@@ -88,11 +88,17 @@ android {
 compose.desktop {
     application {
         mainClass = "meteor.Main"
-
+        version = "2.0.0"
         nativeDistributions {
-            targetFormats(TargetFormat.Dmg, TargetFormat.Msi, TargetFormat.Deb)
-            packageName = "meteor.client"
+            targetFormats(TargetFormat.Dmg, TargetFormat.Exe, TargetFormat.Deb)
+            packageName = "meteor"
             packageVersion = "2.0.0"
+            windows {
+                console = true
+                upgradeUuid = "9df19035-e962-4bb4-90c0-74330a07082b"
+                iconFile.set(project.file("src/desktopMain/resources/Meteor.ico"))
+                shortcut = true
+            }
         }
     }
 }

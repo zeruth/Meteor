@@ -1,5 +1,5 @@
 <component name="ProjectRunConfigurationManager">
-  <configuration default="false" name="package MSI" type="GradleRunConfiguration" factoryName="Gradle">
+  <configuration default="false" name="package EXE" type="GradleRunConfiguration" factoryName="Gradle">
     <ExternalSystemSettings>
       <option name="executionName" />
       <option name="externalProjectPath" value="$PROJECT_DIR$/composeApp" />
@@ -10,7 +10,7 @@
       </option>
       <option name="taskNames">
         <list>
-          <option value=":composeApp:packageMsi" />
+          <option value=":composeApp:packageExe" />
         </list>
       </option>
       <option name="vmOptions" />
