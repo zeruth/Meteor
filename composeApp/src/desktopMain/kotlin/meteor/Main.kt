@@ -41,7 +41,7 @@ object Main {
      */
     @JvmStatic
     fun main(args: Array<String>) = application {
-            Window(onCloseRequest = ::exitApplication, title = "Meteor", state = WindowState(size = DpSize(DIMENSIONS.width.dp, DIMENSIONS.height.dp))) {
+            Window(onCloseRequest = ::exitApplication, title = "Meteor", state = WindowState(size = DpSize(802.dp, 567.dp))) {
                 this.window.isResizable = true
                 this.window.minimumSize = Dimension(DIMENSIONS.width, DIMENSIONS.height)
                 this.window.background = java.awt.Color.BLACK
