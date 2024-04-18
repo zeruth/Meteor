@@ -26,25 +26,18 @@ public class ViewBox extends Frame {
 	@Override
 	public Graphics getGraphics() {
 		Graphics g = super.getGraphics();
-/*        if (this.insets != null) {
-		    g.translate(this.insets.left, this.insets.top);
-        }*/
 		return g;
 	}
 
 	@Override
 	public void update( Graphics g) {
-/*		if (!Client.vanilla)
-			super.update(g);
-		else
-			gameView.update(g);*/
+		if (Client.vanilla)
+			gameView.update(g);
 	}
 
 	@Override
 	public void paint( Graphics g) {
-/*		if (!Client.vanilla)
-			super.paint(g);
-		else
-			gameView.paint(g);*/
+		if (Client.vanilla)
+			gameView.paint(g);
 	}
 }

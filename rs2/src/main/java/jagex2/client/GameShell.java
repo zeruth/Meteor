@@ -85,10 +85,12 @@ public class GameShell extends Applet implements Runnable, MouseListener, MouseM
 	}
 
 	public void run() {
-		this.getBaseComponent().addMouseListener(this);
-		this.getBaseComponent().addMouseMotionListener(this);
-		this.getBaseComponent().addKeyListener(this);
-		this.getBaseComponent().addFocusListener(this);
+		if (Client.vanilla) {
+			this.getBaseComponent().addMouseListener(this);
+			this.getBaseComponent().addMouseMotionListener(this);
+			this.getBaseComponent().addKeyListener(this);
+			this.getBaseComponent().addFocusListener(this);
+		}
 
 		if (this.frame != null) {
 			this.frame.addWindowListener(this);
