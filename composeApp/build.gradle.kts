@@ -92,7 +92,7 @@ compose.desktop {
         nativeDistributions {
             targetFormats(TargetFormat.Dmg, TargetFormat.Msi, TargetFormat.Deb)
             packageName = "meteor.client"
-            packageVersion = "1.0.0"
+            packageVersion = "2.0.0"
         }
     }
 }

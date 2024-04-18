@@ -1,4 +1,4 @@
-package meteor
+package meteor.ui.swing
 
 import jagex2.client.Client
 import meteor.Configuration.STRETCH_TO_FILL

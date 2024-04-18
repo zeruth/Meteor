@@ -17,14 +17,14 @@ import meteor.Configuration.DIMENSIONS
 import meteor.impl.Command
 import meteor.input.KeyListener
 import meteor.input.TranslateMouseListener
+import meteor.ui.compose.GamePanel
+import meteor.ui.compose.GamePanel.RS2GameView
+import meteor.ui.compose.Window.MeteorWindow
+import meteor.ui.swing.PostProcessGamePanel
+import meteor.ui.swing.RS2GamePanel
 import org.rationalityfrontline.kevent.KEVENT
 import java.awt.Dimension
 import java.awt.Window
-import java.awt.event.KeyEvent
-import javax.swing.AbstractAction
-import javax.swing.ActionMap
-import javax.swing.InputMap
-import javax.swing.KeyStroke
 
 
 object Main {
@@ -54,19 +54,13 @@ object Main {
     @JvmStatic
     fun main(args: Array<String>) = application {
             Window(onCloseRequest = ::exitApplication, title = "Meteor", state = WindowState(size = DpSize(802.dp, 567.dp))) {
-                this.window.isResizable = true
-                this.window.minimumSize = Dimension(DIMENSIONS.width, DIMENSIONS.height)
-                this.window.background = java.awt.Color.BLACK
-                this@Main.window = this.window
+                this@Main.window = window
+                window.isResizable = true
+                window.minimumSize = Dimension(DIMENSIONS.width, DIMENSIONS.height)
+                window.background = java.awt.Color.BLACK
                 initRS2()
                 MeteorWindow()
             }
-    }
-
-    @Composable
-    fun MeteorWindow() {
-        SwingPanel(factory = { gamePanel }, modifier = Modifier.fillMaxSize())
-        Text("Meteor 2.0.0", color = Color.Cyan, fontSize = 8.sp, modifier = Modifier.fillMaxSize())
     }
 
     private fun initRS2() {
@@ -77,7 +71,6 @@ object Main {
         //Desktop init
         //We provide a custom JPanel impl that hooks the drawing process
         Client.gamePanel = RS2GamePanel(DIMENSIONS.width, DIMENSIONS.height)
-        Client.gamePanel.size = Dimension(DIMENSIONS.width, DIMENSIONS.height)
         client.initApplication(DIMENSIONS.width, DIMENSIONS.height)
         gamePanel.addKeyListener(KeyListener)
         gamePanel.addMouseListener(TranslateMouseListener)

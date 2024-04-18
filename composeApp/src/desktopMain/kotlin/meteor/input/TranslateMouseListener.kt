@@ -28,7 +28,7 @@ package meteor.input
 import jagex2.client.Client
 import meteor.Configuration
 import meteor.Main
-import meteor.PostProcessGamePanel.Companion.padding
+import meteor.ui.swing.PostProcessGamePanel.Companion.padding
 import java.awt.Dimension
 import java.awt.event.MouseEvent
 import java.awt.event.MouseListener

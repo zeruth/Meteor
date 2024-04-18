@@ -1,9 +1,11 @@
-package meteor
+package meteor.ui.swing
 
+import meteor.Configuration
+import meteor.Main
 import meteor.impl.BufferedDrawFinished
 import meteor.impl.DrawFinished
 import org.rationalityfrontline.kevent.KEVENT
-import java.awt.Color
+import java.awt.Dimension
 import java.awt.Graphics
 import java.awt.KeyboardFocusManager
 import java.awt.image.BufferedImage
@@ -13,13 +15,15 @@ import javax.swing.JPanel
  * Double buffered RS2 image
  */
 class RS2GamePanel(w: Int, h: Int) : JPanel() {
-    var loading = true
-
     var image = BufferedImage(w, h, BufferedImage.TYPE_INT_ARGB)
     var bufferedImage = BufferedImage(image.width, image.height, BufferedImage.TYPE_INT_ARGB)
     var bufferedGraphics = bufferedImage.createGraphics()
 
+    var loading = true
+
     init {
+        size = Dimension(Configuration.DIMENSIONS.width, Configuration.DIMENSIONS.height)
+
         //Loading
         Thread(kotlinx.coroutines.Runnable {
             while (loading) {
