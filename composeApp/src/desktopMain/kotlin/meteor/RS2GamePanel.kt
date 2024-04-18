@@ -46,17 +46,15 @@ class RS2GamePanel(w: Int, h: Int) : JPanel() {
     }
 
     /**
-     * This fixes a bug where focus would be lost every click causing subsequent keystrokes to be ignored.
-     * This will kill off anything attempting to steal away focus.
+     * This fixes a compose bug where focus would be lost every click causing subsequent keystrokes to be ignored.
      */
     private fun checkFocus() {
         KeyboardFocusManager.getCurrentKeyboardFocusManager().focusOwner?.let {
-            if (it != Main.gamePanel) {
+            if (it::class.java.toString().contains("org.jetbrains.skiko.SkiaLayer")) {
                 it.isFocusable = false
                 Main.gamePanel.grabFocus()
             }
         }
-
     }
 
     //Override rs2 surface graphics
