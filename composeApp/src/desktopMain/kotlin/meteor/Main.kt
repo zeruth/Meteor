@@ -31,6 +31,7 @@ object Main {
     lateinit var client: Client
     val gamePanel = PostProcessGamePanel()
     lateinit var window: Window
+    private var initialSize = Dimension(802, 567)
 
     init {
         System.setProperty("compose.interop.blending", "true")
@@ -43,6 +44,9 @@ object Main {
                     Configuration.STRETCH_TO_FILL = false
                     window.repaint()
                 }
+                "reset_window" -> {
+                    window.size = initialSize
+                }
             }
         }
     }
@@ -53,10 +57,13 @@ object Main {
      */
     @JvmStatic
     fun main(args: Array<String>) = application {
-            Window(onCloseRequest = ::exitApplication, title = "Meteor", state = WindowState(size = DpSize(802.dp, 567.dp))) {
+            Window(onCloseRequest = ::exitApplication,
+                title = "Meteor",
+                state = WindowState(
+                    size = DpSize(initialSize.width.dp, initialSize.height.dp),
+                )) {
                 this@Main.window = window
                 window.isResizable = true
-                window.minimumSize = Dimension(DIMENSIONS.width, DIMENSIONS.height)
                 window.background = java.awt.Color.BLACK
                 initRS2()
                 MeteorWindow()
