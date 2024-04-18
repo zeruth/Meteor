@@ -19,8 +19,8 @@ coroutines = "1.6.4"
 [libraries]
 kotlin-test = { module = "org.jetbrains.kotlin:kotlin-test", version.ref = "kotlin" }
 kotlin-test-junit = { module = "org.jetbrains.kotlin:kotlin-test-junit", version.ref = "kotlin" }
-kotlin_coroutines = {group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-core-jvm", version.ref = "coroutines"}
-kotlin-logging = {group = "io.github.microutils", name = "kotlin-logging", version = "3.0.5"}
+kotlin_coroutines = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-core-jvm", version.ref = "coroutines"}
+kotlin-logging = { group = "io.github.microutils", name = "kotlin-logging", version = "3.0.5"}
 junit = { group = "junit", name = "junit", version.ref = "junit" }
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "androidx-core-ktx" }
 androidx-test-junit = { group = "androidx.test.ext", name = "junit", version.ref = "androidx-test-junit" }

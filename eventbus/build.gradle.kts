@@ -16,14 +16,12 @@ java {
 }
 
 dependencies {
-
     with(libs) {
         implementation(kotlin.coroutines)
         implementation(kotlin.logging)
     }
 
     implementation(projects.logger)
-
 }
 
 tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile>().all {

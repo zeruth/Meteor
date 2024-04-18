@@ -12,7 +12,7 @@ java {
 }
 
 dependencies {
-    implementation(project(":eventbus"))
+    implementation(projects.eventbus)
 }
 
 application {

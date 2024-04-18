@@ -44,8 +44,8 @@ kotlin {
             implementation(compose.components.uiToolingPreview)
         }
         desktopMain.dependencies {
-            implementation(project(":eventbus"))
-            implementation(project(":rs2"))
+            implementation(projects.eventbus)
+            implementation(projects.rs2)
             implementation(compose.desktop.currentOs)
         }
     }
