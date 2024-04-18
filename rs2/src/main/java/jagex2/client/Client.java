@@ -24,7 +24,6 @@ import meteor.impl.DrawFinished;
 import org.rationalityfrontline.kevent.KEventGlobal;
 import sign.signlink;
 
-import javax.sound.midi.MidiChannel;
 import javax.sound.sampled.AudioSystem;
 import java.awt.*;
 import java.io.ByteArrayInputStream;
@@ -161,7 +160,7 @@ public class Client extends GameShell {
 
 	private int cameraOffsetCycle;
 
-	public static int lastWaveId = -1;
+	public int lastWaveId = -1;
 
 	private boolean updateDesignModel = false;
 
@@ -2869,12 +2868,6 @@ public class Client extends GameShell {
 
 			this.dragCycles = 0;
 		}
-		if (MidiPlayer.synthesizer != null) {
-			MidiChannel[] channels = MidiPlayer.synthesizer.getChannels();
-			for (MidiChannel channel : channels) {
-				channel.controlChange(7, MidiPlayer.volume);
-			}
-		}
 		KEventGlobal.INSTANCE.post(DrawFinished.INSTANCE);
 	}
 
@@ -3787,19 +3780,14 @@ public class Client extends GameShell {
 
 		switch (volume) {
 			case 0:
-				MidiPlayer.volume = 80;
 				break;
 			case -400:
-				MidiPlayer.volume = 60;
 				break;
 			case -800:
-				MidiPlayer.volume = 40;
 				break;
 			case -1200:
-				MidiPlayer.volume = 20;
 				break;
 			default:
-				MidiPlayer.stop();
 				break;
 		}
 	}
@@ -4280,17 +4268,23 @@ public class Client extends GameShell {
 			boolean lastMidiActive = this.midiActive;
 			if (value == 0) {
 				this.setMidiVolume(0);
+				MidiPlayer.volume = 100;
 				this.midiActive = true;
 			} else if (value == 1) {
 				this.setMidiVolume(-400);
+				MidiPlayer.volume = 75;
 				this.midiActive = true;
 			} else if (value == 2) {
 				this.setMidiVolume(-800);
+				MidiPlayer.volume = 50;
 				this.midiActive = true;
 			} else if (value == 3) {
 				this.setMidiVolume(-1200);
+				MidiPlayer.volume = 25;
 				this.midiActive = true;
 			} else if (value == 4) {
+				MidiPlayer.volume = 0;
+				MidiPlayer.stop();
 				this.midiActive = false;
 			}
 
@@ -7717,11 +7711,6 @@ public class Client extends GameShell {
 					try {
 						if (this.waveIds[wave] != this.lastWaveId || this.waveLoops[wave] != this.lastWaveLoops) {
 							Packet buf = Wave.generate(this.waveIds[wave], this.waveLoops[wave]);
-							//TODO: Offer toggle to play all sounds instead of vanilla last sound
-							SoundPlayer.sounds.put(this.waveIds[wave], AudioSystem.getAudioInputStream(new ByteArrayInputStream(buf.data, 0, buf.pos)));
-
-							if (PLAY_ALL_SOUNDS)
-								new SoundPlayer(SoundPlayer.sounds.get(this.waveIds[wave]), 100, 0);
 
 							if (System.currentTimeMillis() + (long) (buf.pos / 22) > this.lastWaveStartTime + (long) (this.lastWaveLength / 22)) {
 								this.lastWaveLength = buf.pos;
@@ -7729,14 +7718,14 @@ public class Client extends GameShell {
 								if (this.saveWave(buf.data, buf.pos)) {
 									this.lastWaveId = this.waveIds[wave];
 									this.lastWaveLoops = this.waveLoops[wave];
+									SoundPlayer.sounds.put(this.waveIds[wave], AudioSystem.getAudioInputStream(new ByteArrayInputStream(buf.data, 0, buf.pos)));
+									new SoundPlayer(SoundPlayer.sounds.get(this.waveIds[wave]), 100, 0);
 								} else {
 									failed = true;
 								}
 							}
 						} else {
-							if (PLAY_ALL_SOUNDS) {
-								new SoundPlayer(SoundPlayer.sounds.get(this.waveIds[wave]), 100, 0);
-							}
+							new SoundPlayer(SoundPlayer.sounds.get(this.waveIds[wave]), 100, 0);
 							if (!this.replayWave()) {
 								failed = true;
 							}
@@ -10061,12 +10050,6 @@ public class Client extends GameShell {
 			if (this.packetType == 1) {
 				// NPC_INFO (Server Cycle)
 				this.readNpcInfo(this.in, this.packetSize);
-				try {
-					if (!PLAY_ALL_SOUNDS)
-						SoundPlayer.playLastSound();
-				} catch (IOException e) {
-					throw new RuntimeException(e);
-				}
 				this.packetType = -1;
 				return true;
 			}

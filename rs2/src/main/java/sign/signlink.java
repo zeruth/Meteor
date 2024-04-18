@@ -393,7 +393,7 @@ public class signlink implements Runnable {
 
 				if (midiplay) {
 					midi = cacheDir + savereq;
-					MidiPlayer.playSong(savereq, false);
+					MidiPlayer.playSong(false);
 					midiplay = false;
 				}
 

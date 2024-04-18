@@ -1,9 +1,9 @@
 package audio;
 
 import javax.sound.midi.*;
+import javax.sound.sampled.*;
 import java.io.File;
 import java.io.IOException;
-import java.util.HashMap;
 import java.util.Objects;
 
 import static sign.signlink.midi;
@@ -13,33 +13,11 @@ public class MidiPlayer {
   static Soundbank soundfont;
   static Sequencer sequencer;
   public static Synthesizer synthesizer;
-
-  private static boolean isRunning = false;
-
-  public static int volume = 20;
-
-  private static int fadeTime = 3000;
-
-  private static Thread fadeThread;
-
-  public static HashMap<Integer, byte[]> songs = new HashMap<>();
-
   private static String currentSong;
+  public static int volume;
 
-  private static long length = -1;
-
-  static boolean firstReset = true;
-
-  public static boolean isJingle = false;
-
-  public static void playSong(String name, boolean forced) {
-
-    if (firstReset) {
-      volume = 40;
-      firstReset = false;
-    }
-
-    if (midi == null || volume == 0) {
+  public static void playSong(boolean forced) {
+    if (midi == null) {
       sequencer.stop();
     } else {
       if (sequencer != null)
@@ -71,76 +49,33 @@ public class MidiPlayer {
         synthesizer = MidiSystem.getSynthesizer();
       }
 
-      if (isRunning && !isJingle) {
-        fadeOut();
-      } else {
-        if (sequencer.isRunning())
-          sequencer.stop();
-        sequencer = MidiSystem.getSequencer(false);
-        synthesizer = MidiSystem.getSynthesizer();
+      if (sequencer.isRunning())
+        sequencer.stop();
+      sequencer = MidiSystem.getSequencer(false);
+      synthesizer = MidiSystem.getSynthesizer();
+      sequencer.close();
+      synthesizer.close();
 
-        sequencer.open();
-        synthesizer.open();
-        synthesizer.loadAllInstruments(soundfont);
+      sequencer.open();
+      synthesizer.open();
+      synthesizer.loadAllInstruments(soundfont);
 
-        sequencer.getTransmitter().setReceiver(synthesizer.getReceiver());
-        Sequence sequence = null;
-        try {
-          sequence = MidiSystem.getSequence(songFile);
-          sequencer.setSequence(sequence);
-        } catch (InvalidMidiDataException | IOException e) {
-          e.printStackTrace();
-        }
-
-        length = sequencer.getSequence().getTickLength();
-
-        sequencer.start();
-        isRunning = true;
+      sequencer.getTransmitter().setReceiver(synthesizer.getReceiver());
+      try {
+        Sequence sequence = MidiSystem.getSequence(songFile);
+        sequencer.setSequence(sequence);
+      } catch (InvalidMidiDataException | IOException e) {
+        e.printStackTrace();
       }
+
+      sequencer.start();
     } catch (Exception e) {
       e.printStackTrace();
     }
   }
 
-  private static void fadeOut() {
-
-    final long fadeStart = System.currentTimeMillis();
-    fadeThread = new Thread(new Runnable() {
-      @Override
-      public void run() {
-        int oldVolume = volume;
-        while (System.currentTimeMillis() < fadeStart + fadeTime) {
-          if (volume >= 10) {
-            volume -= 10;
-            MidiChannel[] channels = synthesizer.getChannels();
-            for (MidiChannel channel : channels) {
-              channel.controlChange(7, volume);
-            }
-          }
-
-          try {
-            Thread.sleep(fadeTime / 10);
-          } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-          }
-        }
-        isRunning = false;
-        playSong("", true);
-        volume = oldVolume;
-      }
-    });
-
-    fadeThread.start();
-  }
-
   public static void stop() {
-    if (synthesizer != null) {
-      synthesizer.close();
-      soundfont = null;
-      sequencer = null;
-      synthesizer = null;
-    }
-
-    currentSong = null;
+    if (sequencer.isRunning())
+      sequencer.stop();
   }
 }
