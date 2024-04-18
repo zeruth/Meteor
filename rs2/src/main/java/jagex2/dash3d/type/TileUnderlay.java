@@ -1,22 +1,26 @@
 package jagex2.dash3d.type;
 
+
+
+
+
 public class TileUnderlay {
 
-    public final int southwestColor;
+	public final int southwestColor;
 
-    public final int southeastColor;
+	public final int southeastColor;
 
-    public final int northeastColor;
+	public final int northeastColor;
 
-    public final int northwestColor;
+	public final int northwestColor;
 
-    public final int textureId;
+	public final int textureId;
 
-    public boolean flat = true;
+	public boolean flat = true;
 
-    public final int rgb;
+	public final int rgb;
 
-    public TileUnderlay( int southwestColor, int southeastColor, int northeastColor, int northwestColor, int textureId, int rgb, boolean flat) {
+	public TileUnderlay( int southwestColor, int southeastColor, int northeastColor, int northwestColor, int textureId, int rgb, boolean flat) {
 		this.southwestColor = southwestColor;
 		this.southeastColor = southeastColor;
 		this.northeastColor = northeastColor;

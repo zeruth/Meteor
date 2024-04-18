@@ -8,95 +8,99 @@ import jagex2.graphics.Pix24;
 import jagex2.io.Jagfile;
 import jagex2.io.Packet;
 
+
+
+
+
 public class ObjType {
 
-    private static int count;
+	private static int count;
 
-    private static int[] offsets;
+	private static int[] offsets;
 
-    private static Packet dat;
+	private static Packet dat;
 
-    private static ObjType[] cache;
+	private static ObjType[] cache;
 
-    private static int cachePos;
+	private static int cachePos;
 
-    public static boolean membersWorld = true;
+	public static boolean membersWorld = true;
 
-    public int index = -1;
+	public int index = -1;
 
-    private int model;
+	private int model;
 
-    public String name;
+	public String name;
 
-    public String desc;
+	public String desc;
 
-    private int[] recol_s;
+	private int[] recol_s;
 
-    private int[] recol_d;
+	private int[] recol_d;
 
-    public int zoom2d;
+	public int zoom2d;
 
-    public int xan2d;
+	public int xan2d;
 
-    public int yan2d;
+	public int yan2d;
 
-    public int zan2d;
+	public int zan2d;
 
-    public int xof2d;
+	public int xof2d;
 
-    public int yof2d;
+	public int yof2d;
 
-    private boolean code9;
+	private boolean code9;
 
-    private int code10;
+	private int code10;
 
-    public boolean stackable;
+	public boolean stackable;
 
-    public int cost;
+	public int cost;
 
-    public boolean members;
+	public boolean members;
 
-    public String[] ops;
+	public String[] ops;
 
-    public String[] iops;
+	public String[] iops;
 
-    private int manwear;
+	private int manwear;
 
-    private int manwear2;
+	private int manwear2;
 
-    private byte manwearOffsetY;
+	private byte manwearOffsetY;
 
-    private int womanwear;
+	private int womanwear;
 
-    private int womanwear2;
+	private int womanwear2;
 
-    private byte womanwearOffsetY;
+	private byte womanwearOffsetY;
 
-    private int manwear3;
+	private int manwear3;
 
-    private int womanwear3;
+	private int womanwear3;
 
-    private int manhead;
+	private int manhead;
 
-    private int manhead2;
+	private int manhead2;
 
-    private int womanhead;
+	private int womanhead;
 
-    private int womanhead2;
+	private int womanhead2;
 
-    public int[] countobj;
+	public int[] countobj;
 
-    public int[] countco;
+	public int[] countco;
 
-    public int certlink;
+	public int certlink;
 
-    public int certtemplate;
+	public int certtemplate;
 
-    public static LruCache modelCache = new LruCache(50);
+	public static LruCache modelCache = new LruCache(50);
 
-    public static LruCache iconCache = new LruCache(200);
+	public static LruCache iconCache = new LruCache(200);
 
-    public static void unpack( Jagfile config) {
+	public static void unpack( Jagfile config) {
 		dat = new Packet(config.read("obj.dat", null));
 		Packet idx = new Packet(config.read("obj.idx", null));
 
@@ -115,7 +119,7 @@ public class ObjType {
 		}
 	}
 
-    public static void unload() {
+	public static void unload() {
 		modelCache = null;
 		iconCache = null;
 		offsets = null;
@@ -123,7 +127,7 @@ public class ObjType {
 		dat = null;
 	}
 
-    public static ObjType get( int id) {
+	public static ObjType get( int id) {
 		for ( int i = 0; i < 10; i++) {
 			if (cache[i].index == id) {
 				return cache[i];
@@ -151,7 +155,7 @@ public class ObjType {
 		return obj;
 	}
 
-    public static Pix24 getIcon( int id, int count) {
+	public static Pix24 getIcon( int id, int count) {
 		Pix24 icon = (Pix24) iconCache.get(id);
 		if (icon != null && icon.cropH != count && icon.cropH != -1) {
 			icon.unlink();
@@ -256,7 +260,7 @@ public class ObjType {
 		return icon;
 	}
 
-    public void reset() {
+	public void reset() {
 		this.model = 0;
 		this.name = null;
 		this.desc = null;
@@ -293,7 +297,7 @@ public class ObjType {
 		this.certtemplate = -1;
 	}
 
-    public void decode( Packet dat) {
+	public void decode( Packet dat) {
 		while (true) {
 			int code = dat.g1();
 			if (code == 0) {
@@ -396,7 +400,7 @@ public class ObjType {
 		}
 	}
 
-    public void toCertificate() {
+	public void toCertificate() {
 		ObjType template = get(this.certtemplate);
 		this.model = template.model;
 		this.zoom2d = template.zoom2d;
@@ -423,7 +427,7 @@ public class ObjType {
 		this.stackable = true;
 	}
 
-    public Model getInterfaceModel( int count) {
+	public Model getInterfaceModel( int count) {
 		if (this.countobj != null && count > 1) {
 			int id = -1;
 			for (int i = 0; i < 10; i++) {
@@ -455,7 +459,7 @@ public class ObjType {
 		return model;
 	}
 
-    public Model getWornModel( int gender) {
+	public Model getWornModel( int gender) {
 		int id1 = this.manwear;
 		if (gender == 1) {
 			id1 = this.womanwear;
@@ -504,7 +508,7 @@ public class ObjType {
 		return model;
 	}
 
-    public Model getHeadModel( int gender) {
+	public Model getHeadModel( int gender) {
 		int head1 = this.manhead;
 		if (gender == 1) {
 			head1 = this.womanhead;

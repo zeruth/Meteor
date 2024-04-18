@@ -3,25 +3,29 @@ package jagex2.graphics;
 import jagex2.io.Jagfile;
 import jagex2.io.Packet;
 
+
+
+
+
 public class Pix8 extends Draw2D {
 
-    public byte[] pixels;
+	public byte[] pixels;
 
-    public final int[] palette;
+	public final int[] palette;
 
-    public int width;
+	public int width;
 
-    public int height;
+	public int height;
 
-    public int cropX;
+	public int cropX;
 
-    public int cropY;
+	public int cropY;
 
-    public int cropW;
+	public int cropW;
 
-    private int cropH;
+	private int cropH;
 
-    public Pix8( Jagfile jag, String name, int index) {
+	public Pix8( Jagfile jag, String name, int index) {
 		Packet dat = new Packet(jag.read(name + ".dat", null));
 		Packet idx = new Packet(jag.read("index.dat", null));
 		idx.pos = dat.g2();
@@ -63,7 +67,7 @@ public class Pix8 extends Draw2D {
 		}
 	}
 
-    public void shrink() {
+	public void shrink() {
 		this.cropW /= 2;
 		this.cropH /= 2;
 
@@ -82,7 +86,7 @@ public class Pix8 extends Draw2D {
 		this.cropY = 0;
 	}
 
-    public void crop() {
+	public void crop() {
 		if (this.width == this.cropW && this.height == this.cropH) {
 			return;
 		}
@@ -102,7 +106,7 @@ public class Pix8 extends Draw2D {
 		this.cropY = 0;
 	}
 
-    public void flipHorizontally() {
+	public void flipHorizontally() {
 		byte[] pixels = new byte[this.width * this.height];
 		int off = 0;
 		for ( int y = 0; y < this.height; y++) {
@@ -115,7 +119,7 @@ public class Pix8 extends Draw2D {
 		this.cropX = this.cropW - this.width - this.cropX;
 	}
 
-    public void flipVertically() {
+	public void flipVertically() {
 		byte[] pixels = new byte[this.width * this.height];
 		int off = 0;
 		for ( int y = this.height - 1; y >= 0; y--) {
@@ -128,7 +132,7 @@ public class Pix8 extends Draw2D {
 		this.cropY = this.cropH - this.height - this.cropY;
 	}
 
-    public void translate( int r, int g, int b) {
+	public void translate( int r, int g, int b) {
 		for ( int i = 0; i < this.palette.length; i++) {
 			int red = this.palette[i] >> 16 & 0xFF;
 			red += r;
@@ -158,7 +162,7 @@ public class Pix8 extends Draw2D {
 		}
 	}
 
-    public void draw( int x, int y) {
+	public void draw( int x, int y) {
 		x += this.cropX;
 		y += this.cropY;
 
@@ -203,7 +207,7 @@ public class Pix8 extends Draw2D {
 		}
 	}
 
-    private void copyPixels( int w, int h, byte[] src, int srcOff, int srcStep, int[] dst, int dstOff, int dstStep, int[] palette) {
+	private void copyPixels( int w, int h, byte[] src, int srcOff, int srcStep, int[] dst, int dstOff, int dstStep, int[] palette) {
 		int qw = -(w >> 2);
 		w = -(w & 0x3);
 

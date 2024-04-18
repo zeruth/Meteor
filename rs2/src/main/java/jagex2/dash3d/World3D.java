@@ -7,115 +7,119 @@ import jagex2.graphics.Draw2D;
 import jagex2.graphics.Draw3D;
 import jagex2.graphics.Model;
 
+
+
+
+
 public class World3D {
 
-    public static boolean lowMemory = true;
+	public static boolean lowMemory = true;
 
-    private final int maxLevel;
+	private final int maxLevel;
 
-    private final int maxTileX;
+	private final int maxTileX;
 
-    private final int maxTileZ;
+	private final int maxTileZ;
 
-    private final int[][][] levelHeightmaps;
+	private final int[][][] levelHeightmaps;
 
-    private final Tile[][][] levelTiles;
+	private final Tile[][][] levelTiles;
 
-    private int minLevel;
+	private int minLevel;
 
-    private int temporaryLocCount;
+	private int temporaryLocCount;
 
-    private final Loc[] temporaryLocs = new Loc[5000];
+	private final Loc[] temporaryLocs = new Loc[5000];
 
-    private final int[][][] levelTileOcclusionCycles;
+	private final int[][][] levelTileOcclusionCycles;
 
-    public static int tilesRemaining;
+	public static int tilesRemaining;
 
-    public static int topLevel;
+	public static int topLevel;
 
-    public static int cycle;
+	public static int cycle;
 
-    public static int minDrawTileX;
+	public static int minDrawTileX;
 
-    public static int maxDrawTileX;
+	public static int maxDrawTileX;
 
-    public static int minDrawTileZ;
+	public static int minDrawTileZ;
 
-    public static int maxDrawTileZ;
+	public static int maxDrawTileZ;
 
-    public static int eyeTileX;
+	public static int eyeTileX;
 
-    public static int eyeTileZ;
+	public static int eyeTileZ;
 
-    public static int eyeX;
+	public static int eyeX;
 
-    public static int eyeY;
+	public static int eyeY;
 
-    public static int eyeZ;
+	public static int eyeZ;
 
-    public static int sinEyePitch;
+	public static int sinEyePitch;
 
-    public static int cosEyePitch;
+	public static int cosEyePitch;
 
-    public static int sinEyeYaw;
+	public static int sinEyeYaw;
 
-    public static int cosEyeYaw;
+	public static int cosEyeYaw;
 
-    public static Loc[] locBuffer = new Loc[100];
+	public static Loc[] locBuffer = new Loc[100];
 
-    public static final int[] WALL_DECORATION_INSET_X = new int[] { 53, -53, -53, 53 };
+	public static final int[] WALL_DECORATION_INSET_X = new int[] { 53, -53, -53, 53 };
 
-    public static final int[] WALL_DECORATION_INSET_Z = new int[] { -53, -53, 53, 53 };
+	public static final int[] WALL_DECORATION_INSET_Z = new int[] { -53, -53, 53, 53 };
 
-    public static final int[] WALL_DECORATION_OUTSET_X = new int[] { -45, 45, 45, -45 };
+	public static final int[] WALL_DECORATION_OUTSET_X = new int[] { -45, 45, 45, -45 };
 
-    public static final int[] WALL_DECORATION_OUTSET_Z = new int[] { 45, 45, -45, -45 };
+	public static final int[] WALL_DECORATION_OUTSET_Z = new int[] { 45, 45, -45, -45 };
 
-    public static boolean takingInput;
+	public static boolean takingInput;
 
-    public static int mouseX;
+	public static int mouseX;
 
-    public static int mouseY;
+	public static int mouseY;
 
-    public static int clickTileX = -1;
+	public static int clickTileX = -1;
 
-    public static int clickTileZ = -1;
+	public static int clickTileZ = -1;
 
-    public static final int LEVEL_COUNT = 4;
+	public static final int LEVEL_COUNT = 4;
 
-    public static int[] levelOccluderCount = new int[LEVEL_COUNT];
+	public static int[] levelOccluderCount = new int[LEVEL_COUNT];
 
-    public static Occluder[][] levelOccluders = new Occluder[LEVEL_COUNT][500];
+	public static Occluder[][] levelOccluders = new Occluder[LEVEL_COUNT][500];
 
-    public static int activeOccluderCount;
+	public static int activeOccluderCount;
 
-    public static final Occluder[] activeOccluders = new Occluder[500];
+	public static final Occluder[] activeOccluders = new Occluder[500];
 
-    public static LinkList drawTileQueue = new LinkList();
+	public static LinkList drawTileQueue = new LinkList();
 
-    public static final int[] FRONT_WALL_TYPES = new int[] { 19, 55, 38, 155, 255, 110, 137, 205, 76 };
+	public static final int[] FRONT_WALL_TYPES = new int[] { 19, 55, 38, 155, 255, 110, 137, 205, 76 };
 
-    public static final int[] DIRECTION_ALLOW_WALL_CORNER_TYPE = new int[] { 160, 192, 80, 96, 0, 144, 80, 48, 160 };
+	public static final int[] DIRECTION_ALLOW_WALL_CORNER_TYPE = new int[] { 160, 192, 80, 96, 0, 144, 80, 48, 160 };
 
-    public static final int[] BACK_WALL_TYPES = new int[] { 76, 8, 137, 4, 0, 1, 38, 2, 19 };
+	public static final int[] BACK_WALL_TYPES = new int[] { 76, 8, 137, 4, 0, 1, 38, 2, 19 };
 
-    public static final int[] WALL_CORNER_TYPE_16_BLOCK_LOC_SPANS = new int[] { 0, 0, 2, 0, 0, 2, 1, 1, 0 };
+	public static final int[] WALL_CORNER_TYPE_16_BLOCK_LOC_SPANS = new int[] { 0, 0, 2, 0, 0, 2, 1, 1, 0 };
 
-    public static final int[] WALL_CORNER_TYPE_32_BLOCK_LOC_SPANS = new int[] { 2, 0, 0, 2, 0, 0, 0, 4, 4 };
+	public static final int[] WALL_CORNER_TYPE_32_BLOCK_LOC_SPANS = new int[] { 2, 0, 0, 2, 0, 0, 0, 4, 4 };
 
-    public static final int[] WALL_CORNER_TYPE_64_BLOCK_LOC_SPANS = new int[] { 0, 4, 4, 8, 0, 0, 8, 0, 0 };
+	public static final int[] WALL_CORNER_TYPE_64_BLOCK_LOC_SPANS = new int[] { 0, 4, 4, 8, 0, 0, 8, 0, 0 };
 
-    public static final int[] WALL_CORNER_TYPE_128_BLOCK_LOC_SPANS = new int[] { 1, 1, 0, 0, 0, 8, 0, 0, 8 };
+	public static final int[] WALL_CORNER_TYPE_128_BLOCK_LOC_SPANS = new int[] { 1, 1, 0, 0, 0, 8, 0, 0, 8 };
 
-    public static final int[] TEXTURE_HSL = new int[] { 41, 39248, 41, 4643, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 43086, 41, 41, 41, 41, 41, 41, 41, 8602, 41, 28992, 41, 41, 41, 41, 41, 5056, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 3131, 41, 41, 41 };
+	public static final int[] TEXTURE_HSL = new int[] { 41, 39248, 41, 4643, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 43086, 41, 41, 41, 41, 41, 41, 41, 8602, 41, 28992, 41, 41, 41, 41, 41, 5056, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 3131, 41, 41, 41 };
 
-    private final int[] mergeIndexA = new int[10000];
+	private final int[] mergeIndexA = new int[10000];
 
-    private final int[] mergeIndexB = new int[10000];
+	private final int[] mergeIndexB = new int[10000];
 
-    private int tmpMergeIndex;
+	private int tmpMergeIndex;
 
-    private final int[][] MINIMAP_OVERLAY_SHAPE = new int[][] {
+	private final int[][] MINIMAP_OVERLAY_SHAPE = new int[][] {
 		{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
 		{ 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 }, // PLAIN_SHAPE
 		{ 1, 0, 0, 0, 1, 1, 0, 0, 1, 1, 1, 0, 1, 1, 1, 1 }, // DIAGONAL_SHAPE
@@ -131,30 +135,30 @@ public class World3D {
 		{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 1, 1, 1, 1 }  // TRAPEZIUM_SHAPE
 	};
 
-    private final int[][] MINIMAP_OVERLAY_ROTATION = new int[][] {
+	private final int[][] MINIMAP_OVERLAY_ROTATION = new int[][] {
 		{ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15 },
 		{ 12, 8, 4, 0, 13, 9, 5, 1, 14, 10, 6, 2, 15, 11, 7, 3 },
 		{ 15, 14, 13, 12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1, 0 },
 		{ 3, 7, 11, 15, 2, 6, 10, 14, 1, 5, 9, 13, 0, 4, 8, 12 }
 	};
 
-    public static boolean[][][][] visibilityMatrix = new boolean[8][32][51][51];
+	public static boolean[][][][] visibilityMatrix = new boolean[8][32][51][51];
 
-    public static boolean[][] visibilityMap;
+	public static boolean[][] visibilityMap;
 
-    private static int viewportCenterX;
+	private static int viewportCenterX;
 
-    private static int viewportCenterY;
+	private static int viewportCenterY;
 
-    private static int viewportLeft;
+	private static int viewportLeft;
 
-    private static int viewportTop;
+	private static int viewportTop;
 
-    private static int viewportRight;
+	private static int viewportRight;
 
-    private static int viewportBottom;
+	private static int viewportBottom;
 
-    public World3D( int[][][] levelHeightmaps, int maxTileZ, int maxLevel, int maxTileX) {
+	public World3D( int[][][] levelHeightmaps, int maxTileZ, int maxLevel, int maxTileX) {
 		this.maxLevel = maxLevel;
 		this.maxTileX = maxTileX;
 		this.maxTileZ = maxTileZ;
@@ -164,7 +168,7 @@ public class World3D {
 		this.reset();
 	}
 
-    public static void unload() {
+	public static void unload() {
 		locBuffer = null;
 		levelOccluderCount = null;
 		levelOccluders = null;
@@ -173,7 +177,7 @@ public class World3D {
 		visibilityMap = null;
 	}
 
-    public static void addOccluder( int level, int type, int minX, int minY, int minZ, int maxX, int maxY, int maxZ) {
+	public static void addOccluder( int level, int type, int minX, int minY, int minZ, int maxX, int maxY, int maxZ) {
 		Occluder occluder = new Occluder();
 		occluder.minTileX = minX / 128;
 		occluder.maxTileX = maxX / 128;
@@ -189,7 +193,7 @@ public class World3D {
 		levelOccluders[level][levelOccluderCount[level]++] = occluder;
 	}
 
-    public static void init( int viewportWidth, int viewportHeight, int frustumStart, int frustumEnd, int[] pitchDistance) {
+	public static void init( int viewportWidth, int viewportHeight, int frustumStart, int frustumEnd, int[] pitchDistance) {
 		viewportLeft = 0;
 		viewportTop = 0;
 		viewportRight = viewportWidth;
@@ -263,7 +267,7 @@ public class World3D {
 		}
 	}
 
-    private static boolean testPoint( int x, int z, int y) {
+	private static boolean testPoint( int x, int z, int y) {
 		int px = z * sinEyeYaw + x * cosEyeYaw >> 16;
 		int tmp = z * cosEyeYaw - x * sinEyeYaw >> 16;
 		int pz = y * sinEyePitch + tmp * cosEyePitch >> 16;
@@ -277,7 +281,7 @@ public class World3D {
 		return viewportX >= viewportLeft && viewportX <= viewportRight && viewportY >= viewportTop && viewportY <= viewportBottom;
 	}
 
-    public void reset() {
+	public void reset() {
 		for ( int level = 0; level < this.maxLevel; level++) {
 			for (int x = 0; x < this.maxTileX; x++) {
 				for (int z = 0; z < this.maxTileZ; z++) {
@@ -305,7 +309,7 @@ public class World3D {
 		}
 	}
 
-    public void setMinLevel( int level) {
+	public void setMinLevel( int level) {
 		this.minLevel = level;
 
 		for ( int stx = 0; stx < this.maxTileX; stx++) {
@@ -315,7 +319,7 @@ public class World3D {
 		}
 	}
 
-    public void setBridge( int stx, int stz) {
+	public void setBridge( int stx, int stz) {
 		Tile ground = this.levelTiles[0][stx][stz];
 		for ( int level = 0; level < 3; level++) {
 			this.levelTiles[level][stx][stz] = this.levelTiles[level + 1][stx][stz];
@@ -332,7 +336,7 @@ public class World3D {
 		this.levelTiles[3][stx][stz] = null;
 	}
 
-    public void setDrawLevel( int level, int stx, int stz, int drawLevel) {
+	public void setDrawLevel( int level, int stx, int stz, int drawLevel) {
 		Tile tile = this.levelTiles[level][stx][stz];
 		if (tile == null) {
 			return;
@@ -341,7 +345,7 @@ public class World3D {
 		this.levelTiles[level][stx][stz].drawLevel = drawLevel;
 	}
 
-    public void setTile( int level, int x, int z, int shape, int angle, int textureId, int southwestY, int southeastY, int northeastY, int northwestY, int southwestColor, int southeastColor, int northeastColor, int northwestColor, int southwestColor2, int southeastColor2, int northeastColor2, int northwestColor2, int backgroundRgb, int foregroundRgb) {
+	public void setTile( int level, int x, int z, int shape, int angle, int textureId, int southwestY, int southeastY, int northeastY, int northwestY, int southwestColor, int southeastColor, int northeastColor, int northwestColor, int southwestColor2, int southeastColor2, int northeastColor2, int northwestColor2, int backgroundRgb, int foregroundRgb) {
 		TileUnderlay underlay;
 		int l;
 		if (shape == 0) {
@@ -371,7 +375,7 @@ public class World3D {
 		}
 	}
 
-    public void addGroundDecoration( Model model, int tileLevel, int tileX, int tileZ, int y, int bitset, byte info) {
+	public void addGroundDecoration( Model model, int tileLevel, int tileX, int tileZ, int y, int bitset, byte info) {
 		GroundDecoration decor = new GroundDecoration();
 		decor.model = model;
 		decor.x = tileX * 128 + 64;
@@ -385,7 +389,7 @@ public class World3D {
 		this.levelTiles[tileLevel][tileX][tileZ].groundDecoration = decor;
 	}
 
-    public void addObjStack( int stx, int stz, int y, int level, int bitset, Model topObj, Model middleObj, Model bottomObj) {
+	public void addObjStack( int stx, int stz, int y, int level, int bitset, Model topObj, Model middleObj, Model bottomObj) {
 		ObjStack stack = new ObjStack();
 		stack.topObj = topObj;
 		stack.x = stx * 128 + 64;
@@ -411,7 +415,7 @@ public class World3D {
 		this.levelTiles[level][stx][stz].objStack = stack;
 	}
 
-    public void addWall( int level, int tileX, int tileZ, int y, int typeA, int typeB, Model modelA, Model modelB, int bitset, byte info) {
+	public void addWall( int level, int tileX, int tileZ, int y, int typeA, int typeB, Model modelA, Model modelB, int bitset, byte info) {
 		if (modelA == null && modelB == null) {
 			return;
 		}
@@ -434,7 +438,7 @@ public class World3D {
 		this.levelTiles[level][tileX][tileZ].wall = wall;
 	}
 
-    public void setWallDecoration( int level, int tileX, int tileZ, int y, int offsetX, int offsetZ, int bitset, Model model, byte info, int angle, int type) {
+	public void setWallDecoration( int level, int tileX, int tileZ, int y, int offsetX, int offsetZ, int bitset, Model model, byte info, int angle, int type) {
 		if (model == null) {
 			return;
 		}
@@ -456,7 +460,7 @@ public class World3D {
 		this.levelTiles[level][tileX][tileZ].wallDecoration = decor;
 	}
 
-    public boolean addLoc( int level, int tileX, int tileZ, int y, Model model, Entity entity, int bitset, byte info, int width, int length, int yaw) {
+	public boolean addLoc( int level, int tileX, int tileZ, int y, Model model, Entity entity, int bitset, byte info, int width, int length, int yaw) {
 		if (model == null && entity == null) {
 			return true;
 		} else {
@@ -466,7 +470,7 @@ public class World3D {
 		}
 	}
 
-    public boolean addTemporary( int level, int x, int y, int z, Model model, Entity entity, int bitset, int yaw, int padding, boolean forwardPadding) {
+	public boolean addTemporary( int level, int x, int y, int z, Model model, Entity entity, int bitset, int yaw, int padding, boolean forwardPadding) {
 		if (model == null && entity == null) {
 			return true;
 		}
@@ -495,11 +499,11 @@ public class World3D {
 		return this.addLoc(x, z, y, level, x0, z0, x1 + 1 - x0, z1 - z0 + 1, model, entity, bitset, (byte) 0, yaw, true);
 	}
 
-    public boolean addTemporary( int level, int x, int y, int z, int minTileX, int minTileZ, int maxTileX, int maxTileZ, Model model, Entity entity, int bitset, int yaw) {
+	public boolean addTemporary( int level, int x, int y, int z, int minTileX, int minTileZ, int maxTileX, int maxTileZ, Model model, Entity entity, int bitset, int yaw) {
 		return model == null && entity == null || this.addLoc(x, z, y, level, minTileX, minTileZ, maxTileX + 1 - minTileX, maxTileZ - minTileZ + 1, model, entity, bitset, (byte) 0, yaw, true);
 	}
 
-    private boolean addLoc( int x, int z, int y, int level, int tileX, int tileZ, int tileSizeX, int tileSizeZ, Model model, Entity entity, int bitset, byte info, int yaw, boolean temporary) {
+	private boolean addLoc( int x, int z, int y, int level, int tileX, int tileZ, int tileSizeX, int tileSizeZ, Model model, Entity entity, int bitset, byte info, int yaw, boolean temporary) {
 		if (model == null && entity == null) {
 			return false;
 		}
@@ -563,7 +567,7 @@ public class World3D {
 		return true;
 	}
 
-    public void clearTemporaryLocs() {
+	public void clearTemporaryLocs() {
 		for ( int i = 0; i < this.temporaryLocCount; i++) {
 			Loc loc = this.temporaryLocs[i];
 			this.removeLoc(loc);
@@ -573,7 +577,7 @@ public class World3D {
 		this.temporaryLocCount = 0;
 	}
 
-    private void removeLoc( Loc loc) {
+	private void removeLoc( Loc loc) {
 		for ( int tx = loc.minSceneTileX; tx <= loc.maxSceneTileX; tx++) {
 			for ( int tz = loc.minSceneTileZ; tz <= loc.maxSceneTileZ; tz++) {
 				Tile tile = this.levelTiles[loc.level][tx][tz];
@@ -602,7 +606,7 @@ public class World3D {
 		}
 	}
 
-    public void setLocModel( int level, int x, int z, Model model) {
+	public void setLocModel( int level, int x, int z, Model model) {
 		if (model == null) {
 			return;
 		}
@@ -621,7 +625,7 @@ public class World3D {
 		}
 	}
 
-    public void setWallDecorationOffset( int level, int x, int z, int offset) {
+	public void setWallDecorationOffset( int level, int x, int z, int offset) {
 		Tile tile = this.levelTiles[level][x][z];
 		if (tile == null) {
 			return;
@@ -638,7 +642,7 @@ public class World3D {
 		decor.z = sz + (decor.z - sz) * offset / 16;
 	}
 
-    public void setWallDecorationModel( int level, int x, int z, Model model) {
+	public void setWallDecorationModel( int level, int x, int z, Model model) {
 		if (model == null) {
 			return;
 		}
@@ -656,7 +660,7 @@ public class World3D {
 		decor.model = model;
 	}
 
-    public void setGroundDecorationModel( int level, int x, int z, Model model) {
+	public void setGroundDecorationModel( int level, int x, int z, Model model) {
 		if (model == null) {
 			return;
 		}
@@ -674,7 +678,7 @@ public class World3D {
 		decor.model = model;
 	}
 
-    public void setWallModel( int level, int x, int z, Model model) {
+	public void setWallModel( int level, int x, int z, Model model) {
 		if (model == null) {
 			return;
 		}
@@ -692,7 +696,7 @@ public class World3D {
 		wall.modelA = model;
 	}
 
-    public void setWallModels( int x, int z, int level, Model modelA, Model modelB) {
+	public void setWallModels( int x, int z, int level, Model modelA, Model modelB) {
 		if (modelA == null) {
 			return;
 		}
@@ -711,14 +715,14 @@ public class World3D {
 		wall.modelB = modelB;
 	}
 
-    public void removeWall( int level, int x, int z, int force) {
+	public void removeWall( int level, int x, int z, int force) {
 		Tile tile = this.levelTiles[level][x][z];
 		if (force == 1 && tile != null) {
 			tile.wall = null;
 		}
 	}
 
-    public void removeWallDecoration( int level, int x, int z) {
+	public void removeWallDecoration( int level, int x, int z) {
 		Tile tile = this.levelTiles[level][x][z];
 		if (tile == null) {
 			return;
@@ -727,7 +731,7 @@ public class World3D {
 		tile.wallDecoration = null;
 	}
 
-    public void removeLoc( int level, int x, int z) {
+	public void removeLoc( int level, int x, int z) {
 		Tile tile = this.levelTiles[level][x][z];
 		if (tile == null) {
 			return;
@@ -742,7 +746,7 @@ public class World3D {
 		}
 	}
 
-    public void removeGroundDecoration( int level, int x, int z) {
+	public void removeGroundDecoration( int level, int x, int z) {
 		Tile tile = this.levelTiles[level][x][z];
 		if (tile == null) {
 			return;
@@ -751,7 +755,7 @@ public class World3D {
 		tile.groundDecoration = null;
 	}
 
-    public void removeObjStack( int level, int x, int z) {
+	public void removeObjStack( int level, int x, int z) {
 		Tile tile = this.levelTiles[level][x][z];
 		if (tile == null) {
 			return;
@@ -760,17 +764,17 @@ public class World3D {
 		tile.objStack = null;
 	}
 
-    public int getWallBitset( int level, int x, int z) {
+	public int getWallBitset( int level, int x, int z) {
 		Tile tile = this.levelTiles[level][x][z];
 		return tile == null || tile.wall == null ? 0 : tile.wall.bitset;
 	}
 
-    public int getWallDecorationBitset( int level, int z, int x) {
+	public int getWallDecorationBitset( int level, int z, int x) {
 		Tile tile = this.levelTiles[level][x][z];
 		return tile == null || tile.wallDecoration == null ? 0 : tile.wallDecoration.bitset;
 	}
 
-    public int getLocBitset( int level, int x, int z) {
+	public int getLocBitset( int level, int x, int z) {
 		Tile tile = this.levelTiles[level][x][z];
 		if (tile == null) {
 			return 0;
@@ -786,12 +790,12 @@ public class World3D {
 		return 0;
 	}
 
-    public int getGroundDecorationBitset( int level, int x, int z) {
+	public int getGroundDecorationBitset( int level, int x, int z) {
 		Tile tile = this.levelTiles[level][x][z];
 		return tile == null || tile.groundDecoration == null ? 0 : tile.groundDecoration.bitset;
 	}
 
-    public int getInfo( int level, int x, int z, int bitset) {
+	public int getInfo( int level, int x, int z, int bitset) {
 		Tile tile = this.levelTiles[level][x][z];
 		if (tile == null) {
 			return -1;
@@ -812,7 +816,7 @@ public class World3D {
 		}
 	}
 
-    public void buildModels( int lightAmbient, int lightAttenuation, int lightSrcX, int lightSrcY, int lightSrcZ) {
+	public void buildModels( int lightAmbient, int lightAttenuation, int lightSrcX, int lightSrcY, int lightSrcZ) {
 		int lightMagnitude = (int) Math.sqrt(lightSrcX * lightSrcX + lightSrcY * lightSrcY + lightSrcZ * lightSrcZ);
 		int attenuation = lightAttenuation * lightMagnitude >> 8;
 
@@ -853,7 +857,7 @@ public class World3D {
 		}
 	}
 
-    private void mergeGroundDecorationNormals( int level, int tileX, int tileZ, Model model) {
+	private void mergeGroundDecorationNormals( int level, int tileX, int tileZ, Model model) {
 		Tile tile;
 		if (tileX < this.maxTileX) {
 			tile = this.levelTiles[level][tileX + 1][tileZ];
@@ -884,7 +888,7 @@ public class World3D {
 		}
 	}
 
-    private void mergeLocNormals( int level, int tileX, int tileZ, int tileSizeX, int tileSizeZ, Model model) {
+	private void mergeLocNormals( int level, int tileX, int tileZ, int tileSizeX, int tileSizeZ, Model model) {
 		boolean allowFaceRemoval = true;
 
 		int minTileX = tileX;
@@ -941,7 +945,7 @@ public class World3D {
 		}
 	}
 
-    private void mergeNormals( Model modelA, Model modelB, int offsetX, int offsetY, int offsetZ, boolean allowFaceRemoval) {
+	private void mergeNormals( Model modelA, Model modelB, int offsetX, int offsetY, int offsetZ, boolean allowFaceRemoval) {
 		this.tmpMergeIndex++;
 
 		int merged = 0;
@@ -1006,7 +1010,7 @@ public class World3D {
 		}
 	}
 
-    public void drawMinimapTile( int level, int x, int z, int[] dst, int offset, int step) {
+	public void drawMinimapTile( int level, int x, int z, int[] dst, int offset, int step) {
 		Tile tile = this.levelTiles[level][x][z];
 		if (tile == null) {
 			return;
@@ -1076,7 +1080,7 @@ public class World3D {
 		}
 	}
 
-    public void click( int mouseX, int mouseY) {
+	public void click( int mouseX, int mouseY) {
 		takingInput = true;
 		World3D.mouseX = mouseX;
 		World3D.mouseY = mouseY;
@@ -1084,7 +1088,7 @@ public class World3D {
 		clickTileZ = -1;
 	}
 
-    public void draw( int eyeX, int eyeY, int eyeZ, int topLevel, int eyeYaw, int eyePitch, int loopCycle) {
+	public void draw( int eyeX, int eyeY, int eyeZ, int topLevel, int eyeYaw, int eyePitch, int loopCycle) {
 		if (eyeX < 0) {
 			eyeX = 0;
 		} else if (eyeX >= this.maxTileX * 128) {
@@ -1265,14 +1269,14 @@ public class World3D {
 		}
 	}
 
-    private void drawTile( Tile next, boolean checkAdjacent, int loopCycle) {
-		drawTileQueue.pushBack(next);
+	private void drawTile( Tile next, boolean checkAdjacent, int loopCycle) {
+		drawTileQueue.addTail(next);
 
 		while (true) {
 			Tile tile;
 
 			do {
-				tile = (Tile) drawTileQueue.pollFront();
+				tile = (Tile) drawTileQueue.removeHead();
 
 				if (tile == null) {
 					return;
@@ -1490,28 +1494,28 @@ public class World3D {
 					if (tileX < eyeTileX && (spans & 0x4) != 0) {
 						Tile adjacent = tiles[tileX + 1][tileZ];
 						if (adjacent != null && adjacent.update) {
-							drawTileQueue.pushBack(adjacent);
+							drawTileQueue.addTail(adjacent);
 						}
 					}
 
 					if (tileZ < eyeTileZ && (spans & 0x2) != 0) {
 						Tile adjacent = tiles[tileX][tileZ + 1];
 						if (adjacent != null && adjacent.update) {
-							drawTileQueue.pushBack(adjacent);
+							drawTileQueue.addTail(adjacent);
 						}
 					}
 
 					if (tileX > eyeTileX && (spans & 0x1) != 0) {
 						Tile adjacent = tiles[tileX - 1][tileZ];
 						if (adjacent != null && adjacent.update) {
-							drawTileQueue.pushBack(adjacent);
+							drawTileQueue.addTail(adjacent);
 						}
 					}
 
 					if (tileZ > eyeTileZ && (spans & 0x8) != 0) {
 						Tile adjacent = tiles[tileX][tileZ - 1];
 						if (adjacent != null && adjacent.update) {
-							drawTileQueue.pushBack(adjacent);
+							drawTileQueue.addTail(adjacent);
 						}
 					}
 				}
@@ -1642,9 +1646,9 @@ public class World3D {
 							Tile occupied = tiles[x][z];
 
 							if (occupied.checkLocSpans != 0) {
-								drawTileQueue.pushBack(occupied);
+								drawTileQueue.addTail(occupied);
 							} else if ((x != tileX || z != tileZ) && occupied.update) {
-								drawTileQueue.pushBack(occupied);
+								drawTileQueue.addTail(occupied);
 							}
 						}
 					}
@@ -1760,41 +1764,41 @@ public class World3D {
 			if (level < this.maxLevel - 1) {
 				Tile above = this.levelTiles[level + 1][tileX][tileZ];
 				if (above != null && above.update) {
-					drawTileQueue.pushBack(above);
+					drawTileQueue.addTail(above);
 				}
 			}
 
 			if (tileX < eyeTileX) {
 				Tile adjacent = tiles[tileX + 1][tileZ];
 				if (adjacent != null && adjacent.update) {
-					drawTileQueue.pushBack(adjacent);
+					drawTileQueue.addTail(adjacent);
 				}
 			}
 
 			if (tileZ < eyeTileZ) {
 				Tile adjacent = tiles[tileX][tileZ + 1];
 				if (adjacent != null && adjacent.update) {
-					drawTileQueue.pushBack(adjacent);
+					drawTileQueue.addTail(adjacent);
 				}
 			}
 
 			if (tileX > eyeTileX) {
 				Tile adjacent = tiles[tileX - 1][tileZ];
 				if (adjacent != null && adjacent.update) {
-					drawTileQueue.pushBack(adjacent);
+					drawTileQueue.addTail(adjacent);
 				}
 			}
 
 			if (tileZ > eyeTileZ) {
 				Tile adjacent = tiles[tileX][tileZ - 1];
 				if (adjacent != null && adjacent.update) {
-					drawTileQueue.pushBack(adjacent);
+					drawTileQueue.addTail(adjacent);
 				}
 			}
 		}
 	}
 
-    private void drawTileUnderlay( TileUnderlay underlay, int level, int tileX, int tileZ, int sinEyePitch, int cosEyePitch, int sinEyeYaw, int cosEyeYaw) {
+	private void drawTileUnderlay( TileUnderlay underlay, int level, int tileX, int tileZ, int sinEyePitch, int cosEyePitch, int sinEyeYaw, int cosEyeYaw) {
 		int x3;
 		int x0 = x3 = (tileX << 7) - eyeX;
 		int z1;
@@ -1907,7 +1911,7 @@ public class World3D {
 		}
 	}
 
-    private void drawTileOverlay( int tileX, int tileZ, TileOverlay overlay, int sinEyePitch, int cosEyePitch, int sinEyeYaw, int cosEyeYaw) {
+	private void drawTileOverlay( int tileX, int tileZ, TileOverlay overlay, int sinEyePitch, int cosEyePitch, int sinEyeYaw, int cosEyeYaw) {
 		int vertexCount = overlay.vertexX.length;
 
 		for ( int i = 0; i < vertexCount; i++) {
@@ -1973,7 +1977,7 @@ public class World3D {
 		}
 	}
 
-    private int mulLightness( int hsl, int lightness) {
+	private int mulLightness( int hsl, int lightness) {
 		int invLightness = 127 - lightness;
 		lightness = invLightness * (hsl & 0x7F) / 160;
 		if (lightness < 2) {
@@ -1984,7 +1988,7 @@ public class World3D {
 		return (hsl & 0xFF80) + lightness;
 	}
 
-    private boolean pointInsideTriangle( int x, int y, int y0, int y1, int y2, int x0, int x1, int x2) {
+	private boolean pointInsideTriangle( int x, int y, int y0, int y1, int y2, int x0, int x1, int x2) {
 		if (y < y0 && y < y1 && y < y2) {
 			return false;
 		} else if (y > y0 && y > y1 && y > y2) {
@@ -2001,7 +2005,7 @@ public class World3D {
 		}
 	}
 
-    private void updateActiveOccluders() {
+	private void updateActiveOccluders() {
 		int count = levelOccluderCount[topLevel];
 		Occluder[] occluders = levelOccluders[topLevel];
 		activeOccluderCount = 0;
@@ -2127,7 +2131,7 @@ public class World3D {
 		}
 	}
 
-    private boolean tileVisible( int level, int x, int z) {
+	private boolean tileVisible( int level, int x, int z) {
 		int cycle = this.levelTileOcclusionCycles[level][x][z];
 		if (cycle == -World3D.cycle) {
 			return false;
@@ -2146,7 +2150,7 @@ public class World3D {
 		}
 	}
 
-    private boolean wallVisible( int level, int x, int z, int type) {
+	private boolean wallVisible( int level, int x, int z, int type) {
 		if (!this.tileVisible(level, x, z)) {
 			return false;
 		}
@@ -2262,7 +2266,7 @@ public class World3D {
 		}
 	}
 
-    private boolean visible( int level, int tileX, int tileZ, int y) {
+	private boolean visible( int level, int tileX, int tileZ, int y) {
 		if (this.tileVisible(level, tileX, tileZ)) {
 			int x = tileX << 7;
 			int z = tileZ << 7;
@@ -2272,7 +2276,7 @@ public class World3D {
 		}
 	}
 
-    private boolean locVisible( int level, int minX, int maxX, int minZ, int maxZ, int y) {
+	private boolean locVisible( int level, int minX, int maxX, int minZ, int maxZ, int y) {
 		int x;
 		int z;
 		if (minX != maxX || minZ != maxZ) {
@@ -2306,7 +2310,7 @@ public class World3D {
 		}
 	}
 
-    private boolean occluded( int x, int y, int z) {
+	private boolean occluded( int x, int y, int z) {
 		for ( int i = 0; i < activeOccluderCount; i++) {
 			Occluder occluder = activeOccluders[i];
 

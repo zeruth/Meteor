@@ -1,15 +1,20 @@
 package jagex2.datastruct;
 
+
+
+
+
+
 public class Stack {
 
-    private final Hashable head = new Hashable();
+	private final Hashable head = new Hashable();
 
-    public Stack() {
+	public Stack() {
 		this.head.nextHashable = this.head;
 		this.head.prevHashable = this.head;
 	}
 
-    public void push( Hashable node) {
+	public void push( Hashable node) {
 		if (node.prevHashable != null) {
 			node.uncache();
 		}
@@ -20,7 +25,7 @@ public class Stack {
 		node.nextHashable.prevHashable = node;
 	}
 
-    public Hashable pop() {
+	public Hashable pop() {
 		Hashable node = this.head.nextHashable;
 		if (node == this.head) {
 			return null;

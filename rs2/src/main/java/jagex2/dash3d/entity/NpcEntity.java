@@ -5,12 +5,15 @@ import jagex2.config.SeqType;
 import jagex2.config.SpotAnimType;
 import jagex2.graphics.Model;
 
+
+
+
 public class NpcEntity extends PathingEntity {
 
-    public NpcType type;
+	public NpcType type;
 
-    @Override
-    public Model draw(int loopCycle) {
+	@Override
+	public Model draw(int loopCycle) {
 		if (this.type == null) {
 			return null;
 		}
@@ -44,7 +47,7 @@ public class NpcEntity extends PathingEntity {
 		return tmp;
 	}
 
-    private Model getSequencedModel() {
+	private Model getSequencedModel() {
 		if (super.primarySeqId >= 0 && super.primarySeqDelay == 0) {
 			int primaryTransformId = SeqType.instances[super.primarySeqId].frames[super.primarySeqFrame];
 			int secondaryTransformId = -1;
@@ -64,8 +67,8 @@ public class NpcEntity extends PathingEntity {
 		return model;
 	}
 
-    @Override
-    public boolean isVisible() {
+	@Override
+	public boolean isVisible() {
 		return this.type != null;
 	}
 }

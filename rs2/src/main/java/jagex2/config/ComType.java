@@ -8,6 +8,10 @@ import jagex2.graphics.PixFont;
 import jagex2.io.Jagfile;
 import jagex2.io.Packet;
 
+
+
+
+
 // Interface Component - doesn't quite belong under config...
 public class ComType {
 
@@ -27,25 +31,25 @@ public class ComType {
 	public static final int BUTTON_SELECT = 5;
 	public static final int BUTTON_CONTINUE = 6;
 
-    public static ComType[] instances;
+	public static ComType[] instances;
 
-    public int[] invSlotObjId;
+	public int[] invSlotObjId;
 
-    public int[] invSlotObjCount;
+	public int[] invSlotObjCount;
 
-    public int seqFrame;
+	public int seqFrame;
 
-    public int seqCycle;
+	public int seqCycle;
 
-    public int id;
+	public int id;
 
-    public int layer;
+	public int layer;
 
-    public int type;
+	public int type;
 
-    public int buttonType;
+	public int buttonType;
 
-    public int clientCode;
+	public int clientCode;
 
 	/* Client codes:
 	 * ---- friends
@@ -109,105 +113,105 @@ public class ComType {
 	 * 655: last login info (no recovery questions set)
 	 */
 
-    public int width;
+	public int width;
 
-    public int height;
+	public int height;
 
-    public int x;
+	public int x;
 
-    public int y;
+	public int y;
 
-    public int[][] scripts;
+	public int[][] scripts;
 
-    public int[] scriptComparator;
+	public int[] scriptComparator;
 
-    public int[] scriptOperand;
+	public int[] scriptOperand;
 
-    public int overLayer;
+	public int overLayer;
 
-    public int scroll;
+	public int scroll;
 
-    public int scrollPosition;
+	public int scrollPosition;
 
-    public boolean hide;
+	public boolean hide;
 
-    public int[] childId;
+	public int[] childId;
 
-    public int[] childX;
+	public int[] childX;
 
-    public int[] childY;
+	public int[] childY;
 
-    public int unusedShort1;
+	public int unusedShort1;
 
-    public boolean unusedBoolean1;
+	public boolean unusedBoolean1;
 
-    public boolean draggable;
+	public boolean draggable;
 
-    public boolean interactable;
+	public boolean interactable;
 
-    public boolean usable;
+	public boolean usable;
 
-    public int marginX;
+	public int marginX;
 
-    public int marginY;
+	public int marginY;
 
-    public Pix24[] invSlotSprite;
+	public Pix24[] invSlotSprite;
 
-    public int[] invSlotOffsetX;
+	public int[] invSlotOffsetX;
 
-    public int[] invSlotOffsetY;
+	public int[] invSlotOffsetY;
 
-    public String[] iops;
+	public String[] iops;
 
-    public boolean fill;
+	public boolean fill;
 
-    public boolean center;
+	public boolean center;
 
-    public boolean shadowed;
+	public boolean shadowed;
 
-    public PixFont font;
+	public PixFont font;
 
-    public String text;
+	public String text;
 
-    public String activeText;
+	public String activeText;
 
-    public int colour;
+	public int colour;
 
-    public int activeColour;
+	public int activeColour;
 
-    public int overColour;
+	public int overColour;
 
-    public Pix24 graphic;
+	public Pix24 graphic;
 
-    public Pix24 activeGraphic;
+	public Pix24 activeGraphic;
 
-    public Model model;
+	public Model model;
 
-    public Model activeModel;
+	public Model activeModel;
 
-    public int anim;
+	public int anim;
 
-    public int activeAnim;
+	public int activeAnim;
 
-    public int zoom;
+	public int zoom;
 
-    public int xan;
+	public int xan;
 
-    public int yan;
+	public int yan;
 
-    public String actionVerb;
+	public String actionVerb;
 
-    public String action;
+	public String action;
 
-    public int actionTarget;
+	public int actionTarget;
 
-    public String option;
+	public String option;
 
-    private static LruCache imageCache;
+	private static LruCache imageCache;
 
-    private static LruCache modelCache;
+	private static LruCache modelCache;
 
-    public static void unpack( Jagfile jag, Jagfile media, PixFont[] fonts) {
+	public static void unpack( Jagfile jag, Jagfile media, PixFont[] fonts) {
 		imageCache = new LruCache(50000);
 		modelCache = new LruCache(50000);
 
@@ -445,7 +449,7 @@ public class ComType {
 		modelCache = null;
 	}
 
-    private static Pix24 getImage( Jagfile media, String sprite, int spriteId) {
+	private static Pix24 getImage( Jagfile media, String sprite, int spriteId) {
 		long uid = (JString.hashCode(sprite) << 8) + (long) spriteId;
 		Pix24 image = (Pix24) imageCache.get(uid);
 
@@ -463,7 +467,7 @@ public class ComType {
 		return image;
 	}
 
-    private static Model getModel( int id) {
+	private static Model getModel( int id) {
 		Model m = (Model) modelCache.get(id);
 		if (m != null) {
 			return m;
@@ -474,7 +478,7 @@ public class ComType {
 		return m;
 	}
 
-    public Model getModel( int primaryFrame, int secondaryFrame, boolean active) {
+	public Model getModel( int primaryFrame, int secondaryFrame, boolean active) {
 		Model m = this.model;
 		if (active) {
 			m = this.activeModel;

@@ -2,39 +2,43 @@ package jagex2.graphics;
 
 import jagex2.datastruct.Hashable;
 
+
+
+
+
 public class Draw2D extends Hashable {
 
-    public static int[] data;
+	public static int[] data;
 
-    public static int width2d;
+	public static int width2d;
 
-    public static int height2d;
+	public static int height2d;
 
-    public static int top;
+	public static int top;
 
-    public static int bottom;
+	public static int bottom;
 
-    public static int left;
+	public static int left;
 
-    public static int right;
+	public static int right;
 
-    public static int boundX;
+	public static int boundX;
 
-    public static int centerX2d;
+	public static int centerX2d;
 
-    public static int centerY2d;
+	public static int centerY2d;
 
-    protected Draw2D() {
+	protected Draw2D() {
 	}
 
-    public static void bind( int width, int height, int[] src) {
+	public static void bind( int width, int height, int[] src) {
 		data = src;
 		width2d = width;
 		height2d = height;
 		setBounds(height, width, 0, 0);
 	}
 
-    public static void resetBounds() {
+	public static void resetBounds() {
 		left = 0;
 		top = 0;
 		right = width2d;
@@ -43,7 +47,7 @@ public class Draw2D extends Hashable {
 		centerX2d = right / 2;
 	}
 
-    public static void setBounds( int bottom, int right, int top, int left) {
+	public static void setBounds( int bottom, int right, int top, int left) {
 		if (left < 0) {
 			left = 0;
 		}
@@ -69,14 +73,14 @@ public class Draw2D extends Hashable {
 		centerY2d = Draw2D.bottom / 2;
 	}
 
-    public static void clear() {
+	public static void clear() {
 		int len = width2d * height2d;
 		for ( int i = 0; i < len; i++) {
 			data[i] = 0;
 		}
 	}
 
-    public static void fillRect( int x, int y, int rgb, int width, int height) {
+	public static void fillRect( int x, int y, int rgb, int width, int height) {
 		if (x < left) {
 			width -= left - x;
 			x = left;
@@ -106,14 +110,14 @@ public class Draw2D extends Hashable {
 		}
 	}
 
-    public static void drawRect( int x, int y, int rgb, int width, int height) {
+	public static void drawRect( int x, int y, int rgb, int width, int height) {
 		drawHorizontalLine(x, y, rgb, width);
 		drawHorizontalLine(x, y + height - 1, rgb, width);
 		drawVerticalLine(x, y, rgb, height);
 		drawVerticalLine(x + width - 1, y, rgb, height);
 	}
 
-    public static void drawHorizontalLine( int x, int y, int rgb, int width) {
+	public static void drawHorizontalLine( int x, int y, int rgb, int width) {
 		if (y < top || y >= bottom) {
 			return;
 		}
@@ -133,7 +137,7 @@ public class Draw2D extends Hashable {
 		}
 	}
 
-    public static void drawVerticalLine( int x, int y, int rgb, int width) {
+	public static void drawVerticalLine( int x, int y, int rgb, int width) {
 		if (x < left || x >= right) {
 			return;
 		}

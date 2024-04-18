@@ -3,17 +3,21 @@ package jagex2.graphics;
 import jagex2.io.Jagfile;
 import jagex2.io.Packet;
 
+
+
+
+
 public class SeqBase {
 
-    public static SeqBase[] instances;
+	public static SeqBase[] instances;
 
-    public int length;
+	public int length;
 
-    public int[] types;
+	public int[] types;
 
-    public int[][] labels;
+	public int[][] labels;
 
-    public static void unpack( Jagfile models) {
+	public static void unpack( Jagfile models) {
 		Packet head = new Packet(models.read("base_head.dat", null));
 		Packet type = new Packet(models.read("base_type.dat", null));
 		Packet label = new Packet(models.read("base_label.dat", null));

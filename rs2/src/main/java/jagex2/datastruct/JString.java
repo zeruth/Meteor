@@ -1,5 +1,9 @@
 package jagex2.datastruct;
 
+
+
+
+
 public class JString {
 
     private static final char[] builder = new char[12];

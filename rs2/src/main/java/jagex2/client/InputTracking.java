@@ -2,6 +2,9 @@ package jagex2.client;
 
 import jagex2.io.Packet;
 
+
+
+
 public class InputTracking {
 
     public static boolean enabled;

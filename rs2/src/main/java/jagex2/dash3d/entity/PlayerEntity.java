@@ -9,13 +9,17 @@ import jagex2.datastruct.LruCache;
 import jagex2.graphics.Model;
 import jagex2.io.Packet;
 
+
+
+
+
 public class PlayerEntity extends PathingEntity {
 
-    public static final int[] DESIGN_HAIR_COLOR = new int[] {
+	public static final int[] DESIGN_HAIR_COLOR = new int[] {
 		9104, 10275, 7595, 3610, 7975, 8526, 918, 38802, 24466, 10145, 58654, 5027, 1457, 16565, 34991, 25486
 	};
 
-    public static final int[][] DESIGN_BODY_COLOR = new int[][] {
+	public static final int[][] DESIGN_BODY_COLOR = new int[][] {
 		{ 6798, 107, 10283, 16, 4797, 7744, 5799, 4634, 33697, 22433, 2983, 54193 },
 		{ 8741, 12, 64030, 43162, 7735, 8404, 1701, 38430, 24094, 10153, 56621, 4783, 1341, 16578, 35003, 25239 },
 		{ 25238, 8742, 12, 64030, 43162, 7735, 8404, 1701, 38430, 24094, 10153, 56621, 4783, 1341, 16578, 35003 },
@@ -23,49 +27,49 @@ public class PlayerEntity extends PathingEntity {
 		{ 4550, 4537, 5681, 5673, 5790, 6806, 8076, 4574 }
 	};
 
-    public String name;
+	public String name;
 
-    private boolean visible = false;
+	private boolean visible = false;
 
-    private int gender;
+	private int gender;
 
-    public int headicons;
+	public int headicons;
 
-    private final int[] appearances = new int[12];
+	private final int[] appearances = new int[12];
 
-    private final int[] colors = new int[5];
+	private final int[] colors = new int[5];
 
-    public int combatLevel;
+	public int combatLevel;
 
-    private long appearanceHashcode;
+	private long appearanceHashcode;
 
-    public int y;
+	public int y;
 
-    public int locStartCycle;
+	public int locStartCycle;
 
-    public int locStopCycle;
+	public int locStopCycle;
 
-    public int locOffsetX;
+	public int locOffsetX;
 
-    public int locOffsetY;
+	public int locOffsetY;
 
-    public int locOffsetZ;
+	public int locOffsetZ;
 
-    public Model locModel;
+	public Model locModel;
 
-    public int minTileX;
+	public int minTileX;
 
-    public int minTileZ;
+	public int minTileZ;
 
-    public int maxTileX;
+	public int maxTileX;
 
-    public int maxTileZ;
+	public int maxTileZ;
 
-    public boolean lowMemory = false;
+	public boolean lowMemory = false;
 
-    public static LruCache modelCache = new LruCache(200);
+	public static LruCache modelCache = new LruCache(200);
 
-    public void read( Packet buf) {
+	public void read( Packet buf) {
 		buf.pos = 0;
 
 		this.gender = buf.g1();
@@ -155,8 +159,8 @@ public class PlayerEntity extends PathingEntity {
 		this.appearanceHashcode += this.gender;
 	}
 
-    @Override
-    public Model draw(int loopCycle) {
+	@Override
+	public Model draw(int loopCycle) {
 		if (!this.visible) {
 			return null;
 		}
@@ -227,7 +231,7 @@ public class PlayerEntity extends PathingEntity {
 		return model;
 	}
 
-    private Model getSequencedModel() {
+	private Model getSequencedModel() {
 		long hashCode = this.appearanceHashcode;
 		int primaryTransformId = -1;
 		int secondaryTransformId = -1;
@@ -318,7 +322,7 @@ public class PlayerEntity extends PathingEntity {
 		return tmp;
 	}
 
-    public Model getHeadModel() {
+	public Model getHeadModel() {
 		if (!this.visible) {
 			return null;
 		}
@@ -355,8 +359,8 @@ public class PlayerEntity extends PathingEntity {
 		return tmp;
 	}
 
-    @Override
-    public boolean isVisible() {
+	@Override
+	public boolean isVisible() {
 		return this.visible;
 	}
 }

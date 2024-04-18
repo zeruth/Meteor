@@ -1,27 +1,32 @@
 package jagex2.io;
 
+
+
+
+
+
 public class Isaac {
 
-    private int count;
+	private int count;
 
-    private final int[] rsl;
+	private final int[] rsl;
 
-    private final int[] mem;
+	private final int[] mem;
 
-    private int a;
+	private int a;
 
-    private int b;
+	private int b;
 
-    private int c;
+	private int c;
 
-    public Isaac( int[] seed) {
+	public Isaac( int[] seed) {
 		this.mem = new int[256];
 		this.rsl = new int[256];
 		System.arraycopy(seed, 0, this.rsl, 0, seed.length);
 		this.init();
 	}
 
-    public int nextInt() {
+	public int nextInt() {
 		if (this.count-- == 0) {
 			this.isaac();
 			this.count = 255;
@@ -29,7 +34,7 @@ public class Isaac {
 		return this.rsl[this.count];
 	}
 
-    private void isaac() {
+	private void isaac() {
 		this.b += ++this.c;
 
 		for ( int i = 0; i < 256; i++) {
@@ -55,7 +60,7 @@ public class Isaac {
 		}
 	}
 
-    private void init() {
+	private void init() {
 		int h = 0x9e3779b9;
 		int g = 0x9e3779b9;
 		int f = 0x9e3779b9;

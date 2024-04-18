@@ -2,53 +2,57 @@ package jagex2.graphics;
 
 import jagex2.io.Jagfile;
 
+
+
+
+
 public class Draw3D extends Draw2D {
 
-    public static boolean lowMemory = true;
+	public static boolean lowMemory = true;
 
-    public static boolean clipX;
+	public static boolean clipX;
 
-    private static boolean opaque;
+	private static boolean opaque;
 
-    public static boolean jagged = true;
+	public static boolean jagged = true;
 
-    public static int alpha;
+	public static int alpha;
 
-    public static int centerX;
+	public static int centerX;
 
-    public static int centerY;
+	public static int centerY;
 
-    public static int[] reciprocal15 = new int[512];
+	public static int[] reciprocal15 = new int[512];
 
-    public static final int[] reciprocal16 = new int[2048];
+	public static final int[] reciprocal16 = new int[2048];
 
-    public static int[] sin = new int[2048];
+	public static int[] sin = new int[2048];
 
-    public static int[] cos = new int[2048];
+	public static int[] cos = new int[2048];
 
-    public static int[] lineOffset;
+	public static int[] lineOffset;
 
-    private static int textureCount;
+	private static int textureCount;
 
-    public static Pix8[] textures = new Pix8[50];
+	public static Pix8[] textures = new Pix8[50];
 
-    private static boolean[] textureTranslucent = new boolean[50];
+	private static boolean[] textureTranslucent = new boolean[50];
 
-    private static int[] averageTextureRGB = new int[50];
+	private static int[] averageTextureRGB = new int[50];
 
-    private static int poolSize;
+	private static int poolSize;
 
-    private static int[][] texelPool;
+	private static int[][] texelPool;
 
-    private static int[][] activeTexels = new int[50][];
+	private static int[][] activeTexels = new int[50][];
 
-    public static int[] textureCycle = new int[50];
+	public static int[] textureCycle = new int[50];
 
-    public static int cycle;
+	public static int cycle;
 
-    public static int[] palette = new int[65536];
+	public static int[] palette = new int[65536];
 
-    private static int[][] texturePalette = new int[50][];
+	private static int[][] texturePalette = new int[50][];
 
 	static {
 		for ( int i = 1; i < 512; i++) {
@@ -65,7 +69,7 @@ public class Draw3D extends Draw2D {
 		}
 	}
 
-    public static void unload() {
+	public static void unload() {
 		reciprocal15 = null;
 		reciprocal15 = null;
 		sin = null;
@@ -81,7 +85,7 @@ public class Draw3D extends Draw2D {
 		texturePalette = null;
 	}
 
-    public static void init2D() {
+	public static void init2D() {
 		lineOffset = new int[height2d];
 		for (int y = 0; y < height2d; y++) {
 			lineOffset[y] = width2d * y;
@@ -90,7 +94,7 @@ public class Draw3D extends Draw2D {
 		centerY = height2d / 2;
 	}
 
-    public static void init3D( int width, int height) {
+	public static void init3D( int width, int height) {
 		lineOffset = new int[height];
 		for ( int y = 0; y < height; y++) {
 			lineOffset[y] = width * y;
@@ -99,14 +103,14 @@ public class Draw3D extends Draw2D {
 		centerY = height / 2;
 	}
 
-    public static void clearTexels() {
+	public static void clearTexels() {
 		texelPool = null;
 		for ( int i = 0; i < 50; i++) {
 			activeTexels[i] = null;
 		}
 	}
 
-    public static void initPool( int size) {
+	public static void initPool( int size) {
 		if (texelPool != null) {
 			return;
 		}
@@ -121,7 +125,7 @@ public class Draw3D extends Draw2D {
 		}
 	}
 
-    public static void unpackTextures( Jagfile jag) {
+	public static void unpackTextures( Jagfile jag) {
 		textureCount = 0;
 		for ( int id = 0; id < 50; id++) {
 			try {
@@ -137,7 +141,7 @@ public class Draw3D extends Draw2D {
 		}
 	}
 
-    public static int getAverageTextureRGB( int id) {
+	public static int getAverageTextureRGB( int id) {
 		if (averageTextureRGB[id] != 0) {
 			return averageTextureRGB[id];
 		}
@@ -161,14 +165,14 @@ public class Draw3D extends Draw2D {
 		return rgb;
 	}
 
-    public static void pushTexture( int id) {
+	public static void pushTexture( int id) {
 		if (activeTexels[id] != null) {
 			texelPool[poolSize++] = activeTexels[id];
 			activeTexels[id] = null;
 		}
 	}
 
-    private static int[] getTexels( int id) {
+	private static int[] getTexels( int id) {
 		textureCycle[id] = cycle++;
 		if (activeTexels[id] != null) {
 			return activeTexels[id];
@@ -234,7 +238,7 @@ public class Draw3D extends Draw2D {
 		return texels;
 	}
 
-    public static void setBrightness( double brightness) {
+	public static void setBrightness( double brightness) {
 		double randomBrightness = brightness + Math.random() * 0.03D - 0.015D;
 		int offset = 0;
 		for ( int y = 0; y < 512; y++) {
@@ -312,7 +316,7 @@ public class Draw3D extends Draw2D {
 		}
 	}
 
-    private static int setGamma( int rgb, double gamma) {
+	private static int setGamma( int rgb, double gamma) {
 		double r = (double) (rgb >> 16) / 256.0D;
 		double g = (double) (rgb >> 8 & 0xFF) / 256.0D;
 		double b = (double) (rgb & 0xFF) / 256.0D;
@@ -325,7 +329,7 @@ public class Draw3D extends Draw2D {
 		return (intR << 16) + (intG << 8) + intB;
 	}
 
-    public static void fillGouraudTriangle( int xA, int xB, int xC, int yA, int yB, int yC, int colorA, int colorB, int colorC) {
+	public static void fillGouraudTriangle( int xA, int xB, int xC, int yA, int yB, int yC, int colorA, int colorB, int colorC) {
 		int xStepAB = 0;
 		int colorStepAB = 0;
 		if (yB != yA) {
@@ -810,7 +814,7 @@ public class Draw3D extends Draw2D {
 		}
 	}
 
-    private static void drawGouraudScanline( int x0, int x1, int color0, int color1, int[] dst, int offset, int length) {
+	private static void drawGouraudScanline( int x0, int x1, int color0, int color1, int[] dst, int offset, int length) {
 		int rgb;
 
 		if (jagged) {
@@ -931,7 +935,7 @@ public class Draw3D extends Draw2D {
 		}
 	}
 
-    public static void fillTriangle( int x0, int x1, int x2, int y0, int y1, int y2, int color) {
+	public static void fillTriangle( int x0, int x1, int x2, int y0, int y1, int y2, int color) {
 		int xStepAB = 0;
 		if (y1 != y0) {
 			xStepAB = (x1 - x0 << 16) / (y1 - y0);
@@ -1329,7 +1333,7 @@ public class Draw3D extends Draw2D {
 		}
 	}
 
-    private static void drawScanline( int x0, int x1, int[] dst, int offset, int rgb) {
+	private static void drawScanline( int x0, int x1, int[] dst, int offset, int rgb) {
 		if (clipX) {
 			if (x1 > boundX) {
 				x1 = boundX;
@@ -1390,7 +1394,7 @@ public class Draw3D extends Draw2D {
 		}
 	}
 
-    public static void fillTexturedTriangle( int xA, int xB, int xC, int yA, int yB, int yC, int shadeA, int shadeB, int shadeC, int originX, int originY, int originZ, int txB, int txC, int tyB, int tyC, int tzB, int tzC, int texture) {
+	public static void fillTexturedTriangle( int xA, int xB, int xC, int yA, int yB, int yC, int shadeA, int shadeB, int shadeC, int originX, int originY, int originZ, int txB, int txC, int tyB, int tyC, int tzB, int tzC, int texture) {
 		int[] texels = getTexels(texture);
 		opaque = !textureTranslucent[texture];
 
@@ -1996,7 +2000,7 @@ public class Draw3D extends Draw2D {
 		}
 	}
 
-    private static void drawTexturedScanline( int xA, int xB, int[] dst, int offset, int[] texels, int curU, int curV, int u, int v, int w, int uStride, int vStride, int wStride, int shadeA, int shadeB) {
+	private static void drawTexturedScanline( int xA, int xB, int[] dst, int offset, int[] texels, int curU, int curV, int u, int v, int w, int uStride, int vStride, int wStride, int shadeA, int shadeB) {
 		if (xA >= xB) {
 			return;
 		}

@@ -1,21 +1,26 @@
 package jagex2.datastruct;
 
+
+
+
+
+
 public class LruCache {
 
-    private final int capacity;
+	private final int capacity;
 
-    private int available;
+	private int available;
 
-    private final HashTable hashtable = new HashTable(1024);
+	private final HashTable hashtable = new HashTable(1024);
 
-    private final Stack history = new Stack();
+	private final Stack history = new Stack();
 
-    public LruCache( int size) {
+	public LruCache( int size) {
 		this.capacity = size;
 		this.available = size;
 	}
 
-    public Hashable get( long key) {
+	public Hashable get( long key) {
 		Hashable node = (Hashable) this.hashtable.get(key);
 		if (node != null) {
 			this.history.push(node);
@@ -24,7 +29,7 @@ public class LruCache {
 		return node;
 	}
 
-    public void put( long key, Hashable value) {
+	public void put( long key, Hashable value) {
 		if (this.available == 0) {
 			Hashable node = this.history.pop();
 			node.unlink();
@@ -37,7 +42,7 @@ public class LruCache {
 		this.history.push(value);
 	}
 
-    public void clear() {
+	public void clear() {
 		while (true) {
 			Hashable node = this.history.pop();
 			if (node == null) {

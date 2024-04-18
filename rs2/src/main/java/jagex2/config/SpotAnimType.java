@@ -5,39 +5,43 @@ import jagex2.graphics.Model;
 import jagex2.io.Jagfile;
 import jagex2.io.Packet;
 
+
+
+
+
 public class SpotAnimType {
 
-    private static int count;
+	private static int count;
 
-    public static SpotAnimType[] instances;
+	public static SpotAnimType[] instances;
 
-    public int index;
+	public int index;
 
-    private int model;
+	private int model;
 
-    private int anim = -1;
+	private int anim = -1;
 
-    public SeqType seq;
+	public SeqType seq;
 
-    public boolean disposeAlpha = false;
+	public boolean disposeAlpha = false;
 
-    private final int[] recol_s = new int[6];
+	private final int[] recol_s = new int[6];
 
-    private final int[] recol_d = new int[6];
+	private final int[] recol_d = new int[6];
 
-    public int resizeh = 128;
+	public int resizeh = 128;
 
-    public int resizev = 128;
+	public int resizev = 128;
 
-    public int orientation;
+	public int orientation;
 
-    public int ambient;
+	public int ambient;
 
-    public int contrast;
+	public int contrast;
 
-    public static LruCache modelCache = new LruCache(30);
+	public static LruCache modelCache = new LruCache(30);
 
-    public static void unpack( Jagfile config) {
+	public static void unpack( Jagfile config) {
 		Packet dat = new Packet(config.read("spotanim.dat", null));
 		count = dat.g2();
 
@@ -55,7 +59,7 @@ public class SpotAnimType {
 		}
 	}
 
-    public void decode( Packet dat) {
+	public void decode( Packet dat) {
 		while (true) {
 			int code = dat.g1();
 			if (code == 0) {
@@ -92,7 +96,7 @@ public class SpotAnimType {
 		}
 	}
 
-    public Model getModel() {
+	public Model getModel() {
 		Model model = (Model) modelCache.get(this.index);
 		if (model != null) {
 			return model;

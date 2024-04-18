@@ -1,26 +1,31 @@
 package jagex2.io;
 
+
+
+
+
+
 public class Jagfile {
 
-    private byte[] buffer;
+	private byte[] buffer;
 
-    private int fileCount;
+	private int fileCount;
 
-    private int[] fileHash;
+	private int[] fileHash;
 
-    private int[] fileUnpackedSize;
+	private int[] fileUnpackedSize;
 
-    private int[] filePackedSize;
+	private int[] filePackedSize;
 
-    private int[] fileOffset;
+	private int[] fileOffset;
 
-    private boolean unpacked;
+	private boolean unpacked;
 
-    public Jagfile( byte[] src) {
+	public Jagfile( byte[] src) {
 		this.load(src);
 	}
 
-    private void load( byte[] src) {
+	private void load( byte[] src) {
 		Packet data = new Packet(src);
 		int unpackedSize = data.g3();
 		int packedSize = data.g3();
@@ -53,7 +58,7 @@ public class Jagfile {
 		}
 	}
 
-    public byte[] read( String name, byte[] dst) {
+	public byte[] read( String name, byte[] dst) {
 		int hash = 0;
 		String upper = name.toUpperCase();
 		for ( int i = 0; i < upper.length(); i++) {

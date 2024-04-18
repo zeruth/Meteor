@@ -3,33 +3,37 @@ package jagex2.io;
 import jagex2.datastruct.Hashable;
 import jagex2.datastruct.LinkList;
 
+
+
+
+
 import java.math.BigInteger;
 
 public class Packet extends Hashable {
 
-    private static final int[] crctable = new int[256];
+	private static final int[] crctable = new int[256];
 
-    public static final int[] BITMASK = new int[33];
+	public static final int[] BITMASK = new int[33];
 
-    public byte[] data;
+	public byte[] data;
 
-    public int pos;
+	public int pos;
 
-    public int bitPos;
+	public int bitPos;
 
-    public Isaac random;
+	public Isaac random;
 
-    public static int cacheMinCount;
+	public static int cacheMinCount;
 
-    public static int cacheMidCount;
+	public static int cacheMidCount;
 
-    public static int cacheMaxCount;
+	public static int cacheMaxCount;
 
-    public static final LinkList cacheMin = new LinkList();
+	public static final LinkList cacheMin = new LinkList();
 
-    public static final LinkList cacheMid = new LinkList();
+	public static final LinkList cacheMid = new LinkList();
 
-    public static final LinkList cacheMax = new LinkList();
+	public static final LinkList cacheMax = new LinkList();
 
 	static {
 		for (int i = 0; i < 32; i++) {
@@ -52,26 +56,26 @@ public class Packet extends Hashable {
 		}
 	}
 
-    public Packet() {
+	public Packet() {
 	}
 
-    public Packet( byte[] src) {
+	public Packet( byte[] src) {
 		this.data = src;
 		this.pos = 0;
 	}
 
-    public static Packet alloc( int type) {
+	public static Packet alloc( int type) {
 		synchronized (cacheMid) {
 			Packet cached = null;
 			if (type == 0 && cacheMinCount > 0) {
 				cacheMinCount--;
-				cached = (Packet) cacheMin.pollFront();
+				cached = (Packet) cacheMin.removeHead();
 			} else if (type == 1 && cacheMidCount > 0) {
 				cacheMidCount--;
-				cached = (Packet) cacheMid.pollFront();
+				cached = (Packet) cacheMid.removeHead();
 			} else if (type == 2 && cacheMaxCount > 0) {
 				cacheMaxCount--;
-				cached = (Packet) cacheMax.pollFront();
+				cached = (Packet) cacheMax.removeHead();
 			}
 
 			if (cached != null) {
@@ -92,62 +96,62 @@ public class Packet extends Hashable {
 		return packet;
 	}
 
-    public void release() {
+	public void release() {
 		synchronized (cacheMid) {
 			this.pos = 0;
 
 			if (this.data.length == 100 && cacheMinCount < 1000) {
-				cacheMin.pushBack(this);
+				cacheMin.addTail(this);
 				cacheMinCount++;
 			} else if (this.data.length == 5000 && cacheMidCount < 250) {
-				cacheMid.pushBack(this);
+				cacheMid.addTail(this);
 				cacheMidCount++;
 			} else if (this.data.length == 30000 && cacheMaxCount < 50) {
-				cacheMax.pushBack(this);
+				cacheMax.addTail(this);
 				cacheMaxCount++;
 			}
 		}
 	}
 
-    public void p1isaac( int opcode) {
+	public void p1isaac( int opcode) {
 		this.data[this.pos++] = (byte) (opcode + this.random.nextInt());
 	}
 
-    public void p1( int value) {
+	public void p1( int value) {
 		this.data[this.pos++] = (byte) value;
 	}
 
-    public void p2( int value) {
+	public void p2( int value) {
 		this.data[this.pos++] = (byte) (value >> 8);
 		this.data[this.pos++] = (byte) value;
 	}
 
-    public void ip2( int value) {
+	public void ip2( int value) {
 		this.data[this.pos++] = (byte) value;
 		this.data[this.pos++] = (byte) (value >> 8);
 	}
 
-    public void p3( int value) {
+	public void p3( int value) {
 		this.data[this.pos++] = (byte) (value >> 16);
 		this.data[this.pos++] = (byte) (value >> 8);
 		this.data[this.pos++] = (byte) value;
 	}
 
-    public void p4( int value) {
+	public void p4( int value) {
 		this.data[this.pos++] = (byte) (value >> 24);
 		this.data[this.pos++] = (byte) (value >> 16);
 		this.data[this.pos++] = (byte) (value >> 8);
 		this.data[this.pos++] = (byte) value;
 	}
 
-    public void ip4( int value) {
+	public void ip4( int value) {
 		this.data[this.pos++] = (byte) value;
 		this.data[this.pos++] = (byte) (value >> 8);
 		this.data[this.pos++] = (byte) (value >> 16);
 		this.data[this.pos++] = (byte) (value >> 24);
 	}
 
-    public void p8( long value) {
+	public void p8( long value) {
 		this.data[this.pos++] = (byte) (value >> 56);
 		this.data[this.pos++] = (byte) (value >> 48);
 		this.data[this.pos++] = (byte) (value >> 40);
@@ -158,36 +162,36 @@ public class Packet extends Hashable {
 		this.data[this.pos++] = (byte) value;
 	}
 
-    public void pjstr( String str) {
+	public void pjstr( String str) {
 		str.getBytes(0, str.length(), this.data, this.pos);
 		this.pos += str.length();
 		this.data[this.pos++] = 10;
 	}
 
-    public void pdata( byte[] src, int length, int offset) {
+	public void pdata( byte[] src, int length, int offset) {
 		for ( int i = offset; i < offset + length; i++) {
 			this.data[this.pos++] = src[i];
 		}
 	}
 
-    public void psize1( int size) {
+	public void psize1( int size) {
 		this.data[this.pos - size - 1] = (byte) size;
 	}
 
-    public int g1() {
+	public int g1() {
 		return this.data[this.pos++] & 0xFF;
 	}
 
-    public byte g1b() {
+	public byte g1b() {
 		return this.data[this.pos++];
 	}
 
-    public int g2() {
+	public int g2() {
 		this.pos += 2;
 		return ((this.data[this.pos - 2] & 0xFF) << 8) + (this.data[this.pos - 1] & 0xFF);
 	}
 
-    public int g2b() {
+	public int g2b() {
 		this.pos += 2;
 		int value = ((this.data[this.pos - 2] & 0xFF) << 8) + (this.data[this.pos - 1] & 0xFF);
 		if (value > 32767) {
@@ -196,30 +200,30 @@ public class Packet extends Hashable {
 		return value;
 	}
 
-    public int g3() {
+	public int g3() {
 		this.pos += 3;
 		return ((this.data[this.pos - 3] & 0xFF) << 16) + ((this.data[this.pos - 2] & 0xFF) << 8) + (this.data[this.pos - 1] & 0xFF);
 	}
 
-    public int g4() {
+	public int g4() {
 		this.pos += 4;
 		return ((this.data[this.pos - 4] & 0xFF) << 24) + ((this.data[this.pos - 3] & 0xFF) << 16) + ((this.data[this.pos - 2] & 0xFF) << 8) + (this.data[this.pos - 1] & 0xFF);
 	}
 
-    public long g8() {
+	public long g8() {
 		long high = (long) this.g4() & 0xFFFFFFFFL;
 		long low = (long) this.g4() & 0xFFFFFFFFL;
 		return (high << 32) + low;
 	}
 
-    public String gjstr() {
+	public String gjstr() {
 		int start = this.pos;
 		while (this.data[this.pos++] != 10) {}
 
 		return new String(this.data, start, this.pos - start - 1);
 	}
 
-    public byte[] gstrbyte() {
+	public byte[] gstrbyte() {
 		int start = this.pos;
 		while (this.data[this.pos++] != 10) {}
 
@@ -228,17 +232,17 @@ public class Packet extends Hashable {
 		return temp;
 	}
 
-    public void gdata( int length, int offset, byte[] dest) {
+	public void gdata( int length, int offset, byte[] dest) {
 		for ( int i = offset; i < offset + length; i++) {
 			dest[i] = this.data[this.pos++];
 		}
 	}
 
-    public void accessBits() {
+	public void accessBits() {
 		this.bitPos = this.pos * 8;
 	}
 
-    public int gBit( int n) {
+	public int gBit( int n) {
 		int bytePos = this.bitPos >> 3;
 		int remainingBits = 8 - (this.bitPos & 0x7);
 
@@ -260,21 +264,21 @@ public class Packet extends Hashable {
 		return value;
 	}
 
-    public void accessBytes() {
+	public void accessBytes() {
 		this.pos = (this.bitPos + 7) / 8;
 	}
 
-    public int gsmart() {
+	public int gsmart() {
 		int value = this.data[this.pos] & 0xFF;
 		return value < 128 ? this.g1() - 64 : this.g2() - 49152;
 	}
 
-    public int gsmarts() {
+	public int gsmarts() {
 		int value = this.data[this.pos] & 0xFF;
 		return value < 128 ? this.g1() : this.g2() - 32768;
 	}
 
-    public void rsaenc( BigInteger mod, BigInteger exp) {
+	public void rsaenc( BigInteger mod, BigInteger exp) {
 		int length = this.pos;
 		this.pos = 0;
 

@@ -3,57 +3,61 @@ package jagex2.dash3d.entity;
 import jagex2.config.SpotAnimType;
 import jagex2.graphics.Model;
 
+
+
+
+
 public class ProjectileEntity extends Entity {
 
-    private final SpotAnimType spotanim;
+	private final SpotAnimType spotanim;
 
-    public final int level;
+	public final int level;
 
-    private final int srcX;
+	private final int srcX;
 
-    private final int srcZ;
+	private final int srcZ;
 
-    private final int srcY;
+	private final int srcY;
 
-    public final int offsetY;
+	public final int offsetY;
 
-    public final int startCycle;
+	public final int startCycle;
 
-    public final int lastCycle;
+	public final int lastCycle;
 
-    private final int peakPitch;
+	private final int peakPitch;
 
-    private final int arc;
+	private final int arc;
 
-    public final int target;
+	public final int target;
 
-    private boolean mobile = false;
+	private boolean mobile = false;
 
-    public double x;
+	public double x;
 
-    public double z;
+	public double z;
 
-    public double y;
+	public double y;
 
-    private double velocityX;
+	private double velocityX;
 
-    private double velocityZ;
+	private double velocityZ;
 
-    private double velocity;
+	private double velocity;
 
-    private double velocityY;
+	private double velocityY;
 
-    private double accelerationY;
+	private double accelerationY;
 
-    public int yaw;
+	public int yaw;
 
-    private int pitch;
+	private int pitch;
 
-    private int seqFrame;
+	private int seqFrame;
 
-    private int seqCycle;
+	private int seqCycle;
 
-    public ProjectileEntity( int spotanim, int level, int srcX, int srcY, int srcZ, int startCycle, int lastCycle, int peakPitch, int arc, int target, int offsetY) {
+	public ProjectileEntity( int spotanim, int level, int srcX, int srcY, int srcZ, int startCycle, int lastCycle, int peakPitch, int arc, int target, int offsetY) {
 		this.spotanim = SpotAnimType.instances[spotanim];
 		this.level = level;
 		this.srcX = srcX;
@@ -68,7 +72,7 @@ public class ProjectileEntity extends Entity {
 		this.mobile = false;
 	}
 
-    public void updateVelocity( int dstX, int dstY, int dstZ, int cycle) {
+	public void updateVelocity( int dstX, int dstY, int dstZ, int cycle) {
 		if (!this.mobile) {
 			double dx = dstX - this.srcX;
 			double dz = dstZ - this.srcZ;
@@ -91,7 +95,7 @@ public class ProjectileEntity extends Entity {
 		this.accelerationY = ((double) dstY - this.y - this.velocityY * dt) * 2.0D / (dt * dt);
 	}
 
-    public void update( int delta) {
+	public void update( int delta) {
 		this.mobile = true;
 		this.x += this.velocityX * (double) delta;
 		this.z += this.velocityZ * (double) delta;
@@ -113,8 +117,8 @@ public class ProjectileEntity extends Entity {
 		}
 	}
 
-    @Override
-    public Model draw(int loopCycle) {
+	@Override
+	public Model draw(int loopCycle) {
 		Model tmp = this.spotanim.getModel();
 		Model model = new Model(tmp, true, !this.spotanim.disposeAlpha, false);
 

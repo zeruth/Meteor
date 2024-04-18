@@ -3,29 +3,33 @@ package jagex2.graphics;
 import jagex2.io.Jagfile;
 import jagex2.io.Packet;
 
+
+
+
+
 import java.util.Random;
 
 public class PixFont extends Draw2D {
 
-    private final byte[][] charMask = new byte[94][];
+	private final byte[][] charMask = new byte[94][];
 
-    private final int[] charMaskWidth = new int[94];
+	private final int[] charMaskWidth = new int[94];
 
-    private final int[] charMaskHeight = new int[94];
+	private final int[] charMaskHeight = new int[94];
 
-    private final int[] charOffsetX = new int[94];
+	private final int[] charOffsetX = new int[94];
 
-    private final int[] charOffsetY = new int[94];
+	private final int[] charOffsetY = new int[94];
 
-    private final int[] charAdvance = new int[95];
+	private final int[] charAdvance = new int[95];
 
-    private final int[] drawWidth = new int[256];
+	private final int[] drawWidth = new int[256];
 
-    public int height;
+	public int height;
 
-    private final Random random = new Random();
+	private final Random random = new Random();
 
-    private static final int[] CHAR_LOOKUP = new int[256];
+	private static final int[] CHAR_LOOKUP = new int[256];
 
 	static {
 		String charset = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!\"£$%^&*()-_=+[{]};:'@#~,<.>/?\\| ";
@@ -40,7 +44,7 @@ public class PixFont extends Draw2D {
 		}
 	}
 
-    public PixFont( Jagfile title, String font) {
+	public PixFont( Jagfile title, String font) {
 		Packet dat = new Packet(title.read(font + ".dat", null));
 		Packet idx = new Packet(title.read("index.dat", null));
 		idx.pos = dat.g2() + 4;
@@ -107,15 +111,15 @@ public class PixFont extends Draw2D {
 		}
 	}
 
-    public void drawStringCenter( int x, int y, String str, int rgb) {
+	public void drawStringCenter( int x, int y, String str, int rgb) {
 		this.drawString(x - this.stringWidth(str) / 2, y, str, rgb);
 	}
 
-    public void drawStringTaggableCenter( String str, int x, int y, int color, boolean shadowed) {
+	public void drawStringTaggableCenter( String str, int x, int y, int color, boolean shadowed) {
 		this.drawStringTaggable(x - this.stringWidth(str) / 2, y, str, color, shadowed);
 	}
 
-    public int stringWidth( String str) {
+	public int stringWidth( String str) {
 		if (str == null) {
 			return 0;
 		}
@@ -132,7 +136,7 @@ public class PixFont extends Draw2D {
 		return size;
 	}
 
-    public void drawString( int x, int y, String str, int rgb) {
+	public void drawString( int x, int y, String str, int rgb) {
 		if (str == null) {
 			return;
 		}
@@ -157,7 +161,7 @@ public class PixFont extends Draw2D {
 		this.drawString(x - this.stringWidth(str), y, str, rgb);
 	}
 
-    public void drawCenteredWave( int x, int y, String str, int rgb, int phase) {
+	public void drawCenteredWave( int x, int y, String str, int rgb, int phase) {
 		if (str == null) {
 			return;
 		}
@@ -176,7 +180,7 @@ public class PixFont extends Draw2D {
 		}
 	}
 
-    public void drawStringTaggable( int x, int y, String str, int rgb, boolean shadowed) {
+	public void drawStringTaggable( int x, int y, String str, int rgb, boolean shadowed) {
 		if (str == null) {
 			return;
 		}
@@ -202,7 +206,7 @@ public class PixFont extends Draw2D {
 		}
 	}
 
-    public void drawStringTooltip( int x, int y, String str, int color, boolean shadowed, int seed) {
+	public void drawStringTooltip( int x, int y, String str, int color, boolean shadowed, int seed) {
 		if (str == null) {
 			return;
 		}
@@ -233,7 +237,7 @@ public class PixFont extends Draw2D {
 		}
 	}
 
-    private int evaluateTag( String tag) {
+	private int evaluateTag( String tag) {
 		if (tag.equals("red")) {
 			return 0xff0000;
 		} else if (tag.equals("gre")) {
@@ -273,7 +277,7 @@ public class PixFont extends Draw2D {
 		}
 	}
 
-    private void drawChar( byte[] data, int x, int y, int w, int h, int rgb) {
+	private void drawChar( byte[] data, int x, int y, int w, int h, int rgb) {
 		int dstOff = x + y * Draw2D.width2d;
 		int dstStep = Draw2D.width2d - w;
 
@@ -314,7 +318,7 @@ public class PixFont extends Draw2D {
 		}
 	}
 
-    private void drawMask( int w, int h, byte[] src, int srcOff, int srcStep, int[] dst, int dstOff, int dstStep, int rgb) {
+	private void drawMask( int w, int h, byte[] src, int srcOff, int srcStep, int[] dst, int dstOff, int dstStep, int rgb) {
 		int hw = -(w >> 2);
 		w = -(w & 0x3);
 
@@ -358,7 +362,7 @@ public class PixFont extends Draw2D {
 		}
 	}
 
-    private void drawCharAlpha( int x, int y, int w, int h, int rgb, int alpha, byte[] mask) {
+	private void drawCharAlpha( int x, int y, int w, int h, int rgb, int alpha, byte[] mask) {
 		int dstOff = x + y * Draw2D.width2d;
 		int dstStep = Draw2D.width2d - w;
 
@@ -399,7 +403,7 @@ public class PixFont extends Draw2D {
 		}
 	}
 
-    private void drawMaskAlpha( int w, int h, int[] dst, int dstOff, int dstStep, byte[] mask, int maskOff, int maskStep, int color, int alpha) {
+	private void drawMaskAlpha( int w, int h, int[] dst, int dstOff, int dstStep, byte[] mask, int maskOff, int maskStep, int color, int alpha) {
 		int rgb = ((color & 0xFF00FF) * alpha & 0xFF00FF00) + ((color & 0xFF00) * alpha & 0xFF0000) >> 8;
 		int invAlpha = 256 - alpha;
 

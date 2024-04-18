@@ -3,27 +3,31 @@ package jagex2.dash3d.entity;
 import jagex2.config.SpotAnimType;
 import jagex2.graphics.Model;
 
+
+
+
+
 public class SpotAnimEntity extends Entity {
 
-    private final SpotAnimType type;
+	private final SpotAnimType type;
 
-    public final int startCycle;
+	public final int startCycle;
 
-    public final int level;
+	public final int level;
 
-    public final int x;
+	public final int x;
 
-    public final int z;
+	public final int z;
 
-    public final int y;
+	public final int y;
 
-    private int seqFrame;
+	private int seqFrame;
 
-    private int seqCycle;
+	private int seqCycle;
 
-    public boolean seqComplete = false;
+	public boolean seqComplete = false;
 
-    public SpotAnimEntity( int id, int level, int x, int z, int y, int cycle, int delay) {
+	public SpotAnimEntity( int id, int level, int x, int z, int y, int cycle, int delay) {
 		this.type = SpotAnimType.instances[id];
 		this.level = level;
 		this.x = x;
@@ -33,7 +37,7 @@ public class SpotAnimEntity extends Entity {
 		this.seqComplete = false;
 	}
 
-    public void update( int delta) {
+	public void update( int delta) {
 		for (this.seqCycle += delta; this.seqCycle > this.type.seq.delay[this.seqFrame]; ) {
 			this.seqCycle -= this.type.seq.delay[this.seqFrame] + 1;
 			this.seqFrame++;
@@ -45,8 +49,8 @@ public class SpotAnimEntity extends Entity {
 		}
 	}
 
-    @Override
-    public Model draw(int loopCycle) {
+	@Override
+	public Model draw(int loopCycle) {
 		Model tmp = this.type.getModel();
 		Model model = new Model(tmp, true, !this.type.disposeAlpha, false);
 

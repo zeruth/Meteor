@@ -1,48 +1,53 @@
 package jagex2.dash3d.type;
 
+
+
+
+
+
 public class TileOverlay {
 
-    public final int[] vertexX;
+	public final int[] vertexX;
 
-    public final int[] vertexY;
+	public final int[] vertexY;
 
-    public final int[] vertexZ;
+	public final int[] vertexZ;
 
-    public final int[] triangleColorA;
+	public final int[] triangleColorA;
 
-    public final int[] triangleColorB;
+	public final int[] triangleColorB;
 
-    public final int[] triangleColorC;
+	public final int[] triangleColorC;
 
-    public final int[] triangleVertexA;
+	public final int[] triangleVertexA;
 
-    public final int[] triangleVertexB;
+	public final int[] triangleVertexB;
 
-    public final int[] triangleVertexC;
+	public final int[] triangleVertexC;
 
-    public int[] triangleTextureIds;
+	public int[] triangleTextureIds;
 
-    public boolean flat = true;
+	public boolean flat = true;
 
-    public final int shape;
+	public final int shape;
 
-    public final int rotation;
+	public final int rotation;
 
-    public final int backgroundRgb;
+	public final int backgroundRgb;
 
-    public final int foregroundRgb;
+	public final int foregroundRgb;
 
-    public static final int[] tmpScreenX = new int[6];
+	public static final int[] tmpScreenX = new int[6];
 
-    public static final int[] tmpScreenY = new int[6];
+	public static final int[] tmpScreenY = new int[6];
 
-    public static final int[] tmpViewspaceX = new int[6];
+	public static final int[] tmpViewspaceX = new int[6];
 
-    public static final int[] tmpViewspaceY = new int[6];
+	public static final int[] tmpViewspaceY = new int[6];
 
-    public static final int[] tmpViewspaceZ = new int[6];
+	public static final int[] tmpViewspaceZ = new int[6];
 
-    public static final int[][] SHAPE_POINTS = new int[][] {
+	public static final int[][] SHAPE_POINTS = new int[][] {
 		{ 1, 3, 5, 7 },
 		{ 1, 3, 5, 7 }, // PLAIN_SHAPE
 		{ 1, 3, 5, 7 }, // DIAGONAL_SHAPE
@@ -58,7 +63,7 @@ public class TileOverlay {
 		{ 1, 3, 5, 7, 13, 14 } // TRAPEZIUM_SHAPE
 	};
 
-    public static final int[][] SHAPE_PATHS = new int[][] {
+	public static final int[][] SHAPE_PATHS = new int[][] {
 		{ 0, 1, 2, 3, 0, 0, 1, 3 },
 		{ 1, 1, 2, 3, 1, 0, 1, 3 }, // PLAIN_SHAPE
 		{ 0, 1, 2, 3, 1, 0, 1, 3 }, // DIAGONAL_SHAPE
@@ -74,7 +79,7 @@ public class TileOverlay {
 		{ 1, 0, 5, 4, 1, 0, 1, 5, 0, 0, 4, 3, 0, 4, 5, 3, 0, 5, 2, 3, 0, 1, 2, 5 } // TRAPEZIUM_SHAPE
 	};
 
-    public TileOverlay( int tileX, int shape, int southeastColor2, int southeastY, int northeastColor1, int rotation, int southwestColor1, int northwestY, int foregroundRgb, int southwestColor2, int textureId, int northwestColor2, int backgroundRgb, int northeastY, int northeastColor2, int northwestColor1, int southwestY, int tileZ, int southeastColor1) {
+	public TileOverlay( int tileX, int shape, int southeastColor2, int southeastY, int northeastColor1, int rotation, int southwestColor1, int northwestY, int foregroundRgb, int southwestColor2, int textureId, int northwestColor2, int backgroundRgb, int northeastY, int northeastColor2, int northwestColor1, int southwestY, int tileZ, int southeastColor1) {
 		if (southwestY != southeastY || southwestY != northeastY || southwestY != northwestY) {
 			this.flat = false;
 		}

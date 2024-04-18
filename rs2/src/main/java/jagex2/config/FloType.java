@@ -3,35 +3,39 @@ package jagex2.config;
 import jagex2.io.Jagfile;
 import jagex2.io.Packet;
 
+
+
+
+
 public class FloType {
 
-    public static int count;
+	public static int count;
 
-    public static FloType[] instances;
+	public static FloType[] instances;
 
-    public int rgb;
+	public int rgb;
 
-    public int texture = -1;
+	public int texture = -1;
 
-    private boolean opcode3 = false;
+	private boolean opcode3 = false;
 
-    public boolean occlude = true;
+	public boolean occlude = true;
 
-    public String name;
+	public String name;
 
-    public int hue;
+	public int hue;
 
-    public int saturation;
+	public int saturation;
 
-    public int lightness;
+	public int lightness;
 
-    public int chroma;
+	public int chroma;
 
-    public int luminance;
+	public int luminance;
 
-    public int hsl;
+	public int hsl;
 
-    public static void unpack( Jagfile config) {
+	public static void unpack( Jagfile config) {
 		Packet dat = new Packet(config.read("flo.dat", null));
 		count = dat.g2();
 
@@ -48,7 +52,7 @@ public class FloType {
 		}
 	}
 
-    public void decode( Packet dat) {
+	public void decode( Packet dat) {
 		while (true) {
 			int code = dat.g1();
 			if (code == 0) {
@@ -72,7 +76,7 @@ public class FloType {
 		}
 	}
 
-    private void setColor( int rgb) {
+	private void setColor( int rgb) {
 		double red = (double) (rgb >> 16 & 0xFF) / 256.0D;
 		double green = (double) (rgb >> 8 & 0xFF) / 256.0D;
 		double blue = (double) (rgb & 0xFF) / 256.0D;
@@ -168,7 +172,7 @@ public class FloType {
 		this.hsl = this.hsl24to16(hue, saturation, lightness);
 	}
 
-    private int hsl24to16( int hue, int saturation, int lightness) {
+	private int hsl24to16( int hue, int saturation, int lightness) {
 		if (lightness > 179) {
 			saturation /= 2;
 		}

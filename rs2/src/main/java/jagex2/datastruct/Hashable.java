@@ -1,12 +1,15 @@
 package jagex2.datastruct;
 
+
+
+
 public class Hashable extends Linkable {
 
-    public Hashable nextHashable;
+	public Hashable nextHashable;
 
-    public Hashable prevHashable;
+	public Hashable prevHashable;
 
-    public final void uncache() {
+	public final void uncache() {
 		if (this.prevHashable != null) {
 			this.prevHashable.nextHashable = this.nextHashable;
 			this.nextHashable.prevHashable = this.prevHashable;

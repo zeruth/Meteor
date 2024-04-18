@@ -9,59 +9,63 @@ import jagex2.graphics.Draw3D;
 import jagex2.graphics.Model;
 import jagex2.io.Packet;
 
+
+
+
+
 public class World {
 
-    public static boolean lowMemory = true;
+	public static boolean lowMemory = true;
 
-    public static int levelBuilt;
+	public static int levelBuilt;
 
-    public static boolean fullbright;
+	public static boolean fullbright;
 
-    private final int maxTileX;
+	private final int maxTileX;
 
-    private final int maxTileZ;
+	private final int maxTileZ;
 
-    private final int[][][] levelHeightmap;
+	private final int[][][] levelHeightmap;
 
-    private final byte[][][] levelTileFlags;
+	private final byte[][][] levelTileFlags;
 
-    private final byte[][][] levelTileUnderlayIds;
+	private final byte[][][] levelTileUnderlayIds;
 
-    private final byte[][][] levelTileOverlayIds;
+	private final byte[][][] levelTileOverlayIds;
 
-    private final byte[][][] levelTileOverlayShape;
+	private final byte[][][] levelTileOverlayShape;
 
-    private final byte[][][] levelTileOverlayRotation;
+	private final byte[][][] levelTileOverlayRotation;
 
-    private final byte[][][] levelShademap;
+	private final byte[][][] levelShademap;
 
-    private final int[][] levelLightmap;
+	private final int[][] levelLightmap;
 
-    private final int[] blendChroma;
+	private final int[] blendChroma;
 
-    private final int[] blendSaturation;
+	private final int[] blendSaturation;
 
-    private final int[] blendLightness;
+	private final int[] blendLightness;
 
-    private final int[] blendLuminance;
+	private final int[] blendLuminance;
 
-    private final int[] blendMagnitude;
+	private final int[] blendMagnitude;
 
-    private final int[][][] levelOccludemap;
+	private final int[][][] levelOccludemap;
 
-    public static final int[] ROTATION_WALL_TYPE = new int[] { 1, 2, 4, 8 };
+	public static final int[] ROTATION_WALL_TYPE = new int[] { 1, 2, 4, 8 };
 
-    public static final int[] ROTATION_WALL_CORNER_TYPE = new int[] { 16, 32, 64, 128 };
+	public static final int[] ROTATION_WALL_CORNER_TYPE = new int[] { 16, 32, 64, 128 };
 
-    public static final int[] WALL_DECORATION_ROTATION_FORWARD_X = new int[] { 1, 0, -1, 0 };
+	public static final int[] WALL_DECORATION_ROTATION_FORWARD_X = new int[] { 1, 0, -1, 0 };
 
-    public static final int[] WALL_DECORATION_ROTATION_FORWARD_Z = new int[] { 0, -1, 0, 1 };
+	public static final int[] WALL_DECORATION_ROTATION_FORWARD_Z = new int[] { 0, -1, 0, 1 };
 
-    public static int randomHueOffset = (int) (Math.random() * 17.0D) - 8;
+	public static int randomHueOffset = (int) (Math.random() * 17.0D) - 8;
 
-    public static int randomLightnessOffset = (int) (Math.random() * 33.0D) - 16;
+	public static int randomLightnessOffset = (int) (Math.random() * 33.0D) - 16;
 
-    public World( int maxTileX, int maxTileZ, int[][][] levelHeightmap, byte[][][] levelTileFlags) {
+	public World( int maxTileX, int maxTileZ, int[][][] levelHeightmap, byte[][][] levelTileFlags) {
 		this.maxTileX = maxTileX;
 		this.maxTileZ = maxTileZ;
 		this.levelHeightmap = levelHeightmap;
@@ -83,7 +87,7 @@ public class World {
 		this.blendMagnitude = new int[this.maxTileZ];
 	}
 
-    public static int perlin( int x, int z) {
+	public static int perlin( int x, int z) {
 		int value = perlin(x + 45365, z + 91923, 4) + (perlin(x + 10294, z + 37821, 2) - 128 >> 1) + (perlin(x, z, 1) - 128 >> 2) - 128;
 		value = (int) ((double) value * 0.3D) + 35;
 		if (value < 10) {
@@ -94,7 +98,7 @@ public class World {
 		return value;
 	}
 
-    private static int perlin( int x, int z, int scale) {
+	private static int perlin( int x, int z, int scale) {
 		int intX = x / scale;
 		int fracX = x & scale - 1;
 		int intZ = z / scale;
@@ -108,26 +112,26 @@ public class World {
 		return interpolate(i1, i2, fracZ, scale);
 	}
 
-    private static int interpolate( int a, int b, int x, int scale) {
+	private static int interpolate( int a, int b, int x, int scale) {
 		int f = 65536 - Draw3D.cos[x * 1024 / scale] >> 1;
 		return (a * (65536 - f) >> 16) + (b * f >> 16);
 	}
 
-    private static int smoothNoise( int x, int y) {
+	private static int smoothNoise( int x, int y) {
 		int corners = noise(x - 1, y - 1) + noise(x + 1, y - 1) + noise(x - 1, y + 1) + noise(x + 1, y + 1);
 		int sides = noise(x - 1, y) + noise(x + 1, y) + noise(x, y - 1) + noise(x, y + 1);
 		int center = noise(x, y);
 		return corners / 16 + sides / 8 + center / 4;
 	}
 
-    private static int noise( int x, int y) {
+	private static int noise( int x, int y) {
 		int n = x + y * 57;
 		int n1 = n << 13 ^ n;
 		int n2 = n1 * (n1 * n1 * 15731 + 789221) + 1376312589 & Integer.MAX_VALUE;
 		return n2 >> 19 & 0xFF;
 	}
 
-    public static int mulHSL( int hsl, int lightness) {
+	public static int mulHSL( int hsl, int lightness) {
 		if (hsl == -1) {
 			return 12345678;
 		}
@@ -142,7 +146,7 @@ public class World {
 		return (hsl & 0xFF80) + lightness;
 	}
 
-    public static void addLoc( int level, int x, int z, World3D scene, int[][][] levelHeightmap, LinkList locs, CollisionMap collision, int locId, int shape, int rotation, int trueLevel) {
+	public static void addLoc( int level, int x, int z, World3D scene, int[][][] levelHeightmap, LinkList locs, CollisionMap collision, int locId, int shape, int rotation, int trueLevel) {
 		int heightSW = levelHeightmap[trueLevel][x][z];
 		int heightSE = levelHeightmap[trueLevel][x + 1][z];
 		int heightNW = levelHeightmap[trueLevel][x + 1][z + 1];
@@ -170,7 +174,7 @@ public class World {
 			}
 
 			if (loc.anim != -1) {
-				locs.pushBack(new LocEntity(locId, level, 3, x, z, SeqType.instances[loc.anim], true));
+				locs.addTail(new LocEntity(locId, level, 3, x, z, SeqType.instances[loc.anim], true));
 			}
 		} else if (shape == LocType.CENTREPIECE_STRAIGHT || shape == LocType.CENTREPIECE_DIAGONAL) {
 			model1 = loc.getModel(LocType.CENTREPIECE_STRAIGHT, rotation, heightSW, heightSE, heightNW, heightNE, -1);
@@ -197,7 +201,7 @@ public class World {
 			}
 
 			if (loc.anim != -1) {
-				locs.pushBack(new LocEntity(locId, level, 2, x, z, SeqType.instances[loc.anim], true));
+				locs.addTail(new LocEntity(locId, level, 2, x, z, SeqType.instances[loc.anim], true));
 			}
 		} else if (shape >= LocType.ROOF_STRAIGHT) {
 			model1 = loc.getModel(shape, rotation, heightSW, heightSE, heightNW, heightNE, -1);
@@ -208,7 +212,7 @@ public class World {
 			}
 
 			if (loc.anim != -1) {
-				locs.pushBack(new LocEntity(locId, level, 2, x, z, SeqType.instances[loc.anim], true));
+				locs.addTail(new LocEntity(locId, level, 2, x, z, SeqType.instances[loc.anim], true));
 			}
 		} else if (shape == LocType.WALL_STRAIGHT) {
 			model1 = loc.getModel(LocType.WALL_STRAIGHT, rotation, heightSW, heightSE, heightNW, heightNE, -1);
@@ -219,7 +223,7 @@ public class World {
 			}
 
 			if (loc.anim != -1) {
-				locs.pushBack(new LocEntity(locId, level, 0, x, z, SeqType.instances[loc.anim], true));
+				locs.addTail(new LocEntity(locId, level, 0, x, z, SeqType.instances[loc.anim], true));
 			}
 		} else if (shape == LocType.WALL_DIAGONALCORNER) {
 			model1 = loc.getModel(LocType.WALL_DIAGONALCORNER, rotation, heightSW, heightSE, heightNW, heightNE, -1);
@@ -230,7 +234,7 @@ public class World {
 			}
 
 			if (loc.anim != -1) {
-				locs.pushBack(new LocEntity(locId, level, 0, x, z, SeqType.instances[loc.anim], true));
+				locs.addTail(new LocEntity(locId, level, 0, x, z, SeqType.instances[loc.anim], true));
 			}
 		} else if (shape == LocType.WALL_L) {
 			int nextRotation = rotation + 1 & 0x3;
@@ -243,7 +247,7 @@ public class World {
 			}
 
 			if (loc.anim != -1) {
-				locs.pushBack(new LocEntity(locId, level, 0, x, z, SeqType.instances[loc.anim], true));
+				locs.addTail(new LocEntity(locId, level, 0, x, z, SeqType.instances[loc.anim], true));
 			}
 		} else if (shape == LocType.WALL_SQUARECORNER) {
 			model1 = loc.getModel(LocType.WALL_SQUARECORNER, rotation, heightSW, heightSE, heightNW, heightNE, -1);
@@ -254,7 +258,7 @@ public class World {
 			}
 
 			if (loc.anim != -1) {
-				locs.pushBack(new LocEntity(locId, level, 0, x, z, SeqType.instances[loc.anim], true));
+				locs.addTail(new LocEntity(locId, level, 0, x, z, SeqType.instances[loc.anim], true));
 			}
 		} else if (shape == LocType.WALL_DIAGONAL) {
 			model1 = loc.getModel(shape, rotation, heightSW, heightSE, heightNW, heightNE, -1);
@@ -265,14 +269,14 @@ public class World {
 			}
 
 			if (loc.anim != -1) {
-				locs.pushBack(new LocEntity(locId, level, 2, x, z, SeqType.instances[loc.anim], true));
+				locs.addTail(new LocEntity(locId, level, 2, x, z, SeqType.instances[loc.anim], true));
 			}
 		} else if (shape == LocType.WALLDECOR_STRAIGHT_NOOFFSET) {
 			model1 = loc.getModel(LocType.WALLDECOR_STRAIGHT_NOOFFSET, 0, heightSW, heightSE, heightNW, heightNE, -1);
 			scene.setWallDecoration(level, x, z, y, 0, 0, bitset, model1, info, rotation * 512, ROTATION_WALL_TYPE[rotation]);
 
 			if (loc.anim != -1) {
-				locs.pushBack(new LocEntity(locId, level, 1, x, z, SeqType.instances[loc.anim], true));
+				locs.addTail(new LocEntity(locId, level, 1, x, z, SeqType.instances[loc.anim], true));
 			}
 		} else if (shape == LocType.WALLDECOR_STRAIGHT_OFFSET) {
 			offset = 16;
@@ -286,33 +290,33 @@ public class World {
 			scene.setWallDecoration(level, x, z, y, WALL_DECORATION_ROTATION_FORWARD_X[rotation] * offset, WALL_DECORATION_ROTATION_FORWARD_Z[rotation] * offset, bitset, model2, info, rotation * 512, ROTATION_WALL_TYPE[rotation]);
 
 			if (loc.anim != -1) {
-				locs.pushBack(new LocEntity(locId, level, 1, x, z, SeqType.instances[loc.anim], true));
+				locs.addTail(new LocEntity(locId, level, 1, x, z, SeqType.instances[loc.anim], true));
 			}
 		} else if (shape == LocType.WALLDECOR_DIAGONAL_OFFSET) {
 			model1 = loc.getModel(LocType.WALLDECOR_STRAIGHT_NOOFFSET, 0, heightSW, heightSE, heightNW, heightNE, -1);
 			scene.setWallDecoration(level, x, z, y, 0, 0, bitset, model1, info, rotation, 256);
 
 			if (loc.anim != -1) {
-				locs.pushBack(new LocEntity(locId, level, 1, x, z, SeqType.instances[loc.anim], true));
+				locs.addTail(new LocEntity(locId, level, 1, x, z, SeqType.instances[loc.anim], true));
 			}
 		} else if (shape == LocType.WALLDECOR_DIAGONAL_NOOFFSET) {
 			model1 = loc.getModel(LocType.WALLDECOR_STRAIGHT_NOOFFSET, 0, heightSW, heightSE, heightNW, heightNE, -1);
 			scene.setWallDecoration(level, x, z, y, 0, 0, bitset, model1, info, rotation, 512);
 
 			if (loc.anim != -1) {
-				locs.pushBack(new LocEntity(locId, level, 1, x, z, SeqType.instances[loc.anim], true));
+				locs.addTail(new LocEntity(locId, level, 1, x, z, SeqType.instances[loc.anim], true));
 			}
 		} else if (shape == LocType.WALLDECOR_DIAGONAL_BOTH) {
 			model1 = loc.getModel(LocType.WALLDECOR_STRAIGHT_NOOFFSET, 0, heightSW, heightSE, heightNW, heightNE, -1);
 			scene.setWallDecoration(level, x, z, y, 0, 0, bitset, model1, info, rotation, 768);
 
 			if (loc.anim != -1) {
-				locs.pushBack(new LocEntity(locId, level, 1, x, z, SeqType.instances[loc.anim], true));
+				locs.addTail(new LocEntity(locId, level, 1, x, z, SeqType.instances[loc.anim], true));
 			}
 		}
 	}
 
-    public void clearLandscape( int startX, int startZ, int endX, int endZ) {
+	public void clearLandscape( int startX, int startZ, int endX, int endZ) {
 		byte waterOverlay = 0;
 		for ( int i = 0; i < FloType.count; i++) {
 			if (FloType.instances[i].name.equalsIgnoreCase("water")) {
@@ -337,7 +341,7 @@ public class World {
 		}
 	}
 
-    public void readLandscape( int originX, int originZ, int xOffset, int zOffset, byte[] src) {
+	public void readLandscape( int originX, int originZ, int xOffset, int zOffset, byte[] src) {
 		Packet buf = new Packet(src);
 
 		for ( int level = 0; level < 4; level++) {
@@ -405,7 +409,7 @@ public class World {
 		}
 	}
 
-    public void readLocs( World3D scene, LinkList locs, CollisionMap[] collision, byte[] src, int xOffset, int zOffset) {
+	public void readLocs( World3D scene, LinkList locs, CollisionMap[] collision, byte[] src, int xOffset, int zOffset) {
 		Packet buf = new Packet(src);
 		int locId = -1;
 
@@ -452,7 +456,7 @@ public class World {
 		}
 	}
 
-    private void addLoc( int level, int x, int z, World3D scene, LinkList locs, CollisionMap collision, int locId, int shape, int rotation) {
+	private void addLoc( int level, int x, int z, World3D scene, LinkList locs, CollisionMap collision, int locId, int shape, int rotation) {
 		if (lowMemory) {
 			if ((this.levelTileFlags[level][x][z] & 0x10) != 0) {
 				return;
@@ -494,7 +498,7 @@ public class World {
 			}
 
 			if (loc.anim != -1) {
-				locs.pushBack(new LocEntity(locId, level, 3, x, z, SeqType.instances[loc.anim], true));
+				locs.addTail(new LocEntity(locId, level, 3, x, z, SeqType.instances[loc.anim], true));
 			}
 		} else if (shape == LocType.CENTREPIECE_STRAIGHT || shape == LocType.CENTREPIECE_DIAGONAL) {
 			model = loc.getModel(LocType.CENTREPIECE_STRAIGHT, rotation, heightSW, heightSE, heightNW, heightNE, -1);
@@ -535,7 +539,7 @@ public class World {
 			}
 
 			if (loc.anim != -1) {
-				locs.pushBack(new LocEntity(locId, level, 2, x, z, SeqType.instances[loc.anim], true));
+				locs.addTail(new LocEntity(locId, level, 2, x, z, SeqType.instances[loc.anim], true));
 			}
 		} else if (shape >= LocType.ROOF_STRAIGHT) {
 			model = loc.getModel(shape, rotation, heightSW, heightSE, heightNW, heightNE, -1);
@@ -550,7 +554,7 @@ public class World {
 			}
 
 			if (loc.anim != -1) {
-				locs.pushBack(new LocEntity(locId, level, 2, x, z, SeqType.instances[loc.anim], true));
+				locs.addTail(new LocEntity(locId, level, 2, x, z, SeqType.instances[loc.anim], true));
 			}
 		} else if (shape == LocType.WALL_STRAIGHT) {
 			model = loc.getModel(LocType.WALL_STRAIGHT, rotation, heightSW, heightSE, heightNW, heightNE, -1);
@@ -599,7 +603,7 @@ public class World {
 			}
 
 			if (loc.anim != -1) {
-				locs.pushBack(new LocEntity(locId, level, 0, x, z, SeqType.instances[loc.anim], true));
+				locs.addTail(new LocEntity(locId, level, 0, x, z, SeqType.instances[loc.anim], true));
 			}
 
 			if (loc.walloff != 16) {
@@ -626,7 +630,7 @@ public class World {
 			}
 
 			if (loc.anim != -1) {
-				locs.pushBack(new LocEntity(locId, level, 0, x, z, SeqType.instances[loc.anim], true));
+				locs.addTail(new LocEntity(locId, level, 0, x, z, SeqType.instances[loc.anim], true));
 			}
 		} else if (shape == LocType.WALL_L) {
 			int nextRotation = rotation + 1 & 0x3;
@@ -655,7 +659,7 @@ public class World {
 			}
 
 			if (loc.anim != -1) {
-				locs.pushBack(new LocEntity(locId, level, 0, x, z, SeqType.instances[loc.anim], true));
+				locs.addTail(new LocEntity(locId, level, 0, x, z, SeqType.instances[loc.anim], true));
 			}
 
 			if (loc.walloff != 16) {
@@ -682,7 +686,7 @@ public class World {
 			}
 
 			if (loc.anim != -1) {
-				locs.pushBack(new LocEntity(locId, level, 0, x, z, SeqType.instances[loc.anim], true));
+				locs.addTail(new LocEntity(locId, level, 0, x, z, SeqType.instances[loc.anim], true));
 			}
 		} else if (shape == LocType.WALL_DIAGONAL) {
 			model = loc.getModel(shape, rotation, heightSW, heightSE, heightNW, heightNE, -1);
@@ -693,14 +697,14 @@ public class World {
 			}
 
 			if (loc.anim != -1) {
-				locs.pushBack(new LocEntity(locId, level, 2, x, z, SeqType.instances[loc.anim], true));
+				locs.addTail(new LocEntity(locId, level, 2, x, z, SeqType.instances[loc.anim], true));
 			}
 		} else if (shape == LocType.WALLDECOR_STRAIGHT_NOOFFSET) {
 			model = loc.getModel(LocType.WALLDECOR_STRAIGHT_NOOFFSET, 0, heightSW, heightSE, heightNW, heightNE, -1);
 			scene.setWallDecoration(level, x, z, y, 0, 0, bitset, model, info, rotation * 512, ROTATION_WALL_TYPE[rotation]);
 
 			if (loc.anim != -1) {
-				locs.pushBack(new LocEntity(locId, level, 1, x, z, SeqType.instances[loc.anim], true));
+				locs.addTail(new LocEntity(locId, level, 1, x, z, SeqType.instances[loc.anim], true));
 			}
 		} else if (shape == LocType.WALLDECOR_STRAIGHT_OFFSET) {
 			offset = 16;
@@ -713,33 +717,33 @@ public class World {
 			scene.setWallDecoration(level, x, z, y, WALL_DECORATION_ROTATION_FORWARD_X[rotation] * offset, WALL_DECORATION_ROTATION_FORWARD_Z[rotation] * offset, bitset, model1, info, rotation * 512, ROTATION_WALL_TYPE[rotation]);
 
 			if (loc.anim != -1) {
-				locs.pushBack(new LocEntity(locId, level, 1, x, z, SeqType.instances[loc.anim], true));
+				locs.addTail(new LocEntity(locId, level, 1, x, z, SeqType.instances[loc.anim], true));
 			}
 		} else if (shape == LocType.WALLDECOR_DIAGONAL_OFFSET) {
 			model = loc.getModel(LocType.WALLDECOR_STRAIGHT_NOOFFSET, 0, heightSW, heightSE, heightNW, heightNE, -1);
 			scene.setWallDecoration(level, x, z, y, 0, 0, bitset, model, info, rotation, 256);
 
 			if (loc.anim != -1) {
-				locs.pushBack(new LocEntity(locId, level, 1, x, z, SeqType.instances[loc.anim], true));
+				locs.addTail(new LocEntity(locId, level, 1, x, z, SeqType.instances[loc.anim], true));
 			}
 		} else if (shape == LocType.WALLDECOR_DIAGONAL_NOOFFSET) {
 			model = loc.getModel(LocType.WALLDECOR_STRAIGHT_NOOFFSET, 0, heightSW, heightSE, heightNW, heightNE, -1);
 			scene.setWallDecoration(level, x, z, y, 0, 0, bitset, model, info, rotation, 512);
 
 			if (loc.anim != -1) {
-				locs.pushBack(new LocEntity(locId, level, 1, x, z, SeqType.instances[loc.anim], true));
+				locs.addTail(new LocEntity(locId, level, 1, x, z, SeqType.instances[loc.anim], true));
 			}
 		} else if (shape == LocType.WALLDECOR_DIAGONAL_BOTH) {
 			model = loc.getModel(LocType.WALLDECOR_STRAIGHT_NOOFFSET, 0, heightSW, heightSE, heightNW, heightNE, -1);
 			scene.setWallDecoration(level, x, z, y, 0, 0, bitset, model, info, rotation, 768);
 
 			if (loc.anim != -1) {
-				locs.pushBack(new LocEntity(locId, level, 1, x, z, SeqType.instances[loc.anim], true));
+				locs.addTail(new LocEntity(locId, level, 1, x, z, SeqType.instances[loc.anim], true));
 			}
 		}
 	}
 
-    public void build( World3D scene, CollisionMap[] collision) {
+	public void build( World3D scene, CollisionMap[] collision) {
 		for ( int level = 0; level < 4; level++) {
 			for (int x = 0; x < 104; x++) {
 				for (int z = 0; z < 104; z++) {
@@ -1131,7 +1135,7 @@ public class World {
 		}
 	}
 
-    private int getDrawLevel( int level, int stx, int stz) {
+	private int getDrawLevel( int level, int stx, int stz) {
 		if ((this.levelTileFlags[level][stx][stz] & 0x8) == 0) {
 			return level <= 0 || (this.levelTileFlags[1][stx][stz] & 0x2) == 0 ? level : level - 1;
 		} else {
@@ -1139,7 +1143,7 @@ public class World {
 		}
 	}
 
-    private int adjustLightness( int hsl, int scalar) {
+	private int adjustLightness( int hsl, int scalar) {
 		if (hsl == -2) {
 			return 12345678;
 		}
@@ -1162,7 +1166,7 @@ public class World {
 		}
 	}
 
-    private int hsl24to16( int hue, int saturation, int lightness) {
+	private int hsl24to16( int hue, int saturation, int lightness) {
 		if (lightness > 179) {
 			saturation /= 2;
 		}

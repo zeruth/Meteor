@@ -3,25 +3,29 @@ package jagex2.graphics;
 import jagex2.io.Jagfile;
 import jagex2.io.Packet;
 
+
+
+
+
 public class SeqFrame {
 
-    public static SeqFrame[] instances;
+	public static SeqFrame[] instances;
 
-    public int delay;
+	public int delay;
 
-    public SeqBase base;
+	public SeqBase base;
 
-    public int length;
+	public int length;
 
-    public int[] bases;
+	public int[] bases;
 
-    public int[] x;
+	public int[] x;
 
-    public int[] y;
+	public int[] y;
 
-    public int[] z;
+	public int[] z;
 
-    public static void unpack( Jagfile models) {
+	public static void unpack( Jagfile models) {
 		Packet head = new Packet(models.read("frame_head.dat", null));
 		Packet tran1 = new Packet(models.read("frame_tran1.dat", null));
 		Packet tran2 = new Packet(models.read("frame_tran2.dat", null));

@@ -5,6 +5,10 @@ import jagex2.graphics.Model;
 import jagex2.io.Jagfile;
 import jagex2.io.Packet;
 
+
+
+
+
 public class LocType {
 
 	// shapes
@@ -32,89 +36,89 @@ public class LocType {
 	public static final int ROOFEDGE_L = 20;
 	public static final int ROOFEDGE_SQUARECORNER = 21;
 
-    public static boolean reset;
+	public static boolean reset;
 
-    private static int count;
+	private static int count;
 
-    private static int[] offsets;
+	private static int[] offsets;
 
-    private static Packet dat;
+	private static Packet dat;
 
-    private static LocType[] cache;
+	private static LocType[] cache;
 
-    private static int cachePos;
+	private static int cachePos;
 
-    public int index = -1;
+	public int index = -1;
 
-    private int[] models;
+	private int[] models;
 
-    private int[] shapes;
+	private int[] shapes;
 
-    public String name;
+	public String name;
 
-    public String desc;
+	public String desc;
 
-    private int[] recol_s;
+	private int[] recol_s;
 
-    private int[] recol_d;
+	private int[] recol_d;
 
-    public int width;
+	public int width;
 
-    public int length;
+	public int length;
 
-    public boolean blockwalk;
+	public boolean blockwalk;
 
-    public boolean blockrange;
+	public boolean blockrange;
 
-    public boolean active;
+	public boolean active;
 
-    private boolean hillskew;
+	private boolean hillskew;
 
-    private boolean sharelight;
+	private boolean sharelight;
 
-    public boolean occlude;
+	public boolean occlude;
 
-    public int anim;
+	public int anim;
 
-    public int walloff;
+	public int walloff;
 
-    private byte ambient;
+	private byte ambient;
 
-    private byte contrast;
+	private byte contrast;
 
-    public String[] ops;
+	public String[] ops;
 
-    private boolean disposeAlpha;
+	private boolean disposeAlpha;
 
-    public int mapfunction;
+	public int mapfunction;
 
-    public int mapscene;
+	public int mapscene;
 
-    private boolean mirror;
+	private boolean mirror;
 
-    public boolean shadow;
+	public boolean shadow;
 
-    private int resizex;
+	private int resizex;
 
-    private int resizey;
+	private int resizey;
 
-    private int resizez;
+	private int resizez;
 
-    private int xoff;
+	private int xoff;
 
-    private int yoff;
+	private int yoff;
 
-    private int zoff;
+	private int zoff;
 
-    public int forceapproach;
+	public int forceapproach;
 
-    public boolean forcedecor;
+	public boolean forcedecor;
 
-    public static LruCache modelCacheStatic = new LruCache(500);
+	public static LruCache modelCacheStatic = new LruCache(500);
 
-    public static LruCache modelCacheDynamic = new LruCache(30);
+	public static LruCache modelCacheDynamic = new LruCache(30);
 
-    public static void unpack( Jagfile config) {
+	public static void unpack( Jagfile config) {
 		dat = new Packet(config.read("loc.dat", null));
 		Packet idx = new Packet(config.read("loc.idx", null));
 
@@ -133,7 +137,7 @@ public class LocType {
 		}
 	}
 
-    public static void unload() {
+	public static void unload() {
 		modelCacheStatic = null;
 		modelCacheDynamic = null;
 		offsets = null;
@@ -141,7 +145,7 @@ public class LocType {
 		dat = null;
 	}
 
-    public static LocType get( int id) {
+	public static LocType get( int id) {
 		for ( int i = 0; i < 10; i++) {
 			if (cache[i].index == id) {
 				return cache[i];
@@ -157,7 +161,7 @@ public class LocType {
 		return loc;
 	}
 
-    public void reset() {
+	public void reset() {
 		this.models = null;
 		this.shapes = null;
 		this.name = null;
@@ -192,7 +196,7 @@ public class LocType {
 		this.forcedecor = false;
 	}
 
-    public void decode( Packet dat) {
+	public void decode( Packet dat) {
 		int active = -1;
 
 		while (true) {
@@ -305,7 +309,7 @@ public class LocType {
 		}
 	}
 
-    public Model getModel( int shape, int rotation, int heightmapSW, int heightmapSE, int heightmapNE, int heightmapNW, int transformId) {
+	public Model getModel( int shape, int rotation, int heightmapSW, int heightmapSE, int heightmapNE, int heightmapNW, int transformId) {
 		int shapeIndex = -1;
 		for ( int i = 0; i < this.shapes.length; i++) {
 			if (this.shapes[i] == shape) {

@@ -2,19 +2,23 @@ package jagex2.dash3d;
 
 import jagex2.config.LocType;
 
+
+
+
+
 public class CollisionMap {
 
-    private final int offsetX;
+	private final int offsetX;
 
-    private final int offsetZ;
+	private final int offsetZ;
 
-    private final int sizeX;
+	private final int sizeX;
 
-    private final int sizeZ;
+	private final int sizeZ;
 
-    public final int[][] flags;
+	public final int[][] flags;
 
-    public CollisionMap( int sizeX, int sizeZ) {
+	public CollisionMap( int sizeX, int sizeZ) {
 		this.offsetX = 0;
 		this.offsetZ = 0;
 		this.sizeX = sizeX;
@@ -23,7 +27,7 @@ public class CollisionMap {
 		this.reset();
 	}
 
-    public void reset() {
+	public void reset() {
 		for ( int x = 0; x < this.sizeX; x++) {
 			for ( int z = 0; z < this.sizeZ; z++) {
 				if (x == 0 || z == 0 || x == this.sizeX - 1 || z == this.sizeZ - 1) {
@@ -35,7 +39,7 @@ public class CollisionMap {
 		}
 	}
 
-    public void addWall( int tileX, int tileZ, int shape, int rotation, boolean blockrange) {
+	public void addWall( int tileX, int tileZ, int shape, int rotation, boolean blockrange) {
 		int x = tileX - this.offsetX;
 		int z = tileZ - this.offsetZ;
 
@@ -138,7 +142,7 @@ public class CollisionMap {
 		}
 	}
 
-    public void addLoc( int tileX, int tileZ, int sizeX, int sizeZ, int rotation, boolean blockrange) {
+	public void addLoc( int tileX, int tileZ, int sizeX, int sizeZ, int rotation, boolean blockrange) {
 		int flags = 0x100;
 		if (blockrange) {
 			flags += 0x20000;
@@ -168,17 +172,17 @@ public class CollisionMap {
 		}
 	}
 
-    public void setBlocked( int tileX, int tileZ) {
+	public void setBlocked( int tileX, int tileZ) {
 		int x = tileX - this.offsetX;
 		int z = tileZ - this.offsetZ;
 		this.flags[x][z] |= 0x200000;
 	}
 
-    private void add( int x, int z, int flags) {
+	private void add( int x, int z, int flags) {
 		this.flags[x][z] |= flags;
 	}
 
-    public void removeWall( int tileX, int tileZ, int shape, int rotation, boolean blockrange) {
+	public void removeWall( int tileX, int tileZ, int shape, int rotation, boolean blockrange) {
 		int x = tileX - this.offsetX;
 		int z = tileZ - this.offsetZ;
 
@@ -281,7 +285,7 @@ public class CollisionMap {
 		}
 	}
 
-    public void removeLoc( int tileX, int tileZ, int sizeX, int sizeZ, int rotation, boolean blockrange) {
+	public void removeLoc( int tileX, int tileZ, int sizeX, int sizeZ, int rotation, boolean blockrange) {
 		int flags = 0x100;
 		if (blockrange) {
 			flags += 0x20000;
@@ -311,17 +315,17 @@ public class CollisionMap {
 		}
 	}
 
-    private void remove( int x, int z, int flags) {
+	private void remove( int x, int z, int flags) {
 		this.flags[x][z] &= 0xFFFFFF - flags;
 	}
 
-    public void removeBlocked( int tileX, int tileZ) {
+	public void removeBlocked( int tileX, int tileZ) {
 		int x = tileX - this.offsetX;
 		int z = tileZ - this.offsetZ;
 		this.flags[x][z] &= 0xDFFFFF;
 	}
 
-    public boolean reachedWall( int sourceX, int sourceZ, int destX, int destZ, int shape, int rotation) {
+	public boolean reachedWall( int sourceX, int sourceZ, int destX, int destZ, int shape, int rotation) {
 		if (sourceX == destX && sourceZ == destZ) {
 			return true;
 		}
@@ -422,7 +426,7 @@ public class CollisionMap {
 		return false;
 	}
 
-    public boolean reachedWallDecoration( int sourceX, int sourceZ, int destX, int destZ, int shape, int rotation) {
+	public boolean reachedWallDecoration( int sourceX, int sourceZ, int destX, int destZ, int shape, int rotation) {
 		if (sourceX == destX && sourceZ == destZ) {
 			return true;
 		}
@@ -477,7 +481,7 @@ public class CollisionMap {
 		return false;
 	}
 
-    public boolean reachedLoc( int srcX, int srcZ, int dstX, int dstZ, int dstSizeX, int dstSizeZ, int forceapproach) {
+	public boolean reachedLoc( int srcX, int srcZ, int dstX, int dstZ, int dstSizeX, int dstSizeZ, int forceapproach) {
 		int maxX = dstX + dstSizeX - 1;
 		int maxZ = dstZ + dstSizeZ - 1;
 

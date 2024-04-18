@@ -4,35 +4,39 @@ import jagex2.graphics.SeqFrame;
 import jagex2.io.Jagfile;
 import jagex2.io.Packet;
 
+
+
+
+
 public class SeqType {
 
-    private static int count;
+	private static int count;
 
-    public static SeqType[] instances;
+	public static SeqType[] instances;
 
-    public int frameCount;
+	public int frameCount;
 
-    public int[] frames;
+	public int[] frames;
 
-    public int[] iframes;
+	public int[] iframes;
 
-    public int[] delay;
+	public int[] delay;
 
-    public int replayoff = -1;
+	public int replayoff = -1;
 
-    public int[] labelGroups;
+	public int[] labelGroups;
 
-    public boolean stretches = false;
+	public boolean stretches = false;
 
-    public int priority = 5;
+	public int priority = 5;
 
-    public int mainhand = -1;
+	public int mainhand = -1;
 
-    public int offhand = -1;
+	public int offhand = -1;
 
-    public int replaycount = 99;
+	public int replaycount = 99;
 
-    public static void unpack( Jagfile config) {
+	public static void unpack( Jagfile config) {
 		Packet dat = new Packet(config.read("seq.dat", null));
 		count = dat.g2();
 
@@ -49,7 +53,7 @@ public class SeqType {
 		}
 	}
 
-    public void decode( Packet dat) {
+	public void decode( Packet dat) {
 		while (true) {
 			int code = dat.g1();
 			if (code == 0) {

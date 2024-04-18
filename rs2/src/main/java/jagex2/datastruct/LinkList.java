@@ -1,91 +1,96 @@
 package jagex2.datastruct;
 
+
+
+
+
+
 public class LinkList {
 
-    private final Linkable head = new Linkable();
+	private final Linkable sentinel = new Linkable();
 
-    private Linkable peeked;
+	private Linkable cursor;
 
-    public LinkList() {
-		this.head.prev = this.head;
-		this.head.next = this.head;
+	public LinkList() {
+		this.sentinel.next = this.sentinel;
+		this.sentinel.prev = this.sentinel;
 	}
 
-    public void pushBack( Linkable node) {
-		if (node.next != null) {
+	public void addTail( Linkable node) {
+		if (node.prev != null) {
 			node.unlink();
 		}
 
-		node.next = this.head.next;
-		node.prev = this.head;
-		node.next.prev = node;
+		node.prev = this.sentinel.prev;
+		node.next = this.sentinel;
 		node.prev.next = node;
+		node.next.prev = node;
 	}
 
-    public void pushFront( Linkable node) {
-		if (node.next != null) {
+	public void addHead( Linkable node) {
+		if (node.prev != null) {
 			node.unlink();
 		}
 
-		node.next = this.head;
-		node.prev = this.head.prev;
-		node.next.prev = node;
+		node.prev = this.sentinel;
+		node.next = this.sentinel.next;
 		node.prev.next = node;
+		node.next.prev = node;
 	}
 
-    public Linkable pollFront() {
-		Linkable node = this.head.prev;
-		if (node == this.head) {
+	public Linkable removeHead() {
+		Linkable node = this.sentinel.next;
+		if (node == this.sentinel) {
 			return null;
 		}
 		node.unlink();
 		return node;
 	}
 
-    public Linkable peekFront() {
-		Linkable node = this.head.prev;
-		if (node == this.head) {
-			this.peeked = null;
+	public Linkable head() {
+		Linkable node = this.sentinel.next;
+		if (node == this.sentinel) {
+			this.cursor = null;
 			return null;
 		}
-		this.peeked = node.prev;
+		this.cursor = node.next;
 		return node;
 	}
 
-    public Linkable peekBack() {
-		Linkable node = this.head.next;
-		if (node == this.head) {
-			this.peeked = null;
+	public Linkable tail() {
+		Linkable node = this.sentinel.prev;
+		if (node == this.sentinel) {
+			this.cursor = null;
 			return null;
 		}
-		this.peeked = node.next;
+		this.cursor = node.prev;
 		return node;
 	}
 
-    public Linkable prev() {
-		Linkable node = this.peeked;
-		if (node == this.head) {
-			this.peeked = null;
+	public Linkable next() {
+		Linkable node = this.cursor;
+		if (node == this.sentinel) {
+			this.cursor = null;
 			return null;
 		}
-		this.peeked = node.prev;
+		this.cursor = node.next;
 		return node;
 	}
 
-    public Linkable next() {
-		Linkable node = this.peeked;
-		if (node == this.head) {
-			this.peeked = null;
+	public Linkable prev() {
+		Linkable node = this.cursor;
+		if (node == this.sentinel) {
+			this.cursor = null;
 			return null;
 		}
-		this.peeked = node.next;
+		this.cursor = node.prev;
 		return node;
 	}
 
-    public void clear() {
+	public void clear() {
 		while (true) {
-			Linkable node = this.head.prev;
-			if (node == this.head) {
+			Linkable node = this.sentinel.next;
+			if (node == this.sentinel) {
 				return;
 			}
 			node.unlink();

@@ -3,25 +3,28 @@ package jagex2.dash3d.entity;
 import jagex2.config.SeqType;
 import jagex2.datastruct.Linkable;
 
+
+
+
 public class LocEntity extends Linkable {
 
-    public int heightmapSW;
+	public int heightmapSW;
 
-    public final int heightmapSE;
+	public final int heightmapSE;
 
-    public final int heightmapNE;
+	public final int heightmapNE;
 
-    public final int heightmapNW;
+	public final int heightmapNW;
 
-    public final int index;
+	public final int index;
 
-    public final SeqType seq;
+	public final SeqType seq;
 
-    public int seqFrame;
+	public int seqFrame;
 
-    public int seqCycle;
+	public int seqCycle;
 
-    public LocEntity( int index, int heightmapSW, int heightmapSE, int heightmapNE, int heightmapNW, SeqType seq, boolean randomFrame) {
+	public LocEntity( int index, int heightmapSW, int heightmapSE, int heightmapNE, int heightmapNW, SeqType seq, boolean randomFrame) {
 		this.heightmapSW = heightmapSW;
 		this.heightmapSE = heightmapSE;
 		this.heightmapNE = heightmapNE;

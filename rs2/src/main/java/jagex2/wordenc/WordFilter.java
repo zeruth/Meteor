@@ -3,6 +3,9 @@ package jagex2.wordenc;
 import jagex2.io.Jagfile;
 import jagex2.io.Packet;
 
+
+
+
 public class WordFilter {
 
     private static int[] fragments;

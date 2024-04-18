@@ -1,10 +1,15 @@
 package jagex2.io;
 
+
+
+
+
+
 public class BZip2 {
 
-    private static final BZip2State state = new BZip2State();
+	private static final BZip2State state = new BZip2State();
 
-    public static int read( byte[] decompressed, int length, byte[] stream, int avail_in, int next_in) {
+	public static int read( byte[] decompressed, int length, byte[] stream, int avail_in, int next_in) {
 		synchronized (state) {
 			state.stream = stream;
 			state.next_in = next_in;
@@ -25,7 +30,7 @@ public class BZip2 {
 	}
 
 	// unRLE_obuf_to_output_FAST
-    private static void finish( BZip2State s) {
+	private static void finish( BZip2State s) {
 		byte c_state_out_ch = s.state_out_ch;
 		int c_state_out_len = s.state_out_len;
 		int c_nblock_used = s.c_nblock_used;
@@ -165,7 +170,7 @@ public class BZip2 {
 	}
 
 	// BZ2_decompress
-    private static void decompress( BZip2State s) {
+	private static void decompress( BZip2State s) {
 		// libbzip2 uses these variables in a save area
 		/*@Pc(3) boolean save_i = false;
 		@Pc(5) boolean save_j = false;
@@ -554,17 +559,17 @@ public class BZip2 {
 	}
 
 	// macro: GET_UCHAR
-    private static byte getUnsignedChar( BZip2State s) {
+	private static byte getUnsignedChar( BZip2State s) {
 		return (byte) getBits(8, s);
 	}
 
 	// macro: GET_BIT
-    private static byte getBit( BZip2State s) {
+	private static byte getBit( BZip2State s) {
 		return (byte) getBits(1, s);
 	}
 
 	// macro: GET_BITS
-    private static int getBits( int n, BZip2State s) {
+	private static int getBits( int n, BZip2State s) {
 		while (s.bsLive < n) {
 			s.bsBuff = s.bsBuff << 8 | s.stream[s.next_in] & 0xFF;
 			s.bsLive += 8;
@@ -582,7 +587,7 @@ public class BZip2 {
 	}
 
 	// makeMaps_d
-    private static void makeMaps( BZip2State s) {
+	private static void makeMaps( BZip2State s) {
 		s.nInUse = 0;
 
 		for ( int i = 0; i < 256; i++) {
@@ -594,7 +599,7 @@ public class BZip2 {
 	}
 
 	// BZ2_hbCreateDecodeTables
-    private static void createDecodeTables( int[] limit, int[] base, int[] perm, byte[] length, int minLen, int maxLen, int alphaSize) {
+	private static void createDecodeTables( int[] limit, int[] base, int[] perm, byte[] length, int minLen, int maxLen, int alphaSize) {
 		int pp = 0;
 		int i;
 
@@ -635,105 +640,105 @@ public class BZip2 {
 		}
 	}
 
-	public static final class BZip2State {
+    public static final class BZip2State {
 
-        public static final int MTFA_SIZE = 4096;
+		public static final int MTFA_SIZE = 4096;
 
-        public static final int MTFL_SIZE = 16;
+		public static final int MTFL_SIZE = 16;
 
-        public static final int BZ_MAX_ALPHA_SIZE = 258;
+		public static final int BZ_MAX_ALPHA_SIZE = 258;
 
-        public static final int BZ_MAX_CODE_LEN = 23;
+		public static final int BZ_MAX_CODE_LEN = 23;
 
-        private static final int anInt732 = 1; // TODO
+		private static final int anInt732 = 1; // TODO
 
-        private static final int BZ_N_GROUPS = 6;
+		private static final int BZ_N_GROUPS = 6;
 
-        private static final int BZ_G_SIZE = 50;
+		private static final int BZ_G_SIZE = 50;
 
-        private static final int anInt735 = 4; // TODO
+		private static final int anInt735 = 4; // TODO
 
-        private static final int BZ_MAX_SELECTORS = (2 + (900000 / BZ_G_SIZE)); // 18002
+		private static final int BZ_MAX_SELECTORS = (2 + (900000 / BZ_G_SIZE)); // 18002
 
 		public static final int BZ_RUNA = 0;
 		public static final int BZ_RUNB = 1;
 
-        public byte[] stream;
+		public byte[] stream;
 
-        public int next_in;
+		public int next_in;
 
-        public int avail_in;
+		public int avail_in;
 
-        public int total_in_lo32;
+		public int total_in_lo32;
 
-        public int total_in_hi32;
+		public int total_in_hi32;
 
-        public byte[] decompressed;
+		public byte[] decompressed;
 
-        public int next_out;
+		public int next_out;
 
-        public int avail_out;
+		public int avail_out;
 
-        public int total_out_lo32;
+		public int total_out_lo32;
 
-        public int total_out_hi32;
+		public int total_out_hi32;
 
-        public byte state_out_ch;
+		public byte state_out_ch;
 
-        public int state_out_len;
+		public int state_out_len;
 
-        public boolean blockRandomized;
+		public boolean blockRandomized;
 
-        public int bsBuff;
+		public int bsBuff;
 
-        public int bsLive;
+		public int bsLive;
 
-        public int blockSize100k;
+		public int blockSize100k;
 
-        public int currBlockNo;
+		public int currBlockNo;
 
-        public int origPtr;
+		public int origPtr;
 
-        public int tPos;
+		public int tPos;
 
-        public int k0;
+		public int k0;
 
-        public final int[] unzftab = new int[256];
+		public final int[] unzftab = new int[256];
 
-        public int c_nblock_used;
+		public int c_nblock_used;
 
-        public final int[] cftab = new int[257];
+		public final int[] cftab = new int[257];
 
-        private final int[] cftabCopy = new int[257];
+		private final int[] cftabCopy = new int[257];
 
-        public static int[] tt;
+		public static int[] tt;
 
-        public int nInUse;
+		public int nInUse;
 
-        public final boolean[] inUse = new boolean[256];
+		public final boolean[] inUse = new boolean[256];
 
-        public final boolean[] inUse16 = new boolean[16];
+		public final boolean[] inUse16 = new boolean[16];
 
-        public final byte[] seqToUnseq = new byte[256];
+		public final byte[] seqToUnseq = new byte[256];
 
-        public final byte[] mtfa = new byte[MTFA_SIZE];
+		public final byte[] mtfa = new byte[MTFA_SIZE];
 
-        public final int[] mtfbase = new int[256 / MTFL_SIZE];
+		public final int[] mtfbase = new int[256 / MTFL_SIZE];
 
-        public final byte[] selector = new byte[BZ_MAX_SELECTORS];
+		public final byte[] selector = new byte[BZ_MAX_SELECTORS];
 
-        public final byte[] selectorMtf = new byte[BZ_MAX_SELECTORS];
+		public final byte[] selectorMtf = new byte[BZ_MAX_SELECTORS];
 
-        public final byte[][] len = new byte[BZ_N_GROUPS][BZ_MAX_ALPHA_SIZE];
+		public final byte[][] len = new byte[BZ_N_GROUPS][BZ_MAX_ALPHA_SIZE];
 
-        public final int[][] limit = new int[BZ_N_GROUPS][BZ_MAX_ALPHA_SIZE];
+		public final int[][] limit = new int[BZ_N_GROUPS][BZ_MAX_ALPHA_SIZE];
 
-        public final int[][] base = new int[BZ_N_GROUPS][BZ_MAX_ALPHA_SIZE];
+		public final int[][] base = new int[BZ_N_GROUPS][BZ_MAX_ALPHA_SIZE];
 
-        public final int[][] perm = new int[BZ_N_GROUPS][BZ_MAX_ALPHA_SIZE];
+		public final int[][] perm = new int[BZ_N_GROUPS][BZ_MAX_ALPHA_SIZE];
 
-        public final int[] minLens = new int[BZ_N_GROUPS];
+		public final int[] minLens = new int[BZ_N_GROUPS];
 
-        public int save_nblock;
+		public int save_nblock;
 	}
 }

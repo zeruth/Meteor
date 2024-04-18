@@ -4,173 +4,177 @@ import jagex2.datastruct.Hashable;
 import jagex2.io.Jagfile;
 import jagex2.io.Packet;
 
+
+
+
+
 public class Model extends Hashable {
 
-    public int vertexCount;
+	public int vertexCount;
 
-    public int[] vertexX;
+	public int[] vertexX;
 
-    public int[] vertexY;
+	public int[] vertexY;
 
-    public int[] vertexZ;
+	public int[] vertexZ;
 
-    public int faceCount;
+	public int faceCount;
 
-    public int[] faceVertexA;
+	public int[] faceVertexA;
 
-    public int[] faceVertexB;
+	public int[] faceVertexB;
 
-    public int[] faceVertexC;
+	public int[] faceVertexC;
 
-    private int[] faceColorA;
+	private int[] faceColorA;
 
-    private int[] faceColorB;
+	private int[] faceColorB;
 
-    private int[] faceColorC;
+	private int[] faceColorC;
 
-    public int[] faceInfo;
+	public int[] faceInfo;
 
-    private int[] facePriority;
+	private int[] facePriority;
 
-    private int[] faceAlpha;
+	private int[] faceAlpha;
 
-    public int[] faceColor;
+	public int[] faceColor;
 
-    private int priority;
+	private int priority;
 
-    private int texturedFaceCount;
+	private int texturedFaceCount;
 
-    private int[] texturedVertexA;
+	private int[] texturedVertexA;
 
-    private int[] texturedVertexB;
+	private int[] texturedVertexB;
 
-    private int[] texturedVertexC;
+	private int[] texturedVertexC;
 
-    public int minX;
+	public int minX;
 
-    public int maxX;
+	public int maxX;
 
-    public int maxZ;
+	public int maxZ;
 
-    public int minZ;
+	public int minZ;
 
-    public int radius;
+	public int radius;
 
-    public int maxY;
+	public int maxY;
 
-    public int minY;
+	public int minY;
 
-    private int maxDepth;
+	private int maxDepth;
 
-    private int minDepth;
+	private int minDepth;
 
-    public int objRaise;
+	public int objRaise;
 
-    private int[] vertexLabel;
+	private int[] vertexLabel;
 
-    private int[] faceLabel;
+	private int[] faceLabel;
 
-    public int[][] labelVertices;
+	public int[][] labelVertices;
 
-    public int[][] labelFaces;
+	public int[][] labelFaces;
 
-    public boolean pickable = false;
+	public boolean pickable = false;
 
-    public VertexNormal[] vertexNormal;
+	public VertexNormal[] vertexNormal;
 
-    public VertexNormal[] vertexNormalOriginal;
+	public VertexNormal[] vertexNormalOriginal;
 
-    public static Metadata[] metadata;
+	public static Metadata[] metadata;
 
-    private static Packet head;
+	private static Packet head;
 
-    public static Packet face1;
+	public static Packet face1;
 
-    public static Packet face2;
+	public static Packet face2;
 
-    public static Packet face3;
+	public static Packet face3;
 
-    public static Packet face4;
+	public static Packet face4;
 
-    public static Packet face5;
+	public static Packet face5;
 
-    public static Packet point1;
+	public static Packet point1;
 
-    public static Packet point2;
+	public static Packet point2;
 
-    public static Packet point3;
+	public static Packet point3;
 
-    public static Packet point4;
+	public static Packet point4;
 
-    public static Packet point5;
+	public static Packet point5;
 
-    public static Packet vertex1;
+	public static Packet vertex1;
 
-    public static Packet vertex2;
+	public static Packet vertex2;
 
-    public static Packet axis;
+	public static Packet axis;
 
-    public static boolean[] faceClippedX = new boolean[4096];
+	public static boolean[] faceClippedX = new boolean[4096];
 
-    public static boolean[] faceNearClipped = new boolean[4096];
+	public static boolean[] faceNearClipped = new boolean[4096];
 
-    public static int[] vertexScreenX = new int[4096];
+	public static int[] vertexScreenX = new int[4096];
 
-    public static int[] vertexScreenY = new int[4096];
+	public static int[] vertexScreenY = new int[4096];
 
-    public static int[] vertexScreenZ = new int[4096];
+	public static int[] vertexScreenZ = new int[4096];
 
-    public static int[] vertexViewSpaceX = new int[4096];
+	public static int[] vertexViewSpaceX = new int[4096];
 
-    public static int[] vertexViewSpaceY = new int[4096];
+	public static int[] vertexViewSpaceY = new int[4096];
 
-    public static int[] vertexViewSpaceZ = new int[4096];
+	public static int[] vertexViewSpaceZ = new int[4096];
 
-    public static int[] tmpDepthFaceCount = new int[1500];
+	public static int[] tmpDepthFaceCount = new int[1500];
 
-    public static int[][] tmpDepthFaces = new int[1500][512];
+	public static int[][] tmpDepthFaces = new int[1500][512];
 
-    public static int[] tmpPriorityFaceCount = new int[12];
+	public static int[] tmpPriorityFaceCount = new int[12];
 
-    public static int[][] tmpPriorityFaces = new int[12][2000];
+	public static int[][] tmpPriorityFaces = new int[12][2000];
 
-    public static int[] tmpPriority10FaceDepth = new int[2000];
+	public static int[] tmpPriority10FaceDepth = new int[2000];
 
-    public static int[] tmpPriority11FaceDepth = new int[2000];
+	public static int[] tmpPriority11FaceDepth = new int[2000];
 
-    public static int[] tmpPriorityDepthSum = new int[12];
+	public static int[] tmpPriorityDepthSum = new int[12];
 
-    public static final int[] clippedX = new int[10];
+	public static final int[] clippedX = new int[10];
 
-    public static final int[] clippedY = new int[10];
+	public static final int[] clippedY = new int[10];
 
-    public static final int[] clippedColor = new int[10];
+	public static final int[] clippedColor = new int[10];
 
-    public static int baseX;
+	public static int baseX;
 
-    public static int baseY;
+	public static int baseY;
 
-    public static int baseZ;
+	public static int baseZ;
 
-    public static boolean checkHover;
+	public static boolean checkHover;
 
-    public static int mouseX;
+	public static int mouseX;
 
-    public static int mouseZ;
+	public static int mouseZ;
 
-    public static int pickedCount;
+	public static int pickedCount;
 
-    public static final int[] pickedBitsets = new int[1000];
+	public static final int[] pickedBitsets = new int[1000];
 
-    public static int[] sin = Draw3D.sin;
+	public static int[] sin = Draw3D.sin;
 
-    public static int[] cos = Draw3D.cos;
+	public static int[] cos = Draw3D.cos;
 
-    public static int[] palette = Draw3D.palette;
+	public static int[] palette = Draw3D.palette;
 
-    public static int[] reciprical16 = Draw3D.reciprocal16;
+	public static int[] reciprical16 = Draw3D.reciprocal16;
 
-    public Model( int id) {
+	public Model( int id) {
 		if (metadata == null) {
 			return;
 		}
@@ -338,7 +342,7 @@ public class Model extends Hashable {
 		}
 	}
 
-    public Model( Model[] models, int count) {
+	public Model( Model[] models, int count) {
 		boolean copyInfo = false;
 		boolean copyPriorities = false;
 		boolean copyAlpha = false;
@@ -456,7 +460,7 @@ public class Model extends Hashable {
 		}
 	}
 
-    public Model( Model[] models, int count, boolean dummy) {
+	public Model( Model[] models, int count, boolean dummy) {
 		boolean copyInfo = false;
 		boolean copyPriority = false;
 		boolean copyAlpha = false;
@@ -589,7 +593,7 @@ public class Model extends Hashable {
 		this.calculateBoundsCylinder();
 	}
 
-    public Model( Model src, boolean shareColors, boolean shareAlpha, boolean shareVertices) {
+	public Model( Model src, boolean shareColors, boolean shareAlpha, boolean shareVertices) {
 		this.vertexCount = src.vertexCount;
 		this.faceCount = src.faceCount;
 		this.texturedFaceCount = src.texturedFaceCount;
@@ -643,7 +647,7 @@ public class Model extends Hashable {
 		this.texturedVertexC = src.texturedVertexC;
 	}
 
-    public Model( Model src, boolean copyVertexY, boolean copyFaces) {
+	public Model( Model src, boolean copyVertexY, boolean copyFaces) {
 		this.vertexCount = src.vertexCount;
 		this.faceCount = src.faceCount;
 		this.texturedFaceCount = src.texturedFaceCount;
@@ -715,7 +719,7 @@ public class Model extends Hashable {
 		this.maxX = src.maxX;
 	}
 
-    public Model( Model src, boolean shareAlpha) {
+	public Model( Model src, boolean shareAlpha) {
 		this.vertexCount = src.vertexCount;
 		this.faceCount = src.faceCount;
 		this.texturedFaceCount = src.texturedFaceCount;
@@ -760,7 +764,7 @@ public class Model extends Hashable {
 		this.texturedVertexC = src.texturedVertexC;
 	}
 
-    public static void unload() {
+	public static void unload() {
 		metadata = null;
 		head = null;
 		face1 = null;
@@ -797,7 +801,7 @@ public class Model extends Hashable {
 		reciprical16 = null;
 	}
 
-    public static void unpack( Jagfile models) {
+	public static void unpack( Jagfile models) {
 		try {
 			head = new Packet(models.read("ob_head.dat", null));
 			face1 = new Packet(models.read("ob_face1.dat", null));
@@ -907,7 +911,7 @@ public class Model extends Hashable {
 		}
 	}
 
-    public static int mulColorLightness( int hsl, int scalar, int faceInfo) {
+	public static int mulColorLightness( int hsl, int scalar, int faceInfo) {
 		if ((faceInfo & 0x2) == 2) {
 			if (scalar < 0) {
 				scalar = 0;
@@ -925,7 +929,7 @@ public class Model extends Hashable {
 		return (hsl & 0xFF80) + scalar;
 	}
 
-    private int addVertex( Model src, int vertexId) {
+	private int addVertex( Model src, int vertexId) {
 		int identical = -1;
 		int x = src.vertexX[vertexId];
 		int y = src.vertexY[vertexId];
@@ -948,7 +952,7 @@ public class Model extends Hashable {
 		return identical;
 	}
 
-    public void calculateBoundsCylinder() {
+	public void calculateBoundsCylinder() {
 		this.maxY = 0;
 		this.radius = 0;
 		this.minY = 0;
@@ -972,7 +976,7 @@ public class Model extends Hashable {
 		this.maxDepth = this.minDepth + (int) (Math.sqrt(this.radius * this.radius + this.minY * this.minY) + 0.99D);
 	}
 
-    public void calculateBoundsY() {
+	public void calculateBoundsY() {
 		this.maxY = 0;
 		this.minY = 0;
 		for ( int v = 0; v < this.vertexCount; v++) {
@@ -988,7 +992,7 @@ public class Model extends Hashable {
 		this.maxDepth = this.minDepth + (int) (Math.sqrt(this.radius * this.radius + this.minY * this.minY) + 0.99D);
 	}
 
-    private void calculateBoundsAABB() {
+	private void calculateBoundsAABB() {
 		this.maxY = 0;
 		this.radius = 0;
 		this.minY = 0;
@@ -1028,7 +1032,7 @@ public class Model extends Hashable {
 		this.maxDepth = this.minDepth + (int) Math.sqrt(this.radius * this.radius + this.minY * this.minY);
 	}
 
-    public void createLabelReferences() {
+	public void createLabelReferences() {
 		if (this.vertexLabel != null) {
 			int[] labelVertexCount = new int[256];
 			int count = 0;
@@ -1076,7 +1080,7 @@ public class Model extends Hashable {
 		}
 	}
 
-    public void applyTransform( int id) {
+	public void applyTransform( int id) {
 		if (this.labelVertices != null && id != -1) {
 			SeqFrame transform = SeqFrame.instances[id];
 			SeqBase skeleton = transform.base;
@@ -1090,7 +1094,7 @@ public class Model extends Hashable {
 		}
 	}
 
-    public void applyTransforms( int primaryId, int secondaryId, int[] mask) {
+	public void applyTransforms( int primaryId, int secondaryId, int[] mask) {
 		if (primaryId == -1) {
 			return;
 		}
@@ -1140,7 +1144,7 @@ public class Model extends Hashable {
 		}
 	}
 
-    private void applyTransform( int x, int y, int z, int[] labels, int type) {
+	private void applyTransform( int x, int y, int z, int[] labels, int type) {
 		int labelCount = labels.length;
 
 		if (type == 0) {
@@ -1282,7 +1286,7 @@ public class Model extends Hashable {
 		}
 	}
 
-    public void rotateY90() {
+	public void rotateY90() {
 		for ( int v = 0; v < this.vertexCount; v++) {
 			int tmp = this.vertexX[v];
 			this.vertexX[v] = this.vertexZ[v];
@@ -1290,7 +1294,7 @@ public class Model extends Hashable {
 		}
 	}
 
-    public void rotateX( int angle) {
+	public void rotateX( int angle) {
 		int sin = Model.sin[angle];
 		int cos = Model.cos[angle];
 		for ( int v = 0; v < this.vertexCount; v++) {
@@ -1300,7 +1304,7 @@ public class Model extends Hashable {
 		}
 	}
 
-    public void translate( int y, int x, int z) {
+	public void translate( int y, int x, int z) {
 		for ( int v = 0; v < this.vertexCount; v++) {
 			this.vertexX[v] += x;
 			this.vertexY[v] += y;
@@ -1308,7 +1312,7 @@ public class Model extends Hashable {
 		}
 	}
 
-    public void recolor( int src, int dst) {
+	public void recolor( int src, int dst) {
 		for ( int f = 0; f < this.faceCount; f++) {
 			if (this.faceColor[f] == src) {
 				this.faceColor[f] = dst;
@@ -1316,7 +1320,7 @@ public class Model extends Hashable {
 		}
 	}
 
-    public void rotateY180() {
+	public void rotateY180() {
 		for ( int v = 0; v < this.vertexCount; v++) {
 			this.vertexZ[v] = -this.vertexZ[v];
 		}
@@ -1328,7 +1332,7 @@ public class Model extends Hashable {
 		}
 	}
 
-    public void scale( int x, int y, int z) {
+	public void scale( int x, int y, int z) {
 		for ( int v = 0; v < this.vertexCount; v++) {
 			this.vertexX[v] = this.vertexX[v] * x / 128;
 			this.vertexY[v] = this.vertexY[v] * y / 128;
@@ -1336,7 +1340,7 @@ public class Model extends Hashable {
 		}
 	}
 
-    public void calculateNormals( int lightAmbient, int lightAttenuation, int lightSrcX, int lightSrcY, int lightSrcZ, boolean applyLighting) {
+	public void calculateNormals( int lightAmbient, int lightAttenuation, int lightSrcX, int lightSrcY, int lightSrcZ, boolean applyLighting) {
 		int lightMagnitude = (int) Math.sqrt(lightSrcX * lightSrcX + lightSrcY * lightSrcY + lightSrcZ * lightSrcZ);
 		int attenuation = lightAttenuation * lightMagnitude >> 8;
 
@@ -1428,7 +1432,7 @@ public class Model extends Hashable {
 		}
 	}
 
-    public void applyLighting( int lightAmbient, int lightAttenuation, int lightSrcX, int lightSrcY, int lightSrcZ) {
+	public void applyLighting( int lightAmbient, int lightAttenuation, int lightSrcX, int lightSrcY, int lightSrcZ) {
 		for ( int f = 0; f < this.faceCount; f++) {
 			int a = this.faceVertexA[f];
 			int b = this.faceVertexB[f];
@@ -1482,7 +1486,7 @@ public class Model extends Hashable {
 		this.faceColor = null;
 	}
 
-    public void drawSimple( int pitch, int yaw, int roll, int eyePitch, int eyeX, int eyeY, int eyeZ) {
+	public void drawSimple( int pitch, int yaw, int roll, int eyePitch, int eyeX, int eyeY, int eyeZ) {
 		int centerX = Draw3D.centerX;
 		int centerY = Draw3D.centerY;
 		int sinPitch = sin[pitch];
@@ -1543,7 +1547,7 @@ public class Model extends Hashable {
 		}
 	}
 
-    public void draw( int yaw, int sinEyePitch, int cosEyePitch, int sinEyeYaw, int cosEyeYaw, int relativeX, int relativeY, int relativeZ, int bitset) {
+	public void draw( int yaw, int sinEyePitch, int cosEyePitch, int sinEyeYaw, int cosEyeYaw, int relativeX, int relativeY, int relativeZ, int bitset) {
 		int zPrime = relativeZ * cosEyeYaw - relativeX * sinEyeYaw >> 16;
 		int midZ = relativeY * sinEyePitch + zPrime * cosEyePitch >> 16;
 		int radiusCosEyePitch = this.radius * cosEyePitch >> 16;
@@ -1672,7 +1676,7 @@ public class Model extends Hashable {
 		}
 	}
 
-    private void draw( boolean clipped, boolean picking, int bitset) {
+	private void draw( boolean clipped, boolean picking, int bitset) {
 		for ( int depth = 0; depth < this.maxDepth; depth++) {
 			tmpDepthFaceCount[depth] = 0;
 		}
@@ -1854,7 +1858,7 @@ public class Model extends Hashable {
 		}
 	}
 
-    private void drawFace( int face) {
+	private void drawFace( int face) {
 		if (faceNearClipped[face]) {
 			this.drawNearClippedFace(face);
 			return;
@@ -1898,7 +1902,7 @@ public class Model extends Hashable {
 		}
 	}
 
-    private void drawNearClippedFace( int face) {
+	private void drawNearClippedFace( int face) {
 		int centerX = Draw3D.centerX;
 		int centerY = Draw3D.centerY;
 		int elements = 0;
@@ -2062,7 +2066,7 @@ public class Model extends Hashable {
 		}
 	}
 
-    private boolean pointWithinTriangle( int x, int y, int yA, int yB, int yC, int xA, int xB, int xC) {
+	private boolean pointWithinTriangle( int x, int y, int yA, int yB, int yC, int xA, int xB, int xC) {
 		if (y < yA && y < yB && y < yC) {
 			return false;
 		} else if (y > yA && y > yB && y > yC) {
@@ -2074,50 +2078,50 @@ public class Model extends Hashable {
 		}
 	}
 
-	public static final class Metadata {
+    public static final class Metadata {
 
-        public int vertexCount;
+		public int vertexCount;
 
-        public int faceCount;
+		public int faceCount;
 
-        public int texturedFaceCount;
+		public int texturedFaceCount;
 
-        public int vertexFlagsOffset;
+		public int vertexFlagsOffset;
 
-        public int vertexXOffset;
+		public int vertexXOffset;
 
-        public int vertexYOffset;
+		public int vertexYOffset;
 
-        public int vertexZOffset;
+		public int vertexZOffset;
 
-        public int vertexLabelsOffset;
+		public int vertexLabelsOffset;
 
-        public int faceVerticesOffset;
+		public int faceVerticesOffset;
 
-        public int faceOrientationsOffset;
+		public int faceOrientationsOffset;
 
-        public int faceColorsOffset;
+		public int faceColorsOffset;
 
-        public int faceInfosOffset;
+		public int faceInfosOffset;
 
-        public int facePrioritiesOffset;
+		public int facePrioritiesOffset;
 
-        public int faceAlphasOffset;
+		public int faceAlphasOffset;
 
-        public int faceLabelsOffset;
+		public int faceLabelsOffset;
 
-        public int faceTextureAxisOffset;
+		public int faceTextureAxisOffset;
 	}
 
-	public static final class VertexNormal {
+    public static final class VertexNormal {
 
-        public int x;
+		public int x;
 
-        public int y;
+		public int y;
 
-        public int z;
+		public int z;
 
-        public int w;
+		public int w;
 	}
 
 }

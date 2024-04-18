@@ -3,35 +3,39 @@ package jagex2.config;
 import jagex2.io.Jagfile;
 import jagex2.io.Packet;
 
+
+
+
+
 public class VarpType {
 
-    private static int count;
+	private static int count;
 
-    public static VarpType[] instances;
+	public static VarpType[] instances;
 
-    public static int code3Count;
+	public static int code3Count;
 
-    public static int[] code3;
+	public static int[] code3;
 
-    private String code10;
+	private String code10;
 
-    private int code1;
+	private int code1;
 
-    private int code2;
+	private int code2;
 
-    private boolean hasCode3 = false;
+	private boolean hasCode3 = false;
 
-    private boolean code4 = true;
+	private boolean code4 = true;
 
-    public int clientcode;
+	public int clientcode;
 
-    private int code7;
+	private int code7;
 
-    private boolean code6 = false;
+	private boolean code6 = false;
 
-    private boolean code8 = false;
+	private boolean code8 = false;
 
-    public static void unpack( Jagfile config) {
+	public static void unpack( Jagfile config) {
 		Packet dat = new Packet(config.read("varp.dat", null));
 		code3Count = 0;
 		count = dat.g2();
@@ -53,7 +57,7 @@ public class VarpType {
 		}
 	}
 
-    public void decode( int id, Packet dat) {
+	public void decode( int id, Packet dat) {
 		while (true) {
 			int code = dat.g1();
 			if (code == 0) {

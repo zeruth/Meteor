@@ -4,25 +4,29 @@ import jagex2.graphics.Model;
 import jagex2.io.Jagfile;
 import jagex2.io.Packet;
 
+
+
+
+
 public class IdkType {
 
-    public static int count;
+	public static int count;
 
-    public static IdkType[] instances;
+	public static IdkType[] instances;
 
-    public int type = -1;
+	public int type = -1;
 
-    private int[] models;
+	private int[] models;
 
-    private final int[] recol_s = new int[6];
+	private final int[] recol_s = new int[6];
 
-    private final int[] recol_d = new int[6];
+	private final int[] recol_d = new int[6];
 
-    private final int[] heads = new int[] { -1, -1, -1, -1, -1 };
+	private final int[] heads = new int[] { -1, -1, -1, -1, -1 };
 
-    public boolean disable = false;
+	public boolean disable = false;
 
-    public static void unpack( Jagfile config) {
+	public static void unpack( Jagfile config) {
 		Packet dat = new Packet(config.read("idk.dat", null));
 		count = dat.g2();
 
@@ -39,7 +43,7 @@ public class IdkType {
 		}
 	}
 
-    public void decode( Packet dat) {
+	public void decode( Packet dat) {
 		while (true) {
 			int code = dat.g1();
 			if (code == 0) {
@@ -69,7 +73,7 @@ public class IdkType {
 		}
 	}
 
-    public Model getModel() {
+	public Model getModel() {
 		if (this.models == null) {
 			return null;
 		}
@@ -93,7 +97,7 @@ public class IdkType {
 		return model;
 	}
 
-    public Model getHeadModel() {
+	public Model getHeadModel() {
 		Model[] models = new Model[5];
 
 		int count = 0;

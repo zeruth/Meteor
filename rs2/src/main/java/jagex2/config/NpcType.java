@@ -5,65 +5,69 @@ import jagex2.graphics.Model;
 import jagex2.io.Jagfile;
 import jagex2.io.Packet;
 
+
+
+
+
 public class NpcType {
 
-    private static int count;
+	private static int count;
 
-    private static int[] offsets;
+	private static int[] offsets;
 
-    private static Packet dat;
+	private static Packet dat;
 
-    private static NpcType[] cache;
+	private static NpcType[] cache;
 
-    private static int cachePos;
+	private static int cachePos;
 
-    public long index = -1L;
+	public long index = -1L;
 
-    public String name;
+	public String name;
 
-    public String desc;
+	public String desc;
 
-    public byte size = 1;
+	public byte size = 1;
 
-    private int[] models;
+	private int[] models;
 
-    private int[] heads;
+	private int[] heads;
 
-    public int readyanim = -1;
+	public int readyanim = -1;
 
-    public int walkanim = -1;
+	public int walkanim = -1;
 
-    public int walkanim_b = -1;
+	public int walkanim_b = -1;
 
-    public int walkanim_r = -1;
+	public int walkanim_r = -1;
 
-    public int walkanim_l = -1;
+	public int walkanim_l = -1;
 
-    private boolean disposeAlpha = false;
+	private boolean disposeAlpha = false;
 
-    private int[] recol_s;
+	private int[] recol_s;
 
-    private int[] recol_d;
+	private int[] recol_d;
 
-    public String[] ops;
+	public String[] ops;
 
-    private int code90 = -1;
+	private int code90 = -1;
 
-    private int code91 = -1;
+	private int code91 = -1;
 
-    private int code92 = -1;
+	private int code92 = -1;
 
-    public boolean visonmap = true;
+	public boolean visonmap = true;
 
-    public int vislevel = -1;
+	public int vislevel = -1;
 
-    private int resizeh = 128;
+	private int resizeh = 128;
 
-    private int resizev = 128;
+	private int resizev = 128;
 
-    public static LruCache modelCache = new LruCache(30);
+	public static LruCache modelCache = new LruCache(30);
 
-    public static void unpack( Jagfile config) {
+	public static void unpack( Jagfile config) {
 		dat = new Packet(config.read("npc.dat", null));
 		Packet idx = new Packet(config.read("npc.idx", null));
 
@@ -82,14 +86,14 @@ public class NpcType {
 		}
 	}
 
-    public static void unload() {
+	public static void unload() {
 		modelCache = null;
 		offsets = null;
 		cache = null;
 		dat = null;
 	}
 
-    public static NpcType get( int id) {
+	public static NpcType get( int id) {
 		for ( int i = 0; i < 20; i++) {
 			if (cache[i].index == (long) id) {
 				return cache[i];
@@ -104,7 +108,7 @@ public class NpcType {
 		return npc;
 	}
 
-    public void decode( Packet dat) {
+	public void decode( Packet dat) {
 		while (true) {
 			int code = dat.g1();
 			if (code == 0) {
@@ -178,7 +182,7 @@ public class NpcType {
 		}
 	}
 
-    public Model getSequencedModel( int primaryTransformId, int secondaryTransformId, int[] seqMask) {
+	public Model getSequencedModel( int primaryTransformId, int secondaryTransformId, int[] seqMask) {
 		Model tmp = null;
 		Model model = (Model) modelCache.get(this.index);
 
@@ -228,7 +232,7 @@ public class NpcType {
 		return tmp;
 	}
 
-    public Model getHeadModel() {
+	public Model getHeadModel() {
 		if (this.heads == null) {
 			return null;
 		}

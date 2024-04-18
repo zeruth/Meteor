@@ -2,23 +2,27 @@ package jagex2.sound;
 
 import jagex2.io.Packet;
 
+
+
+
+
 public class Wave {
 
-    private static final Wave[] tracks = new Wave[1000];
+	private static final Wave[] tracks = new Wave[1000];
 
-    public static final int[] delays = new int[1000];
+	public static final int[] delays = new int[1000];
 
-    public static byte[] waveBytes;
+	public static byte[] waveBytes;
 
-    public static Packet waveBuffer;
+	public static Packet waveBuffer;
 
-    private final SoundTone[] tones = new SoundTone[10];
+	private final SoundTone[] tones = new SoundTone[10];
 
-    private int loopBegin;
+	private int loopBegin;
 
-    private int loopEnd;
+	private int loopEnd;
 
-    public static void unpack( Packet dat) {
+	public static void unpack( Packet dat) {
 		waveBytes = new byte[441000];
 		waveBuffer = new Packet(waveBytes);
 		SoundTone.init();
@@ -35,7 +39,7 @@ public class Wave {
 		}
 	}
 
-    public static Packet generate( int id, int loopCount) {
+	public static Packet generate( int id, int loopCount) {
 		if (tracks[id] == null) {
 			return null;
 		}
@@ -44,7 +48,7 @@ public class Wave {
 		return track.getWave(loopCount);
 	}
 
-    public void read( Packet dat) {
+	public void read( Packet dat) {
 		for ( int tone = 0; tone < 10; tone++) {
 			if (dat.g1() != 0) {
 				dat.pos--;
@@ -57,7 +61,7 @@ public class Wave {
 		this.loopEnd = dat.g2();
 	}
 
-    public int trim() {
+	public int trim() {
 		int start = 9999999;
 		for ( int tone = 0; tone < 10; tone++) {
 			if (this.tones[tone] != null && this.tones[tone].start / 20 < start) {
@@ -87,7 +91,7 @@ public class Wave {
 		return start;
 	}
 
-    public Packet getWave( int loopCount) {
+	public Packet getWave( int loopCount) {
 		int length = this.generate(loopCount);
 		waveBuffer.pos = 0;
 		waveBuffer.p4(0x52494646); // "RIFF" ChunkID
@@ -107,7 +111,7 @@ public class Wave {
 		return waveBuffer;
 	}
 
-    private int generate( int loopCount) {
+	private int generate( int loopCount) {
 		int duration = 0;
 		for ( int tone = 0; tone < 10; tone++) {
 			if (this.tones[tone] != null && this.tones[tone].length + this.tones[tone].start > duration) {
@@ -168,55 +172,55 @@ public class Wave {
 		return totalSampleCount;
 	}
 
-	public static final class SoundTone {
+    public static final class SoundTone {
 
-        private SoundEnvelope frequencyBase;
+		private SoundEnvelope frequencyBase;
 
-        private SoundEnvelope amplitudeBase;
+		private SoundEnvelope amplitudeBase;
 
-        private SoundEnvelope frequencyModRate;
+		private SoundEnvelope frequencyModRate;
 
-        private SoundEnvelope frequencyModRange;
+		private SoundEnvelope frequencyModRange;
 
-        private SoundEnvelope amplitudeModRate;
+		private SoundEnvelope amplitudeModRate;
 
-        private SoundEnvelope amplitudeModRange;
+		private SoundEnvelope amplitudeModRange;
 
-        private SoundEnvelope release;
+		private SoundEnvelope release;
 
-        private SoundEnvelope attack;
+		private SoundEnvelope attack;
 
-        private final int[] harmonicVolume = new int[5];
+		private final int[] harmonicVolume = new int[5];
 
-        private final int[] harmonicSemitone = new int[5];
+		private final int[] harmonicSemitone = new int[5];
 
-        private final int[] harmonicDelay = new int[5];
+		private final int[] harmonicDelay = new int[5];
 
-        private int reverbDelay;
+		private int reverbDelay;
 
-        private int reverbVolume = 100;
+		private int reverbVolume = 100;
 
-        public int length = 500;
+		public int length = 500;
 
-        public int start;
+		public int start;
 
-        public static int[] buffer;
+		public static int[] buffer;
 
-        public static int[] noise;
+		public static int[] noise;
 
-        public static int[] sin;
+		public static int[] sin;
 
-        public static final int[] tmpPhases = new int[5];
+		public static final int[] tmpPhases = new int[5];
 
-        public static final int[] tmpDelays = new int[5];
+		public static final int[] tmpDelays = new int[5];
 
-        public static final int[] tmpVolumes = new int[5];
+		public static final int[] tmpVolumes = new int[5];
 
-        public static final int[] tmpSemitones = new int[5];
+		public static final int[] tmpSemitones = new int[5];
 
-        public static final int[] tmpStarts = new int[5];
+		public static final int[] tmpStarts = new int[5];
 
-        public static void init() {
+		public static void init() {
 			noise = new int[32768];
 			for ( int i = 0; i < 32768; i++) {
 				if (Math.random() > 0.5D) {
@@ -234,7 +238,7 @@ public class Wave {
 			buffer = new int[220500]; // 10s * 22050 KHz
 		}
 
-        public int[] generate( int sampleCount, int length) {
+		public int[] generate( int sampleCount, int length) {
 			for ( int sample = 0; sample < sampleCount; sample++) {
 				buffer[sample] = 0;
 			}
@@ -360,7 +364,7 @@ public class Wave {
 			return buffer;
 		}
 
-        private int generate( int amplitude, int phase, int form) {
+		private int generate( int amplitude, int phase, int form) {
 			if (form == 1) {
 				return (phase & 0x7FFF) < 16384 ? amplitude : -amplitude;
 			} else if (form == 2) {
@@ -374,7 +378,7 @@ public class Wave {
 			}
 		}
 
-        public void read( Packet dat) {
+		public void read( Packet dat) {
 			this.frequencyBase = new SoundEnvelope();
 			this.frequencyBase.read(dat);
 
@@ -429,31 +433,31 @@ public class Wave {
 		}
 	}
 
-	public static final class SoundEnvelope {
+    public static final class SoundEnvelope {
 
-        private int length;
+		private int length;
 
-        private int[] shapeDelta;
+		private int[] shapeDelta;
 
-        private int[] shapePeak;
+		private int[] shapePeak;
 
-        public int start;
+		public int start;
 
-        public int end;
+		public int end;
 
-        public int form;
+		public int form;
 
-        private int threshold;
+		private int threshold;
 
-        private int position;
+		private int position;
 
-        private int delta;
+		private int delta;
 
-        private int amplitude;
+		private int amplitude;
 
-        private int ticks;
+		private int ticks;
 
-        public void read( Packet dat) {
+		public void read( Packet dat) {
 			this.form = dat.g1();
 			this.start = dat.g4();
 			this.end = dat.g4();
@@ -467,7 +471,7 @@ public class Wave {
 			}
 		}
 
-        public void reset() {
+		public void reset() {
 			this.threshold = 0;
 			this.position = 0;
 			this.delta = 0;
@@ -475,7 +479,7 @@ public class Wave {
 			this.ticks = 0;
 		}
 
-        public int evaluate( int delta) {
+		public int evaluate( int delta) {
 			if (this.ticks >= this.threshold) {
 				this.amplitude = this.shapePeak[this.position++] << 15;
 

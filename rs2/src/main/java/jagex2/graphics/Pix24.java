@@ -3,33 +3,37 @@ package jagex2.graphics;
 import jagex2.io.Jagfile;
 import jagex2.io.Packet;
 
+
+
+
+
 import java.awt.*;
 import java.awt.image.PixelGrabber;
 
 public class Pix24 extends Draw2D {
 
-    public int[] pixels;
+	public int[] pixels;
 
-    public int width;
+	public int width;
 
-    public int height;
+	public int height;
 
-    private int cropX;
+	private int cropX;
 
-    private int cropY;
+	private int cropY;
 
-    public int cropW;
+	public int cropW;
 
-    public int cropH;
+	public int cropH;
 
-    public Pix24( int width, int height) {
+	public Pix24( int width, int height) {
 		this.pixels = new int[width * height];
 		this.width = this.cropW = width;
 		this.height = this.cropH = height;
 		this.cropX = this.cropY = 0;
 	}
 
-    public Pix24( byte[] src, Component c) {
+	public Pix24( byte[] src, Component c) {
 		try {
 			Image image = Toolkit.getDefaultToolkit().createImage(src);
 			MediaTracker tracker = new MediaTracker(c);
@@ -49,7 +53,7 @@ public class Pix24 extends Draw2D {
 		}
 	}
 
-    public Pix24( Jagfile jag, String name, int index) {
+	public Pix24( Jagfile jag, String name, int index) {
 		Packet dat = new Packet(jag.read(name + ".dat", null));
 		Packet idx = new Packet(jag.read("index.dat", null));
 
@@ -94,11 +98,11 @@ public class Pix24 extends Draw2D {
 		}
 	}
 
-    public void bind() {
+	public void bind() {
 		Draw2D.bind(this.width, this.height, this.pixels);
 	}
 
-    public void translate( int r, int g, int b) {
+	public void translate( int r, int g, int b) {
 		for ( int i = 0; i < this.pixels.length; i++) {
 			int rgb = this.pixels[i];
 
@@ -132,7 +136,7 @@ public class Pix24 extends Draw2D {
 		}
 	}
 
-    public void blitOpaque( int x, int y) {
+	public void blitOpaque( int x, int y) {
 		x += this.cropX;
 		y += this.cropY;
 
@@ -177,7 +181,7 @@ public class Pix24 extends Draw2D {
 		}
 	}
 
-    private void copyPixels( int w, int h, int[] src, int srcOff, int srcStep, int[] dst, int dstOff, int dstStep) {
+	private void copyPixels( int w, int h, int[] src, int srcOff, int srcStep, int[] dst, int dstOff, int dstStep) {
 		int qw = -(w >> 2);
 		w = -(w & 0x3);
 
@@ -198,7 +202,7 @@ public class Pix24 extends Draw2D {
 		}
 	}
 
-    public void draw( int x, int y) {
+	public void draw( int x, int y) {
 		x += this.cropX;
 		y += this.cropY;
 
@@ -243,7 +247,7 @@ public class Pix24 extends Draw2D {
 		}
 	}
 
-    private void copyPixels( int[] dst, int[] src, int srcOff, int dstOff, int w, int h, int dstStep, int srcStep) {
+	private void copyPixels( int[] dst, int[] src, int srcOff, int dstOff, int w, int h, int dstStep, int srcStep) {
 		int qw = -(w >> 2);
 		w = -(w & 0x3);
 
@@ -292,7 +296,7 @@ public class Pix24 extends Draw2D {
 		}
 	}
 
-    public void crop( int x, int y, int w, int h) {
+	public void crop( int x, int y, int w, int h) {
 		try {
 			int currentW = this.width;
 			int currentH = this.height;
@@ -357,7 +361,7 @@ public class Pix24 extends Draw2D {
 		}
 	}
 
-    private void scale( int w, int h, int[] src, int offW, int offH, int[] dst, int dstStep, int dstOff, int currentW, int scaleCropWidth, int scaleCropHeight) {
+	private void scale( int w, int h, int[] src, int offW, int offH, int[] dst, int dstStep, int dstOff, int currentW, int scaleCropWidth, int scaleCropHeight) {
 		try {
 			int lastOffW = offW;
 
@@ -384,7 +388,7 @@ public class Pix24 extends Draw2D {
 		}
 	}
 
-    public void drawAlpha( int alpha, int x, int y) {
+	public void drawAlpha( int alpha, int x, int y) {
 		x += this.cropX;
 		y += this.cropY;
 
@@ -429,7 +433,7 @@ public class Pix24 extends Draw2D {
 		}
 	}
 
-    private void copyPixelsAlpha( int w, int h, int[] src, int srcOff, int srcStep, int[] dst, int dstOff, int dstStep, int alpha) {
+	private void copyPixelsAlpha( int w, int h, int[] src, int srcOff, int srcStep, int[] dst, int dstOff, int dstStep, int alpha) {
 		int invAlpha = 256 - alpha;
 
 		for ( int y = -h; y < 0; y++) {
@@ -448,7 +452,7 @@ public class Pix24 extends Draw2D {
 		}
 	}
 
-    public void drawRotatedMasked( int x, int y, int w, int h, int[] lineStart, int[] lineWidth, int anchorX, int anchorY, int theta, int zoom) {
+	public void drawRotatedMasked( int x, int y, int w, int h, int[] lineStart, int[] lineWidth, int anchorX, int anchorY, int theta, int zoom) {
 		try {
 			int centerX = -w / 2;
 			int centerY = -h / 2;
@@ -482,7 +486,7 @@ public class Pix24 extends Draw2D {
 		}
 	}
 
-    public void drawMasked( int x, int y, Pix8 mask) {
+	public void drawMasked( int x, int y, Pix8 mask) {
 		x += this.cropX;
 		y += this.cropY;
 
@@ -527,7 +531,7 @@ public class Pix24 extends Draw2D {
 		}
 	}
 
-    private void copyPixelsMasked( int w, int h, int[] src, int srcStep, int srcOff, int[] dst, int dstOff, int dstStep, byte[] mask) {
+	private void copyPixelsMasked( int w, int h, int[] src, int srcStep, int srcOff, int[] dst, int dstOff, int dstStep, byte[] mask) {
 		int qw = -(w >> 2);
 		w = -(w & 0x3);
 

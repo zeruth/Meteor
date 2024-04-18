@@ -2,6 +2,9 @@ package jagex2.wordenc;
 
 import jagex2.io.Packet;
 
+
+
+
 public class WordPack {
 
     private static final char[] charBuffer = new char[100];
