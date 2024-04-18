@@ -87,7 +87,7 @@ public class MidiPlayer {
         Sequence sequence = null;
         try {
           sequence = MidiSystem.getSequence(songFile);
-          sequencer.setSequence(removeVolumeControlEvents(sequence));
+          sequencer.setSequence(sequence);
         } catch (InvalidMidiDataException | IOException e) {
           e.printStackTrace();
         }
@@ -142,30 +142,5 @@ public class MidiPlayer {
     }
 
     currentSong = null;
-  }
-
-  private static Sequence removeVolumeControlEvents(Sequence sequence) throws InvalidMidiDataException {
-    Sequence newSequence = new Sequence(sequence.getDivisionType(), sequence.getResolution());
-    Track[] tracks = sequence.getTracks();
-
-    for (Track track : tracks) {
-      Track newTrack = newSequence.createTrack();
-      for (int i = 0; i < track.size(); i++) {
-        MidiEvent event = track.get(i);
-        MidiMessage message = event.getMessage();
-        if (!(message instanceof ShortMessage)) {
-          // Not a ShortMessage, add it directly to the new track
-          newTrack.add(event);
-          continue;
-        }
-        ShortMessage shortMessage = (ShortMessage) message;
-        if (shortMessage.getCommand() != ShortMessage.CONTROL_CHANGE || shortMessage.getData1() != 7) {
-          // Not a volume control event, add it to the new track
-          newTrack.add(event);
-        }
-      }
-    }
-
-    return newSequence;
   }
 }
