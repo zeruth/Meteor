@@ -25,6 +25,7 @@ class PostProcessGamePanel : JPanel() {
             padding = (width - stretchedWidth) / 2
 
             if (STRETCH_TO_FILL) {
+                padding = 0
                 super.getGraphics()?.drawImage(it.data.image, padding, 0,
                     width, height,this)
             } else { //FIT_TO_SCREEN

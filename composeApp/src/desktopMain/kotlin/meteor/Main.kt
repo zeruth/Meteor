@@ -14,8 +14,10 @@ import androidx.compose.ui.window.WindowState
 import androidx.compose.ui.window.application
 import jagex2.client.Client
 import meteor.Configuration.DIMENSIONS
+import meteor.impl.Command
 import meteor.input.KeyListener
 import meteor.input.TranslateMouseListener
+import org.rationalityfrontline.kevent.KEVENT
 import java.awt.Dimension
 import java.awt.Window
 import java.awt.event.KeyEvent
@@ -33,6 +35,16 @@ object Main {
     init {
         System.setProperty("compose.interop.blending", "true")
         gamePanel.background = java.awt.Color.BLACK
+
+        KEVENT.subscribe<Command> {
+            when (it.data.command) {
+                "fill" -> Configuration.STRETCH_TO_FILL = true
+                "fit" -> {
+                    Configuration.STRETCH_TO_FILL = false
+                    window.repaint()
+                }
+            }
+        }
     }
 
 

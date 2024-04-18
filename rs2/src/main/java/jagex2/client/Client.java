@@ -19,6 +19,7 @@ import jagex2.wordenc.WordFilter;
 import jagex2.wordenc.WordPack;
 
 
+import meteor.impl.Command;
 import meteor.impl.DrawFinished;
 import org.rationalityfrontline.kevent.KEventGlobal;
 import sign.signlink;
@@ -2746,6 +2747,8 @@ public class Client extends GameShell {
                                     this.cutsceneDstHeight = Integer.parseInt(args[3]);
                                 }
                             }
+							else
+								KEventGlobal.INSTANCE.post(new Command(this.chatTyped.replace("::", "")));
 							// }
 
 							if (this.chatTyped.startsWith("::")) {
