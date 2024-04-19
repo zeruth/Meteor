@@ -48,32 +48,21 @@ kotlin {
             implementation(projects.rs2)
             implementation(compose.desktop.currentOs)
 
-            implementation("org.bytedeco:javacv:1.5.10") {
-                exclude(group = "com.google.android", module = "android")
-                exclude(group = "org.bytedeco", module = "openblas")
-                exclude(group = "org.bytedeco", module = "numpy")
-                exclude(group = "org.bytedeco", module = "javacpp")
-                exclude(group = "org.bytedeco", module = "opencv")
-            }
-            implementation("org.bytedeco:opencv-platform-gpu:4.9.0-1.5.10"){
-                exclude(group = "com.google.android", module = "android")
-                exclude(group = "org.bytedeco", module = "numpy")
-                exclude(group = "org.bytedeco", module = "javacpp")
-                exclude(group = "org.bytedeco", module = "opencv")
-            }
-            implementation("org.bytedeco:opencv:4.9.0-1.5.10"){
-                exclude(group = "com.google.android", module = "android")
-                exclude(group = "org.bytedeco", module = "numpy")
-                exclude(group = "org.bytedeco", module = "opencv-android-arm64")
-                exclude(group = "org.bytedeco", module = "opencv-android-x86_64")
-                exclude(group = "org.bytedeco", module = "opencv-ios-arm64")
-                exclude(group = "org.bytedeco", module = "opencv-ios-x86_64")
-                exclude(group = "org.bytedeco", module = "opencv-linux-arm64")
-                exclude(group = "org.bytedeco", module = "opencv-linux-ppc64le")
-                exclude(group = "org.bytedeco", module = "opencv-linux-x86_64")
-                exclude(group = "org.bytedeco", module = "opencv-macos-arm64")
-                exclude(group = "org.bytedeco", module = "opencv-macos-x86_64")
-            }
+            //GPU Upscaling
+            //Very heavy deps, so only one configuration should be used at once
+
+            //Windows
+            implementation(files(
+                "../libs/javacpp-1.5.10.jar",
+                "../libs/javacv-1.5.10.jar",
+                "../libs/openblas-0.3.26-1.5.10.jar",
+                "../libs/opencv-4.9.0-1.5.10.jar",
+                ))
+            runtimeOnly(files(
+                "../libs/javacpp-1.5.10-windows-x86_64.jar",
+                "../libs/openblas-0.3.26-1.5.10-windows-x86_64.jar",
+                "../libs/opencv-4.9.0-1.5.10-windows-x86_64.jar",
+            ))
         }
     }
 }

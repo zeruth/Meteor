@@ -8,8 +8,8 @@ import meteor.Configuration.STRETCH_TO_FILL
 import meteor.Main
 import meteor.impl.BufferedDrawFinished
 import org.bytedeco.javacv.Java2DFrameUtils
-import org.bytedeco.opencv.global.opencv_core.printCudaDeviceInfo
 import org.bytedeco.opencv.global.opencv_imgproc
+import org.bytedeco.opencv.global.opencv_imgproc.CV_INTER_CUBIC
 import org.bytedeco.opencv.opencv_core.Mat
 import org.bytedeco.opencv.opencv_core.Size
 import org.rationalityfrontline.kevent.KEVENT
@@ -30,7 +30,7 @@ class PostProcessGamePanel : JPanel() {
         var stretchedHeight = -1
         var padding = 0
         var lastScale = 0f
-        var filter = opencv_imgproc.CV_INTER_CUBIC
+        var filter = CV_INTER_CUBIC
     }
     init {
         KEVENT.subscribe<BufferedDrawFinished> { event ->
@@ -50,7 +50,7 @@ class PostProcessGamePanel : JPanel() {
                     Main.text.value = "Meteor 2.0.0 (GPU)"
                     try {
                         if (!printedGPUInfo) {
-                            printCudaDeviceInfo(org.bytedeco.opencv.global.opencv_core.getDevice())
+                            //printCudaDeviceInfo(org.bytedeco.opencv.global.opencv_core.getDevice())
                             printedGPUInfo = true
                         }
                         val inputMat: Mat = Java2DFrameUtils.toMat(event.data.image)
@@ -78,7 +78,6 @@ class PostProcessGamePanel : JPanel() {
                         println("Error occurred during GPU upscaling, disabling...")
                         GPU = false
                     }
-
                 } else {
                     Main.text.value = "Meteor 2.0.0"
                     if (FILTER) {
