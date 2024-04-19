@@ -15,54 +15,21 @@ import javax.swing.JPanel
  * Double buffered RS2 image
  */
 class RS2GamePanel(w: Int, h: Int) : JPanel() {
-    var image = BufferedImage(w, h, BufferedImage.TYPE_4BYTE_ABGR)
-    var bufferedImage = BufferedImage(image.width, image.height, BufferedImage.TYPE_4BYTE_ABGR)
-    var bufferedGraphics = bufferedImage.createGraphics()
-
-    var loading = true
+    companion object {
+        var image: BufferedImage? = null
+    }
+    private var graphics: Graphics? = null
 
     init {
         size = Dimension(Configuration.DIMENSIONS.width, Configuration.DIMENSIONS.height)
-
-        //Loading
-        Thread(kotlinx.coroutines.Runnable {
-            while (loading) {
-                //Must sleep 1ms to draw correctly on fast cpus
-                Thread.sleep(1)
-                drawAndPost()
-            }
-        }).start()
-
-        //Login/In-game
-        KEVENT.subscribe<DrawFinished> {
-            //Kill the loading drawing thread
-            loading = false
-            checkFocus()
-            drawAndPost()
-        }
+        image = BufferedImage(w, h, BufferedImage.TYPE_4BYTE_ABGR)
+        graphics = image!!.createGraphics()
     }
 
-    private fun drawAndPost() {
-        //Double buffer
-        bufferedGraphics?.drawImage(image, 0, 0, this)
-        //Post
-        KEVENT.post(BufferedDrawFinished(bufferedImage))
-    }
 
-    /**
-     * This fixes a compose bug where focus would be lost every click causing subsequent keystrokes to be ignored.
-     */
-    private fun checkFocus() {
-        KeyboardFocusManager.getCurrentKeyboardFocusManager().focusOwner?.let {
-            if (it::class.java.toString().contains("org.jetbrains.skiko.SkiaLayer")) {
-                it.isFocusable = false
-                Main.gamePanel.grabFocus()
-            }
-        }
-    }
 
-    //Override rs2 surface graphics
+    //Force rs2 to use our BufferedImage graphics (no need to draw before manipulation)
     override fun getGraphics(): Graphics? {
-        return bufferedImage.graphics
+        return this.graphics
     }
 }

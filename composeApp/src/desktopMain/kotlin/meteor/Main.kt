@@ -86,16 +86,14 @@ object Main {
                 this@Main.window = window
                 window.isResizable = true
                 window.background = java.awt.Color.BLACK
-                initRS2()
+                // This Window be reloaded on events where it may be destroyed such as windows scaling changes
+                if (!loaded)
+                    initRS2()
                 MeteorWindow()
             }
     }
 
     private fun initRS2() {
-        //Compose re-inits window on scaling change, don't reload
-        if (loaded)
-            return
-
         //Common init
         client = Client()
         client.preInit()
