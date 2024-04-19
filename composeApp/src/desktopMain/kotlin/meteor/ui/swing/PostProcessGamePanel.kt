@@ -122,7 +122,7 @@ class PostProcessGamePanel : JPanel() {
 
     private fun getScale(): Float {
         val windowSize: Int = height
-        val canvasSize: Int = Client.gamePanel.height
+        val canvasSize: Int = Client.gamePanel?.height ?: Main.initialSize.height
         val scale = windowSize.toFloat() / canvasSize
 
         val s = (scale)

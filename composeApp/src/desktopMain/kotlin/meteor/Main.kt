@@ -32,7 +32,7 @@ object Main {
     lateinit var client: Client
     val gamePanel = PostProcessGamePanel()
     lateinit var window: Window
-    private var initialSize = Dimension(801, 567)
+    var initialSize = Dimension(801, 567)
     var text = mutableStateOf("")
     private var loaded = false
 
