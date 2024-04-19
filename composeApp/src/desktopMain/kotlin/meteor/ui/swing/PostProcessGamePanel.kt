@@ -37,7 +37,8 @@ class PostProcessGamePanel : JPanel() {
             stretchedWidth = (789 * scale).toInt()
             stretchedHeight = (531 * scale).toInt()
             lastScale = scale
-            padding = (width - stretchedWidth) / 2
+            if (!STRETCH_TO_FILL)
+                padding = (width - stretchedWidth) / 2
 
             super.getGraphics()?.let {
                 graphics2D = it as Graphics2D
