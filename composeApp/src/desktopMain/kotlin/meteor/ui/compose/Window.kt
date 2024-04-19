@@ -6,6 +6,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.sp
+import meteor.Main
 import meteor.ui.compose.GamePanel.RS2GameView
 
 /**
@@ -16,6 +17,6 @@ object Window {
     fun MeteorWindow() {
         RS2GameView()
         //TODO: Remove this as it's just to verify compose / swing interop isn't broken
-        Text("Meteor 2.0.0", color = Color.Cyan, fontSize = 8.sp, modifier = Modifier.fillMaxSize())
+        Text(Main.text.value, color = Color.Cyan, fontSize = 8.sp, modifier = Modifier.fillMaxSize())
     }
 }

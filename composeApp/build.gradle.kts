@@ -47,6 +47,9 @@ kotlin {
             implementation(projects.eventbus)
             implementation(projects.rs2)
             implementation(compose.desktop.currentOs)
+            implementation("org.bytedeco:javacv-platform:1.5.10")
+            implementation("org.bytedeco:opencv-platform-gpu:4.9.0-1.5.10")
+
         }
     }
 }

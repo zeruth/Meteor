@@ -3,6 +3,7 @@ package meteor
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.awt.SwingPanel
 import androidx.compose.ui.graphics.Color
@@ -21,7 +22,9 @@ import meteor.ui.compose.GamePanel
 import meteor.ui.compose.GamePanel.RS2GameView
 import meteor.ui.compose.Window.MeteorWindow
 import meteor.ui.swing.PostProcessGamePanel
+import meteor.ui.swing.PostProcessGamePanel.Companion.filter
 import meteor.ui.swing.RS2GamePanel
+import org.bytedeco.opencv.global.opencv_imgproc
 import org.rationalityfrontline.kevent.KEVENT
 import java.awt.Dimension
 import java.awt.Window
@@ -32,6 +35,7 @@ object Main {
     val gamePanel = PostProcessGamePanel()
     lateinit var window: Window
     private var initialSize = Dimension(801, 567)
+    var text = mutableStateOf("")
 
     init {
         System.setProperty("compose.interop.blending", "true")
@@ -49,6 +53,21 @@ object Main {
                 }
                 "filter" -> {
                     Configuration.FILTER = !Configuration.FILTER
+                }
+                "filter_gpu" -> {
+                    Configuration.FILTER_GPU = !Configuration.FILTER_GPU
+                }
+                "gpu" -> {
+                    Configuration.GPU = !Configuration.GPU
+                }
+                "linear" -> {
+                    filter = opencv_imgproc.CV_INTER_LINEAR
+                }
+                "cubic" -> {
+                    filter = opencv_imgproc.CV_INTER_CUBIC
+                }
+                "lanc" -> {
+                    filter = opencv_imgproc.CV_INTER_LANCZOS4
                 }
             }
         }

@@ -15,8 +15,8 @@ import javax.swing.JPanel
  * Double buffered RS2 image
  */
 class RS2GamePanel(w: Int, h: Int) : JPanel() {
-    var image = BufferedImage(w, h, BufferedImage.TYPE_INT_ARGB)
-    var bufferedImage = BufferedImage(image.width, image.height, BufferedImage.TYPE_INT_ARGB)
+    var image = BufferedImage(w, h, BufferedImage.TYPE_4BYTE_ABGR)
+    var bufferedImage = BufferedImage(image.width, image.height, BufferedImage.TYPE_4BYTE_ABGR)
     var bufferedGraphics = bufferedImage.createGraphics()
 
     var loading = true

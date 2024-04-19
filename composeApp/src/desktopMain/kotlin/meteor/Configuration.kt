@@ -11,4 +11,8 @@ object Configuration {
     val DIMENSIONS = Dimension(789, 531)
 
     var FILTER = true
+
+    var FILTER_GPU = true
+
+    var GPU = true
 }
