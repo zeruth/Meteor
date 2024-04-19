@@ -47,6 +47,9 @@ object Main {
                 "reset_window" -> {
                     window.size = initialSize
                 }
+                "filter" -> {
+                    Configuration.FILTER = !Configuration.FILTER
+                }
             }
         }
     }

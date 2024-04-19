@@ -9,4 +9,6 @@ object Configuration {
     var STRETCH_TO_FILL = false
 
     val DIMENSIONS = Dimension(789, 531)
+
+    var FILTER = true
 }
