@@ -47,9 +47,33 @@ kotlin {
             implementation(projects.eventbus)
             implementation(projects.rs2)
             implementation(compose.desktop.currentOs)
-            implementation("org.bytedeco:javacv-platform:1.5.10")
-            implementation("org.bytedeco:opencv-platform-gpu:4.9.0-1.5.10")
 
+            implementation("org.bytedeco:javacv:1.5.10") {
+                exclude(group = "com.google.android", module = "android")
+                exclude(group = "org.bytedeco", module = "openblas")
+                exclude(group = "org.bytedeco", module = "numpy")
+                exclude(group = "org.bytedeco", module = "javacpp")
+                exclude(group = "org.bytedeco", module = "opencv")
+            }
+            implementation("org.bytedeco:opencv-platform-gpu:4.9.0-1.5.10"){
+                exclude(group = "com.google.android", module = "android")
+                exclude(group = "org.bytedeco", module = "numpy")
+                exclude(group = "org.bytedeco", module = "javacpp")
+                exclude(group = "org.bytedeco", module = "opencv")
+            }
+            implementation("org.bytedeco:opencv:4.9.0-1.5.10"){
+                exclude(group = "com.google.android", module = "android")
+                exclude(group = "org.bytedeco", module = "numpy")
+                exclude(group = "org.bytedeco", module = "opencv-android-arm64")
+                exclude(group = "org.bytedeco", module = "opencv-android-x86_64")
+                exclude(group = "org.bytedeco", module = "opencv-ios-arm64")
+                exclude(group = "org.bytedeco", module = "opencv-ios-x86_64")
+                exclude(group = "org.bytedeco", module = "opencv-linux-arm64")
+                exclude(group = "org.bytedeco", module = "opencv-linux-ppc64le")
+                exclude(group = "org.bytedeco", module = "opencv-linux-x86_64")
+                exclude(group = "org.bytedeco", module = "opencv-macos-arm64")
+                exclude(group = "org.bytedeco", module = "opencv-macos-x86_64")
+            }
         }
     }
 }
@@ -91,11 +115,11 @@ android {
 compose.desktop {
     application {
         mainClass = "meteor.Main"
-        version = "2.0.0"
+        version = "2.0.1"
         nativeDistributions {
             targetFormats(TargetFormat.Dmg, TargetFormat.Exe, TargetFormat.Deb)
             packageName = "meteor"
-            packageVersion = "2.0.0"
+            packageVersion = "2.0.1"
             windows {
                 console = true
                 upgradeUuid = "9df19035-e962-4bb4-90c0-74330a07082b"

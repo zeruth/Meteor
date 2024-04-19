@@ -18,8 +18,6 @@ import meteor.Configuration.DIMENSIONS
 import meteor.impl.Command
 import meteor.input.KeyListener
 import meteor.input.TranslateMouseListener
-import meteor.ui.compose.GamePanel
-import meteor.ui.compose.GamePanel.RS2GameView
 import meteor.ui.compose.Window.MeteorWindow
 import meteor.ui.swing.PostProcessGamePanel
 import meteor.ui.swing.PostProcessGamePanel.Companion.filter
