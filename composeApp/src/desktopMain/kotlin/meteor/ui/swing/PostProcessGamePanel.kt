@@ -24,7 +24,6 @@ import javax.swing.JPanel
 class PostProcessGamePanel : JPanel() {
     private var graphics2D: Graphics2D? = null
     val hints = RenderingHints(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BILINEAR)
-    private var printedGPUInfo = false
     companion object {
         var stretchedWidth = -1
         var stretchedHeight = -1
@@ -49,15 +48,14 @@ class PostProcessGamePanel : JPanel() {
                 if (GPU) {
                     Main.text.value = "Meteor 2.0.0 (GPU)"
                     try {
-                        if (!printedGPUInfo) {
-                            //printCudaDeviceInfo(org.bytedeco.opencv.global.opencv_core.getDevice())
-                            printedGPUInfo = true
-                        }
                         val inputMat: Mat = Java2DFrameUtils.toMat(event.data.image)
                         var outputMat = Mat()
 
                         //Color filtering
-                        //opencv_imgproc.cvtColor(inputMat, inputMat, opencv_imgproc.COLOR_RGBA2GRAY);
+                        //opencv_imgproc.cvtColor(inputMat, inputMat, opencv_imgproc.COLOR_RGBA2BGR);
+
+                        //Color mapping
+                        //opencv_imgproc.applyColorMap(inputMat, inputMat, opencv_imgproc.COLORMAP_RAINBOW);
 
                         if (FILTER_GPU) {
                             opencv_imgproc.resize(
