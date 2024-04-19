@@ -34,6 +34,7 @@ object Main {
     lateinit var window: Window
     private var initialSize = Dimension(801, 567)
     var text = mutableStateOf("")
+    private var loaded = false
 
     init {
         System.setProperty("compose.interop.blending", "true")
@@ -91,6 +92,10 @@ object Main {
     }
 
     private fun initRS2() {
+        //Compose re-inits window on scaling change, don't reload
+        if (loaded)
+            return
+
         //Common init
         client = Client()
         client.preInit()
@@ -102,5 +107,6 @@ object Main {
         gamePanel.addKeyListener(KeyListener)
         gamePanel.addMouseListener(TranslateMouseListener)
         gamePanel.addMouseMotionListener(TranslateMouseListener)
+        loaded = true
     }
 }
