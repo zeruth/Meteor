@@ -31,7 +31,7 @@ object Main {
     lateinit var client: Client
     val gamePanel = PostProcessGamePanel()
     lateinit var window: Window
-    private var initialSize = Dimension(802, 567)
+    private var initialSize = Dimension(801, 567)
 
     init {
         System.setProperty("compose.interop.blending", "true")
