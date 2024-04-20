@@ -49,15 +49,16 @@ kotlin {
             implementation(compose.desktop.currentOs)
 
             //GPU Upscaling
-            //Very heavy deps, so only one configuration should be used at once
+            //Very heavy deps, so only one runtime configuration should be used at once
 
-            //Windows
+            //Common
             implementation(files(
                 "../libs/javacpp-1.5.10.jar",
                 "../libs/javacv-1.5.10.jar",
                 "../libs/openblas-0.3.26-1.5.10.jar",
                 "../libs/opencv-4.9.0-1.5.10.jar",
                 ))
+            //Windows
             runtimeOnly(files(
                 "../libs/javacpp-1.5.10-windows-x86_64.jar",
                 "../libs/openblas-0.3.26-1.5.10-windows-x86_64.jar",

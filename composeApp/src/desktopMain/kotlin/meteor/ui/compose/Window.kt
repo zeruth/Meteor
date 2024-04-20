@@ -16,7 +16,5 @@ object Window {
     @Composable
     fun MeteorWindow() {
         RS2GameView()
-        //TODO: Remove this as it's just to verify compose / swing interop isn't broken
-        Text(Main.text.value, color = Color.Cyan, fontSize = 8.sp, modifier = Modifier.fillMaxSize())
     }
 }

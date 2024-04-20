@@ -19,8 +19,8 @@ import jagex2.wordenc.WordFilter;
 import jagex2.wordenc.WordPack;
 
 
-import meteor.impl.Command;
-import meteor.impl.DrawFinished;
+import meteor.events.Command;
+import meteor.events.DrawFinished;
 import org.rationalityfrontline.kevent.KEventGlobal;
 import sign.signlink;
 

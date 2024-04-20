@@ -28,7 +28,7 @@ package meteor.input
 import jagex2.client.Client
 import meteor.Configuration
 import meteor.Main
-import meteor.ui.swing.PostProcessGamePanel.Companion.padding
+import meteor.ui.config.FillMode
 import java.awt.Dimension
 import java.awt.event.MouseEvent
 import java.awt.event.MouseListener
@@ -65,12 +65,12 @@ object TranslateMouseListener : MouseListener, MouseMotionListener {
     }
 
     private fun translateEvent(e: MouseEvent): MouseEvent {
-        val x = e.x - padding
+        val x = e.x - Main.xPadding.value
         val stretchedDimensions = Dimension(Main.gamePanel.width, Main.gamePanel.height)
         val modX: Float = (stretchedDimensions.width.toFloat() / Client.gamePanel.width)
         val modY: Float = (stretchedDimensions.height.toFloat() / 531)
         var newX = (x.toFloat() / modX);
-        if (!Configuration.STRETCH_TO_FILL)
+        if (Main.fillMode == FillMode.FIT)
             newX = (x.toFloat() / modY);
         val newY = (e.y.toFloat() / modY);
         val mouseEvent = MouseEvent(

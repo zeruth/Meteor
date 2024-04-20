@@ -1,13 +1,9 @@
 package meteor.ui.swing
 
 import meteor.Configuration
-import meteor.Main
-import meteor.impl.BufferedDrawFinished
-import meteor.impl.DrawFinished
-import org.rationalityfrontline.kevent.KEVENT
+import meteor.Constants.RS_DIMENSIONS
 import java.awt.Dimension
 import java.awt.Graphics
-import java.awt.KeyboardFocusManager
 import java.awt.image.BufferedImage
 import javax.swing.JPanel
 
@@ -21,7 +17,7 @@ class RS2GamePanel(w: Int, h: Int) : JPanel() {
     private var graphics: Graphics? = null
 
     init {
-        size = Dimension(Configuration.DIMENSIONS.width, Configuration.DIMENSIONS.height)
+        size = Dimension(RS_DIMENSIONS.width, RS_DIMENSIONS.height)
         image = BufferedImage(w, h, BufferedImage.TYPE_4BYTE_ABGR)
         graphics = image!!.createGraphics()
     }
