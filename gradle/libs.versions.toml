@@ -31,6 +31,16 @@ androidx-constraintlayout = { group = "androidx.constraintlayout", name = "const
 androidx-activity-compose = { module = "androidx.activity:activity-compose", version.ref = "androidx-activityCompose" }
 compose-ui-tooling = { module = "androidx.compose.ui:ui-tooling", version.ref = "compose" }
 compose-ui-tooling-preview = { module = "androidx.compose.ui:ui-tooling-preview", version.ref = "compose" }
+lombok = {group = "org.projectlombok", name = "lombok", version = "1.18.32"}
+annotations = {group = "org.jetbrains", name = "annotations", version = "24.0.0"}
+asm = {group = "org.ow2.asm", name = "asm", version = "9.4"}
+asm-util = {group = "org.ow2.asm", name = "asm-util", version = "9.4"}
+fernflower = {group = "net.runelite", name = "fernflower", version = "07082019"}
+gson = {group = "com.google.code.gson", name = "gson", version = "2.8.9"}
+guava = {group = "com.google.guava", name = "guava", version = "31.1-jre"}
+java-inject = {group = "javax.inject", name = "javax.inject", version = "1"}
+jopt-simple = {group = "net.sf.jopt-simple", name = "jopt-simple", version = "6.0-alpha-3"}
+
 
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }

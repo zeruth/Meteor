@@ -6,9 +6,10 @@ plugins {
 group = "meteor"
 version = "unspecified"
 
-java {
-    sourceCompatibility = JavaVersion.VERSION_17
-    targetCompatibility = JavaVersion.VERSION_17
+java{
+    sourceCompatibility = JavaVersion.VERSION_1_8
+    targetCompatibility = JavaVersion.VERSION_1_8
+    disableAutoTargetJvm()
 }
 
 dependencies {
@@ -16,7 +17,7 @@ dependencies {
 }
 
 application {
-    mainClass.set("jagex2.client.Client")
+    mainClass.set("Client")
 }
 
 tasks.withType<JavaCompile> {

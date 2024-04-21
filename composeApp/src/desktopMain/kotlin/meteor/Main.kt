@@ -6,7 +6,6 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Window
 import androidx.compose.ui.window.WindowState
 import androidx.compose.ui.window.application
-import jagex2.client.Client
 import meteor.Constants.RS_DIMENSIONS
 import meteor.events.Command
 import meteor.input.KeyListener
@@ -17,6 +16,7 @@ import meteor.ui.config.GPUFilter
 import meteor.ui.config.RenderMode
 import meteor.ui.swing.PostProcessGamePanel
 import meteor.ui.swing.RS2GamePanel
+import net.runelite.api.Client
 import org.rationalityfrontline.kevent.KEVENT
 import java.awt.Dimension
 import java.awt.Window
@@ -25,6 +25,7 @@ import java.awt.Window
 object Main {
     lateinit var client: Client
     lateinit var window: Window
+    val hooks = Hooks
     val gamePanel = PostProcessGamePanel()
     var initialSize = Dimension(RS_DIMENSIONS.width, RS_DIMENSIONS.height + 28)
     var fillMode = FillMode.FIT
@@ -63,12 +64,13 @@ object Main {
 
     private fun initRS2() {
         //Common init
-        client = Client()
-        client.preInit()
+        client = ClassLoader.getSystemClassLoader().loadClass("Client").newInstance() as Client
+        client.callbacks = hooks
+        client.`preInit$api`()
 
         //Desktop init
         //We provide a custom JPanel impl that hooks the drawing process
-        Client.gamePanel = RS2GamePanel(RS_DIMENSIONS.width, RS_DIMENSIONS.height)
+        client.setGamePanel(RS2GamePanel(RS_DIMENSIONS.width, RS_DIMENSIONS.height))
         client.initApplication(RS_DIMENSIONS.width, RS_DIMENSIONS.height)
         gamePanel.addKeyListener(KeyListener)
         gamePanel.addMouseListener(TranslateMouseListener)

@@ -25,56 +25,56 @@
  */
 package meteor.input
 
-import jagex2.client.Client
-import meteor.Configuration
 import meteor.Main
 import meteor.ui.config.FillMode
+import net.runelite.rs.api.RSGameShell
+import java.applet.Applet
 import java.awt.Dimension
 import java.awt.event.MouseEvent
 import java.awt.event.MouseListener
 import java.awt.event.MouseMotionListener
 
 object TranslateMouseListener : MouseListener, MouseMotionListener {
-    val client = Main.client
+    val client = (Main.client as RSGameShell)
     override fun mouseClicked(mouseEvent: MouseEvent) {
-        Main.client.mouseClicked(translateEvent(mouseEvent))
+        client.mouseClicked(translateEvent(mouseEvent))
     }
 
     override fun mousePressed(mouseEvent: MouseEvent) {
-        Main.client.mousePressed(translateEvent(mouseEvent))
+        client.mousePressed(translateEvent(mouseEvent))
     }
 
     override fun mouseReleased(mouseEvent: MouseEvent) {
-        Main.client.mouseReleased(translateEvent(mouseEvent))
+        client.mouseReleased(translateEvent(mouseEvent))
     }
 
     override fun mouseEntered(mouseEvent: MouseEvent) {
-        Main.client.mouseEntered(translateEvent(mouseEvent))
+        client.mouseEntered(translateEvent(mouseEvent))
     }
 
     override fun mouseExited(mouseEvent: MouseEvent) {
-        Main.client.mouseExited(translateEvent(mouseEvent))
+        client.mouseExited(translateEvent(mouseEvent))
     }
 
     override fun mouseDragged(mouseEvent: MouseEvent) {
-        Main.client.mouseDragged(translateEvent(mouseEvent))
+        client.mouseDragged(translateEvent(mouseEvent))
     }
 
     override fun mouseMoved(mouseEvent: MouseEvent) {
-        Main.client.mouseMoved(translateEvent(mouseEvent))
+        client.mouseMoved(translateEvent(mouseEvent))
     }
 
     private fun translateEvent(e: MouseEvent): MouseEvent {
         val x = e.x - Main.xPadding.value
         val stretchedDimensions = Dimension(Main.gamePanel.width, Main.gamePanel.height)
-        val modX: Float = (stretchedDimensions.width.toFloat() / Client.gamePanel.width)
+        val modX: Float = (stretchedDimensions.width.toFloat() / Main.client.gamePanel.width)
         val modY: Float = (stretchedDimensions.height.toFloat() / 531)
         var newX = (x.toFloat() / modX);
         if (Main.fillMode == FillMode.FIT)
             newX = (x.toFloat() / modY);
         val newY = (e.y.toFloat() / modY);
         val mouseEvent = MouseEvent(
-            client, e.id, e.getWhen(),
+            client as Applet, e.id, e.getWhen(),
             e.modifiersEx,
             newX.toInt(), newY.toInt(), e.clickCount, e.isPopupTrigger, e.button
         )

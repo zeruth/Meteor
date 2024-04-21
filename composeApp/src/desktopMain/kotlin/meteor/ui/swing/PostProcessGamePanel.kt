@@ -1,6 +1,5 @@
 package meteor.ui.swing
 
-import jagex2.client.Client
 import meteor.Configuration.CPU_LINEAR
 import meteor.Main
 import meteor.events.DrawFinished
@@ -124,7 +123,7 @@ class PostProcessGamePanel : JPanel() {
 
     private fun getScale(): Float {
         val windowSize: Int = height
-        val canvasSize: Int = Client.gamePanel?.height ?: Main.initialSize.height
+        val canvasSize: Int = Main.client.gamePanel?.height ?: Main.initialSize.height
         val scale = windowSize.toFloat() / canvasSize
 
         val s = (scale)

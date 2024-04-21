@@ -45,8 +45,10 @@ kotlin {
         }
         desktopMain.dependencies {
             implementation(projects.eventbus)
-            implementation(projects.rs2)
+            implementation(projects.api)
+            implementation(projects.apiRs)
             implementation(compose.desktop.currentOs)
+            runtimeOnly(files("./src/desktopMain/resources/injected-client.jar"))
 
             //GPU Upscaling
             //Very heavy deps, so only one runtime configuration should be used at once
