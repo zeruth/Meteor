@@ -36,7 +36,6 @@ import com.openosrs.injector.injection.InjectData;
 import com.openosrs.injector.injectors.rsapi.InjectGetter;
 import com.openosrs.injector.injectors.rsapi.InjectInvoke;
 import com.openosrs.injector.injectors.rsapi.InjectSetter;
-import com.openosrs.injector.injectors.rsapi.ObfuscatedGettersMapManager;
 import com.openosrs.injector.rsapi.RSApiClass;
 import com.openosrs.injector.rsapi.RSApiMethod;
 import java.util.ArrayList;
@@ -50,7 +49,7 @@ import net.runelite.asm.Method;
 import net.runelite.asm.Type;
 import net.runelite.asm.attributes.Annotated;
 import net.runelite.asm.signature.Signature;
-import net.runelite.deob.DeobAnnotations;
+import com.openosrs.injector.DeobAnnotations;
 
 import static com.openosrs.injector.Injector.report;
 import static com.openosrs.injector.rsapi.RSApi.API_BASE;
@@ -235,14 +234,7 @@ public class RSApiInjector extends AbstractInjector
 
 			matched.removeIf(RSApiMethod::isInjected);
 
-			/*if (matched.size() > 2)
-			{
-				throw new InjectException("More than 2 imported api methods for field " + deobField.getPoolField());
-			}*/
-
 			final Field vanillaField = inject.toVanilla(deobField);
-			//final Number getter = DeobAnnotations.getObfuscatedGetter(deobField);
-
 			inject(matched, deobField, vanillaField, null);
 		}
 	}

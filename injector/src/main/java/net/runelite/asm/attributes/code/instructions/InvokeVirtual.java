@@ -44,8 +44,8 @@ import net.runelite.asm.pool.Class;
 import net.runelite.asm.pool.Method;
 import net.runelite.asm.signature.Signature;
 import net.runelite.asm.signature.util.VirtualMethods;
-import net.runelite.deob.deobfuscators.mapping.MappingExecutorUtil;
-import net.runelite.deob.deobfuscators.mapping.ParallelExecutorMapping;
+import net.runelite.asm.mapping.MappingExecutorUtil;
+import net.runelite.asm.mapping.ParallelExecutorMapping;
 import org.objectweb.asm.MethodVisitor;
 
 public class InvokeVirtual extends Instruction implements InvokeInstruction

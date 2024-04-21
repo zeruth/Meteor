@@ -54,12 +54,10 @@ import net.runelite.asm.attributes.Code;
 import net.runelite.asm.attributes.code.Instruction;
 import net.runelite.asm.attributes.code.Instructions;
 import net.runelite.asm.attributes.code.instruction.types.FieldInstruction;
-import net.runelite.asm.attributes.code.instruction.types.GetFieldInstruction;
 import net.runelite.asm.attributes.code.instruction.types.InvokeInstruction;
 import net.runelite.asm.attributes.code.instruction.types.LVTInstruction;
 import net.runelite.asm.attributes.code.instruction.types.PushConstantInstruction;
 import net.runelite.asm.attributes.code.instruction.types.ReturnInstruction;
-import net.runelite.asm.attributes.code.instruction.types.SetFieldInstruction;
 import net.runelite.asm.attributes.code.instructions.ALoad;
 import net.runelite.asm.attributes.code.instructions.ANewArray;
 import net.runelite.asm.attributes.code.instructions.CheckCast;
@@ -71,8 +69,8 @@ import net.runelite.asm.attributes.code.instructions.LDC;
 import net.runelite.asm.attributes.code.instructions.Pop;
 import net.runelite.asm.attributes.code.instructions.PutField;
 import net.runelite.asm.signature.Signature;
-import net.runelite.deob.DeobAnnotations;
-import net.runelite.deob.util.JarUtil;
+import com.openosrs.injector.DeobAnnotations;
+import net.runelite.asm.util.JarUtil;
 import org.jetbrains.annotations.Nullable;
 import org.objectweb.asm.Opcodes;
 
@@ -271,8 +269,6 @@ public class MixinInjector extends AbstractInjector
 			{
 				final Field deobTargetField = InjectUtil.findStaticField(inject, shadowed, null, InjectUtil.apiToDeob(inject, field.getType()));
 				targetField = inject.toVanilla(deobTargetField);
-
-				getter = DeobAnnotations.getObfuscatedGetter(deobTargetField);
 			}
 
 			if ((targetField.getAccessFlags() & Opcodes.ACC_PRIVATE) != 0)
@@ -282,7 +278,7 @@ public class MixinInjector extends AbstractInjector
 
 			shadowFields.put(
 				field.getPoolField(),
-				new ShadowField(targetField, getter)
+				new ShadowField(targetField)
 			);
 		}
 	}
@@ -645,20 +641,6 @@ public class MixinInjector extends AbstractInjector
 				if (shadowField != null)
 				{
 					Field shadowed = shadowField.targetField;
-					if (shadowField.obfuscatedGetter != null)
-					{
-						if (i instanceof SetFieldInstruction)
-						{
-							iterator.previous();
-							InjectUtil.injectObfuscatedSetter(shadowField.obfuscatedGetter, i.getInstructions(), iterator::add);
-							iterator.next();
-						}
-						else if (i instanceof GetFieldInstruction)
-						{
-							InjectUtil.injectObfuscatedGetter(shadowField.obfuscatedGetter, i.getInstructions(), iterator::add);
-						}
-					}
-
 					fi.setField(shadowed.getPoolField());
 				}
 				else if (fi.getField().getClazz().getName().equals(mixinCf.getName()))
@@ -804,7 +786,6 @@ public class MixinInjector extends AbstractInjector
 	{
 		@Nonnull
 		Field targetField;
-		@Nullable Number obfuscatedGetter;
 	}
 
 	private static Provider<ClassFile> mixinProvider(ClassFile mixin)

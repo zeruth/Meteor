@@ -22,48 +22,78 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
+package net.runelite.asm.mapping;
 
-package net.runelite.asm.attributes.code.instructions;
+import java.util.ArrayList;
+import java.util.List;
+import net.runelite.asm.attributes.code.Instruction;
 
-import net.runelite.asm.attributes.code.InstructionType;
-import net.runelite.asm.attributes.code.Instructions;
-import net.runelite.asm.execution.InstructionContext;
-import net.runelite.asm.mapping.ParallelExecutorMapping;
-
-public class IfGt extends If0
+public class Mapping
 {
-	public IfGt(Instructions instructions, InstructionType type)
+	private Object from;
+	private Object object;
+	private int count;
+	private List<Instruction> ins = new ArrayList<>();
+	public boolean wasExecuted;
+	public int weight; // weight of mapping, based on same instruction count
+
+	public Mapping(Object from, Object object)
 	{
-		super(instructions, type);
+		this.from = from;
+		this.object = object;
 	}
 
 	@Override
-	public boolean isSame(InstructionContext thisIc, InstructionContext otherIc)
+	public String toString()
 	{
-		if (!this.isSameField(thisIc, otherIc))
-			return false;
-		
-		if (thisIc.getInstruction().getClass() == otherIc.getInstruction().getClass())
-			return true;
-		
-		if (otherIc.getInstruction() instanceof IfLe)
-		{
-			return true;
-		}
-		
-		return false;
+		return "Mapping{" + "from=" + from + ", object=" + object + ", count=" + count + '}';
 	}
-	
-	@Override
-	public void map(ParallelExecutorMapping mapping, InstructionContext ctx, InstructionContext other)
+
+	public Object getFrom()
 	{
-		if (other.getInstruction() instanceof IfLe)
+		return from;
+	}
+
+	public Object getObject()
+	{
+		return object;
+	}
+
+	public int getCount()
+	{
+		return count;
+	}
+
+	public void inc()
+	{
+		++count;
+	}
+
+	public void merge(Mapping other)
+	{
+		assert object == other.object;
+		count += other.count;
+		for (Instruction i : other.ins)
 		{
-			super.mapOtherBranch(mapping, ctx, other);
+			addInstruction(i);
 		}
-		else
+		wasExecuted |= other.wasExecuted;
+		weight = Math.max(weight, other.weight);
+	}
+
+	public void addInstruction(Instruction i)
+	{
+		if (!ins.contains(i))
 		{
-			super.map(mapping, ctx, other);
+			ins.add(i);
+		}
+	}
+
+	public void setWeight(int w)
+	{
+		if (w > weight)
+		{
+			weight = w;
 		}
 	}
 }

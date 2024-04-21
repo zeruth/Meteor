@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2017, Adam <Adam@sigterm.info>
+ * Copyright (c) 2016-2018, Adam <Adam@sigterm.info>
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -22,48 +22,67 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
+package net.runelite.asm.mapping;
 
-package net.runelite.asm.attributes.code.instructions;
-
+import java.util.HashSet;
+import java.util.Set;
+import net.runelite.asm.ClassFile;
+import net.runelite.asm.ClassGroup;
+import net.runelite.asm.Field;
+import net.runelite.asm.Method;
+import net.runelite.asm.attributes.code.Instruction;
 import net.runelite.asm.attributes.code.InstructionType;
 import net.runelite.asm.attributes.code.Instructions;
-import net.runelite.asm.execution.InstructionContext;
-import net.runelite.asm.mapping.ParallelExecutorMapping;
+import net.runelite.asm.attributes.code.instructions.PutStatic;
 
-public class IfGt extends If0
+/**
+ * Finds fields which are initialized in clinit
+ *
+ * @author Adam
+ */
+public class StaticInitializerIndexer
 {
-	public IfGt(Instructions instructions, InstructionType type)
+
+	private final ClassGroup group;
+	private final Set<Field> fields = new HashSet<>();
+
+	public StaticInitializerIndexer(ClassGroup group)
 	{
-		super(instructions, type);
+		this.group = group;
 	}
 
-	@Override
-	public boolean isSame(InstructionContext thisIc, InstructionContext otherIc)
+	public void index()
 	{
-		if (!this.isSameField(thisIc, otherIc))
-			return false;
-		
-		if (thisIc.getInstruction().getClass() == otherIc.getInstruction().getClass())
-			return true;
-		
-		if (otherIc.getInstruction() instanceof IfLe)
+		for (ClassFile cf : group.getClasses())
 		{
-			return true;
+			Method method = cf.findMethod("<clinit>");
+			if (method == null)
+			{
+				continue;
+			}
+
+			Instructions instructions = method.getCode().getInstructions();
+			for (Instruction i : instructions.getInstructions())
+			{
+				if (i.getType() != InstructionType.PUTSTATIC)
+				{
+					continue;
+				}
+
+				PutStatic putstatic = (PutStatic) i;
+				if (!putstatic.getField().getClazz().equals(cf.getPoolClass()) || putstatic.getMyField() == null)
+				{
+					continue;
+				}
+
+				fields.add(putstatic.getMyField());
+			}
 		}
-		
-		return false;
+
 	}
-	
-	@Override
-	public void map(ParallelExecutorMapping mapping, InstructionContext ctx, InstructionContext other)
+
+	public boolean isStatic(Field field)
 	{
-		if (other.getInstruction() instanceof IfLe)
-		{
-			super.mapOtherBranch(mapping, ctx, other);
-		}
-		else
-		{
-			super.map(mapping, ctx, other);
-		}
+		return fields.contains(field);
 	}
 }

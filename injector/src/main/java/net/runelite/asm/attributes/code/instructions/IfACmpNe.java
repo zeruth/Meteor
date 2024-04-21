@@ -30,7 +30,7 @@ import net.runelite.asm.attributes.code.Instructions;
 import net.runelite.asm.attributes.code.Label;
 import net.runelite.asm.execution.InstructionContext;
 import net.runelite.asm.execution.StackContext;
-import net.runelite.deob.deobfuscators.mapping.ParallelExecutorMapping;
+import net.runelite.asm.mapping.ParallelExecutorMapping;
 
 public class IfACmpNe extends If
 {

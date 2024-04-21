@@ -29,7 +29,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.stream.Collectors;
 import net.runelite.asm.pool.Class;
-import net.runelite.deob.DeobAnnotations;
+import com.openosrs.injector.DeobAnnotations;
 import org.jetbrains.annotations.NotNull;
 
 public class Interfaces implements Iterable<Class>

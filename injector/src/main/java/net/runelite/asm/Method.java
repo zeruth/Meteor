@@ -37,7 +37,7 @@ import net.runelite.asm.attributes.code.LocalVariable;
 import net.runelite.asm.attributes.code.Parameter;
 import net.runelite.asm.attributes.code.instruction.types.LVTInstruction;
 import net.runelite.asm.signature.Signature;
-import net.runelite.deob.DeobAnnotations;
+import com.openosrs.injector.DeobAnnotations;
 import org.objectweb.asm.Label;
 import org.objectweb.asm.MethodVisitor;
 import static org.objectweb.asm.Opcodes.ACC_FINAL;

@@ -32,7 +32,7 @@ import lombok.Getter;
 import net.runelite.asm.attributes.Annotated;
 import net.runelite.asm.pool.Class;
 import net.runelite.asm.signature.Signature;
-import static net.runelite.deob.DeobAnnotations.*;
+import static com.openosrs.injector.DeobAnnotations.*;
 import org.objectweb.asm.ClassVisitor;
 import org.objectweb.asm.FieldVisitor;
 import org.objectweb.asm.MethodVisitor;

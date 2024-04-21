@@ -34,7 +34,7 @@ import com.openosrs.injector.injection.InjectData;
 import net.runelite.asm.ClassFile;
 import net.runelite.asm.Field;
 import net.runelite.asm.Method;
-import net.runelite.deob.DeobAnnotations;
+import com.openosrs.injector.DeobAnnotations;
 
 /*
  * This handles creating "virtual" annotations to clean up rs-client in the main project

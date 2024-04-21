@@ -23,47 +23,47 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-package net.runelite.asm.attributes.code.instructions;
+package net.runelite.asm.mapping;
 
-import net.runelite.asm.attributes.code.InstructionType;
-import net.runelite.asm.attributes.code.Instructions;
-import net.runelite.asm.execution.InstructionContext;
-import net.runelite.asm.mapping.ParallelExecutorMapping;
+import java.util.HashMap;
+import java.util.Map;
+import net.runelite.asm.ClassFile;
+import net.runelite.asm.ClassGroup;
 
-public class IfGt extends If0
+public class ClassGroupMapper
 {
-	public IfGt(Instructions instructions, InstructionType type)
-	{
-		super(instructions, type);
-	}
+	private final ClassGroup one, two;
+	private final Map<ClassFile, ClassFile> map = new HashMap<>();
 
-	@Override
-	public boolean isSame(InstructionContext thisIc, InstructionContext otherIc)
+	public ClassGroupMapper(ClassGroup one, ClassGroup two)
 	{
-		if (!this.isSameField(thisIc, otherIc))
-			return false;
-		
-		if (thisIc.getInstruction().getClass() == otherIc.getInstruction().getClass())
-			return true;
-		
-		if (otherIc.getInstruction() instanceof IfLe)
-		{
-			return true;
-		}
-		
-		return false;
+		this.one = one;
+		this.two = two;
 	}
 	
-	@Override
-	public void map(ParallelExecutorMapping mapping, InstructionContext ctx, InstructionContext other)
+	public void map()
 	{
-		if (other.getInstruction() instanceof IfLe)
-		{
-			super.mapOtherBranch(mapping, ctx, other);
-		}
-		else
-		{
-			super.map(mapping, ctx, other);
-		}
+		for (ClassFile cf1 : one.getClasses())
+			for (ClassFile cf2 : two.getClasses())
+			{
+				if (!MappingExecutorUtil.isMaybeEqual(cf1, cf2))
+					continue;
+				
+				ClassMapper m = new ClassMapper(cf1, cf2);
+				if (!m.same())
+					continue;
+				
+				map.put(cf1, cf2);
+			}
+	}
+
+	public Map<ClassFile, ClassFile> getMap()
+	{
+		return map;
+	}
+	
+	public ClassFile get(ClassFile c)
+	{
+		return map.get(c);
 	}
 }

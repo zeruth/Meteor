@@ -33,7 +33,7 @@ import net.runelite.asm.attributes.code.instruction.types.InvokeInstruction;
 import net.runelite.asm.execution.Frame;
 import net.runelite.asm.execution.InstructionContext;
 import net.runelite.asm.pool.Method;
-import net.runelite.deob.deobfuscators.mapping.ParallelExecutorMapping;
+import net.runelite.asm.mapping.ParallelExecutorMapping;
 import org.objectweb.asm.Handle;
 import org.objectweb.asm.MethodVisitor;
 

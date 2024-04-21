@@ -26,7 +26,7 @@
 package net.runelite.asm.attributes.code.instruction.types;
 
 import net.runelite.asm.execution.InstructionContext;
-import net.runelite.deob.deobfuscators.mapping.ParallelExecutorMapping;
+import net.runelite.asm.mapping.ParallelExecutorMapping;
 
 public interface MappableInstruction
 {

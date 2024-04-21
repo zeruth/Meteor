@@ -38,8 +38,8 @@ import net.runelite.asm.execution.Stack;
 import net.runelite.asm.execution.StackContext;
 import net.runelite.asm.pool.Class;
 import net.runelite.asm.pool.Field;
-import net.runelite.deob.deobfuscators.mapping.MappingExecutorUtil;
-import net.runelite.deob.deobfuscators.mapping.ParallelExecutorMapping;
+import net.runelite.asm.mapping.MappingExecutorUtil;
+import net.runelite.asm.mapping.ParallelExecutorMapping;
 import org.objectweb.asm.MethodVisitor;
 
 public class PutStatic extends Instruction implements SetFieldInstruction

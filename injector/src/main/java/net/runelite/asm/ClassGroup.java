@@ -33,7 +33,7 @@ import java.util.Map;
 import java.util.function.Consumer;
 import net.runelite.asm.attributes.Code;
 import net.runelite.asm.signature.Signature;
-import static net.runelite.deob.DeobAnnotations.*;
+import static com.openosrs.injector.DeobAnnotations.*;
 import org.jetbrains.annotations.NotNull;
 
 public class ClassGroup implements Iterable<ClassFile>

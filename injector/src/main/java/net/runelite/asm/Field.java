@@ -28,7 +28,7 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 import lombok.Getter;
 import net.runelite.asm.attributes.Annotated;
-import net.runelite.deob.DeobAnnotations;
+import com.openosrs.injector.DeobAnnotations;
 import org.objectweb.asm.FieldVisitor;
 import org.objectweb.asm.Opcodes;
 import static org.objectweb.asm.Opcodes.ACC_PRIVATE;

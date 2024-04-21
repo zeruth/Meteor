@@ -35,8 +35,8 @@ import net.runelite.asm.execution.Frame;
 import net.runelite.asm.execution.InstructionContext;
 import net.runelite.asm.execution.Stack;
 import net.runelite.asm.execution.StackContext;
-import net.runelite.deob.deobfuscators.mapping.MappingExecutorUtil;
-import net.runelite.deob.deobfuscators.mapping.ParallelExecutorMapping;
+import net.runelite.asm.mapping.MappingExecutorUtil;
+import net.runelite.asm.mapping.ParallelExecutorMapping;
 
 public class Return extends Instruction implements ReturnInstruction, MappableInstruction
 {

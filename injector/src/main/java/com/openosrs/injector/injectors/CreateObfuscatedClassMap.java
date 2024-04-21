@@ -30,18 +30,13 @@
  */
 package com.openosrs.injector.injectors;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 import com.openosrs.injector.injection.InjectData;
 import net.runelite.asm.ClassFile;
-import net.runelite.deob.DeobAnnotations;
+import com.openosrs.injector.DeobAnnotations;
 
 import java.io.File;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.HashMap;
-import java.util.Map;
 
 /*
  * This handles creating "virtual" annotations to clean up rs-client in the main project

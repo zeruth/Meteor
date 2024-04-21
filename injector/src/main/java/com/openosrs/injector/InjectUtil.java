@@ -42,8 +42,6 @@ import net.runelite.asm.attributes.code.instructions.Return;
 import net.runelite.asm.attributes.code.instructions.VReturn;
 import net.runelite.asm.pool.Class;
 import net.runelite.asm.signature.Signature;
-import net.runelite.deob.DeobAnnotations;
-import net.runelite.deob.deobfuscators.arithmetic.DMath;
 import org.jetbrains.annotations.Nullable;
 
 public interface InjectUtil
@@ -545,33 +543,6 @@ public interface InjectUtil
 		Object v = annotation.getValue();
 		String str = ((org.objectweb.asm.Type) v).getInternalName();
 		return data.toVanilla(data.toDeob(str));
-	}
-
-	/**
-	 * Add after the get
-	 */
-	static void injectObfuscatedGetter(Number getter, Instructions instrs, Consumer<Instruction> into)
-	{
-		into.accept(new LDC(instrs, getter));
-
-		if (getter instanceof Integer)
-		{
-			into.accept(new IMul(instrs));
-		}
-		else if (getter instanceof Long)
-		{
-			into.accept(new LMul(instrs));
-		}
-	}
-
-	/**
-	 * Add IN FRONT of the put
-	 *
-	 * @param getter should be the same value as for the getter (straight from ObfuscatedGetter)
-	 */
-	static void injectObfuscatedSetter(Number getter, Instructions instrs, Consumer<Instruction> into)
-	{
-		injectObfuscatedGetter(DMath.modInverse(getter), instrs, into);
 	}
 
 	private static List<Type> findArgs(final String str, final List<Type> ret, final int from, final int to)

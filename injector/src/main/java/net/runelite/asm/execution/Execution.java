@@ -40,7 +40,6 @@ import net.runelite.asm.Field;
 import net.runelite.asm.Method;
 import net.runelite.asm.attributes.code.Instruction;
 import static net.runelite.asm.execution.StaticStep.popStack;
-import net.runelite.deob.Deob;
 
 public class Execution
 {
@@ -79,7 +78,7 @@ public class Execution
 
 			for (Method m : cf.getMethods())
 			{
-				if (!Deob.isObfuscated(m.getName()) && !m.getName().equals("<init>"))
+				if (!m.getName().equals("<init>"))
 				{
 					if (m.getCode() == null)
 					{

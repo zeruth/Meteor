@@ -22,48 +22,64 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
+package net.runelite.asm.mapping;
 
-package net.runelite.asm.attributes.code.instructions;
+import com.google.common.collect.ImmutableMultiset;
+import com.google.common.collect.Multiset;
+import java.util.List;
+import java.util.stream.Collectors;
+import net.runelite.asm.ClassFile;
+import net.runelite.asm.Type;
+import net.runelite.asm.signature.Signature;
 
-import net.runelite.asm.attributes.code.InstructionType;
-import net.runelite.asm.attributes.code.Instructions;
-import net.runelite.asm.execution.InstructionContext;
-import net.runelite.asm.mapping.ParallelExecutorMapping;
-
-public class IfGt extends If0
+public class ClassMapper
 {
-	public IfGt(Instructions instructions, InstructionType type)
+	private final ClassFile one, two;
+
+	public ClassMapper(ClassFile one, ClassFile two)
 	{
-		super(instructions, type);
+		this.one = one;
+		this.two = two;
 	}
 
-	@Override
-	public boolean isSame(InstructionContext thisIc, InstructionContext otherIc)
+	private Multiset<Type> fieldCardinalities(ClassFile cf)
 	{
-		if (!this.isSameField(thisIc, otherIc))
-			return false;
-		
-		if (thisIc.getInstruction().getClass() == otherIc.getInstruction().getClass())
-			return true;
-		
-		if (otherIc.getInstruction() instanceof IfLe)
-		{
-			return true;
-		}
-		
-		return false;
+		List<Type> t = cf.getFields().stream()
+			.filter(f -> !f.isStatic())
+			.map(f -> f.getType())
+			.collect(Collectors.toList());
+
+		return ImmutableMultiset.copyOf(t);
 	}
-	
-	@Override
-	public void map(ParallelExecutorMapping mapping, InstructionContext ctx, InstructionContext other)
+
+	private Multiset<Signature> methodCardinalities(ClassFile cf)
 	{
-		if (other.getInstruction() instanceof IfLe)
+		List<Signature> t = cf.getMethods().stream()
+			.filter(m -> !m.isStatic())
+			.filter(m -> !m.getName().startsWith("<"))
+			.map(m -> m.getDescriptor())
+			.collect(Collectors.toList());
+
+		return ImmutableMultiset.copyOf(t);
+	}
+
+	public boolean same()
+	{
+		Multiset<Type> c1 = fieldCardinalities(one), c2 = fieldCardinalities(two);
+
+		if (!c1.equals(c2))
 		{
-			super.mapOtherBranch(mapping, ctx, other);
+			return false;
 		}
-		else
+
+		Multiset<Signature> s1 = methodCardinalities(one);
+		Multiset<Signature> s2 = methodCardinalities(two);
+
+		if (!s1.equals(s2))
 		{
-			super.map(mapping, ctx, other);
+			return false;
 		}
+
+		return true;
 	}
 }

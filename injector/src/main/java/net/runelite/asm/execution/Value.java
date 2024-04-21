@@ -27,7 +27,7 @@ package net.runelite.asm.execution;
 
 import java.lang.reflect.Array;
 import java.util.Arrays;
-import net.runelite.deob.util.PrimitiveUtils;
+import net.runelite.asm.util.PrimitiveUtil;
 
 public class Value
 {
@@ -120,15 +120,15 @@ public class Value
 		
 		Object v = value;
 		
-		if (value instanceof Number && Number.class.isAssignableFrom(PrimitiveUtils.unbox(c)))
-			v = PrimitiveUtils.convert((Number) value, c);
+		if (value instanceof Number && Number.class.isAssignableFrom(PrimitiveUtil.unbox(c)))
+			v = PrimitiveUtil.convert((Number) value, c);
 		
-		return new Value(PrimitiveUtils.unbox(c).cast(v));
+		return new Value(PrimitiveUtil.unbox(c).cast(v));
 	}
 	
 	public Object as(Class<?> c)
 	{
-		return PrimitiveUtils.convert((Number) value, c);
+		return PrimitiveUtil.convert((Number) value, c);
 	}
 	
 	public static Value newArray(Value length)

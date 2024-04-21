@@ -31,7 +31,7 @@ import net.runelite.asm.attributes.code.instruction.types.ComparisonInstruction;
 import net.runelite.asm.attributes.code.instruction.types.PushConstantInstruction;
 import net.runelite.asm.execution.InstructionContext;
 import net.runelite.asm.execution.StackContext;
-import net.runelite.deob.deobfuscators.mapping.ParallelExecutorMapping;
+import net.runelite.asm.mapping.ParallelExecutorMapping;
 
 public class IfICmpEq extends If
 {

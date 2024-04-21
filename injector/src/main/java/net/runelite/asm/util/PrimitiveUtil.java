@@ -23,47 +23,51 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-package net.runelite.asm.attributes.code.instructions;
+package net.runelite.asm.util;
 
-import net.runelite.asm.attributes.code.InstructionType;
-import net.runelite.asm.attributes.code.Instructions;
-import net.runelite.asm.execution.InstructionContext;
-import net.runelite.asm.mapping.ParallelExecutorMapping;
-
-public class IfGt extends If0
+public class PrimitiveUtil
 {
-	public IfGt(Instructions instructions, InstructionType type)
+	public static Class<?> unbox(Class<?> c)
 	{
-		super(instructions, type);
-	}
-
-	@Override
-	public boolean isSame(InstructionContext thisIc, InstructionContext otherIc)
-	{
-		if (!this.isSameField(thisIc, otherIc))
-			return false;
-		
-		if (thisIc.getInstruction().getClass() == otherIc.getInstruction().getClass())
-			return true;
-		
-		if (otherIc.getInstruction() instanceof IfLe)
-		{
-			return true;
-		}
-		
-		return false;
+		if (c == int.class)
+			return Integer.class;
+		else if (c == long.class)
+			return Long.class;
+		else if (c == byte.class)
+			return Byte.class;
+		else if (c == char.class)
+			return Character.class;
+		else if (c == short.class)
+			return Short.class;
+		else if (c == boolean.class)
+			return Boolean.class;
+		else if (c == float.class)
+			return Float.class;
+		else if (c == double.class)
+			return Double.class;
+		else if (c == void.class)
+			return Void.class;
+		else
+			return c;
 	}
 	
-	@Override
-	public void map(ParallelExecutorMapping mapping, InstructionContext ctx, InstructionContext other)
+	public static Object convert(Number n, Class<?> c)
 	{
-		if (other.getInstruction() instanceof IfLe)
-		{
-			super.mapOtherBranch(mapping, ctx, other);
-		}
-		else
-		{
-			super.map(mapping, ctx, other);
-		}
+		c = unbox(c);
+		
+		if (c == Integer.class)
+			return n.intValue();
+		else if (c == Long.class)
+			return n.longValue();
+		else if (c == Byte.class)
+			return n.byteValue();
+		else if (c == Short.class)
+			return n.shortValue();
+		else if (c == Float.class)
+			return n.floatValue();
+		else if (c == Double.class)
+			return n.doubleValue();
+		
+		throw new IllegalArgumentException();
 	}
 }

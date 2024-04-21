@@ -7,19 +7,15 @@
  */
 package com.openosrs.injector;
 
-import com.google.common.hash.Hashing;
 import com.openosrs.injector.injection.InjectData;
 import com.openosrs.injector.injection.InjectTaskHandler;
 import com.openosrs.injector.injectors.*;
-import com.openosrs.injector.injectors.raw.*;
 import com.openosrs.injector.rsapi.RSApi;
 import com.openosrs.injector.transformers.EnumInvokeVirtualFixer;
 import com.openosrs.injector.transformers.InjectTransformer;
-import com.openosrs.injector.transformers.Java8Ifier;
 import com.openosrs.injector.transformers.SourceChanger;
 import java.io.File;
 import java.io.IOException;
-import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayList;
@@ -32,8 +28,8 @@ import joptsimple.util.EnumConverter;
 import meteor.Logger;
 import net.runelite.asm.ClassFile;
 import net.runelite.asm.ClassGroup;
-import net.runelite.deob.util.JarUtil;
-import static net.runelite.deob.util.JarUtil.load;
+import net.runelite.asm.util.JarUtil;
+import static net.runelite.asm.util.JarUtil.load;
 
 public class Injector extends InjectData implements InjectTaskHandler
 {
@@ -43,32 +39,7 @@ public class Injector extends InjectData implements InjectTaskHandler
 	public static ArrayList<String> report = new ArrayList<>();
 
 	public static void main(String[] args) {
-		OptionParser parser = new OptionParser();
-
-		ArgumentAcceptingOptionSpec<File> vanillaFileOption =
-				parser.accepts("vanilla", "Vanilla OSRS gamepack file")
-						.withRequiredArg().ofType(File.class);
-
-		ArgumentAcceptingOptionSpec<String> oprsVerOption =
-				parser.accepts("version", "OpenOSRS version")
-						.withRequiredArg().ofType(String.class);
-
-		ArgumentAcceptingOptionSpec<File> outFileOption =
-				parser.accepts("output", "Output file, jar if outmode is jar, folder if outmode is files")
-						.withRequiredArg().ofType(File.class);
-
-		ArgumentAcceptingOptionSpec<OutputMode> outModeOption =
-				parser.accepts("outmode")
-						.withRequiredArg().ofType(OutputMode.class)
-						.withValuesConvertedBy(new EnumConverter<>(OutputMode.class) {
-							@Override
-							public OutputMode convert(String value) {
-								return super.convert(value.toUpperCase());
-							}
-						});
-
-		OptionSet options = parser.parse(args);
-		String oprsVer = "1.0.0";
+		String version = "1.0.0";
 
 		injector.vanilla = load(
 				new File("./rs2/build/libs/rs2.jar"));
@@ -78,7 +49,7 @@ public class Injector extends InjectData implements InjectTaskHandler
 				new File("./api-rs/build/classes/java/main/net/runelite/rs/api/")
 						.listFiles()));
 		injector.mixins = load(
-				new File("./mixins/build/libs/mixins-" + oprsVer + ".jar"));
+				new File("./mixins/build/libs/mixins-" + version + ".jar"));
 
 		File injected = new File("./composeApp/src/desktopMain/resources/injected-client.jar");
 		if (injected.exists()) {
@@ -94,65 +65,30 @@ public class Injector extends InjectData implements InjectTaskHandler
 	}
 
 	public void injectVanilla() {
-		//log.debug("[DEBUG] Starting injection");
-
-		ClassFile reflection = null;
-
-		transform(new Java8Ifier(this));
-
+		//runelite asm mashes bytecode for array initializers,
+		//this quickly fixes that, making bytecode 100% valid
 		transform(new EnumInvokeVirtualFixer(this));
 
+		//Adds "virtual" annotations to all classes/fields/methods in rs2
+		//They must still be imported as normal in api-rs(api)
 		inject(new CreateAnnotations(this));
 
-		//Used during rev to create class uses in osrs/net/runelite/rs/
-		//inject(new CreateObfuscatedClassMap(this));
-
-		//inject(new GraphicsObject(this));
-
-		//inject(new CopyRuneLiteClasses(this));
-
-		//inject(new RuneLiteIterables(this));
-
-		//inject(new RuneliteObject(this));
-
+		//Attaches our api-rs(api) to their target class in rs2
 		inject(new InterfaceInjector(this));
 
-		//inject(new RasterizerAlpha(this));
-
+		//Code to be injected / modified in rs2
 		inject(new MixinInjector(this));
-
-		// This is where field hooks runs
-
-		// This is where method hooks runs
 
 		inject(new InjectConstruct(this));
 
+		//Inject all members from api-rs(api) in rs2
 		inject(new RSApiInjector(this));
 
-		//inject(new DrawAfterWidgets(this));
-
-		//inject(new ScriptVM(this));
-
-		// All GPU raw injectors should probably be combined, especially RenderDraw and Occluder
-		//inject(new ClearColorBuffer(this));
-
-		//inject(new RenderDraw(this));
-
-		//inject(new Occluder(this));
-
-		//inject(new DrawMenu(this));
-
-		//inject(new GameDrawingMode(this));
-
-		//inject(new AddPlayerToMenu(this));
-
-		//inject(new RuneliteMenuEntry(this));
-
+		//Warns about unimplemented members in api-rs(api)
 		validate(new InjectorValidator(this));
 
+		//Print better stacktrace info
 		transform(new SourceChanger(this));
-
-		//injector.vanilla.addClass(reflection);
 	}
 
 	private void inject(com.openosrs.injector.injectors.Injector injector) {

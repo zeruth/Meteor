@@ -38,7 +38,7 @@ import net.runelite.asm.execution.Frame;
 import net.runelite.asm.execution.InstructionContext;
 import net.runelite.asm.execution.Stack;
 import net.runelite.asm.execution.StackContext;
-import net.runelite.deob.deobfuscators.mapping.ParallelExecutorMapping;
+import net.runelite.asm.mapping.ParallelExecutorMapping;
 import org.objectweb.asm.MethodVisitor;
 
 public class TableSwitch extends Instruction implements JumpingInstruction, MappableInstruction
