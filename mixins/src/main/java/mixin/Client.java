@@ -5,11 +5,17 @@ import net.runelite.api.Callbacks;
 import net.runelite.api.mixins.*;
 import net.runelite.rs.api.RSClient;
 
+import javax.swing.*;
+import java.awt.*;
+
 @SuppressWarnings("ALL")
 @Mixin(RSClient.class)
 abstract class Client implements RSClient {
     @Shadow("client")
     public static RSClient client;
+
+    @Shadow("gamePanel")
+    public static JPanel gamePanel;
 
     @Inject
     private Callbacks callbacks;
@@ -44,5 +50,22 @@ abstract class Client implements RSClient {
             //even though WordFilter has no initialization...
             //error.printStackTrace();
         }
+    }
+
+    @Copy("getBaseComponent")
+    @Replace("getBaseComponent")
+    public Component getBaseComponent$mixin() {
+        return gamePanel;
+    }
+
+    @Inject
+    @Override
+    public void preInit() {
+        client = this;
+        setNodeID(10);
+        setPortOffset(3); //world
+        setHighMemory$api();
+        setMembers(true);
+        startDaemon$api();
     }
 }

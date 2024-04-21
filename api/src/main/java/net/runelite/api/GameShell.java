@@ -1,6 +1,5 @@
 package net.runelite.api;
 
-import javax.swing.*;
-
 public interface GameShell {
+    void initApplication$api(int width, int height);
 }

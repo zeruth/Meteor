@@ -17,8 +17,6 @@ import java.util.zip.CRC32;
 public class Client extends GameShell {
 
 	public static Client client;
-
-	public static boolean vanilla = true;
 	public static boolean isJingle;
 	public boolean showDebug = false;
 	public boolean showPerformance = false;
@@ -2824,15 +2822,6 @@ public class Client extends GameShell {
 		}
 	}
 
-	public void preInit() throws UnknownHostException {
-		Client.vanilla = false;
-		Client.nodeId = 10;
-		Client.portOffset = Configuration.PORT_OFFSET;
-		Client.setHighMemory();
-		Client.members = true;
-		signlink.startDaemon();
-	}
-
 	@Override
 	protected void draw() {
 		if (this.errorStarted || this.errorLoading || this.errorHost) {
@@ -3250,9 +3239,6 @@ public class Client extends GameShell {
 	}
 
 	public Component getBaseComponent() {
-		if (!vanilla)
-			return gamePanel;
-
 		if (signlink.mainapp != null) {
 			return signlink.mainapp;
 		}

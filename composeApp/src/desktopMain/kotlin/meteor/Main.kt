@@ -66,12 +66,12 @@ object Main {
         //Common init
         client = ClassLoader.getSystemClassLoader().loadClass("Client").newInstance() as Client
         client.callbacks = hooks
-        client.`preInit$api`()
+        client.preInit()
 
         //Desktop init
         //We provide a custom JPanel impl that hooks the drawing process
         client.setGamePanel(RS2GamePanel(RS_DIMENSIONS.width, RS_DIMENSIONS.height))
-        client.initApplication(RS_DIMENSIONS.width, RS_DIMENSIONS.height)
+        client.`initApplication$api`(RS_DIMENSIONS.width, RS_DIMENSIONS.height)
         gamePanel.addKeyListener(KeyListener)
         gamePanel.addMouseListener(TranslateMouseListener)
         gamePanel.addMouseMotionListener(TranslateMouseListener)
