@@ -3,15 +3,24 @@
 A Kotlin/Compose client built around Client1
 
 The goal is to eventually offer a truly cross-platform client with a modern touch.  
-Some enhancements are nice, but I intend to respect the experience.  
+Enhancements are nice, but I intend to respect the experience, and the developers of the project.  
     
 It currently offers:  
-GPU upscaling / texture filtering via OpenCV  
-Stretch to fit / fill  
-  
+RuneLite injection  
+OpenCV GPU upscaling  
+Kotlin/Compose framework
+
+* `/annotations` various annotations related to RuneLite's lifecycle
+* `/api` restricted-level interfaces to client members
+* `/api-rs` unrestricted-level interfaces to client members
 * `/composeApp` 
   - `commonMain` where most ui code / non-jvm code should go eventually  
-    `desktopMain` where all code currently resides. aka jvmMain  
+    `desktopMain` where all code currently resides. aka jvmMain
+* `/eventbus` custom KEvent eventbus
+* `/injector` packs `api`/`api-rs`/`mixins` into `rs2`
+* `/logger` simple logger implementation with support for ANSI color coding
+* `/mixins` code to be packed/modified in `rs2`
+* `/rs2` aka deob aka 2004Scape Client aka Client1
   
 Other platforms are not yet started  
   
