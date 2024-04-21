@@ -38,7 +38,11 @@ abstract class Client implements RSClient {
         try {
             load();
         } catch (NoClassDefFoundError error) {
-            //TODO: investigate this failure if we don't catch this
+            //TODO: investigate this failure, it's weird.
+            //simply calling WordFilter.unpack(wordenc)
+            //even with an empty obj and empty code will cause the error
+            //even though WordFilter has no initialization...
+            error.printStackTrace();
         }
     }
 }
