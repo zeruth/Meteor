@@ -1,3 +1,5 @@
+import com.android.build.gradle.internal.lint.AndroidLintAnalysisTask
+import com.android.build.gradle.internal.lint.LintModelWriterTask
 import org.jetbrains.compose.desktop.application.dsl.TargetFormat
 
 plugins {
@@ -120,4 +122,15 @@ compose.desktop {
             }
         }
     }
+}
+
+// Fixes for latest Android Gradle Plugin for Kotlin Multiplatform
+tasks.withType<LintModelWriterTask> {
+    if (this.name == "generateDebugUnitTestLintModel")
+        dependsOn(tasks.named("generateResourceAccessorsForAndroidUnitTest"))
+}
+
+tasks.withType<AndroidLintAnalysisTask> {
+    if (this.name == "lintAnalyzeDebug" || this.name == "lintAnalyzeDebugUnitTest")
+        dependsOn(tasks.named("generateResourceAccessorsForAndroidUnitTest"))
 }

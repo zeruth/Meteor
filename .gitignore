@@ -17,3 +17,4 @@ captures
 **/xcshareddata/WorkspaceSettings.xcsettings
 
 composeApp/src/desktopMain/resources/injected-client.jar
+/.kotlin/

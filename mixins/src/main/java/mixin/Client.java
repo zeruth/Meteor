@@ -42,7 +42,7 @@ abstract class Client implements RSClient {
             //simply calling WordFilter.unpack(wordenc)
             //even with an empty obj and empty code will cause the error
             //even though WordFilter has no initialization...
-            error.printStackTrace();
+            //error.printStackTrace();
         }
     }
 }
