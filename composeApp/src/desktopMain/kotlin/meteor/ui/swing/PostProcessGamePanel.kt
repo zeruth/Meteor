@@ -64,7 +64,7 @@ class PostProcessGamePanel : JPanel() {
             var outputImage = image
             when (Main.client.renderMode) {
                 RenderMode.GPU -> {
-                    Main.text.value = "Meteor 2.0.3 (GPU)"
+                    Main.text.value = "Meteor 2.0.4 (GPU)"
                     try {
                         val inputMat: Mat = Java2DFrameUtils.toMat(image)
                         val outputMat = Mat()
@@ -79,7 +79,7 @@ class PostProcessGamePanel : JPanel() {
                     }
                 }
                 RenderMode.CPU -> {
-                    Main.text.value = "Meteor 2.0.3"
+                    Main.text.value = "Meteor 2.0.4"
                     if (Main.client.cpuFilter == CPUFilter.BILINEAR) {
                         it.setRenderingHints(hints)
                     }
