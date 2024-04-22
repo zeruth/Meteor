@@ -32,7 +32,6 @@ object Main {
     var loaded = false
 
     var text = mutableStateOf("")
-    var xPadding = mutableStateOf(0f)
 
     init {
         System.setProperty("compose.interop.blending", "true")

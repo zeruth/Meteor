@@ -58,6 +58,7 @@ public class Injector extends InjectData implements InjectTaskHandler
 
 		injector.initToVanilla();
 		injector.injectVanilla();
+		log.warn("\t\t\t[Injection Report]");
 		for (String s : report) {
 			log.warn(s);
 		}

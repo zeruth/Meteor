@@ -8,9 +8,14 @@ import meteor.ui.config.RenderMode;
 import net.runelite.api.Callbacks;
 import net.runelite.api.mixins.*;
 import net.runelite.rs.api.RSClient;
+import org.bytedeco.javacv.Java2DFrameUtils;
+import org.bytedeco.opencv.global.opencv_imgproc;
+import org.bytedeco.opencv.opencv_core.Mat;
+import org.bytedeco.opencv.opencv_core.Size;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.image.BufferedImage;
 
 @SuppressWarnings("ALL")
 @Mixin(RSClient.class)
@@ -139,5 +144,68 @@ abstract class Client implements RSClient {
     @Override
     public void setGPUFilter(GPUFilter gpuFilter) {
         this.gpuFilter = gpuFilter;
+    }
+
+    @Inject
+    private float stretchedWidth = -1f;
+
+    @Inject
+    @Override
+    public float getStretchedWidth() {
+        return stretchedWidth;
+    }
+
+    @Inject
+    @Override
+    public void setStretchedWidth(float stretchedWidth) {
+        this.stretchedWidth = stretchedWidth;
+    }
+
+    @Inject
+    private float stretchedHeight = -1f;
+
+    @Inject
+    @Override
+    public float getStretchedHeight() {
+        return stretchedHeight;
+    }
+
+    @Inject
+    @Override
+    public void setStretchedHeight(float stretchedHeight) {
+        this.stretchedHeight = stretchedHeight;
+    }
+
+    @Inject
+    @Override
+    public BufferedImage gpuResizeAndFilter(BufferedImage gameImage) {
+        Mat inputMat = Java2DFrameUtils.toMat(gameImage);
+        Mat outputMat = new Mat();
+        opencv_imgproc.resize(
+                inputMat,
+                outputMat,
+                new Size((int) (getStretchedWidth() + 12), (int) getStretchedHeight()),
+                0d,
+                0d,
+                getGPUFilter().getFilter()
+        );
+        return Java2DFrameUtils.toBufferedImage(outputMat);
+    }
+
+    @Inject
+    private float padding = 0;
+
+    @Inject
+    @Override
+    public float getPadding() {
+        if (padding == -1)
+            padding = 0;
+        return padding;
+    }
+
+    @Inject
+    @Override
+    public void setPadding(float padding) {
+        this.padding = padding;
     }
 }

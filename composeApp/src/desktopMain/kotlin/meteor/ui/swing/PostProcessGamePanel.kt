@@ -1,18 +1,18 @@
 package meteor.ui.swing
 
+import meteor.Constants.RS_DIMENSIONS
 import meteor.Main
 import meteor.events.DrawFinished
+import meteor.ui.compose.GamePanel
 import meteor.ui.config.AspectMode
 import meteor.ui.config.CPUFilter
 import meteor.ui.config.RenderMode
-import org.bytedeco.javacv.Java2DFrameUtils
-import org.bytedeco.opencv.global.opencv_imgproc
-import org.bytedeco.opencv.opencv_core.Mat
-import org.bytedeco.opencv.opencv_core.Size
 import org.rationalityfrontline.kevent.KEVENT
+import java.awt.Graphics
 import java.awt.Graphics2D
 import java.awt.KeyboardFocusManager
 import java.awt.RenderingHints
+import java.awt.image.BufferedImage
 import javax.swing.JPanel
 
 
@@ -23,11 +23,6 @@ class PostProcessGamePanel : JPanel() {
     private var graphics2D: Graphics2D? = null
     private val hints = RenderingHints(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BILINEAR)
     private var loading = true
-    companion object {
-        var stretchedWidth = -1f
-        var stretchedHeight = -1f
-        var lastScale = 0f
-    }
     init {
         //Loading
         Thread(kotlinx.coroutines.Runnable {
@@ -48,77 +43,68 @@ class PostProcessGamePanel : JPanel() {
     }
 
     fun draw() {
-        val image = RS2GamePanel.image
-        val scale = getScale()
-        stretchedWidth = (789 * scale)
-        stretchedHeight = (531 * scale)
-        lastScale = scale
-        if (Main.client.aspectMode == AspectMode.FIT)
-            Main.xPadding.value = ((width - stretchedWidth) / 2)
-
         super.getGraphics()?.let {
             graphics2D = it as Graphics2D
-        }
-
-        graphics2D?.let {
-            var outputImage = image
+            var finalImage = RS2GamePanel.image
+            updateScale()
             when (Main.client.renderMode) {
-                RenderMode.GPU -> {
-                    Main.text.value = "Meteor 2.0.4 (GPU)"
-                    try {
-                        val inputMat: Mat = Java2DFrameUtils.toMat(image)
-                        val outputMat = Mat()
-                        if (stretchedWidth > 0 && stretchedHeight > 0) {
-                            gpuResizeAndFilter(inputMat, outputMat)
-                            outputImage = Java2DFrameUtils.toBufferedImage(outputMat)
-                        }
-                    } catch (e: Exception) {
-                        e.printStackTrace()
-                        println("Error occurred during GPU upscaling, disabling...")
-                        Main.client.renderMode = RenderMode.CPU
-                    }
-                }
-                RenderMode.CPU -> {
-                    Main.text.value = "Meteor 2.0.4"
-                    if (Main.client.cpuFilter == CPUFilter.BILINEAR) {
-                        it.setRenderingHints(hints)
-                    }
-                }
+                RenderMode.GPU -> finalImage = renderGPU(RS2GamePanel.image)
+                RenderMode.CPU -> setCPURenderingHints(it)
                 else -> {}
             }
-
-            when (Main.client.aspectMode) {
-                AspectMode.FIT -> {
-                    it.drawImage(outputImage, Main.xPadding.value.toInt(), 0,
-                        stretchedWidth.toInt(), stretchedHeight.toInt(),this)
-                }
-                AspectMode.FILL -> {
-                    Main.xPadding.value = 0f
-                    it.drawImage(outputImage, Main.xPadding.value.toInt(), 0,
-                        width, height,this)
-                }
-                else -> {}
-            }
+            drawToSurface(it, finalImage)
         }
     }
 
-    private fun gpuColorOperations() {
-        //Color filtering
-        //opencv_imgproc.cvtColor(inputMat, inputMat, opencv_imgproc.COLOR_RGBA2BGR);
+    private fun updateScale() {
+        val scale = getScale()
+        Main.client.stretchedWidth = (RS_DIMENSIONS.width * scale)
+        Main.client.stretchedHeight = (RS_DIMENSIONS.height * scale)
 
-        //Color mapping
-        //opencv_imgproc.applyColorMap(inputMat, inputMat, opencv_imgproc.COLORMAP_RAINBOW);
+        if (Main.client.aspectMode == AspectMode.FIT)
+            updatePadding((width - Main.client.stretchedWidth) / 2)
+        else
+            updatePadding(0f)
     }
 
-    private fun gpuResizeAndFilter(inputMat: Mat, outputMat: Mat) {
-        opencv_imgproc.resize(
-            inputMat,
-            outputMat,
-            Size(stretchedWidth.toInt() + 12, stretchedHeight.toInt()),
-            0.toDouble(),
-            0.toDouble(),
-            Main.client.gpuFilter.filter
-        )
+    private fun drawToSurface(graphics: Graphics, finalImage: BufferedImage?) {
+        when (Main.client.aspectMode) {
+            AspectMode.FIT -> {
+                graphics.drawImage(finalImage, Main.client.padding.toInt(), 0,
+                    Main.client.stretchedWidth.toInt(), Main.client.stretchedHeight.toInt(),this)
+            }
+            AspectMode.FILL -> {
+                graphics.drawImage(finalImage, 0, 0,
+                    width, height,this)
+            }
+            else -> {}
+        }
+    }
+
+    private fun updatePadding(padding: Float) {
+        Main.client.padding = padding
+        GamePanel.xPadding.value = Main.client.padding
+    }
+
+    private fun setCPURenderingHints(graphics2D: Graphics2D) {
+        Main.text.value = "Meteor 2.0.4"
+        if (Main.client.cpuFilter == CPUFilter.BILINEAR) {
+            graphics2D.setRenderingHints(hints)
+        }
+    }
+
+    private fun renderGPU(inputImage: BufferedImage?) : BufferedImage? {
+        Main.text.value = "Meteor 2.0.4 (GPU)"
+        try {
+            if (Main.client.stretchedWidth > 0 && Main.client.stretchedHeight > 0) {
+                return Main.client.gpuResizeAndFilter(inputImage)
+            }
+        } catch (e: Exception) {
+            e.printStackTrace()
+            println("Error occurred during GPU upscaling, disabling...")
+            Main.client.renderMode = RenderMode.CPU
+        }
+        return null
     }
 
     private fun getScale(): Float {

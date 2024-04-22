@@ -66,10 +66,13 @@ object TranslateMouseListener : MouseListener, MouseMotionListener {
     }
 
     private fun translateEvent(e: MouseEvent): MouseEvent {
-        val x = e.x - Main.xPadding.value
-        val stretchedDimensions = Dimension(Main.gamePanel.width, Main.gamePanel.height)
-        val modX: Float = (stretchedDimensions.width.toFloat() / Main.client.gamePanel.width)
-        val modY: Float = (stretchedDimensions.height.toFloat() / RS_DIMENSIONS.height)
+        val x = e.x - Main.client.padding
+        val modY: Float = (Main.gamePanel.height.toFloat() / RS_DIMENSIONS.height)
+        val modX = when (Main.client.aspectMode) {
+            AspectMode.FIT -> modY
+            AspectMode.FILL -> (Main.gamePanel.width.toFloat() / Main.client.gamePanel.width)
+            else -> 1f
+        }
         val newX = x / modX
         val newY = (e.y.toFloat() / modY);
         val mouseEvent = MouseEvent(

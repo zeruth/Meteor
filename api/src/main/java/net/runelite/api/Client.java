@@ -4,8 +4,10 @@ import meteor.ui.config.AspectMode;
 import meteor.ui.config.CPUFilter;
 import meteor.ui.config.GPUFilter;
 import meteor.ui.config.RenderMode;
+import org.bytedeco.opencv.opencv_core.Mat;
 
 import javax.swing.*;
+import java.awt.image.BufferedImage;
 
 public interface Client extends GameShell{
     void setGamePanel(JPanel gamePanel);
@@ -34,4 +36,17 @@ public interface Client extends GameShell{
 
     void setGPUFilter(GPUFilter gpuFilter);
 
+    float getStretchedWidth();
+
+    void setStretchedWidth(float stretcheWidth);
+
+    float getStretchedHeight();
+
+    void setStretchedHeight(float stretcheHeight);
+
+    BufferedImage gpuResizeAndFilter(BufferedImage gameImage);
+
+    float getPadding();
+
+    void setPadding(float xPadding);
 }
