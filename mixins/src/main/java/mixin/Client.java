@@ -1,6 +1,10 @@
 package mixin;
 
 import meteor.events.DrawFinished;
+import meteor.ui.config.AspectMode;
+import meteor.ui.config.CPUFilter;
+import meteor.ui.config.GPUFilter;
+import meteor.ui.config.RenderMode;
 import net.runelite.api.Callbacks;
 import net.runelite.api.mixins.*;
 import net.runelite.rs.api.RSClient;
@@ -67,5 +71,73 @@ abstract class Client implements RSClient {
         setHighMemory$api();
         setMembers(true);
         startDaemon$api();
+    }
+
+    @Inject
+    private RenderMode renderMode;
+
+    @Inject
+    @Override
+    public RenderMode getRenderMode() {
+        if (renderMode == null)
+            renderMode = RenderMode.CPU;
+        return renderMode;
+    }
+
+    @Inject
+    @Override
+    public void setRenderMode(RenderMode renderMode) {
+        this.renderMode = renderMode;
+    }
+
+    @Inject
+    private AspectMode aspectMode;
+
+    @Inject
+    @Override
+    public AspectMode getAspectMode() {
+        if (aspectMode == null)
+            aspectMode = AspectMode.FIT;
+        return aspectMode;
+    }
+
+    @Inject
+    @Override
+    public void setAspectMode(AspectMode aspectMode) {
+        this.aspectMode = aspectMode;
+    }
+
+    @Inject
+    private CPUFilter cpuFilter = CPUFilter.NONE;
+
+    @Inject
+    @Override
+    public CPUFilter getCPUFilter() {
+        if (cpuFilter == null)
+            cpuFilter = CPUFilter.NONE;
+        return cpuFilter;
+    }
+
+    @Inject
+    @Override
+    public void setCPUFilter(CPUFilter cpuFilter) {
+        this.cpuFilter = cpuFilter;
+    }
+
+    @Inject
+    private GPUFilter gpuFilter = GPUFilter.CUBIC;
+
+    @Inject
+    @Override
+    public GPUFilter getGPUFilter() {
+        if (gpuFilter == null)
+            gpuFilter = GPUFilter.CUBIC;
+        return gpuFilter;
+    }
+
+    @Inject
+    @Override
+    public void setGPUFilter(GPUFilter gpuFilter) {
+        this.gpuFilter = gpuFilter;
     }
 }

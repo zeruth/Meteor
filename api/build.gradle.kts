@@ -17,7 +17,15 @@ dependencies {
     }
 
     with(libs) {
+
     }
+
+    compileOnly(files(
+        "../libs/javacpp-1.5.10.jar",
+        "../libs/javacv-1.5.10.jar",
+        "../libs/openblas-0.3.26-1.5.10.jar",
+        "../libs/opencv-4.9.0-1.5.10.jar",
+    ))
 }
 
 tasks.test {

@@ -1,18 +1,15 @@
 package meteor.ui.compose
 
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.awt.SwingPanel
-import androidx.compose.ui.draw.scale
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import meteor.Constants.RS_DIMENSIONS
 import meteor.Main
-import meteor.ui.config.FillMode
 
 /**
  * This panel will contain the game view & compose overlays eventually

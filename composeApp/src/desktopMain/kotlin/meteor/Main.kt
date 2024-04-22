@@ -11,7 +11,8 @@ import meteor.events.Command
 import meteor.input.KeyListener
 import meteor.input.TranslateMouseListener
 import meteor.ui.compose.Window.MeteorWindow
-import meteor.ui.config.FillMode
+import meteor.ui.config.AspectMode
+import meteor.ui.config.CPUFilter
 import meteor.ui.config.GPUFilter
 import meteor.ui.config.RenderMode
 import meteor.ui.swing.PostProcessGamePanel
@@ -28,9 +29,6 @@ object Main {
     val hooks = Hooks
     val gamePanel = PostProcessGamePanel()
     var initialSize = Dimension(RS_DIMENSIONS.width, RS_DIMENSIONS.height + 28)
-    var fillMode = FillMode.FIT
-    var gpuFilter = GPUFilter.LINEAR
-    var renderMode = RenderMode.CPU
     var loaded = false
 
     var text = mutableStateOf("")
@@ -80,34 +78,39 @@ object Main {
 
     fun processClientCommand(command: String) {
         when (command) {
-            "fill" -> fillMode = FillMode.FILL
+            "fill" -> client.aspectMode = AspectMode.FILL
             "fit" -> {
-                fillMode = FillMode.FIT
+                client.aspectMode = AspectMode.FIT
                 window.repaint()
             }
             "reset_window" -> {
                 window.size = initialSize
             }
             "filter" -> {
-                Configuration.CPU_LINEAR = !Configuration.CPU_LINEAR
+                client.cpuFilter = when (client.cpuFilter) {
+                    CPUFilter.BILINEAR -> CPUFilter.NONE
+                    CPUFilter.NONE -> CPUFilter.BILINEAR
+                    else -> CPUFilter.NONE
+                }
             }
             "gpu" -> {
-                renderMode = when (renderMode) {
+                client.renderMode = when (client.renderMode) {
                     RenderMode.CPU -> RenderMode.GPU
                     RenderMode.GPU -> RenderMode.CPU
+                    else -> RenderMode.CPU
                 }
             }
             "area" -> {
-                gpuFilter = GPUFilter.AREA
+                client.gpuFilter = GPUFilter.AREA
             }
             "linear_gpu" -> {
-                gpuFilter = GPUFilter.LINEAR
+                client.gpuFilter = GPUFilter.LINEAR
             }
             "cubic" -> {
-                gpuFilter = GPUFilter.CUBIC
+                client.gpuFilter = GPUFilter.CUBIC
             }
             "lanc" -> {
-                gpuFilter = GPUFilter.LANCZOS4
+                client.gpuFilter = GPUFilter.LANCZOS4
             }
         }
     }

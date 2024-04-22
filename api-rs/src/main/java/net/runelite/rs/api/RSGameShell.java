@@ -38,7 +38,7 @@ public interface RSGameShell extends GameShell, Runnable, MouseListener, MouseMo
     void startThread$api(Runnable runnable, int priority);
 
     @Import("refresh")
-    void setRefresh(Boolean shouldRefresh);
+    void setRefresh(boolean shouldRefresh);
 
     @Import("refresh")
     void refresh$api();

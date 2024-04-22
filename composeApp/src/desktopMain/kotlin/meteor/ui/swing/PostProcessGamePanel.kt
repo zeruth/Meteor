@@ -1,14 +1,12 @@
 package meteor.ui.swing
 
-import meteor.Configuration.CPU_LINEAR
 import meteor.Main
 import meteor.events.DrawFinished
-import meteor.ui.config.FillMode
-import meteor.ui.config.GPUFilter
+import meteor.ui.config.AspectMode
+import meteor.ui.config.CPUFilter
 import meteor.ui.config.RenderMode
 import org.bytedeco.javacv.Java2DFrameUtils
 import org.bytedeco.opencv.global.opencv_imgproc
-import org.bytedeco.opencv.global.opencv_imgproc.CV_INTER_CUBIC
 import org.bytedeco.opencv.opencv_core.Mat
 import org.bytedeco.opencv.opencv_core.Size
 import org.rationalityfrontline.kevent.KEVENT
@@ -55,7 +53,7 @@ class PostProcessGamePanel : JPanel() {
         stretchedWidth = (789 * scale)
         stretchedHeight = (531 * scale)
         lastScale = scale
-        if (Main.fillMode == FillMode.FIT)
+        if (Main.client.aspectMode == AspectMode.FIT)
             Main.xPadding.value = ((width - stretchedWidth) / 2)
 
         super.getGraphics()?.let {
@@ -64,7 +62,7 @@ class PostProcessGamePanel : JPanel() {
 
         graphics2D?.let {
             var outputImage = image
-            when (Main.renderMode) {
+            when (Main.client.renderMode) {
                 RenderMode.GPU -> {
                     Main.text.value = "Meteor 2.0.3 (GPU)"
                     try {
@@ -77,27 +75,29 @@ class PostProcessGamePanel : JPanel() {
                     } catch (e: Exception) {
                         e.printStackTrace()
                         println("Error occurred during GPU upscaling, disabling...")
-                        Main.renderMode = RenderMode.CPU
+                        Main.client.renderMode = RenderMode.CPU
                     }
                 }
                 RenderMode.CPU -> {
                     Main.text.value = "Meteor 2.0.3"
-                    if (CPU_LINEAR) {
+                    if (Main.client.cpuFilter == CPUFilter.BILINEAR) {
                         it.setRenderingHints(hints)
                     }
                 }
+                else -> {}
             }
 
-            when (Main.fillMode) {
-                FillMode.FIT -> {
+            when (Main.client.aspectMode) {
+                AspectMode.FIT -> {
                     it.drawImage(outputImage, Main.xPadding.value.toInt(), 0,
                         stretchedWidth.toInt(), stretchedHeight.toInt(),this)
                 }
-                FillMode.FILL -> {
+                AspectMode.FILL -> {
                     Main.xPadding.value = 0f
                     it.drawImage(outputImage, Main.xPadding.value.toInt(), 0,
                         width, height,this)
                 }
+                else -> {}
             }
         }
     }
@@ -117,7 +117,7 @@ class PostProcessGamePanel : JPanel() {
             Size(stretchedWidth.toInt() + 12, stretchedHeight.toInt()),
             0.toDouble(),
             0.toDouble(),
-            Main.gpuFilter.filter
+            Main.client.gpuFilter.filter
         )
     }
 

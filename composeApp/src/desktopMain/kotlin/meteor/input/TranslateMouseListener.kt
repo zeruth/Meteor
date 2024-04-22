@@ -25,8 +25,9 @@
  */
 package meteor.input
 
+import meteor.Constants.RS_DIMENSIONS
 import meteor.Main
-import meteor.ui.config.FillMode
+import meteor.ui.config.AspectMode
 import net.runelite.rs.api.RSGameShell
 import java.applet.Applet
 import java.awt.Dimension
@@ -68,10 +69,8 @@ object TranslateMouseListener : MouseListener, MouseMotionListener {
         val x = e.x - Main.xPadding.value
         val stretchedDimensions = Dimension(Main.gamePanel.width, Main.gamePanel.height)
         val modX: Float = (stretchedDimensions.width.toFloat() / Main.client.gamePanel.width)
-        val modY: Float = (stretchedDimensions.height.toFloat() / 531)
-        var newX = (x.toFloat() / modX);
-        if (Main.fillMode == FillMode.FIT)
-            newX = (x.toFloat() / modY);
+        val modY: Float = (stretchedDimensions.height.toFloat() / RS_DIMENSIONS.height)
+        val newX = x / modX
         val newY = (e.y.toFloat() / modY);
         val mouseEvent = MouseEvent(
             client as Applet, e.id, e.getWhen(),

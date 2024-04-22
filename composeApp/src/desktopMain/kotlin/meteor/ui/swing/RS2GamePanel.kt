@@ -1,6 +1,5 @@
 package meteor.ui.swing
 
-import meteor.Configuration
 import meteor.Constants.RS_DIMENSIONS
 import java.awt.Dimension
 import java.awt.Graphics
