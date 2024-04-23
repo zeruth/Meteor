@@ -48,7 +48,7 @@ class PostProcessGamePanel : JPanel() {
             var finalImage = RS2GamePanel.image
             updateScale()
             when (Main.client.renderMode) {
-                RenderMode.GPU -> finalImage = renderGPU(RS2GamePanel.image)
+                RenderMode.GPU -> finalImage = upscaleGPU(finalImage)
                 RenderMode.CPU -> setCPURenderingHints(it)
                 else -> {}
             }
@@ -93,7 +93,7 @@ class PostProcessGamePanel : JPanel() {
         }
     }
 
-    private fun renderGPU(inputImage: BufferedImage?) : BufferedImage? {
+    private fun upscaleGPU(inputImage: BufferedImage?) : BufferedImage? {
         Main.text.value = "Meteor 2.0.4 (GPU)"
         try {
             if (Main.client.stretchedWidth > 0 && Main.client.stretchedHeight > 0) {
