@@ -80,7 +80,7 @@ class PostProcessGamePanel : JPanel() {
     }
 
     private fun updatePadding(padding: Float) {
-        Main.client.padding = padding
+        Main.client.padding = padding.coerceAtLeast(0f)
         GamePanel.xPadding.value = Main.client.padding
     }
 
