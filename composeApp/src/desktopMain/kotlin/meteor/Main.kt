@@ -113,4 +113,12 @@ object Main {
             }
         }
     }
+
+    fun updateStatusText() {
+        when (client.renderMode) {
+            RenderMode.CPU -> text.value = "Meteor 2.0.4"
+            RenderMode.GPU -> text.value = "Meteor 2.0.4 (GPU)"
+            else -> {}
+        }
+    }
 }

@@ -52,6 +52,7 @@ class PostProcessGamePanel : JPanel() {
                 RenderMode.CPU -> setCPURenderingHints(it)
                 else -> {}
             }
+            Main.updateStatusText()
             drawToSurface(it, finalImage)
         }
     }
@@ -73,10 +74,7 @@ class PostProcessGamePanel : JPanel() {
                 graphics.drawImage(finalImage, Main.client.padding.toInt(), 0,
                     Main.client.stretchedWidth.toInt(), Main.client.stretchedHeight.toInt(),this)
             }
-            AspectMode.FILL -> {
-                graphics.drawImage(finalImage, 0, 0,
-                    width, height,this)
-            }
+            AspectMode.FILL -> graphics.drawImage(finalImage, 0, 0, width, height,this)
             else -> {}
         }
     }
@@ -87,14 +85,12 @@ class PostProcessGamePanel : JPanel() {
     }
 
     private fun setCPURenderingHints(graphics2D: Graphics2D) {
-        Main.text.value = "Meteor 2.0.4"
         if (Main.client.cpuFilter == CPUFilter.BILINEAR) {
             graphics2D.setRenderingHints(hints)
         }
     }
 
     private fun upscaleGPU(inputImage: BufferedImage?) : BufferedImage? {
-        Main.text.value = "Meteor 2.0.4 (GPU)"
         try {
             if (Main.client.stretchedWidth > 0 && Main.client.stretchedHeight > 0) {
                 return Main.client.gpuResizeAndFilter(inputImage)
