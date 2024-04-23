@@ -4,7 +4,6 @@ import meteor.ui.config.AspectMode;
 import meteor.ui.config.CPUFilter;
 import meteor.ui.config.GPUFilter;
 import meteor.ui.config.RenderMode;
-import org.bytedeco.opencv.opencv_core.Mat;
 
 import javax.swing.*;
 import java.awt.image.BufferedImage;
@@ -49,4 +48,11 @@ public interface Client extends GameShell{
     float getPadding();
 
     void setPadding(float xPadding);
+    void projectFromGround$api(PathingEntity entity, int height);
+    int getProjectX();
+    int getProjectY();
+    PlayerEntity[] getPlayers();
+    PlayerEntity getLocalPlayer();
+    NpcEntity[] getNpcs();
+    boolean loggedIn();
 }

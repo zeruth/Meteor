@@ -8,6 +8,7 @@ import meteor.ui.config.RenderMode;
 import net.runelite.api.Callbacks;
 import net.runelite.api.mixins.*;
 import net.runelite.rs.api.RSClient;
+import net.runelite.rs.api.RSPathingEntity;
 import org.bytedeco.javacv.Java2DFrameUtils;
 import org.bytedeco.opencv.global.opencv_imgproc;
 import org.bytedeco.opencv.opencv_core.Mat;
@@ -203,5 +204,11 @@ abstract class Client implements RSClient {
     @Override
     public void setPadding(float padding) {
         this.padding = padding;
+    }
+
+    @Inject
+    @MethodHook(value = "projectFromGround", end = true)
+    public void projectFromGround$tail(RSPathingEntity entity, int height) {
+        entity.setProjection(getProjectX(), getProjectY());
     }
 }

@@ -124,5 +124,9 @@ object Main {
             RenderMode.GPU -> text.value = "Meteor 2.0.4 (GPU)"
             else -> {}
         }
+        if (client.loggedIn())
+            client.localPlayer?.let {
+                text.value += " - ${it.name}"
+            }
     }
 }
