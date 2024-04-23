@@ -176,19 +176,15 @@ abstract class Client implements RSClient {
         this.stretchedHeight = stretchedHeight;
     }
 
+    /**
+     * @param filter see GamePanel.
+     */
     @Inject
     @Override
-    public BufferedImage gpuResizeAndFilter(BufferedImage gameImage) {
+    public BufferedImage gpuResizeAndFilter(BufferedImage gameImage, int width, int height, int filter) {
         Mat inputMat = Java2DFrameUtils.toMat(gameImage);
         Mat outputMat = new Mat();
-        opencv_imgproc.resize(
-                inputMat,
-                outputMat,
-                new Size((int) (getStretchedWidth() + 12), (int) getStretchedHeight()),
-                0d,
-                0d,
-                getGPUFilter().getFilter()
-        );
+        opencv_imgproc.resize(inputMat, outputMat, new Size(width, height), 0d, 0d, filter);
         return Java2DFrameUtils.toBufferedImage(outputMat);
     }
 

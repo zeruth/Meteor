@@ -4,6 +4,8 @@ import meteor.Constants.RS_DIMENSIONS
 import meteor.Main
 import meteor.events.DrawFinished
 import meteor.ui.compose.GamePanel
+import meteor.ui.compose.GamePanel.stretchedHeight
+import meteor.ui.compose.GamePanel.stretchedWidth
 import meteor.ui.config.AspectMode
 import meteor.ui.config.CPUFilter
 import meteor.ui.config.RenderMode
@@ -45,10 +47,10 @@ class PostProcessGamePanel : JPanel() {
     fun draw() {
         super.getGraphics()?.let {
             graphics2D = it as Graphics2D
-            var finalImage = RS2GamePanel.image
-            updateScale()
+            var finalImage = RS2GamePanel.image!!
+            updateSizeAndScale()
             when (Main.client.renderMode) {
-                RenderMode.GPU -> finalImage = upscaleGPU(finalImage)
+                RenderMode.GPU -> finalImage = upscaleGPU(finalImage)?: return
                 RenderMode.CPU -> setCPURenderingHints(it)
                 else -> {}
             }
@@ -57,22 +59,29 @@ class PostProcessGamePanel : JPanel() {
         }
     }
 
-    private fun updateScale() {
+    private fun updateSizeAndScale() {
         val scale = getScale()
-        Main.client.stretchedWidth = (RS_DIMENSIONS.width * scale)
-        Main.client.stretchedHeight = (RS_DIMENSIONS.height * scale)
+        var stretchedWidth = width
+        var stretchedHeight = height
+        if (Main.client.aspectMode == AspectMode.FIT) {
+            stretchedWidth = (RS_DIMENSIONS.width * scale).toInt()
+            stretchedHeight = (RS_DIMENSIONS.height * scale).toInt()
+        }
+
+        GamePanel.stretchedWidth.value = stretchedWidth
+        GamePanel.stretchedHeight.value = stretchedHeight
 
         if (Main.client.aspectMode == AspectMode.FIT)
-            updatePadding((width - Main.client.stretchedWidth) / 2)
+            updatePadding((width - stretchedWidth.toFloat()) / 2)
         else
             updatePadding(0f)
     }
 
-    private fun drawToSurface(graphics: Graphics, finalImage: BufferedImage?) {
+    private fun drawToSurface(graphics: Graphics, finalImage: BufferedImage) {
         when (Main.client.aspectMode) {
             AspectMode.FIT -> {
                 graphics.drawImage(finalImage, Main.client.padding.toInt(), 0,
-                    Main.client.stretchedWidth.toInt(), Main.client.stretchedHeight.toInt(),this)
+                    stretchedWidth.value, stretchedHeight.value,this)
             }
             AspectMode.FILL -> graphics.drawImage(finalImage, 0, 0, width, height,this)
             else -> {}
@@ -90,10 +99,11 @@ class PostProcessGamePanel : JPanel() {
         }
     }
 
-    private fun upscaleGPU(inputImage: BufferedImage?) : BufferedImage? {
+    private fun upscaleGPU(inputImage: BufferedImage) : BufferedImage? {
         try {
-            if (Main.client.stretchedWidth > 0 && Main.client.stretchedHeight > 0) {
-                return Main.client.gpuResizeAndFilter(inputImage)
+            if (stretchedWidth.value > 0 && stretchedHeight.value > 0) {
+                return Main.client.gpuResizeAndFilter(
+                    inputImage, stretchedWidth.value, stretchedHeight.value, Main.client.gpuFilter.filter)
             }
         } catch (e: Exception) {
             e.printStackTrace()

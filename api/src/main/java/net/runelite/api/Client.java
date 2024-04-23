@@ -44,7 +44,7 @@ public interface Client extends GameShell{
 
     void setStretchedHeight(float stretcheHeight);
 
-    BufferedImage gpuResizeAndFilter(BufferedImage gameImage);
+    BufferedImage gpuResizeAndFilter(BufferedImage gameImage, int width, int height, int filter);
 
     float getPadding();
 

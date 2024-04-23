@@ -10,6 +10,7 @@ import meteor.Constants.RS_DIMENSIONS
 import meteor.events.Command
 import meteor.input.KeyListener
 import meteor.input.TranslateMouseListener
+import meteor.ui.compose.GamePanel
 import meteor.ui.compose.Window.MeteorWindow
 import meteor.ui.config.AspectMode
 import meteor.ui.config.CPUFilter
@@ -30,7 +31,6 @@ object Main {
     val gamePanel = PostProcessGamePanel()
     var initialSize = Dimension(RS_DIMENSIONS.width, RS_DIMENSIONS.height + 28)
     var loaded = false
-
     var text = mutableStateOf("")
 
     init {
@@ -52,7 +52,7 @@ object Main {
                 this@Main.window = window
                 window.isResizable = true
                 window.background = java.awt.Color.BLACK
-                // This Window be reloaded on events where it may be destroyed such as windows scaling changes
+                //This Window be reloaded on events where it may be destroyed such as windows scaling changes
                 if (!loaded)
                     initRS2()
                 MeteorWindow()
@@ -64,6 +64,7 @@ object Main {
         client = ClassLoader.getSystemClassLoader().loadClass("Client").newInstance() as Client
         client.callbacks = hooks
         client.preInit()
+        loaded = true
 
         //Desktop init
         //We provide a custom JPanel impl that hooks the drawing process
@@ -72,7 +73,7 @@ object Main {
         gamePanel.addKeyListener(KeyListener)
         gamePanel.addMouseListener(TranslateMouseListener)
         gamePanel.addMouseMotionListener(TranslateMouseListener)
-        loaded = true
+
     }
 
     fun processClientCommand(command: String) {
@@ -110,6 +111,9 @@ object Main {
             }
             "lanc" -> {
                 client.gpuFilter = GPUFilter.LANCZOS4
+            }
+            "overlay" -> {
+                GamePanel.debugOverlay.value = !GamePanel.debugOverlay.value
             }
         }
     }
