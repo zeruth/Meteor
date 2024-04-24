@@ -1,7 +1,7 @@
 import meteor.events.Command;
-import meteor.events.DrawFinished;
 import org.rationalityfrontline.kevent.KEventGlobal;
 
+import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
 import java.awt.*;
 import java.io.ByteArrayInputStream;
@@ -11,7 +11,6 @@ import java.math.BigInteger;
 import java.net.InetAddress;
 import java.net.Socket;
 import java.net.URL;
-import java.net.UnknownHostException;
 import java.util.zip.CRC32;
 
 public class Client extends GameShell {
@@ -2617,7 +2616,7 @@ public class Client extends GameShell {
 								WordPack.pack(this.out, this.socialInput);
 								this.out.psize1(this.out.pos - start);
 								this.socialInput = JString.toSentenceCase(this.socialInput);
-								this.socialInput = WordFilter.filter(this.socialInput);
+								//this.socialInput = WordFilter.filter(this.socialInput);
 								this.addMessage(6, this.socialInput, JString.formatName(JString.fromBase37(this.socialName37)));
 								if (this.privateChatSetting == 2) {
 									this.privateChatSetting = 1;
@@ -2791,7 +2790,7 @@ public class Client extends GameShell {
 								this.out.psize1(this.out.pos - start);
 
 								this.chatTyped = JString.toSentenceCase(this.chatTyped);
-								this.chatTyped = WordFilter.filter(this.chatTyped);
+								//this.chatTyped = WordFilter.filter(this.chatTyped);
 								this.localPlayer.chat = this.chatTyped;
 								this.localPlayer.chatColor = color;
 								this.localPlayer.chatStyle = effect;
@@ -4231,23 +4230,17 @@ public class Client extends GameShell {
 			boolean lastMidiActive = this.midiActive;
 			if (value == 0) {
 				this.setMidiVolume(0);
-				MidiPlayer.volume = 100;
 				this.midiActive = true;
 			} else if (value == 1) {
 				this.setMidiVolume(-400);
-				MidiPlayer.volume = 75;
 				this.midiActive = true;
 			} else if (value == 2) {
 				this.setMidiVolume(-800);
-				MidiPlayer.volume = 50;
 				this.midiActive = true;
 			} else if (value == 3) {
 				this.setMidiVolume(-1200);
-				MidiPlayer.volume = 25;
 				this.midiActive = true;
 			} else if (value == 4) {
-				MidiPlayer.volume = 0;
-				MidiPlayer.stop();
 				this.midiActive = false;
 			}
 
@@ -6313,7 +6306,7 @@ public class Client extends GameShell {
 			}
 
 			World3D.init(512, 334, 500, 800, distance);
-			WordFilter.unpack(wordenc);
+			//WordFilter.unpack(wordenc);
 		} catch ( Exception ex) {
 			this.errorLoading = true;
 		}
@@ -7681,14 +7674,11 @@ public class Client extends GameShell {
 								if (this.saveWave(buf.data, buf.pos)) {
 									this.lastWaveId = this.waveIds[wave];
 									this.lastWaveLoops = this.waveLoops[wave];
-									SoundPlayer.sounds.put(this.waveIds[wave], AudioSystem.getAudioInputStream(new ByteArrayInputStream(buf.data, 0, buf.pos)));
-									new SoundPlayer(SoundPlayer.sounds.get(this.waveIds[wave]), 100, 0);
 								} else {
 									failed = true;
 								}
 							}
 						} else {
-							new SoundPlayer(SoundPlayer.sounds.get(this.waveIds[wave]), 100, 0);
 							if (!this.replayWave()) {
 								failed = true;
 							}
@@ -10648,7 +10638,7 @@ public class Client extends GameShell {
 						this.messageIds[this.privateMessageCount] = messageId;
 						this.privateMessageCount = (this.privateMessageCount + 1) % 100;
 						String uncompressed = WordPack.unpack(this.in, this.packetSize - 13);
-						String filtered = WordFilter.filter(uncompressed);
+						String filtered = uncompressed; //WordFilter.filter(uncompressed);
 						if (staffModLevel > 1) {
 							this.addMessage(7, filtered, JString.formatName(JString.fromBase37(from)));
 						} else {
@@ -11120,7 +11110,7 @@ public class Client extends GameShell {
 				if (!ignored && this.overrideChat == 0) {
 					try {
 						String uncompressed = WordPack.unpack(buf, length);
-						String filtered = WordFilter.filter(uncompressed);
+						String filtered = uncompressed; //WordFilter.filter(uncompressed);
 						player.chat = filtered;
 						player.chatColor = colorEffect >> 8;
 						player.chatStyle = colorEffect & 0xFF;

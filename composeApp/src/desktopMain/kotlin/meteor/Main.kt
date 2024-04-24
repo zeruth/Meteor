@@ -7,7 +7,12 @@ import androidx.compose.ui.window.Window
 import androidx.compose.ui.window.WindowState
 import androidx.compose.ui.window.application
 import meteor.Constants.RS_DIMENSIONS
+import meteor.audio.MidiPlayer
+import meteor.audio.SoundPlayer
 import meteor.events.Command
+import meteor.events.PlaySong
+import meteor.events.PlaySound
+import meteor.events.StopMusic
 import meteor.input.KeyListener
 import meteor.input.TranslateMouseListener
 import meteor.ui.compose.GamePanel
@@ -22,6 +27,7 @@ import net.runelite.api.Client
 import org.rationalityfrontline.kevent.KEVENT
 import java.awt.Dimension
 import java.awt.Window
+import javax.sound.sampled.AudioSystem
 
 
 object Main {
@@ -37,6 +43,11 @@ object Main {
         System.setProperty("compose.interop.blending", "true")
         gamePanel.background = java.awt.Color.BLACK
         KEVENT.subscribe<Command> { processClientCommand(it.data.command) }
+        KEVENT.subscribe<PlaySound> {
+            SoundPlayer(AudioSystem.getAudioInputStream(it.data.sound), 0)
+        }
+        KEVENT.subscribe<PlaySong> { MidiPlayer.playSong(false) }
+        KEVENT.subscribe<StopMusic> { MidiPlayer.stop() }
     }
 
     /**

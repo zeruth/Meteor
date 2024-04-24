@@ -35,7 +35,7 @@ public class signlink implements Runnable {
 
 	private static boolean waveplay;
 
-	private static int wavepos;
+	static int wavepos;
 
 	public static int wavevol;
 
@@ -389,7 +389,6 @@ public class signlink implements Runnable {
 
 				if (midiplay) {
 					midi = cacheDir + savereq;
-					MidiPlayer.playSong(false);
 					midiplay = false;
 				}
 

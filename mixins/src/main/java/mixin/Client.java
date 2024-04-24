@@ -1,12 +1,13 @@
 package mixin;
 
-import meteor.events.DrawFinished;
+import meteor.events.*;
 import meteor.ui.config.AspectMode;
 import meteor.ui.config.CPUFilter;
 import meteor.ui.config.GPUFilter;
 import meteor.ui.config.RenderMode;
 import net.runelite.api.Callbacks;
 import net.runelite.api.mixins.*;
+import net.runelite.mapping.Import;
 import net.runelite.rs.api.RSClient;
 import net.runelite.rs.api.RSPathingEntity;
 import org.bytedeco.javacv.Java2DFrameUtils;
@@ -17,6 +18,8 @@ import org.bytedeco.opencv.opencv_core.Size;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.image.BufferedImage;
+import java.io.ByteArrayInputStream;
+import java.util.HashMap;
 
 @SuppressWarnings("ALL")
 @Mixin(RSClient.class)
@@ -46,20 +49,6 @@ abstract class Client implements RSClient {
     @MethodHook(value = "draw", end = true)
     public void draw$post() {
         getCallbacks().post(DrawFinished.INSTANCE);
-    }
-
-    @Copy("load")
-    @Replace("load")
-    public void load() {
-        try {
-            load();
-        } catch (NoClassDefFoundError error) {
-            //TODO: investigate this failure, it's weird.
-            //simply calling WordFilter.unpack(wordenc)
-            //even with an empty obj and empty code will cause the error
-            //even though WordFilter has no initialization...
-            //error.printStackTrace();
-        }
     }
 
     @Copy("getBaseComponent")
@@ -210,5 +199,70 @@ abstract class Client implements RSClient {
     @MethodHook(value = "projectFromGround", end = true)
     public void projectFromGround$tail(RSPathingEntity entity, int height) {
         entity.setProjection(getProjectX(), getProjectY());
+    }
+
+    @Inject
+    public ByteArrayInputStream lastSound;
+
+    @Inject
+    @MethodHook(value = "saveWave", end = true)
+    void saveWave$tail(byte[] data, int pos) {
+        ByteArrayInputStream soundStream = new ByteArrayInputStream(data, 0, pos);
+        lastSound = soundStream;
+        getCallbacks().post(new PlaySound(lastSound));
+    }
+
+    @Inject
+    @MethodHook(value = "replayWave")
+    void replayWave$head() {
+        lastSound.reset();
+        getCallbacks().post(new PlaySound(lastSound));
+    }
+
+    @Shadow("wavevol")
+    public static int waveVol;
+
+    @Inject
+    @Override
+    public int getWaveVol() {
+        return waveVol;
+    }
+
+    @Shadow("midi")
+    public static String midi;
+
+    @Inject
+    @FieldHook("midi")
+    public static void onMidiChanged(int idx) {
+        if (!midi.equals("stop") && !midi.equals("voladjust")) {
+            client.getCallbacks().post(new PlaySong(midi));
+        } else if (midi.equals("stop")) {
+            client.getCallbacks().post(StopMusic.INSTANCE);
+        }
+    }
+
+    @Inject
+    @Override
+    public String getMidi() {
+        return midi;
+    }
+
+    @Copy("setMidiVolume")
+    @Replace("setMidiVolume")
+    public void setMidiVolume(int volume) {
+        switch (volume) {
+            case 0:
+                getCallbacks().post(new ChangeMusicVolume(100));
+                break;
+            case -400:
+                getCallbacks().post(new ChangeMusicVolume(75));
+                break;
+            case -800:
+                getCallbacks().post(new ChangeMusicVolume(50));
+                break;
+            case -1200:
+                getCallbacks().post(new ChangeMusicVolume(25));
+                break;
+        }
     }
 }
