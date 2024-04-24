@@ -131,8 +131,8 @@ object Main {
 
     fun updateStatusText() {
         when (client.renderMode) {
-            RenderMode.CPU -> text.value = "Meteor 2.0.4"
-            RenderMode.GPU -> text.value = "Meteor 2.0.4 (GPU)"
+            RenderMode.CPU -> text.value = "Meteor 2.0.5-SNAPSHOT"
+            RenderMode.GPU -> text.value = "Meteor 2.0.5-SNAPSHOT (GPU)"
             else -> {}
         }
         if (client.loggedIn())
