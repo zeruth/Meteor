@@ -2984,7 +2984,6 @@ public final class Client extends GameShell {
             if (this.packetType == 249) {
                i1 = this.in.g2u(); //ID
                var2 = this.in.g3u(); //DELAY
-               System.out.println(i1);
                if (this.midiActive && !lowMemory) {
                   this.anInt1023 = i1;
                   this.aBoolean260 = false;
@@ -9899,7 +9898,6 @@ public final class Client extends GameShell {
             }
 
             if (var6 != var7) {
-               System.out.println(var7);
                var3 = "checksum problem";
                this.archiveChecksum[8] = 0;
             }
