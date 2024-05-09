@@ -1,7 +1,9 @@
 <component name="ProjectRunConfigurationManager">
   <configuration default="false" name="Inject" type="Application" factoryName="Application">
+    <option name="ALTERNATIVE_JRE_PATH" value="21" />
+    <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
     <option name="MAIN_CLASS_NAME" value="com.openosrs.injector.Injector" />
-    <module name="Meteor.injector.main" />
+    <module name="client-377.injector.main" />
     <extension name="coverage">
       <pattern>
         <option name="PATTERN" value="com.openosrs.injector.*" />
