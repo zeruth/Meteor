@@ -1,4 +1,4 @@
-rootProject.name = "Meteor"
+rootProject.name = "client-377"
 enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
 
 pluginManagement {
