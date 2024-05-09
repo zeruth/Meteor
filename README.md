@@ -1,15 +1,14 @@
 # Meteor
 
-A Kotlin/Compose client built around Client1
-
-The goal is to eventually offer a truly cross-platform client with a modern touch.  
-Enhancements are nice, but I intend to respect the experience, and the developers of the project.  
-    
+A Kotlin/Compose client built around vanilla 377 (mapped from Lost-City/Client1)  
+To be used with https://github.com/Meteor-377/server but will be compatible with any 377 protocol server  
+  
 It currently offers:  
 RuneLite injection  
 OpenCV GPU upscaling  
-Kotlin/Compose framework
-
+Kotlin/Compose framework  
+Vanilla launcher (no sound/injection)  
+  
 * `/annotations` various annotations related to RuneLite's lifecycle
 * `/api` restricted-level interfaces to client members
 * `/api-rs` unrestricted-level interfaces to client members
