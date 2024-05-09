@@ -32,7 +32,7 @@ public interface RSGameShell extends GameShell, Runnable, MouseListener, MouseMo
     int getScreenHeight();
 
     @Import("initApplication")
-    void initApplication$api(int width, int height);
+    void initApplication$api();
 
     @Import("startThread")
     void startThread$api(Runnable runnable, int priority);

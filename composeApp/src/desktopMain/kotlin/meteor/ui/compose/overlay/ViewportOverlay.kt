@@ -22,7 +22,7 @@ import java.awt.Point
 
 object ViewportOverlay {
     val VIEWPORT_DIMENSIONS = Dimension(512,334)
-    val VIEWPORT_OFFSETS = Point(8, 11)
+    val VIEWPORT_OFFSETS = Point(4, 4)
 
     /**
      * This overlay layer is restricted to the viewport area

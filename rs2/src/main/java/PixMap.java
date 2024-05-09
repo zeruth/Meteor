@@ -1,88 +1,81 @@
-import java.awt.*;
-import java.awt.image.*;
+import java.awt.Component;
+import java.awt.Graphics;
+import java.awt.Image;
+import java.awt.image.ColorModel;
+import java.awt.image.DirectColorModel;
+import java.awt.image.ImageConsumer;
+import java.awt.image.ImageObserver;
+import java.awt.image.ImageProducer;
+import java.util.Hashtable;
 
-public class PixMap implements ImageProducer, ImageObserver {
+public final class PixMap implements ImageProducer, ImageObserver {
+   private ImageConsumer imageConsumer;
+   private final int width;
+   private final int height;
+   public int[] pixels;
+   private final Image image;
+   private final ColorModel colorModel;
 
-	public final int[] pixels;
+   public PixMap(Component var1, int var2, int var3) {
+      this.width = var2;
+      this.height = var3;
+      this.pixels = new int[var2 * var3];
+      this.colorModel = new DirectColorModel(32, 16711680, 65280, 255);
+      this.image = var1.createImage(this);
+      this.setPixels();
+      var1.prepareImage(this.image, this);
+      this.setPixels();
+      var1.prepareImage(this.image, this);
+      this.setPixels();
+      var1.prepareImage(this.image, this);
+      this.method130();
+   }
 
-	private final int width;
+   public synchronized void addConsumer(ImageConsumer var1) {
+      this.imageConsumer = var1;
+      var1.setDimensions(this.width, this.height);
+      var1.setProperties((Hashtable)null);
+      var1.setColorModel(this.colorModel);
+      var1.setHints(14);
+   }
 
-	private final int height;
+   private synchronized void setPixels() {
+      if (this.imageConsumer != null) {
+         this.imageConsumer.setPixels(0, 0, this.width, this.height, this.colorModel, this.pixels, 0, this.width);
+         this.imageConsumer.imageComplete(2);
+      }
 
-	private final ColorModel colorModel;
+   }
 
-	private ImageConsumer imageConsumer;
+   public void method130() {
+      Draw2D.bind(this.width, this.height, this.pixels);
+   }
 
-	private final Image image;
+   public void draw(int var1, int var2, Graphics var3) {
+      this.setPixels();
+      var3.drawImage(this.image, var2, var1, this);
+   }
 
-	public PixMap( Component c, int width, int height) {
-		this.width = width;
-		this.height = height;
-		this.pixels = new int[width * height];
-		this.colorModel = new DirectColorModel(32, 0xff0000, 0xff00, 0xff);
-		this.image = c.createImage(this);
+   public synchronized boolean isConsumer(ImageConsumer var1) {
+      return this.imageConsumer == var1;
+   }
 
-		this.setPixels();
-		c.prepareImage(this.image, this);
+   public synchronized void removeConsumer(ImageConsumer var1) {
+      if (this.imageConsumer == var1) {
+         this.imageConsumer = null;
+      }
 
-		this.setPixels();
-		c.prepareImage(this.image, this);
+   }
 
-		this.setPixels();
-		c.prepareImage(this.image, this);
+   public void startProduction(ImageConsumer var1) {
+      this.addConsumer(var1);
+   }
 
-		this.bind();
-	}
+   public void requestTopDownLeftRightResend(ImageConsumer var1) {
+      System.out.println("TDLR");
+   }
 
-	public void bind() {
-		Draw2D.bind(this.width, this.height, this.pixels);
-	}
-
-	public void draw( Graphics g, int width, int height) {
-		this.setPixels();
-		g.drawImage(this.image, width, height, this);
-	}
-
-	@Override
-	public synchronized void addConsumer( ImageConsumer consumer) {
-		this.imageConsumer = consumer;
-		consumer.setDimensions(this.width, this.height);
-		consumer.setProperties(null);
-		consumer.setColorModel(this.colorModel);
-		consumer.setHints(14);
-	}
-
-	@Override
-	public synchronized boolean isConsumer( ImageConsumer consumer) {
-		return this.imageConsumer == consumer;
-	}
-
-	@Override
-	public synchronized void removeConsumer( ImageConsumer consumer) {
-		if (this.imageConsumer == consumer) {
-			this.imageConsumer = null;
-		}
-	}
-
-	@Override
-	public void startProduction( ImageConsumer consumer) {
-		this.addConsumer(consumer);
-	}
-
-	@Override
-	public void requestTopDownLeftRightResend( ImageConsumer consumer) {
-		System.out.println("TDLR");
-	}
-
-	private synchronized void setPixels() {
-		if (this.imageConsumer != null) {
-			this.imageConsumer.setPixels(0, 0, this.width, this.height, this.colorModel, this.pixels, 0, this.width);
-			this.imageConsumer.imageComplete(2);
-		}
-	}
-
-	@Override
-	public boolean imageUpdate( Image img, int infoflags, int x, int y, int width, int height) {
-		return true;
-	}
+   public boolean imageUpdate(Image var1, int var2, int var3, int var4, int var5, int var6) {
+      return true;
+   }
 }

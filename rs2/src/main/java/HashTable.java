@@ -1,42 +1,43 @@
-public class HashTable {
+public final class HashTable {
+   private Linkable[] aClass10Array1;
+   private boolean aBoolean72 = true;
+   private int anInt231;
+   private boolean aBoolean73 = true;
 
-	private final int bucketCount;
+   public HashTable(int var1) {
+      this.anInt231 = var1;
+      this.aClass10Array1 = new Linkable[var1];
 
-	private final Linkable[] buckets;
+      for(int var2 = 0; var2 < var1; ++var2) {
+         Linkable var3 = this.aClass10Array1[var2] = new Linkable();
+         var3.next = var3;
+         var3.prev = var3;
+      }
 
-	public HashTable( int size) {
-		this.buckets = new Linkable[size];
-		this.bucketCount = size;
+   }
 
-		for ( int i = 0; i < size; i++) {
-			Linkable sentinel = this.buckets[i] = new Linkable();
-			sentinel.next = sentinel;
-			sentinel.prev = sentinel;
-		}
-	}
+   public Linkable get(long var1) {
+      Linkable var3 = this.aClass10Array1[(int)(var1 & (long)(this.anInt231 - 1))];
 
-	public Linkable get( long key) {
-		Linkable sentinel = this.buckets[(int) (key & (long) (this.bucketCount - 1))];
+      for(Linkable var4 = var3.next; var4 != var3; var4 = var4.next) {
+         if (var4.key == var1) {
+            return var4;
+         }
+      }
 
-		for ( Linkable node = sentinel.next; node != sentinel; node = node.next) {
-			if (node.key == key) {
-				return node;
-			}
-		}
+      return null;
+   }
 
-		return null;
-	}
+   public void method164(Linkable var1, long var2) {
+      if (var1.prev != null) {
+         var1.unlink();
+      }
 
-	public void put( long key, Linkable value) {
-		if (value.prev != null) {
-			value.unlink();
-		}
-
-		Linkable sentinel = this.buckets[(int) (key & (long) (this.bucketCount - 1))];
-		value.prev = sentinel.prev;
-		value.next = sentinel;
-		value.prev.next = value;
-		value.next.prev = value;
-		value.key = key;
-	}
+      Linkable var4 = this.aClass10Array1[(int)(var2 & (long)(this.anInt231 - 1))];
+      var1.prev = var4.prev;
+      var1.next = var4;
+      var1.prev.next = var1;
+      var1.next.prev = var1;
+      var1.key = var2;
+   }
 }

@@ -3,7 +3,6 @@ package mixin;
 import net.runelite.api.mixins.*;
 import net.runelite.rs.api.RSClient;
 import net.runelite.rs.api.RSGameShell;
-import net.runelite.rs.api.RSViewBox;
 
 import javax.swing.*;
 import java.applet.Applet;
@@ -20,10 +19,10 @@ abstract class GameShell extends Applet implements RSGameShell {
 
     @Copy("initApplication")
     @Replace("initApplication")
-    public void initApplication$mixin(int width, int height) {
-        setScreenWidth(width);
-        setScreenHeight(height);
-        setFrame(client.createViewBox(this, width, height));
+    public void initApplication$mixin() {
+        setScreenWidth(765);
+        setScreenHeight(503);
+        setFrame(client.createViewBox(this, getScreenWidth(), getScreenHeight()));
         setGraphics(gamePanel.getGraphics());
         setGameSurface(client.createPixMap(gamePanel, getScreenWidth(), getScreenHeight()));
         startThread$api(this, 1);
@@ -47,7 +46,6 @@ abstract class GameShell extends Applet implements RSGameShell {
         refresh$api();
     }
 
-    @Copy("getBaseComponent")
     @Replace("getBaseComponent")
     public Component getBaseComponent$mixin() {
         return gamePanel;

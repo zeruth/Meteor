@@ -1,2120 +1,2107 @@
-
-
-
-public class Model extends Hashable {
-
-	public int vertexCount;
-
-	public int[] vertexX;
-
-	public int[] vertexY;
-
-	public int[] vertexZ;
-
-	public int faceCount;
-
-	public int[] faceVertexA;
-
-	public int[] faceVertexB;
-
-	public int[] faceVertexC;
-
-	private int[] faceColorA;
-
-	private int[] faceColorB;
-
-	private int[] faceColorC;
-
-	public int[] faceInfo;
-
-	private int[] facePriority;
-
-	private int[] faceAlpha;
-
-	public int[] faceColor;
-
-	private int priority;
-
-	private int texturedFaceCount;
-
-	private int[] texturedVertexA;
-
-	private int[] texturedVertexB;
-
-	private int[] texturedVertexC;
-
-	public int minX;
-
-	public int maxX;
-
-	public int maxZ;
-
-	public int minZ;
-
-	public int radius;
-
-	public int maxY;
-
-	public int minY;
-
-	private int maxDepth;
-
-	private int minDepth;
-
-	public int objRaise;
-
-	private int[] vertexLabel;
-
-	private int[] faceLabel;
-
-	public int[][] labelVertices;
-
-	public int[][] labelFaces;
-
-	public boolean pickable = false;
-
-	public VertexNormal[] vertexNormal;
-
-	public VertexNormal[] vertexNormalOriginal;
-
-	public static Metadata[] metadata;
-
-	private static Packet head;
-
-	public static Packet face1;
-
-	public static Packet face2;
-
-	public static Packet face3;
-
-	public static Packet face4;
-
-	public static Packet face5;
-
-	public static Packet point1;
-
-	public static Packet point2;
-
-	public static Packet point3;
-
-	public static Packet point4;
-
-	public static Packet point5;
-
-	public static Packet vertex1;
-
-	public static Packet vertex2;
-
-	public static Packet axis;
-
-	public static boolean[] faceClippedX = new boolean[4096];
-
-	public static boolean[] faceNearClipped = new boolean[4096];
-
-	public static int[] vertexScreenX = new int[4096];
-
-	public static int[] vertexScreenY = new int[4096];
-
-	public static int[] vertexScreenZ = new int[4096];
-
-	public static int[] vertexViewSpaceX = new int[4096];
-
-	public static int[] vertexViewSpaceY = new int[4096];
-
-	public static int[] vertexViewSpaceZ = new int[4096];
-
-	public static int[] tmpDepthFaceCount = new int[1500];
-
-	public static int[][] tmpDepthFaces = new int[1500][512];
-
-	public static int[] tmpPriorityFaceCount = new int[12];
-
-	public static int[][] tmpPriorityFaces = new int[12][2000];
-
-	public static int[] tmpPriority10FaceDepth = new int[2000];
-
-	public static int[] tmpPriority11FaceDepth = new int[2000];
-
-	public static int[] tmpPriorityDepthSum = new int[12];
-
-	public static final int[] clippedX = new int[10];
-
-	public static final int[] clippedY = new int[10];
-
-	public static final int[] clippedColor = new int[10];
-
-	public static int baseX;
-
-	public static int baseY;
-
-	public static int baseZ;
-
-	public static boolean checkHover;
-
-	public static int mouseX;
-
-	public static int mouseZ;
-
-	public static int pickedCount;
-
-	public static final int[] pickedBitsets = new int[1000];
-
-	public static int[] sin = Draw3D.sin;
-
-	public static int[] cos = Draw3D.cos;
-
-	public static int[] palette = Draw3D.palette;
-
-	public static int[] reciprical16 = Draw3D.reciprocal16;
-
-	public Model( int id) {
-		if (metadata == null) {
-			return;
-		}
-
-		Metadata meta = metadata[id];
-		if (meta == null) {
-			System.out.println("Error model:" + id + " not found!");
-		} else {
-			this.vertexCount = meta.vertexCount;
-			this.faceCount = meta.faceCount;
-			this.texturedFaceCount = meta.texturedFaceCount;
-			this.vertexX = new int[this.vertexCount];
-			this.vertexY = new int[this.vertexCount];
-			this.vertexZ = new int[this.vertexCount];
-			this.faceVertexA = new int[this.faceCount];
-			this.faceVertexB = new int[this.faceCount];
-			this.faceVertexC = new int[this.faceCount];
-			this.texturedVertexA = new int[this.texturedFaceCount];
-			this.texturedVertexB = new int[this.texturedFaceCount];
-			this.texturedVertexC = new int[this.texturedFaceCount];
-
-			if (meta.vertexLabelsOffset >= 0) {
-				this.vertexLabel = new int[this.vertexCount];
-			}
-
-			if (meta.faceInfosOffset >= 0) {
-				this.faceInfo = new int[this.faceCount];
-			}
-
-			if (meta.facePrioritiesOffset >= 0) {
-				this.facePriority = new int[this.faceCount];
-			} else {
-				this.priority = -meta.facePrioritiesOffset - 1;
-			}
-
-			if (meta.faceAlphasOffset >= 0) {
-				this.faceAlpha = new int[this.faceCount];
-			}
-
-			if (meta.faceLabelsOffset >= 0) {
-				this.faceLabel = new int[this.faceCount];
-			}
-
-			this.faceColor = new int[this.faceCount];
-
-			point1.pos = meta.vertexFlagsOffset;
-			point2.pos = meta.vertexXOffset;
-			point3.pos = meta.vertexYOffset;
-			point4.pos = meta.vertexZOffset;
-			point5.pos = meta.vertexLabelsOffset;
-
-			int dx = 0;
-			int db = 0;
-			int dc = 0;
-			int a;
-			int b;
-			int c;
-
-			for ( int v = 0; v < this.vertexCount; v++) {
-				int flags = point1.g1();
-				a = 0;
-				if ((flags & 0x1) != 0) {
-					a = point2.gsmart();
-				}
-
-				b = 0;
-				if ((flags & 0x2) != 0) {
-					b = point3.gsmart();
-				}
-
-				c = 0;
-				if ((flags & 0x4) != 0) {
-					c = point4.gsmart();
-				}
-
-				this.vertexX[v] = dx + a;
-				this.vertexY[v] = db + b;
-				this.vertexZ[v] = dc + c;
-				dx = this.vertexX[v];
-				db = this.vertexY[v];
-				dc = this.vertexZ[v];
-
-				if (this.vertexLabel != null) {
-					this.vertexLabel[v] = point5.g1();
-				}
-			}
-
-			face1.pos = meta.faceColorsOffset;
-			face2.pos = meta.faceInfosOffset;
-			face3.pos = meta.facePrioritiesOffset;
-			face4.pos = meta.faceAlphasOffset;
-			face5.pos = meta.faceLabelsOffset;
-			for (int f = 0; f < this.faceCount; f++) {
-				this.faceColor[f] = face1.g2();
-				if (this.faceInfo != null) {
-					this.faceInfo[f] = face2.g1();
-				}
-
-				if (this.facePriority != null) {
-					this.facePriority[f] = face3.g1();
-				}
-
-				if (this.faceAlpha != null) {
-					this.faceAlpha[f] = face4.g1();
-				}
-
-				if (this.faceLabel != null) {
-					this.faceLabel[f] = face5.g1();
-				}
-			}
-
-			vertex1.pos = meta.faceVerticesOffset;
-			vertex2.pos = meta.faceOrientationsOffset;
-
-			a = 0;
-			b = 0;
-			c = 0;
-			int last = 0;
-
-			for ( int f = 0; f < this.faceCount; f++) {
-				int orientation = vertex2.g1();
-
-				if (orientation == 1) {
-					a = vertex1.gsmart() + last;
-					b = vertex1.gsmart() + a;
-					c = vertex1.gsmart() + b;
-					last = c;
-					this.faceVertexA[f] = a;
-					this.faceVertexB[f] = b;
-					this.faceVertexC[f] = c;
-				} else if (orientation == 2) {
-					a = a;
-					b = c;
-					c = vertex1.gsmart() + last;
-					last = c;
-					this.faceVertexA[f] = a;
-					this.faceVertexB[f] = b;
-					this.faceVertexC[f] = c;
-				} else if (orientation == 3) {
-					a = c;
-					b = b;
-					c = vertex1.gsmart() + last;
-					last = c;
-					this.faceVertexA[f] = a;
-					this.faceVertexB[f] = b;
-					this.faceVertexC[f] = c;
-				} else if (orientation == 4) {
-					int tmp = a;
-					a = b;
-					b = tmp;
-					c = vertex1.gsmart() + last;
-					last = c;
-					this.faceVertexA[f] = a;
-					this.faceVertexB[f] = tmp;
-					this.faceVertexC[f] = c;
-				}
-			}
-
-			axis.pos = meta.faceTextureAxisOffset * 6;
-			for (int f = 0; f < this.texturedFaceCount; f++) {
-				this.texturedVertexA[f] = axis.g2();
-				this.texturedVertexB[f] = axis.g2();
-				this.texturedVertexC[f] = axis.g2();
-			}
-		}
-	}
-
-	public Model( Model[] models, int count) {
-		boolean copyInfo = false;
-		boolean copyPriorities = false;
-		boolean copyAlpha = false;
-		boolean copyLabels = false;
-
-		this.vertexCount = 0;
-		this.faceCount = 0;
-		this.texturedFaceCount = 0;
-		this.priority = -1;
-
-		for ( int i = 0; i < count; i++) {
-			Model model = models[i];
-			if (model != null) {
-				this.vertexCount += model.vertexCount;
-				this.faceCount += model.faceCount;
-				this.texturedFaceCount += model.texturedFaceCount;
-				copyInfo |= model.faceInfo != null;
-
-				if (model.facePriority == null) {
-					if (this.priority == -1) {
-						this.priority = model.priority;
-					}
-
-					if (this.priority != model.priority) {
-						copyPriorities = true;
-					}
-				} else {
-					copyPriorities = true;
-				}
-
-				copyAlpha |= model.faceAlpha != null;
-				copyLabels |= model.faceLabel != null;
-			}
-		}
-
-		this.vertexX = new int[this.vertexCount];
-		this.vertexY = new int[this.vertexCount];
-		this.vertexZ = new int[this.vertexCount];
-		this.vertexLabel = new int[this.vertexCount];
-		this.faceVertexA = new int[this.faceCount];
-		this.faceVertexB = new int[this.faceCount];
-		this.faceVertexC = new int[this.faceCount];
-		this.texturedVertexA = new int[this.texturedFaceCount];
-		this.texturedVertexB = new int[this.texturedFaceCount];
-		this.texturedVertexC = new int[this.texturedFaceCount];
-
-		if (copyInfo) {
-			this.faceInfo = new int[this.faceCount];
-		}
-
-		if (copyPriorities) {
-			this.facePriority = new int[this.faceCount];
-		}
-
-		if (copyAlpha) {
-			this.faceAlpha = new int[this.faceCount];
-		}
-
-		if (copyLabels) {
-			this.faceLabel = new int[this.faceCount];
-		}
-
-		this.faceColor = new int[this.faceCount];
-		this.vertexCount = 0;
-		this.faceCount = 0;
-		this.texturedFaceCount = 0;
-
-		for ( int i = 0; i < count; i++) {
-			Model model = models[i];
-
-			if (model != null) {
-				for ( int face = 0; face < model.faceCount; face++) {
-					if (copyInfo) {
-						if (model.faceInfo == null) {
-							this.faceInfo[this.faceCount] = 0;
-						} else {
-							this.faceInfo[this.faceCount] = model.faceInfo[face];
-						}
-					}
-
-					if (copyPriorities) {
-						if (model.facePriority == null) {
-							this.facePriority[this.faceCount] = model.priority;
-						} else {
-							this.facePriority[this.faceCount] = model.facePriority[face];
-						}
-					}
-
-					if (copyAlpha) {
-						if (model.faceAlpha == null) {
-							this.faceAlpha[this.faceCount] = 0;
-						} else {
-							this.faceAlpha[this.faceCount] = model.faceAlpha[face];
-						}
-					}
-
-					if (copyLabels && model.faceLabel != null) {
-						this.faceLabel[this.faceCount] = model.faceLabel[face];
-					}
-
-					this.faceColor[this.faceCount] = model.faceColor[face];
-					this.faceVertexA[this.faceCount] = this.addVertex(model, model.faceVertexA[face]);
-					this.faceVertexB[this.faceCount] = this.addVertex(model, model.faceVertexB[face]);
-					this.faceVertexC[this.faceCount] = this.addVertex(model, model.faceVertexC[face]);
-					this.faceCount++;
-				}
-
-				for ( int f = 0; f < model.texturedFaceCount; f++) {
-					this.texturedVertexA[this.texturedFaceCount] = this.addVertex(model, model.texturedVertexA[f]);
-					this.texturedVertexB[this.texturedFaceCount] = this.addVertex(model, model.texturedVertexB[f]);
-					this.texturedVertexC[this.texturedFaceCount] = this.addVertex(model, model.texturedVertexC[f]);
-					this.texturedFaceCount++;
-				}
-			}
-		}
-	}
-
-	public Model( Model[] models, int count, boolean dummy) {
-		boolean copyInfo = false;
-		boolean copyPriority = false;
-		boolean copyAlpha = false;
-		boolean copyColor = false;
-
-		this.vertexCount = 0;
-		this.faceCount = 0;
-		this.texturedFaceCount = 0;
-		this.priority = -1;
-
-		for ( int i = 0; i < count; i++) {
-			Model model = models[i];
-			if (model != null) {
-				this.vertexCount += model.vertexCount;
-				this.faceCount += model.faceCount;
-				this.texturedFaceCount += model.texturedFaceCount;
-
-				copyInfo |= model.faceInfo != null;
-
-				if (model.facePriority == null) {
-					if (this.priority == -1) {
-						this.priority = model.priority;
-					}
-					if (this.priority != model.priority) {
-						copyPriority = true;
-					}
-				} else {
-					copyPriority = true;
-				}
-
-				copyAlpha |= model.faceAlpha != null;
-				copyColor |= model.faceColor != null;
-			}
-		}
-
-		this.vertexX = new int[this.vertexCount];
-		this.vertexY = new int[this.vertexCount];
-		this.vertexZ = new int[this.vertexCount];
-		this.faceVertexA = new int[this.faceCount];
-		this.faceVertexB = new int[this.faceCount];
-		this.faceVertexC = new int[this.faceCount];
-		this.faceColorA = new int[this.faceCount];
-		this.faceColorB = new int[this.faceCount];
-		this.faceColorC = new int[this.faceCount];
-		this.texturedVertexA = new int[this.texturedFaceCount];
-		this.texturedVertexB = new int[this.texturedFaceCount];
-		this.texturedVertexC = new int[this.texturedFaceCount];
-
-		if (copyInfo) {
-			this.faceInfo = new int[this.faceCount];
-		}
-
-		if (copyPriority) {
-			this.facePriority = new int[this.faceCount];
-		}
-
-		if (copyAlpha) {
-			this.faceAlpha = new int[this.faceCount];
-		}
-
-		if (copyColor) {
-			this.faceColor = new int[this.faceCount];
-		}
-
-		this.vertexCount = 0;
-		this.faceCount = 0;
-		this.texturedFaceCount = 0;
-
-		int i;
-		for (i = 0; i < count; i++) {
-			Model model = models[i];
-			if (model != null) {
-				int vertexCount = this.vertexCount;
-
-				for ( int v = 0; v < model.vertexCount; v++) {
-					this.vertexX[this.vertexCount] = model.vertexX[v];
-					this.vertexY[this.vertexCount] = model.vertexY[v];
-					this.vertexZ[this.vertexCount] = model.vertexZ[v];
-					this.vertexCount++;
-				}
-
-				for ( int f = 0; f < model.faceCount; f++) {
-					this.faceVertexA[this.faceCount] = model.faceVertexA[f] + vertexCount;
-					this.faceVertexB[this.faceCount] = model.faceVertexB[f] + vertexCount;
-					this.faceVertexC[this.faceCount] = model.faceVertexC[f] + vertexCount;
-					this.faceColorA[this.faceCount] = model.faceColorA[f];
-					this.faceColorB[this.faceCount] = model.faceColorB[f];
-					this.faceColorC[this.faceCount] = model.faceColorC[f];
-
-					if (copyInfo) {
-						if (model.faceInfo == null) {
-							this.faceInfo[this.faceCount] = 0;
-						} else {
-							this.faceInfo[this.faceCount] = model.faceInfo[f];
-						}
-					}
-
-					if (copyPriority) {
-						if (model.facePriority == null) {
-							this.facePriority[this.faceCount] = model.priority;
-						} else {
-							this.facePriority[this.faceCount] = model.facePriority[f];
-						}
-					}
-
-					if (copyAlpha) {
-						if (model.faceAlpha == null) {
-							this.faceAlpha[this.faceCount] = 0;
-						} else {
-							this.faceAlpha[this.faceCount] = model.faceAlpha[f];
-						}
-					}
-
-					if (copyColor && model.faceColor != null) {
-						this.faceColor[this.faceCount] = model.faceColor[f];
-					}
-
-					this.faceCount++;
-				}
-
-				for ( int f = 0; f < model.texturedFaceCount; f++) {
-					this.texturedVertexA[this.texturedFaceCount] = model.texturedVertexA[f] + vertexCount;
-					this.texturedVertexB[this.texturedFaceCount] = model.texturedVertexB[f] + vertexCount;
-					this.texturedVertexC[this.texturedFaceCount] = model.texturedVertexC[f] + vertexCount;
-					this.texturedFaceCount++;
-				}
-			}
-		}
-
-		this.calculateBoundsCylinder();
-	}
-
-	public Model( Model src, boolean shareColors, boolean shareAlpha, boolean shareVertices) {
-		this.vertexCount = src.vertexCount;
-		this.faceCount = src.faceCount;
-		this.texturedFaceCount = src.texturedFaceCount;
-
-		if (shareVertices) {
-			this.vertexX = src.vertexX;
-			this.vertexY = src.vertexY;
-			this.vertexZ = src.vertexZ;
-		} else {
-			this.vertexX = new int[this.vertexCount];
-			this.vertexY = new int[this.vertexCount];
-			this.vertexZ = new int[this.vertexCount];
-
-			for (int v = 0; v < this.vertexCount; v++) {
-				this.vertexX[v] = src.vertexX[v];
-				this.vertexY[v] = src.vertexY[v];
-				this.vertexZ[v] = src.vertexZ[v];
-			}
-		}
-
-		if (shareColors) {
-			this.faceColor = src.faceColor;
-		} else {
-			this.faceColor = new int[this.faceCount];
-			System.arraycopy(src.faceColor, 0, this.faceColor, 0, this.faceCount);
-		}
-
-		if (shareAlpha) {
-			this.faceAlpha = src.faceAlpha;
-		} else {
-			this.faceAlpha = new int[this.faceCount];
-			if (src.faceAlpha == null) {
-				for (int f = 0; f < this.faceCount; f++) {
-					this.faceAlpha[f] = 0;
-				}
-			} else {
-				System.arraycopy(src.faceAlpha, 0, this.faceAlpha, 0, this.faceCount);
-			}
-		}
-
-		this.vertexLabel = src.vertexLabel;
-		this.faceLabel = src.faceLabel;
-		this.faceInfo = src.faceInfo;
-		this.faceVertexA = src.faceVertexA;
-		this.faceVertexB = src.faceVertexB;
-		this.faceVertexC = src.faceVertexC;
-		this.facePriority = src.facePriority;
-		this.priority = src.priority;
-		this.texturedVertexA = src.texturedVertexA;
-		this.texturedVertexB = src.texturedVertexB;
-		this.texturedVertexC = src.texturedVertexC;
-	}
-
-	public Model( Model src, boolean copyVertexY, boolean copyFaces) {
-		this.vertexCount = src.vertexCount;
-		this.faceCount = src.faceCount;
-		this.texturedFaceCount = src.texturedFaceCount;
-
-		if (copyVertexY) {
-			this.vertexY = new int[this.vertexCount];
-			System.arraycopy(src.vertexY, 0, this.vertexY, 0, this.vertexCount);
-		} else {
-			this.vertexY = src.vertexY;
-		}
-
-		if (copyFaces) {
-			this.faceColorA = new int[this.faceCount];
-			this.faceColorB = new int[this.faceCount];
-			this.faceColorC = new int[this.faceCount];
-			for (int f = 0; f < this.faceCount; f++) {
-				this.faceColorA[f] = src.faceColorA[f];
-				this.faceColorB[f] = src.faceColorB[f];
-				this.faceColorC[f] = src.faceColorC[f];
-			}
-
-			this.faceInfo = new int[this.faceCount];
-			if (src.faceInfo == null) {
-				for (int f = 0; f < this.faceCount; f++) {
-					this.faceInfo[f] = 0;
-				}
-			} else {
-				System.arraycopy(src.faceInfo, 0, this.faceInfo, 0, this.faceCount);
-			}
-
-			this.vertexNormal = new VertexNormal[this.vertexCount];
-			for (int v = 0; v < this.vertexCount; v++) {
-				VertexNormal copy = this.vertexNormal[v] = new VertexNormal();
-				VertexNormal original = src.vertexNormal[v];
-				copy.x = original.x;
-				copy.y = original.y;
-				copy.z = original.z;
-				copy.w = original.w;
-			}
-
-			this.vertexNormalOriginal = src.vertexNormalOriginal;
-		} else {
-			this.faceColorA = src.faceColorA;
-			this.faceColorB = src.faceColorB;
-			this.faceColorC = src.faceColorC;
-			this.faceInfo = src.faceInfo;
-		}
-
-		this.vertexX = src.vertexX;
-		this.vertexZ = src.vertexZ;
-		this.faceColor = src.faceColor;
-		this.faceAlpha = src.faceAlpha;
-		this.facePriority = src.facePriority;
-		this.priority = src.priority;
-		this.faceVertexA = src.faceVertexA;
-		this.faceVertexB = src.faceVertexB;
-		this.faceVertexC = src.faceVertexC;
-		this.texturedVertexA = src.texturedVertexA;
-		this.texturedVertexB = src.texturedVertexB;
-		this.texturedVertexC = src.texturedVertexC;
-		this.maxY = src.maxY;
-		this.minY = src.minY;
-		this.radius = src.radius;
-		this.minDepth = src.minDepth;
-		this.maxDepth = src.maxDepth;
-		this.minX = src.minX;
-		this.maxZ = src.maxZ;
-		this.minZ = src.minZ;
-		this.maxX = src.maxX;
-	}
-
-	public Model( Model src, boolean shareAlpha) {
-		this.vertexCount = src.vertexCount;
-		this.faceCount = src.faceCount;
-		this.texturedFaceCount = src.texturedFaceCount;
-
-		this.vertexX = new int[this.vertexCount];
-		this.vertexY = new int[this.vertexCount];
-		this.vertexZ = new int[this.vertexCount];
-
-		for ( int v = 0; v < this.vertexCount; v++) {
-			this.vertexX[v] = src.vertexX[v];
-			this.vertexY[v] = src.vertexY[v];
-			this.vertexZ[v] = src.vertexZ[v];
-		}
-
-		if (shareAlpha) {
-			this.faceAlpha = src.faceAlpha;
-		} else {
-			this.faceAlpha = new int[this.faceCount];
-			if (src.faceAlpha == null) {
-				for (int f = 0; f < this.faceCount; f++) {
-					this.faceAlpha[f] = 0;
-				}
-			} else {
-				System.arraycopy(src.faceAlpha, 0, this.faceAlpha, 0, this.faceCount);
-			}
-		}
-
-		this.faceInfo = src.faceInfo;
-		this.faceColor = src.faceColor;
-		this.facePriority = src.facePriority;
-		this.priority = src.priority;
-		this.labelFaces = src.labelFaces;
-		this.labelVertices = src.labelVertices;
-		this.faceVertexA = src.faceVertexA;
-		this.faceVertexB = src.faceVertexB;
-		this.faceVertexC = src.faceVertexC;
-		this.faceColorA = src.faceColorA;
-		this.faceColorB = src.faceColorB;
-		this.faceColorC = src.faceColorC;
-		this.texturedVertexA = src.texturedVertexA;
-		this.texturedVertexB = src.texturedVertexB;
-		this.texturedVertexC = src.texturedVertexC;
-	}
-
-	public static void unload() {
-		metadata = null;
-		head = null;
-		face1 = null;
-		face2 = null;
-		face3 = null;
-		face4 = null;
-		face5 = null;
-		point1 = null;
-		point2 = null;
-		point3 = null;
-		point4 = null;
-		point5 = null;
-		vertex1 = null;
-		vertex2 = null;
-		axis = null;
-		faceClippedX = null;
-		faceNearClipped = null;
-		vertexScreenX = null;
-		vertexScreenY = null;
-		vertexScreenZ = null;
-		vertexViewSpaceX = null;
-		vertexViewSpaceY = null;
-		vertexViewSpaceZ = null;
-		tmpDepthFaceCount = null;
-		tmpDepthFaces = null;
-		tmpPriorityFaceCount = null;
-		tmpPriorityFaces = null;
-		tmpPriority10FaceDepth = null;
-		tmpPriority11FaceDepth = null;
-		tmpPriorityDepthSum = null;
-		sin = null;
-		cos = null;
-		palette = null;
-		reciprical16 = null;
-	}
-
-	public static void unpack( Jagfile models) {
-		try {
-			head = new Packet(models.read("ob_head.dat", null));
-			face1 = new Packet(models.read("ob_face1.dat", null));
-			face2 = new Packet(models.read("ob_face2.dat", null));
-			face3 = new Packet(models.read("ob_face3.dat", null));
-			face4 = new Packet(models.read("ob_face4.dat", null));
-			face5 = new Packet(models.read("ob_face5.dat", null));
-			point1 = new Packet(models.read("ob_point1.dat", null));
-			point2 = new Packet(models.read("ob_point2.dat", null));
-			point3 = new Packet(models.read("ob_point3.dat", null));
-			point4 = new Packet(models.read("ob_point4.dat", null));
-			point5 = new Packet(models.read("ob_point5.dat", null));
-			vertex1 = new Packet(models.read("ob_vertex1.dat", null));
-			vertex2 = new Packet(models.read("ob_vertex2.dat", null));
-			axis = new Packet(models.read("ob_axis.dat", null));
-			head.pos = 0;
-			point1.pos = 0;
-			point2.pos = 0;
-			point3.pos = 0;
-			point4.pos = 0;
-			vertex1.pos = 0;
-			vertex2.pos = 0;
-			int count = head.g2();
-			metadata = new Metadata[count + 100];
-			int vertexTextureDataOffset = 0;
-			int labelDataOffset = 0;
-			int triangleColorDataOffset = 0;
-			int triangleInfoDataOffset = 0;
-			int trianglePriorityDataOffset = 0;
-			int triangleAlphaDataOffset = 0;
-			int triangleSkinDataOffset = 0;
-			for ( int i = 0; i < count; i++) {
-				int index = head.g2();
-				Metadata meta = metadata[index] = new Metadata();
-				meta.vertexCount = head.g2();
-				meta.faceCount = head.g2();
-				meta.texturedFaceCount = head.g1();
-				meta.vertexFlagsOffset = point1.pos;
-				meta.vertexXOffset = point2.pos;
-				meta.vertexYOffset = point3.pos;
-				meta.vertexZOffset = point4.pos;
-				meta.faceVerticesOffset = vertex1.pos;
-				meta.faceOrientationsOffset = vertex2.pos;
-				int hasInfo = head.g1();
-				int hasPriorities = head.g1();
-				int hasAlpha = head.g1();
-				int hasSkins = head.g1();
-				int hasLabels = head.g1();
-				for ( int v = 0; v < meta.vertexCount; v++) {
-					int flags = point1.g1();
-					if ((flags & 0x1) != 0) {
-						point2.gsmart();
-					}
-					if ((flags & 0x2) != 0) {
-						point3.gsmart();
-					}
-					if ((flags & 0x4) != 0) {
-						point4.gsmart();
-					}
-				}
-				for (int f = 0; f < meta.faceCount; f++) {
-					int type = vertex2.g1();
-					if (type == 1) {
-						vertex1.gsmart();
-						vertex1.gsmart();
-					}
-					vertex1.gsmart();
-				}
-				meta.faceColorsOffset = triangleColorDataOffset;
-				triangleColorDataOffset += meta.faceCount * 2;
-				if (hasInfo == 1) {
-					meta.faceInfosOffset = triangleInfoDataOffset;
-					triangleInfoDataOffset += meta.faceCount;
-				} else {
-					meta.faceInfosOffset = -1;
-				}
-				if (hasPriorities == 255) {
-					meta.facePrioritiesOffset = trianglePriorityDataOffset;
-					trianglePriorityDataOffset += meta.faceCount;
-				} else {
-					meta.facePrioritiesOffset = -hasPriorities - 1;
-				}
-				if (hasAlpha == 1) {
-					meta.faceAlphasOffset = triangleAlphaDataOffset;
-					triangleAlphaDataOffset += meta.faceCount;
-				} else {
-					meta.faceAlphasOffset = -1;
-				}
-				if (hasSkins == 1) {
-					meta.faceLabelsOffset = triangleSkinDataOffset;
-					triangleSkinDataOffset += meta.faceCount;
-				} else {
-					meta.faceLabelsOffset = -1;
-				}
-				if (hasLabels == 1) {
-					meta.vertexLabelsOffset = labelDataOffset;
-					labelDataOffset += meta.vertexCount;
-				} else {
-					meta.vertexLabelsOffset = -1;
-				}
-				meta.faceTextureAxisOffset = vertexTextureDataOffset;
-				vertexTextureDataOffset += meta.texturedFaceCount;
-			}
-		} catch ( Exception ex) {
-			System.out.println("Error loading model index");
-			ex.printStackTrace();
-		}
-	}
-
-	public static int mulColorLightness( int hsl, int scalar, int faceInfo) {
-		if ((faceInfo & 0x2) == 2) {
-			if (scalar < 0) {
-				scalar = 0;
-			} else if (scalar > 127) {
-				scalar = 127;
-			}
-			return 127 - scalar;
-		}
-		scalar = scalar * (hsl & 0x7F) >> 7;
-		if (scalar < 2) {
-			scalar = 2;
-		} else if (scalar > 126) {
-			scalar = 126;
-		}
-		return (hsl & 0xFF80) + scalar;
-	}
-
-	private int addVertex( Model src, int vertexId) {
-		int identical = -1;
-		int x = src.vertexX[vertexId];
-		int y = src.vertexY[vertexId];
-		int z = src.vertexZ[vertexId];
-		for ( int v = 0; v < this.vertexCount; v++) {
-			if (x == this.vertexX[v] && y == this.vertexY[v] && z == this.vertexZ[v]) {
-				identical = v;
-				break;
-			}
-		}
-		if (identical == -1) {
-			this.vertexX[this.vertexCount] = x;
-			this.vertexY[this.vertexCount] = y;
-			this.vertexZ[this.vertexCount] = z;
-			if (src.vertexLabel != null) {
-				this.vertexLabel[this.vertexCount] = src.vertexLabel[vertexId];
-			}
-			identical = this.vertexCount++;
-		}
-		return identical;
-	}
-
-	public void calculateBoundsCylinder() {
-		this.maxY = 0;
-		this.radius = 0;
-		this.minY = 0;
-		for ( int i = 0; i < this.vertexCount; i++) {
-			int x = this.vertexX[i];
-			int y = this.vertexY[i];
-			int z = this.vertexZ[i];
-			if (-y > this.maxY) {
-				this.maxY = -y;
-			}
-			if (y > this.minY) {
-				this.minY = y;
-			}
-			int radiusSqr = x * x + z * z;
-			if (radiusSqr > this.radius) {
-				this.radius = radiusSqr;
-			}
-		}
-		this.radius = (int) (Math.sqrt(this.radius) + 0.99D);
-		this.minDepth = (int) (Math.sqrt(this.radius * this.radius + this.maxY * this.maxY) + 0.99D);
-		this.maxDepth = this.minDepth + (int) (Math.sqrt(this.radius * this.radius + this.minY * this.minY) + 0.99D);
-	}
-
-	public void calculateBoundsY() {
-		this.maxY = 0;
-		this.minY = 0;
-		for ( int v = 0; v < this.vertexCount; v++) {
-			int y = this.vertexY[v];
-			if (-y > this.maxY) {
-				this.maxY = -y;
-			}
-			if (y > this.minY) {
-				this.minY = y;
-			}
-		}
-		this.minDepth = (int) (Math.sqrt(this.radius * this.radius + this.maxY * this.maxY) + 0.99D);
-		this.maxDepth = this.minDepth + (int) (Math.sqrt(this.radius * this.radius + this.minY * this.minY) + 0.99D);
-	}
-
-	private void calculateBoundsAABB() {
-		this.maxY = 0;
-		this.radius = 0;
-		this.minY = 0;
-		this.minX = 999999;
-		this.maxX = -999999;
-		this.maxZ = -99999;
-		this.minZ = 99999;
-		for ( int v = 0; v < this.vertexCount; v++) {
-			int x = this.vertexX[v];
-			int y = this.vertexY[v];
-			int z = this.vertexZ[v];
-			if (x < this.minX) {
-				this.minX = x;
-			}
-			if (x > this.maxX) {
-				this.maxX = x;
-			}
-			if (z < this.minZ) {
-				this.minZ = z;
-			}
-			if (z > this.maxZ) {
-				this.maxZ = z;
-			}
-			if (-y > this.maxY) {
-				this.maxY = -y;
-			}
-			if (y > this.minY) {
-				this.minY = y;
-			}
-			int radiusSqr = x * x + z * z;
-			if (radiusSqr > this.radius) {
-				this.radius = radiusSqr;
-			}
-		}
-		this.radius = (int) Math.sqrt(this.radius);
-		this.minDepth = (int) Math.sqrt(this.radius * this.radius + this.maxY * this.maxY);
-		this.maxDepth = this.minDepth + (int) Math.sqrt(this.radius * this.radius + this.minY * this.minY);
-	}
-
-	public void createLabelReferences() {
-		if (this.vertexLabel != null) {
-			int[] labelVertexCount = new int[256];
-			int count = 0;
-			for (int v = 0; v < this.vertexCount; v++) {
-				int label = this.vertexLabel[v];
-				int countDebug = labelVertexCount[label]++;
-				if (label > count) {
-					count = label;
-				}
-			}
-			this.labelVertices = new int[count + 1][];
-			for (int label = 0; label <= count; label++) {
-				this.labelVertices[label] = new int[labelVertexCount[label]];
-				labelVertexCount[label] = 0;
-			}
-			int v = 0;
-			while (v < this.vertexCount) {
-				int label = this.vertexLabel[v];
-				this.labelVertices[label][labelVertexCount[label]++] = v++;
-			}
-			this.vertexLabel = null;
-		}
-
-		if (this.faceLabel != null) {
-			int[] labelFaceCount = new int[256];
-			int count = 0;
-			for (int f = 0; f < this.faceCount; f++) {
-				int label = this.faceLabel[f];
-				int countDebug = labelFaceCount[label]++;
-				if (label > count) {
-					count = label;
-				}
-			}
-			this.labelFaces = new int[count + 1][];
-			for (int label = 0; label <= count; label++) {
-				this.labelFaces[label] = new int[labelFaceCount[label]];
-				labelFaceCount[label] = 0;
-			}
-			int face = 0;
-			while (face < this.faceCount) {
-				int label = this.faceLabel[face];
-				this.labelFaces[label][labelFaceCount[label]++] = face++;
-			}
-			this.faceLabel = null;
-		}
-	}
-
-	public void applyTransform( int id) {
-		if (this.labelVertices != null && id != -1) {
-			SeqFrame transform = SeqFrame.instances[id];
-			SeqBase skeleton = transform.base;
-			baseX = 0;
-			baseY = 0;
-			baseZ = 0;
-			for ( int i = 0; i < transform.length; i++) {
-				int base = transform.bases[i];
-				this.applyTransform(transform.x[i], transform.y[i], transform.z[i], skeleton.labels[base], skeleton.types[base]);
-			}
-		}
-	}
-
-	public void applyTransforms( int primaryId, int secondaryId, int[] mask) {
-		if (primaryId == -1) {
-			return;
-		}
-
-		if (mask == null || secondaryId == -1) {
-			this.applyTransform(primaryId);
-		} else {
-			SeqFrame primary = SeqFrame.instances[primaryId];
-			SeqFrame secondary = SeqFrame.instances[secondaryId];
-			SeqBase skeleton = primary.base;
-
-			baseX = 0;
-			baseY = 0;
-			baseZ = 0;
-
-			int counter = 0;
-			int maskBase = mask[counter++];
-
-			for ( int i = 0; i < primary.length; i++) {
-				int base = primary.bases[i];
-				while (base > maskBase) {
-					maskBase = mask[counter++];
-				}
-
-				if (base != maskBase || skeleton.types[base] == 0) {
-					this.applyTransform(primary.x[i], primary.y[i], primary.z[i], skeleton.labels[base], skeleton.types[base]);
-				}
-			}
-
-			baseX = 0;
-			baseY = 0;
-			baseZ = 0;
-
-			counter = 0;
-			maskBase = mask[counter++];
-
-			for (int i = 0; i < secondary.length; i++) {
-				int base = secondary.bases[i];
-				while (base > maskBase) {
-					maskBase = mask[counter++];
-				}
-
-				if (base == maskBase || skeleton.types[base] == 0) {
-					this.applyTransform(secondary.x[i], secondary.y[i], secondary.z[i], skeleton.labels[base], skeleton.types[base]);
-				}
-			}
-		}
-	}
-
-	private void applyTransform( int x, int y, int z, int[] labels, int type) {
-		int labelCount = labels.length;
-
-		if (type == 0) {
-			int count = 0;
-			baseX = 0;
-			baseY = 0;
-			baseZ = 0;
-
-			for (int g = 0; g < labelCount; g++) {
-				int label = labels[g];
-				if (label < this.labelVertices.length) {
-					int[] vertices = this.labelVertices[label];
-					for (int i = 0; i < vertices.length; i++) {
-						int v = vertices[i];
-						baseX += this.vertexX[v];
-						baseY += this.vertexY[v];
-						baseZ += this.vertexZ[v];
-						count++;
-					}
-				}
-			}
-
-			if (count > 0) {
-				baseX = baseX / count + x;
-				baseY = baseY / count + y;
-				baseZ = baseZ / count + z;
-			} else {
-				baseX = x;
-				baseY = y;
-				baseZ = z;
-			}
-		} else if (type == 1) {
-			for (int g = 0; g < labelCount; g++) {
-				int group = labels[g];
-				if (group >= this.labelVertices.length) {
-					continue;
-				}
-
-				int[] vertices = this.labelVertices[group];
-				for (int i = 0; i < vertices.length; i++) {
-					int v = vertices[i];
-					this.vertexX[v] += x;
-					this.vertexY[v] += y;
-					this.vertexZ[v] += z;
-				}
-			}
-		} else if (type == 2) {
-			for (int g = 0; g < labelCount; g++) {
-				int label = labels[g];
-				if (label >= this.labelVertices.length) {
-					continue;
-				}
-
-				int[] vertices = this.labelVertices[label];
-				for (int i = 0; i < vertices.length; i++) {
-					int v = vertices[i];
-					this.vertexX[v] -= baseX;
-					this.vertexY[v] -= baseY;
-					this.vertexZ[v] -= baseZ;
-
-					int pitch = (x & 0xFF) * 8;
-					int yaw = (y & 0xFF) * 8;
-					int roll = (z & 0xFF) * 8;
-
-					int sin;
-					int cos;
-
-					if (roll != 0) {
-						sin = Model.sin[roll];
-						cos = Model.cos[roll];
-						int x_ = this.vertexY[v] * sin + this.vertexX[v] * cos >> 16;
-						this.vertexY[v] = this.vertexY[v] * cos - this.vertexX[v] * sin >> 16;
-						this.vertexX[v] = x_;
-					}
-
-					if (pitch != 0) {
-						sin = Model.sin[pitch];
-						cos = Model.cos[pitch];
-						int y_ = this.vertexY[v] * cos - this.vertexZ[v] * sin >> 16;
-						this.vertexZ[v] = this.vertexY[v] * sin + this.vertexZ[v] * cos >> 16;
-						this.vertexY[v] = y_;
-					}
-
-					if (yaw != 0) {
-						sin = Model.sin[yaw];
-						cos = Model.cos[yaw];
-						int x_ = this.vertexZ[v] * sin + this.vertexX[v] * cos >> 16;
-						this.vertexZ[v] = this.vertexZ[v] * cos - this.vertexX[v] * sin >> 16;
-						this.vertexX[v] = x_;
-					}
-
-					this.vertexX[v] += baseX;
-					this.vertexY[v] += baseY;
-					this.vertexZ[v] += baseZ;
-				}
-			}
-		} else if (type == 3) {
-			for (int g = 0; g < labelCount; g++) {
-				int label = labels[g];
-				if (label >= this.labelVertices.length) {
-					continue;
-				}
-
-				int[] vertices = this.labelVertices[label];
-				for (int i = 0; i < vertices.length; i++) {
-					int v = vertices[i];
-					this.vertexX[v] -= baseX;
-					this.vertexY[v] -= baseY;
-					this.vertexZ[v] -= baseZ;
-					this.vertexX[v] = this.vertexX[v] * x / 128;
-					this.vertexY[v] = this.vertexY[v] * y / 128;
-					this.vertexZ[v] = this.vertexZ[v] * z / 128;
-					this.vertexX[v] += baseX;
-					this.vertexY[v] += baseY;
-					this.vertexZ[v] += baseZ;
-				}
-			}
-		} else if (type == 5 && (this.labelFaces != null && this.faceAlpha != null)) {
-			for (int g = 0; g < labelCount; g++) {
-				int label = labels[g];
-				if (label >= this.labelFaces.length) {
-					continue;
-				}
-
-				int[] triangles = this.labelFaces[label];
-				for (int i = 0; i < triangles.length; i++) {
-					int t = triangles[i];
-
-					this.faceAlpha[t] += x * 8;
-					if (this.faceAlpha[t] < 0) {
-						this.faceAlpha[t] = 0;
-					}
-
-					if (this.faceAlpha[t] > 255) {
-						this.faceAlpha[t] = 255;
-					}
-				}
-			}
-		}
-	}
-
-	public void rotateY90() {
-		for ( int v = 0; v < this.vertexCount; v++) {
-			int tmp = this.vertexX[v];
-			this.vertexX[v] = this.vertexZ[v];
-			this.vertexZ[v] = -tmp;
-		}
-	}
-
-	public void rotateX( int angle) {
-		int sin = Model.sin[angle];
-		int cos = Model.cos[angle];
-		for ( int v = 0; v < this.vertexCount; v++) {
-			int tmp = this.vertexY[v] * cos - this.vertexZ[v] * sin >> 16;
-			this.vertexZ[v] = this.vertexY[v] * sin + this.vertexZ[v] * cos >> 16;
-			this.vertexY[v] = tmp;
-		}
-	}
-
-	public void translate( int y, int x, int z) {
-		for ( int v = 0; v < this.vertexCount; v++) {
-			this.vertexX[v] += x;
-			this.vertexY[v] += y;
-			this.vertexZ[v] += z;
-		}
-	}
-
-	public void recolor( int src, int dst) {
-		for ( int f = 0; f < this.faceCount; f++) {
-			if (this.faceColor[f] == src) {
-				this.faceColor[f] = dst;
-			}
-		}
-	}
-
-	public void rotateY180() {
-		for ( int v = 0; v < this.vertexCount; v++) {
-			this.vertexZ[v] = -this.vertexZ[v];
-		}
-
-		for ( int f = 0; f < this.faceCount; f++) {
-			int temp = this.faceVertexA[f];
-			this.faceVertexA[f] = this.faceVertexC[f];
-			this.faceVertexC[f] = temp;
-		}
-	}
-
-	public void scale( int x, int y, int z) {
-		for ( int v = 0; v < this.vertexCount; v++) {
-			this.vertexX[v] = this.vertexX[v] * x / 128;
-			this.vertexY[v] = this.vertexY[v] * y / 128;
-			this.vertexZ[v] = this.vertexZ[v] * z / 128;
-		}
-	}
-
-	public void calculateNormals( int lightAmbient, int lightAttenuation, int lightSrcX, int lightSrcY, int lightSrcZ, boolean applyLighting) {
-		int lightMagnitude = (int) Math.sqrt(lightSrcX * lightSrcX + lightSrcY * lightSrcY + lightSrcZ * lightSrcZ);
-		int attenuation = lightAttenuation * lightMagnitude >> 8;
-
-		if (this.faceColorA == null) {
-			this.faceColorA = new int[this.faceCount];
-			this.faceColorB = new int[this.faceCount];
-			this.faceColorC = new int[this.faceCount];
-		}
-
-		if (this.vertexNormal == null) {
-			this.vertexNormal = new VertexNormal[this.vertexCount];
-			for (int v = 0; v < this.vertexCount; v++) {
-				this.vertexNormal[v] = new VertexNormal();
-			}
-		}
-
-		for (int f = 0; f < this.faceCount; f++) {
-			int a = this.faceVertexA[f];
-			int b = this.faceVertexB[f];
-			int c = this.faceVertexC[f];
-
-			int dxAB = this.vertexX[b] - this.vertexX[a];
-			int dyAB = this.vertexY[b] - this.vertexY[a];
-			int dzAB = this.vertexZ[b] - this.vertexZ[a];
-
-			int dxAC = this.vertexX[c] - this.vertexX[a];
-			int dyAC = this.vertexY[c] - this.vertexY[a];
-			int dzAC = this.vertexZ[c] - this.vertexZ[a];
-
-			int nx = dyAB * dzAC - dyAC * dzAB;
-			int ny = dzAB * dxAC - dzAC * dxAB;
-			int nz;
-			for (nz = dxAB * dyAC - dxAC * dyAB; nx > 8192 || ny > 8192 || nz > 8192 || nx < -8192 || ny < -8192 || nz < -8192; nz >>= 0x1) {
-				nx >>= 0x1;
-				ny >>= 0x1;
-			}
-
-			int length = (int) Math.sqrt(nx * nx + ny * ny + nz * nz);
-			if (length <= 0) {
-				length = 1;
-			}
-
-			nx = nx * 256 / length;
-			ny = ny * 256 / length;
-			nz = nz * 256 / length;
-
-			if (this.faceInfo == null || (this.faceInfo[f] & 0x1) == 0) {
-				VertexNormal n = this.vertexNormal[a];
-				n.x += nx;
-				n.y += ny;
-				n.z += nz;
-				n.w++;
-
-				n = this.vertexNormal[b];
-				n.x += nx;
-				n.y += ny;
-				n.z += nz;
-				n.w++;
-
-				n = this.vertexNormal[c];
-				n.x += nx;
-				n.y += ny;
-				n.z += nz;
-				n.w++;
-			} else {
-				int lightness = lightAmbient + (lightSrcX * nx + lightSrcY * ny + lightSrcZ * nz) / (attenuation + attenuation / 2);
-				this.faceColorA[f] = mulColorLightness(this.faceColor[f], lightness, this.faceInfo[f]);
-			}
-		}
-
-		if (applyLighting) {
-			this.applyLighting(lightAmbient, attenuation, lightSrcX, lightSrcY, lightSrcZ);
-		} else {
-			this.vertexNormalOriginal = new VertexNormal[this.vertexCount];
-			for (int v = 0; v < this.vertexCount; v++) {
-				VertexNormal normal = this.vertexNormal[v];
-				VertexNormal copy = this.vertexNormalOriginal[v] = new VertexNormal();
-				copy.x = normal.x;
-				copy.y = normal.y;
-				copy.z = normal.z;
-				copy.w = normal.w;
-			}
-		}
-
-		if (applyLighting) {
-			this.calculateBoundsCylinder();
-		} else {
-			this.calculateBoundsAABB();
-		}
-	}
-
-	public void applyLighting( int lightAmbient, int lightAttenuation, int lightSrcX, int lightSrcY, int lightSrcZ) {
-		for ( int f = 0; f < this.faceCount; f++) {
-			int a = this.faceVertexA[f];
-			int b = this.faceVertexB[f];
-			int c = this.faceVertexC[f];
-
-			if (this.faceInfo == null) {
-				int color = this.faceColor[f];
-
-				VertexNormal n = this.vertexNormal[a];
-				int lightness = lightAmbient + (lightSrcX * n.x + lightSrcY * n.y + lightSrcZ * n.z) / (lightAttenuation * n.w);
-				this.faceColorA[f] = mulColorLightness(color, lightness, 0);
-
-				n = this.vertexNormal[b];
-				lightness = lightAmbient + (lightSrcX * n.x + lightSrcY * n.y + lightSrcZ * n.z) / (lightAttenuation * n.w);
-				this.faceColorB[f] = mulColorLightness(color, lightness, 0);
-
-				n = this.vertexNormal[c];
-				lightness = lightAmbient + (lightSrcX * n.x + lightSrcY * n.y + lightSrcZ * n.z) / (lightAttenuation * n.w);
-				this.faceColorC[f] = mulColorLightness(color, lightness, 0);
-			} else if ((this.faceInfo[f] & 0x1) == 0) {
-				int color = this.faceColor[f];
-				int info = this.faceInfo[f];
-
-				VertexNormal n = this.vertexNormal[a];
-				int lightness = lightAmbient + (lightSrcX * n.x + lightSrcY * n.y + lightSrcZ * n.z) / (lightAttenuation * n.w);
-				this.faceColorA[f] = mulColorLightness(color, lightness, info);
-
-				n = this.vertexNormal[b];
-				lightness = lightAmbient + (lightSrcX * n.x + lightSrcY * n.y + lightSrcZ * n.z) / (lightAttenuation * n.w);
-				this.faceColorB[f] = mulColorLightness(color, lightness, info);
-
-				n = this.vertexNormal[c];
-				lightness = lightAmbient + (lightSrcX * n.x + lightSrcY * n.y + lightSrcZ * n.z) / (lightAttenuation * n.w);
-				this.faceColorC[f] = mulColorLightness(color, lightness, info);
-			}
-		}
-
-		this.vertexNormal = null;
-		this.vertexNormalOriginal = null;
-		this.vertexLabel = null;
-		this.faceLabel = null;
-
-		if (this.faceInfo != null) {
-			for (int f = 0; f < this.faceCount; f++) {
-				if ((this.faceInfo[f] & 0x2) == 2) {
-					return;
-				}
-			}
-		}
-
-		this.faceColor = null;
-	}
-
-	public void drawSimple( int pitch, int yaw, int roll, int eyePitch, int eyeX, int eyeY, int eyeZ) {
-		int centerX = Draw3D.centerX;
-		int centerY = Draw3D.centerY;
-		int sinPitch = sin[pitch];
-		int cosPitch = cos[pitch];
-		int sinYaw = sin[yaw];
-		int cosYaw = cos[yaw];
-		int sinRoll = sin[roll];
-		int cosRoll = cos[roll];
-		int sinEyePitch = sin[eyePitch];
-		int cosEyePitch = cos[eyePitch];
-		int midZ = eyeY * sinEyePitch + eyeZ * cosEyePitch >> 16;
-
-		for ( int v = 0; v < this.vertexCount; v++) {
-			int x = this.vertexX[v];
-			int y = this.vertexY[v];
-			int z = this.vertexZ[v];
-
-			int temp;
-			if (roll != 0) {
-				temp = y * sinRoll + x * cosRoll >> 16;
-				y = y * cosRoll - x * sinRoll >> 16;
-				x = temp;
-			}
-
-			if (pitch != 0) {
-				temp = y * cosPitch - z * sinPitch >> 16;
-				z = y * sinPitch + z * cosPitch >> 16;
-				y = temp;
-			}
-
-			if (yaw != 0) {
-				temp = z * sinYaw + x * cosYaw >> 16;
-				z = z * cosYaw - x * sinYaw >> 16;
-				x = temp;
-			}
-
-			x += eyeX;
-			y += eyeY;
-			z += eyeZ;
-
-			temp = y * cosEyePitch - z * sinEyePitch >> 16;
-			z = y * sinEyePitch + z * cosEyePitch >> 16;
-
-			vertexScreenZ[v] = z - midZ;
-			vertexScreenX[v] = centerX + (x << 9) / z;
-			vertexScreenY[v] = centerY + (temp << 9) / z;
-
-			if (this.texturedFaceCount > 0) {
-				vertexViewSpaceX[v] = x;
-				vertexViewSpaceY[v] = temp;
-				vertexViewSpaceZ[v] = z;
-			}
-		}
-
-		try {
-			this.draw(false, false, 0);
-		} catch ( Exception ex) {
-		}
-	}
-
-	public void draw( int yaw, int sinEyePitch, int cosEyePitch, int sinEyeYaw, int cosEyeYaw, int relativeX, int relativeY, int relativeZ, int bitset) {
-		int zPrime = relativeZ * cosEyeYaw - relativeX * sinEyeYaw >> 16;
-		int midZ = relativeY * sinEyePitch + zPrime * cosEyePitch >> 16;
-		int radiusCosEyePitch = this.radius * cosEyePitch >> 16;
-
-		int maxZ = midZ + radiusCosEyePitch;
-		if (maxZ <= 50 || midZ >= 3500) {
-			return;
-		}
-
-		int midX = relativeZ * sinEyeYaw + relativeX * cosEyeYaw >> 16;
-		int leftX = midX - this.radius << 9;
-		if (leftX / maxZ >= Draw2D.centerX2d) {
-			return;
-		}
-
-		int rightX = midX + this.radius << 9;
-		if (rightX / maxZ <= -Draw2D.centerX2d) {
-			return;
-		}
-
-		int midY = relativeY * cosEyePitch - zPrime * sinEyePitch >> 16;
-		int radiusSinEyePitch = this.radius * sinEyePitch >> 16;
-
-		int bottomY = midY + radiusSinEyePitch << 9;
-		if (bottomY / maxZ <= -Draw2D.centerY2d) {
-			return;
-		}
-
-		int yPrime = radiusSinEyePitch + (this.maxY * cosEyePitch >> 16);
-		int topY = midY - yPrime << 9;
-		if (topY / maxZ >= Draw2D.centerY2d) {
-			return;
-		}
-
-		int radiusZ = radiusCosEyePitch + (this.maxY * sinEyePitch >> 16);
-
-		boolean clipped = midZ - radiusZ <= 50;
-		boolean picking = false;
-
-		if (bitset > 0 && checkHover) {
-			int z = midZ - radiusCosEyePitch;
-			if (z <= 50) {
-				z = 50;
-			}
-
-			if (midX > 0) {
-				leftX /= maxZ;
-				rightX /= z;
-			} else {
-				rightX /= maxZ;
-				leftX /= z;
-			}
-
-			if (midY > 0) {
-				topY /= maxZ;
-				bottomY /= z;
-			} else {
-				bottomY /= maxZ;
-				topY /= z;
-			}
-
-			int mouseX = Model.mouseX - Draw3D.centerX;
-			int mouseY = mouseZ - Draw3D.centerY;
-			if (mouseX > leftX && mouseX < rightX && mouseY > topY && mouseY < bottomY) {
-				if (this.pickable) {
-					pickedBitsets[pickedCount++] = bitset;
-				} else {
-					picking = true;
-				}
-			}
-		}
-
-		int centerX = Draw3D.centerX;
-		int centerY = Draw3D.centerY;
-
-		int sinYaw = 0;
-		int cosYaw = 0;
-		if (yaw != 0) {
-			sinYaw = sin[yaw];
-			cosYaw = cos[yaw];
-		}
-
-		for ( int v = 0; v < this.vertexCount; v++) {
-			int x = this.vertexX[v];
-			int y = this.vertexY[v];
-			int z = this.vertexZ[v];
-
-			int temp;
-			if (yaw != 0) {
-				temp = z * sinYaw + x * cosYaw >> 16;
-				z = z * cosYaw - x * sinYaw >> 16;
-				x = temp;
-			}
-
-			x += relativeX;
-			y += relativeY;
-			z += relativeZ;
-
-			temp = z * sinEyeYaw + x * cosEyeYaw >> 16;
-			z = z * cosEyeYaw - x * sinEyeYaw >> 16;
-			x = temp;
-
-			temp = y * cosEyePitch - z * sinEyePitch >> 16;
-			z = y * sinEyePitch + z * cosEyePitch >> 16;
-
-			vertexScreenZ[v] = z - midZ;
-
-			if (z >= 50) {
-				vertexScreenX[v] = centerX + (x << 9) / z;
-				vertexScreenY[v] = centerY + (temp << 9) / z;
-			} else {
-				vertexScreenX[v] = -5000;
-				clipped = true;
-			}
-
-			if (clipped || this.texturedFaceCount > 0) {
-				vertexViewSpaceX[v] = x;
-				vertexViewSpaceY[v] = temp;
-				vertexViewSpaceZ[v] = z;
-			}
-		}
-
-		try {
-			this.draw(clipped, picking, bitset);
-		} catch ( Exception ex) {
-		}
-	}
-
-	private void draw( boolean clipped, boolean picking, int bitset) {
-		for ( int depth = 0; depth < this.maxDepth; depth++) {
-			tmpDepthFaceCount[depth] = 0;
-		}
-
-		for ( int f = 0; f < this.faceCount; f++) {
-			if (this.faceInfo == null || this.faceInfo[f] != -1) {
-				int a = this.faceVertexA[f];
-				int b = this.faceVertexB[f];
-				int c = this.faceVertexC[f];
-
-				int xA = vertexScreenX[a];
-				int xB = vertexScreenX[b];
-				int xC = vertexScreenX[c];
-
-				if (clipped && (xA == -5000 || xB == -5000 || xC == -5000)) {
-					faceNearClipped[f] = true;
-					int depthAverage = (vertexScreenZ[a] + vertexScreenZ[b] + vertexScreenZ[c]) / 3 + this.minDepth;
-					tmpDepthFaces[depthAverage][tmpDepthFaceCount[depthAverage]++] = f;
-				} else {
-					if (picking && this.pointWithinTriangle(mouseX, mouseZ, vertexScreenY[a], vertexScreenY[b], vertexScreenY[c], xA, xB, xC)) {
-						pickedBitsets[pickedCount++] = bitset;
-						picking = false;
-					}
-
-					if ((xA - xB) * (vertexScreenY[c] - vertexScreenY[b]) - (vertexScreenY[a] - vertexScreenY[b]) * (xC - xB) > 0) {
-						faceNearClipped[f] = false;
-						faceClippedX[f] = xA < 0 || xB < 0 || xC < 0 || xA > Draw2D.boundX || xB > Draw2D.boundX || xC > Draw2D.boundX;
-						int depthAverage = (vertexScreenZ[a] + vertexScreenZ[b] + vertexScreenZ[c]) / 3 + this.minDepth;
-						tmpDepthFaces[depthAverage][tmpDepthFaceCount[depthAverage]++] = f;
-					}
-				}
-			}
-		}
-
-		if (this.facePriority == null) {
-			for (int depth = this.maxDepth - 1; depth >= 0; depth--) {
-				int count = tmpDepthFaceCount[depth];
-				if (count > 0) {
-					int[] faces = tmpDepthFaces[depth];
-					for (int f = 0; f < count; f++) {
-						this.drawFace(faces[f]);
-					}
-				}
-			}
-			return;
-		}
-
-		for (int priority = 0; priority < 12; priority++) {
-			tmpPriorityFaceCount[priority] = 0;
-			tmpPriorityDepthSum[priority] = 0;
-		}
-
-		for (int depth = this.maxDepth - 1; depth >= 0; depth--) {
-			int faceCount = tmpDepthFaceCount[depth];
-			if (faceCount > 0) {
-				int[] faces = tmpDepthFaces[depth];
-				for (int i = 0; i < faceCount; i++) {
-					int priorityDepth = faces[i];
-					int priorityFace = this.facePriority[priorityDepth];
-					int priorityFaceCount = tmpPriorityFaceCount[priorityFace]++;
-					tmpPriorityFaces[priorityFace][priorityFaceCount] = priorityDepth;
-					if (priorityFace < 10) {
-						tmpPriorityDepthSum[priorityFace] += depth;
-					} else if (priorityFace == 10) {
-						tmpPriority10FaceDepth[priorityFaceCount] = depth;
-					} else {
-						tmpPriority11FaceDepth[priorityFaceCount] = depth;
-					}
-				}
-			}
-		}
-
-		int averagePriorityDepthSum1_2 = 0;
-		if (tmpPriorityFaceCount[1] > 0 || tmpPriorityFaceCount[2] > 0) {
-			averagePriorityDepthSum1_2 = (tmpPriorityDepthSum[1] + tmpPriorityDepthSum[2]) / (tmpPriorityFaceCount[1] + tmpPriorityFaceCount[2]);
-		}
-		int averagePriorityDepthSum3_4 = 0;
-		if (tmpPriorityFaceCount[3] > 0 || tmpPriorityFaceCount[4] > 0) {
-			averagePriorityDepthSum3_4 = (tmpPriorityDepthSum[3] + tmpPriorityDepthSum[4]) / (tmpPriorityFaceCount[3] + tmpPriorityFaceCount[4]);
-		}
-		int averagePriorityDepthSum6_8 = 0;
-		if (tmpPriorityFaceCount[6] > 0 || tmpPriorityFaceCount[8] > 0) {
-			averagePriorityDepthSum6_8 = (tmpPriorityDepthSum[6] + tmpPriorityDepthSum[8]) / (tmpPriorityFaceCount[6] + tmpPriorityFaceCount[8]);
-		}
-
-		int priorityFace = 0;
-		int priorityFaceCount = tmpPriorityFaceCount[10];
-
-		int[] priorityFaces = tmpPriorityFaces[10];
-		int[] priorithFaceDepths = tmpPriority10FaceDepth;
-		if (priorityFace == priorityFaceCount) {
-			priorityFace = 0;
-			priorityFaceCount = tmpPriorityFaceCount[11];
-			priorityFaces = tmpPriorityFaces[11];
-			priorithFaceDepths = tmpPriority11FaceDepth;
-		}
-
-		int priorityDepth;
-		if (priorityFace < priorityFaceCount) {
-			priorityDepth = priorithFaceDepths[priorityFace];
-		} else {
-			priorityDepth = -1000;
-		}
-
-		for ( int priority = 0; priority < 10; priority++) {
-			while (priority == 0 && priorityDepth > averagePriorityDepthSum1_2) {
-				this.drawFace(priorityFaces[priorityFace++]);
-
-				if (priorityFace == priorityFaceCount && priorityFaces != tmpPriorityFaces[11]) {
-					priorityFace = 0;
-					priorityFaceCount = tmpPriorityFaceCount[11];
-					priorityFaces = tmpPriorityFaces[11];
-					priorithFaceDepths = tmpPriority11FaceDepth;
-				}
-
-				if (priorityFace < priorityFaceCount) {
-					priorityDepth = priorithFaceDepths[priorityFace];
-				} else {
-					priorityDepth = -1000;
-				}
-			}
-
-			while (priority == 3 && priorityDepth > averagePriorityDepthSum3_4) {
-				this.drawFace(priorityFaces[priorityFace++]);
-
-				if (priorityFace == priorityFaceCount && priorityFaces != tmpPriorityFaces[11]) {
-					priorityFace = 0;
-					priorityFaceCount = tmpPriorityFaceCount[11];
-					priorityFaces = tmpPriorityFaces[11];
-					priorithFaceDepths = tmpPriority11FaceDepth;
-				}
-
-				if (priorityFace < priorityFaceCount) {
-					priorityDepth = priorithFaceDepths[priorityFace];
-				} else {
-					priorityDepth = -1000;
-				}
-			}
-
-			while (priority == 5 && priorityDepth > averagePriorityDepthSum6_8) {
-				this.drawFace(priorityFaces[priorityFace++]);
-
-				if (priorityFace == priorityFaceCount && priorityFaces != tmpPriorityFaces[11]) {
-					priorityFace = 0;
-					priorityFaceCount = tmpPriorityFaceCount[11];
-					priorityFaces = tmpPriorityFaces[11];
-					priorithFaceDepths = tmpPriority11FaceDepth;
-				}
-
-				if (priorityFace < priorityFaceCount) {
-					priorityDepth = priorithFaceDepths[priorityFace];
-				} else {
-					priorityDepth = -1000;
-				}
-			}
-
-			int count = tmpPriorityFaceCount[priority];
-			int[] faces = tmpPriorityFaces[priority];
-			for ( int i = 0; i < count; i++) {
-				this.drawFace(faces[i]);
-			}
-		}
-
-		while (priorityDepth != -1000) {
-			this.drawFace(priorityFaces[priorityFace++]);
-
-			if (priorityFace == priorityFaceCount && priorityFaces != tmpPriorityFaces[11]) {
-				priorityFace = 0;
-				priorityFaces = tmpPriorityFaces[11];
-				priorityFaceCount = tmpPriorityFaceCount[11];
-				priorithFaceDepths = tmpPriority11FaceDepth;
-			}
-
-			if (priorityFace < priorityFaceCount) {
-				priorityDepth = priorithFaceDepths[priorityFace];
-			} else {
-				priorityDepth = -1000;
-			}
-		}
-	}
-
-	private void drawFace( int face) {
-		if (faceNearClipped[face]) {
-			this.drawNearClippedFace(face);
-			return;
-		}
-
-		int a = this.faceVertexA[face];
-		int b = this.faceVertexB[face];
-		int c = this.faceVertexC[face];
-
-		Draw3D.clipX = faceClippedX[face];
-
-		if (this.faceAlpha == null) {
-			Draw3D.alpha = 0;
-		} else {
-			Draw3D.alpha = this.faceAlpha[face];
-		}
-
-		int type;
-		if (this.faceInfo == null) {
-			type = 0;
-		} else {
-			type = this.faceInfo[face] & 0x3;
-		}
-
-		if (type == 0) {
-			Draw3D.fillGouraudTriangle(vertexScreenX[a], vertexScreenX[b], vertexScreenX[c], vertexScreenY[a], vertexScreenY[b], vertexScreenY[c], this.faceColorA[face], this.faceColorB[face], this.faceColorC[face]);
-		} else if (type == 1) {
-			Draw3D.fillTriangle(vertexScreenX[a], vertexScreenX[b], vertexScreenX[c], vertexScreenY[a], vertexScreenY[b], vertexScreenY[c], palette[this.faceColorA[face]]);
-		} else if (type == 2) {
-			int texturedFace = this.faceInfo[face] >> 2;
-			int tA = this.texturedVertexA[texturedFace];
-			int tB = this.texturedVertexB[texturedFace];
-			int tC = this.texturedVertexC[texturedFace];
-			Draw3D.fillTexturedTriangle(vertexScreenX[a], vertexScreenX[b], vertexScreenX[c], vertexScreenY[a], vertexScreenY[b], vertexScreenY[c], this.faceColorA[face], this.faceColorB[face], this.faceColorC[face], vertexViewSpaceX[tA], vertexViewSpaceY[tA], vertexViewSpaceZ[tA], vertexViewSpaceX[tB], vertexViewSpaceX[tC], vertexViewSpaceY[tB], vertexViewSpaceY[tC], vertexViewSpaceZ[tB], vertexViewSpaceZ[tC], this.faceColor[face]);
-		} else if (type == 3) {
-			int texturedFace = this.faceInfo[face] >> 2;
-			int tA = this.texturedVertexA[texturedFace];
-			int tB = this.texturedVertexB[texturedFace];
-			int tC = this.texturedVertexC[texturedFace];
-			Draw3D.fillTexturedTriangle(vertexScreenX[a], vertexScreenX[b], vertexScreenX[c], vertexScreenY[a], vertexScreenY[b], vertexScreenY[c], this.faceColorA[face], this.faceColorA[face], this.faceColorA[face], vertexViewSpaceX[tA], vertexViewSpaceY[tA], vertexViewSpaceZ[tA], vertexViewSpaceX[tB], vertexViewSpaceX[tC], vertexViewSpaceY[tB], vertexViewSpaceY[tC], vertexViewSpaceZ[tB], vertexViewSpaceZ[tC], this.faceColor[face]);
-		}
-	}
-
-	private void drawNearClippedFace( int face) {
-		int centerX = Draw3D.centerX;
-		int centerY = Draw3D.centerY;
-		int elements = 0;
-
-		int a = this.faceVertexA[face];
-		int b = this.faceVertexB[face];
-		int c = this.faceVertexC[face];
-
-		int zA = vertexViewSpaceZ[a];
-		int zB = vertexViewSpaceZ[b];
-		int zC = vertexViewSpaceZ[c];
-
-		if (zA >= 50) {
-			clippedX[elements] = vertexScreenX[a];
-			clippedY[elements] = vertexScreenY[a];
-			clippedColor[elements++] = this.faceColorA[face];
-		} else {
-			int xA = vertexViewSpaceX[a];
-			int yA = vertexViewSpaceY[a];
-			int colorA = this.faceColorA[face];
-
-			if (zC >= 50) {
-				int scalar = (50 - zA) * reciprical16[zC - zA];
-				clippedX[elements] = centerX + (xA + ((vertexViewSpaceX[c] - xA) * scalar >> 16) << 9) / 50;
-				clippedY[elements] = centerY + (yA + ((vertexViewSpaceY[c] - yA) * scalar >> 16) << 9) / 50;
-				clippedColor[elements++] = colorA + ((this.faceColorC[face] - colorA) * scalar >> 16);
-			}
-
-			if (zB >= 50) {
-				int scalar = (50 - zA) * reciprical16[zB - zA];
-				clippedX[elements] = centerX + (xA + ((vertexViewSpaceX[b] - xA) * scalar >> 16) << 9) / 50;
-				clippedY[elements] = centerY + (yA + ((vertexViewSpaceY[b] - yA) * scalar >> 16) << 9) / 50;
-				clippedColor[elements++] = colorA + ((this.faceColorB[face] - colorA) * scalar >> 16);
-			}
-		}
-
-		if (zB >= 50) {
-			clippedX[elements] = vertexScreenX[b];
-			clippedY[elements] = vertexScreenY[b];
-			clippedColor[elements++] = this.faceColorB[face];
-		} else {
-			int xB = vertexViewSpaceX[b];
-			int yB = vertexViewSpaceY[b];
-			int colorB = this.faceColorB[face];
-
-			if (zA >= 50) {
-				int scalar = (50 - zB) * reciprical16[zA - zB];
-				clippedX[elements] = centerX + (xB + ((vertexViewSpaceX[a] - xB) * scalar >> 16) << 9) / 50;
-				clippedY[elements] = centerY + (yB + ((vertexViewSpaceY[a] - yB) * scalar >> 16) << 9) / 50;
-				clippedColor[elements++] = colorB + ((this.faceColorA[face] - colorB) * scalar >> 16);
-			}
-
-			if (zC >= 50) {
-				int scalar = (50 - zB) * reciprical16[zC - zB];
-				clippedX[elements] = centerX + (xB + ((vertexViewSpaceX[c] - xB) * scalar >> 16) << 9) / 50;
-				clippedY[elements] = centerY + (yB + ((vertexViewSpaceY[c] - yB) * scalar >> 16) << 9) / 50;
-				clippedColor[elements++] = colorB + ((this.faceColorC[face] - colorB) * scalar >> 16);
-			}
-		}
-
-		if (zC >= 50) {
-			clippedX[elements] = vertexScreenX[c];
-			clippedY[elements] = vertexScreenY[c];
-			clippedColor[elements++] = this.faceColorC[face];
-		} else {
-			int xC = vertexViewSpaceX[c];
-			int yC = vertexViewSpaceY[c];
-			int colorC = this.faceColorC[face];
-
-			if (zB >= 50) {
-				int scalar = (50 - zC) * reciprical16[zB - zC];
-				clippedX[elements] = centerX + (xC + ((vertexViewSpaceX[b] - xC) * scalar >> 16) << 9) / 50;
-				clippedY[elements] = centerY + (yC + ((vertexViewSpaceY[b] - yC) * scalar >> 16) << 9) / 50;
-				clippedColor[elements++] = colorC + ((this.faceColorB[face] - colorC) * scalar >> 16);
-			}
-
-			if (zA >= 50) {
-				int scalar = (50 - zC) * reciprical16[zA - zC];
-				clippedX[elements] = centerX + (xC + ((vertexViewSpaceX[a] - xC) * scalar >> 16) << 9) / 50;
-				clippedY[elements] = centerY + (yC + ((vertexViewSpaceY[a] - yC) * scalar >> 16) << 9) / 50;
-				clippedColor[elements++] = colorC + ((this.faceColorA[face] - colorC) * scalar >> 16);
-			}
-		}
-
-		int x0 = clippedX[0];
-		int x1 = clippedX[1];
-		int x2 = clippedX[2];
-		int y0 = clippedY[0];
-		int y1 = clippedY[1];
-		int y2 = clippedY[2];
-
-		if ((x0 - x1) * (y2 - y1) - (y0 - y1) * (x2 - x1) <= 0) {
-			return;
-		}
-
-		Draw3D.clipX = false;
-
-		if (elements == 3) {
-			if (x0 < 0 || x1 < 0 || x2 < 0 || x0 > Draw2D.boundX || x1 > Draw2D.boundX || x2 > Draw2D.boundX) {
-				Draw3D.clipX = true;
-			}
-
-			int type;
-			if (this.faceInfo == null) {
-				type = 0;
-			} else {
-				type = this.faceInfo[face] & 0x3;
-			}
-
-			if (type == 0) {
-				Draw3D.fillGouraudTriangle(x0, x1, x2, y0, y1, y2, clippedColor[0], clippedColor[1], clippedColor[2]);
-			} else if (type == 1) {
-				Draw3D.fillTriangle(x0, x1, x2, y0, y1, y2, palette[this.faceColorA[face]]);
-			} else if (type == 2) {
-				int texturedFace = this.faceInfo[face] >> 2;
-				int tA = this.texturedVertexA[texturedFace];
-				int tB = this.texturedVertexB[texturedFace];
-				int tC = this.texturedVertexC[texturedFace];
-				Draw3D.fillTexturedTriangle(x0, x1, x2, y0, y1, y2, clippedColor[0], clippedColor[1], clippedColor[2], vertexViewSpaceX[tA], vertexViewSpaceY[tA], vertexViewSpaceZ[tA], vertexViewSpaceX[tB], vertexViewSpaceX[tC], vertexViewSpaceY[tB], vertexViewSpaceY[tC], vertexViewSpaceZ[tB], vertexViewSpaceZ[tC], this.faceColor[face]);
-			} else if (type == 3) {
-				int texturedFace = this.faceInfo[face] >> 2;
-				int tA = this.texturedVertexA[texturedFace];
-				int tB = this.texturedVertexB[texturedFace];
-				int tC = this.texturedVertexC[texturedFace];
-				Draw3D.fillTexturedTriangle(x0, x1, x2, y0, y1, y2, this.faceColorA[face], this.faceColorA[face], this.faceColorA[face], vertexViewSpaceX[tA], vertexViewSpaceY[tA], vertexViewSpaceZ[tA], vertexViewSpaceX[tB], vertexViewSpaceX[tC], vertexViewSpaceY[tB], vertexViewSpaceY[tC], vertexViewSpaceZ[tB], vertexViewSpaceZ[tC], this.faceColor[face]);
-			}
-		} else if (elements == 4) {
-			if (x0 < 0 || x1 < 0 || x2 < 0 || x0 > Draw2D.boundX || x1 > Draw2D.boundX || x2 > Draw2D.boundX || clippedX[3] < 0 || clippedX[3] > Draw2D.boundX) {
-				Draw3D.clipX = true;
-			}
-
-			int type;
-			if (this.faceInfo == null) {
-				type = 0;
-			} else {
-				type = this.faceInfo[face] & 0x3;
-			}
-
-			if (type == 0) {
-				Draw3D.fillGouraudTriangle(x0, x1, x2, y0, y1, y2, clippedColor[0], clippedColor[1], clippedColor[2]);
-				Draw3D.fillGouraudTriangle(x0, x2, clippedX[3], y0, y2, clippedY[3], clippedColor[0], clippedColor[2], clippedColor[3]);
-			} else if (type == 1) {
-				int colorA = palette[this.faceColorA[face]];
-				Draw3D.fillTriangle(x0, x1, x2, y0, y1, y2, colorA);
-				Draw3D.fillTriangle(x0, x2, clippedX[3], y0, y2, clippedY[3], colorA);
-			} else if (type == 2) {
-				int texturedFace = this.faceInfo[face] >> 2;
-				int tA = this.texturedVertexA[texturedFace];
-				int tB = this.texturedVertexB[texturedFace];
-				int tC = this.texturedVertexC[texturedFace];
-				Draw3D.fillTexturedTriangle(x0, x1, x2, y0, y1, y2, clippedColor[0], clippedColor[1], clippedColor[2], vertexViewSpaceX[tA], vertexViewSpaceY[tA], vertexViewSpaceZ[tA], vertexViewSpaceX[tB], vertexViewSpaceX[tC], vertexViewSpaceY[tB], vertexViewSpaceY[tC], vertexViewSpaceZ[tB], vertexViewSpaceZ[tC], this.faceColor[face]);
-				Draw3D.fillTexturedTriangle(x0, x2, clippedX[3], y0, y2, clippedY[3], clippedColor[0], clippedColor[2], clippedColor[3], vertexViewSpaceX[tA], vertexViewSpaceY[tA], vertexViewSpaceZ[tA], vertexViewSpaceX[tB], vertexViewSpaceX[tC], vertexViewSpaceY[tB], vertexViewSpaceY[tC], vertexViewSpaceZ[tB], vertexViewSpaceZ[tC], this.faceColor[face]);
-			} else if (type == 3) {
-				int texturedFace = this.faceInfo[face] >> 2;
-				int tA = this.texturedVertexA[texturedFace];
-				int tB = this.texturedVertexB[texturedFace];
-				int tC = this.texturedVertexC[texturedFace];
-				Draw3D.fillTexturedTriangle(x0, x1, x2, y0, y1, y2, this.faceColorA[face], this.faceColorA[face], this.faceColorA[face], vertexViewSpaceX[tA], vertexViewSpaceY[tA], vertexViewSpaceZ[tA], vertexViewSpaceX[tB], vertexViewSpaceX[tC], vertexViewSpaceY[tB], vertexViewSpaceY[tC], vertexViewSpaceZ[tB], vertexViewSpaceZ[tC], this.faceColor[face]);
-				Draw3D.fillTexturedTriangle(x0, x2, clippedX[3], y0, y2, clippedY[3], this.faceColorA[face], this.faceColorA[face], this.faceColorA[face], vertexViewSpaceX[tA], vertexViewSpaceY[tA], vertexViewSpaceZ[tA], vertexViewSpaceX[tB], vertexViewSpaceX[tC], vertexViewSpaceY[tB], vertexViewSpaceY[tC], vertexViewSpaceZ[tB], vertexViewSpaceZ[tC], this.faceColor[face]);
-			}
-		}
-	}
-
-	private boolean pointWithinTriangle( int x, int y, int yA, int yB, int yC, int xA, int xB, int xC) {
-		if (y < yA && y < yB && y < yC) {
-			return false;
-		} else if (y > yA && y > yB && y > yC) {
-			return false;
-		} else if (x < xA && x < xB && x < xC) {
-			return false;
-		} else {
-			return x <= xA || x <= xB || x <= xC;
-		}
-	}
-
-    public static final class Metadata {
-
-		public int vertexCount;
-
-		public int faceCount;
-
-		public int texturedFaceCount;
-
-		public int vertexFlagsOffset;
-
-		public int vertexXOffset;
-
-		public int vertexYOffset;
-
-		public int vertexZOffset;
-
-		public int vertexLabelsOffset;
-
-		public int faceVerticesOffset;
-
-		public int faceOrientationsOffset;
-
-		public int faceColorsOffset;
-
-		public int faceInfosOffset;
-
-		public int facePrioritiesOffset;
-
-		public int faceAlphasOffset;
-
-		public int faceLabelsOffset;
-
-		public int faceTextureAxisOffset;
-	}
-
-    public static final class VertexNormal {
-
-		public int x;
-
-		public int y;
-
-		public int z;
-
-		public int w;
-	}
-
+public final class Model extends Entity {
+   private static boolean[] aBooleanArray6 = new boolean[4096];
+   private static Class27[] renderables;
+   public static int[] anIntArray146;
+   private static int anInt414;
+   public static Model aClass10_Sub1_Sub2_Sub4_1 = new Model(852);
+   private static int[] anIntArray137 = new int[1500];
+   public static int pickedCount;
+   public static int[] anIntArray147;
+   private static int anInt415;
+   private static int[] anIntArray109 = new int[2000];
+   public static int[] anIntArray145 = new int[1000];
+   private static Class33 aClass33_1;
+   private static int anInt416;
+   private static int[] anIntArray110 = new int[2000];
+   private static int[] anIntArray138 = new int[12];
+   private static int[] anIntArray111 = new int[2000];
+   private static int[] anIntArray136 = new int[4096];
+   private static boolean[] aBooleanArray5 = new boolean[4096];
+   private static int[] anIntArray141 = new int[12];
+   private static int[] anIntArray112 = new int[2000];
+   private static int[][] anIntArrayArray12 = new int[1500][512];
+   private static int[] anIntArray131 = new int[4096];
+   private static int[] anIntArray142 = new int[10];
+   private static int[] anIntArray134 = new int[4096];
+   private static int anInt401;
+   private static int[] anIntArray135 = new int[4096];
+   private static int[] anIntArray132 = new int[4096];
+   private static int[] anIntArray143 = new int[10];
+   private static int[] anIntArray133 = new int[4096];
+   private static int[] anIntArray149;
+   public static int mouseX;
+   private static int[][] anIntArrayArray13 = new int[12][2000];
+   private static int[] anIntArray144 = new int[10];
+   public static int mouseZ;
+   private static int[] anIntArray139 = new int[2000];
+   private static int[] anIntArray140 = new int[2000];
+   private static int[] anIntArray148;
+   public static boolean checkHover;
+   private int anInt411;
+   private int anInt406;
+   public int[][] anIntArrayArray10;
+   private int[] anIntArray129;
+   public int[] anIntArray113;
+   public int anInt402;
+   public int anInt403;
+   private int anInt398 = 932;
+   public int anInt410;
+   public int anInt409;
+   public int[] anIntArray116;
+   private int[] anIntArray130;
+   public int[] anIntArray125;
+   public int[] anIntArray114;
+   public int[] anIntArray115;
+   private int[] anIntArray119;
+   private int anInt399 = 426;
+   public Class41[] aClass41Array6;
+   public int[] anIntArray117;
+   private int[] anIntArray123;
+   public int[] anIntArray122;
+   public int[][] anIntArrayArray11;
+   public int anInt407;
+   private boolean aBoolean103 = false;
+   public int[] anIntArray118;
+   private int anInt405;
+   private int[] anIntArray124;
+   public int anInt408;
+   private boolean aBoolean104 = true;
+   public boolean aBoolean106 = false;
+   private int[] anIntArray120;
+   private int anInt400 = -252;
+   private boolean aBoolean105 = false;
+   private int[] anIntArray121;
+   private int anInt412;
+   private int[] anIntArray126;
+   private int[] anIntArray127;
+   private int anInt404;
+   private int[] anIntArray128;
+   public int anInt413;
+
+   static {
+      anIntArray146 = Draw3D.anIntArray181;
+      anIntArray147 = Draw3D.anIntArray182;
+      anIntArray148 = Draw3D.anIntArray186;
+      anIntArray149 = Draw3D.anIntArray180;
+   }
+
+   private Model(int var1) {
+   }
+
+   public Model(int var1, Model[] var2) {
+      ++anInt401;
+      boolean var3 = false;
+      boolean var4 = false;
+      boolean var5 = false;
+      boolean var6 = false;
+      this.anInt402 = 0;
+      this.anInt403 = 0;
+      this.anInt405 = 0;
+      this.anInt404 = -1;
+
+      int var7;
+      for(var7 = 0; var7 < var1; ++var7) {
+         Model var8 = var2[var7];
+         if (var8 != null) {
+            this.anInt402 += var8.anInt402;
+            this.anInt403 += var8.anInt403;
+            this.anInt405 += var8.anInt405;
+            var3 |= var8.anIntArray122 != null;
+            if (var8.anIntArray123 == null) {
+               if (this.anInt404 == -1) {
+                  this.anInt404 = var8.anInt404;
+               }
+
+               if (this.anInt404 != var8.anInt404) {
+                  var4 = true;
+               }
+            } else {
+               var4 = true;
+            }
+
+            var5 |= var8.anIntArray124 != null;
+            var6 |= var8.anIntArray130 != null;
+         }
+      }
+
+      this.anIntArray113 = new int[this.anInt402];
+      this.anIntArray114 = new int[this.anInt402];
+      this.anIntArray115 = new int[this.anInt402];
+      this.anIntArray129 = new int[this.anInt402];
+      this.anIntArray116 = new int[this.anInt403];
+      this.anIntArray117 = new int[this.anInt403];
+      this.anIntArray118 = new int[this.anInt403];
+      this.anIntArray126 = new int[this.anInt405];
+      this.anIntArray127 = new int[this.anInt405];
+      this.anIntArray128 = new int[this.anInt405];
+      if (var3) {
+         this.anIntArray122 = new int[this.anInt403];
+      }
+
+      if (var4) {
+         this.anIntArray123 = new int[this.anInt403];
+      }
+
+      if (var5) {
+         this.anIntArray124 = new int[this.anInt403];
+      }
+
+      if (var6) {
+         this.anIntArray130 = new int[this.anInt403];
+      }
+
+      this.anIntArray125 = new int[this.anInt403];
+      this.anInt402 = 0;
+      this.anInt403 = 0;
+      this.anInt405 = 0;
+      var7 = 0;
+
+      for(int var12 = 0; var12 < var1; ++var12) {
+         Model var9 = var2[var12];
+         if (var9 != null) {
+            int var10;
+            for(int var11 = 0; var11 < var9.anInt403; ++var11) {
+               if (var3) {
+                  if (var9.anIntArray122 == null) {
+                     this.anIntArray122[this.anInt403] = 0;
+                  } else {
+                     var10 = var9.anIntArray122[var11];
+                     if ((var10 & 2) == 2) {
+                        var10 += var7 << 2;
+                     }
+
+                     this.anIntArray122[this.anInt403] = var10;
+                  }
+               }
+
+               if (var4) {
+                  if (var9.anIntArray123 == null) {
+                     this.anIntArray123[this.anInt403] = var9.anInt404;
+                  } else {
+                     this.anIntArray123[this.anInt403] = var9.anIntArray123[var11];
+                  }
+               }
+
+               if (var5) {
+                  if (var9.anIntArray124 == null) {
+                     this.anIntArray124[this.anInt403] = 0;
+                  } else {
+                     this.anIntArray124[this.anInt403] = var9.anIntArray124[var11];
+                  }
+               }
+
+               if (var6 && var9.anIntArray130 != null) {
+                  this.anIntArray130[this.anInt403] = var9.anIntArray130[var11];
+               }
+
+               this.anIntArray125[this.anInt403] = var9.anIntArray125[var11];
+               this.anIntArray116[this.anInt403] = this.method274(var9, var9.anIntArray116[var11]);
+               this.anIntArray117[this.anInt403] = this.method274(var9, var9.anIntArray117[var11]);
+               this.anIntArray118[this.anInt403] = this.method274(var9, var9.anIntArray118[var11]);
+               ++this.anInt403;
+            }
+
+            for(var10 = 0; var10 < var9.anInt405; ++var10) {
+               this.anIntArray126[this.anInt405] = this.method274(var9, var9.anIntArray126[var10]);
+               this.anIntArray127[this.anInt405] = this.method274(var9, var9.anIntArray127[var10]);
+               this.anIntArray128[this.anInt405] = this.method274(var9, var9.anIntArray128[var10]);
+               ++this.anInt405;
+            }
+
+            var7 += var9.anInt405;
+         }
+      }
+
+   }
+
+   private Model(int var1, int var2) {
+      ++anInt401;
+      Class27 var3 = renderables[var1];
+      this.anInt402 = var3.anInt330;
+      this.anInt403 = var3.anInt331;
+      this.anInt405 = var3.anInt332;
+      this.anIntArray113 = new int[this.anInt402];
+      this.anIntArray114 = new int[this.anInt402];
+      this.anIntArray115 = new int[this.anInt402];
+      this.anIntArray116 = new int[this.anInt403];
+      this.anIntArray117 = new int[this.anInt403];
+      this.anIntArray118 = new int[this.anInt403];
+      this.anIntArray126 = new int[this.anInt405];
+      this.anIntArray127 = new int[this.anInt405];
+      this.anIntArray128 = new int[this.anInt405];
+      if (var3.anInt337 >= 0) {
+         this.anIntArray129 = new int[this.anInt402];
+      }
+
+      if (var3.anInt341 >= 0) {
+         this.anIntArray122 = new int[this.anInt403];
+      }
+
+      if (var3.anInt342 >= 0) {
+         this.anIntArray123 = new int[this.anInt403];
+      } else {
+         this.anInt404 = -var3.anInt342 - 1;
+      }
+
+      if (var3.anInt343 >= 0) {
+         this.anIntArray124 = new int[this.anInt403];
+      }
+
+      if (var3.anInt344 >= 0) {
+         this.anIntArray130 = new int[this.anInt403];
+      }
+
+      this.anIntArray125 = new int[this.anInt403];
+      Packet var4 = new Packet(var3.aByteArray11);
+      var4.pos = var3.anInt333;
+      Packet var5 = new Packet(var3.aByteArray11);
+      var5.pos = var3.anInt334;
+      Packet var6 = new Packet(var3.aByteArray11);
+      var6.pos = var3.anInt335;
+      Packet var7 = new Packet(var3.aByteArray11);
+      var7.pos = var3.anInt336;
+      Packet var8 = new Packet(var3.aByteArray11);
+      var8.pos = var3.anInt337;
+      int var9 = 0;
+      int var10 = 0;
+      int var11 = 0;
+
+      int var12;
+      int var13;
+      int var14;
+      int var15;
+      int var16;
+      for(var16 = 0; var16 < this.anInt402; ++var16) {
+         var12 = var4.g1();
+         var13 = 0;
+         if ((var12 & 1) != 0) {
+            var13 = var5.gsmart();
+         }
+
+         var14 = 0;
+         if ((var12 & 2) != 0) {
+            var14 = var6.gsmart();
+         }
+
+         var15 = 0;
+         if ((var12 & 4) != 0) {
+            var15 = var7.gsmart();
+         }
+
+         this.anIntArray113[var16] = var9 + var13;
+         this.anIntArray114[var16] = var10 + var14;
+         this.anIntArray115[var16] = var11 + var15;
+         var9 = this.anIntArray113[var16];
+         var10 = this.anIntArray114[var16];
+         var11 = this.anIntArray115[var16];
+         if (this.anIntArray129 != null) {
+            this.anIntArray129[var16] = var8.g1();
+         }
+      }
+
+      var4.pos = var3.anInt340;
+      var5.pos = var3.anInt341;
+      var6.pos = var3.anInt342;
+      var7.pos = var3.anInt343;
+      var8.pos = var3.anInt344;
+
+      for(var12 = 0; var12 < this.anInt403; ++var12) {
+         this.anIntArray125[var12] = var4.g2();
+         if (this.anIntArray122 != null) {
+            this.anIntArray122[var12] = var5.g1();
+         }
+
+         if (this.anIntArray123 != null) {
+            this.anIntArray123[var12] = var6.g1();
+         }
+
+         if (this.anIntArray124 != null) {
+            this.anIntArray124[var12] = var7.g1();
+         }
+
+         if (this.anIntArray130 != null) {
+            this.anIntArray130[var12] = var8.g1();
+         }
+      }
+
+      var4.pos = var3.anInt338;
+      var5.pos = var3.anInt339;
+      var13 = 0;
+      var14 = 0;
+      var15 = 0;
+      var16 = 0;
+
+      int var17;
+      for(int var18 = 0; var18 < this.anInt403; ++var18) {
+         var17 = var5.g1();
+         if (var17 == 1) {
+            var13 = var4.gsmart() + var16;
+            var14 = var4.gsmart() + var13;
+            var15 = var4.gsmart() + var14;
+            var16 = var15;
+            this.anIntArray116[var18] = var13;
+            this.anIntArray117[var18] = var14;
+            this.anIntArray118[var18] = var15;
+         }
+
+         if (var17 == 2) {
+            var13 = var13;
+            var14 = var15;
+            var15 = var4.gsmart() + var16;
+            var16 = var15;
+            this.anIntArray116[var18] = var13;
+            this.anIntArray117[var18] = var14;
+            this.anIntArray118[var18] = var15;
+         }
+
+         if (var17 == 3) {
+            var13 = var15;
+            var14 = var14;
+            var15 = var4.gsmart() + var16;
+            var16 = var15;
+            this.anIntArray116[var18] = var13;
+            this.anIntArray117[var18] = var14;
+            this.anIntArray118[var18] = var15;
+         }
+
+         if (var17 == 4) {
+            int var19 = var13;
+            var13 = var14;
+            var14 = var19;
+            var15 = var4.gsmart() + var16;
+            var16 = var15;
+            this.anIntArray116[var18] = var13;
+            this.anIntArray117[var18] = var19;
+            this.anIntArray118[var18] = var15;
+         }
+      }
+
+      var4.pos = var3.anInt345;
+
+      for(var17 = 0; var17 < this.anInt405; ++var17) {
+         this.anIntArray126[var17] = var4.g2();
+         this.anIntArray127[var17] = var4.g2();
+         this.anIntArray128[var17] = var4.g2();
+      }
+
+   }
+
+   public Model(boolean var1, boolean var2, int var3, Model var4) {
+      ++anInt401;
+      this.anInt402 = var4.anInt402;
+      this.anInt403 = var4.anInt403;
+      this.anInt405 = var4.anInt405;
+      int var5;
+      if (var1) {
+         this.anIntArray114 = new int[this.anInt402];
+
+         for(var5 = 0; var5 < this.anInt402; ++var5) {
+            this.anIntArray114[var5] = var4.anIntArray114[var5];
+         }
+      } else {
+         this.anIntArray114 = var4.anIntArray114;
+      }
+
+      if (var2) {
+         this.anIntArray119 = new int[this.anInt403];
+         this.anIntArray120 = new int[this.anInt403];
+         this.anIntArray121 = new int[this.anInt403];
+
+         for(var5 = 0; var5 < this.anInt403; ++var5) {
+            this.anIntArray119[var5] = var4.anIntArray119[var5];
+            this.anIntArray120[var5] = var4.anIntArray120[var5];
+            this.anIntArray121[var5] = var4.anIntArray121[var5];
+         }
+
+         this.anIntArray122 = new int[this.anInt403];
+         int var6;
+         if (var4.anIntArray122 == null) {
+            for(var6 = 0; var6 < this.anInt403; ++var6) {
+               this.anIntArray122[var6] = 0;
+            }
+         } else {
+            for(var6 = 0; var6 < this.anInt403; ++var6) {
+               this.anIntArray122[var6] = var4.anIntArray122[var6];
+            }
+         }
+
+         super.aClass41Array10 = new Class41[this.anInt402];
+
+         for(var6 = 0; var6 < this.anInt402; ++var6) {
+            Class41 var7 = super.aClass41Array10[var6] = new Class41();
+            Class41 var8 = var4.aClass41Array10[var6];
+            var7.anInt607 = var8.anInt607;
+            var7.anInt608 = var8.anInt608;
+            var7.anInt609 = var8.anInt609;
+            var7.anInt610 = var8.anInt610;
+         }
+
+         this.aClass41Array6 = var4.aClass41Array6;
+      } else {
+         this.anIntArray119 = var4.anIntArray119;
+         this.anIntArray120 = var4.anIntArray120;
+         this.anIntArray121 = var4.anIntArray121;
+         this.anIntArray122 = var4.anIntArray122;
+      }
+
+      this.anIntArray113 = var4.anIntArray113;
+      this.anIntArray115 = var4.anIntArray115;
+      this.anIntArray125 = var4.anIntArray125;
+      this.anIntArray124 = var4.anIntArray124;
+      this.anIntArray123 = var4.anIntArray123;
+      this.anInt404 = var4.anInt404;
+      this.anIntArray116 = var4.anIntArray116;
+      this.anIntArray117 = var4.anIntArray117;
+      this.anIntArray118 = var4.anIntArray118;
+      this.anIntArray126 = var4.anIntArray126;
+      this.anIntArray127 = var4.anIntArray127;
+      this.anIntArray128 = var4.anIntArray128;
+      super.anInt713 = var4.anInt713;
+      this.anInt410 = var4.anInt410;
+      this.anInt409 = var4.anInt409;
+      this.anInt412 = var4.anInt412;
+      this.anInt411 = var4.anInt411;
+      this.anInt407 = var4.anInt407;
+      this.anInt408 = var4.anInt408;
+      this.anInt406 = var4.anInt406;
+   }
+
+   public Model(boolean var1, boolean var2, boolean var3, Model var4, boolean var5) {
+      ++anInt401;
+      this.anInt402 = var4.anInt402;
+      this.anInt403 = var4.anInt403;
+      this.anInt405 = var4.anInt405;
+      int var6;
+      if (var1) {
+         this.anIntArray113 = var4.anIntArray113;
+         this.anIntArray114 = var4.anIntArray114;
+         this.anIntArray115 = var4.anIntArray115;
+      } else {
+         this.anIntArray113 = new int[this.anInt402];
+         this.anIntArray114 = new int[this.anInt402];
+         this.anIntArray115 = new int[this.anInt402];
+
+         for(var6 = 0; var6 < this.anInt402; ++var6) {
+            this.anIntArray113[var6] = var4.anIntArray113[var6];
+            this.anIntArray114[var6] = var4.anIntArray114[var6];
+            this.anIntArray115[var6] = var4.anIntArray115[var6];
+         }
+      }
+
+      if (var3) {
+         this.anIntArray125 = var4.anIntArray125;
+      } else {
+         this.anIntArray125 = new int[this.anInt403];
+
+         for(var6 = 0; var6 < this.anInt403; ++var6) {
+            this.anIntArray125[var6] = var4.anIntArray125[var6];
+         }
+      }
+
+      if (var5) {
+         this.anIntArray124 = var4.anIntArray124;
+      } else {
+         this.anIntArray124 = new int[this.anInt403];
+         if (var4.anIntArray124 == null) {
+            for(var6 = 0; var6 < this.anInt403; ++var6) {
+               this.anIntArray124[var6] = 0;
+            }
+         } else {
+            for(var6 = 0; var6 < this.anInt403; ++var6) {
+               this.anIntArray124[var6] = var4.anIntArray124[var6];
+            }
+         }
+      }
+
+      this.anIntArray129 = var4.anIntArray129;
+      this.anIntArray130 = var4.anIntArray130;
+      this.anIntArray122 = var4.anIntArray122;
+      this.anIntArray116 = var4.anIntArray116;
+      this.anIntArray117 = var4.anIntArray117;
+      this.anIntArray118 = var4.anIntArray118;
+      this.anIntArray123 = var4.anIntArray123;
+      this.anInt404 = var4.anInt404;
+      this.anIntArray126 = var4.anIntArray126;
+      this.anIntArray127 = var4.anIntArray127;
+      this.anIntArray128 = var4.anIntArray128;
+   }
+
+   public Model(int var1, boolean var2, int var3, Model[] var4) {
+      ++anInt401;
+      boolean var5 = false;
+      boolean var6 = false;
+      boolean var7 = false;
+      boolean var8 = false;
+      this.anInt402 = 0;
+      this.anInt403 = 0;
+      this.anInt405 = 0;
+      this.anInt404 = -1;
+
+      int var9;
+      for(var9 = 0; var9 < var1; ++var9) {
+         Model var10 = var4[var9];
+         if (var10 != null) {
+            this.anInt402 += var10.anInt402;
+            this.anInt403 += var10.anInt403;
+            this.anInt405 += var10.anInt405;
+            var5 |= var10.anIntArray122 != null;
+            if (var10.anIntArray123 == null) {
+               if (this.anInt404 == -1) {
+                  this.anInt404 = var10.anInt404;
+               }
+
+               if (this.anInt404 != var10.anInt404) {
+                  var6 = true;
+               }
+            } else {
+               var6 = true;
+            }
+
+            var7 |= var10.anIntArray124 != null;
+            var8 |= var10.anIntArray125 != null;
+         }
+      }
+
+      this.anIntArray113 = new int[this.anInt402];
+      this.anIntArray114 = new int[this.anInt402];
+      this.anIntArray115 = new int[this.anInt402];
+      this.anIntArray116 = new int[this.anInt403];
+      this.anIntArray117 = new int[this.anInt403];
+      this.anIntArray118 = new int[this.anInt403];
+      this.anIntArray119 = new int[this.anInt403];
+      this.anIntArray120 = new int[this.anInt403];
+      this.anIntArray121 = new int[this.anInt403];
+      this.anIntArray126 = new int[this.anInt405];
+      this.anIntArray127 = new int[this.anInt405];
+      this.anIntArray128 = new int[this.anInt405];
+      if (var5) {
+         this.anIntArray122 = new int[this.anInt403];
+      }
+
+      if (var6) {
+         this.anIntArray123 = new int[this.anInt403];
+      }
+
+      if (var7) {
+         this.anIntArray124 = new int[this.anInt403];
+      }
+
+      if (var8) {
+         this.anIntArray125 = new int[this.anInt403];
+      }
+
+      this.anInt402 = 0;
+      this.anInt403 = 0;
+      this.anInt405 = 0;
+      var9 = 0;
+
+      for(int var15 = 0; var15 < var1; ++var15) {
+         Model var11 = var4[var15];
+         if (var11 != null) {
+            int var12 = this.anInt402;
+
+            int var13;
+            for(var13 = 0; var13 < var11.anInt402; ++var13) {
+               this.anIntArray113[this.anInt402] = var11.anIntArray113[var13];
+               this.anIntArray114[this.anInt402] = var11.anIntArray114[var13];
+               this.anIntArray115[this.anInt402] = var11.anIntArray115[var13];
+               ++this.anInt402;
+            }
+
+            for(int var14 = 0; var14 < var11.anInt403; ++var14) {
+               this.anIntArray116[this.anInt403] = var11.anIntArray116[var14] + var12;
+               this.anIntArray117[this.anInt403] = var11.anIntArray117[var14] + var12;
+               this.anIntArray118[this.anInt403] = var11.anIntArray118[var14] + var12;
+               this.anIntArray119[this.anInt403] = var11.anIntArray119[var14];
+               this.anIntArray120[this.anInt403] = var11.anIntArray120[var14];
+               this.anIntArray121[this.anInt403] = var11.anIntArray121[var14];
+               if (var5) {
+                  if (var11.anIntArray122 == null) {
+                     this.anIntArray122[this.anInt403] = 0;
+                  } else {
+                     var13 = var11.anIntArray122[var14];
+                     if ((var13 & 2) == 2) {
+                        var13 += var9 << 2;
+                     }
+
+                     this.anIntArray122[this.anInt403] = var13;
+                  }
+               }
+
+               if (var6) {
+                  if (var11.anIntArray123 == null) {
+                     this.anIntArray123[this.anInt403] = var11.anInt404;
+                  } else {
+                     this.anIntArray123[this.anInt403] = var11.anIntArray123[var14];
+                  }
+               }
+
+               if (var7) {
+                  if (var11.anIntArray124 == null) {
+                     this.anIntArray124[this.anInt403] = 0;
+                  } else {
+                     this.anIntArray124[this.anInt403] = var11.anIntArray124[var14];
+                  }
+               }
+
+               if (var8 && var11.anIntArray125 != null) {
+                  this.anIntArray125[this.anInt403] = var11.anIntArray125[var14];
+               }
+
+               ++this.anInt403;
+            }
+
+            for(var13 = 0; var13 < var11.anInt405; ++var13) {
+               this.anIntArray126[this.anInt405] = var11.anIntArray126[var13] + var12;
+               this.anIntArray127[this.anInt405] = var11.anIntArray127[var13] + var12;
+               this.anIntArray128[this.anInt405] = var11.anIntArray128[var13] + var12;
+               ++this.anInt405;
+            }
+
+            var9 += var11.anInt405;
+         }
+      }
+
+      this.method275(this.anInt398);
+   }
+
+   private void method290(int var1, int var2, int var3, int var4, int var5) {
+      int var6;
+      for(int var7 = 0; var7 < this.anInt403; ++var7) {
+         var6 = this.anIntArray116[var7];
+         int var8 = this.anIntArray117[var7];
+         int var9 = this.anIntArray118[var7];
+         Class41 var10;
+         int var11;
+         int var12;
+         if (this.anIntArray122 == null) {
+            var12 = this.anIntArray125[var7];
+            var10 = super.aClass41Array10[var6];
+            var11 = var1 + (var3 * var10.anInt607 + var4 * var10.anInt608 + var5 * var10.anInt609) / (var2 * var10.anInt610);
+            this.anIntArray119[var7] = method291(var12, var11, 0);
+            Class41 var13 = super.aClass41Array10[var8];
+            int var14 = var1 + (var3 * var13.anInt607 + var4 * var13.anInt608 + var5 * var13.anInt609) / (var2 * var13.anInt610);
+            this.anIntArray120[var7] = method291(var12, var14, 0);
+            Class41 var15 = super.aClass41Array10[var9];
+            int var16 = var1 + (var3 * var15.anInt607 + var4 * var15.anInt608 + var5 * var15.anInt609) / (var2 * var15.anInt610);
+            this.anIntArray121[var7] = method291(var12, var16, 0);
+         } else if ((this.anIntArray122[var7] & 1) == 0) {
+            var12 = this.anIntArray125[var7];
+            int var17 = this.anIntArray122[var7];
+            var10 = super.aClass41Array10[var6];
+            var11 = var1 + (var3 * var10.anInt607 + var4 * var10.anInt608 + var5 * var10.anInt609) / (var2 * var10.anInt610);
+            this.anIntArray119[var7] = method291(var12, var11, var17);
+            var10 = super.aClass41Array10[var8];
+            var11 = var1 + (var3 * var10.anInt607 + var4 * var10.anInt608 + var5 * var10.anInt609) / (var2 * var10.anInt610);
+            this.anIntArray120[var7] = method291(var12, var11, var17);
+            var10 = super.aClass41Array10[var9];
+            var11 = var1 + (var3 * var10.anInt607 + var4 * var10.anInt608 + var5 * var10.anInt609) / (var2 * var10.anInt610);
+            this.anIntArray121[var7] = method291(var12, var11, var17);
+         }
+      }
+
+      super.aClass41Array10 = null;
+      this.aClass41Array6 = null;
+      this.anIntArray129 = null;
+      this.anIntArray130 = null;
+      if (this.anIntArray122 != null) {
+         for(var6 = 0; var6 < this.anInt403; ++var6) {
+            if ((this.anIntArray122[var6] & 2) == 2) {
+               return;
+            }
+         }
+      }
+
+      this.anIntArray125 = null;
+   }
+
+   public void method279(int var1, byte var2) {
+      if (this.anIntArrayArray10 != null && var1 != -1) {
+         Class22 var3 = Class22.method168(var1);
+         if (var3 != null) {
+            Class42 var4 = var3.aClass42_1;
+            boolean var5 = false;
+            anInt414 = 0;
+            anInt415 = 0;
+            anInt416 = 0;
+
+            for(int var6 = 0; var6 < var3.anInt239; ++var6) {
+               int var7 = var3.anIntArray81[var6];
+               this.method281(var4.anIntArray172[var7], var4.anIntArrayArray15[var7], var3.anIntArray82[var6], var3.anIntArray83[var6], var3.anIntArray84[var6]);
+            }
+         }
+      }
+
+   }
+
+   private void method295(int var1) {
+      int var2 = Draw3D.anInt686;
+      int var3 = Draw3D.anInt687;
+      int var4 = 0;
+      int var5 = this.anIntArray116[var1];
+      int var6 = this.anIntArray117[var1];
+      int var7 = this.anIntArray118[var1];
+      int var8 = anIntArray136[var5];
+      int var9 = anIntArray136[var6];
+      int var10 = anIntArray136[var7];
+      int var11;
+      int var12;
+      int var13;
+      int var14;
+      if (var8 >= 50) {
+         anIntArray142[0] = anIntArray131[var5];
+         anIntArray143[0] = anIntArray132[var5];
+         ++var4;
+         anIntArray144[0] = this.anIntArray119[var1];
+      } else {
+         var11 = anIntArray134[var5];
+         var12 = anIntArray135[var5];
+         var13 = this.anIntArray119[var1];
+         if (var10 >= 50) {
+            var14 = (50 - var8) * anIntArray149[var10 - var8];
+            anIntArray142[0] = var2 + (var11 + ((anIntArray134[var7] - var11) * var14 >> 16) << 9) / 50;
+            anIntArray143[0] = var3 + (var12 + ((anIntArray135[var7] - var12) * var14 >> 16) << 9) / 50;
+            ++var4;
+            anIntArray144[0] = var13 + ((this.anIntArray121[var1] - var13) * var14 >> 16);
+         }
+
+         if (var9 >= 50) {
+            var14 = (50 - var8) * anIntArray149[var9 - var8];
+            anIntArray142[var4] = var2 + (var11 + ((anIntArray134[var6] - var11) * var14 >> 16) << 9) / 50;
+            anIntArray143[var4] = var3 + (var12 + ((anIntArray135[var6] - var12) * var14 >> 16) << 9) / 50;
+            anIntArray144[var4++] = var13 + ((this.anIntArray120[var1] - var13) * var14 >> 16);
+         }
+      }
+
+      if (var9 >= 50) {
+         anIntArray142[var4] = anIntArray131[var6];
+         anIntArray143[var4] = anIntArray132[var6];
+         anIntArray144[var4++] = this.anIntArray120[var1];
+      } else {
+         var11 = anIntArray134[var6];
+         var12 = anIntArray135[var6];
+         var13 = this.anIntArray120[var1];
+         if (var8 >= 50) {
+            var14 = (50 - var9) * anIntArray149[var8 - var9];
+            anIntArray142[var4] = var2 + (var11 + ((anIntArray134[var5] - var11) * var14 >> 16) << 9) / 50;
+            anIntArray143[var4] = var3 + (var12 + ((anIntArray135[var5] - var12) * var14 >> 16) << 9) / 50;
+            anIntArray144[var4++] = var13 + ((this.anIntArray119[var1] - var13) * var14 >> 16);
+         }
+
+         if (var10 >= 50) {
+            var14 = (50 - var9) * anIntArray149[var10 - var9];
+            anIntArray142[var4] = var2 + (var11 + ((anIntArray134[var7] - var11) * var14 >> 16) << 9) / 50;
+            anIntArray143[var4] = var3 + (var12 + ((anIntArray135[var7] - var12) * var14 >> 16) << 9) / 50;
+            anIntArray144[var4++] = var13 + ((this.anIntArray121[var1] - var13) * var14 >> 16);
+         }
+      }
+
+      if (var10 >= 50) {
+         anIntArray142[var4] = anIntArray131[var7];
+         anIntArray143[var4] = anIntArray132[var7];
+         anIntArray144[var4++] = this.anIntArray121[var1];
+      } else {
+         var11 = anIntArray134[var7];
+         var12 = anIntArray135[var7];
+         var13 = this.anIntArray121[var1];
+         if (var9 >= 50) {
+            var14 = (50 - var10) * anIntArray149[var9 - var10];
+            anIntArray142[var4] = var2 + (var11 + ((anIntArray134[var6] - var11) * var14 >> 16) << 9) / 50;
+            anIntArray143[var4] = var3 + (var12 + ((anIntArray135[var6] - var12) * var14 >> 16) << 9) / 50;
+            anIntArray144[var4++] = var13 + ((this.anIntArray120[var1] - var13) * var14 >> 16);
+         }
+
+         if (var8 >= 50) {
+            var14 = (50 - var10) * anIntArray149[var8 - var10];
+            anIntArray142[var4] = var2 + (var11 + ((anIntArray134[var5] - var11) * var14 >> 16) << 9) / 50;
+            anIntArray143[var4] = var3 + (var12 + ((anIntArray135[var5] - var12) * var14 >> 16) << 9) / 50;
+            anIntArray144[var4++] = var13 + ((this.anIntArray119[var1] - var13) * var14 >> 16);
+         }
+      }
+
+      var11 = anIntArray142[0];
+      var12 = anIntArray142[1];
+      var13 = anIntArray142[2];
+      var14 = anIntArray143[0];
+      int var15 = anIntArray143[1];
+      int var16 = anIntArray143[2];
+      if ((var11 - var12) * (var16 - var15) - (var14 - var15) * (var13 - var12) > 0) {
+         Draw3D.aBoolean177 = false;
+         int var17;
+         int var18;
+         int var19;
+         int var20;
+         int var21;
+         if (var4 == 3) {
+            if (var11 < 0 || var12 < 0 || var13 < 0 || var11 > Draw2D.boundX || var12 > Draw2D.boundX || var13 > Draw2D.boundX) {
+               Draw3D.aBoolean177 = true;
+            }
+
+            if (this.anIntArray122 == null) {
+               var17 = 0;
+            } else {
+               var17 = this.anIntArray122[var1] & 3;
+            }
+
+            if (var17 == 0) {
+               Draw3D.method517(var14, var15, var16, var11, var12, var13, anIntArray144[0], anIntArray144[1], anIntArray144[2]);
+            } else if (var17 == 1) {
+               Draw3D.method519(var14, var15, var16, var11, var12, var13, anIntArray148[this.anIntArray119[var1]]);
+            } else if (var17 == 2) {
+               var18 = this.anIntArray122[var1] >> 2;
+               var19 = this.anIntArray126[var18];
+               var20 = this.anIntArray127[var18];
+               var21 = this.anIntArray128[var18];
+               Draw3D.method521(var14, var15, var16, var11, var12, var13, anIntArray144[0], anIntArray144[1], anIntArray144[2], anIntArray134[var19], anIntArray134[var20], anIntArray134[var21], anIntArray135[var19], anIntArray135[var20], anIntArray135[var21], anIntArray136[var19], anIntArray136[var20], anIntArray136[var21], this.anIntArray125[var1]);
+            } else if (var17 == 3) {
+               var18 = this.anIntArray122[var1] >> 2;
+               var19 = this.anIntArray126[var18];
+               var20 = this.anIntArray127[var18];
+               var21 = this.anIntArray128[var18];
+               Draw3D.method521(var14, var15, var16, var11, var12, var13, this.anIntArray119[var1], this.anIntArray119[var1], this.anIntArray119[var1], anIntArray134[var19], anIntArray134[var20], anIntArray134[var21], anIntArray135[var19], anIntArray135[var20], anIntArray135[var21], anIntArray136[var19], anIntArray136[var20], anIntArray136[var21], this.anIntArray125[var1]);
+            }
+         }
+
+         if (var4 == 4) {
+            if (var11 < 0 || var12 < 0 || var13 < 0 || var11 > Draw2D.boundX || var12 > Draw2D.boundX || var13 > Draw2D.boundX || anIntArray142[3] < 0 || anIntArray142[3] > Draw2D.boundX) {
+               Draw3D.aBoolean177 = true;
+            }
+
+            if (this.anIntArray122 == null) {
+               var17 = 0;
+            } else {
+               var17 = this.anIntArray122[var1] & 3;
+            }
+
+            if (var17 == 0) {
+               Draw3D.method517(var14, var15, var16, var11, var12, var13, anIntArray144[0], anIntArray144[1], anIntArray144[2]);
+               Draw3D.method517(var14, var16, anIntArray143[3], var11, var13, anIntArray142[3], anIntArray144[0], anIntArray144[2], anIntArray144[3]);
+            } else if (var17 == 1) {
+               var18 = anIntArray148[this.anIntArray119[var1]];
+               Draw3D.method519(var14, var15, var16, var11, var12, var13, var18);
+               Draw3D.method519(var14, var16, anIntArray143[3], var11, var13, anIntArray142[3], var18);
+            } else if (var17 == 2) {
+               var18 = this.anIntArray122[var1] >> 2;
+               var19 = this.anIntArray126[var18];
+               var20 = this.anIntArray127[var18];
+               var21 = this.anIntArray128[var18];
+               Draw3D.method521(var14, var15, var16, var11, var12, var13, anIntArray144[0], anIntArray144[1], anIntArray144[2], anIntArray134[var19], anIntArray134[var20], anIntArray134[var21], anIntArray135[var19], anIntArray135[var20], anIntArray135[var21], anIntArray136[var19], anIntArray136[var20], anIntArray136[var21], this.anIntArray125[var1]);
+               Draw3D.method521(var14, var16, anIntArray143[3], var11, var13, anIntArray142[3], anIntArray144[0], anIntArray144[2], anIntArray144[3], anIntArray134[var19], anIntArray134[var20], anIntArray134[var21], anIntArray135[var19], anIntArray135[var20], anIntArray135[var21], anIntArray136[var19], anIntArray136[var20], anIntArray136[var21], this.anIntArray125[var1]);
+            } else if (var17 == 3) {
+               var18 = this.anIntArray122[var1] >> 2;
+               var19 = this.anIntArray126[var18];
+               var20 = this.anIntArray127[var18];
+               var21 = this.anIntArray128[var18];
+               Draw3D.method521(var14, var15, var16, var11, var12, var13, this.anIntArray119[var1], this.anIntArray119[var1], this.anIntArray119[var1], anIntArray134[var19], anIntArray134[var20], anIntArray134[var21], anIntArray135[var19], anIntArray135[var20], anIntArray135[var21], anIntArray136[var19], anIntArray136[var20], anIntArray136[var21], this.anIntArray125[var1]);
+               Draw3D.method521(var14, var16, anIntArray143[3], var11, var13, anIntArray142[3], this.anIntArray119[var1], this.anIntArray119[var1], this.anIntArray119[var1], anIntArray134[var19], anIntArray134[var20], anIntArray134[var21], anIntArray135[var19], anIntArray135[var20], anIntArray135[var21], anIntArray136[var19], anIntArray136[var20], anIntArray136[var21], this.anIntArray125[var1]);
+            }
+         }
+      }
+   }
+
+   public void recolor(int var1, int var2) {
+      for(int var3 = 0; var3 < this.anInt403; ++var3) {
+         if (this.anIntArray125[var3] == var1) {
+            this.anIntArray125[var3] = var2;
+         }
+      }
+
+   }
+
+   public void method278() {
+      int[] var1;
+      int var2;
+      int var10003;
+      int var4;
+      int var5;
+      int var6;
+      int var7;
+      if (this.anIntArray129 != null) {
+         var1 = new int[256];
+         var2 = 0;
+
+         for(var4 = 0; var4 < this.anInt402; ++var4) {
+            var5 = this.anIntArray129[var4];
+            var10003 = var1[var5]++;
+            if (var5 > var2) {
+               var2 = var5;
+            }
+         }
+
+         this.anIntArrayArray10 = new int[var2 + 1][];
+
+         for(var5 = 0; var5 <= var2; ++var5) {
+            this.anIntArrayArray10[var5] = new int[var1[var5]];
+            var1[var5] = 0;
+         }
+
+         for(var6 = 0; var6 < this.anInt402; this.anIntArrayArray10[var7][var1[var7]++] = var6++) {
+            var7 = this.anIntArray129[var6];
+         }
+
+         this.anIntArray129 = null;
+      }
+
+      if (this.anIntArray130 != null) {
+         var1 = new int[256];
+         var2 = 0;
+
+         for(var4 = 0; var4 < this.anInt403; ++var4) {
+            var5 = this.anIntArray130[var4];
+            var10003 = var1[var5]++;
+            if (var5 > var2) {
+               var2 = var5;
+            }
+         }
+
+         this.anIntArrayArray11 = new int[var2 + 1][];
+
+         for(var5 = 0; var5 <= var2; ++var5) {
+            this.anIntArrayArray11[var5] = new int[var1[var5]];
+            var1[var5] = 0;
+         }
+
+         for(var6 = 0; var6 < this.anInt403; this.anIntArrayArray11[var7][var1[var7]++] = var6++) {
+            var7 = this.anIntArray130[var6];
+         }
+
+         this.anIntArray130 = null;
+      }
+
+   }
+
+   public void method273(boolean var1, Model var2) {
+      this.anInt402 = var2.anInt402;
+      this.anInt403 = var2.anInt403;
+      this.anInt405 = var2.anInt405;
+      if (anIntArray109.length < this.anInt402) {
+         anIntArray109 = new int[this.anInt402 + 100];
+         anIntArray110 = new int[this.anInt402 + 100];
+         anIntArray111 = new int[this.anInt402 + 100];
+      }
+
+      this.anIntArray113 = anIntArray109;
+      this.anIntArray114 = anIntArray110;
+      this.anIntArray115 = anIntArray111;
+
+      int var3;
+      for(var3 = 0; var3 < this.anInt402; ++var3) {
+         this.anIntArray113[var3] = var2.anIntArray113[var3];
+         this.anIntArray114[var3] = var2.anIntArray114[var3];
+         this.anIntArray115[var3] = var2.anIntArray115[var3];
+      }
+
+      if (var1) {
+         this.anIntArray124 = var2.anIntArray124;
+      } else {
+         if (anIntArray112.length < this.anInt403) {
+            anIntArray112 = new int[this.anInt403 + 100];
+         }
+
+         this.anIntArray124 = anIntArray112;
+         if (var2.anIntArray124 == null) {
+            for(var3 = 0; var3 < this.anInt403; ++var3) {
+               this.anIntArray124[var3] = 0;
+            }
+         } else {
+            for(var3 = 0; var3 < this.anInt403; ++var3) {
+               this.anIntArray124[var3] = var2.anIntArray124[var3];
+            }
+         }
+      }
+
+      this.anIntArray122 = var2.anIntArray122;
+      this.anIntArray125 = var2.anIntArray125;
+      this.anIntArray123 = var2.anIntArray123;
+      this.anInt404 = var2.anInt404;
+      this.anIntArrayArray11 = var2.anIntArrayArray11;
+      this.anIntArrayArray10 = var2.anIntArrayArray10;
+      this.anIntArray116 = var2.anIntArray116;
+      this.anIntArray117 = var2.anIntArray117;
+      this.anIntArray118 = var2.anIntArray118;
+      this.anIntArray119 = var2.anIntArray119;
+      this.anIntArray120 = var2.anIntArray120;
+      this.anIntArray121 = var2.anIntArray121;
+      this.anIntArray126 = var2.anIntArray126;
+      this.anIntArray127 = var2.anIntArray127;
+      this.anIntArray128 = var2.anIntArray128;
+   }
+
+   public void method536(int var1, int var2, int var3, int var4, int var5, int var6, int var7, int var8, int var9) {
+      int var10 = var8 * var5 - var6 * var4 >> 16;
+      int var11 = var7 * var2 + var10 * var3 >> 16;
+      int var12 = this.anInt409 * var3 >> 16;
+      int var13 = var11 + var12;
+      if (var13 > 50 && var11 < 3500) {
+         int var14 = var8 * var4 + var6 * var5 >> 16;
+         int var15 = var14 - this.anInt409 << 9;
+         if (var15 / var13 < Draw2D.centerX2d) {
+            int var16 = var14 + this.anInt409 << 9;
+            if (var16 / var13 > -Draw2D.centerX2d) {
+               int var17 = var7 * var3 - var10 * var2 >> 16;
+               int var18 = this.anInt409 * var2 >> 16;
+               int var19 = var17 + var18 << 9;
+               if (var19 / var13 > -Draw2D.anInt682) {
+                  int var20 = var18 + (super.anInt713 * var3 >> 16);
+                  int var21 = var17 - var20 << 9;
+                  if (var21 / var13 < Draw2D.anInt682) {
+                     int var22 = var12 + (super.anInt713 * var2 >> 16);
+                     boolean var23 = false;
+                     if (var11 - var22 <= 50) {
+                        var23 = true;
+                     }
+
+                     boolean var24 = false;
+                     int var25;
+                     int var26;
+                     int var27;
+                     if (var9 > 0 && checkHover) {
+                        var25 = var11 - var12;
+                        if (var25 <= 50) {
+                           var25 = 50;
+                        }
+
+                        if (var14 > 0) {
+                           var15 /= var13;
+                           var16 /= var25;
+                        } else {
+                           var16 /= var13;
+                           var15 /= var25;
+                        }
+
+                        if (var17 > 0) {
+                           var21 /= var13;
+                           var19 /= var25;
+                        } else {
+                           var19 /= var13;
+                           var21 /= var25;
+                        }
+
+                        var26 = mouseX - Draw3D.anInt686;
+                        var27 = mouseZ - Draw3D.anInt687;
+                        if (var26 > var15 && var26 < var16 && var27 > var21 && var27 < var19) {
+                           if (this.aBoolean106) {
+                              anIntArray145[pickedCount++] = var9;
+                           } else {
+                              var24 = true;
+                           }
+                        }
+                     }
+
+                     var25 = Draw3D.anInt686;
+                     var26 = Draw3D.anInt687;
+                     var27 = 0;
+                     int var28 = 0;
+                     if (var1 != 0) {
+                        var27 = anIntArray146[var1];
+                        var28 = anIntArray147[var1];
+                     }
+
+                     for(int var29 = 0; var29 < this.anInt402; ++var29) {
+                        int var30 = this.anIntArray113[var29];
+                        int var31 = this.anIntArray114[var29];
+                        int var32 = this.anIntArray115[var29];
+                        int var33;
+                        if (var1 != 0) {
+                           var33 = var32 * var27 + var30 * var28 >> 16;
+                           var32 = var32 * var28 - var30 * var27 >> 16;
+                           var30 = var33;
+                        }
+
+                        var30 += var6;
+                        var31 += var7;
+                        var32 += var8;
+                        var33 = var32 * var4 + var30 * var5 >> 16;
+                        var32 = var32 * var5 - var30 * var4 >> 16;
+                        var30 = var33;
+                        var33 = var31 * var3 - var32 * var2 >> 16;
+                        var32 = var31 * var2 + var32 * var3 >> 16;
+                        anIntArray133[var29] = var32 - var11;
+                        if (var32 >= 50) {
+                           anIntArray131[var29] = var25 + (var30 << 9) / var32;
+                           anIntArray132[var29] = var26 + (var33 << 9) / var32;
+                        } else {
+                           anIntArray131[var29] = -5000;
+                           var23 = true;
+                        }
+
+                        if (var23 || this.anInt405 > 0) {
+                           anIntArray134[var29] = var30;
+                           anIntArray135[var29] = var33;
+                           anIntArray136[var29] = var32;
+                        }
+                     }
+
+                     try {
+                        this.method293(var23, var24, var9);
+                     } catch (Exception var35) {
+                     }
+
+                  }
+               }
+            }
+         }
+      }
+   }
+
+   public void method287(int var1, int var2, int var3) {
+      for(int var4 = 0; var4 < this.anInt402; ++var4) {
+         this.anIntArray113[var4] = this.anIntArray113[var4] * var3 / 128;
+         this.anIntArray114[var4] = this.anIntArray114[var4] * var1 / 128;
+         this.anIntArray115[var4] = this.anIntArray115[var4] * var2 / 128;
+      }
+
+   }
+
+   public void method284(int var1, int var2, int var3) {
+      for(int var4 = 0; var4 < this.anInt402; ++var4) {
+         int[] var10000 = this.anIntArray113;
+         var10000[var4] += var1;
+         var10000 = this.anIntArray114;
+         var10000[var4] += var3;
+         var10000 = this.anIntArray115;
+         var10000[var4] += var2;
+      }
+
+   }
+
+   private void method294(int var1) {
+      if (aBooleanArray6[var1]) {
+         this.method295(var1);
+      } else {
+         int var2 = this.anIntArray116[var1];
+         int var3 = this.anIntArray117[var1];
+         int var4 = this.anIntArray118[var1];
+         Draw3D.aBoolean177 = aBooleanArray5[var1];
+         if (this.anIntArray124 == null) {
+            Draw3D.anInt685 = 0;
+         } else {
+            Draw3D.anInt685 = this.anIntArray124[var1];
+         }
+
+         int var5;
+         if (this.anIntArray122 == null) {
+            var5 = 0;
+         } else {
+            var5 = this.anIntArray122[var1] & 3;
+         }
+
+         if (var5 == 0) {
+            Draw3D.method517(anIntArray132[var2], anIntArray132[var3], anIntArray132[var4], anIntArray131[var2], anIntArray131[var3], anIntArray131[var4], this.anIntArray119[var1], this.anIntArray120[var1], this.anIntArray121[var1]);
+         } else if (var5 == 1) {
+            Draw3D.method519(anIntArray132[var2], anIntArray132[var3], anIntArray132[var4], anIntArray131[var2], anIntArray131[var3], anIntArray131[var4], anIntArray148[this.anIntArray119[var1]]);
+         } else {
+            int var6;
+            int var7;
+            int var8;
+            int var9;
+            if (var5 == 2) {
+               var6 = this.anIntArray122[var1] >> 2;
+               var7 = this.anIntArray126[var6];
+               var8 = this.anIntArray127[var6];
+               var9 = this.anIntArray128[var6];
+               Draw3D.method521(anIntArray132[var2], anIntArray132[var3], anIntArray132[var4], anIntArray131[var2], anIntArray131[var3], anIntArray131[var4], this.anIntArray119[var1], this.anIntArray120[var1], this.anIntArray121[var1], anIntArray134[var7], anIntArray134[var8], anIntArray134[var9], anIntArray135[var7], anIntArray135[var8], anIntArray135[var9], anIntArray136[var7], anIntArray136[var8], anIntArray136[var9], this.anIntArray125[var1]);
+            } else if (var5 == 3) {
+               var6 = this.anIntArray122[var1] >> 2;
+               var7 = this.anIntArray126[var6];
+               var8 = this.anIntArray127[var6];
+               var9 = this.anIntArray128[var6];
+               Draw3D.method521(anIntArray132[var2], anIntArray132[var3], anIntArray132[var4], anIntArray131[var2], anIntArray131[var3], anIntArray131[var4], this.anIntArray119[var1], this.anIntArray119[var1], this.anIntArray119[var1], anIntArray134[var7], anIntArray134[var8], anIntArray134[var9], anIntArray135[var7], anIntArray135[var8], anIntArray135[var9], anIntArray136[var7], anIntArray136[var8], anIntArray136[var9], this.anIntArray125[var1]);
+            }
+         }
+
+      }
+   }
+
+   public void method280(int var1, int var2, int[] var3) {
+      if (var2 != -1) {
+         if (var3 != null && var1 != -1) {
+            Class22 var4 = Class22.method168(var2);
+            if (var4 != null) {
+               Class22 var5 = Class22.method168(var1);
+               if (var5 == null) {
+                  this.method279(var2, (byte)6);
+               } else {
+                  Class42 var6 = var4.aClass42_1;
+                  anInt414 = 0;
+                  anInt415 = 0;
+                  anInt416 = 0;
+                  byte var7 = 0;
+                  int var8 = var7 + 1;
+                  int var9 = var3[0];
+
+                  int var10;
+                  int var11;
+                  for(var11 = 0; var11 < var4.anInt239; ++var11) {
+                     for(var10 = var4.anIntArray81[var11]; var10 > var9; var9 = var3[var8++]) {
+                     }
+
+                     if (var10 != var9 || var6.anIntArray172[var10] == 0) {
+                        this.method281(var6.anIntArray172[var10], var6.anIntArrayArray15[var10], var4.anIntArray82[var11], var4.anIntArray83[var11], var4.anIntArray84[var11]);
+                     }
+                  }
+
+                  anInt414 = 0;
+                  anInt415 = 0;
+                  anInt416 = 0;
+                  var7 = 0;
+                  var8 = var7 + 1;
+                  var9 = var3[0];
+
+                  for(var10 = 0; var10 < var5.anInt239; ++var10) {
+                     for(var11 = var5.anIntArray81[var10]; var11 > var9; var9 = var3[var8++]) {
+                     }
+
+                     if (var11 == var9 || var6.anIntArray172[var11] == 0) {
+                        this.method281(var6.anIntArray172[var11], var6.anIntArrayArray15[var11], var5.anIntArray82[var10], var5.anIntArray83[var10], var5.anIntArray84[var10]);
+                     }
+                  }
+               }
+            }
+         } else {
+            this.method279(var2, (byte)6);
+         }
+      }
+
+   }
+
+   public void method276() {
+      super.anInt713 = 0;
+      this.anInt410 = 0;
+
+      for(int var1 = 0; var1 < this.anInt402; ++var1) {
+         int var2 = this.anIntArray114[var1];
+         if (-var2 > super.anInt713) {
+            super.anInt713 = -var2;
+         }
+
+         if (var2 > this.anInt410) {
+            this.anInt410 = var2;
+         }
+      }
+
+      this.anInt412 = (int)(Math.sqrt((double)(this.anInt409 * this.anInt409 + super.anInt713 * super.anInt713)) + 0.99);
+      this.anInt411 = this.anInt412 + (int)(Math.sqrt((double)(this.anInt409 * this.anInt409 + this.anInt410 * this.anInt410)) + 0.99);
+   }
+
+   private void method293(boolean var1, boolean var2, int var3) {
+      int var4;
+      for(var4 = 0; var4 < this.anInt411; ++var4) {
+         anIntArray137[var4] = 0;
+      }
+
+      int var5;
+      int var6;
+      int var7;
+      int var8;
+      int var9;
+      int var10;
+      int var11;
+      for(var11 = 0; var11 < this.anInt403; ++var11) {
+         if (this.anIntArray122 == null || this.anIntArray122[var11] != -1) {
+            var4 = this.anIntArray116[var11];
+            var5 = this.anIntArray117[var11];
+            var6 = this.anIntArray118[var11];
+            var7 = anIntArray131[var4];
+            var8 = anIntArray131[var5];
+            var9 = anIntArray131[var6];
+            if (!var1 || var7 != -5000 && var8 != -5000 && var9 != -5000) {
+               if (var2 && this.method296(mouseX, mouseZ, anIntArray132[var4], anIntArray132[var5], anIntArray132[var6], var7, var8, var9)) {
+                  anIntArray145[pickedCount++] = var3;
+                  var2 = false;
+               }
+
+               if ((var7 - var8) * (anIntArray132[var6] - anIntArray132[var5]) - (anIntArray132[var4] - anIntArray132[var5]) * (var9 - var8) > 0) {
+                  aBooleanArray6[var11] = false;
+                  if (var7 >= 0 && var8 >= 0 && var9 >= 0 && var7 <= Draw2D.boundX && var8 <= Draw2D.boundX && var9 <= Draw2D.boundX) {
+                     aBooleanArray5[var11] = false;
+                  } else {
+                     aBooleanArray5[var11] = true;
+                  }
+
+                  var10 = (anIntArray133[var4] + anIntArray133[var5] + anIntArray133[var6]) / 3 + this.anInt412;
+                  anIntArrayArray12[var10][anIntArray137[var10]++] = var11;
+               }
+            } else {
+               aBooleanArray6[var11] = true;
+               var10 = (anIntArray133[var4] + anIntArray133[var5] + anIntArray133[var6]) / 3 + this.anInt412;
+               anIntArrayArray12[var10][anIntArray137[var10]++] = var11;
+            }
+         }
+      }
+
+      if (this.anIntArray123 == null) {
+         for(var4 = this.anInt411 - 1; var4 >= 0; --var4) {
+            var5 = anIntArray137[var4];
+            if (var5 > 0) {
+               int[] var18 = anIntArrayArray12[var4];
+
+               for(var7 = 0; var7 < var5; ++var7) {
+                  this.method294(var18[var7]);
+               }
+            }
+         }
+
+      } else {
+         for(var4 = 0; var4 < 12; ++var4) {
+            anIntArray138[var4] = 0;
+            anIntArray141[var4] = 0;
+         }
+
+         int[] var12;
+         for(var5 = this.anInt411 - 1; var5 >= 0; --var5) {
+            var6 = anIntArray137[var5];
+            if (var6 > 0) {
+               var12 = anIntArrayArray12[var5];
+
+               for(var8 = 0; var8 < var6; ++var8) {
+                  var9 = var12[var8];
+                  var10 = this.anIntArray123[var9];
+                  var11 = anIntArray138[var10]++;
+                  anIntArrayArray13[var10][var11] = var9;
+                  if (var10 < 10) {
+                     int[] var10000 = anIntArray141;
+                     var10000[var10] += var5;
+                  } else if (var10 == 10) {
+                     anIntArray139[var11] = var5;
+                  } else {
+                     anIntArray140[var11] = var5;
+                  }
+               }
+            }
+         }
+
+         var6 = 0;
+         if (anIntArray138[1] > 0 || anIntArray138[2] > 0) {
+            var6 = (anIntArray141[1] + anIntArray141[2]) / (anIntArray138[1] + anIntArray138[2]);
+         }
+
+         var7 = 0;
+         if (anIntArray138[3] > 0 || anIntArray138[4] > 0) {
+            var7 = (anIntArray141[3] + anIntArray141[4]) / (anIntArray138[3] + anIntArray138[4]);
+         }
+
+         var8 = 0;
+         if (anIntArray138[6] > 0 || anIntArray138[8] > 0) {
+            var8 = (anIntArray141[6] + anIntArray141[8]) / (anIntArray138[6] + anIntArray138[8]);
+         }
+
+         var10 = 0;
+         var11 = anIntArray138[10];
+         var12 = anIntArrayArray13[10];
+         int[] var13 = anIntArray139;
+         if (var11 == 0) {
+            var10 = 0;
+            var11 = anIntArray138[11];
+            var12 = anIntArrayArray13[11];
+            var13 = anIntArray140;
+         }
+
+         if (var11 > 0) {
+            var9 = var13[0];
+         } else {
+            var9 = -1000;
+         }
+
+         for(int var14 = 0; var14 < 10; ++var14) {
+            while(var14 == 0 && var9 > var6) {
+               this.method294(var12[var10++]);
+               if (var10 == var11 && var12 != anIntArrayArray13[11]) {
+                  var10 = 0;
+                  var11 = anIntArray138[11];
+                  var12 = anIntArrayArray13[11];
+                  var13 = anIntArray140;
+               }
+
+               if (var10 < var11) {
+                  var9 = var13[var10];
+               } else {
+                  var9 = -1000;
+               }
+            }
+
+            while(var14 == 3 && var9 > var7) {
+               this.method294(var12[var10++]);
+               if (var10 == var11 && var12 != anIntArrayArray13[11]) {
+                  var10 = 0;
+                  var11 = anIntArray138[11];
+                  var12 = anIntArrayArray13[11];
+                  var13 = anIntArray140;
+               }
+
+               if (var10 < var11) {
+                  var9 = var13[var10];
+               } else {
+                  var9 = -1000;
+               }
+            }
+
+            while(var14 == 5 && var9 > var8) {
+               this.method294(var12[var10++]);
+               if (var10 == var11 && var12 != anIntArrayArray13[11]) {
+                  var10 = 0;
+                  var11 = anIntArray138[11];
+                  var12 = anIntArrayArray13[11];
+                  var13 = anIntArray140;
+               }
+
+               if (var10 < var11) {
+                  var9 = var13[var10];
+               } else {
+                  var9 = -1000;
+               }
+            }
+
+            int var15 = anIntArray138[var14];
+            int[] var16 = anIntArrayArray13[var14];
+
+            for(int var17 = 0; var17 < var15; ++var17) {
+               this.method294(var16[var17]);
+            }
+         }
+
+         while(var9 != -1000) {
+            this.method294(var12[var10++]);
+            if (var10 == var11 && var12 != anIntArrayArray13[11]) {
+               var10 = 0;
+               var12 = anIntArrayArray13[11];
+               var11 = anIntArray138[11];
+               var13 = anIntArray140;
+            }
+
+            if (var10 < var11) {
+               var9 = var13[var10];
+            } else {
+               var9 = -1000;
+            }
+         }
+
+      }
+   }
+
+   private void method277() {
+      super.anInt713 = 0;
+      this.anInt409 = 0;
+      this.anInt410 = 0;
+      int var1 = 32767;
+      int var2 = -32767;
+      int var3 = -32767;
+      int var4 = 32767;
+
+      for(int var5 = 0; var5 < this.anInt402; ++var5) {
+         int var6 = this.anIntArray113[var5];
+         int var7 = this.anIntArray114[var5];
+         int var8 = this.anIntArray115[var5];
+         if (var6 < var1) {
+            var1 = var6;
+         }
+
+         if (var6 > var2) {
+            var2 = var6;
+         }
+
+         if (var8 < var4) {
+            var4 = var8;
+         }
+
+         if (var8 > var3) {
+            var3 = var8;
+         }
+
+         if (-var7 > super.anInt713) {
+            super.anInt713 = -var7;
+         }
+
+         if (var7 > this.anInt410) {
+            this.anInt410 = var7;
+         }
+
+         int var9 = var6 * var6 + var8 * var8;
+         if (var9 > this.anInt409) {
+            this.anInt409 = var9;
+         }
+      }
+
+      this.anInt409 = (int)Math.sqrt((double)this.anInt409);
+      this.anInt412 = (int)Math.sqrt((double)(this.anInt409 * this.anInt409 + super.anInt713 * super.anInt713));
+      this.anInt411 = this.anInt412 + (int)Math.sqrt((double)(this.anInt409 * this.anInt409 + this.anInt410 * this.anInt410));
+      this.anInt407 = (var1 << 16) + (var2 & 65535);
+      this.anInt408 = (var3 << 16) + (var4 & 65535);
+   }
+
+   public void method288(int var1, int var2, int var3, int var4, int var5, boolean var6) {
+      int var7 = (int)Math.sqrt((double)(var3 * var3 + var4 * var4 + var5 * var5));
+      int var8 = var2 * var7 >> 8;
+      if (this.anIntArray119 == null) {
+         this.anIntArray119 = new int[this.anInt403];
+         this.anIntArray120 = new int[this.anInt403];
+         this.anIntArray121 = new int[this.anInt403];
+      }
+
+      int var9;
+      if (super.aClass41Array10 == null) {
+         super.aClass41Array10 = new Class41[this.anInt402];
+
+         for(var9 = 0; var9 < this.anInt402; ++var9) {
+            super.aClass41Array10[var9] = new Class41();
+         }
+      }
+
+      int var10;
+      for(var9 = 0; var9 < this.anInt403; ++var9) {
+         var10 = this.anIntArray116[var9];
+         int var11 = this.anIntArray117[var9];
+         int var12 = this.anIntArray118[var9];
+         int var13 = this.anIntArray113[var11] - this.anIntArray113[var10];
+         int var14 = this.anIntArray114[var11] - this.anIntArray114[var10];
+         int var15 = this.anIntArray115[var11] - this.anIntArray115[var10];
+         int var16 = this.anIntArray113[var12] - this.anIntArray113[var10];
+         int var17 = this.anIntArray114[var12] - this.anIntArray114[var10];
+         int var18 = this.anIntArray115[var12] - this.anIntArray115[var10];
+         int var19 = var14 * var18 - var17 * var15;
+         int var20 = var15 * var16 - var18 * var13;
+
+         int var21;
+         for(var21 = var13 * var17 - var16 * var14; var19 > 8192 || var20 > 8192 || var21 > 8192 || var19 < -8192 || var20 < -8192 || var21 < -8192; var21 >>= 1) {
+            var19 >>= 1;
+            var20 >>= 1;
+         }
+
+         int var22 = (int)Math.sqrt((double)(var19 * var19 + var20 * var20 + var21 * var21));
+         if (var22 <= 0) {
+            var22 = 1;
+         }
+
+         var19 = var19 * 256 / var22;
+         var20 = var20 * 256 / var22;
+         var21 = var21 * 256 / var22;
+         if (this.anIntArray122 != null && (this.anIntArray122[var9] & 1) != 0) {
+            int var23 = var1 + (var3 * var19 + var4 * var20 + var5 * var21) / (var8 + var8 / 2);
+            this.anIntArray119[var9] = method291(this.anIntArray125[var9], var23, this.anIntArray122[var9]);
+         } else {
+            Class41 var26 = super.aClass41Array10[var10];
+            var26.anInt607 += var19;
+            var26.anInt608 += var20;
+            var26.anInt609 += var21;
+            ++var26.anInt610;
+            Class41 var24 = super.aClass41Array10[var11];
+            var24.anInt607 += var19;
+            var24.anInt608 += var20;
+            var24.anInt609 += var21;
+            ++var24.anInt610;
+            Class41 var25 = super.aClass41Array10[var12];
+            var25.anInt607 += var19;
+            var25.anInt608 += var20;
+            var25.anInt609 += var21;
+            ++var25.anInt610;
+         }
+      }
+
+      if (var6) {
+         this.method290(var1, var8, var3, var4, var5);
+      } else {
+         this.aClass41Array6 = new Class41[this.anInt402];
+
+         for(var10 = 0; var10 < this.anInt402; ++var10) {
+            Class41 var27 = super.aClass41Array10[var10];
+            Class41 var28 = this.aClass41Array6[var10] = new Class41();
+            var28.anInt607 = var27.anInt607;
+            var28.anInt608 = var27.anInt608;
+            var28.anInt609 = var27.anInt609;
+            var28.anInt610 = var27.anInt610;
+         }
+
+         this.anInt406 = (var1 << 16) + (var8 & 65535);
+      }
+
+      if (var6) {
+         this.method275(this.anInt398);
+      } else {
+         this.method277();
+      }
+
+   }
+
+   public void method275(int var1) {
+      super.anInt713 = 0;
+      this.anInt409 = 0;
+      this.anInt410 = 0;
+
+      int var2;
+      for(var2 = 0; var2 < this.anInt402; ++var2) {
+         int var3 = this.anIntArray113[var2];
+         int var4 = this.anIntArray114[var2];
+         int var5 = this.anIntArray115[var2];
+         if (-var4 > super.anInt713) {
+            super.anInt713 = -var4;
+         }
+
+         if (var4 > this.anInt410) {
+            this.anInt410 = var4;
+         }
+
+         int var6 = var3 * var3 + var5 * var5;
+         if (var6 > this.anInt409) {
+            this.anInt409 = var6;
+         }
+      }
+
+      this.anInt409 = (int)(Math.sqrt((double)this.anInt409) + 0.99);
+      this.anInt412 = (int)(Math.sqrt((double)(this.anInt409 * this.anInt409 + super.anInt713 * super.anInt713)) + 0.99);
+      var2 = 64 / var1;
+      this.anInt411 = this.anInt412 + (int)(Math.sqrt((double)(this.anInt409 * this.anInt409 + this.anInt410 * this.anInt410)) + 0.99);
+   }
+
+   public void method289() {
+      int var1 = this.anInt406 >> 16;
+      int var2 = this.anInt406 << 16 >> 16;
+      this.method290(var1, var2, -50, -10, -50);
+   }
+
+   private void method281(int var1, int[] var2, int var3, int var4, int var5) {
+      int var6 = var2.length;
+      int var7;
+      int var8;
+      int var9;
+      int var10;
+      if (var1 == 0) {
+         var7 = 0;
+         anInt414 = 0;
+         anInt415 = 0;
+         anInt416 = 0;
+
+         for(var8 = 0; var8 < var6; ++var8) {
+            int var11 = var2[var8];
+            if (var11 < this.anIntArrayArray10.length) {
+               int[] var12 = this.anIntArrayArray10[var11];
+
+               for(var9 = 0; var9 < var12.length; ++var9) {
+                  var10 = var12[var9];
+                  anInt414 += this.anIntArray113[var10];
+                  anInt415 += this.anIntArray114[var10];
+                  anInt416 += this.anIntArray115[var10];
+                  ++var7;
+               }
+            }
+         }
+
+         if (var7 > 0) {
+            anInt414 = anInt414 / var7 + var3;
+            anInt415 = anInt415 / var7 + var4;
+            anInt416 = anInt416 / var7 + var5;
+         } else {
+            anInt414 = var3;
+            anInt415 = var4;
+            anInt416 = var5;
+         }
+
+      } else {
+         int[] var10000;
+         int[] var18;
+         int var19;
+         if (var1 == 1) {
+            for(var7 = 0; var7 < var6; ++var7) {
+               var8 = var2[var7];
+               if (var8 < this.anIntArrayArray10.length) {
+                  var18 = this.anIntArrayArray10[var8];
+
+                  for(var19 = 0; var19 < var18.length; ++var19) {
+                     var9 = var18[var19];
+                     var10000 = this.anIntArray113;
+                     var10000[var9] += var3;
+                     var10000 = this.anIntArray114;
+                     var10000[var9] += var4;
+                     var10000 = this.anIntArray115;
+                     var10000[var9] += var5;
+                  }
+               }
+            }
+         } else if (var1 == 2) {
+            for(var7 = 0; var7 < var6; ++var7) {
+               var8 = var2[var7];
+               if (var8 < this.anIntArrayArray10.length) {
+                  var18 = this.anIntArrayArray10[var8];
+
+                  for(var19 = 0; var19 < var18.length; ++var19) {
+                     var9 = var18[var19];
+                     var10000 = this.anIntArray113;
+                     var10000[var9] -= anInt414;
+                     var10000 = this.anIntArray114;
+                     var10000[var9] -= anInt415;
+                     var10000 = this.anIntArray115;
+                     var10000[var9] -= anInt416;
+                     var10 = (var3 & 255) * 8;
+                     int var13 = (var4 & 255) * 8;
+                     int var14 = (var5 & 255) * 8;
+                     int var15;
+                     int var16;
+                     int var17;
+                     if (var14 != 0) {
+                        var15 = anIntArray146[var14];
+                        var16 = anIntArray147[var14];
+                        var17 = this.anIntArray114[var9] * var15 + this.anIntArray113[var9] * var16 >> 16;
+                        this.anIntArray114[var9] = this.anIntArray114[var9] * var16 - this.anIntArray113[var9] * var15 >> 16;
+                        this.anIntArray113[var9] = var17;
+                     }
+
+                     if (var10 != 0) {
+                        var15 = anIntArray146[var10];
+                        var16 = anIntArray147[var10];
+                        var17 = this.anIntArray114[var9] * var16 - this.anIntArray115[var9] * var15 >> 16;
+                        this.anIntArray115[var9] = this.anIntArray114[var9] * var15 + this.anIntArray115[var9] * var16 >> 16;
+                        this.anIntArray114[var9] = var17;
+                     }
+
+                     if (var13 != 0) {
+                        var15 = anIntArray146[var13];
+                        var16 = anIntArray147[var13];
+                        var17 = this.anIntArray115[var9] * var15 + this.anIntArray113[var9] * var16 >> 16;
+                        this.anIntArray115[var9] = this.anIntArray115[var9] * var16 - this.anIntArray113[var9] * var15 >> 16;
+                        this.anIntArray113[var9] = var17;
+                     }
+
+                     var10000 = this.anIntArray113;
+                     var10000[var9] += anInt414;
+                     var10000 = this.anIntArray114;
+                     var10000[var9] += anInt415;
+                     var10000 = this.anIntArray115;
+                     var10000[var9] += anInt416;
+                  }
+               }
+            }
+         } else if (var1 == 3) {
+            for(var7 = 0; var7 < var6; ++var7) {
+               var8 = var2[var7];
+               if (var8 < this.anIntArrayArray10.length) {
+                  var18 = this.anIntArrayArray10[var8];
+
+                  for(var19 = 0; var19 < var18.length; ++var19) {
+                     var9 = var18[var19];
+                     var10000 = this.anIntArray113;
+                     var10000[var9] -= anInt414;
+                     var10000 = this.anIntArray114;
+                     var10000[var9] -= anInt415;
+                     var10000 = this.anIntArray115;
+                     var10000[var9] -= anInt416;
+                     this.anIntArray113[var9] = this.anIntArray113[var9] * var3 / 128;
+                     this.anIntArray114[var9] = this.anIntArray114[var9] * var4 / 128;
+                     this.anIntArray115[var9] = this.anIntArray115[var9] * var5 / 128;
+                     var10000 = this.anIntArray113;
+                     var10000[var9] += anInt414;
+                     var10000 = this.anIntArray114;
+                     var10000[var9] += anInt415;
+                     var10000 = this.anIntArray115;
+                     var10000[var9] += anInt416;
+                  }
+               }
+            }
+         } else if (var1 == 5 && this.anIntArrayArray11 != null && this.anIntArray124 != null) {
+            for(var7 = 0; var7 < var6; ++var7) {
+               var8 = var2[var7];
+               if (var8 < this.anIntArrayArray11.length) {
+                  var18 = this.anIntArrayArray11[var8];
+
+                  for(var19 = 0; var19 < var18.length; ++var19) {
+                     var9 = var18[var19];
+                     var10000 = this.anIntArray124;
+                     var10000[var9] += var3 * 8;
+                     if (this.anIntArray124[var9] < 0) {
+                        this.anIntArray124[var9] = 0;
+                     }
+
+                     if (this.anIntArray124[var9] > 255) {
+                        this.anIntArray124[var9] = 255;
+                     }
+                  }
+               }
+            }
+         }
+
+      }
+   }
+
+   public void method283(int var1, int var2) {
+      int var3 = anIntArray146[var1];
+      int var4 = anIntArray147[var1];
+
+      for(int var5 = 0; var5 < this.anInt402; ++var5) {
+         int var6 = this.anIntArray114[var5] * var4 - this.anIntArray115[var5] * var3 >> 16;
+         this.anIntArray115[var5] = this.anIntArray114[var5] * var3 + this.anIntArray115[var5] * var4 >> 16;
+         this.anIntArray114[var5] = var6;
+      }
+
+      boolean var7 = false;
+   }
+
+   public void method286() {
+      int var1;
+      for(var1 = 0; var1 < this.anInt402; ++var1) {
+         this.anIntArray115[var1] = -this.anIntArray115[var1];
+      }
+
+      for(var1 = 0; var1 < this.anInt403; ++var1) {
+         int var2 = this.anIntArray116[var1];
+         this.anIntArray116[var1] = this.anIntArray118[var1];
+         this.anIntArray118[var1] = var2;
+      }
+
+   }
+
+   private boolean method296(int var1, int var2, int var3, int var4, int var5, int var6, int var7, int var8) {
+      if (var2 < var3 && var2 < var4 && var2 < var5) {
+         return false;
+      } else if (var2 > var3 && var2 > var4 && var2 > var5) {
+         return false;
+      } else if (var1 < var6 && var1 < var7 && var1 < var8) {
+         return false;
+      } else {
+         return var1 <= var6 || var1 <= var7 || var1 <= var8;
+      }
+   }
+
+   public void method282() {
+      for(int var1 = 0; var1 < this.anInt402; ++var1) {
+         int var2 = this.anIntArray113[var1];
+         this.anIntArray113[var1] = this.anIntArray115[var1];
+         this.anIntArray115[var1] = -var2;
+      }
+
+   }
+
+   public void method292(int var1, int var2, int var3, int var4, int var5, int var6) {
+      int var7 = Draw3D.anInt686;
+      int var8 = Draw3D.anInt687;
+      int var9 = anIntArray146[0];
+      int var10 = anIntArray147[0];
+      int var11 = anIntArray146[var1];
+      int var12 = anIntArray147[var1];
+      int var13 = anIntArray146[var2];
+      int var14 = anIntArray147[var2];
+      int var15 = anIntArray146[var3];
+      int var16 = anIntArray147[var3];
+      int var17 = var5 * var15 + var6 * var16 >> 16;
+
+      for(int var18 = 0; var18 < this.anInt402; ++var18) {
+         int var19 = this.anIntArray113[var18];
+         int var20 = this.anIntArray114[var18];
+         int var21 = this.anIntArray115[var18];
+         int var22;
+         if (var2 != 0) {
+            var22 = var20 * var13 + var19 * var14 >> 16;
+            var20 = var20 * var14 - var19 * var13 >> 16;
+            var19 = var22;
+         }
+
+         if (var1 != 0) {
+            var22 = var21 * var11 + var19 * var12 >> 16;
+            var21 = var21 * var12 - var19 * var11 >> 16;
+            var19 = var22;
+         }
+
+         var19 += var4;
+         var20 += var5;
+         var21 += var6;
+         var22 = var20 * var16 - var21 * var15 >> 16;
+         var21 = var20 * var15 + var21 * var16 >> 16;
+         anIntArray133[var18] = var21 - var17;
+         anIntArray131[var18] = var7 + (var19 << 9) / var21;
+         anIntArray132[var18] = var8 + (var22 << 9) / var21;
+         if (this.anInt405 > 0) {
+            anIntArray134[var18] = var19;
+            anIntArray135[var18] = var22;
+            anIntArray136[var18] = var21;
+         }
+      }
+
+      try {
+         this.method293(false, false, 0);
+      } catch (Exception var24) {
+      }
+
+   }
+
+   private int method274(Model var1, int var2) {
+      int var3 = -1;
+      int var4 = var1.anIntArray113[var2];
+      int var5 = var1.anIntArray114[var2];
+      int var6 = var1.anIntArray115[var2];
+
+      for(int var7 = 0; var7 < this.anInt402; ++var7) {
+         if (var4 == this.anIntArray113[var7] && var5 == this.anIntArray114[var7] && var6 == this.anIntArray115[var7]) {
+            var3 = var7;
+            break;
+         }
+      }
+
+      if (var3 == -1) {
+         this.anIntArray113[this.anInt402] = var4;
+         this.anIntArray114[this.anInt402] = var5;
+         this.anIntArray115[this.anInt402] = var6;
+         if (var1.anIntArray129 != null) {
+            this.anIntArray129[this.anInt402] = var1.anIntArray129[var2];
+         }
+
+         var3 = this.anInt402++;
+      }
+
+      return var3;
+   }
+
+   public static Model createModel(int var0) {
+      if (renderables == null) {
+         return null;
+      } else {
+         Class27 var1 = renderables[var0];
+         if (var1 == null) {
+            aClass33_1.method552(var0);
+            return null;
+         } else {
+            return new Model(var0, -478);
+         }
+      }
+   }
+
+   public static boolean method272(int var0) {
+      if (renderables == null) {
+         return false;
+      } else {
+         Class27 var1 = renderables[var0];
+         if (var1 == null) {
+            aClass33_1.method552(var0);
+            return false;
+         } else {
+            return true;
+         }
+      }
+   }
+
+   public static void method269(byte[] var0, int var1) {
+      if (var0 == null) {
+         Class27 var2 = renderables[var1] = new Class27();
+         var2.anInt330 = 0;
+         var2.anInt331 = 0;
+         var2.anInt332 = 0;
+      } else {
+         Packet var14 = new Packet(var0);
+         var14.pos = var0.length - 18;
+         Class27 var3 = renderables[var1] = new Class27();
+         var3.aByteArray11 = var0;
+         var3.anInt330 = var14.g2();
+         var3.anInt331 = var14.g2();
+         var3.anInt332 = var14.g1();
+         int var4 = var14.g1();
+         int var5 = var14.g1();
+         int var6 = var14.g1();
+         int var7 = var14.g1();
+         int var8 = var14.g1();
+         int var9 = var14.g2();
+         int var10 = var14.g2();
+         int var11 = var14.g2();
+         int var12 = var14.g2();
+         var3.anInt333 = 0;
+         int var13 = var3.anInt330 + 0;
+         var3.anInt339 = var13;
+         var13 += var3.anInt331;
+         var3.anInt342 = var13;
+         if (var5 == 255) {
+            var13 += var3.anInt331;
+         } else {
+            var3.anInt342 = -var5 - 1;
+         }
+
+         var3.anInt344 = var13;
+         if (var7 == 1) {
+            var13 += var3.anInt331;
+         } else {
+            var3.anInt344 = -1;
+         }
+
+         var3.anInt341 = var13;
+         if (var4 == 1) {
+            var13 += var3.anInt331;
+         } else {
+            var3.anInt341 = -1;
+         }
+
+         var3.anInt337 = var13;
+         if (var8 == 1) {
+            var13 += var3.anInt330;
+         } else {
+            var3.anInt337 = -1;
+         }
+
+         var3.anInt343 = var13;
+         if (var6 == 1) {
+            var13 += var3.anInt331;
+         } else {
+            var3.anInt343 = -1;
+         }
+
+         var3.anInt338 = var13;
+         var13 += var12;
+         var3.anInt340 = var13;
+         var13 += var3.anInt331 * 2;
+         var3.anInt345 = var13;
+         var13 += var3.anInt332 * 6;
+         var3.anInt334 = var13;
+         var13 += var9;
+         var3.anInt335 = var13;
+         var13 += var10;
+         var3.anInt336 = var13;
+      }
+
+   }
+
+   public static void method270(int var0) {
+      renderables[var0] = null;
+   }
+
+   private static int method291(int var0, int var1, int var2) {
+      if ((var2 & 2) == 2) {
+         if (var1 < 0) {
+            var1 = 0;
+         } else if (var1 > 127) {
+            var1 = 127;
+         }
+
+         return 127 - var1;
+      } else {
+         var1 = var1 * (var0 & 127) >> 7;
+         if (var1 < 2) {
+            var1 = 2;
+         } else if (var1 > 126) {
+            var1 = 126;
+         }
+
+         return (var0 & 65408) + var1;
+      }
+   }
+
+   public static void method268(int var0, Class33 var1) {
+      renderables = new Class27[var0];
+      aClass33_1 = var1;
+   }
+
+   public static void method267() {
+      renderables = null;
+      aBooleanArray5 = null;
+      aBooleanArray6 = null;
+      anIntArray131 = null;
+      anIntArray132 = null;
+      anIntArray133 = null;
+      anIntArray134 = null;
+      anIntArray135 = null;
+      anIntArray136 = null;
+      anIntArray137 = null;
+      anIntArrayArray12 = null;
+      anIntArray138 = null;
+      anIntArrayArray13 = null;
+      anIntArray139 = null;
+      anIntArray140 = null;
+      anIntArray141 = null;
+      anIntArray146 = null;
+      anIntArray147 = null;
+      anIntArray148 = null;
+      anIntArray149 = null;
+   }
 }

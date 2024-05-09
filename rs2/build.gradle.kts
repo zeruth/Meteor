@@ -17,7 +17,7 @@ dependencies {
 }
 
 application {
-    mainClass.set("Client")
+    mainClass.set("Launcher")
 }
 
 tasks.withType<JavaCompile> {

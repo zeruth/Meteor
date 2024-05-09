@@ -1,101 +1,103 @@
+public final class WordPack {
+   private static int anInt484 = 20411;
+   private static char[] aCharArray3 = new char[100];
+   private static Packet aClass10_Sub1_Sub3_2 = new Packet(new byte[100]);
+   private static char[] aCharArray4 = new char[]{' ', 'e', 't', 'a', 'o', 'i', 'h', 'n', 's', 'r', 'd', 'l', 'u', 'm', 'w', 'c', 'y', 'f', 'g', 'p', 'b', 'v', 'k', 'x', 'j', 'q', 'z', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', ' ', '!', '?', '.', ',', ':', ';', '(', ')', '-', '&', '*', '\\', '\'', '@', '#', '+', '=', '£', '$', '%', '"', '[', ']'};
 
+   public static void pack(String var0, Packet var1) {
+      if (var0.length() > 80) {
+         var0 = var0.substring(0, 80);
+      }
 
-public class WordPack {
+      var0 = var0.toLowerCase();
+      int var2 = -1;
 
-    private static final char[] charBuffer = new char[100];
+      for(int var3 = 0; var3 < var0.length(); ++var3) {
+         char var4 = var0.charAt(var3);
+         int var5 = 0;
 
-    private static final char[] TABLE = new char[] {
-		// combined to save space:
-		' ', 'e', 't', 'a', 'o', 'i', 'h', 'n', 's', 'r', 'd', 'l', 'u',
-		// allowed:
-		'm', 'w', 'c', 'y', 'f', 'g', 'p', 'b', 'v', 'k', 'x', 'j', 'q', 'z',
-		'0', '1', '2', '3', '4', '5', '6', '7', '8', '9',
-		' ', '!', '?', '.', ',', ':', ';', '(', ')', '-', '&', '*', '\\', '\'', '@', '#', '+', '=', '£', '$', '%', '"', '[', ']'
-	};
+         for(int var6 = 0; var6 < aCharArray4.length; ++var6) {
+            if (var4 == aCharArray4[var6]) {
+               var5 = var6;
+               break;
+            }
+         }
 
-    public static String unpack( Packet word, int length) {
-		int pos = 0;
-		int carry = -1;
+         if (var5 > 12) {
+            var5 += 195;
+         }
 
-		int nibble;
-		for ( int i = 0; i < length; i++) {
-			int value = word.g1();
-			nibble = value >> 4 & 0xF;
+         if (var2 == -1) {
+            if (var5 < 13) {
+               var2 = var5;
+            } else {
+               var1.p1(var5);
+            }
+         } else if (var5 < 13) {
+            var1.p1((var2 << 4) + var5);
+            var2 = -1;
+         } else {
+            var1.p1((var2 << 4) + (var5 >> 4));
+            var2 = var5 & 15;
+         }
+      }
 
-			if (carry != -1) {
-				charBuffer[pos++] = TABLE[(carry << 4) + nibble - 195];
-				carry = -1;
-			} else if (nibble < 13) {
-				charBuffer[pos++] = TABLE[nibble];
-			} else {
-				carry = nibble;
-			}
+      if (var2 != -1) {
+         var1.p1(var2 << 4);
+      }
 
-			nibble = value & 0xF;
-			if (carry != -1) {
-				charBuffer[pos++] = TABLE[(carry << 4) + nibble - 195];
-				carry = -1;
-			} else if (nibble < 13) {
-				charBuffer[pos++] = TABLE[nibble];
-			} else {
-				carry = nibble;
-			}
-		}
+   }
 
-		boolean uppercase = true;
-		for (int i = 0; i < pos; i++) {
-			char c = charBuffer[i];
-			if (uppercase && c >= 'a' && c <= 'z') {
-				charBuffer[i] = (char) (charBuffer[i] - 32);
-				uppercase = false;
-			}
+   public static String method373(String var0) {
+      aClass10_Sub1_Sub3_2.pos = 0;
+      pack(var0, aClass10_Sub1_Sub3_2);
+      int var1 = aClass10_Sub1_Sub3_2.pos;
+      aClass10_Sub1_Sub3_2.pos = 0;
+      return unpack(aClass10_Sub1_Sub3_2, var1);
+   }
 
-			if (c == '.' || c == '!') {
-				uppercase = true;
-			}
-		}
-		return new String(charBuffer, 0, pos);
-	}
+   public static String unpack(Packet var0, int var1) {
+      int var2 = 0;
+      int var3 = -1;
 
-    public static void pack( Packet word, String str) {
-		if (str.length() > 80) {
-			str = str.substring(0, 80);
-		}
-		str = str.toLowerCase();
+      int var4;
+      for(int var5 = 0; var5 < var1; ++var5) {
+         int var6 = var0.g1();
+         var4 = var6 >> 4 & 15;
+         if (var3 != -1) {
+            aCharArray3[var2++] = aCharArray4[(var3 << 4) + var4 - 195];
+            var3 = -1;
+         } else if (var4 < 13) {
+            aCharArray3[var2++] = aCharArray4[var4];
+         } else {
+            var3 = var4;
+         }
 
-		int carry = -1;
-		for ( int i = 0; i < str.length(); i++) {
-			char c = str.charAt(i);
+         var4 = var6 & 15;
+         if (var3 != -1) {
+            aCharArray3[var2++] = aCharArray4[(var3 << 4) + var4 - 195];
+            var3 = -1;
+         } else if (var4 < 13) {
+            aCharArray3[var2++] = aCharArray4[var4];
+         } else {
+            var3 = var4;
+         }
+      }
 
-			int index = 0;
-			for ( int j = 0; j < TABLE.length; j++) {
-				if (c == TABLE[j]) {
-					index = j;
-					break;
-				}
-			}
+      boolean var7 = true;
 
-			if (index > 12) {
-				index += 195;
-			}
+      for(var4 = 0; var4 < var2; ++var4) {
+         char var8 = aCharArray3[var4];
+         if (var7 && var8 >= 'a' && var8 <= 'z') {
+            aCharArray3[var4] = (char)(aCharArray3[var4] - ' ');
+            var7 = false;
+         }
 
-			if (carry == -1) {
-				if (index < 13) {
-					carry = index;
-				} else {
-					word.p1(index);
-				}
-			} else if (index < 13) {
-				word.p1((carry << 4) + index);
-				carry = -1;
-			} else {
-				word.p1((carry << 4) + (index >> 4));
-				carry = index & 0xF;
-			}
-		}
+         if (var8 == '.' || var8 == '!' || var8 == '?') {
+            var7 = true;
+         }
+      }
 
-		if (carry != -1) {
-			word.p1(carry << 4);
-		}
-	}
+      return new String(aCharArray3, 0, var2);
+   }
 }

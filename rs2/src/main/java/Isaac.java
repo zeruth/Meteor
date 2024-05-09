@@ -1,138 +1,173 @@
-public class Isaac {
+public final class Isaac {
+   private int count;
+   private int b;
+   private int c;
+   private int[] mem = new int[256];
+   private int[] rsl = new int[256];
+   private int a;
 
-	private int count;
+   public Isaac(int[] var1) {
+      System.arraycopy(var1, 0, this.rsl, 0, var1.length);
+      this.init();
+   }
 
-	private final int[] rsl;
+   private void isaac() {
+      this.b += ++this.c;
 
-	private final int[] mem;
+      for(int var1 = 0; var1 < 256; ++var1) {
+         int var2 = this.mem[var1];
+         if ((var1 & 3) == 0) {
+            this.a ^= this.a << 13;
+         } else if ((var1 & 3) == 1) {
+            this.a ^= this.a >>> 6;
+         } else if ((var1 & 3) == 2) {
+            this.a ^= this.a << 2;
+         } else if ((var1 & 3) == 3) {
+            this.a ^= this.a >>> 16;
+         }
 
-	private int a;
+         this.a += this.mem[var1 + 128 & 255];
+         int var3;
+         this.mem[var1] = var3 = this.mem[var2 >> 2 & 255] + this.a + this.b;
+         this.rsl[var1] = this.b = this.mem[var3 >> 8 >> 2 & 255] + var2;
+      }
 
-	private int b;
+   }
 
-	private int c;
+   public int nextInt() {
+      if (this.count-- == 0) {
+         this.isaac();
+         this.count = 255;
+      }
 
-	public Isaac( int[] seed) {
-		this.mem = new int[256];
-		this.rsl = new int[256];
-		System.arraycopy(seed, 0, this.rsl, 0, seed.length);
-		this.init();
-	}
+      return this.rsl[this.count];
+   }
 
-	public int nextInt() {
-		if (this.count-- == 0) {
-			this.isaac();
-			this.count = 255;
-		}
-		return this.rsl[this.count];
-	}
+   private void init() {
+      int var1 = -1640531527;
+      int var2 = -1640531527;
+      int var3 = -1640531527;
+      int var4 = -1640531527;
+      int var5 = -1640531527;
+      int var6 = -1640531527;
+      int var7 = -1640531527;
+      int var8 = -1640531527;
 
-	private void isaac() {
-		this.b += ++this.c;
+      int var9;
+      for(var9 = 0; var9 < 4; ++var9) {
+         var8 ^= var7 << 11;
+         var5 += var8;
+         var7 += var6;
+         var7 ^= var6 >>> 2;
+         var4 += var7;
+         var6 += var5;
+         var6 ^= var5 << 8;
+         var3 += var6;
+         var5 += var4;
+         var5 ^= var4 >>> 16;
+         var2 += var5;
+         var4 += var3;
+         var4 ^= var3 << 10;
+         var1 += var4;
+         var3 += var2;
+         var3 ^= var2 >>> 4;
+         var8 += var3;
+         var2 += var1;
+         var2 ^= var1 << 8;
+         var7 += var2;
+         var1 += var8;
+         var1 ^= var8 >>> 9;
+         var6 += var1;
+         var8 += var7;
+      }
 
-		for ( int i = 0; i < 256; i++) {
-			int x = this.mem[i];
-			switch (i & 0x3) {
-				case 0:
-					this.a ^= this.a << 13;
-					break;
-				case 1:
-					this.a ^= this.a >>> 6;
-					break;
-				case 2:
-					this.a ^= this.a << 2;
-					break;
-				case 3:
-					this.a ^= this.a >>> 16;
-			}
+      for(var9 = 0; var9 < 256; var9 += 8) {
+         var8 += this.rsl[var9];
+         var7 += this.rsl[var9 + 1];
+         var6 += this.rsl[var9 + 2];
+         var5 += this.rsl[var9 + 3];
+         var4 += this.rsl[var9 + 4];
+         var3 += this.rsl[var9 + 5];
+         var2 += this.rsl[var9 + 6];
+         var1 += this.rsl[var9 + 7];
+         var8 ^= var7 << 11;
+         var5 += var8;
+         var7 += var6;
+         var7 ^= var6 >>> 2;
+         var4 += var7;
+         var6 += var5;
+         var6 ^= var5 << 8;
+         var3 += var6;
+         var5 += var4;
+         var5 ^= var4 >>> 16;
+         var2 += var5;
+         var4 += var3;
+         var4 ^= var3 << 10;
+         var1 += var4;
+         var3 += var2;
+         var3 ^= var2 >>> 4;
+         var8 += var3;
+         var2 += var1;
+         var2 ^= var1 << 8;
+         var7 += var2;
+         var1 += var8;
+         var1 ^= var8 >>> 9;
+         var6 += var1;
+         var8 += var7;
+         this.mem[var9] = var8;
+         this.mem[var9 + 1] = var7;
+         this.mem[var9 + 2] = var6;
+         this.mem[var9 + 3] = var5;
+         this.mem[var9 + 4] = var4;
+         this.mem[var9 + 5] = var3;
+         this.mem[var9 + 6] = var2;
+         this.mem[var9 + 7] = var1;
+      }
 
-			this.a += this.mem[i + 128 & 0xFF];
-			int y;
-			this.mem[i] = y = this.mem[x >> 2 & 0xFF] + this.a + this.b;
-			this.rsl[i] = this.b = this.mem[y >> 8 >> 2 & 0xFF] + x;
-		}
-	}
+      for(var9 = 0; var9 < 256; var9 += 8) {
+         var8 += this.mem[var9];
+         var7 += this.mem[var9 + 1];
+         var6 += this.mem[var9 + 2];
+         var5 += this.mem[var9 + 3];
+         var4 += this.mem[var9 + 4];
+         var3 += this.mem[var9 + 5];
+         var2 += this.mem[var9 + 6];
+         var1 += this.mem[var9 + 7];
+         var8 ^= var7 << 11;
+         var5 += var8;
+         var7 += var6;
+         var7 ^= var6 >>> 2;
+         var4 += var7;
+         var6 += var5;
+         var6 ^= var5 << 8;
+         var3 += var6;
+         var5 += var4;
+         var5 ^= var4 >>> 16;
+         var2 += var5;
+         var4 += var3;
+         var4 ^= var3 << 10;
+         var1 += var4;
+         var3 += var2;
+         var3 ^= var2 >>> 4;
+         var8 += var3;
+         var2 += var1;
+         var2 ^= var1 << 8;
+         var7 += var2;
+         var1 += var8;
+         var1 ^= var8 >>> 9;
+         var6 += var1;
+         var8 += var7;
+         this.mem[var9] = var8;
+         this.mem[var9 + 1] = var7;
+         this.mem[var9 + 2] = var6;
+         this.mem[var9 + 3] = var5;
+         this.mem[var9 + 4] = var4;
+         this.mem[var9 + 5] = var3;
+         this.mem[var9 + 6] = var2;
+         this.mem[var9 + 7] = var1;
+      }
 
-	private void init() {
-		int h = 0x9e3779b9;
-		int g = 0x9e3779b9;
-		int f = 0x9e3779b9;
-		int e = 0x9e3779b9;
-		int d = 0x9e3779b9;
-		int c = 0x9e3779b9;
-		int b = 0x9e3779b9;
-		int a = 0x9e3779b9;
-
-		int i;
-		for (i = 0; i < 4; i++) {
-			a ^= b << 11; d += a; b += c;
-			b ^= c >>> 2; e += b; c += d;
-			c ^= d << 8; f += c; d += e;
-			d ^= e >>> 16; g += d; e += f;
-			e ^= f << 10; h += e; f += g;
-			f ^= g >>> 4; a += f; g += h;
-			g ^= h << 8; b += g; h += a;
-			h ^= a >>> 9; c += h; a += b;
-		}
-
-		for (i = 0; i < 256; i += 8) {
-			a += this.rsl[i];
-			b += this.rsl[i + 1];
-			c += this.rsl[i + 2];
-			d += this.rsl[i + 3];
-			e += this.rsl[i + 4];
-			f += this.rsl[i + 5];
-			g += this.rsl[i + 6];
-			h += this.rsl[i + 7];
-
-			a ^= b << 11; d += a; b += c;
-			b ^= c >>> 2; e += b; c += d;
-			c ^= d << 8; f += c; d += e;
-			d ^= e >>> 16; g += d; e += f;
-			e ^= f << 10; h += e; f += g;
-			f ^= g >>> 4; a += f; g += h;
-			g ^= h << 8; b += g; h += a;
-			h ^= a >>> 9; c += h; a += b;
-
-			this.mem[i] = a;
-			this.mem[i + 1] = b;
-			this.mem[i + 2] = c;
-			this.mem[i + 3] = d;
-			this.mem[i + 4] = e;
-			this.mem[i + 5] = f;
-			this.mem[i + 6] = g;
-			this.mem[i + 7] = h;
-		}
-		for (i = 0; i < 256; i += 8) {
-			a += this.mem[i];
-			b += this.mem[i + 1];
-			c += this.mem[i + 2];
-			d += this.mem[i + 3];
-			e += this.mem[i + 4];
-			f += this.mem[i + 5];
-			g += this.mem[i + 6];
-			h += this.mem[i + 7];
-
-			a ^= b << 11; d += a; b += c;
-			b ^= c >>> 2; e += b; c += d;
-			c ^= d << 8; f += c; d += e;
-			d ^= e >>> 16; g += d; e += f;
-			e ^= f << 10; h += e; f += g;
-			f ^= g >>> 4; a += f; g += h;
-			g ^= h << 8; b += g; h += a;
-			h ^= a >>> 9; c += h; a += b;
-
-			this.mem[i] = a;
-			this.mem[i + 1] = b;
-			this.mem[i + 2] = c;
-			this.mem[i + 3] = d;
-			this.mem[i + 4] = e;
-			this.mem[i + 5] = f;
-			this.mem[i + 6] = g;
-			this.mem[i + 7] = h;
-		}
-
-		this.isaac();
-		this.count = 256;
-	}
+      this.isaac();
+      this.count = 256;
+   }
 }

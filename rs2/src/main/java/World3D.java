@@ -1,2366 +1,2371 @@
-
-
-
-public class World3D {
-
-	public static boolean lowMemory = true;
-
-	private final int maxLevel;
-
-	private final int maxTileX;
-
-	private final int maxTileZ;
-
-	private final int[][][] levelHeightmaps;
-
-	private final Tile[][][] levelTiles;
-
-	private int minLevel;
-
-	private int temporaryLocCount;
-
-	private final Loc[] temporaryLocs = new Loc[5000];
-
-	private final int[][][] levelTileOcclusionCycles;
-
-	public static int tilesRemaining;
-
-	public static int topLevel;
-
-	public static int cycle;
-
-	public static int minDrawTileX;
-
-	public static int maxDrawTileX;
-
-	public static int minDrawTileZ;
-
-	public static int maxDrawTileZ;
-
-	public static int eyeTileX;
-
-	public static int eyeTileZ;
-
-	public static int eyeX;
-
-	public static int eyeY;
-
-	public static int eyeZ;
-
-	public static int sinEyePitch;
-
-	public static int cosEyePitch;
-
-	public static int sinEyeYaw;
-
-	public static int cosEyeYaw;
-
-	public static Loc[] locBuffer = new Loc[100];
-
-	public static final int[] WALL_DECORATION_INSET_X = new int[] { 53, -53, -53, 53 };
-
-	public static final int[] WALL_DECORATION_INSET_Z = new int[] { -53, -53, 53, 53 };
-
-	public static final int[] WALL_DECORATION_OUTSET_X = new int[] { -45, 45, 45, -45 };
-
-	public static final int[] WALL_DECORATION_OUTSET_Z = new int[] { 45, 45, -45, -45 };
-
-	public static boolean takingInput;
-
-	public static int mouseX;
-
-	public static int mouseY;
-
-	public static int clickTileX = -1;
-
-	public static int clickTileZ = -1;
-
-	public static final int LEVEL_COUNT = 4;
-
-	public static int[] levelOccluderCount = new int[LEVEL_COUNT];
-
-	public static Occluder[][] levelOccluders = new Occluder[LEVEL_COUNT][500];
-
-	public static int activeOccluderCount;
-
-	public static final Occluder[] activeOccluders = new Occluder[500];
-
-	public static LinkList drawTileQueue = new LinkList();
-
-	public static final int[] FRONT_WALL_TYPES = new int[] { 19, 55, 38, 155, 255, 110, 137, 205, 76 };
-
-	public static final int[] DIRECTION_ALLOW_WALL_CORNER_TYPE = new int[] { 160, 192, 80, 96, 0, 144, 80, 48, 160 };
-
-	public static final int[] BACK_WALL_TYPES = new int[] { 76, 8, 137, 4, 0, 1, 38, 2, 19 };
-
-	public static final int[] WALL_CORNER_TYPE_16_BLOCK_LOC_SPANS = new int[] { 0, 0, 2, 0, 0, 2, 1, 1, 0 };
-
-	public static final int[] WALL_CORNER_TYPE_32_BLOCK_LOC_SPANS = new int[] { 2, 0, 0, 2, 0, 0, 0, 4, 4 };
-
-	public static final int[] WALL_CORNER_TYPE_64_BLOCK_LOC_SPANS = new int[] { 0, 4, 4, 8, 0, 0, 8, 0, 0 };
-
-	public static final int[] WALL_CORNER_TYPE_128_BLOCK_LOC_SPANS = new int[] { 1, 1, 0, 0, 0, 8, 0, 0, 8 };
-
-	public static final int[] TEXTURE_HSL = new int[] { 41, 39248, 41, 4643, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 43086, 41, 41, 41, 41, 41, 41, 41, 8602, 41, 28992, 41, 41, 41, 41, 41, 5056, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 3131, 41, 41, 41 };
-
-	private final int[] mergeIndexA = new int[10000];
-
-	private final int[] mergeIndexB = new int[10000];
-
-	private int tmpMergeIndex;
-
-	private final int[][] MINIMAP_OVERLAY_SHAPE = new int[][] {
-		{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
-		{ 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 }, // PLAIN_SHAPE
-		{ 1, 0, 0, 0, 1, 1, 0, 0, 1, 1, 1, 0, 1, 1, 1, 1 }, // DIAGONAL_SHAPE
-		{ 1, 1, 0, 0, 1, 1, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 }, // LEFT_SEMI_DIAGONAL_SMALL_SHAPE
-		{ 0, 0, 1, 1, 0, 0, 1, 1, 0, 0, 0, 1, 0, 0, 0, 1 }, // RIGHT_SEMI_DIAGONAL_SMALL_SHAPE
-		{ 0, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 }, // LEFT_SEMI_DIAGONAL_BIG_SHAPE
-		{ 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1 }, // RIGHT_SEMI_DIAGONAL_BIG_SHAPE
-		{ 1, 1, 0, 0, 1, 1, 0, 0, 1, 1, 0, 0, 1, 1, 0, 0 }, // HALF_SQUARE_SHAPE
-		{ 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0 }, // CORNER_SMALL_SHAPE
-		{ 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 0, 0, 1, 1 }, // CORNER_BIG_SHAPE
-		{ 1, 1, 1, 1, 1, 1, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 }, // FAN_SMALL_SHAPE
-		{ 0, 0, 0, 0, 0, 0, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1 }, // FAN_BIG_SHAPE
-		{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 1, 1, 1, 1 }  // TRAPEZIUM_SHAPE
-	};
-
-	private final int[][] MINIMAP_OVERLAY_ROTATION = new int[][] {
-		{ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15 },
-		{ 12, 8, 4, 0, 13, 9, 5, 1, 14, 10, 6, 2, 15, 11, 7, 3 },
-		{ 15, 14, 13, 12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1, 0 },
-		{ 3, 7, 11, 15, 2, 6, 10, 14, 1, 5, 9, 13, 0, 4, 8, 12 }
-	};
-
-	public static boolean[][][][] visibilityMatrix = new boolean[8][32][51][51];
-
-	public static boolean[][] visibilityMap;
-
-	private static int viewportCenterX;
-
-	private static int viewportCenterY;
-
-	private static int viewportLeft;
-
-	private static int viewportTop;
-
-	private static int viewportRight;
-
-	private static int viewportBottom;
-
-	public World3D( int[][][] levelHeightmaps, int maxTileZ, int maxLevel, int maxTileX) {
-		this.maxLevel = maxLevel;
-		this.maxTileX = maxTileX;
-		this.maxTileZ = maxTileZ;
-		this.levelTiles = new Tile[maxLevel][maxTileX][maxTileZ];
-		this.levelTileOcclusionCycles = new int[maxLevel][maxTileX + 1][maxTileZ + 1];
-		this.levelHeightmaps = levelHeightmaps;
-		this.reset();
-	}
-
-	public static void unload() {
-		locBuffer = null;
-		levelOccluderCount = null;
-		levelOccluders = null;
-		drawTileQueue = null;
-		visibilityMatrix = null;
-		visibilityMap = null;
-	}
-
-	public static void addOccluder( int level, int type, int minX, int minY, int minZ, int maxX, int maxY, int maxZ) {
-		Occluder occluder = new Occluder();
-		occluder.minTileX = minX / 128;
-		occluder.maxTileX = maxX / 128;
-		occluder.minTileZ = minZ / 128;
-		occluder.maxTileZ = maxZ / 128;
-		occluder.type = type;
-		occluder.minX = minX;
-		occluder.maxX = maxX;
-		occluder.minZ = minZ;
-		occluder.maxZ = maxZ;
-		occluder.minY = minY;
-		occluder.maxY = maxY;
-		levelOccluders[level][levelOccluderCount[level]++] = occluder;
-	}
-
-	public static void init( int viewportWidth, int viewportHeight, int frustumStart, int frustumEnd, int[] pitchDistance) {
-		viewportLeft = 0;
-		viewportTop = 0;
-		viewportRight = viewportWidth;
-		viewportBottom = viewportHeight;
-		viewportCenterX = viewportWidth / 2;
-		viewportCenterY = viewportHeight / 2;
-
-		boolean[][][][] matrix = new boolean[9][32][53][53];
-		for ( int pitch = 128; pitch <= 384; pitch += 32) {
-			for (int yaw = 0; yaw < 2048; yaw += 64) {
-				sinEyePitch = Model.sin[pitch];
-				cosEyePitch = Model.cos[pitch];
-				sinEyeYaw = Model.sin[yaw];
-				cosEyeYaw = Model.cos[yaw];
-
-				int pitchLevel = (pitch - 128) / 32;
-				int yawLevel = yaw / 64;
-				for (int dx = -26; dx <= 26; dx++) {
-					for ( int dz = -26; dz <= 26; dz++) {
-						int x = dx * 128;
-						int z = dz * 128;
-
-						boolean visible = false;
-						for ( int y = -frustumStart; y <= frustumEnd; y += 128) {
-							if (testPoint(x, z, pitchDistance[pitchLevel] + y)) {
-								visible = true;
-								break;
-							}
-						}
-
-						matrix[pitchLevel][yawLevel][dx + 25 + 1][dz + 25 + 1] = visible;
-					}
-				}
-			}
-		}
-
-		for (int pitchLevel = 0; pitchLevel < 8; pitchLevel++) {
-			for (int yawLevel = 0; yawLevel < 32; yawLevel++) {
-				for (int x = -25; x < 25; x++) {
-					for (int z = -25; z < 25; z++) {
-						boolean visible = false;
-						check_areas:
-						for (int dx = -1; dx <= 1; dx++) {
-							for (int dz = -1; dz <= 1; dz++) {
-								if (matrix[pitchLevel][yawLevel][x + dx + 25 + 1][z + dz + 25 + 1]) {
-									visible = true;
-									break check_areas;
-								}
-
-								if (matrix[pitchLevel][(yawLevel + 1) % 31][x + dx + 25 + 1][z + dz + 25 + 1]) {
-									visible = true;
-									break check_areas;
-								}
-
-								if (matrix[pitchLevel + 1][yawLevel][x + dx + 25 + 1][z + dz + 25 + 1]) {
-									visible = true;
-									break check_areas;
-								}
-
-								if (matrix[pitchLevel + 1][(yawLevel + 1) % 31][x + dx + 25 + 1][z + dz + 25 + 1]) {
-									visible = true;
-									break check_areas;
-								}
-							}
-						}
-
-						visibilityMatrix[pitchLevel][yawLevel][x + 25][z + 25] = visible;
-					}
-				}
-			}
-		}
-	}
-
-	private static boolean testPoint( int x, int z, int y) {
-		int px = z * sinEyeYaw + x * cosEyeYaw >> 16;
-		int tmp = z * cosEyeYaw - x * sinEyeYaw >> 16;
-		int pz = y * sinEyePitch + tmp * cosEyePitch >> 16;
-		int py = y * cosEyePitch - tmp * sinEyePitch >> 16;
-		if (pz < 50 || pz > 3500) {
-			return false;
-		}
-
-		int viewportX = viewportCenterX + (px << 9) / pz;
-		int viewportY = viewportCenterY + (py << 9) / pz;
-		return viewportX >= viewportLeft && viewportX <= viewportRight && viewportY >= viewportTop && viewportY <= viewportBottom;
-	}
-
-	public void reset() {
-		for ( int level = 0; level < this.maxLevel; level++) {
-			for (int x = 0; x < this.maxTileX; x++) {
-				for (int z = 0; z < this.maxTileZ; z++) {
-					this.levelTiles[level][x][z] = null;
-				}
-			}
-		}
-
-		for (int l = 0; l < LEVEL_COUNT; l++) {
-			for (int o = 0; o < levelOccluderCount[l]; o++) {
-				levelOccluders[l][o] = null;
-			}
-
-			levelOccluderCount[l] = 0;
-		}
-
-		for (int i = 0; i < this.temporaryLocCount; i++) {
-			this.temporaryLocs[i] = null;
-		}
-
-		this.temporaryLocCount = 0;
-
-		for ( int i = 0; i < locBuffer.length; i++) {
-			locBuffer[i] = null;
-		}
-	}
-
-	public void setMinLevel( int level) {
-		this.minLevel = level;
-
-		for ( int stx = 0; stx < this.maxTileX; stx++) {
-			for ( int stz = 0; stz < this.maxTileZ; stz++) {
-				this.levelTiles[level][stx][stz] = new Tile(level, stx, stz);
-			}
-		}
-	}
-
-	public void setBridge( int stx, int stz) {
-		Tile ground = this.levelTiles[0][stx][stz];
-		for ( int level = 0; level < 3; level++) {
-			this.levelTiles[level][stx][stz] = this.levelTiles[level + 1][stx][stz];
-			if (this.levelTiles[level][stx][stz] != null) {
-				this.levelTiles[level][stx][stz].level--;
-			}
-		}
-
-		if (this.levelTiles[0][stx][stz] == null) {
-			this.levelTiles[0][stx][stz] = new Tile(0, stx, stz);
-		}
-
-		this.levelTiles[0][stx][stz].bridge = ground;
-		this.levelTiles[3][stx][stz] = null;
-	}
-
-	public void setDrawLevel( int level, int stx, int stz, int drawLevel) {
-		Tile tile = this.levelTiles[level][stx][stz];
-		if (tile == null) {
-			return;
-		}
-
-		this.levelTiles[level][stx][stz].drawLevel = drawLevel;
-	}
-
-	public void setTile( int level, int x, int z, int shape, int angle, int textureId, int southwestY, int southeastY, int northeastY, int northwestY, int southwestColor, int southeastColor, int northeastColor, int northwestColor, int southwestColor2, int southeastColor2, int northeastColor2, int northwestColor2, int backgroundRgb, int foregroundRgb) {
-		TileUnderlay underlay;
-		int l;
-		if (shape == 0) {
-			underlay = new TileUnderlay(southwestColor, southeastColor, northeastColor, northwestColor, -1, backgroundRgb, false);
-			for (l = level; l >= 0; l--) {
-				if (this.levelTiles[l][x][z] == null) {
-					this.levelTiles[l][x][z] = new Tile(l, x, z);
-				}
-			}
-			this.levelTiles[level][x][z].underlay = underlay;
-		} else if (shape == 1) {
-			underlay = new TileUnderlay(southwestColor2, southeastColor2, northeastColor2, northwestColor2, textureId, foregroundRgb, southwestY == southeastY && southwestY == northeastY && southwestY == northwestY);
-			for (l = level; l >= 0; l--) {
-				if (this.levelTiles[l][x][z] == null) {
-					this.levelTiles[l][x][z] = new Tile(l, x, z);
-				}
-			}
-			this.levelTiles[level][x][z].underlay = underlay;
-		} else {
-			TileOverlay overlay = new TileOverlay(x, shape, southeastColor2, southeastY, northeastColor, angle, southwestColor, northwestY, foregroundRgb, southwestColor2, textureId, northwestColor2, backgroundRgb, northeastY, northeastColor2, northwestColor, southwestY, z, southeastColor);
-			for (l = level; l >= 0; l--) {
-				if (this.levelTiles[l][x][z] == null) {
-					this.levelTiles[l][x][z] = new Tile(l, x, z);
-				}
-			}
-			this.levelTiles[level][x][z].overlay = overlay;
-		}
-	}
-
-	public void addGroundDecoration( Model model, int tileLevel, int tileX, int tileZ, int y, int bitset, byte info) {
-		GroundDecoration decor = new GroundDecoration();
-		decor.model = model;
-		decor.x = tileX * 128 + 64;
-		decor.z = tileZ * 128 + 64;
-		decor.y = y;
-		decor.bitset = bitset;
-		decor.info = info;
-		if (this.levelTiles[tileLevel][tileX][tileZ] == null) {
-			this.levelTiles[tileLevel][tileX][tileZ] = new Tile(tileLevel, tileX, tileZ);
-		}
-		this.levelTiles[tileLevel][tileX][tileZ].groundDecoration = decor;
-	}
-
-	public void addObjStack( int stx, int stz, int y, int level, int bitset, Model topObj, Model middleObj, Model bottomObj) {
-		ObjStack stack = new ObjStack();
-		stack.topObj = topObj;
-		stack.x = stx * 128 + 64;
-		stack.z = stz * 128 + 64;
-		stack.y = y;
-		stack.bitset = bitset;
-		stack.bottomObj = bottomObj;
-		stack.middleObj = middleObj;
-		int stackOffset = 0;
-		Tile tile = this.levelTiles[level][stx][stz];
-		if (tile != null) {
-			for ( int l = 0; l < tile.locCount; l++) {
-				int height = tile.locs[l].model.objRaise;
-				if (height > stackOffset) {
-					stackOffset = height;
-				}
-			}
-		}
-		stack.offset = stackOffset;
-		if (this.levelTiles[level][stx][stz] == null) {
-			this.levelTiles[level][stx][stz] = new Tile(level, stx, stz);
-		}
-		this.levelTiles[level][stx][stz].objStack = stack;
-	}
-
-	public void addWall( int level, int tileX, int tileZ, int y, int typeA, int typeB, Model modelA, Model modelB, int bitset, byte info) {
-		if (modelA == null && modelB == null) {
-			return;
-		}
-
-		Wall wall = new Wall();
-		wall.bitset = bitset;
-		wall.info = info;
-		wall.x = tileX * 128 + 64;
-		wall.z = tileZ * 128 + 64;
-		wall.y = y;
-		wall.modelA = modelA;
-		wall.modelB = modelB;
-		wall.typeA = typeA;
-		wall.typeB = typeB;
-		for ( int l = level; l >= 0; l--) {
-			if (this.levelTiles[l][tileX][tileZ] == null) {
-				this.levelTiles[l][tileX][tileZ] = new Tile(l, tileX, tileZ);
-			}
-		}
-		this.levelTiles[level][tileX][tileZ].wall = wall;
-	}
-
-	public void setWallDecoration( int level, int tileX, int tileZ, int y, int offsetX, int offsetZ, int bitset, Model model, byte info, int angle, int type) {
-		if (model == null) {
-			return;
-		}
-
-		WallDecoration decor = new WallDecoration();
-		decor.bitset = bitset;
-		decor.info = info;
-		decor.x = tileX * 128 + offsetX + 64;
-		decor.z = tileZ * 128 + offsetZ + 64;
-		decor.y = y;
-		decor.model = model;
-		decor.type = type;
-		decor.angle = angle;
-		for ( int l = level; l >= 0; l--) {
-			if (this.levelTiles[l][tileX][tileZ] == null) {
-				this.levelTiles[l][tileX][tileZ] = new Tile(l, tileX, tileZ);
-			}
-		}
-		this.levelTiles[level][tileX][tileZ].wallDecoration = decor;
-	}
-
-	public boolean addLoc( int level, int tileX, int tileZ, int y, Model model, Entity entity, int bitset, byte info, int width, int length, int yaw) {
-		if (model == null && entity == null) {
-			return true;
-		} else {
-			int sceneX = tileX * 128 + width * 64;
-			int sceneZ = tileZ * 128 + length * 64;
-			return this.addLoc(sceneX, sceneZ, y, level, tileX, tileZ, width, length, model, entity, bitset, info, yaw, false);
-		}
-	}
-
-	public boolean addTemporary( int level, int x, int y, int z, Model model, Entity entity, int bitset, int yaw, int padding, boolean forwardPadding) {
-		if (model == null && entity == null) {
-			return true;
-		}
-		int x0 = x - padding;
-		int z0 = z - padding;
-		int x1 = x + padding;
-		int z1 = z + padding;
-		if (forwardPadding) {
-			if (yaw > 640 && yaw < 1408) {
-				z1 += 128;
-			}
-			if (yaw > 1152 && yaw < 1920) {
-				x1 += 128;
-			}
-			if (yaw > 1664 || yaw < 384) {
-				z0 -= 128;
-			}
-			if (yaw > 128 && yaw < 896) {
-				x0 -= 128;
-			}
-		}
-		x0 /= 128;
-		z0 /= 128;
-		x1 /= 128;
-		z1 /= 128;
-		return this.addLoc(x, z, y, level, x0, z0, x1 + 1 - x0, z1 - z0 + 1, model, entity, bitset, (byte) 0, yaw, true);
-	}
-
-	public boolean addTemporary( int level, int x, int y, int z, int minTileX, int minTileZ, int maxTileX, int maxTileZ, Model model, Entity entity, int bitset, int yaw) {
-		return model == null && entity == null || this.addLoc(x, z, y, level, minTileX, minTileZ, maxTileX + 1 - minTileX, maxTileZ - minTileZ + 1, model, entity, bitset, (byte) 0, yaw, true);
-	}
-
-	private boolean addLoc( int x, int z, int y, int level, int tileX, int tileZ, int tileSizeX, int tileSizeZ, Model model, Entity entity, int bitset, byte info, int yaw, boolean temporary) {
-		if (model == null && entity == null) {
-			return false;
-		}
-		for ( int tx = tileX; tx < tileX + tileSizeX; tx++) {
-			for ( int tz = tileZ; tz < tileZ + tileSizeZ; tz++) {
-				if (tx < 0 || tz < 0 || tx >= this.maxTileX || tz >= this.maxTileZ) {
-					return false;
-				}
-				Tile tile = this.levelTiles[level][tx][tz];
-				if (tile != null && tile.locCount >= 5) {
-					return false;
-				}
-			}
-		}
-		Loc loc = new Loc();
-		loc.bitset = bitset;
-		loc.info = info;
-		loc.level = level;
-		loc.x = x;
-		loc.z = z;
-		loc.y = y;
-		loc.model = model;
-		loc.entity = entity;
-		loc.yaw = yaw;
-		loc.minSceneTileX = tileX;
-		loc.minSceneTileZ = tileZ;
-		loc.maxSceneTileX = tileX + tileSizeX - 1;
-		loc.maxSceneTileZ = tileZ + tileSizeZ - 1;
-		for ( int tx = tileX; tx < tileX + tileSizeX; tx++) {
-			for ( int tz = tileZ; tz < tileZ + tileSizeZ; tz++) {
-				int spans = 0;
-				if (tx > tileX) {
-					spans |= 0x1;
-				}
-				if (tx < tileX + tileSizeX - 1) {
-					spans += 0x4;
-				}
-				if (tz > tileZ) {
-					spans += 0x8;
-				}
-				if (tz < tileZ + tileSizeZ - 1) {
-					spans += 0x2;
-				}
-				for ( int l = level; l >= 0; l--) {
-					if (this.levelTiles[l][tx][tz] == null) {
-						this.levelTiles[l][tx][tz] = new Tile(l, tx, tz);
-					}
-				}
-				Tile tile = this.levelTiles[level][tx][tz];
-				tile.locs[tile.locCount] = loc;
-				tile.locSpan[tile.locCount] = spans;
-				tile.locSpans |= spans;
-				tile.locCount++;
-			}
-		}
-
-		if (temporary) {
-			this.temporaryLocs[this.temporaryLocCount++] = loc;
-		}
-
-		return true;
-	}
-
-	public void clearTemporaryLocs() {
-		for ( int i = 0; i < this.temporaryLocCount; i++) {
-			Loc loc = this.temporaryLocs[i];
-			this.removeLoc(loc);
-			this.temporaryLocs[i] = null;
-		}
-
-		this.temporaryLocCount = 0;
-	}
-
-	private void removeLoc( Loc loc) {
-		for ( int tx = loc.minSceneTileX; tx <= loc.maxSceneTileX; tx++) {
-			for ( int tz = loc.minSceneTileZ; tz <= loc.maxSceneTileZ; tz++) {
-				Tile tile = this.levelTiles[loc.level][tx][tz];
-				if (tile == null) {
-					continue;
-				}
-
-				for ( int i = 0; i < tile.locCount; i++) {
-					if (tile.locs[i] == loc) {
-						tile.locCount--;
-						for (int j = i; j < tile.locCount; j++) {
-							tile.locs[j] = tile.locs[j + 1];
-							tile.locSpan[j] = tile.locSpan[j + 1];
-						}
-						tile.locs[tile.locCount] = null;
-						break;
-					}
-				}
-
-				tile.locSpans = 0;
-
-				for (int i = 0; i < tile.locCount; i++) {
-					tile.locSpans |= tile.locSpan[i];
-				}
-			}
-		}
-	}
-
-	public void setLocModel( int level, int x, int z, Model model) {
-		if (model == null) {
-			return;
-		}
-
-		Tile tile = this.levelTiles[level][x][z];
-		if (tile == null) {
-			return;
-		}
-
-		for (int i = 0; i < tile.locCount; i++) {
-			Loc loc = tile.locs[i];
-			if ((loc.bitset >> 29 & 0x3) == 2) {
-				loc.model = model;
-				return;
-			}
-		}
-	}
-
-	public void setWallDecorationOffset( int level, int x, int z, int offset) {
-		Tile tile = this.levelTiles[level][x][z];
-		if (tile == null) {
-			return;
-		}
-
-		WallDecoration decor = tile.wallDecoration;
-		if (decor == null) {
-			return;
-		}
-
-		int sx = x * 128 + 64;
-		int sz = z * 128 + 64;
-		decor.x = sx + (decor.x - sx) * offset / 16;
-		decor.z = sz + (decor.z - sz) * offset / 16;
-	}
-
-	public void setWallDecorationModel( int level, int x, int z, Model model) {
-		if (model == null) {
-			return;
-		}
-
-		Tile tile = this.levelTiles[level][x][z];
-		if (tile == null) {
-			return;
-		}
-
-		WallDecoration decor = tile.wallDecoration;
-		if (decor == null) {
-			return;
-		}
-
-		decor.model = model;
-	}
-
-	public void setGroundDecorationModel( int level, int x, int z, Model model) {
-		if (model == null) {
-			return;
-		}
-
-		Tile tile = this.levelTiles[level][x][z];
-		if (tile == null) {
-			return;
-		}
-
-		GroundDecoration decor = tile.groundDecoration;
-		if (decor == null) {
-			return;
-		}
-
-		decor.model = model;
-	}
-
-	public void setWallModel( int level, int x, int z, Model model) {
-		if (model == null) {
-			return;
-		}
-
-		Tile tile = this.levelTiles[level][x][z];
-		if (tile == null) {
-			return;
-		}
-
-		Wall wall = tile.wall;
-		if (wall == null) {
-			return;
-		}
-
-		wall.modelA = model;
-	}
-
-	public void setWallModels( int x, int z, int level, Model modelA, Model modelB) {
-		if (modelA == null) {
-			return;
-		}
-
-		Tile tile = this.levelTiles[level][x][z];
-		if (tile == null) {
-			return;
-		}
-
-		Wall wall = tile.wall;
-		if (wall == null) {
-			return;
-		}
-
-		wall.modelA = modelA;
-		wall.modelB = modelB;
-	}
-
-	public void removeWall( int level, int x, int z, int force) {
-		Tile tile = this.levelTiles[level][x][z];
-		if (force == 1 && tile != null) {
-			tile.wall = null;
-		}
-	}
-
-	public void removeWallDecoration( int level, int x, int z) {
-		Tile tile = this.levelTiles[level][x][z];
-		if (tile == null) {
-			return;
-		}
-
-		tile.wallDecoration = null;
-	}
-
-	public void removeLoc( int level, int x, int z) {
-		Tile tile = this.levelTiles[level][x][z];
-		if (tile == null) {
-			return;
-		}
-
-		for ( int l = 0; l < tile.locCount; l++) {
-			Loc loc = tile.locs[l];
-			if ((loc.bitset >> 29 & 0x3) == 2 && loc.minSceneTileX == x && loc.minSceneTileZ == z) {
-				this.removeLoc(loc);
-				return;
-			}
-		}
-	}
-
-	public void removeGroundDecoration( int level, int x, int z) {
-		Tile tile = this.levelTiles[level][x][z];
-		if (tile == null) {
-			return;
-		}
-
-		tile.groundDecoration = null;
-	}
-
-	public void removeObjStack( int level, int x, int z) {
-		Tile tile = this.levelTiles[level][x][z];
-		if (tile == null) {
-			return;
-		}
-
-		tile.objStack = null;
-	}
-
-	public int getWallBitset( int level, int x, int z) {
-		Tile tile = this.levelTiles[level][x][z];
-		return tile == null || tile.wall == null ? 0 : tile.wall.bitset;
-	}
-
-	public int getWallDecorationBitset( int level, int z, int x) {
-		Tile tile = this.levelTiles[level][x][z];
-		return tile == null || tile.wallDecoration == null ? 0 : tile.wallDecoration.bitset;
-	}
-
-	public int getLocBitset( int level, int x, int z) {
-		Tile tile = this.levelTiles[level][x][z];
-		if (tile == null) {
-			return 0;
-		}
-
-		for ( int l = 0; l < tile.locCount; l++) {
-			Loc loc = tile.locs[l];
-			if ((loc.bitset >> 29 & 0x3) == 2 && loc.minSceneTileX == x && loc.minSceneTileZ == z) {
-				return loc.bitset;
-			}
-		}
-
-		return 0;
-	}
-
-	public int getGroundDecorationBitset( int level, int x, int z) {
-		Tile tile = this.levelTiles[level][x][z];
-		return tile == null || tile.groundDecoration == null ? 0 : tile.groundDecoration.bitset;
-	}
-
-	public int getInfo( int level, int x, int z, int bitset) {
-		Tile tile = this.levelTiles[level][x][z];
-		if (tile == null) {
-			return -1;
-		} else if (tile.wall != null && tile.wall.bitset == bitset) {
-			return tile.wall.info & 0xFF;
-		} else if (tile.wallDecoration != null && tile.wallDecoration.bitset == bitset) {
-			return tile.wallDecoration.info & 0xFF;
-		} else if (tile.groundDecoration != null && tile.groundDecoration.bitset == bitset) {
-			return tile.groundDecoration.info & 0xFF;
-		} else {
-			for ( int i = 0; i < tile.locCount; i++) {
-				if (tile.locs[i].bitset == bitset) {
-					return tile.locs[i].info & 0xFF;
-				}
-			}
-
-			return -1;
-		}
-	}
-
-	public void buildModels( int lightAmbient, int lightAttenuation, int lightSrcX, int lightSrcY, int lightSrcZ) {
-		int lightMagnitude = (int) Math.sqrt(lightSrcX * lightSrcX + lightSrcY * lightSrcY + lightSrcZ * lightSrcZ);
-		int attenuation = lightAttenuation * lightMagnitude >> 8;
-
-		for ( int level = 0; level < this.maxLevel; level++) {
-			for ( int tileX = 0; tileX < this.maxTileX; tileX++) {
-				for ( int tileZ = 0; tileZ < this.maxTileZ; tileZ++) {
-					Tile tile = this.levelTiles[level][tileX][tileZ];
-					if (tile == null) {
-						continue;
-					}
-
-					Wall wall = tile.wall;
-					if (wall != null && wall.modelA != null && wall.modelA.vertexNormal != null) {
-						this.mergeLocNormals(level, tileX, tileZ, 1, 1, wall.modelA);
-						if (wall.modelB != null && wall.modelB.vertexNormal != null) {
-							this.mergeLocNormals(level, tileX, tileZ, 1, 1, wall.modelB);
-							this.mergeNormals(wall.modelA, wall.modelB, 0, 0, 0, false);
-							wall.modelB.applyLighting(lightAmbient, attenuation, lightSrcX, lightSrcY, lightSrcZ);
-						}
-						wall.modelA.applyLighting(lightAmbient, attenuation, lightSrcX, lightSrcY, lightSrcZ);
-					}
-
-					for ( int i = 0; i < tile.locCount; i++) {
-						Loc loc = tile.locs[i];
-						if (loc != null && loc.model != null && loc.model.vertexNormal != null) {
-							this.mergeLocNormals(level, tileX, tileZ, loc.maxSceneTileX + 1 - loc.minSceneTileX, loc.maxSceneTileZ - loc.minSceneTileZ + 1, loc.model);
-							loc.model.applyLighting(lightAmbient, attenuation, lightSrcX, lightSrcY, lightSrcZ);
-						}
-					}
-
-					GroundDecoration decor = tile.groundDecoration;
-					if (decor != null && decor.model.vertexNormal != null) {
-						this.mergeGroundDecorationNormals(level, tileX, tileZ, decor.model);
-						decor.model.applyLighting(lightAmbient, attenuation, lightSrcX, lightSrcY, lightSrcZ);
-					}
-				}
-			}
-		}
-	}
-
-	private void mergeGroundDecorationNormals( int level, int tileX, int tileZ, Model model) {
-		Tile tile;
-		if (tileX < this.maxTileX) {
-			tile = this.levelTiles[level][tileX + 1][tileZ];
-			if (tile != null && tile.groundDecoration != null && tile.groundDecoration.model.vertexNormal != null) {
-				this.mergeNormals(model, tile.groundDecoration.model, 128, 0, 0, true);
-			}
-		}
-
-		if (tileZ < this.maxTileX) {
-			tile = this.levelTiles[level][tileX][tileZ + 1];
-			if (tile != null && tile.groundDecoration != null && tile.groundDecoration.model.vertexNormal != null) {
-				this.mergeNormals(model, tile.groundDecoration.model, 0, 0, 128, true);
-			}
-		}
-
-		if (tileX < this.maxTileX && tileZ < this.maxTileZ) {
-			tile = this.levelTiles[level][tileX + 1][tileZ + 1];
-			if (tile != null && tile.groundDecoration != null && tile.groundDecoration.model.vertexNormal != null) {
-				this.mergeNormals(model, tile.groundDecoration.model, 128, 0, 128, true);
-			}
-		}
-
-		if (tileX < this.maxTileX && tileZ > 0) {
-			tile = this.levelTiles[level][tileX + 1][tileZ - 1];
-			if (tile != null && tile.groundDecoration != null && tile.groundDecoration.model.vertexNormal != null) {
-				this.mergeNormals(model, tile.groundDecoration.model, 128, 0, -128, true);
-			}
-		}
-	}
-
-	private void mergeLocNormals( int level, int tileX, int tileZ, int tileSizeX, int tileSizeZ, Model model) {
-		boolean allowFaceRemoval = true;
-
-		int minTileX = tileX;
-		int maxTileX = tileX + tileSizeX;
-		int minTileZ = tileZ - 1;
-		int maxTileZ = tileZ + tileSizeZ;
-
-		for ( int l = level; l <= level + 1; l++) {
-			if (l == this.maxLevel) {
-				continue;
-			}
-
-			for ( int x = minTileX; x <= maxTileX; x++) {
-				if (x < 0 || x >= this.maxTileX) {
-					continue;
-				}
-
-				for ( int z = minTileZ; z <= maxTileZ; z++) {
-					if (z < 0 || z >= this.maxTileZ || (allowFaceRemoval && x < maxTileX && z < maxTileZ && (z >= tileZ || x == tileX))) {
-						continue;
-					}
-
-					Tile tile = this.levelTiles[l][x][z];
-					if (tile == null) {
-						continue;
-					}
-
-					int offsetY = (this.levelHeightmaps[l][x][z] + this.levelHeightmaps[l][x + 1][z] + this.levelHeightmaps[l][x][z + 1] + this.levelHeightmaps[l][x + 1][z + 1]) / 4 - (this.levelHeightmaps[level][tileX][tileZ] + this.levelHeightmaps[level][tileX + 1][tileZ] + this.levelHeightmaps[level][tileX][tileZ + 1] + this.levelHeightmaps[level][tileX + 1][tileZ + 1]) / 4;
-
-					Wall wall = tile.wall;
-					if (wall != null && wall.modelA != null && wall.modelA.vertexNormal != null) {
-						this.mergeNormals(model, wall.modelA, (x - tileX) * 128 + (1 - tileSizeX) * 64, offsetY, (z - tileZ) * 128 + (1 - tileSizeZ) * 64, allowFaceRemoval);
-					}
-
-					if (wall != null && wall.modelB != null && wall.modelB.vertexNormal != null) {
-						this.mergeNormals(model, wall.modelB, (x - tileX) * 128 + (1 - tileSizeX) * 64, offsetY, (z - tileZ) * 128 + (1 - tileSizeZ) * 64, allowFaceRemoval);
-					}
-
-					for ( int i = 0; i < tile.locCount; i++) {
-						Loc loc = tile.locs[i];
-						if (loc == null || loc.model == null || loc.model.vertexNormal == null) {
-							continue;
-						}
-
-						int locTileSizeX = loc.maxSceneTileX + 1 - loc.minSceneTileX;
-						int locTileSizeZ = loc.maxSceneTileZ + 1 - loc.minSceneTileZ;
-						this.mergeNormals(model, loc.model, (loc.minSceneTileX - tileX) * 128 + (locTileSizeX - tileSizeX) * 64, offsetY, (loc.minSceneTileZ - tileZ) * 128 + (locTileSizeZ - tileSizeZ) * 64, allowFaceRemoval);
-					}
-				}
-			}
-
-			minTileX--;
-			allowFaceRemoval = false;
-		}
-	}
-
-	private void mergeNormals( Model modelA, Model modelB, int offsetX, int offsetY, int offsetZ, boolean allowFaceRemoval) {
-		this.tmpMergeIndex++;
-
-		int merged = 0;
-		int[] vertexX = modelB.vertexX;
-		int vertexCountB = modelB.vertexCount;
-
-		for ( int vertexA = 0; vertexA < modelA.vertexCount; vertexA++) {
-			Model.VertexNormal normalA = modelA.vertexNormal[vertexA];
-			Model.VertexNormal originalNormalA = modelA.vertexNormalOriginal[vertexA];
-			if (originalNormalA.w != 0) {
-				int y = modelA.vertexY[vertexA] - offsetY;
-				if (y > modelB.minY) {
-					continue;
-				}
-
-				int x = modelA.vertexX[vertexA] - offsetX;
-				if (x < modelB.minX || x > modelB.maxX) {
-					continue;
-				}
-
-				int z = modelA.vertexZ[vertexA] - offsetZ;
-				if (z < modelB.minZ || z > modelB.maxZ) {
-					continue;
-				}
-
-				for ( int vertexB = 0; vertexB < vertexCountB; vertexB++) {
-					Model.VertexNormal normalB = modelB.vertexNormal[vertexB];
-					Model.VertexNormal originalNormalB = modelB.vertexNormalOriginal[vertexB];
-					if (x != vertexX[vertexB] || z != modelB.vertexZ[vertexB] || y != modelB.vertexY[vertexB] || originalNormalB.w == 0) {
-						continue;
-					}
-
-					normalA.x += originalNormalB.x;
-					normalA.y += originalNormalB.y;
-					normalA.z += originalNormalB.z;
-					normalA.w += originalNormalB.w;
-					normalB.x += originalNormalA.x;
-					normalB.y += originalNormalA.y;
-					normalB.z += originalNormalA.z;
-					normalB.w += originalNormalA.w;
-					merged++;
-					this.mergeIndexA[vertexA] = this.tmpMergeIndex;
-					this.mergeIndexB[vertexB] = this.tmpMergeIndex;
-				}
-			}
-		}
-
-		if (merged < 3 || !allowFaceRemoval) {
-			return;
-		}
-
-		for ( int i = 0; i < modelA.faceCount; i++) {
-			if (this.mergeIndexA[modelA.faceVertexA[i]] == this.tmpMergeIndex && this.mergeIndexA[modelA.faceVertexB[i]] == this.tmpMergeIndex && this.mergeIndexA[modelA.faceVertexC[i]] == this.tmpMergeIndex) {
-				modelA.faceInfo[i] = -1;
-			}
-		}
-
-		for ( int i = 0; i < modelB.faceCount; i++) {
-			if (this.mergeIndexB[modelB.faceVertexA[i]] == this.tmpMergeIndex && this.mergeIndexB[modelB.faceVertexB[i]] == this.tmpMergeIndex && this.mergeIndexB[modelB.faceVertexC[i]] == this.tmpMergeIndex) {
-				modelB.faceInfo[i] = -1;
-			}
-		}
-	}
-
-	public void drawMinimapTile( int level, int x, int z, int[] dst, int offset, int step) {
-		Tile tile = this.levelTiles[level][x][z];
-		if (tile == null) {
-			return;
-		}
-
-		TileUnderlay underlay = tile.underlay;
-		if (underlay != null) {
-			int rgb = underlay.rgb;
-			if (rgb == 0) {
-				return;
-			}
-
-			for (int i = 0; i < 4; i++) {
-				dst[offset] = rgb;
-				dst[offset + 1] = rgb;
-				dst[offset + 2] = rgb;
-				dst[offset + 3] = rgb;
-				offset += step;
-			}
-
-			return;
-		}
-
-		TileOverlay overlay = tile.overlay;
-		if (overlay == null) {
-			return;
-		}
-
-		int shape = overlay.shape;
-		int angle = overlay.rotation;
-		int background = overlay.backgroundRgb;
-		int foreground = overlay.foregroundRgb;
-		int[] mask = this.MINIMAP_OVERLAY_SHAPE[shape];
-		int[] rotation = this.MINIMAP_OVERLAY_ROTATION[angle];
-
-		int off = 0;
-		if (background != 0) {
-			for (int i = 0; i < 4; i++) {
-				dst[offset] = mask[rotation[off++]] == 0 ? background : foreground;
-				dst[offset + 1] = mask[rotation[off++]] == 0 ? background : foreground;
-				dst[offset + 2] = mask[rotation[off++]] == 0 ? background : foreground;
-				dst[offset + 3] = mask[rotation[off++]] == 0 ? background : foreground;
-				offset += step;
-			}
-
-			return;
-		}
-
-		for (int i = 0; i < 4; i++) {
-			if (mask[rotation[off++]] != 0) {
-				dst[offset] = foreground;
-			}
-
-			if (mask[rotation[off++]] != 0) {
-				dst[offset + 1] = foreground;
-			}
-
-			if (mask[rotation[off++]] != 0) {
-				dst[offset + 2] = foreground;
-			}
-
-			if (mask[rotation[off++]] != 0) {
-				dst[offset + 3] = foreground;
-			}
-
-			offset += step;
-		}
-	}
-
-	public void click( int mouseX, int mouseY) {
-		takingInput = true;
-		World3D.mouseX = mouseX;
-		World3D.mouseY = mouseY;
-		clickTileX = -1;
-		clickTileZ = -1;
-	}
-
-	public void draw( int eyeX, int eyeY, int eyeZ, int topLevel, int eyeYaw, int eyePitch, int loopCycle) {
-		if (eyeX < 0) {
-			eyeX = 0;
-		} else if (eyeX >= this.maxTileX * 128) {
-			eyeX = this.maxTileX * 128 - 1;
-		}
-
-		if (eyeZ < 0) {
-			eyeZ = 0;
-		} else if (eyeZ >= this.maxTileZ * 128) {
-			eyeZ = this.maxTileZ * 128 - 1;
-		}
-
-		cycle++;
-		sinEyePitch = Model.sin[eyePitch];
-		cosEyePitch = Model.cos[eyePitch];
-		sinEyeYaw = Model.sin[eyeYaw];
-		cosEyeYaw = Model.cos[eyeYaw];
-
-		visibilityMap = visibilityMatrix[(eyePitch - 128) / 32][eyeYaw / 64];
-		World3D.eyeX = eyeX;
-		World3D.eyeY = eyeY;
-		World3D.eyeZ = eyeZ;
-		eyeTileX = eyeX / 128;
-		eyeTileZ = eyeZ / 128;
-		World3D.topLevel = topLevel;
-
-		minDrawTileX = eyeTileX - 25;
-		if (minDrawTileX < 0) {
-			minDrawTileX = 0;
-		}
-
-		minDrawTileZ = eyeTileZ - 25;
-		if (minDrawTileZ < 0) {
-			minDrawTileZ = 0;
-		}
-
-		maxDrawTileX = eyeTileX + 25;
-		if (maxDrawTileX > this.maxTileX) {
-			maxDrawTileX = this.maxTileX;
-		}
-
-		maxDrawTileZ = eyeTileZ + 25;
-		if (maxDrawTileZ > this.maxTileZ) {
-			maxDrawTileZ = this.maxTileZ;
-		}
-
-		this.updateActiveOccluders();
-		tilesRemaining = 0;
-
-		for ( int level = this.minLevel; level < this.maxLevel; level++) {
-			Tile[][] tiles = this.levelTiles[level];
-			for (int x = minDrawTileX; x < maxDrawTileX; x++) {
-				for (int z = minDrawTileZ; z < maxDrawTileZ; z++) {
-					Tile tile = tiles[x][z];
-					if (tile == null) {
-						continue;
-					}
-
-					if (tile.drawLevel <= topLevel && (visibilityMap[x + 25 - eyeTileX][z + 25 - eyeTileZ] || this.levelHeightmaps[level][x][z] - eyeY >= 2000)) {
-						tile.visible = true;
-						tile.update = true;
-						tile.containsLocs = tile.locCount > 0;
-						tilesRemaining++;
-					} else {
-						tile.visible = false;
-						tile.update = false;
-						tile.checkLocSpans = 0;
-					}
-				}
-			}
-		}
-
-		for ( int level = this.minLevel; level < this.maxLevel; level++) {
-			Tile[][] tiles = this.levelTiles[level];
-			for (int dx = -25; dx <= 0; dx++) {
-				int rightTileX = eyeTileX + dx;
-				int leftTileX = eyeTileX - dx;
-
-				if (rightTileX < minDrawTileX && leftTileX >= maxDrawTileX) {
-					continue;
-				}
-
-				for (int dz = -25; dz <= 0; dz++) {
-					int forwardTileZ = eyeTileZ + dz;
-					int backwardTileZ = eyeTileZ - dz;
-					Tile tile;
-					if (rightTileX >= minDrawTileX) {
-						if (forwardTileZ >= minDrawTileZ) {
-							tile = tiles[rightTileX][forwardTileZ];
-							if (tile != null && tile.visible) {
-								this.drawTile(tile, true, loopCycle);
-							}
-						}
-
-						if (backwardTileZ < maxDrawTileZ) {
-							tile = tiles[rightTileX][backwardTileZ];
-							if (tile != null && tile.visible) {
-								this.drawTile(tile, true, loopCycle);
-							}
-						}
-					}
-
-					if (leftTileX < maxDrawTileX) {
-						if (forwardTileZ >= minDrawTileZ) {
-							tile = tiles[leftTileX][forwardTileZ];
-							if (tile != null && tile.visible) {
-								this.drawTile(tile, true, loopCycle);
-							}
-						}
-
-						if (backwardTileZ < maxDrawTileZ) {
-							tile = tiles[leftTileX][backwardTileZ];
-							if (tile != null && tile.visible) {
-								this.drawTile(tile, true, loopCycle);
-							}
-						}
-					}
-
-					if (tilesRemaining == 0) {
-						takingInput = false;
-						return;
-					}
-				}
-			}
-		}
-
-		for (int level = this.minLevel; level < this.maxLevel; level++) {
-			Tile[][] tiles = this.levelTiles[level];
-			for (int dx = -25; dx <= 0; dx++) {
-				int rightTileX = eyeTileX + dx;
-				int leftTileX = eyeTileX - dx;
-				if (rightTileX < minDrawTileX && leftTileX >= maxDrawTileX) {
-					continue;
-				}
-
-				for (int dz = -25; dz <= 0; dz++) {
-					int forwardTileZ = eyeTileZ + dz;
-					int backgroundTileZ = eyeTileZ - dz;
-					Tile tile;
-					if (rightTileX >= minDrawTileX) {
-						if (forwardTileZ >= minDrawTileZ) {
-							tile = tiles[rightTileX][forwardTileZ];
-							if (tile != null && tile.visible) {
-								this.drawTile(tile, false, loopCycle);
-							}
-						}
-
-						if (backgroundTileZ < maxDrawTileZ) {
-							tile = tiles[rightTileX][backgroundTileZ];
-							if (tile != null && tile.visible) {
-								this.drawTile(tile, false, loopCycle);
-							}
-						}
-					}
-
-					if (leftTileX < maxDrawTileX) {
-						if (forwardTileZ >= minDrawTileZ) {
-							tile = tiles[leftTileX][forwardTileZ];
-							if (tile != null && tile.visible) {
-								this.drawTile(tile, false, loopCycle);
-							}
-						}
-
-						if (backgroundTileZ < maxDrawTileZ) {
-							tile = tiles[leftTileX][backgroundTileZ];
-							if (tile != null && tile.visible) {
-								this.drawTile(tile, false, loopCycle);
-							}
-						}
-					}
-
-					if (tilesRemaining == 0) {
-						takingInput = false;
-						return;
-					}
-				}
-			}
-		}
-	}
-
-	private void drawTile( Tile next, boolean checkAdjacent, int loopCycle) {
-		drawTileQueue.addTail(next);
-
-		while (true) {
-			Tile tile;
-
-			do {
-				tile = (Tile) drawTileQueue.removeHead();
-
-				if (tile == null) {
-					return;
-				}
-			} while (!tile.update);
-
-			int tileX = tile.x;
-			int tileZ = tile.z;
-			int level = tile.level;
-			int occludeLevel = tile.occludeLevel;
-			Tile[][] tiles = this.levelTiles[level];
-
-			if (tile.visible) {
-				if (checkAdjacent) {
-					if (level > 0) {
-						Tile above = this.levelTiles[level - 1][tileX][tileZ];
-
-						if (above != null && above.update) {
-							continue;
-						}
-					}
-
-					if (tileX <= eyeTileX && tileX > minDrawTileX) {
-						Tile adjacent = tiles[tileX - 1][tileZ];
-
-						if (adjacent != null && adjacent.update && (adjacent.visible || (tile.locSpans & 0x1) == 0)) {
-							continue;
-						}
-					}
-
-					if (tileX >= eyeTileX && tileX < maxDrawTileX - 1) {
-						Tile adjacent = tiles[tileX + 1][tileZ];
-
-						if (adjacent != null && adjacent.update && (adjacent.visible || (tile.locSpans & 0x4) == 0)) {
-							continue;
-						}
-					}
-
-					if (tileZ <= eyeTileZ && tileZ > minDrawTileZ) {
-						Tile adjacent = tiles[tileX][tileZ - 1];
-
-						if (adjacent != null && adjacent.update && (adjacent.visible || (tile.locSpans & 0x8) == 0)) {
-							continue;
-						}
-					}
-
-					if (tileZ >= eyeTileZ && tileZ < maxDrawTileZ - 1) {
-						Tile adjacent = tiles[tileX][tileZ + 1];
-
-						if (adjacent != null && adjacent.update && (adjacent.visible || (tile.locSpans & 0x2) == 0)) {
-							continue;
-						}
-					}
-				} else {
-					checkAdjacent = true;
-				}
-
-				tile.visible = false;
-
-				if (tile.bridge != null) {
-					Tile bridge = tile.bridge;
-
-					if (bridge.underlay == null) {
-						if (bridge.overlay != null && !this.tileVisible(0, tileX, tileZ)) {
-							this.drawTileOverlay(tileX, tileZ, bridge.overlay, sinEyePitch, cosEyePitch, sinEyeYaw, cosEyeYaw);
-						}
-					} else if (!this.tileVisible(0, tileX, tileZ)) {
-						this.drawTileUnderlay(bridge.underlay, 0, tileX, tileZ, sinEyePitch, cosEyePitch, sinEyeYaw, cosEyeYaw);
-					}
-
-					Wall wall = bridge.wall;
-					if (wall != null) {
-						wall.modelA.draw(0, sinEyePitch, cosEyePitch, sinEyeYaw, cosEyeYaw, wall.x - eyeX, wall.y - eyeY, wall.z - eyeZ, wall.bitset);
-					}
-
-					for (int i = 0; i < bridge.locCount; i++) {
-						Loc loc = bridge.locs[i];
-
-						if (loc != null) {
-							Model model = loc.model;
-							if (model == null) {
-								model = loc.entity.draw(loopCycle);
-							}
-							model.draw(loc.yaw, sinEyePitch, cosEyePitch, sinEyeYaw, cosEyeYaw, loc.x - eyeX, loc.y - eyeY, loc.z - eyeZ, loc.bitset);
-						}
-					}
-				}
-
-				boolean tileDrawn = false;
-				if (tile.underlay == null) {
-					if (tile.overlay != null && !this.tileVisible(occludeLevel, tileX, tileZ)) {
-						tileDrawn = true;
-						this.drawTileOverlay(tileX, tileZ, tile.overlay, sinEyePitch, cosEyePitch, sinEyeYaw, cosEyeYaw);
-					}
-				} else if (!this.tileVisible(occludeLevel, tileX, tileZ)) {
-					tileDrawn = true;
-					this.drawTileUnderlay(tile.underlay, occludeLevel, tileX, tileZ, sinEyePitch, cosEyePitch, sinEyeYaw, cosEyeYaw);
-				}
-
-				int direction = 0;
-				int frontWallTypes = 0;
-
-				Wall wall = tile.wall;
-				WallDecoration decor = tile.wallDecoration;
-
-				if (wall != null || decor != null) {
-					if (eyeTileX == tileX) {
-						direction += 1;
-					} else if (eyeTileX < tileX) {
-						direction += 2;
-					}
-
-					if (eyeTileZ == tileZ) {
-						direction += 3;
-					} else if (eyeTileZ > tileZ) {
-						direction += 6;
-					}
-
-					frontWallTypes = FRONT_WALL_TYPES[direction];
-					tile.backWallTypes = BACK_WALL_TYPES[direction];
-				}
-
-				if (wall != null) {
-					if ((wall.typeA & DIRECTION_ALLOW_WALL_CORNER_TYPE[direction]) == 0) {
-						tile.checkLocSpans = 0;
-					} else if (wall.typeA == 16) {
-						tile.checkLocSpans = 3;
-						tile.blockLocSpans = WALL_CORNER_TYPE_16_BLOCK_LOC_SPANS[direction];
-						tile.inverseBlockLocSpans = 3 - tile.blockLocSpans;
-					} else if (wall.typeA == 32) {
-						tile.checkLocSpans = 6;
-						tile.blockLocSpans = WALL_CORNER_TYPE_32_BLOCK_LOC_SPANS[direction];
-						tile.inverseBlockLocSpans = 6 - tile.blockLocSpans;
-					} else if (wall.typeA == 64) {
-						tile.checkLocSpans = 12;
-						tile.blockLocSpans = WALL_CORNER_TYPE_64_BLOCK_LOC_SPANS[direction];
-						tile.inverseBlockLocSpans = 12 - tile.blockLocSpans;
-					} else {
-						tile.checkLocSpans = 9;
-						tile.blockLocSpans = WALL_CORNER_TYPE_128_BLOCK_LOC_SPANS[direction];
-						tile.inverseBlockLocSpans = 9 - tile.blockLocSpans;
-					}
-
-					if ((wall.typeA & frontWallTypes) != 0 && !this.wallVisible(occludeLevel, tileX, tileZ, wall.typeA)) {
-						wall.modelA.draw(0, sinEyePitch, cosEyePitch, sinEyeYaw, cosEyeYaw, wall.x - eyeX, wall.y - eyeY, wall.z - eyeZ, wall.bitset);
-					}
-
-					if ((wall.typeB & frontWallTypes) != 0 && !this.wallVisible(occludeLevel, tileX, tileZ, wall.typeB)) {
-						wall.modelB.draw(0, sinEyePitch, cosEyePitch, sinEyeYaw, cosEyeYaw, wall.x - eyeX, wall.y - eyeY, wall.z - eyeZ, wall.bitset);
-					}
-				}
-
-				if (decor != null && !this.visible(occludeLevel, tileX, tileZ, decor.model.maxY)) {
-					if ((decor.type & frontWallTypes) != 0) {
-						decor.model.draw(decor.angle, sinEyePitch, cosEyePitch, sinEyeYaw, cosEyeYaw, decor.x - eyeX, decor.y - eyeY, decor.z - eyeZ, decor.bitset);
-					} else if ((decor.type & 0x300) != 0) {
-						int x = decor.x - eyeX;
-						int y = decor.y - eyeY;
-						int z = decor.z - eyeZ;
-						int rotation = decor.angle;
-
-						int nearestX;
-						if (rotation == 1 || rotation == 2) {
-							nearestX = -x;
-						} else {
-							nearestX = x;
-						}
-
-						int nearestZ;
-						if (rotation == 2 || rotation == 3) {
-							nearestZ = -z;
-						} else {
-							nearestZ = z;
-						}
-
-						if ((decor.type & 0x100) != 0 && nearestZ < nearestX) {
-							int drawX = x + WALL_DECORATION_INSET_X[rotation];
-							int drawZ = z + WALL_DECORATION_INSET_Z[rotation];
-							decor.model.draw(rotation * 512 + 256, sinEyePitch, cosEyePitch, sinEyeYaw, cosEyeYaw, drawX, y, drawZ, decor.bitset);
-						}
-
-						if ((decor.type & 0x200) != 0 && nearestZ > nearestX) {
-							int drawX = x + WALL_DECORATION_OUTSET_X[rotation];
-							int drawZ = z + WALL_DECORATION_OUTSET_Z[rotation];
-							decor.model.draw(rotation * 512 + 1280 & 0x7FF, sinEyePitch, cosEyePitch, sinEyeYaw, cosEyeYaw, drawX, y, drawZ, decor.bitset);
-						}
-					}
-				}
-
-				if (tileDrawn) {
-					GroundDecoration groundDecor = tile.groundDecoration;
-					if (groundDecor != null) {
-						groundDecor.model.draw(0, sinEyePitch, cosEyePitch, sinEyeYaw, cosEyeYaw, groundDecor.x - eyeX, groundDecor.y - eyeY, groundDecor.z - eyeZ, groundDecor.bitset);
-					}
-
-					ObjStack objs = tile.objStack;
-					if (objs != null && objs.offset == 0) {
-						if (objs.bottomObj != null) {
-							objs.bottomObj.draw(0, sinEyePitch, cosEyePitch, sinEyeYaw, cosEyeYaw, objs.x - eyeX, objs.y - eyeY, objs.z - eyeZ, objs.bitset);
-						}
-
-						if (objs.middleObj != null) {
-							objs.middleObj.draw(0, sinEyePitch, cosEyePitch, sinEyeYaw, cosEyeYaw, objs.x - eyeX, objs.y - eyeY, objs.z - eyeZ, objs.bitset);
-						}
-
-						if (objs.topObj != null) {
-							objs.topObj.draw(0, sinEyePitch, cosEyePitch, sinEyeYaw, cosEyeYaw, objs.x - eyeX, objs.y - eyeY, objs.z - eyeZ, objs.bitset);
-						}
-					}
-				}
-
-				int spans = tile.locSpans;
-
-				if (spans != 0) {
-					if (tileX < eyeTileX && (spans & 0x4) != 0) {
-						Tile adjacent = tiles[tileX + 1][tileZ];
-						if (adjacent != null && adjacent.update) {
-							drawTileQueue.addTail(adjacent);
-						}
-					}
-
-					if (tileZ < eyeTileZ && (spans & 0x2) != 0) {
-						Tile adjacent = tiles[tileX][tileZ + 1];
-						if (adjacent != null && adjacent.update) {
-							drawTileQueue.addTail(adjacent);
-						}
-					}
-
-					if (tileX > eyeTileX && (spans & 0x1) != 0) {
-						Tile adjacent = tiles[tileX - 1][tileZ];
-						if (adjacent != null && adjacent.update) {
-							drawTileQueue.addTail(adjacent);
-						}
-					}
-
-					if (tileZ > eyeTileZ && (spans & 0x8) != 0) {
-						Tile adjacent = tiles[tileX][tileZ - 1];
-						if (adjacent != null && adjacent.update) {
-							drawTileQueue.addTail(adjacent);
-						}
-					}
-				}
-			}
-
-			if (tile.checkLocSpans != 0) {
-				boolean draw = true;
-				for (int i = 0; i < tile.locCount; i++) {
-					if (tile.locs[i].cycle != cycle && (tile.locSpan[i] & tile.checkLocSpans) == tile.blockLocSpans) {
-						draw = false;
-						break;
-					}
-				}
-
-				if (draw) {
-					Wall wall = tile.wall;
-
-					if (!this.wallVisible(occludeLevel, tileX, tileZ, wall.typeA)) {
-						wall.modelA.draw(0, sinEyePitch, cosEyePitch, sinEyeYaw, cosEyeYaw, wall.x - eyeX, wall.y - eyeY, wall.z - eyeZ, wall.bitset);
-					}
-
-					tile.checkLocSpans = 0;
-				}
-			}
-
-			if (tile.containsLocs) {
-				int locCount = tile.locCount;
-				tile.containsLocs = false;
-				int locBufferSize = 0;
-
-				iterate_locs:
-				for (int i = 0; i < locCount; i++) {
-					Loc loc = tile.locs[i];
-
-					if (loc.cycle == cycle) {
-						continue;
-					}
-
-					for (int x = loc.minSceneTileX; x <= loc.maxSceneTileX; x++) {
-						for (int z = loc.minSceneTileZ; z <= loc.maxSceneTileZ; z++) {
-							Tile other = tiles[x][z];
-
-							if (!other.visible) {
-								if (other.checkLocSpans == 0) {
-									continue;
-								}
-
-								int spans = 0;
-
-								if (x > loc.minSceneTileX) {
-									spans += 1;
-								}
-
-								if (x < loc.maxSceneTileX) {
-									spans += 4;
-								}
-
-								if (z > loc.minSceneTileZ) {
-									spans += 8;
-								}
-
-								if (z < loc.maxSceneTileZ) {
-									spans += 2;
-								}
-
-								if ((spans & other.checkLocSpans) != tile.inverseBlockLocSpans) {
-									continue;
-								}
-							}
-
-							tile.containsLocs = true;
-							continue iterate_locs;
-						}
-					}
-
-					locBuffer[locBufferSize++] = loc;
-
-					int minTileDistanceX = eyeTileX - loc.minSceneTileX;
-					int maxTileDistanceX = loc.maxSceneTileX - eyeTileX;
-
-					if (maxTileDistanceX > minTileDistanceX) {
-						minTileDistanceX = maxTileDistanceX;
-					}
-
-					int minTileDistanceZ = eyeTileZ - loc.minSceneTileZ;
-					int maxTileDistanceZ = loc.maxSceneTileZ - eyeTileZ;
-
-					if (maxTileDistanceZ > minTileDistanceZ) {
-						loc.distance = minTileDistanceX + maxTileDistanceZ;
-					} else {
-						loc.distance = minTileDistanceX + minTileDistanceZ;
-					}
-				}
-
-				while (true) {
-					int farthestDistance = -50;
-					int farthestIndex = -1;
-
-					for (int index = 0; index < locBufferSize; index++) {
-						Loc loc = locBuffer[index];
-
-						if (loc.cycle != cycle) {
-							if (loc.distance > farthestDistance) {
-								farthestDistance = loc.distance;
-								farthestIndex = index;
-							}
-						}
-					}
-
-					if (farthestIndex == -1) {
-						break;
-					}
-
-					Loc farthest = locBuffer[farthestIndex];
-					farthest.cycle = cycle;
-
-					Model model = farthest.model;
-					if (model == null) {
-						model = farthest.entity.draw(loopCycle);
-					}
-
-					if (!this.locVisible(occludeLevel, farthest.minSceneTileX, farthest.maxSceneTileX, farthest.minSceneTileZ, farthest.maxSceneTileZ, model.maxY)) {
-						model.draw(farthest.yaw, sinEyePitch, cosEyePitch, sinEyeYaw, cosEyeYaw, farthest.x - eyeX, farthest.y - eyeY, farthest.z - eyeZ, farthest.bitset);
-					}
-
-					for (int x = farthest.minSceneTileX; x <= farthest.maxSceneTileX; x++) {
-						for (int z = farthest.minSceneTileZ; z <= farthest.maxSceneTileZ; z++) {
-							Tile occupied = tiles[x][z];
-
-							if (occupied.checkLocSpans != 0) {
-								drawTileQueue.addTail(occupied);
-							} else if ((x != tileX || z != tileZ) && occupied.update) {
-								drawTileQueue.addTail(occupied);
-							}
-						}
-					}
-				}
-
-				if (tile.containsLocs) {
-					continue;
-				}
-			}
-
-			if (!tile.update || tile.checkLocSpans != 0) {
-				continue;
-			}
-
-			if (tileX <= eyeTileX && tileX > minDrawTileX) {
-				Tile adjacent = tiles[tileX - 1][tileZ];
-				if (adjacent != null && adjacent.update) {
-					continue;
-				}
-			}
-
-			if (tileX >= eyeTileX && tileX < maxDrawTileX - 1) {
-				Tile adjacent = tiles[tileX + 1][tileZ];
-				if (adjacent != null && adjacent.update) {
-					continue;
-				}
-			}
-
-			if (tileZ <= eyeTileZ && tileZ > minDrawTileZ) {
-				Tile adjacent = tiles[tileX][tileZ - 1];
-				if (adjacent != null && adjacent.update) {
-					continue;
-				}
-			}
-
-			if (tileZ >= eyeTileZ && tileZ < maxDrawTileZ - 1) {
-				Tile adjacent = tiles[tileX][tileZ + 1];
-				if (adjacent != null && adjacent.update) {
-					continue;
-				}
-			}
-
-			tile.update = false;
-			tilesRemaining--;
-
-			ObjStack objs = tile.objStack;
-			if (objs != null && objs.offset != 0) {
-				if (objs.bottomObj != null) {
-					objs.bottomObj.draw(0, sinEyePitch, cosEyePitch, sinEyeYaw, cosEyeYaw, objs.x - eyeX, objs.y - eyeY - objs.offset, objs.z - eyeZ, objs.bitset);
-				}
-
-				if (objs.middleObj != null) {
-					objs.middleObj.draw(0, sinEyePitch, cosEyePitch, sinEyeYaw, cosEyeYaw, objs.x - eyeX, objs.y - eyeY - objs.offset, objs.z - eyeZ, objs.bitset);
-				}
-
-				if (objs.topObj != null) {
-					objs.topObj.draw(0, sinEyePitch, cosEyePitch, sinEyeYaw, cosEyeYaw, objs.x - eyeX, objs.y - eyeY - objs.offset, objs.z - eyeZ, objs.bitset);
-				}
-			}
-
-			if (tile.backWallTypes != 0) {
-				WallDecoration decor = tile.wallDecoration;
-
-				if (decor != null && !this.visible(occludeLevel, tileX, tileZ, decor.model.maxY)) {
-					if ((decor.type & tile.backWallTypes) != 0) {
-						decor.model.draw(decor.angle, sinEyePitch, cosEyePitch, sinEyeYaw, cosEyeYaw, decor.x - eyeX, decor.y - eyeY, decor.z - eyeZ, decor.bitset);
-					} else if ((decor.type & 0x300) != 0) {
-						int x = decor.x - eyeX;
-						int y = decor.y - eyeY;
-						int z = decor.z - eyeZ;
-						int rotation = decor.angle;
-
-						int nearestX;
-						if (rotation == 1 || rotation == 2) {
-							nearestX = -x;
-						} else {
-							nearestX = x;
-						}
-
-						int nearestZ;
-						if (rotation == 2 || rotation == 3) {
-							nearestZ = -z;
-						} else {
-							nearestZ = z;
-						}
-
-						if ((decor.type & 0x100) != 0 && nearestZ >= nearestX) {
-							int drawX = x + WALL_DECORATION_INSET_X[rotation];
-							int drawZ = z + WALL_DECORATION_INSET_Z[rotation];
-							decor.model.draw(rotation * 512 + 256, sinEyePitch, cosEyePitch, sinEyeYaw, cosEyeYaw, drawX, y, drawZ, decor.bitset);
-						}
-
-						if ((decor.type & 0x200) != 0 && nearestZ <= nearestX) {
-							int drawX = x + WALL_DECORATION_OUTSET_X[rotation];
-							int drawZ = z + WALL_DECORATION_OUTSET_Z[rotation];
-							decor.model.draw(rotation * 512 + 1280 & 0x7FF, sinEyePitch, cosEyePitch, sinEyeYaw, cosEyeYaw, drawX, y, drawZ, decor.bitset);
-						}
-					}
-				}
-
-				Wall wall = tile.wall;
-				if (wall != null) {
-					if ((wall.typeB & tile.backWallTypes) != 0 && !this.wallVisible(occludeLevel, tileX, tileZ, wall.typeB)) {
-						wall.modelB.draw(0, sinEyePitch, cosEyePitch, sinEyeYaw, cosEyeYaw, wall.x - eyeX, wall.y - eyeY, wall.z - eyeZ, wall.bitset);
-					}
-
-					if ((wall.typeA & tile.backWallTypes) != 0 && !this.wallVisible(occludeLevel, tileX, tileZ, wall.typeA)) {
-						wall.modelA.draw(0, sinEyePitch, cosEyePitch, sinEyeYaw, cosEyeYaw, wall.x - eyeX, wall.y - eyeY, wall.z - eyeZ, wall.bitset);
-					}
-				}
-			}
-
-			if (level < this.maxLevel - 1) {
-				Tile above = this.levelTiles[level + 1][tileX][tileZ];
-				if (above != null && above.update) {
-					drawTileQueue.addTail(above);
-				}
-			}
-
-			if (tileX < eyeTileX) {
-				Tile adjacent = tiles[tileX + 1][tileZ];
-				if (adjacent != null && adjacent.update) {
-					drawTileQueue.addTail(adjacent);
-				}
-			}
-
-			if (tileZ < eyeTileZ) {
-				Tile adjacent = tiles[tileX][tileZ + 1];
-				if (adjacent != null && adjacent.update) {
-					drawTileQueue.addTail(adjacent);
-				}
-			}
-
-			if (tileX > eyeTileX) {
-				Tile adjacent = tiles[tileX - 1][tileZ];
-				if (adjacent != null && adjacent.update) {
-					drawTileQueue.addTail(adjacent);
-				}
-			}
-
-			if (tileZ > eyeTileZ) {
-				Tile adjacent = tiles[tileX][tileZ - 1];
-				if (adjacent != null && adjacent.update) {
-					drawTileQueue.addTail(adjacent);
-				}
-			}
-		}
-	}
-
-	private void drawTileUnderlay( TileUnderlay underlay, int level, int tileX, int tileZ, int sinEyePitch, int cosEyePitch, int sinEyeYaw, int cosEyeYaw) {
-		int x3;
-		int x0 = x3 = (tileX << 7) - eyeX;
-		int z1;
-		int z0 = z1 = (tileZ << 7) - eyeZ;
-		int x2;
-		int x1 = x2 = x0 + 128;
-		int z3;
-		int z2 = z3 = z0 + 128;
-
-		int y0 = this.levelHeightmaps[level][tileX][tileZ] - eyeY;
-		int y1 = this.levelHeightmaps[level][tileX + 1][tileZ] - eyeY;
-		int y2 = this.levelHeightmaps[level][tileX + 1][tileZ + 1] - eyeY;
-		int y3 = this.levelHeightmaps[level][tileX][tileZ + 1] - eyeY;
-
-		int tmp = z0 * sinEyeYaw + x0 * cosEyeYaw >> 16;
-		z0 = z0 * cosEyeYaw - x0 * sinEyeYaw >> 16;
-		x0 = tmp;
-
-		tmp = y0 * cosEyePitch - z0 * sinEyePitch >> 16;
-		z0 = y0 * sinEyePitch + z0 * cosEyePitch >> 16;
-		y0 = tmp;
-
-		if (z0 < 50) {
-			return;
-		}
-
-		tmp = z1 * sinEyeYaw + x1 * cosEyeYaw >> 16;
-		z1 = z1 * cosEyeYaw - x1 * sinEyeYaw >> 16;
-		x1 = tmp;
-
-		tmp = y1 * cosEyePitch - z1 * sinEyePitch >> 16;
-		z1 = y1 * sinEyePitch + z1 * cosEyePitch >> 16;
-		y1 = tmp;
-
-		if (z1 < 50) {
-			return;
-		}
-
-		tmp = z2 * sinEyeYaw + x2 * cosEyeYaw >> 16;
-		z2 = z2 * cosEyeYaw - x2 * sinEyeYaw >> 16;
-		x2 = tmp;
-
-		tmp = y2 * cosEyePitch - z2 * sinEyePitch >> 16;
-		z2 = y2 * sinEyePitch + z2 * cosEyePitch >> 16;
-		y2 = tmp;
-
-		if (z2 < 50) {
-			return;
-		}
-
-		tmp = z3 * sinEyeYaw + x3 * cosEyeYaw >> 16;
-		z3 = z3 * cosEyeYaw - x3 * sinEyeYaw >> 16;
-		x3 = tmp;
-
-		tmp = y3 * cosEyePitch - z3 * sinEyePitch >> 16;
-		z3 = y3 * sinEyePitch + z3 * cosEyePitch >> 16;
-		y3 = tmp;
-
-		if (z3 < 50) {
-			return;
-		}
-
-		int px0 = Draw3D.centerX + (x0 << 9) / z0;
-		int py0 = Draw3D.centerY + (y0 << 9) / z0;
-		int pz0 = Draw3D.centerX + (x1 << 9) / z1;
-		int px1 = Draw3D.centerY + (y1 << 9) / z1;
-		int py1 = Draw3D.centerX + (x2 << 9) / z2;
-		int pz1 = Draw3D.centerY + (y2 << 9) / z2;
-		int px3 = Draw3D.centerX + (x3 << 9) / z3;
-		int py3 = Draw3D.centerY + (y3 << 9) / z3;
-
-		Draw3D.alpha = 0;
-
-		if ((py1 - px3) * (px1 - py3) - (pz1 - py3) * (pz0 - px3) > 0) {
-			Draw3D.clipX = py1 < 0 || px3 < 0 || pz0 < 0 || py1 > Draw2D.boundX || px3 > Draw2D.boundX || pz0 > Draw2D.boundX;
-			if (takingInput && this.pointInsideTriangle(mouseX, mouseY, pz1, py3, px1, py1, px3, pz0)) {
-				clickTileX = tileX;
-				clickTileZ = tileZ;
-			}
-			if (underlay.textureId == -1) {
-				if (underlay.northeastColor != 12345678) {
-					Draw3D.fillGouraudTriangle(py1, px3, pz0, pz1, py3, px1, underlay.northeastColor, underlay.northwestColor, underlay.southeastColor);
-				}
-			} else if (lowMemory) {
-				int averageColor = TEXTURE_HSL[underlay.textureId];
-				Draw3D.fillGouraudTriangle(py1, px3, pz0, pz1, py3, px1, this.mulLightness(averageColor, underlay.northeastColor), this.mulLightness(averageColor, underlay.northwestColor), this.mulLightness(averageColor, underlay.southeastColor));
-			} else if (underlay.flat) {
-				Draw3D.fillTexturedTriangle(py1, px3, pz0, pz1, py3, px1, underlay.northeastColor, underlay.northwestColor, underlay.southeastColor, x0, y0, z0, x1, x3, y1, y3, z1, z3, underlay.textureId);
-			} else {
-				Draw3D.fillTexturedTriangle(py1, px3, pz0, pz1, py3, px1, underlay.northeastColor, underlay.northwestColor, underlay.southeastColor, x2, y2, z2, x3, x1, y3, y1, z3, z1, underlay.textureId);
-			}
-		}
-		if ((px0 - pz0) * (py3 - px1) - (py0 - px1) * (px3 - pz0) <= 0) {
-			return;
-		}
-		Draw3D.clipX = px0 < 0 || pz0 < 0 || px3 < 0 || px0 > Draw2D.boundX || pz0 > Draw2D.boundX || px3 > Draw2D.boundX;
-		if (takingInput && this.pointInsideTriangle(mouseX, mouseY, py0, px1, py3, px0, pz0, px3)) {
-			clickTileX = tileX;
-			clickTileZ = tileZ;
-		}
-		if (underlay.textureId != -1) {
-			if (!lowMemory) {
-				Draw3D.fillTexturedTriangle(px0, pz0, px3, py0, px1, py3, underlay.southwestColor, underlay.southeastColor, underlay.northwestColor, x0, y0, z0, x1, x3, y1, y3, z1, z3, underlay.textureId);
-				return;
-			}
-			int averageColor = TEXTURE_HSL[underlay.textureId];
-			Draw3D.fillGouraudTriangle(px0, pz0, px3, py0, px1, py3, this.mulLightness(averageColor, underlay.southwestColor), this.mulLightness(averageColor, underlay.southeastColor), this.mulLightness(averageColor, underlay.northwestColor));
-		} else if (underlay.southwestColor != 12345678) {
-			Draw3D.fillGouraudTriangle(px0, pz0, px3, py0, px1, py3, underlay.southwestColor, underlay.southeastColor, underlay.northwestColor);
-		}
-	}
-
-	private void drawTileOverlay( int tileX, int tileZ, TileOverlay overlay, int sinEyePitch, int cosEyePitch, int sinEyeYaw, int cosEyeYaw) {
-		int vertexCount = overlay.vertexX.length;
-
-		for ( int i = 0; i < vertexCount; i++) {
-			int x = overlay.vertexX[i] - eyeX;
-			int y = overlay.vertexY[i] - eyeY;
-			int z = overlay.vertexZ[i] - eyeZ;
-
-			int tmp = z * sinEyeYaw + x * cosEyeYaw >> 16;
-			z = z * cosEyeYaw - x * sinEyeYaw >> 16;
-			x = tmp;
-
-			tmp = y * cosEyePitch - z * sinEyePitch >> 16;
-			z = y * sinEyePitch + z * cosEyePitch >> 16;
-			y = tmp;
-
-			if (z < 50) {
-				return;
-			}
-
-			if (overlay.triangleTextureIds != null) {
-				TileOverlay.tmpViewspaceX[i] = x;
-				TileOverlay.tmpViewspaceY[i] = y;
-				TileOverlay.tmpViewspaceZ[i] = z;
-			}
-			TileOverlay.tmpScreenX[i] = Draw3D.centerX + (x << 9) / z;
-			TileOverlay.tmpScreenY[i] = Draw3D.centerY + (y << 9) / z;
-		}
-
-		Draw3D.alpha = 0;
-
-		vertexCount = overlay.triangleVertexA.length;
-		for (int v = 0; v < vertexCount; v++) {
-			int a = overlay.triangleVertexA[v];
-			int b = overlay.triangleVertexB[v];
-			int c = overlay.triangleVertexC[v];
-
-			int x0 = TileOverlay.tmpScreenX[a];
-			int x1 = TileOverlay.tmpScreenX[b];
-			int x2 = TileOverlay.tmpScreenX[c];
-			int y0 = TileOverlay.tmpScreenY[a];
-			int y1 = TileOverlay.tmpScreenY[b];
-			int y2 = TileOverlay.tmpScreenY[c];
-
-			if ((x0 - x1) * (y2 - y1) - (y0 - y1) * (x2 - x1) > 0) {
-				Draw3D.clipX = x0 < 0 || x1 < 0 || x2 < 0 || x0 > Draw2D.boundX || x1 > Draw2D.boundX || x2 > Draw2D.boundX;
-				if (takingInput && this.pointInsideTriangle(mouseX, mouseY, y0, y1, y2, x0, x1, x2)) {
-					clickTileX = tileX;
-					clickTileZ = tileZ;
-				}
-				if (overlay.triangleTextureIds == null || overlay.triangleTextureIds[v] == -1) {
-					if (overlay.triangleColorA[v] != 12345678) {
-						Draw3D.fillGouraudTriangle(x0, x1, x2, y0, y1, y2, overlay.triangleColorA[v], overlay.triangleColorB[v], overlay.triangleColorC[v]);
-					}
-				} else if (lowMemory) {
-					int textureColor = TEXTURE_HSL[overlay.triangleTextureIds[v]];
-					Draw3D.fillGouraudTriangle(x0, x1, x2, y0, y1, y2, this.mulLightness(textureColor, overlay.triangleColorA[v]), this.mulLightness(textureColor, overlay.triangleColorB[v]), this.mulLightness(textureColor, overlay.triangleColorC[v]));
-				} else if (overlay.flat) {
-					Draw3D.fillTexturedTriangle(x0, x1, x2, y0, y1, y2, overlay.triangleColorA[v], overlay.triangleColorB[v], overlay.triangleColorC[v], TileOverlay.tmpViewspaceX[0], TileOverlay.tmpViewspaceY[0], TileOverlay.tmpViewspaceZ[0], TileOverlay.tmpViewspaceX[1], TileOverlay.tmpViewspaceX[3], TileOverlay.tmpViewspaceY[1], TileOverlay.tmpViewspaceY[3], TileOverlay.tmpViewspaceZ[1], TileOverlay.tmpViewspaceZ[3], overlay.triangleTextureIds[v]);
-				} else {
-					Draw3D.fillTexturedTriangle(x0, x1, x2, y0, y1, y2, overlay.triangleColorA[v], overlay.triangleColorB[v], overlay.triangleColorC[v], TileOverlay.tmpViewspaceX[a], TileOverlay.tmpViewspaceY[a], TileOverlay.tmpViewspaceZ[a], TileOverlay.tmpViewspaceX[b], TileOverlay.tmpViewspaceX[c], TileOverlay.tmpViewspaceY[b], TileOverlay.tmpViewspaceY[c], TileOverlay.tmpViewspaceZ[b], TileOverlay.tmpViewspaceZ[c], overlay.triangleTextureIds[v]);
-				}
-			}
-		}
-	}
-
-	private int mulLightness( int hsl, int lightness) {
-		int invLightness = 127 - lightness;
-		lightness = invLightness * (hsl & 0x7F) / 160;
-		if (lightness < 2) {
-			lightness = 2;
-		} else if (lightness > 126) {
-			lightness = 126;
-		}
-		return (hsl & 0xFF80) + lightness;
-	}
-
-	private boolean pointInsideTriangle( int x, int y, int y0, int y1, int y2, int x0, int x1, int x2) {
-		if (y < y0 && y < y1 && y < y2) {
-			return false;
-		} else if (y > y0 && y > y1 && y > y2) {
-			return false;
-		} else if (x < x0 && x < x1 && x < x2) {
-			return false;
-		} else if (x > x0 && x > x1 && x > x2) {
-			return false;
-		} else {
-			int crossProduct_01 = (y - y0) * (x1 - x0) - (x - x0) * (y1 - y0);
-			int crossProduct_20 = (y - y2) * (x0 - x2) - (x - x2) * (y0 - y2);
-			int crossProduct_12 = (y - y1) * (x2 - x1) - (x - x1) * (y2 - y1);
-			return crossProduct_01 * crossProduct_12 > 0 && crossProduct_12 * crossProduct_20 > 0;
-		}
-	}
-
-	private void updateActiveOccluders() {
-		int count = levelOccluderCount[topLevel];
-		Occluder[] occluders = levelOccluders[topLevel];
-		activeOccluderCount = 0;
-		for ( int i = 0; i < count; i++) {
-			Occluder occluder = occluders[i];
-			int deltaMaxY;
-			int deltaMinTileZ;
-			int deltaMaxTileZ;
-			int deltaMaxTileX;
-			if (occluder.type == 1) {
-				deltaMaxY = occluder.minTileX + 25 - eyeTileX;
-				if (deltaMaxY >= 0 && deltaMaxY <= 50) {
-					deltaMinTileZ = occluder.minTileZ + 25 - eyeTileZ;
-					if (deltaMinTileZ < 0) {
-						deltaMinTileZ = 0;
-					}
-					deltaMaxTileZ = occluder.maxTileZ + 25 - eyeTileZ;
-					if (deltaMaxTileZ > 50) {
-						deltaMaxTileZ = 50;
-					}
-					boolean ok = false;
-					while (deltaMinTileZ <= deltaMaxTileZ) {
-						if (visibilityMap[deltaMaxY][deltaMinTileZ++]) {
-							ok = true;
-							break;
-						}
-					}
-					if (ok) {
-						deltaMaxTileX = eyeX - occluder.minX;
-						if (deltaMaxTileX > 32) {
-							occluder.mode = 1;
-						} else {
-							if (deltaMaxTileX >= -32) {
-								continue;
-							}
-							occluder.mode = 2;
-							deltaMaxTileX = -deltaMaxTileX;
-						}
-						occluder.minDeltaZ = (occluder.minZ - eyeZ << 8) / deltaMaxTileX;
-						occluder.maxDeltaZ = (occluder.maxZ - eyeZ << 8) / deltaMaxTileX;
-						occluder.minDeltaY = (occluder.minY - eyeY << 8) / deltaMaxTileX;
-						occluder.maxDeltaY = (occluder.maxY - eyeY << 8) / deltaMaxTileX;
-						activeOccluders[activeOccluderCount++] = occluder;
-					}
-				}
-			} else if (occluder.type == 2) {
-				deltaMaxY = occluder.minTileZ + 25 - eyeTileZ;
-				if (deltaMaxY >= 0 && deltaMaxY <= 50) {
-					deltaMinTileZ = occluder.minTileX + 25 - eyeTileX;
-					if (deltaMinTileZ < 0) {
-						deltaMinTileZ = 0;
-					}
-					deltaMaxTileZ = occluder.maxTileX + 25 - eyeTileX;
-					if (deltaMaxTileZ > 50) {
-						deltaMaxTileZ = 50;
-					}
-					boolean ok = false;
-					while (deltaMinTileZ <= deltaMaxTileZ) {
-						if (visibilityMap[deltaMinTileZ++][deltaMaxY]) {
-							ok = true;
-							break;
-						}
-					}
-					if (ok) {
-						deltaMaxTileX = eyeZ - occluder.minZ;
-						if (deltaMaxTileX > 32) {
-							occluder.mode = 3;
-						} else {
-							if (deltaMaxTileX >= -32) {
-								continue;
-							}
-							occluder.mode = 4;
-							deltaMaxTileX = -deltaMaxTileX;
-						}
-						occluder.minDeltaX = (occluder.minX - eyeX << 8) / deltaMaxTileX;
-						occluder.maxDeltaX = (occluder.maxX - eyeX << 8) / deltaMaxTileX;
-						occluder.minDeltaY = (occluder.minY - eyeY << 8) / deltaMaxTileX;
-						occluder.maxDeltaY = (occluder.maxY - eyeY << 8) / deltaMaxTileX;
-						activeOccluders[activeOccluderCount++] = occluder;
-					}
-				}
-			} else if (occluder.type == 4) {
-				deltaMaxY = occluder.minY - eyeY;
-				if (deltaMaxY > 128) {
-					deltaMinTileZ = occluder.minTileZ + 25 - eyeTileZ;
-					if (deltaMinTileZ < 0) {
-						deltaMinTileZ = 0;
-					}
-					deltaMaxTileZ = occluder.maxTileZ + 25 - eyeTileZ;
-					if (deltaMaxTileZ > 50) {
-						deltaMaxTileZ = 50;
-					}
-					if (deltaMinTileZ <= deltaMaxTileZ) {
-						int deltaMinTileX = occluder.minTileX + 25 - eyeTileX;
-						if (deltaMinTileX < 0) {
-							deltaMinTileX = 0;
-						}
-						deltaMaxTileX = occluder.maxTileX + 25 - eyeTileX;
-						if (deltaMaxTileX > 50) {
-							deltaMaxTileX = 50;
-						}
-						boolean ok = false;
-						find_visible_tile:
-						for ( int x = deltaMinTileX; x <= deltaMaxTileX; x++) {
-							for ( int z = deltaMinTileZ; z <= deltaMaxTileZ; z++) {
-								if (visibilityMap[x][z]) {
-									ok = true;
-									break find_visible_tile;
-								}
-							}
-						}
-						if (ok) {
-							occluder.mode = 5;
-							occluder.minDeltaX = (occluder.minX - eyeX << 8) / deltaMaxY;
-							occluder.maxDeltaX = (occluder.maxX - eyeX << 8) / deltaMaxY;
-							occluder.minDeltaZ = (occluder.minZ - eyeZ << 8) / deltaMaxY;
-							occluder.maxDeltaZ = (occluder.maxZ - eyeZ << 8) / deltaMaxY;
-							activeOccluders[activeOccluderCount++] = occluder;
-						}
-					}
-				}
-			}
-		}
-	}
-
-	private boolean tileVisible( int level, int x, int z) {
-		int cycle = this.levelTileOcclusionCycles[level][x][z];
-		if (cycle == -World3D.cycle) {
-			return false;
-		} else if (cycle == World3D.cycle) {
-			return true;
-		} else {
-			int sx = x << 7;
-			int sz = z << 7;
-			if (this.occluded(sx + 1, this.levelHeightmaps[level][x][z], sz + 1) && this.occluded(sx + 128 - 1, this.levelHeightmaps[level][x + 1][z], sz + 1) && this.occluded(sx + 128 - 1, this.levelHeightmaps[level][x + 1][z + 1], sz + 128 - 1) && this.occluded(sx + 1, this.levelHeightmaps[level][x][z + 1], sz + 128 - 1)) {
-				this.levelTileOcclusionCycles[level][x][z] = World3D.cycle;
-				return true;
-			} else {
-				this.levelTileOcclusionCycles[level][x][z] = -World3D.cycle;
-				return false;
-			}
-		}
-	}
-
-	private boolean wallVisible( int level, int x, int z, int type) {
-		if (!this.tileVisible(level, x, z)) {
-			return false;
-		}
-		int sceneX = x << 7;
-		int sceneZ = z << 7;
-		int sceneY = this.levelHeightmaps[level][x][z] - 1;
-		int y0 = sceneY - 120;
-		int y1 = sceneY - 230;
-		int y2 = sceneY - 238;
-		if (type < 16) {
-			if (type == 1) {
-				if (sceneX > eyeX) {
-					if (!this.occluded(sceneX, sceneY, sceneZ)) {
-						return false;
-					}
-					if (!this.occluded(sceneX, sceneY, sceneZ + 128)) {
-						return false;
-					}
-				}
-				if (level > 0) {
-					if (!this.occluded(sceneX, y0, sceneZ)) {
-						return false;
-					}
-					if (!this.occluded(sceneX, y0, sceneZ + 128)) {
-						return false;
-					}
-				}
-				if (!this.occluded(sceneX, y1, sceneZ)) {
-					return false;
-				}
-				return this.occluded(sceneX, y1, sceneZ + 128);
-			}
-			if (type == 2) {
-				if (sceneZ < eyeZ) {
-					if (!this.occluded(sceneX, sceneY, sceneZ + 128)) {
-						return false;
-					}
-					if (!this.occluded(sceneX + 128, sceneY, sceneZ + 128)) {
-						return false;
-					}
-				}
-				if (level > 0) {
-					if (!this.occluded(sceneX, y0, sceneZ + 128)) {
-						return false;
-					}
-					if (!this.occluded(sceneX + 128, y0, sceneZ + 128)) {
-						return false;
-					}
-				}
-				if (!this.occluded(sceneX, y1, sceneZ + 128)) {
-					return false;
-				}
-				return this.occluded(sceneX + 128, y1, sceneZ + 128);
-			}
-			if (type == 4) {
-				if (sceneX < eyeX) {
-					if (!this.occluded(sceneX + 128, sceneY, sceneZ)) {
-						return false;
-					}
-					if (!this.occluded(sceneX + 128, sceneY, sceneZ + 128)) {
-						return false;
-					}
-				}
-				if (level > 0) {
-					if (!this.occluded(sceneX + 128, y0, sceneZ)) {
-						return false;
-					}
-					if (!this.occluded(sceneX + 128, y0, sceneZ + 128)) {
-						return false;
-					}
-				}
-				if (!this.occluded(sceneX + 128, y1, sceneZ)) {
-					return false;
-				}
-				return this.occluded(sceneX + 128, y1, sceneZ + 128);
-			}
-			if (type == 8) {
-				if (sceneZ > eyeZ) {
-					if (!this.occluded(sceneX, sceneY, sceneZ)) {
-						return false;
-					}
-					if (!this.occluded(sceneX + 128, sceneY, sceneZ)) {
-						return false;
-					}
-				}
-				if (level > 0) {
-					if (!this.occluded(sceneX, y0, sceneZ)) {
-						return false;
-					}
-					if (!this.occluded(sceneX + 128, y0, sceneZ)) {
-						return false;
-					}
-				}
-				if (!this.occluded(sceneX, y1, sceneZ)) {
-					return false;
-				}
-				return this.occluded(sceneX + 128, y1, sceneZ);
-			}
-		}
-		if (!this.occluded(sceneX + 64, y2, sceneZ + 64)) {
-			return false;
-		} else if (type == 16) {
-			return this.occluded(sceneX, y1, sceneZ + 128);
-		} else if (type == 32) {
-			return this.occluded(sceneX + 128, y1, sceneZ + 128);
-		} else if (type == 64) {
-			return this.occluded(sceneX + 128, y1, sceneZ);
-		} else if (type == 128) {
-			return this.occluded(sceneX, y1, sceneZ);
-		} else {
-			System.out.println("Warning unsupported wall type");
-			return true;
-		}
-	}
-
-	private boolean visible( int level, int tileX, int tileZ, int y) {
-		if (this.tileVisible(level, tileX, tileZ)) {
-			int x = tileX << 7;
-			int z = tileZ << 7;
-			return this.occluded(x + 1, this.levelHeightmaps[level][tileX][tileZ] - y, z + 1) && this.occluded(x + 128 - 1, this.levelHeightmaps[level][tileX + 1][tileZ] - y, z + 1) && this.occluded(x + 128 - 1, this.levelHeightmaps[level][tileX + 1][tileZ + 1] - y, z + 128 - 1) && this.occluded(x + 1, this.levelHeightmaps[level][tileX][tileZ + 1] - y, z + 128 - 1);
-		} else {
-			return false;
-		}
-	}
-
-	private boolean locVisible( int level, int minX, int maxX, int minZ, int maxZ, int y) {
-		int x;
-		int z;
-		if (minX != maxX || minZ != maxZ) {
-			for (x = minX; x <= maxX; x++) {
-				for (z = minZ; z <= maxZ; z++) {
-					if (this.levelTileOcclusionCycles[level][x][z] == -cycle) {
-						return false;
-					}
-				}
-			}
-			z = (minX << 7) + 1;
-			int z0 = (minZ << 7) + 2;
-			int y0 = this.levelHeightmaps[level][minX][minZ] - y;
-			if (!this.occluded(z, y0, z0)) {
-				return false;
-			}
-			int x1 = (maxX << 7) - 1;
-			if (!this.occluded(x1, y0, z0)) {
-				return false;
-			}
-			int z1 = (maxZ << 7) - 1;
-			if (!this.occluded(z, y0, z1)) {
-				return false;
-			} else return this.occluded(x1, y0, z1);
-		} else if (this.tileVisible(level, minX, minZ)) {
-			x = minX << 7;
-			z = minZ << 7;
-			return this.occluded(x + 1, this.levelHeightmaps[level][minX][minZ] - y, z + 1) && this.occluded(x + 128 - 1, this.levelHeightmaps[level][minX + 1][minZ] - y, z + 1) && this.occluded(x + 128 - 1, this.levelHeightmaps[level][minX + 1][minZ + 1] - y, z + 128 - 1) && this.occluded(x + 1, this.levelHeightmaps[level][minX][minZ + 1] - y, z + 128 - 1);
-		} else {
-			return false;
-		}
-	}
-
-	private boolean occluded( int x, int y, int z) {
-		for ( int i = 0; i < activeOccluderCount; i++) {
-			Occluder occluder = activeOccluders[i];
-
-			if (occluder.mode == 1) {
-				int dx = occluder.minX - x;
-				if (dx > 0) {
-					int minZ = occluder.minZ + (occluder.minDeltaZ * dx >> 8);
-					int maxZ = occluder.maxZ + (occluder.maxDeltaZ * dx >> 8);
-					int minY = occluder.minY + (occluder.minDeltaY * dx >> 8);
-					int maxY = occluder.maxY + (occluder.maxDeltaY * dx >> 8);
-					if (z >= minZ && z <= maxZ && y >= minY && y <= maxY) {
-						return true;
-					}
-				}
-			} else if (occluder.mode == 2) {
-				int dx = x - occluder.minX;
-				if (dx > 0) {
-					int minZ = occluder.minZ + (occluder.minDeltaZ * dx >> 8);
-					int maxZ = occluder.maxZ + (occluder.maxDeltaZ * dx >> 8);
-					int minY = occluder.minY + (occluder.minDeltaY * dx >> 8);
-					int maxY = occluder.maxY + (occluder.maxDeltaY * dx >> 8);
-					if (z >= minZ && z <= maxZ && y >= minY && y <= maxY) {
-						return true;
-					}
-				}
-			} else if (occluder.mode == 3) {
-				int dz = occluder.minZ - z;
-				if (dz > 0) {
-					int minX = occluder.minX + (occluder.minDeltaX * dz >> 8);
-					int maxX = occluder.maxX + (occluder.maxDeltaX * dz >> 8);
-					int minY = occluder.minY + (occluder.minDeltaY * dz >> 8);
-					int maxY = occluder.maxY + (occluder.maxDeltaY * dz >> 8);
-					if (x >= minX && x <= maxX && y >= minY && y <= maxY) {
-						return true;
-					}
-				}
-			} else if (occluder.mode == 4) {
-				int dz = z - occluder.minZ;
-				if (dz > 0) {
-					int minX = occluder.minX + (occluder.minDeltaX * dz >> 8);
-					int maxX = occluder.maxX + (occluder.maxDeltaX * dz >> 8);
-					int minY = occluder.minY + (occluder.minDeltaY * dz >> 8);
-					int maxY = occluder.maxY + (occluder.maxDeltaY * dz >> 8);
-					if (x >= minX && x <= maxX && y >= minY && y <= maxY) {
-						return true;
-					}
-				}
-			} else if (occluder.mode == 5) {
-				int dy = y - occluder.minY;
-				if (dy > 0) {
-					int minX = occluder.minX + (occluder.minDeltaX * dy >> 8);
-					int maxX = occluder.maxX + (occluder.maxDeltaX * dy >> 8);
-					int minZ = occluder.minZ + (occluder.minDeltaZ * dy >> 8);
-					int maxZ = occluder.maxZ + (occluder.maxDeltaZ * dy >> 8);
-					if (x >= minX && x <= maxX && z >= minZ && z <= maxZ) {
-						return true;
-					}
-				}
-			}
-		}
-		return false;
-	}
+public final class World3D {
+   private static int[] anIntArray91;
+   public static boolean aBoolean93 = true;
+   private static boolean aBoolean94;
+   private static int anInt310;
+   private static int anInt298;
+   private static Class6 aClass6_1;
+   private static int anInt290;
+   private static int anInt309 = 4;
+   private static int anInt305;
+   private static Class5[] aClass5Array2 = new Class5[100];
+   private static Class40[] aClass40Array1;
+   private static int anInt291;
+   private static int anInt300;
+   private static Class40[][] aClass40ArrayArray1;
+   private static int anInt306;
+   public static int anInt307 = -1;
+   public static int anInt308 = -1;
+   private static final int[] anIntArray87 = new int[]{53, -53, -53, 53};
+   private static int anInt299;
+   private static int anInt301;
+   private static int anInt302;
+   private static final int[] anIntArray88 = new int[]{-53, -53, 53, 53};
+   private static int anInt296;
+   private static int anInt303;
+   private static final int[] anIntArray89 = new int[]{-45, 45, 45, -45};
+   private static int anInt304;
+   private static int anInt292;
+   private static boolean[][][][] aBooleanArrayArrayArrayArray1;
+   private static int anInt297;
+   private static int anInt293;
+   private static int anInt294;
+   private static final int[] anIntArray90 = new int[]{45, 45, -45, -45};
+   private static int anInt295;
+   private static boolean[][] aBooleanArrayArray1;
+   private static final int[] anIntArray93;
+   private static final int[] anIntArray92;
+   private static final int[] anIntArray94;
+   private static final int[] anIntArray95;
+   private static final int[] anIntArray99;
+   private static final int[] anIntArray96;
+   private static final int[] anIntArray97;
+   private static final int[] anIntArray98;
+   private static int anInt289;
+   private static int anInt314;
+   private static int anInt315;
+   private static int anInt316;
+   private static int anInt317;
+   private static int anInt312;
+   private static int anInt313;
+   private static int anInt280;
+   private static boolean aBoolean87;
+   private int anInt287;
+   private int[][][] anIntArrayArrayArray4;
+   private int anInt285;
+   private int anInt284;
+   private int anInt311;
+   private Class10_Sub3[][][] aClass10_Sub3ArrayArrayArray1;
+   private int anInt278 = -203;
+   private int anInt288;
+   private int anInt286;
+   private boolean aBoolean88 = true;
+   private Class5[] aClass5Array1 = new Class5[5000];
+   private int[][][] anIntArrayArrayArray3;
+   private boolean aBoolean89 = false;
+   private int anInt281 = 2;
+   private int anInt282 = -766;
+   private boolean aBoolean90 = true;
+   private boolean aBoolean91 = true;
+   private int[][] anIntArrayArray8 = new int[][]{new int[16], {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1}, {1, 0, 0, 0, 1, 1, 0, 0, 1, 1, 1, 0, 1, 1, 1, 1}, {1, 1, 0, 0, 1, 1, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0}, {0, 0, 1, 1, 0, 0, 1, 1, 0, 0, 0, 1, 0, 0, 0, 1}, {0, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1}, {1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1}, {1, 1, 0, 0, 1, 1, 0, 0, 1, 1, 0, 0, 1, 1, 0, 0}, {0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0}, {1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 0, 0, 1, 1}, {1, 1, 1, 1, 1, 1, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0}, {0, 0, 0, 0, 0, 0, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1}, {0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 1, 1, 1, 1}};
+   private boolean aBoolean92 = false;
+   private int[][] anIntArrayArray9 = new int[][]{{0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15}, {12, 8, 4, 0, 13, 9, 5, 1, 14, 10, 6, 2, 15, 11, 7, 3}, {15, 14, 13, 12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1, 0}, {3, 7, 11, 15, 2, 6, 10, 14, 1, 5, 9, 13, 0, 4, 8, 12}};
+   private int[] anIntArray100 = new int[10000];
+   private int anInt283 = -68;
+   private int[] anIntArray101 = new int[10000];
+
+   static {
+      anIntArray91 = new int[anInt309];
+      aClass40ArrayArray1 = new Class40[anInt309][500];
+      aClass40Array1 = new Class40[500];
+      aClass6_1 = new Class6(true);
+      anIntArray92 = new int[]{19, 55, 38, 155, 255, 110, 137, 205, 76};
+      anIntArray93 = new int[]{160, 192, 80, 96, 0, 144, 80, 48, 160};
+      anIntArray94 = new int[]{76, 8, 137, 4, 0, 1, 38, 2, 19};
+      anIntArray95 = new int[]{0, 0, 2, 0, 0, 2, 1, 1, 0};
+      anIntArray96 = new int[]{2, 0, 0, 2, 0, 0, 0, 4, 4};
+      anIntArray97 = new int[]{0, 4, 4, 8, 0, 0, 8, 0, 0};
+      anIntArray98 = new int[]{1, 1, 0, 0, 0, 8, 0, 0, 8};
+      anIntArray99 = new int[]{41, 39248, 41, 4643, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 43086, 41, 41, 41, 41, 41, 41, 41, 8602, 41, 28992, 41, 41, 41, 41, 41, 5056, 41, 41, 41, 7079, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 3131, 41, 41, 41};
+      aBooleanArrayArrayArrayArray1 = new boolean[8][32][51][51];
+   }
+
+   public World3D(int[][][] var1, int var2, int var3, int var4, byte var5) {
+      this.anInt284 = var3;
+      this.anInt285 = var4;
+      this.anInt286 = var2;
+      this.aClass10_Sub3ArrayArrayArray1 = new Class10_Sub3[var3][var4][var2];
+      this.anIntArrayArrayArray4 = new int[var3][var4 + 1][var2 + 1];
+      this.anIntArrayArrayArray3 = var1;
+      boolean var6 = false;
+      this.reset();
+   }
+
+   private boolean method236(int var1, int var2, int var3) {
+      int var4 = this.anIntArrayArrayArray4[var1][var2][var3];
+      if (var4 == -anInt291) {
+         return false;
+      } else if (var4 == anInt291) {
+         return true;
+      } else {
+         int var5 = var2 << 7;
+         int var6 = var3 << 7;
+         if (this.method240(var5 + 1, this.anIntArrayArrayArray3[var1][var2][var3], var6 + 1) && this.method240(var5 + 128 - 1, this.anIntArrayArrayArray3[var1][var2 + 1][var3], var6 + 1) && this.method240(var5 + 128 - 1, this.anIntArrayArrayArray3[var1][var2 + 1][var3 + 1], var6 + 128 - 1) && this.method240(var5 + 1, this.anIntArrayArrayArray3[var1][var2][var3 + 1], var6 + 128 - 1)) {
+            this.anIntArrayArrayArray4[var1][var2][var3] = anInt291;
+            return true;
+         } else {
+            this.anIntArrayArrayArray4[var1][var2][var3] = -anInt291;
+            return false;
+         }
+      }
+   }
+
+   public int method216(int var1, int var2, int var3) {
+      Class10_Sub3 var4 = this.aClass10_Sub3ArrayArrayArray1[var1][var2][var3];
+      return var4 != null && var4.aClass45_1 != null ? var4.aClass45_1.anInt635 : 0;
+   }
+
+   public int method220(int var1, int var2, int var3, int var4) {
+      Class10_Sub3 var5 = this.aClass10_Sub3ArrayArrayArray1[var1][var2][var3];
+      if (var5 == null) {
+         return -1;
+      } else if (var5.aClass45_1 != null && var5.aClass45_1.anInt635 == var4) {
+         return var5.aClass45_1.aByte35 & 255;
+      } else if (var5.aClass36_1 != null && var5.aClass36_1.anInt561 == var4) {
+         return var5.aClass36_1.aByte30 & 255;
+      } else if (var5.aClass29_1 != null && var5.aClass29_1.anInt446 == var4) {
+         return var5.aClass29_1.aByte27 & 255;
+      } else {
+         for(int var6 = 0; var6 < var5.anInt548; ++var6) {
+            if (var5.aClass5Array3[var6].anInt50 == var4) {
+               return var5.aClass5Array3[var6].aByte3 & 255;
+            }
+         }
+
+         return -1;
+      }
+   }
+
+   private boolean method203(int var1, int var2, int var3, int var4, int var5, int var6, int var7, int var8, Entity var9, int var10, boolean var11, int var12, byte var13) {
+      int var15;
+      for(int var14 = var2; var14 < var2 + var4; ++var14) {
+         for(var15 = var3; var15 < var3 + var5; ++var15) {
+            if (var14 < 0 || var15 < 0 || var14 >= this.anInt285 || var15 >= this.anInt286) {
+               return false;
+            }
+
+            Class10_Sub3 var16 = this.aClass10_Sub3ArrayArrayArray1[var1][var14][var15];
+            if (var16 != null && var16.anInt548 >= 5) {
+               return false;
+            }
+         }
+      }
+
+      Class5 var19 = new Class5();
+      var19.anInt50 = var12;
+      var19.aByte3 = var13;
+      var19.anInt39 = var1;
+      var19.anInt41 = var6;
+      var19.anInt42 = var7;
+      var19.anInt40 = var8;
+      var19.aClass10_Sub1_Sub2_1 = var9;
+      var19.anInt43 = var10;
+      var19.anInt44 = var2;
+      var19.anInt46 = var3;
+      var19.anInt45 = var2 + var4 - 1;
+      var19.anInt47 = var3 + var5 - 1;
+
+      for(var15 = var2; var15 < var2 + var4; ++var15) {
+         for(int var20 = var3; var20 < var3 + var5; ++var20) {
+            int var17 = 0;
+            if (var15 > var2) {
+               ++var17;
+            }
+
+            if (var15 < var2 + var4 - 1) {
+               var17 += 4;
+            }
+
+            if (var20 > var3) {
+               var17 += 8;
+            }
+
+            if (var20 < var3 + var5 - 1) {
+               var17 += 2;
+            }
+
+            for(int var18 = var1; var18 >= 0; --var18) {
+               if (this.aClass10_Sub3ArrayArrayArray1[var18][var15][var20] == null) {
+                  this.aClass10_Sub3ArrayArrayArray1[var18][var15][var20] = new Class10_Sub3(var18, var15, var20);
+               }
+            }
+
+            Class10_Sub3 var21 = this.aClass10_Sub3ArrayArrayArray1[var1][var15][var20];
+            var21.aClass5Array3[var21.anInt548] = var19;
+            var21.anIntArray162[var21.anInt548] = var17;
+            var21.anInt549 |= var17;
+            ++var21.anInt548;
+         }
+      }
+
+      if (var11) {
+         this.aClass5Array1[this.anInt288++] = var19;
+      }
+
+      return true;
+   }
+
+   private void method205(Class5 var1) {
+      for(int var2 = var1.anInt44; var2 <= var1.anInt45; ++var2) {
+         for(int var3 = var1.anInt46; var3 <= var1.anInt47; ++var3) {
+            Class10_Sub3 var4 = this.aClass10_Sub3ArrayArrayArray1[var1.anInt39][var2][var3];
+            if (var4 != null) {
+               int var5;
+               for(int var6 = 0; var6 < var4.anInt548; ++var6) {
+                  if (var4.aClass5Array3[var6] == var1) {
+                     --var4.anInt548;
+
+                     for(var5 = var6; var5 < var4.anInt548; ++var5) {
+                        var4.aClass5Array3[var5] = var4.aClass5Array3[var5 + 1];
+                        var4.anIntArray162[var5] = var4.anIntArray162[var5 + 1];
+                     }
+
+                     var4.aClass5Array3[var4.anInt548] = null;
+                     break;
+                  }
+               }
+
+               var4.anInt549 = 0;
+
+               for(var5 = 0; var5 < var4.anInt548; ++var5) {
+                  var4.anInt549 |= var4.anIntArray162[var5];
+               }
+            }
+         }
+      }
+
+   }
+
+   public int method218(int var1, int var2, int var3) {
+      Class10_Sub3 var4 = this.aClass10_Sub3ArrayArrayArray1[var1][var2][var3];
+      if (var4 == null) {
+         return 0;
+      } else {
+         for(int var5 = 0; var5 < var4.anInt548; ++var5) {
+            Class5 var6 = var4.aClass5Array3[var5];
+            if ((var6.anInt50 >> 29 & 3) == 2 && var6.anInt44 == var2 && var6.anInt46 == var3) {
+               return var6.anInt50;
+            }
+         }
+
+         return 0;
+      }
+   }
+
+   public int method217(int var1, int var2, int var3) {
+      Class10_Sub3 var4 = this.aClass10_Sub3ArrayArrayArray1[var2][var1][var3];
+      return var4 != null && var4.aClass36_1 != null ? var4.aClass36_1.anInt561 : 0;
+   }
+
+   public void method211(int var1, int var2, int var3) {
+      Class10_Sub3 var4 = this.aClass10_Sub3ArrayArrayArray1[var1][var2][var3];
+      if (var4 != null) {
+         var4.aClass11_1 = null;
+      }
+
+   }
+
+   public int method219(int var1, int var2, int var3) {
+      Class10_Sub3 var4 = this.aClass10_Sub3ArrayArrayArray1[var1][var2][var3];
+      return var4 != null && var4.aClass29_1 != null ? var4.aClass29_1.anInt446 : 0;
+   }
+
+   private boolean method240(int var1, int var2, int var3) {
+      for(int var4 = 0; var4 < anInt310; ++var4) {
+         Class40 var5 = aClass40Array1[var4];
+         int var6;
+         int var7;
+         int var8;
+         int var9;
+         int var10;
+         if (var5.anInt600 == 1) {
+            var6 = var5.anInt594 - var1;
+            if (var6 > 0) {
+               var7 = var5.anInt596 + (var5.anInt603 * var6 >> 8);
+               var8 = var5.anInt597 + (var5.anInt604 * var6 >> 8);
+               var9 = var5.anInt598 + (var5.anInt605 * var6 >> 8);
+               var10 = var5.anInt599 + (var5.anInt606 * var6 >> 8);
+               if (var3 >= var7 && var3 <= var8 && var2 >= var9 && var2 <= var10) {
+                  return true;
+               }
+            }
+         } else if (var5.anInt600 == 2) {
+            var6 = var1 - var5.anInt594;
+            if (var6 > 0) {
+               var7 = var5.anInt596 + (var5.anInt603 * var6 >> 8);
+               var8 = var5.anInt597 + (var5.anInt604 * var6 >> 8);
+               var9 = var5.anInt598 + (var5.anInt605 * var6 >> 8);
+               var10 = var5.anInt599 + (var5.anInt606 * var6 >> 8);
+               if (var3 >= var7 && var3 <= var8 && var2 >= var9 && var2 <= var10) {
+                  return true;
+               }
+            }
+         } else if (var5.anInt600 == 3) {
+            var6 = var5.anInt596 - var3;
+            if (var6 > 0) {
+               var7 = var5.anInt594 + (var5.anInt601 * var6 >> 8);
+               var8 = var5.anInt595 + (var5.anInt602 * var6 >> 8);
+               var9 = var5.anInt598 + (var5.anInt605 * var6 >> 8);
+               var10 = var5.anInt599 + (var5.anInt606 * var6 >> 8);
+               if (var1 >= var7 && var1 <= var8 && var2 >= var9 && var2 <= var10) {
+                  return true;
+               }
+            }
+         } else if (var5.anInt600 == 4) {
+            var6 = var3 - var5.anInt596;
+            if (var6 > 0) {
+               var7 = var5.anInt594 + (var5.anInt601 * var6 >> 8);
+               var8 = var5.anInt595 + (var5.anInt602 * var6 >> 8);
+               var9 = var5.anInt598 + (var5.anInt605 * var6 >> 8);
+               var10 = var5.anInt599 + (var5.anInt606 * var6 >> 8);
+               if (var1 >= var7 && var1 <= var8 && var2 >= var9 && var2 <= var10) {
+                  return true;
+               }
+            }
+         } else if (var5.anInt600 == 5) {
+            var6 = var2 - var5.anInt598;
+            if (var6 > 0) {
+               var7 = var5.anInt594 + (var5.anInt601 * var6 >> 8);
+               var8 = var5.anInt595 + (var5.anInt602 * var6 >> 8);
+               var9 = var5.anInt596 + (var5.anInt603 * var6 >> 8);
+               var10 = var5.anInt597 + (var5.anInt604 * var6 >> 8);
+               if (var1 >= var7 && var1 <= var8 && var3 >= var9 && var3 <= var10) {
+                  return true;
+               }
+            }
+         }
+      }
+
+      return false;
+   }
+
+   public void method225(int[] var1, int var2, int var3, int var4, int var5) {
+      Class10_Sub3 var6 = this.aClass10_Sub3ArrayArrayArray1[var3][var4][var5];
+      if (var6 != null) {
+         Class3 var7 = var6.aClass3_1;
+         int var8;
+         if (var7 == null) {
+            Class21 var17 = var6.aClass21_1;
+            if (var17 != null) {
+               var8 = var17.anInt233;
+               int var10 = var17.anInt234;
+               int var11 = var17.anInt235;
+               int var12 = var17.anInt236;
+               int[] var13 = this.anIntArrayArray8[var8];
+               int[] var14 = this.anIntArrayArray9[var10];
+               int var15 = 0;
+               int var16;
+               if (var11 != 0) {
+                  for(var16 = 0; var16 < 4; ++var16) {
+                     var1[var2] = var13[var14[var15++]] == 0 ? var11 : var12;
+                     var1[var2 + 1] = var13[var14[var15++]] == 0 ? var11 : var12;
+                     var1[var2 + 2] = var13[var14[var15++]] == 0 ? var11 : var12;
+                     var1[var2 + 3] = var13[var14[var15++]] == 0 ? var11 : var12;
+                     var2 += 512;
+                  }
+
+               } else {
+                  for(var16 = 0; var16 < 4; ++var16) {
+                     if (var13[var14[var15++]] != 0) {
+                        var1[var2] = var12;
+                     }
+
+                     if (var13[var14[var15++]] != 0) {
+                        var1[var2 + 1] = var12;
+                     }
+
+                     if (var13[var14[var15++]] != 0) {
+                        var1[var2 + 2] = var12;
+                     }
+
+                     if (var13[var14[var15++]] != 0) {
+                        var1[var2 + 3] = var12;
+                     }
+
+                     var2 += 512;
+                  }
+
+               }
+            }
+         } else {
+            int var9 = var7.anInt36;
+            if (var9 != 0) {
+               for(var8 = 0; var8 < 4; ++var8) {
+                  var1[var2] = var9;
+                  var1[var2 + 1] = var9;
+                  var1[var2 + 2] = var9;
+                  var1[var2 + 3] = var9;
+                  var2 += 512;
+               }
+            }
+
+         }
+      }
+   }
+
+   public void reset() {
+      int var1;
+      int var2;
+      int var3;
+      for(var3 = 0; var3 < this.anInt284; ++var3) {
+         for(var1 = 0; var1 < this.anInt285; ++var1) {
+            for(var2 = 0; var2 < this.anInt286; ++var2) {
+               this.aClass10_Sub3ArrayArrayArray1[var3][var1][var2] = null;
+            }
+         }
+      }
+
+      for(var1 = 0; var1 < anInt309; ++var1) {
+         for(var2 = 0; var2 < anIntArray91[var1]; ++var2) {
+            aClass40ArrayArray1[var1][var2] = null;
+         }
+
+         anIntArray91[var1] = 0;
+      }
+
+      for(var2 = 0; var2 < this.anInt288; ++var2) {
+         this.aClass5Array1[var2] = null;
+      }
+
+      this.anInt288 = 0;
+
+      for(var3 = 0; var3 < aClass5Array2.length; ++var3) {
+         aClass5Array2[var3] = null;
+      }
+
+   }
+
+   private void method224(Model var1, Model var2, int var3, int var4, int var5, boolean var6) {
+      ++this.anInt311;
+      int var7 = 0;
+      int[] var8 = var2.anIntArray113;
+      int var9 = var2.anInt402;
+      int var10 = var2.anInt407 >> 16;
+      int var11 = var2.anInt407 << 16 >> 16;
+      int var12 = var2.anInt408 >> 16;
+      int var13 = var2.anInt408 << 16 >> 16;
+
+      int var14;
+      for(var14 = 0; var14 < var1.anInt402; ++var14) {
+         Class41 var15 = var1.aClass41Array10[var14];
+         Class41 var16 = var1.aClass41Array6[var14];
+         if (var16.anInt610 != 0) {
+            int var17 = var1.anIntArray114[var14] - var4;
+            if (var17 <= var2.anInt410) {
+               int var18 = var1.anIntArray113[var14] - var3;
+               if (var18 >= var10 && var18 <= var11) {
+                  int var19 = var1.anIntArray115[var14] - var5;
+                  if (var19 >= var13 && var19 <= var12) {
+                     for(int var20 = 0; var20 < var9; ++var20) {
+                        Class41 var21 = var2.aClass41Array10[var20];
+                        Class41 var22 = var2.aClass41Array6[var20];
+                        if (var18 == var8[var20] && var19 == var2.anIntArray115[var20] && var17 == var2.anIntArray114[var20] && var22.anInt610 != 0) {
+                           var15.anInt607 += var22.anInt607;
+                           var15.anInt608 += var22.anInt608;
+                           var15.anInt609 += var22.anInt609;
+                           var15.anInt610 += var22.anInt610;
+                           var21.anInt607 += var16.anInt607;
+                           var21.anInt608 += var16.anInt608;
+                           var21.anInt609 += var16.anInt609;
+                           var21.anInt610 += var16.anInt610;
+                           ++var7;
+                           this.anIntArray100[var14] = this.anInt311;
+                           this.anIntArray101[var20] = this.anInt311;
+                        }
+                     }
+                  }
+               }
+            }
+         }
+      }
+
+      if (var7 >= 3 && var6) {
+         for(var14 = 0; var14 < var1.anInt403; ++var14) {
+            if (this.anIntArray100[var1.anIntArray116[var14]] == this.anInt311 && this.anIntArray100[var1.anIntArray117[var14]] == this.anInt311 && this.anIntArray100[var1.anIntArray118[var14]] == this.anInt311) {
+               var1.anIntArray122[var14] = -1;
+            }
+         }
+
+         for(var14 = 0; var14 < var2.anInt403; ++var14) {
+            if (this.anIntArray101[var2.anIntArray116[var14]] == this.anInt311 && this.anIntArray101[var2.anIntArray117[var14]] == this.anInt311 && this.anIntArray101[var2.anIntArray118[var14]] == this.anInt311) {
+               var2.anIntArray122[var14] = -1;
+            }
+         }
+
+      }
+   }
+
+   private void method223(int var1, int var2, int var3, Model var4, int var5, int var6) {
+      boolean var7 = true;
+      int var8 = var5;
+      int var9 = var5 + var3;
+      int var10 = var1 - 1;
+      int var11 = var1 + var6;
+
+      for(int var12 = var2; var12 <= var2 + 1; ++var12) {
+         if (var12 != this.anInt284) {
+            for(int var13 = var8; var13 <= var9; ++var13) {
+               if (var13 >= 0 && var13 < this.anInt285) {
+                  for(int var14 = var10; var14 <= var11; ++var14) {
+                     if (var14 >= 0 && var14 < this.anInt286 && (!var7 || var13 >= var9 || var14 >= var11 || var14 < var1 && var13 != var5)) {
+                        Class10_Sub3 var15 = this.aClass10_Sub3ArrayArrayArray1[var12][var13][var14];
+                        if (var15 != null) {
+                           int var16 = (this.anIntArrayArrayArray3[var12][var13][var14] + this.anIntArrayArrayArray3[var12][var13 + 1][var14] + this.anIntArrayArrayArray3[var12][var13][var14 + 1] + this.anIntArrayArrayArray3[var12][var13 + 1][var14 + 1]) / 4 - (this.anIntArrayArrayArray3[var2][var5][var1] + this.anIntArrayArrayArray3[var2][var5 + 1][var1] + this.anIntArrayArrayArray3[var2][var5][var1 + 1] + this.anIntArrayArrayArray3[var2][var5 + 1][var1 + 1]) / 4;
+                           Class45 var17 = var15.aClass45_1;
+                           if (var17 != null && var17.aClass10_Sub1_Sub2_7 != null && var17.aClass10_Sub1_Sub2_7.aClass41Array10 != null) {
+                              this.method224(var4, (Model)var17.aClass10_Sub1_Sub2_7, (var13 - var5) * 128 + (1 - var3) * 64, var16, (var14 - var1) * 128 + (1 - var6) * 64, var7);
+                           }
+
+                           if (var17 != null && var17.aClass10_Sub1_Sub2_8 != null && var17.aClass10_Sub1_Sub2_8.aClass41Array10 != null) {
+                              this.method224(var4, (Model)var17.aClass10_Sub1_Sub2_8, (var13 - var5) * 128 + (1 - var3) * 64, var16, (var14 - var1) * 128 + (1 - var6) * 64, var7);
+                           }
+
+                           for(int var18 = 0; var18 < var15.anInt548; ++var18) {
+                              Class5 var19 = var15.aClass5Array3[var18];
+                              if (var19 != null && var19.aClass10_Sub1_Sub2_1 != null && var19.aClass10_Sub1_Sub2_1.aClass41Array10 != null) {
+                                 int var20 = var19.anInt45 + 1 - var19.anInt44;
+                                 int var21 = var19.anInt47 + 1 - var19.anInt46;
+                                 this.method224(var4, (Model)var19.aClass10_Sub1_Sub2_1, (var19.anInt44 - var5) * 128 + (var20 - var3) * 64, var16, (var19.anInt46 - var1) * 128 + (var21 - var6) * 64, var7);
+                              }
+                           }
+                        }
+                     }
+                  }
+               }
+            }
+
+            --var8;
+            var7 = false;
+         }
+      }
+
+   }
+
+   public boolean method201(int var1, Entity var2, int var3, int var4, boolean var5, int var6, int var7, int var8, int var9) {
+      if (var2 == null) {
+         return true;
+      } else {
+         int var10 = var3 - var7;
+         int var11 = var8 - var7;
+         int var12 = var3 + var7;
+         int var13 = var8 + var7;
+         if (var5) {
+            if (var9 > 640 && var9 < 1408) {
+               var13 += 128;
+            }
+
+            if (var9 > 1152 && var9 < 1920) {
+               var12 += 128;
+            }
+
+            if (var9 > 1664 || var9 < 384) {
+               var11 -= 128;
+            }
+
+            if (var9 > 128 && var9 < 896) {
+               var10 -= 128;
+            }
+         }
+
+         var10 /= 128;
+         var11 /= 128;
+         var12 /= 128;
+         var13 /= 128;
+         return this.method203(var6, var10, var11, var12 + 1 - var10, var13 - var11 + 1, var3, var8, var4, var2, var9, true, var1, (byte)0);
+      }
+   }
+
+   public void method197(int var1, int var2, Entity var3, Entity var4, int var5, Entity var6, int var7, int var8) {
+      Class11 var9 = new Class11();
+      var9.aClass10_Sub1_Sub2_2 = var3;
+      var9.anInt65 = var8 * 128 + 64;
+      var9.anInt66 = var7 * 128 + 64;
+      var9.anInt64 = var1;
+      var9.anInt67 = var5;
+      var9.aClass10_Sub1_Sub2_3 = var4;
+      var9.aClass10_Sub1_Sub2_4 = var6;
+      int var10 = 0;
+      Class10_Sub3 var11 = this.aClass10_Sub3ArrayArrayArray1[var2][var8][var7];
+      if (var11 != null) {
+         for(int var12 = 0; var12 < var11.anInt548; ++var12) {
+            if (var11.aClass5Array3[var12].aClass10_Sub1_Sub2_1 instanceof Model) {
+               int var13 = ((Model)var11.aClass5Array3[var12].aClass10_Sub1_Sub2_1).anInt413;
+               if (var13 > var10) {
+                  var10 = var13;
+               }
+            }
+         }
+      }
+
+      var9.anInt68 = var10;
+      if (this.aClass10_Sub3ArrayArrayArray1[var2][var8][var7] == null) {
+         this.aClass10_Sub3ArrayArrayArray1[var2][var8][var7] = new Class10_Sub3(var2, var8, var7);
+      }
+
+      this.aClass10_Sub3ArrayArrayArray1[var2][var8][var7].aClass11_1 = var9;
+   }
+
+   private boolean method237(int var1, int var2, int var3, int var4) {
+      if (!this.method236(var1, var2, var3)) {
+         return false;
+      } else {
+         int var5 = var2 << 7;
+         int var6 = var3 << 7;
+         int var7 = this.anIntArrayArrayArray3[var1][var2][var3] - 1;
+         int var8 = var7 - 120;
+         int var9 = var7 - 230;
+         int var10 = var7 - 238;
+         if (var4 < 16) {
+            if (var4 == 1) {
+               if (var5 > anInt298) {
+                  if (!this.method240(var5, var7, var6)) {
+                     return false;
+                  }
+
+                  if (!this.method240(var5, var7, var6 + 128)) {
+                     return false;
+                  }
+               }
+
+               if (var1 > 0) {
+                  if (!this.method240(var5, var8, var6)) {
+                     return false;
+                  }
+
+                  if (!this.method240(var5, var8, var6 + 128)) {
+                     return false;
+                  }
+               }
+
+               if (!this.method240(var5, var9, var6)) {
+                  return false;
+               }
+
+               if (!this.method240(var5, var9, var6 + 128)) {
+                  return false;
+               }
+
+               return true;
+            }
+
+            if (var4 == 2) {
+               if (var6 < anInt300) {
+                  if (!this.method240(var5, var7, var6 + 128)) {
+                     return false;
+                  }
+
+                  if (!this.method240(var5 + 128, var7, var6 + 128)) {
+                     return false;
+                  }
+               }
+
+               if (var1 > 0) {
+                  if (!this.method240(var5, var8, var6 + 128)) {
+                     return false;
+                  }
+
+                  if (!this.method240(var5 + 128, var8, var6 + 128)) {
+                     return false;
+                  }
+               }
+
+               if (!this.method240(var5, var9, var6 + 128)) {
+                  return false;
+               }
+
+               if (!this.method240(var5 + 128, var9, var6 + 128)) {
+                  return false;
+               }
+
+               return true;
+            }
+
+            if (var4 == 4) {
+               if (var5 < anInt298) {
+                  if (!this.method240(var5 + 128, var7, var6)) {
+                     return false;
+                  }
+
+                  if (!this.method240(var5 + 128, var7, var6 + 128)) {
+                     return false;
+                  }
+               }
+
+               if (var1 > 0) {
+                  if (!this.method240(var5 + 128, var8, var6)) {
+                     return false;
+                  }
+
+                  if (!this.method240(var5 + 128, var8, var6 + 128)) {
+                     return false;
+                  }
+               }
+
+               if (!this.method240(var5 + 128, var9, var6)) {
+                  return false;
+               }
+
+               if (!this.method240(var5 + 128, var9, var6 + 128)) {
+                  return false;
+               }
+
+               return true;
+            }
+
+            if (var4 == 8) {
+               if (var6 > anInt300) {
+                  if (!this.method240(var5, var7, var6)) {
+                     return false;
+                  }
+
+                  if (!this.method240(var5 + 128, var7, var6)) {
+                     return false;
+                  }
+               }
+
+               if (var1 > 0) {
+                  if (!this.method240(var5, var8, var6)) {
+                     return false;
+                  }
+
+                  if (!this.method240(var5 + 128, var8, var6)) {
+                     return false;
+                  }
+               }
+
+               if (!this.method240(var5, var9, var6)) {
+                  return false;
+               }
+
+               if (!this.method240(var5 + 128, var9, var6)) {
+                  return false;
+               }
+
+               return true;
+            }
+         }
+
+         if (!this.method240(var5 + 64, var10, var6 + 64)) {
+            return false;
+         } else if (var4 == 16) {
+            return this.method240(var5, var9, var6 + 128);
+         } else if (var4 == 32) {
+            return this.method240(var5 + 128, var9, var6 + 128);
+         } else if (var4 == 64) {
+            return this.method240(var5 + 128, var9, var6);
+         } else if (var4 == 128) {
+            return this.method240(var5, var9, var6);
+         } else {
+            System.out.println("Warning unsupported wall type");
+            return true;
+         }
+      }
+   }
+
+   public void method207(int var1, int var2, int var3) {
+      Class10_Sub3 var4 = this.aClass10_Sub3ArrayArrayArray1[var2][var3][var1];
+      if (var4 != null) {
+         var4.aClass45_1 = null;
+      }
+
+   }
+
+   public void method208(int var1, int var2, int var3) {
+      Class10_Sub3 var4 = this.aClass10_Sub3ArrayArrayArray1[var3][var1][var2];
+      if (var4 != null) {
+         var4.aClass36_1 = null;
+      }
+
+   }
+
+   public void method221(byte var1) {
+      for(int var2 = 0; var2 < this.anInt284; ++var2) {
+         for(int var3 = 0; var3 < this.anInt285; ++var3) {
+            for(int var4 = 0; var4 < this.anInt286; ++var4) {
+               Class10_Sub3 var5 = this.aClass10_Sub3ArrayArrayArray1[var2][var3][var4];
+               if (var5 != null) {
+                  Class45 var6 = var5.aClass45_1;
+                  if (var6 != null && var6.aClass10_Sub1_Sub2_7 != null && var6.aClass10_Sub1_Sub2_7.aClass41Array10 != null) {
+                     this.method223(var4, var2, 1, (Model)var6.aClass10_Sub1_Sub2_7, var3, 1);
+                     if (var6.aClass10_Sub1_Sub2_8 != null && var6.aClass10_Sub1_Sub2_8.aClass41Array10 != null) {
+                        this.method223(var4, var2, 1, (Model)var6.aClass10_Sub1_Sub2_8, var3, 1);
+                        this.method224((Model)var6.aClass10_Sub1_Sub2_7, (Model)var6.aClass10_Sub1_Sub2_8, 0, 0, 0, false);
+                        ((Model)var6.aClass10_Sub1_Sub2_8).method289();
+                     }
+
+                     ((Model)var6.aClass10_Sub1_Sub2_7).method289();
+                  }
+
+                  for(int var7 = 0; var7 < var5.anInt548; ++var7) {
+                     Class5 var8 = var5.aClass5Array3[var7];
+                     if (var8 != null && var8.aClass10_Sub1_Sub2_1 != null && var8.aClass10_Sub1_Sub2_1.aClass41Array10 != null) {
+                        this.method223(var4, var2, var8.anInt45 + 1 - var8.anInt44, (Model)var8.aClass10_Sub1_Sub2_1, var3, var8.anInt47 + 1 - var8.anInt46);
+                        ((Model)var8.aClass10_Sub1_Sub2_1).method289();
+                     }
+                  }
+
+                  Class29 var9 = var5.aClass29_1;
+                  if (var9 != null && var9.aClass10_Sub1_Sub2_5.aClass41Array10 != null) {
+                     this.method222(var3, (Model)var9.aClass10_Sub1_Sub2_5, var4, var2);
+                     ((Model)var9.aClass10_Sub1_Sub2_5).method289();
+                  }
+               }
+            }
+         }
+      }
+
+      boolean var10 = false;
+   }
+
+   private void method231(Class3 var1, int var2, int var3, int var4, int var5, int var6, int var7, int var8) {
+      int var9;
+      int var10 = var9 = (var7 << 7) - anInt298;
+      int var11;
+      int var12 = var11 = (var8 << 7) - anInt300;
+      int var13;
+      int var14 = var13 = var10 + 128;
+      int var15;
+      int var16 = var15 = var12 + 128;
+      int var17 = this.anIntArrayArrayArray3[var2][var7][var8] - anInt299;
+      int var18 = this.anIntArrayArrayArray3[var2][var7 + 1][var8] - anInt299;
+      int var19 = this.anIntArrayArrayArray3[var2][var7 + 1][var8 + 1] - anInt299;
+      int var20 = this.anIntArrayArrayArray3[var2][var7][var8 + 1] - anInt299;
+      int var21 = var12 * var5 + var10 * var6 >> 16;
+      int var22 = var12 * var6 - var10 * var5 >> 16;
+      int var23 = var21;
+      int var24 = var17 * var4 - var22 * var3 >> 16;
+      int var25 = var17 * var3 + var22 * var4 >> 16;
+      if (var25 >= 50) {
+         var21 = var11 * var5 + var14 * var6 >> 16;
+         int var27 = var11 * var6 - var14 * var5 >> 16;
+         var14 = var21;
+         var21 = var18 * var4 - var27 * var3 >> 16;
+         int var28 = var18 * var3 + var27 * var4 >> 16;
+         var18 = var21;
+         if (var28 >= 50) {
+            var21 = var16 * var5 + var13 * var6 >> 16;
+            var16 = var16 * var6 - var13 * var5 >> 16;
+            int var29 = var21;
+            var21 = var19 * var4 - var16 * var3 >> 16;
+            var16 = var19 * var3 + var16 * var4 >> 16;
+            var19 = var21;
+            if (var16 >= 50) {
+               var21 = var15 * var5 + var9 * var6 >> 16;
+               int var30 = var15 * var6 - var9 * var5 >> 16;
+               int var31 = var21;
+               var21 = var20 * var4 - var30 * var3 >> 16;
+               int var32 = var20 * var3 + var30 * var4 >> 16;
+               if (var32 >= 50) {
+                  int var33 = Draw3D.anInt686 + (var23 << 9) / var25;
+                  int var34 = Draw3D.anInt687 + (var24 << 9) / var25;
+                  int var35 = Draw3D.anInt686 + (var14 << 9) / var28;
+                  int var36 = Draw3D.anInt687 + (var18 << 9) / var28;
+                  int var37 = Draw3D.anInt686 + (var29 << 9) / var16;
+                  int var38 = Draw3D.anInt687 + (var19 << 9) / var16;
+                  int var39 = Draw3D.anInt686 + (var31 << 9) / var32;
+                  int var40 = Draw3D.anInt687 + (var21 << 9) / var32;
+                  Draw3D.anInt685 = 0;
+                  int var41;
+                  if ((var37 - var39) * (var36 - var40) - (var38 - var40) * (var35 - var39) > 0) {
+                     Draw3D.aBoolean177 = false;
+                     if (var37 < 0 || var39 < 0 || var35 < 0 || var37 > Draw2D.boundX || var39 > Draw2D.boundX || var35 > Draw2D.boundX) {
+                        Draw3D.aBoolean177 = true;
+                     }
+
+                     if (aBoolean94 && this.method234(anInt305, anInt306, var38, var40, var36, var37, var39, var35)) {
+                        anInt307 = var7;
+                        anInt308 = var8;
+                     }
+
+                     if (var1.anInt35 == -1) {
+                        if (var1.anInt33 != 12345678) {
+                           Draw3D.method517(var38, var40, var36, var37, var39, var35, var1.anInt33, var1.anInt34, var1.anInt32);
+                        }
+                     } else if (aBoolean93) {
+                        var41 = anIntArray99[var1.anInt35];
+                        Draw3D.method517(var38, var40, var36, var37, var39, var35, this.method233(var1.anInt33, var41), this.method233(var1.anInt34, var41), this.method233(var1.anInt32, var41));
+                     } else if (var1.aBoolean4) {
+                        Draw3D.method521(var38, var40, var36, var37, var39, var35, var1.anInt33, var1.anInt34, var1.anInt32, var23, var14, var31, var24, var18, var21, var25, var28, var32, var1.anInt35);
+                     } else {
+                        Draw3D.method521(var38, var40, var36, var37, var39, var35, var1.anInt33, var1.anInt34, var1.anInt32, var29, var31, var14, var19, var21, var18, var16, var32, var28, var1.anInt35);
+                     }
+                  }
+
+                  if ((var33 - var35) * (var40 - var36) - (var34 - var36) * (var39 - var35) > 0) {
+                     Draw3D.aBoolean177 = false;
+                     if (var33 < 0 || var35 < 0 || var39 < 0 || var33 > Draw2D.boundX || var35 > Draw2D.boundX || var39 > Draw2D.boundX) {
+                        Draw3D.aBoolean177 = true;
+                     }
+
+                     if (aBoolean94 && this.method234(anInt305, anInt306, var34, var36, var40, var33, var35, var39)) {
+                        anInt307 = var7;
+                        anInt308 = var8;
+                     }
+
+                     if (var1.anInt35 != -1) {
+                        if (!aBoolean93) {
+                           Draw3D.method521(var34, var36, var40, var33, var35, var39, var1.anInt31, var1.anInt32, var1.anInt34, var23, var14, var31, var24, var18, var21, var25, var28, var32, var1.anInt35);
+                           return;
+                        }
+
+                        var41 = anIntArray99[var1.anInt35];
+                        Draw3D.method517(var34, var36, var40, var33, var35, var39, this.method233(var1.anInt31, var41), this.method233(var1.anInt32, var41), this.method233(var1.anInt34, var41));
+                     } else if (var1.anInt31 != 12345678) {
+                        Draw3D.method517(var34, var36, var40, var33, var35, var39, var1.anInt31, var1.anInt32, var1.anInt34);
+                        return;
+                     }
+
+                  }
+               }
+            }
+         }
+      }
+   }
+
+   public void method209(int var1, int var2, int var3) {
+      Class10_Sub3 var4 = this.aClass10_Sub3ArrayArrayArray1[var2][var3][var1];
+      if (var4 != null) {
+         for(int var5 = 0; var5 < var4.anInt548; ++var5) {
+            Class5 var6 = var4.aClass5Array3[var5];
+            if ((var6.anInt50 >> 29 & 3) == 2 && var6.anInt44 == var3 && var6.anInt46 == var1) {
+               this.method205(var6);
+               return;
+            }
+         }
+      }
+
+   }
+
+   private void method232(int var1, int var2, Class21 var3, int var4, int var5, int var6, int var7) {
+      int var8 = var3.anIntArray63.length;
+
+      int var9;
+      int var10;
+      int var11;
+      int var12;
+      int var13;
+      int var14;
+      int var15;
+      int var16;
+      for(var13 = 0; var13 < var8; ++var13) {
+         var9 = var3.anIntArray63[var13] - anInt298;
+         var10 = var3.anIntArray64[var13] - anInt299;
+         var11 = var3.anIntArray65[var13] - anInt300;
+         var12 = var11 * var7 + var9 * var2 >> 16;
+         var14 = var11 * var2 - var9 * var7 >> 16;
+         var15 = var10 * var1 - var14 * var4 >> 16;
+         var16 = var10 * var4 + var14 * var1 >> 16;
+         if (var16 < 50) {
+            return;
+         }
+
+         if (var3.anIntArray72 != null) {
+            Class21.anIntArray75[var13] = var12;
+            Class21.anIntArray76[var13] = var15;
+            Class21.anIntArray77[var13] = var16;
+         }
+
+         Class21.anIntArray73[var13] = Draw3D.anInt686 + (var12 << 9) / var16;
+         Class21.anIntArray74[var13] = Draw3D.anInt687 + (var15 << 9) / var16;
+      }
+
+      Draw3D.anInt685 = 0;
+      var8 = var3.anIntArray69.length;
+
+      for(var9 = 0; var9 < var8; ++var9) {
+         var10 = var3.anIntArray69[var9];
+         var11 = var3.anIntArray70[var9];
+         var12 = var3.anIntArray71[var9];
+         var13 = Class21.anIntArray73[var10];
+         var14 = Class21.anIntArray73[var11];
+         var15 = Class21.anIntArray73[var12];
+         var16 = Class21.anIntArray74[var10];
+         int var17 = Class21.anIntArray74[var11];
+         int var18 = Class21.anIntArray74[var12];
+         if ((var13 - var14) * (var18 - var17) - (var16 - var17) * (var15 - var14) > 0) {
+            Draw3D.aBoolean177 = false;
+            if (var13 < 0 || var14 < 0 || var15 < 0 || var13 > Draw2D.boundX || var14 > Draw2D.boundX || var15 > Draw2D.boundX) {
+               Draw3D.aBoolean177 = true;
+            }
+
+            if (aBoolean94 && this.method234(anInt305, anInt306, var16, var17, var18, var13, var14, var15)) {
+               anInt307 = var6;
+               anInt308 = var5;
+            }
+
+            if (var3.anIntArray72 != null && var3.anIntArray72[var9] != -1) {
+               if (aBoolean93) {
+                  int var19 = anIntArray99[var3.anIntArray72[var9]];
+                  Draw3D.method517(var16, var17, var18, var13, var14, var15, this.method233(var3.anIntArray66[var9], var19), this.method233(var3.anIntArray67[var9], var19), this.method233(var3.anIntArray68[var9], var19));
+               } else if (var3.aBoolean74) {
+                  Draw3D.method521(var16, var17, var18, var13, var14, var15, var3.anIntArray66[var9], var3.anIntArray67[var9], var3.anIntArray68[var9], Class21.anIntArray75[0], Class21.anIntArray75[1], Class21.anIntArray75[3], Class21.anIntArray76[0], Class21.anIntArray76[1], Class21.anIntArray76[3], Class21.anIntArray77[0], Class21.anIntArray77[1], Class21.anIntArray77[3], var3.anIntArray72[var9]);
+               } else {
+                  Draw3D.method521(var16, var17, var18, var13, var14, var15, var3.anIntArray66[var9], var3.anIntArray67[var9], var3.anIntArray68[var9], Class21.anIntArray75[var10], Class21.anIntArray75[var11], Class21.anIntArray75[var12], Class21.anIntArray76[var10], Class21.anIntArray76[var11], Class21.anIntArray76[var12], Class21.anIntArray77[var10], Class21.anIntArray77[var11], Class21.anIntArray77[var12], var3.anIntArray72[var9]);
+               }
+            } else if (var3.anIntArray66[var9] != 12345678) {
+               Draw3D.method517(var16, var17, var18, var13, var14, var15, var3.anIntArray66[var9], var3.anIntArray67[var9], var3.anIntArray68[var9]);
+            }
+         }
+      }
+
+   }
+
+   public void method192(int var1, int var2) {
+      Class10_Sub3 var3 = this.aClass10_Sub3ArrayArrayArray1[0][var1][var2];
+
+      for(int var4 = 0; var4 < 3; ++var4) {
+         Class10_Sub3 var5 = this.aClass10_Sub3ArrayArrayArray1[var4][var1][var2] = this.aClass10_Sub3ArrayArrayArray1[var4 + 1][var1][var2];
+         if (var5 != null) {
+            --var5.anInt544;
+
+            for(int var6 = 0; var6 < var5.anInt548; ++var6) {
+               Class5 var7 = var5.aClass5Array3[var6];
+               if ((var7.anInt50 >> 29 & 3) == 2 && var7.anInt44 == var1 && var7.anInt46 == var2) {
+                  --var7.anInt39;
+               }
+            }
+         }
+      }
+
+      if (this.aClass10_Sub3ArrayArrayArray1[0][var1][var2] == null) {
+         this.aClass10_Sub3ArrayArrayArray1[0][var1][var2] = new Class10_Sub3(0, var1, var2);
+      }
+
+      this.aClass10_Sub3ArrayArrayArray1[0][var1][var2].aClass10_Sub3_1 = var3;
+      this.aClass10_Sub3ArrayArrayArray1[3][var1][var2] = null;
+   }
+
+   private boolean method234(int var1, int var2, int var3, int var4, int var5, int var6, int var7, int var8) {
+      if (var2 < var3 && var2 < var4 && var2 < var5) {
+         return false;
+      } else if (var2 > var3 && var2 > var4 && var2 > var5) {
+         return false;
+      } else if (var1 < var6 && var1 < var7 && var1 < var8) {
+         return false;
+      } else if (var1 > var6 && var1 > var7 && var1 > var8) {
+         return false;
+      } else {
+         int var9 = (var2 - var3) * (var7 - var6) - (var1 - var6) * (var4 - var3);
+         int var10 = (var2 - var5) * (var6 - var8) - (var1 - var8) * (var3 - var5);
+         int var11 = (var2 - var4) * (var8 - var7) - (var1 - var7) * (var5 - var4);
+         return var9 * var11 > 0 && var11 * var10 > 0;
+      }
+   }
+
+   public Class45 method212(int var1, int var2, int var3) {
+      Class10_Sub3 var4 = this.aClass10_Sub3ArrayArrayArray1[var1][var2][var3];
+      return var4 == null ? null : var4.aClass45_1;
+   }
+
+   public void method210(int var1, int var2, int var3) {
+      Class10_Sub3 var4 = this.aClass10_Sub3ArrayArrayArray1[var3][var1][var2];
+      if (var4 != null) {
+         var4.aClass29_1 = null;
+      }
+
+   }
+
+   private void method222(int var1, Model var2, int var3, int var4) {
+      Class10_Sub3 var5;
+      if (var1 < this.anInt285) {
+         var5 = this.aClass10_Sub3ArrayArrayArray1[var4][var1 + 1][var3];
+         if (var5 != null && var5.aClass29_1 != null && var5.aClass29_1.aClass10_Sub1_Sub2_5.aClass41Array10 != null) {
+            this.method224(var2, (Model)var5.aClass29_1.aClass10_Sub1_Sub2_5, 128, 0, 0, true);
+         }
+      }
+
+      if (var3 < this.anInt285) {
+         var5 = this.aClass10_Sub3ArrayArrayArray1[var4][var1][var3 + 1];
+         if (var5 != null && var5.aClass29_1 != null && var5.aClass29_1.aClass10_Sub1_Sub2_5.aClass41Array10 != null) {
+            this.method224(var2, (Model)var5.aClass29_1.aClass10_Sub1_Sub2_5, 0, 0, 128, true);
+         }
+      }
+
+      if (var1 < this.anInt285 && var3 < this.anInt286) {
+         var5 = this.aClass10_Sub3ArrayArrayArray1[var4][var1 + 1][var3 + 1];
+         if (var5 != null && var5.aClass29_1 != null && var5.aClass29_1.aClass10_Sub1_Sub2_5.aClass41Array10 != null) {
+            this.method224(var2, (Model)var5.aClass29_1.aClass10_Sub1_Sub2_5, 128, 0, 128, true);
+         }
+      }
+
+      if (var1 < this.anInt285 && var3 > 0) {
+         var5 = this.aClass10_Sub3ArrayArrayArray1[var4][var1 + 1][var3 - 1];
+         if (var5 != null && var5.aClass29_1 != null && var5.aClass29_1.aClass10_Sub1_Sub2_5.aClass41Array10 != null) {
+            this.method224(var2, (Model)var5.aClass29_1.aClass10_Sub1_Sub2_5, 128, 0, -128, true);
+            return;
+         }
+      }
+
+   }
+
+   public void method194(int var1, int var2, int var3, int var4) {
+      Class10_Sub3 var5 = this.aClass10_Sub3ArrayArrayArray1[var1][var2][var3];
+      if (var5 != null) {
+         this.aClass10_Sub3ArrayArrayArray1[var1][var2][var3].anInt550 = var4;
+      }
+
+   }
+
+   public void method196(int var1, int var2, byte var3, int var4, int var5, int var6, Entity var7) {
+      if (var7 != null) {
+         Class29 var8 = new Class29();
+         var8.aClass10_Sub1_Sub2_5 = var7;
+         var8.anInt444 = var1 * 128 + 64;
+         var8.anInt445 = var2 * 128 + 64;
+         var8.anInt443 = var5;
+         var8.anInt446 = var4;
+         var8.aByte27 = var3;
+         if (this.aClass10_Sub3ArrayArrayArray1[var6][var1][var2] == null) {
+            this.aClass10_Sub3ArrayArrayArray1[var6][var1][var2] = new Class10_Sub3(var6, var1, var2);
+         }
+
+         this.aClass10_Sub3ArrayArrayArray1[var6][var1][var2].aClass29_1 = var8;
+      }
+
+   }
+
+   public boolean method200(int var1, int var2, int var3, Entity var4, byte var5, int var6, int var7, int var8, int var9, int var10) {
+      if (var4 == null) {
+         return true;
+      } else {
+         int var11 = var7 * 128 + var2 * 64;
+         int var12 = var3 * 128 + var8 * 64;
+         return this.method203(var1, var7, var3, var2, var8, var11, var12, var9, var4, var6, false, var10, var5);
+      }
+   }
+
+   private boolean method238(int var1, int var2, int var3, int var4) {
+      if (!this.method236(var1, var2, var3)) {
+         return false;
+      } else {
+         int var5 = var2 << 7;
+         int var6 = var3 << 7;
+         return this.method240(var5 + 1, this.anIntArrayArrayArray3[var1][var2][var3] - var4, var6 + 1) && this.method240(var5 + 128 - 1, this.anIntArrayArrayArray3[var1][var2 + 1][var3] - var4, var6 + 1) && this.method240(var5 + 128 - 1, this.anIntArrayArrayArray3[var1][var2 + 1][var3 + 1] - var4, var6 + 128 - 1) && this.method240(var5 + 1, this.anIntArrayArrayArray3[var1][var2][var3 + 1] - var4, var6 + 128 - 1);
+      }
+   }
+
+   public void method198(int var1, int var2, int var3, Entity var4, int var5, int var6, byte var7, int var8, Entity var9, int var10) {
+      if (var9 != null || var4 != null) {
+         Class45 var11 = new Class45();
+         var11.anInt635 = var6;
+         var11.aByte35 = var7;
+         var11.anInt631 = var5 * 128 + 64;
+         var11.anInt632 = var8 * 128 + 64;
+         var11.anInt630 = var1;
+         var11.aClass10_Sub1_Sub2_7 = var9;
+         var11.aClass10_Sub1_Sub2_8 = var4;
+         var11.anInt633 = var3;
+         var11.anInt634 = var2;
+
+         for(int var12 = var10; var12 >= 0; --var12) {
+            if (this.aClass10_Sub3ArrayArrayArray1[var12][var5][var8] == null) {
+               this.aClass10_Sub3ArrayArrayArray1[var12][var5][var8] = new Class10_Sub3(var12, var5, var8);
+            }
+         }
+
+         this.aClass10_Sub3ArrayArrayArray1[var10][var5][var8].aClass45_1 = var11;
+      }
+
+   }
+
+   public void method191(int var1) {
+      this.anInt287 = var1;
+
+      for(int var2 = 0; var2 < this.anInt285; ++var2) {
+         for(int var3 = 0; var3 < this.anInt286; ++var3) {
+            if (this.aClass10_Sub3ArrayArrayArray1[var1][var2][var3] == null) {
+               this.aClass10_Sub3ArrayArrayArray1[var1][var2][var3] = new Class10_Sub3(var1, var2, var3);
+            }
+         }
+      }
+
+   }
+
+   public void method199(int var1, int var2, int var3, int var4, byte var5, int var6, int var7, int var8, int var9, int var10, Entity var11) {
+      if (var11 != null) {
+         Class36 var12 = new Class36();
+         var12.anInt561 = var4;
+         var12.aByte30 = var5;
+         var12.anInt557 = var6 * 128 + var9 + 64;
+         var12.anInt558 = var8 * 128 + var7 + 64;
+         var12.anInt556 = var10;
+         var12.aClass10_Sub1_Sub2_6 = var11;
+         var12.anInt559 = var2;
+         var12.anInt560 = var3;
+
+         for(int var13 = var1; var13 >= 0; --var13) {
+            if (this.aClass10_Sub3ArrayArrayArray1[var13][var6][var8] == null) {
+               this.aClass10_Sub3ArrayArrayArray1[var13][var6][var8] = new Class10_Sub3(var13, var6, var8);
+            }
+         }
+
+         this.aClass10_Sub3ArrayArrayArray1[var1][var6][var8].aClass36_1 = var12;
+      }
+
+   }
+
+   public Class36 method213(int var1, int var2, int var3) {
+      Class10_Sub3 var4 = this.aClass10_Sub3ArrayArrayArray1[var1][var3][var2];
+      return var4 == null ? null : var4.aClass36_1;
+   }
+
+   public Class5 method214(int var1, int var2, int var3) {
+      Class10_Sub3 var4 = this.aClass10_Sub3ArrayArrayArray1[var3][var1][var2];
+      if (var4 == null) {
+         return null;
+      } else {
+         for(int var5 = 0; var5 < var4.anInt548; ++var5) {
+            Class5 var6 = var4.aClass5Array3[var5];
+            if ((var6.anInt50 >> 29 & 3) == 2 && var6.anInt44 == var1 && var6.anInt46 == var2) {
+               return var6;
+            }
+         }
+
+         return null;
+      }
+   }
+
+   private int method233(int var1, int var2) {
+      int var3 = 127 - var1;
+      var1 = var3 * (var2 & 127) / 160;
+      if (var1 < 2) {
+         var1 = 2;
+      } else if (var1 > 126) {
+         var1 = 126;
+      }
+
+      return (var2 & 65408) + var1;
+   }
+
+   public boolean method202(int var1, int var2, Entity var3, int var4, int var5, int var6, int var7, int var8, int var9, int var10, int var11) {
+      return var3 == null ? true : this.method203(var10, var4, var2, var9 + 1 - var4, var6 - var2 + 1, var7, var5, var1, var3, var8, true, var11, (byte)0);
+   }
+
+   public void method206(int var1, int var2, int var3, int var4) {
+      Class10_Sub3 var5 = this.aClass10_Sub3ArrayArrayArray1[var3][var4][var1];
+      if (var5 != null) {
+         Class36 var6 = var5.aClass36_1;
+         if (var6 != null) {
+            int var7 = var4 * 128 + 64;
+            int var8 = var1 * 128 + 64;
+            var6.anInt557 = var7 + (var6.anInt557 - var7) * var2 / 16;
+            var6.anInt558 = var8 + (var6.anInt558 - var8) * var2 / 16;
+         }
+      }
+
+   }
+
+   private boolean method239(int var1, int var2, int var3, int var4, int var5, int var6) {
+      int var7;
+      int var8;
+      if (var2 == var3 && var4 == var5) {
+         if (!this.method236(var1, var2, var4)) {
+            return false;
+         } else {
+            var7 = var2 << 7;
+            var8 = var4 << 7;
+            return this.method240(var7 + 1, this.anIntArrayArrayArray3[var1][var2][var4] - var6, var8 + 1) && this.method240(var7 + 128 - 1, this.anIntArrayArrayArray3[var1][var2 + 1][var4] - var6, var8 + 1) && this.method240(var7 + 128 - 1, this.anIntArrayArrayArray3[var1][var2 + 1][var4 + 1] - var6, var8 + 128 - 1) && this.method240(var7 + 1, this.anIntArrayArrayArray3[var1][var2][var4 + 1] - var6, var8 + 128 - 1);
+         }
+      } else {
+         for(var7 = var2; var7 <= var3; ++var7) {
+            for(var8 = var4; var8 <= var5; ++var8) {
+               if (this.anIntArrayArrayArray4[var1][var7][var8] == -anInt291) {
+                  return false;
+               }
+            }
+         }
+
+         var8 = (var2 << 7) + 1;
+         int var9 = (var4 << 7) + 2;
+         int var10 = this.anIntArrayArrayArray3[var1][var2][var4] - var6;
+         if (!this.method240(var8, var10, var9)) {
+            return false;
+         } else {
+            int var11 = (var3 << 7) - 1;
+            if (!this.method240(var11, var10, var9)) {
+               return false;
+            } else {
+               int var12 = (var5 << 7) - 1;
+               if (!this.method240(var8, var10, var12)) {
+                  return false;
+               } else if (this.method240(var11, var10, var12)) {
+                  return true;
+               } else {
+                  return false;
+               }
+            }
+         }
+      }
+   }
+
+   private void method235(int var1) {
+      int var2 = anIntArray91[anInt290];
+      Class40[] var3 = aClass40ArrayArray1[anInt290];
+      if (var1 < 2 || var1 > 2) {
+         this.aBoolean88 = !this.aBoolean88;
+      }
+
+      anInt310 = 0;
+
+      for(int var4 = 0; var4 < var2; ++var4) {
+         Class40 var5 = var3[var4];
+         int var6;
+         int var7;
+         int var8;
+         int var9;
+         boolean var10;
+         if (var5.anInt593 == 1) {
+            var6 = var5.anInt589 + 25 - anInt296;
+            if (var6 >= 0 && var6 <= 50) {
+               var7 = var5.anInt591 + 25 - anInt297;
+               if (var7 < 0) {
+                  var7 = 0;
+               }
+
+               var8 = var5.anInt592 + 25 - anInt297;
+               if (var8 > 50) {
+                  var8 = 50;
+               }
+
+               var10 = false;
+
+               while(var7 <= var8) {
+                  if (aBooleanArrayArray1[var6][var7++]) {
+                     var10 = true;
+                     break;
+                  }
+               }
+
+               if (var10) {
+                  var9 = anInt298 - var5.anInt594;
+                  if (var9 > 32) {
+                     var5.anInt600 = 1;
+                  } else {
+                     if (var9 >= -32) {
+                        continue;
+                     }
+
+                     var5.anInt600 = 2;
+                     var9 = -var9;
+                  }
+
+                  var5.anInt603 = (var5.anInt596 - anInt300 << 8) / var9;
+                  var5.anInt604 = (var5.anInt597 - anInt300 << 8) / var9;
+                  var5.anInt605 = (var5.anInt598 - anInt299 << 8) / var9;
+                  var5.anInt606 = (var5.anInt599 - anInt299 << 8) / var9;
+                  aClass40Array1[anInt310++] = var5;
+               }
+            }
+         } else if (var5.anInt593 == 2) {
+            var6 = var5.anInt591 + 25 - anInt297;
+            if (var6 >= 0 && var6 <= 50) {
+               var7 = var5.anInt589 + 25 - anInt296;
+               if (var7 < 0) {
+                  var7 = 0;
+               }
+
+               var8 = var5.anInt590 + 25 - anInt296;
+               if (var8 > 50) {
+                  var8 = 50;
+               }
+
+               var10 = false;
+
+               while(var7 <= var8) {
+                  if (aBooleanArrayArray1[var7++][var6]) {
+                     var10 = true;
+                     break;
+                  }
+               }
+
+               if (var10) {
+                  var9 = anInt300 - var5.anInt596;
+                  if (var9 > 32) {
+                     var5.anInt600 = 3;
+                  } else {
+                     if (var9 >= -32) {
+                        continue;
+                     }
+
+                     var5.anInt600 = 4;
+                     var9 = -var9;
+                  }
+
+                  var5.anInt601 = (var5.anInt594 - anInt298 << 8) / var9;
+                  var5.anInt602 = (var5.anInt595 - anInt298 << 8) / var9;
+                  var5.anInt605 = (var5.anInt598 - anInt299 << 8) / var9;
+                  var5.anInt606 = (var5.anInt599 - anInt299 << 8) / var9;
+                  aClass40Array1[anInt310++] = var5;
+               }
+            }
+         } else if (var5.anInt593 == 4) {
+            var6 = var5.anInt598 - anInt299;
+            if (var6 > 128) {
+               var7 = var5.anInt591 + 25 - anInt297;
+               if (var7 < 0) {
+                  var7 = 0;
+               }
+
+               var8 = var5.anInt592 + 25 - anInt297;
+               if (var8 > 50) {
+                  var8 = 50;
+               }
+
+               if (var7 <= var8) {
+                  int var11 = var5.anInt589 + 25 - anInt296;
+                  if (var11 < 0) {
+                     var11 = 0;
+                  }
+
+                  var9 = var5.anInt590 + 25 - anInt296;
+                  if (var9 > 50) {
+                     var9 = 50;
+                  }
+
+                  boolean var12 = false;
+
+                  label177:
+                  for(int var13 = var11; var13 <= var9; ++var13) {
+                     for(int var14 = var7; var14 <= var8; ++var14) {
+                        if (aBooleanArrayArray1[var13][var14]) {
+                           var12 = true;
+                           break label177;
+                        }
+                     }
+                  }
+
+                  if (var12) {
+                     var5.anInt600 = 5;
+                     var5.anInt601 = (var5.anInt594 - anInt298 << 8) / var6;
+                     var5.anInt602 = (var5.anInt595 - anInt298 << 8) / var6;
+                     var5.anInt603 = (var5.anInt596 - anInt300 << 8) / var6;
+                     var5.anInt604 = (var5.anInt597 - anInt300 << 8) / var6;
+                     aClass40Array1[anInt310++] = var5;
+                  }
+               }
+            }
+         }
+      }
+
+   }
+
+   public void draw(int var1, int var2, int var3, int var4, int var5, int var6) {
+      if (var1 < 0) {
+         var1 = 0;
+      } else if (var1 >= this.anInt285 * 128) {
+         var1 = this.anInt285 * 128 - 1;
+      }
+
+      if (var4 < 0) {
+         var4 = 0;
+      } else if (var4 >= this.anInt286 * 128) {
+         var4 = this.anInt286 * 128 - 1;
+      }
+
+      ++anInt291;
+      anInt301 = Model.anIntArray146[var6];
+      anInt302 = Model.anIntArray147[var6];
+      anInt303 = Model.anIntArray146[var5];
+      anInt304 = Model.anIntArray147[var5];
+      aBooleanArrayArray1 = aBooleanArrayArrayArrayArray1[(var6 - 128) / 32][var5 / 64];
+      anInt298 = var1;
+      anInt299 = var3;
+      anInt300 = var4;
+      anInt296 = var1 / 128;
+      anInt297 = var4 / 128;
+      anInt290 = var2;
+      anInt292 = anInt296 - 25;
+      if (anInt292 < 0) {
+         anInt292 = 0;
+      }
+
+      anInt294 = anInt297 - 25;
+      if (anInt294 < 0) {
+         anInt294 = 0;
+      }
+
+      anInt293 = anInt296 + 25;
+      if (anInt293 > this.anInt285) {
+         anInt293 = this.anInt285;
+      }
+
+      anInt295 = anInt297 + 25;
+      if (anInt295 > this.anInt286) {
+         anInt295 = this.anInt286;
+      }
+
+      this.method235(this.anInt281);
+      anInt289 = 0;
+
+      int var7;
+      int var8;
+      int var9;
+      for(var9 = this.anInt287; var9 < this.anInt284; ++var9) {
+         Class10_Sub3[][] var10 = this.aClass10_Sub3ArrayArrayArray1[var9];
+
+         for(var7 = anInt292; var7 < anInt293; ++var7) {
+            for(var8 = anInt294; var8 < anInt295; ++var8) {
+               Class10_Sub3 var11 = var10[var7][var8];
+               if (var11 != null) {
+                  if (var11.anInt550 > var2 || !aBooleanArrayArray1[var7 + 25 - anInt296][var8 + 25 - anInt297] && this.anIntArrayArrayArray3[var9][var7][var8] - var3 < 2000) {
+                     var11.aBoolean134 = false;
+                     var11.aBoolean135 = false;
+                     var11.anInt551 = 0;
+                  } else {
+                     var11.aBoolean134 = true;
+                     var11.aBoolean135 = true;
+                     if (var11.anInt548 > 0) {
+                        var11.aBoolean136 = true;
+                     } else {
+                        var11.aBoolean136 = false;
+                     }
+
+                     ++anInt289;
+                  }
+               }
+            }
+         }
+      }
+
+      int var12;
+      int var13;
+      Class10_Sub3 var16;
+      int var17;
+      int var18;
+      for(int var14 = this.anInt287; var14 < this.anInt284; ++var14) {
+         Class10_Sub3[][] var15 = this.aClass10_Sub3ArrayArrayArray1[var14];
+
+         for(var8 = -25; var8 <= 0; ++var8) {
+            var13 = anInt296 + var8;
+            var9 = anInt296 - var8;
+            if (var13 >= anInt292 || var9 < anInt293) {
+               for(var17 = -25; var17 <= 0; ++var17) {
+                  var18 = anInt297 + var17;
+                  var12 = anInt297 - var17;
+                  if (var13 >= anInt292) {
+                     if (var18 >= anInt294) {
+                        var16 = var15[var13][var18];
+                        if (var16 != null && var16.aBoolean134) {
+                           this.method230(var16, true);
+                        }
+                     }
+
+                     if (var12 < anInt295) {
+                        var16 = var15[var13][var12];
+                        if (var16 != null && var16.aBoolean134) {
+                           this.method230(var16, true);
+                        }
+                     }
+                  }
+
+                  if (var9 < anInt293) {
+                     if (var18 >= anInt294) {
+                        var16 = var15[var9][var18];
+                        if (var16 != null && var16.aBoolean134) {
+                           this.method230(var16, true);
+                        }
+                     }
+
+                     if (var12 < anInt295) {
+                        var16 = var15[var9][var12];
+                        if (var16 != null && var16.aBoolean134) {
+                           this.method230(var16, true);
+                        }
+                     }
+                  }
+
+                  if (anInt289 == 0) {
+                     aBoolean94 = false;
+                     return;
+                  }
+               }
+            }
+         }
+      }
+
+      for(var7 = this.anInt287; var7 < this.anInt284; ++var7) {
+         Class10_Sub3[][] var19 = this.aClass10_Sub3ArrayArrayArray1[var7];
+
+         for(var13 = -25; var13 <= 0; ++var13) {
+            var9 = anInt296 + var13;
+            var17 = anInt296 - var13;
+            if (var9 >= anInt292 || var17 < anInt293) {
+               for(var18 = -25; var18 <= 0; ++var18) {
+                  var12 = anInt297 + var18;
+                  int var20 = anInt297 - var18;
+                  if (var9 >= anInt292) {
+                     if (var12 >= anInt294) {
+                        var16 = var19[var9][var12];
+                        if (var16 != null && var16.aBoolean134) {
+                           this.method230(var16, false);
+                        }
+                     }
+
+                     if (var20 < anInt295) {
+                        var16 = var19[var9][var20];
+                        if (var16 != null && var16.aBoolean134) {
+                           this.method230(var16, false);
+                        }
+                     }
+                  }
+
+                  if (var17 < anInt293) {
+                     if (var12 >= anInt294) {
+                        var16 = var19[var17][var12];
+                        if (var16 != null && var16.aBoolean134) {
+                           this.method230(var16, false);
+                        }
+                     }
+
+                     if (var20 < anInt295) {
+                        var16 = var19[var17][var20];
+                        if (var16 != null && var16.aBoolean134) {
+                           this.method230(var16, false);
+                        }
+                     }
+                  }
+
+                  if (anInt289 == 0) {
+                     aBoolean94 = false;
+                     return;
+                  }
+               }
+            }
+         }
+      }
+
+      aBoolean94 = false;
+   }
+
+   public void clearTemporaryLocs() {
+      for(int var3 = 0; var3 < this.anInt288; ++var3) {
+         Class5 var4 = this.aClass5Array1[var3];
+         this.method205(var4);
+         this.aClass5Array1[var3] = null;
+      }
+
+      this.anInt288 = 0;
+   }
+
+   public Class29 method215(int var1, int var2, int var3) {
+      Class10_Sub3 var4 = this.aClass10_Sub3ArrayArrayArray1[var1][var3][var2];
+      return var4 != null && var4.aClass29_1 != null ? var4.aClass29_1 : null;
+   }
+
+   private void method230(Class10_Sub3 var1, boolean var2) {
+      aClass6_1.method3(var1);
+
+      while(true) {
+         Class10_Sub3 var3;
+         int var4;
+         int var5;
+         int var6;
+         int var7;
+         Class10_Sub3[][] var8;
+         Class10_Sub3 var9;
+         int var10;
+         int var11;
+         int var12;
+         int var13;
+         int var14;
+         int var15;
+         Class45 var16;
+         int var17;
+         int var18;
+         do {
+            do {
+               do {
+                  do {
+                     do {
+                        do {
+                           while(true) {
+                              Class5 var19;
+                              int var20;
+                              int var21;
+                              boolean var22;
+                              Class10_Sub3 var23;
+                              while(true) {
+                                 do {
+                                    var3 = (Class10_Sub3)aClass6_1.method5();
+                                    if (var3 == null) {
+                                       return;
+                                    }
+                                 } while(!var3.aBoolean135);
+
+                                 var4 = var3.anInt545;
+                                 var5 = var3.anInt546;
+                                 var6 = var3.anInt544;
+                                 var7 = var3.anInt547;
+                                 var8 = this.aClass10_Sub3ArrayArrayArray1[var6];
+                                 if (!var3.aBoolean134) {
+                                    break;
+                                 }
+
+                                 if (var2) {
+                                    if (var6 > 0) {
+                                       var9 = this.aClass10_Sub3ArrayArrayArray1[var6 - 1][var4][var5];
+                                       if (var9 != null && var9.aBoolean135) {
+                                          continue;
+                                       }
+                                    }
+
+                                    if (var4 <= anInt296 && var4 > anInt292) {
+                                       var9 = var8[var4 - 1][var5];
+                                       if (var9 != null && var9.aBoolean135 && (var9.aBoolean134 || (var3.anInt549 & 1) == 0)) {
+                                          continue;
+                                       }
+                                    }
+
+                                    if (var4 >= anInt296 && var4 < anInt293 - 1) {
+                                       var9 = var8[var4 + 1][var5];
+                                       if (var9 != null && var9.aBoolean135 && (var9.aBoolean134 || (var3.anInt549 & 4) == 0)) {
+                                          continue;
+                                       }
+                                    }
+
+                                    if (var5 <= anInt297 && var5 > anInt294) {
+                                       var9 = var8[var4][var5 - 1];
+                                       if (var9 != null && var9.aBoolean135 && (var9.aBoolean134 || (var3.anInt549 & 8) == 0)) {
+                                          continue;
+                                       }
+                                    }
+
+                                    if (var5 >= anInt297 && var5 < anInt295 - 1) {
+                                       var9 = var8[var4][var5 + 1];
+                                       if (var9 != null && var9.aBoolean135 && (var9.aBoolean134 || (var3.anInt549 & 2) == 0)) {
+                                          continue;
+                                       }
+                                    }
+                                 } else {
+                                    var2 = true;
+                                 }
+
+                                 var3.aBoolean134 = false;
+                                 Class45 var24;
+                                 if (var3.aClass10_Sub3_1 != null) {
+                                    var9 = var3.aClass10_Sub3_1;
+                                    if (var9.aClass3_1 == null) {
+                                       if (var9.aClass21_1 != null && !this.method236(0, var4, var5)) {
+                                          this.method232(anInt302, anInt304, var9.aClass21_1, anInt301, var5, var4, anInt303);
+                                       }
+                                    } else if (!this.method236(0, var4, var5)) {
+                                       this.method231(var9.aClass3_1, 0, anInt301, anInt302, anInt303, anInt304, var4, var5);
+                                    }
+
+                                    var24 = var9.aClass45_1;
+                                    if (var24 != null) {
+                                       var24.aClass10_Sub1_Sub2_7.method536(0, anInt301, anInt302, anInt303, anInt304, var24.anInt631 - anInt298, var24.anInt630 - anInt299, var24.anInt632 - anInt300, var24.anInt635);
+                                    }
+
+                                    for(var10 = 0; var10 < var9.anInt548; ++var10) {
+                                       var19 = var9.aClass5Array3[var10];
+                                       if (var19 != null) {
+                                          var19.aClass10_Sub1_Sub2_1.method536(var19.anInt43, anInt301, anInt302, anInt303, anInt304, var19.anInt41 - anInt298, var19.anInt40 - anInt299, var19.anInt42 - anInt300, var19.anInt50);
+                                       }
+                                    }
+                                 }
+
+                                 var22 = false;
+                                 if (var3.aClass3_1 == null) {
+                                    if (var3.aClass21_1 != null && !this.method236(var7, var4, var5)) {
+                                       var22 = true;
+                                       this.method232(anInt302, anInt304, var3.aClass21_1, anInt301, var5, var4, anInt303);
+                                    }
+                                 } else if (!this.method236(var7, var4, var5)) {
+                                    var22 = true;
+                                    this.method231(var3.aClass3_1, var7, anInt301, anInt302, anInt303, anInt304, var4, var5);
+                                 }
+
+                                 var21 = 0;
+                                 var10 = 0;
+                                 var24 = var3.aClass45_1;
+                                 Class36 var25 = var3.aClass36_1;
+                                 if (var24 != null || var25 != null) {
+                                    if (anInt296 == var4) {
+                                       ++var21;
+                                    } else if (anInt296 < var4) {
+                                       var21 += 2;
+                                    }
+
+                                    if (anInt297 == var5) {
+                                       var21 += 3;
+                                    } else if (anInt297 > var5) {
+                                       var21 += 6;
+                                    }
+
+                                    var10 = anIntArray92[var21];
+                                    var3.anInt554 = anIntArray94[var21];
+                                 }
+
+                                 if (var24 != null) {
+                                    if ((var24.anInt633 & anIntArray93[var21]) == 0) {
+                                       var3.anInt551 = 0;
+                                    } else if (var24.anInt633 == 16) {
+                                       var3.anInt551 = 3;
+                                       var3.anInt552 = anIntArray95[var21];
+                                       var3.anInt553 = 3 - var3.anInt552;
+                                    } else if (var24.anInt633 == 32) {
+                                       var3.anInt551 = 6;
+                                       var3.anInt552 = anIntArray96[var21];
+                                       var3.anInt553 = 6 - var3.anInt552;
+                                    } else if (var24.anInt633 == 64) {
+                                       var3.anInt551 = 12;
+                                       var3.anInt552 = anIntArray97[var21];
+                                       var3.anInt553 = 12 - var3.anInt552;
+                                    } else {
+                                       var3.anInt551 = 9;
+                                       var3.anInt552 = anIntArray98[var21];
+                                       var3.anInt553 = 9 - var3.anInt552;
+                                    }
+
+                                    if ((var24.anInt633 & var10) != 0 && !this.method237(var7, var4, var5, var24.anInt633)) {
+                                       var24.aClass10_Sub1_Sub2_7.method536(0, anInt301, anInt302, anInt303, anInt304, var24.anInt631 - anInt298, var24.anInt630 - anInt299, var24.anInt632 - anInt300, var24.anInt635);
+                                    }
+
+                                    if ((var24.anInt634 & var10) != 0 && !this.method237(var7, var4, var5, var24.anInt634)) {
+                                       var24.aClass10_Sub1_Sub2_8.method536(0, anInt301, anInt302, anInt303, anInt304, var24.anInt631 - anInt298, var24.anInt630 - anInt299, var24.anInt632 - anInt300, var24.anInt635);
+                                    }
+                                 }
+
+                                 if (var25 != null && !this.method238(var7, var4, var5, var25.aClass10_Sub1_Sub2_6.anInt713)) {
+                                    if ((var25.anInt559 & var10) != 0) {
+                                       var25.aClass10_Sub1_Sub2_6.method536(var25.anInt560, anInt301, anInt302, anInt303, anInt304, var25.anInt557 - anInt298, var25.anInt556 - anInt299, var25.anInt558 - anInt300, var25.anInt561);
+                                    } else if ((var25.anInt559 & 768) != 0) {
+                                       var11 = var25.anInt557 - anInt298;
+                                       var12 = var25.anInt556 - anInt299;
+                                       var13 = var25.anInt558 - anInt300;
+                                       var14 = var25.anInt560;
+                                       if (var14 != 1 && var14 != 2) {
+                                          var15 = var11;
+                                       } else {
+                                          var15 = -var11;
+                                       }
+
+                                       if (var14 != 2 && var14 != 3) {
+                                          var20 = var13;
+                                       } else {
+                                          var20 = -var13;
+                                       }
+
+                                       int var26;
+                                       int var27;
+                                       if ((var25.anInt559 & 256) != 0 && var20 < var15) {
+                                          var26 = var11 + anIntArray87[var14];
+                                          var27 = var13 + anIntArray88[var14];
+                                          var25.aClass10_Sub1_Sub2_6.method536(var14 * 512 + 256, anInt301, anInt302, anInt303, anInt304, var26, var12, var27, var25.anInt561);
+                                       }
+
+                                       if ((var25.anInt559 & 512) != 0 && var20 > var15) {
+                                          var26 = var11 + anIntArray89[var14];
+                                          var27 = var13 + anIntArray90[var14];
+                                          var25.aClass10_Sub1_Sub2_6.method536(var14 * 512 + 1280 & 2047, anInt301, anInt302, anInt303, anInt304, var26, var12, var27, var25.anInt561);
+                                       }
+                                    }
+                                 }
+
+                                 if (var22) {
+                                    Class29 var28 = var3.aClass29_1;
+                                    if (var28 != null) {
+                                       var28.aClass10_Sub1_Sub2_5.method536(0, anInt301, anInt302, anInt303, anInt304, var28.anInt444 - anInt298, var28.anInt443 - anInt299, var28.anInt445 - anInt300, var28.anInt446);
+                                    }
+
+                                    Class11 var29 = var3.aClass11_1;
+                                    if (var29 != null && var29.anInt68 == 0) {
+                                       if (var29.aClass10_Sub1_Sub2_3 != null) {
+                                          var29.aClass10_Sub1_Sub2_3.method536(0, anInt301, anInt302, anInt303, anInt304, var29.anInt65 - anInt298, var29.anInt64 - anInt299, var29.anInt66 - anInt300, var29.anInt67);
+                                       }
+
+                                       if (var29.aClass10_Sub1_Sub2_4 != null) {
+                                          var29.aClass10_Sub1_Sub2_4.method536(0, anInt301, anInt302, anInt303, anInt304, var29.anInt65 - anInt298, var29.anInt64 - anInt299, var29.anInt66 - anInt300, var29.anInt67);
+                                       }
+
+                                       if (var29.aClass10_Sub1_Sub2_2 != null) {
+                                          var29.aClass10_Sub1_Sub2_2.method536(0, anInt301, anInt302, anInt303, anInt304, var29.anInt65 - anInt298, var29.anInt64 - anInt299, var29.anInt66 - anInt300, var29.anInt67);
+                                       }
+                                    }
+                                 }
+
+                                 var11 = var3.anInt549;
+                                 if (var11 != 0) {
+                                    if (var4 < anInt296 && (var11 & 4) != 0) {
+                                       var23 = var8[var4 + 1][var5];
+                                       if (var23 != null && var23.aBoolean135) {
+                                          aClass6_1.method3(var23);
+                                       }
+                                    }
+
+                                    if (var5 < anInt297 && (var11 & 2) != 0) {
+                                       var23 = var8[var4][var5 + 1];
+                                       if (var23 != null && var23.aBoolean135) {
+                                          aClass6_1.method3(var23);
+                                       }
+                                    }
+
+                                    if (var4 > anInt296 && (var11 & 1) != 0) {
+                                       var23 = var8[var4 - 1][var5];
+                                       if (var23 != null && var23.aBoolean135) {
+                                          aClass6_1.method3(var23);
+                                       }
+                                    }
+
+                                    if (var5 > anInt297 && (var11 & 8) != 0) {
+                                       var23 = var8[var4][var5 - 1];
+                                       if (var23 != null && var23.aBoolean135) {
+                                          aClass6_1.method3(var23);
+                                       }
+                                    }
+                                 }
+                                 break;
+                              }
+
+                              if (var3.anInt551 != 0) {
+                                 var22 = true;
+
+                                 for(var21 = 0; var21 < var3.anInt548; ++var21) {
+                                    if (var3.aClass5Array3[var21].anInt49 != anInt291 && (var3.anIntArray162[var21] & var3.anInt551) == var3.anInt552) {
+                                       var22 = false;
+                                       break;
+                                    }
+                                 }
+
+                                 if (var22) {
+                                    var16 = var3.aClass45_1;
+                                    if (!this.method237(var7, var4, var5, var16.anInt633)) {
+                                       var16.aClass10_Sub1_Sub2_7.method536(0, anInt301, anInt302, anInt303, anInt304, var16.anInt631 - anInt298, var16.anInt630 - anInt299, var16.anInt632 - anInt300, var16.anInt635);
+                                    }
+
+                                    var3.anInt551 = 0;
+                                 }
+                              }
+
+                              if (!var3.aBoolean136) {
+                                 break;
+                              }
+
+                              try {
+                                 int var30 = var3.anInt548;
+                                 var3.aBoolean136 = false;
+                                 var21 = 0;
+
+                                 label563:
+                                 for(var10 = 0; var10 < var30; ++var10) {
+                                    var19 = var3.aClass5Array3[var10];
+                                    if (var19.anInt49 != anInt291) {
+                                       for(var18 = var19.anInt44; var18 <= var19.anInt45; ++var18) {
+                                          for(var11 = var19.anInt46; var11 <= var19.anInt47; ++var11) {
+                                             var23 = var8[var18][var11];
+                                             if (var23.aBoolean134) {
+                                                var3.aBoolean136 = true;
+                                                continue label563;
+                                             }
+
+                                             if (var23.anInt551 != 0) {
+                                                var13 = 0;
+                                                if (var18 > var19.anInt44) {
+                                                   ++var13;
+                                                }
+
+                                                if (var18 < var19.anInt45) {
+                                                   var13 += 4;
+                                                }
+
+                                                if (var11 > var19.anInt46) {
+                                                   var13 += 8;
+                                                }
+
+                                                if (var11 < var19.anInt47) {
+                                                   var13 += 2;
+                                                }
+
+                                                if ((var13 & var23.anInt551) == var3.anInt553) {
+                                                   var3.aBoolean136 = true;
+                                                   continue label563;
+                                                }
+                                             }
+                                          }
+                                       }
+
+                                       aClass5Array2[var21++] = var19;
+                                       var11 = anInt296 - var19.anInt44;
+                                       var12 = var19.anInt45 - anInt296;
+                                       if (var12 > var11) {
+                                          var11 = var12;
+                                       }
+
+                                       var13 = anInt297 - var19.anInt46;
+                                       var14 = var19.anInt47 - anInt297;
+                                       if (var14 > var13) {
+                                          var19.anInt48 = var11 + var14;
+                                       } else {
+                                          var19.anInt48 = var11 + var13;
+                                       }
+                                    }
+                                 }
+
+                                 while(var21 > 0) {
+                                    var17 = -50;
+                                    var18 = -1;
+
+                                    Class5 var34;
+                                    for(var11 = 0; var11 < var21; ++var11) {
+                                       var34 = aClass5Array2[var11];
+                                       if (var34.anInt49 != anInt291) {
+                                          if (var34.anInt48 > var17) {
+                                             var17 = var34.anInt48;
+                                             var18 = var11;
+                                          } else if (var34.anInt48 == var17) {
+                                             var13 = var34.anInt41 - anInt298;
+                                             var14 = var34.anInt42 - anInt300;
+                                             var15 = aClass5Array2[var18].anInt41 - anInt298;
+                                             var20 = aClass5Array2[var18].anInt42 - anInt300;
+                                             if (var13 * var13 + var14 * var14 > var15 * var15 + var20 * var20) {
+                                                var18 = var11;
+                                             }
+                                          }
+                                       }
+                                    }
+
+                                    if (var18 == -1) {
+                                       break;
+                                    }
+
+                                    var34 = aClass5Array2[var18];
+                                    var34.anInt49 = anInt291;
+                                    if (!this.method239(var7, var34.anInt44, var34.anInt45, var34.anInt46, var34.anInt47, var34.aClass10_Sub1_Sub2_1.anInt713)) {
+                                       var34.aClass10_Sub1_Sub2_1.method536(var34.anInt43, anInt301, anInt302, anInt303, anInt304, var34.anInt41 - anInt298, var34.anInt40 - anInt299, var34.anInt42 - anInt300, var34.anInt50);
+                                    }
+
+                                    for(var13 = var34.anInt44; var13 <= var34.anInt45; ++var13) {
+                                       for(var14 = var34.anInt46; var14 <= var34.anInt47; ++var14) {
+                                          Class10_Sub3 var35 = var8[var13][var14];
+                                          if (var35.anInt551 != 0) {
+                                             aClass6_1.method3(var35);
+                                          } else if ((var13 != var4 || var14 != var5) && var35.aBoolean135) {
+                                             aClass6_1.method3(var35);
+                                          }
+                                       }
+                                    }
+                                 }
+
+                                 if (!var3.aBoolean136) {
+                                    break;
+                                 }
+                              } catch (Exception var32) {
+                                 var3.aBoolean136 = false;
+                                 break;
+                              }
+                           }
+                        } while(!var3.aBoolean135);
+                     } while(var3.anInt551 != 0);
+
+                     if (var4 > anInt296 || var4 <= anInt292) {
+                        break;
+                     }
+
+                     var9 = var8[var4 - 1][var5];
+                  } while(var9 != null && var9.aBoolean135);
+
+                  if (var4 < anInt296 || var4 >= anInt293 - 1) {
+                     break;
+                  }
+
+                  var9 = var8[var4 + 1][var5];
+               } while(var9 != null && var9.aBoolean135);
+
+               if (var5 > anInt297 || var5 <= anInt294) {
+                  break;
+               }
+
+               var9 = var8[var4][var5 - 1];
+            } while(var9 != null && var9.aBoolean135);
+
+            if (var5 < anInt297 || var5 >= anInt295 - 1) {
+               break;
+            }
+
+            var9 = var8[var4][var5 + 1];
+         } while(var9 != null && var9.aBoolean135);
+
+         var3.aBoolean135 = false;
+         --anInt289;
+         Class11 var33 = var3.aClass11_1;
+         if (var33 != null && var33.anInt68 != 0) {
+            if (var33.aClass10_Sub1_Sub2_3 != null) {
+               var33.aClass10_Sub1_Sub2_3.method536(0, anInt301, anInt302, anInt303, anInt304, var33.anInt65 - anInt298, var33.anInt64 - anInt299 - var33.anInt68, var33.anInt66 - anInt300, var33.anInt67);
+            }
+
+            if (var33.aClass10_Sub1_Sub2_4 != null) {
+               var33.aClass10_Sub1_Sub2_4.method536(0, anInt301, anInt302, anInt303, anInt304, var33.anInt65 - anInt298, var33.anInt64 - anInt299 - var33.anInt68, var33.anInt66 - anInt300, var33.anInt67);
+            }
+
+            if (var33.aClass10_Sub1_Sub2_2 != null) {
+               var33.aClass10_Sub1_Sub2_2.method536(0, anInt301, anInt302, anInt303, anInt304, var33.anInt65 - anInt298, var33.anInt64 - anInt299 - var33.anInt68, var33.anInt66 - anInt300, var33.anInt67);
+            }
+         }
+
+         if (var3.anInt554 != 0) {
+            Class36 var31 = var3.aClass36_1;
+            if (var31 != null && !this.method238(var7, var4, var5, var31.aClass10_Sub1_Sub2_6.anInt713)) {
+               if ((var31.anInt559 & var3.anInt554) != 0) {
+                  var31.aClass10_Sub1_Sub2_6.method536(var31.anInt560, anInt301, anInt302, anInt303, anInt304, var31.anInt557 - anInt298, var31.anInt556 - anInt299, var31.anInt558 - anInt300, var31.anInt561);
+               } else if ((var31.anInt559 & 768) != 0) {
+                  var10 = var31.anInt557 - anInt298;
+                  var17 = var31.anInt556 - anInt299;
+                  var18 = var31.anInt558 - anInt300;
+                  var11 = var31.anInt560;
+                  if (var11 != 1 && var11 != 2) {
+                     var12 = var10;
+                  } else {
+                     var12 = -var10;
+                  }
+
+                  if (var11 != 2 && var11 != 3) {
+                     var13 = var18;
+                  } else {
+                     var13 = -var18;
+                  }
+
+                  if ((var31.anInt559 & 256) != 0 && var13 >= var12) {
+                     var14 = var10 + anIntArray87[var11];
+                     var15 = var18 + anIntArray88[var11];
+                     var31.aClass10_Sub1_Sub2_6.method536(var11 * 512 + 256, anInt301, anInt302, anInt303, anInt304, var14, var17, var15, var31.anInt561);
+                  }
+
+                  if ((var31.anInt559 & 512) != 0 && var13 <= var12) {
+                     var14 = var10 + anIntArray89[var11];
+                     var15 = var18 + anIntArray90[var11];
+                     var31.aClass10_Sub1_Sub2_6.method536(var11 * 512 + 1280 & 2047, anInt301, anInt302, anInt303, anInt304, var14, var17, var15, var31.anInt561);
+                  }
+               }
+            }
+
+            var16 = var3.aClass45_1;
+            if (var16 != null) {
+               if ((var16.anInt634 & var3.anInt554) != 0 && !this.method237(var7, var4, var5, var16.anInt634)) {
+                  var16.aClass10_Sub1_Sub2_8.method536(0, anInt301, anInt302, anInt303, anInt304, var16.anInt631 - anInt298, var16.anInt630 - anInt299, var16.anInt632 - anInt300, var16.anInt635);
+               }
+
+               if ((var16.anInt633 & var3.anInt554) != 0 && !this.method237(var7, var4, var5, var16.anInt633)) {
+                  var16.aClass10_Sub1_Sub2_7.method536(0, anInt301, anInt302, anInt303, anInt304, var16.anInt631 - anInt298, var16.anInt630 - anInt299, var16.anInt632 - anInt300, var16.anInt635);
+               }
+            }
+         }
+
+         Class10_Sub3 var36;
+         if (var6 < this.anInt284 - 1) {
+            var36 = this.aClass10_Sub3ArrayArrayArray1[var6 + 1][var4][var5];
+            if (var36 != null && var36.aBoolean135) {
+               aClass6_1.method3(var36);
+            }
+         }
+
+         if (var4 < anInt296) {
+            var36 = var8[var4 + 1][var5];
+            if (var36 != null && var36.aBoolean135) {
+               aClass6_1.method3(var36);
+            }
+         }
+
+         if (var5 < anInt297) {
+            var36 = var8[var4][var5 + 1];
+            if (var36 != null && var36.aBoolean135) {
+               aClass6_1.method3(var36);
+            }
+         }
+
+         if (var4 > anInt296) {
+            var36 = var8[var4 - 1][var5];
+            if (var36 != null && var36.aBoolean135) {
+               aClass6_1.method3(var36);
+            }
+         }
+
+         if (var5 > anInt297) {
+            var36 = var8[var4][var5 - 1];
+            if (var36 != null && var36.aBoolean135) {
+               aClass6_1.method3(var36);
+            }
+         }
+      }
+   }
+
+   public void method195(int var1, int var2, int var3, int var4, int var5, int var6, int var7, int var8, int var9, int var10, int var11, int var12, int var13, int var14, int var15, int var16, int var17, int var18, int var19, int var20) {
+      Class3 var21;
+      int var22;
+      if (var4 == 0) {
+         var21 = new Class3(var11, var12, var13, var14, -1, var19, false);
+
+         for(var22 = var1; var22 >= 0; --var22) {
+            if (this.aClass10_Sub3ArrayArrayArray1[var22][var2][var3] == null) {
+               this.aClass10_Sub3ArrayArrayArray1[var22][var2][var3] = new Class10_Sub3(var22, var2, var3);
+            }
+         }
+
+         this.aClass10_Sub3ArrayArrayArray1[var1][var2][var3].aClass3_1 = var21;
+      } else if (var4 == 1) {
+         var21 = new Class3(var15, var16, var17, var18, var6, var20, var7 == var8 && var7 == var9 && var7 == var10);
+
+         for(var22 = var1; var22 >= 0; --var22) {
+            if (this.aClass10_Sub3ArrayArrayArray1[var22][var2][var3] == null) {
+               this.aClass10_Sub3ArrayArrayArray1[var22][var2][var3] = new Class10_Sub3(var22, var2, var3);
+            }
+         }
+
+         this.aClass10_Sub3ArrayArrayArray1[var1][var2][var3].aClass3_1 = var21;
+      } else {
+         Class21 var23 = new Class21(var10, var15, var9, var7, var2, var13, var14, var20, var12, var17, 0, var11, var4, var8, var18, var6, var19, var16, var3, var5);
+
+         for(var22 = var1; var22 >= 0; --var22) {
+            if (this.aClass10_Sub3ArrayArrayArray1[var22][var2][var3] == null) {
+               this.aClass10_Sub3ArrayArrayArray1[var22][var2][var3] = new Class10_Sub3(var22, var2, var3);
+            }
+         }
+
+         this.aClass10_Sub3ArrayArrayArray1[var1][var2][var3].aClass21_1 = var23;
+      }
+
+   }
+
+   public void method228(int var1, int var2) {
+      aBoolean94 = true;
+      anInt305 = var1;
+      anInt306 = var2;
+      anInt307 = -1;
+      anInt308 = -1;
+   }
+
+   public static void method193(int var0, int var1, int var2, int var3, int var4, int var5, int var6, int var7) {
+      Class40 var8 = new Class40();
+      var8.anInt589 = var0 / 128;
+      var8.anInt590 = var2 / 128;
+      var8.anInt591 = var5 / 128;
+      var8.anInt592 = var3 / 128;
+      var8.anInt593 = var7;
+      var8.anInt594 = var0;
+      var8.anInt595 = var2;
+      var8.anInt596 = var5;
+      var8.anInt597 = var3;
+      var8.anInt598 = var6;
+      var8.anInt599 = var1;
+      aClass40ArrayArray1[var4][anIntArray91[var4]++] = var8;
+   }
+
+   public static void method189() {
+      aClass5Array2 = null;
+      anIntArray91 = null;
+      aClass40ArrayArray1 = null;
+      aClass6_1 = null;
+      aBooleanArrayArrayArrayArray1 = null;
+      aBooleanArrayArray1 = null;
+   }
+
+   public static void init(int[] var0) {
+      anInt314 = 0;
+      anInt315 = 0;
+      anInt316 = 512;
+      anInt317 = 334;
+      anInt312 = 256;
+      anInt313 = 167;
+      boolean[][][][] var1 = new boolean[9][32][53][53];
+
+      int var2;
+      int var3;
+      int var4;
+      int var5;
+      int var6;
+      int var7;
+      for(int var8 = 128; var8 <= 384; var8 += 32) {
+         for(var2 = 0; var2 < 2048; var2 += 64) {
+            anInt301 = Model.anIntArray146[var8];
+            anInt302 = Model.anIntArray147[var8];
+            anInt303 = Model.anIntArray146[var2];
+            anInt304 = Model.anIntArray147[var2];
+            var3 = (var8 - 128) / 32;
+            var4 = var2 / 64;
+
+            for(var5 = -26; var5 <= 26; ++var5) {
+               for(int var9 = -26; var9 <= 26; ++var9) {
+                  var6 = var5 * 128;
+                  var7 = var9 * 128;
+                  boolean var10 = false;
+
+                  for(int var11 = -500; var11 <= 800; var11 += 128) {
+                     if (method227(var7, var6, anInt280, var0[var3] + var11)) {
+                        var10 = true;
+                        break;
+                     }
+                  }
+
+                  var1[var3][var4][var5 + 25 + 1][var9 + 25 + 1] = var10;
+               }
+            }
+         }
+      }
+
+      for(var2 = 0; var2 < 8; ++var2) {
+         for(var3 = 0; var3 < 32; ++var3) {
+            for(var4 = -25; var4 < 25; ++var4) {
+               for(var5 = -25; var5 < 25; ++var5) {
+                  boolean var12 = false;
+
+                  label76:
+                  for(var6 = -1; var6 <= 1; ++var6) {
+                     for(var7 = -1; var7 <= 1; ++var7) {
+                        if (var1[var2][var3][var4 + var6 + 25 + 1][var5 + var7 + 25 + 1]) {
+                           var12 = true;
+                           break label76;
+                        }
+
+                        if (var1[var2][(var3 + 1) % 31][var4 + var6 + 25 + 1][var5 + var7 + 25 + 1]) {
+                           var12 = true;
+                           break label76;
+                        }
+
+                        if (var1[var2 + 1][var3][var4 + var6 + 25 + 1][var5 + var7 + 25 + 1]) {
+                           var12 = true;
+                           break label76;
+                        }
+
+                        if (var1[var2 + 1][(var3 + 1) % 31][var4 + var6 + 25 + 1][var5 + var7 + 25 + 1]) {
+                           var12 = true;
+                           break label76;
+                        }
+                     }
+                  }
+
+                  aBooleanArrayArrayArrayArray1[var2][var3][var4 + 25][var5 + 25] = var12;
+               }
+            }
+         }
+      }
+
+   }
+
+   private static boolean method227(int var0, int var1, int var2, int var3) {
+      int var4 = var0 * anInt303 + var1 * anInt304 >> 16;
+      int var5 = var0 * anInt304 - var1 * anInt303 >> 16;
+      if (var2 != 0) {
+         aBoolean87 = !aBoolean87;
+      }
+
+      int var6 = var3 * anInt301 + var5 * anInt302 >> 16;
+      int var7 = var3 * anInt302 - var5 * anInt301 >> 16;
+      if (var6 >= 50 && var6 <= 3500) {
+         int var8 = anInt312 + (var4 << 9) / var6;
+         int var9 = anInt313 + (var7 << 9) / var6;
+         return var8 >= anInt314 && var8 <= anInt316 && var9 >= anInt315 && var9 <= anInt317;
+      } else {
+         return false;
+      }
+   }
 }

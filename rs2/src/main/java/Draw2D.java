@@ -1,184 +1,254 @@
-
 public class Draw2D extends Hashable {
+   private static boolean aBoolean173 = true;
+   public static int top;
+   public static int left;
+   public static int[] data;
+   public static int width2d;
+   public static int height2d;
+   private static int anInt673 = -291;
+   public static int right;
+   public static int bottom;
+   public static int centerX2d;
+   public static int boundX;
+   public static int anInt682;
 
-	public static int[] data;
+   protected Draw2D() {
+   }
 
-	public static int width2d;
+   public static void drawHorizontalLine(int var0, int var1, int var2, int var3) {
+      if (var2 >= top && var2 < bottom) {
+         if (var0 < left) {
+            var3 -= left - var0;
+            var0 = left;
+         }
 
-	public static int height2d;
+         if (var0 + var3 > right) {
+            var3 = right - var0;
+         }
 
-	public static int top;
+         int var4 = var0 + var2 * width2d;
 
-	public static int bottom;
+         for(int var5 = 0; var5 < var3; ++var5) {
+            data[var4 + var5] = var1;
+         }
+      }
 
-	public static int left;
+   }
 
-	public static int right;
+   public static void bind(int var0, int var1, int[] var2) {
+      data = var2;
+      width2d = var0;
+      height2d = var1;
+      setBounds(0, 0, var1, var0);
+   }
 
-	public static int boundX;
+   public static void fillRect(int var0, int var1, int var2, int var3, int var4) {
+      if (var4 < left) {
+         var3 -= left - var4;
+         var4 = left;
+      }
 
-	public static int centerX2d;
+      if (var1 < top) {
+         var0 -= top - var1;
+         var1 = top;
+      }
 
-	public static int centerY2d;
+      if (var4 + var3 > right) {
+         var3 = right - var4;
+      }
 
-	protected Draw2D() {
-	}
+      if (var1 + var0 > bottom) {
+         var0 = bottom - var1;
+      }
 
-	public static void bind( int width, int height, int[] src) {
-		data = src;
-		width2d = width;
-		height2d = height;
-		setBounds(height, width, 0, 0);
-	}
+      int var5 = width2d - var3;
+      int var6 = var4 + var1 * width2d;
 
-	public static void resetBounds() {
-		left = 0;
-		top = 0;
-		right = width2d;
-		bottom = height2d;
-		boundX = right - 1;
-		centerX2d = right / 2;
-	}
+      for(int var7 = -var0; var7 < 0; ++var7) {
+         for(int var8 = -var3; var8 < 0; ++var8) {
+            data[var6++] = var2;
+         }
 
-	public static void setBounds( int bottom, int right, int top, int left) {
-		if (left < 0) {
-			left = 0;
-		}
+         var6 += var5;
+      }
 
-		if (top < 0) {
-			top = 0;
-		}
+   }
 
-		if (right > width2d) {
-			right = width2d;
-		}
+   public static void drawVerticalLine(int var0, int var1, int var2, int var3) {
+      if (var0 >= left && var0 < right) {
+         if (var3 < top) {
+            var2 -= top - var3;
+            var3 = top;
+         }
 
-		if (bottom > height2d) {
-			bottom = height2d;
-		}
+         if (var3 + var2 > bottom) {
+            var2 = bottom - var3;
+         }
 
-		Draw2D.left = left;
-		Draw2D.top = top;
-		Draw2D.right = right;
-		Draw2D.bottom = bottom;
-		boundX = Draw2D.right - 1;
-		centerX2d = Draw2D.right / 2;
-		centerY2d = Draw2D.bottom / 2;
-	}
+         int var4 = var0 + var3 * width2d;
 
-	public static void clear() {
-		int len = width2d * height2d;
-		for ( int i = 0; i < len; i++) {
-			data[i] = 0;
-		}
-	}
+         for(int var5 = 0; var5 < var2; ++var5) {
+            data[var4 + var5 * width2d] = var1;
+         }
+      }
 
-	public static void fillRect( int x, int y, int rgb, int width, int height) {
-		if (x < left) {
-			width -= left - x;
-			x = left;
-		}
+   }
 
-		if (y < top) {
-			height -= top - y;
-			y = top;
-		}
+   public static void setBounds(int var0, int var1, int var2, int var3) {
+      if (var1 < 0) {
+         var1 = 0;
+      }
 
-		if (x + width > right) {
-			width = right - x;
-		}
+      if (var0 < 0) {
+         var0 = 0;
+      }
 
-		if (y + height > bottom) {
-			height = bottom - y;
-		}
+      if (var3 > width2d) {
+         var3 = width2d;
+      }
 
-		int step = width2d - width;
-		int offset = x + y * width2d;
-		for ( int i = -height; i < 0; i++) {
-			for ( int j = -width; j < 0; j++) {
-				data[offset++] = rgb;
-			}
+      if (var2 > height2d) {
+         var2 = height2d;
+      }
 
-			offset += step;
-		}
-	}
+      left = var1;
+      top = var0;
+      right = var3;
+      bottom = var2;
+      boundX = right - 1;
+      centerX2d = right / 2;
+      anInt682 = bottom / 2;
+   }
 
-	public static void drawRect( int x, int y, int rgb, int width, int height) {
-		drawHorizontalLine(x, y, rgb, width);
-		drawHorizontalLine(x, y + height - 1, rgb, width);
-		drawVerticalLine(x, y, rgb, height);
-		drawVerticalLine(x + width - 1, y, rgb, height);
-	}
+   public static void drawRect(int var0, int var1, int var2, int var3, int var4) {
+      drawHorizontalLine(var3, var2, var0, var4);
+      drawHorizontalLine(var3, var2, var0 + var1 - 1, var4);
+      drawVerticalLine(var3, var2, var1, var0);
+      drawVerticalLine(var3 + var4 - 1, var2, var1, var0);
+   }
 
-	public static void drawHorizontalLine( int x, int y, int rgb, int width) {
-		if (y < top || y >= bottom) {
-			return;
-		}
+   public static void clear() {
+      int var0 = width2d * height2d;
 
-		if (x < left) {
-			width -= left - x;
-			x = left;
-		}
+      for(int var1 = 0; var1 < var0; ++var1) {
+         data[var1] = 0;
+      }
 
-		if (x + width > right) {
-			width = right - x;
-		}
+   }
 
-		int off = x + y * width2d;
-		for ( int i = 0; i < width; i++) {
-			data[off + i] = rgb;
-		}
-	}
+   public static void resetBounds() {
+      left = 0;
+      top = 0;
+      right = width2d;
+      bottom = height2d;
+      boundX = right - 1;
+      centerX2d = right / 2;
+   }
 
-	public static void drawVerticalLine( int x, int y, int rgb, int width) {
-		if (x < left || x >= right) {
-			return;
-		}
+   public static void fillRectAlpha(int var0, int var1, int var2, int var3, int var4, int var5) {
+      if (var5 < left) {
+         var2 -= left - var5;
+         var5 = left;
+      }
 
-		if (y < top) {
-			width -= top - y;
-			y = top;
-		}
+      if (var1 < top) {
+         var3 -= top - var1;
+         var1 = top;
+      }
 
-		if (y + width > bottom) {
-			width = bottom - y;
-		}
+      if (var5 + var2 > right) {
+         var2 = right - var5;
+      }
 
-		int off = x + y * width2d;
-		for ( int i = 0; i < width; i++) {
-			data[off + i * width2d] = rgb;
-		}
-	}
+      if (var1 + var3 > bottom) {
+         var3 = bottom - var1;
+      }
 
-	public static void drawLine(int x1, int y1, int x2, int y2, int rgb) {
-		int dx = Math.abs(x2 - x1);
-		int dy = Math.abs(y2 - y1);
+      int var6 = 256 - var4;
+      int var7 = (var0 >> 16 & 255) * var4;
+      int var8 = (var0 >> 8 & 255) * var4;
+      int var9 = (var0 & 255) * var4;
+      int var10 = width2d - var2;
+      int var11 = var5 + var1 * width2d;
 
-		int sx = (x1 < x2) ? 1 : -1;
-		int sy = (y1 < y2) ? 1 : -1;
+      for(int var12 = 0; var12 < var3; ++var12) {
+         for(int var13 = -var2; var13 < 0; ++var13) {
+            int var14 = (data[var11] >> 16 & 255) * var6;
+            int var15 = (data[var11] >> 8 & 255) * var6;
+            int var16 = (data[var11] & 255) * var6;
+            int var17 = (var7 + var14 >> 8 << 16) + (var8 + var15 >> 8 << 8) + (var9 + var16 >> 8);
+            data[var11++] = var17;
+         }
 
-		int err = dx - dy;
+         var11 += var10;
+      }
 
-		while (true) {
-			if ((x1 >= left) && (x1 < right) && (y1 >= top) && (y1 < bottom)) {
-				data[x1 + (y1 * width2d)] = rgb;
-			}
+   }
 
-			if ((x1 == x2) && (y1 == y2)) {
-				break;
-			}
+   public static void method501(int var0, int var1, int var2, int var3, int var4, int var5) {
+      method503(var4, var0, var1, var5, var2);
+      method503(var4 + var3 - 1, var0, var1, var5, var2);
+      if (var3 >= 3) {
+         method505(var4 + 1, var0, var2, var3 - 2, var5);
+         method505(var4 + 1, var0 + var1 - 1, var2, var3 - 2, var5);
+      }
 
-			int e2 = 2 * err;
+   }
 
-			if (e2 > -dy) {
-				err = err - dy;
-				x1 = x1 + sx;
-			}
+   private static void method503(int var0, int var1, int var2, int var3, int var4) {
+      if (var0 >= top && var0 < bottom) {
+         if (var1 < left) {
+            var2 -= left - var1;
+            var1 = left;
+         }
 
-			if (e2 < dx) {
-				err = err + dx;
-				y1 = y1 + sy;
-			}
-		}
-	}
+         if (var1 + var2 > right) {
+            var2 = right - var1;
+         }
+
+         int var5 = 256 - var3;
+         int var6 = (var4 >> 16 & 255) * var3;
+         int var7 = (var4 >> 8 & 255) * var3;
+         int var8 = (var4 & 255) * var3;
+         int var9 = var1 + var0 * width2d;
+
+         for(int var10 = 0; var10 < var2; ++var10) {
+            int var11 = (data[var9] >> 16 & 255) * var5;
+            int var12 = (data[var9] >> 8 & 255) * var5;
+            int var13 = (data[var9] & 255) * var5;
+            int var14 = (var6 + var11 >> 8 << 16) + (var7 + var12 >> 8 << 8) + (var8 + var13 >> 8);
+            data[var9++] = var14;
+         }
+      }
+
+   }
+
+   private static void method505(int var0, int var1, int var2, int var3, int var4) {
+      if (var1 >= left && var1 < right) {
+         if (var0 < top) {
+            var3 -= top - var0;
+            var0 = top;
+         }
+
+         if (var0 + var3 > bottom) {
+            var3 = bottom - var0;
+         }
+
+         int var5 = 256 - var4;
+         int var6 = (var2 >> 16 & 255) * var4;
+         int var7 = (var2 >> 8 & 255) * var4;
+         int var8 = (var2 & 255) * var4;
+         int var9 = var1 + var0 * width2d;
+
+         for(int var10 = 0; var10 < var3; ++var10) {
+            int var11 = (data[var9] >> 16 & 255) * var5;
+            int var12 = (data[var9] >> 8 & 255) * var5;
+            int var13 = (data[var9] & 255) * var5;
+            int var14 = (var6 + var11 >> 8 << 16) + (var7 + var12 >> 8 << 8) + (var8 + var13 >> 8);
+            data[var9] = var14;
+            var9 += width2d;
+         }
+      }
+
+   }
 }

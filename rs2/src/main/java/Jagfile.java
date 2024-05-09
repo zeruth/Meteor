@@ -1,80 +1,77 @@
-public class Jagfile {
+public final class Jagfile {
+   private int anInt29 = -766;
+   private boolean aBoolean2 = true;
+   private int fileCount;
+   private int[] fileHash;
+   private byte[] buffer;
+   private boolean unpacked;
+   private int[] fileUnpackedSize;
+   private int[] fileOffset;
+   private int[] filePackedSize;
 
-	private byte[] buffer;
+   public Jagfile(byte[] var1) {
+      this.load(var1);
+   }
 
-	private int fileCount;
+   public byte[] read(String var1, byte[] var2) {
+      int var3 = 0;
+      String var4 = var1.toUpperCase();
 
-	private int[] fileHash;
+      int var5;
+      for(var5 = 0; var5 < var4.length(); ++var5) {
+         var3 = var3 * 61 + var4.charAt(var5) - 32;
+      }
 
-	private int[] fileUnpackedSize;
+      for(var5 = 0; var5 < this.fileCount; ++var5) {
+         if (this.fileHash[var5] == var3) {
+            if (var2 == null) {
+               var2 = new byte[this.fileUnpackedSize[var5]];
+            }
 
-	private int[] filePackedSize;
+            if (this.unpacked) {
+               if (this.fileUnpackedSize[var5] >= 0) {
+                  System.arraycopy(this.buffer, this.fileOffset[var5], var2, 0, this.fileUnpackedSize[var5]);
+               }
+            } else {
+               BZip2.read(var2, this.fileUnpackedSize[var5], this.buffer, this.filePackedSize[var5], this.fileOffset[var5]);
+            }
 
-	private int[] fileOffset;
+            return var2;
+         }
+      }
 
-	private boolean unpacked;
+      return null;
+   }
 
-	public Jagfile( byte[] src) {
-		this.load(src);
-	}
+   private void load(byte[] var1) {
+      Packet var2 = new Packet(var1);
+      int var3 = var2.g3();
+      int var4 = var2.g3();
+      if (var4 == var3) {
+         this.buffer = var1;
+         this.unpacked = false;
+      } else {
+         byte[] var7 = new byte[var3];
+         BZip2.read(var7, var3, var1, var4, 6);
+         this.buffer = var7;
+         var2 = new Packet(this.buffer);
+         this.unpacked = true;
+      }
 
-	private void load( byte[] src) {
-		Packet data = new Packet(src);
-		int unpackedSize = data.g3();
-		int packedSize = data.g3();
+      this.fileCount = var2.g2();
+      this.fileHash = new int[this.fileCount];
+      this.fileUnpackedSize = new int[this.fileCount];
+      this.filePackedSize = new int[this.fileCount];
+      this.fileOffset = new int[this.fileCount];
+      int var5 = var2.pos + this.fileCount * 10;
 
-		if (packedSize == unpackedSize) {
-			this.buffer = src;
-			this.unpacked = false;
-		} else {
-			byte[] temp = new byte[unpackedSize];
-			BZip2.read(temp, unpackedSize, src, packedSize, 6);
-			this.buffer = temp;
+      for(int var6 = 0; var6 < this.fileCount; ++var6) {
+         this.fileHash[var6] = var2.g4();
+         this.fileUnpackedSize[var6] = var2.g3();
+         this.filePackedSize[var6] = var2.g3();
+         this.fileOffset[var6] = var5;
+         var5 += this.filePackedSize[var6];
+      }
 
-			data = new Packet(this.buffer);
-			this.unpacked = true;
-		}
-
-		this.fileCount = data.g2();
-		this.fileHash = new int[this.fileCount];
-		this.fileUnpackedSize = new int[this.fileCount];
-		this.filePackedSize = new int[this.fileCount];
-		this.fileOffset = new int[this.fileCount];
-
-		int pos = data.pos + this.fileCount * 10;
-		for ( int i = 0; i < this.fileCount; i++) {
-			this.fileHash[i] = data.g4();
-			this.fileUnpackedSize[i] = data.g3();
-			this.filePackedSize[i] = data.g3();
-			this.fileOffset[i] = pos;
-			pos += this.filePackedSize[i];
-		}
-	}
-
-	public byte[] read( String name, byte[] dst) {
-		int hash = 0;
-		String upper = name.toUpperCase();
-		for ( int i = 0; i < upper.length(); i++) {
-			hash = hash * 61 + upper.charAt(i) - 32;
-		}
-
-		for ( int i = 0; i < this.fileCount; i++) {
-			if (this.fileHash[i] == hash) {
-				if (dst == null) {
-					dst = new byte[this.fileUnpackedSize[i]];
-				}
-
-				if (this.unpacked) {
-					if (this.fileUnpackedSize[i] >= 0) {
-						System.arraycopy(this.buffer, this.fileOffset[i], dst, 0, this.fileUnpackedSize[i]);
-					}
-				} else {
-					BZip2.read(dst, this.fileUnpackedSize[i], this.buffer, this.filePackedSize[i], this.fileOffset[i]);
-				}
-				return dst;
-			}
-		}
-
-		return null;
-	}
+   }
 }

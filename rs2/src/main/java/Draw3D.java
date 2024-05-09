@@ -1,2379 +1,2643 @@
-
-public class Draw3D extends Draw2D {
-
-	public static boolean lowMemory = true;
-
-	public static boolean clipX;
-
-	private static boolean opaque;
-
-	public static boolean jagged = true;
-
-	public static int alpha;
-
-	public static int centerX;
-
-	public static int centerY;
-
-	public static int[] reciprocal15 = new int[512];
-
-	public static final int[] reciprocal16 = new int[2048];
-
-	public static int[] sin = new int[2048];
-
-	public static int[] cos = new int[2048];
-
-	public static int[] lineOffset;
-
-	private static int textureCount;
-
-	public static Pix8[] textures = new Pix8[50];
-
-	private static boolean[] textureTranslucent = new boolean[50];
-
-	private static int[] averageTextureRGB = new int[50];
-
-	private static int poolSize;
-
-	private static int[][] texelPool;
-
-	private static int[][] activeTexels = new int[50][];
-
-	public static int[] textureCycle = new int[50];
-
-	public static int cycle;
-
-	public static int[] palette = new int[65536];
-
-	private static int[][] texturePalette = new int[50][];
-
-	static {
-		for ( int i = 1; i < 512; i++) {
-			reciprocal15[i] = 32768 / i;
-		}
-
-		for ( int i = 1; i < 2048; i++) {
-			reciprocal16[i] = 65536 / i;
-		}
-
-		for ( int i = 0; i < 2048; i++) {
-			sin[i] = (int) (Math.sin((double) i * 0.0030679615D) * 65536.0D);
-			cos[i] = (int) (Math.cos((double) i * 0.0030679615D) * 65536.0D);
-		}
-	}
-
-	public static void unload() {
-		reciprocal15 = null;
-		reciprocal15 = null;
-		sin = null;
-		cos = null;
-		lineOffset = null;
-		textures = null;
-		textureTranslucent = null;
-		averageTextureRGB = null;
-		texelPool = null;
-		activeTexels = null;
-		textureCycle = null;
-		palette = null;
-		texturePalette = null;
-	}
-
-	public static void init2D() {
-		lineOffset = new int[height2d];
-		for (int y = 0; y < height2d; y++) {
-			lineOffset[y] = width2d * y;
-		}
-		centerX = width2d / 2;
-		centerY = height2d / 2;
-	}
-
-	public static void init3D( int width, int height) {
-		lineOffset = new int[height];
-		for ( int y = 0; y < height; y++) {
-			lineOffset[y] = width * y;
-		}
-		centerX = width / 2;
-		centerY = height / 2;
-	}
-
-	public static void clearTexels() {
-		texelPool = null;
-		for ( int i = 0; i < 50; i++) {
-			activeTexels[i] = null;
-		}
-	}
-
-	public static void initPool( int size) {
-		if (texelPool != null) {
-			return;
-		}
-		poolSize = size;
-		if (lowMemory) {
-			texelPool = new int[poolSize][16384];
-		} else {
-			texelPool = new int[poolSize][65536];
-		}
-		for (int i = 0; i < 50; i++) {
-			activeTexels[i] = null;
-		}
-	}
-
-	public static void unpackTextures( Jagfile jag) {
-		textureCount = 0;
-		for ( int id = 0; id < 50; id++) {
-			try {
-				textures[id] = new Pix8(jag, String.valueOf(id), 0);
-				if (lowMemory && textures[id].cropW == 128) {
-					textures[id].shrink();
-				} else {
-					textures[id].crop();
-				}
-				textureCount++;
-			} catch ( Exception ex) {
-			}
-		}
-	}
-
-	public static int getAverageTextureRGB( int id) {
-		if (averageTextureRGB[id] != 0) {
-			return averageTextureRGB[id];
-		}
-
-		int r = 0;
-		int g = 0;
-		int b = 0;
-		int length = texturePalette[id].length;
-		for ( int i = 0; i < length; i++) {
-			r += texturePalette[id][i] >> 16 & 0xFF;
-			g += texturePalette[id][i] >> 8 & 0xFF;
-			b += texturePalette[id][i] & 0xFF;
-		}
-
-		int rgb = (r / length << 16) + (g / length << 8) + b / length;
-		rgb = setGamma(rgb, 1.4D);
-		if (rgb == 0) {
-			rgb = 1;
-		}
-		averageTextureRGB[id] = rgb;
-		return rgb;
-	}
-
-	public static void pushTexture( int id) {
-		if (activeTexels[id] != null) {
-			texelPool[poolSize++] = activeTexels[id];
-			activeTexels[id] = null;
-		}
-	}
-
-	private static int[] getTexels( int id) {
-		textureCycle[id] = cycle++;
-		if (activeTexels[id] != null) {
-			return activeTexels[id];
-		}
-
-		int[] texels;
-		if (poolSize > 0) {
-			texels = texelPool[--poolSize];
-			texelPool[poolSize] = null;
-		} else {
-			int cycle = 0;
-			int selected = -1;
-			for (int t = 0; t < textureCount; t++) {
-				if (activeTexels[t] != null && (textureCycle[t] < cycle || selected == -1)) {
-					cycle = textureCycle[t];
-					selected = t;
-				}
-			}
-			texels = activeTexels[selected];
-			activeTexels[selected] = null;
-		}
-
-		activeTexels[id] = texels;
-		Pix8 texture = textures[id];
-		int[] palette = texturePalette[id];
-
-		if (lowMemory) {
-			textureTranslucent[id] = false;
-			for (int i = 0; i < 4096; i++) {
-				int rgb = texels[i] = palette[texture.pixels[i]] & 0xF8F8FF;
-				if (rgb == 0) {
-					textureTranslucent[id] = true;
-				}
-				texels[i + 4096] = rgb - (rgb >>> 3) & 0xF8F8FF;
-				texels[i + 8192] = rgb - (rgb >>> 2) & 0xF8F8FF;
-				texels[i + 12288] = rgb - (rgb >>> 2) - (rgb >>> 3) & 0xF8F8FF;
-			}
-		} else {
-			if (texture.width == 64) {
-				for (int y = 0; y < 128; y++) {
-					for (int x = 0; x < 128; x++) {
-						texels[x + (y << 7)] = palette[texture.pixels[(x >> 1) + (y >> 1 << 6)]];
-					}
-				}
-			} else {
-				for (int i = 0; i < 16384; i++) {
-					texels[i] = palette[texture.pixels[i]];
-				}
-			}
-
-			textureTranslucent[id] = false;
-			for (int i = 0; i < 16384; i++) {
-				texels[i] &= 0xF8F8FF;
-				int rgb = texels[i];
-				if (rgb == 0) {
-					textureTranslucent[id] = true;
-				}
-				texels[i + 16384] = rgb - (rgb >>> 3) & 0xF8F8FF;
-				texels[i + 32768] = rgb - (rgb >>> 2) & 0xF8F8FF;
-				texels[i + 49152] = rgb - (rgb >>> 2) - (rgb >>> 3) & 0xF8F8FF;
-			}
-		}
-		return texels;
-	}
-
-	public static void setBrightness( double brightness) {
-		double randomBrightness = brightness + Math.random() * 0.03D - 0.015D;
-		int offset = 0;
-		for ( int y = 0; y < 512; y++) {
-			double hue = (double) (y / 8) / 64.0D + 0.0078125D;
-			double saturation = (double) (y & 0x7) / 8.0D + 0.0625D;
-			for ( int x = 0; x < 128; x++) {
-				double lightness = (double) x / 128.0D;
-				double r = lightness;
-				double g = lightness;
-				double b = lightness;
-				if (saturation != 0.0D) {
-					double q;
-					if (lightness < 0.5D) {
-						q = lightness * (saturation + 1.0D);
-					} else {
-						q = lightness + saturation - lightness * saturation;
-					}
-					double p = lightness * 2.0D - q;
-					double t = hue + 0.3333333333333333D;
-					if (t > 1.0D) {
-						t--;
-					}
-					double d11 = hue - 0.3333333333333333D;
-					if (d11 < 0.0D) {
-						d11++;
-					}
-					if (t * 6.0D < 1.0D) {
-						r = p + (q - p) * 6.0D * t;
-					} else if (t * 2.0D < 1.0D) {
-						r = q;
-					} else if (t * 3.0D < 2.0D) {
-						r = p + (q - p) * (0.6666666666666666D - t) * 6.0D;
-					} else {
-						r = p;
-					}
-					if (hue * 6.0D < 1.0D) {
-						g = p + (q - p) * 6.0D * hue;
-					} else if (hue * 2.0D < 1.0D) {
-						g = q;
-					} else if (hue * 3.0D < 2.0D) {
-						g = p + (q - p) * (0.6666666666666666D - hue) * 6.0D;
-					} else {
-						g = p;
-					}
-					if (d11 * 6.0D < 1.0D) {
-						b = p + (q - p) * 6.0D * d11;
-					} else if (d11 * 2.0D < 1.0D) {
-						b = q;
-					} else if (d11 * 3.0D < 2.0D) {
-						b = p + (q - p) * (0.6666666666666666D - d11) * 6.0D;
-					} else {
-						b = p;
-					}
-				}
-				int intR = (int) (r * 256.0D);
-				int intG = (int) (g * 256.0D);
-				int intB = (int) (b * 256.0D);
-				int rgb = (intR << 16) + (intG << 8) + intB;
-				int rgbAdjusted = setGamma(rgb, randomBrightness);
-				palette[offset++] = rgbAdjusted;
-			}
-		}
-		for ( int id = 0; id < 50; id++) {
-			if (textures[id] != null) {
-				int[] palette = textures[id].palette;
-				texturePalette[id] = new int[palette.length];
-				for ( int i = 0; i < palette.length; i++) {
-					texturePalette[id][i] = setGamma(palette[i], randomBrightness);
-				}
-			}
-		}
-
-		for ( int id = 0; id < 50; id++) {
-			pushTexture(id);
-		}
-	}
-
-	private static int setGamma( int rgb, double gamma) {
-		double r = (double) (rgb >> 16) / 256.0D;
-		double g = (double) (rgb >> 8 & 0xFF) / 256.0D;
-		double b = (double) (rgb & 0xFF) / 256.0D;
-		double powR = Math.pow(r, gamma);
-		double powG = Math.pow(g, gamma);
-		double powB = Math.pow(b, gamma);
-		int intR = (int) (powR * 256.0D);
-		int intG = (int) (powG * 256.0D);
-		int intB = (int) (powB * 256.0D);
-		return (intR << 16) + (intG << 8) + intB;
-	}
-
-	public static void fillGouraudTriangle( int xA, int xB, int xC, int yA, int yB, int yC, int colorA, int colorB, int colorC) {
-		int xStepAB = 0;
-		int colorStepAB = 0;
-		if (yB != yA) {
-			xStepAB = (xB - xA << 16) / (yB - yA);
-			colorStepAB = (colorB - colorA << 15) / (yB - yA);
-		}
-
-		int xStepBC = 0;
-		int colorStepBC = 0;
-		if (yC != yB) {
-			xStepBC = (xC - xB << 16) / (yC - yB);
-			colorStepBC = (colorC - colorB << 15) / (yC - yB);
-		}
-
-		int xStepAC = 0;
-		int colorStepAC = 0;
-		if (yC != yA) {
-			xStepAC = (xA - xC << 16) / (yA - yC);
-			colorStepAC = (colorA - colorC << 15) / (yA - yC);
-		}
-
-		if (yA <= yB && yA <= yC) {
-			if (yA < bottom) {
-				if (yB > bottom) {
-					yB = bottom;
-				}
-				if (yC > bottom) {
-					yC = bottom;
-				}
-				if (yB < yC) {
-					xC = xA <<= 0x10;
-					colorC = colorA <<= 0xF;
-					if (yA < 0) {
-						xC -= xStepAC * yA;
-						xA -= xStepAB * yA;
-						colorC -= colorStepAC * yA;
-						colorA -= colorStepAB * yA;
-						yA = 0;
-					}
-					xB <<= 0x10;
-					colorB <<= 0xF;
-					if (yB < 0) {
-						xB -= xStepBC * yB;
-						colorB -= colorStepBC * yB;
-						yB = 0;
-					}
-					if (yA != yB && xStepAC < xStepAB || yA == yB && xStepAC > xStepBC) {
-						yC -= yB;
-						yB -= yA;
-						yA = lineOffset[yA];
-						while (true) {
-							yB--;
-							if (yB < 0) {
-								while (true) {
-									yC--;
-									if (yC < 0) {
-										return;
-									}
-									drawGouraudScanline(xC >> 16, xB >> 16, colorC >> 7, colorB >> 7, data, yA, 0);
-									xC += xStepAC;
-									xB += xStepBC;
-									colorC += colorStepAC;
-									colorB += colorStepBC;
-									yA += width2d;
-								}
-							}
-							drawGouraudScanline(xC >> 16, xA >> 16, colorC >> 7, colorA >> 7, data, yA, 0);
-							xC += xStepAC;
-							xA += xStepAB;
-							colorC += colorStepAC;
-							colorA += colorStepAB;
-							yA += width2d;
-						}
-					} else {
-						yC -= yB;
-						yB -= yA;
-						yA = lineOffset[yA];
-						while (true) {
-							yB--;
-							if (yB < 0) {
-								while (true) {
-									yC--;
-									if (yC < 0) {
-										return;
-									}
-									drawGouraudScanline(xB >> 16, xC >> 16, colorB >> 7, colorC >> 7, data, yA, 0);
-									xC += xStepAC;
-									xB += xStepBC;
-									colorC += colorStepAC;
-									colorB += colorStepBC;
-									yA += width2d;
-								}
-							}
-							drawGouraudScanline(xA >> 16, xC >> 16, colorA >> 7, colorC >> 7, data, yA, 0);
-							xC += xStepAC;
-							xA += xStepAB;
-							colorC += colorStepAC;
-							colorA += colorStepAB;
-							yA += width2d;
-						}
-					}
-				} else {
-					xB = xA <<= 0x10;
-					colorB = colorA <<= 0xF;
-					if (yA < 0) {
-						xB -= xStepAC * yA;
-						xA -= xStepAB * yA;
-						colorB -= colorStepAC * yA;
-						colorA -= colorStepAB * yA;
-						yA = 0;
-					}
-					xC <<= 0x10;
-					colorC <<= 0xF;
-					if (yC < 0) {
-						xC -= xStepBC * yC;
-						colorC -= colorStepBC * yC;
-						yC = 0;
-					}
-					if (yA != yC && xStepAC < xStepAB || yA == yC && xStepBC > xStepAB) {
-						yB -= yC;
-						yC -= yA;
-						yA = lineOffset[yA];
-						while (true) {
-							yC--;
-							if (yC < 0) {
-								while (true) {
-									yB--;
-									if (yB < 0) {
-										return;
-									}
-									drawGouraudScanline(xC >> 16, xA >> 16, colorC >> 7, colorA >> 7, data, yA, 0);
-									xC += xStepBC;
-									xA += xStepAB;
-									colorC += colorStepBC;
-									colorA += colorStepAB;
-									yA += width2d;
-								}
-							}
-							drawGouraudScanline(xB >> 16, xA >> 16, colorB >> 7, colorA >> 7, data, yA, 0);
-							xB += xStepAC;
-							xA += xStepAB;
-							colorB += colorStepAC;
-							colorA += colorStepAB;
-							yA += width2d;
-						}
-					} else {
-						yB -= yC;
-						yC -= yA;
-						yA = lineOffset[yA];
-						while (true) {
-							yC--;
-							if (yC < 0) {
-								while (true) {
-									yB--;
-									if (yB < 0) {
-										return;
-									}
-									drawGouraudScanline(xA >> 16, xC >> 16, colorA >> 7, colorC >> 7, data, yA, 0);
-									xC += xStepBC;
-									xA += xStepAB;
-									colorC += colorStepBC;
-									colorA += colorStepAB;
-									yA += width2d;
-								}
-							}
-							drawGouraudScanline(xA >> 16, xB >> 16, colorA >> 7, colorB >> 7, data, yA, 0);
-							xB += xStepAC;
-							xA += xStepAB;
-							colorB += colorStepAC;
-							colorA += colorStepAB;
-							yA += width2d;
-						}
-					}
-				}
-			}
-		} else if (yB <= yC) {
-			if (yB < bottom) {
-				if (yC > bottom) {
-					yC = bottom;
-				}
-				if (yA > bottom) {
-					yA = bottom;
-				}
-				if (yC < yA) {
-					xA = xB <<= 0x10;
-					colorA = colorB <<= 0xF;
-					if (yB < 0) {
-						xA -= xStepAB * yB;
-						xB -= xStepBC * yB;
-						colorA -= colorStepAB * yB;
-						colorB -= colorStepBC * yB;
-						yB = 0;
-					}
-					xC <<= 0x10;
-					colorC <<= 0xF;
-					if (yC < 0) {
-						xC -= xStepAC * yC;
-						colorC -= colorStepAC * yC;
-						yC = 0;
-					}
-					if (yB != yC && xStepAB < xStepBC || yB == yC && xStepAB > xStepAC) {
-						yA -= yC;
-						yC -= yB;
-						yB = lineOffset[yB];
-						while (true) {
-							yC--;
-							if (yC < 0) {
-								while (true) {
-									yA--;
-									if (yA < 0) {
-										return;
-									}
-									drawGouraudScanline(xA >> 16, xC >> 16, colorA >> 7, colorC >> 7, data, yB, 0);
-									xA += xStepAB;
-									xC += xStepAC;
-									colorA += colorStepAB;
-									colorC += colorStepAC;
-									yB += width2d;
-								}
-							}
-							drawGouraudScanline(xA >> 16, xB >> 16, colorA >> 7, colorB >> 7, data, yB, 0);
-							xA += xStepAB;
-							xB += xStepBC;
-							colorA += colorStepAB;
-							colorB += colorStepBC;
-							yB += width2d;
-						}
-					} else {
-						yA -= yC;
-						yC -= yB;
-						yB = lineOffset[yB];
-						while (true) {
-							yC--;
-							if (yC < 0) {
-								while (true) {
-									yA--;
-									if (yA < 0) {
-										return;
-									}
-									drawGouraudScanline(xC >> 16, xA >> 16, colorC >> 7, colorA >> 7, data, yB, 0);
-									xA += xStepAB;
-									xC += xStepAC;
-									colorA += colorStepAB;
-									colorC += colorStepAC;
-									yB += width2d;
-								}
-							}
-							drawGouraudScanline(xB >> 16, xA >> 16, colorB >> 7, colorA >> 7, data, yB, 0);
-							xA += xStepAB;
-							xB += xStepBC;
-							colorA += colorStepAB;
-							colorB += colorStepBC;
-							yB += width2d;
-						}
-					}
-				} else {
-					xC = xB <<= 0x10;
-					colorC = colorB <<= 0xF;
-					if (yB < 0) {
-						xC -= xStepAB * yB;
-						xB -= xStepBC * yB;
-						colorC -= colorStepAB * yB;
-						colorB -= colorStepBC * yB;
-						yB = 0;
-					}
-					xA <<= 0x10;
-					colorA <<= 0xF;
-					if (yA < 0) {
-						xA -= xStepAC * yA;
-						colorA -= colorStepAC * yA;
-						yA = 0;
-					}
-					if (xStepAB < xStepBC) {
-						yC -= yA;
-						yA -= yB;
-						yB = lineOffset[yB];
-						while (true) {
-							yA--;
-							if (yA < 0) {
-								while (true) {
-									yC--;
-									if (yC < 0) {
-										return;
-									}
-									drawGouraudScanline(xA >> 16, xB >> 16, colorA >> 7, colorB >> 7, data, yB, 0);
-									xA += xStepAC;
-									xB += xStepBC;
-									colorA += colorStepAC;
-									colorB += colorStepBC;
-									yB += width2d;
-								}
-							}
-							drawGouraudScanline(xC >> 16, xB >> 16, colorC >> 7, colorB >> 7, data, yB, 0);
-							xC += xStepAB;
-							xB += xStepBC;
-							colorC += colorStepAB;
-							colorB += colorStepBC;
-							yB += width2d;
-						}
-					} else {
-						yC -= yA;
-						yA -= yB;
-						yB = lineOffset[yB];
-						while (true) {
-							yA--;
-							if (yA < 0) {
-								while (true) {
-									yC--;
-									if (yC < 0) {
-										return;
-									}
-									drawGouraudScanline(xB >> 16, xA >> 16, colorB >> 7, colorA >> 7, data, yB, 0);
-									xA += xStepAC;
-									xB += xStepBC;
-									colorA += colorStepAC;
-									colorB += colorStepBC;
-									yB += width2d;
-								}
-							}
-							drawGouraudScanline(xB >> 16, xC >> 16, colorB >> 7, colorC >> 7, data, yB, 0);
-							xC += xStepAB;
-							xB += xStepBC;
-							colorC += colorStepAB;
-							colorB += colorStepBC;
-							yB += width2d;
-						}
-					}
-				}
-			}
-		} else if (yC < bottom) {
-			if (yA > bottom) {
-				yA = bottom;
-			}
-			if (yB > bottom) {
-				yB = bottom;
-			}
-			if (yA < yB) {
-				xB = xC <<= 0x10;
-				colorB = colorC <<= 0xF;
-				if (yC < 0) {
-					xB -= xStepBC * yC;
-					xC -= xStepAC * yC;
-					colorB -= colorStepBC * yC;
-					colorC -= colorStepAC * yC;
-					yC = 0;
-				}
-				xA <<= 0x10;
-				colorA <<= 0xF;
-				if (yA < 0) {
-					xA -= xStepAB * yA;
-					colorA -= colorStepAB * yA;
-					yA = 0;
-				}
-				if (xStepBC < xStepAC) {
-					yB -= yA;
-					yA -= yC;
-					yC = lineOffset[yC];
-					while (true) {
-						yA--;
-						if (yA < 0) {
-							while (true) {
-								yB--;
-								if (yB < 0) {
-									return;
-								}
-								drawGouraudScanline(xB >> 16, xA >> 16, colorB >> 7, colorA >> 7, data, yC, 0);
-								xB += xStepBC;
-								xA += xStepAB;
-								colorB += colorStepBC;
-								colorA += colorStepAB;
-								yC += width2d;
-							}
-						}
-						drawGouraudScanline(xB >> 16, xC >> 16, colorB >> 7, colorC >> 7, data, yC, 0);
-						xB += xStepBC;
-						xC += xStepAC;
-						colorB += colorStepBC;
-						colorC += colorStepAC;
-						yC += width2d;
-					}
-				} else {
-					yB -= yA;
-					yA -= yC;
-					yC = lineOffset[yC];
-					while (true) {
-						yA--;
-						if (yA < 0) {
-							while (true) {
-								yB--;
-								if (yB < 0) {
-									return;
-								}
-								drawGouraudScanline(xA >> 16, xB >> 16, colorA >> 7, colorB >> 7, data, yC, 0);
-								xB += xStepBC;
-								xA += xStepAB;
-								colorB += colorStepBC;
-								colorA += colorStepAB;
-								yC += width2d;
-							}
-						}
-						drawGouraudScanline(xC >> 16, xB >> 16, colorC >> 7, colorB >> 7, data, yC, 0);
-						xB += xStepBC;
-						xC += xStepAC;
-						colorB += colorStepBC;
-						colorC += colorStepAC;
-						yC += width2d;
-					}
-				}
-			} else {
-				xA = xC <<= 0x10;
-				colorA = colorC <<= 0xF;
-				if (yC < 0) {
-					xA -= xStepBC * yC;
-					xC -= xStepAC * yC;
-					colorA -= colorStepBC * yC;
-					colorC -= colorStepAC * yC;
-					yC = 0;
-				}
-				xB <<= 0x10;
-				colorB <<= 0xF;
-				if (yB < 0) {
-					xB -= xStepAB * yB;
-					colorB -= colorStepAB * yB;
-					yB = 0;
-				}
-				if (xStepBC < xStepAC) {
-					yA -= yB;
-					yB -= yC;
-					yC = lineOffset[yC];
-					while (true) {
-						yB--;
-						if (yB < 0) {
-							while (true) {
-								yA--;
-								if (yA < 0) {
-									return;
-								}
-								drawGouraudScanline(xB >> 16, xC >> 16, colorB >> 7, colorC >> 7, data, yC, 0);
-								xB += xStepAB;
-								xC += xStepAC;
-								colorB += colorStepAB;
-								colorC += colorStepAC;
-								yC += width2d;
-							}
-						}
-						drawGouraudScanline(xA >> 16, xC >> 16, colorA >> 7, colorC >> 7, data, yC, 0);
-						xA += xStepBC;
-						xC += xStepAC;
-						colorA += colorStepBC;
-						colorC += colorStepAC;
-						yC += width2d;
-					}
-				} else {
-					yA -= yB;
-					yB -= yC;
-					yC = lineOffset[yC];
-					while (true) {
-						yB--;
-						if (yB < 0) {
-							while (true) {
-								yA--;
-								if (yA < 0) {
-									return;
-								}
-								drawGouraudScanline(xC >> 16, xB >> 16, colorC >> 7, colorB >> 7, data, yC, 0);
-								xB += xStepAB;
-								xC += xStepAC;
-								colorB += colorStepAB;
-								colorC += colorStepAC;
-								yC += width2d;
-							}
-						}
-						drawGouraudScanline(xC >> 16, xA >> 16, colorC >> 7, colorA >> 7, data, yC, 0);
-						xA += xStepBC;
-						xC += xStepAC;
-						colorA += colorStepBC;
-						colorC += colorStepAC;
-						yC += width2d;
-					}
-				}
-			}
-		}
-	}
-
-	private static void drawGouraudScanline( int x0, int x1, int color0, int color1, int[] dst, int offset, int length) {
-		int rgb;
-
-		if (jagged) {
-			int colorStep;
-
-			if (clipX) {
-				if (x1 - x0 > 3) {
-					colorStep = (color1 - color0) / (x1 - x0);
-				} else {
-					colorStep = 0;
-				}
-				if (x1 > boundX) {
-					x1 = boundX;
-				}
-				if (x0 < 0) {
-					color0 -= x0 * colorStep;
-					x0 = 0;
-				}
-				if (x0 >= x1) {
-					return;
-				}
-				offset += x0;
-				length = x1 - x0 >> 2;
-				colorStep <<= 0x2;
-			} else if (x0 < x1) {
-				offset += x0;
-				length = x1 - x0 >> 2;
-				if (length > 0) {
-					colorStep = (color1 - color0) * reciprocal15[length] >> 15;
-				} else {
-					colorStep = 0;
-				}
-			} else {
-				return;
-			}
-
-			if (alpha == 0) {
-				while (true) {
-					length--;
-					if (length < 0) {
-						length = x1 - x0 & 0x3;
-						if (length > 0) {
-							rgb = palette[color0 >> 8];
-							do {
-								dst[offset++] = rgb;
-								length--;
-							} while (length > 0);
-							return;
-						}
-						break;
-					}
-					rgb = palette[color0 >> 8];
-					color0 += colorStep;
-					dst[offset++] = rgb;
-					dst[offset++] = rgb;
-					dst[offset++] = rgb;
-					dst[offset++] = rgb;
-				}
-			} else {
-				int alpha = Draw3D.alpha;
-				int invAlpha = 256 - Draw3D.alpha;
-				while (true) {
-					length--;
-					if (length < 0) {
-						length = x1 - x0 & 0x3;
-						if (length > 0) {
-							rgb = palette[color0 >> 8];
-							rgb = ((rgb & 0xFF00FF) * invAlpha >> 8 & 0xFF00FF) + ((rgb & 0xFF00) * invAlpha >> 8 & 0xFF00);
-							do {
-								dst[offset++] = rgb + ((dst[offset] & 0xFF00FF) * alpha >> 8 & 0xFF00FF) + ((dst[offset] & 0xFF00) * alpha >> 8 & 0xFF00);
-								length--;
-							} while (length > 0);
-						}
-						break;
-					}
-					rgb = palette[color0 >> 8];
-					color0 += colorStep;
-					rgb = ((rgb & 0xFF00FF) * invAlpha >> 8 & 0xFF00FF) + ((rgb & 0xFF00) * invAlpha >> 8 & 0xFF00);
-					dst[offset++] = rgb + ((dst[offset] & 0xFF00FF) * alpha >> 8 & 0xFF00FF) + ((dst[offset] & 0xFF00) * alpha >> 8 & 0xFF00);
-					dst[offset++] = rgb + ((dst[offset] & 0xFF00FF) * alpha >> 8 & 0xFF00FF) + ((dst[offset] & 0xFF00) * alpha >> 8 & 0xFF00);
-					dst[offset++] = rgb + ((dst[offset] & 0xFF00FF) * alpha >> 8 & 0xFF00FF) + ((dst[offset] & 0xFF00) * alpha >> 8 & 0xFF00);
-					dst[offset++] = rgb + ((dst[offset] & 0xFF00FF) * alpha >> 8 & 0xFF00FF) + ((dst[offset] & 0xFF00) * alpha >> 8 & 0xFF00);
-				}
-			}
-		} else if (x0 < x1) {
-			int colorStep = (color1 - color0) / (x1 - x0);
-			if (clipX) {
-				if (x1 > boundX) {
-					x1 = boundX;
-				}
-				if (x0 < 0) {
-					color0 -= x0 * colorStep;
-					x0 = 0;
-				}
-				if (x0 >= x1) {
-					return;
-				}
-			}
-			offset += x0;
-			length = x1 - x0;
-			if (alpha == 0) {
-				do {
-					dst[offset++] = palette[color0 >> 8];
-					color0 += colorStep;
-					length--;
-				} while (length > 0);
-			} else {
-				int alpha = Draw3D.alpha;
-				int invAlpha = 256 - Draw3D.alpha;
-				do {
-					rgb = palette[color0 >> 8];
-					color0 += colorStep;
-					rgb = ((rgb & 0xFF00FF) * invAlpha >> 8 & 0xFF00FF) + ((rgb & 0xFF00) * invAlpha >> 8 & 0xFF00);
-					dst[offset++] = rgb + ((dst[offset] & 0xFF00FF) * alpha >> 8 & 0xFF00FF) + ((dst[offset] & 0xFF00) * alpha >> 8 & 0xFF00);
-					length--;
-				} while (length > 0);
-			}
-		}
-	}
-
-	public static void fillTriangle( int x0, int x1, int x2, int y0, int y1, int y2, int color) {
-		int xStepAB = 0;
-		if (y1 != y0) {
-			xStepAB = (x1 - x0 << 16) / (y1 - y0);
-		}
-		int xStepBC = 0;
-		if (y2 != y1) {
-			xStepBC = (x2 - x1 << 16) / (y2 - y1);
-		}
-		int xStepAC = 0;
-		if (y2 != y0) {
-			xStepAC = (x0 - x2 << 16) / (y0 - y2);
-		}
-		if (y0 <= y1 && y0 <= y2) {
-			if (y0 < bottom) {
-				if (y1 > bottom) {
-					y1 = bottom;
-				}
-				if (y2 > bottom) {
-					y2 = bottom;
-				}
-				if (y1 < y2) {
-					x2 = x0 <<= 0x10;
-					if (y0 < 0) {
-						x2 -= xStepAC * y0;
-						x0 -= xStepAB * y0;
-						y0 = 0;
-					}
-					x1 <<= 0x10;
-					if (y1 < 0) {
-						x1 -= xStepBC * y1;
-						y1 = 0;
-					}
-					if (y0 != y1 && xStepAC < xStepAB || y0 == y1 && xStepAC > xStepBC) {
-						y2 -= y1;
-						y1 -= y0;
-						y0 = lineOffset[y0];
-						while (true) {
-							y1--;
-							if (y1 < 0) {
-								while (true) {
-									y2--;
-									if (y2 < 0) {
-										return;
-									}
-									drawScanline(x2 >> 16, x1 >> 16, data, y0, color);
-									x2 += xStepAC;
-									x1 += xStepBC;
-									y0 += width2d;
-								}
-							}
-							drawScanline(x2 >> 16, x0 >> 16, data, y0, color);
-							x2 += xStepAC;
-							x0 += xStepAB;
-							y0 += width2d;
-						}
-					} else {
-						y2 -= y1;
-						y1 -= y0;
-						y0 = lineOffset[y0];
-						while (true) {
-							y1--;
-							if (y1 < 0) {
-								while (true) {
-									y2--;
-									if (y2 < 0) {
-										return;
-									}
-									drawScanline(x1 >> 16, x2 >> 16, data, y0, color);
-									x2 += xStepAC;
-									x1 += xStepBC;
-									y0 += width2d;
-								}
-							}
-							drawScanline(x0 >> 16, x2 >> 16, data, y0, color);
-							x2 += xStepAC;
-							x0 += xStepAB;
-							y0 += width2d;
-						}
-					}
-				} else {
-					x1 = x0 <<= 0x10;
-					if (y0 < 0) {
-						x1 -= xStepAC * y0;
-						x0 -= xStepAB * y0;
-						y0 = 0;
-					}
-					x2 <<= 0x10;
-					if (y2 < 0) {
-						x2 -= xStepBC * y2;
-						y2 = 0;
-					}
-					if (y0 != y2 && xStepAC < xStepAB || y0 == y2 && xStepBC > xStepAB) {
-						y1 -= y2;
-						y2 -= y0;
-						y0 = lineOffset[y0];
-						while (true) {
-							y2--;
-							if (y2 < 0) {
-								while (true) {
-									y1--;
-									if (y1 < 0) {
-										return;
-									}
-									drawScanline(x2 >> 16, x0 >> 16, data, y0, color);
-									x2 += xStepBC;
-									x0 += xStepAB;
-									y0 += width2d;
-								}
-							}
-							drawScanline(x1 >> 16, x0 >> 16, data, y0, color);
-							x1 += xStepAC;
-							x0 += xStepAB;
-							y0 += width2d;
-						}
-					} else {
-						y1 -= y2;
-						y2 -= y0;
-						y0 = lineOffset[y0];
-						while (true) {
-							y2--;
-							if (y2 < 0) {
-								while (true) {
-									y1--;
-									if (y1 < 0) {
-										return;
-									}
-									drawScanline(x0 >> 16, x2 >> 16, data, y0, color);
-									x2 += xStepBC;
-									x0 += xStepAB;
-									y0 += width2d;
-								}
-							}
-							drawScanline(x0 >> 16, x1 >> 16, data, y0, color);
-							x1 += xStepAC;
-							x0 += xStepAB;
-							y0 += width2d;
-						}
-					}
-				}
-			}
-		} else if (y1 <= y2) {
-			if (y1 < bottom) {
-				if (y2 > bottom) {
-					y2 = bottom;
-				}
-				if (y0 > bottom) {
-					y0 = bottom;
-				}
-				if (y2 < y0) {
-					x0 = x1 <<= 0x10;
-					if (y1 < 0) {
-						x0 -= xStepAB * y1;
-						x1 -= xStepBC * y1;
-						y1 = 0;
-					}
-					x2 <<= 0x10;
-					if (y2 < 0) {
-						x2 -= xStepAC * y2;
-						y2 = 0;
-					}
-					if (y1 != y2 && xStepAB < xStepBC || y1 == y2 && xStepAB > xStepAC) {
-						y0 -= y2;
-						y2 -= y1;
-						y1 = lineOffset[y1];
-						while (true) {
-							y2--;
-							if (y2 < 0) {
-								while (true) {
-									y0--;
-									if (y0 < 0) {
-										return;
-									}
-									drawScanline(x0 >> 16, x2 >> 16, data, y1, color);
-									x0 += xStepAB;
-									x2 += xStepAC;
-									y1 += width2d;
-								}
-							}
-							drawScanline(x0 >> 16, x1 >> 16, data, y1, color);
-							x0 += xStepAB;
-							x1 += xStepBC;
-							y1 += width2d;
-						}
-					} else {
-						y0 -= y2;
-						y2 -= y1;
-						y1 = lineOffset[y1];
-						while (true) {
-							y2--;
-							if (y2 < 0) {
-								while (true) {
-									y0--;
-									if (y0 < 0) {
-										return;
-									}
-									drawScanline(x2 >> 16, x0 >> 16, data, y1, color);
-									x0 += xStepAB;
-									x2 += xStepAC;
-									y1 += width2d;
-								}
-							}
-							drawScanline(x1 >> 16, x0 >> 16, data, y1, color);
-							x0 += xStepAB;
-							x1 += xStepBC;
-							y1 += width2d;
-						}
-					}
-				} else {
-					x2 = x1 <<= 0x10;
-					if (y1 < 0) {
-						x2 -= xStepAB * y1;
-						x1 -= xStepBC * y1;
-						y1 = 0;
-					}
-					x0 <<= 0x10;
-					if (y0 < 0) {
-						x0 -= xStepAC * y0;
-						y0 = 0;
-					}
-					if (xStepAB < xStepBC) {
-						y2 -= y0;
-						y0 -= y1;
-						y1 = lineOffset[y1];
-						while (true) {
-							y0--;
-							if (y0 < 0) {
-								while (true) {
-									y2--;
-									if (y2 < 0) {
-										return;
-									}
-									drawScanline(x0 >> 16, x1 >> 16, data, y1, color);
-									x0 += xStepAC;
-									x1 += xStepBC;
-									y1 += width2d;
-								}
-							}
-							drawScanline(x2 >> 16, x1 >> 16, data, y1, color);
-							x2 += xStepAB;
-							x1 += xStepBC;
-							y1 += width2d;
-						}
-					} else {
-						y2 -= y0;
-						y0 -= y1;
-						y1 = lineOffset[y1];
-						while (true) {
-							y0--;
-							if (y0 < 0) {
-								while (true) {
-									y2--;
-									if (y2 < 0) {
-										return;
-									}
-									drawScanline(x1 >> 16, x0 >> 16, data, y1, color);
-									x0 += xStepAC;
-									x1 += xStepBC;
-									y1 += width2d;
-								}
-							}
-							drawScanline(x1 >> 16, x2 >> 16, data, y1, color);
-							x2 += xStepAB;
-							x1 += xStepBC;
-							y1 += width2d;
-						}
-					}
-				}
-			}
-		} else if (y2 < bottom) {
-			if (y0 > bottom) {
-				y0 = bottom;
-			}
-			if (y1 > bottom) {
-				y1 = bottom;
-			}
-			if (y0 < y1) {
-				x1 = x2 <<= 0x10;
-				if (y2 < 0) {
-					x1 -= xStepBC * y2;
-					x2 -= xStepAC * y2;
-					y2 = 0;
-				}
-				x0 <<= 0x10;
-				if (y0 < 0) {
-					x0 -= xStepAB * y0;
-					y0 = 0;
-				}
-				if (xStepBC < xStepAC) {
-					y1 -= y0;
-					y0 -= y2;
-					y2 = lineOffset[y2];
-					while (true) {
-						y0--;
-						if (y0 < 0) {
-							while (true) {
-								y1--;
-								if (y1 < 0) {
-									return;
-								}
-								drawScanline(x1 >> 16, x0 >> 16, data, y2, color);
-								x1 += xStepBC;
-								x0 += xStepAB;
-								y2 += width2d;
-							}
-						}
-						drawScanline(x1 >> 16, x2 >> 16, data, y2, color);
-						x1 += xStepBC;
-						x2 += xStepAC;
-						y2 += width2d;
-					}
-				} else {
-					y1 -= y0;
-					y0 -= y2;
-					y2 = lineOffset[y2];
-					while (true) {
-						y0--;
-						if (y0 < 0) {
-							while (true) {
-								y1--;
-								if (y1 < 0) {
-									return;
-								}
-								drawScanline(x0 >> 16, x1 >> 16, data, y2, color);
-								x1 += xStepBC;
-								x0 += xStepAB;
-								y2 += width2d;
-							}
-						}
-						drawScanline(x2 >> 16, x1 >> 16, data, y2, color);
-						x1 += xStepBC;
-						x2 += xStepAC;
-						y2 += width2d;
-					}
-				}
-			} else {
-				x0 = x2 <<= 0x10;
-				if (y2 < 0) {
-					x0 -= xStepBC * y2;
-					x2 -= xStepAC * y2;
-					y2 = 0;
-				}
-				x1 <<= 0x10;
-				if (y1 < 0) {
-					x1 -= xStepAB * y1;
-					y1 = 0;
-				}
-				if (xStepBC < xStepAC) {
-					y0 -= y1;
-					y1 -= y2;
-					y2 = lineOffset[y2];
-					while (true) {
-						y1--;
-						if (y1 < 0) {
-							while (true) {
-								y0--;
-								if (y0 < 0) {
-									return;
-								}
-								drawScanline(x1 >> 16, x2 >> 16, data, y2, color);
-								x1 += xStepAB;
-								x2 += xStepAC;
-								y2 += width2d;
-							}
-						}
-						drawScanline(x0 >> 16, x2 >> 16, data, y2, color);
-						x0 += xStepBC;
-						x2 += xStepAC;
-						y2 += width2d;
-					}
-				} else {
-					y0 -= y1;
-					y1 -= y2;
-					y2 = lineOffset[y2];
-					while (true) {
-						y1--;
-						if (y1 < 0) {
-							while (true) {
-								y0--;
-								if (y0 < 0) {
-									return;
-								}
-								drawScanline(x2 >> 16, x1 >> 16, data, y2, color);
-								x1 += xStepAB;
-								x2 += xStepAC;
-								y2 += width2d;
-							}
-						}
-						drawScanline(x2 >> 16, x0 >> 16, data, y2, color);
-						x0 += xStepBC;
-						x2 += xStepAC;
-						y2 += width2d;
-					}
-				}
-			}
-		}
-	}
-
-	private static void drawScanline( int x0, int x1, int[] dst, int offset, int rgb) {
-		if (clipX) {
-			if (x1 > boundX) {
-				x1 = boundX;
-			}
-			if (x0 < 0) {
-				x0 = 0;
-			}
-		}
-
-		if (x0 >= x1) {
-			return;
-		}
-
-		offset += x0;
-		int length = x1 - x0 >> 2;
-
-		if (alpha == 0) {
-			while (true) {
-				length--;
-				if (length < 0) {
-					length = x1 - x0 & 0x3;
-					while (true) {
-						length--;
-						if (length < 0) {
-							return;
-						}
-						dst[offset++] = rgb;
-					}
-				}
-				dst[offset++] = rgb;
-				dst[offset++] = rgb;
-				dst[offset++] = rgb;
-				dst[offset++] = rgb;
-			}
-		}
-
-		int alpha = Draw3D.alpha;
-		int invAlpha = 256 - Draw3D.alpha;
-		rgb = ((rgb & 0xFF00FF) * invAlpha >> 8 & 0xFF00FF) + ((rgb & 0xFF00) * invAlpha >> 8 & 0xFF00);
-
-		while (true) {
-			length--;
-			if (length < 0) {
-				length = x1 - x0 & 0x3;
-				while (true) {
-					length--;
-					if (length < 0) {
-						return;
-					}
-					dst[offset++] = rgb + ((dst[offset] & 0xFF00FF) * alpha >> 8 & 0xFF00FF) + ((dst[offset] & 0xFF00) * alpha >> 8 & 0xFF00);
-				}
-			}
-
-			dst[offset++] = rgb + ((dst[offset] & 0xFF00FF) * alpha >> 8 & 0xFF00FF) + ((dst[offset] & 0xFF00) * alpha >> 8 & 0xFF00);
-			dst[offset++] = rgb + ((dst[offset] & 0xFF00FF) * alpha >> 8 & 0xFF00FF) + ((dst[offset] & 0xFF00) * alpha >> 8 & 0xFF00);
-			dst[offset++] = rgb + ((dst[offset] & 0xFF00FF) * alpha >> 8 & 0xFF00FF) + ((dst[offset] & 0xFF00) * alpha >> 8 & 0xFF00);
-			dst[offset++] = rgb + ((dst[offset] & 0xFF00FF) * alpha >> 8 & 0xFF00FF) + ((dst[offset] & 0xFF00) * alpha >> 8 & 0xFF00);
-		}
-	}
-
-	public static void fillTexturedTriangle( int xA, int xB, int xC, int yA, int yB, int yC, int shadeA, int shadeB, int shadeC, int originX, int originY, int originZ, int txB, int txC, int tyB, int tyC, int tzB, int tzC, int texture) {
-		int[] texels = getTexels(texture);
-		opaque = !textureTranslucent[texture];
-
-		int verticalX = originX - txB;
-		int verticalY = originY - tyB;
-		int verticalZ = originZ - tzB;
-
-		int horizontalX = txC - originX;
-		int horizontalY = tyC - originY;
-		int horizontalZ = tzC - originZ;
-
-		int u = horizontalX * originY - horizontalY * originX << 14;
-		int uStride = horizontalY * originZ - horizontalZ * originY << 8;
-		int uStepVertical = horizontalZ * originX - horizontalX * originZ << 5;
-
-		int v = verticalX * originY - verticalY * originX << 14;
-		int vStride = verticalY * originZ - verticalZ * originY << 8;
-		int vStepVertical = verticalZ * originX - verticalX * originZ << 5;
-
-		int w = verticalY * horizontalX - verticalX * horizontalY << 14;
-		int wStride = verticalZ * horizontalY - verticalY * horizontalZ << 8;
-		int wStepVertical = verticalX * horizontalZ - verticalZ * horizontalX << 5;
-
-		int xStepAB = 0;
-		int shadeStepAB = 0;
-		if (yB != yA) {
-			xStepAB = (xB - xA << 16) / (yB - yA);
-			shadeStepAB = (shadeB - shadeA << 16) / (yB - yA);
-		}
-
-		int xStepBC = 0;
-		int shadeStepBC = 0;
-		if (yC != yB) {
-			xStepBC = (xC - xB << 16) / (yC - yB);
-			shadeStepBC = (shadeC - shadeB << 16) / (yC - yB);
-		}
-
-		int xStepAC = 0;
-		int shadeStepAC = 0;
-		if (yC != yA) {
-			xStepAC = (xA - xC << 16) / (yA - yC);
-			shadeStepAC = (shadeA - shadeC << 16) / (yA - yC);
-		}
-
-		if (yA <= yB && yA <= yC) {
-			if (yA < bottom) {
-				if (yB > bottom) {
-					yB = bottom;
-				}
-
-				if (yC > bottom) {
-					yC = bottom;
-				}
-
-				if (yB < yC) {
-					xC = xA <<= 0x10;
-					shadeC = shadeA <<= 0x10;
-					if (yA < 0) {
-						xC -= xStepAC * yA;
-						xA -= xStepAB * yA;
-						shadeC -= shadeStepAC * yA;
-						shadeA -= shadeStepAB * yA;
-						yA = 0;
-					}
-					xB <<= 0x10;
-					shadeB <<= 0x10;
-					if (yB < 0) {
-						xB -= xStepBC * yB;
-						shadeB -= shadeStepBC * yB;
-						yB = 0;
-					}
-					int dy = yA - centerY;
-					u += uStepVertical * dy;
-					v += vStepVertical * dy;
-					w += wStepVertical * dy;
-					if (yA != yB && xStepAC < xStepAB || yA == yB && xStepAC > xStepBC) {
-						yC -= yB;
-						yB -= yA;
-						yA = lineOffset[yA];
-						while (true) {
-							yB--;
-							if (yB < 0) {
-								while (true) {
-									yC--;
-									if (yC < 0) {
-										return;
-									}
-									drawTexturedScanline(xC >> 16, xB >> 16, data, yA, texels, 0, 0, u, v, w, uStride, vStride, wStride, shadeC >> 8, shadeB >> 8);
-									xC += xStepAC;
-									xB += xStepBC;
-									shadeC += shadeStepAC;
-									shadeB += shadeStepBC;
-									yA += width2d;
-									u += uStepVertical;
-									v += vStepVertical;
-									w += wStepVertical;
-								}
-							}
-							drawTexturedScanline(xC >> 16, xA >> 16, data, yA, texels, 0, 0, u, v, w, uStride, vStride, wStride, shadeC >> 8, shadeA >> 8);
-							xC += xStepAC;
-							xA += xStepAB;
-							shadeC += shadeStepAC;
-							shadeA += shadeStepAB;
-							yA += width2d;
-							u += uStepVertical;
-							v += vStepVertical;
-							w += wStepVertical;
-						}
-					} else {
-						yC -= yB;
-						yB -= yA;
-						yA = lineOffset[yA];
-						while (true) {
-							yB--;
-							if (yB < 0) {
-								while (true) {
-									yC--;
-									if (yC < 0) {
-										return;
-									}
-									drawTexturedScanline(xB >> 16, xC >> 16, data, yA, texels, 0, 0, u, v, w, uStride, vStride, wStride, shadeB >> 8, shadeC >> 8);
-									xC += xStepAC;
-									xB += xStepBC;
-									shadeC += shadeStepAC;
-									shadeB += shadeStepBC;
-									yA += width2d;
-									u += uStepVertical;
-									v += vStepVertical;
-									w += wStepVertical;
-								}
-							}
-							drawTexturedScanline(xA >> 16, xC >> 16, data, yA, texels, 0, 0, u, v, w, uStride, vStride, wStride, shadeA >> 8, shadeC >> 8);
-							xC += xStepAC;
-							xA += xStepAB;
-							shadeC += shadeStepAC;
-							shadeA += shadeStepAB;
-							yA += width2d;
-							u += uStepVertical;
-							v += vStepVertical;
-							w += wStepVertical;
-						}
-					}
-				} else {
-					xB = xA <<= 0x10;
-					shadeB = shadeA <<= 0x10;
-					if (yA < 0) {
-						xB -= xStepAC * yA;
-						xA -= xStepAB * yA;
-						shadeB -= shadeStepAC * yA;
-						shadeA -= shadeStepAB * yA;
-						yA = 0;
-					}
-					xC <<= 0x10;
-					shadeC <<= 0x10;
-					if (yC < 0) {
-						xC -= xStepBC * yC;
-						shadeC -= shadeStepBC * yC;
-						yC = 0;
-					}
-					int dy = yA - centerY;
-					u += uStepVertical * dy;
-					v += vStepVertical * dy;
-					w += wStepVertical * dy;
-					if ((yA == yC || xStepAC >= xStepAB) && (yA != yC || xStepBC <= xStepAB)) {
-						yB -= yC;
-						yC -= yA;
-						yA = lineOffset[yA];
-						while (true) {
-							yC--;
-							if (yC < 0) {
-								while (true) {
-									yB--;
-									if (yB < 0) {
-										return;
-									}
-									drawTexturedScanline(xA >> 16, xC >> 16, data, yA, texels, 0, 0, u, v, w, uStride, vStride, wStride, shadeA >> 8, shadeC >> 8);
-									xC += xStepBC;
-									xA += xStepAB;
-									shadeC += shadeStepBC;
-									shadeA += shadeStepAB;
-									yA += width2d;
-									u += uStepVertical;
-									v += vStepVertical;
-									w += wStepVertical;
-								}
-							}
-							drawTexturedScanline(xA >> 16, xB >> 16, data, yA, texels, 0, 0, u, v, w, uStride, vStride, wStride, shadeA >> 8, shadeB >> 8);
-							xB += xStepAC;
-							xA += xStepAB;
-							shadeB += shadeStepAC;
-							shadeA += shadeStepAB;
-							yA += width2d;
-							u += uStepVertical;
-							v += vStepVertical;
-							w += wStepVertical;
-						}
-					} else {
-						yB -= yC;
-						yC -= yA;
-						yA = lineOffset[yA];
-						while (true) {
-							yC--;
-							if (yC < 0) {
-								while (true) {
-									yB--;
-									if (yB < 0) {
-										return;
-									}
-									drawTexturedScanline(xC >> 16, xA >> 16, data, yA, texels, 0, 0, u, v, w, uStride, vStride, wStride, shadeC >> 8, shadeA >> 8);
-									xC += xStepBC;
-									xA += xStepAB;
-									shadeC += shadeStepBC;
-									shadeA += shadeStepAB;
-									yA += width2d;
-									u += uStepVertical;
-									v += vStepVertical;
-									w += wStepVertical;
-								}
-							}
-							drawTexturedScanline(xB >> 16, xA >> 16, data, yA, texels, 0, 0, u, v, w, uStride, vStride, wStride, shadeB >> 8, shadeA >> 8);
-							xB += xStepAC;
-							xA += xStepAB;
-							shadeB += shadeStepAC;
-							shadeA += shadeStepAB;
-							yA += width2d;
-							u += uStepVertical;
-							v += vStepVertical;
-							w += wStepVertical;
-						}
-					}
-				}
-			}
-		} else if (yB <= yC) {
-			if (yB < bottom) {
-				if (yC > bottom) {
-					yC = bottom;
-				}
-				if (yA > bottom) {
-					yA = bottom;
-				}
-				if (yC < yA) {
-					xA = xB <<= 0x10;
-					shadeA = shadeB <<= 0x10;
-					if (yB < 0) {
-						xA -= xStepAB * yB;
-						xB -= xStepBC * yB;
-						shadeA -= shadeStepAB * yB;
-						shadeB -= shadeStepBC * yB;
-						yB = 0;
-					}
-					xC <<= 0x10;
-					shadeC <<= 0x10;
-					if (yC < 0) {
-						xC -= xStepAC * yC;
-						shadeC -= shadeStepAC * yC;
-						yC = 0;
-					}
-					int dy = yB - centerY;
-					u += uStepVertical * dy;
-					v += vStepVertical * dy;
-					w += wStepVertical * dy;
-					if (yB != yC && xStepAB < xStepBC || yB == yC && xStepAB > xStepAC) {
-						yA -= yC;
-						yC -= yB;
-						yB = lineOffset[yB];
-						while (true) {
-							yC--;
-							if (yC < 0) {
-								while (true) {
-									yA--;
-									if (yA < 0) {
-										return;
-									}
-									drawTexturedScanline(xA >> 16, xC >> 16, data, yB, texels, 0, 0, u, v, w, uStride, vStride, wStride, shadeA >> 8, shadeC >> 8);
-									xA += xStepAB;
-									xC += xStepAC;
-									shadeA += shadeStepAB;
-									shadeC += shadeStepAC;
-									yB += width2d;
-									u += uStepVertical;
-									v += vStepVertical;
-									w += wStepVertical;
-								}
-							}
-							drawTexturedScanline(xA >> 16, xB >> 16, data, yB, texels, 0, 0, u, v, w, uStride, vStride, wStride, shadeA >> 8, shadeB >> 8);
-							xA += xStepAB;
-							xB += xStepBC;
-							shadeA += shadeStepAB;
-							shadeB += shadeStepBC;
-							yB += width2d;
-							u += uStepVertical;
-							v += vStepVertical;
-							w += wStepVertical;
-						}
-					} else {
-						yA -= yC;
-						yC -= yB;
-						yB = lineOffset[yB];
-						while (true) {
-							yC--;
-							if (yC < 0) {
-								while (true) {
-									yA--;
-									if (yA < 0) {
-										return;
-									}
-									drawTexturedScanline(xC >> 16, xA >> 16, data, yB, texels, 0, 0, u, v, w, uStride, vStride, wStride, shadeC >> 8, shadeA >> 8);
-									xA += xStepAB;
-									xC += xStepAC;
-									shadeA += shadeStepAB;
-									shadeC += shadeStepAC;
-									yB += width2d;
-									u += uStepVertical;
-									v += vStepVertical;
-									w += wStepVertical;
-								}
-							}
-							drawTexturedScanline(xB >> 16, xA >> 16, data, yB, texels, 0, 0, u, v, w, uStride, vStride, wStride, shadeB >> 8, shadeA >> 8);
-							xA += xStepAB;
-							xB += xStepBC;
-							shadeA += shadeStepAB;
-							shadeB += shadeStepBC;
-							yB += width2d;
-							u += uStepVertical;
-							v += vStepVertical;
-							w += wStepVertical;
-						}
-					}
-				} else {
-					xC = xB <<= 0x10;
-					shadeC = shadeB <<= 0x10;
-					if (yB < 0) {
-						xC -= xStepAB * yB;
-						xB -= xStepBC * yB;
-						shadeC -= shadeStepAB * yB;
-						shadeB -= shadeStepBC * yB;
-						yB = 0;
-					}
-					xA <<= 0x10;
-					shadeA <<= 0x10;
-					if (yA < 0) {
-						xA -= xStepAC * yA;
-						shadeA -= shadeStepAC * yA;
-						yA = 0;
-					}
-					int dy = yB - centerY;
-					u += uStepVertical * dy;
-					v += vStepVertical * dy;
-					w += wStepVertical * dy;
-					if (xStepAB < xStepBC) {
-						yC -= yA;
-						yA -= yB;
-						yB = lineOffset[yB];
-						while (true) {
-							yA--;
-							if (yA < 0) {
-								while (true) {
-									yC--;
-									if (yC < 0) {
-										return;
-									}
-									drawTexturedScanline(xA >> 16, xB >> 16, data, yB, texels, 0, 0, u, v, w, uStride, vStride, wStride, shadeA >> 8, shadeB >> 8);
-									xA += xStepAC;
-									xB += xStepBC;
-									shadeA += shadeStepAC;
-									shadeB += shadeStepBC;
-									yB += width2d;
-									u += uStepVertical;
-									v += vStepVertical;
-									w += wStepVertical;
-								}
-							}
-							drawTexturedScanline(xC >> 16, xB >> 16, data, yB, texels, 0, 0, u, v, w, uStride, vStride, wStride, shadeC >> 8, shadeB >> 8);
-							xC += xStepAB;
-							xB += xStepBC;
-							shadeC += shadeStepAB;
-							shadeB += shadeStepBC;
-							yB += width2d;
-							u += uStepVertical;
-							v += vStepVertical;
-							w += wStepVertical;
-						}
-					} else {
-						yC -= yA;
-						yA -= yB;
-						yB = lineOffset[yB];
-						while (true) {
-							yA--;
-							if (yA < 0) {
-								while (true) {
-									yC--;
-									if (yC < 0) {
-										return;
-									}
-									drawTexturedScanline(xB >> 16, xA >> 16, data, yB, texels, 0, 0, u, v, w, uStride, vStride, wStride, shadeB >> 8, shadeA >> 8);
-									xA += xStepAC;
-									xB += xStepBC;
-									shadeA += shadeStepAC;
-									shadeB += shadeStepBC;
-									yB += width2d;
-									u += uStepVertical;
-									v += vStepVertical;
-									w += wStepVertical;
-								}
-							}
-							drawTexturedScanline(xB >> 16, xC >> 16, data, yB, texels, 0, 0, u, v, w, uStride, vStride, wStride, shadeB >> 8, shadeC >> 8);
-							xC += xStepAB;
-							xB += xStepBC;
-							shadeC += shadeStepAB;
-							shadeB += shadeStepBC;
-							yB += width2d;
-							u += uStepVertical;
-							v += vStepVertical;
-							w += wStepVertical;
-						}
-					}
-				}
-			}
-		} else if (yC < bottom) {
-			if (yA > bottom) {
-				yA = bottom;
-			}
-			if (yB > bottom) {
-				yB = bottom;
-			}
-			if (yA < yB) {
-				xB = xC <<= 0x10;
-				shadeB = shadeC <<= 0x10;
-				if (yC < 0) {
-					xB -= xStepBC * yC;
-					xC -= xStepAC * yC;
-					shadeB -= shadeStepBC * yC;
-					shadeC -= shadeStepAC * yC;
-					yC = 0;
-				}
-				xA <<= 0x10;
-				shadeA <<= 0x10;
-				if (yA < 0) {
-					xA -= xStepAB * yA;
-					shadeA -= shadeStepAB * yA;
-					yA = 0;
-				}
-				int dy = yC - centerY;
-				u += uStepVertical * dy;
-				v += vStepVertical * dy;
-				w += wStepVertical * dy;
-				if (xStepBC < xStepAC) {
-					yB -= yA;
-					yA -= yC;
-					yC = lineOffset[yC];
-					while (true) {
-						yA--;
-						if (yA < 0) {
-							while (true) {
-								yB--;
-								if (yB < 0) {
-									return;
-								}
-								drawTexturedScanline(xB >> 16, xA >> 16, data, yC, texels, 0, 0, u, v, w, uStride, vStride, wStride, shadeB >> 8, shadeA >> 8);
-								xB += xStepBC;
-								xA += xStepAB;
-								shadeB += shadeStepBC;
-								shadeA += shadeStepAB;
-								yC += width2d;
-								u += uStepVertical;
-								v += vStepVertical;
-								w += wStepVertical;
-							}
-						}
-						drawTexturedScanline(xB >> 16, xC >> 16, data, yC, texels, 0, 0, u, v, w, uStride, vStride, wStride, shadeB >> 8, shadeC >> 8);
-						xB += xStepBC;
-						xC += xStepAC;
-						shadeB += shadeStepBC;
-						shadeC += shadeStepAC;
-						yC += width2d;
-						u += uStepVertical;
-						v += vStepVertical;
-						w += wStepVertical;
-					}
-				} else {
-					yB -= yA;
-					yA -= yC;
-					yC = lineOffset[yC];
-					while (true) {
-						yA--;
-						if (yA < 0) {
-							while (true) {
-								yB--;
-								if (yB < 0) {
-									return;
-								}
-								drawTexturedScanline(xA >> 16, xB >> 16, data, yC, texels, 0, 0, u, v, w, uStride, vStride, wStride, shadeA >> 8, shadeB >> 8);
-								xB += xStepBC;
-								xA += xStepAB;
-								shadeB += shadeStepBC;
-								shadeA += shadeStepAB;
-								yC += width2d;
-								u += uStepVertical;
-								v += vStepVertical;
-								w += wStepVertical;
-							}
-						}
-						drawTexturedScanline(xC >> 16, xB >> 16, data, yC, texels, 0, 0, u, v, w, uStride, vStride, wStride, shadeC >> 8, shadeB >> 8);
-						xB += xStepBC;
-						xC += xStepAC;
-						shadeB += shadeStepBC;
-						shadeC += shadeStepAC;
-						yC += width2d;
-						u += uStepVertical;
-						v += vStepVertical;
-						w += wStepVertical;
-					}
-				}
-			} else {
-				xA = xC <<= 0x10;
-				shadeA = shadeC <<= 0x10;
-				if (yC < 0) {
-					xA -= xStepBC * yC;
-					xC -= xStepAC * yC;
-					shadeA -= shadeStepBC * yC;
-					shadeC -= shadeStepAC * yC;
-					yC = 0;
-				}
-				xB <<= 0x10;
-				shadeB <<= 0x10;
-				if (yB < 0) {
-					xB -= xStepAB * yB;
-					shadeB -= shadeStepAB * yB;
-					yB = 0;
-				}
-				int dy = yC - centerY;
-				u += uStepVertical * dy;
-				v += vStepVertical * dy;
-				w += wStepVertical * dy;
-				if (xStepBC < xStepAC) {
-					yA -= yB;
-					yB -= yC;
-					yC = lineOffset[yC];
-					while (true) {
-						yB--;
-						if (yB < 0) {
-							while (true) {
-								yA--;
-								if (yA < 0) {
-									return;
-								}
-								drawTexturedScanline(xB >> 16, xC >> 16, data, yC, texels, 0, 0, u, v, w, uStride, vStride, wStride, shadeB >> 8, shadeC >> 8);
-								xB += xStepAB;
-								xC += xStepAC;
-								shadeB += shadeStepAB;
-								shadeC += shadeStepAC;
-								yC += width2d;
-								u += uStepVertical;
-								v += vStepVertical;
-								w += wStepVertical;
-							}
-						}
-						drawTexturedScanline(xA >> 16, xC >> 16, data, yC, texels, 0, 0, u, v, w, uStride, vStride, wStride, shadeA >> 8, shadeC >> 8);
-						xA += xStepBC;
-						xC += xStepAC;
-						shadeA += shadeStepBC;
-						shadeC += shadeStepAC;
-						yC += width2d;
-						u += uStepVertical;
-						v += vStepVertical;
-						w += wStepVertical;
-					}
-				} else {
-					yA -= yB;
-					yB -= yC;
-					yC = lineOffset[yC];
-					while (true) {
-						yB--;
-						if (yB < 0) {
-							while (true) {
-								yA--;
-								if (yA < 0) {
-									return;
-								}
-								drawTexturedScanline(xC >> 16, xB >> 16, data, yC, texels, 0, 0, u, v, w, uStride, vStride, wStride, shadeC >> 8, shadeB >> 8);
-								xB += xStepAB;
-								xC += xStepAC;
-								shadeB += shadeStepAB;
-								shadeC += shadeStepAC;
-								yC += width2d;
-								u += uStepVertical;
-								v += vStepVertical;
-								w += wStepVertical;
-							}
-						}
-						drawTexturedScanline(xC >> 16, xA >> 16, data, yC, texels, 0, 0, u, v, w, uStride, vStride, wStride, shadeC >> 8, shadeA >> 8);
-						xA += xStepBC;
-						xC += xStepAC;
-						shadeA += shadeStepBC;
-						shadeC += shadeStepAC;
-						yC += width2d;
-						u += uStepVertical;
-						v += vStepVertical;
-						w += wStepVertical;
-					}
-				}
-			}
-		}
-	}
-
-	private static void drawTexturedScanline( int xA, int xB, int[] dst, int offset, int[] texels, int curU, int curV, int u, int v, int w, int uStride, int vStride, int wStride, int shadeA, int shadeB) {
-		if (xA >= xB) {
-			return;
-		}
-
-		int shadeStrides;
-		int strides;
-		if (clipX) {
-			shadeStrides = (shadeB - shadeA) / (xB - xA);
-
-			if (xB > boundX) {
-				xB = boundX;
-			}
-
-			if (xA < 0) {
-				shadeA -= xA * shadeStrides;
-				xA = 0;
-			}
-
-			if (xA >= xB) {
-				return;
-			}
-
-			strides = xB - xA >> 3;
-			shadeStrides <<= 0xC;
-			shadeA <<= 0x9;
-		} else {
-			if (xB - xA > 7) {
-				strides = xB - xA >> 3;
-				shadeStrides = (shadeB - shadeA) * reciprocal15[strides] >> 6;
-			} else {
-				strides = 0;
-				shadeStrides = 0;
-			}
-
-			shadeA <<= 0x9;
-		}
-
-		offset += xA;
-
-		int nextU;
-		int nextV;
-		int curW;
-		int dx;
-		int stepU;
-		int stepV;
-		int shadeShift;
-		if (lowMemory) {
-			nextU = 0;
-			nextV = 0;
-			dx = xA - centerX;
-			u = u + (uStride >> 3) * dx;
-			v = v + (vStride >> 3) * dx;
-			w = w + (wStride >> 3) * dx;
-			curW = w >> 12;
-			if (curW != 0) {
-				curU = u / curW;
-				curV = v / curW;
-				if (curU < 0) {
-					curU = 0;
-				} else if (curU > 4032) {
-					curU = 4032;
-				}
-			}
-			u = u + uStride;
-			v = v + vStride;
-			w = w + wStride;
-			curW = w >> 12;
-			if (curW != 0) {
-				nextU = u / curW;
-				nextV = v / curW;
-				if (nextU < 7) {
-					nextU = 7;
-				} else if (nextU > 4032) {
-					nextU = 4032;
-				}
-			}
-			stepU = nextU - curU >> 3;
-			stepV = nextV - curV >> 3;
-			curU += shadeA >> 3 & 0xC0000;
-			shadeShift = shadeA >> 23;
-			if (opaque) {
-				while (strides-- > 0) {
-					dst[offset++] = texels[(curV & 0xFC0) + (curU >> 6)] >>> shadeShift;
-					curU += stepU;
-					curV += stepV;
-					dst[offset++] = texels[(curV & 0xFC0) + (curU >> 6)] >>> shadeShift;
-					curU += stepU;
-					curV += stepV;
-					dst[offset++] = texels[(curV & 0xFC0) + (curU >> 6)] >>> shadeShift;
-					curU += stepU;
-					curV += stepV;
-					dst[offset++] = texels[(curV & 0xFC0) + (curU >> 6)] >>> shadeShift;
-					curU += stepU;
-					curV += stepV;
-					dst[offset++] = texels[(curV & 0xFC0) + (curU >> 6)] >>> shadeShift;
-					curU += stepU;
-					curV += stepV;
-					dst[offset++] = texels[(curV & 0xFC0) + (curU >> 6)] >>> shadeShift;
-					curU += stepU;
-					curV += stepV;
-					dst[offset++] = texels[(curV & 0xFC0) + (curU >> 6)] >>> shadeShift;
-					curU += stepU;
-					curV += stepV;
-					dst[offset++] = texels[(curV & 0xFC0) + (curU >> 6)] >>> shadeShift;
-					curU = nextU;
-					curV = nextV;
-					u += uStride;
-					v += vStride;
-					w += wStride;
-					curW = w >> 12;
-					if (curW != 0) {
-						nextU = u / curW;
-						nextV = v / curW;
-						if (nextU < 7) {
-							nextU = 7;
-						} else if (nextU > 4032) {
-							nextU = 4032;
-						}
-					}
-					stepU = nextU - curU >> 3;
-					stepV = nextV - curV >> 3;
-					shadeA += shadeStrides;
-					curU += shadeA >> 3 & 0xC0000;
-					shadeShift = shadeA >> 23;
-				}
-				strides = xB - xA & 0x7;
-				while (strides-- > 0) {
-					dst[offset++] = texels[(curV & 0xFC0) + (curU >> 6)] >>> shadeShift;
-					curU += stepU;
-					curV += stepV;
-				}
-			} else {
-				while (strides-- > 0) {
-					int rgb;
-					if ((rgb = texels[(curV & 0xFC0) + (curU >> 6)] >>> shadeShift) != 0) {
-						dst[offset] = rgb;
-					}
-					offset = offset + 1;
-					curU += stepU;
-					curV += stepV;
-					if ((rgb = texels[(curV & 0xFC0) + (curU >> 6)] >>> shadeShift) != 0) {
-						dst[offset] = rgb;
-					}
-					offset++;
-					curU += stepU;
-					curV += stepV;
-					if ((rgb = texels[(curV & 0xFC0) + (curU >> 6)] >>> shadeShift) != 0) {
-						dst[offset] = rgb;
-					}
-					offset++;
-					curU += stepU;
-					curV += stepV;
-					if ((rgb = texels[(curV & 0xFC0) + (curU >> 6)] >>> shadeShift) != 0) {
-						dst[offset] = rgb;
-					}
-					offset++;
-					curU += stepU;
-					curV += stepV;
-					if ((rgb = texels[(curV & 0xFC0) + (curU >> 6)] >>> shadeShift) != 0) {
-						dst[offset] = rgb;
-					}
-					offset++;
-					curU += stepU;
-					curV += stepV;
-					if ((rgb = texels[(curV & 0xFC0) + (curU >> 6)] >>> shadeShift) != 0) {
-						dst[offset] = rgb;
-					}
-					offset++;
-					curU += stepU;
-					curV += stepV;
-					if ((rgb = texels[(curV & 0xFC0) + (curU >> 6)] >>> shadeShift) != 0) {
-						dst[offset] = rgb;
-					}
-					offset++;
-					curU += stepU;
-					curV += stepV;
-					if ((rgb = texels[(curV & 0xFC0) + (curU >> 6)] >>> shadeShift) != 0) {
-						dst[offset] = rgb;
-					}
-					offset = offset + 1;
-					curU = nextU;
-					curV = nextV;
-					u += uStride;
-					v += vStride;
-					w += wStride;
-					curW = w >> 12;
-					if (curW != 0) {
-						nextU = u / curW;
-						nextV = v / curW;
-						if (nextU < 7) {
-							nextU = 7;
-						} else if (nextU > 4032) {
-							nextU = 4032;
-						}
-					}
-					stepU = nextU - curU >> 3;
-					stepV = nextV - curV >> 3;
-					shadeA += shadeStrides;
-					curU += shadeA >> 3 & 0xC0000;
-					shadeShift = shadeA >> 23;
-				}
-				strides = xB - xA & 0x7;
-				while (strides-- > 0) {
-					int rgb;
-					if ((rgb = texels[(curV & 0xFC0) + (curU >> 6)] >>> shadeShift) != 0) {
-						dst[offset] = rgb;
-					}
-					offset++;
-					curU += stepU;
-					curV += stepV;
-				}
-			}
-			return;
-		}
-		nextU = 0;
-		nextV = 0;
-		dx = xA - centerX;
-		u = u + (uStride >> 3) * dx;
-		v = v + (vStride >> 3) * dx;
-		w = w + (wStride >> 3) * dx;
-		curW = w >> 14;
-		if (curW != 0) {
-			curU = u / curW;
-			curV = v / curW;
-			if (curU < 0) {
-				curU = 0;
-			} else if (curU > 16256) {
-				curU = 16256;
-			}
-		}
-		u = u + uStride;
-		v = v + vStride;
-		w = w + wStride;
-		curW = w >> 14;
-		if (curW != 0) {
-			nextU = u / curW;
-			nextV = v / curW;
-			if (nextU < 7) {
-				nextU = 7;
-			} else if (nextU > 16256) {
-				nextU = 16256;
-			}
-		}
-		stepU = nextU - curU >> 3;
-		stepV = nextV - curV >> 3;
-		curU += shadeA & 0x600000;
-		shadeShift = shadeA >> 23;
-		if (opaque) {
-			while (strides-- > 0) {
-				dst[offset++] = texels[(curV & 0x3F80) + (curU >> 7)] >>> shadeShift;
-				curU += stepU;
-				curV += stepV;
-				dst[offset++] = texels[(curV & 0x3F80) + (curU >> 7)] >>> shadeShift;
-				curU += stepU;
-				curV += stepV;
-				dst[offset++] = texels[(curV & 0x3F80) + (curU >> 7)] >>> shadeShift;
-				curU += stepU;
-				curV += stepV;
-				dst[offset++] = texels[(curV & 0x3F80) + (curU >> 7)] >>> shadeShift;
-				curU += stepU;
-				curV += stepV;
-				dst[offset++] = texels[(curV & 0x3F80) + (curU >> 7)] >>> shadeShift;
-				curU += stepU;
-				curV += stepV;
-				dst[offset++] = texels[(curV & 0x3F80) + (curU >> 7)] >>> shadeShift;
-				curU += stepU;
-				curV += stepV;
-				dst[offset++] = texels[(curV & 0x3F80) + (curU >> 7)] >>> shadeShift;
-				curU += stepU;
-				curV += stepV;
-				dst[offset++] = texels[(curV & 0x3F80) + (curU >> 7)] >>> shadeShift;
-				curU = nextU;
-				curV = nextV;
-				u += uStride;
-				v += vStride;
-				w += wStride;
-				curW = w >> 14;
-				if (curW != 0) {
-					nextU = u / curW;
-					nextV = v / curW;
-					if (nextU < 7) {
-						nextU = 7;
-					} else if (nextU > 16256) {
-						nextU = 16256;
-					}
-				}
-				stepU = nextU - curU >> 3;
-				stepV = nextV - curV >> 3;
-				shadeA += shadeStrides;
-				curU += shadeA & 0x600000;
-				shadeShift = shadeA >> 23;
-			}
-			strides = xB - xA & 0x7;
-			while (strides-- > 0) {
-				dst[offset++] = texels[(curV & 0x3F80) + (curU >> 7)] >>> shadeShift;
-				curU += stepU;
-				curV += stepV;
-			}
-			return;
-		}
-
-		while (strides-- > 0) {
-			int rgb;
-			if ((rgb = texels[(curV & 0x3F80) + (curU >> 7)] >>> shadeShift) != 0) {
-				dst[offset] = rgb;
-			}
-			offset = offset + 1;
-			curU += stepU;
-			curV += stepV;
-			if ((rgb = texels[(curV & 0x3F80) + (curU >> 7)] >>> shadeShift) != 0) {
-				dst[offset] = rgb;
-			}
-			offset++;
-			curU += stepU;
-			curV += stepV;
-			if ((rgb = texels[(curV & 0x3F80) + (curU >> 7)] >>> shadeShift) != 0) {
-				dst[offset] = rgb;
-			}
-			offset++;
-			curU += stepU;
-			curV += stepV;
-			if ((rgb = texels[(curV & 0x3F80) + (curU >> 7)] >>> shadeShift) != 0) {
-				dst[offset] = rgb;
-			}
-			offset++;
-			curU += stepU;
-			curV += stepV;
-			if ((rgb = texels[(curV & 0x3F80) + (curU >> 7)] >>> shadeShift) != 0) {
-				dst[offset] = rgb;
-			}
-			offset++;
-			curU += stepU;
-			curV += stepV;
-			if ((rgb = texels[(curV & 0x3F80) + (curU >> 7)] >>> shadeShift) != 0) {
-				dst[offset] = rgb;
-			}
-			offset++;
-			curU += stepU;
-			curV += stepV;
-			if ((rgb = texels[(curV & 0x3F80) + (curU >> 7)] >>> shadeShift) != 0) {
-				dst[offset] = rgb;
-			}
-			offset++;
-			curU += stepU;
-			curV += stepV;
-			if ((rgb = texels[(curV & 0x3F80) + (curU >> 7)] >>> shadeShift) != 0) {
-				dst[offset] = rgb;
-			}
-			offset++;
-			curU = nextU;
-			curV = nextV;
-			u += uStride;
-			v += vStride;
-			w += wStride;
-			curW = w >> 14;
-			if (curW != 0) {
-				nextU = u / curW;
-				nextV = v / curW;
-				if (nextU < 7) {
-					nextU = 7;
-				} else if (nextU > 16256) {
-					nextU = 16256;
-				}
-			}
-			stepU = nextU - curU >> 3;
-			stepV = nextV - curV >> 3;
-			shadeA += shadeStrides;
-			curU += shadeA & 0x600000;
-			shadeShift = shadeA >> 23;
-		}
-		strides = xB - xA & 0x7;
-		while (strides-- > 0) {
-			int rgb;
-			if ((rgb = texels[(curV & 0x3F80) + (curU >> 7)] >>> shadeShift) != 0) {
-				dst[offset] = rgb;
-			}
-			offset++;
-			curU += stepU;
-			curV += stepV;
-		}
-	}
-
+public final class Draw3D extends Draw2D {
+   private static int anInt683 = -20714;
+   public static int anInt686;
+   public static int anInt687;
+   public static boolean aBoolean176 = true;
+   public static int anInt685;
+   public static boolean aBoolean179 = true;
+   public static int[] lineOffset;
+   public static int[] anIntArray185;
+   private static int[] anIntArray179 = new int[512];
+   public static int[] anIntArray180 = new int[2048];
+   private static int[][] anIntArrayArray17;
+   public static Class10_Sub1_Sub1_Sub3[] aClass10_Sub1_Sub1_Sub3Array1;
+   public static int[] anIntArray181 = new int[2048];
+   private static int[][] anIntArrayArray18;
+   public static boolean aBoolean177;
+   public static int[] anIntArray182 = new int[2048];
+   private static int anInt689;
+   private static boolean[] aBooleanArray9;
+   private static int[] anIntArray184;
+   private static int[][] anIntArrayArray19;
+   public static int[] anIntArray186;
+   public static int cycle;
+   private static boolean aBoolean178;
+   private static int anInt688;
+
+   static {
+      int var0;
+      for(var0 = 1; var0 < 512; ++var0) {
+         anIntArray179[var0] = 32768 / var0;
+      }
+
+      for(var0 = 1; var0 < 2048; ++var0) {
+         anIntArray180[var0] = 65536 / var0;
+      }
+
+      for(var0 = 0; var0 < 2048; ++var0) {
+         anIntArray181[var0] = (int)(Math.sin((double)var0 * 0.0030679615) * 65536.0);
+         anIntArray182[var0] = (int)(Math.cos((double)var0 * 0.0030679615) * 65536.0);
+      }
+
+      aClass10_Sub1_Sub1_Sub3Array1 = new Class10_Sub1_Sub1_Sub3[50];
+      aBooleanArray9 = new boolean[50];
+      anIntArray184 = new int[50];
+      anIntArrayArray18 = new int[50][];
+      anIntArray185 = new int[50];
+      anIntArray186 = new int[65536];
+      anIntArrayArray19 = new int[50][];
+   }
+
+   public static void method509() {
+      anIntArrayArray17 = null;
+
+      for(int var0 = 0; var0 < 50; ++var0) {
+         anIntArrayArray18[var0] = null;
+      }
+
+   }
+
+   public static void setBrightness(double var0) {
+      double var3 = var0 + Math.random() * 0.03 - 0.015;
+      int var5 = 0;
+
+      int var6;
+      for(var6 = 0; var6 < 512; ++var6) {
+         double var7 = (double)(var6 / 8) / 64.0 + 0.0078125;
+         double var9 = (double)(var6 & 7) / 8.0 + 0.0625;
+
+         for(int var11 = 0; var11 < 128; ++var11) {
+            double var12 = (double)var11 / 128.0;
+            double var14 = var12;
+            double var16 = var12;
+            double var18 = var12;
+            if (var9 != 0.0) {
+               double var20;
+               if (var12 < 0.5) {
+                  var20 = var12 * (var9 + 1.0);
+               } else {
+                  var20 = var12 + var9 - var12 * var9;
+               }
+
+               double var22 = var12 * 2.0 - var20;
+               double var24 = var7 + 0.3333333333333333;
+               if (var24 > 1.0) {
+                  --var24;
+               }
+
+               double var26 = var7 - 0.3333333333333333;
+               if (var26 < 0.0) {
+                  ++var26;
+               }
+
+               if (var24 * 6.0 < 1.0) {
+                  var14 = var22 + (var20 - var22) * 6.0 * var24;
+               } else if (var24 * 2.0 < 1.0) {
+                  var14 = var20;
+               } else if (var24 * 3.0 < 2.0) {
+                  var14 = var22 + (var20 - var22) * (0.6666666666666666 - var24) * 6.0;
+               } else {
+                  var14 = var22;
+               }
+
+               if (var7 * 6.0 < 1.0) {
+                  var16 = var22 + (var20 - var22) * 6.0 * var7;
+               } else if (var7 * 2.0 < 1.0) {
+                  var16 = var20;
+               } else if (var7 * 3.0 < 2.0) {
+                  var16 = var22 + (var20 - var22) * (0.6666666666666666 - var7) * 6.0;
+               } else {
+                  var16 = var22;
+               }
+
+               if (var26 * 6.0 < 1.0) {
+                  var18 = var22 + (var20 - var22) * 6.0 * var26;
+               } else if (var26 * 2.0 < 1.0) {
+                  var18 = var20;
+               } else if (var26 * 3.0 < 2.0) {
+                  var18 = var22 + (var20 - var22) * (0.6666666666666666 - var26) * 6.0;
+               } else {
+                  var18 = var22;
+               }
+            }
+
+            int var28 = (int)(var14 * 256.0);
+            int var21 = (int)(var16 * 256.0);
+            int var29 = (int)(var18 * 256.0);
+            int var23 = (var28 << 16) + (var21 << 8) + var29;
+            var23 = method516(var23, var3);
+            if (var23 == 0) {
+               var23 = 1;
+            }
+
+            anIntArray186[var5++] = var23;
+         }
+      }
+
+      for(var6 = 0; var6 < 50; ++var6) {
+         if (aClass10_Sub1_Sub1_Sub3Array1[var6] != null) {
+            int[] var30 = aClass10_Sub1_Sub1_Sub3Array1[var6].anIntArray175;
+            anIntArrayArray19[var6] = new int[var30.length];
+
+            for(int var8 = 0; var8 < var30.length; ++var8) {
+               anIntArrayArray19[var6][var8] = method516(var30[var8], var3);
+               if ((anIntArrayArray19[var6][var8] & 16316671) == 0 && var8 != 0) {
+                  anIntArrayArray19[var6][var8] = 1;
+               }
+            }
+         }
+      }
+
+      boolean var32 = false;
+
+      for(int var31 = 0; var31 < 50; ++var31) {
+         method513(var31);
+      }
+
+   }
+
+   public static void initPool() {
+      if (anIntArrayArray17 == null) {
+         anInt689 = 20;
+         if (aBoolean176) {
+            anIntArrayArray17 = new int[anInt689][16384];
+         } else {
+            anIntArrayArray17 = new int[anInt689][65536];
+         }
+
+         for(int var0 = 0; var0 < 50; ++var0) {
+            anIntArrayArray18[var0] = null;
+         }
+      }
+
+   }
+
+   public static void method513(int var0) {
+      if (anIntArrayArray18[var0] != null) {
+         anIntArrayArray17[anInt689++] = anIntArrayArray18[var0];
+         anIntArrayArray18[var0] = null;
+      }
+
+   }
+
+   private static int method516(int var0, double var1) {
+      double var3 = (double)(var0 >> 16) / 256.0;
+      double var5 = (double)(var0 >> 8 & 255) / 256.0;
+      double var7 = (double)(var0 & 255) / 256.0;
+      double var9 = Math.pow(var3, var1);
+      double var11 = Math.pow(var5, var1);
+      double var13 = Math.pow(var7, var1);
+      int var15 = (int)(var9 * 256.0);
+      int var16 = (int)(var11 * 256.0);
+      int var17 = (int)(var13 * 256.0);
+      return (var15 << 16) + (var16 << 8) + var17;
+   }
+
+   public static void method519(int var0, int var1, int var2, int var3, int var4, int var5, int var6) {
+      int var7 = 0;
+      if (var1 != var0) {
+         var7 = (var4 - var3 << 16) / (var1 - var0);
+      }
+
+      int var8 = 0;
+      if (var2 != var1) {
+         var8 = (var5 - var4 << 16) / (var2 - var1);
+      }
+
+      int var9 = 0;
+      if (var2 != var0) {
+         var9 = (var3 - var5 << 16) / (var0 - var2);
+      }
+
+      if (var0 <= var1 && var0 <= var2) {
+         if (var0 < Draw2D.bottom) {
+            if (var1 > Draw2D.bottom) {
+               var1 = Draw2D.bottom;
+            }
+
+            if (var2 > Draw2D.bottom) {
+               var2 = Draw2D.bottom;
+            }
+
+            if (var1 < var2) {
+               var5 = var3 <<= 16;
+               if (var0 < 0) {
+                  var5 -= var9 * var0;
+                  var3 -= var7 * var0;
+                  var0 = 0;
+               }
+
+               var4 <<= 16;
+               if (var1 < 0) {
+                  var4 -= var8 * var1;
+                  var1 = 0;
+               }
+
+               if (var0 != var1 && var9 < var7 || var0 == var1 && var9 > var8) {
+                  var2 -= var1;
+                  var1 -= var0;
+                  var0 = lineOffset[var0];
+
+                  while(true) {
+                     --var1;
+                     if (var1 < 0) {
+                        while(true) {
+                           --var2;
+                           if (var2 < 0) {
+                              return;
+                           }
+
+                           method520(Draw2D.data, var0, var6, var5 >> 16, var4 >> 16);
+                           var5 += var9;
+                           var4 += var8;
+                           var0 += Draw2D.width2d;
+                        }
+                     }
+
+                     method520(Draw2D.data, var0, var6, var5 >> 16, var3 >> 16);
+                     var5 += var9;
+                     var3 += var7;
+                     var0 += Draw2D.width2d;
+                  }
+               }
+
+               var2 -= var1;
+               var1 -= var0;
+               var0 = lineOffset[var0];
+
+               while(true) {
+                  --var1;
+                  if (var1 < 0) {
+                     while(true) {
+                        --var2;
+                        if (var2 < 0) {
+                           return;
+                        }
+
+                        method520(Draw2D.data, var0, var6, var4 >> 16, var5 >> 16);
+                        var5 += var9;
+                        var4 += var8;
+                        var0 += Draw2D.width2d;
+                     }
+                  }
+
+                  method520(Draw2D.data, var0, var6, var3 >> 16, var5 >> 16);
+                  var5 += var9;
+                  var3 += var7;
+                  var0 += Draw2D.width2d;
+               }
+            }
+
+            var4 = var3 <<= 16;
+            if (var0 < 0) {
+               var4 -= var9 * var0;
+               var3 -= var7 * var0;
+               var0 = 0;
+            }
+
+            var5 <<= 16;
+            if (var2 < 0) {
+               var5 -= var8 * var2;
+               var2 = 0;
+            }
+
+            if ((var0 == var2 || var9 >= var7) && (var0 != var2 || var8 <= var7)) {
+               var1 -= var2;
+               var2 -= var0;
+               var0 = lineOffset[var0];
+
+               while(true) {
+                  --var2;
+                  if (var2 < 0) {
+                     while(true) {
+                        --var1;
+                        if (var1 < 0) {
+                           return;
+                        }
+
+                        method520(Draw2D.data, var0, var6, var3 >> 16, var5 >> 16);
+                        var5 += var8;
+                        var3 += var7;
+                        var0 += Draw2D.width2d;
+                     }
+                  }
+
+                  method520(Draw2D.data, var0, var6, var3 >> 16, var4 >> 16);
+                  var4 += var9;
+                  var3 += var7;
+                  var0 += Draw2D.width2d;
+               }
+            }
+
+            var1 -= var2;
+            var2 -= var0;
+            var0 = lineOffset[var0];
+
+            while(true) {
+               --var2;
+               if (var2 < 0) {
+                  while(true) {
+                     --var1;
+                     if (var1 < 0) {
+                        return;
+                     }
+
+                     method520(Draw2D.data, var0, var6, var5 >> 16, var3 >> 16);
+                     var5 += var8;
+                     var3 += var7;
+                     var0 += Draw2D.width2d;
+                  }
+               }
+
+               method520(Draw2D.data, var0, var6, var4 >> 16, var3 >> 16);
+               var4 += var9;
+               var3 += var7;
+               var0 += Draw2D.width2d;
+            }
+         }
+      } else if (var1 <= var2) {
+         if (var1 < Draw2D.bottom) {
+            if (var2 > Draw2D.bottom) {
+               var2 = Draw2D.bottom;
+            }
+
+            if (var0 > Draw2D.bottom) {
+               var0 = Draw2D.bottom;
+            }
+
+            if (var2 < var0) {
+               var3 = var4 <<= 16;
+               if (var1 < 0) {
+                  var3 -= var7 * var1;
+                  var4 -= var8 * var1;
+                  var1 = 0;
+               }
+
+               var5 <<= 16;
+               if (var2 < 0) {
+                  var5 -= var9 * var2;
+                  var2 = 0;
+               }
+
+               if (var1 != var2 && var7 < var8 || var1 == var2 && var7 > var9) {
+                  var0 -= var2;
+                  var2 -= var1;
+                  var1 = lineOffset[var1];
+
+                  while(true) {
+                     --var2;
+                     if (var2 < 0) {
+                        while(true) {
+                           --var0;
+                           if (var0 < 0) {
+                              return;
+                           }
+
+                           method520(Draw2D.data, var1, var6, var3 >> 16, var5 >> 16);
+                           var3 += var7;
+                           var5 += var9;
+                           var1 += Draw2D.width2d;
+                        }
+                     }
+
+                     method520(Draw2D.data, var1, var6, var3 >> 16, var4 >> 16);
+                     var3 += var7;
+                     var4 += var8;
+                     var1 += Draw2D.width2d;
+                  }
+               }
+
+               var0 -= var2;
+               var2 -= var1;
+               var1 = lineOffset[var1];
+
+               while(true) {
+                  --var2;
+                  if (var2 < 0) {
+                     while(true) {
+                        --var0;
+                        if (var0 < 0) {
+                           return;
+                        }
+
+                        method520(Draw2D.data, var1, var6, var5 >> 16, var3 >> 16);
+                        var3 += var7;
+                        var5 += var9;
+                        var1 += Draw2D.width2d;
+                     }
+                  }
+
+                  method520(Draw2D.data, var1, var6, var4 >> 16, var3 >> 16);
+                  var3 += var7;
+                  var4 += var8;
+                  var1 += Draw2D.width2d;
+               }
+            }
+
+            var5 = var4 <<= 16;
+            if (var1 < 0) {
+               var5 -= var7 * var1;
+               var4 -= var8 * var1;
+               var1 = 0;
+            }
+
+            var3 <<= 16;
+            if (var0 < 0) {
+               var3 -= var9 * var0;
+               var0 = 0;
+            }
+
+            if (var7 < var8) {
+               var2 -= var0;
+               var0 -= var1;
+               var1 = lineOffset[var1];
+
+               while(true) {
+                  --var0;
+                  if (var0 < 0) {
+                     while(true) {
+                        --var2;
+                        if (var2 < 0) {
+                           return;
+                        }
+
+                        method520(Draw2D.data, var1, var6, var3 >> 16, var4 >> 16);
+                        var3 += var9;
+                        var4 += var8;
+                        var1 += Draw2D.width2d;
+                     }
+                  }
+
+                  method520(Draw2D.data, var1, var6, var5 >> 16, var4 >> 16);
+                  var5 += var7;
+                  var4 += var8;
+                  var1 += Draw2D.width2d;
+               }
+            }
+
+            var2 -= var0;
+            var0 -= var1;
+            var1 = lineOffset[var1];
+
+            while(true) {
+               --var0;
+               if (var0 < 0) {
+                  while(true) {
+                     --var2;
+                     if (var2 < 0) {
+                        return;
+                     }
+
+                     method520(Draw2D.data, var1, var6, var4 >> 16, var3 >> 16);
+                     var3 += var9;
+                     var4 += var8;
+                     var1 += Draw2D.width2d;
+                  }
+               }
+
+               method520(Draw2D.data, var1, var6, var4 >> 16, var5 >> 16);
+               var5 += var7;
+               var4 += var8;
+               var1 += Draw2D.width2d;
+            }
+         }
+      } else if (var2 < Draw2D.bottom) {
+         if (var0 > Draw2D.bottom) {
+            var0 = Draw2D.bottom;
+         }
+
+         if (var1 > Draw2D.bottom) {
+            var1 = Draw2D.bottom;
+         }
+
+         if (var0 < var1) {
+            var4 = var5 <<= 16;
+            if (var2 < 0) {
+               var4 -= var8 * var2;
+               var5 -= var9 * var2;
+               var2 = 0;
+            }
+
+            var3 <<= 16;
+            if (var0 < 0) {
+               var3 -= var7 * var0;
+               var0 = 0;
+            }
+
+            if (var8 < var9) {
+               var1 -= var0;
+               var0 -= var2;
+               var2 = lineOffset[var2];
+
+               while(true) {
+                  --var0;
+                  if (var0 < 0) {
+                     while(true) {
+                        --var1;
+                        if (var1 < 0) {
+                           return;
+                        }
+
+                        method520(Draw2D.data, var2, var6, var4 >> 16, var3 >> 16);
+                        var4 += var8;
+                        var3 += var7;
+                        var2 += Draw2D.width2d;
+                     }
+                  }
+
+                  method520(Draw2D.data, var2, var6, var4 >> 16, var5 >> 16);
+                  var4 += var8;
+                  var5 += var9;
+                  var2 += Draw2D.width2d;
+               }
+            }
+
+            var1 -= var0;
+            var0 -= var2;
+            var2 = lineOffset[var2];
+
+            while(true) {
+               --var0;
+               if (var0 < 0) {
+                  while(true) {
+                     --var1;
+                     if (var1 < 0) {
+                        return;
+                     }
+
+                     method520(Draw2D.data, var2, var6, var3 >> 16, var4 >> 16);
+                     var4 += var8;
+                     var3 += var7;
+                     var2 += Draw2D.width2d;
+                  }
+               }
+
+               method520(Draw2D.data, var2, var6, var5 >> 16, var4 >> 16);
+               var4 += var8;
+               var5 += var9;
+               var2 += Draw2D.width2d;
+            }
+         }
+
+         var3 = var5 <<= 16;
+         if (var2 < 0) {
+            var3 -= var8 * var2;
+            var5 -= var9 * var2;
+            var2 = 0;
+         }
+
+         var4 <<= 16;
+         if (var1 < 0) {
+            var4 -= var7 * var1;
+            var1 = 0;
+         }
+
+         if (var8 < var9) {
+            var0 -= var1;
+            var1 -= var2;
+            var2 = lineOffset[var2];
+
+            while(true) {
+               --var1;
+               if (var1 < 0) {
+                  while(true) {
+                     --var0;
+                     if (var0 < 0) {
+                        return;
+                     }
+
+                     method520(Draw2D.data, var2, var6, var4 >> 16, var5 >> 16);
+                     var4 += var7;
+                     var5 += var9;
+                     var2 += Draw2D.width2d;
+                  }
+               }
+
+               method520(Draw2D.data, var2, var6, var3 >> 16, var5 >> 16);
+               var3 += var8;
+               var5 += var9;
+               var2 += Draw2D.width2d;
+            }
+         }
+
+         var0 -= var1;
+         var1 -= var2;
+         var2 = lineOffset[var2];
+
+         while(true) {
+            --var1;
+            if (var1 < 0) {
+               while(true) {
+                  --var0;
+                  if (var0 < 0) {
+                     return;
+                  }
+
+                  method520(Draw2D.data, var2, var6, var5 >> 16, var4 >> 16);
+                  var4 += var7;
+                  var5 += var9;
+                  var2 += Draw2D.width2d;
+               }
+            }
+
+            method520(Draw2D.data, var2, var6, var5 >> 16, var3 >> 16);
+            var3 += var8;
+            var5 += var9;
+            var2 += Draw2D.width2d;
+         }
+      }
+
+   }
+
+   public static void method517(int var0, int var1, int var2, int var3, int var4, int var5, int var6, int var7, int var8) {
+      int var9 = 0;
+      int var10 = 0;
+      if (var1 != var0) {
+         var9 = (var4 - var3 << 16) / (var1 - var0);
+         var10 = (var7 - var6 << 15) / (var1 - var0);
+      }
+
+      int var11 = 0;
+      int var12 = 0;
+      if (var2 != var1) {
+         var11 = (var5 - var4 << 16) / (var2 - var1);
+         var12 = (var8 - var7 << 15) / (var2 - var1);
+      }
+
+      int var13 = 0;
+      int var14 = 0;
+      if (var2 != var0) {
+         var13 = (var3 - var5 << 16) / (var0 - var2);
+         var14 = (var6 - var8 << 15) / (var0 - var2);
+      }
+
+      if (var0 <= var1 && var0 <= var2) {
+         if (var0 < Draw2D.bottom) {
+            if (var1 > Draw2D.bottom) {
+               var1 = Draw2D.bottom;
+            }
+
+            if (var2 > Draw2D.bottom) {
+               var2 = Draw2D.bottom;
+            }
+
+            if (var1 < var2) {
+               var5 = var3 <<= 16;
+               var8 = var6 <<= 15;
+               if (var0 < 0) {
+                  var5 -= var13 * var0;
+                  var3 -= var9 * var0;
+                  var8 -= var14 * var0;
+                  var6 -= var10 * var0;
+                  var0 = 0;
+               }
+
+               var4 <<= 16;
+               var7 <<= 15;
+               if (var1 < 0) {
+                  var4 -= var11 * var1;
+                  var7 -= var12 * var1;
+                  var1 = 0;
+               }
+
+               if (var0 != var1 && var13 < var9 || var0 == var1 && var13 > var11) {
+                  var2 -= var1;
+                  var1 -= var0;
+                  var0 = lineOffset[var0];
+
+                  while(true) {
+                     --var1;
+                     if (var1 < 0) {
+                        while(true) {
+                           --var2;
+                           if (var2 < 0) {
+                              return;
+                           }
+
+                           method518(Draw2D.data, var0, var5 >> 16, var4 >> 16, var8 >> 7, var7 >> 7);
+                           var5 += var13;
+                           var4 += var11;
+                           var8 += var14;
+                           var7 += var12;
+                           var0 += Draw2D.width2d;
+                        }
+                     }
+
+                     method518(Draw2D.data, var0, var5 >> 16, var3 >> 16, var8 >> 7, var6 >> 7);
+                     var5 += var13;
+                     var3 += var9;
+                     var8 += var14;
+                     var6 += var10;
+                     var0 += Draw2D.width2d;
+                  }
+               }
+
+               var2 -= var1;
+               var1 -= var0;
+               var0 = lineOffset[var0];
+
+               while(true) {
+                  --var1;
+                  if (var1 < 0) {
+                     while(true) {
+                        --var2;
+                        if (var2 < 0) {
+                           return;
+                        }
+
+                        method518(Draw2D.data, var0, var4 >> 16, var5 >> 16, var7 >> 7, var8 >> 7);
+                        var5 += var13;
+                        var4 += var11;
+                        var8 += var14;
+                        var7 += var12;
+                        var0 += Draw2D.width2d;
+                     }
+                  }
+
+                  method518(Draw2D.data, var0, var3 >> 16, var5 >> 16, var6 >> 7, var8 >> 7);
+                  var5 += var13;
+                  var3 += var9;
+                  var8 += var14;
+                  var6 += var10;
+                  var0 += Draw2D.width2d;
+               }
+            }
+
+            var4 = var3 <<= 16;
+            var7 = var6 <<= 15;
+            if (var0 < 0) {
+               var4 -= var13 * var0;
+               var3 -= var9 * var0;
+               var7 -= var14 * var0;
+               var6 -= var10 * var0;
+               var0 = 0;
+            }
+
+            var5 <<= 16;
+            var8 <<= 15;
+            if (var2 < 0) {
+               var5 -= var11 * var2;
+               var8 -= var12 * var2;
+               var2 = 0;
+            }
+
+            if ((var0 == var2 || var13 >= var9) && (var0 != var2 || var11 <= var9)) {
+               var1 -= var2;
+               var2 -= var0;
+               var0 = lineOffset[var0];
+
+               while(true) {
+                  --var2;
+                  if (var2 < 0) {
+                     while(true) {
+                        --var1;
+                        if (var1 < 0) {
+                           return;
+                        }
+
+                        method518(Draw2D.data, var0, var3 >> 16, var5 >> 16, var6 >> 7, var8 >> 7);
+                        var5 += var11;
+                        var3 += var9;
+                        var8 += var12;
+                        var6 += var10;
+                        var0 += Draw2D.width2d;
+                     }
+                  }
+
+                  method518(Draw2D.data, var0, var3 >> 16, var4 >> 16, var6 >> 7, var7 >> 7);
+                  var4 += var13;
+                  var3 += var9;
+                  var7 += var14;
+                  var6 += var10;
+                  var0 += Draw2D.width2d;
+               }
+            }
+
+            var1 -= var2;
+            var2 -= var0;
+            var0 = lineOffset[var0];
+
+            while(true) {
+               --var2;
+               if (var2 < 0) {
+                  while(true) {
+                     --var1;
+                     if (var1 < 0) {
+                        return;
+                     }
+
+                     method518(Draw2D.data, var0, var5 >> 16, var3 >> 16, var8 >> 7, var6 >> 7);
+                     var5 += var11;
+                     var3 += var9;
+                     var8 += var12;
+                     var6 += var10;
+                     var0 += Draw2D.width2d;
+                  }
+               }
+
+               method518(Draw2D.data, var0, var4 >> 16, var3 >> 16, var7 >> 7, var6 >> 7);
+               var4 += var13;
+               var3 += var9;
+               var7 += var14;
+               var6 += var10;
+               var0 += Draw2D.width2d;
+            }
+         }
+      } else if (var1 <= var2) {
+         if (var1 < Draw2D.bottom) {
+            if (var2 > Draw2D.bottom) {
+               var2 = Draw2D.bottom;
+            }
+
+            if (var0 > Draw2D.bottom) {
+               var0 = Draw2D.bottom;
+            }
+
+            if (var2 < var0) {
+               var3 = var4 <<= 16;
+               var6 = var7 <<= 15;
+               if (var1 < 0) {
+                  var3 -= var9 * var1;
+                  var4 -= var11 * var1;
+                  var6 -= var10 * var1;
+                  var7 -= var12 * var1;
+                  var1 = 0;
+               }
+
+               var5 <<= 16;
+               var8 <<= 15;
+               if (var2 < 0) {
+                  var5 -= var13 * var2;
+                  var8 -= var14 * var2;
+                  var2 = 0;
+               }
+
+               if (var1 != var2 && var9 < var11 || var1 == var2 && var9 > var13) {
+                  var0 -= var2;
+                  var2 -= var1;
+                  var1 = lineOffset[var1];
+
+                  while(true) {
+                     --var2;
+                     if (var2 < 0) {
+                        while(true) {
+                           --var0;
+                           if (var0 < 0) {
+                              return;
+                           }
+
+                           method518(Draw2D.data, var1, var3 >> 16, var5 >> 16, var6 >> 7, var8 >> 7);
+                           var3 += var9;
+                           var5 += var13;
+                           var6 += var10;
+                           var8 += var14;
+                           var1 += Draw2D.width2d;
+                        }
+                     }
+
+                     method518(Draw2D.data, var1, var3 >> 16, var4 >> 16, var6 >> 7, var7 >> 7);
+                     var3 += var9;
+                     var4 += var11;
+                     var6 += var10;
+                     var7 += var12;
+                     var1 += Draw2D.width2d;
+                  }
+               }
+
+               var0 -= var2;
+               var2 -= var1;
+               var1 = lineOffset[var1];
+
+               while(true) {
+                  --var2;
+                  if (var2 < 0) {
+                     while(true) {
+                        --var0;
+                        if (var0 < 0) {
+                           return;
+                        }
+
+                        method518(Draw2D.data, var1, var5 >> 16, var3 >> 16, var8 >> 7, var6 >> 7);
+                        var3 += var9;
+                        var5 += var13;
+                        var6 += var10;
+                        var8 += var14;
+                        var1 += Draw2D.width2d;
+                     }
+                  }
+
+                  method518(Draw2D.data, var1, var4 >> 16, var3 >> 16, var7 >> 7, var6 >> 7);
+                  var3 += var9;
+                  var4 += var11;
+                  var6 += var10;
+                  var7 += var12;
+                  var1 += Draw2D.width2d;
+               }
+            }
+
+            var5 = var4 <<= 16;
+            var8 = var7 <<= 15;
+            if (var1 < 0) {
+               var5 -= var9 * var1;
+               var4 -= var11 * var1;
+               var8 -= var10 * var1;
+               var7 -= var12 * var1;
+               var1 = 0;
+            }
+
+            var3 <<= 16;
+            var6 <<= 15;
+            if (var0 < 0) {
+               var3 -= var13 * var0;
+               var6 -= var14 * var0;
+               var0 = 0;
+            }
+
+            if (var9 < var11) {
+               var2 -= var0;
+               var0 -= var1;
+               var1 = lineOffset[var1];
+
+               while(true) {
+                  --var0;
+                  if (var0 < 0) {
+                     while(true) {
+                        --var2;
+                        if (var2 < 0) {
+                           return;
+                        }
+
+                        method518(Draw2D.data, var1, var3 >> 16, var4 >> 16, var6 >> 7, var7 >> 7);
+                        var3 += var13;
+                        var4 += var11;
+                        var6 += var14;
+                        var7 += var12;
+                        var1 += Draw2D.width2d;
+                     }
+                  }
+
+                  method518(Draw2D.data, var1, var5 >> 16, var4 >> 16, var8 >> 7, var7 >> 7);
+                  var5 += var9;
+                  var4 += var11;
+                  var8 += var10;
+                  var7 += var12;
+                  var1 += Draw2D.width2d;
+               }
+            }
+
+            var2 -= var0;
+            var0 -= var1;
+            var1 = lineOffset[var1];
+
+            while(true) {
+               --var0;
+               if (var0 < 0) {
+                  while(true) {
+                     --var2;
+                     if (var2 < 0) {
+                        return;
+                     }
+
+                     method518(Draw2D.data, var1, var4 >> 16, var3 >> 16, var7 >> 7, var6 >> 7);
+                     var3 += var13;
+                     var4 += var11;
+                     var6 += var14;
+                     var7 += var12;
+                     var1 += Draw2D.width2d;
+                  }
+               }
+
+               method518(Draw2D.data, var1, var4 >> 16, var5 >> 16, var7 >> 7, var8 >> 7);
+               var5 += var9;
+               var4 += var11;
+               var8 += var10;
+               var7 += var12;
+               var1 += Draw2D.width2d;
+            }
+         }
+      } else if (var2 < Draw2D.bottom) {
+         if (var0 > Draw2D.bottom) {
+            var0 = Draw2D.bottom;
+         }
+
+         if (var1 > Draw2D.bottom) {
+            var1 = Draw2D.bottom;
+         }
+
+         if (var0 < var1) {
+            var4 = var5 <<= 16;
+            var7 = var8 <<= 15;
+            if (var2 < 0) {
+               var4 -= var11 * var2;
+               var5 -= var13 * var2;
+               var7 -= var12 * var2;
+               var8 -= var14 * var2;
+               var2 = 0;
+            }
+
+            var3 <<= 16;
+            var6 <<= 15;
+            if (var0 < 0) {
+               var3 -= var9 * var0;
+               var6 -= var10 * var0;
+               var0 = 0;
+            }
+
+            if (var11 < var13) {
+               var1 -= var0;
+               var0 -= var2;
+               var2 = lineOffset[var2];
+
+               while(true) {
+                  --var0;
+                  if (var0 < 0) {
+                     while(true) {
+                        --var1;
+                        if (var1 < 0) {
+                           return;
+                        }
+
+                        method518(Draw2D.data, var2, var4 >> 16, var3 >> 16, var7 >> 7, var6 >> 7);
+                        var4 += var11;
+                        var3 += var9;
+                        var7 += var12;
+                        var6 += var10;
+                        var2 += Draw2D.width2d;
+                     }
+                  }
+
+                  method518(Draw2D.data, var2, var4 >> 16, var5 >> 16, var7 >> 7, var8 >> 7);
+                  var4 += var11;
+                  var5 += var13;
+                  var7 += var12;
+                  var8 += var14;
+                  var2 += Draw2D.width2d;
+               }
+            }
+
+            var1 -= var0;
+            var0 -= var2;
+            var2 = lineOffset[var2];
+
+            while(true) {
+               --var0;
+               if (var0 < 0) {
+                  while(true) {
+                     --var1;
+                     if (var1 < 0) {
+                        return;
+                     }
+
+                     method518(Draw2D.data, var2, var3 >> 16, var4 >> 16, var6 >> 7, var7 >> 7);
+                     var4 += var11;
+                     var3 += var9;
+                     var7 += var12;
+                     var6 += var10;
+                     var2 += Draw2D.width2d;
+                  }
+               }
+
+               method518(Draw2D.data, var2, var5 >> 16, var4 >> 16, var8 >> 7, var7 >> 7);
+               var4 += var11;
+               var5 += var13;
+               var7 += var12;
+               var8 += var14;
+               var2 += Draw2D.width2d;
+            }
+         }
+
+         var3 = var5 <<= 16;
+         var6 = var8 <<= 15;
+         if (var2 < 0) {
+            var3 -= var11 * var2;
+            var5 -= var13 * var2;
+            var6 -= var12 * var2;
+            var8 -= var14 * var2;
+            var2 = 0;
+         }
+
+         var4 <<= 16;
+         var7 <<= 15;
+         if (var1 < 0) {
+            var4 -= var9 * var1;
+            var7 -= var10 * var1;
+            var1 = 0;
+         }
+
+         if (var11 < var13) {
+            var0 -= var1;
+            var1 -= var2;
+            var2 = lineOffset[var2];
+
+            while(true) {
+               --var1;
+               if (var1 < 0) {
+                  while(true) {
+                     --var0;
+                     if (var0 < 0) {
+                        return;
+                     }
+
+                     method518(Draw2D.data, var2, var4 >> 16, var5 >> 16, var7 >> 7, var8 >> 7);
+                     var4 += var9;
+                     var5 += var13;
+                     var7 += var10;
+                     var8 += var14;
+                     var2 += Draw2D.width2d;
+                  }
+               }
+
+               method518(Draw2D.data, var2, var3 >> 16, var5 >> 16, var6 >> 7, var8 >> 7);
+               var3 += var11;
+               var5 += var13;
+               var6 += var12;
+               var8 += var14;
+               var2 += Draw2D.width2d;
+            }
+         }
+
+         var0 -= var1;
+         var1 -= var2;
+         var2 = lineOffset[var2];
+
+         while(true) {
+            --var1;
+            if (var1 < 0) {
+               while(true) {
+                  --var0;
+                  if (var0 < 0) {
+                     return;
+                  }
+
+                  method518(Draw2D.data, var2, var5 >> 16, var4 >> 16, var8 >> 7, var7 >> 7);
+                  var4 += var9;
+                  var5 += var13;
+                  var7 += var10;
+                  var8 += var14;
+                  var2 += Draw2D.width2d;
+               }
+            }
+
+            method518(Draw2D.data, var2, var5 >> 16, var3 >> 16, var8 >> 7, var6 >> 7);
+            var3 += var11;
+            var5 += var13;
+            var6 += var12;
+            var8 += var14;
+            var2 += Draw2D.width2d;
+         }
+      }
+
+   }
+
+   private static int[] method514(int var0) {
+      anIntArray185[var0] = cycle++;
+      if (anIntArrayArray18[var0] != null) {
+         return anIntArrayArray18[var0];
+      } else {
+         int[] var1;
+         int var2;
+         if (anInt689 > 0) {
+            var1 = anIntArrayArray17[--anInt689];
+            anIntArrayArray17[anInt689] = null;
+         } else {
+            int var6 = 0;
+            int var7 = -1;
+
+            for(var2 = 0; var2 < anInt688; ++var2) {
+               if (anIntArrayArray18[var2] != null && (anIntArray185[var2] < var6 || var7 == -1)) {
+                  var6 = anIntArray185[var2];
+                  var7 = var2;
+               }
+            }
+
+            var1 = anIntArrayArray18[var7];
+            anIntArrayArray18[var7] = null;
+         }
+
+         anIntArrayArray18[var0] = var1;
+         Class10_Sub1_Sub1_Sub3 var3 = aClass10_Sub1_Sub1_Sub3Array1[var0];
+         int[] var4 = anIntArrayArray19[var0];
+         int var5;
+         if (aBoolean176) {
+            aBooleanArray9[var0] = false;
+
+            for(var2 = 0; var2 < 4096; ++var2) {
+               var5 = var1[var2] = var4[var3.aByteArray16[var2]] & 16316671;
+               if (var5 == 0) {
+                  aBooleanArray9[var0] = true;
+               }
+
+               var1[var2 + 4096] = var5 - (var5 >>> 3) & 16316671;
+               var1[var2 + 8192] = var5 - (var5 >>> 2) & 16316671;
+               var1[var2 + 12288] = var5 - (var5 >>> 2) - (var5 >>> 3) & 16316671;
+            }
+         } else {
+            if (var3.anInt652 != 64) {
+               for(var2 = 0; var2 < 16384; ++var2) {
+                  var1[var2] = var4[var3.aByteArray16[var2]];
+               }
+            } else {
+               for(var2 = 0; var2 < 128; ++var2) {
+                  for(var5 = 0; var5 < 128; ++var5) {
+                     var1[var5 + (var2 << 7)] = var4[var3.aByteArray16[(var5 >> 1) + (var2 >> 1 << 6)]];
+                  }
+               }
+            }
+
+            aBooleanArray9[var0] = false;
+
+            for(var2 = 0; var2 < 16384; ++var2) {
+               var1[var2] &= 16316671;
+               var5 = var1[var2];
+               if (var5 == 0) {
+                  aBooleanArray9[var0] = true;
+               }
+
+               var1[var2 + 16384] = var5 - (var5 >>> 3) & 16316671;
+               var1[var2 + 32768] = var5 - (var5 >>> 2) & 16316671;
+               var1[var2 + 49152] = var5 - (var5 >>> 2) - (var5 >>> 3) & 16316671;
+            }
+         }
+
+         return var1;
+      }
+   }
+
+   public static void method521(int var0, int var1, int var2, int var3, int var4, int var5, int var6, int var7, int var8, int var9, int var10, int var11, int var12, int var13, int var14, int var15, int var16, int var17, int var18) {
+      int[] var19 = method514(var18);
+      aBoolean178 = !aBooleanArray9[var18];
+      int var20 = var9 - var10;
+      int var21 = var12 - var13;
+      int var22 = var15 - var16;
+      int var23 = var11 - var9;
+      int var24 = var14 - var12;
+      int var25 = var17 - var15;
+      int var26 = var23 * var12 - var24 * var9 << 14;
+      int var27 = var24 * var15 - var25 * var12 << 8;
+      int var28 = var25 * var9 - var23 * var15 << 5;
+      int var29 = var20 * var12 - var21 * var9 << 14;
+      int var30 = var21 * var15 - var22 * var12 << 8;
+      int var31 = var22 * var9 - var20 * var15 << 5;
+      int var32 = var21 * var23 - var20 * var24 << 14;
+      int var33 = var22 * var24 - var21 * var25 << 8;
+      int var34 = var20 * var25 - var22 * var23 << 5;
+      int var35 = 0;
+      int var36 = 0;
+      if (var1 != var0) {
+         var35 = (var4 - var3 << 16) / (var1 - var0);
+         var36 = (var7 - var6 << 16) / (var1 - var0);
+      }
+
+      int var37 = 0;
+      int var38 = 0;
+      if (var2 != var1) {
+         var37 = (var5 - var4 << 16) / (var2 - var1);
+         var38 = (var8 - var7 << 16) / (var2 - var1);
+      }
+
+      int var39 = 0;
+      int var40 = 0;
+      if (var2 != var0) {
+         var39 = (var3 - var5 << 16) / (var0 - var2);
+         var40 = (var6 - var8 << 16) / (var0 - var2);
+      }
+
+      int var41;
+      if (var0 <= var1 && var0 <= var2) {
+         if (var0 < Draw2D.bottom) {
+            if (var1 > Draw2D.bottom) {
+               var1 = Draw2D.bottom;
+            }
+
+            if (var2 > Draw2D.bottom) {
+               var2 = Draw2D.bottom;
+            }
+
+            if (var1 < var2) {
+               var5 = var3 <<= 16;
+               var8 = var6 <<= 16;
+               if (var0 < 0) {
+                  var5 -= var39 * var0;
+                  var3 -= var35 * var0;
+                  var8 -= var40 * var0;
+                  var6 -= var36 * var0;
+                  var0 = 0;
+               }
+
+               var4 <<= 16;
+               var7 <<= 16;
+               if (var1 < 0) {
+                  var4 -= var37 * var1;
+                  var7 -= var38 * var1;
+                  var1 = 0;
+               }
+
+               var41 = var0 - anInt687;
+               var26 += var28 * var41;
+               var29 += var31 * var41;
+               var32 += var34 * var41;
+               if (var0 != var1 && var39 < var35 || var0 == var1 && var39 > var37) {
+                  var2 -= var1;
+                  var1 -= var0;
+                  var0 = lineOffset[var0];
+
+                  while(true) {
+                     --var1;
+                     if (var1 < 0) {
+                        while(true) {
+                           --var2;
+                           if (var2 < 0) {
+                              return;
+                           }
+
+                           method522(Draw2D.data, var19, 0, 0, var0, var5 >> 16, var4 >> 16, var8 >> 8, var7 >> 8, var26, var29, var32, var27, var30, var33);
+                           var5 += var39;
+                           var4 += var37;
+                           var8 += var40;
+                           var7 += var38;
+                           var0 += Draw2D.width2d;
+                           var26 += var28;
+                           var29 += var31;
+                           var32 += var34;
+                        }
+                     }
+
+                     method522(Draw2D.data, var19, 0, 0, var0, var5 >> 16, var3 >> 16, var8 >> 8, var6 >> 8, var26, var29, var32, var27, var30, var33);
+                     var5 += var39;
+                     var3 += var35;
+                     var8 += var40;
+                     var6 += var36;
+                     var0 += Draw2D.width2d;
+                     var26 += var28;
+                     var29 += var31;
+                     var32 += var34;
+                  }
+               }
+
+               var2 -= var1;
+               var1 -= var0;
+               var0 = lineOffset[var0];
+
+               while(true) {
+                  --var1;
+                  if (var1 < 0) {
+                     while(true) {
+                        --var2;
+                        if (var2 < 0) {
+                           return;
+                        }
+
+                        method522(Draw2D.data, var19, 0, 0, var0, var4 >> 16, var5 >> 16, var7 >> 8, var8 >> 8, var26, var29, var32, var27, var30, var33);
+                        var5 += var39;
+                        var4 += var37;
+                        var8 += var40;
+                        var7 += var38;
+                        var0 += Draw2D.width2d;
+                        var26 += var28;
+                        var29 += var31;
+                        var32 += var34;
+                     }
+                  }
+
+                  method522(Draw2D.data, var19, 0, 0, var0, var3 >> 16, var5 >> 16, var6 >> 8, var8 >> 8, var26, var29, var32, var27, var30, var33);
+                  var5 += var39;
+                  var3 += var35;
+                  var8 += var40;
+                  var6 += var36;
+                  var0 += Draw2D.width2d;
+                  var26 += var28;
+                  var29 += var31;
+                  var32 += var34;
+               }
+            }
+
+            var4 = var3 <<= 16;
+            var7 = var6 <<= 16;
+            if (var0 < 0) {
+               var4 -= var39 * var0;
+               var3 -= var35 * var0;
+               var7 -= var40 * var0;
+               var6 -= var36 * var0;
+               var0 = 0;
+            }
+
+            var5 <<= 16;
+            var8 <<= 16;
+            if (var2 < 0) {
+               var5 -= var37 * var2;
+               var8 -= var38 * var2;
+               var2 = 0;
+            }
+
+            var41 = var0 - anInt687;
+            var26 += var28 * var41;
+            var29 += var31 * var41;
+            var32 += var34 * var41;
+            if (var0 != var2 && var39 < var35 || var0 == var2 && var37 > var35) {
+               var1 -= var2;
+               var2 -= var0;
+               var0 = lineOffset[var0];
+
+               while(true) {
+                  --var2;
+                  if (var2 < 0) {
+                     while(true) {
+                        --var1;
+                        if (var1 < 0) {
+                           return;
+                        }
+
+                        method522(Draw2D.data, var19, 0, 0, var0, var5 >> 16, var3 >> 16, var8 >> 8, var6 >> 8, var26, var29, var32, var27, var30, var33);
+                        var5 += var37;
+                        var3 += var35;
+                        var8 += var38;
+                        var6 += var36;
+                        var0 += Draw2D.width2d;
+                        var26 += var28;
+                        var29 += var31;
+                        var32 += var34;
+                     }
+                  }
+
+                  method522(Draw2D.data, var19, 0, 0, var0, var4 >> 16, var3 >> 16, var7 >> 8, var6 >> 8, var26, var29, var32, var27, var30, var33);
+                  var4 += var39;
+                  var3 += var35;
+                  var7 += var40;
+                  var6 += var36;
+                  var0 += Draw2D.width2d;
+                  var26 += var28;
+                  var29 += var31;
+                  var32 += var34;
+               }
+            }
+
+            var1 -= var2;
+            var2 -= var0;
+            var0 = lineOffset[var0];
+
+            while(true) {
+               --var2;
+               if (var2 < 0) {
+                  while(true) {
+                     --var1;
+                     if (var1 < 0) {
+                        return;
+                     }
+
+                     method522(Draw2D.data, var19, 0, 0, var0, var3 >> 16, var5 >> 16, var6 >> 8, var8 >> 8, var26, var29, var32, var27, var30, var33);
+                     var5 += var37;
+                     var3 += var35;
+                     var8 += var38;
+                     var6 += var36;
+                     var0 += Draw2D.width2d;
+                     var26 += var28;
+                     var29 += var31;
+                     var32 += var34;
+                  }
+               }
+
+               method522(Draw2D.data, var19, 0, 0, var0, var3 >> 16, var4 >> 16, var6 >> 8, var7 >> 8, var26, var29, var32, var27, var30, var33);
+               var4 += var39;
+               var3 += var35;
+               var7 += var40;
+               var6 += var36;
+               var0 += Draw2D.width2d;
+               var26 += var28;
+               var29 += var31;
+               var32 += var34;
+            }
+         }
+      } else if (var1 <= var2) {
+         if (var1 < Draw2D.bottom) {
+            if (var2 > Draw2D.bottom) {
+               var2 = Draw2D.bottom;
+            }
+
+            if (var0 > Draw2D.bottom) {
+               var0 = Draw2D.bottom;
+            }
+
+            if (var2 < var0) {
+               var3 = var4 <<= 16;
+               var6 = var7 <<= 16;
+               if (var1 < 0) {
+                  var3 -= var35 * var1;
+                  var4 -= var37 * var1;
+                  var6 -= var36 * var1;
+                  var7 -= var38 * var1;
+                  var1 = 0;
+               }
+
+               var5 <<= 16;
+               var8 <<= 16;
+               if (var2 < 0) {
+                  var5 -= var39 * var2;
+                  var8 -= var40 * var2;
+                  var2 = 0;
+               }
+
+               var41 = var1 - anInt687;
+               var26 += var28 * var41;
+               var29 += var31 * var41;
+               var32 += var34 * var41;
+               if (var1 != var2 && var35 < var37 || var1 == var2 && var35 > var39) {
+                  var0 -= var2;
+                  var2 -= var1;
+                  var1 = lineOffset[var1];
+
+                  while(true) {
+                     --var2;
+                     if (var2 < 0) {
+                        while(true) {
+                           --var0;
+                           if (var0 < 0) {
+                              return;
+                           }
+
+                           method522(Draw2D.data, var19, 0, 0, var1, var3 >> 16, var5 >> 16, var6 >> 8, var8 >> 8, var26, var29, var32, var27, var30, var33);
+                           var3 += var35;
+                           var5 += var39;
+                           var6 += var36;
+                           var8 += var40;
+                           var1 += Draw2D.width2d;
+                           var26 += var28;
+                           var29 += var31;
+                           var32 += var34;
+                        }
+                     }
+
+                     method522(Draw2D.data, var19, 0, 0, var1, var3 >> 16, var4 >> 16, var6 >> 8, var7 >> 8, var26, var29, var32, var27, var30, var33);
+                     var3 += var35;
+                     var4 += var37;
+                     var6 += var36;
+                     var7 += var38;
+                     var1 += Draw2D.width2d;
+                     var26 += var28;
+                     var29 += var31;
+                     var32 += var34;
+                  }
+               }
+
+               var0 -= var2;
+               var2 -= var1;
+               var1 = lineOffset[var1];
+
+               while(true) {
+                  --var2;
+                  if (var2 < 0) {
+                     while(true) {
+                        --var0;
+                        if (var0 < 0) {
+                           return;
+                        }
+
+                        method522(Draw2D.data, var19, 0, 0, var1, var5 >> 16, var3 >> 16, var8 >> 8, var6 >> 8, var26, var29, var32, var27, var30, var33);
+                        var3 += var35;
+                        var5 += var39;
+                        var6 += var36;
+                        var8 += var40;
+                        var1 += Draw2D.width2d;
+                        var26 += var28;
+                        var29 += var31;
+                        var32 += var34;
+                     }
+                  }
+
+                  method522(Draw2D.data, var19, 0, 0, var1, var4 >> 16, var3 >> 16, var7 >> 8, var6 >> 8, var26, var29, var32, var27, var30, var33);
+                  var3 += var35;
+                  var4 += var37;
+                  var6 += var36;
+                  var7 += var38;
+                  var1 += Draw2D.width2d;
+                  var26 += var28;
+                  var29 += var31;
+                  var32 += var34;
+               }
+            }
+
+            var5 = var4 <<= 16;
+            var8 = var7 <<= 16;
+            if (var1 < 0) {
+               var5 -= var35 * var1;
+               var4 -= var37 * var1;
+               var8 -= var36 * var1;
+               var7 -= var38 * var1;
+               var1 = 0;
+            }
+
+            var3 <<= 16;
+            var6 <<= 16;
+            if (var0 < 0) {
+               var3 -= var39 * var0;
+               var6 -= var40 * var0;
+               var0 = 0;
+            }
+
+            var41 = var1 - anInt687;
+            var26 += var28 * var41;
+            var29 += var31 * var41;
+            var32 += var34 * var41;
+            if (var35 < var37) {
+               var2 -= var0;
+               var0 -= var1;
+               var1 = lineOffset[var1];
+
+               while(true) {
+                  --var0;
+                  if (var0 < 0) {
+                     while(true) {
+                        --var2;
+                        if (var2 < 0) {
+                           return;
+                        }
+
+                        method522(Draw2D.data, var19, 0, 0, var1, var3 >> 16, var4 >> 16, var6 >> 8, var7 >> 8, var26, var29, var32, var27, var30, var33);
+                        var3 += var39;
+                        var4 += var37;
+                        var6 += var40;
+                        var7 += var38;
+                        var1 += Draw2D.width2d;
+                        var26 += var28;
+                        var29 += var31;
+                        var32 += var34;
+                     }
+                  }
+
+                  method522(Draw2D.data, var19, 0, 0, var1, var5 >> 16, var4 >> 16, var8 >> 8, var7 >> 8, var26, var29, var32, var27, var30, var33);
+                  var5 += var35;
+                  var4 += var37;
+                  var8 += var36;
+                  var7 += var38;
+                  var1 += Draw2D.width2d;
+                  var26 += var28;
+                  var29 += var31;
+                  var32 += var34;
+               }
+            }
+
+            var2 -= var0;
+            var0 -= var1;
+            var1 = lineOffset[var1];
+
+            while(true) {
+               --var0;
+               if (var0 < 0) {
+                  while(true) {
+                     --var2;
+                     if (var2 < 0) {
+                        return;
+                     }
+
+                     method522(Draw2D.data, var19, 0, 0, var1, var4 >> 16, var3 >> 16, var7 >> 8, var6 >> 8, var26, var29, var32, var27, var30, var33);
+                     var3 += var39;
+                     var4 += var37;
+                     var6 += var40;
+                     var7 += var38;
+                     var1 += Draw2D.width2d;
+                     var26 += var28;
+                     var29 += var31;
+                     var32 += var34;
+                  }
+               }
+
+               method522(Draw2D.data, var19, 0, 0, var1, var4 >> 16, var5 >> 16, var7 >> 8, var8 >> 8, var26, var29, var32, var27, var30, var33);
+               var5 += var35;
+               var4 += var37;
+               var8 += var36;
+               var7 += var38;
+               var1 += Draw2D.width2d;
+               var26 += var28;
+               var29 += var31;
+               var32 += var34;
+            }
+         }
+      } else if (var2 < Draw2D.bottom) {
+         if (var0 > Draw2D.bottom) {
+            var0 = Draw2D.bottom;
+         }
+
+         if (var1 > Draw2D.bottom) {
+            var1 = Draw2D.bottom;
+         }
+
+         if (var0 < var1) {
+            var4 = var5 <<= 16;
+            var7 = var8 <<= 16;
+            if (var2 < 0) {
+               var4 -= var37 * var2;
+               var5 -= var39 * var2;
+               var7 -= var38 * var2;
+               var8 -= var40 * var2;
+               var2 = 0;
+            }
+
+            var3 <<= 16;
+            var6 <<= 16;
+            if (var0 < 0) {
+               var3 -= var35 * var0;
+               var6 -= var36 * var0;
+               var0 = 0;
+            }
+
+            var41 = var2 - anInt687;
+            var26 += var28 * var41;
+            var29 += var31 * var41;
+            var32 += var34 * var41;
+            if (var37 < var39) {
+               var1 -= var0;
+               var0 -= var2;
+               var2 = lineOffset[var2];
+
+               while(true) {
+                  --var0;
+                  if (var0 < 0) {
+                     while(true) {
+                        --var1;
+                        if (var1 < 0) {
+                           return;
+                        }
+
+                        method522(Draw2D.data, var19, 0, 0, var2, var4 >> 16, var3 >> 16, var7 >> 8, var6 >> 8, var26, var29, var32, var27, var30, var33);
+                        var4 += var37;
+                        var3 += var35;
+                        var7 += var38;
+                        var6 += var36;
+                        var2 += Draw2D.width2d;
+                        var26 += var28;
+                        var29 += var31;
+                        var32 += var34;
+                     }
+                  }
+
+                  method522(Draw2D.data, var19, 0, 0, var2, var4 >> 16, var5 >> 16, var7 >> 8, var8 >> 8, var26, var29, var32, var27, var30, var33);
+                  var4 += var37;
+                  var5 += var39;
+                  var7 += var38;
+                  var8 += var40;
+                  var2 += Draw2D.width2d;
+                  var26 += var28;
+                  var29 += var31;
+                  var32 += var34;
+               }
+            }
+
+            var1 -= var0;
+            var0 -= var2;
+            var2 = lineOffset[var2];
+
+            while(true) {
+               --var0;
+               if (var0 < 0) {
+                  while(true) {
+                     --var1;
+                     if (var1 < 0) {
+                        return;
+                     }
+
+                     method522(Draw2D.data, var19, 0, 0, var2, var3 >> 16, var4 >> 16, var6 >> 8, var7 >> 8, var26, var29, var32, var27, var30, var33);
+                     var4 += var37;
+                     var3 += var35;
+                     var7 += var38;
+                     var6 += var36;
+                     var2 += Draw2D.width2d;
+                     var26 += var28;
+                     var29 += var31;
+                     var32 += var34;
+                  }
+               }
+
+               method522(Draw2D.data, var19, 0, 0, var2, var5 >> 16, var4 >> 16, var8 >> 8, var7 >> 8, var26, var29, var32, var27, var30, var33);
+               var4 += var37;
+               var5 += var39;
+               var7 += var38;
+               var8 += var40;
+               var2 += Draw2D.width2d;
+               var26 += var28;
+               var29 += var31;
+               var32 += var34;
+            }
+         }
+
+         var3 = var5 <<= 16;
+         var6 = var8 <<= 16;
+         if (var2 < 0) {
+            var3 -= var37 * var2;
+            var5 -= var39 * var2;
+            var6 -= var38 * var2;
+            var8 -= var40 * var2;
+            var2 = 0;
+         }
+
+         var4 <<= 16;
+         var7 <<= 16;
+         if (var1 < 0) {
+            var4 -= var35 * var1;
+            var7 -= var36 * var1;
+            var1 = 0;
+         }
+
+         var41 = var2 - anInt687;
+         var26 += var28 * var41;
+         var29 += var31 * var41;
+         var32 += var34 * var41;
+         if (var37 < var39) {
+            var0 -= var1;
+            var1 -= var2;
+            var2 = lineOffset[var2];
+
+            while(true) {
+               --var1;
+               if (var1 < 0) {
+                  while(true) {
+                     --var0;
+                     if (var0 < 0) {
+                        return;
+                     }
+
+                     method522(Draw2D.data, var19, 0, 0, var2, var4 >> 16, var5 >> 16, var7 >> 8, var8 >> 8, var26, var29, var32, var27, var30, var33);
+                     var4 += var35;
+                     var5 += var39;
+                     var7 += var36;
+                     var8 += var40;
+                     var2 += Draw2D.width2d;
+                     var26 += var28;
+                     var29 += var31;
+                     var32 += var34;
+                  }
+               }
+
+               method522(Draw2D.data, var19, 0, 0, var2, var3 >> 16, var5 >> 16, var6 >> 8, var8 >> 8, var26, var29, var32, var27, var30, var33);
+               var3 += var37;
+               var5 += var39;
+               var6 += var38;
+               var8 += var40;
+               var2 += Draw2D.width2d;
+               var26 += var28;
+               var29 += var31;
+               var32 += var34;
+            }
+         }
+
+         var0 -= var1;
+         var1 -= var2;
+         var2 = lineOffset[var2];
+
+         while(true) {
+            --var1;
+            if (var1 < 0) {
+               while(true) {
+                  --var0;
+                  if (var0 < 0) {
+                     return;
+                  }
+
+                  method522(Draw2D.data, var19, 0, 0, var2, var5 >> 16, var4 >> 16, var8 >> 8, var7 >> 8, var26, var29, var32, var27, var30, var33);
+                  var4 += var35;
+                  var5 += var39;
+                  var7 += var36;
+                  var8 += var40;
+                  var2 += Draw2D.width2d;
+                  var26 += var28;
+                  var29 += var31;
+                  var32 += var34;
+               }
+            }
+
+            method522(Draw2D.data, var19, 0, 0, var2, var5 >> 16, var3 >> 16, var8 >> 8, var6 >> 8, var26, var29, var32, var27, var30, var33);
+            var3 += var37;
+            var5 += var39;
+            var6 += var38;
+            var8 += var40;
+            var2 += Draw2D.width2d;
+            var26 += var28;
+            var29 += var31;
+            var32 += var34;
+         }
+      }
+
+   }
+
+   private static void method520(int[] var0, int var1, int var2, int var3, int var4) {
+      if (aBoolean177) {
+         if (var4 > Draw2D.boundX) {
+            var4 = Draw2D.boundX;
+         }
+
+         if (var3 < 0) {
+            var3 = 0;
+         }
+      }
+
+      if (var3 < var4) {
+         var1 += var3;
+         int var5 = var4 - var3 >> 2;
+         int var6;
+         if (anInt685 == 0) {
+            while(true) {
+               --var5;
+               if (var5 < 0) {
+                  var5 = var4 - var3 & 3;
+
+                  while(true) {
+                     --var5;
+                     if (var5 < 0) {
+                        return;
+                     }
+
+                     var0[var1++] = var2;
+                  }
+               }
+
+               var6 = var1 + 1;
+               var0[var1] = var2;
+               var0[var6++] = var2;
+               var0[var6++] = var2;
+               var1 = var6 + 1;
+               var0[var6] = var2;
+            }
+         } else {
+            int var7 = anInt685;
+            int var8 = 256 - anInt685;
+            int var9 = ((var2 & 16711935) * var8 >> 8 & 16711935) + ((var2 & 65280) * var8 >> 8 & 65280);
+
+            while(true) {
+               --var5;
+               if (var5 < 0) {
+                  var5 = var4 - var3 & 3;
+
+                  while(true) {
+                     --var5;
+                     if (var5 < 0) {
+                        return;
+                     }
+
+                     var0[var1++] = var9 + ((var0[var1] & 16711935) * var7 >> 8 & 16711935) + ((var0[var1] & 65280) * var7 >> 8 & 65280);
+                  }
+               }
+
+               var6 = var1 + 1;
+               var0[var1] = var9 + ((var0[var6] & 16711935) * var7 >> 8 & 16711935) + ((var0[var6] & 65280) * var7 >> 8 & 65280);
+               int var10 = var6 + 1;
+               var0[var6] = var9 + ((var0[var10] & 16711935) * var7 >> 8 & 16711935) + ((var0[var10] & 65280) * var7 >> 8 & 65280);
+               int var11 = var10 + 1;
+               var0[var10] = var9 + ((var0[var11] & 16711935) * var7 >> 8 & 16711935) + ((var0[var11] & 65280) * var7 >> 8 & 65280);
+               var1 = var11 + 1;
+               var0[var11] = var9 + ((var0[var1] & 16711935) * var7 >> 8 & 16711935) + ((var0[var1] & 65280) * var7 >> 8 & 65280);
+            }
+         }
+      }
+   }
+
+   private static void method518(int[] var0, int var1, int var2, int var3, int var4, int var5) {
+      int var6;
+      int var7;
+      int var8;
+      int var9;
+      int var10;
+      int var11;
+      int var12;
+      if (aBoolean179) {
+         if (aBoolean177) {
+            if (var3 - var2 > 3) {
+               var6 = (var5 - var4) / (var3 - var2);
+            } else {
+               var6 = 0;
+            }
+
+            if (var3 > Draw2D.boundX) {
+               var3 = Draw2D.boundX;
+            }
+
+            if (var2 < 0) {
+               var4 -= var2 * var6;
+               var2 = 0;
+            }
+
+            if (var2 >= var3) {
+               return;
+            }
+
+            var1 += var2;
+            var9 = var3 - var2 >> 2;
+            var6 <<= 2;
+         } else {
+            if (var2 >= var3) {
+               return;
+            }
+
+            var1 += var2;
+            var9 = var3 - var2 >> 2;
+            if (var9 > 0) {
+               var6 = (var5 - var4) * anIntArray179[var9] >> 15;
+            } else {
+               var6 = 0;
+            }
+         }
+
+         if (anInt685 != 0) {
+            var7 = anInt685;
+            var8 = 256 - anInt685;
+
+            while(true) {
+               --var9;
+               if (var9 < 0) {
+                  var9 = var3 - var2 & 3;
+                  if (var9 > 0) {
+                     var10 = anIntArray186[var4 >> 8];
+                     var10 = ((var10 & 16711935) * var8 >> 8 & 16711935) + ((var10 & 65280) * var8 >> 8 & 65280);
+
+                     do {
+                        var0[var1++] = var10 + ((var0[var1] & 16711935) * var7 >> 8 & 16711935) + ((var0[var1] & 65280) * var7 >> 8 & 65280);
+                        --var9;
+                     } while(var9 > 0);
+                  }
+                  break;
+               }
+
+               var10 = anIntArray186[var4 >> 8];
+               var4 += var6;
+               var10 = ((var10 & 16711935) * var8 >> 8 & 16711935) + ((var10 & 65280) * var8 >> 8 & 65280);
+               var11 = var1 + 1;
+               var0[var1] = var10 + ((var0[var11] & 16711935) * var7 >> 8 & 16711935) + ((var0[var11] & 65280) * var7 >> 8 & 65280);
+               var0[var11++] = var10 + ((var0[var11] & 16711935) * var7 >> 8 & 16711935) + ((var0[var11] & 65280) * var7 >> 8 & 65280);
+               var0[var11++] = var10 + ((var0[var11] & 16711935) * var7 >> 8 & 16711935) + ((var0[var11] & 65280) * var7 >> 8 & 65280);
+               var1 = var11 + 1;
+               var0[var11] = var10 + ((var0[var1] & 16711935) * var7 >> 8 & 16711935) + ((var0[var1] & 65280) * var7 >> 8 & 65280);
+            }
+         } else {
+            while(true) {
+               --var9;
+               if (var9 < 0) {
+                  var9 = var3 - var2 & 3;
+                  if (var9 > 0) {
+                     var10 = anIntArray186[var4 >> 8];
+
+                     do {
+                        var0[var1++] = var10;
+                        --var9;
+                     } while(var9 > 0);
+
+                     return;
+                  }
+                  break;
+               }
+
+               var10 = anIntArray186[var4 >> 8];
+               var4 += var6;
+               var11 = var1 + 1;
+               var0[var1] = var10;
+               var12 = var11 + 1;
+               var0[var11] = var10;
+               int var13 = var12 + 1;
+               var0[var12] = var10;
+               var1 = var13 + 1;
+               var0[var13] = var10;
+            }
+         }
+      } else if (var2 < var3) {
+         var6 = (var5 - var4) / (var3 - var2);
+         if (aBoolean177) {
+            if (var3 > Draw2D.boundX) {
+               var3 = Draw2D.boundX;
+            }
+
+            if (var2 < 0) {
+               var4 -= var2 * var6;
+               var2 = 0;
+            }
+
+            if (var2 >= var3) {
+               return;
+            }
+         }
+
+         var11 = var1 + var2;
+         var9 = var3 - var2;
+         if (anInt685 == 0) {
+            do {
+               var0[var11++] = anIntArray186[var4 >> 8];
+               var4 += var6;
+               --var9;
+            } while(var9 > 0);
+         } else {
+            var7 = anInt685;
+            var8 = 256 - anInt685;
+
+            do {
+               var10 = anIntArray186[var4 >> 8];
+               var4 += var6;
+               var12 = ((var10 & 16711935) * var8 >> 8 & 16711935) + ((var10 & 65280) * var8 >> 8 & 65280);
+               var0[var11++] = var12 + ((var0[var11] & 16711935) * var7 >> 8 & 16711935) + ((var0[var11] & 65280) * var7 >> 8 & 65280);
+               --var9;
+            } while(var9 > 0);
+         }
+      }
+
+   }
+
+   private static void method522(int[] var0, int[] var1, int var2, int var3, int var4, int var5, int var6, int var7, int var8, int var9, int var10, int var11, int var12, int var13, int var14) {
+      if (var5 < var6) {
+         int var15;
+         int var16;
+         if (aBoolean177) {
+            var15 = (var8 - var7) / (var6 - var5);
+            if (var6 > Draw2D.boundX) {
+               var6 = Draw2D.boundX;
+            }
+
+            if (var5 < 0) {
+               var7 -= var5 * var15;
+               var5 = 0;
+            }
+
+            if (var5 >= var6) {
+               return;
+            }
+
+            var16 = var6 - var5 >> 3;
+            var15 <<= 12;
+            var7 <<= 9;
+         } else {
+            if (var6 - var5 > 7) {
+               var16 = var6 - var5 >> 3;
+               var15 = (var8 - var7) * anIntArray179[var16] >> 6;
+            } else {
+               var16 = 0;
+               var15 = 0;
+            }
+
+            var7 <<= 9;
+         }
+
+         var4 += var5;
+         int var17;
+         int var18;
+         int var19;
+         int var20;
+         int var21;
+         int var22;
+         int var23;
+         int var24;
+         int var25;
+         int var26;
+         int var27;
+         int var28;
+         int var29;
+         int var30;
+         int var31;
+         int var32;
+         int var33;
+         int var34;
+         int var35;
+         if (aBoolean176) {
+            var17 = 0;
+            var18 = 0;
+            var20 = var5 - anInt686;
+            var25 = var9 + (var12 >> 3) * var20;
+            var26 = var10 + (var13 >> 3) * var20;
+            var27 = var11 + (var14 >> 3) * var20;
+            var19 = var27 >> 12;
+            if (var19 != 0) {
+               var2 = var25 / var19;
+               var3 = var26 / var19;
+               if (var2 < 0) {
+                  var2 = 0;
+               } else if (var2 > 4032) {
+                  var2 = 4032;
+               }
+            }
+
+            var9 = var25 + var12;
+            var10 = var26 + var13;
+            var11 = var27 + var14;
+            var19 = var11 >> 12;
+            if (var19 != 0) {
+               var17 = var9 / var19;
+               var18 = var10 / var19;
+               if (var17 < 7) {
+                  var17 = 7;
+               } else if (var17 > 4032) {
+                  var17 = 4032;
+               }
+            }
+
+            var21 = var17 - var2 >> 3;
+            var22 = var18 - var3 >> 3;
+            var2 += var7 >> 3 & 786432;
+            var23 = var7 >> 23;
+            if (aBoolean178) {
+               while(var16-- > 0) {
+                  var24 = var4 + 1;
+                  var0[var4] = var1[(var3 & 4032) + (var2 >> 6)] >>> var23;
+                  var2 += var21;
+                  var3 += var22;
+                  var0[var24++] = var1[(var3 & 4032) + (var2 >> 6)] >>> var23;
+                  var2 += var21;
+                  var3 += var22;
+                  var0[var24++] = var1[(var3 & 4032) + (var2 >> 6)] >>> var23;
+                  var2 += var21;
+                  var3 += var22;
+                  var0[var24++] = var1[(var3 & 4032) + (var2 >> 6)] >>> var23;
+                  var2 += var21;
+                  var3 += var22;
+                  var0[var24++] = var1[(var3 & 4032) + (var2 >> 6)] >>> var23;
+                  var2 += var21;
+                  var3 += var22;
+                  var0[var24++] = var1[(var3 & 4032) + (var2 >> 6)] >>> var23;
+                  var2 += var21;
+                  var3 += var22;
+                  var0[var24++] = var1[(var3 & 4032) + (var2 >> 6)] >>> var23;
+                  var2 += var21;
+                  var3 += var22;
+                  var4 = var24 + 1;
+                  var0[var24] = var1[(var3 & 4032) + (var2 >> 6)] >>> var23;
+                  var2 = var17;
+                  var3 = var18;
+                  var9 += var12;
+                  var10 += var13;
+                  var11 += var14;
+                  var19 = var11 >> 12;
+                  if (var19 != 0) {
+                     var17 = var9 / var19;
+                     var18 = var10 / var19;
+                     if (var17 < 7) {
+                        var17 = 7;
+                     } else if (var17 > 4032) {
+                        var17 = 4032;
+                     }
+                  }
+
+                  var21 = var17 - var2 >> 3;
+                  var22 = var18 - var3 >> 3;
+                  var7 += var15;
+                  var2 += var7 >> 3 & 786432;
+                  var23 = var7 >> 23;
+               }
+
+               for(var16 = var6 - var5 & 7; var16-- > 0; var3 += var22) {
+                  var0[var4++] = var1[(var3 & 4032) + (var2 >> 6)] >>> var23;
+                  var2 += var21;
+               }
+            } else {
+               while(var16-- > 0) {
+                  if ((var28 = var1[(var3 & 4032) + (var2 >> 6)] >>> var23) != 0) {
+                     var0[var4] = var28;
+                  }
+
+                  var24 = var4 + 1;
+                  var2 += var21;
+                  var3 += var22;
+                  if ((var29 = var1[(var3 & 4032) + (var2 >> 6)] >>> var23) != 0) {
+                     var0[var24] = var29;
+                  }
+
+                  ++var24;
+                  var2 += var21;
+                  var3 += var22;
+                  if ((var30 = var1[(var3 & 4032) + (var2 >> 6)] >>> var23) != 0) {
+                     var0[var24] = var30;
+                  }
+
+                  ++var24;
+                  var2 += var21;
+                  var3 += var22;
+                  if ((var31 = var1[(var3 & 4032) + (var2 >> 6)] >>> var23) != 0) {
+                     var0[var24] = var31;
+                  }
+
+                  ++var24;
+                  var2 += var21;
+                  var3 += var22;
+                  if ((var32 = var1[(var3 & 4032) + (var2 >> 6)] >>> var23) != 0) {
+                     var0[var24] = var32;
+                  }
+
+                  ++var24;
+                  var2 += var21;
+                  var3 += var22;
+                  if ((var33 = var1[(var3 & 4032) + (var2 >> 6)] >>> var23) != 0) {
+                     var0[var24] = var33;
+                  }
+
+                  ++var24;
+                  var2 += var21;
+                  var3 += var22;
+                  if ((var34 = var1[(var3 & 4032) + (var2 >> 6)] >>> var23) != 0) {
+                     var0[var24] = var34;
+                  }
+
+                  ++var24;
+                  var2 += var21;
+                  var3 += var22;
+                  if ((var35 = var1[(var3 & 4032) + (var2 >> 6)] >>> var23) != 0) {
+                     var0[var24] = var35;
+                  }
+
+                  var4 = var24 + 1;
+                  var2 = var17;
+                  var3 = var18;
+                  var9 += var12;
+                  var10 += var13;
+                  var11 += var14;
+                  var19 = var11 >> 12;
+                  if (var19 != 0) {
+                     var17 = var9 / var19;
+                     var18 = var10 / var19;
+                     if (var17 < 7) {
+                        var17 = 7;
+                     } else if (var17 > 4032) {
+                        var17 = 4032;
+                     }
+                  }
+
+                  var21 = var17 - var2 >> 3;
+                  var22 = var18 - var3 >> 3;
+                  var7 += var15;
+                  var2 += var7 >> 3 & 786432;
+                  var23 = var7 >> 23;
+               }
+
+               for(var16 = var6 - var5 & 7; var16-- > 0; var3 += var22) {
+                  if ((var28 = var1[(var3 & 4032) + (var2 >> 6)] >>> var23) != 0) {
+                     var0[var4] = var28;
+                  }
+
+                  ++var4;
+                  var2 += var21;
+               }
+            }
+
+         } else {
+            var17 = 0;
+            var18 = 0;
+            var20 = var5 - anInt686;
+            var25 = var9 + (var12 >> 3) * var20;
+            var26 = var10 + (var13 >> 3) * var20;
+            var27 = var11 + (var14 >> 3) * var20;
+            var19 = var27 >> 14;
+            if (var19 != 0) {
+               var2 = var25 / var19;
+               var3 = var26 / var19;
+               if (var2 < 0) {
+                  var2 = 0;
+               } else if (var2 > 16256) {
+                  var2 = 16256;
+               }
+            }
+
+            var9 = var25 + var12;
+            var10 = var26 + var13;
+            var11 = var27 + var14;
+            var19 = var11 >> 14;
+            if (var19 != 0) {
+               var17 = var9 / var19;
+               var18 = var10 / var19;
+               if (var17 < 7) {
+                  var17 = 7;
+               } else if (var17 > 16256) {
+                  var17 = 16256;
+               }
+            }
+
+            var21 = var17 - var2 >> 3;
+            var22 = var18 - var3 >> 3;
+            var2 += var7 & 6291456;
+            var23 = var7 >> 23;
+            if (!aBoolean178) {
+               while(var16-- > 0) {
+                  if ((var28 = var1[(var3 & 16256) + (var2 >> 7)] >>> var23) != 0) {
+                     var0[var4] = var28;
+                  }
+
+                  var24 = var4 + 1;
+                  var2 += var21;
+                  var3 += var22;
+                  if ((var29 = var1[(var3 & 16256) + (var2 >> 7)] >>> var23) != 0) {
+                     var0[var24] = var29;
+                  }
+
+                  ++var24;
+                  var2 += var21;
+                  var3 += var22;
+                  if ((var30 = var1[(var3 & 16256) + (var2 >> 7)] >>> var23) != 0) {
+                     var0[var24] = var30;
+                  }
+
+                  ++var24;
+                  var2 += var21;
+                  var3 += var22;
+                  if ((var31 = var1[(var3 & 16256) + (var2 >> 7)] >>> var23) != 0) {
+                     var0[var24] = var31;
+                  }
+
+                  ++var24;
+                  var2 += var21;
+                  var3 += var22;
+                  if ((var32 = var1[(var3 & 16256) + (var2 >> 7)] >>> var23) != 0) {
+                     var0[var24] = var32;
+                  }
+
+                  ++var24;
+                  var2 += var21;
+                  var3 += var22;
+                  if ((var33 = var1[(var3 & 16256) + (var2 >> 7)] >>> var23) != 0) {
+                     var0[var24] = var33;
+                  }
+
+                  ++var24;
+                  var2 += var21;
+                  var3 += var22;
+                  if ((var34 = var1[(var3 & 16256) + (var2 >> 7)] >>> var23) != 0) {
+                     var0[var24] = var34;
+                  }
+
+                  ++var24;
+                  var2 += var21;
+                  var3 += var22;
+                  if ((var35 = var1[(var3 & 16256) + (var2 >> 7)] >>> var23) != 0) {
+                     var0[var24] = var35;
+                  }
+
+                  var4 = var24 + 1;
+                  var2 = var17;
+                  var3 = var18;
+                  var9 += var12;
+                  var10 += var13;
+                  var11 += var14;
+                  var19 = var11 >> 14;
+                  if (var19 != 0) {
+                     var17 = var9 / var19;
+                     var18 = var10 / var19;
+                     if (var17 < 7) {
+                        var17 = 7;
+                     } else if (var17 > 16256) {
+                        var17 = 16256;
+                     }
+                  }
+
+                  var21 = var17 - var2 >> 3;
+                  var22 = var18 - var3 >> 3;
+                  var7 += var15;
+                  var2 += var7 & 6291456;
+                  var23 = var7 >> 23;
+               }
+
+               for(var16 = var6 - var5 & 7; var16-- > 0; var3 += var22) {
+                  if ((var28 = var1[(var3 & 16256) + (var2 >> 7)] >>> var23) != 0) {
+                     var0[var4] = var28;
+                  }
+
+                  ++var4;
+                  var2 += var21;
+               }
+
+            } else {
+               while(var16-- > 0) {
+                  var24 = var4 + 1;
+                  var0[var4] = var1[(var3 & 16256) + (var2 >> 7)] >>> var23;
+                  var2 += var21;
+                  var3 += var22;
+                  var28 = var24 + 1;
+                  var0[var24] = var1[(var3 & 16256) + (var2 >> 7)] >>> var23;
+                  var2 += var21;
+                  var3 += var22;
+                  var29 = var28 + 1;
+                  var0[var28] = var1[(var3 & 16256) + (var2 >> 7)] >>> var23;
+                  var2 += var21;
+                  var3 += var22;
+                  var30 = var29 + 1;
+                  var0[var29] = var1[(var3 & 16256) + (var2 >> 7)] >>> var23;
+                  var2 += var21;
+                  var3 += var22;
+                  var31 = var30 + 1;
+                  var0[var30] = var1[(var3 & 16256) + (var2 >> 7)] >>> var23;
+                  var2 += var21;
+                  var3 += var22;
+                  var32 = var31 + 1;
+                  var0[var31] = var1[(var3 & 16256) + (var2 >> 7)] >>> var23;
+                  var2 += var21;
+                  var3 += var22;
+                  var33 = var32 + 1;
+                  var0[var32] = var1[(var3 & 16256) + (var2 >> 7)] >>> var23;
+                  var2 += var21;
+                  var3 += var22;
+                  var4 = var33 + 1;
+                  var0[var33] = var1[(var3 & 16256) + (var2 >> 7)] >>> var23;
+                  var2 = var17;
+                  var3 = var18;
+                  var9 += var12;
+                  var10 += var13;
+                  var11 += var14;
+                  var19 = var11 >> 14;
+                  if (var19 != 0) {
+                     var17 = var9 / var19;
+                     var18 = var10 / var19;
+                     if (var17 < 7) {
+                        var17 = 7;
+                     } else if (var17 > 16256) {
+                        var17 = 16256;
+                     }
+                  }
+
+                  var21 = var17 - var2 >> 3;
+                  var22 = var18 - var3 >> 3;
+                  var7 += var15;
+                  var2 += var7 & 6291456;
+                  var23 = var7 >> 23;
+               }
+
+               for(var16 = var6 - var5 & 7; var16-- > 0; var3 += var22) {
+                  var0[var4++] = var1[(var3 & 16256) + (var2 >> 7)] >>> var23;
+                  var2 += var21;
+               }
+
+            }
+         }
+      }
+   }
+
+   public static void method507(int var0) {
+      boolean var1 = false;
+      lineOffset = new int[Draw2D.height2d];
+
+      for(int var2 = 0; var2 < Draw2D.height2d; ++var2) {
+         lineOffset[var2] = Draw2D.width2d * var2;
+      }
+
+      anInt686 = Draw2D.width2d / 2;
+      anInt687 = Draw2D.height2d / 2;
+   }
+
+   public static int method512(int var0) {
+      if (anIntArray184[var0] != 0) {
+         return anIntArray184[var0];
+      } else {
+         int var1 = 0;
+         int var2 = 0;
+         int var3 = 0;
+         int var4 = anIntArrayArray19[var0].length;
+
+         int var5;
+         for(var5 = 0; var5 < var4; ++var5) {
+            var1 += anIntArrayArray19[var0][var5] >> 16 & 255;
+            var2 += anIntArrayArray19[var0][var5] >> 8 & 255;
+            var3 += anIntArrayArray19[var0][var5] & 255;
+         }
+
+         var5 = (var1 / var4 << 16) + (var2 / var4 << 8) + var3 / var4;
+         var5 = method516(var5, 1.4);
+         if (var5 == 0) {
+            var5 = 1;
+         }
+
+         anIntArray184[var0] = var5;
+         return var5;
+      }
+   }
+
+   public static void method506() {
+      anIntArray179 = null;
+      anIntArray179 = null;
+      anIntArray181 = null;
+      anIntArray182 = null;
+      lineOffset = null;
+      aClass10_Sub1_Sub1_Sub3Array1 = null;
+      aBooleanArray9 = null;
+      anIntArray184 = null;
+      anIntArrayArray17 = null;
+      anIntArrayArray18 = null;
+      anIntArray185 = null;
+      anIntArray186 = null;
+      anIntArrayArray19 = null;
+   }
+
+   public static void unpackTextures(Jagfile var0) {
+      anInt688 = 0;
+
+      for(int var1 = 0; var1 < 50; ++var1) {
+         try {
+            aClass10_Sub1_Sub1_Sub3Array1[var1] = new Class10_Sub1_Sub1_Sub3(var0, String.valueOf(var1), 0);
+            if (aBoolean176 && aClass10_Sub1_Sub1_Sub3Array1[var1].anInt656 == 128) {
+               aClass10_Sub1_Sub1_Sub3Array1[var1].method435();
+            } else {
+               aClass10_Sub1_Sub1_Sub3Array1[var1].method436();
+            }
+
+            ++anInt688;
+         } catch (Exception var3) {
+         }
+      }
+
+   }
+
+   public static void init3D(int var0, int var1) {
+      lineOffset = new int[var0];
+
+      for(int var2 = 0; var2 < var0; ++var2) {
+         lineOffset[var2] = var1 * var2;
+      }
+
+      anInt686 = var1 / 2;
+      anInt687 = var0 / 2;
+   }
 }

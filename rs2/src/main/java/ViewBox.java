@@ -1,31 +1,29 @@
+import java.awt.Frame;
+import java.awt.Graphics;
 
-import java.awt.*;
+public final class ViewBox extends Frame {
+   private final GameShell shell;
 
-public class ViewBox extends Frame {
+   public ViewBox(GameShell var1, int var2, int var3) {
+      this.shell = var1;
+      this.setTitle("Jagex");
+      this.setResizable(false);
+      this.show();
+      this.toFront();
+      this.resize(var2 + 8, var3 + 28);
+   }
 
-	public static GameView gameView;
+   public Graphics getGraphics() {
+      Graphics var1 = super.getGraphics();
+      var1.translate(4, 24);
+      return var1;
+   }
 
-	public ViewBox( GameShell shell, int width, int height) {
-		gameView = new GameView(shell, width, height);
-		this.setTitle("Jagex");
-		this.setResizable(false);
-		this.resize(width, height);
-		this.show();
-	}
+   public void update(Graphics var1) {
+      this.shell.update(var1);
+   }
 
-	@Override
-	public Graphics getGraphics() {
-		Graphics g = super.getGraphics();
-		return g;
-	}
-
-	@Override
-	public void update( Graphics g) {
-		gameView.update(g);
-	}
-
-	@Override
-	public void paint( Graphics g) {
-		gameView.paint(g);
-	}
+   public void paint(Graphics var1) {
+      this.shell.paint(var1);
+   }
 }

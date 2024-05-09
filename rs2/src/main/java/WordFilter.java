@@ -1,1015 +1,1229 @@
+public final class WordFilter {
+   private static int anInt658 = 3;
+   private static int anInt660 = -761;
+   private static int anInt661 = -48545;
+   private static byte aByte37 = -113;
+   private static int anInt663 = 3;
+   private static int anInt664 = -939;
+   private static boolean aBoolean166 = true;
+   private static final String[] aStringArray6 = new String[]{"cook", "cook's", "cooks", "seeks", "sheet", "woop", "woops", "faq", "noob", "noobs"};
+   private static char[][] aCharArrayArray3;
+   private static int[] anIntArray177;
+   private static char[][] aCharArrayArray1;
+   private static boolean aBoolean163;
+   private static byte[][][] aByteArrayArrayArray7;
+   private static char[][] aCharArrayArray2;
+   private static boolean aBoolean165;
+   private static int[] anIntArray176;
 
+   public static String method452(String var0) {
+      long var1 = System.currentTimeMillis();
+      char[] var3 = var0.toCharArray();
+      method450(var3);
+      String var4 = (new String(var3)).trim();
+      char[] var5 = var4.toLowerCase().toCharArray();
+      String var6 = var4.toLowerCase();
+      method460(var5);
+      method455(var5, anInt661);
+      method456(var5);
+      method469(var5);
 
-public class WordFilter {
+      for(int var7 = 0; var7 < aStringArray6.length; ++var7) {
+         int var8 = -1;
 
-    private static int[] fragments;
+         while((var8 = var6.indexOf(aStringArray6[var7], var8 + 1)) != -1) {
+            char[] var9 = aStringArray6[var7].toCharArray();
 
-    private static char[][] badWords;
+            for(int var10 = 0; var10 < var9.length; ++var10) {
+               var5[var10 + var8] = var9[var10];
+            }
+         }
+      }
 
-    private static byte[][][] badCombinations;
+      method453(var5, var4.toCharArray());
+      method454(var5);
+      long var11 = System.currentTimeMillis();
+      return (new String(var5)).trim();
+   }
 
-    private static char[][] domains;
+   private static void method450(char[] var0) {
+      int var1 = 0;
 
-    private static char[][] tlds;
+      int var2;
+      for(var2 = 0; var2 < var0.length; ++var2) {
+         if (method451(var0[var2])) {
+            var0[var1] = var0[var2];
+         } else {
+            var0[var1] = ' ';
+         }
 
-    private static int[] tldType;
+         if (var1 == 0 || var0[var1] != ' ' || var0[var1 - 1] != ' ') {
+            ++var1;
+         }
+      }
 
-    private static final String[] ALLOWLIST = new String[] { "cook", "cook's", "cooks", "seeks", "sheet" };
+      for(var2 = var1; var2 < var0.length; ++var2) {
+         var0[var2] = ' ';
+      }
 
-    public static void unpack( Jagfile jag) {
-		Packet fragments = new Packet(jag.read("fragmentsenc.txt", null));
-		Packet bad = new Packet(jag.read("badenc.txt", null));
-		Packet domain = new Packet(jag.read("domainenc.txt", null));
-		Packet tld = new Packet(jag.read("tldlist.txt", null));
-		read(bad, domain, fragments, tld);
-	}
+   }
 
-    private static void read( Packet bad, Packet domain, Packet fragments, Packet tld) {
-		readBadWords(bad);
-		readDomains(domain);
-		readFragments(fragments);
-		readTld(tld);
-	}
+   private static void method460(char[] var0) {
+      char[] var1 = (char[])var0.clone();
+      char[] var2 = new char[]{'d', 'o', 't'};
+      method464((byte[][])null, var2, var1);
+      char[] var3 = (char[])var0.clone();
+      char[] var4 = new char[]{'s', 'l', 'a', 's', 'h'};
+      method464((byte[][])null, var4, var3);
 
-    private static void readTld( Packet buf) {
-		int count = buf.g4();
-		tlds = new char[count][];
-		tldType = new int[count];
-		for ( int i = 0; i < count; i++) {
-			tldType[i] = buf.g1();
-			char[] tld = new char[buf.g1()];
-			for ( int j = 0; j < tld.length; j++) {
-				tld[j] = (char) buf.g1();
-			}
-			tlds[i] = tld;
-		}
-	}
+      for(int var5 = 0; var5 < aCharArrayArray3.length; ++var5) {
+         method461(var0, (byte)7, var1, anIntArray177[var5], aCharArrayArray3[var5], var3);
+      }
 
-    private static void readBadWords( Packet buf) {
-		int count = buf.g4();
-		badWords = new char[count][];
-		badCombinations = new byte[count][][];
-		readBadCombinations(buf, badWords, badCombinations);
-	}
+   }
 
-    private static void readDomains( Packet buf) {
-		int count = buf.g4();
-		domains = new char[count][];
-		readDomain(buf, domains);
-	}
+   private static void method455(char[] var0, int var1) {
+      for(int var2 = 0; var2 < 2; ++var2) {
+         for(int var3 = aCharArrayArray1.length - 1; var3 >= 0; --var3) {
+            method464(aByteArrayArrayArray7[var3], aCharArrayArray1[var3], var0);
+         }
+      }
 
-    private static void readFragments( Packet buf) {
-		fragments = new int[buf.g4()];
-		for ( int i = 0; i < fragments.length; i++) {
-			fragments[i] = buf.g2();
-		}
-	}
+      if (var1 != -48545) {
+         aBoolean163 = !aBoolean163;
+      }
 
-    private static void readBadCombinations( Packet buf, char[][] badwords, byte[][][] badCombinations) {
-		for ( int i = 0; i < badwords.length; i++) {
-			char[] badword = new char[buf.g1()];
-			for ( int j = 0; j < badword.length; j++) {
-				badword[j] = (char) buf.g1();
-			}
-			badwords[i] = badword;
-			byte[][] combination = new byte[buf.g1()][2];
-			for ( int j = 0; j < combination.length; j++) {
-				combination[j][0] = (byte) buf.g1();
-				combination[j][1] = (byte) buf.g1();
-			}
-			if (combination.length > 0) {
-				badCombinations[i] = combination;
-			}
-		}
-	}
+   }
 
-    private static void readDomain( Packet buf, char[][] domains) {
-		for ( int i = 0; i < domains.length; i++) {
-			char[] domain = new char[buf.g1()];
-			for ( int j = 0; j < domain.length; j++) {
-				domain[j] = (char) buf.g1();
-			}
-			domains[i] = domain;
-		}
-	}
+   private static void method456(char[] var0) {
+      char[] var1 = (char[])var0.clone();
+      char[] var2 = new char[]{'(', 'a', ')'};
+      method464((byte[][])null, var2, var1);
+      char[] var3 = (char[])var0.clone();
+      char[] var4 = new char[]{'d', 'o', 't'};
+      method464((byte[][])null, var4, var3);
 
-    private static void filterCharacters( char[] in) {
-		int pos = 0;
-		for ( int i = 0; i < in.length; i++) {
-			if (allowCharacter(in[i])) {
-				in[pos] = in[i];
-			} else {
-				in[pos] = ' ';
-			}
-			if (pos == 0 || in[pos] != ' ' || in[pos - 1] != ' ') {
-				pos++;
-			}
-		}
-		for ( int i = pos; i < in.length; i++) {
-			in[i] = ' ';
-		}
-	}
+      for(int var5 = aCharArrayArray2.length - 1; var5 >= 0; --var5) {
+         method457(var0, var3, var1, aCharArrayArray2[var5]);
+      }
 
-    private static boolean allowCharacter( char c) {
-		return c >= ' ' && c <= '\u007f' || c == ' ' || c == '\n' || c == '\t' || c == '£' || c == '€';
-	}
+   }
 
-    public static String filter( String input) {
-		long start = System.currentTimeMillis();
-		char[] outputPre = input.toCharArray();
-		filterCharacters(outputPre);
-		String trimmed = (new String(outputPre)).trim();
-		char[] output = trimmed.toLowerCase().toCharArray();
-		String lowercase = trimmed.toLowerCase();
-		filterTld(output);
-		filterBad(output);
-		filterDomains(output);
-		filterFragments(output);
-		int j;
-		for ( int i = 0; i < ALLOWLIST.length; i++) {
-			j = -1;
-			while ((j = lowercase.indexOf(ALLOWLIST[i], j + 1)) != -1) {
-				char[] allowed = ALLOWLIST[i].toCharArray();
-				System.arraycopy(allowed, 0, output, 0 + j, allowed.length);
-			}
-		}
-		replaceUpperCases(output, trimmed.toCharArray());
-		formatUpperCases(output);
-		long end = System.currentTimeMillis();
-		return (new String(output)).trim();
-	}
+   private static void method469(char[] var0) {
+      int var1 = 0;
+      int var2 = 0;
+      int var3 = 0;
 
-    private static void replaceUpperCases( char[] in, char[] unfiltered) {
-		for ( int i = 0; i < unfiltered.length; i++) {
-			if (in[i] != '*' && isUpperCase(unfiltered[i])) {
-				in[i] = unfiltered[i];
-			}
-		}
-	}
+      while(true) {
+         int var4;
+         do {
+            if ((var4 = method470(var1, var0)) == -1) {
+               return;
+            }
 
-    private static void formatUpperCases( char[] in) {
-		boolean upper = true;
-		for ( int i = 0; i < in.length; i++) {
-			char c = in[i];
-			if (!isAlpha(c)) {
-				upper = true;
-			} else if (upper) {
-				if (isLowerCase(c)) {
-					upper = false;
-				}
-			} else if (isUpperCase(c)) {
-				in[i] = (char) (c + 'a' - 65);
-			}
-		}
-	}
+            boolean var5 = false;
 
-    private static void filterBad( char[] in) {
-		for ( int passes = 0; passes < 2; passes++) {
-			for ( int i = badWords.length - 1; i >= 0; i--) {
-				filter(badCombinations[i], in, badWords[i]);
-			}
-		}
-	}
+            int var6;
+            for(var6 = var1; var6 >= 0 && var6 < var4 && !var5; ++var6) {
+               if (!method472(var0[var6]) && !method473(var0[var6])) {
+                  var5 = true;
+               }
+            }
 
-    private static void filterDomains( char[] in) {
-		char[] filteredAt = (char[]) in.clone();
-		char[] at = new char[] { '(', 'a', ')' };
-		filter(null, filteredAt, at);
-		char[] filteredDot = (char[]) in.clone();
-		char[] dot = new char[] { 'd', 'o', 't' };
-		filter(null, filteredDot, dot);
-		for ( int i = domains.length - 1; i >= 0; i--) {
-			filterDomain(filteredDot, filteredAt, domains[i], in);
-		}
-	}
+            if (var5) {
+               var2 = 0;
+            }
 
-    private static void filterDomain( char[] filteredDot, char[] filteredAt, char[] domain, char[] in) {
-		if (domain.length <= in.length) {
-			int stride;
-			for ( int start = 0; start <= in.length - domain.length; start += stride) {
-				int end = start;
-				int offset = 0;
-				stride = 1;
-				boolean match;
-				filter_pass:
-				while (true) {
-					while (true) {
-						if (end >= in.length) {
-							break filter_pass;
-						}
-						match = false;
-						char b = in[end];
-						char c = 0;
-						if (end + 1 < in.length) {
-							c = in[end + 1];
-						}
-						int charSize;
-						if (offset < domain.length && (charSize = getEmulatedDomainCharSize(c, domain[offset], b)) > 0) {
-							end += charSize;
-							offset++;
-						} else {
-							if (offset == 0) {
-								break filter_pass;
-							}
-							int charSize2;
-							if ((charSize2 = getEmulatedDomainCharSize(c, domain[offset - 1], b)) > 0) {
-								end += charSize2;
-								if (offset == 1) {
-									stride++;
-								}
-							} else {
-								if (offset >= domain.length || !isSymbol(b)) {
-									break filter_pass;
-								}
-								end++;
-							}
-						}
-					}
-				}
-				if (offset >= domain.length) {
-					match = false;
-					int atFilter = getDomainAtFilterStatus(start, in, filteredAt);
-					int dotFilter = getDomainDotFilterStatus(in, filteredDot, end - 1);
-					if (atFilter > 2 || dotFilter > 2) {
-						match = true;
-					}
-					if (match) {
-						for ( int i = start; i < end; i++) {
-							in[i] = '*';
-						}
-					}
-				}
-			}
-		}
-	}
+            if (var2 == 0) {
+               var3 = var4;
+            }
 
-    private static int getDomainAtFilterStatus( int end, char[] a, char[] b) {
-		if (end == 0) {
-			return 2;
-		}
-		for ( int i = end - 1; i >= 0 && isSymbol(a[i]); i--) {
-			if (a[i] == '@') {
-				return 3;
-			}
-		}
-		int asteriskCount = 0;
-		for ( int i = end - 1; i >= 0 && isSymbol(b[i]); i--) {
-			if (b[i] == '*') {
-				asteriskCount++;
-			}
-		}
-		if (asteriskCount >= 3) {
-			return 4;
-		} else if (isSymbol(a[end - 1])) {
-			return 1;
-		} else {
-			return 0;
-		}
-	}
+            var1 = method471(var4, var0);
+            var6 = 0;
 
-    private static int getDomainDotFilterStatus( char[] a, char[] b, int start) {
-		if (start + 1 == a.length) {
-			return 2;
-		} else {
-			int i = start + 1;
-			while (true) {
-				if (i < a.length && isSymbol(a[i])) {
-					if (a[i] != '.' && a[i] != ',') {
-						i++;
-						continue;
-					}
-					return 3;
-				}
-				int asteriskCount = 0;
-				for ( int j = start + 1; j < a.length && isSymbol(b[j]); j++) {
-					if (b[j] == '*') {
-						asteriskCount++;
-					}
-				}
-				if (asteriskCount >= 3) {
-					return 4;
-				}
-				if (isSymbol(a[start + 1])) {
-					return 1;
-				}
-				return 0;
-			}
-		}
-	}
+            for(int var7 = var4; var7 < var1; ++var7) {
+               var6 = var6 * 10 + var0[var7] - 48;
+            }
 
-    private static void filterTld( char[] in) {
-		char[] filteredDot = (char[]) in.clone();
-		char[] dot = new char[] { 'd', 'o', 't' };
-		filter(null, filteredDot, dot);
-		char[] filteredSlash = (char[]) in.clone();
-		char[] slash = new char[] { 's', 'l', 'a', 's', 'h' };
-		filter(null, filteredSlash, slash);
-		for ( int i = 0; i < tlds.length; i++) {
-			filterTld(filteredSlash, tldType[i], in, tlds[i], filteredDot);
-		}
-	}
+            if (var6 <= 255 && var1 - var4 <= 8) {
+               ++var2;
+            } else {
+               var2 = 0;
+            }
+         } while(var2 != 4);
 
-    private static void filterTld( char[] filteredSlash, int type, char[] chars, char[] tld, char[] filteredDot) {
-		int stride;
-		if (tld.length <= chars.length) {
-			boolean compare = true;
-			for ( int start = 0; start <= chars.length - tld.length; start += stride) {
-				int end = start;
-				int offset = 0;
-				stride = 1;
-				boolean match;
-				filter_pass:
-				while (true) {
-					while (true) {
-						if (end >= chars.length) {
-							break filter_pass;
-						}
-						match = false;
-						char b = chars[end];
-						char c = 0;
-						if (end + 1 < chars.length) {
-							c = chars[end + 1];
-						}
-						int charLen;
-						if (offset < tld.length && (charLen = getEmulatedDomainCharSize(c, tld[offset], b)) > 0) {
-							end += charLen;
-							offset++;
-						} else {
-							if (offset == 0) {
-								break filter_pass;
-							}
-							int charLen2;
-							if ((charLen2 = getEmulatedDomainCharSize(c, tld[offset - 1], b)) > 0) {
-								end += charLen2;
-								if (offset == 1) {
-									stride++;
-								}
-							} else {
-								if (offset >= tld.length || !isSymbol(b)) {
-									break filter_pass;
-								}
-								end++;
-							}
-						}
-					}
-				}
-				if (offset >= tld.length) {
-					match = false;
-					int status0 = getTldDotFilterStatus(chars, filteredDot, start);
-					int status1 = getTldSlashFilterStatus(filteredSlash, end - 1, chars);
-					if (type == 1 && status0 > 0 && status1 > 0) {
-						match = true;
-					}
-					if (type == 2 && (status0 > 2 && status1 > 0 || status0 > 0 && status1 > 2)) {
-						match = true;
-					}
-					if (type == 3 && status0 > 0 && status1 > 2) {
-						match = true;
-					}
-					boolean lastCheck = type == 3 && status0 > 2 && status1 > 0;
-					if (match) {
-						int first = start;
-						int last = end - 1;
-						boolean findStart;
-						int i;
-						if (status0 > 2) {
-							if (status0 == 4) {
-								findStart = false;
-								for (i = start - 1; i >= 0; i--) {
-									if (findStart) {
-										if (filteredDot[i] != '*') {
-											break;
-										}
-										first = i;
-									} else if (filteredDot[i] == '*') {
-										first = i;
-										findStart = true;
-									}
-								}
-							}
-							findStart = false;
-							for (i = first - 1; i >= 0; i--) {
-								if (findStart) {
-									if (isSymbol(chars[i])) {
-										break;
-									}
-									first = i;
-								} else if (!isSymbol(chars[i])) {
-									findStart = true;
-									first = i;
-								}
-							}
-						}
-						if (status1 > 2) {
-							if (status1 == 4) {
-								findStart = false;
-								for (i = last + 1; i < chars.length; i++) {
-									if (findStart) {
-										if (filteredSlash[i] != '*') {
-											break;
-										}
-										last = i;
-									} else if (filteredSlash[i] == '*') {
-										last = i;
-										findStart = true;
-									}
-								}
-							}
-							findStart = false;
-							for (i = last + 1; i < chars.length; i++) {
-								if (findStart) {
-									if (isSymbol(chars[i])) {
-										break;
-									}
-									last = i;
-								} else if (!isSymbol(chars[i])) {
-									findStart = true;
-									last = i;
-								}
-							}
-						}
-						for ( int j = first; j <= last; j++) {
-							chars[j] = '*';
-						}
-					}
-				}
-			}
-		}
-	}
+         for(var4 = var3; var4 < var1; ++var4) {
+            var0[var4] = '*';
+         }
 
-    private static int getTldDotFilterStatus( char[] a, char[] b, int start) {
-		if (start == 0) {
-			return 2;
-		}
-		int i = start - 1;
-		while (true) {
-			if (i >= 0 && isSymbol(a[i])) {
-				if (a[i] != ',' && a[i] != '.') {
-					i--;
-					continue;
-				}
-				return 3;
-			}
-			int asteriskCount = 0;
-			int j;
-			for (j = start - 1; j >= 0 && isSymbol(b[j]); j--) {
-				if (b[j] == '*') {
-					asteriskCount++;
-				}
-			}
-			if (asteriskCount >= 3) {
-				return 4;
-			}
-			if (isSymbol(a[start - 1])) {
-				return 1;
-			}
-			return 0;
-		}
-	}
+         var2 = 0;
+      }
+   }
 
-    private static int getTldSlashFilterStatus( char[] b, int end, char[] a) {
-		if (end + 1 == a.length) {
-			return 2;
-		}
-		int i = end + 1;
-		while (true) {
-			if (i < a.length && isSymbol(a[i])) {
-				if (a[i] != '\\' && a[i] != '/') {
-					i++;
-					continue;
-				}
-				return 3;
-			}
-			int asteriskCount = 0;
-			for ( int j = end + 1; j < a.length && isSymbol(b[j]); j++) {
-				if (b[j] == '*') {
-					asteriskCount++;
-				}
-			}
-			if (asteriskCount >= 5) {
-				return 4;
-			}
-			if (isSymbol(a[end + 1])) {
-				return 1;
-			}
-			return 0;
-		}
-	}
+   private static void method453(char[] var0, char[] var1) {
+      for(int var2 = 0; var2 < var1.length; ++var2) {
+         if (var0[var2] != '*' && method477(var1[var2])) {
+            var0[var2] = var1[var2];
+         }
+      }
 
-    private static void filter( byte[][] badCombinations, char[] chars, char[] fragment) {
-		if (fragment.length <= chars.length) {
-			boolean compare = true;
-			int stride;
-			for ( int start = 0; start <= chars.length - fragment.length; start += stride) {
-				int end = start;
-				int fragOff = 0;
-				int iterations = 0;
-				stride = 1;
-				boolean isSymbol = false;
-				boolean isEmulated = false;
-				boolean isNumeral = false;
-				boolean bad;
-				char b;
-				char c;
-				label163:
-				while (true) {
-					while (true) {
-						if (end >= chars.length || isEmulated && isNumeral) {
-							break label163;
-						}
-						bad = false;
-						b = chars[end];
-						c = '\0';
-						if (end + 1 < chars.length) {
-							c = chars[end + 1];
-						}
-						int charLen;
-						if (fragOff < fragment.length && (charLen = getEmulatedSize(c, fragment[fragOff], b)) > 0) {
-							if (charLen == 1 && isNumber(b)) {
-								isEmulated = true;
-							}
-							if (charLen == 2 && (isNumber(b) || isNumber(c))) {
-								isEmulated = true;
-							}
-							end += charLen;
-							fragOff++;
-						} else {
-							if (fragOff == 0) {
-								break label163;
-							}
-							int charLen2;
-							if ((charLen2 = getEmulatedSize(c, fragment[fragOff - 1], b)) > 0) {
-								end += charLen2;
-								if (fragOff == 1) {
-									stride++;
-								}
-							} else {
-								if (fragOff >= fragment.length || !isLowerCaseAlpha(b)) {
-									break label163;
-								}
-								if (isSymbol(b) && b != '\'') {
-									isSymbol = true;
-								}
-								if (isNumber(b)) {
-									isNumeral = true;
-								}
-								end++;
-								iterations++;
-								if (iterations * 100 / (end - start) > 90) {
-									break label163;
-								}
-							}
-						}
-					}
-				}
-				if (fragOff >= fragment.length && (!isEmulated || !isNumeral)) {
-					bad = true;
-					int cur;
-					if (isSymbol) {
-						boolean badCurrent = false;
-						boolean badNext = false;
-						if (start - 1 < 0 || isSymbol(chars[start - 1]) && chars[start - 1] != '\'') {
-							badCurrent = true;
-						}
-						if (end >= chars.length || isSymbol(chars[end]) && chars[end] != '\'') {
-							badNext = true;
-						}
-						if (!badCurrent || !badNext) {
-							boolean good = false;
-							cur = start - 2;
-							if (badCurrent) {
-								cur = start;
-							}
-							while (!good && cur < end) {
-								if (cur >= 0 && (!isSymbol(chars[cur]) || chars[cur] == '\'')) {
-									char[] frag = new char[3];
-									int off;
-									for (off = 0; off < 3 && cur + off < chars.length && (!isSymbol(chars[cur + off]) || chars[cur + off] == '\''); off++) {
-										frag[off] = chars[cur + off];
-									}
-									boolean valid = off != 0;
-									if (off < 3 && cur - 1 >= 0 && (!isSymbol(chars[cur - 1]) || chars[cur - 1] == '\'')) {
-										valid = false;
-									}
-									if (valid && !isBadFragment(frag)) {
-										good = true;
-									}
-								}
-								cur++;
-							}
-							if (!good) {
-								bad = false;
-							}
-						}
-					} else {
-						b = ' ';
-						if (start - 1 >= 0) {
-							b = chars[start - 1];
-						}
-						c = ' ';
-						if (end < chars.length) {
-							c = chars[end];
-						}
-						byte bIndex = getIndex(b);
-						byte cIndex = getIndex(c);
-						if (badCombinations != null && comboMatches(bIndex, badCombinations, cIndex)) {
-							bad = false;
-						}
-					}
-					if (bad) {
-						int numeralCount = 0;
-						int alphaCount = 0;
-						for ( int n = start; n < end; n++) {
-							if (isNumber(chars[n])) {
-								numeralCount++;
-							} else if (isAlpha(chars[n])) {
-								alphaCount++;
-							}
-						}
-						if (numeralCount <= alphaCount) {
-							for (cur = start; cur < end; cur++) {
-								chars[cur] = '*';
-							}
-						}
-					}
-				}
-			}
-		}
-	}
+   }
 
-    private static boolean comboMatches( byte a, byte[][] combos, byte b) {
-		int first = 0;
-		if (combos[first][0] == a && combos[first][1] == b) {
-			return true;
-		}
-		int last = combos.length - 1;
-		if (combos[last][0] == a && combos[last][1] == b) {
-			return true;
-		}
-		do {
-			int middle = (first + last) / 2;
-			if (combos[middle][0] == a && combos[middle][1] == b) {
-				return true;
-			}
-			if (a < combos[middle][0] || a == combos[middle][0] && b < combos[middle][1]) {
-				last = middle;
-			} else {
-				first = middle;
-			}
-		} while (first != last && first + 1 != last);
-		return false;
-	}
+   private static void method454(char[] var0) {
+      boolean var1 = true;
 
-    private static int getEmulatedDomainCharSize( char c, char a, char b) {
-		if (a == b) {
-			return 1;
-		} else if (a == 'o' && b == '0') {
-			return 1;
-		} else if (a == 'o' && b == '(' && c == ')') {
-			return 2;
-		} else if (a == 'c' && (b == '(' || b == '<' || b == '[')) {
-			return 1;
-		} else if (a == 'e' && b == '€') {
-			return 1;
-		} else if (a == 's' && b == '$') {
-			return 1;
-		} else if (a == 'l' && b == 'i') {
-			return 1;
-		} else {
-			return 0;
-		}
-	}
+      for(int var2 = 0; var2 < var0.length; ++var2) {
+         char var3 = var0[var2];
+         if (!method474(var3)) {
+            var1 = true;
+         } else if (var1) {
+            if (method476(var3, aBoolean165)) {
+               var1 = false;
+            }
+         } else if (method477(var3)) {
+            var0[var2] = (char)(var3 + 'a' - 65);
+         }
+      }
 
-    private static int getEmulatedSize( char c, char a, char b) {
-		if (a == b) {
-			return 1;
-		}
-		if (a >= 'a' && a <= 'm') {
-			if (a == 'a') {
-				if (b != '4' && b != '@' && b != '^') {
-					if (b == '/' && c == '\\') {
-						return 2;
-					}
-					return 0;
-				}
-				return 1;
-			}
-			if (a == 'b') {
-				if (b != '6' && b != '8') {
-					if (b == '1' && c == '3') {
-						return 2;
-					}
-					return 0;
-				}
-				return 1;
-			}
-			if (a == 'c') {
-				if (b != '(' && b != '<' && b != '{' && b != '[') {
-					return 0;
-				}
-				return 1;
-			}
-			if (a == 'd') {
-				if (b == '[' && c == ')') {
-					return 2;
-				}
-				return 0;
-			}
-			if (a == 'e') {
-				if (b != '3' && b != '€') {
-					return 0;
-				}
-				return 1;
-			}
-			if (a == 'f') {
-				if (b == 'p' && c == 'h') {
-					return 2;
-				}
-				if (b == '£') {
-					return 1;
-				}
-				return 0;
-			}
-			if (a == 'g') {
-				if (b != '9' && b != '6') {
-					return 0;
-				}
-				return 1;
-			}
-			if (a == 'h') {
-				if (b == '#') {
-					return 1;
-				}
-				return 0;
-			}
-			if (a == 'i') {
-				if (b != 'y' && b != 'l' && b != 'j' && b != '1' && b != '!' && b != ':' && b != ';' && b != '|') {
-					return 0;
-				}
-				return 1;
-			}
-			if (a == 'j') {
-				return 0;
-			}
-			if (a == 'k') {
-				return 0;
-			}
-			if (a == 'l') {
-				if (b != '1' && b != '|' && b != 'i') {
-					return 0;
-				}
-				return 1;
-			}
-			if (a == 'm') {
-				return 0;
-			}
-		}
-		if (a >= 'n' && a <= 'z') {
-			if (a == 'n') {
-				return 0;
-			}
-			if (a == 'o') {
-				if (b != '0' && b != '*') {
-					if ((b != '(' || c != ')') && (b != '[' || c != ']') && (b != '{' || c != '}') && (b != '<' || c != '>')) {
-						return 0;
-					}
-					return 2;
-				}
-				return 1;
-			}
-			if (a == 'p') {
-				return 0;
-			}
-			if (a == 'q') {
-				return 0;
-			}
-			if (a == 'r') {
-				return 0;
-			}
-			if (a == 's') {
-				if (b != '5' && b != 'z' && b != '$' && b != '2') {
-					return 0;
-				}
-				return 1;
-			}
-			if (a == 't') {
-				if (b != '7' && b != '+') {
-					return 0;
-				}
-				return 1;
-			}
-			if (a == 'u') {
-				if (b == 'v') {
-					return 1;
-				}
-				if (b == '\\' && c == '/' || b == '\\' && c == '|' || b == '|' && c == '/') {
-					return 2;
-				}
-				return 0;
-			}
-			if (a == 'v') {
-				if ((b != '\\' || c != '/') && (b != '\\' || c != '|') && (b != '|' || c != '/')) {
-					return 0;
-				}
-				return 2;
-			}
-			if (a == 'w') {
-				if (b == 'v' && c == 'v') {
-					return 2;
-				}
-				return 0;
-			}
-			if (a == 'x') {
-				if ((b != ')' || c != '(') && (b != '}' || c != '{') && (b != ']' || c != '[') && (b != '>' || c != '<')) {
-					return 0;
-				}
-				return 2;
-			}
-			if (a == 'y') {
-				return 0;
-			}
-			if (a == 'z') {
-				return 0;
-			}
-		}
-		if (a >= '0' && a <= '9') {
-			if (a == '0') {
-				if (b == 'o' || b == 'O') {
-					return 1;
-				} else if ((b != '(' || c != ')') && (b != '{' || c != '}') && (b != '[' || c != ']')) {
-					return 0;
-				} else {
-					return 2;
-				}
-			} else if (a == '1') {
-				return b == 'l' ? 1 : 0;
-			} else {
-				return 0;
-			}
-		} else if (a == ',') {
-			return b == '.' ? 1 : 0;
-		} else if (a == '.') {
-			return b == ',' ? 1 : 0;
-		} else if (a == '!') {
-			return b == 'i' ? 1 : 0;
-		} else {
-			return 0;
-		}
-	}
+   }
 
-    private static byte getIndex( char c) {
-		if (c >= 'a' && c <= 'z') {
-			return (byte) (c + 1 - 'a');
-		} else if (c == '\'') {
-			return 28;
-		} else if (c >= '0' && c <= '9') {
-			return (byte) (c + 29 - '0');
-		} else {
-			return 27;
-		}
-	}
+   private static boolean method451(char var0) {
+      return var0 >= ' ' && var0 <= 127 || var0 == ' ' || var0 == '\n' || var0 == '\t' || var0 == 163 || var0 == 8364;
+   }
 
-    private static void filterFragments( char[] chars) {
-		boolean compare = false;
-		int end = 0;
-		int count = 0;
-		int start = 0;
-		while (true) {
-			do {
-				int index;
-				if ((index = indexOfNumber(chars, end)) == -1) {
-					return;
-				}
-				boolean foundLowercase = false;
-				for ( int i = end; i >= 0 && i < index && !foundLowercase; i++) {
-					if (!isSymbol(chars[i]) && !isLowerCaseAlpha(chars[i])) {
-						foundLowercase = true;
-					}
-				}
-				if (foundLowercase) {
-					count = 0;
-				}
-				if (count == 0) {
-					start = index;
-				}
-				end = indexOfNonNumber(index, chars);
-				int value = 0;
-				for ( int i = index; i < end; i++) {
-					value = value * 10 + chars[i] - 48;
-				}
-				if (value <= 255 && end - index <= 8) {
-					count++;
-				} else {
-					count = 0;
-				}
-			} while (count != 4);
-			for ( int i = start; i < end; i++) {
-				chars[i] = '*';
-			}
-			count = 0;
-		}
-	}
+   private static void method464(byte[][] var0, char[] var1, char[] var2) {
+      int var3;
+      if (var1.length <= var2.length) {
+         for(int var4 = 0; var4 <= var2.length - var1.length; var4 += var3) {
+            int var5 = var4;
+            int var6 = 0;
+            int var7 = 0;
+            var3 = 1;
+            boolean var8 = false;
+            boolean var9 = false;
+            boolean var10 = false;
 
-    private static int indexOfNumber( char[] input, int off) {
-		for ( int i = off; i < input.length && i >= 0; i++) {
-			if (input[i] >= '0' && input[i] <= '9') {
-				return i;
-			}
-		}
-		return -1;
-	}
+            char var11;
+            char var12;
+            int var14;
+            label165:
+            while(true) {
+               while(true) {
+                  if (var5 >= var2.length || var9 && var10) {
+                     break label165;
+                  }
 
-    private static int indexOfNonNumber( int off, char[] input) {
-		int i = off;
-		while (true) {
-			if (i < input.length && i >= 0) {
-				if (input[i] >= '0' && input[i] <= '9') {
-					i++;
-					continue;
-				}
-				return i;
-			}
-			return input.length;
-		}
-	}
+                  var11 = var2[var5];
+                  var12 = 0;
+                  if (var5 + 1 < var2.length) {
+                     var12 = var2[var5 + 1];
+                  }
 
-    private static boolean isSymbol( char c) {
-		return !isAlpha(c) && !isNumber(c);
-	}
+                  int var13;
+                  if (var6 < var1.length && (var13 = method467(var1[var6], var11, var12)) > 0) {
+                     if (var13 == 1 && method475(var11)) {
+                        var9 = true;
+                     }
 
-    private static boolean isLowerCaseAlpha( char c) {
-		if (c >= 'a' && c <= 'z') {
-			return c == 'v' || c == 'x' || c == 'j' || c == 'q' || c == 'z';
-		} else {
-			return true;
-		}
-	}
+                     if (var13 == 2 && (method475(var11) || method475(var12))) {
+                        var9 = true;
+                     }
 
-    private static boolean isAlpha( char c) {
-		return c >= 'a' && c <= 'z' || c >= 'A' && c <= 'Z';
-	}
+                     var5 += var13;
+                     ++var6;
+                  } else {
+                     if (var6 == 0) {
+                        break label165;
+                     }
 
-    private static boolean isNumber( char c) {
-		return c >= '0' && c <= '9';
-	}
+                     if ((var14 = method467(var1[var6 - 1], var11, var12)) > 0) {
+                        var5 += var14;
+                        if (var6 == 1) {
+                           ++var3;
+                        }
+                     } else {
+                        if (var6 >= var1.length || !method473(var11)) {
+                           break label165;
+                        }
 
-    private static boolean isLowerCase( char c) {
-		return c >= 'a' && c <= 'z';
-	}
+                        if (method472(var11) && var11 != '\'') {
+                           var8 = true;
+                        }
 
-    private static boolean isUpperCase( char c) {
-		return c >= 'A' && c <= 'Z';
-	}
+                        if (method475(var11)) {
+                           var10 = true;
+                        }
 
-    private static boolean isBadFragment( char[] input) {
-		boolean skip = true;
-		for ( int i = 0; i < input.length; i++) {
-			if (!isNumber(input[i]) && input[i] != '\0') {
-				skip = false;
-				break;
-			}
-		}
-		if (skip) {
-			return true;
-		}
-		int i = firstFragmentId(input);
-		int start = 0;
-		int end;
-		end = fragments.length - 1;
-		if (i == fragments[start] || i == fragments[end]) {
-			return true;
-		}
-		do {
-			int middle = (start + end) / 2;
-			if (i == fragments[middle]) {
-				return true;
-			}
-			if (i < fragments[middle]) {
-				end = middle;
-			} else {
-				start = middle;
-			}
-		} while (start != end && start + 1 != end);
-		return false;
-	}
+                        ++var5;
+                        ++var7;
+                        if (var7 * 100 / (var5 - var4) > 90) {
+                           break label165;
+                        }
+                     }
+                  }
+               }
+            }
 
-    private static int firstFragmentId( char[] chars) {
-		if (chars.length > 6) {
-			return 0;
-		}
-		int value = 0;
-		for ( int i = 0; i < chars.length; i++) {
-			char c = chars[chars.length - i - 1];
-			if (c >= 'a' && c <= 'z') {
-				value = value * 38 + c + 1 - 'a';
-			} else if (c == '\'') {
-				value = value * 38 + 27;
-			} else if (c >= '0' && c <= '9') {
-				value = value * 38 + c + 28 - '0';
-			} else if (c != '\0') {
-				return 0;
-			}
-		}
-		return value;
-	}
+            if (var6 >= var1.length && (!var9 || !var10)) {
+               boolean var22 = true;
+               int var23;
+               int var24;
+               if (var8) {
+                  boolean var15 = false;
+                  boolean var16 = false;
+                  if (var4 - 1 < 0 || method472(var2[var4 - 1]) && var2[var4 - 1] != '\'') {
+                     var15 = true;
+                  }
+
+                  if (var5 >= var2.length || method472(var2[var5]) && var2[var5] != '\'') {
+                     var16 = true;
+                  }
+
+                  if (!var15 || !var16) {
+                     boolean var17 = false;
+                     var14 = var4 - 2;
+                     if (var15) {
+                        var14 = var4;
+                     }
+
+                     for(; !var17 && var14 < var5; ++var14) {
+                        if (var14 >= 0 && (!method472(var2[var14]) || var2[var14] == '\'')) {
+                           char[] var18 = new char[3];
+
+                           int var19;
+                           for(var19 = 0; var19 < 3 && var14 + var19 < var2.length && (!method472(var2[var14 + var19]) || var2[var14 + var19] == '\''); ++var19) {
+                              var18[var19] = var2[var14 + var19];
+                           }
+
+                           boolean var20 = true;
+                           if (var19 == 0) {
+                              var20 = false;
+                           }
+
+                           if (var19 < 3 && var14 - 1 >= 0 && (!method472(var2[var14 - 1]) || var2[var14 - 1] == '\'')) {
+                              var20 = false;
+                           }
+
+                           if (var20 && !method478(var18, 463)) {
+                              var17 = true;
+                           }
+                        }
+                     }
+
+                     if (!var17) {
+                        var22 = false;
+                     }
+                  }
+               } else {
+                  var11 = ' ';
+                  if (var4 - 1 >= 0) {
+                     var11 = var2[var4 - 1];
+                  }
+
+                  var12 = ' ';
+                  if (var5 < var2.length) {
+                     var12 = var2[var5];
+                  }
+
+                  var23 = method468(var11);
+                  var24 = method468(var12);
+                  if (var0 != null && method465((byte)var24, var0, (byte)var23)) {
+                     var22 = false;
+                  }
+               }
+
+               if (var22) {
+                  var23 = 0;
+                  var24 = 0;
+                  int var25 = -1;
+
+                  for(var14 = var4; var14 < var5; ++var14) {
+                     if (method475(var2[var14])) {
+                        ++var23;
+                     } else if (method474(var2[var14])) {
+                        ++var24;
+                        var25 = var14;
+                     }
+                  }
+
+                  if (var25 > -1) {
+                     var23 -= var5 - var25 - 1;
+                  }
+
+                  if (var23 <= var24) {
+                     for(int var21 = var4; var21 < var5; ++var21) {
+                        var2[var21] = '*';
+                     }
+                  } else {
+                     var3 = 1;
+                  }
+               }
+            }
+         }
+      }
+
+   }
+
+   private static int method467(char var0, char var1, char var2) {
+      if (var0 == var1) {
+         return 1;
+      } else {
+         if (var0 >= 'a' && var0 <= 'm') {
+            if (var0 == 'a') {
+               if (var1 != '4' && var1 != '@' && var1 != '^') {
+                  if (var1 == '/' && var2 == '\\') {
+                     return 2;
+                  }
+
+                  return 0;
+               }
+
+               return 1;
+            }
+
+            if (var0 == 'b') {
+               if (var1 != '6' && var1 != '8') {
+                  if ((var1 != '1' || var2 != '3') && (var1 != 'i' || var2 != '3')) {
+                     return 0;
+                  }
+
+                  return 2;
+               }
+
+               return 1;
+            }
+
+            if (var0 == 'c') {
+               if (var1 != '(' && var1 != '<' && var1 != '{' && var1 != '[') {
+                  return 0;
+               }
+
+               return 1;
+            }
+
+            if (var0 == 'd') {
+               if (var1 == '[' && var2 == ')' || var1 == 'i' && var2 == ')') {
+                  return 2;
+               }
+
+               return 0;
+            }
+
+            if (var0 == 'e') {
+               if (var1 != '3' && var1 != 8364) {
+                  return 0;
+               }
+
+               return 1;
+            }
+
+            if (var0 == 'f') {
+               if (var1 == 'p' && var2 == 'h') {
+                  return 2;
+               }
+
+               if (var1 == 163) {
+                  return 1;
+               }
+
+               return 0;
+            }
+
+            if (var0 == 'g') {
+               if (var1 != '9' && var1 != '6' && var1 != 'q') {
+                  return 0;
+               }
+
+               return 1;
+            }
+
+            if (var0 == 'h') {
+               if (var1 == '#') {
+                  return 1;
+               }
+
+               return 0;
+            }
+
+            if (var0 == 'i') {
+               if (var1 != 'y' && var1 != 'l' && var1 != 'j' && var1 != '1' && var1 != '!' && var1 != ':' && var1 != ';' && var1 != '|') {
+                  return 0;
+               }
+
+               return 1;
+            }
+
+            if (var0 == 'j') {
+               return 0;
+            }
+
+            if (var0 == 'k') {
+               return 0;
+            }
+
+            if (var0 == 'l') {
+               if (var1 != '1' && var1 != '|' && var1 != 'i') {
+                  return 0;
+               }
+
+               return 1;
+            }
+
+            if (var0 == 'm') {
+               return 0;
+            }
+         }
+
+         if (var0 >= 'n' && var0 <= 'z') {
+            if (var0 == 'n') {
+               return 0;
+            }
+
+            if (var0 == 'o') {
+               if (var1 != '0' && var1 != '*') {
+                  if ((var1 != '(' || var2 != ')') && (var1 != '[' || var2 != ']') && (var1 != '{' || var2 != '}') && (var1 != '<' || var2 != '>')) {
+                     return 0;
+                  }
+
+                  return 2;
+               }
+
+               return 1;
+            }
+
+            if (var0 == 'p') {
+               return 0;
+            }
+
+            if (var0 == 'q') {
+               return 0;
+            }
+
+            if (var0 == 'r') {
+               return 0;
+            }
+
+            if (var0 == 's') {
+               if (var1 != '5' && var1 != 'z' && var1 != '$' && var1 != '2') {
+                  return 0;
+               }
+
+               return 1;
+            }
+
+            if (var0 == 't') {
+               if (var1 != '7' && var1 != '+') {
+                  return 0;
+               }
+
+               return 1;
+            }
+
+            if (var0 == 'u') {
+               if (var1 == 'v') {
+                  return 1;
+               }
+
+               if ((var1 != '\\' || var2 != '/') && (var1 != '\\' || var2 != '|') && (var1 != '|' || var2 != '/')) {
+                  return 0;
+               }
+
+               return 2;
+            }
+
+            if (var0 == 'v') {
+               if (var1 == '\\' && var2 == '/' || var1 == '\\' && var2 == '|' || var1 == '|' && var2 == '/') {
+                  return 2;
+               }
+
+               return 0;
+            }
+
+            if (var0 == 'w') {
+               if (var1 == 'v' && var2 == 'v') {
+                  return 2;
+               }
+
+               return 0;
+            }
+
+            if (var0 == 'x') {
+               if ((var1 != ')' || var2 != '(') && (var1 != '}' || var2 != '{') && (var1 != ']' || var2 != '[') && (var1 != '>' || var2 != '<')) {
+                  return 0;
+               }
+
+               return 2;
+            }
+
+            if (var0 == 'y') {
+               return 0;
+            }
+
+            if (var0 == 'z') {
+               return 0;
+            }
+         }
+
+         if (var0 >= '0' && var0 <= '9') {
+            if (var0 != '0') {
+               if (var0 == '1') {
+                  return var1 == 'l' ? 1 : 0;
+               } else {
+                  return 0;
+               }
+            } else if (var1 != 'o' && var1 != 'O') {
+               return (var1 != '(' || var2 != ')') && (var1 != '{' || var2 != '}') && (var1 != '[' || var2 != ']') ? 0 : 2;
+            } else {
+               return 1;
+            }
+         } else if (var0 == ',') {
+            return var1 == '.' ? 1 : 0;
+         } else if (var0 == '.') {
+            return var1 == ',' ? 1 : 0;
+         } else if (var0 == '!') {
+            return var1 == 'i' ? 1 : 0;
+         } else {
+            return 0;
+         }
+      }
+   }
+
+   private static boolean method472(char var0) {
+      return !method474(var0) && !method475(var0);
+   }
+
+   private static void method461(char[] var0, byte var1, char[] var2, int var3, char[] var4, char[] var5) {
+      if (var4.length <= var0.length) {
+         int var6;
+         for(int var7 = 0; var7 <= var0.length - var4.length; var7 += var6) {
+            int var8 = var7;
+            int var9 = 0;
+            var6 = 1;
+
+            int var11;
+            int var12;
+            label152:
+            while(true) {
+               while(true) {
+                  if (var8 >= var0.length) {
+                     break label152;
+                  }
+
+                  char var10 = var0[var8];
+                  var11 = 0;
+                  if (var8 + 1 < var0.length) {
+                     var11 = var0[var8 + 1];
+                  }
+
+                  if (var9 < var4.length && (var12 = method466(var10, var4[var9], (char)var11)) > 0) {
+                     var8 += var12;
+                     ++var9;
+                  } else {
+                     if (var9 == 0) {
+                        break label152;
+                     }
+
+                     int var13;
+                     if ((var13 = method466(var10, var4[var9 - 1], (char)var11)) > 0) {
+                        var8 += var13;
+                        if (var9 == 1) {
+                           ++var6;
+                        }
+                     } else {
+                        if (var9 >= var4.length || !method472(var10)) {
+                           break label152;
+                        }
+
+                        ++var8;
+                     }
+                  }
+               }
+            }
+
+            if (var9 >= var4.length) {
+               boolean var20 = false;
+               var11 = method462(var2, var7, var0);
+               var12 = method463(var5, var8 - 1, var0);
+               if (var3 == 1 && var11 > 0 && var12 > 0) {
+                  var20 = true;
+               }
+
+               if (var3 == 2 && (var11 > 2 && var12 > 0 || var11 > 0 && var12 > 2)) {
+                  var20 = true;
+               }
+
+               if (var3 == 3 && var11 > 0 && var12 > 2) {
+                  var20 = true;
+               }
+
+               boolean var21;
+               if (var3 == 3 && var11 > 2 && var12 > 0) {
+                  var21 = true;
+               } else {
+                  var21 = false;
+               }
+
+               if (var20) {
+                  int var14 = var7;
+                  int var15 = var8 - 1;
+                  boolean var16;
+                  int var17;
+                  if (var11 > 2) {
+                     if (var11 == 4) {
+                        var16 = false;
+
+                        for(var17 = var7 - 1; var17 >= 0; --var17) {
+                           if (var16) {
+                              if (var2[var17] != '*') {
+                                 break;
+                              }
+
+                              var14 = var17;
+                           } else if (var2[var17] == '*') {
+                              var14 = var17;
+                              var16 = true;
+                           }
+                        }
+                     }
+
+                     var16 = false;
+
+                     for(var17 = var14 - 1; var17 >= 0; --var17) {
+                        if (var16) {
+                           if (method472(var0[var17])) {
+                              break;
+                           }
+
+                           var14 = var17;
+                        } else if (!method472(var0[var17])) {
+                           var16 = true;
+                           var14 = var17;
+                        }
+                     }
+                  }
+
+                  if (var12 > 2) {
+                     if (var12 == 4) {
+                        var16 = false;
+
+                        for(var17 = var15 + 1; var17 < var0.length; ++var17) {
+                           if (var16) {
+                              if (var5[var17] != '*') {
+                                 break;
+                              }
+
+                              var15 = var17;
+                           } else if (var5[var17] == '*') {
+                              var15 = var17;
+                              var16 = true;
+                           }
+                        }
+                     }
+
+                     var16 = false;
+
+                     for(var17 = var15 + 1; var17 < var0.length; ++var17) {
+                        if (var16) {
+                           if (method472(var0[var17])) {
+                              break;
+                           }
+
+                           var15 = var17;
+                        } else if (!method472(var0[var17])) {
+                           var16 = true;
+                           var15 = var17;
+                        }
+                     }
+                  }
+
+                  for(int var18 = var14; var18 <= var15; ++var18) {
+                     var0[var18] = '*';
+                  }
+               }
+            }
+         }
+
+         boolean var19 = false;
+      }
+
+   }
+
+   private static boolean method474(char var0) {
+      return var0 >= 'a' && var0 <= 'z' || var0 >= 'A' && var0 <= 'Z';
+   }
+
+   private static byte method468(char var0) {
+      if (var0 >= 'a' && var0 <= 'z') {
+         return (byte)(var0 + 1 - 97);
+      } else if (var0 == '\'') {
+         return 28;
+      } else {
+         return var0 >= '0' && var0 <= '9' ? (byte)(var0 + 29 - 48) : 27;
+      }
+   }
+
+   private static boolean method475(char var0) {
+      return var0 >= '0' && var0 <= '9';
+   }
+
+   private static int method470(int var0, char[] var1) {
+      for(int var2 = var0; var2 < var1.length && var2 >= 0; ++var2) {
+         if (var1[var2] >= '0' && var1[var2] <= '9') {
+            return var2;
+         }
+      }
+
+      return -1;
+   }
+
+   private static boolean method473(char var0) {
+      if (var0 >= 'a' && var0 <= 'z') {
+         return var0 == 'v' || var0 == 'x' || var0 == 'j' || var0 == 'q' || var0 == 'z';
+      } else {
+         return true;
+      }
+   }
+
+   private static boolean method465(byte var0, byte[][] var1, byte var2) {
+      int var3 = 0;
+      if (var1[0][0] == var2 && var1[0][1] == var0) {
+         return true;
+      } else {
+         int var4 = var1.length - 1;
+         if (var1[var4][0] == var2 && var1[var4][1] == var0) {
+            return true;
+         } else {
+            do {
+               int var5 = (var3 + var4) / 2;
+               if (var1[var5][0] == var2 && var1[var5][1] == var0) {
+                  return true;
+               }
+
+               if (var2 >= var1[var5][0] && (var2 != var1[var5][0] || var0 >= var1[var5][1])) {
+                  var3 = var5;
+               } else {
+                  var4 = var5;
+               }
+            } while(var3 != var4 && var3 + 1 != var4);
+
+            return false;
+         }
+      }
+   }
+
+   private static int method462(char[] var0, int var1, char[] var2) {
+      int var3;
+      if (aByte37 != -113) {
+         for(var3 = 1; var3 > 0; ++var3) {
+         }
+      }
+
+      if (var1 == 0) {
+         return 2;
+      } else {
+         var3 = var1 - 1;
+
+         while(true) {
+            if (var3 >= 0 && method472(var2[var3])) {
+               if (var2[var3] != ',' && var2[var3] != '.') {
+                  --var3;
+                  continue;
+               }
+
+               return 3;
+            }
+
+            int var4 = 0;
+
+            for(int var5 = var1 - 1; var5 >= 0 && method472(var0[var5]); --var5) {
+               if (var0[var5] == '*') {
+                  ++var4;
+               }
+            }
+
+            if (var4 >= 3) {
+               return 4;
+            }
+
+            if (method472(var2[var1 - 1])) {
+               return 1;
+            }
+
+            return 0;
+         }
+      }
+   }
+
+   private static int method466(char var0, char var1, char var2) {
+      if (var1 == var0) {
+         return 1;
+      } else if (var1 == 'o' && var0 == '0') {
+         return 1;
+      } else if (var1 == 'o' && var0 == '(' && var2 == ')') {
+         return 2;
+      } else if (var1 == 'c' && (var0 == '(' || var0 == '<' || var0 == '[')) {
+         return 1;
+      } else if (var1 == 'e' && var0 == 8364) {
+         return 1;
+      } else if (var1 == 's' && var0 == '$') {
+         return 1;
+      } else {
+         return var1 == 'l' && var0 == 'i' ? 1 : 0;
+      }
+   }
+
+   private static int method463(char[] var0, int var1, char[] var2) {
+      int var3;
+      if (anInt663 > 3 || anInt663 < 3) {
+         for(var3 = 1; var3 > 0; ++var3) {
+         }
+      }
+
+      if (var1 + 1 == var2.length) {
+         return 2;
+      } else {
+         var3 = var1 + 1;
+
+         while(true) {
+            if (var3 < var2.length && method472(var2[var3])) {
+               if (var2[var3] != '\\' && var2[var3] != '/') {
+                  ++var3;
+                  continue;
+               }
+
+               return 3;
+            }
+
+            int var4 = 0;
+
+            for(int var5 = var1 + 1; var5 < var2.length && method472(var0[var5]); ++var5) {
+               if (var0[var5] == '*') {
+                  ++var4;
+               }
+            }
+
+            if (var4 >= 5) {
+               return 4;
+            }
+
+            if (method472(var2[var1 + 1])) {
+               return 1;
+            }
+
+            return 0;
+         }
+      }
+   }
+
+   private static int method471(int var0, char[] var1) {
+      int var2 = var0;
+
+      while(true) {
+         if (var2 < var1.length && var2 >= 0) {
+            if (var1[var2] >= '0' && var1[var2] <= '9') {
+               ++var2;
+               continue;
+            }
+
+            return var2;
+         }
+
+         return var1.length;
+      }
+   }
+
+   private static boolean method477(char var0) {
+      return var0 >= 'A' && var0 <= 'Z';
+   }
+
+   private static void method457(char[] var0, char[] var1, char[] var2, char[] var3) {
+      int var4;
+      if (var3.length <= var0.length) {
+         for(int var5 = 0; var5 <= var0.length - var3.length; var5 += var4) {
+            int var6 = var5;
+            int var7 = 0;
+            var4 = 1;
+
+            int var9;
+            int var10;
+            int var11;
+            label57:
+            while(true) {
+               while(true) {
+                  if (var6 >= var0.length) {
+                     break label57;
+                  }
+
+                  char var8 = var0[var6];
+                  var9 = 0;
+                  if (var6 + 1 < var0.length) {
+                     var9 = var0[var6 + 1];
+                  }
+
+                  if (var7 < var3.length && (var10 = method466(var8, var3[var7], (char)var9)) > 0) {
+                     var6 += var10;
+                     ++var7;
+                  } else {
+                     if (var7 == 0) {
+                        break label57;
+                     }
+
+                     if ((var11 = method466(var8, var3[var7 - 1], (char)var9)) > 0) {
+                        var6 += var11;
+                        if (var7 == 1) {
+                           ++var4;
+                        }
+                     } else {
+                        if (var7 >= var3.length || !method472(var8)) {
+                           break label57;
+                        }
+
+                        ++var6;
+                     }
+                  }
+               }
+            }
+
+            if (var7 >= var3.length) {
+               boolean var12 = false;
+               var9 = method458(var0, var2, var5);
+               var10 = method459(var1, var6 - 1, var0);
+               if (var9 > 2 || var10 > 2) {
+                  var12 = true;
+               }
+
+               if (var12) {
+                  for(var11 = var5; var11 < var6; ++var11) {
+                     var0[var11] = '*';
+                  }
+               }
+            }
+         }
+      }
+
+   }
+
+   private static boolean method476(char var0, boolean var1) {
+      if (var1) {
+         throw new NullPointerException();
+      } else {
+         return var0 >= 'a' && var0 <= 'z';
+      }
+   }
+
+   private static boolean method478(char[] var0, int var1) {
+      boolean var2 = true;
+
+      for(int var3 = 0; var3 < var0.length; ++var3) {
+         if (!method475(var0[var3]) && var0[var3] != 0) {
+            var2 = false;
+         }
+      }
+
+      boolean var8 = false;
+      if (var2) {
+         return true;
+      } else {
+         int var4 = method479(var0, (byte)5);
+         int var5 = 0;
+         int var6 = anIntArray176.length - 1;
+         if (var4 != anIntArray176[0] && var4 != anIntArray176[var6]) {
+            do {
+               int var7 = (var5 + var6) / 2;
+               if (var4 == anIntArray176[var7]) {
+                  return true;
+               }
+
+               if (var4 < anIntArray176[var7]) {
+                  var6 = var7;
+               } else {
+                  var5 = var7;
+               }
+            } while(var5 != var6 && var5 + 1 != var6);
+
+            return false;
+         } else {
+            return true;
+         }
+      }
+   }
+
+   private static int method458(char[] var0, char[] var1, int var2) {
+      if (var2 == 0) {
+         return 2;
+      } else {
+         int var3;
+         for(var3 = var2 - 1; var3 >= 0 && method472(var0[var3]); --var3) {
+            if (var0[var3] == '@') {
+               return 3;
+            }
+         }
+
+         var3 = 0;
+
+         for(int var4 = var2 - 1; var4 >= 0 && method472(var1[var4]); --var4) {
+            if (var1[var4] == '*') {
+               ++var3;
+            }
+         }
+
+         if (var3 >= 3) {
+            return 4;
+         } else {
+            return method472(var0[var2 - 1]) ? 1 : 0;
+         }
+      }
+   }
+
+   private static int method479(char[] var0, byte var1) {
+      if (var0.length > 6) {
+         return 0;
+      } else {
+         int var2 = 0;
+         boolean var3 = false;
+
+         for(int var4 = 0; var4 < var0.length; ++var4) {
+            char var5 = var0[var0.length - var4 - 1];
+            if (var5 >= 'a' && var5 <= 'z') {
+               var2 = var2 * 38 + var5 + 1 - 97;
+            } else if (var5 == '\'') {
+               var2 = var2 * 38 + 27;
+            } else if (var5 >= '0' && var5 <= '9') {
+               var2 = var2 * 38 + var5 + 28 - 48;
+            } else if (var5 != 0) {
+               return 0;
+            }
+         }
+
+         return var2;
+      }
+   }
+
+   private static int method459(char[] var0, int var1, char[] var2) {
+      if (var1 + 1 == var2.length) {
+         return 2;
+      } else {
+         int var3 = var1 + 1;
+
+         while(true) {
+            if (var3 < var2.length && method472(var2[var3])) {
+               if (var2[var3] != '.' && var2[var3] != ',') {
+                  ++var3;
+                  continue;
+               }
+
+               return 3;
+            }
+
+            int var4 = 0;
+
+            for(int var5 = var1 + 1; var5 < var2.length && method472(var0[var5]); ++var5) {
+               if (var0[var5] == '*') {
+                  ++var4;
+               }
+            }
+
+            if (var4 >= 3) {
+               return 4;
+            }
+
+            if (method472(var2[var1 + 1])) {
+               return 1;
+            }
+
+            return 0;
+         }
+      }
+   }
+
+   public static void unpack(Jagfile var0) {
+      Packet var1 = new Packet(var0.read("fragmentsenc.txt", (byte[])null));
+      Packet var2 = new Packet(var0.read("badenc.txt", (byte[])null));
+      Packet var3 = new Packet(var0.read("domainenc.txt", (byte[])null));
+      Packet var4 = new Packet(var0.read("tldlist.txt", (byte[])null));
+      method443(var1, var2, var3, var4);
+   }
+
+   private static void method443(Packet var0, Packet var1, Packet var2, Packet var3) {
+      method445(var1);
+      method446(var2);
+      method447(var0);
+      method444(var3);
+   }
+
+   private static void method445(Packet var0) {
+      int var1 = var0.g4();
+      aCharArrayArray1 = new char[var1][];
+      aByteArrayArrayArray7 = new byte[var1][][];
+      method448(var0, aCharArrayArray1, aByteArrayArrayArray7);
+   }
+
+   private static void method448(Packet var0, char[][] var1, byte[][][] var2) {
+      for(int var3 = 0; var3 < var1.length; ++var3) {
+         char[] var4 = new char[var0.g1()];
+
+         for(int var5 = 0; var5 < var4.length; ++var5) {
+            var4[var5] = (char)var0.g1();
+         }
+
+         var1[var3] = var4;
+         byte[][] var7 = new byte[var0.g1()][2];
+
+         for(int var6 = 0; var6 < var7.length; ++var6) {
+            var7[var6][0] = (byte)var0.g1();
+            var7[var6][1] = (byte)var0.g1();
+         }
+
+         if (var7.length > 0) {
+            var2[var3] = var7;
+         }
+      }
+
+   }
+
+   private static void method446(Packet var0) {
+      int var1 = var0.g4();
+      aCharArrayArray2 = new char[var1][];
+      method449(var0, aCharArrayArray2);
+   }
+
+   private static void method449(Packet var0, char[][] var1) {
+      for(int var2 = 0; var2 < var1.length; ++var2) {
+         char[] var3 = new char[var0.g1()];
+
+         for(int var4 = 0; var4 < var3.length; ++var4) {
+            var3[var4] = (char)var0.g1();
+         }
+
+         var1[var2] = var3;
+      }
+
+   }
+
+   private static void method447(Packet var0) {
+      anIntArray176 = new int[var0.g4()];
+
+      for(int var1 = 0; var1 < anIntArray176.length; ++var1) {
+         anIntArray176[var1] = var0.g2();
+      }
+
+   }
+
+   private static void method444(Packet var0) {
+      int var1 = var0.g4();
+      aCharArrayArray3 = new char[var1][];
+      anIntArray177 = new int[var1];
+
+      for(int var2 = 0; var2 < var1; ++var2) {
+         anIntArray177[var2] = var0.g1();
+         char[] var3 = new char[var0.g1()];
+
+         for(int var4 = 0; var4 < var3.length; ++var4) {
+            var3[var4] = (char)var0.g1();
+         }
+
+         aCharArrayArray3[var2] = var3;
+      }
+
+   }
 }

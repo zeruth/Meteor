@@ -1,84 +1,89 @@
+public final class VarpType {
+   public static VarpType[] aClass44Array1;
+   private static int[] anIntArray173;
+   private static int anInt614;
+   private static int anInt613;
+   private boolean aBoolean147 = false;
+   private boolean aBoolean148 = true;
+   private boolean aBoolean149 = false;
+   private int anInt615;
+   public int anInt617;
+   private int anInt616;
+   public boolean aBoolean150 = false;
+   private int anInt620 = -1;
+   private boolean aBoolean151 = true;
+   private int anInt619;
+   private int anInt618;
+   private String aString11;
 
+   private VarpType() {
+   }
 
-public class VarpType {
+   private void method415(int var1, Packet var2) {
+      while(true) {
+         int var3 = var2.g1();
+         if (var3 == 0) {
+            return;
+         }
 
-	private static int count;
+         if (var3 == 1) {
+            this.anInt615 = var2.g1();
+         } else if (var3 == 2) {
+            this.anInt616 = var2.g1();
+         } else if (var3 == 3) {
+            this.aBoolean147 = true;
+            anIntArray173[anInt614++] = var1;
+         } else if (var3 == 4) {
+            this.aBoolean148 = false;
+         } else if (var3 == 5) {
+            this.anInt617 = var2.g2();
+         } else if (var3 == 6) {
+            this.aBoolean149 = true;
+         } else if (var3 == 7) {
+            this.anInt618 = var2.g4();
+         } else if (var3 == 8) {
+            this.anInt619 = 1;
+            this.aBoolean150 = true;
+         } else if (var3 == 10) {
+            this.aString11 = var2.gjstr();
+         } else if (var3 == 11) {
+            this.aBoolean150 = true;
+         } else if (var3 == 12) {
+            this.anInt620 = var2.g4();
+         } else if (var3 == 13) {
+            this.anInt619 = 2;
+            this.aBoolean150 = true;
+         } else if (var3 == 14) {
+            this.aBoolean151 = false;
+         } else {
+            System.out.println("Error unrecognised config code: " + var3);
+         }
+      }
+   }
 
-	public static VarpType[] instances;
+   public static void unpack(Jagfile var0) {
+      Packet var1 = new Packet(var0.read("varp.dat", (byte[])null));
+      anInt614 = 0;
+      anInt613 = var1.g2();
+      if (aClass44Array1 == null) {
+         aClass44Array1 = new VarpType[anInt613];
+      }
 
-	public static int code3Count;
+      if (anIntArray173 == null) {
+         anIntArray173 = new int[anInt613];
+      }
 
-	public static int[] code3;
+      for(int var2 = 0; var2 < anInt613; ++var2) {
+         if (aClass44Array1[var2] == null) {
+            aClass44Array1[var2] = new VarpType();
+         }
 
-	private String code10;
+         aClass44Array1[var2].method415(var2, var1);
+      }
 
-	private int code1;
+      if (var1.pos != var1.data.length) {
+         System.out.println("varptype load mismatch");
+      }
 
-	private int code2;
-
-	private boolean hasCode3 = false;
-
-	private boolean code4 = true;
-
-	public int clientcode;
-
-	private int code7;
-
-	private boolean code6 = false;
-
-	private boolean code8 = false;
-
-	public static void unpack( Jagfile config) {
-		Packet dat = new Packet(config.read("varp.dat", null));
-		code3Count = 0;
-		count = dat.g2();
-
-		if (instances == null) {
-			instances = new VarpType[count];
-		}
-
-		if (code3 == null) {
-			code3 = new int[count];
-		}
-
-		for ( int id = 0; id < count; id++) {
-			if (instances[id] == null) {
-				instances[id] = new VarpType();
-			}
-
-			instances[id].decode(id, dat);
-		}
-	}
-
-	public void decode( int id, Packet dat) {
-		while (true) {
-			int code = dat.g1();
-			if (code == 0) {
-				return;
-			}
-
-			if (code == 1) {
-				this.code1 = dat.g1();
-			} else if (code == 2) {
-				this.code2 = dat.g1();
-			} else if (code == 3) {
-				this.hasCode3 = true;
-				VarpType.code3[VarpType.code3Count++] = id;
-			} else if (code == 4) {
-				this.code4 = false;
-			} else if (code == 5) {
-				this.clientcode = dat.g2();
-			} else if (code == 6) {
-				this.code6 = true;
-			} else if (code == 7) {
-				this.code7 = dat.g4();
-			} else if (code == 8) {
-				this.code8 = true;
-			} else if (code == 10) {
-				this.code10 = dat.gjstr();
-			} else {
-				System.out.println("Error unrecognised config code: " + code);
-			}
-		}
-	}
+   }
 }

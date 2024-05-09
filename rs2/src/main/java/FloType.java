@@ -1,187 +1,199 @@
+public final class FloType {
+   private static byte aByte11 = 6;
+   public static FloType[] aClass16Array1;
+   private static int anInt164;
+   private boolean aBoolean46 = true;
+   public int anInt166 = -1;
+   private boolean aBoolean47 = false;
+   public int anInt165;
+   public boolean aBoolean48 = true;
+   public int anInt167;
+   private String aString6;
+   public int anInt168;
+   public int anInt169;
+   public int anInt170;
+   public int anInt171;
+   public int anInt172;
 
+   private FloType() {
+   }
 
-public class FloType {
+   private void method101(int var1) {
+      if (var1 == 16711935) {
+         var1 = 0;
+      }
 
-	public static int count;
+      double var2 = (double)(var1 >> 16 & 255) / 256.0;
+      double var4 = (double)(var1 >> 8 & 255) / 256.0;
+      double var6 = (double)(var1 & 255) / 256.0;
+      double var8 = var2;
+      if (var4 < var2) {
+         var8 = var4;
+      }
 
-	public static FloType[] instances;
+      if (var6 < var8) {
+         var8 = var6;
+      }
 
-	public int rgb;
+      double var10 = var2;
+      if (var4 > var2) {
+         var10 = var4;
+      }
 
-	public int texture = -1;
+      if (var6 > var10) {
+         var10 = var6;
+      }
 
-	private boolean opcode3 = false;
+      double var12 = 0.0;
+      double var14 = 0.0;
+      double var16 = (var8 + var10) / 2.0;
+      if (var8 != var10) {
+         if (var16 < 0.5) {
+            var14 = (var10 - var8) / (var10 + var8);
+         }
 
-	public boolean occlude = true;
+         if (var16 >= 0.5) {
+            var14 = (var10 - var8) / (2.0 - var10 - var8);
+         }
 
-	public String name;
+         if (var2 == var10) {
+            var12 = (var4 - var6) / (var10 - var8);
+         } else if (var4 == var10) {
+            var12 = (var6 - var2) / (var10 - var8) + 2.0;
+         } else if (var6 == var10) {
+            var12 = (var2 - var4) / (var10 - var8) + 4.0;
+         }
+      }
 
-	public int hue;
+      var12 /= 6.0;
+      this.anInt167 = (int)(var12 * 256.0);
+      this.anInt168 = (int)(var14 * 256.0);
+      this.anInt169 = (int)(var16 * 256.0);
+      if (this.anInt168 < 0) {
+         this.anInt168 = 0;
+      } else if (this.anInt168 > 255) {
+         this.anInt168 = 255;
+      }
 
-	public int saturation;
+      if (this.anInt169 < 0) {
+         this.anInt169 = 0;
+      } else if (this.anInt169 > 255) {
+         this.anInt169 = 255;
+      }
 
-	public int lightness;
+      if (var16 > 0.5) {
+         this.anInt171 = (int)((1.0 - var16) * var14 * 512.0);
+      } else {
+         this.anInt171 = (int)(var16 * var14 * 512.0);
+      }
 
-	public int chroma;
+      if (this.anInt171 < 1) {
+         this.anInt171 = 1;
+      }
 
-	public int luminance;
+      this.anInt170 = (int)(var12 * (double)this.anInt171);
+      int var18 = this.anInt167 + (int)(Math.random() * 16.0) - 8;
+      if (var18 < 0) {
+         var18 = 0;
+      } else if (var18 > 255) {
+         var18 = 255;
+      }
 
-	public int hsl;
+      int var19 = this.anInt168 + (int)(Math.random() * 48.0) - 24;
+      if (var19 < 0) {
+         var19 = 0;
+      } else if (var19 > 255) {
+         var19 = 255;
+      }
 
-	public static void unpack( Jagfile config) {
-		Packet dat = new Packet(config.read("flo.dat", null));
-		count = dat.g2();
+      int var20 = this.anInt169 + (int)(Math.random() * 48.0) - 24;
+      if (var20 < 0) {
+         var20 = 0;
+      } else if (var20 > 255) {
+         var20 = 255;
+      }
 
-		if (instances == null) {
-			instances = new FloType[count];
-		}
+      this.anInt172 = this.method102(var18, var19, var20);
+   }
 
-		for ( int id = 0; id < count; id++) {
-			if (instances[id] == null) {
-				instances[id] = new FloType();
-			}
+   private int method102(int var1, int var2, int var3) {
+      if (var3 > 179) {
+         var2 /= 2;
+      }
 
-			instances[id].decode(dat);
-		}
-	}
+      if (var3 > 192) {
+         var2 /= 2;
+      }
 
-	public void decode( Packet dat) {
-		while (true) {
-			int code = dat.g1();
-			if (code == 0) {
-				return;
-			}
+      if (var3 > 217) {
+         var2 /= 2;
+      }
 
-			if (code == 1) {
-				this.rgb = dat.g3();
-				this.setColor(this.rgb);
-			} else if (code == 2) {
-				this.texture = dat.g1();
-			} else if (code == 3) {
-				this.opcode3 = true;
-			} else if (code == 5) {
-				this.occlude = false;
-			} else if (code == 6) {
-				this.name = dat.gjstr();
-			} else {
-				System.out.println("Error unrecognised config code: " + code);
-			}
-		}
-	}
+      if (var3 > 243) {
+         var2 /= 2;
+      }
 
-	private void setColor( int rgb) {
-		double red = (double) (rgb >> 16 & 0xFF) / 256.0D;
-		double green = (double) (rgb >> 8 & 0xFF) / 256.0D;
-		double blue = (double) (rgb & 0xFF) / 256.0D;
+      return (var1 / 4 << 10) + (var2 / 32 << 7) + var3 / 2;
+   }
 
-		double min = red;
-		if (green < red) {
-			min = green;
-		}
-		if (blue < min) {
-			min = blue;
-		}
+   private void method100(byte var1, Packet var2) {
+      int var3;
+      if (var1 == 6) {
+         boolean var4 = false;
+      } else {
+         for(var3 = 1; var3 > 0; ++var3) {
+         }
+      }
 
-		double max = red;
-		if (green > red) {
-			max = green;
-		}
-		if (blue > max) {
-			max = blue;
-		}
+      while(true) {
+         var3 = var2.g1();
+         if (var3 == 0) {
+            return;
+         }
 
-		double h = 0.0D;
-		double s = 0.0D;
-		double l = (min + max) / 2.0D;
+         if (var3 == 1) {
+            this.anInt165 = var2.g3();
+            this.method101(this.anInt165);
+         } else if (var3 == 2) {
+            this.anInt166 = var2.g1();
+         } else if (var3 == 3) {
+            this.aBoolean47 = true;
+         } else if (var3 == 5) {
+            this.aBoolean48 = false;
+         } else if (var3 == 6) {
+            this.aString6 = var2.gjstr();
+         } else if (var3 == 7) {
+            int var9 = this.anInt167;
+            int var5 = this.anInt168;
+            int var6 = this.anInt169;
+            int var7 = this.anInt170;
+            int var8 = var2.g3();
+            this.method101(var8);
+            this.anInt167 = var9;
+            this.anInt168 = var5;
+            this.anInt169 = var6;
+            this.anInt170 = var7;
+            this.anInt171 = var7;
+         } else {
+            System.out.println("Error unrecognised config code: " + var3);
+         }
+      }
+   }
 
-		if (min != max) {
-			if (l < 0.5D) {
-				s = (max - min) / (max + min);
-			}
-			if (l >= 0.5D) {
-				s = (max - min) / (2.0D - max - min);
-			}
+   public static void unpack(Jagfile var0) {
+      Packet var1 = new Packet(var0.read("flo.dat", (byte[])null));
+      anInt164 = var1.g2();
+      if (aClass16Array1 == null) {
+         aClass16Array1 = new FloType[anInt164];
+      }
 
-			if (red == max) {
-				h = (green - blue) / (max - min);
-			} else if (green == max) {
-				h = (blue - red) / (max - min) + 2.0D;
-			} else if (blue == max) {
-				h = (red - green) / (max - min) + 4.0D;
-			}
-		}
+      for(int var2 = 0; var2 < anInt164; ++var2) {
+         if (aClass16Array1[var2] == null) {
+            aClass16Array1[var2] = new FloType();
+         }
 
-		h /= 6.0D;
+         aClass16Array1[var2].method100(aByte11, var1);
+      }
 
-		this.hue = (int) (h * 256.0D);
-		this.saturation = (int) (s * 256.0D);
-		this.lightness = (int) (l * 256.0D);
-
-		if (this.saturation < 0) {
-			this.saturation = 0;
-		} else if (this.saturation > 255) {
-			this.saturation = 255;
-		}
-
-		if (this.lightness < 0) {
-			this.lightness = 0;
-		} else if (this.lightness > 255) {
-			this.lightness = 255;
-		}
-
-		if (l > 0.5D) {
-			this.luminance = (int) ((1.0D - l) * s * 512.0D);
-		} else {
-			this.luminance = (int) (l * s * 512.0D);
-		}
-
-		if (this.luminance < 1) {
-			this.luminance = 1;
-		}
-
-		this.chroma = (int) (h * (double) this.luminance);
-
-		int hue = this.hue + (int) (Math.random() * 16.0D) - 8;
-		if (hue < 0) {
-			hue = 0;
-		} else if (hue > 255) {
-			hue = 255;
-		}
-
-		int saturation = this.saturation + (int) (Math.random() * 48.0D) - 24;
-		if (saturation < 0) {
-			saturation = 0;
-		} else if (saturation > 255) {
-			saturation = 255;
-		}
-
-		int lightness = this.lightness + (int) (Math.random() * 48.0D) - 24;
-		if (lightness < 0) {
-			lightness = 0;
-		} else if (lightness > 255) {
-			lightness = 255;
-		}
-
-		this.hsl = this.hsl24to16(hue, saturation, lightness);
-	}
-
-	private int hsl24to16( int hue, int saturation, int lightness) {
-		if (lightness > 179) {
-			saturation /= 2;
-		}
-
-		if (lightness > 192) {
-			saturation /= 2;
-		}
-
-		if (lightness > 217) {
-			saturation /= 2;
-		}
-
-		if (lightness > 243) {
-			saturation /= 2;
-		}
-
-		return (hue / 4 << 10) + (saturation / 32 << 7) + lightness / 2;
-	}
+   }
 }

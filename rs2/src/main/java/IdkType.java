@@ -1,108 +1,133 @@
+public final class IdkType {
+   public static int count;
+   public static IdkType[] instances;
+   private int[] models;
+   private int[] heads = new int[]{-1, -1, -1, -1, -1};
+   public int type = -1;
+   private int[] recol_s = new int[6];
+   private int[] recol_d = new int[6];
+   public boolean disable = false;
 
-public class IdkType {
+   private IdkType() {
+   }
 
-	public static int count;
+   public boolean method550() {
+      boolean var1 = true;
 
-	public static IdkType[] instances;
+      for(int var2 = 0; var2 < 5; ++var2) {
+         if (this.heads[var2] != -1 && !Model.method272(this.heads[var2])) {
+            var1 = false;
+         }
+      }
 
-	public int type = -1;
+      return var1;
+   }
 
-	private int[] models;
+   public Model getHeadModel() {
+      Model[] var1 = new Model[5];
+      int var2 = 0;
 
-	private final int[] recol_s = new int[6];
+      for(int var3 = 0; var3 < 5; ++var3) {
+         if (this.heads[var3] != -1) {
+            var1[var2++] = Model.createModel(this.heads[var3]);
+         }
+      }
 
-	private final int[] recol_d = new int[6];
+      Model var5 = new Model(var2, var1);
 
-	private final int[] heads = new int[] { -1, -1, -1, -1, -1 };
+      for(int var4 = 0; var4 < 6 && this.recol_s[var4] != 0; ++var4) {
+         var5.recolor(this.recol_s[var4], this.recol_d[var4]);
+      }
 
-	public boolean disable = false;
+      return var5;
+   }
 
-	public static void unpack( Jagfile config) {
-		Packet dat = new Packet(config.read("idk.dat", null));
-		count = dat.g2();
+   private void decode(Packet var1) {
+      while(true) {
+         int var2 = var1.g1();
+         if (var2 == 0) {
+            return;
+         }
 
-		if (instances == null) {
-			instances = new IdkType[count];
-		}
+         if (var2 == 1) {
+            this.type = var1.g1();
+         } else if (var2 == 2) {
+            int var3 = var1.g1();
+            this.models = new int[var3];
 
-		for ( int id = 0; id < count; id++) {
-			if (instances[id] == null) {
-				instances[id] = new IdkType();
-			}
+            for(int var4 = 0; var4 < var3; ++var4) {
+               this.models[var4] = var1.g2();
+            }
+         } else if (var2 == 3) {
+            this.disable = true;
+         } else if (var2 >= 40 && var2 < 50) {
+            this.recol_s[var2 - 40] = var1.g2();
+         } else if (var2 >= 50 && var2 < 60) {
+            this.recol_d[var2 - 50] = var1.g2();
+         } else if (var2 >= 60 && var2 < 70) {
+            this.heads[var2 - 60] = var1.g2();
+         } else {
+            System.out.println("Error unrecognised config code: " + var2);
+         }
+      }
+   }
 
-			instances[id].decode(dat);
-		}
-	}
+   public boolean method548(int var1) {
+      if (this.models == null) {
+         return true;
+      } else {
+         boolean var2 = true;
+         boolean var3 = false;
 
-	public void decode( Packet dat) {
-		while (true) {
-			int code = dat.g1();
-			if (code == 0) {
-				break;
-			}
+         for(int var4 = 0; var4 < this.models.length; ++var4) {
+            if (!Model.method272(this.models[var4])) {
+               var2 = false;
+            }
+         }
 
-			if (code == 1) {
-				this.type = dat.g1();
-			} else if (code == 2) {
-				int count = dat.g1();
-				this.models = new int[count];
+         return var2;
+      }
+   }
 
-				for ( int i = 0; i < count; i++) {
-					this.models[i] = dat.g2();
-				}
-			} else if (code == 3) {
-				this.disable = true;
-			} else if (code >= 40 && code < 50) {
-				this.recol_s[code - 40] = dat.g2();
-			} else if (code >= 50 && code < 60) {
-				this.recol_d[code - 50] = dat.g2();
-			} else if (code >= 60 && code < 70) {
-				this.heads[code - 60] = dat.g2();
-			} else {
-				System.out.println("Error unrecognised config code: " + code);
-			}
-		}
-	}
+   public Model getModel() {
+      if (this.models == null) {
+         return null;
+      } else {
+         Model[] var1 = new Model[this.models.length];
 
-	public Model getModel() {
-		if (this.models == null) {
-			return null;
-		}
+         for(int var2 = 0; var2 < this.models.length; ++var2) {
+            var1[var2] = Model.createModel(this.models[var2]);
+         }
 
-		Model[] models = new Model[this.models.length];
-		for ( int i = 0; i < this.models.length; i++) {
-			models[i] = new Model(this.models[i]);
-		}
+         Model var4;
+         if (var1.length == 1) {
+            var4 = var1[0];
+         } else {
+            var4 = new Model(var1.length, var1);
+         }
 
-		Model model;
-		if (models.length == 1) {
-			model = models[0];
-		} else {
-			model = new Model(models, models.length);
-		}
+         for(int var3 = 0; var3 < 6 && this.recol_s[var3] != 0; ++var3) {
+            var4.recolor(this.recol_s[var3], this.recol_d[var3]);
+         }
 
-		for ( int i = 0; i < 6 && this.recol_s[i] != 0; i++) {
-			model.recolor(this.recol_s[i], this.recol_d[i]);
-		}
+         return var4;
+      }
+   }
 
-		return model;
-	}
+   public static void unpack(Jagfile var0) {
+      Packet var1 = new Packet(var0.read("idk.dat", (byte[])null));
+      count = var1.g2();
+      if (instances == null) {
+         instances = new IdkType[count];
+      }
 
-	public Model getHeadModel() {
-		Model[] models = new Model[5];
+      for(int var2 = 0; var2 < count; ++var2) {
+         if (instances[var2] == null) {
+            instances[var2] = new IdkType();
+         }
 
-		int count = 0;
-		for ( int i = 0; i < 5; i++) {
-			if (this.heads[i] != -1) {
-				models[count++] = new Model(this.heads[i]);
-			}
-		}
+         instances[var2].decode(var1);
+      }
 
-		Model model = new Model(models, count);
-		for ( int i = 0; i < 6 && this.recol_s[i] != 0; i++) {
-			model.recolor(this.recol_s[i], this.recol_d[i]);
-		}
-
-		return model;
-	}
+   }
 }
