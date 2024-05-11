@@ -30,7 +30,7 @@ public final class Client extends GameShell {
    private static int anInt887;
    private static boolean aBoolean230;
    private static boolean members = true;
-   private static int anInt1044;
+   private static int drawCycle;
    private static int[] anIntArray228 = new int[99];
    public static int[] anIntArray262;
    private static boolean aBoolean229;
@@ -5425,7 +5425,7 @@ public final class Client extends GameShell {
 
    }
 
-   private void method649() {
+   private void drawGame() {
       if (this.anInt926 == -1 || this.sceneState != 2 && super.gameSurface == null) {
          if (this.aBoolean236) {
             this.prepareGameScreen();
@@ -10164,7 +10164,7 @@ public final class Client extends GameShell {
       }
 
       System.out.println("loop-cycle:" + anInt1050);
-      System.out.println("draw-cycle:" + anInt1044);
+      System.out.println("draw-cycle:" + drawCycle);
       System.out.println("ptype:" + this.packetType);
       System.out.println("psize:" + this.packetSize);
       if (this.stream != null) {
@@ -10335,9 +10335,9 @@ public final class Client extends GameShell {
 
    protected void draw() {
       if (!this.aBoolean232 && !this.aBoolean264 && !this.errorHost) {
-         ++anInt1044;
+         ++drawCycle;
          if (this.ingame) {
-            this.method649();
+            this.drawGame();
          } else {
             this.drawTitleScreen(false);
          }
