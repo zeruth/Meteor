@@ -1,4 +1,3 @@
-
 public class LocEntity extends Linkable {
 
 	public int heightmapSW;

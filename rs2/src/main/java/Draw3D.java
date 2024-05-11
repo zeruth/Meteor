@@ -1,4 +1,3 @@
-
 public class Draw3D extends Draw2D {
 
 	public static boolean lowMemory = true;
@@ -17,7 +16,7 @@ public class Draw3D extends Draw2D {
 
 	public static int[] reciprocal15 = new int[512];
 
-	public static final int[] reciprocal16 = new int[2048];
+	public static int[] reciprocal16 = new int[2048];
 
 	public static int[] sin = new int[2048];
 
@@ -64,7 +63,7 @@ public class Draw3D extends Draw2D {
 
 	public static void unload() {
 		reciprocal15 = null;
-		reciprocal15 = null;
+		reciprocal16 = null; // original typo: reciprocal15 = null; (yes twice)
 		sin = null;
 		cos = null;
 		lineOffset = null;
@@ -232,7 +231,8 @@ public class Draw3D extends Draw2D {
 	}
 
 	public static void setBrightness( double brightness) {
-		double randomBrightness = brightness + Math.random() * 0.03D - 0.015D;
+		double randomized = brightness + Math.random() * 0.03D - 0.015D;
+
 		int offset = 0;
 		for ( int y = 0; y < 512; y++) {
 			double hue = (double) (y / 8) / 64.0D + 0.0078125D;
@@ -290,16 +290,17 @@ public class Draw3D extends Draw2D {
 				int intG = (int) (g * 256.0D);
 				int intB = (int) (b * 256.0D);
 				int rgb = (intR << 16) + (intG << 8) + intB;
-				int rgbAdjusted = setGamma(rgb, randomBrightness);
+				int rgbAdjusted = setGamma(rgb, randomized);
 				palette[offset++] = rgbAdjusted;
 			}
 		}
+
 		for ( int id = 0; id < 50; id++) {
 			if (textures[id] != null) {
 				int[] palette = textures[id].palette;
 				texturePalette[id] = new int[palette.length];
 				for ( int i = 0; i < palette.length; i++) {
-					texturePalette[id][i] = setGamma(palette[i], randomBrightness);
+					texturePalette[id][i] = setGamma(palette[i], randomized);
 				}
 			}
 		}
@@ -313,9 +314,11 @@ public class Draw3D extends Draw2D {
 		double r = (double) (rgb >> 16) / 256.0D;
 		double g = (double) (rgb >> 8 & 0xFF) / 256.0D;
 		double b = (double) (rgb & 0xFF) / 256.0D;
+
 		double powR = Math.pow(r, gamma);
 		double powG = Math.pow(g, gamma);
 		double powB = Math.pow(b, gamma);
+
 		int intR = (int) (powR * 256.0D);
 		int intG = (int) (powG * 256.0D);
 		int intB = (int) (powB * 256.0D);

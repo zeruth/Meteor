@@ -1,31 +1,38 @@
-
 import java.awt.*;
 
+// name taken from rsc
 public class ViewBox extends Frame {
 
-	public static GameView gameView;
+	private final GameShell shell;
+
+	public Insets insets;
 
 	public ViewBox( GameShell shell, int width, int height) {
-		gameView = new GameView(shell, width, height);
+		this.shell = shell;
 		this.setTitle("Jagex");
 		this.setResizable(false);
-		this.resize(width, height);
 		this.show();
+		this.toFront();
+		this.insets = this.getInsets();
+		this.resize(width + this.insets.left + this.insets.bottom, height + this.insets.top + this.insets.bottom);
 	}
 
 	@Override
 	public Graphics getGraphics() {
 		Graphics g = super.getGraphics();
+        if (this.insets != null) {
+		    g.translate(this.insets.left, this.insets.top);
+        }
 		return g;
 	}
 
 	@Override
 	public void update( Graphics g) {
-		gameView.update(g);
+		this.shell.update(g);
 	}
 
 	@Override
 	public void paint( Graphics g) {
-		gameView.paint(g);
+		this.shell.paint(g);
 	}
 }

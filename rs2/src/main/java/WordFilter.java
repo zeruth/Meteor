@@ -1,22 +1,21 @@
-
-
+// name taken from rsc
 public class WordFilter {
 
-    private static int[] fragments;
+	private static int[] fragments;
 
-    private static char[][] badWords;
+	private static char[][] badWords;
 
-    private static byte[][][] badCombinations;
+	private static byte[][][] badCombinations;
 
-    private static char[][] domains;
+	private static char[][] domains;
 
-    private static char[][] tlds;
+	private static char[][] tlds;
 
-    private static int[] tldType;
+	private static int[] tldType;
 
-    private static final String[] ALLOWLIST = new String[] { "cook", "cook's", "cooks", "seeks", "sheet" };
+	private static final String[] ALLOWLIST = new String[] { "cook", "cook's", "cooks", "seeks", "sheet" };
 
-    public static void unpack( Jagfile jag) {
+	public static void unpack( Jagfile jag) {
 		Packet fragments = new Packet(jag.read("fragmentsenc.txt", null));
 		Packet bad = new Packet(jag.read("badenc.txt", null));
 		Packet domain = new Packet(jag.read("domainenc.txt", null));
@@ -24,14 +23,14 @@ public class WordFilter {
 		read(bad, domain, fragments, tld);
 	}
 
-    private static void read( Packet bad, Packet domain, Packet fragments, Packet tld) {
+	private static void read( Packet bad, Packet domain, Packet fragments, Packet tld) {
 		readBadWords(bad);
 		readDomains(domain);
 		readFragments(fragments);
 		readTld(tld);
 	}
 
-    private static void readTld( Packet buf) {
+	private static void readTld( Packet buf) {
 		int count = buf.g4();
 		tlds = new char[count][];
 		tldType = new int[count];
@@ -45,27 +44,27 @@ public class WordFilter {
 		}
 	}
 
-    private static void readBadWords( Packet buf) {
+	private static void readBadWords( Packet buf) {
 		int count = buf.g4();
 		badWords = new char[count][];
 		badCombinations = new byte[count][][];
 		readBadCombinations(buf, badWords, badCombinations);
 	}
 
-    private static void readDomains( Packet buf) {
+	private static void readDomains( Packet buf) {
 		int count = buf.g4();
 		domains = new char[count][];
 		readDomain(buf, domains);
 	}
 
-    private static void readFragments( Packet buf) {
+	private static void readFragments( Packet buf) {
 		fragments = new int[buf.g4()];
 		for ( int i = 0; i < fragments.length; i++) {
 			fragments[i] = buf.g2();
 		}
 	}
 
-    private static void readBadCombinations( Packet buf, char[][] badwords, byte[][][] badCombinations) {
+	private static void readBadCombinations( Packet buf, char[][] badwords, byte[][][] badCombinations) {
 		for ( int i = 0; i < badwords.length; i++) {
 			char[] badword = new char[buf.g1()];
 			for ( int j = 0; j < badword.length; j++) {
@@ -83,7 +82,7 @@ public class WordFilter {
 		}
 	}
 
-    private static void readDomain( Packet buf, char[][] domains) {
+	private static void readDomain( Packet buf, char[][] domains) {
 		for ( int i = 0; i < domains.length; i++) {
 			char[] domain = new char[buf.g1()];
 			for ( int j = 0; j < domain.length; j++) {
@@ -93,7 +92,7 @@ public class WordFilter {
 		}
 	}
 
-    private static void filterCharacters( char[] in) {
+	private static void filterCharacters( char[] in) {
 		int pos = 0;
 		for ( int i = 0; i < in.length; i++) {
 			if (allowCharacter(in[i])) {
@@ -110,11 +109,11 @@ public class WordFilter {
 		}
 	}
 
-    private static boolean allowCharacter( char c) {
+	private static boolean allowCharacter( char c) {
 		return c >= ' ' && c <= '\u007f' || c == ' ' || c == '\n' || c == '\t' || c == '£' || c == '€';
 	}
 
-    public static String filter( String input) {
+	public static String filter( String input) {
 		long start = System.currentTimeMillis();
 		char[] outputPre = input.toCharArray();
 		filterCharacters(outputPre);
@@ -139,7 +138,7 @@ public class WordFilter {
 		return (new String(output)).trim();
 	}
 
-    private static void replaceUpperCases( char[] in, char[] unfiltered) {
+	private static void replaceUpperCases( char[] in, char[] unfiltered) {
 		for ( int i = 0; i < unfiltered.length; i++) {
 			if (in[i] != '*' && isUpperCase(unfiltered[i])) {
 				in[i] = unfiltered[i];
@@ -147,7 +146,7 @@ public class WordFilter {
 		}
 	}
 
-    private static void formatUpperCases( char[] in) {
+	private static void formatUpperCases( char[] in) {
 		boolean upper = true;
 		for ( int i = 0; i < in.length; i++) {
 			char c = in[i];
@@ -163,7 +162,7 @@ public class WordFilter {
 		}
 	}
 
-    private static void filterBad( char[] in) {
+	private static void filterBad( char[] in) {
 		for ( int passes = 0; passes < 2; passes++) {
 			for ( int i = badWords.length - 1; i >= 0; i--) {
 				filter(badCombinations[i], in, badWords[i]);
@@ -171,7 +170,7 @@ public class WordFilter {
 		}
 	}
 
-    private static void filterDomains( char[] in) {
+	private static void filterDomains( char[] in) {
 		char[] filteredAt = (char[]) in.clone();
 		char[] at = new char[] { '(', 'a', ')' };
 		filter(null, filteredAt, at);
@@ -183,7 +182,7 @@ public class WordFilter {
 		}
 	}
 
-    private static void filterDomain( char[] filteredDot, char[] filteredAt, char[] domain, char[] in) {
+	private static void filterDomain( char[] filteredDot, char[] filteredAt, char[] domain, char[] in) {
 		if (domain.length <= in.length) {
 			int stride;
 			for ( int start = 0; start <= in.length - domain.length; start += stride) {
@@ -243,7 +242,7 @@ public class WordFilter {
 		}
 	}
 
-    private static int getDomainAtFilterStatus( int end, char[] a, char[] b) {
+	private static int getDomainAtFilterStatus( int end, char[] a, char[] b) {
 		if (end == 0) {
 			return 2;
 		}
@@ -267,7 +266,7 @@ public class WordFilter {
 		}
 	}
 
-    private static int getDomainDotFilterStatus( char[] a, char[] b, int start) {
+	private static int getDomainDotFilterStatus( char[] a, char[] b, int start) {
 		if (start + 1 == a.length) {
 			return 2;
 		} else {
@@ -297,7 +296,7 @@ public class WordFilter {
 		}
 	}
 
-    private static void filterTld( char[] in) {
+	private static void filterTld( char[] in) {
 		char[] filteredDot = (char[]) in.clone();
 		char[] dot = new char[] { 'd', 'o', 't' };
 		filter(null, filteredDot, dot);
@@ -309,7 +308,7 @@ public class WordFilter {
 		}
 	}
 
-    private static void filterTld( char[] filteredSlash, int type, char[] chars, char[] tld, char[] filteredDot) {
+	private static void filterTld( char[] filteredSlash, int type, char[] chars, char[] tld, char[] filteredDot) {
 		int stride;
 		if (tld.length <= chars.length) {
 			boolean compare = true;
@@ -437,7 +436,7 @@ public class WordFilter {
 		}
 	}
 
-    private static int getTldDotFilterStatus( char[] a, char[] b, int start) {
+	private static int getTldDotFilterStatus( char[] a, char[] b, int start) {
 		if (start == 0) {
 			return 2;
 		}
@@ -467,7 +466,7 @@ public class WordFilter {
 		}
 	}
 
-    private static int getTldSlashFilterStatus( char[] b, int end, char[] a) {
+	private static int getTldSlashFilterStatus( char[] b, int end, char[] a) {
 		if (end + 1 == a.length) {
 			return 2;
 		}
@@ -496,7 +495,7 @@ public class WordFilter {
 		}
 	}
 
-    private static void filter( byte[][] badCombinations, char[] chars, char[] fragment) {
+	private static void filter( byte[][] badCombinations, char[] chars, char[] fragment) {
 		if (fragment.length <= chars.length) {
 			boolean compare = true;
 			int stride;
@@ -637,7 +636,7 @@ public class WordFilter {
 		}
 	}
 
-    private static boolean comboMatches( byte a, byte[][] combos, byte b) {
+	private static boolean comboMatches( byte a, byte[][] combos, byte b) {
 		int first = 0;
 		if (combos[first][0] == a && combos[first][1] == b) {
 			return true;
@@ -660,7 +659,7 @@ public class WordFilter {
 		return false;
 	}
 
-    private static int getEmulatedDomainCharSize( char c, char a, char b) {
+	private static int getEmulatedDomainCharSize( char c, char a, char b) {
 		if (a == b) {
 			return 1;
 		} else if (a == 'o' && b == '0') {
@@ -680,7 +679,7 @@ public class WordFilter {
 		}
 	}
 
-    private static int getEmulatedSize( char c, char a, char b) {
+	private static int getEmulatedSize( char c, char a, char b) {
 		if (a == b) {
 			return 1;
 		}
@@ -857,7 +856,7 @@ public class WordFilter {
 		}
 	}
 
-    private static byte getIndex( char c) {
+	private static byte getIndex( char c) {
 		if (c >= 'a' && c <= 'z') {
 			return (byte) (c + 1 - 'a');
 		} else if (c == '\'') {
@@ -869,7 +868,7 @@ public class WordFilter {
 		}
 	}
 
-    private static void filterFragments( char[] chars) {
+	private static void filterFragments( char[] chars) {
 		boolean compare = false;
 		int end = 0;
 		int count = 0;
@@ -910,7 +909,7 @@ public class WordFilter {
 		}
 	}
 
-    private static int indexOfNumber( char[] input, int off) {
+	private static int indexOfNumber( char[] input, int off) {
 		for ( int i = off; i < input.length && i >= 0; i++) {
 			if (input[i] >= '0' && input[i] <= '9') {
 				return i;
@@ -919,7 +918,7 @@ public class WordFilter {
 		return -1;
 	}
 
-    private static int indexOfNonNumber( int off, char[] input) {
+	private static int indexOfNonNumber( int off, char[] input) {
 		int i = off;
 		while (true) {
 			if (i < input.length && i >= 0) {
@@ -933,11 +932,11 @@ public class WordFilter {
 		}
 	}
 
-    private static boolean isSymbol( char c) {
+	private static boolean isSymbol( char c) {
 		return !isAlpha(c) && !isNumber(c);
 	}
 
-    private static boolean isLowerCaseAlpha( char c) {
+	private static boolean isLowerCaseAlpha( char c) {
 		if (c >= 'a' && c <= 'z') {
 			return c == 'v' || c == 'x' || c == 'j' || c == 'q' || c == 'z';
 		} else {
@@ -945,23 +944,23 @@ public class WordFilter {
 		}
 	}
 
-    private static boolean isAlpha( char c) {
+	private static boolean isAlpha( char c) {
 		return c >= 'a' && c <= 'z' || c >= 'A' && c <= 'Z';
 	}
 
-    private static boolean isNumber( char c) {
+	private static boolean isNumber( char c) {
 		return c >= '0' && c <= '9';
 	}
 
-    private static boolean isLowerCase( char c) {
+	private static boolean isLowerCase( char c) {
 		return c >= 'a' && c <= 'z';
 	}
 
-    private static boolean isUpperCase( char c) {
+	private static boolean isUpperCase( char c) {
 		return c >= 'A' && c <= 'Z';
 	}
 
-    private static boolean isBadFragment( char[] input) {
+	private static boolean isBadFragment( char[] input) {
 		boolean skip = true;
 		for ( int i = 0; i < input.length; i++) {
 			if (!isNumber(input[i]) && input[i] != '\0') {
@@ -993,7 +992,7 @@ public class WordFilter {
 		return false;
 	}
 
-    private static int firstFragmentId( char[] chars) {
+	private static int firstFragmentId( char[] chars) {
 		if (chars.length > 6) {
 			return 0;
 		}

@@ -1,4 +1,3 @@
-
 public class ProjectileEntity extends Entity {
 
 	private final SpotAnimType spotanim;

@@ -1,5 +1,4 @@
 
-
 public class Wall {
 
 	public int y;

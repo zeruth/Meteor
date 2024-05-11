@@ -1,4 +1,4 @@
-
+// name derived from other types + spotanim.dat (it's been renamed in NXT)
 public class SpotAnimType {
 
 	private static int count;

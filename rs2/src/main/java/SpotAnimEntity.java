@@ -1,5 +1,3 @@
-
-
 public class SpotAnimEntity extends Entity {
 
 	private final SpotAnimType type;

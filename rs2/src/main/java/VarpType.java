@@ -1,5 +1,4 @@
-
-
+// name derived from other types + varp.dat (rs3 has this as VarPlayerType)
 public class VarpType {
 
 	private static int count;

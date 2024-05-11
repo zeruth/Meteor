@@ -1,4 +1,3 @@
-
 public class IdkType {
 
 	public static int count;

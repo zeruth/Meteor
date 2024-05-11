@@ -1,5 +1,3 @@
-
-
 public class FloType {
 
 	public static int count;

@@ -1,6 +1,7 @@
 import java.awt.*;
 import java.awt.image.*;
 
+// name taken from rsc
 public class PixMap implements ImageProducer, ImageObserver {
 
 	public final int[] pixels;
@@ -15,7 +16,7 @@ public class PixMap implements ImageProducer, ImageObserver {
 
 	private final Image image;
 
-	public PixMap( Component c, int width, int height) {
+	public PixMap( java.awt.Component c, int width, int height) {
 		this.width = width;
 		this.height = height;
 		this.pixels = new int[width * height];

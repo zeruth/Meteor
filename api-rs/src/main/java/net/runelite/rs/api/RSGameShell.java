@@ -22,8 +22,8 @@ public interface RSGameShell extends GameShell, Runnable, MouseListener, MouseMo
     @Import("graphics")
     void setGraphics(Graphics graphics);
 
-    @Import("gameSurface")
-    void setGameSurface(RSPixMap gameSurface);
+    @Import("drawArea")
+    void setDrawArea(RSPixMap drawArea);
 
     @Import("screenWidth")
     int getScreenWidth();

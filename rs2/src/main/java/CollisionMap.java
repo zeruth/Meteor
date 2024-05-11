@@ -1,6 +1,3 @@
-
-
-
 public class CollisionMap {
 
 	private final int offsetX;

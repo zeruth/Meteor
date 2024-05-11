@@ -1,7 +1,3 @@
-
-
-
-
 import java.util.Random;
 
 public class PixFont extends Draw2D {

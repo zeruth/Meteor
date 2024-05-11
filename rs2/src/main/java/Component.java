@@ -1,8 +1,5 @@
-
-
-
-// Interface Component - doesn't quite belong under config...
-public class ComType {
+// rs3 has this as config.iftype.Component
+public class Component {
 
 	public static final int TYPE_LAYER = 0;
 	public static final int TYPE_UNUSED = 1; // TODO: decodes g2, gbool, center, font, shadowed, colour
@@ -20,7 +17,7 @@ public class ComType {
 	public static final int BUTTON_SELECT = 5;
 	public static final int BUTTON_CONTINUE = 6;
 
-	public static ComType[] instances;
+	public static Component[] instances;
 
 	public int[] invSlotObjId;
 
@@ -208,7 +205,7 @@ public class ComType {
 		int layer = -1;
 
 		int count = dat.g2();
-		instances = new ComType[count];
+		instances = new Component[count];
 
 		while (dat.pos < dat.data.length) {
 			int id = dat.g2();
@@ -217,7 +214,7 @@ public class ComType {
 				id = dat.g2();
 			}
 
-			ComType com = instances[id] = new ComType();
+			Component com = instances[id] = new Component();
 			com.id = id;
 			com.layer = layer;
 			com.type = dat.g1();

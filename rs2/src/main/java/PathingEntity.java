@@ -1,6 +1,3 @@
-
-
-
 public class PathingEntity extends Entity {
 
 	public int x;

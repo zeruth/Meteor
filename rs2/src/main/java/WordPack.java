@@ -1,10 +1,10 @@
 
-
+// name taken from rsc
 public class WordPack {
 
-    private static final char[] charBuffer = new char[100];
+	private static final char[] charBuffer = new char[100];
 
-    private static final char[] TABLE = new char[] {
+	private static final char[] TABLE = new char[] {
 		// combined to save space:
 		' ', 'e', 't', 'a', 'o', 'i', 'h', 'n', 's', 'r', 'd', 'l', 'u',
 		// allowed:
@@ -13,7 +13,7 @@ public class WordPack {
 		' ', '!', '?', '.', ',', ':', ';', '(', ')', '-', '&', '*', '\\', '\'', '@', '#', '+', '=', '£', '$', '%', '"', '[', ']'
 	};
 
-    public static String unpack( Packet word, int length) {
+	public static String unpack( Packet word, int length) {
 		int pos = 0;
 		int carry = -1;
 
@@ -57,7 +57,7 @@ public class WordPack {
 		return new String(charBuffer, 0, pos);
 	}
 
-    public static void pack( Packet word, String str) {
+	public static void pack( Packet word, String str) {
 		if (str.length() > 80) {
 			str = str.substring(0, 80);
 		}

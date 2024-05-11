@@ -1,4 +1,3 @@
-
 public class LocSpawned extends Linkable {
 
 	public final int plane;

@@ -1,11 +1,10 @@
+public class AnimFrame {
 
-public class SeqFrame {
-
-	public static SeqFrame[] instances;
+	public static AnimFrame[] instances;
 
 	public int delay;
 
-	public SeqBase base;
+	public AnimBase base;
 
 	public int length;
 
@@ -25,7 +24,7 @@ public class SeqFrame {
 
 		int total = head.g2();
 		int count = head.g2();
-		instances = new SeqFrame[count + 1];
+		instances = new AnimFrame[count + 1];
 
 		int[] labels = new int[500];
 		int[] x = new int[500];
@@ -34,11 +33,11 @@ public class SeqFrame {
 
 		for ( int i = 0; i < total; i++) {
 			int id = head.g2();
-			SeqFrame frame = instances[id] = new SeqFrame();
+			AnimFrame frame = instances[id] = new AnimFrame();
 			frame.delay = del.g1();
 
 			int baseId = head.g2();
-			SeqBase base = SeqBase.instances[baseId];
+			AnimBase base = AnimBase.instances[baseId];
 			frame.base = base;
 
 			int groupCount = head.g1();

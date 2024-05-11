@@ -1,5 +1,3 @@
-
-
 public class PlayerEntity extends PathingEntity {
 
 	public static final int[] DESIGN_HAIR_COLOR = new int[] {
@@ -233,13 +231,13 @@ public class PlayerEntity extends PathingEntity {
 				secondaryTransformId = SeqType.instances[super.secondarySeqId].frames[super.secondarySeqFrame];
 			}
 
-			if (seq.mainhand >= 0) {
-				rightHandValue = seq.mainhand;
+			if (seq.righthand >= 0) {
+				rightHandValue = seq.righthand;
 				hashCode += (long) rightHandValue - this.appearances[5] << 8;
 			}
 
-			if (seq.offhand >= 0) {
-				leftHandValue = seq.offhand;
+			if (seq.lefthand >= 0) {
+				leftHandValue = seq.lefthand;
 				hashCode += (long) leftHandValue - this.appearances[3] << 16;
 			}
 		} else if (super.secondarySeqId >= 0) {
@@ -298,7 +296,7 @@ public class PlayerEntity extends PathingEntity {
 
 		Model tmp = new Model(model, true);
 		if (primaryTransformId != -1 && secondaryTransformId != -1) {
-			tmp.applyTransforms(primaryTransformId, secondaryTransformId, SeqType.instances[super.primarySeqId].labelGroups);
+			tmp.applyTransforms(primaryTransformId, secondaryTransformId, SeqType.instances[super.primarySeqId].walkmerge);
 		} else if (primaryTransformId != -1) {
 			tmp.applyTransform(primaryTransformId);
 		}

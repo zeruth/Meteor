@@ -1,6 +1,4 @@
-
-
-
+// name taken from rsc
 public class World3D {
 
 	public static boolean lowMemory = true;

@@ -633,7 +633,8 @@ public class BZip2 {
 		}
 	}
 
-    public static final class BZip2State {
+	// rsc and rs3 says this is an inner class
+	public static final class BZip2State {
 
 		public static final int MTFA_SIZE = 4096;
 

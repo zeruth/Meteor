@@ -1,5 +1,4 @@
-
-
+// name taken from rs3
 public class SeqType {
 
 	private static int count;
@@ -16,15 +15,15 @@ public class SeqType {
 
 	public int replayoff = -1;
 
-	public int[] labelGroups;
+	public int[] walkmerge;
 
 	public boolean stretches = false;
 
 	public int priority = 5;
 
-	public int mainhand = -1;
+	public int righthand = -1;
 
-	public int offhand = -1;
+	public int lefthand = -1;
 
 	public int replaycount = 99;
 
@@ -68,7 +67,7 @@ public class SeqType {
 
 					this.delay[i] = dat.g2();
 					if (this.delay[i] == 0) {
-						this.delay[i] = SeqFrame.instances[this.frames[i]].delay;
+						this.delay[i] = AnimFrame.instances[this.frames[i]].delay;
 					}
 
 					if (this.delay[i] == 0) {
@@ -79,21 +78,23 @@ public class SeqType {
 				this.replayoff = dat.g2();
 			} else if (code == 3) {
 				int count = dat.g1();
-				this.labelGroups = new int[count + 1];
+				this.walkmerge = new int[count + 1];
 
 				for ( int i = 0; i < count; i++) {
-					this.labelGroups[i] = dat.g1();
+					this.walkmerge[i] = dat.g1();
 				}
 
-				this.labelGroups[count] = 9999999;
+				this.walkmerge[count] = 9999999;
 			} else if (code == 4) {
 				this.stretches = true;
 			} else if (code == 5) {
 				this.priority = dat.g1();
 			} else if (code == 6) {
-				this.mainhand = dat.g2();
+                // later RS (think RS3) this becomes mainhand
+				this.righthand = dat.g2();
 			} else if (code == 7) {
-				this.offhand = dat.g2();
+                // later RS (think RS3) this becomes offhand
+				this.lefthand = dat.g2();
 			} else if (code == 8) {
 				this.replaycount = dat.g1();
 			} else {

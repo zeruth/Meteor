@@ -1,5 +1,3 @@
-
-
 public class Loc {
 
 	public int level;

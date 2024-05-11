@@ -1,4 +1,3 @@
-
 public class ObjStackEntity extends Linkable {
 
 	public int index;

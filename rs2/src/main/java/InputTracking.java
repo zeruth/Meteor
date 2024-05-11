@@ -1,35 +1,34 @@
-
 public class InputTracking {
 
-    public static boolean enabled;
+	public static boolean enabled;
 
-    private static Packet outBuffer = null;
+	private static Packet outBuffer = null;
 
-    private static Packet oldBuffer = null;
+	private static Packet oldBuffer = null;
 
-    private static long lastTime;
+	private static long lastTime;
 
-    private static int trackedCount;
+	private static int trackedCount;
 
-    private static long lastMoveTime;
+	private static long lastMoveTime;
 
-    private static int lastX;
+	private static int lastX;
 
-    private static int lastY;
+	private static int lastY;
 
-    public static synchronized void setEnabled() {
+	public static synchronized void setEnabled() {
 		outBuffer = Packet.alloc(1);
 		oldBuffer = null;
 		lastTime = System.currentTimeMillis();
 		enabled = true;
 	}
 
-    public static synchronized void setDisabled() {
+	public static synchronized void setDisabled() {
 		enabled = false;
 		outBuffer = null;
 	}
 
-    public static synchronized Packet flush() {
+	public static synchronized Packet flush() {
 		Packet buffer = null;
 		if (oldBuffer != null && enabled) {
 			buffer = oldBuffer;
@@ -38,7 +37,7 @@ public class InputTracking {
 		return buffer;
 	}
 
-    public static synchronized Packet stop() {
+	public static synchronized Packet stop() {
 		Packet buffer = null;
 		if (outBuffer != null && outBuffer.pos > 0 && enabled) {
 			buffer = outBuffer;
@@ -47,7 +46,7 @@ public class InputTracking {
 		return buffer;
 	}
 
-    private static synchronized void ensureCapacity( int n) {
+	private static synchronized void ensureCapacity( int n) {
 		if (outBuffer.pos + n >= 500) {
 			Packet buffer = outBuffer;
 			outBuffer = Packet.alloc(1);
@@ -55,7 +54,7 @@ public class InputTracking {
 		}
 	}
 
-    public static synchronized void mousePressed( int x, int y, int button) {
+	public static synchronized void mousePressed( int x, int y, int button) {
 		if (enabled && (x >= 0 && x < 789 && y >= 0 && y < 532)) {
 			trackedCount++;
 
@@ -79,7 +78,7 @@ public class InputTracking {
 		}
 	}
 
-    public static synchronized void mouseReleased( int button) {
+	public static synchronized void mouseReleased( int button) {
 		if (enabled) {
 			trackedCount++;
 
@@ -102,7 +101,7 @@ public class InputTracking {
 		}
 	}
 
-    public static synchronized void mouseMoved( int x, int y) {
+	public static synchronized void mouseMoved( int x, int y) {
 		if (enabled && (x >= 0 && x < 789 && y >= 0 && y < 532)) {
 			long now = System.currentTimeMillis();
 
@@ -140,7 +139,7 @@ public class InputTracking {
 		}
 	}
 
-    public static synchronized void keyPressed( int key) {
+	public static synchronized void keyPressed( int key) {
 		if (enabled) {
 			trackedCount++;
 
@@ -170,7 +169,7 @@ public class InputTracking {
 		}
 	}
 
-    public static synchronized void keyReleased( int key) {
+	public static synchronized void keyReleased( int key) {
 		if (enabled) {
 			trackedCount++;
 
@@ -200,7 +199,7 @@ public class InputTracking {
 		}
 	}
 
-    public static synchronized void focusGained() {
+	public static synchronized void focusGained() {
 		if (enabled) {
 			trackedCount++;
 
@@ -217,7 +216,7 @@ public class InputTracking {
 		}
 	}
 
-    public static synchronized void focusLost() {
+	public static synchronized void focusLost() {
 		if (enabled) {
 			trackedCount++;
 
@@ -234,7 +233,7 @@ public class InputTracking {
 		}
 	}
 
-    public static synchronized void mouseEntered() {
+	public static synchronized void mouseEntered() {
 		if (enabled) {
 			trackedCount++;
 
@@ -251,7 +250,7 @@ public class InputTracking {
 		}
 	}
 
-    public static synchronized void mouseExited() {
+	public static synchronized void mouseExited() {
 		if (enabled) {
 			trackedCount++;
 

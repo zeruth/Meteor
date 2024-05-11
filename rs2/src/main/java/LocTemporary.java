@@ -1,4 +1,3 @@
-
 public class LocTemporary extends Linkable {
 
 	public int plane;

@@ -1,4 +1,3 @@
-
 public class Tile extends Linkable {
 
 	public int level;

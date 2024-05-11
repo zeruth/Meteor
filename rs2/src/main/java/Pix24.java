@@ -1,7 +1,7 @@
-
 import java.awt.*;
 import java.awt.image.PixelGrabber;
 
+// name derived from Pix8
 public class Pix24 extends Draw2D {
 
 	public int[] pixels;
@@ -25,7 +25,7 @@ public class Pix24 extends Draw2D {
 		this.cropX = this.cropY = 0;
 	}
 
-	public Pix24( byte[] src, Component c) {
+	public Pix24( byte[] src, java.awt.Component c) {
 		try {
 			Image image = Toolkit.getDefaultToolkit().createImage(src);
 			MediaTracker tracker = new MediaTracker(c);

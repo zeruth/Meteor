@@ -1,4 +1,3 @@
-
 public class Draw2D extends Hashable {
 
 	public static int[] data;
@@ -103,6 +102,74 @@ public class Draw2D extends Hashable {
 		}
 	}
 
+	public static void fillRectAlpha( int x, int y, int width, int height, int rgb, int alpha) {
+		if (x < left) {
+			width -= left - x;
+			x = left;
+		}
+		if (y < top) {
+			height -= top - y;
+			y = top;
+		}
+		if (x + width > right) {
+			width = right - x;
+		}
+		if (y + height > bottom) {
+			height = bottom - y;
+		}
+		int invAlpha = 256 - alpha;
+		int r0 = (rgb >> 16 & 0xFF) * alpha;
+		int g0 = (rgb >> 8 & 0xFF) * alpha;
+		int b0 = (rgb & 0xFF) * alpha;
+		int step = width2d - width;
+		int offset = x + y * width2d;
+		for ( int i = 0; i < height; i++) {
+			for ( int j = -width; j < 0; j++) {
+				int r1 = (data[offset] >> 16 & 0xFF) * invAlpha;
+				int g1 = (data[offset] >> 8 & 0xFF) * invAlpha;
+				int b1 = (data[offset] & 0xFF) * invAlpha;
+				int color = (r0 + r1 >> 8 << 16) + (g0 + g1 >> 8 << 8) + (b0 + b1 >> 8);
+				data[offset++] = color;
+			}
+			offset += step;
+		}
+	}
+
+	public static void fillCircle( int xCenter, int yCenter, int yRadius, int rgb, int alpha) {
+		int invAlpha = 256 - alpha;
+		int r0 = (rgb >> 16 & 0xFF) * alpha;
+		int g0 = (rgb >> 8 & 0xFF) * alpha;
+		int b0 = (rgb & 0xFF) * alpha;
+		int yStart = yCenter - yRadius;
+		if (yStart < 0) {
+			yStart = 0;
+		}
+		int yEnd = yCenter + yRadius;
+		if (yEnd >= height2d) {
+			yEnd = height2d - 1;
+		}
+		for ( int y = yStart; y <= yEnd; y++) {
+			int midpoint = y - yCenter;
+			int xRadius = (int) Math.sqrt((double) (yRadius * yRadius - midpoint * midpoint));
+			int xStart = xCenter - xRadius;
+			if (xStart < 0) {
+				xStart = 0;
+			}
+			int xEnd = xCenter + xRadius;
+			if (xEnd >= width2d) {
+				xEnd = width2d - 1;
+			}
+			int offset = xStart + y * width2d;
+			for ( int x = xStart; x <= xEnd; x++) {
+				int r1 = (data[offset] >> 16 & 0xFF) * invAlpha;
+				int g1 = (data[offset] >> 8 & 0xFF) * invAlpha;
+				int b1 = (data[offset] & 0xFF) * invAlpha;
+				int color = (r0 + r1 >> 8 << 16) + (g0 + g1 >> 8 << 8) + (b0 + b1 >> 8);
+				data[offset++] = color;
+			}
+		}
+	}
+
 	public static void drawRect( int x, int y, int rgb, int width, int height) {
 		drawHorizontalLine(x, y, rgb, width);
 		drawHorizontalLine(x, y + height - 1, rgb, width);
@@ -130,22 +197,22 @@ public class Draw2D extends Hashable {
 		}
 	}
 
-	public static void drawVerticalLine( int x, int y, int rgb, int width) {
+	public static void drawVerticalLine( int x, int y, int rgb, int height) {
 		if (x < left || x >= right) {
 			return;
 		}
 
 		if (y < top) {
-			width -= top - y;
+			height -= top - y;
 			y = top;
 		}
 
-		if (y + width > bottom) {
-			width = bottom - y;
+		if (y + height > bottom) {
+			height = bottom - y;
 		}
 
 		int off = x + y * width2d;
-		for ( int i = 0; i < width; i++) {
+		for ( int i = 0; i < height; i++) {
 			data[off + i * width2d] = rgb;
 		}
 	}

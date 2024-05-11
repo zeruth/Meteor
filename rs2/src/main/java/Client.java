@@ -1,10 +1,5 @@
-import meteor.events.Command;
-import org.rationalityfrontline.kevent.KEventGlobal;
-
-import javax.sound.sampled.AudioInputStream;
-import javax.sound.sampled.AudioSystem;
+import javax.swing.*;
 import java.awt.*;
-import java.io.ByteArrayInputStream;
 import java.io.DataInputStream;
 import java.io.IOException;
 import java.math.BigInteger;
@@ -14,9 +9,8 @@ import java.net.URL;
 import java.util.zip.CRC32;
 
 public class Client extends GameShell {
-
 	public static Client client;
-	public static boolean isJingle;
+	public static JPanel gamePanel;
 	public boolean showDebug = false;
 	public boolean showPerformance = false;
     public boolean cameraEditor = false;
@@ -25,7 +19,7 @@ public class Client extends GameShell {
 	public Tile[] userTileMarkers = new Tile[4];
 	public int userTileMarkerIndex = 0;
 
-	public static int opHeld1Counter;
+	public static int oplogic5;
 
 	public static final String CHARSET = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!\"£$%^&*()-_=+[{]};:'@#~,<.>/?\\| ";
 
@@ -109,7 +103,7 @@ public class Client extends GameShell {
 
 	private byte[][] sceneMapLandData;
 
-	public static int opLoc4Counter;
+	public static int oplogic1;
 
 	private int[] friendWorld = new int[100];
 
@@ -135,7 +129,7 @@ public class Client extends GameShell {
 
 	private int cameraOffsetCycle;
 
-	public int lastWaveId = -1;
+	private int lastWaveId = -1;
 
 	private boolean updateDesignModel = false;
 
@@ -151,7 +145,7 @@ public class Client extends GameShell {
 
 	private Packet in = Packet.alloc(1);
 
-	public static int opNpc5Counter;
+	public static int oplogic4;
 
 	private Packet out = Packet.alloc(1);
 
@@ -163,13 +157,13 @@ public class Client extends GameShell {
 
 	private int overrideChat;
 
-	public static int drawCounter;
+	public static int cyclelogic2;
 
-	public static int opHeld4Counter;
+	public static int oplogic3;
 
 	private final int[] skillLevel = new int[50];
 
-	private final ComType chatInterface = new ComType();
+	private final Component chatInterface = new Component();
 
 	private final int[] waveLoops = new int[50];
 
@@ -259,7 +253,7 @@ public class Client extends GameShell {
 
 	private final int[] compassMaskLineOffsets = new int[33];
 
-	public static int opLoc5Counter;
+	public static int oplogic6;
 
 	private final int[] waveDelay = new int[50];
 
@@ -275,7 +269,7 @@ public class Client extends GameShell {
 
 	private boolean errorLoading = false;
 
-	public static int opNpc3Counter;
+	public static int oplogic2;
 
 	private int lastHoveredInterfaceId;
 
@@ -289,7 +283,7 @@ public class Client extends GameShell {
 
 	private int flameGradientCycle1;
 
-	public static int opHeld9Counter;
+	public static int oplogic9;
 
 	private final int[] messageIds = new int[100];
 
@@ -299,7 +293,7 @@ public class Client extends GameShell {
 
 	private boolean reportAbuseMuteOption = false;
 
-	public static int sidebarInputCounter;
+	public static int cyclelogic1;
 
 	private LinkList spawnedLocations = new LinkList();
 
@@ -313,7 +307,7 @@ public class Client extends GameShell {
 
 	public static boolean lowMemory;
 
-	public static int opPlayer2Counter;
+	public static int oplogic8;
 
 	private Pix8 imageRedstone1;
 
@@ -355,7 +349,7 @@ public class Client extends GameShell {
 
 	private int hintType;
 
-	public static int updatePlayersCounter;
+	public static int cyclelogic6;
 
 	private int orbitCameraX;
 
@@ -401,7 +395,7 @@ public class Client extends GameShell {
 
 	private String modalMessage;
 
-	public static int ifButton5Counter;
+	public static int oplogic7;
 
 	private int[] varps = new int[2000];
 
@@ -517,7 +511,7 @@ public class Client extends GameShell {
 
 	private Pix24 imageMapflag;
 
-	public static int updateCounter;
+	public static int cyclelogic3;
 
 	private ClientStream stream;
 
@@ -687,7 +681,7 @@ public class Client extends GameShell {
 
 	private int friendCount;
 
-	public static int update2Counter;
+	public static int cyclelogic4;
 
 	private int chatCount;
 
@@ -719,7 +713,7 @@ public class Client extends GameShell {
 
 	private final int[] LOC_KIND_TO_CLASS_ID = new int[] { 0, 0, 0, 0, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 3 };
 
-	public static int updateLocCounter;
+	public static int cyclelogic5;
 
 	private int titleScreenState;
 
@@ -836,7 +830,7 @@ public class Client extends GameShell {
 			if (args.length > 1) {
 				portOffset = Integer.parseInt(args[1]);
 			} else {
-				portOffset = Configuration.PORT_OFFSET;
+				portOffset = 0;
 			}
 
 			if (args.length > 2 && args[2].equals("lowmem")) {
@@ -852,10 +846,10 @@ public class Client extends GameShell {
 				signlink.sunjava = true;
 			}
 
-			signlink.startDaemon();
+			signlink.startpriv(InetAddress.getByName("localhost"));
 
-			client = new Client();
-			client.initApplication(789, 531);
+			Client c = new Client();
+			c.initApplication(789, 532);
 		} catch ( Exception _ex) {
 		}
 	}
@@ -1838,9 +1832,9 @@ public class Client extends GameShell {
 			int yaw = this.orbitCameraYaw + this.cameraAnticheatAngle & 0x7FF;
 			this.orbitCamera(this.orbitCameraX, this.getHeightmapY(this.currentLevel, this.localPlayer.x, this.localPlayer.z) - 50, this.orbitCameraZ, yaw, pitch, pitch * 3 + 600);
 
-			drawCounter++;
-			if (drawCounter > 1802) {
-				drawCounter = 0;
+			cyclelogic2++;
+			if (cyclelogic2 > 1802) {
+				cyclelogic2 = 0;
 				// ANTICHEAT_CYCLELOGIC2
 				this.out.p1isaac(146);
 				this.out.p1(0);
@@ -2067,7 +2061,7 @@ public class Client extends GameShell {
 		this.imageTitle1.draw(super.graphics, 661, 0);
 	}
 
-	private void handleInterfaceInput( ComType com, int mouseX, int mouseY, int x, int y, int scrollPosition) {
+	private void handleInterfaceInput( Component com, int mouseX, int mouseY, int x, int y, int scrollPosition) {
 		if (com.type != 0 || com.childId == null || com.hide || (mouseX < x || mouseY < y || mouseX > x + com.width || mouseY > y + com.height)) {
 			return;
 		}
@@ -2076,7 +2070,7 @@ public class Client extends GameShell {
 		for ( int i = 0; i < children; i++) {
 			int childX = com.childX[i] + x;
 			int childY = com.childY[i] + y - scrollPosition;
-			ComType child = ComType.instances[com.childId[i]];
+			Component child = Component.instances[com.childId[i]];
 
 			childX += child.x;
 			childY += child.y;
@@ -2144,8 +2138,8 @@ public class Client extends GameShell {
 						} else {
 							if (child.interactable) {
 								for (int op = 4; op >= 3; op--) {
-									if (obj.iops != null && obj.iops[op] != null) {
-										this.menuOption[this.menuSize] = obj.iops[op] + " @lre@" + obj.name;
+									if (obj.iop != null && obj.iop[op] != null) {
+										this.menuOption[this.menuSize] = obj.iop[op] + " @lre@" + obj.name;
 										if (op == 3) {
 											this.menuAction[this.menuSize] = 478;
 										} else if (op == 4) {
@@ -2175,10 +2169,10 @@ public class Client extends GameShell {
 								this.menuSize++;
 							}
 
-							if (child.interactable && obj.iops != null) {
+							if (child.interactable && obj.iop != null) {
 								for (int op = 2; op >= 0; op--) {
-									if (obj.iops[op] != null) {
-										this.menuOption[this.menuSize] = obj.iops[op] + " @lre@" + obj.name;
+									if (obj.iop[op] != null) {
+										this.menuOption[this.menuSize] = obj.iop[op] + " @lre@" + obj.name;
 										if (op == 0) {
 											this.menuAction[this.menuSize] = 405;
 										} else if (op == 1) {
@@ -2231,7 +2225,7 @@ public class Client extends GameShell {
 					}
 				}
 			} else if (mouseX >= childX && mouseY >= childY && mouseX < childX + child.width && mouseY < childY + child.height) {
-				if (child.buttonType == ComType.BUTTON_OK) {
+				if (child.buttonType == Component.BUTTON_OK) {
 					boolean override = false;
 					if (child.clientCode != 0) {
 						override = this.handleSocialMenuOption(child);
@@ -2243,7 +2237,7 @@ public class Client extends GameShell {
 						this.menuParamC[this.menuSize] = child.id;
 						this.menuSize++;
 					}
-				} else if (child.buttonType == ComType.BUTTON_TARGET && this.spellSelected == 0) {
+				} else if (child.buttonType == Component.BUTTON_TARGET && this.spellSelected == 0) {
 					String prefix = child.actionVerb;
 					if (prefix.indexOf(" ") != -1) {
 						prefix = prefix.substring(0, prefix.indexOf(" "));
@@ -2253,22 +2247,22 @@ public class Client extends GameShell {
 					this.menuAction[this.menuSize] = 930;
 					this.menuParamC[this.menuSize] = child.id;
 					this.menuSize++;
-				} else if (child.buttonType == ComType.BUTTON_CLOSE) {
+				} else if (child.buttonType == Component.BUTTON_CLOSE) {
 					this.menuOption[this.menuSize] = "Close";
 					this.menuAction[this.menuSize] = 947;
 					this.menuParamC[this.menuSize] = child.id;
 					this.menuSize++;
-				} else if (child.buttonType == ComType.BUTTON_TOGGLE) {
+				} else if (child.buttonType == Component.BUTTON_TOGGLE) {
 					this.menuOption[this.menuSize] = child.option;
 					this.menuAction[this.menuSize] = 465;
 					this.menuParamC[this.menuSize] = child.id;
 					this.menuSize++;
-				} else if (child.buttonType == ComType.BUTTON_SELECT) {
+				} else if (child.buttonType == Component.BUTTON_SELECT) {
 					this.menuOption[this.menuSize] = child.option;
 					this.menuAction[this.menuSize] = 960;
 					this.menuParamC[this.menuSize] = child.id;
 					this.menuSize++;
-				} else if (child.buttonType == ComType.BUTTON_CONTINUE && !this.pressedContinueOption) {
+				} else if (child.buttonType == Component.BUTTON_CONTINUE && !this.pressedContinueOption) {
 					this.menuOption[this.menuSize] = child.option;
 					this.menuAction[this.menuSize] = 44;
 					this.menuParamC[this.menuSize] = child.id;
@@ -2319,9 +2313,9 @@ public class Client extends GameShell {
 			this.reportAbuseInput = "";
 			this.reportAbuseMuteOption = false;
 
-			for ( int i = 0; i < ComType.instances.length; i++) {
-				if (ComType.instances[i] != null && ComType.instances[i].clientCode == 600) {
-					this.reportAbuseInterfaceID = this.viewportInterfaceId = ComType.instances[i].layer;
+			for ( int i = 0; i < Component.instances.length; i++) {
+				if (Component.instances[i] != null && Component.instances[i].clientCode == 600) {
+					this.reportAbuseInterfaceID = this.viewportInterfaceId = Component.instances[i].layer;
 					return;
 				}
 			}
@@ -2490,10 +2484,10 @@ public class Client extends GameShell {
 			this.menuSize++;
 		} else if (this.spellSelected != 1) {
 			int type;
-			if (npc.ops != null) {
+			if (npc.op != null) {
 				for (type = 4; type >= 0; type--) {
-					if (npc.ops[type] != null && !npc.ops[type].equalsIgnoreCase("attack")) {
-						this.menuOption[this.menuSize] = npc.ops[type] + " @yel@" + tooltip;
+					if (npc.op[type] != null && !npc.op[type].equalsIgnoreCase("attack")) {
+						this.menuOption[this.menuSize] = npc.op[type] + " @yel@" + tooltip;
 
 						if (type == 0) {
 							this.menuAction[this.menuSize] = 728;
@@ -2515,15 +2509,15 @@ public class Client extends GameShell {
 				}
 			}
 
-			if (npc.ops != null) {
+			if (npc.op != null) {
 				for (type = 4; type >= 0; type--) {
-					if (npc.ops[type] != null && npc.ops[type].equalsIgnoreCase("attack")) {
+					if (npc.op[type] != null && npc.op[type].equalsIgnoreCase("attack")) {
 						short action = 0;
 						if (npc.vislevel > this.localPlayer.combatLevel) {
 							action = 2000;
 						}
 
-						this.menuOption[this.menuSize] = npc.ops[type] + " @yel@" + tooltip;
+						this.menuOption[this.menuSize] = npc.op[type] + " @yel@" + tooltip;
 
 						if (type == 0) {
 							this.menuAction[this.menuSize] = action + 728;
@@ -2616,7 +2610,7 @@ public class Client extends GameShell {
 								WordPack.pack(this.out, this.socialInput);
 								this.out.psize1(this.out.pos - start);
 								this.socialInput = JString.toSentenceCase(this.socialInput);
-								//this.socialInput = WordFilter.filter(this.socialInput);
+								this.socialInput = WordFilter.filter(this.socialInput);
 								this.addMessage(6, this.socialInput, JString.formatName(JString.fromBase37(this.socialName37)));
 								if (this.privateChatSetting == 2) {
 									this.privateChatSetting = 1;
@@ -2721,8 +2715,6 @@ public class Client extends GameShell {
                                     this.cutsceneDstHeight = Integer.parseInt(args[3]);
                                 }
                             }
-							else
-								KEventGlobal.INSTANCE.post(new Command(this.chatTyped.replace("::", "")));
 							// }
 
 							if (this.chatTyped.startsWith("::")) {
@@ -2790,7 +2782,7 @@ public class Client extends GameShell {
 								this.out.psize1(this.out.pos - start);
 
 								this.chatTyped = JString.toSentenceCase(this.chatTyped);
-								//this.chatTyped = WordFilter.filter(this.chatTyped);
+								this.chatTyped = this.chatTyped; // WordFilter.filter(this.chatTyped);
 								this.localPlayer.chat = this.chatTyped;
 								this.localPlayer.chatColor = color;
 								this.localPlayer.chatStyle = effect;
@@ -3197,7 +3189,7 @@ public class Client extends GameShell {
 
 		for (int i = 0; i < this.npcCount; i++) {
 			NpcEntity npc = this.npcs[this.npcIds[i]];
-			if (npc != null && npc.isVisible() && npc.type.visonmap) {
+			if (npc != null && npc.isVisible() && npc.type.minimap) {
 				anchorX = npc.x / 32 - this.localPlayer.x / 32;
 				anchorY = npc.z / 32 - this.localPlayer.z / 32;
 				this.drawOnMinimap(anchorY, this.imageMapdot1, anchorX);
@@ -3237,7 +3229,7 @@ public class Client extends GameShell {
 		this.areaViewport.bind();
 	}
 
-	public Component getBaseComponent() {
+	public java.awt.Component getBaseComponent() {
 		if (signlink.mainapp != null) {
 			return signlink.mainapp;
 		}
@@ -3258,9 +3250,9 @@ public class Client extends GameShell {
 				}
 			}
 
-			updateLocCounter++;
-			if (updateLocCounter > 85) {
-				updateLocCounter = 0;
+			cyclelogic5++;
+			if (cyclelogic5 > 85) {
+				cyclelogic5 = 0;
 				// ANTICHEAT_CYCLELOGIC5
 				this.out.p1isaac(85);
 			}
@@ -3739,19 +3731,6 @@ public class Client extends GameShell {
 	private void setMidiVolume( int volume) {
 		signlink.midivol = volume;
 		signlink.midi = "voladjust";
-
-		switch (volume) {
-			case 0:
-				break;
-			case -400:
-				break;
-			case -800:
-				break;
-			case -1200:
-				break;
-			default:
-				break;
-		}
 	}
 
 	private void drawTitleScreen() {
@@ -3840,7 +3819,7 @@ public class Client extends GameShell {
 		}
 
 		this.unloadTitle();
-		super.gameSurface = null;
+		super.drawArea = null;
 		this.imageTitle2 = null;
 		this.imageTitle3 = null;
 		this.imageTitle4 = null;
@@ -3929,7 +3908,7 @@ public class Client extends GameShell {
 		this.nextMusicDelay = 0;
 	}
 
-	private void drawInterface( ComType com, int x, int y, int scrollY) {
+	private void drawInterface( Component com, int x, int y, int scrollY) {
 		if (com.type != 0 || com.childId == null || (com.hide && this.viewportHoveredInterfaceIndex != com.id && this.sidebarHoveredInterfaceIndex != com.id && this.chatHoveredInterfaceIndex != com.id)) {
 			return;
 		}
@@ -3946,7 +3925,7 @@ public class Client extends GameShell {
 			int childX = com.childX[i] + x;
 			int childY = com.childY[i] + y - scrollY;
 
-			ComType child = ComType.instances[com.childId[i]];
+			Component child = Component.instances[com.childId[i]];
 			childX += child.x;
 			childY += child.y;
 
@@ -4051,7 +4030,7 @@ public class Client extends GameShell {
 					}
 				}
 
-				if (child.buttonType == ComType.BUTTON_CONTINUE && this.pressedContinueOption) {
+				if (child.buttonType == Component.BUTTON_CONTINUE && this.pressedContinueOption) {
 					text = "Please wait...";
 					color = child.colour;
 				}
@@ -4392,7 +4371,7 @@ public class Client extends GameShell {
 
 		if (entity.primarySeqId != -1 && entity.primarySeqDelay == 0) {
 			SeqType seq = SeqType.instances[entity.primarySeqId];
-			if (seq.labelGroups == null) {
+			if (seq.walkmerge == null) {
 				entity.seqTrigger++;
 				return;
 			}
@@ -4976,10 +4955,10 @@ public class Client extends GameShell {
 		} else if (action == 405 || action == 38 || action == 422 || action == 478 || action == 347) {
 			if (action == 478) {
 				if ((b & 0x3) == 0) {
-					opHeld1Counter++;
+					oplogic5++;
 				}
 
-				if (opHeld1Counter >= 90) {
+				if (oplogic5 >= 90) {
 					// ANTICHEAT_OPLOGIC5
 					this.out.p1isaac(220);
 				}
@@ -4993,8 +4972,8 @@ public class Client extends GameShell {
 				// OPHELD3
 				this.out.p1isaac(133);
 			} else if (action == 405) {
-				opHeld4Counter += a;
-				if (opHeld4Counter >= 97) {
+				oplogic3 += a;
+				if (oplogic3 >= 97) {
 					// ANTICHEAT_OPLOGIC3
 					this.out.p1isaac(30);
 					this.out.p3(14953816);
@@ -5015,11 +4994,11 @@ public class Client extends GameShell {
 			this.selectedItem = b;
 			this.selectedArea = 2;
 
-			if (ComType.instances[c].layer == this.viewportInterfaceId) {
+			if (Component.instances[c].layer == this.viewportInterfaceId) {
 				this.selectedArea = 1;
 			}
 
-			if (ComType.instances[c].layer == this.chatInterfaceId) {
+			if (Component.instances[c].layer == this.chatInterfaceId) {
 				this.selectedArea = 3;
 			}
 		} else if (action == 728 || action == 542 || action == 6 || action == 963 || action == 245) {
@@ -5037,10 +5016,10 @@ public class Client extends GameShell {
 					this.out.p1isaac(8);
 				} else if (action == 6) {
 					if ((a & 0x3) == 0) {
-						opNpc3Counter++;
+						oplogic2++;
 					}
 
-					if (opNpc3Counter >= 124) {
+					if (oplogic2 >= 124) {
 						// ANTICHEAT_OPLOGIC2
 						this.out.p1isaac(88);
 						this.out.p4(0);
@@ -5056,10 +5035,10 @@ public class Client extends GameShell {
 					this.out.p1isaac(194);
 				} else if (action == 245) {
 					if ((a & 0x3) == 0) {
-						opNpc5Counter++;
+						oplogic4++;
 					}
 
-					if (opNpc5Counter >= 85) {
+					if (oplogic4 >= 85) {
 						// ANTICHEAT_OPLOGIC4
 						this.out.p1isaac(176);
 						this.out.p2(39596);
@@ -5120,11 +5099,11 @@ public class Client extends GameShell {
 			this.selectedItem = b;
 			this.selectedArea = 2;
 
-			if (ComType.instances[c].layer == this.viewportInterfaceId) {
+			if (Component.instances[c].layer == this.viewportInterfaceId) {
 				this.selectedArea = 1;
 			}
 
-			if (ComType.instances[c].layer == this.chatInterfaceId) {
+			if (Component.instances[c].layer == this.chatInterfaceId) {
 				this.selectedArea = 3;
 			}
 		} else if (action == 391) {
@@ -5140,11 +5119,11 @@ public class Client extends GameShell {
 			this.selectedItem = b;
 			this.selectedArea = 2;
 
-			if (ComType.instances[c].layer == this.viewportInterfaceId) {
+			if (Component.instances[c].layer == this.viewportInterfaceId) {
 				this.selectedArea = 1;
 			}
 
-			if (ComType.instances[c].layer == this.chatInterfaceId) {
+			if (Component.instances[c].layer == this.chatInterfaceId) {
 				this.selectedArea = 3;
 			}
 		} else if (action == 660) {
@@ -5211,8 +5190,8 @@ public class Client extends GameShell {
 					// OPPLAYER1
 					this.out.p1isaac(164);
 				} else if (action == 151) {
-					opPlayer2Counter++;
-					if (opPlayer2Counter >= 90) {
+					oplogic8++;
+					if (oplogic8 >= 90) {
 						// ANTICHEAT_OPLOGIC8
 						this.out.p1isaac(2);
 						this.out.p2(31114);
@@ -5322,7 +5301,7 @@ public class Client extends GameShell {
 			// OPLOC2
 			this.interactWithLoc(172, b, c, a);
 		} else if (action == 930) {
-			ComType com = ComType.instances[c];
+			Component com = Component.instances[c];
 			this.spellSelected = 1;
 			this.activeSpellId = c;
 			this.activeSpellFlags = com.actionTarget;
@@ -5347,7 +5326,7 @@ public class Client extends GameShell {
 
 			return;
 		} else if (action == 951) {
-			ComType com = ComType.instances[c];
+			Component com = Component.instances[c];
 			boolean notify = true;
 
 			if (com.clientCode > 0) {
@@ -5365,10 +5344,10 @@ public class Client extends GameShell {
 				this.out.p1isaac(212);
 			} else if (action == 415) {
 				if ((c & 0x3) == 0) {
-					ifButton5Counter++;
+					oplogic7++;
 				}
 
-				if (ifButton5Counter >= 55) {
+				if (oplogic7 >= 55) {
 					// ANTICHEAT_OPLOGIC7
 					this.out.p1isaac(17);
 					this.out.p4(0);
@@ -5381,10 +5360,10 @@ public class Client extends GameShell {
 				this.out.p1isaac(31);
 			} else if (action == 892) {
 				if ((b & 0x3) == 0) {
-					opHeld9Counter++;
+					oplogic9++;
 				}
 
-				if (opHeld9Counter >= 130) {
+				if (oplogic9 >= 130) {
 					// ANTICHEAT_OPLOGIC9
 					this.out.p1isaac(238);
 					this.out.p1(177);
@@ -5406,19 +5385,19 @@ public class Client extends GameShell {
 			this.selectedItem = b;
 			this.selectedArea = 2;
 
-			if (ComType.instances[c].layer == this.viewportInterfaceId) {
+			if (Component.instances[c].layer == this.viewportInterfaceId) {
 				this.selectedArea = 1;
 			}
 
-			if (ComType.instances[c].layer == this.chatInterfaceId) {
+			if (Component.instances[c].layer == this.chatInterfaceId) {
 				this.selectedArea = 3;
 			}
 		} else if (action == 581) {
 			if ((a & 0x3) == 0) {
-				opLoc4Counter++;
+				oplogic1++;
 			}
 
-			if (opLoc4Counter >= 99) {
+			if (oplogic1 >= 99) {
 				// ANTICHEAT_OPLOGIC1
 				this.out.p1isaac(7);
 				this.out.p4(0);
@@ -5444,8 +5423,8 @@ public class Client extends GameShell {
 			this.out.p2(a);
 			this.out.p2(this.activeSpellId);
 		} else if (action == 1501) {
-			opLoc5Counter += this.sceneBaseTileZ;
-			if (opLoc5Counter >= 92) {
+			oplogic6 += this.sceneBaseTileZ;
+			if (oplogic6 >= 92) {
 				// ANTICHEAT_OPLOGIC6
 				this.out.p1isaac(66);
 				this.out.p4(0);
@@ -5471,7 +5450,7 @@ public class Client extends GameShell {
 			this.out.p1isaac(155);
 			this.out.p2(c);
 
-			ComType com = ComType.instances[c];
+			Component com = Component.instances[c];
 			if (com.scripts != null && com.scripts[0][0] == 5) {
 				int varp = com.scripts[0][1];
 				if (this.varps[varp] != com.scriptOperand[0]) {
@@ -5490,9 +5469,9 @@ public class Client extends GameShell {
 				this.reportAbuseInput = option.substring(tag + 5).trim();
 				this.reportAbuseMuteOption = false;
 
-				for ( int i = 0; i < ComType.instances.length; i++) {
-					if (ComType.instances[i] != null && ComType.instances[i].clientCode == 600) {
-						this.reportAbuseInterfaceID = this.viewportInterfaceId = ComType.instances[i].layer;
+				for ( int i = 0; i < Component.instances.length; i++) {
+					if (Component.instances[i] != null && Component.instances[i].clientCode == 600) {
+						this.reportAbuseInterfaceID = this.viewportInterfaceId = Component.instances[i].layer;
 						break;
 					}
 				}
@@ -5521,7 +5500,7 @@ public class Client extends GameShell {
 			this.out.p1isaac(155);
 			this.out.p2(c);
 
-			ComType com = ComType.instances[c];
+			Component com = Component.instances[c];
 			if (com.scripts != null && com.scripts[0][0] == 5) {
 				int varp = com.scripts[0][1];
 				this.varps[varp] = 1 - this.varps[varp];
@@ -5576,6 +5555,7 @@ public class Client extends GameShell {
 		}
 
 		return super.getDocumentBase().getHost().toLowerCase();
+
 	}
 
 	private void drawMenu() {
@@ -5659,7 +5639,7 @@ public class Client extends GameShell {
 		}
 	}
 
-	private void updateInterfaceContent( ComType component) {
+	private void updateInterfaceContent( Component component) {
 		int clientCode = component.clientCode;
 
 		if (clientCode >= 1 && clientCode <= 100) {
@@ -5882,7 +5862,7 @@ public class Client extends GameShell {
 		buf.accessBytes();
 	}
 
-	private boolean handleInterfaceAction( ComType com) {
+	private boolean handleInterfaceAction( Component com) {
 		int clientCode = com.clientCode;
 		if (clientCode == 201) {
 			this.redrawChatback = true;
@@ -5989,7 +5969,7 @@ public class Client extends GameShell {
 		}
 
 		if (clientCode == 326) {
-			// IF_DESIGN
+			// IF_PLAYERDESIGN
 			this.out.p1isaac(52);
 			this.out.p1(this.designGenderMale ? 0 : 1);
 			for (int i = 0; i < 7; i++) {
@@ -6231,8 +6211,8 @@ public class Client extends GameShell {
 			Draw3D.initPool(20);
 			this.drawProgress("Unpacking models", 83);
 			Model.unpack(models);
-			SeqBase.unpack(models);
-			SeqFrame.unpack(models);
+			AnimBase.unpack(models);
+			AnimFrame.unpack(models);
 			this.drawProgress("Unpacking config", 86);
 			SeqType.unpack(config);
 			LocType.unpack(config);
@@ -6253,7 +6233,7 @@ public class Client extends GameShell {
 
 			this.drawProgress("Unpacking interfaces", 92);
 			PixFont[] fonts = new PixFont[] { this.fontPlain11, this.fontPlain12, this.fontBold12, this.fontQuill8 };
-			ComType.unpack(inter, media, fonts);
+			Component.unpack(inter, media, fonts);
 
 			this.drawProgress("Preparing game engine", 97);
 			for ( int y = 0; y < 33; y++) {
@@ -6327,7 +6307,7 @@ public class Client extends GameShell {
 			if (this.viewportInterfaceId == -1) {
 				this.handleViewportOptions();
 			} else {
-				this.handleInterfaceInput(ComType.instances[this.viewportInterfaceId], super.mouseX, super.mouseY, 8, 11, 0);
+				this.handleInterfaceInput(Component.instances[this.viewportInterfaceId], super.mouseX, super.mouseY, 8, 11, 0);
 			}
 		}
 
@@ -6339,9 +6319,9 @@ public class Client extends GameShell {
 
 		if (super.mouseX > 562 && super.mouseY > 231 && super.mouseX < 752 && super.mouseY < 492) {
 			if (this.sidebarInterfaceId != -1) {
-				this.handleInterfaceInput(ComType.instances[this.sidebarInterfaceId], super.mouseX, super.mouseY, 562, 231, 0);
+				this.handleInterfaceInput(Component.instances[this.sidebarInterfaceId], super.mouseX, super.mouseY, 562, 231, 0);
 			} else if (this.tabInterfaceId[this.selectedTab] != -1) {
-				this.handleInterfaceInput(ComType.instances[this.tabInterfaceId[this.selectedTab]], super.mouseX, super.mouseY, 562, 231, 0);
+				this.handleInterfaceInput(Component.instances[this.tabInterfaceId[this.selectedTab]], super.mouseX, super.mouseY, 562, 231, 0);
 			}
 		}
 
@@ -6356,7 +6336,7 @@ public class Client extends GameShell {
 			if (this.chatInterfaceId == -1) {
 				this.handleChatMouseInput(super.mouseX - 22, super.mouseY - 375);
 			} else {
-				this.handleInterfaceInput(ComType.instances[this.chatInterfaceId], super.mouseX, super.mouseY, 22, 375, 0);
+				this.handleInterfaceInput(Component.instances[this.chatInterfaceId], super.mouseX, super.mouseY, 22, 375, 0);
 			}
 		}
 
@@ -6419,7 +6399,7 @@ public class Client extends GameShell {
 
 		if (this.viewportInterfaceId != -1) {
 			this.updateInterfaceAnimation(this.viewportInterfaceId, this.sceneDelta);
-			this.drawInterface(ComType.instances[this.viewportInterfaceId], 0, 0, 0);
+			this.drawInterface(Component.instances[this.viewportInterfaceId], 0, 0, 0);
 		}
 
 		this.drawWildyLevel();
@@ -6967,7 +6947,7 @@ public class Client extends GameShell {
 			return signlink.openurl(url);
 		}
 
-		return new DataInputStream((new URL(new URL(Configuration.URL), url)).openStream());
+		return new DataInputStream((new URL(getCodeBase(), url)).openStream());
 	}
 
 	private void loadTitle() {
@@ -6975,7 +6955,7 @@ public class Client extends GameShell {
 			return;
 		}
 
-		super.gameSurface = null;
+		super.drawArea = null;
 		this.areaChatback = null;
 		this.areaMapback = null;
 		this.areaSidebar = null;
@@ -7068,7 +7048,7 @@ public class Client extends GameShell {
 		}
 	}
 
-	private void handleScrollInput( int mouseX, int mouseY, int scrollableHeight, int height, boolean redraw, int left, int top, ComType component) {
+	private void handleScrollInput( int mouseX, int mouseY, int scrollableHeight, int height, boolean redraw, int left, int top, Component component) {
 		if (this.scrollGrabbed) {
 			this.scrollInputPadding = 32;
 		} else {
@@ -7111,7 +7091,7 @@ public class Client extends GameShell {
 				this.drawTitleScreen();
 			}
 
-			this.stream = new ClientStream(this, this.openSocket(Configuration.PORT_OFFSET + Configuration.PORT));
+			this.stream = new ClientStream(this, this.openSocket(portOffset + 43594));
 			this.stream.read(this.in.data, 0, 8);
 			this.in.pos = 0;
 
@@ -7243,15 +7223,16 @@ public class Client extends GameShell {
 					this.designColors[i] = 0;
 				}
 
-				opLoc4Counter = 0;
-				opNpc3Counter = 0;
-				opHeld4Counter = 0;
-				opNpc5Counter = 0;
-				opHeld1Counter = 0;
-				opLoc5Counter = 0;
-				ifButton5Counter = 0;
-				opPlayer2Counter = 0;
-				opHeld9Counter = 0;
+				oplogic1 = 0;
+				oplogic2 = 0;
+				oplogic3 = 0;
+				oplogic4 = 0;
+				oplogic5 = 0;
+				oplogic6 = 0;
+				oplogic7 = 0;
+				oplogic8 = 0;
+				oplogic9 = 0;
+
 				this.prepareGameScreen();
 			} else if (reply == 3) {
 				this.loginMessage0 = "";
@@ -7548,18 +7529,18 @@ public class Client extends GameShell {
 		ObjType.unload();
 		FloType.instances = null;
 		IdkType.instances = null;
-		ComType.instances = null;
+		Component.instances = null;
 		SeqType.instances = null;
 		SpotAnimType.instances = null;
 		SpotAnimType.modelCache = null;
 		VarpType.instances = null;
-		super.gameSurface = null;
+		super.drawArea = null;
 		PlayerEntity.modelCache = null;
 		Draw3D.unload();
 		World3D.unload();
 		Model.unload();
-		SeqBase.instances = null;
-		SeqFrame.instances = null;
+		AnimBase.instances = null;
+		AnimFrame.instances = null;
 		System.gc();
 	}
 
@@ -7678,10 +7659,8 @@ public class Client extends GameShell {
 									failed = true;
 								}
 							}
-						} else {
-							if (!this.replayWave()) {
-								failed = true;
-							}
+						} else if (!this.replayWave()) {
+							failed = true;
 						}
 					} catch ( Exception ignored) {
 					}
@@ -7781,7 +7760,7 @@ public class Client extends GameShell {
 						this.hoveredSlotParentId = -1;
 						this.handleInput();
 						if (this.hoveredSlotParentId == this.objDragInterfaceId && this.hoveredSlot != this.objDragSlot) {
-							ComType com = ComType.instances[this.objDragInterfaceId];
+							Component com = Component.instances[this.objDragInterfaceId];
 							int obj = com.invSlotObjId[this.hoveredSlot];
 							com.invSlotObjId[this.hoveredSlot] = com.invSlotObjId[this.objDragSlot];
 							com.invSlotObjId[this.objDragSlot] = obj;
@@ -7807,9 +7786,9 @@ public class Client extends GameShell {
 				}
 			}
 
-			updateCounter++;
-			if (updateCounter > 127) {
-				updateCounter = 0;
+			cyclelogic3++;
+			if (cyclelogic3 > 127) {
+				cyclelogic3 = 0;
 				// ANTICHEAT_CYCLELOGIC3
 				this.out.p1isaac(215);
 				this.out.p3(4991788);
@@ -7928,9 +7907,9 @@ public class Client extends GameShell {
 				this.minimapZoomModifier = -1;
 			}
 
-			update2Counter++;
-			if (update2Counter > 110) {
-				update2Counter = 0;
+			cyclelogic4++;
+			if (cyclelogic4 > 110) {
+				cyclelogic4 = 0;
 				// ANTICHEAT_CYCLELOGIC4
 				this.out.p1isaac(236);
 				this.out.p4(0);
@@ -7994,13 +7973,9 @@ public class Client extends GameShell {
 
 	@Override
 	public URL getCodeBase() {
-		if (signlink.mainapp != null) {
-			return signlink.mainapp.getCodeBase();
-		}
-
 		try {
 			if (super.frame != null) {
-				return new URL(Configuration.URL + ":" + ( Configuration.PORT + Configuration.PORT_OFFSET));
+				return new URL(Configuration.URL);
 			}
 		} catch ( Exception ex) {
 		}
@@ -8281,9 +8256,9 @@ public class Client extends GameShell {
 
 	private boolean updateInterfaceAnimation( int id, int delta) {
 		boolean updated = false;
-		ComType parent = ComType.instances[id];
+		Component parent = Component.instances[id];
 		for ( int i = 0; i < parent.childId.length && parent.childId[i] != -1; i++) {
-			ComType child = ComType.instances[parent.childId[i]];
+			Component child = Component.instances[parent.childId[i]];
 			if (child.type == 1) {
 				updated |= this.updateInterfaceAnimation(child.id, delta);
 			}
@@ -8341,9 +8316,9 @@ public class Client extends GameShell {
 	}
 
 	private void resetInterfaceAnimation( int id) {
-		ComType parent = ComType.instances[id];
+		Component parent = Component.instances[id];
 		for ( int i = 0; i < parent.childId.length && parent.childId[i] != -1; i++) {
-			ComType child = ComType.instances[parent.childId[i]];
+			Component child = Component.instances[parent.childId[i]];
 			if (child.type == 1) {
 				this.resetInterfaceAnimation(child.id);
 			}
@@ -8374,7 +8349,7 @@ public class Client extends GameShell {
 		}
 	}
 
-	private boolean executeInterfaceScript( ComType com) {
+	private boolean executeInterfaceScript( Component com) {
 		if (com.scriptComparator == null) {
 			return false;
 		}
@@ -8526,7 +8501,7 @@ public class Client extends GameShell {
 				if (action == 602 || action == 596 || action == 22 || action == 892 || action == 415 || action == 405 || action == 38 || action == 422 || action == 478 || action == 347 || action == 188) {
 					int slot = this.menuParamB[this.menuSize - 1];
 					int comId = this.menuParamC[this.menuSize - 1];
-					ComType com = ComType.instances[comId];
+					Component com = Component.instances[comId];
 
 					if (com.draggable) {
 						this.objGrabThreshold = false;
@@ -8537,11 +8512,11 @@ public class Client extends GameShell {
 						this.objGrabX = super.mouseClickX;
 						this.objGrabY = super.mouseClickY;
 
-						if (ComType.instances[comId].layer == this.viewportInterfaceId) {
+						if (Component.instances[comId].layer == this.viewportInterfaceId) {
 							this.objDragArea = 1;
 						}
 
-						if (ComType.instances[comId].layer == this.chatInterfaceId) {
+						if (Component.instances[comId].layer == this.chatInterfaceId) {
 							this.objDragArea = 3;
 						}
 
@@ -8743,16 +8718,16 @@ public class Client extends GameShell {
 			this.redrawSideicons = true;
 		}
 
-		sidebarInputCounter++;
-		if (sidebarInputCounter > 150) {
-			sidebarInputCounter = 0;
+		cyclelogic1++;
+		if (cyclelogic1 > 150) {
+			cyclelogic1 = 0;
 			// ANTICHEAT_CYCLELOGIC1
 			this.out.p1isaac(233);
 			this.out.p1(43);
 		}
 	}
 
-	private boolean handleSocialMenuOption( ComType component) {
+	private boolean handleSocialMenuOption( Component component) {
 		int type = component.clientCode;
 		if (type >= 1 && type <= 200) {
 			if (type >= 101) {
@@ -9121,7 +9096,7 @@ public class Client extends GameShell {
 		}
 	}
 
-	private int executeClientscript1( ComType component, int scriptId) {
+	private int executeClientscript1( Component component, int scriptId) {
 		if (component.scripts == null || scriptId >= component.scripts.length) {
 			return -2;
 		}
@@ -9144,7 +9119,7 @@ public class Client extends GameShell {
 				} else if (opcode == 3) { // load_skill_exp {skill}
 					register += this.skillExperience[script[pc++]];
 				} else if (opcode == 4) { // load_inv_count {interface id} {obj id}
-					ComType com = ComType.instances[script[pc++]];
+					Component com = Component.instances[script[pc++]];
 					int obj = script[pc++] + 1;
 
 					for (int i = 0; i < com.invSlotObjId.length; i++) {
@@ -9170,7 +9145,7 @@ public class Client extends GameShell {
 						register += this.skillBaseLevel[i];
 					}
 				} else if (opcode == 10) { // load_inv_contains {interface id} {obj id}
-					ComType com = ComType.instances[script[pc++]];
+					Component com = Component.instances[script[pc++]];
 					int obj = script[pc++] + 1;
 
 					for (int i = 0; i < com.invSlotObjId.length; i++) {
@@ -9495,10 +9470,10 @@ public class Client extends GameShell {
 					this.menuParamC[this.menuSize] = z;
 					this.menuSize++;
 				} else if (this.spellSelected != 1) {
-					if (loc.ops != null) {
+					if (loc.op != null) {
 						for (int op = 4; op >= 0; op--) {
-							if (loc.ops[op] != null) {
-								this.menuOption[this.menuSize] = loc.ops[op] + " @cya@" + loc.name;
+							if (loc.op[op] != null) {
+								this.menuOption[this.menuSize] = loc.op[op] + " @cya@" + loc.name;
 								if (op == 0) {
 									this.menuAction[this.menuSize] = 285;
 								}
@@ -9601,8 +9576,8 @@ public class Client extends GameShell {
 						this.menuSize++;
 					} else if (this.spellSelected != 1) {
 						for ( int op = 4; op >= 0; op--) {
-							if (type.ops != null && type.ops[op] != null) {
-								this.menuOption[this.menuSize] = type.ops[op] + " @lre@" + type.name;
+							if (type.op != null && type.op[op] != null) {
+								this.menuOption[this.menuSize] = type.op[op] + " @lre@" + type.name;
 								if (op == 0) {
 									this.menuAction[this.menuSize] = 224;
 								}
@@ -9674,9 +9649,9 @@ public class Client extends GameShell {
 			}
 		}
 
-		updatePlayersCounter++;
-		if (updatePlayersCounter > 1406) {
-			updatePlayersCounter = 0;
+		cyclelogic6++;
+		if (cyclelogic6 > 1406) {
+			cyclelogic6 = 0;
 			// ANTICHEAT_CYCLELOGIC6
 			this.out.p1isaac(219);
 			this.out.p1(0);
@@ -9773,7 +9748,7 @@ public class Client extends GameShell {
 			this.fontBold12.drawStringCenter(239, 40, this.modalMessage, 0);
 			this.fontBold12.drawStringCenter(239, 60, "Click to continue", 128);
 		} else if (this.chatInterfaceId != -1) {
-			this.drawInterface(ComType.instances[this.chatInterfaceId], 0, 0, 0);
+			this.drawInterface(Component.instances[this.chatInterfaceId], 0, 0, 0);
 		} else if (this.stickyChatInterfaceId == -1) {
 			PixFont font = this.fontPlain12;
 			int line = 0;
@@ -9846,7 +9821,7 @@ public class Client extends GameShell {
 			font.drawString(font.stringWidth(this.username + ": ") + 6, 90, this.chatTyped + "*", 255);
 			Draw2D.drawHorizontalLine(0, 77, 0, 479);
 		} else {
-			this.drawInterface(ComType.instances[this.stickyChatInterfaceId], 0, 0, 0);
+			this.drawInterface(Component.instances[this.stickyChatInterfaceId], 0, 0, 0);
 		}
 		if (this.menuVisible && this.menuArea == 2) {
 			this.drawMenu();
@@ -10001,7 +9976,7 @@ public class Client extends GameShell {
 				return true;
 			}
 			if (this.packetType == 1) {
-				// NPC_INFO (Server Cycle)
+				// NPC_INFO
 				this.readNpcInfo(this.in, this.packetSize);
 				this.packetType = -1;
 				return true;
@@ -10159,7 +10134,7 @@ public class Client extends GameShell {
 			if (this.packetType == 197) {
 				// IF_SETPLAYERHEAD
 				int com = this.in.g2();
-				ComType.instances[com].model = this.localPlayer.getHeadModel();
+				Component.instances[com].model = this.localPlayer.getHeadModel();
 				this.packetType = -1;
 				return true;
 			}
@@ -10214,7 +10189,6 @@ public class Client extends GameShell {
 				this.midiSize = length;
 				this.nextMusicDelay = 0;
 				this.packetType = -1;
-				isJingle = false;
 				return true;
 			}
 			if (this.packetType == 142) {
@@ -10298,7 +10272,7 @@ public class Client extends GameShell {
 				// IF_SETANIM
 				int com = this.in.g2();
 				int seqId = this.in.g2();
-				ComType.instances[com].anim = seqId;
+				Component.instances[com].anim = seqId;
 				this.packetType = -1;
 				return true;
 			}
@@ -10340,6 +10314,7 @@ public class Client extends GameShell {
 				// FINISH_TRACKING
 				Packet tracking = InputTracking.stop();
 				if (tracking != null) {
+                    // EVENT_TRACKING
 					this.out.p1isaac(81);
 					this.out.p2(tracking.pos);
 					this.out.pdata(tracking.data, tracking.pos, 0);
@@ -10352,7 +10327,7 @@ public class Client extends GameShell {
 				// UPDATE_INV_FULL
 				this.redrawSidebar = true;
 				int com = this.in.g2();
-				ComType inv = ComType.instances[com];
+				Component inv = Component.instances[com];
 				int size = this.in.g1();
 				for (int i = 0; i < size; i++) {
 					inv.invSlotObjId[i] = this.in.g2();
@@ -10387,7 +10362,7 @@ public class Client extends GameShell {
 			if (this.packetType == 15) {
 				// UPDATE_INV_STOP_TRANSMIT
 				int com = this.in.g2();
-				ComType inv = ComType.instances[com];
+				Component inv = Component.instances[com];
 				for (int i = 0; i < inv.invSlotObjId.length; i++) {
 					inv.invSlotObjId[i] = -1;
 					inv.invSlotObjId[i] = 0;
@@ -10410,9 +10385,9 @@ public class Client extends GameShell {
 					}
 					this.reportAbuseInput = "";
 					this.reportAbuseMuteOption = false;
-					for (int i = 0; i < ComType.instances.length; i++) {
-						if (ComType.instances[i] != null && ComType.instances[i].clientCode == clientCode) {
-							this.viewportInterfaceId = ComType.instances[i].layer;
+					for (int i = 0; i < Component.instances.length; i++) {
+						if (Component.instances[i] != null && Component.instances[i].clientCode == clientCode) {
+							this.viewportInterfaceId = Component.instances[i].layer;
 							break;
 						}
 					}
@@ -10444,7 +10419,6 @@ public class Client extends GameShell {
 					BZip2.read(src, length, this.in.data, remaining, this.in.pos);
 					this.saveMidi(src, length, 0);
 					this.nextMusicDelay = delay;
-					isJingle = true;
 				}
 				this.packetType = -1;
 				return true;
@@ -10474,7 +10448,7 @@ public class Client extends GameShell {
 				int com = this.in.g2();
 				int npcId = this.in.g2();
 				NpcType npc = NpcType.get(npcId);
-				ComType.instances[com].model = npc.getHeadModel();
+				Component.instances[com].model = npc.getHeadModel();
 				this.packetType = -1;
 				return true;
 			}
@@ -10490,7 +10464,7 @@ public class Client extends GameShell {
 				int com = this.in.g2();
 				int src = this.in.g2();
 				int dst = this.in.g2();
-				ComType inter = ComType.instances[com];
+				Component inter = Component.instances[com];
 				Model model = inter.model;
 				if (model != null) {
 					model.recolor(src, dst);
@@ -10549,7 +10523,7 @@ public class Client extends GameShell {
 				int com = this.in.g2();
 				int x = this.in.g2b();
 				int z = this.in.g2b();
-				ComType inter = ComType.instances[com];
+				Component inter = Component.instances[com];
 				inter.x = x;
 				inter.y = z;
 				this.packetType = -1;
@@ -10638,7 +10612,7 @@ public class Client extends GameShell {
 						this.messageIds[this.privateMessageCount] = messageId;
 						this.privateMessageCount = (this.privateMessageCount + 1) % 100;
 						String uncompressed = WordPack.unpack(this.in, this.packetSize - 13);
-						String filtered = uncompressed; //WordFilter.filter(uncompressed);
+						String filtered = WordFilter.filter(uncompressed);
 						if (staffModLevel > 1) {
 							this.addMessage(7, filtered, JString.formatName(JString.fromBase37(from)));
 						} else {
@@ -10667,7 +10641,7 @@ public class Client extends GameShell {
 				// IF_SETMODEL
 				int com = this.in.g2();
 				int model = this.in.g2();
-				ComType.instances[com].model = new Model(model);
+				Component.instances[com].model = new Model(model);
 				this.packetType = -1;
 				return true;
 			}
@@ -10766,10 +10740,10 @@ public class Client extends GameShell {
 				int objId = this.in.g2();
 				int zoom = this.in.g2();
 				ObjType obj = ObjType.get(objId);
-				ComType.instances[com].model = obj.getInterfaceModel(50);
-				ComType.instances[com].xan = obj.xan2d;
-				ComType.instances[com].yan = obj.yan2d;
-				ComType.instances[com].zoom = obj.zoom2d * 100 / zoom;
+				Component.instances[com].model = obj.getInterfaceModel(50);
+				Component.instances[com].xan = obj.xan2d;
+				Component.instances[com].yan = obj.yan2d;
+				Component.instances[com].zoom = obj.zoom2d * 100 / zoom;
 				this.packetType = -1;
 				return true;
 			}
@@ -10802,7 +10776,7 @@ public class Client extends GameShell {
 				int r = color >> 10 & 0x1F;
 				int g = color >> 5 & 0x1F;
 				int b = color & 0x1F;
-				ComType.instances[com].colour = (r << 19) + (g << 11) + (b << 3);
+				Component.instances[com].colour = (r << 19) + (g << 11) + (b << 3);
 				this.packetType = -1;
 				return true;
 			}
@@ -10825,7 +10799,7 @@ public class Client extends GameShell {
 				// IF_SETHIDE
 				int com = this.in.g2();
 				boolean hide = this.in.g1() == 1;
-				ComType.instances[com].hide = hide;
+				Component.instances[com].hide = hide;
 				this.packetType = -1;
 				return true;
 			}
@@ -10871,8 +10845,8 @@ public class Client extends GameShell {
 				// IF_SETTEXT
 				int com = this.in.g2();
 				String text = this.in.gjstr();
-				ComType.instances[com].text = text;
-				if (ComType.instances[com].layer == this.tabInterfaceId[this.selectedTab]) {
+				Component.instances[com].text = text;
+				if (Component.instances[com].layer == this.tabInterfaceId[this.selectedTab]) {
 					this.redrawSidebar = true;
 				}
 				this.packetType = -1;
@@ -10933,7 +10907,7 @@ public class Client extends GameShell {
 				// UPDATE_INV_PARTIAL
 				this.redrawSidebar = true;
 				int com = this.in.g2();
-				ComType inv = ComType.instances[com];
+				Component inv = Component.instances[com];
 				while (this.in.pos < this.packetSize) {
 					int slot = this.in.g1();
 					int id = this.in.g2();
@@ -10992,9 +10966,9 @@ public class Client extends GameShell {
 		Draw3D.lineOffset = this.areaSidebarOffsets;
 		this.imageInvback.draw(0, 0);
 		if (this.sidebarInterfaceId != -1) {
-			this.drawInterface(ComType.instances[this.sidebarInterfaceId], 0, 0, 0);
+			this.drawInterface(Component.instances[this.sidebarInterfaceId], 0, 0, 0);
 		} else if (this.tabInterfaceId[this.selectedTab] != -1) {
-			this.drawInterface(ComType.instances[this.tabInterfaceId[this.selectedTab]], 0, 0, 0);
+			this.drawInterface(Component.instances[this.tabInterfaceId[this.selectedTab]], 0, 0, 0);
 		}
 		if (this.menuVisible && this.menuArea == 1) {
 			this.drawMenu();
@@ -11110,7 +11084,7 @@ public class Client extends GameShell {
 				if (!ignored && this.overrideChat == 0) {
 					try {
 						String uncompressed = WordPack.unpack(buf, length);
-						String filtered = uncompressed; //WordFilter.filter(uncompressed);
+						String filtered = WordFilter.filter(uncompressed);
 						player.chat = filtered;
 						player.chatColor = colorEffect >> 8;
 						player.chatStyle = colorEffect & 0xFF;

@@ -7,6 +7,7 @@ import net.runelite.mapping.Import;
 
 import javax.swing.*;
 import java.awt.*;
+import java.net.InetAddress;
 
 public interface RSClient extends Client, RSGameShell {
 
@@ -35,9 +36,6 @@ public interface RSClient extends Client, RSGameShell {
 
     @Import("members")
     void setMembers(boolean isMembers);
-
-    @Import("startDaemon")
-    void startDaemon$api();
 
     @Override
     @Import("projectFromGround")

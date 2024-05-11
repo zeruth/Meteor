@@ -7,8 +7,6 @@ import meteor.ui.config.RenderMode;
 
 import javax.swing.*;
 import java.awt.image.BufferedImage;
-import java.io.ByteArrayInputStream;
-import java.util.HashMap;
 
 public interface Client extends GameShell{
     void setGamePanel(JPanel gamePanel);
@@ -19,7 +17,7 @@ public interface Client extends GameShell{
 
     void setCallbacks(Callbacks callbacks);
 
-    void preInit();
+    void preGameInit();
 
     RenderMode getRenderMode();
 

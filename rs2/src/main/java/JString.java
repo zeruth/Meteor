@@ -1,15 +1,15 @@
 public class JString {
 
-    private static final char[] builder = new char[12];
+	private static final char[] builder = new char[12];
 
-    private static final char[] BASE37_LOOKUP = new char[] {
+	private static final char[] BASE37_LOOKUP = new char[] {
 		'_', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i',
 		'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's',
 		't', 'u', 'v', 'w', 'x', 'y', 'z',
 		'0', '1', '2', '3', '4', '5', '6', '7', '8', '9'
 	};
 
-    public static long toBase37( String str) {
+	public static long toBase37( String str) {
 		long hash = 0L;
 
 		for ( int i = 0; i < str.length() && i < 12; i++) {
@@ -32,7 +32,7 @@ public class JString {
 		return hash;
 	}
 
-    public static String fromBase37( long username) {
+	public static String fromBase37( long username) {
 		// >= 37 to the 12th power
 		if (username <= 0L || username >= 6582952005840035281L) {
 			return "invalid_name";
@@ -52,7 +52,7 @@ public class JString {
 		return new String(builder, 12 - len, len);
 	}
 
-    public static long hashCode( String str) {
+	public static long hashCode( String str) {
 		String upper = str.toUpperCase();
 		long hash = 0L;
 
@@ -64,11 +64,11 @@ public class JString {
 		return hash;
 	}
 
-    public static String formatIPv4( int ip) {
+	public static String formatIPv4( int ip) {
 		return (ip >> 24 & 0xFF) + "." + (ip >> 16 & 0xFF) + "." + (ip >> 8 & 0xFF) + "." + (ip & 0xFF);
 	}
 
-    public static String formatName( String str) {
+	public static String formatName( String str) {
 		if (str.length() == 0) {
 			return str;
 		}
@@ -91,7 +91,7 @@ public class JString {
 		return new String(chars);
 	}
 
-    public static String toSentenceCase( String str) {
+	public static String toSentenceCase( String str) {
 		String lower = str.toLowerCase();
 		char[] chars = lower.toCharArray();
 		int length = chars.length;
@@ -113,7 +113,7 @@ public class JString {
 		return new String(chars);
 	}
 
-    public static String toAsterisks( String str) {
+	public static String toAsterisks( String str) {
 		String temp = "";
 		for ( int i = 0; i < str.length(); i++) {
 			temp = temp + "*";

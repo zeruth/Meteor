@@ -3,7 +3,6 @@ import java.io.*;
 import java.net.InetAddress;
 import java.net.Socket;
 import java.net.URL;
-import java.net.UnknownHostException;
 
 public class signlink implements Runnable {
 
@@ -15,53 +14,53 @@ public class signlink implements Runnable {
 
 	public static boolean sunjava;
 
-	private static boolean active;
+	public static boolean active;
 
-	private static int threadliveid;
+	public static int threadliveid;
 
-	private static InetAddress socketip;
+	public static InetAddress socketip;
 
-	private static int socketreq;
+	public static int socketreq;
 
-	private static int savelen;
+	public static int savelen;
 
-	private static boolean midiplay;
+	public static boolean midiplay;
 
-	private static int midipos;
+	public static int midipos;
 
 	public static int midivol;
 
 	public static int midifade;
 
-	private static boolean waveplay;
+	public static boolean waveplay;
 
-	static int wavepos;
+	public static int wavepos;
 
 	public static int wavevol;
 
-	private static Socket socket = null;
+	public static Socket socket = null;
 
-	private static int threadreqpri = 1;
+	public static int threadreqpri = 1;
 
-	private static Runnable threadreq = null;
+	public static Runnable threadreq = null;
 
-	private static String dnsreq = null;
+	public static String dnsreq = null;
 
 	public static String dns = null;
 
-	private static String loadreq = null;
+	public static String loadreq = null;
 
-	private static byte[] loadbuf = null;
+	public static byte[] loadbuf = null;
 
-	private static String savereq = null;
+	public static String savereq = null;
 
-	private static byte[] savebuf = null;
+	public static byte[] savebuf = null;
 
-	private static String urlreq = null;
+	public static String urlreq = null;
 
-	private static DataInputStream urlstream = null;
+	public static DataInputStream urlstream = null;
 
-	private static int looprate = 50;
+	public static int looprate = 50;
 
 	public static String midi = null;
 
@@ -71,8 +70,7 @@ public class signlink implements Runnable {
 
 	public static String errorname = "";
 
-	public static void startDaemon() throws UnknownHostException {
-		InetAddress address = InetAddress.getByName("localhost");
+	public static void startpriv( InetAddress address) {
 		threadliveid = (int) (Math.random() * 9.9999999E7D);
 
 		if (active) {
@@ -119,12 +117,14 @@ public class signlink implements Runnable {
 					cache = new File(dir);
 
 					if (!cache.exists() || !cache.canWrite()) {
+						System.out.println("Unable to find or write to cache directory: " + dir);
 						continue;
 					}
 				}
 
 				cache = new File(dir + store);
 				if ((!cache.exists() && !cache.mkdir()) || !cache.canWrite()) {
+					System.out.println("Unable to find or write to cache directory: " + dir + store + "/");
 					continue;
 				}
 

@@ -1,8 +1,6 @@
+public class AnimBase {
 
-
-public class SeqBase {
-
-	public static SeqBase[] instances;
+	public static AnimBase[] instances;
 
 	public int length;
 
@@ -17,7 +15,7 @@ public class SeqBase {
 
 		int total = head.g2();
 		int count = head.g2();
-		instances = new SeqBase[count + 1];
+		instances = new AnimBase[count + 1];
 
 		for ( int i = 0; i < total; i++) {
 			int id = head.g2();
@@ -37,7 +35,7 @@ public class SeqBase {
 				}
 			}
 
-			instances[id] = new SeqBase();
+			instances[id] = new AnimBase();
 			instances[id].length = length;
 			instances[id].types = transformTypes;
 			instances[id].labels = groupLabels;

@@ -1,6 +1,3 @@
-
-
-
 public class Model extends Hashable {
 
 	public int vertexCount;
@@ -1075,8 +1072,8 @@ public class Model extends Hashable {
 
 	public void applyTransform( int id) {
 		if (this.labelVertices != null && id != -1) {
-			SeqFrame transform = SeqFrame.instances[id];
-			SeqBase skeleton = transform.base;
+			AnimFrame transform = AnimFrame.instances[id];
+			AnimBase skeleton = transform.base;
 			baseX = 0;
 			baseY = 0;
 			baseZ = 0;
@@ -1095,9 +1092,9 @@ public class Model extends Hashable {
 		if (mask == null || secondaryId == -1) {
 			this.applyTransform(primaryId);
 		} else {
-			SeqFrame primary = SeqFrame.instances[primaryId];
-			SeqFrame secondary = SeqFrame.instances[secondaryId];
-			SeqBase skeleton = primary.base;
+			AnimFrame primary = AnimFrame.instances[primaryId];
+			AnimFrame secondary = AnimFrame.instances[secondaryId];
+			AnimBase skeleton = primary.base;
 
 			baseX = 0;
 			baseY = 0;
@@ -2071,7 +2068,7 @@ public class Model extends Hashable {
 		}
 	}
 
-    public static final class Metadata {
+	public static final class Metadata {
 
 		public int vertexCount;
 
@@ -2106,7 +2103,7 @@ public class Model extends Hashable {
 		public int faceTextureAxisOffset;
 	}
 
-    public static final class VertexNormal {
+	public static final class VertexNormal {
 
 		public int x;
 

@@ -1,5 +1,4 @@
-
-
+// name and packaging confirmed 100% in rs2/mapview applet strings
 public class Pix8 extends Draw2D {
 
 	public byte[] pixels;
@@ -246,6 +245,83 @@ public class Pix8 extends Draw2D {
 
 			dstOff += dstStep;
 			srcOff += srcStep;
+		}
+	}
+
+	public void clip( int arg0, int arg1, int arg2, int arg3) {
+		try {
+			int local2 = this.width;
+			int local5 = this.height;
+			int local7 = 0;
+			int local9 = 0;
+			int local15 = (local2 << 16) / arg2;
+			int local21 = (local5 << 16) / arg3;
+			int local24 = this.cropW;
+			int local27 = this.cropH;
+			int local33 = (local24 << 16) / arg2;
+			int local39 = (local27 << 16) / arg3;
+			arg0 += (this.cropX * arg2 + local24 - 1) / local24;
+			arg1 += (this.cropY * arg3 + local27 - 1) / local27;
+			if (this.cropX * arg2 % local24 != 0) {
+				local7 = (local24 - this.cropX * arg2 % local24 << 16) / arg2;
+			}
+			if (this.cropY * arg3 % local27 != 0) {
+				local9 = (local27 - this.cropY * arg3 % local27 << 16) / arg3;
+			}
+			arg2 = arg2 * (this.width - (local7 >> 16)) / local24;
+			arg3 = arg3 * (this.height - (local9 >> 16)) / local27;
+			int local133 = arg0 + arg1 * Draw2D.width2d;
+			int local137 = Draw2D.width2d - arg2;
+			int local144;
+			if (arg1 < Draw2D.top) {
+				local144 = Draw2D.top - arg1;
+				arg3 -= local144;
+				arg1 = 0;
+				local133 += local144 * Draw2D.width2d;
+				local9 += local39 * local144;
+			}
+			if (arg1 + arg3 > Draw2D.bottom) {
+				arg3 -= arg1 + arg3 - Draw2D.bottom;
+			}
+			if (arg0 < Draw2D.left) {
+				local144 = Draw2D.left - arg0;
+				arg2 -= local144;
+				arg0 = 0;
+				local133 += local144;
+				local7 += local33 * local144;
+				local137 += local144;
+			}
+			if (arg0 + arg2 > Draw2D.right) {
+				local144 = arg0 + arg2 - Draw2D.right;
+				arg2 -= local144;
+				local137 += local144;
+			}
+			this.plot_scale(Draw2D.data, this.pixels, this.palette, local7, local9, local133, local137, arg2, arg3, local33, local39, local2);
+		} catch ( Exception local239) {
+			System.out.println("error in sprite clipping routine");
+		}
+	}
+
+	private void plot_scale( int[] arg0, byte[] arg1, int[] arg2, int arg3, int arg4, int arg5, int arg6, int arg7, int arg8, int arg9, int arg10, int arg11) {
+		try {
+			int local3 = arg3;
+			for ( int local6 = -arg8; local6 < 0; local6++) {
+				int local14 = (arg4 >> 16) * arg11;
+				for ( int local17 = -arg7; local17 < 0; local17++) {
+					byte local27 = arg1[(arg3 >> 16) + local14];
+					if (local27 == 0) {
+						arg5++;
+					} else {
+						arg0[arg5++] = arg2[local27 & 0xFF];
+					}
+					arg3 += arg9;
+				}
+				arg4 += arg10;
+				arg3 = local3;
+				arg5 += arg6;
+			}
+		} catch ( Exception local63) {
+			System.out.println("error in plot_scale");
 		}
 	}
 }

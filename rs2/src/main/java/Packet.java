@@ -1,10 +1,14 @@
+
 import java.math.BigInteger;
 
+// name and packaging confirmed 100% in rs2/mapview applet strings
 public class Packet extends Hashable {
 
 	private static final int[] crctable = new int[256];
 
 	public static final int[] BITMASK = new int[33];
+
+	private char[] aCharArray1 = new char[] { 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '+', '/' };
 
 	public byte[] data;
 

@@ -1,4 +1,4 @@
-
+// name and packaging confirmed 100% in rs2/mapview applet strings
 public class Wave {
 
 	private static final Wave[] tracks = new Wave[1000];
@@ -165,7 +165,7 @@ public class Wave {
 		return totalSampleCount;
 	}
 
-    public static final class SoundTone {
+	public static final class SoundTone {
 
 		private SoundEnvelope frequencyBase;
 
@@ -426,7 +426,7 @@ public class Wave {
 		}
 	}
 
-    public static final class SoundEnvelope {
+	public static final class SoundEnvelope {
 
 		private int length;
 

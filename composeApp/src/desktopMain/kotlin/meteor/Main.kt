@@ -74,7 +74,7 @@ object Main {
         //Common init
         client = ClassLoader.getSystemClassLoader().loadClass("Client").newInstance() as Client
         client.callbacks = hooks
-        client.preInit()
+        client.preGameInit()
         loaded = true
 
         //Desktop init

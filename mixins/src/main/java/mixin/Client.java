@@ -7,7 +7,6 @@ import meteor.ui.config.GPUFilter;
 import meteor.ui.config.RenderMode;
 import net.runelite.api.Callbacks;
 import net.runelite.api.mixins.*;
-import net.runelite.mapping.Import;
 import net.runelite.rs.api.RSClient;
 import net.runelite.rs.api.RSPathingEntity;
 import org.bytedeco.javacv.Java2DFrameUtils;
@@ -19,7 +18,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayInputStream;
-import java.util.HashMap;
+import java.net.InetAddress;
+import java.net.UnknownHostException;
 
 @SuppressWarnings("ALL")
 @Mixin(RSClient.class)
@@ -51,21 +51,30 @@ abstract class Client implements RSClient {
         getCallbacks().post(DrawFinished.INSTANCE);
     }
 
-    @Copy("getBaseComponent")
     @Replace("getBaseComponent")
     public Component getBaseComponent$mixin() {
         return gamePanel;
     }
 
+    @Copy("startpriv")
+    @Replace("startpriv")
+    public static void startPriv(InetAddress host) {
+        startPriv(host);
+    }
+
     @Inject
     @Override
-    public void preInit() {
+    public void preGameInit() {
         client = this;
         setNodeID(10);
-        setPortOffset(3); //world
+        setPortOffset(3);
         setHighMemory$api();
         setMembers(true);
-        startDaemon$api();
+        try {
+            startPriv(InetAddress.getLocalHost());
+        } catch (UnknownHostException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @Inject
@@ -249,8 +258,8 @@ abstract class Client implements RSClient {
 
     @Copy("setMidiVolume")
     @Replace("setMidiVolume")
-    public void setMidiVolume(int volume) {
-        switch (volume) {
+    public void setMidiVolume(int vol) {
+        switch (vol) {
             case 0:
                 getCallbacks().post(new ChangeMusicVolume(100));
                 break;
