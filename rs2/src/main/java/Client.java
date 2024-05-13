@@ -116,7 +116,7 @@ public final class Client extends GameShell {
    private int projectX;
    private int cameraX;
    private int anInt838;
-   private int anInt985;
+   private int stickyChatInterfaceId;
    private int[] anIntArray231;
    private String[] messageText;
    private Packet in;
@@ -670,7 +670,7 @@ public final class Client extends GameShell {
       this.menuOption = new String[500];
       this.in = Packet.method299();
       this.anIntArrayArray25 = new int[104][104];
-      this.anInt985 = -1;
+      this.stickyChatInterfaceId = -1;
       this.aBoolean251 = false;
       this.spotanims = new Class6(true);
       this.cutscene = false;
@@ -2148,7 +2148,7 @@ public final class Client extends GameShell {
    }
 
    private void method622(String var1, String var2, int var3) {
-      if (var3 == 0 && this.anInt985 != -1) {
+      if (var3 == 0 && this.stickyChatInterfaceId != -1) {
          this.aString26 = var2;
          super.anInt821 = 0;
       }
@@ -2884,7 +2884,7 @@ public final class Client extends GameShell {
                   this.anIntArray244[i1] = var39;
                   this.method680(i1);
                   this.aBoolean248 = true;
-                  if (this.anInt985 != -1) {
+                  if (this.stickyChatInterfaceId != -1) {
                      this.aBoolean255 = true;
                   }
                }
@@ -2997,9 +2997,9 @@ public final class Client extends GameShell {
 
             if (this.packetType == 158) {
                i1 = this.in.method342();
-               if (i1 != this.anInt985) {
-                  this.resetInterface(this.anInt985);
-                  this.anInt985 = i1;
+               if (i1 != this.stickyChatInterfaceId) {
+                  this.resetInterface(this.stickyChatInterfaceId);
+                  this.stickyChatInterfaceId = i1;
                }
 
                this.aBoolean255 = true;
@@ -3148,7 +3148,7 @@ public final class Client extends GameShell {
                   this.anIntArray244[var2] = i1;
                   this.method680(var2);
                   this.aBoolean248 = true;
-                  if (this.anInt985 != -1) {
+                  if (this.stickyChatInterfaceId != -1) {
                      this.aBoolean255 = true;
                   }
                }
@@ -5951,7 +5951,7 @@ public final class Client extends GameShell {
             Model.method269(var1.aByteArray13, var1.anInt487);
             if ((this.aClass33_Sub1_1.method554(var1.anInt487) & 98) != 0) {
                this.aBoolean248 = true;
-               if (this.anInt888 != -1 || this.anInt985 != -1) {
+               if (this.anInt888 != -1 || this.stickyChatInterfaceId != -1) {
                   this.aBoolean255 = true;
                }
             }
@@ -6605,8 +6605,8 @@ public final class Client extends GameShell {
                this.spawnedLocations = new Class6(true);
                this.anInt839 = 0;
                this.anInt838 = 0;
-               this.resetInterface(this.anInt985);
-               this.anInt985 = -1;
+               this.resetInterface(this.stickyChatInterfaceId);
+               this.stickyChatInterfaceId = -1;
                this.resetInterface(this.anInt888);
                this.anInt888 = -1;
                this.resetInterface(this.viewportInterfaceId);
@@ -8909,8 +8909,8 @@ public final class Client extends GameShell {
             }
 
             if (var4 == 55) {
-               this.resetInterface(this.anInt985);
-               this.anInt985 = -1;
+               this.resetInterface(this.stickyChatInterfaceId);
+               this.stickyChatInterfaceId = -1;
                this.aBoolean255 = true;
             }
 
@@ -9560,19 +9560,19 @@ public final class Client extends GameShell {
             if (super.mouseX > 17 && super.mouseY > 357 && super.mouseX < 496 && super.mouseY < 453) {
                if (this.anInt888 != -1) {
                   this.handleInterfaceInput(357, ComType.method87(this.anInt888), 2, 0, 17, super.mouseX, super.mouseY);
-               } else if (this.anInt985 != -1) {
-                  this.handleInterfaceInput(357, ComType.method87(this.anInt985), 3, 0, 17, super.mouseX, super.mouseY);
+               } else if (this.stickyChatInterfaceId != -1) {
+                  this.handleInterfaceInput(357, ComType.method87(this.stickyChatInterfaceId), 3, 0, 17, super.mouseX, super.mouseY);
                } else if (super.mouseY < 434 && super.mouseX < 426 && this.anInt1010 == 0) {
                   this.handleChatMouseInput(super.mouseX - 17, super.mouseY - 357);
                }
             }
 
-            if ((this.anInt888 != -1 || this.anInt985 != -1) && this.anInt863 != this.chatHoveredInterfaceIndex) {
+            if ((this.anInt888 != -1 || this.stickyChatInterfaceId != -1) && this.anInt863 != this.chatHoveredInterfaceIndex) {
                this.aBoolean255 = true;
                this.chatHoveredInterfaceIndex = this.anInt863;
             }
 
-            if ((this.anInt888 != -1 || this.anInt985 != -1) && this.anInt1045 != this.anInt1030) {
+            if ((this.anInt888 != -1 || this.stickyChatInterfaceId != -1) && this.anInt1045 != this.anInt1030) {
                this.aBoolean255 = true;
                this.anInt1030 = this.anInt1045;
             }
@@ -12097,7 +12097,7 @@ public final class Client extends GameShell {
             this.aClass10_Sub1_Sub1_Sub2_4.method148(239, 452, 60, 128, "Click to continue");
          } else if (this.anInt888 != -1) {
             this.drawInterface(0, 0, ComType.method87(this.anInt888), 0);
-         } else if (this.anInt985 == -1) {
+         } else if (this.stickyChatInterfaceId == -1) {
             var1 = this.aClass10_Sub1_Sub1_Sub2_3;
             var2 = 0;
             Draw2D.setBounds(0, 0, 77, 463);
@@ -12223,7 +12223,7 @@ public final class Client extends GameShell {
             var1.method152(var1.method150(var9 + ": ") + 6, 255, 90, this.aString29 + "*");
             Draw2D.drawHorizontalLine(0, 0, 77, 479);
          } else {
-            this.drawInterface(0, 0, ComType.method87(this.anInt985), 0);
+            this.drawInterface(0, 0, ComType.method87(this.stickyChatInterfaceId), 0);
          }
       }
 
