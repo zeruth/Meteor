@@ -2816,6 +2816,8 @@ public class Client extends GameShell {
 	@Override
 	protected void draw() {
 		if (this.errorStarted || this.errorLoading || this.errorHost) {
+			if (this.errorLoading)
+				throw new RuntimeException("errorLoading");
 			this.drawError();
 		} else {
 			if (this.ingame) {
@@ -5551,7 +5553,7 @@ public class Client extends GameShell {
 		}
 
 		if (super.frame != null) {
-			return "2004scape.org";
+			return "localhost";
 		}
 
 		return super.getDocumentBase().getHost().toLowerCase();
@@ -6036,7 +6038,7 @@ public class Client extends GameShell {
 		}
 		if (!good) {
 			this.errorHost = true;
-			return;
+			throw new RuntimeException("host");
 		}
 
 		try {
@@ -6288,6 +6290,7 @@ public class Client extends GameShell {
 			World3D.init(512, 334, 500, 800, distance);
 			//WordFilter.unpack(wordenc);
 		} catch ( Exception ex) {
+			ex.printStackTrace();
 			this.errorLoading = true;
 		}
 	}
@@ -7974,13 +7977,10 @@ public class Client extends GameShell {
 	@Override
 	public URL getCodeBase() {
 		try {
-			if (super.frame != null) {
-				return new URL(Configuration.URL);
-			}
+			return new URL(Configuration.URL);
 		} catch ( Exception ex) {
+			throw new RuntimeException("URL");
 		}
-
-		return super.getCodeBase();
 	}
 
 	private boolean tryMove( int srcX, int srcZ, int dx, int dz, int type, int locWidth, int locLength, int locRotation, int locShape, int forceapproach, boolean tryNearest) {

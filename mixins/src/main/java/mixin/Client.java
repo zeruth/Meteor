@@ -67,7 +67,7 @@ abstract class Client implements RSClient {
     public void preGameInit() {
         client = this;
         setNodeID(10);
-        setPortOffset(3);
+        setPortOffset(0);
         setHighMemory$api();
         setMembers(true);
         try {
