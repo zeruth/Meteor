@@ -53,20 +53,20 @@ object ViewportOverlay {
                 for (npc in Main.client.npcs.filterNotNull()) {
                     npc.type?.let {
                         Main.client.`projectFromGround$api`(npc, npc.height + 30)
-                        if (Main.client.projectX > 0 && Main.client.projectY > 0)
-                            Text(it.name, color = Color.Yellow, fontSize = 14.sp,
-                                modifier = Modifier.absoluteOffset(
-                                    x = (Main.client.projectX * xScale).dp - Util.getCenteredTextOffset(it.name, 14.sp),
-                                    y = (Main.client.projectY * yScale).dp))
+                        Text(it.name, color = Color.Yellow, fontSize = 14.sp,
+                            modifier = Modifier.absoluteOffset(
+                                x = (Main.client.projectX * xScale).dp - Util.getCenteredTextOffset(it.name, 14.sp),
+                                y = (Main.client.projectY * yScale).dp))
                     }
                 }
                 for (player in Main.client.players.filterNotNull()) {
                     Main.client.`projectFromGround$api`(player, player.height + 30)
-                    if (Main.client.projectX > 0 && Main.client.projectY > 0)
+                    player.name?.let {
                         Text(player.name, color = if (player == Main.client.localPlayer) Color.Magenta else Color.Yellow, fontSize = 14.sp,
                             modifier = Modifier.absoluteOffset(
                                 x = (Main.client.projectX * xScale).dp - Util.getCenteredTextOffset(player.name, 14.sp),
                                 y = (Main.client.projectY * yScale).dp))
+                    }
                 }
             }
         }
