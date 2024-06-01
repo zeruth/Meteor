@@ -11,7 +11,7 @@ public final class Class10_Sub1_Sub2_Sub6 extends Entity {
    public int anInt626;
 
    public Class10_Sub1_Sub2_Sub6(int var1, int var2, int var3, int var4, int var5, int var6, int var7, int var8) {
-      this.aClass28_2 = SpotAnimType.aClass28Array1[var5];
+      this.aClass28_2 = SpotAnimType.instances[var5];
       this.anInt623 = var2;
       this.anInt624 = var1;
       this.anInt625 = var7;
@@ -24,11 +24,11 @@ public final class Class10_Sub1_Sub2_Sub6 extends Entity {
       if (var1 != 3) {
          throw new NullPointerException();
       } else {
-         Model var2 = this.aClass28_2.method352();
+         Model var2 = this.aClass28_2.getModel();
          if (var2 == null) {
             return null;
          } else {
-            int var3 = this.aClass28_2.aClass15_1.anIntArray47[this.anInt627];
+            int var3 = this.aClass28_2.seq.anIntArray47[this.anInt627];
             Model var4 = new Model(false, false, true, var2, Class22.method169(this.aBoolean155, var3));
             if (!this.aBoolean156) {
                var4.method278();
@@ -37,28 +37,28 @@ public final class Class10_Sub1_Sub2_Sub6 extends Entity {
                var4.anIntArrayArray10 = null;
             }
 
-            if (this.aClass28_2.anInt438 != 128 || this.aClass28_2.anInt439 != 128) {
-               var4.method287(this.aClass28_2.anInt439, this.aClass28_2.anInt438, this.aClass28_2.anInt438);
+            if (this.aClass28_2.resizeh != 128 || this.aClass28_2.resizev != 128) {
+               var4.method287(this.aClass28_2.resizev, this.aClass28_2.resizeh, this.aClass28_2.resizeh);
             }
 
-            if (this.aClass28_2.anInt440 != 0) {
-               if (this.aClass28_2.anInt440 == 90) {
+            if (this.aClass28_2.orientation != 0) {
+               if (this.aClass28_2.orientation == 90) {
                   var4.method282();
                }
 
-               if (this.aClass28_2.anInt440 == 180) {
+               if (this.aClass28_2.orientation == 180) {
                   var4.method282();
                   var4.method282();
                }
 
-               if (this.aClass28_2.anInt440 == 270) {
+               if (this.aClass28_2.orientation == 270) {
                   var4.method282();
                   var4.method282();
                   var4.method282();
                }
             }
 
-            var4.method288(this.aClass28_2.anInt441 + 64, this.aClass28_2.anInt442 + 850, -30, -50, -30, true);
+            var4.method288(this.aClass28_2.ambient + 64, this.aClass28_2.contrast + 850, -30, -50, -30, true);
             return var4;
          }
       }
@@ -71,14 +71,14 @@ public final class Class10_Sub1_Sub2_Sub6 extends Entity {
       while(true) {
          do {
             do {
-               if (this.anInt628 <= this.aClass28_2.aClass15_1.method97(this.anInt627)) {
+               if (this.anInt628 <= this.aClass28_2.seq.method97(this.anInt627)) {
                   return;
                }
 
-               this.anInt628 -= this.aClass28_2.aClass15_1.method97(this.anInt627);
+               this.anInt628 -= this.aClass28_2.seq.method97(this.anInt627);
                ++this.anInt627;
-            } while(this.anInt627 < this.aClass28_2.aClass15_1.anInt152);
-         } while(this.anInt627 >= 0 && this.anInt627 < this.aClass28_2.aClass15_1.anInt152);
+            } while(this.anInt627 < this.aClass28_2.seq.anInt152);
+         } while(this.anInt627 >= 0 && this.anInt627 < this.aClass28_2.seq.anInt152);
 
          this.anInt627 = 0;
          this.aBoolean156 = true;

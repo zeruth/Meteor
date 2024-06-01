@@ -8,7 +8,7 @@ public final class Class10_Sub1_Sub2_Sub1 extends Entity {
          this.anInt212 = -358;
       }
 
-      ObjType var2 = ObjType.method104(this.anInt211);
+      ObjType var2 = ObjType.get(this.anInt211);
       return var2.method112(this.anInt213);
    }
 }

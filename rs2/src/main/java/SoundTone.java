@@ -1,4 +1,4 @@
-public final class Class12 {
+public final class SoundTone {
    private static int[] anIntArray28 = new int[5];
    private static int[] anIntArray25;
    private static int[] anIntArray27;
@@ -27,7 +27,7 @@ public final class Class12 {
    private Class30 aClass30_8;
    private Class30 aClass30_9;
 
-   public void method44(byte var1, Packet var2) {
+   public void read(byte var1, Packet var2) {
       this.aClass30_1 = new Class30();
       this.aClass30_1.method359(this.aByte7, var2);
       this.aClass30_2 = new Class30();
@@ -305,7 +305,7 @@ public final class Class12 {
       }
    }
 
-   public static void method41() {
+   public static void init() {
       anIntArray26 = new int[32768];
 
       int var0;

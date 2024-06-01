@@ -1,6 +1,6 @@
 public final class SeqType {
    private static byte aByte10 = 6;
-   public static SeqType[] aClass15Array1;
+   public static SeqType[] instances;
    private static int anInt151;
    private int[] anIntArray49;
    private boolean aBoolean44 = false;
@@ -137,16 +137,16 @@ public final class SeqType {
    public static void unpack(Jagfile var0) {
       Packet var1 = new Packet(var0.read("seq.dat", (byte[])null));
       anInt151 = var1.g2();
-      if (aClass15Array1 == null) {
-         aClass15Array1 = new SeqType[anInt151];
+      if (instances == null) {
+         instances = new SeqType[anInt151];
       }
 
       for(int var2 = 0; var2 < anInt151; ++var2) {
-         if (aClass15Array1[var2] == null) {
-            aClass15Array1[var2] = new SeqType();
+         if (instances[var2] == null) {
+            instances[var2] = new SeqType();
          }
 
-         aClass15Array1[var2].method98(aByte10, var1);
+         instances[var2].method98(aByte10, var1);
       }
 
    }

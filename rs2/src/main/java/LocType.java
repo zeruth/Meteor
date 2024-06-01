@@ -16,41 +16,41 @@ public final class LocType {
    private int anInt695 = -992;
    public int anInt701;
    public int anInt696 = -1;
-   public boolean aBoolean182;
-   public String aString12 = "null";
+   public boolean hillskew;
+   public String name = "null";
    private boolean aBoolean184 = true;
    private boolean aBoolean186;
-   public boolean aBoolean180;
-   private boolean aBoolean189;
+   public boolean active;
+   private boolean sharelight;
    public int[] anIntArray192;
    private byte aByte40 = -113;
-   public byte[] aByteArray17;
-   public boolean aBoolean192;
-   private int[] anIntArray191;
+   public byte[] desc;
+   public boolean blockwalk;
+   private int[] recol_s;
    private boolean aBoolean185 = true;
-   public String[] aStringArray7;
-   public boolean aBoolean191;
-   private int[] anIntArray190;
+   public String[] op;
+   public boolean blockrange;
+   private int[] recol_d;
    private int anInt704;
-   public int anInt707;
-   public int anInt697;
-   private boolean aBoolean188;
-   public int anInt705;
-   public int anInt693;
-   public boolean aBoolean187;
-   private int anInt700;
-   public int anInt709;
-   private int anInt691;
-   public int anInt708;
-   private byte aByte38;
-   private byte aByte39;
-   private int anInt706;
-   private int anInt692;
-   public int anInt710;
-   public boolean aBoolean190;
-   private int anInt702;
-   private int anInt694;
-   public boolean aBoolean181;
+   public int width;
+   public int length;
+   private boolean mirror;
+   public int mapscene;
+   public int forceapproach;
+   public boolean occlude;
+   private int resizex;
+   public int anim;
+   private int resizey;
+   public int wallwidth;
+   private byte ambient;
+   private byte contrast;
+   private int resizez;
+   private int offsetx;
+   public int mapfunction;
+   public boolean shadow;
+   private int offsety;
+   private int offsetz;
+   public boolean forcedecor;
 
    private LocType() {
    }
@@ -77,7 +77,7 @@ public final class LocType {
             return null;
          }
 
-         var7 = this.aBoolean188 ^ var1 > 3;
+         var7 = this.mirror ^ var1 > 3;
          var11 = this.anIntArray188.length;
 
          for(var8 = 0; var8 < var11; ++var8) {
@@ -129,7 +129,7 @@ public final class LocType {
          }
 
          var8 = this.anIntArray188[var10];
-         boolean var15 = this.aBoolean188 ^ var1 > 3;
+         boolean var15 = this.mirror ^ var1 > 3;
          if (var15) {
             var8 += 65536;
          }
@@ -150,19 +150,19 @@ public final class LocType {
       }
 
       boolean var14;
-      if (this.anInt700 == 128 && this.anInt691 == 128 && this.anInt706 == 128) {
+      if (this.resizex == 128 && this.resizey == 128 && this.resizez == 128) {
          var14 = false;
       } else {
          var14 = true;
       }
 
-      if (this.anInt692 == 0 && this.anInt702 == 0 && this.anInt694 == 0) {
+      if (this.offsetx == 0 && this.offsety == 0 && this.offsetz == 0) {
          var7 = false;
       } else {
          var7 = true;
       }
 
-      var9 = new Model(var1 == 0 && var2 == -1 && !var14 && !var7, false, this.anIntArray191 == null, var4, Class22.method169(this.aBoolean184, var2));
+      var9 = new Model(var1 == 0 && var2 == -1 && !var14 && !var7, false, this.recol_s == null, var4, Class22.method169(this.aBoolean184, var2));
       if (var2 != -1) {
          var9.method278();
          var9.method279(var2, (byte)6);
@@ -174,21 +174,21 @@ public final class LocType {
          var9.method282();
       }
 
-      if (this.anIntArray191 != null) {
-         for(var8 = 0; var8 < this.anIntArray191.length; ++var8) {
-            var9.recolor(this.anIntArray191[var8], this.anIntArray190[var8]);
+      if (this.recol_s != null) {
+         for(var8 = 0; var8 < this.recol_s.length; ++var8) {
+            var9.recolor(this.recol_s[var8], this.recol_d[var8]);
          }
       }
 
       if (var14) {
-         var9.method287(this.anInt691, this.anInt706, this.anInt700);
+         var9.method287(this.resizey, this.resizez, this.resizex);
       }
 
       if (var7) {
-         var9.method284(this.anInt692, this.anInt694, this.anInt702);
+         var9.method284(this.offsetx, this.offsetz, this.offsety);
       }
 
-      var9.method288(this.aByte38 + 64, this.aByte39 * 5 + 768, -50, -10, -50, !this.aBoolean189);
+      var9.method288(this.ambient + 64, this.contrast * 5 + 768, -50, -10, -50, !this.sharelight);
       if (this.anInt704 == 1) {
          var9.anInt413 = var9.anInt713;
       }
@@ -216,35 +216,35 @@ public final class LocType {
    private void method529() {
       this.anIntArray188 = null;
       this.anIntArray189 = null;
-      this.aString12 = "null";
-      this.aByteArray17 = null;
-      this.anIntArray191 = null;
-      this.anIntArray190 = null;
-      this.anInt707 = 1;
-      this.anInt697 = 1;
-      this.aBoolean192 = true;
-      this.aBoolean191 = true;
-      this.aBoolean180 = false;
-      this.aBoolean182 = false;
-      this.aBoolean189 = false;
-      this.aBoolean187 = false;
-      this.anInt709 = -1;
-      this.anInt708 = 16;
-      this.aByte38 = 0;
-      this.aByte39 = 0;
-      this.aStringArray7 = null;
-      this.anInt710 = -1;
-      this.anInt705 = -1;
-      this.aBoolean188 = false;
-      this.aBoolean190 = true;
-      this.anInt700 = 128;
-      this.anInt691 = 128;
-      this.anInt706 = 128;
-      this.anInt693 = 0;
-      this.anInt692 = 0;
-      this.anInt702 = 0;
-      this.anInt694 = 0;
-      this.aBoolean181 = false;
+      this.name = "null";
+      this.desc = null;
+      this.recol_s = null;
+      this.recol_d = null;
+      this.width = 1;
+      this.length = 1;
+      this.blockwalk = true;
+      this.blockrange = true;
+      this.active = false;
+      this.hillskew = false;
+      this.sharelight = false;
+      this.occlude = false;
+      this.anim = -1;
+      this.wallwidth = 16;
+      this.ambient = 0;
+      this.contrast = 0;
+      this.op = null;
+      this.mapfunction = -1;
+      this.mapscene = -1;
+      this.mirror = false;
+      this.shadow = true;
+      this.resizex = 128;
+      this.resizey = 128;
+      this.resizez = 128;
+      this.forceapproach = 0;
+      this.offsetx = 0;
+      this.offsety = 0;
+      this.offsetz = 0;
+      this.forcedecor = false;
       this.aBoolean186 = false;
       this.anInt704 = -1;
       this.anInt699 = -1;
@@ -290,23 +290,23 @@ public final class LocType {
                      int var6 = var2.g1();
                      if (var6 == 0) {
                         if (var3 == -1) {
-                           this.aBoolean180 = false;
+                           this.active = false;
                            if (this.anIntArray188 != null && (this.anIntArray189 == null || this.anIntArray189[0] == 10)) {
-                              this.aBoolean180 = true;
+                              this.active = true;
                            }
 
-                           if (this.aStringArray7 != null) {
-                              this.aBoolean180 = true;
+                           if (this.op != null) {
+                              this.active = true;
                            }
                         }
 
                         if (this.aBoolean186) {
-                           this.aBoolean192 = false;
-                           this.aBoolean191 = false;
+                           this.blockwalk = false;
+                           this.blockrange = false;
                         }
 
                         if (this.anInt704 == -1) {
-                           this.anInt704 = this.aBoolean192 ? 1 : 0;
+                           this.anInt704 = this.blockwalk ? 1 : 0;
                            return;
                         }
 
@@ -319,9 +319,9 @@ public final class LocType {
                      }
 
                      if (var6 == 2) {
-                        this.aString12 = var2.gjstr();
+                        this.name = var2.gjstr();
                      } else if (var6 == 3) {
-                        this.aByteArray17 = var2.gstrbyte();
+                        this.desc = var2.gstrbyte();
                      } else if (var6 == 5) {
                         var4 = var2.g1();
                         if (var4 > 0) {
@@ -337,77 +337,77 @@ public final class LocType {
                            }
                         }
                      } else if (var6 == 14) {
-                        this.anInt707 = var2.g1();
+                        this.width = var2.g1();
                      } else if (var6 == 15) {
-                        this.anInt697 = var2.g1();
+                        this.length = var2.g1();
                      } else if (var6 == 17) {
-                        this.aBoolean192 = false;
+                        this.blockwalk = false;
                      } else if (var6 == 18) {
-                        this.aBoolean191 = false;
+                        this.blockrange = false;
                      } else if (var6 == 19) {
                         var3 = var2.g1();
                         if (var3 == 1) {
-                           this.aBoolean180 = true;
+                           this.active = true;
                         }
                      } else if (var6 == 21) {
-                        this.aBoolean182 = true;
+                        this.hillskew = true;
                      } else if (var6 == 22) {
-                        this.aBoolean189 = true;
+                        this.sharelight = true;
                      } else if (var6 == 23) {
-                        this.aBoolean187 = true;
+                        this.occlude = true;
                      } else if (var6 == 24) {
-                        this.anInt709 = var2.g2();
-                        if (this.anInt709 == 65535) {
-                           this.anInt709 = -1;
+                        this.anim = var2.g2();
+                        if (this.anim == 65535) {
+                           this.anim = -1;
                         }
                      } else if (var6 == 28) {
-                        this.anInt708 = var2.g1();
+                        this.wallwidth = var2.g1();
                      } else if (var6 == 29) {
-                        this.aByte38 = var2.g1b();
+                        this.ambient = var2.g1b();
                      } else if (var6 == 39) {
-                        this.aByte39 = var2.g1b();
+                        this.contrast = var2.g1b();
                      } else if (var6 >= 30 && var6 < 39) {
-                        if (this.aStringArray7 == null) {
-                           this.aStringArray7 = new String[5];
+                        if (this.op == null) {
+                           this.op = new String[5];
                         }
 
-                        this.aStringArray7[var6 - 30] = var2.gjstr();
-                        if (this.aStringArray7[var6 - 30].equalsIgnoreCase("hidden")) {
-                           this.aStringArray7[var6 - 30] = null;
+                        this.op[var6 - 30] = var2.gjstr();
+                        if (this.op[var6 - 30].equalsIgnoreCase("hidden")) {
+                           this.op[var6 - 30] = null;
                         }
                      } else if (var6 == 40) {
                         var4 = var2.g1();
-                        this.anIntArray191 = new int[var4];
-                        this.anIntArray190 = new int[var4];
+                        this.recol_s = new int[var4];
+                        this.recol_d = new int[var4];
 
                         for(var5 = 0; var5 < var4; ++var5) {
-                           this.anIntArray191[var5] = var2.g2();
-                           this.anIntArray190[var5] = var2.g2();
+                           this.recol_s[var5] = var2.g2();
+                           this.recol_d[var5] = var2.g2();
                         }
                      } else if (var6 == 60) {
-                        this.anInt710 = var2.g2();
+                        this.mapfunction = var2.g2();
                      } else if (var6 == 62) {
-                        this.aBoolean188 = true;
+                        this.mirror = true;
                      } else if (var6 == 64) {
-                        this.aBoolean190 = false;
+                        this.shadow = false;
                      } else if (var6 == 65) {
-                        this.anInt700 = var2.g2();
+                        this.resizex = var2.g2();
                      } else if (var6 == 66) {
-                        this.anInt691 = var2.g2();
+                        this.resizey = var2.g2();
                      } else if (var6 == 67) {
-                        this.anInt706 = var2.g2();
+                        this.resizez = var2.g2();
                      } else if (var6 == 68) {
-                        this.anInt705 = var2.g2();
+                        this.mapscene = var2.g2();
                      } else if (var6 == 69) {
-                        this.anInt693 = var2.g1();
+                        this.forceapproach = var2.g1();
                      } else if (var6 == 70) {
-                        this.anInt692 = var2.g2b();
+                        this.offsetx = var2.g2b();
                      } else if (var6 == 71) {
-                        this.anInt702 = var2.g2b();
+                        this.offsety = var2.g2b();
                      } else if (var6 == 72) {
-                        this.anInt694 = var2.g2b();
+                        this.offsetz = var2.g2b();
                      } else if (var6 == 73) {
-                        this.aBoolean181 = true;
+                        this.forcedecor = true;
                      } else if (var6 == 74) {
                         this.aBoolean186 = true;
                      } else if (var6 == 75) {
@@ -457,11 +457,11 @@ public final class LocType {
       if (var8 == null) {
          return null;
       } else {
-         if (this.aBoolean182 || this.aBoolean189) {
-            var8 = new Model(this.aBoolean182, this.aBoolean189, 0, var8);
+         if (this.hillskew || this.sharelight) {
+            var8 = new Model(this.hillskew, this.sharelight, 0, var8);
          }
 
-         if (this.aBoolean182) {
+         if (this.hillskew) {
             int var9 = (var3 + var4 + var5 + var6) / 4;
 
             for(int var10 = 0; var10 < var8.anInt402; ++var10) {

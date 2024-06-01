@@ -34,9 +34,9 @@ public final class PlayerEntity extends PathingEntity {
       if (this.aClass38_2 != null) {
          int var1 = -1;
          if (super.anInt753 >= 0 && super.anInt756 == 0) {
-            var1 = SeqType.aClass15Array1[super.anInt753].anIntArray47[super.anInt754];
+            var1 = SeqType.instances[super.anInt753].anIntArray47[super.anInt754];
          } else if (super.anInt719 >= 0) {
-            var1 = SeqType.aClass15Array1[super.anInt719].anIntArray47[super.anInt720];
+            var1 = SeqType.instances[super.anInt719].anIntArray47[super.anInt720];
          }
 
          return this.aClass38_2.method405(var1, -1, (int[])null);
@@ -47,10 +47,10 @@ public final class PlayerEntity extends PathingEntity {
          int var5 = -1;
          int var6 = -1;
          if (super.anInt753 >= 0 && super.anInt756 == 0) {
-            SeqType var7 = SeqType.aClass15Array1[super.anInt753];
+            SeqType var7 = SeqType.instances[super.anInt753];
             var3 = var7.anIntArray47[super.anInt754];
             if (super.anInt719 >= 0 && super.anInt719 != super.anInt760) {
-               var4 = SeqType.aClass15Array1[super.anInt719].anIntArray47[super.anInt720];
+               var4 = SeqType.instances[super.anInt719].anIntArray47[super.anInt720];
             }
 
             if (var7.anInt155 >= 0) {
@@ -63,7 +63,7 @@ public final class PlayerEntity extends PathingEntity {
                var13 += (long)(var6 - this.appearances[3] << 16);
             }
          } else if (super.anInt719 >= 0) {
-            var3 = SeqType.aClass15Array1[super.anInt719].anIntArray47[super.anInt720];
+            var3 = SeqType.instances[super.anInt719].anIntArray47[super.anInt720];
          }
 
          Model var16 = (Model)aClass34_9.get(var13);
@@ -86,7 +86,7 @@ public final class PlayerEntity extends PathingEntity {
                   var10 = true;
                }
 
-               if (var9 >= 512 && !ObjType.method104(var9 - 512).method108(this.anInt768)) {
+               if (var9 >= 512 && !ObjType.get(var9 - 512).method108(this.anInt768)) {
                   var10 = true;
                }
             }
@@ -126,7 +126,7 @@ public final class PlayerEntity extends PathingEntity {
                }
 
                if (var11 >= 512) {
-                  var12 = ObjType.method104(var11 - 512).method105(this.anInt768);
+                  var12 = ObjType.get(var11 - 512).method105(this.anInt768);
                   if (var12 != null) {
                      var15[var8++] = var12;
                   }
@@ -156,7 +156,7 @@ public final class PlayerEntity extends PathingEntity {
             Model var17 = Model.aClass10_Sub1_Sub2_Sub4_1;
             var17.method273(Class22.method169(this.aBoolean199, var3) & Class22.method169(this.aBoolean199, var4), var16);
             if (var3 != -1 && var4 != -1) {
-               var17.method280(var4, var3, SeqType.aClass15Array1[super.anInt753].anIntArray50);
+               var17.method280(var4, var3, SeqType.instances[super.anInt753].anIntArray50);
             } else if (var3 != -1) {
                var17.method279(var3, (byte)6);
             }
@@ -183,20 +183,20 @@ public final class PlayerEntity extends PathingEntity {
                return var2;
             } else {
                if (super.anInt743 != -1 && super.anInt744 != -1) {
-                  SpotAnimType var3 = SpotAnimType.aClass28Array1[super.anInt743];
-                  Model var4 = var3.method352();
+                  SpotAnimType var3 = SpotAnimType.instances[super.anInt743];
+                  Model var4 = var3.getModel();
                   if (var4 != null) {
                      Model var5 = new Model(false, false, true, var4, Class22.method169(this.aBoolean199, super.anInt744));
                      var5.method284(0, 0, -super.anInt747);
                      var5.method278();
-                     var5.method279(var3.aClass15_1.anIntArray47[super.anInt744], (byte)6);
+                     var5.method279(var3.seq.anIntArray47[super.anInt744], (byte)6);
                      var5.anIntArrayArray11 = null;
                      var5.anIntArrayArray10 = null;
-                     if (var3.anInt438 != 128 || var3.anInt439 != 128) {
-                        var5.method287(var3.anInt439, var3.anInt438, var3.anInt438);
+                     if (var3.resizeh != 128 || var3.resizev != 128) {
+                        var5.method287(var3.resizev, var3.resizeh, var3.resizeh);
                      }
 
-                     var5.method288(var3.anInt441 + 64, var3.anInt442 + 850, -30, -50, -30, true);
+                     var5.method288(var3.ambient + 64, var3.contrast + 850, -30, -50, -30, true);
                      Model[] var6 = new Model[]{var2, var5};
                      var2 = new Model(2, true, 0, var6);
                   }
@@ -268,7 +268,7 @@ public final class PlayerEntity extends PathingEntity {
                var1 = true;
             }
 
-            if (var3 >= 512 && !ObjType.method104(var3 - 512).method103(this.anInt768)) {
+            if (var3 >= 512 && !ObjType.get(var3 - 512).method103(this.anInt768)) {
                var1 = true;
             }
          }
@@ -291,7 +291,7 @@ public final class PlayerEntity extends PathingEntity {
                }
 
                if (var5 >= 512) {
-                  var6 = ObjType.method104(var5 - 512).method111(this.anInt768);
+                  var6 = ObjType.get(var5 - 512).method111(this.anInt768);
                   if (var6 != null) {
                      var7[var3++] = var6;
                   }
@@ -341,7 +341,7 @@ public final class PlayerEntity extends PathingEntity {
             }
 
             if (this.appearances[var5] >= 512 && this.appearances[var5] - 512 < ObjType.anInt179) {
-               var4 = ObjType.method104(this.appearances[var5] - 512).anInt176;
+               var4 = ObjType.get(this.appearances[var5] - 512).team;
                if (var4 != 0) {
                   this.anInt773 = var4;
                }

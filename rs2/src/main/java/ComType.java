@@ -82,9 +82,9 @@ public final class ComType {
    private Model method89(int var1, int var2) {
       ObjType var3 = null;
       if (var1 == 4) {
-         var3 = ObjType.method104(var2);
-         anInt144 += var3.anInt187;
-         anInt125 += var3.anInt191;
+         var3 = ObjType.get(var2);
+         anInt144 += var3.code113;
+         anInt125 += var3.code114;
       }
 
       Model var4 = (Model)aClass34_2.get((long)((var1 << 16) + var2));

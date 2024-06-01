@@ -24,7 +24,7 @@ public final class LocEntity extends Entity {
       this.anInt463 = var2;
       this.anInt464 = var3;
       if (var1 != -1) {
-         this.aClass15_2 = SeqType.aClass15Array1[var1];
+         this.aClass15_2 = SeqType.instances[var1];
          this.anInt473 = 0;
          this.anInt472 = Client.anInt1050 - 1;
          if (var8 && this.aClass15_2.anInt153 != -1) {

@@ -99,7 +99,7 @@ public abstract class PathingEntity extends Entity {
          --var4;
       }
 
-      if (this.anInt753 != -1 && SeqType.aClass15Array1[this.anInt753].anInt159 == 1) {
+      if (this.anInt753 != -1 && SeqType.instances[this.anInt753].anInt159 == 1) {
          this.anInt753 = -1;
       }
 
@@ -136,7 +136,7 @@ public abstract class PathingEntity extends Entity {
    }
 
    public final void method542(int var1, byte var2, boolean var3, int var4) {
-      if (this.anInt753 != -1 && SeqType.aClass15Array1[this.anInt753].anInt159 == 1) {
+      if (this.anInt753 != -1 && SeqType.instances[this.anInt753].anInt159 == 1) {
          this.anInt753 = -1;
       }
 

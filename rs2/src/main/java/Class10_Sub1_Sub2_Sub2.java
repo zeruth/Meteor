@@ -28,7 +28,7 @@ public final class Class10_Sub1_Sub2_Sub2 extends Entity {
    private int anInt273;
 
    public Class10_Sub1_Sub2_Sub2(int var1, int var2, int var3, int var4, int var5, int var6, int var7, int var8, byte var9, int var10, int var11, int var12) {
-      this.aClass28_1 = SpotAnimType.aClass28Array1[var5];
+      this.aClass28_1 = SpotAnimType.instances[var5];
       this.anInt264 = var1;
       this.anInt274 = var11;
       this.anInt275 = var4;
@@ -47,13 +47,13 @@ public final class Class10_Sub1_Sub2_Sub2 extends Entity {
    }
 
    protected Model method537(byte var1) {
-      Model var2 = this.aClass28_1.method352();
+      Model var2 = this.aClass28_1.getModel();
       if (var2 == null) {
          return null;
       } else {
          int var3 = -1;
-         if (this.aClass28_1.aClass15_1 != null) {
-            var3 = this.aClass28_1.aClass15_1.anIntArray47[this.anInt272];
+         if (this.aClass28_1.seq != null) {
+            var3 = this.aClass28_1.seq.anIntArray47[this.anInt272];
          }
 
          Model var4 = new Model(false, false, true, var2, Class22.method169(this.aBoolean85, var3));
@@ -64,12 +64,12 @@ public final class Class10_Sub1_Sub2_Sub2 extends Entity {
             var4.anIntArrayArray10 = null;
          }
 
-         if (this.aClass28_1.anInt438 != 128 || this.aClass28_1.anInt439 != 128) {
-            var4.method287(this.aClass28_1.anInt439, this.aClass28_1.anInt438, this.aClass28_1.anInt438);
+         if (this.aClass28_1.resizeh != 128 || this.aClass28_1.resizev != 128) {
+            var4.method287(this.aClass28_1.resizev, this.aClass28_1.resizeh, this.aClass28_1.resizeh);
          }
 
          var4.method283(this.anInt269, 341);
-         var4.method288(this.aClass28_1.anInt441 + 64, this.aClass28_1.anInt442 + 850, -30, -50, -30, true);
+         var4.method288(this.aClass28_1.ambient + 64, this.aClass28_1.contrast + 850, -30, -50, -30, true);
          if (var1 == 3) {
             boolean var5 = false;
          } else {
@@ -110,13 +110,13 @@ public final class Class10_Sub1_Sub2_Sub2 extends Entity {
       this.aDouble7 += this.aDouble8 * (double)var1;
       this.anInt268 = (int)(Math.atan2(this.aDouble4, this.aDouble5) * 325.949) + 1024 & 2047;
       this.anInt269 = (int)(Math.atan2(this.aDouble7, this.aDouble6) * 325.949) & 2047;
-      if (this.aClass28_1.aClass15_1 != null) {
+      if (this.aClass28_1.seq != null) {
          this.anInt273 += var1;
 
-         while(this.anInt273 > this.aClass28_1.aClass15_1.method97(this.anInt272)) {
-            this.anInt273 -= this.aClass28_1.aClass15_1.method97(this.anInt272);
+         while(this.anInt273 > this.aClass28_1.seq.method97(this.anInt272)) {
+            this.anInt273 -= this.aClass28_1.seq.method97(this.anInt272);
             ++this.anInt272;
-            if (this.anInt272 >= this.aClass28_1.aClass15_1.anInt152) {
+            if (this.anInt272 >= this.aClass28_1.seq.anInt152) {
                this.anInt272 = 0;
             }
          }

@@ -149,7 +149,7 @@ public final class World {
          this.aBoolean14 = !this.aBoolean14;
       }
 
-      if (!var15.aBoolean180) {
+      if (!var15.active) {
          var16 -= Integer.MIN_VALUE;
       }
 
@@ -161,10 +161,10 @@ public final class World {
          if (var8 != 10 && var8 != 11) {
             int[] var10000;
             if (var8 >= 12) {
-               if (var15.anInt709 == -1 && var15.anIntArray192 == null) {
+               if (var15.anim == -1 && var15.anIntArray192 == null) {
                   var18 = var15.method531(var8, var7, var10, var11, var12, var13, -1);
                } else {
-                  var18 = new LocEntity(var15.anInt709, var12, var13, var11, var8, (byte)3, var9, true, var10, var7);
+                  var18 = new LocEntity(var15.anim, var12, var13, var11, var8, (byte)3, var9, true, var10, var7);
                }
 
                var1.method200(var4, 1, var3, (Entity)var18, var17, 0, var5, 1, var14, var16);
@@ -173,75 +173,75 @@ public final class World {
                   var10000[var3] |= 2340;
                }
 
-               if (var15.aBoolean192 && var2 != null) {
-                  var2.method482(var3, var7, var15.anInt697, var15.anInt707, var15.aBoolean191, var5);
+               if (var15.blockwalk && var2 != null) {
+                  var2.method482(var3, var7, var15.length, var15.width, var15.blockrange, var5);
                }
             } else if (var8 == 0) {
-               if (var15.anInt709 == -1 && var15.anIntArray192 == null) {
+               if (var15.anim == -1 && var15.anIntArray192 == null) {
                   var18 = var15.method531(0, var7, var10, var11, var12, var13, -1);
                } else {
-                  var18 = new LocEntity(var15.anInt709, var12, var13, var11, 0, (byte)3, var9, true, var10, var7);
+                  var18 = new LocEntity(var15.anim, var12, var13, var11, 0, (byte)3, var9, true, var10, var7);
                }
 
                var1.method198(var14, 0, anIntArray19[var7], (Entity)null, var5, var16, var17, var3, (Entity)var18, var4);
                if (var7 == 0) {
-                  if (var15.aBoolean190) {
+                  if (var15.shadow) {
                      this.aByteArrayArrayArray6[var4][var5][var3] = 50;
                      this.aByteArrayArrayArray6[var4][var5][var3 + 1] = 50;
                   }
 
-                  if (var15.aBoolean187) {
+                  if (var15.occlude) {
                      var10000 = this.anIntArrayArrayArray2[var4][var5];
                      var10000[var3] |= 585;
                   }
                } else if (var7 == 1) {
-                  if (var15.aBoolean190) {
+                  if (var15.shadow) {
                      this.aByteArrayArrayArray6[var4][var5][var3 + 1] = 50;
                      this.aByteArrayArrayArray6[var4][var5 + 1][var3 + 1] = 50;
                   }
 
-                  if (var15.aBoolean187) {
+                  if (var15.occlude) {
                      var10000 = this.anIntArrayArrayArray2[var4][var5];
                      var10000[var3 + 1] |= 1170;
                   }
                } else if (var7 == 2) {
-                  if (var15.aBoolean190) {
+                  if (var15.shadow) {
                      this.aByteArrayArrayArray6[var4][var5 + 1][var3] = 50;
                      this.aByteArrayArrayArray6[var4][var5 + 1][var3 + 1] = 50;
                   }
 
-                  if (var15.aBoolean187) {
+                  if (var15.occlude) {
                      var10000 = this.anIntArrayArrayArray2[var4][var5 + 1];
                      var10000[var3] |= 585;
                   }
                } else if (var7 == 3) {
-                  if (var15.aBoolean190) {
+                  if (var15.shadow) {
                      this.aByteArrayArrayArray6[var4][var5][var3] = 50;
                      this.aByteArrayArrayArray6[var4][var5 + 1][var3] = 50;
                   }
 
-                  if (var15.aBoolean187) {
+                  if (var15.occlude) {
                      var10000 = this.anIntArrayArrayArray2[var4][var5];
                      var10000[var3] |= 1170;
                   }
                }
 
-               if (var15.aBoolean192 && var2 != null) {
-                  var2.method481(var7, var15.aBoolean191, var8, var5, var3);
+               if (var15.blockwalk && var2 != null) {
+                  var2.method481(var7, var15.blockrange, var8, var5, var3);
                }
 
-               if (var15.anInt708 != 16) {
-                  var1.method206(var3, var15.anInt708, var4, var5);
+               if (var15.wallwidth != 16) {
+                  var1.method206(var3, var15.wallwidth, var4, var5);
                }
             } else if (var8 == 1) {
-               if (var15.anInt709 == -1 && var15.anIntArray192 == null) {
+               if (var15.anim == -1 && var15.anIntArray192 == null) {
                   var18 = var15.method531(1, var7, var10, var11, var12, var13, -1);
                } else {
-                  var18 = new LocEntity(var15.anInt709, var12, var13, var11, 1, (byte)3, var9, true, var10, var7);
+                  var18 = new LocEntity(var15.anim, var12, var13, var11, 1, (byte)3, var9, true, var10, var7);
                }
 
                var1.method198(var14, 0, anIntArray21[var7], (Entity)null, var5, var16, var17, var3, (Entity)var18, var4);
-               if (var15.aBoolean190) {
+               if (var15.shadow) {
                   if (var7 == 0) {
                      this.aByteArrayArrayArray6[var4][var5][var3 + 1] = 50;
                   } else if (var7 == 1) {
@@ -253,24 +253,24 @@ public final class World {
                   }
                }
 
-               if (var15.aBoolean192 && var2 != null) {
-                  var2.method481(var7, var15.aBoolean191, var8, var5, var3);
+               if (var15.blockwalk && var2 != null) {
+                  var2.method481(var7, var15.blockrange, var8, var5, var3);
                }
             } else {
                Object var21;
                if (var8 == 2) {
                   var20 = var7 + 1 & 3;
                   Object var27;
-                  if (var15.anInt709 == -1 && var15.anIntArray192 == null) {
+                  if (var15.anim == -1 && var15.anIntArray192 == null) {
                      var27 = var15.method531(2, var7 + 4, var10, var11, var12, var13, -1);
                      var21 = var15.method531(2, var20, var10, var11, var12, var13, -1);
                   } else {
-                     var27 = new LocEntity(var15.anInt709, var12, var13, var11, 2, (byte)3, var9, true, var10, var7 + 4);
-                     var21 = new LocEntity(var15.anInt709, var12, var13, var11, 2, (byte)3, var9, true, var10, var20);
+                     var27 = new LocEntity(var15.anim, var12, var13, var11, 2, (byte)3, var9, true, var10, var7 + 4);
+                     var21 = new LocEntity(var15.anim, var12, var13, var11, 2, (byte)3, var9, true, var10, var20);
                   }
 
                   var1.method198(var14, anIntArray19[var20], anIntArray19[var7], (Entity)var21, var5, var16, var17, var3, (Entity)var27, var4);
-                  if (var15.aBoolean187) {
+                  if (var15.occlude) {
                      if (var7 == 0) {
                         var10000 = this.anIntArrayArrayArray2[var4][var5];
                         var10000[var3] |= 585;
@@ -294,22 +294,22 @@ public final class World {
                      }
                   }
 
-                  if (var15.aBoolean192 && var2 != null) {
-                     var2.method481(var7, var15.aBoolean191, var8, var5, var3);
+                  if (var15.blockwalk && var2 != null) {
+                     var2.method481(var7, var15.blockrange, var8, var5, var3);
                   }
 
-                  if (var15.anInt708 != 16) {
-                     var1.method206(var3, var15.anInt708, var4, var5);
+                  if (var15.wallwidth != 16) {
+                     var1.method206(var3, var15.wallwidth, var4, var5);
                   }
                } else if (var8 == 3) {
-                  if (var15.anInt709 == -1 && var15.anIntArray192 == null) {
+                  if (var15.anim == -1 && var15.anIntArray192 == null) {
                      var18 = var15.method531(3, var7, var10, var11, var12, var13, -1);
                   } else {
-                     var18 = new LocEntity(var15.anInt709, var12, var13, var11, 3, (byte)3, var9, true, var10, var7);
+                     var18 = new LocEntity(var15.anim, var12, var13, var11, 3, (byte)3, var9, true, var10, var7);
                   }
 
                   var1.method198(var14, 0, anIntArray21[var7], (Entity)null, var5, var16, var17, var3, (Entity)var18, var4);
-                  if (var15.aBoolean190) {
+                  if (var15.shadow) {
                      if (var7 == 0) {
                         this.aByteArrayArrayArray6[var4][var5][var3 + 1] = 50;
                      } else if (var7 == 1) {
@@ -321,22 +321,22 @@ public final class World {
                      }
                   }
 
-                  if (var15.aBoolean192 && var2 != null) {
-                     var2.method481(var7, var15.aBoolean191, var8, var5, var3);
+                  if (var15.blockwalk && var2 != null) {
+                     var2.method481(var7, var15.blockrange, var8, var5, var3);
                   }
                } else if (var8 == 9) {
-                  if (var15.anInt709 == -1 && var15.anIntArray192 == null) {
+                  if (var15.anim == -1 && var15.anIntArray192 == null) {
                      var18 = var15.method531(var8, var7, var10, var11, var12, var13, -1);
                   } else {
-                     var18 = new LocEntity(var15.anInt709, var12, var13, var11, var8, (byte)3, var9, true, var10, var7);
+                     var18 = new LocEntity(var15.anim, var12, var13, var11, var8, (byte)3, var9, true, var10, var7);
                   }
 
                   var1.method200(var4, 1, var3, (Entity)var18, var17, 0, var5, 1, var14, var16);
-                  if (var15.aBoolean192 && var2 != null) {
-                     var2.method482(var3, var7, var15.anInt697, var15.anInt707, var15.aBoolean191, var5);
+                  if (var15.blockwalk && var2 != null) {
+                     var2.method482(var3, var7, var15.length, var15.width, var15.blockrange, var5);
                   }
                } else {
-                  if (var15.aBoolean182) {
+                  if (var15.hillskew) {
                      if (var7 == 1) {
                         var20 = var13;
                         var13 = var12;
@@ -360,10 +360,10 @@ public final class World {
                   }
 
                   if (var8 == 4) {
-                     if (var15.anInt709 == -1 && var15.anIntArray192 == null) {
+                     if (var15.anim == -1 && var15.anIntArray192 == null) {
                         var18 = var15.method531(4, 0, var10, var11, var12, var13, -1);
                      } else {
-                        var18 = new LocEntity(var15.anInt709, var12, var13, var11, 4, (byte)3, var9, true, var10, 0);
+                        var18 = new LocEntity(var15.anim, var12, var13, var11, 4, (byte)3, var9, true, var10, 0);
                      }
 
                      var1.method199(var4, anIntArray19[var7], var7 * 512, var16, var17, var5, 0, var3, 0, var14, (Entity)var18);
@@ -371,37 +371,37 @@ public final class World {
                      var20 = 16;
                      var19 = var1.method216(var4, var5, var3);
                      if (var19 > 0) {
-                        var20 = LocType.method523(var19 >> 14 & 32767).anInt708;
+                        var20 = LocType.method523(var19 >> 14 & 32767).wallwidth;
                      }
 
-                     if (var15.anInt709 == -1 && var15.anIntArray192 == null) {
+                     if (var15.anim == -1 && var15.anIntArray192 == null) {
                         var21 = var15.method531(4, 0, var10, var11, var12, var13, -1);
                      } else {
-                        var21 = new LocEntity(var15.anInt709, var12, var13, var11, 4, (byte)3, var9, true, var10, 0);
+                        var21 = new LocEntity(var15.anim, var12, var13, var11, 4, (byte)3, var9, true, var10, 0);
                      }
 
                      var1.method199(var4, anIntArray19[var7], var7 * 512, var16, var17, var5, anIntArray13[var7] * var20, var3, anIntArray20[var7] * var20, var14, (Entity)var21);
                   } else if (var8 == 6) {
-                     if (var15.anInt709 == -1 && var15.anIntArray192 == null) {
+                     if (var15.anim == -1 && var15.anIntArray192 == null) {
                         var18 = var15.method531(4, 0, var10, var11, var12, var13, -1);
                      } else {
-                        var18 = new LocEntity(var15.anInt709, var12, var13, var11, 4, (byte)3, var9, true, var10, 0);
+                        var18 = new LocEntity(var15.anim, var12, var13, var11, 4, (byte)3, var9, true, var10, 0);
                      }
 
                      var1.method199(var4, 256, var7, var16, var17, var5, 0, var3, 0, var14, (Entity)var18);
                   } else if (var8 == 7) {
-                     if (var15.anInt709 == -1 && var15.anIntArray192 == null) {
+                     if (var15.anim == -1 && var15.anIntArray192 == null) {
                         var18 = var15.method531(4, 0, var10, var11, var12, var13, -1);
                      } else {
-                        var18 = new LocEntity(var15.anInt709, var12, var13, var11, 4, (byte)3, var9, true, var10, 0);
+                        var18 = new LocEntity(var15.anim, var12, var13, var11, 4, (byte)3, var9, true, var10, 0);
                      }
 
                      var1.method199(var4, 512, var7, var16, var17, var5, 0, var3, 0, var14, (Entity)var18);
                   } else if (var8 == 8) {
-                     if (var15.anInt709 == -1 && var15.anIntArray192 == null) {
+                     if (var15.anim == -1 && var15.anIntArray192 == null) {
                         var18 = var15.method531(4, 0, var10, var11, var12, var13, -1);
                      } else {
-                        var18 = new LocEntity(var15.anInt709, var12, var13, var11, 4, (byte)3, var9, true, var10, 0);
+                        var18 = new LocEntity(var15.anim, var12, var13, var11, 4, (byte)3, var9, true, var10, 0);
                      }
 
                      var1.method199(var4, 768, var7, var16, var17, var5, 0, var3, 0, var14, (Entity)var18);
@@ -409,10 +409,10 @@ public final class World {
                }
             }
          } else {
-            if (var15.anInt709 == -1 && var15.anIntArray192 == null) {
+            if (var15.anim == -1 && var15.anIntArray192 == null) {
                var18 = var15.method531(10, var7, var10, var11, var12, var13, -1);
             } else {
-               var18 = new LocEntity(var15.anInt709, var12, var13, var11, 10, (byte)3, var9, true, var10, var7);
+               var18 = new LocEntity(var15.anim, var12, var13, var11, 10, (byte)3, var9, true, var10, var7);
             }
 
             if (var18 != null) {
@@ -423,14 +423,14 @@ public final class World {
 
                int var26;
                if (var7 != 1 && var7 != 3) {
-                  var19 = var15.anInt707;
-                  var26 = var15.anInt697;
+                  var19 = var15.width;
+                  var26 = var15.length;
                } else {
-                  var19 = var15.anInt697;
-                  var26 = var15.anInt707;
+                  var19 = var15.length;
+                  var26 = var15.width;
                }
 
-               if (var1.method200(var4, var19, var3, (Entity)var18, var17, var20, var5, var26, var14, var16) && var15.aBoolean190) {
+               if (var1.method200(var4, var19, var3, (Entity)var18, var17, var20, var5, var26, var14, var16) && var15.shadow) {
                   Model var22;
                   if (var18 instanceof Model) {
                      var22 = (Model)var18;
@@ -455,19 +455,19 @@ public final class World {
                }
             }
 
-            if (var15.aBoolean192 && var2 != null) {
-               var2.method482(var3, var7, var15.anInt697, var15.anInt707, var15.aBoolean191, var5);
+            if (var15.blockwalk && var2 != null) {
+               var2.method482(var3, var7, var15.length, var15.width, var15.blockrange, var5);
             }
          }
-      } else if (!aBoolean15 || var15.aBoolean180 || var15.aBoolean181) {
-         if (var15.anInt709 == -1 && var15.anIntArray192 == null) {
+      } else if (!aBoolean15 || var15.active || var15.forcedecor) {
+         if (var15.anim == -1 && var15.anIntArray192 == null) {
             var18 = var15.method531(22, var7, var10, var11, var12, var13, -1);
          } else {
-            var18 = new LocEntity(var15.anInt709, var12, var13, var11, 22, (byte)3, var9, true, var10, var7);
+            var18 = new LocEntity(var15.anim, var12, var13, var11, 22, (byte)3, var9, true, var10, var7);
          }
 
          var1.method196(var5, var3, var17, var16, var14, var4, (Entity)var18);
-         if (var15.aBoolean192 && var15.aBoolean180 && var2 != null) {
+         if (var15.blockwalk && var15.active && var2 != null) {
             var2.method483(var3, var5);
          }
       }
@@ -1077,8 +1077,8 @@ public final class World {
             int var21 = var19 & 3;
             if (var18 == var10 && var17 >= var7 && var17 < var7 + 8 && var16 >= var9 && var16 < var9 + 8) {
                LocType var22 = LocType.method523(var12);
-               int var23 = var8 + Class35.method393(var6, var22.anInt697, var21, var17 & 7, var22.anInt707, var16 & 7);
-               int var24 = var5 + Class35.method394(var22.anInt707, var6, var17 & 7, var16 & 7, var22.anInt697, var21);
+               int var23 = var8 + Class35.method393(var6, var22.length, var21, var17 & 7, var22.width, var16 & 7);
+               int var24 = var5 + Class35.method394(var22.width, var6, var17 & 7, var16 & 7, var22.length, var21);
                if (var23 > 0 && var24 > 0 && var23 < 103 && var24 < 103) {
                   int var25 = var1;
                   if ((this.aByteArrayArrayArray1[1][var23][var24] & 2) == 2) {
@@ -1193,7 +1193,7 @@ public final class World {
                } while(var14 >= 103);
 
                var15 = LocType.method523(var5);
-            } while(var12 == 22 && aBoolean15 && !var15.aBoolean180 && !var15.aBoolean181);
+            } while(var12 == 22 && aBoolean15 && !var15.active && !var15.forcedecor);
 
             var3 &= var15.method528();
             var8 = true;
@@ -1267,21 +1267,21 @@ public final class World {
       int var14 = var10 + var11 + var12 + var13 >> 2;
       LocType var15 = LocType.method523(var0);
       int var16 = var6 + (var3 << 7) + (var0 << 14) + 1073741824;
-      if (!var15.aBoolean180) {
+      if (!var15.active) {
          var16 -= Integer.MIN_VALUE;
       }
 
       byte var17 = (byte)((var5 << 6) + var2);
       Object var18;
       if (var2 == 22) {
-         if (var15.anInt709 == -1 && var15.anIntArray192 == null) {
+         if (var15.anim == -1 && var15.anIntArray192 == null) {
             var18 = var15.method531(22, var5, var10, var11, var12, var13, -1);
          } else {
-            var18 = new LocEntity(var15.anInt709, var12, var13, var11, 22, (byte)3, var0, true, var10, var5);
+            var18 = new LocEntity(var15.anim, var12, var13, var11, 22, (byte)3, var0, true, var10, var5);
          }
 
          var8.method196(var6, var3, var17, var16, var14, var7, (Entity)var18);
-         if (var15.aBoolean192 && var15.aBoolean180) {
+         if (var15.blockwalk && var15.active) {
             var4.method483(var3, var6);
          }
       } else {
@@ -1289,79 +1289,79 @@ public final class World {
          int var20;
          if (var2 != 10 && var2 != 11) {
             if (var2 >= 12) {
-               if (var15.anInt709 == -1 && var15.anIntArray192 == null) {
+               if (var15.anim == -1 && var15.anIntArray192 == null) {
                   var18 = var15.method531(var2, var5, var10, var11, var12, var13, -1);
                } else {
-                  var18 = new LocEntity(var15.anInt709, var12, var13, var11, var2, (byte)3, var0, true, var10, var5);
+                  var18 = new LocEntity(var15.anim, var12, var13, var11, var2, (byte)3, var0, true, var10, var5);
                }
 
                var8.method200(var7, 1, var3, (Entity)var18, var17, 0, var6, 1, var14, var16);
-               if (var15.aBoolean192) {
-                  var4.method482(var3, var5, var15.anInt697, var15.anInt707, var15.aBoolean191, var6);
+               if (var15.blockwalk) {
+                  var4.method482(var3, var5, var15.length, var15.width, var15.blockrange, var6);
                }
             } else if (var2 == 0) {
-               if (var15.anInt709 == -1 && var15.anIntArray192 == null) {
+               if (var15.anim == -1 && var15.anIntArray192 == null) {
                   var18 = var15.method531(0, var5, var10, var11, var12, var13, -1);
                } else {
-                  var18 = new LocEntity(var15.anInt709, var12, var13, var11, 0, (byte)3, var0, true, var10, var5);
+                  var18 = new LocEntity(var15.anim, var12, var13, var11, 0, (byte)3, var0, true, var10, var5);
                }
 
                var8.method198(var14, 0, anIntArray19[var5], (Entity)null, var6, var16, var17, var3, (Entity)var18, var7);
-               if (var15.aBoolean192) {
-                  var4.method481(var5, var15.aBoolean191, var2, var6, var3);
+               if (var15.blockwalk) {
+                  var4.method481(var5, var15.blockrange, var2, var6, var3);
                }
             } else if (var2 == 1) {
-               if (var15.anInt709 == -1 && var15.anIntArray192 == null) {
+               if (var15.anim == -1 && var15.anIntArray192 == null) {
                   var18 = var15.method531(1, var5, var10, var11, var12, var13, -1);
                } else {
-                  var18 = new LocEntity(var15.anInt709, var12, var13, var11, 1, (byte)3, var0, true, var10, var5);
+                  var18 = new LocEntity(var15.anim, var12, var13, var11, 1, (byte)3, var0, true, var10, var5);
                }
 
                var8.method198(var14, 0, anIntArray21[var5], (Entity)null, var6, var16, var17, var3, (Entity)var18, var7);
-               if (var15.aBoolean192) {
-                  var4.method481(var5, var15.aBoolean191, var2, var6, var3);
+               if (var15.blockwalk) {
+                  var4.method481(var5, var15.blockrange, var2, var6, var3);
                }
             } else {
                Object var23;
                if (var2 == 2) {
                   var20 = var5 + 1 & 3;
                   Object var22;
-                  if (var15.anInt709 == -1 && var15.anIntArray192 == null) {
+                  if (var15.anim == -1 && var15.anIntArray192 == null) {
                      var22 = var15.method531(2, var5 + 4, var10, var11, var12, var13, -1);
                      var23 = var15.method531(2, var20, var10, var11, var12, var13, -1);
                   } else {
-                     var22 = new LocEntity(var15.anInt709, var12, var13, var11, 2, (byte)3, var0, true, var10, var5 + 4);
-                     var23 = new LocEntity(var15.anInt709, var12, var13, var11, 2, (byte)3, var0, true, var10, var20);
+                     var22 = new LocEntity(var15.anim, var12, var13, var11, 2, (byte)3, var0, true, var10, var5 + 4);
+                     var23 = new LocEntity(var15.anim, var12, var13, var11, 2, (byte)3, var0, true, var10, var20);
                   }
 
                   var8.method198(var14, anIntArray19[var20], anIntArray19[var5], (Entity)var23, var6, var16, var17, var3, (Entity)var22, var7);
-                  if (var15.aBoolean192) {
-                     var4.method481(var5, var15.aBoolean191, var2, var6, var3);
+                  if (var15.blockwalk) {
+                     var4.method481(var5, var15.blockrange, var2, var6, var3);
                   }
                } else if (var2 == 3) {
-                  if (var15.anInt709 == -1 && var15.anIntArray192 == null) {
+                  if (var15.anim == -1 && var15.anIntArray192 == null) {
                      var18 = var15.method531(3, var5, var10, var11, var12, var13, -1);
                   } else {
-                     var18 = new LocEntity(var15.anInt709, var12, var13, var11, 3, (byte)3, var0, true, var10, var5);
+                     var18 = new LocEntity(var15.anim, var12, var13, var11, 3, (byte)3, var0, true, var10, var5);
                   }
 
                   var8.method198(var14, 0, anIntArray21[var5], (Entity)null, var6, var16, var17, var3, (Entity)var18, var7);
-                  if (var15.aBoolean192) {
-                     var4.method481(var5, var15.aBoolean191, var2, var6, var3);
+                  if (var15.blockwalk) {
+                     var4.method481(var5, var15.blockrange, var2, var6, var3);
                   }
                } else if (var2 == 9) {
-                  if (var15.anInt709 == -1 && var15.anIntArray192 == null) {
+                  if (var15.anim == -1 && var15.anIntArray192 == null) {
                      var18 = var15.method531(var2, var5, var10, var11, var12, var13, -1);
                   } else {
-                     var18 = new LocEntity(var15.anInt709, var12, var13, var11, var2, (byte)3, var0, true, var10, var5);
+                     var18 = new LocEntity(var15.anim, var12, var13, var11, var2, (byte)3, var0, true, var10, var5);
                   }
 
                   var8.method200(var7, 1, var3, (Entity)var18, var17, 0, var6, 1, var14, var16);
-                  if (var15.aBoolean192) {
-                     var4.method482(var3, var5, var15.anInt697, var15.anInt707, var15.aBoolean191, var6);
+                  if (var15.blockwalk) {
+                     var4.method482(var3, var5, var15.length, var15.width, var15.blockrange, var6);
                   }
                } else {
-                  if (var15.aBoolean182) {
+                  if (var15.hillskew) {
                      if (var5 == 1) {
                         var20 = var13;
                         var13 = var12;
@@ -1385,10 +1385,10 @@ public final class World {
                   }
 
                   if (var2 == 4) {
-                     if (var15.anInt709 == -1 && var15.anIntArray192 == null) {
+                     if (var15.anim == -1 && var15.anIntArray192 == null) {
                         var18 = var15.method531(4, 0, var10, var11, var12, var13, -1);
                      } else {
-                        var18 = new LocEntity(var15.anInt709, var12, var13, var11, 4, (byte)3, var0, true, var10, 0);
+                        var18 = new LocEntity(var15.anim, var12, var13, var11, 4, (byte)3, var0, true, var10, 0);
                      }
 
                      var8.method199(var7, anIntArray19[var5], var5 * 512, var16, var17, var6, 0, var3, 0, var14, (Entity)var18);
@@ -1396,37 +1396,37 @@ public final class World {
                      var20 = 16;
                      var19 = var8.method216(var7, var6, var3);
                      if (var19 > 0) {
-                        var20 = LocType.method523(var19 >> 14 & 32767).anInt708;
+                        var20 = LocType.method523(var19 >> 14 & 32767).wallwidth;
                      }
 
-                     if (var15.anInt709 == -1 && var15.anIntArray192 == null) {
+                     if (var15.anim == -1 && var15.anIntArray192 == null) {
                         var23 = var15.method531(4, 0, var10, var11, var12, var13, -1);
                      } else {
-                        var23 = new LocEntity(var15.anInt709, var12, var13, var11, 4, (byte)3, var0, true, var10, 0);
+                        var23 = new LocEntity(var15.anim, var12, var13, var11, 4, (byte)3, var0, true, var10, 0);
                      }
 
                      var8.method199(var7, anIntArray19[var5], var5 * 512, var16, var17, var6, anIntArray13[var5] * var20, var3, anIntArray20[var5] * var20, var14, (Entity)var23);
                   } else if (var2 == 6) {
-                     if (var15.anInt709 == -1 && var15.anIntArray192 == null) {
+                     if (var15.anim == -1 && var15.anIntArray192 == null) {
                         var18 = var15.method531(4, 0, var10, var11, var12, var13, -1);
                      } else {
-                        var18 = new LocEntity(var15.anInt709, var12, var13, var11, 4, (byte)3, var0, true, var10, 0);
+                        var18 = new LocEntity(var15.anim, var12, var13, var11, 4, (byte)3, var0, true, var10, 0);
                      }
 
                      var8.method199(var7, 256, var5, var16, var17, var6, 0, var3, 0, var14, (Entity)var18);
                   } else if (var2 == 7) {
-                     if (var15.anInt709 == -1 && var15.anIntArray192 == null) {
+                     if (var15.anim == -1 && var15.anIntArray192 == null) {
                         var18 = var15.method531(4, 0, var10, var11, var12, var13, -1);
                      } else {
-                        var18 = new LocEntity(var15.anInt709, var12, var13, var11, 4, (byte)3, var0, true, var10, 0);
+                        var18 = new LocEntity(var15.anim, var12, var13, var11, 4, (byte)3, var0, true, var10, 0);
                      }
 
                      var8.method199(var7, 512, var5, var16, var17, var6, 0, var3, 0, var14, (Entity)var18);
                   } else if (var2 == 8) {
-                     if (var15.anInt709 == -1 && var15.anIntArray192 == null) {
+                     if (var15.anim == -1 && var15.anIntArray192 == null) {
                         var18 = var15.method531(4, 0, var10, var11, var12, var13, -1);
                      } else {
-                        var18 = new LocEntity(var15.anInt709, var12, var13, var11, 4, (byte)3, var0, true, var10, 0);
+                        var18 = new LocEntity(var15.anim, var12, var13, var11, 4, (byte)3, var0, true, var10, 0);
                      }
 
                      var8.method199(var7, 768, var5, var16, var17, var6, 0, var3, 0, var14, (Entity)var18);
@@ -1434,10 +1434,10 @@ public final class World {
                }
             }
          } else {
-            if (var15.anInt709 == -1 && var15.anIntArray192 == null) {
+            if (var15.anim == -1 && var15.anIntArray192 == null) {
                var18 = var15.method531(10, var5, var10, var11, var12, var13, -1);
             } else {
-               var18 = new LocEntity(var15.anInt709, var12, var13, var11, 10, (byte)3, var0, true, var10, var5);
+               var18 = new LocEntity(var15.anim, var12, var13, var11, 10, (byte)3, var0, true, var10, var5);
             }
 
             if (var18 != null) {
@@ -1448,18 +1448,18 @@ public final class World {
 
                int var21;
                if (var5 != 1 && var5 != 3) {
-                  var19 = var15.anInt707;
-                  var21 = var15.anInt697;
+                  var19 = var15.width;
+                  var21 = var15.length;
                } else {
-                  var19 = var15.anInt697;
-                  var21 = var15.anInt707;
+                  var19 = var15.length;
+                  var21 = var15.width;
                }
 
                var8.method200(var7, var19, var3, (Entity)var18, var17, var20, var6, var21, var14, var16);
             }
 
-            if (var15.aBoolean192) {
-               var4.method482(var3, var5, var15.anInt697, var15.anInt707, var15.aBoolean191, var6);
+            if (var15.blockwalk) {
+               var4.method482(var3, var5, var15.length, var15.width, var15.blockrange, var6);
             }
          }
       }
