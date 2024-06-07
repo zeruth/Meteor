@@ -51,7 +51,7 @@ public class Injector extends InjectData implements InjectTaskHandler
 		injector.mixins = load(
 				new File("./mixins/build/libs/mixins-" + version + ".jar"));
 
-		File injected = new File("./composeApp/src/desktopMain/resources/injected-client.jar");
+		File injected = new File("./composeApp/src/main/resources/injected-client.jar");
 		if (injected.exists()) {
 			injected.delete();
 		}
