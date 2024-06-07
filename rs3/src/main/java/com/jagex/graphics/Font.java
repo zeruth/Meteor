@@ -2,7 +2,7 @@ package com.jagex.graphics;
 
 import com.jagex.core.utils.Cp1252;
 import com.jagex.core.utils.StringTools;
-import deob.ObfuscatedName;
+
 
 import java.util.Random;
 

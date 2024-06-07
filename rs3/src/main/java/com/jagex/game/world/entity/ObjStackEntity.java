@@ -9,7 +9,7 @@ import com.jagex.graphics.scenegraph.ObjLayerEntity;
 import com.jagex.math.Matrix4x3;
 import com.jagex.math.Trig1;
 import com.jagex.math.Vector3;
-import deob.ObfuscatedName;
+
 import rs2.client.Client;
 
 public class ObjStackEntity extends ObjLayerEntity {

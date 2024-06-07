@@ -6,7 +6,7 @@ import com.jagex.core.datastruct.SoftLruHashTable;
 import com.jagex.core.io.Packet;
 import com.jagex.core.utils.ArchiveUtil;
 import com.jagex.js5.Js5;
-import deob.ObfuscatedName;
+
 
 import java.util.Iterator;
 

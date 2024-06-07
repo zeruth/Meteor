@@ -2,7 +2,7 @@ package com.jagex.game.client;
 
 import com.jagex.core.io.SendablePacket;
 import com.jagex.game.network.protocol.ClientProt;
-import deob.ObfuscatedName;
+
 import rs2.client.Client;
 
 public class ClientMapBuildStuck extends MapBuildStuck implements SendablePacket {

@@ -9,7 +9,7 @@ import com.jagex.game.client.DefaultVarValueProvider;
 import com.jagex.game.config.ConfigType;
 import com.jagex.game.config.vartype.constants.BaseVarType;
 import com.jagex.game.config.vartype.constants.VarDomainType;
-import deob.ObfuscatedName;
+
 
 import java.util.HashMap;
 import java.util.Map;

@@ -2,7 +2,7 @@ package com.jagex.math;
 
 import com.jagex.core.constants.SerializableEnum;
 import com.jagex.core.datastruct.SerializableEnums;
-import deob.ObfuscatedName;
+
 
 public class CurveType implements SerializableEnum {
 

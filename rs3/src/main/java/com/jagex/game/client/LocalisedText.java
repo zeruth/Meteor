@@ -1,7 +1,7 @@
 package com.jagex.game.client;
 
 import com.jagex.core.constants.Language;
-import deob.ObfuscatedName;
+
 
 import java.util.HashMap;
 import java.util.Map;

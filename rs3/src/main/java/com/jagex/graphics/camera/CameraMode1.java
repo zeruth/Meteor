@@ -1,7 +1,7 @@
 package com.jagex.graphics.camera;
 
 import com.jagex.math.Vector3;
-import deob.ObfuscatedName;
+
 
 public class CameraMode1 {
 

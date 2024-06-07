@@ -1,7 +1,7 @@
 package com.jagex.core.utils;
 
 import com.jagex.core.constants.SerializableEnum;
-import deob.ObfuscatedName;
+
 
 public class TotpType implements SerializableEnum {
 

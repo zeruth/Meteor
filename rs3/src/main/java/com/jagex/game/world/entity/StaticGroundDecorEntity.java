@@ -13,7 +13,7 @@ import com.jagex.math.Cuboid;
 import com.jagex.math.Matrix4x3;
 import com.jagex.math.ScaleRotTrans;
 import com.jagex.math.Vector3;
-import deob.ObfuscatedName;
+
 import rs2.client.Client;
 
 public class StaticGroundDecorEntity extends GroundDecorLayerEntity implements Location {

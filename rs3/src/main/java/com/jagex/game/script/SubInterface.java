@@ -1,7 +1,7 @@
 package com.jagex.game.script;
 
 import com.jagex.core.datastruct.Node;
-import deob.ObfuscatedName;
+
 
 public class SubInterface extends Node {
 

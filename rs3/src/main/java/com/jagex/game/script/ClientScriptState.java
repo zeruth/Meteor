@@ -4,7 +4,7 @@ import com.jagex.game.config.quickchatphrasetype.QuickChatPhrase;
 import com.jagex.game.script.activepointers.ActiveComponent;
 import com.jagex.game.world.entity.Location;
 import com.jagex.game.world.entity.ObjStackEntity;
-import deob.ObfuscatedName;
+
 import rs2.client.logic.clans.ClanChannel;
 import rs2.client.logic.clans.ClanSettings;
 import rs2.client.scene.entities.PathingEntity;

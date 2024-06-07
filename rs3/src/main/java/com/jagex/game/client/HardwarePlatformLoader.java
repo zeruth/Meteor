@@ -3,7 +3,7 @@ package com.jagex.game.client;
 import com.jagex.core.utils.CacheUtil;
 import com.jagex.core.utils.FileUtil;
 import com.jagex.js5.Js5;
-import deob.ObfuscatedName;
+
 
 import java.io.File;
 import java.io.FileOutputStream;

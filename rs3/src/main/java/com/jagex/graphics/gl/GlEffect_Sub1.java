@@ -4,7 +4,7 @@ import com.jagex.game.client.DataType;
 import com.jagex.graphics.TextureFormat;
 import com.jagex.graphics.gl.effects.GlEffect;
 import com.jagex.math.Matrix4x4;
-import deob.ObfuscatedName;
+
 import jaggl.OpenGL;
 
 public class GlEffect_Sub1 extends GlEffect {

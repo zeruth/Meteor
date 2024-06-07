@@ -1,7 +1,7 @@
 package com.jagex.game.load;
 
 import com.jagex.core.io.Packet;
-import deob.ObfuscatedName;
+
 
 public class LoadingScreenRelated4_Sub1 extends LoadingScreenRelated4 {
 

@@ -6,7 +6,7 @@ import com.jagex.core.utils.Cp1252;
 import com.jagex.game.client.MutableConfig;
 import com.jagex.game.config.ConfigType;
 import com.jagex.game.config.vartype.constants.ScriptVarType;
-import deob.ObfuscatedName;
+
 
 public class ParamType implements ConfigType, MutableConfig {
 

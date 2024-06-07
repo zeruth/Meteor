@@ -7,7 +7,7 @@ import com.jagex.core.io.Packet;
 import com.jagex.core.utils.Algorithms;
 import com.jagex.game.world.entity.ObjectNode;
 import com.jagex.math.IntMath;
-import deob.ObfuscatedName;
+
 
 public class ClanSettings {
 

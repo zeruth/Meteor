@@ -27,7 +27,7 @@ import com.jagex.graphics.*;
 import com.jagex.graphics.particles.ParticleSystem;
 import com.jagex.js5.Js5;
 import com.jagex.math.Matrix4x3;
-import deob.ObfuscatedName;
+
 
 public class Component {
 

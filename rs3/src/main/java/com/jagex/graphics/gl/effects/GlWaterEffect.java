@@ -6,7 +6,7 @@ import com.jagex.graphics.gl.GlWaterRelated;
 import com.jagex.graphics.gl.GlToolkit;
 import com.jagex.graphics.gl.GlTexture;
 import com.jagex.graphics.gl.GlShaderCompiler;
-import deob.ObfuscatedName;
+
 import jaggl.OpenGL;
 
 public class GlWaterEffect extends GlEffect {

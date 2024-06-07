@@ -5,7 +5,7 @@ import com.jagex.core.io.Packet;
 import com.jagex.core.utils.*;
 import com.jagex.game.fullscreen.Fullscreen;
 import com.jagex.graphics.FullscreenImpl;
-import deob.ObfuscatedName;
+
 import jaclib.nanotime.QueryPerformanceCounter;
 import rs2.client.Client;
 

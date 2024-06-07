@@ -1,6 +1,6 @@
 package com.jagex.game.config.npctype;
 
-import deob.ObfuscatedName;
+
 
 public class NPCTypeCustomisation {
 

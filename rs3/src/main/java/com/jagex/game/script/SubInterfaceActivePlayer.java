@@ -1,7 +1,7 @@
 package com.jagex.game.script;
 
 import com.jagex.game.world.entity.PlayerEntity;
-import deob.ObfuscatedName;
+
 import rs2.client.Client;
 import rs2.client.clientscript.ScriptRunner;
 

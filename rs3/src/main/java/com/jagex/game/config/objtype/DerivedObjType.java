@@ -1,6 +1,6 @@
 package com.jagex.game.config.objtype;
 
-import deob.ObfuscatedName;
+
 
 public class DerivedObjType {
 

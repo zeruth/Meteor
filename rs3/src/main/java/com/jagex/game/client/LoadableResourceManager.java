@@ -6,7 +6,7 @@ import com.jagex.graphics.GraphicsPacketQueue;
 import com.jagex.js5.Js5ArchiveResourceLoader;
 import com.jagex.js5.Js5FileResourceLoader;
 import com.jagex.js5.Js5GroupResourceLoader;
-import deob.ObfuscatedName;
+
 import jaclib.ping.Ping;
 import rs2.client.Client;
 

@@ -20,7 +20,7 @@ import com.jagex.graphics.Sprite;
 import com.jagex.graphics.SpriteData;
 import com.jagex.graphics.SpriteDataProvider;
 import com.jagex.math.IntMath;
-import deob.ObfuscatedName;
+
 
 public class MapElementType implements ConfigType {
 

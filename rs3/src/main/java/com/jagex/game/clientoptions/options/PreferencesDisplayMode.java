@@ -2,7 +2,7 @@ package com.jagex.game.clientoptions.options;
 
 import com.jagex.game.client.NativeLibraries;
 import com.jagex.game.clientoptions.ClientOptions;
-import deob.ObfuscatedName;
+
 
 public class PreferencesDisplayMode extends Preference {
 

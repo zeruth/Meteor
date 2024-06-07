@@ -2,7 +2,7 @@ package com.jagex.game.compression.huffman;
 
 import com.jagex.core.io.Packet;
 import com.jagex.core.utils.Cp1252;
-import deob.ObfuscatedName;
+
 
 public class WordPack {
 

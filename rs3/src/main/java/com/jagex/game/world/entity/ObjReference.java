@@ -1,7 +1,7 @@
 package com.jagex.game.world.entity;
 
 import com.jagex.game.shared.movement.CoordGrid;
-import deob.ObfuscatedName;
+
 import rs2.client.Client;
 import rs2.client.scene.ObjStackList;
 

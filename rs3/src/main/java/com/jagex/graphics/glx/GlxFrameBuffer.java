@@ -3,7 +3,7 @@ package com.jagex.graphics.glx;
 import com.jagex.graphics.EffectInterface;
 import com.jagex.graphics.GpuFrameBuffer;
 import com.jagex.graphics.GraphicsDeletable;
-import deob.ObfuscatedName;
+
 import jaggl.OpenGL;
 
 public class GlxFrameBuffer extends GpuFrameBuffer {

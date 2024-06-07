@@ -7,7 +7,7 @@ import com.jagex.game.client.ServerPorts;
 import com.jagex.game.client.ServerType;
 import com.jagex.game.shared.framework.gwc.GWC;
 import com.jagex.game.shared.framework.gwc.GWCWorld;
-import deob.ObfuscatedName;
+
 import rs2.client.Client;
 
 public class WorldSwitcher {

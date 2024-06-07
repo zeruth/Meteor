@@ -1,7 +1,7 @@
 package com.jagex.game.cutscene;
 
 import com.jagex.core.io.Packet;
-import deob.ObfuscatedName;
+
 
 public class EntityDelCutsceneAction extends CutsceneAction {
 

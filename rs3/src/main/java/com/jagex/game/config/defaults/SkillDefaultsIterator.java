@@ -1,7 +1,7 @@
 package com.jagex.game.config.defaults;
 
 import com.jagex.game.client.PlayerSkill;
-import deob.ObfuscatedName;
+
 
 import java.util.Iterator;
 

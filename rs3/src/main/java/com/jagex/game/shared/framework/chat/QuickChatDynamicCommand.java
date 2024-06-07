@@ -1,6 +1,6 @@
 package com.jagex.game.shared.framework.chat;
 
-import deob.ObfuscatedName;
+
 
 public class QuickChatDynamicCommand {
 

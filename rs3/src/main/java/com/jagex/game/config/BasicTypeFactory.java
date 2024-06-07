@@ -1,7 +1,7 @@
 package com.jagex.game.config;
 
 import com.jagex.game.client.MutableConfig;
-import deob.ObfuscatedName;
+
 
 public class BasicTypeFactory implements ConfigTypeFactory {
 

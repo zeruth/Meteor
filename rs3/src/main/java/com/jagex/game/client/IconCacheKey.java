@@ -2,7 +2,7 @@ package com.jagex.game.client;
 
 import com.jagex.core.datastruct.CacheKey;
 import com.jagex.core.io.Packet;
-import deob.ObfuscatedName;
+
 
 public class IconCacheKey implements CacheKey {
 

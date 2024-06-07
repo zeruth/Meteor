@@ -2,7 +2,7 @@ package com.jagex.game.client;
 
 import com.jagex.game.config.seqtype.SeqType;
 import com.jagex.graphics.AnimationNode;
-import deob.ObfuscatedName;
+
 import rs2.client.Client;
 
 public class InterfaceAnimationNode extends AnimationNode {

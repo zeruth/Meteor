@@ -3,7 +3,7 @@ package com.jagex.audio.vorbis;
 import com.jagex.audio.api.AudioEndianness;
 import com.jagex.audio.api.AudioFormat;
 import com.jagex.core.io.Packet;
-import deob.ObfuscatedName;
+
 
 public interface VorbisInterface {
 

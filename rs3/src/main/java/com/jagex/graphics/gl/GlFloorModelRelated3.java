@@ -2,7 +2,7 @@ package com.jagex.graphics.gl;
 
 import com.jagex.game.client.HardShadow;
 import com.jagex.graphics.GpuPacket;
-import deob.ObfuscatedName;
+
 import jaggl.OpenGL;
 
 public class GlFloorModelRelated3 {

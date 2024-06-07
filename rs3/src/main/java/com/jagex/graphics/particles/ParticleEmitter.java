@@ -7,7 +7,7 @@ import com.jagex.game.world.entity.Scene;
 import com.jagex.graphics.ModelParticleEmitter;
 import com.jagex.graphics.Toolkit;
 import com.jagex.math.Trig1;
-import deob.ObfuscatedName;
+
 
 public class ParticleEmitter {
 

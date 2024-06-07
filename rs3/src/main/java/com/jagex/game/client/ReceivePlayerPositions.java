@@ -13,7 +13,7 @@ import com.jagex.game.shared.movement.CoordGrid;
 import com.jagex.game.world.entity.PlayerEntity;
 import com.jagex.game.world.entity.PositionMode;
 import com.jagex.game.world.entity.PositionedSound;
-import deob.ObfuscatedName;
+
 import rs2.client.Client;
 import rs2.client.logic.chat.ChatHistory;
 

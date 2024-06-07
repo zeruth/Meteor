@@ -1,6 +1,6 @@
 package com.jagex.graphics.gl;
 
-import deob.ObfuscatedName;
+
 
 public interface GlInterfaceRelated {
 

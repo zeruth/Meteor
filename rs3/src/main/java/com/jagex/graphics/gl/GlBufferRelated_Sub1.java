@@ -1,6 +1,6 @@
 package com.jagex.graphics.gl;
 
-import deob.ObfuscatedName;
+
 
 public class GlBufferRelated_Sub1 extends GlBufferRelated implements GlBinding {
 

@@ -2,7 +2,7 @@ package com.jagex.graphics.safe;
 
 import com.jagex.game.client.JavaGraphicsRelated3;
 import com.jagex.graphics.*;
-import deob.ObfuscatedName;
+
 
 public class PureJavaOpaqueFont extends Font {
 

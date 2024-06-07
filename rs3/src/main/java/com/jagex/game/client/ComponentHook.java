@@ -2,7 +2,7 @@ package com.jagex.game.client;
 
 import com.jagex.core.io.Packet;
 import com.jagex.game.config.vartype.constants.BaseVarType;
-import deob.ObfuscatedName;
+
 
 public class ComponentHook {
 

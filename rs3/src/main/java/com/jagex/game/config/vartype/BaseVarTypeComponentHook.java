@@ -2,7 +2,7 @@ package com.jagex.game.config.vartype;
 
 import com.jagex.core.io.Packet;
 import com.jagex.game.client.ComponentHook;
-import deob.ObfuscatedName;
+
 
 public final class BaseVarTypeComponentHook implements BaseVarTypeCodec {
 

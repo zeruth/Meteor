@@ -3,7 +3,7 @@ package com.jagex.core.utils;
 import com.jagex.core.datastruct.LinkList;
 import com.jagex.core.io.Packet;
 import com.jagex.core.io.PacketBit;
-import deob.ObfuscatedName;
+
 
 import java.io.*;
 import java.lang.reflect.Field;

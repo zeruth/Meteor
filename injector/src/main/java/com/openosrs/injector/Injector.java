@@ -42,9 +42,9 @@ public class Injector extends InjectData implements InjectTaskHandler
 		String version = "1.0.0";
 
 		injector.vanilla = load(
-				new File("./rs2/build/libs/rs2.jar"));
+				new File("./rs3/build/libs/rs3.jar"));
 		injector.deobfuscated = load(
-				new File("./rs2/build/libs/rs2.jar"));
+				new File("./rs3/build/libs/rs3.jar"));
 		injector.rsApi = new RSApi(Objects.requireNonNull(
 				new File("./api-rs/build/classes/java/main/net/runelite/rs/api/")
 						.listFiles()));

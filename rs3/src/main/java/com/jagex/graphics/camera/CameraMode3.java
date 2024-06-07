@@ -2,7 +2,7 @@ package com.jagex.graphics.camera;
 
 import com.jagex.math.Quaternion;
 import com.jagex.math.Vector3;
-import deob.ObfuscatedName;
+
 
 public class CameraMode3 {
 

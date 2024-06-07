@@ -2,7 +2,7 @@ package com.jagex.graphics;
 
 import com.jagex.game.client.PrimitiveType;
 import com.jagex.math.Matrix4x4;
-import deob.ObfuscatedName;
+
 import sun.misc.Unsafe;
 
 import java.nio.ByteBuffer;

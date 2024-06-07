@@ -4,7 +4,7 @@ import com.jagex.core.datastruct.SoftLruHashTable;
 import com.jagex.core.io.Packet;
 import com.jagex.game.config.ConfigType;
 import com.jagex.graphics.*;
-import deob.ObfuscatedName;
+
 
 public class EffectAnimType implements ConfigType {
 

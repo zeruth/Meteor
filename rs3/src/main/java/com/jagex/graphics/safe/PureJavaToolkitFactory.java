@@ -6,7 +6,7 @@ import com.jagex.game.config.ParticleEmitterTypeList;
 import com.jagex.graphics.MaterialList;
 import com.jagex.graphics.Toolkit;
 import com.jagex.graphics.TextureList;
-import deob.ObfuscatedName;
+
 
 import java.awt.*;
 

@@ -6,7 +6,7 @@ import com.jagex.graphics.Model;
 import com.jagex.graphics.ModelUnlit;
 import com.jagex.graphics.Toolkit;
 import com.jagex.math.Trig1;
-import deob.ObfuscatedName;
+
 
 public class SpotShadowFactory {
 

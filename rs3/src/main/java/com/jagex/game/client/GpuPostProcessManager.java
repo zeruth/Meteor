@@ -1,7 +1,7 @@
 package com.jagex.game.client;
 
 import com.jagex.graphics.*;
-import deob.ObfuscatedName;
+
 
 import java.nio.ByteBuffer;
 import java.util.Vector;

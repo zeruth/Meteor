@@ -6,7 +6,7 @@ import com.jagex.game.config.skyboxtype.SkyBoxType;
 import com.jagex.game.scene.World;
 import com.jagex.js5.Js5;
 import com.jagex.math.Vector3;
-import deob.ObfuscatedName;
+
 import rs2.client.Client;
 
 public class EnvironmentManager {

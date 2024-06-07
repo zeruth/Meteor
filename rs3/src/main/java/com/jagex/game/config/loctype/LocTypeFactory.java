@@ -6,7 +6,9 @@ import com.jagex.core.datastruct.Pair;
 import com.jagex.core.datastruct.SoftLruHashTable;
 import com.jagex.game.client.LocalisedText;
 import com.jagex.graphics.ModelUnlit;
-import deob.ObfuscatedName;
+
+import static rs2.client.Client.language;
+
 
 public abstract class LocTypeFactory {
 
@@ -28,10 +30,14 @@ public abstract class LocTypeFactory {
 
 	public LocTypeFactory(boolean allowMembers, Language language, ModeGame modeGame) {
 		this.allowMembers = allowMembers;
+		defaultops = initDefaultOps(modeGame);
+	}
+
+	public String[] initDefaultOps(ModeGame modeGame) {
 		if (ModeGame.RUNESCAPE == modeGame) {
-			this.defaultops = new String[] { null, null, null, null, null, LocalisedText.EXAMINE.forLang(language) };
+			return new String[] { null, null, null, null, null, LocalisedText.EXAMINE.forLang(language) };
 		} else {
-			this.defaultops = new String[] { null, null, null, null, null, null };
+			return new String[] { null, null, null, null, null, null };
 		}
 	}
 

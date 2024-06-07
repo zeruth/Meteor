@@ -5,7 +5,7 @@ import com.jagex.game.client.MainLoadingScreen;
 import com.jagex.game.load.LoadingScreenElement;
 import com.jagex.graphics.Sprite;
 import com.jagex.js5.Js5;
-import deob.ObfuscatedName;
+
 import rs2.client.Client;
 
 public class LoginRelated2 implements LoadingScreenElement {

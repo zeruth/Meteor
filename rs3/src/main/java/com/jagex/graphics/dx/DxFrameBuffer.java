@@ -4,7 +4,7 @@ import com.jagex.graphics.EffectInterface;
 import com.jagex.graphics.FrameBufferInterface;
 import com.jagex.graphics.GpuFrameBuffer;
 import com.jagex.graphics.GraphicsDeletable;
-import deob.ObfuscatedName;
+
 import jagdx.IDirect3DDevice;
 import jagdx.IUnknown;
 import jagdx.HRESULT;

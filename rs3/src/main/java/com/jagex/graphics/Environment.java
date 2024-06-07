@@ -4,7 +4,7 @@ import com.jagex.core.io.Packet;
 import com.jagex.core.utils.Algorithms;
 import com.jagex.core.utils.ColourUtils;
 import com.jagex.math.Vector3;
-import deob.ObfuscatedName;
+
 import rs2.client.Client;
 
 public class Environment {

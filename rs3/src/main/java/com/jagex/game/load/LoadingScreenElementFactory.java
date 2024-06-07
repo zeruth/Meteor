@@ -1,7 +1,7 @@
 package com.jagex.game.load;
 
 import com.jagex.js5.Js5;
-import deob.ObfuscatedName;
+
 import rs2.client.login.*;
 
 public class LoadingScreenElementFactory {

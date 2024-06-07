@@ -1,7 +1,7 @@
 package com.jagex.game.client;
 
 import com.jagex.core.io.PacketBit;
-import deob.ObfuscatedName;
+
 
 public class RebuildRequest {
 

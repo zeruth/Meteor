@@ -21,7 +21,7 @@ import com.jagex.graphics.ModelUnlit;
 import com.jagex.graphics.Toolkit;
 import com.jagex.math.Matrix4x3;
 import com.jagex.math.Trig1;
-import deob.ObfuscatedName;
+
 
 public class PlayerModel {
 

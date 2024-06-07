@@ -1,7 +1,7 @@
 package com.jagex.core.datastruct;
 
 import com.jagex.core.utils.MonotonicTime;
-import deob.ObfuscatedName;
+
 
 public class TimestampMessage extends Link {
 

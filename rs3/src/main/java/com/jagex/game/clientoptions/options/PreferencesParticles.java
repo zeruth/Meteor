@@ -2,7 +2,7 @@ package com.jagex.game.clientoptions.options;
 
 import com.jagex.game.clientoptions.ClientOptions;
 import com.jagex.graphics.particles.ParticleSystemRenderer;
-import deob.ObfuscatedName;
+
 
 public class PreferencesParticles extends Preference {
 

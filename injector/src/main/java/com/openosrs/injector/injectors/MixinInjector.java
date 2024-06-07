@@ -455,7 +455,6 @@ public class MixinInjector extends AbstractInjector
 							}
 						}
 					}*/
-
 					Method method = targetClass.findMethod(mixinMethod.getName(), mixinMethod.getDescriptor());
 
 					if (method == null)

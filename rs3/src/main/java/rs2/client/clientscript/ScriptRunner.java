@@ -80,7 +80,7 @@ import com.jagex.graphics.particles.ParticleSystemRenderer;
 import com.jagex.graphics.scenegraph.GraphEntity;
 import com.jagex.math.*;
 import com.jagex.twitchtv.TwitchEvent;
-import deob.ObfuscatedName;
+
 import rs2.client.Client;
 import rs2.client.clientscript.emoji.EmojiList;
 import rs2.client.logic.DelayedStateChange;

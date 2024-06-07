@@ -1,7 +1,7 @@
 package com.jagex.game.client;
 
 import com.jagex.core.utils.PingRequest;
-import deob.ObfuscatedName;
+
 import jaclib.ping.Ping;
 
 import java.net.InetAddress;

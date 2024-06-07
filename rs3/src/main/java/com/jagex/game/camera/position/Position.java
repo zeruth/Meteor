@@ -6,7 +6,7 @@ import com.jagex.game.shared.movement.CoordFine;
 import com.jagex.graphics.camera.Camera;
 import com.jagex.math.Vector3;
 import com.jagex.math.Vector3i;
-import deob.ObfuscatedName;
+
 
 public abstract class Position {
 

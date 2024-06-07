@@ -4,7 +4,7 @@ import com.jagex.game.client.DataType;
 import com.jagex.graphics.PostProcessingFilter;
 import com.jagex.graphics.TextureFormat;
 import com.jagex.math.IntMath;
-import deob.ObfuscatedName;
+
 import jaggl.OpenGL;
 
 public class GlColourGradingBloomFilter extends PostProcessingFilter {

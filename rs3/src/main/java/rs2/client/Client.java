@@ -124,7 +124,7 @@ import com.jagex.js5.network.Js5HttpClient;
 import com.jagex.js5.network.Js5NetResourceProvider;
 import com.jagex.js5.network.Js5TcpClient;
 import com.jagex.math.*;
-import deob.ObfuscatedName;
+
 import jaclib.ping.Ping;
 import rs2.client.clientscript.ScriptRunner;
 import rs2.client.clientscript.emoji.EmojiList;
@@ -1307,7 +1307,7 @@ public final class Client extends GameShell {
 		lastOnPlayerGroupVarpTransmitRedrawCycle = 0;
 	}
 
-	public final void init() {
+	public void init() {
 		if (!this.checkhost()) {
 			return;
 		}
@@ -1343,7 +1343,7 @@ public final class Client extends GameShell {
 						break;
 					case 7:
 					default:
-						JagException.report("", new RuntimeException());
+						//JagException.report("", new RuntimeException());
 						break;
 					case 8:
 						if (WorldSwitcher.world == null) {

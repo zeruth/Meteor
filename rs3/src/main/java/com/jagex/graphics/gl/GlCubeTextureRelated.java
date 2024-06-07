@@ -1,6 +1,6 @@
 package com.jagex.graphics.gl;
 
-import deob.ObfuscatedName;
+
 import jaggl.OpenGL;
 
 public class GlCubeTextureRelated implements GlPostProcessingRelated {

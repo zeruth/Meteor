@@ -1,7 +1,7 @@
 package com.jagex.js5.network;
 
 import com.jagex.js5.Js5Request;
-import deob.ObfuscatedName;
+
 
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;

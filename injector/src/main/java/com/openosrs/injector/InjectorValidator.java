@@ -15,6 +15,8 @@ import lombok.RequiredArgsConstructor;
 import meteor.Logger;
 import net.runelite.asm.ClassFile;
 import net.runelite.asm.pool.Class;
+
+import static com.openosrs.injector.Injector.report;
 import static com.openosrs.injector.rsapi.RSApi.API_BASE;
 
 @RequiredArgsConstructor
@@ -54,6 +56,9 @@ public class InjectorValidator implements Validator
 		if (missing > 0) {
 			log.error("RSApiValidator completed. Status [{}] {} overridden methods, {} missing", status,
 					okay, missing);
+			for (String s : report) {
+				log.warn(s);
+			}
 			throw new RuntimeException("Implementations are missing, exiting...");
 		}
 

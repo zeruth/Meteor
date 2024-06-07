@@ -2,7 +2,7 @@ package com.jagex.game.config.hitmarktype;
 
 import com.jagex.core.datastruct.SoftLruHashTable;
 import com.jagex.js5.Js5;
-import deob.ObfuscatedName;
+
 
 public abstract class HitmarkTypeFactory {
 

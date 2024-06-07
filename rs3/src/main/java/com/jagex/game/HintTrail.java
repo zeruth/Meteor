@@ -7,7 +7,7 @@ import com.jagex.game.world.entity.Scene;
 import com.jagex.graphics.Model;
 import com.jagex.graphics.ModelUnlit;
 import com.jagex.graphics.Toolkit;
-import deob.ObfuscatedName;
+
 import rs2.client.Client;
 
 import java.util.Iterator;

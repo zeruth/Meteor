@@ -6,7 +6,7 @@ import com.jagex.core.utils.VarValue;
 import com.jagex.game.config.vartype.VarContainerSparse;
 import com.jagex.game.config.vartype.VarTypeList;
 import com.jagex.game.config.vartype.constants.BaseVarType;
-import deob.ObfuscatedName;
+
 
 public class StockmarketSlot {
 

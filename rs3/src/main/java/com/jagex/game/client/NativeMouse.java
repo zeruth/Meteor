@@ -1,6 +1,6 @@
 package com.jagex.game.client;
 
-import deob.ObfuscatedName;
+
 import jaclib.ping.IcmpService;
 
 import java.util.ArrayList;

@@ -2,7 +2,7 @@ package com.jagex.game.script;
 
 import com.jagex.core.datastruct.Node;
 import com.jagex.game.config.iftype.Component;
-import deob.ObfuscatedName;
+
 
 public class HookRequest extends Node {
 

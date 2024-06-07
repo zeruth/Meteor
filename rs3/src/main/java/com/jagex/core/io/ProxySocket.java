@@ -1,7 +1,7 @@
 package com.jagex.core.io;
 
 import com.jagex.game.client.ProxyAuthenticationRequiredException;
-import deob.ObfuscatedName;
+
 
 import java.io.BufferedReader;
 import java.io.IOException;

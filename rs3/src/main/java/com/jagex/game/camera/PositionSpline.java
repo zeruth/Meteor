@@ -9,7 +9,7 @@ import com.jagex.graphics.camera.Camera;
 import com.jagex.math.Spline;
 import com.jagex.math.Vector3;
 import com.jagex.math.Vector3i;
-import deob.ObfuscatedName;
+
 
 public abstract class PositionSpline extends Position {
 

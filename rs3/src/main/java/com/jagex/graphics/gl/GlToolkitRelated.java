@@ -5,7 +5,7 @@ import com.jagex.graphics.GpuPacket;
 import com.jagex.graphics.Particle;
 import com.jagex.graphics.particles.ParticleList;
 import com.jagex.math.IntMath;
-import deob.ObfuscatedName;
+
 import jaggl.OpenGL;
 
 public class GlToolkitRelated {

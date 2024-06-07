@@ -2,7 +2,7 @@ package com.jagex.graphics;
 
 import com.jagex.game.config.ParticleEmitterType;
 import com.jagex.game.config.ParticleEmitterTypeList;
-import deob.ObfuscatedName;
+
 
 public class ModelParticleEmitter {
 

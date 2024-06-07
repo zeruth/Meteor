@@ -25,7 +25,7 @@ import com.jagex.game.ClientWatch;
 import com.jagex.game.MiniMenu;
 import com.jagex.game.MiniMap;
 import com.jagex.js5.Js5;
-import deob.ObfuscatedName;
+
 import rs2.client.Client;
 import rs2.client.logic.DelayedStateChange;
 import rs2.client.scene.entities.PathingEntity;

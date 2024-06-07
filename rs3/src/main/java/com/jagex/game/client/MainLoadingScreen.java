@@ -8,7 +8,7 @@ import com.jagex.graphics.Toolkit;
 import com.jagex.graphics.Sprite;
 import com.jagex.graphics.SpriteDataProvider;
 import com.jagex.js5.Js5;
-import deob.ObfuscatedName;
+
 import rs2.client.Client;
 
 import javax.imageio.ImageIO;

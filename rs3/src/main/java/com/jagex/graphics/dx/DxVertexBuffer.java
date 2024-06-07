@@ -1,7 +1,7 @@
 package com.jagex.graphics.dx;
 
 import com.jagex.graphics.VertexBuffer;
-import deob.ObfuscatedName;
+
 import jagdx.IDirect3DDevice;
 import jagdx.IDirect3DVertexBuffer;
 import jagdx.IUnknown;

@@ -1,7 +1,7 @@
 package com.jagex.game.shared.framework.chat;
 
 import com.jagex.core.constants.SerializableEnum;
-import deob.ObfuscatedName;
+
 
 public class ChatCrownType implements SerializableEnum {
 

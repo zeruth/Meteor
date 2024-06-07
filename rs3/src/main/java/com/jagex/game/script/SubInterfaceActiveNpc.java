@@ -1,7 +1,7 @@
 package com.jagex.game.script;
 
 import com.jagex.game.world.entity.ObjectNode;
-import deob.ObfuscatedName;
+
 import rs2.client.Client;
 import rs2.client.clientscript.ScriptRunner;
 import rs2.client.scene.entities.PathingEntity;

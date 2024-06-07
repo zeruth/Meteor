@@ -2,7 +2,7 @@ package com.jagex.js5.index;
 
 import com.jagex.core.io.Packet;
 import com.jagex.encryption.Whirlpool;
-import deob.ObfuscatedName;
+
 import rs2.client.Client;
 
 import java.math.BigInteger;

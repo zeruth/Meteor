@@ -1,7 +1,7 @@
 package com.jagex.game.config.vartype.bit;
 
 import com.jagex.game.config.ConfigTypeFactory;
-import deob.ObfuscatedName;
+
 
 import java.util.Map;
 

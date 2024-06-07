@@ -2,7 +2,7 @@ package rs2.client.login;
 
 import com.jagex.game.load.LoadingScreenProgressDisplay;
 import com.jagex.js5.Js5;
-import deob.ObfuscatedName;
+
 import rs2.client.Client;
 
 public class LoginScreenRelated7 extends LoadingScreenProgressDisplay {

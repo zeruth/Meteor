@@ -1,7 +1,7 @@
 package com.jagex.graphics.gl.effects;
 
 import com.jagex.graphics.gl.*;
-import deob.ObfuscatedName;
+
 import jaggl.OpenGL;
 
 public class GlHDWaterWaveEffect extends GlEffect {

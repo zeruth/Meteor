@@ -4,7 +4,7 @@ import com.jagex.game.client.DataType;
 import com.jagex.graphics.DeletableResource;
 import com.jagex.graphics.GpuTextureRelated;
 import com.jagex.graphics.TextureFormat;
-import deob.ObfuscatedName;
+
 import jagdx.IUnknown;
 
 public abstract class DxBaseTexture implements DeletableResource {

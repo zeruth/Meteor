@@ -8,7 +8,7 @@ import com.jagex.game.client.PreLoadingScreen;
 import com.jagex.graphics.FrameBuffer;
 import com.jagex.graphics.RendererException;
 import com.jagex.graphics.Sprite;
-import deob.ObfuscatedName;
+
 import rs2.client.Client;
 
 public class LoadingScreenRenderer implements Runnable {

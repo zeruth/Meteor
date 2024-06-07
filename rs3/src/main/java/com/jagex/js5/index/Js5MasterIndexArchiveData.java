@@ -1,6 +1,6 @@
 package com.jagex.js5.index;
 
-import deob.ObfuscatedName;
+
 
 public class Js5MasterIndexArchiveData {
 

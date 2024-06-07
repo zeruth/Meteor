@@ -9,7 +9,7 @@ import com.jagex.game.client.ClientMessage;
 import com.jagex.game.client.GameShell;
 import com.jagex.game.network.protocol.ClientProt;
 import com.jagex.game.network.protocol.LoginProt;
-import deob.ObfuscatedName;
+
 import rs2.client.Client;
 import rs2.client.logic.DelayedStateChange;
 

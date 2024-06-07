@@ -3,7 +3,7 @@ package com.jagex.math;
 import com.jagex.core.io.Packet;
 import com.jagex.graphics.KeyFrame;
 import com.jagex.graphics.TransformInfinityType;
-import deob.ObfuscatedName;
+
 
 public class Curve {
 

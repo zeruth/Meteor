@@ -18,7 +18,7 @@ import com.jagex.math.Cuboid;
 import com.jagex.math.Matrix4x3;
 import com.jagex.math.Matrix4x4;
 import com.jagex.math.Vector3;
-import deob.ObfuscatedName;
+
 import jaclib.memory.DirectBufferHelper;
 import jaclib.memory.Stream;
 import jaclib.memory.heap.NativeHeap;

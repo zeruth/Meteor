@@ -5,7 +5,7 @@ import com.jagex.graphics.Light;
 import com.jagex.graphics.Toolkit;
 import com.jagex.math.ScaleRotTrans;
 import com.jagex.math.Vector3;
-import deob.ObfuscatedName;
+
 
 public abstract class WallDecorLayerEntity extends GraphEntity {
 

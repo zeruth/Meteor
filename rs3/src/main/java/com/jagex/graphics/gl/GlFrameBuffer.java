@@ -3,7 +3,7 @@ package com.jagex.graphics.gl;
 import com.jagex.graphics.EffectInterface;
 import com.jagex.graphics.FrameBuffer;
 import com.jagex.graphics.GraphicsDeletable;
-import deob.ObfuscatedName;
+
 import jaggl.OpenGL;
 
 public class GlFrameBuffer extends FrameBuffer {

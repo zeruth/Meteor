@@ -5,7 +5,7 @@ import com.jagex.core.utils.Cp1252;
 import com.jagex.game.script.ScriptVarInterface;
 import com.jagex.game.script.ScriptVarProperty;
 import com.jagex.game.shared.movement.CoordFine;
-import deob.ObfuscatedName;
+
 
 public class ScriptVarType implements SerializableEnum, ScriptVarInterface {
 

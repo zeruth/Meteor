@@ -2,7 +2,7 @@ package com.jagex.game.client;
 
 import com.jagex.core.datastruct.Node;
 import com.jagex.game.world.WorldMapElement;
-import deob.ObfuscatedName;
+
 
 public class MapElementContainer extends Node {
 

@@ -1,7 +1,7 @@
 package com.jagex.graphics.glx;
 
 import com.jagex.graphics.ProgramUniform;
-import deob.ObfuscatedName;
+
 
 public class GlxError extends IllegalArgumentException {
 

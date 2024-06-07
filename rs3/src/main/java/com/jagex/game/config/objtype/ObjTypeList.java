@@ -11,7 +11,7 @@ import com.jagex.graphics.Font;
 import com.jagex.graphics.Toolkit;
 import com.jagex.graphics.Sprite;
 import com.jagex.js5.Js5;
-import deob.ObfuscatedName;
+
 
 public class ObjTypeList extends CachingConfigTypeList {
 

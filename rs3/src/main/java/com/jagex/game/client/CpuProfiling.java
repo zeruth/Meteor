@@ -2,7 +2,7 @@ package com.jagex.game.client;
 
 import com.jagex.core.utils.MonotonicTime;
 import com.jagex.graphics.Toolkit;
-import deob.ObfuscatedName;
+
 
 import java.awt.*;
 

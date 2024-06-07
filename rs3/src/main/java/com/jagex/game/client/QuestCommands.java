@@ -3,7 +3,7 @@ package com.jagex.game.client;
 import com.jagex.game.config.paramtype.ParamType;
 import com.jagex.game.config.questtype.QuestType;
 import com.jagex.game.script.ClientScriptState;
-import deob.ObfuscatedName;
+
 import rs2.client.Client;
 
 public final class QuestCommands {

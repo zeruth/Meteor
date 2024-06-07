@@ -1,7 +1,7 @@
 package com.jagex.core.constants;
 
 import com.jagex.core.utils.StringTools;
-import deob.ObfuscatedName;
+
 
 public class NamespaceUtil {
 

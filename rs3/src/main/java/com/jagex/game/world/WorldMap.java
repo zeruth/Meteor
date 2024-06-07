@@ -28,7 +28,7 @@ import com.jagex.graphics.Toolkit;
 import com.jagex.graphics.Sprite;
 import com.jagex.js5.Js5;
 import com.jagex.js5.Js5WorldMapGroup;
-import deob.ObfuscatedName;
+
 
 import java.util.ArrayList;
 import java.util.Arrays;

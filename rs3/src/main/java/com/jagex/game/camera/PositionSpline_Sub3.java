@@ -2,7 +2,7 @@ package com.jagex.game.camera;
 
 import com.jagex.core.io.Packet;
 import com.jagex.graphics.camera.Camera;
-import deob.ObfuscatedName;
+
 
 public class PositionSpline_Sub3 extends PositionSpline {
 

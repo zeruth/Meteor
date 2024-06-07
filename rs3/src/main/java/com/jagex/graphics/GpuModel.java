@@ -12,7 +12,7 @@ import com.jagex.math.Matrix4x3;
 import com.jagex.math.Matrix4x4;
 import com.jagex.math.Trig1;
 import com.jagex.math.Vector3;
-import deob.ObfuscatedName;
+
 import sun.misc.Unsafe;
 
 import java.nio.ByteBuffer;

@@ -6,6 +6,13 @@ plugins {
 group = "meteor"
 version = "unspecified"
 
+repositories {
+    gradlePluginPortal()
+    mavenCentral()
+    google()
+    maven("https://maven.pkg.jetbrains.space/public/p/compose/dev")
+}
+
 java{
     sourceCompatibility = JavaVersion.VERSION_1_8
     targetCompatibility = JavaVersion.VERSION_1_8

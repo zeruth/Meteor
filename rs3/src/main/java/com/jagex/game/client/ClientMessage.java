@@ -4,7 +4,7 @@ import com.jagex.core.datastruct.Node;
 import com.jagex.core.io.PacketBit;
 import com.jagex.encryption.Isaac;
 import com.jagex.game.network.protocol.ClientProt;
-import deob.ObfuscatedName;
+
 
 public class ClientMessage extends Node {
 

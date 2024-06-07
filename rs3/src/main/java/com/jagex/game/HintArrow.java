@@ -4,7 +4,7 @@ import com.jagex.core.datastruct.SoftLruHashTable;
 import com.jagex.graphics.Model;
 import com.jagex.graphics.ModelUnlit;
 import com.jagex.graphics.Toolkit;
-import deob.ObfuscatedName;
+
 import rs2.client.Client;
 
 public class HintArrow {

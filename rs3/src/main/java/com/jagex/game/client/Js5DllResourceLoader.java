@@ -1,7 +1,7 @@
 package com.jagex.game.client;
 
 import com.jagex.graphics.GraphicsPacketQueue;
-import deob.ObfuscatedName;
+
 import rs2.client.Client;
 
 public class Js5DllResourceLoader implements ResourceLoader {

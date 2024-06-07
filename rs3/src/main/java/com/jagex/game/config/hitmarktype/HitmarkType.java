@@ -14,7 +14,7 @@ import com.jagex.graphics.Sprite;
 import com.jagex.graphics.SpriteData;
 import com.jagex.graphics.SpriteDataProvider;
 import com.jagex.js5.Js5;
-import deob.ObfuscatedName;
+
 
 public class HitmarkType implements ConfigType {
 

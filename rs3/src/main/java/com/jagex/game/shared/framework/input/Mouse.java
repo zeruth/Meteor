@@ -3,7 +3,7 @@ package com.jagex.game.shared.framework.input;
 import com.jagex.game.client.BasicMouseEvent;
 import com.jagex.game.client.JavaMouse;
 import com.jagex.game.client.MouseEvent;
-import deob.ObfuscatedName;
+
 
 public abstract class Mouse {
 

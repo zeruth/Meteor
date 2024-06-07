@@ -1,6 +1,6 @@
 package com.jagex.game.world.entity;
 
-import deob.ObfuscatedName;
+
 import rs2.client.Client;
 
 public class LocTint {

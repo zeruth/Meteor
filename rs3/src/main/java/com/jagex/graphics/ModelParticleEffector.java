@@ -3,7 +3,7 @@ package com.jagex.graphics;
 import com.jagex.game.config.ParticleEffectorType;
 import com.jagex.game.config.ParticleEffectorTypeList;
 import com.jagex.math.Matrix4x4;
-import deob.ObfuscatedName;
+
 
 public class ModelParticleEffector {
 

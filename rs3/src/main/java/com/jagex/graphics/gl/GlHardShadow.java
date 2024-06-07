@@ -1,7 +1,7 @@
 package com.jagex.graphics.gl;
 
 import com.jagex.game.client.HardShadow;
-import deob.ObfuscatedName;
+
 
 public class GlHardShadow extends HardShadow {
 

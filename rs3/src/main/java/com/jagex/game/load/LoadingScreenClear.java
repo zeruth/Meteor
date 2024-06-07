@@ -1,7 +1,7 @@
 package com.jagex.game.load;
 
 import com.jagex.game.client.GameShell;
-import deob.ObfuscatedName;
+
 import rs2.client.Client;
 
 public class LoadingScreenClear implements LoadingScreenElement {

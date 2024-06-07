@@ -2,7 +2,7 @@ package com.jagex.graphics.safe;
 
 import com.jagex.core.utils.ColourUtils;
 import com.jagex.graphics.MaterialAlphaMode;
-import deob.ObfuscatedName;
+
 
 public class PureJavaRasteriser {
 

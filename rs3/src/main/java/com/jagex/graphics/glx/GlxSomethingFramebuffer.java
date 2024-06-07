@@ -1,6 +1,6 @@
 package com.jagex.graphics.glx;
 
-import deob.ObfuscatedName;
+
 import jaggl.OpenGL;
 
 public class GlxSomethingFramebuffer implements GlxRelated2 {

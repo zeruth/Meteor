@@ -1,6 +1,6 @@
 package com.jagex.js5;
 
-import deob.ObfuscatedName;
+
 
 public class Js5MapFile {
 

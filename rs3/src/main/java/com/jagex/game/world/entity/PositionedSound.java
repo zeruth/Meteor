@@ -10,7 +10,7 @@ import com.jagex.game.config.loctype.LocType;
 import com.jagex.game.config.npctype.NPCType;
 import com.jagex.game.cutscene.CutsceneManager;
 import com.jagex.math.Vector3;
-import deob.ObfuscatedName;
+
 import rs2.client.Client;
 import rs2.client.scene.entities.NpcEntity;
 

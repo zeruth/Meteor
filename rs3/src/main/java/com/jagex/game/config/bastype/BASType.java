@@ -7,7 +7,7 @@ import com.jagex.game.client.MutableConfig;
 import com.jagex.game.config.ConfigType;
 import com.jagex.math.Matrix4x3;
 import com.jagex.math.Trig1;
-import deob.ObfuscatedName;
+
 
 import java.util.Arrays;
 import java.util.Iterator;

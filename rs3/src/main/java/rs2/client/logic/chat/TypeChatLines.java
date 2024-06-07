@@ -1,7 +1,7 @@
 package rs2.client.logic.chat;
 
 import com.jagex.game.shared.framework.chat.ChatCrownType;
-import deob.ObfuscatedName;
+
 
 public class TypeChatLines {
 

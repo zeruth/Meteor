@@ -1,7 +1,7 @@
 package com.jagex.graphics;
 
 import com.jagex.game.client.NoiseGenerator3D_Sub1;
-import deob.ObfuscatedName;
+
 
 public class WaterBillowGenerator extends NoiseGenerator3D_Sub1 {
 

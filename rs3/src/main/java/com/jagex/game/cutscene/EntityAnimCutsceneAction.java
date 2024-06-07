@@ -2,7 +2,7 @@ package com.jagex.game.cutscene;
 
 import com.jagex.core.io.Packet;
 import com.jagex.game.config.seqtype.SeqType;
-import deob.ObfuscatedName;
+
 import rs2.client.Client;
 import rs2.client.scene.entities.PathingEntity;
 

@@ -23,7 +23,7 @@ import com.jagex.game.world.entity.*;
 import com.jagex.graphics.*;
 import com.jagex.math.Trig1;
 import com.jagex.math.Vector3;
-import deob.ObfuscatedName;
+
 import rs2.client.Client;
 import rs2.client.logic.friendchat.Friend;
 import rs2.client.scene.ObjStackList;

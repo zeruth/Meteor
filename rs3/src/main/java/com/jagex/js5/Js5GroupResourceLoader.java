@@ -2,7 +2,7 @@ package com.jagex.js5;
 
 import com.jagex.game.client.LoadableResourceType;
 import com.jagex.game.client.ResourceLoader;
-import deob.ObfuscatedName;
+
 
 public class Js5GroupResourceLoader implements ResourceLoader {
 

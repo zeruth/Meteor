@@ -3,7 +3,7 @@ package com.jagex.game.camera;
 import com.jagex.core.io.Packet;
 import com.jagex.graphics.camera.Camera;
 import com.jagex.math.*;
-import deob.ObfuscatedName;
+
 
 public class Lookat_Sub2 extends Lookat {
 

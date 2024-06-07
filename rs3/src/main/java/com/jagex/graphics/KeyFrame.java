@@ -1,7 +1,7 @@
 package com.jagex.graphics;
 
 import com.jagex.core.io.Packet;
-import deob.ObfuscatedName;
+
 
 public class KeyFrame {
 

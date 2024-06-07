@@ -9,7 +9,7 @@ import com.jagex.game.world.entity.PositionMode;
 import com.jagex.game.world.entity.PositionPoint;
 import com.jagex.math.Quaternion;
 import com.jagex.math.Vector3;
-import deob.ObfuscatedName;
+
 import rs2.client.Client;
 
 public class CameraManager {

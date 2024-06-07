@@ -5,7 +5,7 @@ import com.jagex.game.client.ScreenBoundingBox;
 import com.jagex.math.Curve;
 import com.jagex.math.Matrix4x3;
 import com.jagex.math.Matrix4x4;
-import deob.ObfuscatedName;
+
 
 public abstract class Model {
 

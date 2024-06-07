@@ -5,7 +5,7 @@ import com.jagex.graphics.*;
 import com.jagex.graphics.particles.ParticleSystemRenderer;
 import com.jagex.graphics.scenegraph.*;
 import com.jagex.math.Vector3;
-import deob.ObfuscatedName;
+
 
 import java.util.ArrayList;
 import java.util.HashMap;

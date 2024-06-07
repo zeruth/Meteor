@@ -2,7 +2,7 @@ package com.jagex.game.client;
 
 import com.jagex.math.Cuboid;
 import com.jagex.math.Matrix4x4;
-import deob.ObfuscatedName;
+
 
 public class ScreenBoundingBox {
 

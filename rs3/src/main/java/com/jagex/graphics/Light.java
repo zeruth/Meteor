@@ -4,7 +4,7 @@ import com.jagex.core.datastruct.Node;
 import com.jagex.core.utils.ColourUtils;
 import com.jagex.core.utils.MonotonicTime;
 import com.jagex.math.Vector3;
-import deob.ObfuscatedName;
+
 
 public class Light extends Node {
 

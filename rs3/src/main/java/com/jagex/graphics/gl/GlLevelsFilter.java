@@ -2,7 +2,7 @@ package com.jagex.graphics.gl;
 
 import com.jagex.game.client.DataType;
 import com.jagex.graphics.PostProcessingFilter;
-import deob.ObfuscatedName;
+
 import jaggl.OpenGL;
 
 public class GlLevelsFilter extends PostProcessingFilter {

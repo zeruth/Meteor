@@ -5,7 +5,7 @@ import com.jagex.graphics.EffectInterface;
 import com.jagex.graphics.GraphicsDeletable;
 import com.jagex.graphics.RenderTarget;
 import com.jagex.graphics.TextureFormat;
-import deob.ObfuscatedName;
+
 import jaggl.OpenGL;
 
 public class GlTexture_Sub1 extends GlTexture {

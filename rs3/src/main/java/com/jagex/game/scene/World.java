@@ -29,7 +29,7 @@ import com.jagex.graphics.particles.ParticleSystemRenderer;
 import com.jagex.graphics.scenegraph.GraphEntity;
 import com.jagex.js5.Js5MapFile;
 import com.jagex.math.Vector3;
-import deob.ObfuscatedName;
+
 import rs2.client.Client;
 import rs2.client.scene.ObjStackList;
 import rs2.client.scene.entities.NpcEntity;

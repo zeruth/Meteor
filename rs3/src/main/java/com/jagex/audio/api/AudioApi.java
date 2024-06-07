@@ -11,7 +11,7 @@ import com.jagex.game.config.seqtype.SeqType;
 import com.jagex.game.network.protocol.ClientProt;
 import com.jagex.graphics.scenegraph.GraphEntity;
 import com.jagex.math.Vector3;
-import deob.ObfuscatedName;
+
 import rs2.client.Client;
 import rs2.client.scene.entities.PathingEntity;
 import rs2.client.scene.entities.ProjectileAnimation;

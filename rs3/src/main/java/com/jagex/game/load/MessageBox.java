@@ -1,7 +1,7 @@
 package com.jagex.game.load;
 
 import com.jagex.graphics.*;
-import deob.ObfuscatedName;
+
 import rs2.client.Client;
 
 public class MessageBox {

@@ -3,7 +3,7 @@ package com.jagex.game.config.defaults;
 import com.jagex.game.client.KeyboardEvent;
 import com.jagex.game.client.MouseEvent;
 import com.jagex.game.shared.framework.input.Keyboard;
-import deob.ObfuscatedName;
+
 
 public interface Binding {
 

@@ -1,6 +1,6 @@
 package rs2.client.logic.friendchat;
 
-import deob.ObfuscatedName;
+
 
 public class Friend {
 

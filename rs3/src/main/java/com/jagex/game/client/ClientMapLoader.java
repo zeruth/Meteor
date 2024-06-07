@@ -14,7 +14,7 @@ import com.jagex.graphics.scenegraph.PrimaryLayerEntity;
 import com.jagex.graphics.scenegraph.WallDecorLayerEntity;
 import com.jagex.graphics.scenegraph.WallLayerEntity;
 import com.jagex.math.ScaleRotTrans;
-import deob.ObfuscatedName;
+
 import rs2.client.Client;
 
 public class ClientMapLoader extends MapLoader {

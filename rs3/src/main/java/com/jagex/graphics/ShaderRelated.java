@@ -2,7 +2,7 @@ package com.jagex.graphics;
 
 import com.jagex.core.datastruct.HashMapKey;
 import com.jagex.core.utils.StringTools;
-import deob.ObfuscatedName;
+
 
 public final class ShaderRelated implements HashMapKey {
 

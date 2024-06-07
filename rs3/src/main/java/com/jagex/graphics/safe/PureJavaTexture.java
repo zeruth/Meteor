@@ -1,7 +1,7 @@
 package com.jagex.graphics.safe;
 
 import com.jagex.core.datastruct.Node;
-import deob.ObfuscatedName;
+
 
 public class PureJavaTexture extends Node {
 

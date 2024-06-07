@@ -1,6 +1,6 @@
 package jaclib.memory;
 
-import deob.ObfuscatedName;
+
 
 public interface Buffer {
 

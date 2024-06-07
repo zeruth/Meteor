@@ -1,6 +1,6 @@
 package com.jagex;
 
-import deob.ObfuscatedName;
+
 
 public class Unused21 {
 

@@ -1,7 +1,7 @@
 package com.jagex.game.player;
 
 import com.jagex.core.constants.SerializableEnum;
-import deob.ObfuscatedName;
+
 
 public class AttackOpPriority implements SerializableEnum {
 

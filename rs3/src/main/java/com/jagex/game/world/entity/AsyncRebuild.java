@@ -4,7 +4,7 @@ import com.jagex.game.client.RebuildRequest;
 import com.jagex.game.client.RebuildType;
 import com.jagex.game.config.loctype.LocTypeList;
 import com.jagex.game.scene.World;
-import deob.ObfuscatedName;
+
 import rs2.client.Client;
 
 import java.util.LinkedList;

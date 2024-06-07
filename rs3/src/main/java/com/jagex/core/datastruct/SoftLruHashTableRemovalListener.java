@@ -1,6 +1,6 @@
 package com.jagex.core.datastruct;
 
-import deob.ObfuscatedName;
+
 
 public interface SoftLruHashTableRemovalListener {
 

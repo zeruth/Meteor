@@ -55,7 +55,7 @@ import com.jagex.graphics.*;
 import com.jagex.graphics.particles.ParticleSystemRenderer;
 import com.jagex.js5.Js5;
 import com.jagex.js5.network.Js5Client;
-import deob.ObfuscatedName;
+
 import rs2.client.Client;
 import rs2.client.login.LoginManager;
 

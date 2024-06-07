@@ -2,7 +2,7 @@ package com.jagex.graphics;
 
 import com.jagex.game.client.DataType;
 import com.jagex.math.IntMath;
-import deob.ObfuscatedName;
+
 
 public class VertexDeclarationElementComponent {
 

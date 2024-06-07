@@ -1,7 +1,7 @@
 package com.jagex.game.group;
 
 import com.jagex.core.constants.SerializableEnum;
-import deob.ObfuscatedName;
+
 
 public class PlayerGroupMemberStatus implements SerializableEnum {
 

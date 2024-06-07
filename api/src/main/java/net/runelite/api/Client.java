@@ -6,6 +6,7 @@ import meteor.ui.config.GPUFilter;
 import meteor.ui.config.RenderMode;
 
 import javax.swing.*;
+import java.applet.Applet;
 import java.awt.image.BufferedImage;
 
 public interface Client extends GameShell{
@@ -17,7 +18,7 @@ public interface Client extends GameShell{
 
     void setCallbacks(Callbacks callbacks);
 
-    void preGameInit();
+    void preGameInit(Applet applet);
 
     RenderMode getRenderMode();
 
@@ -48,12 +49,8 @@ public interface Client extends GameShell{
     float getPadding();
 
     void setPadding(float xPadding);
-    void projectFromGround$api(PathingEntity entity, int height);
     int getProjectX();
     int getProjectY();
-    PlayerEntity[] getPlayers();
-    PlayerEntity getLocalPlayer();
-    NpcEntity[] getNpcs();
     boolean loggedIn();
     int getWaveVol();
     String getMidi();

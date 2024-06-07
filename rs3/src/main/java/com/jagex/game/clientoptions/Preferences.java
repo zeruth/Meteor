@@ -8,7 +8,7 @@ import com.jagex.game.client.FileOnDisk;
 import com.jagex.game.client.GameShell;
 import com.jagex.graphics.GraphicsPacketQueue;
 import com.jagex.graphics.RendererInfo;
-import deob.ObfuscatedName;
+
 import rs2.client.Client;
 
 import java.io.IOException;

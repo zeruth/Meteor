@@ -1,7 +1,7 @@
 package com.jagex.graphics;
 
 import com.jagex.core.constants.SerializableEnum;
-import deob.ObfuscatedName;
+
 
 public class MaterialQualityMode implements SerializableEnum {
 

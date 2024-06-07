@@ -4,7 +4,7 @@ import com.jagex.math.IntMath;
 import com.jagex.math.Matrix4x3;
 import com.jagex.math.Matrix4x4;
 import com.jagex.math.Trig1;
-import deob.ObfuscatedName;
+
 
 public class SkyboxRelated {
 

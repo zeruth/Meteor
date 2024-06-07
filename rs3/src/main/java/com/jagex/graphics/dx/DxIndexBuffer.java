@@ -2,7 +2,7 @@ package com.jagex.graphics.dx;
 
 import com.jagex.game.client.DataType;
 import com.jagex.graphics.GpuIndexBuffer;
-import deob.ObfuscatedName;
+
 import jagdx.IDirect3DDevice;
 import jagdx.IUnknown;
 import jagdx.HRESULT;

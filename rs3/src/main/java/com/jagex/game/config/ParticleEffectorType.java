@@ -2,7 +2,7 @@ package com.jagex.game.config;
 
 import com.jagex.core.io.Packet;
 import com.jagex.math.Trig1;
-import deob.ObfuscatedName;
+
 
 public class ParticleEffectorType {
 

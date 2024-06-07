@@ -2,7 +2,7 @@ package com.jagex.js5.network;
 
 import com.jagex.core.io.Packet;
 import com.jagex.js5.Js5Request;
-import deob.ObfuscatedName;
+
 
 public class Js5NetRequest extends Js5Request {
 

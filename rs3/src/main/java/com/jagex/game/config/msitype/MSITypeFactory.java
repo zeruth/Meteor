@@ -3,7 +3,7 @@ package com.jagex.game.config.msitype;
 import com.jagex.core.datastruct.SoftLruHashTable;
 import com.jagex.game.config.ConfigTypeFactory;
 import com.jagex.js5.Js5;
-import deob.ObfuscatedName;
+
 
 public abstract class MSITypeFactory implements ConfigTypeFactory {
 

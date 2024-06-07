@@ -6,7 +6,7 @@ import com.jagex.game.world.entity.PositionMode;
 import com.jagex.game.world.entity.PositionPoint;
 import com.jagex.graphics.camera.Camera;
 import com.jagex.math.*;
-import deob.ObfuscatedName;
+
 
 public class LookatOrientation extends Lookat {
 

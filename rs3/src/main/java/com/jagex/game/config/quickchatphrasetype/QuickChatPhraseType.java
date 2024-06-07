@@ -4,7 +4,7 @@ import com.jagex.core.datastruct.SecondaryNode;
 import com.jagex.core.io.Packet;
 import com.jagex.core.utils.StringTools;
 import com.jagex.game.shared.framework.chat.QuickChatDynamicCommand;
-import deob.ObfuscatedName;
+
 
 public class QuickChatPhraseType extends SecondaryNode {
 

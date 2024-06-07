@@ -5,7 +5,7 @@ import com.jagex.game.world.entity.Scene;
 import com.jagex.graphics.Light;
 import com.jagex.graphics.Toolkit;
 import com.jagex.math.Vector3;
-import deob.ObfuscatedName;
+
 
 public abstract class ObjLayerEntity extends GraphEntity {
 

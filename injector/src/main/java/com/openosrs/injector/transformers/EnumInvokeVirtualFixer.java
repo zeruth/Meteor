@@ -34,7 +34,8 @@ public class EnumInvokeVirtualFixer extends InjectTransformer
 			Method valuesMethod = vanilla.findMethod("values");
 			if (valuesMethod != null) {
 				for (Instruction insn : valuesMethod.getCode().getInstructions()) {
-					if (insn instanceof InvokeVirtual invokeVirtual) {
+					if (insn instanceof InvokeVirtual) {
+						InvokeVirtual invokeVirtual = (InvokeVirtual) insn;
 						invokeVirtual.getMethod().getClazz().fixEnum();
 						fixedEnums++;
 					}

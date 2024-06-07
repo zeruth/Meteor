@@ -2,7 +2,7 @@ package com.jagex.game.client;
 
 import com.jagex.core.constants.SerializableEnum;
 import com.jagex.game.config.vartype.constants.ScriptVarType;
-import deob.ObfuscatedName;
+
 
 public class TwitchEventSubject implements SerializableEnum, TwitchVar {
 

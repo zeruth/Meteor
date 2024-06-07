@@ -2,7 +2,7 @@ package com.jagex.game.cutscene;
 
 import com.jagex.core.datastruct.IntNode;
 import com.jagex.core.io.Packet;
-import deob.ObfuscatedName;
+
 
 public class SetVarbitCutsceneAction extends CutsceneAction {
 

@@ -1,7 +1,7 @@
 package com.jagex.graphics.gl;
 
 import com.jagex.graphics.gl.effects.*;
-import deob.ObfuscatedName;
+
 
 public class GlEffectList {
 

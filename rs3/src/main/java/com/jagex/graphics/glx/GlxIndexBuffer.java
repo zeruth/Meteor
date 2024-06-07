@@ -2,7 +2,7 @@ package com.jagex.graphics.glx;
 
 import com.jagex.game.client.DataType;
 import com.jagex.graphics.GpuIndexBuffer;
-import deob.ObfuscatedName;
+
 
 public class GlxIndexBuffer extends GlxBuffer implements GpuIndexBuffer {
 

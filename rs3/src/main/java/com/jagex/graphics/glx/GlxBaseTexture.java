@@ -5,7 +5,7 @@ import com.jagex.graphics.BaseTexture;
 import com.jagex.graphics.GpuTextureRelated;
 import com.jagex.graphics.TextureFormat;
 import com.jagex.math.IntMath;
-import deob.ObfuscatedName;
+
 import jaggl.OpenGL;
 
 public abstract class GlxBaseTexture implements BaseTexture {

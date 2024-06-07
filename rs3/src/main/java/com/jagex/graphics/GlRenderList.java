@@ -1,7 +1,7 @@
 package com.jagex.graphics;
 
 import com.jagex.graphics.gl.GlToolkit;
-import deob.ObfuscatedName;
+
 import jaggl.OpenGL;
 
 public class GlRenderList {

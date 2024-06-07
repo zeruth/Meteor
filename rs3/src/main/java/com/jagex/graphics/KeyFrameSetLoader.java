@@ -2,7 +2,7 @@ package com.jagex.graphics;
 
 import com.jagex.game.config.seqtype.SeqType;
 import com.jagex.game.config.seqtype.SeqTypeList;
-import deob.ObfuscatedName;
+
 
 public class KeyFrameSetLoader {
 

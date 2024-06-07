@@ -10,7 +10,7 @@ import com.jagex.graphics.camera.CameraTrackableType;
 import com.jagex.math.Quaternion;
 import com.jagex.math.Vector3;
 import com.jagex.math.Vector3i;
-import deob.ObfuscatedName;
+
 
 public class PositionEntity extends Position {
 

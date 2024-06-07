@@ -5,7 +5,7 @@ import com.jagex.graphics.camera.Camera;
 import com.jagex.math.Matrix4x3;
 import com.jagex.math.Vector3;
 import com.jagex.math.Vector3i;
-import deob.ObfuscatedName;
+
 
 public abstract class Lookat {
 

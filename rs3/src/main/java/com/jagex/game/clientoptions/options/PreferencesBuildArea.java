@@ -2,7 +2,7 @@ package com.jagex.game.clientoptions.options;
 
 import com.jagex.core.constants.BuildAreaSize;
 import com.jagex.game.clientoptions.ClientOptions;
-import deob.ObfuscatedName;
+
 
 public class PreferencesBuildArea extends Preference {
 

@@ -6,7 +6,7 @@ import com.jagex.core.io.Packet;
 import com.jagex.game.client.QuickChatDynamicProvider;
 import com.jagex.game.shared.framework.chat.QuickChatDynamicCommand;
 import com.jagex.js5.Js5;
-import deob.ObfuscatedName;
+
 
 public class QuickChatPhraseTypeList {
 

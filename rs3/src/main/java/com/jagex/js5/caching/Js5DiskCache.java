@@ -4,7 +4,7 @@ import com.jagex.core.datastruct.SecondaryLinkedList;
 import com.jagex.core.utils.JagException;
 import com.jagex.game.client.DiskStore;
 import com.jagex.js5.worker.Js5WorkerRequest;
-import deob.ObfuscatedName;
+
 
 public class Js5DiskCache implements Runnable {
 

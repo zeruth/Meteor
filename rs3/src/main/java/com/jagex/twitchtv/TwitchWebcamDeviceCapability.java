@@ -1,6 +1,6 @@
 package com.jagex.twitchtv;
 
-import deob.ObfuscatedName;
+
 
 public class TwitchWebcamDeviceCapability {
 

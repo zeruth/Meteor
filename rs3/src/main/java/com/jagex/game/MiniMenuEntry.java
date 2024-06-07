@@ -1,7 +1,7 @@
 package com.jagex.game;
 
 import com.jagex.core.datastruct.SecondaryNode;
-import deob.ObfuscatedName;
+
 
 public class MiniMenuEntry extends SecondaryNode {
 

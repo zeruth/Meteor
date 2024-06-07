@@ -8,7 +8,7 @@ import com.jagex.game.network.protocol.ClientProt;
 import com.jagex.game.world.entity.PositionMode;
 import com.jagex.graphics.CompressedTextureFormat;
 import com.jagex.graphics.camera.CameraHelpers;
-import deob.ObfuscatedName;
+
 import rs2.client.Client;
 
 import java.awt.*;

@@ -1,6 +1,6 @@
 package rs2.client.logic.clans;
 
-import deob.ObfuscatedName;
+
 
 public class ClanChannelUser {
 

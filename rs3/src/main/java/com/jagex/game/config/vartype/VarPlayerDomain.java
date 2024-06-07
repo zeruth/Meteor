@@ -5,7 +5,7 @@ import com.jagex.core.utils.MonotonicTime;
 import com.jagex.game.config.vartype.bit.VarBitOverflowException;
 import com.jagex.game.config.vartype.bit.VarBitType;
 import com.jagex.game.config.vartype.player.VarPlayerType;
-import deob.ObfuscatedName;
+
 import rs2.client.Client;
 import rs2.client.logic.clans.LongNode;
 

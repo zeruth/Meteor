@@ -1,7 +1,7 @@
 package com.jagex.game.world.entity;
 
 import com.jagex.graphics.AnimationNode;
-import deob.ObfuscatedName;
+
 import rs2.client.scene.entities.PathingEntity;
 
 public class EntitySpotAnim {

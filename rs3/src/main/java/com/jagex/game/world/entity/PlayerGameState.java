@@ -9,7 +9,7 @@ import com.jagex.game.config.vartype.bit.VarBitType;
 import com.jagex.game.config.vartype.bit.VarBitTypeList;
 import com.jagex.game.config.vartype.constants.VarDomainType;
 import com.jagex.game.config.vartype.player.VarPlayerTypeListClient;
-import deob.ObfuscatedName;
+
 import rs2.client.Client;
 
 public class PlayerGameState implements VarIntDomain, VariableTypeProvider, PlayerStatProvider {

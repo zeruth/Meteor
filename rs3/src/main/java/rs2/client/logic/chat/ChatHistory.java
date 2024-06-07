@@ -3,7 +3,7 @@ package rs2.client.logic.chat;
 import com.jagex.core.datastruct.SecondaryLinkedList;
 import com.jagex.core.datastruct.HashTable;
 import com.jagex.game.shared.framework.chat.ChatCrownType;
-import deob.ObfuscatedName;
+
 import rs2.client.Client;
 
 import java.util.HashMap;

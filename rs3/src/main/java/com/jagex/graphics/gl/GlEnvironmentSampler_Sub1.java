@@ -2,7 +2,7 @@ package com.jagex.graphics.gl;
 
 import com.jagex.game.client.DataType;
 import com.jagex.graphics.TextureFormat;
-import deob.ObfuscatedName;
+
 import jaggl.OpenGL;
 
 public class GlEnvironmentSampler_Sub1 extends GlEnvironmentSampler {

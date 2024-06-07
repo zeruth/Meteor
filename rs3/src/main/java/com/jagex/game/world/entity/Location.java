@@ -1,7 +1,7 @@
 package com.jagex.game.world.entity;
 
 import com.jagex.graphics.Toolkit;
-import deob.ObfuscatedName;
+
 
 public interface Location {
 

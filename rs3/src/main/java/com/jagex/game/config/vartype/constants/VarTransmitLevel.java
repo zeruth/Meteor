@@ -1,7 +1,7 @@
 package com.jagex.game.config.vartype.constants;
 
 import com.jagex.core.constants.SerializableEnum;
-import deob.ObfuscatedName;
+
 
 public class VarTransmitLevel implements SerializableEnum {
 

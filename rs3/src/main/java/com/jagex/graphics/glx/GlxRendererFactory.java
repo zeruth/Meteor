@@ -8,7 +8,7 @@ import com.jagex.graphics.*;
 import com.jagex.graphics.GpuToolkit;
 import com.jagex.graphics.Toolkit;
 import com.jagex.js5.Js5;
-import deob.ObfuscatedName;
+
 import jaggl.OpenGL;
 
 import java.awt.*;

@@ -1,7 +1,7 @@
 package com.jagex.graphics.postprocess.effects;
 
 import com.jagex.graphics.*;
-import deob.ObfuscatedName;
+
 
 public class LevelsFilterEffect extends GpuPostProcessEffect {
 

@@ -3,7 +3,7 @@ package com.jagex.game.config;
 import com.jagex.graphics.TextureList;
 import com.jagex.graphics.TextureRelated1;
 import com.jagex.graphics.TextureRelated2;
-import deob.ObfuscatedName;
+
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;

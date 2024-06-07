@@ -1,7 +1,7 @@
 package com.jagex.core.datastruct;
 
 import com.jagex.game.client.HardCacheEntry;
-import deob.ObfuscatedName;
+
 
 public class IconCache {
 

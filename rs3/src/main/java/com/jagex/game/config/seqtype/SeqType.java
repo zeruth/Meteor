@@ -8,7 +8,7 @@ import com.jagex.game.config.ConfigType;
 import com.jagex.game.config.seqgrouptype.SeqGroupType;
 import com.jagex.game.world.entity.ObjectNode;
 import com.jagex.math.IntMath;
-import deob.ObfuscatedName;
+
 
 public class SeqType implements ConfigType {
 

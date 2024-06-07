@@ -8,7 +8,7 @@ import com.jagex.graphics.GraphicsPacketQueue;
 import com.jagex.graphics.Toolkit;
 import com.jagex.graphics.Sprite;
 import com.jagex.twitchtv.*;
-import deob.ObfuscatedName;
+
 import rs2.client.Client;
 import rs2.client.clientscript.ScriptRunner;
 

@@ -1,7 +1,7 @@
 package com.jagex.graphics;
 
 import com.jagex.core.datastruct.Heap;
-import deob.ObfuscatedName;
+
 import jaclib.memory.heap.NativeHeap;
 
 public class GpuHeap extends Heap {

@@ -1,7 +1,7 @@
 package com.jagex.game.world;
 
 import com.jagex.core.datastruct.Node;
-import deob.ObfuscatedName;
+
 
 public class WorldMapSubarea extends Node {
 

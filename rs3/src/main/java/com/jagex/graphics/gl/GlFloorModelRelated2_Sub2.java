@@ -1,6 +1,6 @@
 package com.jagex.graphics.gl;
 
-import deob.ObfuscatedName;
+
 import jaclib.memory.Buffer;
 
 public class GlFloorModelRelated2_Sub2 extends GlFloorModelRelated2 implements GlInterfaceRelated {

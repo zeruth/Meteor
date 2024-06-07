@@ -8,7 +8,7 @@ import com.jagex.game.config.ConfigType;
 import com.jagex.game.config.ConfigTypeFactory;
 import com.jagex.game.config.ConfigTypeList;
 import com.jagex.game.config.Js5ConfigGroup;
-import deob.ObfuscatedName;
+
 
 import java.lang.reflect.Array;
 import java.util.Iterator;

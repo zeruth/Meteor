@@ -1,6 +1,6 @@
 package com.jagex.core.constants;
 
-import deob.ObfuscatedName;
+
 
 public class BuildAreaSize {
 

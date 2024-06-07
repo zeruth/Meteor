@@ -1,7 +1,7 @@
 package com.jagex.game.world.entity;
 
 import com.jagex.core.datastruct.Node;
-import deob.ObfuscatedName;
+
 
 public class Obj extends Node {
 

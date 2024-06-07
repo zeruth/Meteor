@@ -13,7 +13,7 @@ import com.jagex.graphics.Material;
 import com.jagex.graphics.Toolkit;
 import com.jagex.graphics.WaterFogData;
 import com.jagex.math.Trig1;
-import deob.ObfuscatedName;
+
 
 public class MapLoader {
 

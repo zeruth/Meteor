@@ -3,7 +3,7 @@ package com.jagex.game.config.meltype;
 import com.jagex.game.config.ConfigType;
 import com.jagex.game.config.ConfigTypeList;
 import com.jagex.js5.Js5;
-import deob.ObfuscatedName;
+
 
 public class BasicMapElementTypeFactory extends MapElementTypeFactory {
 

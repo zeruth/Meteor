@@ -11,7 +11,7 @@ import com.jagex.game.config.vartype.VarTypeList;
 import com.jagex.game.config.vartype.constants.VarLifetime;
 import com.jagex.game.network.ServerConnection;
 import com.jagex.game.network.protocol.ClientProt;
-import deob.ObfuscatedName;
+
 import rs2.client.Client;
 
 import java.io.EOFException;

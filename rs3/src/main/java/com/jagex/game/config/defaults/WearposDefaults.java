@@ -2,7 +2,7 @@ package com.jagex.game.config.defaults;
 
 import com.jagex.core.io.Packet;
 import com.jagex.js5.Js5;
-import deob.ObfuscatedName;
+
 
 public class WearposDefaults {
 

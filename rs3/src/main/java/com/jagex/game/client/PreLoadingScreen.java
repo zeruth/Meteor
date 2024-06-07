@@ -3,7 +3,7 @@ package com.jagex.game.client;
 import com.jagex.core.utils.StringTools;
 import com.jagex.game.load.Loading;
 import com.jagex.game.load.LoadingScreen;
-import deob.ObfuscatedName;
+
 import rs2.client.Client;
 
 import java.awt.*;

@@ -1,6 +1,6 @@
 package rs2.client.clientscript.emoji;
 
-import deob.ObfuscatedName;
+
 
 public class Emoji {
 

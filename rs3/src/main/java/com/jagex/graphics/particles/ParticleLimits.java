@@ -1,6 +1,6 @@
 package com.jagex.graphics.particles;
 
-import deob.ObfuscatedName;
+
 
 public class ParticleLimits {
 

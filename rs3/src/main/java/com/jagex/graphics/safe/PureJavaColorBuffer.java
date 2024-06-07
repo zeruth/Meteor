@@ -1,7 +1,7 @@
 package com.jagex.graphics.safe;
 
 import com.jagex.graphics.GraphicsDeletable;
-import deob.ObfuscatedName;
+
 
 public class PureJavaColorBuffer implements GraphicsDeletable {
 

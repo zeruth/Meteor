@@ -2,7 +2,7 @@ package com.jagex.game.clientoptions.options;
 
 import com.jagex.game.clientoptions.ClientOptions;
 import com.jagex.graphics.Toolkit;
-import deob.ObfuscatedName;
+
 
 public class PreferencesUnused0 extends Preference {
 

@@ -7,7 +7,7 @@ import com.jagex.game.client.ClientMessage;
 import com.jagex.game.config.vartype.VarIntDomain;
 import com.jagex.game.network.protocol.ClientProt;
 import com.jagex.game.script.ClientTriggerType;
-import deob.ObfuscatedName;
+
 import rs2.client.Client;
 import rs2.client.clientscript.ScriptRunner;
 

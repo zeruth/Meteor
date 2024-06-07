@@ -1,7 +1,7 @@
 package com.jagex.game.world;
 
 import com.jagex.core.constants.SerializableEnum;
-import deob.ObfuscatedName;
+
 
 public class BuildAreaRelated implements SerializableEnum {
 

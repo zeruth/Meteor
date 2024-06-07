@@ -4,7 +4,7 @@ import com.jagex.core.datastruct.SecondaryNode;
 import com.jagex.core.io.Packet;
 import com.jagex.game.client.MutableConfig;
 import com.jagex.game.config.ConfigType;
-import deob.ObfuscatedName;
+
 
 public class InvType extends SecondaryNode implements ConfigType, MutableConfig {
 

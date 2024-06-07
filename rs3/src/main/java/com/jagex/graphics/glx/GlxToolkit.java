@@ -16,7 +16,7 @@ import com.jagex.game.config.ParticleEmitterTypeList;
 import com.jagex.graphics.*;
 import com.jagex.js5.Js5;
 import com.jagex.math.Matrix4x4;
-import deob.ObfuscatedName;
+
 import jaclib.memory.Stream;
 import jaggl.MapBuffer;
 import jaggl.OpenGL;

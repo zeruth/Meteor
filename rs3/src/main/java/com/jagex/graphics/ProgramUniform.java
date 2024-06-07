@@ -2,7 +2,7 @@ package com.jagex.graphics;
 
 import com.jagex.core.datastruct.HashMapValue;
 import com.jagex.graphics.glx.GlxError;
-import deob.ObfuscatedName;
+
 
 public abstract class ProgramUniform extends HashMapValue {
 

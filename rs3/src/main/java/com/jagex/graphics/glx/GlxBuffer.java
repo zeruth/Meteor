@@ -1,7 +1,7 @@
 package com.jagex.graphics.glx;
 
 import com.jagex.graphics.GpuBuffer;
-import deob.ObfuscatedName;
+
 import jaclib.memory.heap.NativeHeapBuffer;
 import jaggl.OpenGL;
 

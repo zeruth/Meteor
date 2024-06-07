@@ -352,10 +352,12 @@ public interface InjectUtil
 			return api;
 		}
 
-		final String internalName = api.getInternalName();
+		String internalName = api.getInternalName();
 		if (internalName.startsWith(API_BASE))
 		{
-			return Type.getType("L" + api.getInternalName().substring(API_BASE.length()) + ";", api.getDimensions());
+			if (data.classMap.get(api.getInternalName().substring(API_BASE.length())) == null)
+				throw new RuntimeException("Could not find injection target for " + api);
+			return Type.getType("L" + data.classMap.get(api.getInternalName().substring(API_BASE.length())) + ";", api.getDimensions());
 		}
 		else if (internalName.startsWith(RL_API_BASE))
 		{
@@ -363,7 +365,8 @@ public interface InjectUtil
 			Set<RSApiClass> allClasses = data.getRsApi().withInterface(rlApiC);
 
 			// Cheeky unchecked exception
-			assert allClasses.size() > 0 : "No rs api class implements rl api class " + rlApiC.toString();
+			if (allClasses.isEmpty())
+				throw new RuntimeException("No rs api class implements rl api class " + rlApiC);
 
 			if (allClasses.size() == 1)
 			{

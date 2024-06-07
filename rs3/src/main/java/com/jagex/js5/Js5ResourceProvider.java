@@ -1,7 +1,7 @@
 package com.jagex.js5;
 
 import com.jagex.js5.index.Js5Index;
-import deob.ObfuscatedName;
+
 
 public abstract class Js5ResourceProvider {
 

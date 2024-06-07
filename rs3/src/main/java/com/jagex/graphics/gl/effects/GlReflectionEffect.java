@@ -4,7 +4,7 @@ import com.jagex.graphics.GlRenderList;
 import com.jagex.graphics.gl.GlCubeTexture;
 import com.jagex.graphics.gl.GlToolkit;
 import com.jagex.graphics.gl.GlTexture;
-import deob.ObfuscatedName;
+
 import jaggl.OpenGL;
 
 public class GlReflectionEffect extends GlEffect {

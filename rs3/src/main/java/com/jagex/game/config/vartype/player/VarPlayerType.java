@@ -4,7 +4,7 @@ import com.jagex.core.datastruct.SerializableEnums;
 import com.jagex.core.io.Packet;
 import com.jagex.game.config.vartype.VarType;
 import com.jagex.game.config.vartype.constants.VarDomainType;
-import deob.ObfuscatedName;
+
 
 public class VarPlayerType extends VarType {
 

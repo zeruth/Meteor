@@ -1,7 +1,7 @@
 package com.jagex.game.world.entity;
 
 import com.jagex.core.constants.SerializableEnum;
-import deob.ObfuscatedName;
+
 
 public class LocTypeRelated2 implements SerializableEnum {
 

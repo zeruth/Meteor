@@ -4,7 +4,7 @@ import com.jagex.core.utils.ColourUtils;
 import com.jagex.game.client.HardShadow;
 import com.jagex.graphics.*;
 import com.jagex.math.Matrix4x4;
-import deob.ObfuscatedName;
+
 
 public class PureJavaFloorModel extends FloorModel {
 

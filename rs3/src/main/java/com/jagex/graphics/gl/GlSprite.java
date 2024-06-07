@@ -5,7 +5,7 @@ import com.jagex.graphics.GraphicsDeletable;
 import com.jagex.graphics.SpriteRelated;
 import com.jagex.graphics.Sprite;
 import com.jagex.graphics.TextureFormat;
-import deob.ObfuscatedName;
+
 import jaggl.OpenGL;
 
 public class GlSprite extends Sprite {

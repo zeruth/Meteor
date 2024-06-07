@@ -1,7 +1,7 @@
 package com.jagex.graphics.dx;
 
 import com.jagex.graphics.FrameBufferInterface;
-import deob.ObfuscatedName;
+
 import jagdx.IDirect3DTexture;
 import jagdx.IUnknown;
 

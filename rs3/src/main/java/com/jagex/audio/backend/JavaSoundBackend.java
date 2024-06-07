@@ -11,7 +11,7 @@ import com.jagex.audio.stream.SoundRelatedType2;
 import com.jagex.audio.vorbis.VorbisSound;
 import com.jagex.core.utils.JagException;
 import com.jagex.core.utils.PreciseSleep;
-import deob.ObfuscatedName;
+
 
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.DataLine;

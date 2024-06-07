@@ -13,7 +13,7 @@ import com.jagex.graphics.*;
 import com.jagex.js5.Js5;
 import com.jagex.math.Matrix4x3;
 import com.jagex.math.Matrix4x4;
-import deob.ObfuscatedName;
+
 import jagdx.*;
 
 import java.awt.*;

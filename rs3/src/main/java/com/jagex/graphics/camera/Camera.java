@@ -9,7 +9,7 @@ import com.jagex.game.shared.movement.CoordFine;
 import com.jagex.game.world.entity.PositionMode;
 import com.jagex.game.world.entity.PositionPoint;
 import com.jagex.math.*;
-import deob.ObfuscatedName;
+
 
 import java.util.Iterator;
 

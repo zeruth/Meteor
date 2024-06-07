@@ -5,7 +5,7 @@ import com.jagex.game.config.effectanimtype.EffectAnimType;
 import com.jagex.game.config.seqtype.SeqType;
 import com.jagex.game.world.entity.ProjectileEntityNode;
 import com.jagex.math.Vector3;
-import deob.ObfuscatedName;
+
 import rs2.client.Client;
 import rs2.client.scene.entities.PathingEntity;
 import rs2.client.scene.entities.ProjectileAnimation;

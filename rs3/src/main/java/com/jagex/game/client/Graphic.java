@@ -1,7 +1,7 @@
 package com.jagex.game.client;
 
 import com.jagex.graphics.SpriteRelated;
-import deob.ObfuscatedName;
+
 
 public class Graphic {
 

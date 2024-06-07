@@ -9,7 +9,7 @@ import com.jagex.graphics.MaterialList;
 import com.jagex.graphics.Toolkit;
 import com.jagex.graphics.TextureList;
 import com.jagex.js5.Js5;
-import deob.ObfuscatedName;
+
 
 import java.awt.*;
 

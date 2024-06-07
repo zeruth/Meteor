@@ -1,7 +1,7 @@
 package com.jagex.game.client;
 
 import com.jagex.core.utils.JagException;
-import deob.ObfuscatedName;
+
 
 import java.io.DataInputStream;
 import java.io.IOException;

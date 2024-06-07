@@ -2,7 +2,7 @@ package com.jagex.game.client;
 
 import com.jagex.core.datastruct.LinkList;
 import com.jagex.core.io.Packet;
-import deob.ObfuscatedName;
+
 import rs2.client.Client;
 
 import java.util.Iterator;

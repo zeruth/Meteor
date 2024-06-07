@@ -3,7 +3,7 @@ package com.jagex.game.config;
 import com.jagex.core.datastruct.SoftLruHashTable;
 import com.jagex.core.io.Packet;
 import com.jagex.js5.Js5;
-import deob.ObfuscatedName;
+
 
 public class BasicParticleEmitterTypeList implements ParticleEmitterTypeList {
 

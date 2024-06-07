@@ -1,7 +1,7 @@
 package com.jagex.game.client;
 
 import com.jagex.core.datastruct.Link;
-import deob.ObfuscatedName;
+
 
 public class TextCoord extends Link {
 

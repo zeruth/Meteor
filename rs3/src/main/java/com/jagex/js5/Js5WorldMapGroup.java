@@ -1,7 +1,7 @@
 package com.jagex.js5;
 
 import com.jagex.core.constants.SerializableEnum;
-import deob.ObfuscatedName;
+
 
 public class Js5WorldMapGroup implements SerializableEnum {
 

@@ -1,7 +1,7 @@
 package com.jagex.core.io;
 
 import com.jagex.encryption.Isaac;
-import deob.ObfuscatedName;
+
 
 public class PacketBit extends Packet {
 

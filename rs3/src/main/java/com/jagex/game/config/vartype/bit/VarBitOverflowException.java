@@ -1,6 +1,6 @@
 package com.jagex.game.config.vartype.bit;
 
-import deob.ObfuscatedName;
+
 
 public final class VarBitOverflowException extends Exception {
 

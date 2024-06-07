@@ -2,7 +2,7 @@ package com.jagex.game.load;
 
 import com.jagex.game.client.ServerPorts;
 import com.jagex.game.client.ServerType;
-import deob.ObfuscatedName;
+
 import rs2.client.Client;
 import rs2.client.login.WorldSwitcher;
 

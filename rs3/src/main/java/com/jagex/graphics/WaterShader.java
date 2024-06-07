@@ -2,7 +2,7 @@ package com.jagex.graphics;
 
 import com.jagex.math.Matrix4x3;
 import com.jagex.math.Matrix4x4;
-import deob.ObfuscatedName;
+
 
 public abstract class WaterShader extends GpuRendererRelated2 {
 

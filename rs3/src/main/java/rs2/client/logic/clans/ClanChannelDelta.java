@@ -2,7 +2,7 @@ package rs2.client.logic.clans;
 
 import com.jagex.core.datastruct.LinkList;
 import com.jagex.core.io.Packet;
-import deob.ObfuscatedName;
+
 
 public class ClanChannelDelta {
 

@@ -2,7 +2,7 @@ package com.jagex.graphics;
 
 import com.jagex.game.client.PrimitiveType;
 import com.jagex.math.Vector4;
-import deob.ObfuscatedName;
+
 
 public final class ProgrammableSpriteShader extends SpriteShader {
 

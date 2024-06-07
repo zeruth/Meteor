@@ -1,7 +1,7 @@
 package com.jagex.graphics;
 
 import com.jagex.core.datastruct.SoftLruHashTable;
-import deob.ObfuscatedName;
+
 
 public class MaterialTextureProvider {
 

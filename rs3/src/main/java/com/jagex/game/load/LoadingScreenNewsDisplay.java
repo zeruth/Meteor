@@ -2,7 +2,7 @@ package com.jagex.game.load;
 
 import com.jagex.graphics.DefaultSprites;
 import com.jagex.graphics.Font;
-import deob.ObfuscatedName;
+
 import rs2.client.Client;
 
 public class LoadingScreenNewsDisplay implements LoadingScreenElement {

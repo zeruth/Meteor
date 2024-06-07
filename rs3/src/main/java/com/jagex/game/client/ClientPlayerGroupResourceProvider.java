@@ -4,7 +4,7 @@ import com.jagex.game.config.defaults.SkillDefaults;
 import com.jagex.game.config.vartype.VarTypeList;
 import com.jagex.game.config.vartype.bit.VarBitTypeList;
 import com.jagex.game.group.PlayerGroupResourceProvider;
-import deob.ObfuscatedName;
+
 import rs2.client.Client;
 
 public final class ClientPlayerGroupResourceProvider implements PlayerGroupResourceProvider {

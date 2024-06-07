@@ -1,7 +1,7 @@
 package com.jagex.core.utils;
 
 import com.jagex.core.datastruct.Node;
-import deob.ObfuscatedName;
+
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;

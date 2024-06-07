@@ -1,7 +1,7 @@
 package com.jagex.game.config.iftype.componentproperties;
 
 import com.jagex.core.datastruct.Node;
-import deob.ObfuscatedName;
+
 
 public final class ServerKeyProperties extends Node {
 

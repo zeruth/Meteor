@@ -1,6 +1,7 @@
 package com.jagex.game.config.objtype;
 
 import com.jagex.core.constants.Language;
+import com.jagex.core.constants.ModeGame;
 import com.jagex.core.datastruct.IntNode;
 import com.jagex.core.datastruct.HashTable;
 import com.jagex.core.datastruct.Node;
@@ -19,7 +20,7 @@ import com.jagex.math.IntMath;
 import com.jagex.math.Matrix4x3;
 import com.jagex.math.Matrix4x4;
 import com.jagex.math.Trig1;
-import deob.ObfuscatedName;
+
 
 import java.util.Arrays;
 
@@ -181,8 +182,8 @@ public class ObjType implements ConfigType {
 		this.id = id;
 		this.myList = objs;
 		this.factory = factory;
-		this.op = (String[]) this.factory.defaultops.clone();
-		this.iop = (String[]) this.factory.defaultiops.clone();
+		this.op = this.factory.initDefaultOps(ModeGame.RUNESCAPE);
+		this.iop = this.factory.initDefaultOps(ModeGame.RUNESCAPE);
 	}
 
     public void postDecode() {

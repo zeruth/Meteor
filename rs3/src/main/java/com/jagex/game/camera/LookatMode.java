@@ -1,6 +1,6 @@
 package com.jagex.game.camera;
 
-import deob.ObfuscatedName;
+
 
 public class LookatMode {
 

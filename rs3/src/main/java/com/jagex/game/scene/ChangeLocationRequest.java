@@ -7,7 +7,7 @@ import com.jagex.game.world.entity.*;
 import com.jagex.game.MiniMap;
 import com.jagex.graphics.scenegraph.GraphEntity;
 import com.jagex.math.ScaleRotTrans;
-import deob.ObfuscatedName;
+
 import rs2.client.Client;
 
 public final class ChangeLocationRequest extends Node {

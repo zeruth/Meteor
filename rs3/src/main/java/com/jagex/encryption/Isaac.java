@@ -1,6 +1,6 @@
 package com.jagex.encryption;
 
-import deob.ObfuscatedName;
+
 import rs2.client.Client;
 
 public final class Isaac {

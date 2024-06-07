@@ -2,7 +2,7 @@ package com.jagex.js5.network;
 
 import com.jagex.core.datastruct.SecondaryLinkedList;
 import com.jagex.core.io.Packet;
-import deob.ObfuscatedName;
+
 
 public abstract class Js5TcpClient {
 

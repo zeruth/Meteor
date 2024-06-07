@@ -1,7 +1,7 @@
 package com.jagex.graphics.safe;
 
 import com.jagex.graphics.EffectInterface;
-import deob.ObfuscatedName;
+
 
 public class PureJavaDepthBuffer implements EffectInterface {
 

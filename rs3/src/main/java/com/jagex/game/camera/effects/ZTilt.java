@@ -5,7 +5,7 @@ import com.jagex.game.camera.CameraEffect;
 import com.jagex.math.Matrix4x3;
 import com.jagex.math.Matrix4x4;
 import com.jagex.math.Vector3i;
-import deob.ObfuscatedName;
+
 
 public class ZTilt extends CameraEffect {
 

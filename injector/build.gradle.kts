@@ -17,6 +17,7 @@ dependencies{
         implementation(api)
         implementation(apiRs)
         implementation(logger)
+        implementation(mixins)
     }
 
     with(libs){
@@ -33,19 +34,18 @@ dependencies{
     }
 }
 
-tasks.test {
-    useJUnitPlatform()
+tasks.withType<JavaCompile> {
+    dependsOn(":rs3:jar")
 }
 
-tasks.compileJava {
-    sourceCompatibility = JavaVersion.VERSION_17.toString()
-    targetCompatibility = JavaVersion.VERSION_17.toString()
+tasks.test {
+    useJUnitPlatform()
 }
 
 tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile>().all {
     kotlinOptions {
         apiVersion = "1.8"
         languageVersion = "1.8"
-        jvmTarget = "17"
+        jvmTarget = "11"
     }
 }

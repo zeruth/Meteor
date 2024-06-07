@@ -6,7 +6,7 @@ import com.jagex.game.config.BasicTypeFactory;
 import com.jagex.game.config.CachingConfigTypeList;
 import com.jagex.game.config.Js5ConfigGroup;
 import com.jagex.js5.Js5;
-import deob.ObfuscatedName;
+
 
 public class SeqGroupTypeList extends CachingConfigTypeList {
 

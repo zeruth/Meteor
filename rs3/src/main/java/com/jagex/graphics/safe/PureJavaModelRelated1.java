@@ -1,6 +1,6 @@
 package com.jagex.graphics.safe;
 
-import deob.ObfuscatedName;
+
 
 public class PureJavaModelRelated1 {
 

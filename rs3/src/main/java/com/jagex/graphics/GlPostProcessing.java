@@ -6,7 +6,7 @@ import com.jagex.game.client.DataType;
 import com.jagex.graphics.gl.GlFrameBuffer;
 import com.jagex.graphics.gl.GlTexture_Sub1;
 import com.jagex.graphics.gl.GlToolkit;
-import deob.ObfuscatedName;
+
 import jaggl.OpenGL;
 
 public class GlPostProcessing {

@@ -2,7 +2,7 @@ package com.jagex.game.cutscene;
 
 import com.jagex.core.io.Packet;
 import com.jagex.game.client.MoveSpeed;
-import deob.ObfuscatedName;
+
 import rs2.client.scene.entities.PathingEntity;
 
 public class CutsceneRoute {

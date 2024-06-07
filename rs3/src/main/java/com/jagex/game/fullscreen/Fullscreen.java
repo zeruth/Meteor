@@ -2,7 +2,7 @@ package com.jagex.game.fullscreen;
 
 import com.jagex.graphics.FullscreenImpl;
 import com.jagex.graphics.FullscreenMode;
-import deob.ObfuscatedName;
+
 
 import java.awt.*;
 

@@ -3,7 +3,7 @@ package com.jagex.game.load;
 import com.jagex.game.client.MainLoadingScreen;
 import com.jagex.graphics.Sprite;
 import com.jagex.js5.Js5;
-import deob.ObfuscatedName;
+
 import rs2.client.Client;
 
 public class LoadingScreenRelated6 extends LoadingScreenProgressDisplay {

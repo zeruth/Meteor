@@ -6,7 +6,7 @@ import com.jagex.graphics.Toolkit;
 import com.jagex.graphics.Sprite;
 import com.jagex.graphics.SpriteData;
 import com.jagex.graphics.SpriteDataProvider;
-import deob.ObfuscatedName;
+
 
 public class MSIType implements ConfigType {
 

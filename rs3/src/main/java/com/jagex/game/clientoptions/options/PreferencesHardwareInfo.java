@@ -1,6 +1,6 @@
 package com.jagex.game.clientoptions.options;
 
-import deob.ObfuscatedName;
+
 
 public class PreferencesHardwareInfo {
 

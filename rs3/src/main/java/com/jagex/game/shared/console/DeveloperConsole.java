@@ -17,7 +17,7 @@ import com.jagex.game.shared.movement.CoordGrid;
 import com.jagex.game.world.entity.SceneManager;
 import com.jagex.graphics.*;
 import com.jagex.math.Vector3;
-import deob.ObfuscatedName;
+
 import rs2.client.Client;
 import rs2.client.login.LoginManager;
 import rs2.client.login.WorldSwitcher;

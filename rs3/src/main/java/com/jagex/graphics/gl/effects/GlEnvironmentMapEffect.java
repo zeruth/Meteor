@@ -7,7 +7,7 @@ import com.jagex.graphics.gl.GlCubeTexture;
 import com.jagex.graphics.gl.GlToolkit;
 import com.jagex.graphics.gl.GlTexture;
 import com.jagex.math.Vector3;
-import deob.ObfuscatedName;
+
 import jaggl.OpenGL;
 
 public class GlEnvironmentMapEffect extends GlEffect {

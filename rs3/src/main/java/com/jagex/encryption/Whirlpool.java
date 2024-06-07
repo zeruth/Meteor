@@ -1,6 +1,6 @@
 package com.jagex.encryption;
 
-import deob.ObfuscatedName;
+
 
 public class Whirlpool {
 

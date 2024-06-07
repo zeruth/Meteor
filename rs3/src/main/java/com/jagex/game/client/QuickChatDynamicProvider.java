@@ -1,7 +1,7 @@
 package com.jagex.game.client;
 
 import com.jagex.game.shared.framework.chat.QuickChatDynamicCommand;
-import deob.ObfuscatedName;
+
 
 public interface QuickChatDynamicProvider {
 

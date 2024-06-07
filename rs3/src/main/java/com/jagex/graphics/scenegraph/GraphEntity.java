@@ -8,7 +8,7 @@ import com.jagex.graphics.Light;
 import com.jagex.graphics.Model;
 import com.jagex.graphics.Toolkit;
 import com.jagex.math.ScaleRotTrans;
-import deob.ObfuscatedName;
+
 
 public abstract class GraphEntity extends GraphNode {
 

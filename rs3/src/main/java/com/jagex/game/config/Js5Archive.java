@@ -1,6 +1,6 @@
 package com.jagex.game.config;
 
-import deob.ObfuscatedName;
+
 
 public class Js5Archive {
 

@@ -2,7 +2,7 @@ package com.jagex.game.world.entity;
 
 import com.jagex.core.io.Packet;
 import com.jagex.math.ScaleRotTrans;
-import deob.ObfuscatedName;
+
 
 public class LocPositionAdjustment {
 

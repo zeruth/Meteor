@@ -1,7 +1,7 @@
 package com.jagex.graphics.glx;
 
 import com.jagex.graphics.VertexBuffer;
-import deob.ObfuscatedName;
+
 
 public class GlxVertexBuffer extends GlxBuffer implements VertexBuffer {
 

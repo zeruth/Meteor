@@ -3,7 +3,7 @@ package com.jagex.game.client;
 import com.jagex.graphics.FontFactory;
 import com.jagex.graphics.FontMetrics;
 import com.jagex.graphics.SpriteDataProvider;
-import deob.ObfuscatedName;
+
 import rs2.client.Client;
 
 public final class ClientFontFactory implements FontFactory {

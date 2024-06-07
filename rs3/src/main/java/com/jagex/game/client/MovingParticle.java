@@ -13,7 +13,7 @@ import com.jagex.graphics.particles.ParticleEffector;
 import com.jagex.graphics.particles.ParticleEmitter;
 import com.jagex.graphics.particles.ParticleSystem;
 import com.jagex.graphics.particles.ParticleSystemRenderer;
-import deob.ObfuscatedName;
+
 
 import java.util.Iterator;
 

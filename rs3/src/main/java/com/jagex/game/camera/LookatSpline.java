@@ -4,7 +4,7 @@ import com.jagex.core.io.Packet;
 import com.jagex.game.client.GameShell;
 import com.jagex.graphics.camera.Camera;
 import com.jagex.math.*;
-import deob.ObfuscatedName;
+
 
 public abstract class LookatSpline extends Lookat {
 

@@ -12,7 +12,7 @@ import com.jagex.graphics.*;
 import com.jagex.math.Matrix4x3;
 import com.jagex.math.Matrix4x4;
 import com.jagex.math.Trig1;
-import deob.ObfuscatedName;
+
 import jaclib.memory.Stream;
 import jaggl.OpenGL;
 

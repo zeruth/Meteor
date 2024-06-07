@@ -2,7 +2,7 @@ package com.jagex.game.shared.framework.input;
 
 import com.jagex.game.client.JavaKeyboard;
 import com.jagex.game.client.KeyboardEvent;
-import deob.ObfuscatedName;
+
 
 public abstract class Keyboard {
 

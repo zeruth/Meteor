@@ -3,7 +3,7 @@ package com.jagex.game.world;
 import com.jagex.core.utils.ColourUtils;
 import com.jagex.game.config.iftype.Component;
 import com.jagex.graphics.Toolkit;
-import deob.ObfuscatedName;
+
 
 public class WorldMapRenderer {
 

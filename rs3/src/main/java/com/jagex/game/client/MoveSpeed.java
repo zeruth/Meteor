@@ -1,7 +1,7 @@
 package com.jagex.game.client;
 
 import com.jagex.core.constants.SerializableEnum;
-import deob.ObfuscatedName;
+
 
 public class MoveSpeed implements SerializableEnum {
 

@@ -2,7 +2,7 @@ package com.jagex.game.script;
 
 import com.jagex.core.datastruct.ClientScriptCache;
 import com.jagex.core.io.Packet;
-import deob.ObfuscatedName;
+
 import rs2.client.Client;
 
 public class ClientScriptHelpers {

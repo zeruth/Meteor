@@ -2,7 +2,7 @@ package com.jagex.graphics;
 
 import com.jagex.core.io.SendablePacket;
 import com.jagex.game.client.*;
-import deob.ObfuscatedName;
+
 import rs2.client.Client;
 
 import java.util.LinkedList;

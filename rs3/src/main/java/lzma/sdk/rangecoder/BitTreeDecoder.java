@@ -1,6 +1,6 @@
 package lzma.sdk.rangecoder;
 
-import deob.ObfuscatedName;
+
 
 import java.io.IOException;
 
@@ -16,10 +16,10 @@ public class BitTreeDecoder {
 	}
 
     public void init() {
-		Decoder.initBitModels(this.Models);
+		RangeCoderDecoder.initBitModels(this.Models);
 	}
 
-    public int decode(Decoder rangeDecoder) throws IOException {
+    public int decode(RangeCoderDecoder rangeDecoder) throws IOException {
 		int m = 1;
 		for (int bitIndex = this.NumBitLevels; bitIndex != 0; bitIndex--) {
 			m = (m << 1) + rangeDecoder.decodeBit(this.Models, m);
@@ -27,7 +27,7 @@ public class BitTreeDecoder {
 		return m - (0x1 << this.NumBitLevels);
 	}
 
-    public int reverseDecode(Decoder rangeDecoder) throws IOException {
+    public int reverseDecode(RangeCoderDecoder rangeDecoder) throws IOException {
 		int m = 1;
 		int symbol = 0;
 		for (int bitIndex = 0; bitIndex < this.NumBitLevels; bitIndex++) {

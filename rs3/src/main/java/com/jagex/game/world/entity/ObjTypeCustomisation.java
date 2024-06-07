@@ -2,7 +2,7 @@ package com.jagex.game.world.entity;
 
 import com.jagex.core.io.Packet;
 import com.jagex.game.config.objtype.ObjType;
-import deob.ObfuscatedName;
+
 
 public class ObjTypeCustomisation {
 

@@ -5,7 +5,7 @@ import com.jagex.game.load.LoadingScreenAlignmentX;
 import com.jagex.game.load.LoadingScreenAlignmentY;
 import com.jagex.game.load.LoadingScreenElementType;
 import com.jagex.game.load.LoadingScreenProgressDisplayConfig;
-import deob.ObfuscatedName;
+
 
 public class LoginScreenRelated2 extends LoadingScreenProgressDisplayConfig {
 

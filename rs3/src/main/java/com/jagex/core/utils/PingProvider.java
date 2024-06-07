@@ -1,6 +1,6 @@
 package com.jagex.core.utils;
 
-import deob.ObfuscatedName;
+
 import jaclib.ping.Ping;
 
 import java.net.InetAddress;

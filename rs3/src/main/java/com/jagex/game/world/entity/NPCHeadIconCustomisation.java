@@ -1,7 +1,7 @@
 package com.jagex.game.world.entity;
 
 import com.jagex.game.config.npctype.NPCType;
-import deob.ObfuscatedName;
+
 
 public class NPCHeadIconCustomisation {
 

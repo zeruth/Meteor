@@ -4,7 +4,7 @@ import com.jagex.graphics.GpuVolumeTexture;
 import com.jagex.game.client.DataType;
 import com.jagex.graphics.GpuTextureRelated;
 import com.jagex.graphics.TextureFormat;
-import deob.ObfuscatedName;
+
 import jagdx.IDirect3DDevice;
 import jagdx.IDirect3DVolumeTexture;
 

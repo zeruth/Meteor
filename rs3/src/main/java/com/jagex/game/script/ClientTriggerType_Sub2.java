@@ -1,6 +1,6 @@
 package com.jagex.game.script;
 
-import deob.ObfuscatedName;
+
 
 public final class ClientTriggerType_Sub2 extends ClientTriggerType {
 

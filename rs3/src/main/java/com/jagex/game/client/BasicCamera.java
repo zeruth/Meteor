@@ -5,7 +5,7 @@ import com.jagex.game.camera.CameraEffect;
 import com.jagex.game.camera.LookatMode;
 import com.jagex.game.world.entity.PositionMode;
 import com.jagex.graphics.camera.*;
-import deob.ObfuscatedName;
+
 
 import java.util.Iterator;
 

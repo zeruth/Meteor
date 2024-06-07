@@ -1,6 +1,6 @@
 package com.jagex.graphics.gl;
 
-import deob.ObfuscatedName;
+
 import jaclib.memory.Buffer;
 
 public class GlBufferRelated_Sub2 extends GlBufferRelated implements GlInterfaceRelated {

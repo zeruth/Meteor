@@ -8,7 +8,7 @@ import com.jagex.core.utils.ColourUtils;
 import com.jagex.game.client.HardShadow;
 import com.jagex.graphics.*;
 import com.jagex.math.IntMath;
-import deob.ObfuscatedName;
+
 import jaclib.memory.Stream;
 import jaclib.memory.heap.NativeHeapBuffer;
 import jaggl.OpenGL;

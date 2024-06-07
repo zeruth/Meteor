@@ -8,7 +8,7 @@ import com.jagex.core.utils.PingProvider;
 import com.jagex.encryption.Isaac;
 import com.jagex.game.client.ClientMessage;
 import com.jagex.game.network.protocol.ServerProt;
-import deob.ObfuscatedName;
+
 import rs2.client.Client;
 
 import java.io.IOException;

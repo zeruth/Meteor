@@ -2,7 +2,7 @@ package com.jagex.js5.worker;
 
 import com.jagex.game.client.DiskStore;
 import com.jagex.js5.Js5Request;
-import deob.ObfuscatedName;
+
 
 public class Js5WorkerRequest extends Js5Request {
 

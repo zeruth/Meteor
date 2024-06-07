@@ -14,7 +14,7 @@ import com.jagex.graphics.Font;
 import com.jagex.graphics.Toolkit;
 import com.jagex.graphics.Sprite;
 import com.jagex.js5.Js5;
-import deob.ObfuscatedName;
+
 
 public abstract class ObjTypeFactory implements ConfigTypeFactory {
 
@@ -43,12 +43,16 @@ public abstract class ObjTypeFactory implements ConfigTypeFactory {
 		this.allowMembers = allowMembers;
 		this.configClient = configClient;
 		this.paramTL = list;
-		if (ModeGame.RUNESCAPE == modeGame) {
-			this.defaultops = new String[] { null, null, LocalisedText.TAKE.forLang(this.languageId), null, null, LocalisedText.EXAMINE.forLang(this.languageId) };
-		} else {
-			this.defaultops = new String[] { null, null, LocalisedText.TAKE.forLang(this.languageId), null, null, null };
-		}
+		defaultops = initDefaultOps(modeGame);
 		this.defaultiops = new String[] { null, null, null, null, LocalisedText.DROP.forLang(this.languageId) };
+	}
+
+	public String[] initDefaultOps(ModeGame modeGame) {
+		if (ModeGame.RUNESCAPE == modeGame) {
+			return new String[] { null, null, LocalisedText.TAKE.forLang(this.languageId), null, null, LocalisedText.EXAMINE.forLang(this.languageId) };
+		} else {
+			return new String[] { null, null, LocalisedText.TAKE.forLang(this.languageId), null, null, null };
+		}
 	}
 
     public Sprite method14616(Toolkit arg0, int arg1, int arg2, int arg3, int arg4, int arg5, PlayerModel arg6) {

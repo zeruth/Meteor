@@ -1,7 +1,7 @@
 package com.jagex.game.script;
 
 import com.jagex.core.constants.SerializableEnum;
-import deob.ObfuscatedName;
+
 
 public class CommunityPartnerType implements SerializableEnum {
 

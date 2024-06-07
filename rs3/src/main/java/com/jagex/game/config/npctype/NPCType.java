@@ -20,7 +20,7 @@ import com.jagex.math.Cuboid;
 import com.jagex.math.IntMath;
 import com.jagex.math.Matrix4x3;
 import com.jagex.math.Trig1;
-import deob.ObfuscatedName;
+
 
 import java.util.Arrays;
 
@@ -172,7 +172,7 @@ public class NPCType implements ConfigType {
 		this.id = id;
 		this.factory = factory;
 		this.myList = npcs;
-		this.op = (String[]) this.factory.defaultops.clone();
+		this.op = this.factory.initDefaultOps(ModeGame.RUNESCAPE);
 	}
 
     public void decode(Packet buf) {

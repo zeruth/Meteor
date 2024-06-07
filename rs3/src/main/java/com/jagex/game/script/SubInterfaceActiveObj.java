@@ -2,7 +2,7 @@ package com.jagex.game.script;
 
 import com.jagex.game.world.entity.ObjReference;
 import com.jagex.game.world.entity.ObjStackEntity;
-import deob.ObfuscatedName;
+
 import rs2.client.clientscript.ScriptRunner;
 
 public class SubInterfaceActiveObj extends SubInterface {

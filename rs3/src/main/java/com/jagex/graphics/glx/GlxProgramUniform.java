@@ -2,7 +2,7 @@ package com.jagex.graphics.glx;
 
 import com.jagex.graphics.ProgramUniform;
 import com.jagex.graphics.ProgramUniformData;
-import deob.ObfuscatedName;
+
 import jaggl.OpenGL;
 
 public class GlxProgramUniform extends ProgramUniform {

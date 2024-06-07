@@ -1,5 +1,6 @@
 package com.jagex.game.config.loctype;
 
+import com.jagex.core.constants.ModeGame;
 import com.jagex.core.datastruct.*;
 import com.jagex.core.io.Packet;
 import com.jagex.game.client.HardShadow;
@@ -14,7 +15,7 @@ import com.jagex.game.world.entity.*;
 import com.jagex.graphics.*;
 import com.jagex.math.Cuboid;
 import com.jagex.math.IntMath;
-import deob.ObfuscatedName;
+
 
 import java.util.Arrays;
 
@@ -182,7 +183,7 @@ public class LocType implements ConfigType {
 		this.id = id;
 		this.factory = factory;
 		this.myList = locs;
-		this.op = (String[]) this.factory.defaultops.clone();
+		this.op = this.factory.initDefaultOps(ModeGame.RUNESCAPE);
 	}
 
     public void decode(Packet buf) {

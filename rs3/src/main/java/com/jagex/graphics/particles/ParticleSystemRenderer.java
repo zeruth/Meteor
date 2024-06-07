@@ -9,7 +9,7 @@ import com.jagex.game.config.ParticleEffectorTypeList;
 import com.jagex.game.config.ParticleEmitterTypeList;
 import com.jagex.game.world.entity.Scene;
 import com.jagex.graphics.Toolkit;
-import deob.ObfuscatedName;
+
 
 import java.util.Iterator;
 import java.util.LinkedList;

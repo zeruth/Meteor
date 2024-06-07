@@ -7,7 +7,7 @@ import com.jagex.graphics.gl.GlWaterRelated;
 import com.jagex.graphics.gl.GlToolkit;
 import com.jagex.graphics.gl.GlTexture;
 import com.jagex.graphics.gl.GlUnderwaterTexture;
-import deob.ObfuscatedName;
+
 import jaggl.OpenGL;
 
 public class GlUnderwaterEffect extends GlEffect {

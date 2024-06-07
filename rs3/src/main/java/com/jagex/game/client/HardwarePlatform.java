@@ -2,7 +2,7 @@ package com.jagex.game.client;
 
 import com.jagex.core.datastruct.Node;
 import com.jagex.core.io.Packet;
-import deob.ObfuscatedName;
+
 import jaclib.hardware_info.HardwareInfo;
 
 import java.util.HashMap;

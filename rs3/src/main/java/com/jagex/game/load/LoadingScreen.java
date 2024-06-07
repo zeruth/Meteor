@@ -1,6 +1,6 @@
 package com.jagex.game.load;
 
-import deob.ObfuscatedName;
+
 
 public interface LoadingScreen {
 

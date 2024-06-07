@@ -9,7 +9,7 @@ import com.jagex.game.config.skydecortype.SkyDecorType;
 import com.jagex.graphics.SkyBox;
 import com.jagex.graphics.SkyBoxFillMode;
 import com.jagex.graphics.SkyboxRelated;
-import deob.ObfuscatedName;
+
 
 public class SkyBoxType implements ConfigType, MutableConfig {
 

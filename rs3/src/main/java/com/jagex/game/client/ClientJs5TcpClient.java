@@ -6,7 +6,7 @@ import com.jagex.core.utils.MonotonicTime;
 import com.jagex.js5.Js5CompressionType;
 import com.jagex.js5.network.Js5NetRequest;
 import com.jagex.js5.network.Js5TcpClient;
-import deob.ObfuscatedName;
+
 import rs2.client.Client;
 
 import java.io.IOException;

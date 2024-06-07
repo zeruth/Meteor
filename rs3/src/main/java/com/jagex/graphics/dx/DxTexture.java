@@ -5,7 +5,7 @@ import com.jagex.graphics.GpuTexture;
 import com.jagex.graphics.GpuTextureRelated;
 import com.jagex.graphics.TextureFormat;
 import com.jagex.math.IntMath;
-import deob.ObfuscatedName;
+
 import jagdx.IDirect3DDevice;
 import jagdx.IDirect3DTexture;
 

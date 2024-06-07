@@ -3,7 +3,7 @@ package com.jagex.game.config;
 import com.jagex.graphics.TextureRelated1;
 import com.jagex.graphics.TextureRelated2;
 import com.jagex.js5.Js5;
-import deob.ObfuscatedName;
+
 
 public class BasicTextureList extends BasicTextureListInner {
 

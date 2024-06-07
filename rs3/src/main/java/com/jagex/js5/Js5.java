@@ -8,7 +8,7 @@ import com.jagex.core.utils.JagException;
 import com.jagex.core.utils.StringTools;
 import com.jagex.js5.index.Js5Index;
 import com.jagex.js5.network.JS5CompressionHeader;
-import deob.ObfuscatedName;
+
 import lzma.sdk.lzma.LZMA;
 
 import java.io.IOException;

@@ -4,7 +4,7 @@ import com.jagex.core.datastruct.DualLink;
 import com.jagex.graphics.particles.ParticleList;
 import com.jagex.math.IntMath;
 import com.jagex.math.Matrix4x4;
-import deob.ObfuscatedName;
+
 
 import java.nio.ByteBuffer;
 

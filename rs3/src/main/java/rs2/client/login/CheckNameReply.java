@@ -1,7 +1,7 @@
 package rs2.client.login;
 
 import com.jagex.core.constants.SerializableEnum;
-import deob.ObfuscatedName;
+
 
 public class CheckNameReply implements SerializableEnum {
 

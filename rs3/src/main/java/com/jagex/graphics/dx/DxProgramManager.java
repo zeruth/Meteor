@@ -1,7 +1,7 @@
 package com.jagex.graphics.dx;
 
 import com.jagex.graphics.*;
-import deob.ObfuscatedName;
+
 
 public final class DxProgramManager extends GpuShader {
 

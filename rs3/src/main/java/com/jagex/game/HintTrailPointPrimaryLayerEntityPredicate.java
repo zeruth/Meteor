@@ -3,7 +3,7 @@ package com.jagex.game;
 import com.jagex.game.HintTrailPoint;
 import com.jagex.graphics.scenegraph.PrimaryLayerEntity;
 import com.jagex.game.world.entity.PrimaryLayerEntityPredicate;
-import deob.ObfuscatedName;
+
 
 public class HintTrailPointPrimaryLayerEntityPredicate implements PrimaryLayerEntityPredicate {
 

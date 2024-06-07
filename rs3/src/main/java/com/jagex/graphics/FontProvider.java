@@ -3,7 +3,7 @@ package com.jagex.graphics;
 import com.jagex.core.datastruct.Pair;
 import com.jagex.core.datastruct.SoftLruHashTable;
 import com.jagex.js5.Js5;
-import deob.ObfuscatedName;
+
 
 import java.util.HashMap;
 import java.util.Map;

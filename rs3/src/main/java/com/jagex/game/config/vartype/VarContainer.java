@@ -1,6 +1,6 @@
 package com.jagex.game.config.vartype;
 
-import deob.ObfuscatedName;
+
 
 public interface VarContainer extends Iterable {
 

@@ -3,7 +3,7 @@ package com.jagex.core.utils;
 import com.jagex.core.io.Packet;
 import com.jagex.game.client.FileOnDisk;
 import com.jagex.game.client.GameShell;
-import deob.ObfuscatedName;
+
 import rs2.client.Client;
 
 import java.io.EOFException;

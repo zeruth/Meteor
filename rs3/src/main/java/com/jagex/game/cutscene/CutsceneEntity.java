@@ -5,7 +5,7 @@ import com.jagex.game.config.bastype.BASType;
 import com.jagex.game.config.npctype.NPCType;
 import com.jagex.game.config.seqtype.SeqType;
 import com.jagex.game.world.entity.PlayerEntity;
-import deob.ObfuscatedName;
+
 import rs2.client.Client;
 import rs2.client.scene.entities.NpcEntity;
 import rs2.client.scene.entities.PathingEntity;

@@ -3,7 +3,7 @@ package com.jagex.game.config.vartype;
 import com.jagex.game.config.Js5ConfigGroup;
 import com.jagex.game.config.vartype.constants.ScriptVarType;
 import com.jagex.game.config.vartype.constants.VarDomainType;
-import deob.ObfuscatedName;
+
 
 public final class VarDomainTypeController extends VarDomainType {
 

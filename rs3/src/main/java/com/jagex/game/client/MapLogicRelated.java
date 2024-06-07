@@ -2,7 +2,7 @@ package com.jagex.game.client;
 
 import com.jagex.game.network.ServerConnection;
 import com.jagex.game.network.protocol.ClientProt;
-import deob.ObfuscatedName;
+
 import rs2.client.Client;
 
 import java.io.IOException;

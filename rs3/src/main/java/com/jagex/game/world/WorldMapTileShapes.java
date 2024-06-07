@@ -1,6 +1,6 @@
 package com.jagex.game.world;
 
-import deob.ObfuscatedName;
+
 
 public class WorldMapTileShapes {
 

@@ -5,7 +5,7 @@ import com.jagex.core.datastruct.Node;
 import com.jagex.core.io.Packet;
 import com.jagex.game.client.GameShell;
 import com.jagex.game.clientoptions.options.*;
-import deob.ObfuscatedName;
+
 
 public class ClientOptions extends Node {
 

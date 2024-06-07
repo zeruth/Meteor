@@ -5,7 +5,7 @@ import com.jagex.core.utils.Base64;
 import com.jagex.core.utils.WebTools;
 import com.jagex.game.client.Browser;
 import com.jagex.game.client.GameShell;
-import deob.ObfuscatedName;
+
 import rs2.client.Client;
 
 import java.io.InputStream;

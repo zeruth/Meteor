@@ -5,7 +5,7 @@ import com.jagex.audio.api.AudioFormat;
 import com.jagex.core.datastruct.SoftLruHashTable;
 import com.jagex.core.io.Packet;
 import com.jagex.math.IntMath;
-import deob.ObfuscatedName;
+
 
 import java.util.ArrayList;
 import java.util.Iterator;

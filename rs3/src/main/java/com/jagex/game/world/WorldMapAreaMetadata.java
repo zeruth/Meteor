@@ -5,7 +5,7 @@ import com.jagex.core.datastruct.LinkList;
 import com.jagex.core.datastruct.SecondaryNode;
 import com.jagex.core.io.Packet;
 import com.jagex.js5.Js5;
-import deob.ObfuscatedName;
+
 
 public class WorldMapAreaMetadata extends SecondaryNode {
 

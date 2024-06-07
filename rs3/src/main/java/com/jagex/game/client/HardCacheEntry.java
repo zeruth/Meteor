@@ -2,7 +2,7 @@ package com.jagex.game.client;
 
 import com.jagex.core.datastruct.CacheEntry;
 import com.jagex.core.datastruct.CacheKey;
-import deob.ObfuscatedName;
+
 
 public class HardCacheEntry extends CacheEntry {
 

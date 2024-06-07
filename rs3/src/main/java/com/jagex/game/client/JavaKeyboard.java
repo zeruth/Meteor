@@ -4,7 +4,7 @@ import com.jagex.core.datastruct.LinkList;
 import com.jagex.core.utils.Cp1252;
 import com.jagex.core.utils.MonotonicTime;
 import com.jagex.game.shared.framework.input.Keyboard;
-import deob.ObfuscatedName;
+
 
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;

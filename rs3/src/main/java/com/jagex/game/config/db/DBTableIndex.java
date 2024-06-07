@@ -4,7 +4,7 @@ import com.jagex.core.datastruct.SerializableEnums;
 import com.jagex.core.io.Packet;
 import com.jagex.game.config.vartype.constants.BaseVarType;
 import com.jagex.js5.Js5;
-import deob.ObfuscatedName;
+
 
 import java.util.ArrayList;
 import java.util.HashMap;

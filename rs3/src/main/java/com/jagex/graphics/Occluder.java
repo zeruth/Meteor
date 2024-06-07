@@ -1,7 +1,7 @@
 package com.jagex.graphics;
 
 import com.jagex.game.world.entity.Scene;
-import deob.ObfuscatedName;
+
 
 public class Occluder {
 

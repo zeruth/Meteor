@@ -5,7 +5,7 @@ import com.jagex.core.io.Packet;
 import com.jagex.core.utils.VarValue;
 import com.jagex.game.config.vartype.VarContainerSparse;
 import com.jagex.game.world.entity.PlayerStat;
-import deob.ObfuscatedName;
+
 
 import java.util.Iterator;
 

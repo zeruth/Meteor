@@ -9,7 +9,7 @@ import com.jagex.graphics.scenegraph.GraphEntity;
 import com.jagex.graphics.scenegraph.WallDecorLayerEntity;
 import com.jagex.math.Matrix4x3;
 import com.jagex.math.ScaleRotTrans;
-import deob.ObfuscatedName;
+
 
 public class DynamicWallDecorEntity extends WallDecorLayerEntity implements Location {
 

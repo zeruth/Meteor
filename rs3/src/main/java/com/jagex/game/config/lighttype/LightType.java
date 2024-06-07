@@ -3,7 +3,7 @@ package com.jagex.game.config.lighttype;
 import com.jagex.core.io.Packet;
 import com.jagex.game.client.MutableConfig;
 import com.jagex.game.config.ConfigType;
-import deob.ObfuscatedName;
+
 
 public class LightType implements ConfigType, MutableConfig {
 

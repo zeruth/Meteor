@@ -11,7 +11,7 @@ import com.jagex.js5.Js5ResourceProvider;
 import com.jagex.js5.caching.Js5DiskCache;
 import com.jagex.js5.index.Js5Index;
 import com.jagex.js5.worker.Js5WorkerRequest;
-import deob.ObfuscatedName;
+
 
 import java.util.zip.CRC32;
 

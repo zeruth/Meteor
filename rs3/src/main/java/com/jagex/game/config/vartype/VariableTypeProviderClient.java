@@ -3,7 +3,7 @@ package com.jagex.game.config.vartype;
 import com.jagex.game.config.ConfigTypeList;
 import com.jagex.game.config.vartype.bit.VarBitType;
 import com.jagex.game.config.vartype.constants.VarDomainType;
-import deob.ObfuscatedName;
+
 import rs2.client.Client;
 
 public final class VariableTypeProviderClient implements VariableTypeProvider {

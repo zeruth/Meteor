@@ -5,7 +5,7 @@ import com.jagex.game.client.DiskStore;
 import com.jagex.js5.caching.Js5DiskCache;
 import com.jagex.js5.index.Js5MasterIndex;
 import com.jagex.js5.index.Js5MasterIndexArchiveData;
-import deob.ObfuscatedName;
+
 
 import java.math.BigInteger;
 

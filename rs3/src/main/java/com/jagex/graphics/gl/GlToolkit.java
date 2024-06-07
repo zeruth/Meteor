@@ -20,7 +20,7 @@ import com.jagex.graphics.*;
 import com.jagex.graphics.Toolkit;
 import com.jagex.graphics.particles.ParticleList;
 import com.jagex.math.*;
-import deob.ObfuscatedName;
+
 import jaclib.memory.Buffer;
 import jaclib.memory.Stream;
 import jaclib.memory.heap.NativeHeap;

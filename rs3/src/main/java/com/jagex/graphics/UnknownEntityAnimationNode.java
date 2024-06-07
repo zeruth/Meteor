@@ -2,7 +2,7 @@ package com.jagex.graphics;
 
 import com.jagex.game.world.entity.EntityAnimationNode;
 import com.jagex.graphics.scenegraph.GraphEntity;
-import deob.ObfuscatedName;
+
 
 public class UnknownEntityAnimationNode extends EntityAnimationNode {
 

@@ -23,7 +23,7 @@ import com.jagex.graphics.camera.CameraTrackableType;
 import com.jagex.graphics.particles.ParticleList;
 import com.jagex.graphics.scenegraph.GraphEntity;
 import com.jagex.math.*;
-import deob.ObfuscatedName;
+
 import rs2.client.Client;
 import rs2.client.scene.entities.NpcEntity;
 import rs2.client.scene.entities.PathingEntity;

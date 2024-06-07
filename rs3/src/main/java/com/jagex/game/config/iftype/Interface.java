@@ -1,6 +1,6 @@
 package com.jagex.game.config.iftype;
 
-import deob.ObfuscatedName;
+
 
 public class Interface {
 

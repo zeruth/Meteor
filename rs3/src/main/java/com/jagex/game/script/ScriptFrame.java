@@ -1,6 +1,6 @@
 package com.jagex.game.script;
 
-import deob.ObfuscatedName;
+
 
 public class ScriptFrame {
 

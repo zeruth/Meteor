@@ -2,7 +2,7 @@ package com.jagex.game.config.vartype;
 
 import com.jagex.game.config.vartype.bit.VarBitType;
 import com.jagex.game.config.vartype.constants.ScriptVarType;
-import deob.ObfuscatedName;
+
 import rs2.client.Client;
 import rs2.client.logic.clans.ClanSettings;
 

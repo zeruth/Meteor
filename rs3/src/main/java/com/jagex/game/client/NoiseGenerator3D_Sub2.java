@@ -1,6 +1,6 @@
 package com.jagex.game.client;
 
-import deob.ObfuscatedName;
+
 
 public class NoiseGenerator3D_Sub2 extends NoiseGenerator3D {
 

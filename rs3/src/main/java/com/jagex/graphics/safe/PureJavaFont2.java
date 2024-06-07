@@ -5,7 +5,7 @@ import com.jagex.graphics.Font;
 import com.jagex.graphics.FontMetrics;
 import com.jagex.graphics.SpriteRelated;
 import com.jagex.graphics.PalettedSpriteData;
-import deob.ObfuscatedName;
+
 
 public class PureJavaFont2 extends Font {
 

@@ -2,7 +2,7 @@ package com.jagex.graphics.safe;
 
 import com.jagex.math.Matrix4x3;
 import com.jagex.math.Matrix4x4;
-import deob.ObfuscatedName;
+
 
 public class PureJavaToolkitContext {
 

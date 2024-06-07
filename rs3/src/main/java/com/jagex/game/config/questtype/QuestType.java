@@ -14,7 +14,7 @@ import com.jagex.game.config.vartype.constants.VarDomainType;
 import com.jagex.game.world.entity.ObjectNode;
 import com.jagex.game.world.entity.PlayerStatProvider;
 import com.jagex.math.IntMath;
-import deob.ObfuscatedName;
+
 
 public class QuestType implements ConfigType {
 

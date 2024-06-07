@@ -2,7 +2,7 @@ package com.jagex.game.world.entity;
 
 import com.jagex.core.constants.ModeAccountType;
 import com.jagex.game.client.PlayerSkill;
-import deob.ObfuscatedName;
+
 
 public class PlayerStat {
 

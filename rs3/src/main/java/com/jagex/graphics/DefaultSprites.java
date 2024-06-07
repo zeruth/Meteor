@@ -2,7 +2,7 @@ package com.jagex.graphics;
 
 import com.jagex.game.config.defaults.GraphicsDefaults;
 import com.jagex.js5.Js5;
-import deob.ObfuscatedName;
+
 import rs2.client.Client;
 
 public class DefaultSprites {

@@ -4,7 +4,7 @@ import com.jagex.game.client.PrimitiveType;
 import com.jagex.math.Matrix4x4;
 import com.jagex.math.Vector3;
 import com.jagex.math.Vector4;
-import deob.ObfuscatedName;
+
 
 public class EnvMappedWaterShader extends WaterShader {
 

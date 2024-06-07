@@ -4,7 +4,7 @@ import com.jagex.core.io.Packet;
 import com.jagex.core.utils.Algorithms;
 import com.jagex.js5.Js5;
 import com.jagex.math.Trig1;
-import deob.ObfuscatedName;
+
 
 public class ModelUnlit {
 

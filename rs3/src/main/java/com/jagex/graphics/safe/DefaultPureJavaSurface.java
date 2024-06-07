@@ -2,7 +2,7 @@ package com.jagex.graphics.safe;
 
 import com.jagex.graphics.safe.PureJavaToolkit;
 import com.jagex.graphics.safe.PureJavaSurface;
-import deob.ObfuscatedName;
+
 
 import java.awt.*;
 import java.awt.image.*;

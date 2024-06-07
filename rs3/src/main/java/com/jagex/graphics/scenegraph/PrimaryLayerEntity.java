@@ -5,7 +5,7 @@ import com.jagex.game.world.entity.StaticPointLight;
 import com.jagex.graphics.Light;
 import com.jagex.graphics.Toolkit;
 import com.jagex.math.ScaleRotTrans;
-import deob.ObfuscatedName;
+
 
 public abstract class PrimaryLayerEntity extends GraphEntity {
 

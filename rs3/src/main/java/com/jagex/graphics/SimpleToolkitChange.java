@@ -3,7 +3,7 @@ package com.jagex.graphics;
 import com.jagex.core.io.SendablePacket;
 import com.jagex.game.client.ClientMessage;
 import com.jagex.game.network.protocol.ClientProt;
-import deob.ObfuscatedName;
+
 import rs2.client.Client;
 
 public class SimpleToolkitChange implements SendablePacket {

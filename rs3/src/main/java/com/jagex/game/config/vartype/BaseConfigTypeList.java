@@ -3,7 +3,7 @@ package com.jagex.game.config.vartype;
 import com.jagex.core.constants.Language;
 import com.jagex.core.constants.ModeGame;
 import com.jagex.game.config.ConfigTypeList;
-import deob.ObfuscatedName;
+
 
 public abstract class BaseConfigTypeList implements ConfigTypeList {
 

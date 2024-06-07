@@ -1,7 +1,7 @@
 package com.jagex.game.load;
 
 import com.jagex.core.io.Packet;
-import deob.ObfuscatedName;
+
 import rs2.client.login.*;
 
 public class LoadingScreenType {

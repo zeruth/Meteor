@@ -14,6 +14,8 @@ public class AppletViewer extends Applet implements AppletStub {
 
 	public static Properties client_parameters = new Properties();
 
+	public static Client client;
+
 	static {
 		// General
 		client_parameters.put("1", "");
@@ -98,10 +100,10 @@ public class AppletViewer extends Applet implements AppletStub {
 			frame.setLocation(dim.width / 2 - frame.getSize().width / 2, dim.height / 2 - frame.getSize().height / 2);
 			frame.toFront();
 
-			Client cl = new Client();
-			cl.supplyApplet(this);
-			cl.init();
-			cl.start();
+			client = new Client();
+			client.supplyApplet(this);
+			client.init();
+			client.start();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

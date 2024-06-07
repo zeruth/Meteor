@@ -1,6 +1,6 @@
 package com.jagex.graphics;
 
-import deob.ObfuscatedName;
+
 
 public interface GpuTexture extends BaseTexture {
 

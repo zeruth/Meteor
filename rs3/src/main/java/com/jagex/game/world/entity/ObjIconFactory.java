@@ -7,7 +7,7 @@ import com.jagex.graphics.Font;
 import com.jagex.graphics.FontMetrics;
 import com.jagex.graphics.Toolkit;
 import com.jagex.graphics.SpriteDataProvider;
-import deob.ObfuscatedName;
+
 import rs2.client.Client;
 
 import java.awt.*;

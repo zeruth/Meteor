@@ -3,7 +3,7 @@ package com.jagex.graphics.safe;
 import com.jagex.game.client.JavaGraphicsRelated3;
 import com.jagex.graphics.SpriteRelated;
 import com.jagex.graphics.Sprite;
-import deob.ObfuscatedName;
+
 
 public abstract class PureJavaSprite extends Sprite {
 

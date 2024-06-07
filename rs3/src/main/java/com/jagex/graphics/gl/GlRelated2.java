@@ -3,7 +3,7 @@ package com.jagex.graphics.gl;
 import com.jagex.core.datastruct.SoftLruHashTable;
 import com.jagex.game.client.DataType;
 import com.jagex.graphics.*;
-import deob.ObfuscatedName;
+
 
 public class GlRelated2 {
 

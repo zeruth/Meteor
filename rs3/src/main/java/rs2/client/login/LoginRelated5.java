@@ -3,7 +3,7 @@ package rs2.client.login;
 import com.jagex.core.io.Packet;
 import com.jagex.game.load.LoadingScreenElementConfig;
 import com.jagex.game.load.LoadingScreenElementType;
-import deob.ObfuscatedName;
+
 
 public class LoginRelated5 implements LoadingScreenElementConfig {
 

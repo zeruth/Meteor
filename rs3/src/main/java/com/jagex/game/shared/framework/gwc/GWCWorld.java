@@ -1,6 +1,6 @@
 package com.jagex.game.shared.framework.gwc;
 
-import deob.ObfuscatedName;
+
 
 public class GWCWorld extends GWCBasicWorld {
 

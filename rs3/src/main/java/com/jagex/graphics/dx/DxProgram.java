@@ -4,7 +4,7 @@ import com.jagex.core.utils.ArrayUtil;
 import com.jagex.graphics.*;
 import com.jagex.graphics.glx.GlxError;
 import com.jagex.math.Matrix4x4;
-import deob.ObfuscatedName;
+
 import jagdx.IDirect3DDevice;
 import jagdx.IUnknown;
 

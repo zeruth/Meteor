@@ -6,7 +6,7 @@ import com.jagex.game.config.loctype.LocType;
 import com.jagex.game.config.seqtype.SeqType;
 import com.jagex.game.scene.ChangeLocationRequest;
 import com.jagex.game.world.entity.LocShape;
-import deob.ObfuscatedName;
+
 import rs2.client.Client;
 
 public class CutsceneLocation {

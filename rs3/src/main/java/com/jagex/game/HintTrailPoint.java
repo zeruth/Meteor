@@ -6,7 +6,7 @@ import com.jagex.graphics.scenegraph.GraphEntity;
 import com.jagex.graphics.scenegraph.PrimaryLayerEntity;
 import com.jagex.math.Matrix4x3;
 import com.jagex.math.ScaleRotTrans;
-import deob.ObfuscatedName;
+
 
 public class HintTrailPoint extends PrimaryLayerEntity {
 

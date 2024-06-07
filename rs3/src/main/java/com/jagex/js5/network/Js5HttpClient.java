@@ -3,7 +3,7 @@ package com.jagex.js5.network;
 import com.jagex.core.io.Packet;
 import com.jagex.core.utils.ByteArrayPool;
 import com.jagex.core.utils.MonotonicTime;
-import deob.ObfuscatedName;
+
 
 import java.io.IOException;
 import java.io.InputStream;

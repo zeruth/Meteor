@@ -1,7 +1,7 @@
 package com.jagex.graphics.gl;
 
 import com.jagex.graphics.Surface;
-import deob.ObfuscatedName;
+
 import jaggl.OpenGL;
 
 import java.awt.*;

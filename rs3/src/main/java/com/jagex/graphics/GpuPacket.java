@@ -1,7 +1,7 @@
 package com.jagex.graphics;
 
 import com.jagex.core.io.Packet;
-import deob.ObfuscatedName;
+
 import jaclib.memory.Stream;
 
 public class GpuPacket extends Packet {

@@ -12,7 +12,7 @@ import com.jagex.audio.vorbis.VorbisSound;
 import com.jagex.core.utils.JagException;
 import com.jagex.core.utils.MonotonicTime;
 import com.jagex.core.utils.PreciseSleep;
-import deob.ObfuscatedName;
+
 
 import java.util.Arrays;
 import java.util.Comparator;

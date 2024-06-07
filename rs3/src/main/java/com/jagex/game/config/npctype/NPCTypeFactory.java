@@ -6,7 +6,9 @@ import com.jagex.core.datastruct.SoftLruHashTable;
 import com.jagex.game.client.LocalisedText;
 import com.jagex.game.config.ConfigTypeFactory;
 import com.jagex.js5.Js5;
-import deob.ObfuscatedName;
+
+import static rs2.client.Client.language;
+
 
 public abstract class NPCTypeFactory implements ConfigTypeFactory {
 
@@ -28,10 +30,14 @@ public abstract class NPCTypeFactory implements ConfigTypeFactory {
 		this.allowMembers = allowMembers;
 		this.configClient = configClient;
 		this.modeGame = modeGame;
-		if (ModeGame.RUNESCAPE == this.modeGame) {
-			this.defaultops = new String[] { null, null, null, null, null, LocalisedText.EXAMINE.forLang(language) };
+		this.defaultops = initDefaultOps(modeGame);
+	}
+
+	public String[] initDefaultOps(ModeGame modeGame) {
+		if (ModeGame.RUNESCAPE == modeGame) {
+			return new String[] { null, null, null, null, null, LocalisedText.EXAMINE.forLang(language) };
 		} else {
-			this.defaultops = new String[] { null, null, null, null, null, null };
+			return new String[] { null, null, null, null, null, null };
 		}
 	}
 

@@ -4,7 +4,7 @@ import com.jagex.game.world.entity.ObjectNode;
 import com.jagex.graphics.camera.CameraTrackable;
 import com.jagex.graphics.camera.CameraTrackableProvider;
 import com.jagex.graphics.camera.CameraTrackableType;
-import deob.ObfuscatedName;
+
 import rs2.client.Client;
 
 public class ClientCameraTrackableProvider implements CameraTrackableProvider {

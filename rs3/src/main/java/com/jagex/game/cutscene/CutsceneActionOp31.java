@@ -5,7 +5,7 @@ import com.jagex.audio.stream.SoundShape;
 import com.jagex.audio.stream.SoundType;
 import com.jagex.audio.api.SubBussType;
 import com.jagex.core.io.Packet;
-import deob.ObfuscatedName;
+
 import rs2.client.Client;
 
 public class CutsceneActionOp31 extends CutsceneAction {

@@ -1,7 +1,7 @@
 package com.jagex.twitchtv;
 
 import com.jagex.game.client.TwitchEventSubject;
-import deob.ObfuscatedName;
+
 
 public class TwitchEventChatUserInfo extends TwitchEvent {
 

@@ -2,7 +2,7 @@ package com.jagex.game.camera;
 
 import com.jagex.core.io.Packet;
 import com.jagex.graphics.camera.Camera;
-import deob.ObfuscatedName;
+
 
 public class LookatSpline_Sub1 extends LookatSpline {
 

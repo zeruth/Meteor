@@ -1,6 +1,6 @@
 package com.jagex.graphics;
 
-import deob.ObfuscatedName;
+
 
 import java.nio.ByteBuffer;
 

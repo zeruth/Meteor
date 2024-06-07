@@ -1,6 +1,6 @@
 package com.jagex.graphics.gl;
 
-import deob.ObfuscatedName;
+
 
 public class GlFloorModelRelated2_Sub1 extends GlFloorModelRelated2 implements GlBinding {
 

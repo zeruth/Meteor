@@ -4,7 +4,7 @@ import com.jagex.game.load.Loading;
 import com.jagex.game.load.LoadingScreenRelated4_Sub1;
 import com.jagex.game.load.LoadingScreenRelated6;
 import com.jagex.js5.Js5;
-import deob.ObfuscatedName;
+
 
 public class LoginRelated9 extends LoadingScreenRelated6 {
 

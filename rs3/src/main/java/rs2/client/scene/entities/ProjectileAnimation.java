@@ -10,7 +10,7 @@ import com.jagex.graphics.particles.ParticleSystem;
 import com.jagex.graphics.scenegraph.GraphEntity;
 import com.jagex.graphics.scenegraph.PrimaryLayerEntity;
 import com.jagex.math.*;
-import deob.ObfuscatedName;
+
 import rs2.client.Client;
 
 public class ProjectileAnimation extends PrimaryLayerEntity {

@@ -4,7 +4,7 @@ import com.jagex.core.datastruct.IntHashTable;
 import com.jagex.core.io.Packet;
 import com.jagex.encryption.Whirlpool;
 import com.jagex.js5.Js5;
-import deob.ObfuscatedName;
+
 
 public class Js5Index {
 

@@ -1,7 +1,7 @@
 package com.jagex.game.world.entity;
 
 import com.jagex.core.datastruct.SecondaryNode;
-import deob.ObfuscatedName;
+
 import rs2.client.scene.entities.SpotAnimation;
 
 public class SpotAnimEntityNode extends SecondaryNode {

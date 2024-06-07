@@ -4,7 +4,7 @@ import com.jagex.core.io.Packet;
 import com.jagex.game.config.ConfigType;
 import com.jagex.graphics.SpriteData;
 import com.jagex.graphics.SpriteDataProvider;
-import deob.ObfuscatedName;
+
 
 public class CursorType implements ConfigType {
 

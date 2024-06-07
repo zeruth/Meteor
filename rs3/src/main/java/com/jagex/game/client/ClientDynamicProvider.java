@@ -3,7 +3,7 @@ package com.jagex.game.client;
 import com.jagex.game.config.enumtype.EnumType;
 import com.jagex.game.config.objtype.ObjType;
 import com.jagex.game.shared.framework.chat.QuickChatDynamicCommand;
-import deob.ObfuscatedName;
+
 import rs2.client.Client;
 
 public class ClientDynamicProvider implements QuickChatDynamicProvider {

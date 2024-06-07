@@ -3,7 +3,7 @@ package com.jagex.graphics.particles;
 import com.jagex.core.datastruct.Node;
 import com.jagex.game.config.ParticleEffectorType;
 import com.jagex.graphics.ModelParticleEffector;
-import deob.ObfuscatedName;
+
 
 public class ParticleEffector extends Node {
 

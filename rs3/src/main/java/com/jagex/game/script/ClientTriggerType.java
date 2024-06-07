@@ -1,7 +1,7 @@
 package com.jagex.game.script;
 
 import com.jagex.game.config.vartype.constants.ScriptVarType;
-import deob.ObfuscatedName;
+
 
 public class ClientTriggerType implements TriggerType {
 

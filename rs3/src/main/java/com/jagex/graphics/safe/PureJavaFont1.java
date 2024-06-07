@@ -1,7 +1,7 @@
 package com.jagex.graphics.safe;
 
 import com.jagex.graphics.*;
-import deob.ObfuscatedName;
+
 
 public class PureJavaFont1 extends Font {
 

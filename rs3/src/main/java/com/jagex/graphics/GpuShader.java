@@ -5,7 +5,7 @@ import com.jagex.core.datastruct.HashMapKey;
 import com.jagex.math.Matrix4x4;
 import com.jagex.math.Vector3;
 import com.jagex.math.Vector4;
-import deob.ObfuscatedName;
+
 
 public abstract class GpuShader {
 

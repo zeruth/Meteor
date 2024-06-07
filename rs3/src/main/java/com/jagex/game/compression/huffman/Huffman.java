@@ -1,6 +1,6 @@
 package com.jagex.game.compression.huffman;
 
-import deob.ObfuscatedName;
+
 
 public class Huffman {
 

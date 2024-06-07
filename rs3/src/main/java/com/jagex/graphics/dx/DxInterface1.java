@@ -1,6 +1,6 @@
 package com.jagex.graphics.dx;
 
-import deob.ObfuscatedName;
+
 
 public interface DxInterface1 {
 

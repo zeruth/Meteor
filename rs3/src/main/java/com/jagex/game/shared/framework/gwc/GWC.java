@@ -2,7 +2,7 @@ package com.jagex.game.shared.framework.gwc;
 
 import com.jagex.core.io.Packet;
 import com.jagex.core.utils.MonotonicTime;
-import deob.ObfuscatedName;
+
 import rs2.client.login.WorldSwitcher;
 
 public class GWC {

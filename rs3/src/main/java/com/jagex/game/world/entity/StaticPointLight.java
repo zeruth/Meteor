@@ -6,7 +6,7 @@ import com.jagex.game.client.NoiseGenerator;
 import com.jagex.graphics.Light;
 import com.jagex.graphics.Toolkit;
 import com.jagex.math.Trig1;
-import deob.ObfuscatedName;
+
 
 public class StaticPointLight {
 

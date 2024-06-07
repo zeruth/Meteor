@@ -3,7 +3,7 @@ package com.jagex.game.client;
 import com.jagex.core.datastruct.Link;
 import com.jagex.core.datastruct.LinkQueue;
 import com.jagex.game.config.headbartype.HeadbarType;
-import deob.ObfuscatedName;
+
 import rs2.client.Client;
 
 public class Headbar extends Link {

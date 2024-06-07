@@ -3,7 +3,7 @@ package com.jagex.graphics.gl;
 import com.jagex.game.client.DataType;
 import com.jagex.graphics.TextureFormat;
 import com.jagex.math.IntMath;
-import deob.ObfuscatedName;
+
 
 public class GlTexture_Sub1_Sub1 extends GlTexture_Sub1 {
 

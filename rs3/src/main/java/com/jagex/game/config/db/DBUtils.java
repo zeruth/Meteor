@@ -2,7 +2,7 @@ package com.jagex.game.config.db;
 
 import com.jagex.core.io.Packet;
 import com.jagex.game.config.vartype.constants.ScriptVarType;
-import deob.ObfuscatedName;
+
 
 public class DBUtils {
 

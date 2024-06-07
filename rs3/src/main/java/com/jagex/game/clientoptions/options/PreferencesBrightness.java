@@ -1,7 +1,7 @@
 package com.jagex.game.clientoptions.options;
 
 import com.jagex.game.clientoptions.ClientOptions;
-import deob.ObfuscatedName;
+
 
 public class PreferencesBrightness extends Preference {
 

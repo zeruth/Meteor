@@ -3,7 +3,7 @@ package com.jagex.graphics.gl;
 import com.jagex.game.client.DataType;
 import com.jagex.graphics.ColourRemapper;
 import com.jagex.graphics.TextureFormat;
-import deob.ObfuscatedName;
+
 
 public class GlColourRemapper extends ColourRemapper {
 

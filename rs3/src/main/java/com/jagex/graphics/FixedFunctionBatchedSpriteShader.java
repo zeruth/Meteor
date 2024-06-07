@@ -1,7 +1,7 @@
 package com.jagex.graphics;
 
 import com.jagex.math.Matrix4x4;
-import deob.ObfuscatedName;
+
 
 public class FixedFunctionBatchedSpriteShader extends BatchedSpriteShader {
 

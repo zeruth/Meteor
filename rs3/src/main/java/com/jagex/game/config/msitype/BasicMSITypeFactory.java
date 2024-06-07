@@ -3,7 +3,7 @@ package com.jagex.game.config.msitype;
 import com.jagex.game.config.ConfigType;
 import com.jagex.game.config.ConfigTypeList;
 import com.jagex.js5.Js5;
-import deob.ObfuscatedName;
+
 
 public class BasicMSITypeFactory extends MSITypeFactory {
 

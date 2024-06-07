@@ -4,7 +4,7 @@ import com.jagex.core.datastruct.SecondaryNode;
 import com.jagex.core.io.Packet;
 import com.jagex.js5.Js5;
 import com.jagex.math.Curve;
-import deob.ObfuscatedName;
+
 
 public class KeyFrameSet extends SecondaryNode {
 

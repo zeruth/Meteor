@@ -2,7 +2,7 @@ package com.jagex.graphics.dx;
 
 import com.jagex.graphics.ProgramUniform;
 import com.jagex.graphics.ProgramUniformData;
-import deob.ObfuscatedName;
+
 
 public final class DxProgramUniform extends ProgramUniform {
 

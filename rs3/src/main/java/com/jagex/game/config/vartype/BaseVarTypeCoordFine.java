@@ -2,7 +2,7 @@ package com.jagex.game.config.vartype;
 
 import com.jagex.core.io.Packet;
 import com.jagex.game.shared.movement.CoordFine;
-import deob.ObfuscatedName;
+
 
 public final class BaseVarTypeCoordFine implements BaseVarTypeCodec {
 

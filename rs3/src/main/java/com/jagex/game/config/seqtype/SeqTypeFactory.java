@@ -6,7 +6,7 @@ import com.jagex.game.config.ConfigTypeList;
 import com.jagex.graphics.FrameSet;
 import com.jagex.graphics.KeyFrameSet;
 import com.jagex.js5.Js5;
-import deob.ObfuscatedName;
+
 
 public abstract class SeqTypeFactory implements ConfigTypeFactory {
 

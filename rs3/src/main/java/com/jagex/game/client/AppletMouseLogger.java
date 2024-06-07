@@ -3,7 +3,7 @@ package com.jagex.game.client;
 import com.jagex.core.io.Packet;
 import com.jagex.core.utils.MonotonicTime;
 import com.jagex.game.network.protocol.ClientProt;
-import deob.ObfuscatedName;
+
 import rs2.client.Client;
 
 public class AppletMouseLogger extends MouseLogger {

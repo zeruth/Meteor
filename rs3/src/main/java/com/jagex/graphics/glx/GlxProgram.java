@@ -3,7 +3,7 @@ package com.jagex.graphics.glx;
 import com.jagex.core.utils.ArrayUtil;
 import com.jagex.graphics.*;
 import com.jagex.math.Matrix4x4;
-import deob.ObfuscatedName;
+
 import jaggl.OpenGL;
 
 import java.util.HashMap;

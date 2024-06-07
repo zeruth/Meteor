@@ -6,7 +6,7 @@ import com.jagex.game.client.NoiseGenerator3D_Sub1_Sub1;
 import com.jagex.game.client.NoiseGenerator3D_Sub2_Sub1;
 import com.jagex.graphics.TextureFormat;
 import com.jagex.graphics.WaterRelated5;
-import deob.ObfuscatedName;
+
 
 public class GlWaterRelated {
 

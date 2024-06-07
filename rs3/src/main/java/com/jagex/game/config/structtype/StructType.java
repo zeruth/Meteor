@@ -9,7 +9,7 @@ import com.jagex.game.client.MutableConfig;
 import com.jagex.game.config.ConfigType;
 import com.jagex.game.world.entity.ObjectNode;
 import com.jagex.math.IntMath;
-import deob.ObfuscatedName;
+
 
 public class StructType extends SecondaryNode implements ConfigType, MutableConfig {
 

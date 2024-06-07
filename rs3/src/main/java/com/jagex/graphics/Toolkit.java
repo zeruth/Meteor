@@ -15,7 +15,7 @@ import com.jagex.js5.Js5;
 import com.jagex.math.Cuboid;
 import com.jagex.math.Matrix4x3;
 import com.jagex.math.Matrix4x4;
-import deob.ObfuscatedName;
+
 
 import java.awt.*;
 import java.lang.reflect.Method;

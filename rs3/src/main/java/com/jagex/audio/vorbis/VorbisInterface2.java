@@ -1,6 +1,6 @@
 package com.jagex.audio.vorbis;
 
-import deob.ObfuscatedName;
+
 
 public interface VorbisInterface2 {
 

@@ -4,7 +4,7 @@ import com.jagex.core.datastruct.Node;
 import com.jagex.game.client.DataType;
 import com.jagex.graphics.gl.GlTexture_Sub1;
 import com.jagex.graphics.gl.GlToolkit;
-import deob.ObfuscatedName;
+
 
 public abstract class PostProcessingFilter extends Node {
 

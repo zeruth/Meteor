@@ -2,7 +2,7 @@ package com.jagex.game.script.activepointers;
 
 import com.jagex.game.config.iftype.Component;
 import com.jagex.game.config.iftype.Interface;
-import deob.ObfuscatedName;
+
 
 public class ActiveComponent {
 

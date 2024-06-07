@@ -7,7 +7,7 @@ import com.jagex.graphics.FloorModelNode;
 import com.jagex.graphics.GpuPacket;
 import com.jagex.graphics.Light;
 import com.jagex.math.IntMath;
-import deob.ObfuscatedName;
+
 
 public class GlFloorModelRelated5 extends Node {
 

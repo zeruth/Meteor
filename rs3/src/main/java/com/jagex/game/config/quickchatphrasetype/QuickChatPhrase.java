@@ -1,7 +1,7 @@
 package com.jagex.game.config.quickchatphrasetype;
 
 import com.jagex.core.io.Packet;
-import deob.ObfuscatedName;
+
 import rs2.client.Client;
 
 public class QuickChatPhrase {

@@ -9,7 +9,7 @@ import com.jagex.graphics.scenegraph.GraphEntity;
 import com.jagex.graphics.scenegraph.PrimaryLayerEntity;
 import com.jagex.math.Matrix4x3;
 import com.jagex.math.Vector3;
-import deob.ObfuscatedName;
+
 import rs2.client.Client;
 
 public class SpotAnimation extends PrimaryLayerEntity {

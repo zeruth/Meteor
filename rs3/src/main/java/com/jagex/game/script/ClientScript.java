@@ -9,7 +9,7 @@ import com.jagex.game.config.vartype.VariableTypeProvider;
 import com.jagex.game.config.vartype.constants.BaseVarType;
 import com.jagex.game.config.vartype.constants.VarDomainType;
 import com.jagex.math.IntMath;
-import deob.ObfuscatedName;
+
 
 public class ClientScript extends SecondaryNode {
 
