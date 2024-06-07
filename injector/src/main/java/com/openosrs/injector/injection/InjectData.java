@@ -54,31 +54,14 @@ public abstract class InjectData
 	 * - RSApi implementing name
 	 */
 	public final Map<String, ClassFile> toDeob = new HashMap<>();
+	public HashMap<String, String> classMap = new HashMap<>();
 
 	public abstract void runChildInjector(Injector injector);
 
 	public void initToVanilla()
 	{
 		for (final ClassFile deobClass : deobfuscated)
-		{
-			if (deobClass.getName().startsWith("net/runelite/") || deobClass.getName().startsWith("netscape"))
-			{
-				continue;
-			}
-
-			final String obName = deobClass.getName();
-			if (obName != null)
-			{
-				toDeob.put(obName, deobClass);
-
-				final ClassFile obClass = this.vanilla.findClass(obName);
-
-				if (obClass != null)
-				{
-					toVanilla.put(deobClass, obClass);
-				}
-			}
-		}
+			toVanilla.put(deobClass, vanilla.findClass(deobClass.getName()));
 	}
 
 	/**

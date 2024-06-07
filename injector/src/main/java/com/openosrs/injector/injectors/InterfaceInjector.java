@@ -32,21 +32,16 @@ public class InterfaceInjector extends AbstractInjector
 
 	private void injectInterface(final ClassFile deobCf, final ClassFile vanillaCf)
 	{
-		final String impls = DeobAnnotations.getImplements(deobCf);
-
-		if (impls == null)
-		{
-			return;
-		}
-
-
-		final String fullName = API_BASE + impls;
+		final String fullName = API_BASE + deobCf.getClassName();
 		if (!inject.getRsApi().hasClass(fullName)) {
 			log.error("[DEBUG] Class {} implements nonexistent interface {}, skipping interface injection",
 					deobCf.getName(),
 					fullName
 			);
 			return;
+		}else {
+			log.debug("Injected interface " + fullName + " to " + deobCf.getName());
+			inject.classMap.put(vanillaCf.getClassName(), vanillaCf.getName());
 		}
 
 
