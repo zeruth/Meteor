@@ -50,6 +50,7 @@ kotlin {
             implementation(projects.api)
             implementation(projects.apiRs)
             implementation(compose.desktop.currentOs)
+            implementation("com.twelvemonkeys.imageio:imageio-jpeg:3.10.1")
             runtimeOnly(files("./src/desktopMain/resources/injected-client.jar"))
 
             //GPU Upscaling

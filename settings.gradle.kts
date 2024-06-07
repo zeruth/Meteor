@@ -30,5 +30,5 @@ include(":eventbus")
 include(":injector")
 include(":logger")
 include(":mixins")
-include(":rs2")
+include(":rs3")
 

@@ -10,7 +10,7 @@
       </option>
       <option name="taskNames">
         <list>
-          <option value=":rs2:run" />
+          <option value=":rs3:run" />
         </list>
       </option>
       <option name="vmOptions" />
