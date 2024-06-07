@@ -1,3 +1,7 @@
+import meteor.events.Command;
+import org.rationalityfrontline.kevent.KEvent;
+import org.rationalityfrontline.kevent.KEventGlobal;
+
 import javax.swing.*;
 import java.awt.*;
 import java.io.DataInputStream;
@@ -2670,6 +2674,8 @@ public class Client extends GameShell {
 						}
 
 						if ((key == 13 || key == 10) && this.chatTyped.length() > 0) {
+							if (this.chatTyped.startsWith("::"))
+								KEventGlobal.INSTANCE.post(new Command(this.chatTyped.replace("::", "")));
 							// if (this.rights) {
 							if (this.chatTyped.equals("::clientdrop") && super.frame != null) {
 								this.tryReconnect();
@@ -5553,7 +5559,7 @@ public class Client extends GameShell {
 		}
 
 		if (super.frame != null) {
-			return "localhost";
+			return "https://w2.225.2004scape.org";
 		}
 
 		return super.getDocumentBase().getHost().toLowerCase();
