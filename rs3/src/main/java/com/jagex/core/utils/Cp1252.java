@@ -2,18 +2,15 @@ package com.jagex.core.utils;
 
 import deob.ObfuscatedName;
 
-@ObfuscatedName("zo")
 public class Cp1252 {
 
-	@ObfuscatedName("zo.e")
-	public static final char[] field8326 = new char[] { '€', '\u0000', '‚', 'ƒ', '„', '…', '†', '‡', 'ˆ', '‰', 'Š', '‹', 'Œ', '\u0000', 'Ž', '\u0000', '\u0000', '‘', '’', '“', '”', '•', '–', '—', '˜', '™', 'š', '›', 'œ', '\u0000', 'ž', 'Ÿ' };
+    public static final char[] field8326 = new char[] { '€', '\u0000', '‚', 'ƒ', '„', '…', '†', '‡', 'ˆ', '‰', 'Š', '‹', 'Œ', '\u0000', 'Ž', '\u0000', '\u0000', '‘', '’', '“', '”', '•', '–', '—', '˜', '™', 'š', '›', 'œ', '\u0000', 'ž', 'Ÿ' };
 
 	public Cp1252() throws Throwable {
 		throw new Error();
 	}
 
-	@ObfuscatedName("aip.e(CI)B")
-	public static byte encode(char arg0) {
+    public static byte encode(char arg0) {
 		byte var1;
 		if (arg0 > 0 && arg0 < 128 || !(arg0 < 160 || arg0 > 255)) {
 			var1 = (byte) arg0;
@@ -77,8 +74,7 @@ public class Cp1252 {
 		return var1;
 	}
 
-	@ObfuscatedName("w.n(CI)Z")
-	public static boolean method231(char arg0) {
+    public static boolean method231(char arg0) {
 		if (arg0 > 0 && arg0 < 128 || !(arg0 < 160 || arg0 > 255)) {
 			return true;
 		}
@@ -94,8 +90,7 @@ public class Cp1252 {
 		return false;
 	}
 
-	@ObfuscatedName("xf.m(CI)Z")
-	public static boolean charIsValid(char arg0) {
+    public static boolean charIsValid(char arg0) {
 		if (arg0 > ' ' && arg0 < 127 || !(arg0 <= 127 || arg0 >= 160) || arg0 > 160 && arg0 <= 255) {
 			return true;
 		}
@@ -111,8 +106,7 @@ public class Cp1252 {
 		return false;
 	}
 
-	@ObfuscatedName("vj.k(BS)C")
-	public static char byteToCp1252Char(byte arg0) {
+    public static char byteToCp1252Char(byte arg0) {
 		int var1 = arg0 & 0xFF;
 		if (var1 == 0) {
 			throw new IllegalArgumentException("" + Integer.toString(var1, 16));
@@ -127,8 +121,7 @@ public class Cp1252 {
 		return (char) var1;
 	}
 
-	@ObfuscatedName("fn.f(Ljava/lang/CharSequence;B)[B")
-	public static byte[] method3064(CharSequence arg0) {
+    public static byte[] method3064(CharSequence arg0) {
 		int var1 = arg0.length();
 		byte[] var2 = new byte[var1];
 		for (int var3 = 0; var3 < var1; var3++) {
@@ -196,8 +189,7 @@ public class Cp1252 {
 		return var2;
 	}
 
-	@ObfuscatedName("no.w(Ljava/lang/CharSequence;II[BII)I")
-	public static int method5981(CharSequence arg0, int arg1, int arg2, byte[] arg3, int arg4) {
+    public static int method5981(CharSequence arg0, int arg1, int arg2, byte[] arg3, int arg4) {
 		int var5 = arg2 - arg1;
 		for (int var6 = 0; var6 < var5; var6++) {
 			char var7 = arg0.charAt(arg1 + var6);
@@ -264,13 +256,11 @@ public class Cp1252 {
 		return var5;
 	}
 
-	@ObfuscatedName("ag.l([BI)Ljava/lang/String;")
-	public static String method667(byte[] arg0) {
+    public static String method667(byte[] arg0) {
 		return method9199(arg0, 0, arg0.length);
 	}
 
-	@ObfuscatedName("uh.u([BIIB)Ljava/lang/String;")
-	public static String method9199(byte[] arg0, int arg1, int arg2) {
+    public static String method9199(byte[] arg0, int arg1, int arg2) {
 		char[] var3 = new char[arg2];
 		int var4 = 0;
 		for (int var5 = 0; var5 < arg2; var5++) {

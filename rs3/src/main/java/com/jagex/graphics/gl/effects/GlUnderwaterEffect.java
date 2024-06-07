@@ -10,20 +10,15 @@ import com.jagex.graphics.gl.GlUnderwaterTexture;
 import deob.ObfuscatedName;
 import jaggl.OpenGL;
 
-@ObfuscatedName("aet")
 public class GlUnderwaterEffect extends GlEffect {
 
-	@ObfuscatedName("aet.k")
-	public final GlWaterRelated field9302;
+    public final GlWaterRelated field9302;
 
-	@ObfuscatedName("aet.f")
-	public GlRenderList field9300;
+    public GlRenderList field9300;
 
-	@ObfuscatedName("aet.w")
-	public GlUnderwaterTexture field9303;
+    public GlUnderwaterTexture field9303;
 
-	@ObfuscatedName("aet.l")
-	public static final float[] field9305 = new float[] { 0.0F, 0.0F, 0.0F, 0.0F };
+    public static final float[] field9305 = new float[] { 0.0F, 0.0F, 0.0F, 0.0F };
 
 	public GlUnderwaterEffect(GlToolkit arg0, GlWaterRelated arg1) {
 		super(arg0);
@@ -33,13 +28,11 @@ public class GlUnderwaterEffect extends GlEffect {
 		this.field9303.method15334(false);
 	}
 
-	@ObfuscatedName("aet.e()Z")
-	public boolean method1252() {
+    public boolean method1252() {
 		return true;
 	}
 
-	@ObfuscatedName("aet.n(Z)V")
-	public void method1263(boolean arg0) {
+    public void method1263(boolean arg0) {
 		if (this.field1021.field9956 > 0) {
 			float var2 = -0.5F / (float) this.field1021.field9956;
 			this.field1021.method15776(1);
@@ -62,13 +55,11 @@ public class GlUnderwaterEffect extends GlEffect {
 		OpenGL.glMatrixMode(5888);
 	}
 
-	@ObfuscatedName("aet.m(Z)V")
-	public void method1254(boolean arg0) {
+    public void method1254(boolean arg0) {
 		this.field1021.method15810(260, 8448);
 	}
 
-	@ObfuscatedName("aet.k()V")
-	public void method1255() {
+    public void method1255() {
 		this.field9300.method1246('\u0001');
 		if (this.field1021.field9956 > 0) {
 			this.field1021.method15776(1);
@@ -82,8 +73,7 @@ public class GlUnderwaterEffect extends GlEffect {
 		OpenGL.glMatrixMode(5888);
 	}
 
-	@ObfuscatedName("aet.f(II)V")
-	public void method1256(int arg0, int arg1) {
+    public void method1256(int arg0, int arg1) {
 		if ((arg0 & 0x1) == 1) {
 			if (this.field9302.field1040) {
 				this.field1021.method15777(this.field9302.field1042);
@@ -108,12 +98,10 @@ public class GlUnderwaterEffect extends GlEffect {
 		}
 	}
 
-	@ObfuscatedName("aet.w(Lbq;I)V")
-	public void method1251(GlTexture arg0, int arg1) {
+    public void method1251(GlTexture arg0, int arg1) {
 	}
 
-	@ObfuscatedName("aet.b()V")
-	public void method15341() {
+    public void method15341() {
 		this.field9300 = new GlRenderList(this.field1021, 2);
 		this.field9300.method1245(0);
 		this.field1021.method15776(1);

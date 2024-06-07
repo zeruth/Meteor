@@ -8,35 +8,25 @@ import com.jagex.game.config.vartype.VarType;
 import com.jagex.game.config.vartype.constants.VarDomainType;
 import deob.ObfuscatedName;
 
-@ObfuscatedName("kh")
 public class VarBitType implements VarConfigType {
 
-	@ObfuscatedName("kh.e")
-	public int id;
+    public int id;
 
-	@ObfuscatedName("kh.n")
-	public VarBitTypeFactory field3077;
+    public VarBitTypeFactory field3077;
 
-	@ObfuscatedName("kh.m")
-	public VarType baseVar;
+    public VarType baseVar;
 
-	@ObfuscatedName("kh.k")
-	public int startBit;
+    public int startBit;
 
-	@ObfuscatedName("kh.f")
-	public int endBit;
+    public int endBit;
 
-	@ObfuscatedName("kh.w")
-	public String debugName;
+    public String debugName;
 
-	@ObfuscatedName("kh.l")
-	public VarDomainType field3080;
+    public VarDomainType field3080;
 
-	@ObfuscatedName("kh.u")
-	public int field3075 = -1;
+    public int field3075 = -1;
 
-	@ObfuscatedName("kh.z")
-	public static int[] masklookup = new int[32];
+    public static int[] masklookup = new int[32];
 
 	static {
 		int var0 = 2;
@@ -51,13 +41,11 @@ public class VarBitType implements VarConfigType {
 		this.field3077 = arg1;
 	}
 
-	@ObfuscatedName("kh.e(Lalw;B)V")
-	public void decode(Packet buf) {
+    public void decode(Packet buf) {
 		this.decode(buf, false);
 	}
 
-	@ObfuscatedName("kh.u(Lalw;ZI)V")
-	public void decode(Packet arg0, boolean arg1) {
+    public void decode(Packet arg0, boolean arg1) {
 		while (true) {
 			int var3 = arg0.g1();
 			if (var3 == 0) {
@@ -67,12 +55,10 @@ public class VarBitType implements VarConfigType {
 		}
 	}
 
-	@ObfuscatedName("kh.n(I)V")
-	public void postDecode() {
+    public void postDecode() {
 	}
 
-	@ObfuscatedName("kh.z(Lalw;IZI)V")
-	public void method5184(Packet arg0, int arg1, boolean arg2) {
+    public void method5184(Packet arg0, int arg1, boolean arg2) {
 		VarBitTypeEncodingKey var4 = (VarBitTypeEncodingKey) SerializableEnums.decode(VarBitTypeEncodingKey.values(), arg1);
 		switch(var4.index) {
 			case 7:
@@ -99,14 +85,12 @@ public class VarBitType implements VarConfigType {
 		}
 	}
 
-	@ObfuscatedName("kh.p(II)I")
-	public int getVarbitValue(int arg0) {
+    public int getVarbitValue(int arg0) {
 		int var2 = masklookup[this.endBit - this.startBit];
 		return arg0 >> this.startBit & var2;
 	}
 
-	@ObfuscatedName("kh.d(III)I")
-	public int setVarbitValue(int arg0, int arg1) throws VarBitOverflowException {
+    public int setVarbitValue(int arg0, int arg1) throws VarBitOverflowException {
 		int var3 = masklookup[this.endBit - this.startBit];
 		if (arg1 < 0 || arg1 > var3) {
 			throw new VarBitOverflowException(this.debugName == null ? Integer.toString(this.id) : this.debugName, arg1, var3);

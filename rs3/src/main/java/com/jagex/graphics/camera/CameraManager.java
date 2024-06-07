@@ -12,27 +12,21 @@ import com.jagex.math.Vector3;
 import deob.ObfuscatedName;
 import rs2.client.Client;
 
-@ObfuscatedName("a")
 public class CameraManager {
 
-	@ObfuscatedName("a.e")
-	public static boolean field603 = false;
+    public static boolean field603 = false;
 
-	@ObfuscatedName("a.n")
-	public static BasicCamera camera;
+    public static BasicCamera camera;
 
-	@ObfuscatedName("a.m")
-	public static int field605;
+    public static int field605;
 
-	@ObfuscatedName("vx.k")
-	public static int field7284;
+    public static int field7284;
 
 	public CameraManager() throws Throwable {
 		throw new Error();
 	}
 
-	@ObfuscatedName("y.e(Lakt;I)V")
-	public static void method542(CoordFine arg0) {
+    public static void method542(CoordFine arg0) {
 		camera = new BasicCamera(Client.cameraProvider);
 		camera.setControlMode(CameraControlMode.CLIENT);
 		try {
@@ -51,19 +45,16 @@ public class CameraManager {
 		field603 = true;
 	}
 
-	@ObfuscatedName("hd.n(I)V")
-	public static void method3913() {
+    public static void method3913() {
 		camera = null;
 		field603 = false;
 	}
 
-	@ObfuscatedName("ex.m(B)Z")
-	public static boolean method2978() {
+    public static boolean method2978() {
 		return field603;
 	}
 
-	@ObfuscatedName("dg.k(B)V")
-	public static void method2585() {
+    public static void method2585() {
 		PositionPoint var0 = (PositionPoint) camera.getPosition();
 		LookatOrientation var1 = (LookatOrientation) camera.getLookat();
 		Vector3 var2 = var0.method5219();

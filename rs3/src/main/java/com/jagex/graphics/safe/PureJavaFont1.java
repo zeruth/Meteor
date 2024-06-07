@@ -3,17 +3,13 @@ package com.jagex.graphics.safe;
 import com.jagex.graphics.*;
 import deob.ObfuscatedName;
 
-@ObfuscatedName("afh")
 public class PureJavaFont1 extends Font {
 
-	@ObfuscatedName("afh.o")
-	public PureJavaToolkit field10229;
+    public PureJavaToolkit field10229;
 
-	@ObfuscatedName("afh.s")
-	public Sprite[] field10230;
+    public Sprite[] field10230;
 
-	@ObfuscatedName("afh.y")
-	public Sprite[] field10231;
+    public Sprite[] field10231;
 
 	public PureJavaFont1(PureJavaToolkit arg0, FontMetrics arg1, FullSpriteData arg2) {
 		super(arg0, arg1);
@@ -51,8 +47,7 @@ public class PureJavaFont1 extends Font {
 		}
 	}
 
-	@ObfuscatedName("afh.s(CIIIZ)V")
-	public void drawChar(char arg0, int arg1, int arg2, int arg3, boolean arg4) {
+    public void drawChar(char arg0, int arg1, int arg2, int arg3, boolean arg4) {
 		if (this.field10229.colour == null) {
 			return;
 		}
@@ -64,7 +59,6 @@ public class PureJavaFont1 extends Font {
 		}
 	}
 
-	@ObfuscatedName("afh.y(CIIIZLch;II)V")
-	public void drawChar2(char arg0, int arg1, int arg2, int arg3, boolean arg4, SpriteRelated arg5, int arg6, int arg7) {
+    public void drawChar2(char arg0, int arg1, int arg2, int arg3, boolean arg4, SpriteRelated arg5, int arg6, int arg7) {
 	}
 }

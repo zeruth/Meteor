@@ -2,42 +2,31 @@ package com.jagex.game.client;
 
 import deob.ObfuscatedName;
 
-@ObfuscatedName("asj")
 public class NoiseGenerator extends NoiseGeneratorNode {
 
-	@ObfuscatedName("asj.o")
-	public short[] field12437;
+    public short[] field12437;
 
-	@ObfuscatedName("asj.s")
-	public short[] field12432;
+    public short[] field12432;
 
-	@ObfuscatedName("asj.y")
-	public byte[] field12439 = new byte[512];
+    public byte[] field12439 = new byte[512];
 
-	@ObfuscatedName("asj.q")
-	public int field12444 = 0;
+    public int field12444 = 0;
 
-	@ObfuscatedName("asj.x")
-	public int field12441 = 4;
+    public int field12441 = 4;
 
-	@ObfuscatedName("asj.b")
-	public int field12440 = 4;
+    public int field12440 = 4;
 
-	@ObfuscatedName("asj.h")
-	public int field12443 = 4;
+    public int field12443 = 4;
 
-	@ObfuscatedName("asj.a")
-	public int field12445 = 1638;
+    public int field12445 = 1638;
 
-	@ObfuscatedName("asj.g")
-	public boolean field12438 = true;
+    public boolean field12438 = true;
 
 	public NoiseGenerator() {
 		super(0, true);
 	}
 
-	@ObfuscatedName("asj.e(I[II)V")
-	public void method19594(int arg0, int[] arg1) {
+    public void method19594(int arg0, int[] arg1) {
 		int var3 = this.field12440 * NoiseGeneratorRelated.field9128[arg0];
 		if (this.field12443 == 1) {
 			short var4 = this.field12437[0];
@@ -125,8 +114,7 @@ public class NoiseGenerator extends NoiseGeneratorNode {
 		}
 	}
 
-	@ObfuscatedName("asj.n(IIIIIIS)I")
-	public int method19588(int arg0, int arg1, int arg2, int arg3, int arg4, int arg5) {
+    public int method19588(int arg0, int arg1, int arg2, int arg3, int arg4, int arg5) {
 		int var7 = arg0 >> 12;
 		int var8 = var7 + 1;
 		if (var8 >= arg5) {
@@ -171,8 +159,7 @@ public class NoiseGenerator extends NoiseGeneratorNode {
 		return ((var24 - var19) * arg4 >> 12) + var19;
 	}
 
-	@ObfuscatedName("asj.m(I)V")
-	public void method19589() {
+    public void method19589() {
 		this.field12439 = NoiseGeneratorRelated.method15027(this.field12444);
 		this.method19593();
 		for (int var1 = this.field12443 - 1; var1 >= 1; var1--) {
@@ -184,8 +171,7 @@ public class NoiseGenerator extends NoiseGeneratorNode {
 		}
 	}
 
-	@ObfuscatedName("asj.k(I)V")
-	public void method19593() {
+    public void method19593() {
 		if (this.field12445 > 0) {
 			this.field12437 = new short[this.field12443];
 			this.field12432 = new short[this.field12443];
@@ -201,8 +187,7 @@ public class NoiseGenerator extends NoiseGeneratorNode {
 		}
 	}
 
-	@ObfuscatedName("ahx.f(IIIIIFZI)[I")
-	public static int[] method16661(int arg0, int arg1, int arg2, int arg3, int arg4, float arg5, boolean arg6) {
+    public static int[] method16661(int arg0, int arg1, int arg2, int arg3, int arg4, float arg5, boolean arg6) {
 		int[] var7 = new int[arg0];
 		NoiseGenerator var8 = new NoiseGenerator();
 		var8.field12444 = arg1;
@@ -217,8 +202,7 @@ public class NoiseGenerator extends NoiseGeneratorNode {
 		return var7;
 	}
 
-	@ObfuscatedName("aw.w(IIIIIIFZI)[[I")
-	public static int[][] method749(int arg0, int arg1, int arg2, int arg3, int arg4, int arg5, float arg6, boolean arg7) {
+    public static int[][] method749(int arg0, int arg1, int arg2, int arg3, int arg4, int arg5, float arg6, boolean arg7) {
 		int[][] var8 = new int[arg1][arg0];
 		NoiseGenerator var9 = new NoiseGenerator();
 		var9.field12438 = arg7;

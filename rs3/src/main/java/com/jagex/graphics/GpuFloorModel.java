@@ -15,128 +15,87 @@ import deob.ObfuscatedName;
 import java.nio.ByteBuffer;
 import java.util.Iterator;
 
-@ObfuscatedName("aem")
 public class GpuFloorModel extends FloorModel {
 
-	@ObfuscatedName("aem.u")
-	public final GpuToolkit field9516;
+    public final GpuToolkit field9516;
 
-	@ObfuscatedName("aem.z")
-	public int field9488;
+    public int field9488;
 
-	@ObfuscatedName("aem.p")
-	public int field9489;
+    public int field9489;
 
-	@ObfuscatedName("aem.d")
-	public int field9490;
+    public int field9490;
 
-	@ObfuscatedName("aem.c")
-	public final int field9491;
+    public final int field9491;
 
-	@ObfuscatedName("aem.r")
-	public int field9492;
+    public int field9492;
 
-	@ObfuscatedName("aem.v")
-	public int field9517;
+    public int field9517;
 
-	@ObfuscatedName("aem.o")
-	public short[][] field9494;
+    public short[][] field9494;
 
-	@ObfuscatedName("aem.s")
-	public float field9495 = Float.MAX_VALUE;
+    public float field9495 = Float.MAX_VALUE;
 
-	@ObfuscatedName("aem.y")
-	public float field9512 = -3.4028235E38F;
+    public float field9512 = -3.4028235E38F;
 
-	@ObfuscatedName("aem.q")
-	public GpuFloorModelRelated1[][][] field9507;
+    public GpuFloorModelRelated1[][][] field9507;
 
-	@ObfuscatedName("aem.x")
-	public int[][][] field9510;
+    public int[][][] field9510;
 
-	@ObfuscatedName("aem.b")
-	public int[][][] field9499;
+    public int[][][] field9499;
 
-	@ObfuscatedName("aem.h")
-	public int[][][] field9506;
+    public int[][][] field9506;
 
-	@ObfuscatedName("aem.a")
-	public int[][][] field9501;
+    public int[][][] field9501;
 
-	@ObfuscatedName("aem.g")
-	public int[][][] field9502;
+    public int[][][] field9502;
 
-	@ObfuscatedName("aem.i")
-	public int[][][] field9503;
+    public int[][][] field9503;
 
-	@ObfuscatedName("aem.j")
-	public byte[][] field9504;
+    public byte[][] field9504;
 
-	@ObfuscatedName("aem.t")
-	public FloorHardShadows field9505;
+    public FloorHardShadows field9505;
 
-	@ObfuscatedName("aem.ae")
-	public LinkList field9485 = new LinkList();
+    public LinkList field9485 = new LinkList();
 
-	@ObfuscatedName("aem.ag")
-	public Node[] field9496;
+    public Node[] field9496;
 
-	@ObfuscatedName("aem.ah")
-	public VertexBuffer field9508;
+    public VertexBuffer field9508;
 
-	@ObfuscatedName("aem.al")
-	public VertexBuffer field9509;
+    public VertexBuffer field9509;
 
-	@ObfuscatedName("aem.ac")
-	public VertexDeclaration field9493;
+    public VertexDeclaration field9493;
 
-	@ObfuscatedName("aem.ai")
-	public int field9511;
+    public int field9511;
 
-	@ObfuscatedName("aem.aw")
-	public int field9498;
+    public int field9498;
 
-	@ObfuscatedName("aem.as")
-	public byte[][] field9514;
+    public byte[][] field9514;
 
-	@ObfuscatedName("aem.at")
-	public float[][] field9486;
+    public float[][] field9486;
 
-	@ObfuscatedName("aem.ad")
-	public float[][] field9515;
+    public float[][] field9515;
 
-	@ObfuscatedName("aem.am")
-	public float[][] field9487;
+    public float[][] field9487;
 
-	@ObfuscatedName("aem.au")
-	public HashTable field9513;
+    public HashTable field9513;
 
-	@ObfuscatedName("aem.ar")
-	public Node[] field9497;
+    public Node[] field9497;
 
-	@ObfuscatedName("aem.ap")
-	public int field9519;
+    public int field9519;
 
-	@ObfuscatedName("aem.aq")
-	public ByteBuffer field9520;
+    public ByteBuffer field9520;
 
-	@ObfuscatedName("aem.ax")
-	public ByteBuffer field9521;
+    public ByteBuffer field9521;
 
-	@ObfuscatedName("aem.av")
-	public int field9522;
+    public int field9522;
 
-	@ObfuscatedName("aem.ao")
-	public int[] field9523 = new int[1];
+    public int[] field9523 = new int[1];
 
-	@ObfuscatedName("aem.aj")
-	public int[] field9524 = new int[1];
+    public int[] field9524 = new int[1];
 
-	@ObfuscatedName("aem.ay")
-	public int field9525;
+    public int field9525;
 
-	@ObfuscatedName("aem.ab")
-	public int[] field9526 = new int[1];
+    public int[] field9526 = new int[1];
 
 	public GpuFloorModel(GpuToolkit arg0, int arg1, int arg2, int arg3, int arg4, int[][] arg5, int[][] arg6, int arg7) {
 		super(arg3, arg4, arg7, arg5);
@@ -184,8 +143,7 @@ public class GpuFloorModel extends FloorModel {
 		}
 	}
 
-	@ObfuscatedName("aem.e(III)V")
-	public void setLevelShadeMap(int arg0, int arg1, int arg2) {
+    public void setLevelShadeMap(int arg0, int arg1, int arg2) {
 		int var4 = Math.min(this.field9514.length - 1, Math.max(0, arg0));
 		int var5 = Math.min(this.field9514[var4].length - 1, Math.max(0, arg1));
 		if ((this.field9514[var4][var5] & 0xFF) < arg2) {
@@ -193,8 +151,7 @@ public class GpuFloorModel extends FloorModel {
 		}
 	}
 
-	@ObfuscatedName("aem.n(II[I[I[I[I[I[I[I[ILdy;Z)V")
-	public void method1557(int arg0, int arg1, int[] arg2, int[] arg3, int[] arg4, int[] arg5, int[] arg6, int[] arg7, int[] arg8, int[] arg9, WaterFogData arg10, boolean arg11) {
+    public void method1557(int arg0, int arg1, int[] arg2, int[] arg3, int[] arg4, int[] arg5, int[] arg6, int[] arg7, int[] arg8, int[] arg9, WaterFogData arg10, boolean arg11) {
 		MaterialList var13 = this.field9516.materialList;
 		if (arg5 != null && this.field9503 == null) {
 			this.field9503 = new int[this.field1235][this.field1234][];
@@ -244,8 +201,7 @@ public class GpuFloorModel extends FloorModel {
 		this.field9511 += arg6.length;
 	}
 
-	@ObfuscatedName("aem.m(II[I[I[I[I[I[I[I[I[I[I[ILdy;Z)V")
-	public void addTileUnblended(int arg0, int arg1, int[] arg2, int[] arg3, int[] arg4, int[] arg5, int[] arg6, int[] arg7, int[] arg8, int[] arg9, int[] arg10, int[] arg11, int[] arg12, WaterFogData arg13, boolean arg14) {
+    public void addTileUnblended(int arg0, int arg1, int[] arg2, int[] arg3, int[] arg4, int[] arg5, int[] arg6, int[] arg7, int[] arg8, int[] arg9, int[] arg10, int[] arg11, int[] arg12, WaterFogData arg13, boolean arg14) {
 		int var16 = arg9.length;
 		int[] var17 = new int[var16 * 3];
 		int[] var18 = new int[var16 * 3];
@@ -303,8 +259,7 @@ public class GpuFloorModel extends FloorModel {
 		this.method1557(arg0, arg1, var17, var23, var18, var24, var19, var20, var21, var22, arg13, arg14);
 	}
 
-	@ObfuscatedName("aem.k()V")
-	public void method1555() {
+    public void method1555() {
 		if (this.field9511 <= 0) {
 			this.field9505 = null;
 			this.method15414();
@@ -413,8 +368,7 @@ public class GpuFloorModel extends FloorModel {
 		this.method15413();
 	}
 
-	@ObfuscatedName("aem.av()V")
-	public void method15413() {
+    public void method15413() {
 		this.field9509 = this.field9516.createVertexBuffer(false);
 		this.field9509.allocate(this.field9492 * 4, 4);
 		this.field9509.upload(0, this.field9492 * 4, this.field9516.method15963(this.field9520));
@@ -446,8 +400,7 @@ public class GpuFloorModel extends FloorModel {
 		this.method15414();
 	}
 
-	@ObfuscatedName("aem.ao()V")
-	public void method15414() {
+    public void method15414() {
 		if ((this.field9490 & 0x2) == 0) {
 			this.field9501 = null;
 			this.field9506 = null;
@@ -465,8 +418,7 @@ public class GpuFloorModel extends FloorModel {
 		this.field9486 = null;
 	}
 
-	@ObfuscatedName("aem.aj(II[[B[Lakh;Laan;[Lakh;)V")
-	public void method15415(int arg0, int arg1, byte[][] arg2, GpuFloorModelRelated1[] arg3, HashTable arg4, GpuFloorModelRelated1[] arg5) {
+    public void method15415(int arg0, int arg1, byte[][] arg2, GpuFloorModelRelated1[] arg3, HashTable arg4, GpuFloorModelRelated1[] arg5) {
 		if (this.field9510[arg0][arg1] == null) {
 			return;
 		}
@@ -658,8 +610,7 @@ public class GpuFloorModel extends FloorModel {
 		}
 	}
 
-	@ObfuscatedName("aem.f(III[[ZZI)V")
-	public void method1548(int arg0, int arg1, int arg2, boolean[][] arg3, boolean arg4, int arg5) {
+    public void method1548(int arg0, int arg1, int arg2, boolean[][] arg3, boolean arg4, int arg5) {
 		if (this.field9496 == null) {
 			return;
 		}
@@ -871,8 +822,7 @@ public class GpuFloorModel extends FloorModel {
 		this.field9505.method5670(var22, arg0, arg1, arg2, arg3, arg4);
 	}
 
-	@ObfuscatedName("aem.w(IIIIIII[[Z)V")
-	public void method1526(int arg0, int arg1, int arg2, int arg3, int arg4, int arg5, int arg6, boolean[][] arg7) {
+    public void method1526(int arg0, int arg1, int arg2, int arg3, int arg4, int arg5, int arg6, boolean[][] arg7) {
 		if (this.field9511 <= 0) {
 			return;
 		}
@@ -947,8 +897,7 @@ public class GpuFloorModel extends FloorModel {
 		}
 	}
 
-	@ObfuscatedName("aem.d(IILara;)Lara;")
-	public HardShadow method1531(int arg0, int arg1, HardShadow arg2) {
+    public HardShadow method1531(int arg0, int arg1, HardShadow arg2) {
 		if ((this.field9504[arg0][arg1] & 0x1) == 0) {
 			return null;
 		}
@@ -966,8 +915,7 @@ public class GpuFloorModel extends FloorModel {
 		return var6;
 	}
 
-	@ObfuscatedName("aem.ay(Lati;II)V")
-	public void method15416(GpuHardShadow arg0, int arg1, int arg2) {
+    public void method15416(GpuHardShadow arg0, int arg1, int arg2) {
 		int[] var4 = this.field9506[arg1][arg2];
 		int[] var5 = this.field9501[arg1][arg2];
 		int var6 = var4.length;
@@ -993,8 +941,7 @@ public class GpuFloorModel extends FloorModel {
 		}
 	}
 
-	@ObfuscatedName("aem.v(Lara;IIIIZ)Z")
-	public boolean method1535(HardShadow arg0, int arg1, int arg2, int arg3, int arg4, boolean arg5) {
+    public boolean method1535(HardShadow arg0, int arg1, int arg2, int arg3, int arg4, boolean arg5) {
 		if (this.field9505 == null || arg0 == null) {
 			return false;
 		} else {
@@ -1004,8 +951,7 @@ public class GpuFloorModel extends FloorModel {
 		}
 	}
 
-	@ObfuscatedName("aem.c(Lara;IIIIZ)V")
-	public void method1532(HardShadow arg0, int arg1, int arg2, int arg3, int arg4, boolean arg5) {
+    public void method1532(HardShadow arg0, int arg1, int arg2, int arg3, int arg4, boolean arg5) {
 		if (this.field9505 != null && arg0 != null) {
 			int var7 = arg1 - (this.field9516.field10130 * arg2 >> 8) >> this.field9516.field10129;
 			int var8 = arg3 - (this.field9516.field10131 * arg2 >> 8) >> this.field9516.field10129;
@@ -1013,8 +959,7 @@ public class GpuFloorModel extends FloorModel {
 		}
 	}
 
-	@ObfuscatedName("aem.r(Lara;IIIIZ)V")
-	public void method1543(HardShadow arg0, int arg1, int arg2, int arg3, int arg4, boolean arg5) {
+    public void method1543(HardShadow arg0, int arg1, int arg2, int arg3, int arg4, boolean arg5) {
 		if (this.field9505 != null && arg0 != null) {
 			int var7 = arg1 - (this.field9516.field10130 * arg2 >> 8) >> this.field9516.field10129;
 			int var8 = arg3 - (this.field9516.field10131 * arg2 >> 8) >> this.field9516.field10129;
@@ -1022,8 +967,7 @@ public class GpuFloorModel extends FloorModel {
 		}
 	}
 
-	@ObfuscatedName("aem.o(Lakf;[I)V")
-	public void method1549(Light arg0, int[] arg1) {
+    public void method1549(Light arg0, int[] arg1) {
 		this.field9485.addTail(new GpuFloorModelRelated(this.field9516, this, arg0, arg1));
 	}
 }

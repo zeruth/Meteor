@@ -14,92 +14,63 @@ import deob.ObfuscatedName;
 import rs2.client.Client;
 import rs2.client.scene.entities.NpcEntity;
 
-@ObfuscatedName("akc")
 public class PositionedSound extends Node {
 
-	@ObfuscatedName("akc.f")
-	public static LinkList field11346 = new LinkList();
+    public static LinkList field11346 = new LinkList();
 
-	@ObfuscatedName("akc.w")
-	public static LinkList field11347 = new LinkList();
+    public static LinkList field11347 = new LinkList();
 
-	@ObfuscatedName("akc.l")
-	public static HashTable field11366 = new HashTable(16);
+    public static HashTable field11366 = new HashTable(16);
 
-	@ObfuscatedName("akc.u")
-	public int level;
+    public int level;
 
-	@ObfuscatedName("akc.z")
-	public int maxX;
+    public int maxX;
 
-	@ObfuscatedName("akc.p")
-	public int minX;
+    public int minX;
 
-	@ObfuscatedName("akc.d")
-	public int minZ;
+    public int minZ;
 
-	@ObfuscatedName("akc.c")
-	public int maxZ;
+    public int maxZ;
 
-	@ObfuscatedName("akc.r")
-	public Vector3 field11350 = new Vector3(0.0F, 0.0F, 0.0F);
+    public Vector3 field11350 = new Vector3(0.0F, 0.0F, 0.0F);
 
-	@ObfuscatedName("akc.v")
-	public Vector3 field11355 = new Vector3(0.0F, 0.0F, 0.0F);
+    public Vector3 field11355 = new Vector3(0.0F, 0.0F, 0.0F);
 
-	@ObfuscatedName("akc.o")
-	public int size;
+    public int size;
 
-	@ObfuscatedName("akc.s")
-	public int range;
+    public int range;
 
-	@ObfuscatedName("akc.y")
-	public int volume;
+    public int volume;
 
-	@ObfuscatedName("akc.q")
-	public LocType loc;
+    public LocType loc;
 
-	@ObfuscatedName("akc.x")
-	public NpcEntity npc;
+    public NpcEntity npc;
 
-	@ObfuscatedName("akc.b")
-	public PlayerEntity player;
+    public PlayerEntity player;
 
-	@ObfuscatedName("akc.j")
-	public int field11360 = 0;
+    public int field11360 = 0;
 
-	@ObfuscatedName("akc.t")
-	public boolean multisound;
+    public boolean multisound;
 
-	@ObfuscatedName("akc.ae")
-	public int minrate;
+    public int minrate;
 
-	@ObfuscatedName("akc.ag")
-	public int maxrate;
+    public int maxrate;
 
-	@ObfuscatedName("akc.ah")
-	public int sound;
+    public int sound;
 
-	@ObfuscatedName("akc.al")
-	public Sound field11371;
+    public Sound field11371;
 
-	@ObfuscatedName("akc.ac")
-	public Sound field11372;
+    public Sound field11372;
 
-	@ObfuscatedName("akc.ai")
-	public int mindelay;
+    public int mindelay;
 
-	@ObfuscatedName("akc.aw")
-	public int maxdelay;
+    public int maxdelay;
 
-	@ObfuscatedName("akc.as")
-	public int[] random;
+    public int[] random;
 
-	@ObfuscatedName("akc.at")
-	public int delay;
+    public int delay;
 
-	@ObfuscatedName("zj.e(ZB)V")
-	public static void method13908(boolean arg0) {
+    public static void method13908(boolean arg0) {
 		for (PositionedSound var1 = (PositionedSound) field11346.head(); var1 != null; var1 = (PositionedSound) field11346.next()) {
 			if (var1.field11371 != null) {
 				var1.field11371.method7380(150);
@@ -134,8 +105,7 @@ public class PositionedSound extends Node {
 		}
 	}
 
-	@ObfuscatedName("ada.n(I)V")
-	public static void method15185() {
+    public static void method15185() {
 		for (PositionedSound var0 = (PositionedSound) field11346.head(); var0 != null; var0 = (PositionedSound) field11346.next()) {
 			if (var0.multisound) {
 				var0.method17660();
@@ -148,8 +118,7 @@ public class PositionedSound extends Node {
 		}
 	}
 
-	@ObfuscatedName("akc.m(B)V")
-	public void method17660() {
+    public void method17660() {
 		int var1 = this.sound;
 		if (this.loc != null) {
 			LocType var2 = this.loc.getMultiLoc(Client.localPlayerGameState, Client.sceneState == 0 ? CutsceneManager.field1723 : Client.localPlayerGameState);
@@ -210,8 +179,7 @@ public class PositionedSound extends Node {
 		}
 	}
 
-	@ObfuscatedName("wp.k(IIIILvd;Laqc;Laqk;I)V")
-	public static void method9739(int level, int x, int z, int arg3, LocType loc, NpcEntity npc, PlayerEntity player) {
+    public static void method9739(int level, int x, int z, int arg3, LocType loc, NpcEntity npc, PlayerEntity player) {
 		PositionedSound sound = new PositionedSound();
 		sound.level = level;
 		sound.minX = x << 9;
@@ -285,8 +253,7 @@ public class PositionedSound extends Node {
 		}
 	}
 
-	@ObfuscatedName("oi.f(IIILvd;B)V")
-	public static void method6206(int arg0, int arg1, int arg2, LocType arg3) {
+    public static void method6206(int arg0, int arg1, int arg2, LocType arg3) {
 		for (PositionedSound var4 = (PositionedSound) field11346.head(); var4 != null; var4 = (PositionedSound) field11346.next()) {
 			if (var4.level == arg0 && arg1 << 9 == var4.minX && arg2 << 9 == var4.minZ && var4.loc.id == arg3.id) {
 				if (var4.field11371 != null) {
@@ -300,8 +267,7 @@ public class PositionedSound extends Node {
 		}
 	}
 
-	@ObfuscatedName("xn.w(Laqc;I)V")
-	public static void method10111(NpcEntity arg0) {
+    public static void method10111(NpcEntity arg0) {
 		for (PositionedSound var1 = (PositionedSound) field11347.head(); var1 != null; var1 = (PositionedSound) field11347.next()) {
 			if (var1.npc == arg0) {
 				if (var1.field11371 != null) {
@@ -315,8 +281,7 @@ public class PositionedSound extends Node {
 		}
 	}
 
-	@ObfuscatedName("kg.l(Laqk;I)V")
-	public static void method5142(PlayerEntity arg0) {
+    public static void method5142(PlayerEntity arg0) {
 		PositionedSound var1 = (PositionedSound) field11366.get((long) arg0.localPlayerIndex);
 		if (var1 == null) {
 			return;
@@ -329,8 +294,7 @@ public class PositionedSound extends Node {
 		var1.unlink();
 	}
 
-	@ObfuscatedName("xj.u(Laqk;I)V")
-	public static void method10310(PlayerEntity arg0) {
+    public static void method10310(PlayerEntity arg0) {
 		PositionedSound var1 = (PositionedSound) field11366.get((long) arg0.localPlayerIndex);
 		if (var1 == null) {
 			method9739(arg0.level, arg0.routeWaypointX[0], arg0.routeWaypointZ[0], 0, null, null, arg0);
@@ -339,8 +303,7 @@ public class PositionedSound extends Node {
 		}
 	}
 
-	@ObfuscatedName("t.z(Laqc;I)I")
-	public static int getNpcSound(NpcEntity npc) {
+    public static int getNpcSound(NpcEntity npc) {
 		NPCType npcType = npc.npcType;
 		if (npcType.multinpc != null) {
 			npcType = npcType.getMultiNPC(Client.localPlayerGameState, Client.localPlayerGameState);
@@ -361,8 +324,7 @@ public class PositionedSound extends Node {
 		return sound;
 	}
 
-	@ObfuscatedName("ags.p(Laqk;I)I")
-	public static int getPlayerSound(PlayerEntity player) {
+    public static int getPlayerSound(PlayerEntity player) {
 		int sound = player.bgsound_walk_player;
 		BASType bas = player.getBASType();
 		int var3 = player.field10432.getSeqTypeId();
@@ -376,8 +338,7 @@ public class PositionedSound extends Node {
 		return sound;
 	}
 
-	@ObfuscatedName("agz.d(IIIII)V")
-	public static void method16460(int arg0, int arg1, int arg2, int arg3) {
+    public static void method16460(int arg0, int arg1, int arg2, int arg3) {
 		for (PositionedSound var4 = (PositionedSound) field11346.head(); var4 != null; var4 = (PositionedSound) field11346.next()) {
 			method7896(var4, arg0, arg1, arg2, arg3);
 		}
@@ -478,8 +439,7 @@ public class PositionedSound extends Node {
 		}
 	}
 
-	@ObfuscatedName("rd.c(Lakc;IIIII)V")
-	public static void method7896(PositionedSound arg0, int arg1, int arg2, int arg3, int arg4) {
+    public static void method7896(PositionedSound arg0, int arg1, int arg2, int arg3, int arg4) {
 		if (arg0.sound == -1 && arg0.random == null) {
 			return;
 		}

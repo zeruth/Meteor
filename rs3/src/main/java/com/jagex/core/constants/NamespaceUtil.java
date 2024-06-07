@@ -3,21 +3,17 @@ package com.jagex.core.constants;
 import com.jagex.core.utils.StringTools;
 import deob.ObfuscatedName;
 
-@ObfuscatedName("adz")
 public class NamespaceUtil {
 
-	@ObfuscatedName("adz.m")
-	public static final char[] VALID_CHARS_1 = new char[] { ' ', ' ', '_', '-', 'à', 'á', 'â', 'ä', 'ã', 'À', 'Á', 'Â', 'Ä', 'Ã', 'è', 'é', 'ê', 'ë', 'È', 'É', 'Ê', 'Ë', 'í', 'î', 'ï', 'Í', 'Î', 'Ï', 'ò', 'ó', 'ô', 'ö', 'õ', 'Ò', 'Ó', 'Ô', 'Ö', 'Õ', 'ù', 'ú', 'û', 'ü', 'Ù', 'Ú', 'Û', 'Ü', 'ç', 'Ç', 'ÿ', 'Ÿ', 'ñ', 'Ñ', 'ß' };
+    public static final char[] VALID_CHARS_1 = new char[] { ' ', ' ', '_', '-', 'à', 'á', 'â', 'ä', 'ã', 'À', 'Á', 'Â', 'Ä', 'Ã', 'è', 'é', 'ê', 'ë', 'È', 'É', 'Ê', 'Ë', 'í', 'î', 'ï', 'Í', 'Î', 'Ï', 'ò', 'ó', 'ô', 'ö', 'õ', 'Ò', 'Ó', 'Ô', 'Ö', 'Õ', 'ù', 'ú', 'û', 'ü', 'Ù', 'Ú', 'Û', 'Ü', 'ç', 'Ç', 'ÿ', 'Ÿ', 'ñ', 'Ñ', 'ß' };
 
-	@ObfuscatedName("adz.k")
-	public static final char[] VALID_CHARS_2 = new char[] { '[', ']', '#' };
+    public static final char[] VALID_CHARS_2 = new char[] { '[', ']', '#' };
 
 	public NamespaceUtil() throws Throwable {
 		throw new Error();
 	}
 
-	@ObfuscatedName("uj.e(Ladi;B)I")
-	public static final int method9127(Namespace arg0) {
+    public static final int method9127(Namespace arg0) {
 		if (arg0 == null) {
 			return 12;
 		} else {
@@ -30,8 +26,7 @@ public class NamespaceUtil {
 		}
 	}
 
-	@ObfuscatedName("ym.n(CB)Z")
-	public static final boolean method13783(char arg0) {
+    public static final boolean method13783(char arg0) {
 		if (Character.isISOControl(arg0)) {
 			return false;
 		} else if (StringTools.charIsAlphaNumeric(arg0)) {
@@ -55,13 +50,11 @@ public class NamespaceUtil {
 		}
 	}
 
-	@ObfuscatedName("tl.m(CI)Z")
-	public static final boolean method8894(char arg0) {
+    public static final boolean method8894(char arg0) {
 		return arg0 == 160 || arg0 == ' ' || arg0 == '_' || arg0 == '-';
 	}
 
-	@ObfuscatedName("adh.k(Ljava/lang/CharSequence;Ladi;B)Ljava/lang/String;")
-	public static String normalize(CharSequence arg0, Namespace arg1) {
+    public static String normalize(CharSequence arg0, Namespace arg1) {
 		if (arg0 == null) {
 			return null;
 		}
@@ -94,8 +87,7 @@ public class NamespaceUtil {
 		}
 	}
 
-	@ObfuscatedName("sg.f(CI)C")
-	public static char normalize(char arg0) {
+    public static char normalize(char arg0) {
 		switch(arg0) {
 			case ' ':
 			case '-':

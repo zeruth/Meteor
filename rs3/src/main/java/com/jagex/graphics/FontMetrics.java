@@ -8,67 +8,48 @@ import deob.ObfuscatedName;
 
 import java.awt.*;
 
-@ObfuscatedName("aac")
 public class FontMetrics {
 
-	@ObfuscatedName("aac.e")
-	public byte[] field8564;
+    public byte[] field8564;
 
-	@ObfuscatedName("aac.n")
-	public byte[] field8574;
+    public byte[] field8574;
 
-	@ObfuscatedName("aac.m")
-	public byte[][] field8563;
+    public byte[][] field8563;
 
-	@ObfuscatedName("aac.k")
-	public byte[] field8565;
+    public byte[] field8565;
 
-	@ObfuscatedName("aac.f")
-	public int field8566;
+    public int field8566;
 
-	@ObfuscatedName("aac.w")
-	public int field8562;
+    public int field8562;
 
-	@ObfuscatedName("aac.l")
-	public int field8569;
+    public int field8569;
 
-	@ObfuscatedName("aac.u")
-	public int field8568;
+    public int field8568;
 
-	@ObfuscatedName("aac.z")
-	public int field8567;
+    public int field8567;
 
-	@ObfuscatedName("aac.p")
-	public int field8570;
+    public int field8570;
 
-	@ObfuscatedName("aac.d")
-	public int field8571;
+    public int field8571;
 
-	@ObfuscatedName("aac.c")
-	public int field8572;
+    public int field8572;
 
-	@ObfuscatedName("aac.r")
-	public short[][] field8573;
+    public short[][] field8573;
 
-	@ObfuscatedName("aac.v")
-	public static String[] stringBuilder = new String[100];
+    public static String[] stringBuilder = new String[100];
 
-	@ObfuscatedName("aac.o")
-	public final FontIconProvider fontIconProvider;
+    public final FontIconProvider fontIconProvider;
 
-	@ObfuscatedName("cz.e(Lpy;III)Laac;")
-	public static FontMetrics createFontMetrics(Js5 fontmetricsJs5, int fontId, int arg2) {
+    public static FontMetrics createFontMetrics(Js5 fontmetricsJs5, int fontId, int arg2) {
 		return createFontMetrics(fontmetricsJs5, fontId, arg2, null);
 	}
 
-	@ObfuscatedName("nr.n(Lpy;IILaaw;I)Laac;")
-	public static FontMetrics createFontMetrics(Js5 fontmetricsJs5, int fontId, int arg2, FontIconProvider fontIconProvider) {
+    public static FontMetrics createFontMetrics(Js5 fontmetricsJs5, int fontId, int arg2, FontIconProvider fontIconProvider) {
 		byte[] bytes = fontmetricsJs5.getfile(fontId, arg2);
 		return bytes == null ? null : new FontMetrics(bytes, fontIconProvider);
 	}
 
-	@ObfuscatedName("yr.m(Lpy;ILaaw;I)Laac;")
-	public static FontMetrics createFontMetrics(Js5 fontmetricsJs5, int fontId, FontIconProvider fontIconProvider) {
+    public static FontMetrics createFontMetrics(Js5 fontmetricsJs5, int fontId, FontIconProvider fontIconProvider) {
 		byte[] var3 = fontmetricsJs5.fetchFile(fontId);
 		return var3 == null ? null : new FontMetrics(var3, fontIconProvider);
 	}
@@ -159,8 +140,7 @@ public class FontMetrics {
 		}
 	}
 
-	@ObfuscatedName("wx.k([[B[[B[B[B[BIIB)I")
-	public static int method9852(byte[][] arg0, byte[][] arg1, byte[] arg2, byte[] arg3, byte[] arg4, int arg5, int arg6) {
+    public static int method9852(byte[][] arg0, byte[][] arg1, byte[] arg2, byte[] arg3, byte[] arg4, int arg5, int arg6) {
 		byte var7 = arg2[arg5];
 		int var8 = arg4[arg5] + var7;
 		byte var9 = arg2[arg6];
@@ -190,38 +170,31 @@ public class FontMetrics {
 		return -var13;
 	}
 
-	@ObfuscatedName("aac.f(ICB)I")
-	public int method14537(int arg0, char arg1) {
+    public int method14537(int arg0, char arg1) {
 		return this.field8563 == null ? 0 : this.field8563[arg0][arg1];
 	}
 
-	@ObfuscatedName("aac.w(IB)I")
-	public int method14558(int arg0) {
+    public int method14558(int arg0) {
 		return this.field8574[arg0] & 0xFF;
 	}
 
-	@ObfuscatedName("aac.l(II)I")
-	public int method14529(int arg0) {
+    public int method14529(int arg0) {
 		return this.field8564[arg0] & 0xFF;
 	}
 
-	@ObfuscatedName("aac.u(IB)I")
-	public int method14560(int arg0) {
+    public int method14560(int arg0) {
 		return this.field8565[arg0] & 0xFF;
 	}
 
-	@ObfuscatedName("aac.z(II)[S")
-	public short[] method14561(int arg0) {
+    public short[] method14561(int arg0) {
 		return this.field8573[arg0];
 	}
 
-	@ObfuscatedName("aac.p(Ljava/lang/String;I)I")
-	public int stringWidth(String str) {
+    public int stringWidth(String str) {
 		return this.stringWidth(str, null);
 	}
 
-	@ObfuscatedName("aac.d(Ljava/lang/String;[Laay;B)I")
-	public int stringWidth(String str, FontGlyph[] glyphs) {
+    public int stringWidth(String str, FontGlyph[] glyphs) {
 		if (str == null) {
 			return 0;
 		}
@@ -294,8 +267,7 @@ public class FontMetrics {
 		return width;
 	}
 
-	@ObfuscatedName("aac.c(Ljava/lang/String;I[Laay;I)Ljava/lang/String;")
-	public String truncString(String str, int width, FontGlyph[] glyphs) {
+    public String truncString(String str, int width, FontGlyph[] glyphs) {
 		if (this.stringWidth(str, glyphs) <= width) {
 			return str;
 		}
@@ -386,13 +358,11 @@ public class FontMetrics {
 		return str;
 	}
 
-	@ObfuscatedName("aac.r(Ljava/lang/String;[I[Ljava/lang/String;[Laay;B)I")
-	public int splitInit(String str, int[] widths, String[] lines, FontGlyph[] glyphs) {
+    public int splitInit(String str, int[] widths, String[] lines, FontGlyph[] glyphs) {
 		return this.splitInit(str, widths, lines, glyphs, true);
 	}
 
-	@ObfuscatedName("aac.v(Ljava/lang/String;[I[Ljava/lang/String;[Laay;ZI)I")
-	public int splitInit(String str, int[] widths, String[] lines, FontGlyph[] glyphs, boolean arg4) {
+    public int splitInit(String str, int[] widths, String[] lines, FontGlyph[] glyphs, boolean arg4) {
 		if (str == null) {
 			return 0;
 		}
@@ -558,8 +528,7 @@ public class FontMetrics {
 		return linecount;
 	}
 
-	@ObfuscatedName("aac.o(Ljava/lang/String;I[Laay;I)I")
-	public int parawidth(String str, int width, FontGlyph[] glyphs) {
+    public int parawidth(String str, int width, FontGlyph[] glyphs) {
 		int lineCount = this.splitInit(str, new int[] { width }, stringBuilder, glyphs);
 		int parawidth = 0;
 		for (int index = 0; index < lineCount; index++) {
@@ -571,19 +540,16 @@ public class FontMetrics {
 		return parawidth;
 	}
 
-	@ObfuscatedName("aac.s(Ljava/lang/String;I[Laay;I)I")
-	public int paraheight(String str, int width, FontGlyph[] glyphs) {
+    public int paraheight(String str, int width, FontGlyph[] glyphs) {
 		return this.splitInit(str, new int[] { width }, stringBuilder, glyphs);
 	}
 
-	@ObfuscatedName("aac.y(Ljava/lang/String;I[Laay;IB)Ljava/lang/String;")
-	public String paraline(String str, int width, FontGlyph[] glyphs, int pos) {
+    public String paraline(String str, int width, FontGlyph[] glyphs, int pos) {
 		int lineCount = this.splitInit(str, new int[] { width }, stringBuilder, glyphs);
 		return pos >= 0 && pos < lineCount ? stringBuilder[pos] : null;
 	}
 
-	@ObfuscatedName("aac.q(Ljava/lang/String;II[Laay;B)I")
-	public int paraheight(String str, int width, int height, FontGlyph[] glyphs) {
+    public int paraheight(String str, int width, int height, FontGlyph[] glyphs) {
 		if (height == 0) {
 			height = this.field8566;
 		}
@@ -592,8 +558,7 @@ public class FontMetrics {
 		return this.field8569 + this.field8562 + lineHeight;
 	}
 
-	@ObfuscatedName("aac.x(Ljava/lang/String;III[Laay;I)Ljava/awt/Point;")
-	public Point getCharPosAtIndex(String str, int width, int height, int index, FontGlyph[] glyphs) {
+    public Point getCharPosAtIndex(String str, int width, int height, int index, FontGlyph[] glyphs) {
 		if (index <= 0) {
 			return new Point(0, this.field8562 + height);
 		}
@@ -623,8 +588,7 @@ public class FontMetrics {
 		return null;
 	}
 
-	@ObfuscatedName("aac.b(Ljava/lang/String;IIII[Laay;I)I")
-	public int getCharIndexAtPos(String str, int width, int height, int arg3, int pos, FontGlyph[] arg5) {
+    public int getCharIndexAtPos(String str, int width, int height, int arg3, int pos, FontGlyph[] arg5) {
 		if (height == 0) {
 			height = this.field8566;
 		}

@@ -40,12 +40,10 @@ public class TwitchEventLiveStreams extends TwitchEvent {
 		this.viewerCounts[arg0] = arg5;
 	}
 
-	@ObfuscatedName("com/jagex/twitchtv/TwitchEventLiveStreams.n()Lud;")
-	public TwitchEventSubject method11() {
+    public TwitchEventSubject method11() {
 		return null;
 	}
 
-	@ObfuscatedName("com/jagex/twitchtv/TwitchEventLiveStreams.e([I[J[Ljava/lang/Object;)V")
-	public void method12(int[] arg0, long[] arg1, Object[] arg2) {
+    public void method12(int[] arg0, long[] arg1, Object[] arg2) {
 	}
 }

@@ -4,7 +4,6 @@ import com.jagex.core.constants.ModeGame;
 import com.jagex.game.clientoptions.ClientOptions;
 import deob.ObfuscatedName;
 
-@ObfuscatedName("anm")
 public class PreferencesIdleAnimations extends Preference {
 
 	public PreferencesIdleAnimations(ClientOptions options) {
@@ -15,8 +14,7 @@ public class PreferencesIdleAnimations extends Preference {
 		super(value, options);
 	}
 
-	@ObfuscatedName("anm.o(I)V")
-	public void clampValue() {
+    public void clampValue() {
 		if (this.options.modeGame() == ModeGame.STELLARDAWN) {
 			this.currentValue = 2;
 		}
@@ -25,23 +23,19 @@ public class PreferencesIdleAnimations extends Preference {
 		}
 	}
 
-	@ObfuscatedName("anm.e(B)I")
-	public int defaultValue() {
+    public int defaultValue() {
 		return 1;
 	}
 
-	@ObfuscatedName("anm.n(II)I")
-	public int canSetValue(int value) {
+    public int canSetValue(int value) {
 		return 1;
 	}
 
-	@ObfuscatedName("anm.k(II)V")
-	public void setValue(int value) {
+    public void setValue(int value) {
 		this.currentValue = value;
 	}
 
-	@ObfuscatedName("anm.s(B)I")
-	public int getValue() {
+    public int getValue() {
 		return this.currentValue;
 	}
 }

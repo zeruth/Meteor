@@ -17,48 +17,35 @@ import deob.ObfuscatedName;
 import rs2.client.Client;
 import rs2.client.logic.chat.ChatHistory;
 
-@ObfuscatedName("aw")
 public class ReceivePlayerPositions {
 
-	@ObfuscatedName("aw.m")
-	public static byte[] nsn = new byte[2048];
+    public static byte[] nsn = new byte[2048];
 
-	@ObfuscatedName("aw.k")
-	public static byte[] speeds = new byte[2048];
+    public static byte[] speeds = new byte[2048];
 
-	@ObfuscatedName("aw.f")
-	public static Packet[] appearances = new Packet[2048];
+    public static Packet[] appearances = new Packet[2048];
 
-	@ObfuscatedName("aw.w")
-	public static Packet[] headIcons = new Packet[2048];
+    public static Packet[] headIcons = new Packet[2048];
 
-	@ObfuscatedName("aw.l")
-	public static int highResolutionsCount = 0;
+    public static int highResolutionsCount = 0;
 
-	@ObfuscatedName("aw.u")
-	public static int[] highResolutionsIndices = new int[2048];
+    public static int[] highResolutionsIndices = new int[2048];
 
-	@ObfuscatedName("aw.z")
-	public static int lowResolutionsCount = 0;
+    public static int lowResolutionsCount = 0;
 
-	@ObfuscatedName("aw.p")
-	public static int[] lowResolutionsIndices = new int[2048];
+    public static int[] lowResolutionsIndices = new int[2048];
 
-	@ObfuscatedName("aw.d")
-	public static LowResPlayerInfo[] lowResolutions = new LowResPlayerInfo[2048];
+    public static LowResPlayerInfo[] lowResolutions = new LowResPlayerInfo[2048];
 
-	@ObfuscatedName("aw.c")
-	public static int entityUpdateCount = 0;
+    public static int entityUpdateCount = 0;
 
-	@ObfuscatedName("aw.r")
-	public static int[] entityUpdateIds = new int[2048];
+    public static int[] entityUpdateIds = new int[2048];
 
 	public ReceivePlayerPositions() throws Throwable {
 		throw new Error();
 	}
 
-	@ObfuscatedName("aga.e(Lase;I)V")
-	public static final void receivePlayerPositions(PacketBit buf) {
+    public static final void receivePlayerPositions(PacketBit buf) {
 		buf.accessBits();
 		int localPlayerIndex = Client.currentPlayerUid;
 		PlayerEntity player = Client.localPlayerEntity = Client.players[localPlayerIndex] = new PlayerEntity(Client.world.getScene());
@@ -114,8 +101,7 @@ public class ReceivePlayerPositions {
 		}
 	}
 
-	@ObfuscatedName("sj.n(Lase;II)V")
-	public static final void readPlayerInfo(PacketBit buf, int size) {
+    public static final void readPlayerInfo(PacketBit buf, int size) {
 		entityUpdateCount = 0;
 		readPlayers(buf);
 		readPlayerUpdates(buf);
@@ -124,8 +110,7 @@ public class ReceivePlayerPositions {
 		}
 	}
 
-	@ObfuscatedName("ka.m(Lase;I)V")
-	public static final void readPlayers(PacketBit buf) {
+    public static final void readPlayers(PacketBit buf) {
 		int skip = 0;
 		buf.accessBits();
 		for (int index = 0; index < highResolutionsCount; index++) {
@@ -228,8 +213,7 @@ public class ReceivePlayerPositions {
 		}
 	}
 
-	@ObfuscatedName("ck.k(Lase;I)I")
-	public static int skip(PacketBit buf) {
+    public static int skip(PacketBit buf) {
 		int type = buf.gBit(2);
 		int count;
 		if (type == 0) {
@@ -244,8 +228,7 @@ public class ReceivePlayerPositions {
 		return count;
 	}
 
-	@ObfuscatedName("akz.f(Lase;IS)V")
-	public static void readHighResolution(PacketBit buf, int highResIndex) {
+    public static void readHighResolution(PacketBit buf, int highResIndex) {
 		CoordGrid coord = Client.world.getBase();
 		boolean hasUpdate = buf.gBit(1) == 1;
 		if (hasUpdate) {
@@ -425,8 +408,7 @@ public class ReceivePlayerPositions {
 		}
 	}
 
-	@ObfuscatedName("aap.w(Lase;II)Z")
-	public static boolean readLowResolution(PacketBit buf, int lowResIndex) {
+    public static boolean readLowResolution(PacketBit buf, int lowResIndex) {
 		int updateType = buf.gBit(2);
 		if (updateType == 0) {
 			if (buf.gBit(1) != 0) {
@@ -532,8 +514,7 @@ public class ReceivePlayerPositions {
 		}
 	}
 
-	@ObfuscatedName("a.l(Lase;B)V")
-	public static final void readPlayerUpdates(PacketBit buf) {
+    public static final void readPlayerUpdates(PacketBit buf) {
 		for (int index = 0; index < entityUpdateCount; index++) {
 			buf.g2();
 			int entityIndex = entityUpdateIds[index];
@@ -549,8 +530,7 @@ public class ReceivePlayerPositions {
 		}
 	}
 
-	@ObfuscatedName("rp.u(Lase;ILaqk;II)V")
-	public static final void readPlayerUpdatesBlocks(PacketBit buf, int index, PlayerEntity player, int mask) {
+    public static final void readPlayerUpdatesBlocks(PacketBit buf, int index, PlayerEntity player, int mask) {
 		if ((mask & 0x80) != 0) { // sequences
 			int[] seqs = new int[4];
 			for (int var5 = 0; var5 < 4; var5++) {
@@ -807,8 +787,7 @@ public class ReceivePlayerPositions {
 		player.addSpotAnimation(id, var78, var80, var81, var82, 3);
 	}
 
-	@ObfuscatedName("ajt.z(I)V")
-	public static void reset() {
+    public static void reset() {
 		highResolutionsCount = 0;
 		for (int index = 0; index < 2048; index++) {
 			appearances[index] = null;

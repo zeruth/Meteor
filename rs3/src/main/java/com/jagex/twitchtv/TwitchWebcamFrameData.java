@@ -16,8 +16,7 @@ public class TwitchWebcamFrameData {
 		this.buffer = arg2;
 	}
 
-	@ObfuscatedName("com/jagex/twitchtv/TwitchWebcamFrameData.e()V")
-	public void method22() {
+    public void method22() {
 		for (int var1 = this.height - 1; var1 >= 0; var1--) {
 			int var2 = this.width * var1;
 			int var3 = (var1 + 1) * this.width;
@@ -31,8 +30,7 @@ public class TwitchWebcamFrameData {
 		}
 	}
 
-	@ObfuscatedName("com/jagex/twitchtv/TwitchWebcamFrameData.n()V")
-	public void method23() {
+    public void method23() {
 		for (int var1 = (this.height >> 1) - 1; var1 >= 0; var1--) {
 			int var2 = this.width * var1;
 			int var3 = (this.height - var1 - 1) * this.width;

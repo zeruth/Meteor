@@ -21,141 +21,97 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map.Entry;
 
-@ObfuscatedName("alj")
 public class ClientWorldMap extends WorldMap {
 
-	@ObfuscatedName("alj.bv")
-	public static int field11657 = 0;
+    public static int field11657 = 0;
 
-	@ObfuscatedName("alj.br")
-	public static int field11646 = 1;
+    public static int field11646 = 1;
 
-	@ObfuscatedName("alj.bg")
-	public static int field11673 = 2;
+    public static int field11673 = 2;
 
-	@ObfuscatedName("alj.ba")
-	public static int field11648 = 8;
+    public static int field11648 = 8;
 
-	@ObfuscatedName("alj.bp")
-	public static int field11649 = 3;
+    public static int field11649 = 3;
 
-	@ObfuscatedName("alj.bj")
-	public static int field11650 = 50;
+    public static int field11650 = 50;
 
-	@ObfuscatedName("alj.bs")
-	public static int loading = 0;
+    public static int loading = 0;
 
-	@ObfuscatedName("io.cl")
-	public static int field2606;
+    public static int field2606;
 
-	@ObfuscatedName("xf.cg")
-	public static int field8055;
+    public static int field8055;
 
-	@ObfuscatedName("kr.ce")
-	public static int field3121;
+    public static int field3121;
 
-	@ObfuscatedName("qe.cu")
-	public static int field4603;
+    public static int field4603;
 
-	@ObfuscatedName("alj.ci")
-	public static int field11665 = -1;
+    public static int field11665 = -1;
 
-	@ObfuscatedName("alj.cn")
-	public static int field11653 = -1;
+    public static int field11653 = -1;
 
-	@ObfuscatedName("akd.cv")
-	public static int field11443;
+    public static int field11443;
 
-	@ObfuscatedName("alj.cp")
-	public static int field11654;
+    public static int field11654;
 
-	@ObfuscatedName("kg.ca")
-	public static Component component;
+    public static Component component;
 
-	@ObfuscatedName("alj.cx")
-	public static boolean field11663 = false;
+    public static boolean field11663 = false;
 
-	@ObfuscatedName("uw.cw")
-	public static Sprite field7241;
+    public static Sprite field7241;
 
-	@ObfuscatedName("alj.ct")
-	public static int field11656 = -1;
+    public static int field11656 = -1;
 
-	@ObfuscatedName("alj.cf")
-	public static int field11647 = -1;
+    public static int field11647 = -1;
 
-	@ObfuscatedName("alj.co")
-	public static boolean field11672 = false;
+    public static boolean field11672 = false;
 
-	@ObfuscatedName("alj.cr")
-	public static Font[][] field11659 = new Font[3][5];
+    public static Font[][] field11659 = new Font[3][5];
 
-	@ObfuscatedName("alj.cm")
-	public static FontMetrics[][] field11660 = new FontMetrics[3][5];
+    public static FontMetrics[][] field11660 = new FontMetrics[3][5];
 
-	@ObfuscatedName("as.cq")
-	public static Font field717;
+    public static Font field717;
 
-	@ObfuscatedName("ahw.ch")
-	public static FontMetrics field10471;
+    public static FontMetrics field10471;
 
-	@ObfuscatedName("alj.cb")
-	public static HashMap field11661 = new HashMap();
+    public static HashMap field11661 = new HashMap();
 
-	@ObfuscatedName("alj.cs")
-	public static HashMap field11662 = new HashMap();
+    public static HashMap field11662 = new HashMap();
 
-	@ObfuscatedName("alj.cy")
-	public static int field11645 = field11649;
+    public static int field11645 = field11649;
 
-	@ObfuscatedName("alj.cc")
-	public static int field11664 = field11650;
+    public static int field11664 = field11650;
 
-	@ObfuscatedName("alj.cz")
-	public static boolean field11671 = false;
+    public static boolean field11671 = false;
 
-	@ObfuscatedName("ajw.ck")
-	public static LinkList field11253;
+    public static LinkList field11253;
 
-	@ObfuscatedName("alj.cj")
-	public static boolean disableElements = false;
+    public static boolean disableElements = false;
 
-	@ObfuscatedName("alj.cd")
-	public static HashTable field11667 = new HashTable(8);
+    public static HashTable field11667 = new HashTable(8);
 
-	@ObfuscatedName("alj.dd")
-	public static HashTable field11668 = new HashTable(8);
+    public static HashTable field11668 = new HashTable(8);
 
-	@ObfuscatedName("alj.dr")
-	public static LinkListIterator field11669 = new LinkListIterator(new LinkList());
+    public static LinkListIterator field11669 = new LinkListIterator(new LinkList());
 
-	@ObfuscatedName("alj.da")
-	public static boolean field11670 = false;
+    public static boolean field11670 = false;
 
-	@ObfuscatedName("alj.dt")
-	public static boolean field11666 = false;
+    public static boolean field11666 = false;
 
-	@ObfuscatedName("alj.do")
-	public static boolean field11675 = false;
+    public static boolean field11675 = false;
 
-	@ObfuscatedName("alj.dz")
-	public static boolean field11655 = false;
+    public static boolean field11655 = false;
 
-	@ObfuscatedName("alj.dv")
-	public static boolean field11652 = false;
+    public static boolean field11652 = false;
 
-	@ObfuscatedName("alj.dm")
-	public static boolean field11674 = false;
+    public static boolean field11674 = false;
 
-	@ObfuscatedName("uu.dq")
-	public static WorldMapAreaMetadata field7280;
+    public static WorldMapAreaMetadata field7280;
 
 	public ClientWorldMap() throws Throwable {
 		throw new Error();
 	}
 
-	@ObfuscatedName("uu.du(Ldh;Ldf;I)V")
-	public static final void method9231(Toolkit arg0, MaterialList arg1) {
+    public static final void method9231(Toolkit arg0, MaterialList arg1) {
 		if (loading == 100 || WorldMap.currentWorldMap == null) {
 			return;
 		}
@@ -300,8 +256,7 @@ public class ClientWorldMap extends WorldMap {
 		}
 	}
 
-	@ObfuscatedName("jd.dl(I)V")
-	public static void method4643() {
+    public static void method4643() {
 		if (field11443 < 0) {
 			field11443 = 0;
 			field11665 = -1;
@@ -324,8 +279,7 @@ public class ClientWorldMap extends WorldMap {
 		}
 	}
 
-	@ObfuscatedName("abv.dp(B)V")
-	public static void reset() {
+    public static void reset() {
 		field11253 = null;
 		loading = 0;
 		field6793 = 0;
@@ -351,8 +305,7 @@ public class ClientWorldMap extends WorldMap {
 		Client.varBitTypeList.cacheResize(64);
 	}
 
-	@ObfuscatedName("amr.dy(I)V")
-	public static void method18566() {
+    public static void method18566() {
 		int var0 = -1;
 		if (WorldMap.currentWorldMap != null) {
 			var0 = WorldMap.currentWorldMap.id;
@@ -370,8 +323,7 @@ public class ClientWorldMap extends WorldMap {
 		}
 	}
 
-	@ObfuscatedName("na.db(B)V")
-	public static void method6003() {
+    public static void method6003() {
 		reset();
 		WorldMap.currentWorldMap = null;
 		field7280 = null;
@@ -385,8 +337,7 @@ public class ClientWorldMap extends WorldMap {
 		}
 	}
 
-	@ObfuscatedName("pf.dh(Ldh;IIIIS)V")
-	public static void drawWorldMap(Toolkit arg0, int arg1, int arg2, int arg3, int arg4) {
+    public static void drawWorldMap(Toolkit arg0, int arg1, int arg2, int arg3, int arg4) {
 		arg0.resetBounds(arg1, arg2, arg1 + arg3, arg2 + arg4);
 		if (loading < 100) {
 			byte var5 = 20;
@@ -428,8 +379,7 @@ public class ClientWorldMap extends WorldMap {
 		field6831.clean(5);
 	}
 
-	@ObfuscatedName("aq.dx(Ldh;Laat;IIB)V")
-	public static void method928(Toolkit arg0, LinkList arg1, int arg2, int arg3) {
+    public static void method928(Toolkit arg0, LinkList arg1, int arg2, int arg3) {
 		field11253.removeAll();
 		if (disableElements) {
 			return;
@@ -445,8 +395,7 @@ public class ClientWorldMap extends WorldMap {
 		}
 	}
 
-	@ObfuscatedName("aom.dg(Lhs;B)Z")
-	public static boolean method18887(MapElementType arg0) {
+    public static boolean method18887(MapElementType arg0) {
 		if (arg0 == null) {
 			return false;
 		}
@@ -480,8 +429,7 @@ public class ClientWorldMap extends WorldMap {
 		}
 	}
 
-	@ObfuscatedName("gt.de(Ldh;Laks;Lhs;IIB)Z")
-	public static boolean method3589(Toolkit arg0, WorldMapElement arg1, MapElementType arg2, int arg3, int arg4) {
+    public static boolean method3589(Toolkit arg0, WorldMapElement arg1, MapElementType arg2, int arg3, int arg4) {
 		if (field6819 && !Client.loggedInMembers && !method8534(arg1.field11448, arg1.field11452)) {
 			return false;
 		}
@@ -709,8 +657,7 @@ public class ClientWorldMap extends WorldMap {
 		return false;
 	}
 
-	@ObfuscatedName("acc.dj(Ldh;Laks;Lhs;I)V")
-	public static void method14999(Toolkit arg0, WorldMapElement arg1, MapElementType arg2) {
+    public static void method14999(Toolkit arg0, WorldMapElement arg1, MapElementType arg2) {
 		Sprite var3 = arg2.method4027(arg0);
 		if (var3 == null) {
 			return;
@@ -778,8 +725,7 @@ public class ClientWorldMap extends WorldMap {
 		field11253.addTail(var17);
 	}
 
-	@ObfuscatedName("ey.eo(II)V")
-	public static void method2678(int arg0) {
+    public static void method2678(int arg0) {
 		byte var1;
 		if (arg0 == 0) {
 			var1 = 0;
@@ -808,8 +754,7 @@ public class ClientWorldMap extends WorldMap {
 		field10471 = field11660[var1][var2];
 	}
 
-	@ObfuscatedName("hj.ey(Ldh;Laks;Lhs;IIIII)V")
-	public static void method4287(Toolkit arg0, WorldMapElement arg1, MapElementType arg2, int arg3, int arg4, int arg5, int arg6) {
+    public static void method4287(Toolkit arg0, WorldMapElement arg1, MapElementType arg2, int arg3, int arg4, int arg5, int arg6) {
 		int var7 = arg3 - 5;
 		int var8 = arg4 + 2;
 		if (arg2.field2377 != 0) {
@@ -825,8 +770,7 @@ public class ClientWorldMap extends WorldMap {
 		field717.drawStringTaggable(arg2.text, arg3, arg4, arg6, arg5, var9 | 0xFF000000, WorldMap.worldMapDefaults.field7686, 1, 0, 0, null, null, null, 0, 0);
 	}
 
-	@ObfuscatedName("gc.eu(Ldh;IIIIB)V")
-	public static final void drawWorldMapOverview(Toolkit arg0, int arg1, int arg2, int arg3, int arg4) {
+    public static final void drawWorldMapOverview(Toolkit arg0, int arg1, int arg2, int arg3, int arg4) {
 		arg0.resetBounds(arg1, arg2, arg1 + arg3, arg2 + arg4);
 		arg0.fillRectangle(arg1, arg2, arg3, arg4, -16777216);
 		if (loading < 100) {
@@ -883,8 +827,7 @@ public class ClientWorldMap extends WorldMap {
 		field6832.clean(5);
 	}
 
-	@ObfuscatedName("aq.ed(IIB)V")
-	public static final void method929(int arg0, int arg1) {
+    public static final void method929(int arg0, int arg1) {
 		if (WorldMap.field6803 < WorldMap.field6804) {
 			WorldMap.field6803 = (float) ((double) WorldMap.field6803 / 30.0D + (double) WorldMap.field6803);
 			if (WorldMap.field6803 > WorldMap.field6804) {
@@ -992,8 +935,7 @@ public class ClientWorldMap extends WorldMap {
 		}
 	}
 
-	@ObfuscatedName("acl.ee(IIIB)V")
-	public static void method15110(int arg0, int arg1, int arg2) {
+    public static void method15110(int arg0, int arg1, int arg2) {
 		if (arg0 == 1008) {
 			ScriptRunner.executeTriggeredScriptMapElement(ClientTriggerType.OPWORLDMAPELEMENT1, arg1, arg2);
 		} else if (arg0 == 1009) {
@@ -1007,8 +949,7 @@ public class ClientWorldMap extends WorldMap {
 		}
 	}
 
-	@ObfuscatedName("fl.es(IIIZI)V")
-	public static void setMap(int arg0, int arg1, int arg2, boolean arg3) {
+    public static void setMap(int arg0, int arg1, int arg2, boolean arg3) {
 		WorldMapAreaMetadata var4 = WorldMap.currentWorldMap;
 		method8521(arg0);
 		field6842 = false;
@@ -1020,18 +961,15 @@ public class ClientWorldMap extends WorldMap {
 		field11672 = arg3;
 	}
 
-	@ObfuscatedName("kb.ei(I)V")
-	public static void closeMap() {
+    public static void closeMap() {
 		method3079(true);
 	}
 
-	@ObfuscatedName("akb.el(B)Lasy;")
-	public static WorldMapAreaMetadata method17877() {
+    public static WorldMapAreaMetadata method17877() {
 		return WorldMap.currentWorldMap;
 	}
 
-	@ObfuscatedName("ft.ej(ZB)V")
-	public static void method3079(boolean arg0) {
+    public static void method3079(boolean arg0) {
 		CoordGrid var1 = Client.localPlayerEntity.coord();
 		WorldMapAreaMetadata var2 = getMap(var1.x, var1.z);
 		if (var2 == null) {
@@ -1048,24 +986,21 @@ public class ClientWorldMap extends WorldMap {
 		}
 	}
 
-	@ObfuscatedName("tr.ep(IB)V")
-	public static void method8432(int arg0) {
+    public static void method8432(int arg0) {
 		field11443 = arg0;
 		field11665 = -1;
 		field11653 = -1;
 		method4643();
 	}
 
-	@ObfuscatedName("vh.ev(IB)V")
-	public static void method9548(int arg0) {
+    public static void method9548(int arg0) {
 		field11654 = arg0;
 		field11653 = -1;
 		field11653 = -1;
 		method4643();
 	}
 
-	@ObfuscatedName("ali.ec(II)V")
-	public static void setZoom(int arg0) {
+    public static void setZoom(int arg0) {
 		if (arg0 == 25) {
 			WorldMap.field6804 = 2.0F;
 		} else if (arg0 == 37) {
@@ -1083,8 +1018,7 @@ public class ClientWorldMap extends WorldMap {
 		field11653 = -1;
 	}
 
-	@ObfuscatedName("wt.ek(IIIIB)V")
-	public static void method9843(int arg0, int arg1, int arg2, int arg3) {
+    public static void method9843(int arg0, int arg1, int arg2, int arg3) {
 		float var4 = (float) WorldMap.field6810 / (float) WorldMap.field6812;
 		int var5 = arg2;
 		int var6 = arg3;
@@ -1102,8 +1036,7 @@ public class ClientWorldMap extends WorldMap {
 		method4643();
 	}
 
-	@ObfuscatedName("aji.em(S)I")
-	public static int getZoom() {
+    public static int getZoom() {
 		if ((double) field6804 == 2.0D) {
 			return 25;
 		} else if ((double) field6804 == 3.0D) {
@@ -1119,8 +1052,7 @@ public class ClientWorldMap extends WorldMap {
 		}
 	}
 
-	@ObfuscatedName("fy.eh(II)V")
-	public static void flashElement(int arg0) {
+    public static void flashElement(int arg0) {
 		WorldMapFlash var1 = (WorldMapFlash) field11661.get(arg0);
 		if (var1 == null) {
 			var1 = new WorldMapFlash();
@@ -1130,8 +1062,7 @@ public class ClientWorldMap extends WorldMap {
 		field11661.put(arg0, var1);
 	}
 
-	@ObfuscatedName("y.eq(II)V")
-	public static void flashElementCategory(int arg0) {
+    public static void flashElementCategory(int arg0) {
 		WorldMapFlash var1 = (WorldMapFlash) field11662.get(arg0);
 		if (var1 == null) {
 			var1 = new WorldMapFlash();
@@ -1141,8 +1072,7 @@ public class ClientWorldMap extends WorldMap {
 		field11662.put(arg0, var1);
 	}
 
-	@ObfuscatedName("adc.eg(II)V")
-	public static void setFlashLoops(int arg0) {
+    public static void setFlashLoops(int arg0) {
 		if (arg0 < 1) {
 			field11645 = field11649;
 		} else {
@@ -1150,8 +1080,7 @@ public class ClientWorldMap extends WorldMap {
 		}
 	}
 
-	@ObfuscatedName("tw.ez(IB)V")
-	public static void setFlashTics(int arg0) {
+    public static void setFlashTics(int arg0) {
 		if (arg0 < 1) {
 			field11664 = field11650;
 		} else {
@@ -1159,19 +1088,16 @@ public class ClientWorldMap extends WorldMap {
 		}
 	}
 
-	@ObfuscatedName("ij.ef(ZI)V")
-	public static void perpetualFlash(boolean arg0) {
+    public static void perpetualFlash(boolean arg0) {
 		field11671 = arg0;
 	}
 
-	@ObfuscatedName("kp.et(I)V")
-	public static void stopCurrentFlashes() {
+    public static void stopCurrentFlashes() {
 		field11661.clear();
 		field11662.clear();
 	}
 
-	@ObfuscatedName("sk.ea(IIII)I")
-	public static int getNearestElement(int arg0, int arg1, int arg2) {
+    public static int getNearestElement(int arg0, int arg1, int arg2) {
 		if (loading < 100) {
 			return -2;
 		}
@@ -1194,8 +1120,7 @@ public class ClientWorldMap extends WorldMap {
 		return var3;
 	}
 
-	@ObfuscatedName("wf.ew(B)Laks;")
-	public static WorldMapElement method9829() {
+    public static WorldMapElement method9829() {
 		if (field6806 == null || field11669 == null) {
 			return null;
 		}
@@ -1209,8 +1134,7 @@ public class ClientWorldMap extends WorldMap {
 		}
 	}
 
-	@ObfuscatedName("zt.er(I)Laks;")
-	public static WorldMapElement method13882() {
+    public static WorldMapElement method13882() {
 		if (field6806 == null || field11669 == null) {
 			return null;
 		}
@@ -1223,14 +1147,12 @@ public class ClientWorldMap extends WorldMap {
 		return null;
 	}
 
-	@ObfuscatedName("aga.en(III)V")
-	public static void jumpToDisplayCoord(int arg0, int arg1) {
+    public static void jumpToDisplayCoord(int arg0, int arg1) {
 		field11665 = arg0 - WorldMap.field6786;
 		field11653 = arg1 - WorldMap.field6808;
 	}
 
-	@ObfuscatedName("ys.eb(IIB)V")
-	public static void jumpToDisplayCoordInstant(int arg0, int arg1) {
+    public static void jumpToDisplayCoordInstant(int arg0, int arg1) {
 		field11443 = arg0 - field6786;
 		field11654 = arg1 - field6808;
 		field11665 = -1;
@@ -1238,8 +1160,7 @@ public class ClientWorldMap extends WorldMap {
 		method4643();
 	}
 
-	@ObfuscatedName("wo.ex(IZI)Z")
-	public static boolean setDisableType(int arg0, boolean arg1) {
+    public static boolean setDisableType(int arg0, boolean arg1) {
 		if (field11657 == arg0) {
 			field11674 = arg1;
 		} else if (field11646 == arg0) {
@@ -1252,8 +1173,7 @@ public class ClientWorldMap extends WorldMap {
 		return true;
 	}
 
-	@ObfuscatedName("wl.fg(II)I")
-	public static int getDisableType(int arg0) {
+    public static int getDisableType(int arg0) {
 		if (field11657 == arg0) {
 			return field11674 ? 1 : 0;
 		} else if (field11646 == arg0) {

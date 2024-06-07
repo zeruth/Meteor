@@ -2,47 +2,33 @@ package com.jagex.math;
 
 import deob.ObfuscatedName;
 
-@ObfuscatedName("ou")
 public class Matrix4x3 {
 
-	@ObfuscatedName("ou.e")
-	public static final Matrix4x3 IDENTITY = new Matrix4x3();
+    public static final Matrix4x3 IDENTITY = new Matrix4x3();
 
-	@ObfuscatedName("ou.n")
-	public float entry00;
+    public float entry00;
 
-	@ObfuscatedName("ou.m")
-	public float entry01;
+    public float entry01;
 
-	@ObfuscatedName("ou.k")
-	public float entry02;
+    public float entry02;
 
-	@ObfuscatedName("ou.f")
-	public float entry10;
+    public float entry10;
 
-	@ObfuscatedName("ou.w")
-	public float entry11;
+    public float entry11;
 
-	@ObfuscatedName("ou.l")
-	public float entry12;
+    public float entry12;
 
-	@ObfuscatedName("ou.u")
-	public float entry20;
+    public float entry20;
 
-	@ObfuscatedName("ou.z")
-	public float entry21;
+    public float entry21;
 
-	@ObfuscatedName("ou.p")
-	public float entry22;
+    public float entry22;
 
-	@ObfuscatedName("ou.d")
-	public float entry30;
+    public float entry30;
 
-	@ObfuscatedName("ou.c")
-	public float entry31;
+    public float entry31;
 
-	@ObfuscatedName("ou.r")
-	public float entry32;
+    public float entry32;
 
 	public Matrix4x3() {
 		this.setToIdentity();
@@ -52,8 +38,7 @@ public class Matrix4x3 {
 		this.setTo(arg0);
 	}
 
-	@ObfuscatedName("ou.e(Lou;)V")
-	public void setTo(Matrix4x3 arg0) {
+    public void setTo(Matrix4x3 arg0) {
 		this.entry00 = arg0.entry00;
 		this.entry10 = arg0.entry10;
 		this.entry20 = arg0.entry20;
@@ -68,20 +53,17 @@ public class Matrix4x3 {
 		this.entry32 = arg0.entry32;
 	}
 
-	@ObfuscatedName("ou.n(Loe;)V")
-	public void setToTransform2(ScaleRotTrans arg0) {
+    public void setToTransform2(ScaleRotTrans arg0) {
 		this.setToTransform(arg0);
 	}
 
-	@ObfuscatedName("ou.m(Loe;)V")
-	public void setToTransform(ScaleRotTrans arg0) {
+    public void setToTransform(ScaleRotTrans arg0) {
 		this.setToScale(arg0.scale);
 		this.rotateQuaternion(arg0.rot);
 		this.translate(arg0.trans);
 	}
 
-	@ObfuscatedName("ou.k()V")
-	public void setToIdentity() {
+    public void setToIdentity() {
 		this.entry32 = 0.0F;
 		this.entry31 = 0.0F;
 		this.entry30 = 0.0F;
@@ -96,8 +78,7 @@ public class Matrix4x3 {
 		this.entry00 = 1.0F;
 	}
 
-	@ObfuscatedName("ou.f(DDDDDDFFF)V")
-	public void setToCameraTransform(double arg0, double arg1, double arg2, double arg3, double arg4, double arg5, float arg6, float arg7, float arg8) {
+    public void setToCameraTransform(double arg0, double arg1, double arg2, double arg3, double arg4, double arg5, float arg6, float arg7, float arg8) {
 		float var16 = (float) (arg3 - arg0);
 		float var17 = (float) (arg4 - arg1);
 		float var18 = (float) (arg5 - arg2);
@@ -120,8 +101,7 @@ public class Matrix4x3 {
 		this.entry32 = -((float) ((double) this.entry22 * arg2 + (double) this.entry12 * arg1 + (double) this.entry02 * arg0));
 	}
 
-	@ObfuscatedName("ou.w(IIIFFF)V")
-	public void method6297(int arg0, int arg1, int arg2, float arg3, float arg4, float arg5) {
+    public void method6297(int arg0, int arg1, int arg2, float arg3, float arg4, float arg5) {
 		if (arg0 == 0) {
 			this.entry21 = 0.0F;
 			this.entry20 = 0.0F;
@@ -153,8 +133,7 @@ public class Matrix4x3 {
 		this.entry32 = arg5;
 	}
 
-	@ObfuscatedName("ou.l(FFFFFFFFF)V")
-	public void method6298(float arg0, float arg1, float arg2, float arg3, float arg4, float arg5, float arg6, float arg7, float arg8) {
+    public void method6298(float arg0, float arg1, float arg2, float arg3, float arg4, float arg5, float arg6, float arg7, float arg8) {
 		this.entry00 = arg0;
 		this.entry10 = arg3;
 		this.entry20 = arg6;
@@ -169,8 +148,7 @@ public class Matrix4x3 {
 		this.entry32 = 0.0F;
 	}
 
-	@ObfuscatedName("ou.u(Lou;)V")
-	public void method6299(Matrix4x3 arg0) {
+    public void method6299(Matrix4x3 arg0) {
 		if (arg0 == this) {
 			this.method6300();
 			return;
@@ -189,8 +167,7 @@ public class Matrix4x3 {
 		this.entry32 = -(this.entry22 * arg0.entry32 + this.entry12 * arg0.entry31 + this.entry02 * arg0.entry30);
 	}
 
-	@ObfuscatedName("ou.z()V")
-	public void method6300() {
+    public void method6300() {
 		float var1 = this.entry30;
 		float var2 = this.entry31;
 		float var3 = this.entry10;
@@ -207,8 +184,7 @@ public class Matrix4x3 {
 		this.entry32 = -(this.entry22 * this.entry32 + this.entry12 * var2 + this.entry02 * var1);
 	}
 
-	@ObfuscatedName("ou.p(FFFF)V")
-	public void setToRotation(float arg0, float arg1, float arg2, float arg3) {
+    public void setToRotation(float arg0, float arg1, float arg2, float arg3) {
 		float var5 = (float) Math.cos((double) arg3);
 		float var6 = (float) Math.sin((double) arg3);
 		this.entry00 = arg0 * arg0 * (1.0F - var5) + var5;
@@ -225,13 +201,11 @@ public class Matrix4x3 {
 		this.entry30 = 0.0F;
 	}
 
-	@ObfuscatedName("ou.d(Lov;)V")
-	public void setToRotation(Quaternion arg0) {
+    public void setToRotation(Quaternion arg0) {
 		this.setToRotationQuaternion(arg0.w, arg0.x, arg0.y, arg0.z);
 	}
 
-	@ObfuscatedName("ou.c(FFFF)V")
-	public void setToRotationQuaternion(float arg0, float arg1, float arg2, float arg3) {
+    public void setToRotationQuaternion(float arg0, float arg1, float arg2, float arg3) {
 		float var5 = arg0 * arg0;
 		float var6 = arg0 * arg1;
 		float var7 = arg0 * arg2;
@@ -255,8 +229,7 @@ public class Matrix4x3 {
 		this.entry30 = 0.0F;
 	}
 
-	@ObfuscatedName("ou.r(F)V")
-	public void method6304(float arg0) {
+    public void method6304(float arg0) {
 		float var2 = (float) Math.cos((double) arg0);
 		float var3 = (float) Math.sin((double) arg0);
 		float var4 = this.entry01;
@@ -273,8 +246,7 @@ public class Matrix4x3 {
 		this.entry32 = this.entry32 * var2 + var3 * var7;
 	}
 
-	@ObfuscatedName("ou.v(F)V")
-	public void method6305(float arg0) {
+    public void method6305(float arg0) {
 		float var2 = (float) Math.cos((double) arg0);
 		float var3 = (float) Math.sin((double) arg0);
 		float var4 = this.entry00;
@@ -291,8 +263,7 @@ public class Matrix4x3 {
 		this.entry32 = this.entry32 * var2 - var3 * var7;
 	}
 
-	@ObfuscatedName("ou.o(F)V")
-	public void method6306(float arg0) {
+    public void method6306(float arg0) {
 		float var2 = (float) Math.cos((double) arg0);
 		float var3 = (float) Math.sin((double) arg0);
 		float var4 = this.entry00;
@@ -309,8 +280,7 @@ public class Matrix4x3 {
 		this.entry31 = this.entry31 * var2 + var3 * var7;
 	}
 
-	@ObfuscatedName("ou.s(FFFF)V")
-	public void rotateAroundAxis(float arg0, float arg1, float arg2, float arg3) {
+    public void rotateAroundAxis(float arg0, float arg1, float arg2, float arg3) {
 		float var5 = (float) Math.cos((double) arg3);
 		float var6 = (float) Math.sin((double) arg3);
 		float var7 = arg0 * arg0 * (1.0F - var5) + var5;
@@ -344,13 +314,11 @@ public class Matrix4x3 {
 		this.entry32 = this.entry32 * var15 + var9 * var22 + var12 * var23;
 	}
 
-	@ObfuscatedName("ou.y(Lov;)V")
-	public void rotateQuaternion(Quaternion arg0) {
+    public void rotateQuaternion(Quaternion arg0) {
 		this.rotateQuaternion(arg0.w, arg0.x, arg0.y, arg0.z);
 	}
 
-	@ObfuscatedName("ou.q(FFFF)V")
-	public void rotateQuaternion(float arg0, float arg1, float arg2, float arg3) {
+    public void rotateQuaternion(float arg0, float arg1, float arg2, float arg3) {
 		float var5 = arg0 * arg0;
 		float var6 = arg0 * arg1;
 		float var7 = arg0 * arg2;
@@ -391,8 +359,7 @@ public class Matrix4x3 {
 		this.entry32 = this.entry32 * var22 + var20 * var29 + var21 * var30;
 	}
 
-	@ObfuscatedName("ou.x(FFF)V")
-	public void setToScale(float arg0, float arg1, float arg2) {
+    public void setToScale(float arg0, float arg1, float arg2) {
 		this.entry00 = arg0;
 		this.entry10 = 0.0F;
 		this.entry20 = 0.0F;
@@ -407,13 +374,11 @@ public class Matrix4x3 {
 		this.entry32 = 0.0F;
 	}
 
-	@ObfuscatedName("ou.b(Lox;)V")
-	public void setToScale(Vector3 arg0) {
+    public void setToScale(Vector3 arg0) {
 		this.setToScale(arg0.x, arg0.y, arg0.z);
 	}
 
-	@ObfuscatedName("ou.h(FFF)V")
-	public void scale(float arg0, float arg1, float arg2) {
+    public void scale(float arg0, float arg1, float arg2) {
 		this.entry00 *= arg0;
 		this.entry10 *= arg0;
 		this.entry20 *= arg0;
@@ -428,8 +393,7 @@ public class Matrix4x3 {
 		this.entry32 *= arg2;
 	}
 
-	@ObfuscatedName("ou.a(FFF)V")
-	public void setToTranslation(float arg0, float arg1, float arg2) {
+    public void setToTranslation(float arg0, float arg1, float arg2) {
 		this.entry21 = 0.0F;
 		this.entry20 = 0.0F;
 		this.entry12 = 0.0F;
@@ -444,20 +408,17 @@ public class Matrix4x3 {
 		this.entry32 = arg2;
 	}
 
-	@ObfuscatedName("ou.g(Lox;)V")
-	public void translate(Vector3 arg0) {
+    public void translate(Vector3 arg0) {
 		this.translate(arg0.x, arg0.y, arg0.z);
 	}
 
-	@ObfuscatedName("ou.i(FFF)V")
-	public void translate(float arg0, float arg1, float arg2) {
+    public void translate(float arg0, float arg1, float arg2) {
 		this.entry30 += arg0;
 		this.entry31 += arg1;
 		this.entry32 += arg2;
 	}
 
-	@ObfuscatedName("ou.j(Lou;)V")
-	public void method6316(Matrix4x3 arg0) {
+    public void method6316(Matrix4x3 arg0) {
 		float var2 = this.entry00;
 		float var3 = this.entry01;
 		float var4 = this.entry10;
@@ -484,8 +445,7 @@ public class Matrix4x3 {
 		this.entry32 = arg0.entry22 * var13 + arg0.entry12 * var9 + arg0.entry02 * var8 + arg0.entry32;
 	}
 
-	@ObfuscatedName("ou.t(Lou;Lou;)V")
-	public void method6317(Matrix4x3 arg0, Matrix4x3 arg1) {
+    public void method6317(Matrix4x3 arg0, Matrix4x3 arg1) {
 		this.entry00 = arg0.entry02 * arg1.entry20 + arg0.entry01 * arg1.entry10 + arg0.entry00 * arg1.entry00;
 		this.entry01 = arg0.entry02 * arg1.entry21 + arg0.entry01 * arg1.entry11 + arg0.entry00 * arg1.entry01;
 		this.entry02 = arg0.entry02 * arg1.entry22 + arg0.entry01 * arg1.entry12 + arg0.entry00 * arg1.entry02;
@@ -500,15 +460,13 @@ public class Matrix4x3 {
 		this.entry32 = arg0.entry32 * arg1.entry22 + arg0.entry31 * arg1.entry12 + arg0.entry30 * arg1.entry02 + arg1.entry32;
 	}
 
-	@ObfuscatedName("ou.ae(FFF[F)V")
-	public void method6295(float arg0, float arg1, float arg2, float[] arg3) {
+    public void method6295(float arg0, float arg1, float arg2, float[] arg3) {
 		arg3[0] = this.entry20 * arg2 + this.entry10 * arg1 + this.entry00 * arg0 + this.entry30;
 		arg3[1] = this.entry21 * arg2 + this.entry11 * arg1 + this.entry01 * arg0 + this.entry31;
 		arg3[2] = this.entry22 * arg2 + this.entry12 * arg1 + this.entry02 * arg0 + this.entry32;
 	}
 
-	@ObfuscatedName("ou.ag(FFF[F)V")
-	public void method6319(float arg0, float arg1, float arg2, float[] arg3) {
+    public void method6319(float arg0, float arg1, float arg2, float[] arg3) {
 		float var5 = arg0 - this.entry30;
 		float var6 = arg1 - this.entry31;
 		float var7 = arg2 - this.entry32;
@@ -517,8 +475,7 @@ public class Matrix4x3 {
 		arg3[2] = (float) (this.entry22 * var7 + this.entry21 * var6 + this.entry20 * var5);
 	}
 
-	@ObfuscatedName("ou.ah([F)V")
-	public void method6320(float[] arg0) {
+    public void method6320(float[] arg0) {
 		float var2 = arg0[0] - this.entry30;
 		float var3 = arg0[1] - this.entry31;
 		float var4 = arg0[2] - this.entry32;
@@ -527,8 +484,7 @@ public class Matrix4x3 {
 		arg0[2] = (float) (this.entry22 * var4 + this.entry21 * var3 + this.entry20 * var2);
 	}
 
-	@ObfuscatedName("ou.al([F)V")
-	public void method6321(float[] arg0) {
+    public void method6321(float[] arg0) {
 		float var2 = arg0[0];
 		float var3 = arg0[1];
 		float var4 = arg0[2];
@@ -537,16 +493,14 @@ public class Matrix4x3 {
 		arg0[2] = this.entry22 * var4 + this.entry21 * var3 + this.entry20 * var2;
 	}
 
-	@ObfuscatedName("ou.ac([F)[F")
-	public float[] getTranslation(float[] arg0) {
+    public float[] getTranslation(float[] arg0) {
 		arg0[0] = this.entry30;
 		arg0[1] = this.entry31;
 		arg0[2] = this.entry32;
 		return arg0;
 	}
 
-	@ObfuscatedName("ou.ai([F)[F")
-	public float[] getMatrix3x3(float[] arg0) {
+    public float[] getMatrix3x3(float[] arg0) {
 		arg0[0] = this.entry00;
 		arg0[1] = this.entry01;
 		arg0[2] = this.entry02;

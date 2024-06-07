@@ -4,14 +4,11 @@ import com.jagex.core.io.Packet;
 import deob.ObfuscatedName;
 import rs2.client.login.*;
 
-@ObfuscatedName("adn")
 public class LoadingScreenType {
 
-	@ObfuscatedName("adn.e")
-	public LoadingScreenElementConfig[] field9212;
+    public LoadingScreenElementConfig[] field9212;
 
-	@ObfuscatedName("adn.e(Lalw;I)V")
-	public void method15230(Packet arg0) {
+    public void method15230(Packet arg0) {
 		this.field9212 = new LoadingScreenElementConfig[arg0.g1()];
 		LoadingScreenElementType[] var2 = LoadingScreenElementType.method4482();
 		for (int var3 = 0; var3 < this.field9212.length; var3++) {
@@ -19,8 +16,7 @@ public class LoadingScreenType {
 		}
 	}
 
-	@ObfuscatedName("adn.n(Lalw;Lkt;I)Lkk;")
-	public LoadingScreenElementConfig method15231(Packet arg0, LoadingScreenElementType arg1) {
+    public LoadingScreenElementConfig method15231(Packet arg0, LoadingScreenElementType arg1) {
 		if (LoadingScreenElementType.field3190 == arg1) {
 			return LoadingScreenClearConfig.method17440(arg0);
 		} else if (LoadingScreenElementType.field3188 == arg1) {

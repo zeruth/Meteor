@@ -18,141 +18,100 @@ import java.io.InputStreamReader;
 import java.util.Arrays;
 import java.util.LinkedList;
 
-@ObfuscatedName("vv")
 public class TwitchHardwarePlatform {
 
-	@ObfuscatedName("vv.e")
-	public static boolean field7377 = false;
+    public static boolean field7377 = false;
 
-	@ObfuscatedName("vv.z")
-	public static float field7375 = 0.2F;
+    public static float field7375 = 0.2F;
 
-	@ObfuscatedName("vv.p")
-	public static int field7398 = 1;
+    public static int field7398 = 1;
 
-	@ObfuscatedName("vv.d")
-	public static int field7387 = 4000;
+    public static int field7387 = 4000;
 
-	@ObfuscatedName("vv.c")
-	public static int field7378 = 0;
+    public static int field7378 = 0;
 
-	@ObfuscatedName("vv.r")
-	public static int field7379 = 2000;
+    public static int field7379 = 2000;
 
-	@ObfuscatedName("vv.v")
-	public static int field7388 = 0;
+    public static int field7388 = 0;
 
-	@ObfuscatedName("vv.o")
-	public static int field7381 = 0;
+    public static int field7381 = 0;
 
-	@ObfuscatedName("vv.s")
-	public static boolean[] field7371 = null;
+    public static boolean[] field7371 = null;
 
-	@ObfuscatedName("vv.y")
-	public static String[] field7390 = null;
+    public static String[] field7390 = null;
 
-	@ObfuscatedName("vv.q")
-	public static boolean loginReady = false;
+    public static boolean loginReady = false;
 
-	@ObfuscatedName("amm.x")
-	public static TwitchTV twitchTV;
+    public static TwitchTV twitchTV;
 
-	@ObfuscatedName("vv.b")
-	public static long field7385 = 0L;
+    public static long field7385 = 0L;
 
-	@ObfuscatedName("hj.h")
-	public static long field2584;
+    public static long field2584;
 
-	@ObfuscatedName("vv.a")
-	public static long field7386 = 0L;
+    public static long field7386 = 0L;
 
-	@ObfuscatedName("vv.g")
-	public static long field7393 = 0L;
+    public static long field7393 = 0L;
 
-	@ObfuscatedName("vv.i")
-	public static int streamQuality = 0;
+    public static int streamQuality = 0;
 
-	@ObfuscatedName("vv.j")
-	public static boolean field7389 = false;
+    public static boolean field7389 = false;
 
-	@ObfuscatedName("vv.t")
-	public static boolean field7399 = false;
+    public static boolean field7399 = false;
 
-	@ObfuscatedName("hj.ae")
-	public static int field2585;
+    public static int field2585;
 
-	@ObfuscatedName("aao.ag")
-	public static int field8526;
+    public static int field8526;
 
-	@ObfuscatedName("jm.ah")
-	public static int[] field2899;
+    public static int[] field2899;
 
-	@ObfuscatedName("bf.al")
-	public static int[] field894;
+    public static int[] field894;
 
-	@ObfuscatedName("vv.ac")
-	public static TwitchWebcamFrameData field7391 = null;
+    public static TwitchWebcamFrameData field7391 = null;
 
-	@ObfuscatedName("vv.ai")
-	public static LinkedList field7392 = new LinkedList();
+    public static LinkedList field7392 = new LinkedList();
 
-	@ObfuscatedName("vv.aw")
-	public static LinkedList field7380 = new LinkedList();
+    public static LinkedList field7380 = new LinkedList();
 
-	@ObfuscatedName("qz.as")
-	public static TwitchEventLiveStreams field4501;
+    public static TwitchEventLiveStreams field4501;
 
-	@ObfuscatedName("vv.at")
-	public static int field7394 = -1;
+    public static int field7394 = -1;
 
-	@ObfuscatedName("vv.ad")
-	public static TwitchWebcamDevice[] webcamDevices = null;
+    public static TwitchWebcamDevice[] webcamDevices = null;
 
-	@ObfuscatedName("vv.am")
-	public static long field7367 = 0L;
+    public static long field7367 = 0L;
 
-	@ObfuscatedName("vv.au")
-	public static Sprite field7397 = null;
+    public static Sprite field7397 = null;
 
-	@ObfuscatedName("vv.ar")
-	public static boolean field7376 = false;
+    public static boolean field7376 = false;
 
-	@ObfuscatedName("vv.ap")
-	public static boolean field7383 = false;
+    public static boolean field7383 = false;
 
 	public TwitchHardwarePlatform() throws Throwable {
 		throw new Error();
 	}
 
-	@ObfuscatedName("aar.e(I)V")
-	public static void method14297() {
+    public static void method14297() {
 		field7394 = -1;
 	}
 
-	@ObfuscatedName("vb.n(B)I")
-	public static int method9275() {
+    public static int method9275() {
 		return field4501 == null || field7394 >= field4501.streamCount - 1 ? -1 : ++field7394;
 	}
 
-	@ObfuscatedName("io.m(I)Lcm;")
-	public static Sprite method4367() {
+    public static Sprite method4367() {
 		return field7397;
 	}
 
-	@ObfuscatedName("qf.k(ZI)V")
-	public static void debug1(boolean arg0) {
+    public static void debug1(boolean arg0) {
 	}
 
-	@ObfuscatedName("hq.f(ZI)V")
-	public static void debug2(boolean arg0) {
+    public static void debug2(boolean arg0) {
 	}
 
-	@ObfuscatedName("tx.w(ZI)V")
-	public static void debug3(boolean arg0) {
+    public static void debug3(boolean arg0) {
 	}
 
-	@ObfuscatedName("re.l(B)I")
-	public static int getHardwarePlatform() {
+    public static int getHardwarePlatform() {
 		if (field7388 == 3) {
 			return -1;
 		} else if (field7388 == 0) {
@@ -205,13 +164,11 @@ public class TwitchHardwarePlatform {
 		}
 	}
 
-	@ObfuscatedName("qx.u(I)I")
-	public static int getHardwareState() {
+    public static int getHardwareState() {
 		return field7388;
 	}
 
-	@ObfuscatedName("rq.z(I)I")
-	public static int method7603() {
+    public static int method7603() {
 		try {
 			for (int var0 = 0; var0 < field7390.length; var0++) {
 				if (field7390[var0] != null && field7371[var0]) {
@@ -231,8 +188,7 @@ public class TwitchHardwarePlatform {
 		return 2;
 	}
 
-	@ObfuscatedName("uj.p(I)V")
-	public static void method9128() {
+    public static void method9128() {
 		if (!loginReady) {
 			return;
 		}
@@ -243,8 +199,7 @@ public class TwitchHardwarePlatform {
 		}
 	}
 
-	@ObfuscatedName("ff.d(Ljava/lang/String;Ljava/lang/String;B)I")
-	public static int login(String username, String password) {
+    public static int login(String username, String password) {
 		if (loginReady) {
 			return Client.getCurrentConnection() == Client.gameConnection ? twitchTV.Login(username, password) : 42;
 		} else {
@@ -252,13 +207,11 @@ public class TwitchHardwarePlatform {
 		}
 	}
 
-	@ObfuscatedName("db.c(I)I")
-	public static int getLoginState() {
+    public static int getLoginState() {
 		return twitchTV.GetLoginState();
 	}
 
-	@ObfuscatedName("th.r(I)I")
-	public static int logout() {
+    public static int logout() {
 		if (loginReady) {
 			stopStream(Client.toolkit);
 			return twitchTV.Logout();
@@ -267,13 +220,11 @@ public class TwitchHardwarePlatform {
 		}
 	}
 
-	@ObfuscatedName("r.v(I)I")
-	public static int getStreamState() {
+    public static int getStreamState() {
 		return twitchTV.GetStreamState();
 	}
 
-	@ObfuscatedName("adv.o(IIIZI)I")
-	public static int startStream(int arg0, int arg1, int arg2, boolean arg3) {
+    public static int startStream(int arg0, int arg1, int arg2, boolean arg3) {
 		if (arg0 != 0 && (arg0 < 50 || arg0 > 100)) {
 			arg0 = 0;
 		}
@@ -300,14 +251,12 @@ public class TwitchHardwarePlatform {
 		return twitchTV.StartStreaming(var6, var7, arg2, var8, arg1 != 0, field7375, field7398, arg3);
 	}
 
-	@ObfuscatedName("tk.s(Ldh;I)I")
-	public static int stopStream(Toolkit arg0) {
+    public static int stopStream(Toolkit arg0) {
 		reset();
 		return twitchTV.StopStreaming();
 	}
 
-	@ObfuscatedName("hf.y(I)V")
-	public static void reset() {
+    public static void reset() {
 		field7389 = false;
 		field2899 = null;
 		field894 = null;
@@ -316,46 +265,38 @@ public class TwitchHardwarePlatform {
 		Client.toolkit.method2126();
 	}
 
-	@ObfuscatedName("nk.q(Ljava/lang/String;I)I")
-	public static int setStreamTitle(String arg0) {
+    public static int setStreamTitle(String arg0) {
 		return twitchTV.SetStreamTitle(arg0, Client.modegame.title);
 	}
 
-	@ObfuscatedName("xk.x(I)I")
-	public static int getStreamQuality() {
+    public static int getStreamQuality() {
 		return isStreaming() ? streamQuality : 0;
 	}
 
-	@ObfuscatedName("il.b(ZI)V")
-	public static void setStreamSmoothResize(boolean arg0) {
+    public static void setStreamSmoothResize(boolean arg0) {
 		if (field7399 != arg0) {
 			reset();
 			field7399 = arg0;
 		}
 	}
 
-	@ObfuscatedName("ua.h(S)I")
-	public static int getChatState() {
+    public static int getChatState() {
 		return twitchTV.GetChatState();
 	}
 
-	@ObfuscatedName("py.a(Ljava/lang/String;I)I")
-	public static int sendChatMessage(String arg0) {
+    public static int sendChatMessage(String arg0) {
 		return twitchTV.ChatSendMessage(arg0);
 	}
 
-	@ObfuscatedName("iy.g(B)Z")
-	public static boolean isWebcamSupported() {
+    public static boolean isWebcamSupported() {
 		return NativeLibraryConfig.osName.startsWith("win");
 	}
 
-	@ObfuscatedName("y.i(I)I")
-	public static int getWebcamState() {
+    public static int getWebcamState() {
 		return twitchTV.GetWebcamState();
 	}
 
-	@ObfuscatedName("hy.j(Ldh;J)V")
-	public static void update(Toolkit arg0, long arg1) {
+    public static void update(Toolkit arg0, long arg1) {
 		if (field7388 == 3 || field7388 == 0) {
 			return;
 		}
@@ -419,8 +360,7 @@ public class TwitchHardwarePlatform {
 		}
 	}
 
-	@ObfuscatedName("h.t(Ldh;JIIB)V")
-	public static void method593(Toolkit arg0, long arg1, int arg2, int arg3) {
+    public static void method593(Toolkit arg0, long arg1, int arg2, int arg3) {
 		if (arg0.method2360() && arg0.method2502() > -1) {
 			int var5 = arg0.method2502();
 			TwitchRelated2 var6 = null;
@@ -481,26 +421,22 @@ public class TwitchHardwarePlatform {
 		field7389 = false;
 	}
 
-	@ObfuscatedName("th.ae(I)Z")
-	public static boolean method8634() {
+    public static boolean method8634() {
 		return field7389;
 	}
 
-	@ObfuscatedName("jh.ag(I)Z")
-	public static boolean isStreaming() {
+    public static boolean isStreaming() {
 		return twitchTV != null && twitchTV.IsStreaming();
 	}
 
-	@ObfuscatedName("qd.ah(Ldh;J)V")
-	public static void method7259(Toolkit arg0, long arg1) {
+    public static void method7259(Toolkit arg0, long arg1) {
 		arg0.method2126();
 		field7392.clear();
 		field7380.clear();
 		field7385 = (long) field7378 + arg1;
 	}
 
-	@ObfuscatedName("pr.al(Lcom/jagex/twitchtv/TwitchEvent;J)Z")
-	public static boolean method6878(TwitchEvent arg0, long arg1) {
+    public static boolean method6878(TwitchEvent arg0, long arg1) {
 		if (!field7377) {
 			switch(arg0.eventType) {
 				case 7:
@@ -545,8 +481,7 @@ public class TwitchHardwarePlatform {
 		}
 	}
 
-	@ObfuscatedName("xt.ac(IIB)V")
-	public static void method10361(int arg0, int arg1) {
+    public static void method10361(int arg0, int arg1) {
 		TwitchEventResult var2 = new TwitchEventResult(arg0, arg1);
 		TwitchEventSubject var3 = var2.method11();
 		if (var3 != null) {
@@ -554,8 +489,7 @@ public class TwitchHardwarePlatform {
 		}
 	}
 
-	@ObfuscatedName("ps.ai(B)V")
-	public static void method6846() {
+    public static void method6846() {
 		if (field7397 != null && field7397.getWidth() == field7391.width && field7397.getHeight() == field7391.height) {
 			field7397.method1469(0, 0, field7391.width, field7391.height, field7391.buffer, 0, field7391.width);
 		} else {
@@ -563,36 +497,30 @@ public class TwitchHardwarePlatform {
 		}
 	}
 
-	@ObfuscatedName("eu.aw(B)V")
-	public static void method2739() {
+    public static void method2739() {
 		field7397 = null;
 	}
 
-	@ObfuscatedName("iy.as(III)I")
-	public static int startWebcamDevice(int arg0, int arg1) {
+    public static int startWebcamDevice(int arg0, int arg1) {
 		field7391 = new TwitchWebcamFrameData();
 		return arg0 >= 0 && arg0 < webcamDevices.length ? twitchTV.StartWebcamDevice(webcamDevices[arg0].field239, arg1) : -1;
 	}
 
-	@ObfuscatedName("q.at(II)I")
-	public static int stopWebcamDevice(int arg0) {
+    public static int stopWebcamDevice(int arg0) {
 		field7391 = null;
 		field7397 = null;
 		return arg0 >= 0 && arg0 < webcamDevices.length ? twitchTV.StopWebcamDevice(webcamDevices[arg0].field239) : -1;
 	}
 
-	@ObfuscatedName("ks.ad(S)V")
-	public static void fetchWebcamDevices() {
+    public static void fetchWebcamDevices() {
 		webcamDevices = twitchTV.GetWebcamDevices();
 	}
 
-	@ObfuscatedName("fq.am(I)I")
-	public static int getWebcamDeviceCount() {
+    public static int getWebcamDeviceCount() {
 		return webcamDevices == null ? 0 : webcamDevices.length;
 	}
 
-	@ObfuscatedName("aff.au(IB)Lcom/jagex/twitchtv/TwitchWebcamDevice;")
-	public static TwitchWebcamDevice getWebcamDeviceByIndex(int arg0) {
+    public static TwitchWebcamDevice getWebcamDeviceByIndex(int arg0) {
 		if (webcamDevices == null) {
 			return null;
 		}
@@ -604,8 +532,7 @@ public class TwitchHardwarePlatform {
 		return null;
 	}
 
-	@ObfuscatedName("sc.ar(Ljava/lang/String;B)Lcom/jagex/twitchtv/TwitchWebcamDevice;")
-	public static TwitchWebcamDevice getWebcamDeviceByName(String arg0) {
+    public static TwitchWebcamDevice getWebcamDeviceByName(String arg0) {
 		if (webcamDevices == null) {
 			return null;
 		}
@@ -617,30 +544,25 @@ public class TwitchHardwarePlatform {
 		return null;
 	}
 
-	@ObfuscatedName("dk.ap(ZZI)V")
-	public static void flipWebcamDevice(boolean arg0, boolean arg1) {
+    public static void flipWebcamDevice(boolean arg0, boolean arg1) {
 		field7376 = arg0;
 		field7383 = arg1;
 	}
 
-	@ObfuscatedName("fn.aq(I)I")
-	public static int updateLivestreams() {
+    public static int updateLivestreams() {
 		field4501 = null;
 		return twitchTV.RequestLiveStreams(Client.modegame.title);
 	}
 
-	@ObfuscatedName("ny.ax(B)I")
-	public static int getViewerCount() {
+    public static int getViewerCount() {
 		return twitchTV.GetViewerCount();
 	}
 
-	@ObfuscatedName("kt.av(IIIII)V")
-	public static void drawTwitchStream(int arg0, int arg1, int arg2, int arg3) {
+    public static void drawTwitchStream(int arg0, int arg1, int arg2, int arg3) {
 		field7392.addLast(new TwitchRelated(arg0, arg1, arg2 - arg0, arg3 - arg1));
 	}
 
-	@ObfuscatedName("ir.ao([ILjava/util/LinkedList;IIFI)V")
-	public static void method4456(int[] arg0, LinkedList arg1, int arg2, int arg3, float arg4) {
+    public static void method4456(int[] arg0, LinkedList arg1, int arg2, int arg3, float arg4) {
 		if (arg1.isEmpty()) {
 			return;
 		}
@@ -665,8 +587,7 @@ public class TwitchHardwarePlatform {
 		}
 	}
 
-	@ObfuscatedName("lv.aj(I)Z")
-	public static boolean hasPrerequisites() {
+    public static boolean hasPrerequisites() {
 		if (NativeLibraryConfig.osName.startsWith("win")) {
 			String var0 = "msvcr110.dll";
 			String var1 = "msvcp110.dll";

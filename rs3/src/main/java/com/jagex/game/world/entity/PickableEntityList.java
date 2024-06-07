@@ -9,27 +9,21 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.ListIterator;
 
-@ObfuscatedName("tg")
 public class PickableEntityList {
 
-	@ObfuscatedName("tg.e")
-	public List field6885 = new LinkedList();
+    public List field6885 = new LinkedList();
 
-	@ObfuscatedName("tg.n")
-	public boolean field6884 = false;
+    public boolean field6884 = false;
 
-	@ObfuscatedName("tg.m")
-	public int field6886 = 0;
+    public int field6886 = 0;
 
-	@ObfuscatedName("tg.k")
-	public int field6887 = 0;
+    public int field6887 = 0;
 
 	public PickableEntityList(boolean arg0) {
 		this.field6884 = arg0;
 	}
 
-	@ObfuscatedName("tg.e(I)V")
-	public void method8680() {
+    public void method8680() {
 		Iterator var1 = this.field6885.iterator();
 		while (var1.hasNext()) {
 			PickableEntity var2 = (PickableEntity) var1.next();
@@ -38,8 +32,7 @@ public class PickableEntityList {
 		}
 	}
 
-	@ObfuscatedName("tg.n(Ltl;B)V")
-	public void method8683(PickableEntity arg0) {
+    public void method8683(PickableEntity arg0) {
 		GraphEntity var2 = arg0.field6978;
 		boolean var3 = true;
 		ScreenBoundingBox[] var4 = arg0.field6978.entityBounds;

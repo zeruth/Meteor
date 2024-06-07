@@ -6,20 +6,15 @@ import com.jagex.game.client.DiskStore;
 import com.jagex.js5.worker.Js5WorkerRequest;
 import deob.ObfuscatedName;
 
-@ObfuscatedName("pf")
 public class Js5DiskCache implements Runnable {
 
-	@ObfuscatedName("pf.e")
-	public SecondaryLinkedList queue = new SecondaryLinkedList();
+    public SecondaryLinkedList queue = new SecondaryLinkedList();
 
-	@ObfuscatedName("pf.n")
-	public int pendingRequests = 0;
+    public int pendingRequests = 0;
 
-	@ObfuscatedName("pf.m")
-	public boolean stop = false;
+    public boolean stop = false;
 
-	@ObfuscatedName("pf.k")
-	public Thread thread = new Thread(this);
+    public Thread thread = new Thread(this);
 
 	public Js5DiskCache() {
 		this.thread.setDaemon(true);
@@ -27,8 +22,7 @@ public class Js5DiskCache implements Runnable {
 		this.thread.setPriority(1);
 	}
 
-	@ObfuscatedName("pf.e(ILuf;S)Latf;")
-	public Js5WorkerRequest readSynchronous(int arg0, DiskStore arg1) {
+    public Js5WorkerRequest readSynchronous(int arg0, DiskStore arg1) {
 		Js5WorkerRequest var3 = new Js5WorkerRequest();
 		var3.type = 1;
 		SecondaryLinkedList var4 = this.queue;
@@ -52,8 +46,7 @@ public class Js5DiskCache implements Runnable {
 		return var3;
 	}
 
-	@ObfuscatedName("pf.n(I[BLuf;I)Latf;")
-	public Js5WorkerRequest write(int arg0, byte[] arg1, DiskStore arg2) {
+    public Js5WorkerRequest write(int arg0, byte[] arg1, DiskStore arg2) {
 		Js5WorkerRequest var4 = new Js5WorkerRequest();
 		var4.type = 2;
 		var4.secondaryNodeId = arg0;
@@ -64,8 +57,7 @@ public class Js5DiskCache implements Runnable {
 		return var4;
 	}
 
-	@ObfuscatedName("pf.m(ILuf;B)Latf;")
-	public Js5WorkerRequest read(int arg0, DiskStore arg1) {
+    public Js5WorkerRequest read(int arg0, DiskStore arg1) {
 		Js5WorkerRequest var3 = new Js5WorkerRequest();
 		var3.type = 3;
 		var3.secondaryNodeId = arg0;
@@ -75,8 +67,7 @@ public class Js5DiskCache implements Runnable {
 		return var3;
 	}
 
-	@ObfuscatedName("pf.k(Latf;I)V")
-	public void queueRequest(Js5WorkerRequest arg0) {
+    public void queueRequest(Js5WorkerRequest arg0) {
 		SecondaryLinkedList var2 = this.queue;
 		synchronized (this.queue) {
 			this.queue.pushBack(arg0);
@@ -113,16 +104,14 @@ public class Js5DiskCache implements Runnable {
 		}
 	}
 
-	@ObfuscatedName("pf.f(I)I")
-	public int getPendingRequests() {
+    public int getPendingRequests() {
 		SecondaryLinkedList var1 = this.queue;
 		synchronized (this.queue) {
 			return this.pendingRequests;
 		}
 	}
 
-	@ObfuscatedName("pf.w(I)V")
-	public void quit() {
+    public void quit() {
 		this.stop = true;
 		SecondaryLinkedList var1 = this.queue;
 		synchronized (this.queue) {

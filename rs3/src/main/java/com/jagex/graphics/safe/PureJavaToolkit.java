@@ -22,128 +22,87 @@ import deob.ObfuscatedName;
 
 import java.awt.*;
 
-@ObfuscatedName("afg")
 public class PureJavaToolkit extends Toolkit {
 
-	@ObfuscatedName("afg.at")
-	public boolean field9794;
+    public boolean field9794;
 
-	@ObfuscatedName("afg.ad")
-	public int field9776;
+    public int field9776;
 
-	@ObfuscatedName("afg.am")
-	public boolean field9777;
+    public boolean field9777;
 
-	@ObfuscatedName("afg.au")
-	public int[] colour;
+    public int[] colour;
 
-	@ObfuscatedName("afg.ar")
-	public int sizeX;
+    public int sizeX;
 
-	@ObfuscatedName("afg.ap")
-	public int sizeY;
+    public int sizeY;
 
-	@ObfuscatedName("afg.aq")
-	public float[] depth;
+    public float[] depth;
 
-	@ObfuscatedName("afg.ax")
-	public int clipMinX;
+    public int clipMinX;
 
-	@ObfuscatedName("afg.av")
-	public int clipMaxX;
+    public int clipMaxX;
 
-	@ObfuscatedName("afg.ao")
-	public int clipMinY;
+    public int clipMinY;
 
-	@ObfuscatedName("afg.aj")
-	public int clipMaxY;
+    public int clipMaxY;
 
-	@ObfuscatedName("afg.ay")
-	public int field9804;
+    public int field9804;
 
-	@ObfuscatedName("afg.ab")
-	public int field9787;
+    public int field9787;
 
-	@ObfuscatedName("afg.az")
-	public int field9788;
+    public int field9788;
 
-	@ObfuscatedName("afg.aa")
-	public int field9783;
+    public int field9783;
 
-	@ObfuscatedName("afg.af")
-	public int field9790;
+    public int field9790;
 
-	@ObfuscatedName("afg.ak")
-	public int field9791;
+    public int field9791;
 
-	@ObfuscatedName("afg.an")
-	public Matrix4x3 field9792;
+    public Matrix4x3 field9792;
 
-	@ObfuscatedName("afg.bf")
-	public Matrix4x4 field9793;
+    public Matrix4x4 field9793;
 
-	@ObfuscatedName("afg.bl")
-	public Matrix4x4 field9795;
+    public Matrix4x4 field9795;
 
-	@ObfuscatedName("afg.bk")
-	public Matrix4x4 field9803;
+    public Matrix4x4 field9803;
 
-	@ObfuscatedName("afg.bh")
-	public float[][] field9796;
+    public float[][] field9796;
 
-	@ObfuscatedName("afg.bx")
-	public int field9797;
+    public int field9797;
 
-	@ObfuscatedName("afg.bd")
-	public int field9798;
+    public int field9798;
 
-	@ObfuscatedName("afg.bc")
-	public int field9782;
+    public int field9782;
 
-	@ObfuscatedName("afg.bi")
-	public int field9800;
+    public int field9800;
 
-	@ObfuscatedName("afg.bn")
-	public float field9789;
+    public float field9789;
 
-	@ObfuscatedName("afg.bt")
-	public float field9814;
+    public float field9814;
 
-	@ObfuscatedName("afg.bq")
-	public float field9802;
+    public float field9802;
 
-	@ObfuscatedName("afg.bm")
-	public float field9806;
+    public float field9806;
 
-	@ObfuscatedName("afg.bb")
-	public float field9813;
+    public float field9813;
 
-	@ObfuscatedName("afg.be")
-	public float field9799;
+    public float field9799;
 
-	@ObfuscatedName("afg.by")
-	public int threadLocalsCount;
+    public int threadLocalsCount;
 
-	@ObfuscatedName("afg.bu")
-	public PureJavaToolkitContext[] context;
+    public PureJavaToolkitContext[] context;
 
-	@ObfuscatedName("afg.bw")
-	public SoftLruHashTable materialTextureCache;
+    public SoftLruHashTable materialTextureCache;
 
-	@ObfuscatedName("afg.bo")
-	public SoftLruHashTable billboardMaterialSprites;
+    public SoftLruHashTable billboardMaterialSprites;
 
-	@ObfuscatedName("afg.bz")
-	public Sprite cachedBillboardSprite;
+    public Sprite cachedBillboardSprite;
 
-	@ObfuscatedName("afg.bv")
-	public int cachedBillboardMaterial;
+    public int cachedBillboardMaterial;
 
-	@ObfuscatedName("afg.br")
-	public Sprite field9786;
+    public Sprite field9786;
 
-	@ObfuscatedName("afg.bg")
-	public FrameBuffer field9775;
+    public FrameBuffer field9775;
 
 	public PureJavaToolkit(Canvas arg0, MaterialList arg1, TextureList arg2, BillboardTypeList arg3, ParticleEmitterTypeList arg4, ParticleEffectorTypeList arg5, int arg6, int arg7) {
 		this(arg1, arg2, arg3, arg4, arg5);
@@ -192,25 +151,21 @@ public class PureJavaToolkit extends Toolkit {
 		}
 	}
 
-	@ObfuscatedName("afg.f()Lcz;")
-	public RendererInfo getRendererInfo() {
+    public RendererInfo getRendererInfo() {
 		return new RendererInfo(0, "Pure Java", 1, "CPU", 0L, false);
 	}
 
-	@ObfuscatedName("afg.l(II)V")
-	public void method2116(int arg0, int arg1) throws RendererException {
+    public void method2116(int arg0, int arg1) throws RendererException {
 		this.surface.method15450(arg0, arg1);
 		if (this.field1596 != null) {
 			this.field1596.method1982();
 		}
 	}
 
-	@ObfuscatedName("afg.u()V")
-	public void method2117() {
+    public void method2117() {
 	}
 
-	@ObfuscatedName("afg.p()V")
-	public void method2369() {
+    public void method2369() {
 		if (this.field9777) {
 			ColourUtils.method14805(true, false);
 			this.field9777 = false;
@@ -218,8 +173,7 @@ public class PureJavaToolkit extends Toolkit {
 		this.field9794 = true;
 	}
 
-	@ObfuscatedName("afg.d(I)V")
-	public void cycle(int arg0) {
+    public void cycle(int arg0) {
 		int var2 = arg0 - this.field9776;
 		for (PureJavaTexture var3 = (PureJavaTexture) this.materialTextureCache.method2950(); var3 != null; var3 = (PureJavaTexture) this.materialTextureCache.method2937()) {
 			if (var3.field11265) {
@@ -239,18 +193,15 @@ public class PureJavaToolkit extends Toolkit {
 		this.materialTextureCache.clean(5);
 	}
 
-	@ObfuscatedName("afg.c()I")
-	public int method2520() {
+    public int method2520() {
 		return 0;
 	}
 
-	@ObfuscatedName("afg.rv()Z")
-	public boolean method15654() {
+    public boolean method15654() {
 		return this.field9794;
 	}
 
-	@ObfuscatedName("afg.rh(I)[I")
-	public int[] getMaterialTexture(int arg0) {
+    public int[] getMaterialTexture(int arg0) {
 		SoftLruHashTable var2 = this.materialTextureCache;
 		PureJavaTexture var4;
 		synchronized (var2) {
@@ -275,109 +226,88 @@ public class PureJavaToolkit extends Toolkit {
 		return var4.getPixels();
 	}
 
-	@ObfuscatedName("afg.ra(I)Z")
-	public boolean loadMaterialTexture(int arg0) {
+    public boolean loadMaterialTexture(int arg0) {
 		Material var2 = this.materialList.get(arg0);
 		return this.field1596.loadTexture(TextureRelated2.field7586, var2.diffuseTexture, -1, TextureRelated1.field7569, 0.7F, var2.size, var2.size, true);
 	}
 
-	@ObfuscatedName("afg.rx(I)I")
-	public int getMaterialSize(int arg0) {
+    public int getMaterialSize(int arg0) {
 		return this.materialList.get(arg0).size;
 	}
 
-	@ObfuscatedName("afg.ry(I)Lvn;")
-	public MaterialAlphaMode getMaterialAlphaMode(int arg0) {
+    public MaterialAlphaMode getMaterialAlphaMode(int arg0) {
 		return this.materialList.get(arg0).alphaMode;
 	}
 
-	@ObfuscatedName("afg.rg(I)B")
-	public byte getMaterialAlphaThreshold(int arg0) {
+    public byte getMaterialAlphaThreshold(int arg0) {
 		return this.materialList.get(arg0).alphaThreshold;
 	}
 
-	@ObfuscatedName("afg.rz(I)I")
-	public int getMaterialAverageColour(int arg0) {
+    public int getMaterialAverageColour(int arg0) {
 		return this.materialList.get(arg0).averageColour & 0xFFFF;
 	}
 
-	@ObfuscatedName("afg.re(I)Z")
-	public boolean getMaterialRepeat(int arg0) {
+    public boolean getMaterialRepeat(int arg0) {
 		Material var2 = this.materialList.get(arg0);
 		return var2.repeatS != 0 || var2.repeatT != 0;
 	}
 
-	@ObfuscatedName("afg.r()Z")
-	public boolean method2194() {
+    public boolean method2194() {
 		return false;
 	}
 
-	@ObfuscatedName("afg.v()Z")
-	public boolean method2123() {
+    public boolean method2123() {
 		return false;
 	}
 
-	@ObfuscatedName("afg.o()Z")
-	public boolean method2124() {
+    public boolean method2124() {
 		return true;
 	}
 
-	@ObfuscatedName("afg.y()Z")
-	public boolean isBloomSupported() {
+    public boolean isBloomSupported() {
 		return false;
 	}
 
-	@ObfuscatedName("afg.q()Z")
-	public boolean method2127() {
+    public boolean method2127() {
 		return false;
 	}
 
-	@ObfuscatedName("afg.s()Z")
-	public boolean supportsHardShadows() {
+    public boolean supportsHardShadows() {
 		return false;
 	}
 
-	@ObfuscatedName("afg.x()Z")
-	public boolean supportsAntiAliasing() {
+    public boolean supportsAntiAliasing() {
 		return false;
 	}
 
-	@ObfuscatedName("afg.b()Z")
-	public boolean method2129() {
+    public boolean method2129() {
 		return false;
 	}
 
-	@ObfuscatedName("afg.h()Z")
-	public boolean hasExtraDrawDistance() {
+    public boolean hasExtraDrawDistance() {
 		return false;
 	}
 
-	@ObfuscatedName("afg.a()Z")
-	public boolean method2240() {
+    public boolean method2240() {
 		return true;
 	}
 
-	@ObfuscatedName("afg.g()Ljava/lang/String;")
-	public String hardwareInfo() {
+    public String hardwareInfo() {
 		return "";
 	}
 
-	@ObfuscatedName("afg.i()[I")
-	public int[] textureFormat() {
+    public int[] textureFormat() {
 		return null;
 	}
 
-	@ObfuscatedName("afg.eh(Z)V")
-	public void method2253(boolean arg0) {
+    public void method2253(boolean arg0) {
 	}
 
-	@ObfuscatedName("afg.ad(Ljava/awt/Canvas;II)Lafy;")
-	public Surface createSurface(Canvas arg0, int arg1, int arg2) {
+    public Surface createSurface(Canvas arg0, int arg1, int arg2) {
 		return PureJavaSurface.method18912(this, arg0, arg1, arg2);
 	}
 
-	@ObfuscatedName("afg.rt(II[I[F)V")
-	public void method15662(int arg0, int arg1, int[] arg2, float[] arg3) {
+    public void method15662(int arg0, int arg1, int[] arg2, float[] arg3) {
 		this.sizeX = arg0;
 		this.sizeY = arg1;
 		this.colour = arg2;
@@ -389,8 +319,7 @@ public class PureJavaToolkit extends Toolkit {
 		this.method2263();
 	}
 
-	@ObfuscatedName("afg.aq(IIII)[I")
-	public int[] method2149(int arg0, int arg1, int arg2, int arg3) {
+    public int[] method2149(int arg0, int arg1, int arg2, int arg3) {
 		if (this.colour == null) {
 			throw new IllegalStateException("");
 		}
@@ -405,60 +334,48 @@ public class PureJavaToolkit extends Toolkit {
 		return var5;
 	}
 
-	@ObfuscatedName("afg.ax()V")
-	public void method2150() {
+    public void method2150() {
 	}
 
-	@ObfuscatedName("afg.t([I)V")
-	public void method2134(int[] arg0) {
+    public void method2134(int[] arg0) {
 		arg0[0] = this.sizeX;
 		arg0[1] = this.sizeY;
 	}
 
-	@ObfuscatedName("afg.av()Z")
-	public boolean method2360() {
+    public boolean method2360() {
 		return false;
 	}
 
-	@ObfuscatedName("afg.ao()Z")
-	public boolean method2196() {
+    public boolean method2196() {
 		return true;
 	}
 
-	@ObfuscatedName("afg.aj()Z")
-	public boolean method2153() {
+    public boolean method2153() {
 		return false;
 	}
 
-	@ObfuscatedName("afg.ay()Z")
-	public boolean method2304() {
+    public boolean method2304() {
 		return false;
 	}
 
-	@ObfuscatedName("afg.ab()I")
-	public int method2502() {
+    public int method2502() {
 		return -1;
 	}
 
-	@ObfuscatedName("afg.aa(III)V")
-	public void method2163(int arg0, int arg1, int arg2) {
+    public void method2163(int arg0, int arg1, int arg2) {
 	}
 
-	@ObfuscatedName("afg.az()V")
-	public void method2156() {
+    public void method2156() {
 	}
 
-	@ObfuscatedName("afg.af(II)J")
-	public long method2158(int arg0, int arg1) {
+    public long method2158(int arg0, int arg1) {
 		return 0L;
 	}
 
-	@ObfuscatedName("afg.ak(J)V")
-	public void method2159(long arg0) {
+    public void method2159(long arg0) {
 	}
 
-	@ObfuscatedName("afg.an(II[I[I)V")
-	public void method2160(int arg0, int arg1, int[] arg2, int[] arg3) {
+    public void method2160(int arg0, int arg1, int[] arg2, int[] arg3) {
 		this.method2419(arg0, arg1);
 		if (this.field9786 == null || this.field9786.getWidth() != arg0 || this.field9786.getHeight() != arg1) {
 			this.field9786 = this.createSprite(arg0, arg1, true, true);
@@ -476,14 +393,12 @@ public class PureJavaToolkit extends Toolkit {
 		this.method2143(this.field9775);
 	}
 
-	@ObfuscatedName("afg.bl()V")
-	public void method2126() {
+    public void method2126() {
 		this.field9775 = null;
 		this.field9786 = null;
 	}
 
-	@ObfuscatedName("afg.rl()V")
-	public void method15687() {
+    public void method15687() {
 		if (this.depth == null) {
 			return;
 		}
@@ -548,14 +463,12 @@ public class PureJavaToolkit extends Toolkit {
 		}
 	}
 
-	@ObfuscatedName("afg.dv(Z)V")
-	public void method2219(boolean arg0) {
+    public void method2219(boolean arg0) {
 		PureJavaToolkitContext var2 = this.getContext(Thread.currentThread());
 		var2.field834 = arg0;
 	}
 
-	@ObfuscatedName("afg.bk()V")
-	public void method2263() {
+    public void method2263() {
 		this.field9797 = 0;
 		this.field9798 = 0;
 		this.field9782 = this.sizeX;
@@ -563,8 +476,7 @@ public class PureJavaToolkit extends Toolkit {
 		this.method15664();
 	}
 
-	@ObfuscatedName("afg.bh(IIII)V")
-	public void method2164(int arg0, int arg1, int arg2, int arg3) {
+    public void method2164(int arg0, int arg1, int arg2, int arg3) {
 		this.field9797 = arg0;
 		this.field9798 = arg1;
 		this.field9782 = arg2;
@@ -572,16 +484,14 @@ public class PureJavaToolkit extends Toolkit {
 		this.method15664();
 	}
 
-	@ObfuscatedName("afg.bx([I)V")
-	public void method2326(int[] arg0) {
+    public void method2326(int[] arg0) {
 		arg0[0] = this.field9797;
 		arg0[1] = this.field9798;
 		arg0[2] = this.field9782;
 		arg0[3] = this.field9800;
 	}
 
-	@ObfuscatedName("afg.bd(FF)V")
-	public void method2339(float arg0, float arg1) {
+    public void method2339(float arg0, float arg1) {
 		this.field9813 = arg1 - arg0;
 		this.field9799 = arg0 + arg1 - 1.0F;
 		for (int var3 = 0; var3 < this.threadLocalsCount; var3++) {
@@ -592,8 +502,7 @@ public class PureJavaToolkit extends Toolkit {
 		}
 	}
 
-	@ObfuscatedName("afg.rc()V")
-	public void method15664() {
+    public void method15664() {
 		int var1 = this.clipMaxX - this.clipMinX;
 		int var2 = this.clipMaxY - this.clipMinY;
 		float var3 = this.field9789 = (float) this.field9782 / 2.0F;
@@ -619,8 +528,7 @@ public class PureJavaToolkit extends Toolkit {
 		}
 	}
 
-	@ObfuscatedName("afg.bc()V")
-	public void resetClip() {
+    public void resetClip() {
 		this.clipMinX = 0;
 		this.clipMinY = 0;
 		this.clipMaxX = this.sizeX;
@@ -628,8 +536,7 @@ public class PureJavaToolkit extends Toolkit {
 		this.method15664();
 	}
 
-	@ObfuscatedName("afg.bi(IIII)V")
-	public void resetBounds(int left, int top, int right, int bottom) {
+    public void resetBounds(int left, int top, int right, int bottom) {
 		if (left < 0) {
 			left = 0;
 		}
@@ -649,8 +556,7 @@ public class PureJavaToolkit extends Toolkit {
 		this.method15664();
 	}
 
-	@ObfuscatedName("afg.bn(IIII)V")
-	public void setBounds(int left, int top, int right, int bottom) {
+    public void setBounds(int left, int top, int right, int bottom) {
 		if (this.clipMinX < left) {
 			this.clipMinX = left;
 		}
@@ -666,16 +572,14 @@ public class PureJavaToolkit extends Toolkit {
 		this.method15664();
 	}
 
-	@ObfuscatedName("afg.bq([I)V")
-	public void method2171(int[] arg0) {
+    public void method2171(int[] arg0) {
 		arg0[0] = this.clipMinX;
 		arg0[1] = this.clipMinY;
 		arg0[2] = this.clipMaxX;
 		arg0[3] = this.clipMaxY;
 	}
 
-	@ObfuscatedName("afg.bm(II)V")
-	public void method2475(int arg0, int arg1) {
+    public void method2475(int arg0, int arg1) {
 		if ((arg0 & 0x1) != 0) {
 			this.fillRectangle(0, 0, this.sizeX, this.sizeY, arg1, 0);
 		}
@@ -684,16 +588,14 @@ public class PureJavaToolkit extends Toolkit {
 		}
 	}
 
-	@ObfuscatedName("afg.bz(IIIIII)V")
-	public void drawRectangle(int x, int y, int width, int height, int rgb, int arg5) {
+    public void drawRectangle(int x, int y, int width, int height, int rgb, int arg5) {
 		this.drawHorizontalLine(x, y, width, rgb, arg5);
 		this.drawHorizontalLine(x, y + height - 1, width, rgb, arg5);
 		this.drawVerticalLine(x, y + 1, height - 2, rgb, arg5);
 		this.drawVerticalLine(x + width - 1, y + 1, height - 2, rgb, arg5);
 	}
 
-	@ObfuscatedName("afg.bv(IIIIII)V")
-	public void fillRectangle(int x, int y, int width, int height, int rgb, int arg5) {
+    public void fillRectangle(int x, int y, int width, int height, int rgb, int arg5) {
 		if (this.colour == null) {
 			return;
 		}
@@ -781,8 +683,7 @@ public class PureJavaToolkit extends Toolkit {
 		}
 	}
 
-	@ObfuscatedName("afg.bg(IIIII)V")
-	public void method2182(int arg0, int arg1, int arg2, int arg3, int arg4) {
+    public void method2182(int arg0, int arg1, int arg2, int arg3, int arg4) {
 		if (this.colour == null) {
 			return;
 		}
@@ -971,8 +872,7 @@ public class PureJavaToolkit extends Toolkit {
 		}
 	}
 
-	@ObfuscatedName("afg.ba(IIIII)V")
-	public void drawHorizontalLine(int x, int y, int width, int rgb, int arg4) {
+    public void drawHorizontalLine(int x, int y, int width, int rgb, int arg4) {
 		if (this.colour == null || (y < this.clipMinY || y >= this.clipMaxY)) {
 			return;
 		}
@@ -1010,8 +910,7 @@ public class PureJavaToolkit extends Toolkit {
 		}
 	}
 
-	@ObfuscatedName("afg.rr(IIIIIIII)V")
-	public void method15666(int arg0, int arg1, int arg2, int arg3, int arg4, int arg5, int arg6, int arg7) {
+    public void method15666(int arg0, int arg1, int arg2, int arg3, int arg4, int arg5, int arg6, int arg7) {
 		if (this.colour == null || (arg1 < this.clipMinY || arg1 >= this.clipMaxY)) {
 			return;
 		}
@@ -1062,8 +961,7 @@ public class PureJavaToolkit extends Toolkit {
 		}
 	}
 
-	@ObfuscatedName("afg.bp(IIIII)V")
-	public void drawVerticalLine(int x1, int y1, int x2, int y2, int arg4) {
+    public void drawVerticalLine(int x1, int y1, int x2, int y2, int arg4) {
 		if (this.colour == null || (x1 < this.clipMinX || x1 >= this.clipMaxX)) {
 			return;
 		}
@@ -1103,8 +1001,7 @@ public class PureJavaToolkit extends Toolkit {
 		}
 	}
 
-	@ObfuscatedName("afg.rd(IIIIIIII)V")
-	public void method15667(int arg0, int arg1, int arg2, int arg3, int arg4, int arg5, int arg6, int arg7) {
+    public void method15667(int arg0, int arg1, int arg2, int arg3, int arg4, int arg5, int arg6, int arg7) {
 		if (this.colour == null || (arg0 < this.clipMinX || arg0 >= this.clipMaxX)) {
 			return;
 		}
@@ -1157,8 +1054,7 @@ public class PureJavaToolkit extends Toolkit {
 		}
 	}
 
-	@ObfuscatedName("afg.bj(IIIIII)V")
-	public void drawLine(int x1, int y1, int x2, int y2, int rgb, int arg5) {
+    public void drawLine(int x1, int y1, int x2, int y2, int rgb, int arg5) {
 		if (this.colour == null) {
 			return;
 		}
@@ -1293,8 +1189,7 @@ public class PureJavaToolkit extends Toolkit {
 		}
 	}
 
-	@ObfuscatedName("afg.cl(IIIIIIIII)V")
-	public void method2187(int arg0, int arg1, int arg2, int arg3, int arg4, int arg5, int arg6, int arg7, int arg8) {
+    public void method2187(int arg0, int arg1, int arg2, int arg3, int arg4, int arg5, int arg6, int arg7, int arg8) {
 		if (this.colour == null) {
 			return;
 		}
@@ -1455,8 +1350,7 @@ public class PureJavaToolkit extends Toolkit {
 		}
 	}
 
-	@ObfuscatedName("afg.bs(IIIIIILch;II)V")
-	public void method2183(int arg0, int arg1, int arg2, int arg3, int arg4, int arg5, SpriteRelated arg6, int arg7, int arg8) {
+    public void method2183(int arg0, int arg1, int arg2, int arg3, int arg4, int arg5, SpriteRelated arg6, int arg7, int arg8) {
 		if (this.colour == null) {
 			return;
 		}
@@ -1602,8 +1496,7 @@ public class PureJavaToolkit extends Toolkit {
 		}
 	}
 
-	@ObfuscatedName("afg.cg(IIIIIILch;IIIII)V")
-	public void method2537(int arg0, int arg1, int arg2, int arg3, int arg4, int arg5, SpriteRelated arg6, int arg7, int arg8, int arg9, int arg10, int arg11) {
+    public void method2537(int arg0, int arg1, int arg2, int arg3, int arg4, int arg5, SpriteRelated arg6, int arg7, int arg8, int arg9, int arg10, int arg11) {
 		if (this.colour == null) {
 			return;
 		}
@@ -1758,8 +1651,7 @@ public class PureJavaToolkit extends Toolkit {
 		}
 	}
 
-	@ObfuscatedName("afg.ce(IIIIIII)V")
-	public void drawLine(int x1, int y1, int x2, int y2, int rgb, int arg5, int arg6) {
+    public void drawLine(int x1, int y1, int x2, int y2, int rgb, int arg5, int arg6) {
 		if (this.colour == null) {
 			return;
 		}
@@ -1814,8 +1706,7 @@ public class PureJavaToolkit extends Toolkit {
 		this.method2219(true);
 	}
 
-	@ObfuscatedName("afg.cu(IIIIII)I")
-	public int method2348(int arg0, int arg1, int arg2, int arg3, int arg4, int arg5) {
+    public int method2348(int arg0, int arg1, int arg2, int arg3, int arg4, int arg5) {
 		int var7 = 0;
 		float var8 = this.field9803.entries[10] * (float) arg2 + this.field9803.entries[6] * (float) arg1 + this.field9803.entries[2] * (float) arg0 + this.field9803.entries[14];
 		float var9 = this.field9803.entries[10] * (float) arg5 + this.field9803.entries[6] * (float) arg4 + this.field9803.entries[2] * (float) arg3 + this.field9803.entries[14];
@@ -1845,38 +1736,32 @@ public class PureJavaToolkit extends Toolkit {
 		return var7;
 	}
 
-	@ObfuscatedName("afg.cn(IIIILou;Loj;)Z")
-	public boolean pick(int arg0, int arg1, int arg2, int arg3, Matrix4x3 arg4, Cuboid arg5) {
+    public boolean pick(int arg0, int arg1, int arg2, int arg3, Matrix4x3 arg4, Cuboid arg5) {
 		Matrix4x4 var7 = this.method2208();
 		var7.setToMatrix4x3(arg4);
 		var7.multiply(this.field9803);
 		return arg5.pick(arg0, arg1, arg2, arg3, var7, this.field9814, this.field9806, this.field9789, this.field9802);
 	}
 
-	@ObfuscatedName("afg.cv(Lou;Led;Loj;)V")
-	public void method2193(Matrix4x3 arg0, ScreenBoundingBox arg1, Cuboid arg2) {
+    public void method2193(Matrix4x3 arg0, ScreenBoundingBox arg1, Cuboid arg2) {
 		Matrix4x4 var4 = this.method2208();
 		var4.setToMatrix4x3(arg0);
 		var4.multiply(this.field9803);
 		arg1.method2746(arg2, this.field9795, var4, this.field9814, this.field9806, this.field9789, this.field9802);
 	}
 
-	@ObfuscatedName("afg.cp(I)Lakz;")
-	public Heap createHeap(int arg0) {
+    public Heap createHeap(int arg0) {
 		return null;
 	}
 
-	@ObfuscatedName("afg.ca(Lakz;)V")
-	public void setBufferHeap(Heap arg0) {
+    public void setBufferHeap(Heap arg0) {
 	}
 
-	@ObfuscatedName("afg.cw(IIZZ)Lcm;")
-	public Sprite createSprite(int arg0, int arg1, boolean arg2, boolean arg3) {
+    public Sprite createSprite(int arg0, int arg1, boolean arg2, boolean arg3) {
 		return arg2 ? new PureJavaSpriteAlpha(this, arg0, arg1) : new PureJavaSpriteNormal(this, arg0, arg1);
 	}
 
-	@ObfuscatedName("afg.ct([IIIIIZ)Lcm;")
-	public Sprite createSprite(int[] arg0, int arg1, int arg2, int arg3, int arg4, boolean arg5) {
+    public Sprite createSprite(int[] arg0, int arg1, int arg2, int arg3, int arg4, boolean arg5) {
 		boolean var7 = false;
 		int var8 = arg1;
 		for (int var9 = 0; var9 < arg4; var9++) {
@@ -1891,8 +1776,7 @@ public class PureJavaToolkit extends Toolkit {
 		return var7 ? new PureJavaSpriteAlpha(this, arg0, arg1, arg2, arg3, arg4, arg5) : new PureJavaSpriteNormal(this, arg0, arg1, arg2, arg3, arg4, arg5);
 	}
 
-	@ObfuscatedName("afg.co(Lde;Z)Lcm;")
-	public Sprite createSprite(SpriteData arg0, boolean arg1) {
+    public Sprite createSprite(SpriteData arg0, boolean arg1) {
 		int var3 = arg0.getWidth();
 		int var4 = arg0.getHeight();
 		PureJavaSprite var12;
@@ -1922,8 +1806,7 @@ public class PureJavaToolkit extends Toolkit {
 		return var12;
 	}
 
-	@ObfuscatedName("afg.cr(IIIIZ)Lcm;")
-	public Sprite method2314(int arg0, int arg1, int arg2, int arg3, boolean arg4) {
+    public Sprite method2314(int arg0, int arg1, int arg2, int arg3, boolean arg4) {
 		if (this.colour == null) {
 			throw new IllegalStateException("");
 		}
@@ -1944,13 +1827,11 @@ public class PureJavaToolkit extends Toolkit {
 		}
 	}
 
-	@ObfuscatedName("afg.cb(II[I[I)Lch;")
-	public SpriteRelated method2205(int arg0, int arg1, int[] arg2, int[] arg3) {
+    public SpriteRelated method2205(int arg0, int arg1, int[] arg2, int[] arg3) {
 		return new JavaGraphicsRelated3(arg0, arg1, arg2, arg3);
 	}
 
-	@ObfuscatedName("afg.cs(ILch;II)V")
-	public void method2206(int arg0, SpriteRelated arg1, int arg2, int arg3) {
+    public void method2206(int arg0, SpriteRelated arg1, int arg2, int arg3) {
 		if (this.colour == null) {
 			return;
 		}
@@ -1992,8 +1873,7 @@ public class PureJavaToolkit extends Toolkit {
 		}
 	}
 
-	@ObfuscatedName("afg.cy(Laac;Lde;Z)Leu;")
-	public Font createFont(FontMetrics metrics, SpriteData sprite, boolean font) {
+    public Font createFont(FontMetrics metrics, SpriteData sprite, boolean font) {
 		boolean translucent = sprite.isTranslucent();
 		boolean paletted = sprite.isPaletted();
 
@@ -2022,8 +1902,7 @@ public class PureJavaToolkit extends Toolkit {
 		throw new IllegalArgumentException("");
 	}
 
-	@ObfuscatedName("afg.ck(I)V")
-	public void setVertexCapacity(int arg0) {
+    public void setVertexCapacity(int arg0) {
 		PureJavaModel.field9547 = arg0;
 		PureJavaModel.field9564 = arg0;
 		if (this.threadLocalsCount > 1) {
@@ -2033,60 +1912,49 @@ public class PureJavaToolkit extends Toolkit {
 		this.method15722(0);
 	}
 
-	@ObfuscatedName("afg.cj(Ldq;IIII)Ldo;")
-	public Model createModel(ModelUnlit arg0, int arg1, int arg2, int arg3, int arg4) {
+    public Model createModel(ModelUnlit arg0, int arg1, int arg2, int arg3, int arg4) {
 		return new PureJavaModel(this, arg0, arg1, arg3, arg4, arg2);
 	}
 
-	@ObfuscatedName("afg.cd(II)I")
-	public int method2394(int arg0, int arg1) {
+    public int method2394(int arg0, int arg1) {
 		int var3 = arg0 | 0x20800;
 		return var3 & arg1 ^ arg1;
 	}
 
-	@ObfuscatedName("afg.dd(II)I")
-	public int method2213(int arg0, int arg1) {
+    public int method2213(int arg0, int arg1) {
 		return arg0 | arg1;
 	}
 
-	@ObfuscatedName("afg.dr(II[[I[[IIII)Lcb;")
-	public FloorModel createFloor(int arg0, int arg1, int[][] arg2, int[][] arg3, int arg4, int arg5, int arg6) {
+    public FloorModel createFloor(int arg0, int arg1, int[][] arg2, int[][] arg3, int arg4, int arg5, int arg6) {
 		return new PureJavaFloorModel(this, arg5, arg6, arg0, arg1, arg2, arg3, arg4);
 	}
 
-	@ObfuscatedName("afg.cc()Lpq;")
-	public Matrix4x4 method2208() {
+    public Matrix4x4 method2208() {
 		PureJavaToolkitContext var1 = this.getContext(Thread.currentThread());
 		return var1.field829;
 	}
 
-	@ObfuscatedName("afg.cz()Lou;")
-	public Matrix4x3 method2209() {
+    public Matrix4x3 method2209() {
 		PureJavaToolkitContext var1 = this.getContext(Thread.currentThread());
 		return var1.field836;
 	}
 
-	@ObfuscatedName("afg.df()I")
-	public int getMaxLights() {
+    public int getMaxLights() {
 		return 0;
 	}
 
-	@ObfuscatedName("afg.dw(IIIIIF)Lakf;")
-	public Light createLight(int arg0, int arg1, int arg2, int arg3, int arg4, float arg5) {
+    public Light createLight(int arg0, int arg1, int arg2, int arg3, int arg4, float arg5) {
 		return null;
 	}
 
-	@ObfuscatedName("afg.ds(I[Lakf;)V")
-	public void setActiveLights(int arg0, Light[] arg1) {
+    public void setActiveLights(int arg0, Light[] arg1) {
 	}
 
-	@ObfuscatedName("afg.rn(I)V")
-	public void method15722(int arg0) {
+    public void method15722(int arg0) {
 		this.context[arg0].setThread(Thread.currentThread());
 	}
 
-	@ObfuscatedName("afg.rb(I)V")
-	public void method15670(int arg0) {
+    public void method15670(int arg0) {
 		this.threadLocalsCount = arg0;
 		this.context = new PureJavaToolkitContext[this.threadLocalsCount];
 		for (int var2 = 0; var2 < this.threadLocalsCount; var2++) {
@@ -2094,8 +1962,7 @@ public class PureJavaToolkit extends Toolkit {
 		}
 	}
 
-	@ObfuscatedName("afg.ru(Ljava/lang/Runnable;)Laz;")
-	public PureJavaToolkitContext getContext(Runnable arg0) {
+    public PureJavaToolkitContext getContext(Runnable arg0) {
 		for (int var2 = 0; var2 < this.threadLocalsCount; var2++) {
 			if (this.context[var2].field824 == arg0) {
 				return this.context[var2];
@@ -2104,13 +1971,11 @@ public class PureJavaToolkit extends Toolkit {
 		return null;
 	}
 
-	@ObfuscatedName("afg.dt(Ldm;)V")
-	public void drawParticles(ParticleList arg0) {
+    public void drawParticles(ParticleList arg0) {
 		this.drawParticles(this.colour != null, this.depth != null, false, arg0);
 	}
 
-	@ObfuscatedName("afg.sv(ZZZLdm;)V")
-	public void drawParticles(boolean arg0, boolean arg1, boolean arg2, ParticleList arg3) {
+    public void drawParticles(boolean arg0, boolean arg1, boolean arg2, ParticleList arg3) {
 		PureJavaToolkitContext var5 = this.getContext(Thread.currentThread());
 		for (Particle var6 = (Particle) arg3.list.peekFront(); var6 != null; var6 = (Particle) arg3.list.prev()) {
 			int var7 = var6.x >> 12;
@@ -2143,8 +2008,7 @@ public class PureJavaToolkit extends Toolkit {
 		}
 	}
 
-	@ObfuscatedName("afg.sw(ZZZLaqb;IIFI)V")
-	public void drawParticle(boolean arg0, boolean arg1, boolean arg2, Particle arg3, int arg4, int arg5, float arg6, int arg7) {
+    public void drawParticle(boolean arg0, boolean arg1, boolean arg2, Particle arg3, int arg4, int arg5, float arg6, int arg7) {
 		int var9 = arg3.field12160;
 		int var11 = arg7 << 1;
 		if (var9 == -1) {
@@ -2170,8 +2034,7 @@ public class PureJavaToolkit extends Toolkit {
 		((PureJavaSprite) this.cachedBillboardSprite).drawAsBillboard(arg0, arg1, arg2, arg4 - arg7, arg5 - arg7, arg6, var11, var11, 0, arg3.field12158, 1, 1, false);
 	}
 
-	@ObfuscatedName("afg.ss(ZZZIIFIISIII)V")
-	public void method15686(boolean arg0, boolean arg1, boolean arg2, int arg3, int arg4, float arg5, int arg6, int arg7, short arg8, int arg9, int arg10, int arg11) {
+    public void method15686(boolean arg0, boolean arg1, boolean arg2, int arg3, int arg4, float arg5, int arg6, int arg7, short arg8, int arg9, int arg10, int arg11) {
 		if (arg6 == 0 || arg7 == 0) {
 			return;
 		}
@@ -2199,8 +2062,7 @@ public class PureJavaToolkit extends Toolkit {
 		this.drawBillboard(arg1, arg3, arg4, arg5, arg6, arg9, arg11);
 	}
 
-	@ObfuscatedName("afg.sx(ZIIFIII)V")
-	public void drawBillboard(boolean arg0, int arg1, int arg2, float arg3, int arg4, int arg5, int arg6) {
+    public void drawBillboard(boolean arg0, int arg1, int arg2, float arg3, int arg4, int arg5, int arg6) {
 		if (this.colour == null) {
 			return;
 		}
@@ -2407,35 +2269,29 @@ public class PureJavaToolkit extends Toolkit {
 		}
 	}
 
-	@ObfuscatedName("afg.do(Lou;)V")
-	public void method2217(Matrix4x3 arg0) {
+    public void method2217(Matrix4x3 arg0) {
 		this.field9792 = arg0;
 		this.method15683();
 	}
 
-	@ObfuscatedName("afg.dz()Lou;")
-	public Matrix4x3 method2218() {
+    public Matrix4x3 method2218() {
 		return new Matrix4x3(this.field9792);
 	}
 
-	@ObfuscatedName("afg.dm(Lpq;)V")
-	public void method2220(Matrix4x4 arg0) {
+    public void method2220(Matrix4x4 arg0) {
 		this.field9795.setTo(arg0);
 		this.method15683();
 	}
 
-	@ObfuscatedName("afg.dq()Lpq;")
-	public Matrix4x4 method2355() {
+    public Matrix4x4 method2355() {
 		return new Matrix4x4(this.field9795);
 	}
 
-	@ObfuscatedName("afg.dc(F)V")
-	public void setSunAmbientIntensity(float arg0) {
+    public void setSunAmbientIntensity(float arg0) {
 		this.field9791 = (int) (arg0 * 65535.0F);
 	}
 
-	@ObfuscatedName("afg.di(IFFFFF)V")
-	public void setSun(int arg0, float arg1, float arg2, float arg3, float arg4, float arg5) {
+    public void setSun(int arg0, float arg1, float arg2, float arg3, float arg4, float arg5) {
 		this.field9783 = (int) (arg1 * 65535.0F);
 		this.field9790 = (int) (arg2 * 65535.0F);
 		float var7 = (float) Math.sqrt(arg5 * arg5 + arg3 * arg3 + arg4 * arg4);
@@ -2444,12 +2300,10 @@ public class PureJavaToolkit extends Toolkit {
 		this.field9788 = (int) (arg5 * 65535.0F / var7);
 	}
 
-	@ObfuscatedName("afg.dk(I)V")
-	public void method2224(int arg0) {
+    public void method2224(int arg0) {
 	}
 
-	@ObfuscatedName("afg.dn(III)V")
-	public void setFog(int arg0, int arg1, int arg2) {
+    public void setFog(int arg0, int arg1, int arg2) {
 		for (int var4 = 0; var4 < this.context.length; var4++) {
 			PureJavaToolkitContext var5 = this.context[var4];
 			var5.fadeColour = arg0 & 0xFFFFFF;
@@ -2474,8 +2328,7 @@ public class PureJavaToolkit extends Toolkit {
 		}
 	}
 
-	@ObfuscatedName("afg.sm()V")
-	public void method15683() {
+    public void method15683() {
 		this.field9793.setToMatrix4x3(this.field9792);
 		this.field9803.setTo(this.field9793);
 		this.field9803.multiply(this.field9795);
@@ -2496,76 +2349,60 @@ public class PureJavaToolkit extends Toolkit {
 		}
 	}
 
-	@ObfuscatedName("afg.du(I)Ldz;")
-	public EnvironmentSampler createEnvironmentSampler(int arg0) {
+    public EnvironmentSampler createEnvironmentSampler(int arg0) {
 		return null;
 	}
 
-	@ObfuscatedName("afg.dl(Ldz;Ldz;FLdz;)Ldz;")
-	public EnvironmentSampler method2435(EnvironmentSampler arg0, EnvironmentSampler arg1, float arg2, EnvironmentSampler arg3) {
+    public EnvironmentSampler method2435(EnvironmentSampler arg0, EnvironmentSampler arg1, float arg2, EnvironmentSampler arg3) {
 		return null;
 	}
 
-	@ObfuscatedName("afg.dp(Ldz;)V")
-	public void setEnvironmentSampler(EnvironmentSampler arg0) {
+    public void setEnvironmentSampler(EnvironmentSampler arg0) {
 	}
 
-	@ObfuscatedName("afg.dy(IIII)V")
-	public void method2172(int arg0, int arg1, int arg2, int arg3) {
+    public void method2172(int arg0, int arg1, int arg2, int arg3) {
 	}
 
-	@ObfuscatedName("afg.db(II)V")
-	public void method2233(int arg0, int arg1) {
+    public void method2233(int arg0, int arg1) {
 	}
 
-	@ObfuscatedName("afg.dh()Z")
-	public boolean method2234() {
+    public boolean method2234() {
 		return false;
 	}
 
-	@ObfuscatedName("afg.dx()Z")
-	public boolean isLevelsEnabled() {
+    public boolean isLevelsEnabled() {
 		return false;
 	}
 
-	@ObfuscatedName("afg.dg(FFFFF)V")
-	public void setLevels(float arg0, float arg1, float arg2, float arg3, float arg4) {
+    public void setLevels(float arg0, float arg1, float arg2, float arg3, float arg4) {
 	}
 
-	@ObfuscatedName("afg.de([I)Lcj;")
-	public ColourRemapper createColourRemapper(int[] arg0) {
+    public ColourRemapper createColourRemapper(int[] arg0) {
 		return null;
 	}
 
-	@ObfuscatedName("afg.dj()Z")
-	public boolean method2238() {
+    public boolean method2238() {
 		return false;
 	}
 
-	@ObfuscatedName("afg.eo(Lcj;FLcj;FLcj;F)V")
-	public void setColourRemapping(ColourRemapper arg0, float arg1, ColourRemapper arg2, float arg3, ColourRemapper arg4, float arg5) {
+    public void setColourRemapping(ColourRemapper arg0, float arg1, ColourRemapper arg2, float arg3, ColourRemapper arg4, float arg5) {
 	}
 
-	@ObfuscatedName("afg.ey()Z")
-	public boolean enableBloom() {
+    public boolean enableBloom() {
 		return false;
 	}
 
-	@ObfuscatedName("afg.eu()V")
-	public void disableBloom() {
+    public void disableBloom() {
 	}
 
-	@ObfuscatedName("afg.ed()Z")
-	public boolean isBloomEnabled() {
+    public boolean isBloomEnabled() {
 		return false;
 	}
 
-	@ObfuscatedName("afg.es(FFFFFF)V")
-	public void setBloom(float arg0, float arg1, float arg2, float arg3, float arg4, float arg5) {
+    public void setBloom(float arg0, float arg1, float arg2, float arg3, float arg4, float arg5) {
 	}
 
-	@ObfuscatedName("afg.ei(ILdy;)V")
-	public void method2245(int arg0, WaterFogData arg1) {
+    public void method2245(int arg0, WaterFogData arg1) {
 		for (int var3 = 0; var3 < this.context.length; var3++) {
 			this.context[var3].field823 = this.context[var3].fadeColour;
 			this.context[var3].field832 = arg0;
@@ -2575,24 +2412,21 @@ public class PureJavaToolkit extends Toolkit {
 		}
 	}
 
-	@ObfuscatedName("afg.el(ILdy;)V")
-	public void setWaterFog(int arg0, WaterFogData arg1) {
+    public void setWaterFog(int arg0, WaterFogData arg1) {
 		PureJavaToolkitContext var3 = this.getContext(Thread.currentThread());
 		var3.field832 = arg0;
 		var3.fadeColour = arg1.colour;
 		var3.field861 = arg1.scale;
 	}
 
-	@ObfuscatedName("afg.ej()V")
-	public void method2247() {
+    public void method2247() {
 		for (int var1 = 0; var1 < this.context.length; var1++) {
 			this.context[var1].fadeColour = this.context[var1].field823;
 			this.context[var1].field867 = false;
 		}
 	}
 
-	@ObfuscatedName("afg.br(IIFIIFIIFIIII)V")
-	public void method2552(int arg0, int arg1, float arg2, int arg3, int arg4, float arg5, int arg6, int arg7, float arg8, int arg9, int arg10, int arg11, int arg12) {
+    public void method2552(int arg0, int arg1, float arg2, int arg3, int arg4, float arg5, int arg6, int arg7, float arg8, int arg9, int arg10, int arg11, int arg12) {
 		boolean var14 = this.colour != null;
 		boolean var15 = this.depth != null;
 		if (!var14 && !var15) {
@@ -2627,8 +2461,7 @@ public class PureJavaToolkit extends Toolkit {
 		var17.field933 = true;
 	}
 
-	@ObfuscatedName("afg.ev(FFF[F)V")
-	public void method2525(float arg0, float arg1, float arg2, float[] arg3) {
+    public void method2525(float arg0, float arg1, float arg2, float[] arg3) {
 		float var5 = this.field9803.entries[11] * arg2 + this.field9803.entries[7] * arg1 + this.field9803.entries[3] * arg0 + this.field9803.entries[15];
 		float var6 = this.field9803.entries[8] * arg2 + this.field9803.entries[4] * arg1 + this.field9803.entries[0] * arg0 + this.field9803.entries[12];
 		float var7 = this.field9803.entries[9] * arg2 + this.field9803.entries[5] * arg1 + this.field9803.entries[1] * arg0 + this.field9803.entries[13];
@@ -2638,8 +2471,7 @@ public class PureJavaToolkit extends Toolkit {
 		arg3[2] = var8;
 	}
 
-	@ObfuscatedName("afg.ep(FFF[F)V")
-	public void method2507(float arg0, float arg1, float arg2, float[] arg3) {
+    public void method2507(float arg0, float arg1, float arg2, float[] arg3) {
 		float var5 = this.field9803.entries[10] * arg2 + this.field9803.entries[6] * arg1 + this.field9803.entries[2] * arg0 + this.field9803.entries[14];
 		float var6 = this.field9803.entries[11] * arg2 + this.field9803.entries[7] * arg1 + this.field9803.entries[3] * arg0 + this.field9803.entries[15];
 		if (var5 < -var6 || var5 > var6) {
@@ -2668,28 +2500,23 @@ public class PureJavaToolkit extends Toolkit {
 		}
 	}
 
-	@ObfuscatedName("afg.am()Lafq;")
-	public FrameBuffer createFramebuffer() {
+    public FrameBuffer createFramebuffer() {
 		return new PureJavaFrameBuffer(this);
 	}
 
-	@ObfuscatedName("afg.sk(II)Ldp;")
-	public GraphicsDeletable method15676(int arg0, int arg1) {
+    public GraphicsDeletable method15676(int arg0, int arg1) {
 		return new PureJavaColorBuffer(arg0, arg1);
 	}
 
-	@ObfuscatedName("afg.au(IILck;Ldg;I)Ldp;")
-	public GraphicsDeletable method2146(int arg0, int arg1, TextureFormat arg2, DataType arg3, int arg4) {
+    public GraphicsDeletable method2146(int arg0, int arg1, TextureFormat arg2, DataType arg3, int arg4) {
 		return this.method15676(arg0, arg1);
 	}
 
-	@ObfuscatedName("afg.ar(II)Ldw;")
-	public EffectInterface method2121(int arg0, int arg1) {
+    public EffectInterface method2121(int arg0, int arg1) {
 		return new PureJavaDepthBuffer(arg0, arg1);
 	}
 
-	@ObfuscatedName("afg.ap(III)Ldw;")
-	public EffectInterface method2356(int arg0, int arg1, int arg2) {
+    public EffectInterface method2356(int arg0, int arg1, int arg2) {
 		return new PureJavaDepthBuffer(arg0, arg1);
 	}
 }

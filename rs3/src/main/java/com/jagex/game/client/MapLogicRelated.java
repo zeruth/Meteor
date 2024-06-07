@@ -7,15 +7,13 @@ import rs2.client.Client;
 
 import java.io.IOException;
 
-@ObfuscatedName("rz")
 public class MapLogicRelated {
 
 	public MapLogicRelated() throws Throwable {
 		throw new Error();
 	}
 
-	@ObfuscatedName("pg.e(ZB)V")
-	public static void noTimeoutConnections(boolean force) {
+    public static void noTimeoutConnections(boolean force) {
 		Client.audioApi.update();
 		if (!Client.isStateGame(Client.state)) {
 			return;

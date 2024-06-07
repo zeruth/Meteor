@@ -2,35 +2,25 @@ package com.jagex.audio.vorbis;
 
 import deob.ObfuscatedName;
 
-@ObfuscatedName("hl")
 public class VorbisMapping {
 
-	@ObfuscatedName("hl.e")
-	public int submaps;
+    public int submaps;
 
-	@ObfuscatedName("hl.n")
-	public int field2132;
+    public int field2132;
 
-	@ObfuscatedName("hl.m")
-	public int[] mux = null;
+    public int[] mux = null;
 
-	@ObfuscatedName("hl.k")
-	public int[] submapFloor;
+    public int[] submapFloor;
 
-	@ObfuscatedName("hl.f")
-	public int[] submapResidue;
+    public int[] submapResidue;
 
-	@ObfuscatedName("hl.w")
-	public VorbisSound opb;
+    public VorbisSound opb;
 
-	@ObfuscatedName("hl.l")
-	public int[] field2127;
+    public int[] field2127;
 
-	@ObfuscatedName("hl.u")
-	public int[] field2133;
+    public int[] field2133;
 
-	@ObfuscatedName("hl.e([I)V")
-	public void method3905(int[] arg0) {
+    public void method3905(int[] arg0) {
 		if (arg0 != null) {
 			for (int var2 = 0; var2 < arg0.length; var2++) {
 				arg0[var2] = 0;
@@ -38,8 +28,7 @@ public class VorbisMapping {
 		}
 	}
 
-	@ObfuscatedName("hl.n(Lhk;)V")
-	public void unpack(VorbisSound arg0) {
+    public void unpack(VorbisSound arg0) {
 		this.opb = arg0;
 		int var2 = this.opb.method3849();
 		this.opb.read(16);
@@ -87,8 +76,7 @@ public class VorbisMapping {
 		}
 	}
 
-	@ObfuscatedName("hl.m(I)I")
-	public int method3899(int arg0) {
+    public int method3899(int arg0) {
 		int var2 = 0;
 		while (arg0 > 0) {
 			var2++;

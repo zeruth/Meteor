@@ -2,28 +2,22 @@ package com.jagex.graphics;
 
 import deob.ObfuscatedName;
 
-@ObfuscatedName("aps")
 public class GpuEnvironmentSampler_Sub1 extends GpuEnvironmentSampler {
 
-	@ObfuscatedName("aps.e")
-	public final GpuToolkit field11950;
+    public final GpuToolkit field11950;
 
-	@ObfuscatedName("aps.n")
-	public GpuCubeTexture field11952;
+    public GpuCubeTexture field11952;
 
-	@ObfuscatedName("aps.m")
-	public final int field11951;
+    public final int field11951;
 
-	@ObfuscatedName("aps.k")
-	public static final int[][] field11949 = new int[6][];
+    public static final int[][] field11949 = new int[6][];
 
 	public GpuEnvironmentSampler_Sub1(GpuToolkit arg0, int arg1) {
 		this.field11950 = arg0;
 		this.field11951 = arg1;
 	}
 
-	@ObfuscatedName("aps.e()Lmr;")
-	public GpuCubeTexture method15652() {
+    public GpuCubeTexture method15652() {
 		if (this.field11952 == null) {
 			TextureList var1 = this.field11950.field1596;
 			Material var2 = this.field11950.materialList.get(this.field11951);

@@ -11,35 +11,25 @@ import deob.ObfuscatedName;
 import java.util.*;
 import java.util.Map.Entry;
 
-@ObfuscatedName("abm")
 public class EnumType implements ConfigType, MutableConfig {
 
-	@ObfuscatedName("abm.e")
-	public ScriptVarType inputtype;
+    public ScriptVarType inputtype;
 
-	@ObfuscatedName("abm.n")
-	public ScriptVarType outputtype;
+    public ScriptVarType outputtype;
 
-	@ObfuscatedName("abm.m")
-	public String defaultString = "null";
+    public String defaultString = "null";
 
-	@ObfuscatedName("abm.k")
-	public int defaultInt;
+    public int defaultInt;
 
-	@ObfuscatedName("abm.f")
-	public Map values;
+    public Map values;
 
-	@ObfuscatedName("abm.w")
-	public Object[] field8780;
+    public Object[] field8780;
 
-	@ObfuscatedName("abm.l")
-	public int valuesCount = 0;
+    public int valuesCount = 0;
 
-	@ObfuscatedName("abm.u")
-	public java.util.HashMap field8782;
+    public java.util.HashMap field8782;
 
-	@ObfuscatedName("abm.e(Lalw;B)V")
-	public void decode(Packet buf) {
+    public void decode(Packet buf) {
 		while (true) {
 			int code = buf.g1();
 			if (code == 0) {
@@ -49,8 +39,7 @@ public class EnumType implements ConfigType, MutableConfig {
 		}
 	}
 
-	@ObfuscatedName("abm.u(Lalw;II)V")
-	public void decode(Packet buf, int code) {
+    public void decode(Packet buf, int code) {
 		if (code == 1) {
 			char var3 = Cp1252.byteToCp1252Char(buf.g1b());
 			this.inputtype = ScriptVarType.getByLegacyChar(var3);
@@ -93,20 +82,17 @@ public class EnumType implements ConfigType, MutableConfig {
 		}
 	}
 
-	@ObfuscatedName("abm.p(II)I")
-	public int getValueInt(int arg0) {
+    public int getValueInt(int arg0) {
 		Object var2 = this.method14850(arg0);
 		return var2 == null ? this.defaultInt : (Integer) var2;
 	}
 
-	@ObfuscatedName("abm.d(II)Ljava/lang/String;")
-	public String getValueString(int arg0) {
+    public String getValueString(int arg0) {
 		Object var2 = this.method14850(arg0);
 		return var2 == null ? this.defaultString : (String) var2;
 	}
 
-	@ObfuscatedName("abm.c(II)Ljava/lang/Object;")
-	public Object method14850(int arg0) {
+    public Object method14850(int arg0) {
 		if (this.field8780 == null) {
 			return this.values == null ? null : this.values.get(Integer.valueOf(arg0));
 		} else if (arg0 >= 0 && arg0 < this.field8780.length) {
@@ -116,8 +102,7 @@ public class EnumType implements ConfigType, MutableConfig {
 		}
 	}
 
-	@ObfuscatedName("abm.o(Ljava/lang/Object;B)Z")
-	public boolean hasOutputString(Object arg0) {
+    public boolean hasOutputString(Object arg0) {
 		if (this.valuesCount == 0) {
 			return false;
 		} else {
@@ -128,8 +113,7 @@ public class EnumType implements ConfigType, MutableConfig {
 		}
 	}
 
-	@ObfuscatedName("abm.s(Ljava/lang/Object;I)[I")
-	public int[] method14867(Object arg0) {
+    public int[] method14867(Object arg0) {
 		if (this.valuesCount == 0) {
 			return null;
 		} else {
@@ -140,13 +124,11 @@ public class EnumType implements ConfigType, MutableConfig {
 		}
 	}
 
-	@ObfuscatedName("abm.y(I)I")
-	public int getOutputCount() {
+    public int getOutputCount() {
 		return this.valuesCount;
 	}
 
-	@ObfuscatedName("abm.q(B)V")
-	public void method14853() {
+    public void method14853() {
 		java.util.HashMap var1 = new java.util.HashMap();
 		if (this.field8780 == null) {
 			if (this.values == null) {
@@ -195,11 +177,9 @@ public class EnumType implements ConfigType, MutableConfig {
 		}
 	}
 
-	@ObfuscatedName("abm.n(I)V")
-	public void postDecode() {
+    public void postDecode() {
 	}
 
-	@ObfuscatedName("abm.z(IB)V")
-	public void setId(int arg0) {
+    public void setId(int arg0) {
 	}
 }

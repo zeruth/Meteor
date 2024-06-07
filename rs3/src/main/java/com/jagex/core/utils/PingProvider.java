@@ -6,23 +6,17 @@ import jaclib.ping.Ping;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
 
-@ObfuscatedName("e")
 public class PingProvider implements Runnable {
 
-	@ObfuscatedName("e.e")
-	public String host;
+    public String host;
 
-	@ObfuscatedName("e.n")
-	public InetAddress inetAddress;
+    public InetAddress inetAddress;
 
-	@ObfuscatedName("e.m")
-	public volatile long pingedAddress = -1L;
+    public volatile long pingedAddress = -1L;
 
-	@ObfuscatedName("e.k")
-	public volatile boolean running = true;
+    public volatile boolean running = true;
 
-	@ObfuscatedName("e.e(Ljava/lang/String;I)V")
-	public void setPingHost(String host) {
+    public void setPingHost(String host) {
 		this.host = host;
 		this.inetAddress = null;
 		this.pingedAddress = -1L;
@@ -34,13 +28,11 @@ public class PingProvider implements Runnable {
 		}
 	}
 
-	@ObfuscatedName("e.n(B)J")
-	public long getPingedAddress() {
+    public long getPingedAddress() {
 		return this.pingedAddress;
 	}
 
-	@ObfuscatedName("e.m(I)V")
-	public void stop() {
+    public void stop() {
 		this.running = false;
 	}
 
@@ -50,8 +42,7 @@ public class PingProvider implements Runnable {
 		}
 	}
 
-	@ObfuscatedName("e.k(I)V")
-	public void ping() {
+    public void ping() {
 		if (this.inetAddress != null) {
 			try {
 				byte[] var1 = this.inetAddress.getAddress();

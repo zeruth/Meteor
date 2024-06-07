@@ -11,59 +11,41 @@ import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
-@ObfuscatedName("xy")
 public class ParticleSystem {
 
-	@ObfuscatedName("xy.e")
-	public boolean field7804 = false;
+    public boolean field7804 = false;
 
-	@ObfuscatedName("xy.n")
-	public boolean field7810 = false;
+    public boolean field7810 = false;
 
-	@ObfuscatedName("xy.m")
-	public MovingParticle[] field7805 = new MovingParticle[8192];
+    public MovingParticle[] field7805 = new MovingParticle[8192];
 
-	@ObfuscatedName("xy.k")
-	public int field7806 = 0;
+    public int field7806 = 0;
 
-	@ObfuscatedName("xy.f")
-	public long field7811;
+    public long field7811;
 
-	@ObfuscatedName("xy.w")
-	public long field7808;
+    public long field7808;
 
-	@ObfuscatedName("xy.l")
-	public List field7809 = new LinkedList();
+    public List field7809 = new LinkedList();
 
-	@ObfuscatedName("xy.u")
-	public int field7813 = 0;
+    public int field7813 = 0;
 
-	@ObfuscatedName("xy.z")
-	public List field7803 = new LinkedList();
+    public List field7803 = new LinkedList();
 
-	@ObfuscatedName("xy.p")
-	public int field7812 = 0;
+    public int field7812 = 0;
 
-	@ObfuscatedName("xy.d")
-	public boolean field7814 = false;
+    public boolean field7814 = false;
 
-	@ObfuscatedName("xy.c")
-	public boolean field7807 = false;
+    public boolean field7807 = false;
 
-	@ObfuscatedName("xy.r")
-	public int field7815;
+    public int field7815;
 
-	@ObfuscatedName("xy.v")
-	public ParticleList field7816 = new ParticleList();
+    public ParticleList field7816 = new ParticleList();
 
-	@ObfuscatedName("xy.o")
-	public static boolean[] field7817 = new boolean[64];
+    public static boolean[] field7817 = new boolean[64];
 
-	@ObfuscatedName("xy.s")
-	public static boolean[] field7818 = new boolean[16];
+    public static boolean[] field7818 = new boolean[16];
 
-	@ObfuscatedName("xy.e(IZ)Lxy;")
-	public static ParticleSystem method9962(int arg0, boolean arg1) {
+    public static ParticleSystem method9962(int arg0, boolean arg1) {
 		if (ParticleSystemRenderer.field7793 == ParticleSystemRenderer.field7792) {
 			return new ParticleSystem(arg0, arg1);
 		} else {
@@ -78,8 +60,7 @@ public class ParticleSystem {
 		this.method9929(arg0, arg1);
 	}
 
-	@ObfuscatedName("xy.n(IZ)V")
-	public void method9929(int arg0, boolean arg1) {
+    public void method9929(int arg0, boolean arg1) {
 		ParticleSystemRenderer.field8349.add(this);
 		this.field7808 = arg0;
 		this.field7811 = arg0;
@@ -87,13 +68,11 @@ public class ParticleSystem {
 		this.field7807 = arg1;
 	}
 
-	@ObfuscatedName("xy.m()V")
-	public void method9930() {
+    public void method9930() {
 		this.field7814 = true;
 	}
 
-	@ObfuscatedName("xy.k()V")
-	public void method9968() {
+    public void method9968() {
 		this.field7804 = true;
 		Iterator var1 = this.field7803.iterator();
 		while (var1.hasNext()) {
@@ -115,18 +94,15 @@ public class ParticleSystem {
 		this.field7812 = 0;
 	}
 
-	@ObfuscatedName("xy.f()V")
-	public void method9932() {
+    public void method9932() {
 		this.field7810 = true;
 	}
 
-	@ObfuscatedName("xy.w()V")
-	public void method9946() {
+    public void method9946() {
 		this.field7810 = false;
 	}
 
-	@ObfuscatedName("xy.l(Ldh;J)Z")
-	public boolean method9934(Toolkit arg0, long arg1) {
+    public boolean method9934(Toolkit arg0, long arg1) {
 		if (this.field7811 == this.field7808) {
 			this.method9946();
 		} else {
@@ -156,13 +132,11 @@ public class ParticleSystem {
 		return true;
 	}
 
-	@ObfuscatedName("xy.u(J)V")
-	public void method9935(long arg0) {
+    public void method9935(long arg0) {
 		this.field7808 = arg0;
 	}
 
-	@ObfuscatedName("xy.z(Ldh;J[Ldu;[Lcq;Z)V")
-	public void method9936(Toolkit arg0, long arg1, ModelParticleEmitter[] arg2, ModelParticleEffector[] arg3, boolean arg4) {
+    public void method9936(Toolkit arg0, long arg1, ModelParticleEmitter[] arg2, ModelParticleEffector[] arg3, boolean arg4) {
 		if (!this.field7804) {
 			this.method9937(arg0, arg2, arg4);
 			this.method9938(arg3, arg4);
@@ -170,8 +144,7 @@ public class ParticleSystem {
 		}
 	}
 
-	@ObfuscatedName("xy.p(Ldh;[Ldu;Z)V")
-	public void method9937(Toolkit arg0, ModelParticleEmitter[] arg1, boolean arg2) {
+    public void method9937(Toolkit arg0, ModelParticleEmitter[] arg1, boolean arg2) {
 		for (int var4 = 0; var4 < 64; var4++) {
 			field7817[var4] = false;
 		}
@@ -212,8 +185,7 @@ public class ParticleSystem {
 		}
 	}
 
-	@ObfuscatedName("xy.d([Lcq;Z)V")
-	public void method9938(ModelParticleEffector[] arg0, boolean arg1) {
+    public void method9938(ModelParticleEffector[] arg0, boolean arg1) {
 		for (int var3 = 0; var3 < 16; var3++) {
 			field7818[var3] = false;
 		}
@@ -261,8 +233,7 @@ public class ParticleSystem {
 		}
 	}
 
-	@ObfuscatedName("xy.c()Ldm;")
-	public ParticleList method9939() {
+    public ParticleList method9939() {
 		this.field7816.list.clear();
 		for (int var1 = 0; var1 < this.field7805.length; var1++) {
 			if (this.field7805[var1] != null && this.field7805[var1].field12526 != null) {
@@ -272,13 +243,11 @@ public class ParticleSystem {
 		return this.field7816;
 	}
 
-	@ObfuscatedName("xy.r(IIIII)V")
-	public void method9963(int arg0, int arg1, int arg2, int arg3, int arg4) {
+    public void method9963(int arg0, int arg1, int arg2, int arg3, int arg4) {
 		this.field7815 = arg0;
 	}
 
-	@ObfuscatedName("xy.v(Ltx;Ldh;)V")
-	public void method9941(Scene arg0, Toolkit arg1) {
+    public void method9941(Scene arg0, Toolkit arg1) {
 		this.field7816.list.clear();
 		Iterator var3 = this.field7809.iterator();
 		while (var3.hasNext()) {
@@ -287,8 +256,7 @@ public class ParticleSystem {
 		}
 	}
 
-	@ObfuscatedName("xy.o()Ldm;")
-	public ParticleList method9965() {
+    public ParticleList method9965() {
 		return this.field7816;
 	}
 }

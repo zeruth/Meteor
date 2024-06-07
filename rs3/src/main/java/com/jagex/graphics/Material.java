@@ -4,86 +4,59 @@ import com.jagex.core.datastruct.SerializableEnums;
 import com.jagex.core.io.Packet;
 import deob.ObfuscatedName;
 
-@ObfuscatedName("dv")
 public class Material {
 
-	@ObfuscatedName("dv.ag")
-	public int field1329;
+    public int field1329;
 
-	@ObfuscatedName("dv.ah")
-	public boolean field1330 = false;
+    public boolean field1330 = false;
 
-	@ObfuscatedName("dv.al")
-	public boolean field1331 = false;
+    public boolean field1331 = false;
 
-	@ObfuscatedName("dv.ac")
-	public boolean field1321 = false;
+    public boolean field1321 = false;
 
-	@ObfuscatedName("dv.ai")
-	public boolean field1333 = false;
+    public boolean field1333 = false;
 
-	@ObfuscatedName("dv.aw")
-	public int diffuseTexture = -1;
+    public int diffuseTexture = -1;
 
-	@ObfuscatedName("dv.as")
-	public int field1302 = -1;
+    public int field1302 = -1;
 
-	@ObfuscatedName("dv.at")
-	public int size;
+    public int size;
 
-	@ObfuscatedName("dv.ad")
-	public float speedU = 0.0F;
+    public float speedU = 0.0F;
 
-	@ObfuscatedName("dv.am")
-	public float speedV = 0.0F;
+    public float speedV = 0.0F;
 
-	@ObfuscatedName("dv.au")
-	public boolean field1336 = false;
+    public boolean field1336 = false;
 
-	@ObfuscatedName("dv.ar")
-	public MaterialAlphaMode alphaMode = MaterialAlphaMode.NONE;
+    public MaterialAlphaMode alphaMode = MaterialAlphaMode.NONE;
 
-	@ObfuscatedName("dv.ap")
-	public byte alphaThreshold = -1;
+    public byte alphaThreshold = -1;
 
-	@ObfuscatedName("dv.aq")
-	public byte repeatS = 0;
+    public byte repeatS = 0;
 
-	@ObfuscatedName("dv.ax")
-	public byte repeatT = 0;
+    public byte repeatT = 0;
 
-	@ObfuscatedName("dv.bh")
-	public byte effect = 0;
+    public byte effect = 0;
 
-	@ObfuscatedName("dv.bx")
-	public byte effectArg1 = 0;
+    public byte effectArg1 = 0;
 
-	@ObfuscatedName("dv.bd")
-	public int field1359 = 0;
+    public int field1359 = 0;
 
-	@ObfuscatedName("dv.bc")
-	public byte field1332 = 0;
+    public byte field1332 = 0;
 
-	@ObfuscatedName("dv.bi")
-	public boolean field1361 = false;
+    public boolean field1361 = false;
 
-	@ObfuscatedName("dv.bn")
-	public boolean highDetail = false;
+    public boolean highDetail = false;
 
-	@ObfuscatedName("dv.bt")
-	public byte field1363 = 0;
+    public byte field1363 = 0;
 
-	@ObfuscatedName("dv.bq")
-	public byte field1364 = -1;
+    public byte field1364 = -1;
 
-	@ObfuscatedName("dv.bm")
-	public byte field1311 = 0;
+    public byte field1311 = 0;
 
-	@ObfuscatedName("dv.bb")
-	public short averageColour = 0;
+    public short averageColour = 0;
 
-	@ObfuscatedName("rk.e(IB)I")
-	public static int method7618(int arg0) {
+    public static int method7618(int arg0) {
 		switch(arg0) {
 			case 0:
 				return 64;
@@ -100,13 +73,11 @@ public class Material {
 		}
 	}
 
-	@ObfuscatedName("u.n(IB)Z")
-	public static boolean method261(int arg0) {
+    public static boolean method261(int arg0) {
 		return arg0 != 1 && arg0 != 7;
 	}
 
-	@ObfuscatedName("dv.m(ILalw;I)V")
-	public void method1909(int arg0, Packet arg1) {
+    public void method1909(int arg0, Packet arg1) {
 		this.field1329 = arg0;
 		byte var3 = (byte) arg1.g1();
 		if (var3 == 0) {
@@ -116,8 +87,7 @@ public class Material {
 		}
 	}
 
-	@ObfuscatedName("dv.k(Lalw;I)V")
-	public void method1904(Packet arg0) {
+    public void method1904(Packet arg0) {
 		arg0.g1();
 		int var2 = arg0.g1();
 		this.size = method7618(var2);
@@ -180,8 +150,7 @@ public class Material {
 		this.averageColour = (short) arg0.g2();
 	}
 
-	@ObfuscatedName("dv.f(Lalw;I)V")
-	public void method1905(Packet arg0) {
+    public void method1905(Packet arg0) {
 		int var2 = arg0.g4s();
 		boolean var3 = (var2 & 0x800) != 0;
 		if ((var2 & 0x20) != 0) {

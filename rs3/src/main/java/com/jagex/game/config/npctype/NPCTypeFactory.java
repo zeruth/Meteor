@@ -8,29 +8,21 @@ import com.jagex.game.config.ConfigTypeFactory;
 import com.jagex.js5.Js5;
 import deob.ObfuscatedName;
 
-@ObfuscatedName("ih")
 public abstract class NPCTypeFactory implements ConfigTypeFactory {
 
-	@ObfuscatedName("ih.e")
-	public final ModeGame modeGame;
+    public final ModeGame modeGame;
 
-	@ObfuscatedName("ih.n")
-	public boolean allowMembers;
+    public boolean allowMembers;
 
-	@ObfuscatedName("ih.m")
-	public final Js5 configClient;
+    public final Js5 configClient;
 
-	@ObfuscatedName("ih.k")
-	public final SoftLruHashTable modelCache = new SoftLruHashTable(50);
+    public final SoftLruHashTable modelCache = new SoftLruHashTable(50);
 
-	@ObfuscatedName("ih.f")
-	public final SoftLruHashTable headModelCache = new SoftLruHashTable(5);
+    public final SoftLruHashTable headModelCache = new SoftLruHashTable(5);
 
-	@ObfuscatedName("ih.w")
-	public int field2773;
+    public int field2773;
 
-	@ObfuscatedName("ih.l")
-	public final String[] defaultops;
+    public final String[] defaultops;
 
 	public NPCTypeFactory(boolean allowMembers, Js5 configClient, Language language, ModeGame modeGame) {
 		this.allowMembers = allowMembers;
@@ -43,16 +35,14 @@ public abstract class NPCTypeFactory implements ConfigTypeFactory {
 		}
 	}
 
-	@ObfuscatedName("ih.e(ZI)V")
-	public void setAllowMembers(boolean arg0) {
+    public void setAllowMembers(boolean arg0) {
 		if (this.allowMembers != arg0) {
 			this.allowMembers = arg0;
 			this.cacheReset();
 		}
 	}
 
-	@ObfuscatedName("ih.n(II)V")
-	public void resetModelCache(int arg0) {
+    public void resetModelCache(int arg0) {
 		this.field2773 = arg0;
 		SoftLruHashTable var2 = this.modelCache;
 		synchronized (this.modelCache) {
@@ -64,8 +54,7 @@ public abstract class NPCTypeFactory implements ConfigTypeFactory {
 		}
 	}
 
-	@ObfuscatedName("ih.m(B)V")
-	public void cacheReset() {
+    public void cacheReset() {
 		SoftLruHashTable var1 = this.modelCache;
 		synchronized (this.modelCache) {
 			this.modelCache.reset();
@@ -76,8 +65,7 @@ public abstract class NPCTypeFactory implements ConfigTypeFactory {
 		}
 	}
 
-	@ObfuscatedName("ih.k(II)V")
-	public void cacheClean(int arg0) {
+    public void cacheClean(int arg0) {
 		SoftLruHashTable var2 = this.modelCache;
 		synchronized (this.modelCache) {
 			this.modelCache.clean(arg0);
@@ -88,8 +76,7 @@ public abstract class NPCTypeFactory implements ConfigTypeFactory {
 		}
 	}
 
-	@ObfuscatedName("ih.f(I)V")
-	public void cacheRemoveSoftReferences() {
+    public void cacheRemoveSoftReferences() {
 		SoftLruHashTable var1 = this.modelCache;
 		synchronized (this.modelCache) {
 			this.modelCache.clear();

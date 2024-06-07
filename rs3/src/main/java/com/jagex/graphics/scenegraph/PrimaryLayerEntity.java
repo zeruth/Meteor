@@ -7,32 +7,23 @@ import com.jagex.graphics.Toolkit;
 import com.jagex.math.ScaleRotTrans;
 import deob.ObfuscatedName;
 
-@ObfuscatedName("ash")
 public abstract class PrimaryLayerEntity extends GraphEntity {
 
-	@ObfuscatedName("ash.x")
-	public short minSceneTileX;
+    public short minSceneTileX;
 
-	@ObfuscatedName("ash.b")
-	public short maxSceneTileX;
+    public short maxSceneTileX;
 
-	@ObfuscatedName("ash.h")
-	public short minSceneTileZ;
+    public short minSceneTileZ;
 
-	@ObfuscatedName("ash.a")
-	public short maxSceneTileZ;
+    public short maxSceneTileZ;
 
-	@ObfuscatedName("ash.g")
-	public boolean raised;
+    public boolean raised;
 
-	@ObfuscatedName("ash.i")
-	public byte field12469;
+    public byte field12469;
 
-	@ObfuscatedName("ash.j")
-	public int field12466;
+    public int field12466;
 
-	@ObfuscatedName("ash.t")
-	public Light[] field12473;
+    public Light[] field12473;
 
 	public PrimaryLayerEntity(Scene scene, int level, int occludeLevel, int x, int y, int z, int minSceneTileX, int maxSceneTileX, int minSceneTileZ, int maxSceneTileZ, boolean raised, byte arg11) {
 		this(scene, level, occludeLevel, x, y, z, minSceneTileX, maxSceneTileX, minSceneTileZ, maxSceneTileZ, raised, arg11, (ScaleRotTrans) null);
@@ -59,12 +50,10 @@ public abstract class PrimaryLayerEntity extends GraphEntity {
 		}
 	}
 
-	@ObfuscatedName("ash.bv(I)V")
-	public void method16529() {
+    public void method16529() {
 	}
 
-	@ObfuscatedName("ash.gy([Lakf;S)I")
-	public int method18375(Light[] arg0) {
+    public int method18375(Light[] arg0) {
 		if (this.field8176) {
 			this.field12466 = 0;
 			int var2 = Math.max(0, this.minSceneTileX);
@@ -166,13 +155,11 @@ public abstract class PrimaryLayerEntity extends GraphEntity {
 		return this.field12466;
 	}
 
-	@ObfuscatedName("ash.ga(Ldh;S)Z")
-	public boolean isOccluded(Toolkit toolkit) {
+    public boolean isOccluded(Toolkit toolkit) {
 		return this.scene.occlusionManager.locVisible(this.occludeLevel, this.minSceneTileX, this.maxSceneTileX, this.minSceneTileZ, this.maxSceneTileZ, this.method17371(toolkit));
 	}
 
-	@ObfuscatedName("ash.gn(I)Z")
-	public boolean isVisible() {
+    public boolean isVisible() {
 		for (int var1 = this.minSceneTileX; var1 <= this.maxSceneTileX; var1++) {
 			for (int var2 = this.minSceneTileZ; var2 <= this.maxSceneTileZ; var2++) {
 				int var3 = this.scene.drawDistance + (var1 - this.scene.eyeTileX);

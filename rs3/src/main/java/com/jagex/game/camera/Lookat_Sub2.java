@@ -5,30 +5,24 @@ import com.jagex.graphics.camera.Camera;
 import com.jagex.math.*;
 import deob.ObfuscatedName;
 
-@ObfuscatedName("ani")
 public class Lookat_Sub2 extends Lookat {
 
-	@ObfuscatedName("ani.n")
-	public Spline field11874 = null;
+    public Spline field11874 = null;
 
-	@ObfuscatedName("ani.m")
-	public PositionSpline field11875 = null;
+    public PositionSpline field11875 = null;
 
 	public Lookat_Sub2(Camera arg0) {
 		super(arg0);
 	}
 
-	@ObfuscatedName("ani.e(FB)V")
-	public void method14131(float arg0) {
+    public void method14131(float arg0) {
 	}
 
-	@ObfuscatedName("ani.n(I)Z")
-	public boolean method14145() {
+    public boolean method14145() {
 		return this.field11874 != null && this.field11875 != null && this.field11875.method5218();
 	}
 
-	@ObfuscatedName("ani.m(I)Lox;")
-	public Vector3 method14133() {
+    public Vector3 method14133() {
 		Vector3 var1 = Vector3.create();
 		double[] var2 = this.field11874.method6767(this.field11875.method16733());
 		var1.x = (float) var2[0];
@@ -37,18 +31,15 @@ public class Lookat_Sub2 extends Lookat {
 		return var1;
 	}
 
-	@ObfuscatedName("ani.q(B)[D")
-	public double[] method18849() {
+    public double[] method18849() {
 		return this.field11874.method6767(this.field11875.method16733());
 	}
 
-	@ObfuscatedName("ani.k(I)Lox;")
-	public Vector3 method14135() {
+    public Vector3 method14135() {
 		return this.method14133();
 	}
 
-	@ObfuscatedName("ani.f(Lju;Lou;IIFB)V")
-	public void method14136(Vector3i arg0, Matrix4x3 arg1, int arg2, int arg3, float arg4) {
+    public void method14136(Vector3i arg0, Matrix4x3 arg1, int arg2, int arg3, float arg4) {
 		double[] var6 = this.camera.method4715();
 		var6[0] -= arg2;
 		var6[2] -= arg3;
@@ -72,8 +63,7 @@ public class Lookat_Sub2 extends Lookat {
 		var12.release();
 	}
 
-	@ObfuscatedName("ani.w(Lalw;I)V")
-	public void decode(Packet buf) {
+    public void decode(Packet buf) {
 		this.field11874 = new Spline(buf);
 	}
 }

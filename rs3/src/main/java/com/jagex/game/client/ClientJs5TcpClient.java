@@ -12,14 +12,11 @@ import rs2.client.Client;
 import java.io.IOException;
 import java.util.Iterator;
 
-@ObfuscatedName("aik")
 public class ClientJs5TcpClient extends Js5TcpClient {
 
-	@ObfuscatedName("aik.g")
-	public Stream stream;
+    public Stream stream;
 
-	@ObfuscatedName("aik.w(IIB)V")
-	public void error(int archive, int group) {
+    public void error(int archive, int group) {
 		try {
 			this.stream.closeGracefully();
 		} catch (Exception var4) {
@@ -32,8 +29,7 @@ public class ClientJs5TcpClient extends Js5TcpClient {
 		this.group = group;
 	}
 
-	@ObfuscatedName("aik.l(I)Z")
-	public boolean process() {
+    public boolean process() {
 		if (this.stream != null) {
 			long current = MonotonicTime.get();
 			int delay = (int) (current - this.lastTimestamp);
@@ -190,8 +186,7 @@ public class ClientJs5TcpClient extends Js5TcpClient {
 		}
 	}
 
-	@ObfuscatedName("aik.u(Ljava/lang/Object;ZI)V")
-	public void createNewJs5Stream(Object stream, boolean isLoggedIn) {
+    public void createNewJs5Stream(Object stream, boolean isLoggedIn) {
 		if (this.stream != null) {
 			try {
 				this.stream.closeGracefully();
@@ -241,8 +236,7 @@ public class ClientJs5TcpClient extends Js5TcpClient {
 		}
 	}
 
-	@ObfuscatedName("aik.ac(I)V")
-	public void sendNewStream() {
+    public void sendNewStream() {
 		if (this.stream == null) {
 			return;
 		}
@@ -263,8 +257,7 @@ public class ClientJs5TcpClient extends Js5TcpClient {
 		}
 	}
 
-	@ObfuscatedName("aik.z(ZI)V")
-	public void sendLoginStatus(boolean isLoggedIn) {
+    public void sendLoginStatus(boolean isLoggedIn) {
 		if (this.stream == null) {
 			return;
 		}
@@ -284,8 +277,7 @@ public class ClientJs5TcpClient extends Js5TcpClient {
 		}
 	}
 
-	@ObfuscatedName("aik.p(I)V")
-	public void sendCloseStream() {
+    public void sendCloseStream() {
 		if (this.stream == null) {
 			return;
 		}
@@ -305,15 +297,13 @@ public class ClientJs5TcpClient extends Js5TcpClient {
 		}
 	}
 
-	@ObfuscatedName("aik.d(I)V")
-	public void closeGracefully() {
+    public void closeGracefully() {
 		if (this.stream != null) {
 			this.stream.closeGracefully();
 		}
 	}
 
-	@ObfuscatedName("aik.c(I)V")
-	public void closeForcefully() {
+    public void closeForcefully() {
 		if (this.stream != null) {
 			this.stream.closeForcefully();
 		}

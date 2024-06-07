@@ -8,23 +8,17 @@ import com.jagex.game.config.ConfigType;
 import com.jagex.game.config.vartype.constants.ScriptVarType;
 import deob.ObfuscatedName;
 
-@ObfuscatedName("adp")
 public class ParamType implements ConfigType, MutableConfig {
 
-	@ObfuscatedName("adp.e")
-	public ScriptVarType type;
+    public ScriptVarType type;
 
-	@ObfuscatedName("adp.n")
-	public int defaultint;
+    public int defaultint;
 
-	@ObfuscatedName("adp.m")
-	public String defaultstr;
+    public String defaultstr;
 
-	@ObfuscatedName("adp.k")
-	public boolean autodisable = true;
+    public boolean autodisable = true;
 
-	@ObfuscatedName("adp.e(Lalw;B)V")
-	public void decode(Packet buf) {
+    public void decode(Packet buf) {
 		while (true) {
 			int code = buf.g1();
 			if (code == 0) {
@@ -34,8 +28,7 @@ public class ParamType implements ConfigType, MutableConfig {
 		}
 	}
 
-	@ObfuscatedName("adp.u(Lalw;II)V")
-	public void decode(Packet buf, int code) {
+    public void decode(Packet buf, int code) {
 		if (code == 1) {
 			char c = Cp1252.byteToCp1252Char(buf.g1b());
 			this.type = ScriptVarType.getByLegacyChar(c);
@@ -50,16 +43,13 @@ public class ParamType implements ConfigType, MutableConfig {
 		}
 	}
 
-	@ObfuscatedName("adp.p(I)Z")
-	public boolean isStringType() {
+    public boolean isStringType() {
 		return ScriptVarType.STRING == this.type;
 	}
 
-	@ObfuscatedName("adp.n(I)V")
-	public void postDecode() {
+    public void postDecode() {
 	}
 
-	@ObfuscatedName("adp.z(IB)V")
-	public void setId(int arg0) {
+    public void setId(int arg0) {
 	}
 }

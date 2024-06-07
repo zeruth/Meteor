@@ -2,15 +2,13 @@ package com.jagex.core.utils;
 
 import deob.ObfuscatedName;
 
-@ObfuscatedName("xo")
 public final class Utf8 {
 
 	public Utf8() throws Throwable {
 		throw new Error();
 	}
 
-	@ObfuscatedName("tz.e(Ljava/lang/CharSequence;I)I")
-	public static int method8499(CharSequence arg0) {
+    public static int method8499(CharSequence arg0) {
 		int var1 = arg0.length();
 		int var2 = 0;
 		for (int var3 = 0; var3 < var1; var3++) {
@@ -26,8 +24,7 @@ public final class Utf8 {
 		return var2;
 	}
 
-	@ObfuscatedName("alq.n([BILjava/lang/CharSequence;B)I")
-	public static int method18328(byte[] arg0, int arg1, CharSequence arg2) {
+    public static int method18328(byte[] arg0, int arg1, CharSequence arg2) {
 		int var3 = arg2.length();
 		int var4 = arg1;
 		for (int var5 = 0; var5 < var3; var5++) {
@@ -46,8 +43,7 @@ public final class Utf8 {
 		return var4 - arg1;
 	}
 
-	@ObfuscatedName("xf.m([BIIB)Ljava/lang/String;")
-	public static String method10345(byte[] arg0, int arg1, int arg2) {
+    public static String method10345(byte[] arg0, int arg1, int arg2) {
 		char[] var3 = new char[arg2];
 		int var4 = 0;
 		int var5 = arg1;

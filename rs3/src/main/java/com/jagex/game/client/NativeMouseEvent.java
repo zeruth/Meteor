@@ -5,41 +5,30 @@ import deob.ObfuscatedName;
 
 import java.awt.*;
 
-@ObfuscatedName("asp")
 public class NativeMouseEvent extends MouseEvent {
 
-	@ObfuscatedName("asp.x")
 	public int field12424;
 
-	@ObfuscatedName("asp.av")
 	public static NativeMouseEvent[] field12413 = new NativeMouseEvent[0];
 
-	@ObfuscatedName("hr.ao")
 	public static int field2364;
 
-	@ObfuscatedName("wm.aj")
 	public static int field7658;
 
-	@ObfuscatedName("asp.ay")
 	public int field12420;
 
-	@ObfuscatedName("asp.ab")
 	public int field12407;
 
-	@ObfuscatedName("asp.az")
 	public long field12422;
 
-	@ObfuscatedName("asp.aa")
 	public int field12419;
 
-	@ObfuscatedName("alj.t(II)V")
 	public static void method18259(int arg0) {
 		field2364 = arg0;
 		field12413 = new NativeMouseEvent[arg0];
 		field7658 = 0;
 	}
 
-	@ObfuscatedName("ajq.ae(IIIIB)Lasp;")
 	public static NativeMouseEvent method17446(int arg0, int arg1, int arg2, int arg3) {
 		NativeMouseEvent[] var4 = field12413;
 		synchronized (field12413) {
@@ -58,7 +47,6 @@ public class NativeMouseEvent extends MouseEvent {
 		}
 	}
 
-	@ObfuscatedName("asp.l(B)V")
 	public void release() {
 		NativeMouseEvent[] var1 = field12413;
 		synchronized (field12413) {
@@ -68,17 +56,14 @@ public class NativeMouseEvent extends MouseEvent {
 		}
 	}
 
-	@ObfuscatedName("asp.ag(I)I")
 	public int method19537() {
 		return this.field12407;
 	}
 
-	@ObfuscatedName("asp.ah(I)I")
 	public int method19539() {
 		return this.field12420;
 	}
 
-	@ObfuscatedName("asp.al(I)Z")
 	public boolean method19540() {
 		switch(this.field12420) {
 			case 160:
@@ -104,7 +89,6 @@ public class NativeMouseEvent extends MouseEvent {
 		}
 	}
 
-	@ObfuscatedName("asp.k(I)I")
 	public int getCount() {
 		switch(this.field12420) {
 			case 160:
@@ -124,7 +108,6 @@ public class NativeMouseEvent extends MouseEvent {
 		}
 	}
 
-	@ObfuscatedName("asp.e(I)I")
 	public int getButtonAction() {
 		switch(this.field12420) {
 			case 160:
@@ -162,23 +145,19 @@ public class NativeMouseEvent extends MouseEvent {
 		}
 	}
 
-	@ObfuscatedName("asp.ac(Ljava/awt/Point;I)V")
 	public void method19541(Point arg0) {
 		this.field12419 -= arg0.x;
 		this.field12424 -= arg0.y;
 	}
 
-	@ObfuscatedName("asp.f(B)J")
 	public long method17834() {
 		return this.field12422;
 	}
 
-	@ObfuscatedName("asp.n(I)I")
 	public int getMouseClickX() {
 		return this.field12419;
 	}
 
-	@ObfuscatedName("asp.m(B)I")
 	public int getMouseClickY() {
 		return this.field12424;
 	}

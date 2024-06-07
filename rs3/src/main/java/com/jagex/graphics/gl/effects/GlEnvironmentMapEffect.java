@@ -10,20 +10,15 @@ import com.jagex.math.Vector3;
 import deob.ObfuscatedName;
 import jaggl.OpenGL;
 
-@ObfuscatedName("aeb")
 public class GlEnvironmentMapEffect extends GlEffect {
 
-	@ObfuscatedName("aeb.d")
-	public GlRenderList field9333;
+    public GlRenderList field9333;
 
-	@ObfuscatedName("aeb.c")
-	public boolean field9335;
+    public boolean field9335;
 
-	@ObfuscatedName("aeb.r")
-	public boolean field9329 = false;
+    public boolean field9329 = false;
 
-	@ObfuscatedName("aeb.v")
-	public GlCubeTexture[] field9338;
+    public GlCubeTexture[] field9338;
 
 	public GlEnvironmentMapEffect(GlToolkit arg0) {
 		super(arg0);
@@ -84,13 +79,11 @@ public class GlEnvironmentMapEffect extends GlEffect {
 		}
 	}
 
-	@ObfuscatedName("aeb.e()Z")
-	public boolean method1252() {
+    public boolean method1252() {
 		return true;
 	}
 
-	@ObfuscatedName("aeb.b()V")
-	public void method15349() {
+    public void method15349() {
 		this.field9333 = new GlRenderList(this.field1021, 2);
 		this.field9333.method1245(0);
 		this.field1021.method15776(1);
@@ -146,8 +139,7 @@ public class GlEnvironmentMapEffect extends GlEffect {
 		this.field9333.method1243();
 	}
 
-	@ObfuscatedName("aeb.n(Z)V")
-	public void method1263(boolean arg0) {
+    public void method1263(boolean arg0) {
 		if (this.field9333 == null || !arg0) {
 			this.field1021.method15781(0, 34168, 770);
 			return;
@@ -161,13 +153,11 @@ public class GlEnvironmentMapEffect extends GlEffect {
 		this.field9329 = true;
 	}
 
-	@ObfuscatedName("aeb.m(Z)V")
-	public void method1254(boolean arg0) {
+    public void method1254(boolean arg0) {
 		this.field1021.method15810(8448, 7681);
 	}
 
-	@ObfuscatedName("aeb.k()V")
-	public void method1255() {
+    public void method1255() {
 		if (this.field9329) {
 			if (!this.field9335) {
 				this.field1021.method15776(2);
@@ -184,8 +174,7 @@ public class GlEnvironmentMapEffect extends GlEffect {
 		this.field1021.method15810(8448, 8448);
 	}
 
-	@ObfuscatedName("aeb.f(II)V")
-	public void method1256(int arg0, int arg1) {
+    public void method1256(int arg0, int arg1) {
 		if (this.field9329) {
 			this.field1021.method15776(1);
 			this.field1021.method15777(this.field9338[arg0 - 1]);
@@ -193,8 +182,7 @@ public class GlEnvironmentMapEffect extends GlEffect {
 		}
 	}
 
-	@ObfuscatedName("aeb.w(Lbq;I)V")
-	public void method1251(GlTexture arg0, int arg1) {
+    public void method1251(GlTexture arg0, int arg1) {
 		this.field1021.method15777(arg0);
 		this.field1021.method15778(arg1);
 	}

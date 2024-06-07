@@ -5,38 +5,30 @@ import com.jagex.graphics.TextureFormat;
 import deob.ObfuscatedName;
 import jaggl.OpenGL;
 
-@ObfuscatedName("apf")
 public class GlEnvironmentSampler_Sub1 extends GlEnvironmentSampler {
 
-	@ObfuscatedName("apf.e")
-	public final GlToolkit field11944;
+    public final GlToolkit field11944;
 
-	@ObfuscatedName("apf.n")
-	public GlCubeTexture field11941;
+    public GlCubeTexture field11941;
 
-	@ObfuscatedName("apf.m")
-	public static final int[] field11943 = new int[4];
+    public static final int[] field11943 = new int[4];
 
-	@ObfuscatedName("apf.k")
-	public static final int[] field11942 = new int[4];
+    public static final int[] field11942 = new int[4];
 
 	public GlEnvironmentSampler_Sub1(GlToolkit arg0, int arg1) {
 		this.field11944 = arg0;
 		this.field11941 = new GlCubeTexture(arg0, TextureFormat.RGBA, DataType.UNSIGNED_INT_8, arg1);
 	}
 
-	@ObfuscatedName("apf.m()I")
-	public int method18982() {
+    public int method18982() {
 		return this.field11941.field9279;
 	}
 
-	@ObfuscatedName("apf.e()Ladq;")
-	public GlCubeTexture method15649() {
+    public GlCubeTexture method15649() {
 		return this.field11941;
 	}
 
-	@ObfuscatedName("apf.k(Ladq;Ladq;F)Z")
-	public boolean method18984(GlCubeTexture arg0, GlCubeTexture arg1, float arg2) {
+    public boolean method18984(GlCubeTexture arg0, GlCubeTexture arg1, float arg2) {
 		boolean var4 = true;
 		GlFrameBuffer var5 = this.field11944.field9877;
 		this.field11944.method2171(field11943);

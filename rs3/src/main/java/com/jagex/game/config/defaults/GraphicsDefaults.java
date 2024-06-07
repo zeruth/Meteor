@@ -4,142 +4,98 @@ import com.jagex.core.io.Packet;
 import com.jagex.js5.Js5;
 import deob.ObfuscatedName;
 
-@ObfuscatedName("ws")
 public class GraphicsDefaults {
 
-	@ObfuscatedName("ws.n")
-	public int maxhitmarks = 4;
+    public int maxhitmarks = 4;
 
-	@ObfuscatedName("ws.m")
-	public int[] hitmarkpos_x = null;
+    public int[] hitmarkpos_x = null;
 
-	@ObfuscatedName("ws.k")
-	public int[] hitmarkpos_y = null;
+    public int[] hitmarkpos_y = null;
 
-	@ObfuscatedName("ws.w")
-	public int field7719 = 4;
+    public int field7719 = 4;
 
-	@ObfuscatedName("ws.u")
-	public int field7745 = 4;
+    public int field7745 = 4;
 
-	@ObfuscatedName("ws.p")
-	public int field7723 = 7;
+    public int field7723 = 7;
 
-	@ObfuscatedName("ws.d")
-	public int performancemetricsmodel = -1;
+    public int performancemetricsmodel = -1;
 
-	@ObfuscatedName("ws.c")
-	public int login_interface = -1;
+    public int login_interface = -1;
 
-	@ObfuscatedName("ws.r")
-	public int lobby_interface = -1;
+    public int lobby_interface = -1;
 
-	@ObfuscatedName("ws.v")
-	public boolean field7727 = true;
+    public boolean field7727 = true;
 
-	@ObfuscatedName("ws.o")
-	public short spotshadowtexture = -1;
+    public short spotshadowtexture = -1;
 
-	@ObfuscatedName("ws.s")
-	public byte spotshadowtexture_alpha = 0;
+    public byte spotshadowtexture_alpha = 0;
 
-	@ObfuscatedName("ws.y")
-	public int field7730 = 100;
+    public int field7730 = 100;
 
-	@ObfuscatedName("ws.q")
-	public short[][] field7731;
+    public short[][] field7731;
 
-	@ObfuscatedName("ws.x")
-	public short[][][] field7729;
+    public short[][][] field7729;
 
-	@ObfuscatedName("ws.b")
-	public short[][] field7714;
+    public short[][] field7714;
 
-	@ObfuscatedName("ws.h")
-	public short[][][] field7734;
+    public short[][][] field7734;
 
-	@ObfuscatedName("ws.a")
-	public boolean npcShouldDisplayChat = true;
+    public boolean npcShouldDisplayChat = true;
 
-	@ObfuscatedName("ws.g")
-	public int npcChatTimeout = 2;
+    public int npcChatTimeout = 2;
 
-	@ObfuscatedName("ws.i")
-	public boolean playerShouldDisplayChat = true;
+    public boolean playerShouldDisplayChat = true;
 
-	@ObfuscatedName("ws.j")
-	public int playerChatTimeout = 3;
+    public int playerChatTimeout = 3;
 
-	@ObfuscatedName("ws.t")
-	public int field7739 = -1;
+    public int field7739 = -1;
 
-	@ObfuscatedName("ws.ae")
-	public int field7740 = -1;
+    public int field7740 = -1;
 
-	@ObfuscatedName("ws.ag")
-	public boolean field7749;
+    public boolean field7749;
 
-	@ObfuscatedName("ws.ah")
-	public int invHundredColor = 0xFFFF00;
+    public int invHundredColor = 0xFFFF00;
 
-	@ObfuscatedName("ws.al")
-	public int invThousandColor = 0xFFFFFF;
+    public int invThousandColor = 0xFFFFFF;
 
-	@ObfuscatedName("ws.ac")
-	public int invMillionColor = 0x00FF80;
+    public int invMillionColor = 0x00FF80;
 
-	@ObfuscatedName("ws.ai")
-	public int p11_full = -1;
+    public int p11_full = -1;
 
-	@ObfuscatedName("ws.aw")
-	public int p12_full = -1;
+    public int p12_full = -1;
 
-	@ObfuscatedName("ws.as")
-	public int b12_full = -1;
+    public int b12_full = -1;
 
-	@ObfuscatedName("ws.at")
-	public int hintarrows = -1;
+    public int hintarrows = -1;
 
-	@ObfuscatedName("ws.ad")
-	public int field7715 = -1;
+    public int field7715 = -1;
 
-	@ObfuscatedName("ws.am")
-	public int mapflag = -1;
+    public int mapflag = -1;
 
-	@ObfuscatedName("ws.au")
-	public int field7751;
+    public int field7751;
 
-	@ObfuscatedName("ws.ar")
-	public int field7752;
+    public int field7752;
 
-	@ObfuscatedName("ws.ap")
-	public int cross = -1;
+    public int cross = -1;
 
-	@ObfuscatedName("ws.aq")
-	public int mapdots = -1;
+    public int mapdots = -1;
 
-	@ObfuscatedName("ws.ax")
-	public int field7755 = -1;
+    public int field7755 = -1;
 
-	@ObfuscatedName("ws.av")
-	public int field7756 = -1;
+    public int field7756 = -1;
 
-	@ObfuscatedName("ws.ao")
-	public int compass = -1;
+    public int compass = -1;
 
-	@ObfuscatedName("ws.aj")
-	public int field7721 = -1;
+    public int field7721 = -1;
 
-	@ObfuscatedName("ws.ay")
-	public int field7741 = -1;
+    public int field7741 = -1;
 
 	public GraphicsDefaults(Js5 js5) {
 		byte[] bytes = js5.fetchFile(DefaultsGroup.GRAPHICS.js5GroupId);
 		this.decode(new Packet(bytes));
 	}
 
-	@ObfuscatedName("ws.e(Lalw;B)V")
-	public void decode(Packet buf) {
+    public void decode(Packet buf) {
 		boolean var2 = false;
 		while (true) {
 			while (true) {

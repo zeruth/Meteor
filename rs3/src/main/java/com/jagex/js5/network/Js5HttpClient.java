@@ -15,29 +15,21 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 
-@ObfuscatedName("pu")
 public class Js5HttpClient {
 
-	@ObfuscatedName("pu.e")
-	public String host;
+    public String host;
 
-	@ObfuscatedName("pu.n")
-	public int port;
+    public int port;
 
-	@ObfuscatedName("pu.m")
-	public final int game;
+    public final int game;
 
-	@ObfuscatedName("pu.f")
-	public volatile int pendingRequests = 0;
+    public volatile int pendingRequests = 0;
 
-	@ObfuscatedName("pu.l")
-	public ExecutorService executor = Executors.newFixedThreadPool(2);
+    public ExecutorService executor = Executors.newFixedThreadPool(2);
 
-	@ObfuscatedName("pu.u")
-	public long lastException;
+    public long lastException;
 
-	@ObfuscatedName("pu.c")
-	public boolean field4468 = false;
+    public boolean field4468 = false;
 
 	public Js5HttpClient(String host, int port, int game) {
 		this.host = host;
@@ -45,18 +37,15 @@ public class Js5HttpClient {
 		this.game = game;
 	}
 
-	@ObfuscatedName("pu.e(I)Z")
-	public boolean isPendingRequestsFull() {
+    public boolean isPendingRequestsFull() {
 		return this.pendingRequests >= 10;
 	}
 
-	@ObfuscatedName("pu.n(I)Latb;")
-	public Js5HttpRequest requestMasterIndex() {
+    public Js5HttpRequest requestMasterIndex() {
 		return this.sendHttpRequest(255, 255, (byte) 0, true, 0, 0);
 	}
 
-	@ObfuscatedName("pu.m(IIBZIII)Latb;")
-	public Js5HttpRequest sendHttpRequest(int archive, int group, byte padding, boolean urgent, int crc, int version) {
+    public Js5HttpRequest sendHttpRequest(int archive, int group, byte padding, boolean urgent, int crc, int version) {
 		if (archive < 0 || group < 0) {
 			throw new RuntimeException(archive + "," + group);
 		}
@@ -98,33 +87,27 @@ public class Js5HttpClient {
         return newRequest;
     }
 
-	@ObfuscatedName("pu.k(I)V")
-	public void removePendingRequest() {
+    public void removePendingRequest() {
 		this.pendingRequests--;
 	}
 
-	@ObfuscatedName("pu.f(I)V")
-	public void shutdownExecutor() {
+    public void shutdownExecutor() {
 		this.executor.shutdown();
 	}
 
 	// line 75
-	@ObfuscatedName("pu.w(ZB)V")
-	public void method7053(boolean arg0) {
+    public void method7053(boolean arg0) {
 		this.field4468 = arg0;
 	}
 
-	@ObfuscatedName("pv")
-	public static class Js5HTTPClient_Task implements Callable {
+    public static class Js5HTTPClient_Task implements Callable {
 
 		// $FF: synthetic field
 		public final Js5HttpClient this$0;
 
-		@ObfuscatedName("pv.e")
-		public URL url;
+        public URL url;
 
-		@ObfuscatedName("pv.n")
-		public Js5HttpRequest request;
+        public Js5HttpRequest request;
 
 		// line 82
 		public Js5HTTPClient_Task(Js5HttpClient arg0, URL arg1, Js5HttpRequest arg2) {
@@ -150,14 +133,12 @@ public class Js5HttpClient {
 		}
 	}
 
-	@ObfuscatedName("pr")
-	public static class Js5HTTPClientResponse {
+    public static class Js5HTTPClientResponse {
 
 		// $FF: synthetic field
 		public final Js5HttpClient this$0;
 
-		@ObfuscatedName("pr.e")
-		public byte[] response;
+        public byte[] response;
 
 		// line 106
 		public Js5HTTPClientResponse(Js5HttpClient httpclient, InputStream in, Js5HttpRequest request, URL arg3) {
@@ -206,8 +187,7 @@ public class Js5HttpClient {
 			httpclient.removePendingRequest();
 		}
 
-		@ObfuscatedName("pr.e(I)[B")
-		public byte[] getResponseBytes() {
+        public byte[] getResponseBytes() {
 			return this.response;
 		}
 	}

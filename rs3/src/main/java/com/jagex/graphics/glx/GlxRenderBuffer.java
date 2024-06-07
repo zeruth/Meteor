@@ -7,26 +7,19 @@ import com.jagex.graphics.TextureFormat;
 import deob.ObfuscatedName;
 import jaggl.OpenGL;
 
-@ObfuscatedName("rx")
 public class GlxRenderBuffer implements GraphicsDeletable, EffectInterface, GlxRelated2 {
 
-	@ObfuscatedName("rx.e")
-	public final DataType field5001;
+    public final DataType field5001;
 
-	@ObfuscatedName("rx.n")
-	public final TextureFormat field4997;
+    public final TextureFormat field4997;
 
-	@ObfuscatedName("rx.m")
-	public final int field4998;
+    public final int field4998;
 
-	@ObfuscatedName("rx.k")
-	public final int field4999;
+    public final int field4999;
 
-	@ObfuscatedName("rx.f")
-	public final GlxToolkit field5000;
+    public final GlxToolkit field5000;
 
-	@ObfuscatedName("rx.w")
-	public int field4996;
+    public int field4996;
 
 	public GlxRenderBuffer(GlxToolkit arg0, TextureFormat arg1, DataType arg2, int arg3, int arg4) {
 		this.field4997 = arg1;
@@ -54,23 +47,19 @@ public class GlxRenderBuffer implements GraphicsDeletable, EffectInterface, GlxR
 		OpenGL.glRenderbufferStorageMultisampleEXT(36161, arg5, GlxToolkit.method19077(this.field4997, this.field5001), arg3, arg4);
 	}
 
-	@ObfuscatedName("rx.e()I")
-	public int method1015() {
+    public int method1015() {
 		return this.field4998;
 	}
 
-	@ObfuscatedName("rx.n()I")
-	public int method1009() {
+    public int method1009() {
 		return this.field4999;
 	}
 
-	@ObfuscatedName("rx.z(I)V")
-	public void method7627(int arg0) {
+    public void method7627(int arg0) {
 		OpenGL.glFramebufferRenderbufferEXT(36160, arg0, 36161, this.field4996);
 	}
 
-	@ObfuscatedName("rx.m()V")
-	public void delete() {
+    public void delete() {
 		if (this.field4996 != 0) {
 			int[] var1 = new int[] { this.field4996 };
 			OpenGL.glDeleteRenderbuffersEXT(1, var1, 0);
@@ -78,8 +67,7 @@ public class GlxRenderBuffer implements GraphicsDeletable, EffectInterface, GlxR
 		}
 	}
 
-	@ObfuscatedName("rx.r()V")
-	public void method7670() {
+    public void method7670() {
 		if (this.field4996 != 0) {
 			this.field5000.method19071(this.field4996, this.field5001.field1652 * this.field4999 * this.field4998 * this.field4997.id);
 			this.field4996 = 0;

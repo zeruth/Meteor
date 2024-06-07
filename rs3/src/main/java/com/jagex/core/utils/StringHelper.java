@@ -2,15 +2,13 @@ package com.jagex.core.utils;
 
 import deob.ObfuscatedName;
 
-@ObfuscatedName("cc")
 public class StringHelper {
 
 	public StringHelper() throws Throwable {
 		throw new Error();
 	}
 
-	@ObfuscatedName("xf.e(Ljava/lang/String;B)Ljava/lang/String;")
-	public static String escape(String arg0) {
+    public static String escape(String arg0) {
 		int var1 = arg0.length();
 		int var2 = 0;
 		for (int var3 = 0; var3 < var1; var3++) {

@@ -2,14 +2,12 @@ package com.jagex.core.utils;
 
 import deob.ObfuscatedName;
 
-@ObfuscatedName("zc")
 public class GpuByteArrayUtil {
 
 	public GpuByteArrayUtil() throws Throwable {
 		throw new Error();
 	}
 
-    @ObfuscatedName("ie.e([BI)[B")
     public static byte[] method4405(byte[] arg0) {
         if (arg0 == null) {
             return null;
@@ -20,7 +18,6 @@ public class GpuByteArrayUtil {
         }
     }
 
-    @ObfuscatedName("zd.n([SI)[S")
     public static short[] method13987(short[] arg0) {
         if (arg0 == null) {
             return null;

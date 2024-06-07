@@ -13,32 +13,23 @@ import rs2.client.Client;
 import java.util.Iterator;
 import java.util.LinkedList;
 
-@ObfuscatedName("ta")
 public class HintTrail {
 
-	@ObfuscatedName("ta.e")
-	public static int modelDetails = 0;
+    public static int modelDetails = 0;
 
-	@ObfuscatedName("ta.n")
-	public final int field6749;
+    public final int field6749;
 
-	@ObfuscatedName("ta.m")
-	public final int field6751;
+    public final int field6751;
 
-	@ObfuscatedName("ta.k")
-	public final int[] field6750;
+    public final int[] field6750;
 
-	@ObfuscatedName("ta.f")
-	public final int[] field6753;
+    public final int[] field6753;
 
-	@ObfuscatedName("ta.w")
-	public Model model;
+    public Model model;
 
-	@ObfuscatedName("ta.l")
-	public LinkedList field6752;
+    public LinkedList field6752;
 
-	@ObfuscatedName("ta.u")
-	public boolean field6756;
+    public boolean field6756;
 
 	public HintTrail(Toolkit arg0, Packet arg1, int arg2) {
 		this.field6749 = arg2;
@@ -54,8 +45,7 @@ public class HintTrail {
 		this.model = this.method8402(arg0);
 	}
 
-	@ObfuscatedName("ta.e(Ldh;S)Ldo;")
-	public Model method8402(Toolkit arg0) {
+    public Model method8402(Toolkit arg0) {
 		ModelUnlit var2 = ModelUnlit.get(Client.modelsJs5, this.field6749, 0);
 		if (var2 == null) {
 			return null;
@@ -67,8 +57,7 @@ public class HintTrail {
 		}
 	}
 
-	@ObfuscatedName("ta.n(Ltx;B)V")
-	public void method8412(Scene arg0) {
+    public void method8412(Scene arg0) {
 		if (arg0 == null || this.field6751 <= 0) {
 			return;
 		}
@@ -81,8 +70,7 @@ public class HintTrail {
 		this.field6756 = true;
 	}
 
-	@ObfuscatedName("ta.m(Ltx;B)V")
-	public void method8404(Scene arg0) {
+    public void method8404(Scene arg0) {
 		if (arg0 == null || this.field6752 == null) {
 			return;
 		}
@@ -93,8 +81,7 @@ public class HintTrail {
 		}
 	}
 
-	@ObfuscatedName("ta.k(Ltx;B)V")
-	public void method8405(Scene arg0) {
+    public void method8405(Scene arg0) {
 		this.field6752 = new LinkedList();
 		SceneLevelTileFlags var2 = Client.world.getSceneLevelTileFlags();
 		CoordGrid var3 = Client.world.getBase();
@@ -128,24 +115,20 @@ public class HintTrail {
 		}
 	}
 
-	@ObfuscatedName("qo.f(II)V")
-	public static void resetModelCache(int arg0) {
+    public static void resetModelCache(int arg0) {
 		modelDetails = arg0;
 	}
 
-	@ObfuscatedName("ta.w(I)V")
-	public void method8406() {
+    public void method8406() {
 		this.field6756 = false;
 		this.model = null;
 	}
 
-	@ObfuscatedName("ta.l(I)Z")
-	public boolean method8407() {
+    public boolean method8407() {
 		return this.field6756;
 	}
 
-	@ObfuscatedName("ta.u(Ldh;I)Z")
-	public boolean method8408(Toolkit arg0) {
+    public boolean method8408(Toolkit arg0) {
 		this.model = this.method8402(arg0);
 		return this.model != null;
 	}

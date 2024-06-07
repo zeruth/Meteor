@@ -11,31 +11,24 @@ import deob.ObfuscatedName;
 import java.util.HashSet;
 import java.util.Set;
 
-@ObfuscatedName("ec")
 public abstract class VarType implements VarConfigType {
 
-	@ObfuscatedName("ec.e")
-	public final VarDomainType domain;
+    public final VarDomainType domain;
 
-	@ObfuscatedName("ec.n")
-	public int id;
+    public int id;
 
-	@ObfuscatedName("ec.m")
-	public ScriptVarType dataType;
+    public ScriptVarType dataType;
 
-	@ObfuscatedName("ec.k")
-	public VarLifetime lifeTime = VarLifetime.TEMPORARY;
+    public VarLifetime lifeTime = VarLifetime.TEMPORARY;
 
-	@ObfuscatedName("ec.f")
-	public boolean field1703 = true;
+    public boolean field1703 = true;
 
 	public VarType(VarDomainType arg0, int arg1) {
 		this.domain = arg0;
 		this.id = arg1;
 	}
 
-	@ObfuscatedName("ec.e(Lalw;B)V")
-	public void decode(Packet buf) {
+    public void decode(Packet buf) {
 		while (true) {
 			int var2 = buf.g1();
 			if (var2 == 0) {
@@ -74,16 +67,13 @@ public abstract class VarType implements VarConfigType {
 		}
 	}
 
-	@ObfuscatedName("ec.z(B)Z")
-	public boolean isValidDefinition() {
+    public boolean isValidDefinition() {
 		return this.domain != null && this.dataType != null;
 	}
 
-	@ObfuscatedName("ec.p(B)Ljava/lang/Object;")
-	public Object getDefaultValue() {
+    public Object getDefaultValue() {
 		return this.domain.method7211(this);
 	}
 
-	@ObfuscatedName("ec.u(Lalw;IS)V")
-	public abstract void decode(Packet arg0, int arg1);
+    public abstract void decode(Packet arg0, int arg1);
 }

@@ -2,7 +2,6 @@ package com.jagex.game.client;
 
 import deob.ObfuscatedName;
 
-@ObfuscatedName("yp")
 public final class NativeMouseTask implements Runnable {
 
 	public void run() {

@@ -2,14 +2,11 @@ package com.jagex.core.utils;
 
 import deob.ObfuscatedName;
 
-@ObfuscatedName("on")
 public class VarValue {
 
-	@ObfuscatedName("on.e")
-	public final int var;
+    public final int var;
 
-	@ObfuscatedName("on.n")
-	public Object value;
+    public Object value;
 
 	public VarValue(int arg0) {
 		this.var = arg0;

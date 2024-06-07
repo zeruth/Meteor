@@ -4,125 +4,85 @@ import com.jagex.core.utils.ColourUtils;
 import com.jagex.graphics.MaterialAlphaMode;
 import deob.ObfuscatedName;
 
-@ObfuscatedName("bd")
 public class PureJavaRasteriser {
 
-	@ObfuscatedName("bd.e")
-	public boolean field940 = false;
+    public boolean field940 = false;
 
-	@ObfuscatedName("bd.n")
-	public boolean field933 = true;
+    public boolean field933 = true;
 
-	@ObfuscatedName("bd.m")
-	public boolean field968 = false;
+    public boolean field968 = false;
 
-	@ObfuscatedName("bd.k")
-	public int field935 = 0;
+    public int field935 = 0;
 
-	@ObfuscatedName("bd.f")
-	public boolean field936 = false;
+    public boolean field936 = false;
 
-	@ObfuscatedName("bd.w")
-	public boolean field937 = false;
+    public boolean field937 = false;
 
-	@ObfuscatedName("bd.l")
-	public int[] field938 = new int[4096];
+    public int[] field938 = new int[4096];
 
-	@ObfuscatedName("bd.u")
-	public float field934;
+    public float field934;
 
-	@ObfuscatedName("bd.z")
-	public float field964;
+    public float field964;
 
-	@ObfuscatedName("bd.p")
-	public float field941;
+    public float field941;
 
-	@ObfuscatedName("bd.d")
-	public float field942;
+    public float field942;
 
-	@ObfuscatedName("bd.c")
-	public float field958 = 0.0F;
+    public float field958 = 0.0F;
 
-	@ObfuscatedName("bd.r")
-	public float field932 = 1.0F;
+    public float field932 = 1.0F;
 
-	@ObfuscatedName("bd.v")
-	public int field945;
+    public int field945;
 
-	@ObfuscatedName("bd.o")
-	public int field946;
+    public int field946;
 
-	@ObfuscatedName("bd.s")
-	public PureJavaToolkit renderer;
+    public PureJavaToolkit renderer;
 
-	@ObfuscatedName("bd.y")
-	public PureJavaToolkitContext context;
+    public PureJavaToolkitContext context;
 
-	@ObfuscatedName("bd.q")
-	public int sizeX;
+    public int sizeX;
 
-	@ObfuscatedName("bd.x")
-	public int[] pixels;
+    public int[] pixels;
 
-	@ObfuscatedName("bd.b")
-	public float[] depth;
+    public float[] depth;
 
-	@ObfuscatedName("bd.h")
-	public int field952;
+    public int field952;
 
-	@ObfuscatedName("bd.a")
-	public int field953 = -1;
+    public int field953 = -1;
 
-	@ObfuscatedName("bd.g")
-	public int[] field954 = null;
+    public int[] field954 = null;
 
-	@ObfuscatedName("bd.i")
-	public int field948 = 0;
+    public int field948 = 0;
 
-	@ObfuscatedName("bd.j")
-	public int field956 = 0;
+    public int field956 = 0;
 
-	@ObfuscatedName("bd.t")
-	public float field957 = 0.0F;
+    public float field957 = 0.0F;
 
-	@ObfuscatedName("bd.ae")
-	public MaterialAlphaMode alphaMode;
+    public MaterialAlphaMode alphaMode;
 
-	@ObfuscatedName("bd.ag")
-	public int field959 = 0;
+    public int field959 = 0;
 
-	@ObfuscatedName("bd.ah")
-	public boolean field939 = true;
+    public boolean field939 = true;
 
-	@ObfuscatedName("bd.al")
-	public int field961 = -1;
+    public int field961 = -1;
 
-	@ObfuscatedName("bd.ac")
-	public int[] field962 = null;
+    public int[] field962 = null;
 
-	@ObfuscatedName("bd.ai")
-	public int field944 = 0;
+    public int field944 = 0;
 
-	@ObfuscatedName("bd.aw")
-	public int field963 = 0;
+    public int field963 = 0;
 
-	@ObfuscatedName("bd.as")
-	public float field965 = 0.0F;
+    public float field965 = 0.0F;
 
-	@ObfuscatedName("bd.at")
-	public int field955 = -1;
+    public int field955 = -1;
 
-	@ObfuscatedName("bd.ad")
-	public int[] field967 = null;
+    public int[] field967 = null;
 
-	@ObfuscatedName("bd.am")
-	public int field943 = 0;
+    public int field943 = 0;
 
-	@ObfuscatedName("bd.au")
-	public int field969 = 0;
+    public int field969 = 0;
 
-	@ObfuscatedName("bd.ar")
-	public float field970 = 0.0F;
+    public float field970 = 0.0F;
 
 	public PureJavaRasteriser(PureJavaToolkit renderer, PureJavaToolkitContext context) {
 		this.renderer = renderer;
@@ -133,23 +93,19 @@ public class PureJavaRasteriser {
 		this.alphaMode = MaterialAlphaMode.NONE;
 	}
 
-	@ObfuscatedName("bd.e()I")
-	public int method1025() {
+    public int method1025() {
 		return this.field938[0] % this.sizeX;
 	}
 
-	@ObfuscatedName("bd.n()I")
-	public int method1026() {
+    public int method1026() {
 		return this.field938[0] / this.sizeX;
 	}
 
-	@ObfuscatedName("bd.m(Z)V")
-	public final void method1027(boolean arg0) {
+    public final void method1027(boolean arg0) {
 		this.field940 = arg0;
 	}
 
-	@ObfuscatedName("bd.k(ZZZFFFFFFFFFFFF)V")
-	public final void drawTriangle(boolean arg0, boolean arg1, boolean arg2, float arg3, float arg4, float arg5, float arg6, float arg7, float arg8, float arg9, float arg10, float arg11, float arg12, float arg13, float arg14) {
+    public final void drawTriangle(boolean arg0, boolean arg1, boolean arg2, float arg3, float arg4, float arg5, float arg6, float arg7, float arg8, float arg9, float arg10, float arg11, float arg12, float arg13, float arg14) {
 		if (!arg0) {
 			this.drawTriangle(false, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9, arg10, arg11, 0);
 		} else if (this.field940) {
@@ -576,8 +532,7 @@ public class PureJavaRasteriser {
 		}
 	}
 
-	@ObfuscatedName("bd.f(ZZ[IIIIIIFFFF)V")
-	public final void method1056(boolean arg0, boolean arg1, int[] arg2, int arg3, int arg4, int arg5, int arg6, int arg7, float arg8, float arg9, float arg10, float arg11) {
+    public final void method1056(boolean arg0, boolean arg1, int[] arg2, int arg3, int arg4, int arg5, int arg6, int arg7, float arg8, float arg9, float arg10, float arg11) {
 		if (this.field936) {
 			if (arg7 > this.field945) {
 				arg7 = this.field945;
@@ -923,8 +878,7 @@ public class PureJavaRasteriser {
 		}
 	}
 
-	@ObfuscatedName("bd.w(ZZZFFFFFFFFFIII)V")
-	public final void drawTriangle(boolean arg0, boolean arg1, boolean arg2, float arg3, float arg4, float arg5, float arg6, float arg7, float arg8, float arg9, float arg10, float arg11, int arg12, int arg13, int arg14) {
+    public final void drawTriangle(boolean arg0, boolean arg1, boolean arg2, float arg3, float arg4, float arg5, float arg6, float arg7, float arg8, float arg9, float arg10, float arg11, int arg12, int arg13, int arg14) {
 		if (!arg0) {
 			this.drawTriangle(false, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9, arg10, arg11, 0);
 		} else if (this.field940) {
@@ -1425,8 +1379,7 @@ public class PureJavaRasteriser {
 		}
 	}
 
-	@ObfuscatedName("bd.l(ZZ[IIIIIIFFFFFFFF)V")
-	public final void method1031(boolean arg0, boolean arg1, int[] arg2, int arg3, int arg4, int arg5, int arg6, int arg7, float arg8, float arg9, float arg10, float arg11, float arg12, float arg13, float arg14, float arg15) {
+    public final void method1031(boolean arg0, boolean arg1, int[] arg2, int arg3, int arg4, int arg5, int arg6, int arg7, float arg8, float arg9, float arg10, float arg11, float arg12, float arg13, float arg14, float arg15) {
 		if (this.field936) {
 			if (arg7 > this.field945) {
 				arg7 = this.field945;
@@ -2140,8 +2093,7 @@ public class PureJavaRasteriser {
 		}
 	}
 
-	@ObfuscatedName("bd.u(ZZZFFFFFFFFFI)V")
-	public final void drawTriangle(boolean arg0, boolean arg1, boolean arg2, float arg3, float arg4, float arg5, float arg6, float arg7, float arg8, float arg9, float arg10, float arg11, int arg12) {
+    public final void drawTriangle(boolean arg0, boolean arg1, boolean arg2, float arg3, float arg4, float arg5, float arg6, float arg7, float arg8, float arg9, float arg10, float arg11, int arg12) {
 		if (this.field940) {
 			this.renderer.drawLine((int) arg6, (int) arg3, (int) arg7, (int) arg4, arg12);
 			this.renderer.drawLine((int) arg7, (int) arg4, (int) arg8, (int) arg5, arg12);
@@ -2524,8 +2476,7 @@ public class PureJavaRasteriser {
 		}
 	}
 
-	@ObfuscatedName("bd.z(ZZZ[IIIIIIFF)V")
-	public final void method1039(boolean arg0, boolean arg1, boolean arg2, int[] arg3, int arg4, int arg5, int arg6, int arg7, int arg8, float arg9, float arg10) {
+    public final void method1039(boolean arg0, boolean arg1, boolean arg2, int[] arg3, int arg4, int arg5, int arg6, int arg7, int arg8, float arg9, float arg10) {
 		if (this.field936) {
 			if (arg8 > this.field945) {
 				arg8 = this.field945;
@@ -2881,8 +2832,7 @@ public class PureJavaRasteriser {
 		}
 	}
 
-	@ObfuscatedName("bd.p(ZZZFFFFFFFFFFFFFFFFFFIIIIFFFI)V")
-	public final void drawTriangle(boolean arg0, boolean arg1, boolean arg2, float arg3, float arg4, float arg5, float arg6, float arg7, float arg8, float arg9, float arg10, float arg11, float arg12, float arg13, float arg14, float arg15, float arg16, float arg17, float arg18, float arg19, float arg20, int arg21, int arg22, int arg23, int arg24, float arg25, float arg26, float arg27, int arg28) {
+    public final void drawTriangle(boolean arg0, boolean arg1, boolean arg2, float arg3, float arg4, float arg5, float arg6, float arg7, float arg8, float arg9, float arg10, float arg11, float arg12, float arg13, float arg14, float arg15, float arg16, float arg17, float arg18, float arg19, float arg20, int arg21, int arg22, int arg23, int arg24, float arg25, float arg26, float arg27, int arg28) {
 		if (!arg0) {
 			this.drawTriangle(false, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9, arg10, arg11, 0);
 			return;
@@ -3377,8 +3327,7 @@ public class PureJavaRasteriser {
 		}
 	}
 
-	@ObfuscatedName("bd.d(ZZ[I[IIIIFFFFFFFFFFFFFFFFFF)V")
-	public final void drawLine(boolean arg0, boolean arg1, int[] arg2, int[] arg3, int arg4, int arg5, int arg6, float arg7, float arg8, float arg9, float arg10, float arg11, float arg12, float arg13, float arg14, float arg15, float arg16, float arg17, float arg18, float arg19, float arg20, float arg21, float arg22, float arg23, float arg24) {
+    public final void drawLine(boolean arg0, boolean arg1, int[] arg2, int[] arg3, int arg4, int arg5, int arg6, float arg7, float arg8, float arg9, float arg10, float arg11, float arg12, float arg13, float arg14, float arg15, float arg16, float arg17, float arg18, float arg19, float arg20, float arg21, float arg22, float arg23, float arg24) {
 		int var26 = arg6 - arg5;
 		float var27 = 1.0F / (float) var26;
 		float var28 = (arg8 - arg7) * var27;
@@ -3494,8 +3443,7 @@ public class PureJavaRasteriser {
 		}
 	}
 
-	@ObfuscatedName("bd.c(ZZZFFFFFFFFFFFFFFFFFFIIIIFFFIFIFIF)V")
-	public final void drawTriangle(boolean arg0, boolean arg1, boolean arg2, float arg3, float arg4, float arg5, float arg6, float arg7, float arg8, float arg9, float arg10, float arg11, float arg12, float arg13, float arg14, float arg15, float arg16, float arg17, float arg18, float arg19, float arg20, int arg21, int arg22, int arg23, int arg24, float arg25, float arg26, float arg27, int arg28, float arg29, int arg30, float arg31, int arg32, float arg33) {
+    public final void drawTriangle(boolean arg0, boolean arg1, boolean arg2, float arg3, float arg4, float arg5, float arg6, float arg7, float arg8, float arg9, float arg10, float arg11, float arg12, float arg13, float arg14, float arg15, float arg16, float arg17, float arg18, float arg19, float arg20, int arg21, int arg22, int arg23, int arg24, float arg25, float arg26, float arg27, int arg28, float arg29, int arg30, float arg31, int arg32, float arg33) {
 		if (!arg0) {
 			this.drawTriangle(false, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9, arg10, arg11, 0);
 			return;
@@ -4098,8 +4046,7 @@ public class PureJavaRasteriser {
 		}
 	}
 
-	@ObfuscatedName("bd.r(ZZ[IIIIFFFFFFFFFFFFFFFFFFFFFF)V")
-	public final void drawLine(boolean arg0, boolean arg1, int[] arg2, int arg3, int arg4, int arg5, float arg6, float arg7, float arg8, float arg9, float arg10, float arg11, float arg12, float arg13, float arg14, float arg15, float arg16, float arg17, float arg18, float arg19, float arg20, float arg21, float arg22, float arg23, float arg24, float arg25, float arg26, float arg27) {
+    public final void drawLine(boolean arg0, boolean arg1, int[] arg2, int arg3, int arg4, int arg5, float arg6, float arg7, float arg8, float arg9, float arg10, float arg11, float arg12, float arg13, float arg14, float arg15, float arg16, float arg17, float arg18, float arg19, float arg20, float arg21, float arg22, float arg23, float arg24, float arg25, float arg26, float arg27) {
 		int var29 = arg5 - arg4;
 		float var30 = 1.0F / (float) var29;
 		float var31 = (arg7 - arg6) * var30;

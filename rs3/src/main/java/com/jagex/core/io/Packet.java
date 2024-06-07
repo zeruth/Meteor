@@ -9,24 +9,19 @@ import rs2.client.Client;
 
 import java.math.BigInteger;
 
-@ObfuscatedName("alw")
 public class Packet extends Node {
 
 	private static final int CRC32_POLYNOMIAL = 0xEDB88320;
 
 	private static final long CRC64_POLYNOMIAL = 0xC96C5795D7870F42L;
 
-	@ObfuscatedName("alw.w")
-	public byte[] data;
+    public byte[] data;
 
-	@ObfuscatedName("alw.l")
-	public int pos;
+    public int pos;
 
-	@ObfuscatedName("alw.u")
-	public static int[] crctable = new int[256];
+    public static int[] crctable = new int[256];
 
-	@ObfuscatedName("alw.p")
-	public static long[] crc64table = new long[256];
+    public static long[] crc64table = new long[256];
 
 	static {
 		for (int var0 = 0; var0 < 256; var0++) {
@@ -58,8 +53,7 @@ public class Packet extends Node {
 		}
 	}
 
-	@ObfuscatedName("ahd.e([BIIB)I")
-	public static int getcrc(byte[] src, int off, int len) {
+    public static int getcrc(byte[] src, int off, int len) {
 		int crc = -1;
 		for (int i = off; i < len; i++) {
 			crc = crc >>> 8 ^ crctable[(crc ^ src[i]) & 0xFF];
@@ -67,8 +61,7 @@ public class Packet extends Node {
 		return ~crc;
 	}
 
-	@ObfuscatedName("wg.n([BII)I")
-	public static int getcrc(byte[] src, int len) {
+    public static int getcrc(byte[] src, int len) {
 		return getcrc(src, 0, len);
 	}
 
@@ -86,8 +79,7 @@ public class Packet extends Node {
 		this.pos = 0;
 	}
 
-	@ObfuscatedName("alw.m(B)V")
-	public void release() {
+    public void release() {
 		if (this.data != null) {
 			ByteArrayPool.release(this.data);
 		}
@@ -95,48 +87,41 @@ public class Packet extends Node {
 		this.data = null;
 	}
 
-	@ObfuscatedName("alw.k(IB)V")
-	public void p1(int value) {
+    public void p1(int value) {
 		this.data[(++this.pos) - 1] = (byte) value;
 	}
 
-	@ObfuscatedName("alw.f(II)V")
-	public void p2(int value) {
+    public void p2(int value) {
 		this.data[(++this.pos) - 1] = (byte) (value >> 8);
 		this.data[(++this.pos) - 1] = (byte) value;
 	}
 
-	@ObfuscatedName("alw.w(II)V")
-	public void ip2(int value) {
+    public void ip2(int value) {
 		this.data[(++this.pos) - 1] = (byte) value;
 		this.data[(++this.pos) - 1] = (byte) (value >> 8);
 	}
 
-	@ObfuscatedName("alw.l(IB)V")
-	public void p3(int value) {
+    public void p3(int value) {
 		this.data[(++this.pos) - 1] = (byte) (value >> 16);
 		this.data[(++this.pos) - 1] = (byte) (value >> 8);
 		this.data[(++this.pos) - 1] = (byte) value;
 	}
 
-	@ObfuscatedName("alw.u(IB)V")
-	public void p4(int value) {
+    public void p4(int value) {
 		this.data[(++this.pos) - 1] = (byte) (value >> 24);
 		this.data[(++this.pos) - 1] = (byte) (value >> 16);
 		this.data[(++this.pos) - 1] = (byte) (value >> 8);
 		this.data[(++this.pos) - 1] = (byte) value;
 	}
 
-	@ObfuscatedName("alw.z(II)V")
-	public void ip4(int value) {
+    public void ip4(int value) {
 		this.data[(++this.pos) - 1] = (byte) value;
 		this.data[(++this.pos) - 1] = (byte) (value >> 8);
 		this.data[(++this.pos) - 1] = (byte) (value >> 16);
 		this.data[(++this.pos) - 1] = (byte) (value >> 24);
 	}
 
-	@ObfuscatedName("alw.p(J)V")
-	public void p5(long value) {
+    public void p5(long value) {
 		this.data[(++this.pos) - 1] = (byte) (value >> 32);
 		this.data[(++this.pos) - 1] = (byte) (value >> 24);
 		this.data[(++this.pos) - 1] = (byte) (value >> 16);
@@ -144,8 +129,7 @@ public class Packet extends Node {
 		this.data[(++this.pos) - 1] = (byte) value;
 	}
 
-	@ObfuscatedName("alw.d(J)V")
-	public void p6(long value) {
+    public void p6(long value) {
 		this.data[(++this.pos) - 1] = (byte) (value >> 40);
 		this.data[(++this.pos) - 1] = (byte) (value >> 32);
 		this.data[(++this.pos) - 1] = (byte) (value >> 24);
@@ -154,8 +138,7 @@ public class Packet extends Node {
 		this.data[(++this.pos) - 1] = (byte) value;
 	}
 
-	@ObfuscatedName("alw.c(J)V")
-	public void p8(long value) {
+    public void p8(long value) {
 		this.data[(++this.pos) - 1] = (byte) (value >> 56);
 		this.data[(++this.pos) - 1] = (byte) (value >> 48);
 		this.data[(++this.pos) - 1] = (byte) (value >> 40);
@@ -166,8 +149,7 @@ public class Packet extends Node {
 		this.data[(++this.pos) - 1] = (byte) value;
 	}
 
-	@ObfuscatedName("alw.r(JII)V")
-	public void pVarLong(long value, int bytes) {
+    public void pVarLong(long value, int bytes) {
 		int size = bytes - 1;
 		if (size < 0 || size > 7) {
 			throw new IllegalArgumentException();
@@ -178,18 +160,15 @@ public class Packet extends Node {
 		}
 	}
 
-	@ObfuscatedName("alw.v(ZI)V")
-	public void pbool(boolean value) {
+    public void pbool(boolean value) {
 		this.p1(value ? 1 : 0);
 	}
 
-	@ObfuscatedName("abu.y(Ljava/lang/String;I)I")
-	public static int pjstrlen(String str) {
+    public static int pjstrlen(String str) {
 		return str.length() + 1;
 	}
 
-	@ObfuscatedName("alw.x(Ljava/lang/String;I)V")
-	public void pjstr(String str) {
+    public void pjstr(String str) {
 		int nulIndex = str.indexOf(0);
 		if (nulIndex >= 0) {
 			throw new IllegalArgumentException("");
@@ -199,13 +178,11 @@ public class Packet extends Node {
 		this.data[(++this.pos) - 1] = 0;
 	}
 
-	@ObfuscatedName("tu.h(Ljava/lang/String;I)I")
-	public static int method8398(String str) {
+    public static int method8398(String str) {
 		return str.length() + 2;
 	}
 
-	@ObfuscatedName("alw.a(Ljava/lang/String;I)V")
-	public void pjstr2(String str) {
+    public void pjstr2(String str) {
 		int nulIndex = str.indexOf(0);
 		if (nulIndex >= 0) {
 			throw new IllegalArgumentException("");
@@ -216,28 +193,24 @@ public class Packet extends Node {
 		this.data[(++this.pos) - 1] = 0;
 	}
 
-	@ObfuscatedName("alw.g(Ljava/lang/CharSequence;I)V")
-	public void pUTF8(CharSequence arg0) {
+    public void pUTF8(CharSequence arg0) {
 		int var2 = Utf8.method8499(arg0);
 		this.data[(++this.pos) - 1] = 0;
 		this.pVarInt(var2);
 		this.pos += Utf8.method18328(this.data, this.pos, arg0);
 	}
 
-	@ObfuscatedName("alw.i([BIII)V")
-	public void pdata(byte[] src, int off, int len) {
+    public void pdata(byte[] src, int off, int len) {
 		for (int i = off; i < off + len; i++) {
 			this.data[(++this.pos) - 1] = src[i];
 		}
 	}
 
-	@ObfuscatedName("alw.j(Lalw;B)V")
-	public void pdata(Packet buf) {
+    public void pdata(Packet buf) {
 		this.pdata(buf.data, 0, buf.pos);
 	}
 
-	@ObfuscatedName("alw.t(II)V")
-	public void psize2(int len) {
+    public void psize2(int len) {
 		if (len < 0 || len > 65535) {
 			throw new IllegalArgumentException();
 		}
@@ -246,8 +219,7 @@ public class Packet extends Node {
 		this.data[this.pos - len - 1] = (byte) len;
 	}
 
-	@ObfuscatedName("alw.ae(IB)V")
-	public void psize1(int len) {
+    public void psize1(int len) {
 		if (len < 0 || len > 255) {
 			throw new IllegalArgumentException();
 		}
@@ -255,8 +227,7 @@ public class Packet extends Node {
 		this.data[this.pos - len - 1] = (byte) len;
 	}
 
-	@ObfuscatedName("alw.ag(II)V")
-	public void pSmart1or2(int value) {
+    public void pSmart1or2(int value) {
 		if (value < 64 && value >= -64) {
 			this.p1(value + 64);
 		} else if (value < 16384 && value >= -16384) {
@@ -266,8 +237,7 @@ public class Packet extends Node {
 		}
 	}
 
-	@ObfuscatedName("alw.ah(IB)V")
-	public void pSmart1or2s(int value) {
+    public void pSmart1or2s(int value) {
 		if (value >= 0 && value < 128) {
 			this.p1(value);
 		} else if (value >= 0 && value < 32768) {
@@ -277,8 +247,7 @@ public class Packet extends Node {
 		}
 	}
 
-	@ObfuscatedName("alw.al(II)V")
-	public void pSmart2or4(int value) {
+    public void pSmart2or4(int value) {
 		if (value < -1) {
 			throw new IllegalArgumentException();
 		} else if (value == -1) {
@@ -291,8 +260,7 @@ public class Packet extends Node {
 		}
 	}
 
-	@ObfuscatedName("alw.ac(II)V")
-	public void pVarInt(int value) {
+    public void pVarInt(int value) {
 		if ((value & 0xFFFFFF80) != 0) {
 			if ((value & 0xFFFFC000) != 0) {
 				if ((value & 0xFFE00000) != 0) {
@@ -308,24 +276,20 @@ public class Packet extends Node {
 		this.p1(value & 0x7F);
 	}
 
-	@ObfuscatedName("alw.ai(S)I")
-	public int g1() {
+    public int g1() {
 		return this.data[(++this.pos) - 1] & 0xFF;
 	}
 
-	@ObfuscatedName("alw.aw(I)B")
-	public byte g1b() {
+    public byte g1b() {
 		return this.data[(++this.pos) - 1];
 	}
 
-	@ObfuscatedName("alw.as(I)I")
-	public int g2() {
+    public int g2() {
 		this.pos += 2;
 		return ((this.data[this.pos - 2] & 0xFF) << 8) + (this.data[this.pos - 1] & 0xFF);
 	}
 
-	@ObfuscatedName("alw.at(B)I")
-	public int g2s() {
+    public int g2s() {
 		this.pos += 2;
 		int value = ((this.data[this.pos - 2] & 0xFF) << 8) + (this.data[this.pos - 1] & 0xFF);
 		if (value > 32767) {
@@ -334,14 +298,12 @@ public class Packet extends Node {
 		return value;
 	}
 
-	@ObfuscatedName("alw.ad(S)I")
-	public int g3() {
+    public int g3() {
 		this.pos += 3;
 		return (this.data[this.pos - 1] & 0xFF) + ((this.data[this.pos - 3] & 0xFF) << 16) + ((this.data[this.pos - 2] & 0xFF) << 8);
 	}
 
-	@ObfuscatedName("alw.am(I)I")
-	public int g3s() {
+    public int g3s() {
 		this.pos += 3;
 		int value = (this.data[this.pos - 1] & 0xFF) + ((this.data[this.pos - 3] & 0xFF) << 16) + ((this.data[this.pos - 2] & 0xFF) << 8);
 		if (value > 8388607) {
@@ -350,41 +312,35 @@ public class Packet extends Node {
 		return value;
 	}
 
-	@ObfuscatedName("alw.au(I)I")
-	public int g4s() {
+    public int g4s() {
 		this.pos += 4;
 		return (this.data[this.pos - 1] & 0xFF) + ((this.data[this.pos - 2] & 0xFF) << 8) + ((this.data[this.pos - 3] & 0xFF) << 16) + ((this.data[this.pos - 4] & 0xFF) << 24);
 	}
 
-	@ObfuscatedName("alw.ar(B)I")
-	public int ig4s() {
+    public int ig4s() {
 		this.pos += 4;
 		return (this.data[this.pos - 4] & 0xFF) + ((this.data[this.pos - 3] & 0xFF) << 8) + ((this.data[this.pos - 2] & 0xFF) << 16) + ((this.data[this.pos - 1] & 0xFF) << 24);
 	}
 
-	@ObfuscatedName("alw.ap(I)J")
-	public long g5() {
+    public long g5() {
 		long var1 = (long) this.g1() & 0xFFFFFFFFL;
 		long var3 = (long) this.g4s() & 0xFFFFFFFFL;
 		return (var1 << 32) + var3;
 	}
 
-	@ObfuscatedName("alw.aq(I)J")
-	public long g6() {
+    public long g6() {
 		long var1 = (long) this.g2() & 0xFFFFFFFFL;
 		long var3 = (long) this.g4s() & 0xFFFFFFFFL;
 		return (var1 << 32) + var3;
 	}
 
-	@ObfuscatedName("alw.ax(I)J")
-	public long g8() {
+    public long g8() {
 		long var1 = (long) this.g4s() & 0xFFFFFFFFL;
 		long var3 = (long) this.g4s() & 0xFFFFFFFFL;
 		return (var1 << 32) + var3;
 	}
 
-	@ObfuscatedName("alw.av(II)J")
-	public long gVarLong(int bytes) {
+    public long gVarLong(int bytes) {
 		int size = bytes - 1;
 		if (size < 0 || size > 7) {
 			throw new IllegalArgumentException();
@@ -399,13 +355,11 @@ public class Packet extends Node {
 		return var3;
 	}
 
-	@ObfuscatedName("alw.ao(I)F")
-	public float gFloat() {
+    public float gFloat() {
 		return Float.intBitsToFloat(this.g4s());
 	}
 
-	@ObfuscatedName("alw.aj(B)Ljava/lang/String;")
-	public String fastgstr() {
+    public String fastgstr() {
 		if (this.data[this.pos] == 0) {
 			++this.pos;
 			return null;
@@ -414,8 +368,7 @@ public class Packet extends Node {
 		}
 	}
 
-	@ObfuscatedName("alw.ay(I)Ljava/lang/String;")
-	public String gjstr() {
+    public String gjstr() {
 		int start = this.pos;
 		while (this.data[(++this.pos) - 1] != 0) {
 		}
@@ -423,8 +376,7 @@ public class Packet extends Node {
 		return length == 0 ? "" : Cp1252.method9199(this.data, start, length);
 	}
 
-	@ObfuscatedName("alw.ab(I)Ljava/lang/String;")
-	public String gjstr2() {
+    public String gjstr2() {
 		byte version = this.data[(++this.pos) - 1];
 		if (version != 0) {
 			throw new IllegalStateException("");
@@ -436,8 +388,7 @@ public class Packet extends Node {
 		return length == 0 ? "" : Cp1252.method9199(this.data, start, length);
 	}
 
-	@ObfuscatedName("alw.az(I)Ljava/lang/String;")
-	public String gUTF8() {
+    public String gUTF8() {
 		byte var1 = this.data[(++this.pos) - 1];
 		if (var1 != 0) {
 			throw new IllegalStateException("");
@@ -451,33 +402,28 @@ public class Packet extends Node {
 		return var3;
 	}
 
-	@ObfuscatedName("alw.aa([BIIS)V")
-	public void gdata(byte[] dest, int off, int len) {
+    public void gdata(byte[] dest, int off, int len) {
 		for (int i = off; i < off + len; i++) {
 			dest[i] = this.data[(++this.pos) - 1];
 		}
 	}
 
-	@ObfuscatedName("alw.af(I)I")
-	public int gSmart1or2s() {
+    public int gSmart1or2s() {
 		int var1 = this.data[this.pos] & 0xFF;
 		return var1 < 128 ? this.g1() - 64 : this.g2() - 49152;
 	}
 
-	@ObfuscatedName("alw.ak(B)I")
-	public int gSmart1or2() {
+    public int gSmart1or2() {
 		int var1 = this.data[this.pos] & 0xFF;
 		return var1 < 128 ? this.g1() : this.g2() - 32768;
 	}
 
-	@ObfuscatedName("alw.an(B)I")
-	public int gSmart1or2null() {
+    public int gSmart1or2null() {
 		int var1 = this.data[this.pos] & 0xFF;
 		return var1 < 128 ? this.g1() - 1 : this.g2() - 32769;
 	}
 
-	@ObfuscatedName("alw.bf(I)I")
-	public int gExtended1or2() {
+    public int gExtended1or2() {
 		int var1 = 0;
 		int var2;
 		for (var2 = this.gSmart1or2(); var2 == 32767; var2 = this.gSmart1or2()) {
@@ -486,13 +432,11 @@ public class Packet extends Node {
 		return var1 + var2;
 	}
 
-	@ObfuscatedName("alw.bl(I)I")
-	public int gSmart2or4() {
+    public int gSmart2or4() {
 		return this.data[this.pos] < 0 ? this.g4s() & Integer.MAX_VALUE : this.g2();
 	}
 
-	@ObfuscatedName("alw.bk(I)I")
-	public int gSmart2or4null() {
+    public int gSmart2or4null() {
 		if (this.data[this.pos] < 0) {
 			return this.g4s() & Integer.MAX_VALUE;
 		} else {
@@ -501,8 +445,7 @@ public class Packet extends Node {
 		}
 	}
 
-	@ObfuscatedName("alw.bh(I)I")
-	public int gVarInt() {
+    public int gVarInt() {
 		byte var1 = this.data[(++this.pos) - 1];
 		int var2 = 0;
 		while (var1 < 0) {
@@ -513,8 +456,7 @@ public class Packet extends Node {
 	}
 
 	// todo name
-	@ObfuscatedName("alw.bx(S)I")
-	public int gVarInt2() {
+    public int gVarInt2() {
 		int var1 = 0;
 		int var2 = 0;
 		int var3;
@@ -526,8 +468,7 @@ public class Packet extends Node {
 		return var1;
 	}
 
-	@ObfuscatedName("alw.bd([II)V")
-	public void tinyenc(int[] key) {
+    public void tinyenc(int[] key) {
         if (!Client.ENABLE_TINYENC) {
             return;
         }
@@ -551,8 +492,7 @@ public class Packet extends Node {
 		}
 	}
 
-	@ObfuscatedName("alw.bc([II)V")
-	public void tinydec(int[] key) {
+    public void tinydec(int[] key) {
 		int var2 = this.pos / 8;
 		this.pos = 0;
 		for (int var3 = 0; var3 < var2; var3++) {
@@ -572,8 +512,7 @@ public class Packet extends Node {
 		}
 	}
 
-	@ObfuscatedName("alw.bi([IIIB)V")
-	public void tinyenc(int[] key, int off, int len) {
+    public void tinyenc(int[] key, int off, int len) {
         if (!Client.ENABLE_TINYENC) {
             return;
         }
@@ -599,8 +538,7 @@ public class Packet extends Node {
 		this.pos = var4;
 	}
 
-	@ObfuscatedName("alw.bn([IIII)V")
-	public void tinydec(int[] key, int off, int len) {
+    public void tinydec(int[] key, int off, int len) {
 		int var4 = this.pos;
 		this.pos = off;
 		int var5 = (len - off) / 8;
@@ -622,8 +560,7 @@ public class Packet extends Node {
 		this.pos = var4;
 	}
 
-	@ObfuscatedName("alw.bt(Ljava/math/BigInteger;Ljava/math/BigInteger;B)V")
-	public void rsaenc(BigInteger exponent, BigInteger modulus) {
+    public void rsaenc(BigInteger exponent, BigInteger modulus) {
 		if (!Client.ENABLE_RSA) {
 			return;
 		}
@@ -640,104 +577,86 @@ public class Packet extends Node {
 		this.pdata(var7, 0, var7.length);
 	}
 
-	@ObfuscatedName("alw.bq(II)I")
-	public int addcrc(int off) {
+    public int addcrc(int off) {
 		int crc = getcrc(this.data, off, this.pos);
 		this.p4(crc);
 		return crc;
 	}
 
-	@ObfuscatedName("alw.bm(I)Z")
-	public boolean checkcrc() {
+    public boolean checkcrc() {
 		this.pos -= 4;
 		int crc = getcrc(this.data, 0, this.pos);
 		int expected = this.g4s();
 		return crc == expected;
 	}
 
-	@ObfuscatedName("alw.bb(II)V")
-	public void p1_alt1(int value) {
+    public void p1_alt1(int value) {
 		this.data[(++this.pos) - 1] = (byte) (value + 128);
 	}
 
-	@ObfuscatedName("alw.be(II)V")
-	public void p1_alt2(int value) {
+    public void p1_alt2(int value) {
 		this.data[(++this.pos) - 1] = (byte) -value;
 	}
 
-	@ObfuscatedName("alw.by(IB)V")
-	public void p1_alt3(int value) {
+    public void p1_alt3(int value) {
 		this.data[(++this.pos) - 1] = (byte) (128 - value);
 	}
 
-	@ObfuscatedName("alw.bu(I)I")
-	public int g1_alt1() {
+    public int g1_alt1() {
 		return this.data[(++this.pos) - 1] - 128 & 0xFF;
 	}
 
-	@ObfuscatedName("alw.bw(I)I")
-	public int g1_alt2() {
+    public int g1_alt2() {
 		return -this.data[(++this.pos) - 1] & 0xFF;
 	}
 
-	@ObfuscatedName("alw.bo(I)I")
-	public int g1_alt3() {
+    public int g1_alt3() {
 		return 128 - this.data[(++this.pos) - 1] & 0xFF;
 	}
 
-	@ObfuscatedName("alw.bz(B)B")
-	public byte g1b_alt1() {
+    public byte g1b_alt1() {
 		return (byte) (this.data[(++this.pos) - 1] - 128);
 	}
 
-	@ObfuscatedName("alw.bv(I)B")
-	public byte g1b_alt2() {
+    public byte g1b_alt2() {
 		return (byte) -this.data[(++this.pos) - 1];
 	}
 
-	@ObfuscatedName("alw.br(I)B")
-	public byte g1b_alt3() {
+    public byte g1b_alt3() {
 		return (byte) (128 - this.data[(++this.pos) - 1]);
 	}
 
-	@ObfuscatedName("alw.bg(IB)V")
-	public void p2_alt1(int value) {
+    public void p2_alt1(int value) {
 		this.data[(++this.pos) - 1] = (byte) value;
 		this.data[(++this.pos) - 1] = (byte) (value >> 8);
 	}
 
-	@ObfuscatedName("alw.ba(II)V")
-	public void p2_alt2(int value) {
+    public void p2_alt2(int value) {
 		this.data[(++this.pos) - 1] = (byte) (value >> 8);
 		this.data[(++this.pos) - 1] = (byte) (value + 128);
 	}
 
-	@ObfuscatedName("alw.bp(IS)V")
-	public void p2_alt3(int value) {
+    public void p2_alt3(int value) {
 		this.data[(++this.pos) - 1] = (byte) (value + 128);
 		this.data[(++this.pos) - 1] = (byte) (value >> 8);
 	}
 
-	@ObfuscatedName("alw.bj(I)I")
-	public int g2_alt1() {
+    public int g2_alt1() {
 		this.pos += 2;
 		return ((this.data[this.pos - 1] & 0xFF) << 8) + (this.data[this.pos - 2] & 0xFF);
 	}
 
-	@ObfuscatedName("alw.bs(I)I")
-	public int g2_alt2() {
+    public int g2_alt2() {
 		this.pos += 2;
 		return ((this.data[this.pos - 2] & 0xFF) << 8) + (this.data[this.pos - 1] - 128 & 0xFF);
 	}
 
-	@ObfuscatedName("alw.cl(I)I")
-	public int g2_alt3() {
+    public int g2_alt3() {
 		this.pos += 2;
 		return ((this.data[this.pos - 1] & 0xFF) << 8) + (this.data[this.pos - 2] - 128 & 0xFF);
 	}
 
-	@ObfuscatedName("alw.cg(I)I")
-	public int g2s_alt1() {
+    public int g2s_alt1() {
 		this.pos += 2;
 		int var1 = ((this.data[this.pos - 1] & 0xFF) << 8) + (this.data[this.pos - 2] & 0xFF);
 		if (var1 > 32767) {
@@ -746,8 +665,7 @@ public class Packet extends Node {
 		return var1;
 	}
 
-	@ObfuscatedName("alw.ce(I)I")
-	public int g2s_alt2() {
+    public int g2s_alt2() {
 		this.pos += 2;
 		int var1 = ((this.data[this.pos - 2] & 0xFF) << 8) + (this.data[this.pos - 1] - 128 & 0xFF);
 		if (var1 > 32767) {
@@ -756,77 +674,66 @@ public class Packet extends Node {
 		return var1;
 	}
 
-	@ObfuscatedName("alw.cu(II)V")
-	public void p3_alt2(int value) {
+    public void p3_alt2(int value) {
 		this.data[(++this.pos) - 1] = (byte) (value >> 16);
 		this.data[(++this.pos) - 1] = (byte) value;
 		this.data[(++this.pos) - 1] = (byte) (value >> 8);
 	}
 
-	@ObfuscatedName("alw.ci(IB)V")
-	public void p3_alt3(int value) {
+    public void p3_alt3(int value) {
 		this.data[(++this.pos) - 1] = (byte) (value >> 8);
 		this.data[(++this.pos) - 1] = (byte) (value >> 16);
 		this.data[(++this.pos) - 1] = (byte) value;
 	}
 
-	@ObfuscatedName("alw.cn(S)I")
-	public int g3_alt3() {
+    public int g3_alt3() {
 		this.pos += 3;
 		return (this.data[this.pos - 1] & 0xFF) + ((this.data[this.pos - 3] & 0xFF) << 8) + ((this.data[this.pos - 2] & 0xFF) << 16);
 	}
 
-	@ObfuscatedName("alw.cv(II)V")
-	public void p4_alt1(int value) {
+    public void p4_alt1(int value) {
 		this.data[(++this.pos) - 1] = (byte) value;
 		this.data[(++this.pos) - 1] = (byte) (value >> 8);
 		this.data[(++this.pos) - 1] = (byte) (value >> 16);
 		this.data[(++this.pos) - 1] = (byte) (value >> 24);
 	}
 
-	@ObfuscatedName("alw.cp(II)V")
-	public void p4_alt2(int value) {
+    public void p4_alt2(int value) {
 		this.data[(++this.pos) - 1] = (byte) (value >> 8);
 		this.data[(++this.pos) - 1] = (byte) value;
 		this.data[(++this.pos) - 1] = (byte) (value >> 24);
 		this.data[(++this.pos) - 1] = (byte) (value >> 16);
 	}
 
-	@ObfuscatedName("alw.ca(IB)V")
-	public void p4_alt3(int value) {
+    public void p4_alt3(int value) {
 		this.data[(++this.pos) - 1] = (byte) (value >> 16);
 		this.data[(++this.pos) - 1] = (byte) (value >> 24);
 		this.data[(++this.pos) - 1] = (byte) value;
 		this.data[(++this.pos) - 1] = (byte) (value >> 8);
 	}
 
-	@ObfuscatedName("alw.cx(I)I")
-	public int g4_alt1() {
+    public int g4_alt1() {
 		this.pos += 4;
 		return (this.data[this.pos - 4] & 0xFF) + ((this.data[this.pos - 3] & 0xFF) << 8) + ((this.data[this.pos - 2] & 0xFF) << 16) + ((this.data[this.pos - 1] & 0xFF) << 24);
 	}
 
-	@ObfuscatedName("alw.cw(I)I")
-	public int g4_alt2() {
+    public int g4_alt2() {
 		this.pos += 4;
 		return (this.data[this.pos - 3] & 0xFF) + ((this.data[this.pos - 4] & 0xFF) << 8) + ((this.data[this.pos - 1] & 0xFF) << 16) + ((this.data[this.pos - 2] & 0xFF) << 24);
 	}
 
-	@ObfuscatedName("alw.ct(I)I")
-	public int g4_alt3() {
+    public int g4_alt3() {
 		this.pos += 4;
 		return (this.data[this.pos - 2] & 0xFF) + ((this.data[this.pos - 1] & 0xFF) << 8) + ((this.data[this.pos - 4] & 0xFF) << 16) + ((this.data[this.pos - 3] & 0xFF) << 24);
 	}
 
-	@ObfuscatedName("alw.cf([BIIB)V")
-	public void gdata_alt1(byte[] dest, int off, int len) {
+    public void gdata_alt1(byte[] dest, int off, int len) {
 		for (int i = off + len - 1; i >= off; i--) {
 			dest[i] = this.data[(++this.pos) - 1];
 		}
 	}
 
-	@ObfuscatedName("alw.co([BIII)V")
-	public void gdata_alt2(byte[] dest, int off, int len) {
+    public void gdata_alt2(byte[] dest, int off, int len) {
 		for (int i = off; i < off + len; i++) {
 			dest[i] = (byte) (this.data[(++this.pos) - 1] - 128);
 		}

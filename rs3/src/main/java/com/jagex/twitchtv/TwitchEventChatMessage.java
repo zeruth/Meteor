@@ -27,14 +27,12 @@ public class TwitchEventChatMessage extends TwitchEvent {
 		this.isAction = arg6;
 	}
 
-	@ObfuscatedName("com/jagex/twitchtv/TwitchEventChatMessage.e([I[J[Ljava/lang/Object;)V")
-	public void method12(int[] arg0, long[] arg1, Object[] arg2) {
+    public void method12(int[] arg0, long[] arg1, Object[] arg2) {
 		arg2[0] = this.name;
 		arg2[1] = this.message;
 	}
 
-	@ObfuscatedName("com/jagex/twitchtv/TwitchEventChatMessage.n()Lud;")
-	public TwitchEventSubject method11() {
+    public TwitchEventSubject method11() {
 		return TwitchEventSubject.CHAT_MESSAGE;
 	}
 }

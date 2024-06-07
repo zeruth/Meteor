@@ -8,7 +8,6 @@ import com.jagex.game.config.Js5ConfigGroup;
 import com.jagex.js5.Js5;
 import deob.ObfuscatedName;
 
-@ObfuscatedName("api")
 public class InvTypeList extends CachingConfigTypeList {
 
 	public InvTypeList(ModeGame modeGame, Language language, Js5 js5) {

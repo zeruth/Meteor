@@ -4,29 +4,21 @@ import com.jagex.game.config.seqtype.SeqType;
 import com.jagex.game.config.seqtype.SeqTypeList;
 import deob.ObfuscatedName;
 
-@ObfuscatedName("aau")
 public class FrameSetLoader {
 
-	@ObfuscatedName("aau.e")
-	public int field8515;
+    public int field8515;
 
-	@ObfuscatedName("aau.n")
-	public int field8516;
+    public int field8516;
 
-	@ObfuscatedName("aau.m")
-	public int field8517;
+    public int field8517;
 
-	@ObfuscatedName("aau.k")
-	public FrameSet field8520;
+    public FrameSet field8520;
 
-	@ObfuscatedName("aau.f")
-	public FrameSet field8519;
+    public FrameSet field8519;
 
-	@ObfuscatedName("aau.w")
-	public boolean field8518 = false;
+    public boolean field8518 = false;
 
-	@ObfuscatedName("aau.e(Laos;Lfg;II[II)Z")
-	public final boolean method14431(SeqTypeList arg0, SeqType arg1, int arg2, int arg3, int[] arg4) {
+    public final boolean method14431(SeqTypeList arg0, SeqType arg1, int arg2, int arg3, int[] arg4) {
 		if (this.field8518) {
 			return true;
 		} else if (arg2 >= arg4.length) {
@@ -72,8 +64,7 @@ public class FrameSetLoader {
 		}
 	}
 
-	@ObfuscatedName("aau.n(I)V")
-	public final void method14432() {
+    public final void method14432() {
 		this.field8518 = false;
 		this.field8515 = 0;
 		this.field8519 = null;

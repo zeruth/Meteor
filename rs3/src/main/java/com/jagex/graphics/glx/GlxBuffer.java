@@ -5,32 +5,23 @@ import deob.ObfuscatedName;
 import jaclib.memory.heap.NativeHeapBuffer;
 import jaggl.OpenGL;
 
-@ObfuscatedName("rv")
 public abstract class GlxBuffer implements GpuBuffer {
 
-	@ObfuscatedName("rv.m")
-	public final GlxToolkit field4988;
+    public final GlxToolkit field4988;
 
-	@ObfuscatedName("rv.k")
-	public final int field4989;
+    public final int field4989;
 
-	@ObfuscatedName("rv.f")
-	public final boolean field4990;
+    public final boolean field4990;
 
-	@ObfuscatedName("rv.w")
-	public int field4987 = -1;
+    public int field4987 = -1;
 
-	@ObfuscatedName("rv.l")
-	public int field4992;
+    public int field4992;
 
-	@ObfuscatedName("rv.u")
-	public int field4991;
+    public int field4991;
 
-	@ObfuscatedName("rv.z")
-	public NativeHeapBuffer field4986;
+    public NativeHeapBuffer field4986;
 
-	@ObfuscatedName("rv.p")
-	public static final int[] field4995 = new int[1];
+    public static final int[] field4995 = new int[1];
 
 	public GlxBuffer(GlxToolkit arg0, int arg1, boolean arg2) {
 		this.field4988 = arg0;
@@ -38,8 +29,7 @@ public abstract class GlxBuffer implements GpuBuffer {
 		this.field4990 = arg2;
 	}
 
-	@ObfuscatedName("rv.j()V")
-	public void method7654() {
+    public void method7654() {
 		if (this.field4987 >= 0) {
 			return;
 		}
@@ -52,25 +42,21 @@ public abstract class GlxBuffer implements GpuBuffer {
 		}
 	}
 
-	@ObfuscatedName("rv.k()I")
-	public int method5743() {
+    public int method5743() {
 		return this.field4992;
 	}
 
-	@ObfuscatedName("rv.t()J")
-	public long getAddress() {
+    public long getAddress() {
 		return this.field4987 == 0 ? this.field4986.getAddress() : 0L;
 	}
 
-	@ObfuscatedName("rv.ae()V")
-	public void method7658() {
+    public void method7658() {
 		if (this.field4988.hasVertexBufferObject) {
 			OpenGL.glBindBufferARB(this.field4989, this.field4987);
 		}
 	}
 
-	@ObfuscatedName("rv.a(I)V")
-	public void method5831(int arg0) {
+    public void method5831(int arg0) {
 		if (arg0 > this.field4991) {
 			this.method7654();
 			if (this.field4987 > 0) {
@@ -85,19 +71,16 @@ public abstract class GlxBuffer implements GpuBuffer {
 		this.field4992 = arg0;
 	}
 
-	@ObfuscatedName("rv.w(II)J")
-	public long lock(int arg0, int arg1) {
+    public long lock(int arg0, int arg1) {
 		OpenGL.glBindBufferARB(this.field4989, this.field4987);
 		return OpenGL.glMapBufferARB(this.field4989, 35001) + (long) arg0;
 	}
 
-	@ObfuscatedName("rv.l()V")
-	public void unlock() {
+    public void unlock() {
 		OpenGL.glUnmapBufferARB(this.field4989);
 	}
 
-	@ObfuscatedName("rv.f(IIJ)Z")
-	public boolean upload(int arg0, int arg1, long arg2) {
+    public boolean upload(int arg0, int arg1, long arg2) {
 		this.method7654();
 		if (this.field4987 > 0) {
 			OpenGL.glBindBufferARB(this.field4989, this.field4987);
@@ -108,8 +91,7 @@ public abstract class GlxBuffer implements GpuBuffer {
 		return true;
 	}
 
-	@ObfuscatedName("rv.m()V")
-	public void delete() {
+    public void delete() {
 		if (this.field4987 > 0) {
 			this.field4988.method19072(this.field4987, this.field4992);
 			this.field4987 = -1;

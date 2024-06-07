@@ -8,20 +8,15 @@ import com.jagex.game.config.db.DBUtils;
 import com.jagex.game.config.vartype.constants.ScriptVarType;
 import deob.ObfuscatedName;
 
-@ObfuscatedName("abc")
 public class DBRowType implements ConfigType, MutableConfig {
 
-	@ObfuscatedName("abc.e")
-	public Object[][] columnValues;
+    public Object[][] columnValues;
 
-	@ObfuscatedName("abc.n")
-	public ScriptVarType[][] types;
+    public ScriptVarType[][] types;
 
-	@ObfuscatedName("abc.m")
-	public int tableId;
+    public int tableId;
 
-	@ObfuscatedName("abc.e(Lalw;B)V")
-	public void decode(Packet buf) {
+    public void decode(Packet buf) {
 		while (true) {
 			int code = buf.g1();
 			if (code == 0) {
@@ -31,13 +26,11 @@ public class DBRowType implements ConfigType, MutableConfig {
 		}
 	}
 
-	@ObfuscatedName("abc.u(II)[Ljava/lang/Object;")
-	public Object[] method14711(int arg0) {
+    public Object[] method14711(int arg0) {
 		return this.columnValues == null ? null : this.columnValues[arg0];
 	}
 
-	@ObfuscatedName("abc.p(Lalw;II)V")
-	public void decode(Packet buf, int code) {
+    public void decode(Packet buf, int code) {
 		if (code == 3) {
 			int numColumns = buf.g1();
 			if (this.columnValues == null) {
@@ -58,11 +51,9 @@ public class DBRowType implements ConfigType, MutableConfig {
 		}
 	}
 
-	@ObfuscatedName("abc.n(I)V")
-	public void postDecode() {
+    public void postDecode() {
 	}
 
-	@ObfuscatedName("abc.z(IB)V")
-	public void setId(int arg0) {
+    public void setId(int arg0) {
 	}
 }

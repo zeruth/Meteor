@@ -9,41 +9,29 @@ import deob.ObfuscatedName;
 
 import java.math.BigInteger;
 
-@ObfuscatedName("px")
 public class Js5Client {
 
-	@ObfuscatedName("px.e")
-	public Js5TcpClient tcpClient;
+    public Js5TcpClient tcpClient;
 
-	@ObfuscatedName("px.n")
-	public Js5HttpClient httpClient;
+    public Js5HttpClient httpClient;
 
-	@ObfuscatedName("px.m")
-	public Js5DiskCache diskCache;
+    public Js5DiskCache diskCache;
 
-	@ObfuscatedName("px.k")
-	public BigInteger rsaExponent;
+    public BigInteger rsaExponent;
 
-	@ObfuscatedName("px.f")
-	public BigInteger rsaModulus;
+    public BigInteger rsaModulus;
 
-	@ObfuscatedName("px.w")
-	public Js5NetRequest masterIndexRequest;
+    public Js5NetRequest masterIndexRequest;
 
-	@ObfuscatedName("px.l")
-	public Js5HttpRequest httpMasterIndexRequest;
+    public Js5HttpRequest httpMasterIndexRequest;
 
-	@ObfuscatedName("px.u")
-	public Js5MasterIndex masterIndex;
+    public Js5MasterIndex masterIndex;
 
-	@ObfuscatedName("px.z")
-	public Js5MasterIndex field4377;
+    public Js5MasterIndex field4377;
 
-	@ObfuscatedName("px.p")
-	public boolean field4378 = false;
+    public boolean field4378 = false;
 
-	@ObfuscatedName("px.d")
-	public Js5NetResourceProvider[] resourceProviders;
+    public Js5NetResourceProvider[] resourceProviders;
 
 	public Js5Client(Js5TcpClient tcpClient, Js5HttpClient httpClient, Js5DiskCache diskCache, BigInteger exponent, BigInteger modulus) {
 		this.tcpClient = tcpClient;
@@ -62,8 +50,7 @@ public class Js5Client {
 		}
 	}
 
-	@ObfuscatedName("px.e(B)Z")
-	public boolean loadMasterIndex() {
+    public boolean loadMasterIndex() {
 		if (this.masterIndex != null) {
 			return true;
 		}
@@ -101,13 +88,11 @@ public class Js5Client {
 		return true;
 	}
 
-	@ObfuscatedName("px.n(ILuf;Luf;ZB)Laij;")
-	public Js5NetResourceProvider method6835(int arg0, DiskStore arg1, DiskStore arg2, boolean arg3) {
+    public Js5NetResourceProvider method6835(int arg0, DiskStore arg1, DiskStore arg2, boolean arg3) {
 		return this.method6836(arg0, arg1, arg2, true, arg3);
 	}
 
-	@ObfuscatedName("px.m(ILuf;Luf;ZZI)Laij;")
-	public Js5NetResourceProvider method6836(int arg0, DiskStore arg1, DiskStore arg2, boolean arg3, boolean arg4) {
+    public Js5NetResourceProvider method6836(int arg0, DiskStore arg1, DiskStore arg2, boolean arg3, boolean arg4) {
 		if (this.masterIndex == null) {
 			throw new RuntimeException();
 		} else if (arg0 < 0 || arg0 >= this.resourceProviders.length) {
@@ -126,8 +111,7 @@ public class Js5Client {
 		}
 	}
 
-	@ObfuscatedName("px.k(I)V")
-	public void update() {
+    public void update() {
 		if (this.resourceProviders == null) {
 			return;
 		}

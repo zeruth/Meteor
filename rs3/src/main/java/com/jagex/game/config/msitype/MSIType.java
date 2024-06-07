@@ -8,30 +8,23 @@ import com.jagex.graphics.SpriteData;
 import com.jagex.graphics.SpriteDataProvider;
 import deob.ObfuscatedName;
 
-@ObfuscatedName("aco")
 public class MSIType implements ConfigType {
 
-	@ObfuscatedName("aco.e")
-	public MSITypeFactory field9153;
+    public MSITypeFactory field9153;
 
-	@ObfuscatedName("aco.n")
-	public int field9151;
+    public int field9151;
 
-	@ObfuscatedName("aco.m")
-	public int field9154;
+    public int field9154;
 
-	@ObfuscatedName("aco.k")
-	public boolean field9152 = false;
+    public boolean field9152 = false;
 
-	@ObfuscatedName("aco.f")
-	public int[] field9150;
+    public int[] field9150;
 
 	public MSIType(int arg0, MSITypeFactory arg1) {
 		this.field9153 = arg1;
 	}
 
-	@ObfuscatedName("aco.e(Lalw;B)V")
-	public void decode(Packet buf) {
+    public void decode(Packet buf) {
 		while (true) {
 			int var2 = buf.g1();
 			if (var2 == 0) {
@@ -41,8 +34,7 @@ public class MSIType implements ConfigType {
 		}
 	}
 
-	@ObfuscatedName("aco.u(Lalw;IB)V")
-	public void method15066(Packet arg0, int arg1) {
+    public void method15066(Packet arg0, int arg1) {
 		if (arg1 == 1) {
 			this.field9151 = arg0.gSmart2or4null();
 		} else if (arg1 == 2) {
@@ -55,8 +47,7 @@ public class MSIType implements ConfigType {
 		}
 	}
 
-	@ObfuscatedName("aco.z(Ldh;IZI)Lcm;")
-	public Sprite method15057(Toolkit arg0, int arg1, boolean arg2) {
+    public Sprite method15057(Toolkit arg0, int arg1, boolean arg2) {
 		long var4 = (long) (this.field9151 | arg1 << 16 | (arg2 ? 262144 : 0) | arg0.field1595 << 19);
 		Sprite var6 = (Sprite) this.field9153.field9156.get(var4);
 		if (var6 == null) {
@@ -67,8 +58,7 @@ public class MSIType implements ConfigType {
 		}
 	}
 
-	@ObfuscatedName("aco.p(Ldh;IZB)[I")
-	public int[] method15058(Toolkit arg0, int arg1, boolean arg2) {
+    public int[] method15058(Toolkit arg0, int arg1, boolean arg2) {
 		if (this.field9150 == null) {
 			long var4 = (long) (this.field9151 | arg1 << 16 | (arg2 ? 262144 : 0) | arg0.field1595 << 19);
 			this.method15059(arg0, arg1, arg2, var4);
@@ -78,8 +68,7 @@ public class MSIType implements ConfigType {
 		}
 	}
 
-	@ObfuscatedName("aco.d(Ldh;IZJ)V")
-	public void method15059(Toolkit arg0, int arg1, boolean arg2, long arg3) {
+    public void method15059(Toolkit arg0, int arg1, boolean arg2, long arg3) {
 		if (!this.field9153.field9157.loadFile(this.field9151)) {
 			return;
 		}
@@ -121,12 +110,10 @@ public class MSIType implements ConfigType {
 		}
 	}
 
-	@ObfuscatedName("aco.c(I)Z")
-	public boolean method15060() {
+    public boolean method15060() {
 		return this.field9153.field9157.loadFile(this.field9151);
 	}
 
-	@ObfuscatedName("aco.n(I)V")
-	public void postDecode() {
+    public void postDecode() {
 	}
 }

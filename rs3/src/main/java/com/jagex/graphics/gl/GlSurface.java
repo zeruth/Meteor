@@ -6,32 +6,23 @@ import jaggl.OpenGL;
 
 import java.awt.*;
 
-@ObfuscatedName("apt")
 public class GlSurface extends Surface {
 
-	@ObfuscatedName("apt.e")
-	public final GlToolkit field11934;
+    public final GlToolkit field11934;
 
-	@ObfuscatedName("apt.n")
-	public final Canvas field11938;
+    public final Canvas field11938;
 
-	@ObfuscatedName("apt.m")
-	public final OpenGL field11933;
+    public final OpenGL field11933;
 
-	@ObfuscatedName("apt.k")
-	public final long field11935;
+    public final long field11935;
 
-	@ObfuscatedName("apt.f")
-	public int field11936;
+    public int field11936;
 
-	@ObfuscatedName("apt.w")
-	public int field11937;
+    public int field11937;
 
-	@ObfuscatedName("apt.l")
-	public boolean field11932;
+    public boolean field11932;
 
-	@ObfuscatedName("apt.u")
-	public boolean field11939;
+    public boolean field11939;
 
 	public GlSurface(GlToolkit arg0, Canvas arg1) {
 		this(arg0, arg1, arg0.field10022.prepareSurface(arg1));
@@ -47,18 +38,15 @@ public class GlSurface extends Surface {
 		this.method18976();
 	}
 
-	@ObfuscatedName("apt.e()I")
-	public int getWidth() {
+    public int getWidth() {
 		return this.field11936;
 	}
 
-	@ObfuscatedName("apt.n()I")
-	public int getHeight() {
+    public int getHeight() {
 		return this.field11937;
 	}
 
-	@ObfuscatedName("apt.i(II)V")
-	public void onResize(int arg0, int arg1) {
+    public void onResize(int arg0, int arg1) {
 		if (this.field11932) {
 			throw new IllegalStateException();
 		}
@@ -69,15 +57,13 @@ public class GlSurface extends Surface {
 		}
 	}
 
-	@ObfuscatedName("apt.x()V")
-	public void method18976() {
+    public void method18976() {
 		Dimension var1 = this.field11938.getSize();
 		this.field11937 = var1.height;
 		this.field11936 = var1.width;
 	}
 
-	@ObfuscatedName("apt.a()I")
-	public int method15451() {
+    public int method15451() {
 		if (this.field11932) {
 			throw new IllegalStateException();
 		}
@@ -85,13 +71,11 @@ public class GlSurface extends Surface {
 		return 0;
 	}
 
-	@ObfuscatedName("apt.g(II)I")
-	public int method15450(int arg0, int arg1) {
+    public int method15450(int arg0, int arg1) {
 		return 0;
 	}
 
-	@ObfuscatedName("apt.k()Z")
-	public boolean method1630() {
+    public boolean method1630() {
 		if (this.field11932) {
 			throw new IllegalStateException();
 		}
@@ -103,13 +87,11 @@ public class GlSurface extends Surface {
 		return true;
 	}
 
-	@ObfuscatedName("apt.f()Z")
-	public boolean method1631() {
+    public boolean method1631() {
 		return true;
 	}
 
-	@ObfuscatedName("apt.m()V")
-	public void method1629() {
+    public void method1629() {
 		if (this.field11932) {
 			throw new IllegalStateException();
 		}

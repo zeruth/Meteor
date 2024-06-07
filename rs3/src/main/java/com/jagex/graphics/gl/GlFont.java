@@ -5,20 +5,15 @@ import com.jagex.graphics.*;
 import deob.ObfuscatedName;
 import jaggl.OpenGL;
 
-@ObfuscatedName("afs")
 public class GlFont extends Font {
 
-	@ObfuscatedName("afs.o")
-	public final GlToolkit field10243;
+    public final GlToolkit field10243;
 
-	@ObfuscatedName("afs.s")
-	public final GlTexture_Sub1_Sub1 field10241;
+    public final GlTexture_Sub1_Sub1 field10241;
 
-	@ObfuscatedName("afs.y")
-	public final GlRenderList field10242;
+    public final GlRenderList field10242;
 
-	@ObfuscatedName("afs.q")
-	public final boolean field10240;
+    public final boolean field10240;
 
 	public GlFont(GlToolkit arg0, FontMetrics arg1, SpriteData arg2, boolean arg3) {
 		super(arg0, arg1);
@@ -116,8 +111,7 @@ public class GlFont extends Font {
 		}
 	}
 
-	@ObfuscatedName("afs.s(CIIIZ)V")
-	public void drawChar(char arg0, int arg1, int arg2, int arg3, boolean arg4) {
+    public void drawChar(char arg0, int arg1, int arg2, int arg3, boolean arg4) {
 		this.field10243.method15731();
 		this.field10243.method15777(this.field10241);
 		if (this.field10240 || arg4) {
@@ -135,8 +129,7 @@ public class GlFont extends Font {
 		}
 	}
 
-	@ObfuscatedName("afs.y(CIIIZLch;II)V")
-	public void drawChar2(char arg0, int arg1, int arg2, int arg3, boolean arg4, SpriteRelated arg5, int arg6, int arg7) {
+    public void drawChar2(char arg0, int arg1, int arg2, int arg3, boolean arg4, SpriteRelated arg5, int arg6, int arg7) {
 		GlSpriteRelated var9 = (GlSpriteRelated) arg5;
 		GlTexture_Sub1_Sub1 var10 = var9.field9416;
 		this.field10243.method15731();

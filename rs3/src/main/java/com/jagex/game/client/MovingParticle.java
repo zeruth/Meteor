@@ -17,38 +17,27 @@ import deob.ObfuscatedName;
 
 import java.util.Iterator;
 
-@ObfuscatedName("atz")
 public class MovingParticle extends Particle {
 
-	@ObfuscatedName("atz.o")
-	public ParticleEmitter field12526;
+    public ParticleEmitter field12526;
 
-	@ObfuscatedName("atz.s")
-	public short field12523;
+    public short field12523;
 
-	@ObfuscatedName("atz.y")
-	public short field12524;
+    public short field12524;
 
-	@ObfuscatedName("atz.q")
-	public short field12525;
+    public short field12525;
 
-	@ObfuscatedName("atz.x")
-	public int field12527;
+    public int field12527;
 
-	@ObfuscatedName("atz.b")
-	public int field12522;
+    public int field12522;
 
-	@ObfuscatedName("atz.h")
-	public short field12530;
+    public short field12530;
 
-	@ObfuscatedName("atz.a")
-	public short field12529;
+    public short field12529;
 
-	@ObfuscatedName("atz.g")
-	public short field12528;
+    public short field12528;
 
-	@ObfuscatedName("atz.i")
-	public short field12531;
+    public short field12531;
 
 	public MovingParticle(ParticleEmitter arg0, int arg1, int arg2, int arg3, int arg4, int arg5, int arg6, int arg7, int arg8, int arg9, int arg10, int arg11, int arg12, int arg13, boolean arg14, boolean arg15) {
 		this.field12526 = arg0;
@@ -69,8 +58,7 @@ public class MovingParticle extends Particle {
 		this.method19666();
 	}
 
-	@ObfuscatedName("atz.k(Lxm;IIIIIIIIIIIIIZZ)V")
-	public void method19665(ParticleEmitter arg0, int arg1, int arg2, int arg3, int arg4, int arg5, int arg6, int arg7, int arg8, int arg9, int arg10, int arg11, int arg12, int arg13, boolean arg14, boolean arg15) {
+    public void method19665(ParticleEmitter arg0, int arg1, int arg2, int arg3, int arg4, int arg5, int arg6, int arg7, int arg8, int arg9, int arg10, int arg11, int arg12, int arg13, boolean arg14, boolean arg15) {
 		this.field12526 = arg0;
 		this.x = arg1 << 12;
 		this.y = arg2 << 12;
@@ -89,8 +77,7 @@ public class MovingParticle extends Particle {
 		this.method19666();
 	}
 
-	@ObfuscatedName("atz.f()V")
-	public void method19666() {
+    public void method19666() {
 		int var1 = this.field12526.field7785.field7806;
 		if (this.field12526.field7785.field7805[var1] != null) {
 			this.field12526.field7785.field7805[var1].method19669();
@@ -101,8 +88,7 @@ public class MovingParticle extends Particle {
 		this.field12526.field7775.pushBack(this);
 	}
 
-	@ObfuscatedName("atz.w(JI)V")
-	public void method19667(long arg0, int arg1) {
+    public void method19667(long arg0, int arg1) {
 		this.field12525 = (short) (this.field12525 - arg1);
 		if (this.field12525 <= 0) {
 			this.method19669();
@@ -349,8 +335,7 @@ public class MovingParticle extends Particle {
 		this.z = (int) ((long) this.z + ((long) (this.field12522 << 2) * (long) this.field12528 >> 23) * (long) arg1);
 	}
 
-	@ObfuscatedName("atz.l(Ltx;Ldh;J)V")
-	public void method19668(Scene arg0, Toolkit arg1, long arg2) {
+    public void method19668(Scene arg0, Toolkit arg1, long arg2) {
 		int var5 = this.x >> arg0.size + 12;
 		int var6 = this.z >> arg0.size + 12;
 		int var7 = this.y >> 12;
@@ -456,8 +441,7 @@ public class MovingParticle extends Particle {
 		}
 	}
 
-	@ObfuscatedName("atz.u()V")
-	public void method19669() {
+    public void method19669() {
 		this.field12526.field7785.field7805[this.field12523] = null;
 		ParticleSystemRenderer.field7794[ParticleSystemRenderer.field7797] = this;
 		ParticleSystemRenderer.field7797 = ParticleSystemRenderer.field7797 + 1 & 0x3FF;

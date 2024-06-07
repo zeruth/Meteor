@@ -4,31 +4,24 @@ import com.jagex.core.io.Packet;
 import com.jagex.js5.Js5;
 import deob.ObfuscatedName;
 
-@ObfuscatedName("wy")
 public class WearposDefaults {
 
-	@ObfuscatedName("wy.k")
-	public int[] field7766;
+    public int[] field7766;
 
-	@ObfuscatedName("wy.f")
-	public int mainhand = -1;
+    public int mainhand = -1;
 
-	@ObfuscatedName("wy.w")
-	public int offhand = -1;
+    public int offhand = -1;
 
-	@ObfuscatedName("wy.l")
-	public int[] field7769;
+    public int[] field7769;
 
-	@ObfuscatedName("wy.u")
-	public int[] field7767;
+    public int[] field7767;
 
 	public WearposDefaults(Js5 defaultsJs5) {
 		byte[] bytes = defaultsJs5.fetchFile(DefaultsGroup.WEARPOS.js5GroupId);
 		this.decode(new Packet(bytes));
 	}
 
-	@ObfuscatedName("wy.e(Lalw;B)V")
-	public void decode(Packet buf) {
+    public void decode(Packet buf) {
 		while (true) {
 			int var2 = buf.g1();
 			if (var2 == 0) {

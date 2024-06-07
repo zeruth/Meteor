@@ -4,15 +4,13 @@ import com.jagex.math.Quaternion;
 import com.jagex.math.Vector3;
 import deob.ObfuscatedName;
 
-@ObfuscatedName("vx")
 public class CameraMode2 {
 
 	public CameraMode2() throws Throwable {
 		throw new Error();
 	}
 
-	@ObfuscatedName("sk.e(FLox;Lov;Lox;Lox;Lox;Lox;FFFFB)V")
-	public static void method8144(float arg0, Vector3 arg1, Quaternion arg2, Vector3 arg3, Vector3 arg4, Vector3 arg5, Vector3 arg6, float arg7, float arg8, float arg9, float arg10) {
+    public static void method8144(float arg0, Vector3 arg1, Quaternion arg2, Vector3 arg3, Vector3 arg4, Vector3 arg5, Vector3 arg6, float arg7, float arg8, float arg9, float arg10) {
 		if (arg3.isEqualTo(arg1)) {
 			return;
 		}

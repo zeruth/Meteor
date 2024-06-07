@@ -3,233 +3,157 @@ package com.jagex.game.config;
 import com.jagex.core.io.Packet;
 import deob.ObfuscatedName;
 
-@ObfuscatedName("nj")
 public class ParticleEmitterType {
 
-	@ObfuscatedName("nj.k")
-	public short field3461;
+    public short field3461;
 
-	@ObfuscatedName("nj.f")
-	public short field3462;
+    public short field3462;
 
-	@ObfuscatedName("nj.w")
-	public short field3498;
+    public short field3498;
 
-	@ObfuscatedName("nj.l")
-	public short field3464;
+    public short field3464;
 
-	@ObfuscatedName("nj.u")
-	public int field3514;
+    public int field3514;
 
-	@ObfuscatedName("nj.z")
-	public int field3505;
+    public int field3505;
 
-	@ObfuscatedName("nj.p")
-	public int field3467 = 0;
+    public int field3467 = 0;
 
-	@ObfuscatedName("nj.d")
-	public int field3492;
+    public int field3492;
 
-	@ObfuscatedName("nj.c")
-	public int field3469 = -1;
+    public int field3469 = -1;
 
-	@ObfuscatedName("nj.r")
-	public int field3470 = 100;
+    public int field3470 = 100;
 
-	@ObfuscatedName("nj.v")
-	public int field3501;
+    public int field3501;
 
-	@ObfuscatedName("nj.o")
-	public int field3472;
+    public int field3472;
 
-	@ObfuscatedName("nj.s")
-	public int field3473 = -1;
+    public int field3473 = -1;
 
-	@ObfuscatedName("nj.y")
-	public int field3531 = 100;
+    public int field3531 = 100;
 
-	@ObfuscatedName("nj.q")
-	public int field3475;
+    public int field3475;
 
-	@ObfuscatedName("nj.x")
-	public int field3476;
+    public int field3476;
 
-	@ObfuscatedName("nj.b")
-	public boolean field3477 = true;
+    public boolean field3477 = true;
 
-	@ObfuscatedName("nj.h")
-	public int field3478;
+    public int field3478;
 
-	@ObfuscatedName("nj.a")
-	public int field3466 = 100;
+    public int field3466 = 100;
 
-	@ObfuscatedName("nj.g")
-	public int field3480 = 100;
+    public int field3480 = 100;
 
-	@ObfuscatedName("nj.i")
-	public int field3515 = -1;
+    public int field3515 = -1;
 
-	@ObfuscatedName("nj.j")
-	public int field3482;
+    public int field3482;
 
-	@ObfuscatedName("nj.t")
-	public int field3483;
+    public int field3483;
 
-	@ObfuscatedName("nj.ae")
-	public int field3468;
+    public int field3468;
 
-	@ObfuscatedName("nj.ag")
-	public int field3485;
+    public int field3485;
 
-	@ObfuscatedName("nj.ah")
-	public int[] field3486;
+    public int[] field3486;
 
-	@ObfuscatedName("nj.al")
-	public int[] field3487;
+    public int[] field3487;
 
-	@ObfuscatedName("nj.ac")
-	public int[] field3512;
+    public int[] field3512;
 
-	@ObfuscatedName("nj.ai")
-	public int[] field3489;
+    public int[] field3489;
 
-	@ObfuscatedName("nj.as")
-	public int field3491 = -2;
+    public int field3491 = -2;
 
-	@ObfuscatedName("nj.at")
-	public int field3493 = -2;
+    public int field3493 = -2;
 
-	@ObfuscatedName("nj.ad")
-	public int field3458 = 0;
+    public int field3458 = 0;
 
-	@ObfuscatedName("nj.am")
-	public boolean field3494 = true;
+    public boolean field3494 = true;
 
-	@ObfuscatedName("nj.au")
-	public boolean field3495 = true;
+    public boolean field3495 = true;
 
-	@ObfuscatedName("nj.ar")
-	public int field3532 = -1;
+    public int field3532 = -1;
 
-	@ObfuscatedName("nj.ap")
-	public int field3497 = -1;
+    public int field3497 = -1;
 
-	@ObfuscatedName("nj.aq")
-	public int field3504 = 0;
+    public int field3504 = 0;
 
-	@ObfuscatedName("nj.ax")
-	public boolean field3499 = true;
+    public boolean field3499 = true;
 
-	@ObfuscatedName("nj.av")
-	public int field3460 = -1;
+    public int field3460 = -1;
 
-	@ObfuscatedName("nj.ao")
-	public int field3525 = 0;
+    public int field3525 = 0;
 
-	@ObfuscatedName("nj.aj")
-	public int field3502 = 0;
+    public int field3502 = 0;
 
-	@ObfuscatedName("nj.ay")
-	public int field3503 = 0;
+    public int field3503 = 0;
 
-	@ObfuscatedName("nj.ab")
-	public int field3533 = 0;
+    public int field3533 = 0;
 
-	@ObfuscatedName("nj.az")
-	public int field3471 = 0;
+    public int field3471 = 0;
 
-	@ObfuscatedName("nj.aa")
-	public boolean field3506 = false;
+    public boolean field3506 = false;
 
-	@ObfuscatedName("nj.af")
-	public boolean field3496 = true;
+    public boolean field3496 = true;
 
-	@ObfuscatedName("nj.ak")
-	public boolean field3508 = false;
+    public boolean field3508 = false;
 
-	@ObfuscatedName("nj.an")
-	public boolean field3526 = true;
+    public boolean field3526 = true;
 
-	@ObfuscatedName("nj.bf")
-	public boolean field3510 = false;
+    public boolean field3510 = false;
 
-	@ObfuscatedName("nj.bl")
-	public boolean field3511 = false;
+    public boolean field3511 = false;
 
-	@ObfuscatedName("nj.bk")
-	public int field3479;
+    public int field3479;
 
-	@ObfuscatedName("nj.bh")
-	public int field3513;
+    public int field3513;
 
-	@ObfuscatedName("nj.bx")
-	public int field3463;
+    public int field3463;
 
-	@ObfuscatedName("nj.bd")
-	public int field3519;
+    public int field3519;
 
-	@ObfuscatedName("nj.bc")
-	public int field3516;
+    public int field3516;
 
-	@ObfuscatedName("nj.bi")
-	public int field3517;
+    public int field3517;
 
-	@ObfuscatedName("nj.bn")
-	public int field3518;
+    public int field3518;
 
-	@ObfuscatedName("nj.bt")
-	public int field3488;
+    public int field3488;
 
-	@ObfuscatedName("nj.bq")
-	public int field3520;
+    public int field3520;
 
-	@ObfuscatedName("nj.bm")
-	public int field3474;
+    public int field3474;
 
-	@ObfuscatedName("nj.bb")
-	public int field3522;
+    public int field3522;
 
-	@ObfuscatedName("nj.be")
-	public int field3523;
+    public int field3523;
 
-	@ObfuscatedName("nj.by")
-	public int field3524;
+    public int field3524;
 
-	@ObfuscatedName("nj.bu")
-	public int field3500;
+    public int field3500;
 
-	@ObfuscatedName("nj.bw")
-	public int field3530;
+    public int field3530;
 
-	@ObfuscatedName("nj.bo")
-	public int field3527;
+    public int field3527;
 
-	@ObfuscatedName("nj.bz")
-	public int field3528;
+    public int field3528;
 
-	@ObfuscatedName("nj.bv")
-	public int field3465;
+    public int field3465;
 
-	@ObfuscatedName("nj.br")
-	public int field3529;
+    public int field3529;
 
-	@ObfuscatedName("nj.bg")
-	public int field3481;
+    public int field3481;
 
-	@ObfuscatedName("nj.ba")
-	public int field3509;
+    public int field3509;
 
-	@ObfuscatedName("nj.bp")
-	public int field3521;
+    public int field3521;
 
-	@ObfuscatedName("nj.bj")
-	public int field3534;
+    public int field3534;
 
-	@ObfuscatedName("nj.bs")
-	public int field3535;
+    public int field3535;
 
-	@ObfuscatedName("nj.e(Lalw;B)V")
-	public void method5960(Packet arg0) {
+    public void method5960(Packet arg0) {
 		while (true) {
 			int var2 = arg0.g1();
 			if (var2 == 0) {
@@ -239,8 +163,7 @@ public class ParticleEmitterType {
 		}
 	}
 
-	@ObfuscatedName("nj.n(Lalw;II)V")
-	public void method5968(Packet arg0, int arg1) {
+    public void method5968(Packet arg0, int arg1) {
 		if (arg1 == 1) {
 			this.field3461 = (short) arg0.g2();
 			this.field3462 = (short) arg0.g2();
@@ -361,8 +284,7 @@ public class ParticleEmitterType {
 		}
 	}
 
-	@ObfuscatedName("nj.m(I)V")
-	public void method5965() {
+    public void method5965() {
 		if (this.field3491 > -2 || this.field3493 > -2) {
 			this.field3511 = true;
 		}

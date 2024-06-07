@@ -9,65 +9,45 @@ import com.jagex.graphics.Toolkit;
 import com.jagex.math.Trig1;
 import deob.ObfuscatedName;
 
-@ObfuscatedName("xm")
 public class ParticleEmitter {
 
-	@ObfuscatedName("xm.e")
-	public final ModelParticleEmitter field7788;
+    public final ModelParticleEmitter field7788;
 
-	@ObfuscatedName("xm.n")
-	public ParticleEmitterType field7772;
+    public ParticleEmitterType field7772;
 
-	@ObfuscatedName("xm.m")
-	public final ParticleSystem field7785;
+    public final ParticleSystem field7785;
 
-	@ObfuscatedName("xm.k")
-	public int field7786 = 0;
+    public int field7786 = 0;
 
-	@ObfuscatedName("xm.f")
-	public LinkQueue field7775;
+    public LinkQueue field7775;
 
-	@ObfuscatedName("xm.w")
-	public int field7776;
+    public int field7776;
 
-	@ObfuscatedName("xm.l")
-	public long field7774;
+    public long field7774;
 
-	@ObfuscatedName("xm.u")
-	public boolean field7778 = false;
+    public boolean field7778 = false;
 
-	@ObfuscatedName("xm.z")
-	public ParticleEmitterRelated field7779 = new ParticleEmitterRelated();
+    public ParticleEmitterRelated field7779 = new ParticleEmitterRelated();
 
-	@ObfuscatedName("xm.p")
-	public ParticleEmitterRelated field7780 = new ParticleEmitterRelated();
+    public ParticleEmitterRelated field7780 = new ParticleEmitterRelated();
 
-	@ObfuscatedName("xm.d")
-	public int field7781;
+    public int field7781;
 
-	@ObfuscatedName("xm.c")
-	public int field7782;
+    public int field7782;
 
-	@ObfuscatedName("xm.r")
-	public int field7783;
+    public int field7783;
 
-	@ObfuscatedName("xm.v")
-	public int field7784;
+    public int field7784;
 
-	@ObfuscatedName("xm.o")
-	public int field7777;
+    public int field7777;
 
-	@ObfuscatedName("xm.s")
-	public int field7771;
+    public int field7771;
 
-	@ObfuscatedName("xm.y")
-	public int field7787;
+    public int field7787;
 
-	@ObfuscatedName("xm.q")
-	public boolean field7789 = false;
+    public boolean field7789 = false;
 
-	@ObfuscatedName("xm.x")
-	public boolean field7773 = false;
+    public boolean field7773 = false;
 
 	public ParticleEmitter(Toolkit arg0, ModelParticleEmitter arg1, ParticleSystem arg2, long arg3) {
 		this.field7788 = arg1;
@@ -91,8 +71,7 @@ public class ParticleEmitter {
 		this.field7780.field7827 = this.field7779.field7827;
 	}
 
-	@ObfuscatedName("xm.e(B)V")
-	public void method9896() {
+    public void method9896() {
 		this.field7779.field7826 = this.field7788.field1470;
 		this.field7779.field7820 = this.field7788.field1474;
 		this.field7779.field7821 = this.field7788.field1472;
@@ -118,8 +97,7 @@ public class ParticleEmitter {
 		}
 	}
 
-	@ObfuscatedName("xm.n(Ldh;JIZI)V")
-	public void method9897(Toolkit arg0, long arg1, int arg2, boolean arg3) {
+    public void method9897(Toolkit arg0, long arg1, int arg2, boolean arg3) {
 		if (this.field7778) {
 			arg3 = false;
 		} else if (ParticleSystemRenderer.field7802 < this.field7772.field3504) {
@@ -291,8 +269,7 @@ public class ParticleEmitter {
 		ParticleSystemRenderer.field7790 += this.field7776;
 	}
 
-	@ObfuscatedName("xm.m(Ltx;Ldh;J)V")
-	public void method9898(Scene arg0, Toolkit arg1, long arg2) {
+    public void method9898(Scene arg0, Toolkit arg1, long arg2) {
 		for (MovingParticle var5 = (MovingParticle) this.field7775.peekFront(); var5 != null; var5 = (MovingParticle) this.field7775.prev()) {
 			var5.method19668(arg0, arg1, arg2);
 		}

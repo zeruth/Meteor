@@ -2,22 +2,18 @@ package com.jagex.core.datastruct;
 
 import deob.ObfuscatedName;
 
-@ObfuscatedName("aaf")
 public final class DualLinkQueue {
 
-	@ObfuscatedName("aaf.e")
-	public DualLink head = new DualLink();
+    public DualLink head = new DualLink();
 
-	@ObfuscatedName("aaf.n")
-	public DualLink peeked;
+    public DualLink peeked;
 
 	public DualLinkQueue() {
 		this.head.dualPrev = this.head;
 		this.head.dualNext = this.head;
 	}
 
-	@ObfuscatedName("aaf.e(Lajn;B)V")
-	public void pushBack(DualLink node) {
+    public void pushBack(DualLink node) {
 		if (node.dualNext != null) {
 			node.dualUnlink();
 		}
@@ -27,8 +23,7 @@ public final class DualLinkQueue {
 		node.dualPrev.dualNext = node;
 	}
 
-	@ObfuscatedName("aaf.n(I)Lajn;")
-	public DualLink peekFront() {
+    public DualLink peekFront() {
 		DualLink node = this.head.dualPrev;
 		if (this.head == node) {
 			this.peeked = null;
@@ -39,8 +34,7 @@ public final class DualLinkQueue {
 		}
 	}
 
-	@ObfuscatedName("aaf.m(I)Lajn;")
-	public DualLink prev() {
+    public DualLink prev() {
 		DualLink var1 = this.peeked;
 		if (this.head == var1) {
 			this.peeked = null;
@@ -51,8 +45,7 @@ public final class DualLinkQueue {
 		}
 	}
 
-	@ObfuscatedName("aaf.k(I)V")
-	public void clear() {
+    public void clear() {
 		while (true) {
 			DualLink node = this.head.dualPrev;
 			if (this.head == node) {

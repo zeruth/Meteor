@@ -6,71 +6,49 @@ import com.jagex.math.Matrix4x4;
 import com.jagex.math.Trig1;
 import deob.ObfuscatedName;
 
-@ObfuscatedName("sw")
 public class SkyboxRelated {
 
-	@ObfuscatedName("sw.f")
-	public final int field5112;
+    public final int field5112;
 
-	@ObfuscatedName("sw.w")
-	public final int field5113;
+    public final int field5113;
 
-	@ObfuscatedName("sw.l")
-	public final int field5136;
+    public final int field5136;
 
-	@ObfuscatedName("sw.u")
-	public final int field5115;
+    public final int field5115;
 
-	@ObfuscatedName("sw.z")
-	public final boolean field5117;
+    public final boolean field5117;
 
-	@ObfuscatedName("sw.p")
-	public final int field5116;
+    public final int field5116;
 
-	@ObfuscatedName("sw.d")
-	public final int field5135;
+    public final int field5135;
 
-	@ObfuscatedName("sw.c")
-	public final int field5111;
+    public final int field5111;
 
-	@ObfuscatedName("sw.r")
-	public int field5125;
+    public int field5125;
 
-	@ObfuscatedName("sw.v")
-	public int field5121;
+    public int field5121;
 
-	@ObfuscatedName("sw.o")
-	public int field5122;
+    public int field5122;
 
-	@ObfuscatedName("sw.s")
-	public int field5123;
+    public int field5123;
 
-	@ObfuscatedName("sw.y")
-	public int field5130;
+    public int field5130;
 
-	@ObfuscatedName("sw.q")
-	public Sprite field5128;
+    public Sprite field5128;
 
-	@ObfuscatedName("sw.x")
-	public int field5126;
+    public int field5126;
 
-	@ObfuscatedName("sw.b")
-	public int field5127;
+    public int field5127;
 
-	@ObfuscatedName("sw.h")
-	public int field5124;
+    public int field5124;
 
-	@ObfuscatedName("sw.ag")
-	public static Model field5129;
+    public static Model field5129;
 
-	@ObfuscatedName("sw.ah")
-	public static Sprite field5118;
+    public static Sprite field5118;
 
-	@ObfuscatedName("sw.al")
-	public static Sprite field5137;
+    public static Sprite field5137;
 
-	@ObfuscatedName("sw.ac")
-	public static final int[] field5138 = new int[4];
+    public static final int[] field5138 = new int[4];
 
 	public SkyboxRelated(int arg0, int arg1, int arg2, int arg3, int arg4, int arg5, int arg6, boolean arg7, int arg8, int arg9, int arg10) {
 		this.field5136 = arg2;
@@ -86,14 +64,12 @@ public class SkyboxRelated {
 		this.field5124 = arg10;
 	}
 
-	@ObfuscatedName("sw.e()V")
-	public static void method7979() {
+    public static void method7979() {
 		field5129 = null;
 		field5137 = null;
 	}
 
-	@ObfuscatedName("sw.n(IIII)Z")
-	public boolean method7998(int arg0, int arg1, int arg2, int arg3) {
+    public boolean method7998(int arg0, int arg1, int arg2, int arg3) {
 		int var8;
 		int var9;
 		int var10;
@@ -143,13 +119,11 @@ public class SkyboxRelated {
 		return true;
 	}
 
-	@ObfuscatedName("sw.m(Ldh;Lsw;)Z")
-	public boolean method7980(Toolkit arg0, SkyboxRelated arg1) {
+    public boolean method7980(Toolkit arg0, SkyboxRelated arg1) {
 		return this.field5128 != null || this.method7999(arg0, arg1);
 	}
 
-	@ObfuscatedName("sw.k(Ldh;IIIIIIIIII)V")
-	public void method7981(Toolkit arg0, int arg1, int arg2, int arg3, int arg4, int arg5, int arg6, int arg7, int arg8, int arg9, int arg10) {
+    public void method7981(Toolkit arg0, int arg1, int arg2, int arg3, int arg4, int arg5, int arg6, int arg7, int arg8, int arg9, int arg10) {
 		if (this.field5128 == null) {
 			return;
 		}
@@ -173,8 +147,7 @@ public class SkyboxRelated {
 		}
 	}
 
-	@ObfuscatedName("sw.f(Ldh;Lsw;)Z")
-	public boolean method7999(Toolkit arg0, SkyboxRelated arg1) {
+    public boolean method7999(Toolkit arg0, SkyboxRelated arg1) {
 		if (this.field5128 == null) {
 			if (this.field5112 == 0) {
 				if (SkyBox.field2421.loadTexture(TextureRelated2.field7586, this.field5135, -1, TextureRelated1.field7569, 0.7F, this.field5123, this.field5123, false)) {
@@ -190,8 +163,7 @@ public class SkyboxRelated {
 		return this.field5128 != null;
 	}
 
-	@ObfuscatedName("sw.w(Ldh;Lsw;)V")
-	public void method7983(Toolkit arg0, SkyboxRelated arg1) {
+    public void method7983(Toolkit arg0, SkyboxRelated arg1) {
 		ModelUnlit var3 = ModelUnlit.get(SkyBox.field1810, this.field5135, 0);
 		if (var3 == null) {
 			return;
@@ -253,8 +225,7 @@ public class SkyboxRelated {
 		arg0.resetBounds(field5138[0], field5138[1], field5138[2], field5138[3]);
 	}
 
-	@ObfuscatedName("sw.l(Ldh;Lsw;)V")
-	public void method7985(Toolkit arg0, SkyboxRelated arg1) {
+    public void method7985(Toolkit arg0, SkyboxRelated arg1) {
 		method7992(arg0);
 		method7986(arg0);
 		arg0.method2171(field5138);
@@ -317,8 +288,7 @@ public class SkyboxRelated {
 		arg0.resetBounds(field5138[0], field5138[1], field5138[2], field5138[3]);
 	}
 
-	@ObfuscatedName("sw.u(Ldh;)V")
-	public static void method7992(Toolkit arg0) {
+    public static void method7992(Toolkit arg0) {
 		if (field5129 != null) {
 			return;
 		}
@@ -359,8 +329,7 @@ public class SkyboxRelated {
 		field5129 = arg0.createModel(var1, 51200, 33, 64, 768);
 	}
 
-	@ObfuscatedName("sw.z(Ldh;)V")
-	public static void method7986(Toolkit arg0) {
+    public static void method7986(Toolkit arg0) {
 		if (field5137 != null) {
 			return;
 		}

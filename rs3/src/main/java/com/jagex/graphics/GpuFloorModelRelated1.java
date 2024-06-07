@@ -5,47 +5,33 @@ import deob.ObfuscatedName;
 
 import java.nio.ByteBuffer;
 
-@ObfuscatedName("akh")
 public class GpuFloorModelRelated1 extends Node {
 
-	@ObfuscatedName("akh.k")
-	public final GpuToolkit field11409;
+    public final GpuToolkit field11409;
 
-	@ObfuscatedName("akh.f")
-	public final GpuFloorModel field11401;
+    public final GpuFloorModel field11401;
 
-	@ObfuscatedName("akh.w")
-	public final int field11402;
+    public final int field11402;
 
-	@ObfuscatedName("akh.l")
-	public final float field11403;
+    public final float field11403;
 
-	@ObfuscatedName("akh.u")
-	public WaterFogData field11404;
+    public WaterFogData field11404;
 
-	@ObfuscatedName("akh.z")
-	public VertexBuffer field11405;
+    public VertexBuffer field11405;
 
-	@ObfuscatedName("akh.p")
-	public int field11406 = 0;
+    public int field11406 = 0;
 
-	@ObfuscatedName("akh.d")
-	public int[] field11412;
+    public int[] field11412;
 
-	@ObfuscatedName("akh.c")
-	public int field11408 = 0;
+    public int field11408 = 0;
 
-	@ObfuscatedName("akh.r")
-	public int field11400 = 0;
+    public int field11400 = 0;
 
-	@ObfuscatedName("akh.v")
-	public int field11407 = 0;
+    public int field11407 = 0;
 
-	@ObfuscatedName("akh.o")
-	public long field11411;
+    public long field11411;
 
-	@ObfuscatedName("akh.s")
-	public ByteBuffer field11410;
+    public ByteBuffer field11410;
 
 	public GpuFloorModelRelated1(GpuFloorModel arg0, int arg1, int arg2, WaterFogData arg3) {
 		this.field11401 = arg0;
@@ -56,8 +42,7 @@ public class GpuFloorModelRelated1 extends Node {
 		this.field11412 = new int[this.field11401.field1235 * this.field11401.field1234];
 	}
 
-	@ObfuscatedName("akh.e(I)V")
-	public void method17761(int arg0) {
+    public void method17761(int arg0) {
 		this.field11410 = this.field11409.method16151(arg0 * 4);
 		this.field11411 = this.field11409.method15963(this.field11410);
 		for (int var2 = 3; var2 < arg0 * 4; var2 += 4) {
@@ -65,19 +50,16 @@ public class GpuFloorModelRelated1 extends Node {
 		}
 	}
 
-	@ObfuscatedName("akh.n(I)V")
-	public void method17763(int arg0) {
+    public void method17763(int arg0) {
 		this.field11409.field10110.putByte((long) (arg0 * 4) + this.field11411 + 3L, (byte) -1);
 	}
 
-	@ObfuscatedName("akh.m(III)V")
-	public void method17764(int arg0, int arg1, int arg2) {
+    public void method17764(int arg0, int arg1, int arg2) {
 		this.field11412[this.field11401.field1235 * arg1 + arg0] |= 0x1 << arg2;
 		this.field11406++;
 	}
 
-	@ObfuscatedName("akh.k(IIIF)V")
-	public void method17762(int arg0, int arg1, int arg2, float arg3) {
+    public void method17762(int arg0, int arg1, int arg2, float arg3) {
 		if (this.field11402 != -1) {
 			Material var5 = this.field11409.materialList.get(this.field11402);
 			int var6 = var5.field1364 & 0xFF;
@@ -150,8 +132,7 @@ public class GpuFloorModelRelated1 extends Node {
 		}
 	}
 
-	@ObfuscatedName("akh.f(I)V")
-	public void method17766(int arg0) {
+    public void method17766(int arg0) {
 		this.field11405 = this.field11409.createVertexBuffer(false);
 		this.field11405.allocate(arg0 * 4, 4);
 		this.field11405.upload(0, arg0 * 4, this.field11411);
@@ -160,8 +141,7 @@ public class GpuFloorModelRelated1 extends Node {
 		this.field11411 = 0L;
 	}
 
-	@ObfuscatedName("akh.w([II)V")
-	public void method17767(int[] arg0, int arg1) {
+    public void method17767(int[] arg0, int arg1) {
 		this.field11408 = 0;
 		this.field11400 = 32767;
 		this.field11407 = -32768;

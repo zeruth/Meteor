@@ -4,22 +4,17 @@ import com.jagex.game.config.iftype.Component;
 import com.jagex.game.config.iftype.Interface;
 import deob.ObfuscatedName;
 
-@ObfuscatedName("ya")
 public class ActiveComponent {
 
-	@ObfuscatedName("ya.e")
-	public Component com;
+    public Component com;
 
-	@ObfuscatedName("ya.n")
-	public Interface itf;
+    public Interface itf;
 
-	@ObfuscatedName("ya.e(I)Lhf;")
-	public Component method13790() {
+    public Component method13790() {
 		return this.itf.getComponent(this.com.parentlayer);
 	}
 
-	@ObfuscatedName("ya.n(III)Z")
-	public boolean method13787(int arg0, int arg1) {
+    public boolean method13787(int arg0, int arg1) {
 		Component var3 = Component.method16682(arg0, arg1);
 		if (var3 == null) {
 			this.method13788();
@@ -31,8 +26,7 @@ public class ActiveComponent {
 		}
 	}
 
-	@ObfuscatedName("ya.m(I)V")
-	public void method13788() {
+    public void method13788() {
 		this.itf = null;
 		this.com = null;
 	}

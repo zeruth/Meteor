@@ -5,62 +5,43 @@ import com.jagex.math.Matrix4x4;
 import com.jagex.math.Vector4;
 import deob.ObfuscatedName;
 
-@ObfuscatedName("aqw")
 public class WaterfallShader extends WaterShader {
 
-	@ObfuscatedName("aqw.ai")
-	public final GpuWaterRelated field12119;
+    public final GpuWaterRelated field12119;
 
-	@ObfuscatedName("aqw.aw")
-	public ProgramUniform timeUniform;
+    public ProgramUniform timeUniform;
 
-	@ObfuscatedName("aqw.as")
-	public ProgramUniform billowSampler3DUniform;
+    public ProgramUniform billowSampler3DUniform;
 
-	@ObfuscatedName("aqw.at")
-	public GpuProgram waterfall3DProgram;
+    public GpuProgram waterfall3DProgram;
 
-	@ObfuscatedName("aqw.ad")
-	public GpuProgram waterfall2DProgram;
+    public GpuProgram waterfall2DProgram;
 
-	@ObfuscatedName("aqw.am")
-	public ProgramUniform wvpMatrixUniform;
+    public ProgramUniform wvpMatrixUniform;
 
-	@ObfuscatedName("aqw.au")
-	public final Matrix4x4 wvpMatrix = new Matrix4x4();
+    public final Matrix4x4 wvpMatrix = new Matrix4x4();
 
-	@ObfuscatedName("aqw.ar")
-	public ProgramUniform worldMatrixUniform;
+    public ProgramUniform worldMatrixUniform;
 
-	@ObfuscatedName("aqw.ap")
-	public final Matrix4x4 worldMatrix = new Matrix4x4();
+    public final Matrix4x4 worldMatrix = new Matrix4x4();
 
-	@ObfuscatedName("aqw.aq")
-	public ProgramUniform uGenerationPlaneUniform;
+    public ProgramUniform uGenerationPlaneUniform;
 
-	@ObfuscatedName("aqw.ax")
-	public final float[] uGenerationPlane = new float[4];
+    public final float[] uGenerationPlane = new float[4];
 
-	@ObfuscatedName("aqw.av")
-	public ProgramUniform vGenerationPlaneUniform;
+    public ProgramUniform vGenerationPlaneUniform;
 
-	@ObfuscatedName("aqw.ao")
-	public final float[] vGenerationPlane = new float[4];
+    public final float[] vGenerationPlane = new float[4];
 
-	@ObfuscatedName("aqw.aj")
-	public float time;
+    public float time;
 
-	@ObfuscatedName("aqw.ay")
-	public int field12116;
+    public int field12116;
 
-	@ObfuscatedName("aqw.ab")
-	public int field12110;
+    public int field12110;
 
-	@ObfuscatedName("aqw.az")
-	public int field12115;
+    public int field12115;
 
-	@ObfuscatedName("aqw.aa")
-	public int field12117;
+    public int field12117;
 
 	public WaterfallShader(GpuToolkit gpuRenderer, GpuWaterRelated arg1) throws ShaderException {
 		super(gpuRenderer);
@@ -70,8 +51,7 @@ public class WaterfallShader extends WaterShader {
 		}
 	}
 
-	@ObfuscatedName("aqw.a()Z")
-	public boolean method16762() throws ShaderException {
+    public boolean method16762() throws ShaderException {
 		this.worldMatrixUniform = this.shader.getUniform("WorldMatrix");
 		this.wvpMatrixUniform = this.shader.getUniform("WVPMatrix");
 		this.uGenerationPlaneUniform = this.shader.getUniform("UGenerationPlane");
@@ -88,8 +68,7 @@ public class WaterfallShader extends WaterShader {
 		return true;
 	}
 
-	@ObfuscatedName("aqw.bf(III)V")
-	public void method19204(int arg0, int arg1) {
+    public void method19204(int arg0, int arg1) {
 		float var3 = (float) ((arg0 & 0x3) + 1) * -5.0E-4F;
 		float var4 = (float) ((arg0 >> 3 & 0x3) + 1) * 5.0E-4F;
 		float var5 = (arg0 & 0x40) == 0 ? 4.8828125E-4F : 9.765625E-4F;
@@ -117,8 +96,7 @@ public class WaterfallShader extends WaterShader {
 		}
 	}
 
-	@ObfuscatedName("aqw.bl(I)V")
-	public void method19202() {
+    public void method19202() {
 		if (this.field12119.field3229) {
 			this.shader.setCurrentProgram(this.waterfall3DProgram);
 		} else {

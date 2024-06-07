@@ -4,7 +4,6 @@ import com.jagex.core.constants.BuildAreaSize;
 import com.jagex.game.clientoptions.ClientOptions;
 import deob.ObfuscatedName;
 
-@ObfuscatedName("aml")
 public class PreferencesBuildArea extends Preference {
 
 	public PreferencesBuildArea(ClientOptions options) {
@@ -15,8 +14,7 @@ public class PreferencesBuildArea extends Preference {
 		super(value, options);
 	}
 
-	@ObfuscatedName("aml.o(B)V")
-	public void clampValue() {
+    public void clampValue() {
 		if (this.options.hardwareInfo().unused()) {
 			this.currentValue = BuildAreaSize.SIZE_256.id;
 			return;
@@ -33,13 +31,11 @@ public class PreferencesBuildArea extends Preference {
 		}
 	}
 
-	@ObfuscatedName("aml.e(B)I")
-	public int defaultValue() {
+    public int defaultValue() {
 		return this.options.hardwareInfo().unused() ? BuildAreaSize.SIZE_256.id : BuildAreaSize.STANDARD.id;
 	}
 
-	@ObfuscatedName("aml.s(I)Z")
-	public boolean canMod() {
+    public boolean canMod() {
 		if (this.options.hardwareInfo().unused()) {
 			return false;
 		} else {
@@ -48,8 +44,7 @@ public class PreferencesBuildArea extends Preference {
 		}
 	}
 
-	@ObfuscatedName("aml.n(II)I")
-	public int canSetValue(int value) {
+    public int canSetValue(int value) {
 		if (this.options.hardwareInfo().unused()) {
 			return 3;
 		}
@@ -63,13 +58,11 @@ public class PreferencesBuildArea extends Preference {
 		}
 	}
 
-	@ObfuscatedName("aml.k(II)V")
-	public void setValue(int value) {
+    public void setValue(int value) {
 		this.currentValue = value;
 	}
 
-	@ObfuscatedName("aml.y(B)I")
-	public int getValue() {
+    public int getValue() {
 		return this.currentValue;
 	}
 }

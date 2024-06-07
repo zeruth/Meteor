@@ -2,17 +2,13 @@ package com.jagex.core.datastruct;
 
 import deob.ObfuscatedName;
 
-@ObfuscatedName("ix")
 public class HashMap {
 
-	@ObfuscatedName("ix.e")
-	public HashTable map;
+    public HashTable map;
 
-	@ObfuscatedName("ix.n")
-	public HashMapValue[] nodes;
+    public HashMapValue[] nodes;
 
-	@ObfuscatedName("ix.m")
-	public final HashMapKey key;
+    public final HashMapKey key;
 
 	public HashMap(int size, HashMapKey key) {
 		int var3;
@@ -23,13 +19,11 @@ public class HashMap {
 		this.key = key;
 	}
 
-	@ObfuscatedName("ix.e(II)Lakw;")
-	public HashMapValue get(int index) {
+    public HashMapValue get(int index) {
 		return index >= this.nodes.length ? null : this.nodes[index];
 	}
 
-	@ObfuscatedName("ix.n(Ljava/lang/String;B)Lakw;")
-	public HashMapValue get(String value) {
+    public HashMapValue get(String value) {
 		long key = this.key.hash(value);
 		for (HashMapValue var4 = (HashMapValue) this.map.get(key); var4 != null; var4 = (HashMapValue) this.map.nextWithKey()) {
 			if (var4.valuestr.equals(value)) {
@@ -39,8 +33,7 @@ public class HashMap {
 		return null;
 	}
 
-	@ObfuscatedName("ix.m(II)V")
-	public void removeEntry(int index) {
+    public void removeEntry(int index) {
 		HashMapValue entry = this.get(index);
 		if (entry != null) {
 			entry.unlink();
@@ -48,8 +41,7 @@ public class HashMap {
 		}
 	}
 
-	@ObfuscatedName("ix.k(ILjava/lang/String;Lakw;B)V")
-	public void put(int valueint, String valuestr, HashMapValue value) {
+    public void put(int valueint, String valuestr, HashMapValue value) {
 		HashMapValue current = this.get(valuestr);
 		if (current != null && current.valueint != valueint) {
 			throw new IllegalArgumentException(valuestr);

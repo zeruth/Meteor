@@ -4,26 +4,19 @@ import deob.ObfuscatedName;
 
 import java.util.Iterator;
 
-@ObfuscatedName("aan")
 public final class HashTable implements Iterable {
 
-	@ObfuscatedName("aan.e")
-	public int bucketCount;
+    public int bucketCount;
 
-	@ObfuscatedName("aan.n")
-	public Node[] buckets;
+    public Node[] buckets;
 
-	@ObfuscatedName("aan.m")
-	public long searchKey;
+    public long searchKey;
 
-	@ObfuscatedName("aan.k")
-	public Node searchCursor;
+    public Node searchCursor;
 
-	@ObfuscatedName("aan.f")
-	public Node iteratorCursor;
+    public Node iteratorCursor;
 
-	@ObfuscatedName("aan.w")
-	public int iteratorBucket = 0;
+    public int iteratorBucket = 0;
 
 	public HashTable(int bucketCount) {
 		this.buckets = new Node[bucketCount];
@@ -35,8 +28,7 @@ public final class HashTable implements Iterable {
 		}
 	}
 
-	@ObfuscatedName("aan.e(J)Ltj;")
-	public Node get(long key) {
+    public Node get(long key) {
 		this.searchKey = key;
 		Node sentinel = this.buckets[(int) (key & (long) (this.bucketCount - 1))];
 		for (this.searchCursor = sentinel.next; this.searchCursor != sentinel; this.searchCursor = this.searchCursor.next) {
@@ -50,8 +42,7 @@ public final class HashTable implements Iterable {
 		return null;
 	}
 
-	@ObfuscatedName("aan.n(I)Ltj;")
-	public Node nextWithKey() {
+    public Node nextWithKey() {
 		if (this.searchCursor == null) {
 			return null;
 		}
@@ -68,8 +59,7 @@ public final class HashTable implements Iterable {
 		return null;
 	}
 
-	@ObfuscatedName("aan.m([Ltj;B)I")
-	public int toArray(Node[] nodes) {
+    public int toArray(Node[] nodes) {
 		int size = 0;
 		for (int i = 0; i < this.bucketCount; i++) {
 			Node sentinel = this.buckets[i];
@@ -80,8 +70,7 @@ public final class HashTable implements Iterable {
 		return size;
 	}
 
-	@ObfuscatedName("aan.k(I)I")
-	public int size() {
+    public int size() {
 		int count = 0;
 		for (int i = 0; i < this.bucketCount; i++) {
 			Node sentinel = this.buckets[i];
@@ -92,8 +81,7 @@ public final class HashTable implements Iterable {
 		return count;
 	}
 
-	@ObfuscatedName("aan.f(Ltj;J)V")
-	public void put(Node node, long key) {
+    public void put(Node node, long key) {
 		if (node.prev != null) {
 			node.unlink();
 		}
@@ -105,8 +93,7 @@ public final class HashTable implements Iterable {
 		node.nodeId = key;
 	}
 
-	@ObfuscatedName("aan.w(B)V")
-	public void removeAll() {
+    public void removeAll() {
 		for (int i = 0; i < this.bucketCount; i++) {
 			Node sentinel = this.buckets[i];
 			while (true) {
@@ -121,14 +108,12 @@ public final class HashTable implements Iterable {
 		this.iteratorCursor = null;
 	}
 
-	@ObfuscatedName("aan.l(B)Ltj;")
-	public Node head() {
+    public Node head() {
 		this.iteratorBucket = 0;
 		return this.next();
 	}
 
-	@ObfuscatedName("aan.u(I)Ltj;")
-	public Node next() {
+    public Node next() {
 		if (this.iteratorBucket > 0 && this.buckets[this.iteratorBucket - 1] != this.iteratorCursor) {
 			Node node = this.iteratorCursor;
 			this.iteratorCursor = node.next;

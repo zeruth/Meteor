@@ -9,17 +9,13 @@ import deob.ObfuscatedName;
 
 import java.util.Random;
 
-@ObfuscatedName("adg")
 public class LoadingRelated3 {
 
-	@ObfuscatedName("adg.n")
-	public final Js5 field9207;
+    public final Js5 field9207;
 
-	@ObfuscatedName("adg.m")
-	public final LoadingRelated2[] field9208;
+    public final LoadingRelated2[] field9208;
 
-	@ObfuscatedName("adg.k")
-	public final int field9209;
+    public final int field9209;
 
 	public LoadingRelated3(ModeGame arg0, Language arg1, Js5 arg2) {
 		this.field9207 = arg2;
@@ -96,8 +92,7 @@ public class LoadingRelated3 {
 		}
 	}
 
-	@ObfuscatedName("adg.e(III)Lads;")
-	public LoadingRelated2 method15216(int arg0, int arg1) {
+    public LoadingRelated2 method15216(int arg0, int arg1) {
 		if (this.field9209 == -1) {
 			return new LoadingRelated2(false, new LoadingRelated1[0]);
 		} else {
@@ -106,16 +101,14 @@ public class LoadingRelated3 {
 		}
 	}
 
-	@ObfuscatedName("adg.n(II)Ladn;")
-	public LoadingScreenType method15217(int arg0) {
+    public LoadingScreenType method15217(int arg0) {
 		byte[] var2 = this.field9207.getfile(arg0, 0);
 		LoadingScreenType var3 = new LoadingScreenType();
 		var3.method15230(new Packet(var2));
 		return var3;
 	}
 
-	@ObfuscatedName("adg.m(II)[Ladk;")
-	public LoadingRelated1[] method15218(int arg0) {
+    public LoadingRelated1[] method15218(int arg0) {
 		if (arg0 < 0 || arg0 >= this.field9208.length) {
 			return this.method15216(0, 0).field9205;
 		}
@@ -136,8 +129,7 @@ public class LoadingRelated3 {
 		return var5;
 	}
 
-	@ObfuscatedName("adg.k(I)Z")
-	public boolean method15223() {
+    public boolean method15223() {
 		return this.field9209 != -1;
 	}
 }

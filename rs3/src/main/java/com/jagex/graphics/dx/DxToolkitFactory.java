@@ -13,15 +13,13 @@ import deob.ObfuscatedName;
 
 import java.awt.*;
 
-@ObfuscatedName("oa")
 public class DxToolkitFactory {
 
 	public DxToolkitFactory() throws Throwable {
 		throw new Error();
 	}
 
-	@ObfuscatedName("oa.e(Ljava/awt/Canvas;Ldf;Les;Lnx;Lnb;Lnp;Lpy;I)Ldh;")
-	public static Toolkit create(Canvas arg0, MaterialList arg1, TextureList arg2, BillboardTypeList arg3, ParticleEmitterTypeList arg4, ParticleEffectorTypeList arg5, Js5 arg6, int arg7) {
+    public static Toolkit create(Canvas arg0, MaterialList arg1, TextureList arg2, BillboardTypeList arg3, ParticleEmitterTypeList arg4, ParticleEffectorTypeList arg5, Js5 arg6, int arg7) {
 		try {
 			GpuToolkit.method15968();
 			NativeLibraries.getLoader().load("jagdx");

@@ -2,96 +2,74 @@ package com.jagex.graphics;
 
 import deob.ObfuscatedName;
 
-@ObfuscatedName("afr")
 public class PalettedSpriteData extends SpriteData {
 
-	@ObfuscatedName("afr.e")
-	public int field10220;
+    public int field10220;
 
-	@ObfuscatedName("afr.n")
-	public int field10221;
+    public int field10221;
 
-	@ObfuscatedName("afr.m")
-	public int field10222;
+    public int field10222;
 
-	@ObfuscatedName("afr.k")
-	public int field10223;
+    public int field10223;
 
-	@ObfuscatedName("afr.f")
-	public int field10224;
+    public int field10224;
 
-	@ObfuscatedName("afr.w")
-	public int field10225;
+    public int field10225;
 
-	@ObfuscatedName("afr.l")
-	public int[] palette;
+    public int[] palette;
 
-	@ObfuscatedName("afr.u")
-	public byte[] colour;
+    public byte[] colour;
 
-	@ObfuscatedName("afr.z")
-	public byte[] field10228;
+    public byte[] field10228;
 
-	@ObfuscatedName("afr.e()Z")
-	public boolean isPaletted() {
+    public boolean isPaletted() {
 		return true;
 	}
 
-	@ObfuscatedName("afr.n()Z")
-	public boolean isTranslucent() {
+    public boolean isTranslucent() {
 		return this.field10228 != null;
 	}
 
-	@ObfuscatedName("afr.m()I")
-	public int getWidth() {
+    public int getWidth() {
 		return this.field10220;
 	}
 
-	@ObfuscatedName("afr.k()I")
-	public int getHeight() {
+    public int getHeight() {
 		return this.field10221;
 	}
 
-	@ObfuscatedName("afr.p()I")
-	public int method2596() {
+    public int method2596() {
 		return this.field10222 + this.field10220 + this.field10223;
 	}
 
-	@ObfuscatedName("afr.d()I")
-	public int method2597() {
+    public int method2597() {
 		return this.field10224 + this.field10221 + this.field10225;
 	}
 
-	@ObfuscatedName("afr.f()I")
-	public int getPaddingLeft() {
+    public int getPaddingLeft() {
 		return this.field10222;
 	}
 
-	@ObfuscatedName("afr.w()I")
-	public int getPaddingRight() {
+    public int getPaddingRight() {
 		return this.field10223;
 	}
 
-	@ObfuscatedName("afr.l()I")
-	public int getPaddingTop() {
+    public int getPaddingTop() {
 		return this.field10224;
 	}
 
-	@ObfuscatedName("afr.u()I")
-	public int getPaddingBottom() {
+    public int getPaddingBottom() {
 		return this.field10225;
 	}
 
-	@ObfuscatedName("afr.z()V")
-	public void method2595() {
+    public void method2595() {
 		this.field10225 = 0;
 		this.field10224 = 0;
 		this.field10223 = 0;
 		this.field10222 = 0;
 	}
 
-	@ObfuscatedName("afr.c(I)V")
-	public void method2646(int arg0) {
+    public void method2646(int arg0) {
 		int var2 = this.method2596();
 		int var3 = this.method2597();
 		if (this.field10220 == var2 && this.field10221 == var3) {
@@ -145,8 +123,7 @@ public class PalettedSpriteData extends SpriteData {
 		this.colour = var10;
 	}
 
-	@ObfuscatedName("afr.r(I)V")
-	public void method2599(int arg0) {
+    public void method2599(int arg0) {
 		int var2 = -1;
 		if (this.palette.length < 255) {
 			for (int var3 = 0; var3 < this.palette.length; var3++) {
@@ -213,8 +190,7 @@ public class PalettedSpriteData extends SpriteData {
 		this.colour = var19;
 	}
 
-	@ObfuscatedName("afr.v(I)V")
-	public void method2600(int arg0) {
+    public void method2600(int arg0) {
 		int var2 = -1;
 		if (this.palette.length < 255) {
 			for (int var3 = 0; var3 < this.palette.length; var3++) {
@@ -269,8 +245,7 @@ public class PalettedSpriteData extends SpriteData {
 		}
 	}
 
-	@ObfuscatedName("afr.o()V")
-	public void flipHorizontally() {
+    public void flipHorizontally() {
 		byte[] var1 = this.colour;
 		if (this.field10228 == null) {
 			for (int var2 = this.field10221 - 1; var2 >= 0; var2--) {
@@ -306,8 +281,7 @@ public class PalettedSpriteData extends SpriteData {
 		this.field10223 = var12;
 	}
 
-	@ObfuscatedName("afr.s()V")
-	public void flipVertically() {
+    public void flipVertically() {
 		byte[] var1 = this.colour;
 		if (this.field10228 == null) {
 			for (int var2 = (this.field10221 >> 1) - 1; var2 >= 0; var2--) {
@@ -343,8 +317,7 @@ public class PalettedSpriteData extends SpriteData {
 		this.field10225 = var14;
 	}
 
-	@ObfuscatedName("afr.y()V")
-	public void rotate() {
+    public void rotate() {
 		byte[] var1 = new byte[this.field10221 * this.field10220];
 		int var2 = 0;
 		if (this.field10228 == null) {
@@ -375,8 +348,7 @@ public class PalettedSpriteData extends SpriteData {
 		this.field10220 = var9;
 	}
 
-	@ObfuscatedName("afr.q(Z)[I")
-	public int[] method2604(boolean arg0) {
+    public int[] method2604(boolean arg0) {
 		int[] var3;
 		if (arg0) {
 			int var2 = this.method2596();
@@ -427,8 +399,7 @@ public class PalettedSpriteData extends SpriteData {
 		return var3;
 	}
 
-	@ObfuscatedName("afr.x(III)V")
-	public void method2605(int arg0, int arg1, int arg2) {
+    public void method2605(int arg0, int arg1, int arg2) {
 		for (int var4 = 1; var4 < this.palette.length; var4++) {
 			if (this.palette[var4] != 1 && this.palette[var4] != 16711935) {
 				int var5 = this.palette[var4] >> 16 & 0xFF;
@@ -457,8 +428,7 @@ public class PalettedSpriteData extends SpriteData {
 		}
 	}
 
-	@ObfuscatedName("afr.b(II)I")
-	public int method2617(int arg0, int arg1) {
+    public int method2617(int arg0, int arg1) {
 		return this.palette[this.colour[this.field10220 * arg1 + arg0] & 0xFF];
 	}
 }

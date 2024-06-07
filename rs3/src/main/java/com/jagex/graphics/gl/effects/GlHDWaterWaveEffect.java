@@ -4,20 +4,15 @@ import com.jagex.graphics.gl.*;
 import deob.ObfuscatedName;
 import jaggl.OpenGL;
 
-@ObfuscatedName("aer")
 public class GlHDWaterWaveEffect extends GlEffect {
 
-	@ObfuscatedName("aer.k")
-	public GlProgram field9308;
+    public GlProgram field9308;
 
-	@ObfuscatedName("aer.f")
-	public boolean field9311 = false;
+    public boolean field9311 = false;
 
-	@ObfuscatedName("aer.w")
-	public boolean field9310 = false;
+    public boolean field9310 = false;
 
-	@ObfuscatedName("aer.l")
-	public GlWaterRelated field9309;
+    public GlWaterRelated field9309;
 
 	public GlHDWaterWaveEffect(GlToolkit arg0, GlWaterRelated arg1) {
 		super(arg0);
@@ -30,13 +25,11 @@ public class GlHDWaterWaveEffect extends GlEffect {
 		}
 	}
 
-	@ObfuscatedName("aer.e()Z")
-	public boolean method1252() {
+    public boolean method1252() {
 		return this.field9310;
 	}
 
-	@ObfuscatedName("aer.n(Z)V")
-	public void method1263(boolean arg0) {
+    public void method1263(boolean arg0) {
 		GlCubeTexture var2 = this.field1021.method15760();
 		if (!this.field9310 || var2 == null) {
 			return;
@@ -56,12 +49,10 @@ public class GlHDWaterWaveEffect extends GlEffect {
 		this.field9311 = true;
 	}
 
-	@ObfuscatedName("aer.m(Z)V")
-	public void method1254(boolean arg0) {
+    public void method1254(boolean arg0) {
 	}
 
-	@ObfuscatedName("aer.k()V")
-	public void method1255() {
+    public void method1255() {
 		if (!this.field9311) {
 			return;
 		}
@@ -73,8 +64,7 @@ public class GlHDWaterWaveEffect extends GlEffect {
 		this.field9311 = false;
 	}
 
-	@ObfuscatedName("aer.f(II)V")
-	public void method1256(int arg0, int arg1) {
+    public void method1256(int arg0, int arg1) {
 		if (!this.field9311) {
 			return;
 		}
@@ -94,8 +84,7 @@ public class GlHDWaterWaveEffect extends GlEffect {
 		OpenGL.glUniform1f(OpenGL.glGetUniformLocation(var10, "waveExponent"), (float) var9);
 	}
 
-	@ObfuscatedName("aer.w(Lbq;I)V")
-	public void method1251(GlTexture arg0, int arg1) {
+    public void method1251(GlTexture arg0, int arg1) {
 		if (!this.field9311) {
 			this.field1021.method15777(arg0);
 			this.field1021.method15778(arg1);

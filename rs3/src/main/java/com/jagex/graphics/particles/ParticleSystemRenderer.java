@@ -15,63 +15,45 @@ import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
-@ObfuscatedName("xl")
 public class ParticleSystemRenderer {
 
-	@ObfuscatedName("zc.e")
-	public static List field8349;
+    public static List field8349;
 
-	@ObfuscatedName("xl.n")
-	public static MovingParticle[] field7794;
+    public static MovingParticle[] field7794;
 
-	@ObfuscatedName("xl.m")
-	public static int field7791 = 0;
+    public static int field7791 = 0;
 
-	@ObfuscatedName("xl.k")
-	public static int field7797 = 0;
+    public static int field7797 = 0;
 
-	@ObfuscatedName("gp.f")
-	public static ParticleSystem[] field1920;
+    public static ParticleSystem[] field1920;
 
-	@ObfuscatedName("xl.w")
-	public static int field7793 = 0;
+    public static int field7793 = 0;
 
-	@ObfuscatedName("xl.l")
-	public static int field7792 = 0;
+    public static int field7792 = 0;
 
-	@ObfuscatedName("xl.u")
-	public static int field7790 = 0;
+    public static int field7790 = 0;
 
-	@ObfuscatedName("xl.z")
-	public static int field7801 = 0;
+    public static int field7801 = 0;
 
-	@ObfuscatedName("aqn.p")
-	public static ParticleEffectorTypeList field12041;
+    public static ParticleEffectorTypeList field12041;
 
-	@ObfuscatedName("xl.d")
-	public static ParticleEffectorType[] field7795 = new ParticleEffectorType[16];
+    public static ParticleEffectorType[] field7795 = new ParticleEffectorType[16];
 
-	@ObfuscatedName("xl.c")
-	public static int field7798 = 0;
+    public static int field7798 = 0;
 
-	@ObfuscatedName("xl.r")
-	public static HashTable field7799 = new HashTable(16);
+    public static HashTable field7799 = new HashTable(16);
 
-	@ObfuscatedName("xl.v")
-	public static HashTable field7800 = new HashTable(8);
+    public static HashTable field7800 = new HashTable(8);
 
-	@ObfuscatedName("xl.o")
-	public static int field7796 = 0;
+    public static int field7796 = 0;
 
-	@ObfuscatedName("xl.s")
-	public static int field7802 = 2;
+    public static int field7802 = 2;
 
 	public ParticleSystemRenderer() throws Throwable {
 		throw new Error();
 	}
 
-	@ObfuscatedName("vh.e(II)I")
-	public static int method9543(int arg0) {
+    public static int method9543(int arg0) {
 		IntNode var1 = (IntNode) field7799.get((long) arg0);
 		if (var1 == null) {
 			ParticleEffectorType var2 = field12041.method5973(arg0);
@@ -85,8 +67,7 @@ public class ParticleSystemRenderer {
 		return var1.value;
 	}
 
-	@ObfuscatedName("ah.n(Lnb;Lnp;I)V")
-	public static void method706(ParticleEmitterTypeList arg0, ParticleEffectorTypeList arg1) {
+    public static void method706(ParticleEmitterTypeList arg0, ParticleEffectorTypeList arg1) {
 		field7791 = 0;
 		field7797 = 0;
 		field8349 = new LinkedList();
@@ -97,8 +78,7 @@ public class ParticleSystemRenderer {
 		field12041 = arg1;
 	}
 
-	@ObfuscatedName("po.m(Ldh;J)V")
-	public static void method6866(Toolkit arg0, long arg1) {
+    public static void method6866(Toolkit arg0, long arg1) {
 		field7801 = field7790;
 		field7790 = 0;
 		MonotonicTime.get();
@@ -114,8 +94,7 @@ public class ParticleSystemRenderer {
 		}
 	}
 
-	@ObfuscatedName("tm.k(Ltx;Ldh;B)V")
-	public static void method8460(Scene arg0, Toolkit arg1) {
+    public static void method8460(Scene arg0, Toolkit arg1) {
 		Iterator var2 = field8349.iterator();
 		while (var2.hasNext()) {
 			ParticleSystem var3 = (ParticleSystem) var2.next();
@@ -125,8 +104,7 @@ public class ParticleSystemRenderer {
 		}
 	}
 
-	@ObfuscatedName("ge.f(B)V")
-	public static void method3561() {
+    public static void method3561() {
 		field7800 = new HashTable(8);
 		field7796 = 0;
 		Iterator var0 = field8349.iterator();
@@ -136,8 +114,7 @@ public class ParticleSystemRenderer {
 		}
 	}
 
-	@ObfuscatedName("hv.w(II)V")
-	public static void method4293(int arg0) {
+    public static void method4293(int arg0) {
 		if (arg0 < 0 || arg0 > 2) {
 			arg0 = 0;
 		}
@@ -147,8 +124,7 @@ public class ParticleSystemRenderer {
 		field7792 = 0;
 	}
 
-	@ObfuscatedName("tm.l(I)I")
-	public static int method8461() {
+    public static int method8461() {
 		return field7802;
 	}
 }

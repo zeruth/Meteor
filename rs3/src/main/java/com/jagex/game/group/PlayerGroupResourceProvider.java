@@ -5,18 +5,13 @@ import com.jagex.game.config.vartype.VarTypeList;
 import com.jagex.game.config.vartype.bit.VarBitTypeList;
 import deob.ObfuscatedName;
 
-@ObfuscatedName("gu")
 public interface PlayerGroupResourceProvider {
 
-	@ObfuscatedName("gu.n(B)Ladd;")
-	VarTypeList getVarPlayerGroupTypeList();
+    VarTypeList getVarPlayerGroupTypeList();
 
-	@ObfuscatedName("gu.m(I)Laor;")
-	VarBitTypeList getVarBitTypeList();
+    VarBitTypeList getVarBitTypeList();
 
-	@ObfuscatedName("gu.k(B)Lwq;")
-	SkillDefaults getSkillDefaults();
+    SkillDefaults getSkillDefaults();
 
-	@ObfuscatedName("gu.e(B)Ladd;")
     VarTypeList getVarPlayerTypeList();
 }

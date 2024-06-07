@@ -2,32 +2,23 @@ package com.jagex.graphics;
 
 import deob.ObfuscatedName;
 
-@ObfuscatedName("hv")
 public class ProgramUniformData {
 
-	@ObfuscatedName("hv.e")
-	public UniformType uniformType;
+    public UniformType uniformType;
 
-	@ObfuscatedName("hv.n")
-	public UniformType field2587;
+    public UniformType field2587;
 
-	@ObfuscatedName("hv.m")
-	public int field2588 = -1;
+    public int field2588 = -1;
 
-	@ObfuscatedName("hv.k")
-	public String field2586;
+    public String field2586;
 
-	@ObfuscatedName("hv.f")
-	public String field2590;
+    public String field2590;
 
-	@ObfuscatedName("hv.w")
-	public int[] field2591;
+    public int[] field2591;
 
-	@ObfuscatedName("hv.l")
-	public int[] field2593;
+    public int[] field2593;
 
-	@ObfuscatedName("hv.e(Lhw;I)V")
-	public void decode(ShaderDataReader buf) {
+    public void decode(ShaderDataReader buf) {
 		int var2 = buf.g2();
 		this.uniformType = UniformType.values()[var2];
 		if (UniformType.ARRAY == this.uniformType) {

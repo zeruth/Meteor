@@ -10,46 +10,34 @@ import java.awt.event.MouseMotionListener;
 import java.awt.event.MouseWheelEvent;
 import java.awt.event.MouseWheelListener;
 
-@ObfuscatedName("alb")
 public class JavaMouse extends Mouse implements MouseListener, MouseMotionListener, MouseWheelListener {
 
-	@ObfuscatedName("alb.k")
-	public int field11689;
+    public int field11689;
 
-	@ObfuscatedName("alb.f")
-	public int field11690;
+    public int field11690;
 
-	@ObfuscatedName("alb.w")
-	public int field11692;
+    public int field11692;
 
-	@ObfuscatedName("alb.l")
-	public LinkList field11695 = new LinkList();
+    public LinkList field11695 = new LinkList();
 
-	@ObfuscatedName("alb.u")
-	public int field11693;
+    public int field11693;
 
-	@ObfuscatedName("alb.z")
-	public int field11694;
+    public int field11694;
 
-	@ObfuscatedName("alb.p")
-	public int field11698;
+    public int field11698;
 
-	@ObfuscatedName("alb.d")
-	public LinkList field11696 = new LinkList();
+    public LinkList field11696 = new LinkList();
 
-	@ObfuscatedName("alb.c")
-	public java.awt.Component field11697;
+    public java.awt.Component field11697;
 
-	@ObfuscatedName("alb.r")
-	public boolean field11687;
+    public boolean field11687;
 
 	public JavaMouse(java.awt.Component arg0, boolean arg1) {
 		this.method18295(arg0);
 		this.field11687 = arg1;
 	}
 
-	@ObfuscatedName("alb.ao(Ljava/awt/Component;I)V")
-	public void method18295(java.awt.Component arg0) {
+    public void method18295(java.awt.Component arg0) {
 		this.method18297();
 		this.field11697 = arg0;
 		this.field11697.addMouseListener(this);
@@ -57,8 +45,7 @@ public class JavaMouse extends Mouse implements MouseListener, MouseMotionListen
 		this.field11697.addMouseWheelListener(this);
 	}
 
-	@ObfuscatedName("alb.aj(B)V")
-	public void method18297() {
+    public void method18297() {
 		if (this.field11697 == null) {
 			return;
 		}
@@ -76,14 +63,12 @@ public class JavaMouse extends Mouse implements MouseListener, MouseMotionListen
 		this.field11696 = null;
 	}
 
-	@ObfuscatedName("alb.ay(IIIIB)V")
-	public void method18303(int arg0, int arg1, int arg2, int arg3) {
+    public void method18303(int arg0, int arg1, int arg2, int arg3) {
 		BasicMouseEvent var5 = BasicMouseEvent.method8438(arg0, arg1, arg2, MonotonicTime.get(), arg3);
         this.field11696.addTail(var5);
 	}
 
-	@ObfuscatedName("alb.ab(III)V")
-	public void method18293(int arg0, int arg1) {
+    public void method18293(int arg0, int arg1) {
 		this.field11693 = arg0;
 		this.field11694 = arg1;
 		if (this.field11687) {
@@ -91,13 +76,11 @@ public class JavaMouse extends Mouse implements MouseListener, MouseMotionListen
 		}
 	}
 
-	@ObfuscatedName("alb.p(I)Lakm;")
-	public MouseEvent pollEvent() {
+    public MouseEvent pollEvent() {
 		return (MouseEvent) this.field11695.removeHead();
 	}
 
-	@ObfuscatedName("alb.m(I)V")
-	public synchronized void method9087() {
+    public synchronized void method9087() {
 		this.field11689 = this.field11693;
 		this.field11690 = this.field11694;
 		this.field11692 = this.field11698;
@@ -107,33 +90,27 @@ public class JavaMouse extends Mouse implements MouseListener, MouseMotionListen
 		this.field11696.removeAll();
 	}
 
-	@ObfuscatedName("alb.k(B)Z")
-	public boolean method9101() {
+    public boolean method9101() {
 		return (this.field11692 & 0x1) != 0;
 	}
 
-	@ObfuscatedName("alb.f(I)Z")
-	public boolean method9121() {
+    public boolean method9121() {
 		return (this.field11692 & 0x2) != 0;
 	}
 
-	@ObfuscatedName("alb.w(I)Z")
-	public boolean method9125() {
+    public boolean method9125() {
 		return (this.field11692 & 0x4) != 0;
 	}
 
-	@ObfuscatedName("alb.u(I)I")
-	public int getX() {
+    public int getX() {
 		return this.field11689;
 	}
 
-	@ObfuscatedName("alb.z(I)I")
-	public int getY() {
+    public int getY() {
 		return this.field11690;
 	}
 
-	@ObfuscatedName("alb.d(I)V")
-	public void unbind() {
+    public void unbind() {
 		this.method18297();
 	}
 
@@ -151,8 +128,7 @@ public class JavaMouse extends Mouse implements MouseListener, MouseMotionListen
 		this.method18293(arg0.getX(), arg0.getY());
 	}
 
-	@ObfuscatedName("alb.az(Ljava/awt/event/MouseEvent;B)I")
-	public int method18294(java.awt.event.MouseEvent arg0) {
+    public int method18294(java.awt.event.MouseEvent arg0) {
 		if (arg0.getButton() == 1) {
 			return arg0.isMetaDown() ? 4 : 1;
 		} else if (arg0.getButton() == 2) {

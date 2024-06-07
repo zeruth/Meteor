@@ -31,525 +31,353 @@ import java.nio.ByteOrder;
 import java.util.ArrayList;
 import java.util.Iterator;
 
-@ObfuscatedName("afc")
 public abstract class GpuToolkit extends Toolkit {
 
-	@ObfuscatedName("afc.at")
-	public static final Object field10206 = new Object();
+    public static final Object field10206 = new Object();
 
-	@ObfuscatedName("afc.ad")
-	public GpuRendererRelated field10031 = new GpuRendererRelated();
+    public GpuRendererRelated field10031 = new GpuRendererRelated();
 
-	@ObfuscatedName("afc.ay")
-	public final Js5 field10041;
+    public final Js5 field10041;
 
-	@ObfuscatedName("afc.ab")
-	public boolean lightingEnabled;
+    public boolean lightingEnabled;
 
-	@ObfuscatedName("afc.az")
-	public int[] field10043;
+    public int[] field10043;
 
-	@ObfuscatedName("afc.aa")
-	public Unsafe field10110;
+    public Unsafe field10110;
 
-	@ObfuscatedName("afc.af")
-	public ByteBuffer temporaryBuffer;
+    public ByteBuffer temporaryBuffer;
 
-	@ObfuscatedName("afc.ak")
-	public long temporaryBufferAddress;
+    public long temporaryBufferAddress;
 
-	@ObfuscatedName("afc.bf")
-	public int field10048 = 0;
+    public int field10048 = 0;
 
-	@ObfuscatedName("afc.bl")
-	public GpuWaterRelated field10049;
+    public GpuWaterRelated field10049;
 
-	@ObfuscatedName("afc.bk")
-	public NativeHeap field10154;
+    public NativeHeap field10154;
 
-	@ObfuscatedName("afc.bh")
-	public LinkList field10051 = new LinkList();
+    public LinkList field10051 = new LinkList();
 
-	@ObfuscatedName("afc.bx")
-	public int field10052;
+    public int field10052;
 
-	@ObfuscatedName("afc.bd")
-	public int field10053;
+    public int field10053;
 
-	@ObfuscatedName("afc.bc")
-	public int field10117;
+    public int field10117;
 
-	@ObfuscatedName("afc.bi")
-	public Matrix4x3 field10200 = new Matrix4x3();
+    public Matrix4x3 field10200 = new Matrix4x3();
 
-	@ObfuscatedName("afc.bn")
-	public Matrix4x4 field10056 = new Matrix4x4();
+    public Matrix4x4 field10056 = new Matrix4x4();
 
-	@ObfuscatedName("afc.bt")
-	public Matrix4x3 field10201 = new Matrix4x3();
+    public Matrix4x3 field10201 = new Matrix4x3();
 
-	@ObfuscatedName("afc.bq")
-	public Matrix4x3 field10042 = new Matrix4x3();
+    public Matrix4x3 field10042 = new Matrix4x3();
 
-	@ObfuscatedName("afc.bm")
-	public Matrix4x4 field10059 = new Matrix4x4();
+    public Matrix4x4 field10059 = new Matrix4x4();
 
-	@ObfuscatedName("afc.bb")
-	public Matrix4x4 field10035 = new Matrix4x4();
+    public Matrix4x4 field10035 = new Matrix4x4();
 
-	@ObfuscatedName("afc.be")
-	public Matrix4x4 field10190 = new Matrix4x4();
+    public Matrix4x4 field10190 = new Matrix4x4();
 
-	@ObfuscatedName("afc.by")
-	public Matrix4x3 field10062 = new Matrix4x3();
+    public Matrix4x3 field10062 = new Matrix4x3();
 
-	@ObfuscatedName("afc.bu")
-	public Matrix4x4 field10063 = new Matrix4x4();
+    public Matrix4x4 field10063 = new Matrix4x4();
 
-	@ObfuscatedName("afc.bw")
-	public static final Matrix4x4 field10064 = new Matrix4x4();
+    public static final Matrix4x4 field10064 = new Matrix4x4();
 
-	@ObfuscatedName("afc.bo")
-	public Matrix4x3 field10065 = new Matrix4x3();
+    public Matrix4x3 field10065 = new Matrix4x3();
 
-	@ObfuscatedName("afc.bz")
-	public Matrix4x4 field10066 = new Matrix4x4();
+    public Matrix4x4 field10066 = new Matrix4x4();
 
-	@ObfuscatedName("afc.bv")
-	public Matrix4x4 field10039 = new Matrix4x4();
+    public Matrix4x4 field10039 = new Matrix4x4();
 
-	@ObfuscatedName("afc.br")
-	public Vector3 field10054 = new Vector3();
+    public Vector3 field10054 = new Vector3();
 
-	@ObfuscatedName("afc.bg")
-	public float[] field10069 = new float[4];
+    public float[] field10069 = new float[4];
 
-	@ObfuscatedName("afc.ba")
-	public boolean field10070 = false;
+    public boolean field10070 = false;
 
-	@ObfuscatedName("afc.bp")
-	public GpuRendererRelated3 field10050 = GpuRendererRelated3.field3319;
+    public GpuRendererRelated3 field10050 = GpuRendererRelated3.field3319;
 
-	@ObfuscatedName("afc.bj")
-	public boolean field10121 = false;
+    public boolean field10121 = false;
 
-	@ObfuscatedName("afc.bs")
-	public Matrix4x4 field10073 = new Matrix4x4();
+    public Matrix4x4 field10073 = new Matrix4x4();
 
-	@ObfuscatedName("afc.cl")
-	public Matrix4x4 field10068 = new Matrix4x4();
+    public Matrix4x4 field10068 = new Matrix4x4();
 
-	@ObfuscatedName("afc.cg")
-	public boolean field10194 = false;
+    public boolean field10194 = false;
 
-	@ObfuscatedName("afc.ce")
-	public Matrix4x4 field10076 = new Matrix4x4();
+    public Matrix4x4 field10076 = new Matrix4x4();
 
-	@ObfuscatedName("afc.cu")
-	public Matrix4x4 field10168 = new Matrix4x4();
+    public Matrix4x4 field10168 = new Matrix4x4();
 
-	@ObfuscatedName("afc.ci")
-	public Matrix4x4 field10078 = this.field10168;
+    public Matrix4x4 field10078 = this.field10168;
 
-	@ObfuscatedName("afc.cn")
-	public Matrix4x4 projectionMatrix = new Matrix4x4();
+    public Matrix4x4 projectionMatrix = new Matrix4x4();
 
-	@ObfuscatedName("afc.cv")
-	public Matrix4x4 field10145 = new Matrix4x4();
+    public Matrix4x4 field10145 = new Matrix4x4();
 
-	@ObfuscatedName("afc.cp")
-	public Matrix4x4 field10081 = new Matrix4x4();
+    public Matrix4x4 field10081 = new Matrix4x4();
 
-	@ObfuscatedName("afc.ca")
-	public float[][] field10061 = new float[6][4];
+    public float[][] field10061 = new float[6][4];
 
-	@ObfuscatedName("afc.cx")
-	public float field10083;
+    public float field10083;
 
-	@ObfuscatedName("afc.cw")
-	public float field10084;
+    public float field10084;
 
-	@ObfuscatedName("afc.ct")
-	public float field10085;
+    public float field10085;
 
-	@ObfuscatedName("afc.cf")
-	public float field10086;
+    public float field10086;
 
-	@ObfuscatedName("afc.co")
-	public float field10087 = 0.0F;
+    public float field10087 = 0.0F;
 
-	@ObfuscatedName("afc.cr")
-	public float field10088 = 1.0F;
+    public float field10088 = 1.0F;
 
-	@ObfuscatedName("afc.cm")
-	public float field10089 = 0.0F;
+    public float field10089 = 0.0F;
 
-	@ObfuscatedName("afc.cq")
-	public float field10090 = 1.0F;
+    public float field10090 = 1.0F;
 
-	@ObfuscatedName("afc.ch")
-	public float field10170 = 50.0F;
+    public float field10170 = 50.0F;
 
-	@ObfuscatedName("afc.cb")
-	public float field10092 = 3584.0F;
+    public float field10092 = 3584.0F;
 
-	@ObfuscatedName("afc.cs")
-	public int top = 0;
+    public int top = 0;
 
-	@ObfuscatedName("afc.cy")
-	public int bottom = 0;
+    public int bottom = 0;
 
-	@ObfuscatedName("afc.cc")
-	public int left = 0;
+    public int left = 0;
 
-	@ObfuscatedName("afc.cz")
-	public int right = 0;
+    public int right = 0;
 
-	@ObfuscatedName("afc.ck")
-	public int field10097 = 0;
+    public int field10097 = 0;
 
-	@ObfuscatedName("afc.cj")
-	public int field10098 = 0;
+    public int field10098 = 0;
 
-	@ObfuscatedName("afc.cd")
-	public int field10139 = 0;
+    public int field10139 = 0;
 
-	@ObfuscatedName("afc.dd")
-	public int field10082 = 0;
+    public int field10082 = 0;
 
-	@ObfuscatedName("afc.dr")
-	public int field10101 = 0;
+    public int field10101 = 0;
 
-	@ObfuscatedName("afc.da")
-	public int field10102 = 0;
+    public int field10102 = 0;
 
-	@ObfuscatedName("afc.dt")
-	public int field10103 = 0;
+    public int field10103 = 0;
 
-	@ObfuscatedName("afc.do")
-	public int field10104 = 0;
+    public int field10104 = 0;
 
-	@ObfuscatedName("afc.dz")
-	public int field10105 = 0;
+    public int field10105 = 0;
 
-	@ObfuscatedName("afc.dv")
-	public int field10132 = 0;
+    public int field10132 = 0;
 
-	@ObfuscatedName("afc.dm")
-	public boolean field10107 = true;
+    public boolean field10107 = true;
 
-	@ObfuscatedName("afc.dq")
-	public boolean field10108 = false;
+    public boolean field10108 = false;
 
-	@ObfuscatedName("afc.dc")
-	public boolean field10109 = true;
+    public boolean field10109 = true;
 
-	@ObfuscatedName("afc.di")
-	public boolean field10044 = false;
+    public boolean field10044 = false;
 
-	@ObfuscatedName("afc.dk")
-	public boolean field10111 = false;
+    public boolean field10111 = false;
 
-	@ObfuscatedName("afc.dn")
-	public boolean field10112 = true;
+    public boolean field10112 = true;
 
-	@ObfuscatedName("afc.df")
-	public boolean field10113 = false;
+    public boolean field10113 = false;
 
-	@ObfuscatedName("afc.dw")
-	public float[] field10114 = new float[] { 0.0F, 0.0F, 1.0F, 0.0F };
+    public float[] field10114 = new float[] { 0.0F, 0.0F, 1.0F, 0.0F };
 
-	@ObfuscatedName("afc.ds")
-	public float[] field10072 = new float[] { 0.0F, 0.0F, -1.0F, 0.0F };
+    public float[] field10072 = new float[] { 0.0F, 0.0F, -1.0F, 0.0F };
 
-	@ObfuscatedName("afc.du")
-	public float[] field10173 = new float[] { 0.0F, 0.0F, 1.0F, 0.0F };
+    public float[] field10173 = new float[] { 0.0F, 0.0F, 1.0F, 0.0F };
 
-	@ObfuscatedName("afc.dl")
-	public float[] field10075 = new float[] { 0.0F, 0.0F, 1.0F, 0.0F };
+    public float[] field10075 = new float[] { 0.0F, 0.0F, 1.0F, 0.0F };
 
-	@ObfuscatedName("afc.dp")
-	public int field10118 = -33488896;
+    public int field10118 = -33488896;
 
-	@ObfuscatedName("afc.dy")
-	public float field10142 = 1.0F;
+    public float field10142 = 1.0F;
 
-	@ObfuscatedName("afc.db")
-	public float field10120 = 1.0F;
+    public float field10120 = 1.0F;
 
-	@ObfuscatedName("afc.dh")
-	public float field10210 = 1.0F;
+    public float field10210 = 1.0F;
 
-	@ObfuscatedName("afc.dx")
-	public float field10122 = 1.0F;
+    public float field10122 = 1.0F;
 
-	@ObfuscatedName("afc.dg")
-	public float field10123 = -1.0F;
+    public float field10123 = -1.0F;
 
-	@ObfuscatedName("afc.de")
-	public float field10124 = -1.0F;
+    public float field10124 = -1.0F;
 
-	@ObfuscatedName("afc.dj")
-	public Light[] field10045;
+    public Light[] field10045;
 
-	@ObfuscatedName("afc.eo")
-	public int field10126;
+    public int field10126;
 
-	@ObfuscatedName("afc.ey")
-	public int field10127;
+    public int field10127;
 
-	@ObfuscatedName("afc.eu")
-	public int field10128 = 8;
+    public int field10128 = 8;
 
-	@ObfuscatedName("afc.ed")
-	public int field10129 = 3;
+    public int field10129 = 3;
 
-	@ObfuscatedName("afc.ee")
-	public int field10130;
+    public int field10130;
 
-	@ObfuscatedName("afc.es")
-	public int field10131;
+    public int field10131;
 
-	@ObfuscatedName("afc.ei")
-	public int field10177 = 0;
+    public int field10177 = 0;
 
-	@ObfuscatedName("afc.el")
-	public BaseTexture[] field10093;
+    public BaseTexture[] field10093;
 
-	@ObfuscatedName("afc.ej")
-	public Matrix4x4[] field10162;
+    public Matrix4x4[] field10162;
 
-	@ObfuscatedName("afc.ep")
-	public TextureTramsformType[] field10135;
+    public TextureTramsformType[] field10135;
 
-	@ObfuscatedName("afc.ev")
-	public TextureCombineMode[] field10136;
+    public TextureCombineMode[] field10136;
 
-	@ObfuscatedName("afc.ec")
-	public TextureCombineMode[] field10137;
+    public TextureCombineMode[] field10137;
 
-	@ObfuscatedName("afc.ek")
-	public int field10160;
+    public int field10160;
 
-	@ObfuscatedName("afc.em")
-	public final MaterialTextureProvider field10188;
+    public final MaterialTextureProvider field10188;
 
-	@ObfuscatedName("afc.eh")
-	public GpuTexture field10140;
+    public GpuTexture field10140;
 
-	@ObfuscatedName("afc.eq")
-	public GpuTexture field10141;
+    public GpuTexture field10141;
 
-	@ObfuscatedName("afc.eg")
-	public GpuSprite field10057;
+    public GpuSprite field10057;
 
-	@ObfuscatedName("afc.ez")
-	public GpuSprite field10143;
+    public GpuSprite field10143;
 
-	@ObfuscatedName("afc.ef")
-	public boolean field10144 = false;
+    public boolean field10144 = false;
 
-	@ObfuscatedName("afc.et")
-	public GpuRendererRelated6 field10146;
+    public GpuRendererRelated6 field10146;
 
-	@ObfuscatedName("afc.ea")
-	public GpuRendererRelated2 field10067;
+    public GpuRendererRelated2 field10067;
 
-	@ObfuscatedName("afc.ew")
-	public final GpuRendererRelated2[] field10147 = new GpuRendererRelated2[16];
+    public final GpuRendererRelated2[] field10147 = new GpuRendererRelated2[16];
 
-	@ObfuscatedName("afc.er")
-	public ModelShader modelShader;
+    public ModelShader modelShader;
 
-	@ObfuscatedName("afc.en")
-	public SpriteShader spriteShader;
+    public SpriteShader spriteShader;
 
-	@ObfuscatedName("afc.eb")
-	public BatchedSpriteShader batchedSpriteShader;
+    public BatchedSpriteShader batchedSpriteShader;
 
-	@ObfuscatedName("afc.ex")
-	public ParticleShader particleShader;
+    public ParticleShader particleShader;
 
-	@ObfuscatedName("afc.fg")
-	public EnvMappedWaterShader waterShader;
+    public EnvMappedWaterShader waterShader;
 
-	@ObfuscatedName("afc.fu")
-	public EnvMappedWaterShader seaWaterShader;
+    public EnvMappedWaterShader seaWaterShader;
 
-	@ObfuscatedName("afc.fs")
-	public WaterfallShader waterfallShader;
+    public WaterfallShader waterfallShader;
 
-	@ObfuscatedName("afc.fz")
-	public GpuPostProcessManager field10155;
+    public GpuPostProcessManager field10155;
 
-	@ObfuscatedName("afc.fi")
-	public final GpuPostProcessEffect[] field10080 = new GpuPostProcessEffect[4];
+    public final GpuPostProcessEffect[] field10080 = new GpuPostProcessEffect[4];
 
-	@ObfuscatedName("afc.ft")
-	public GpuEnvironmentSampler field10161;
+    public GpuEnvironmentSampler field10161;
 
-	@ObfuscatedName("afc.fx")
-	public boolean field10133;
+    public boolean field10133;
 
-	@ObfuscatedName("afc.fv")
-	public boolean field10163 = false;
+    public boolean field10163 = false;
 
-	@ObfuscatedName("afc.fc")
-	public int field10164;
+    public int field10164;
 
-	@ObfuscatedName("afc.fw")
-	public WaterFogData field10165;
+    public WaterFogData field10165;
 
-	@ObfuscatedName("afc.fa")
-	public boolean field10166;
+    public boolean field10166;
 
-	@ObfuscatedName("afc.fp")
-	public boolean field10167 = true;
+    public boolean field10167 = true;
 
-	@ObfuscatedName("afc.fq")
-	public int fogDensity = -1;
+    public int fogDensity = -1;
 
-	@ObfuscatedName("afc.ff")
-	public int field10169 = -1;
+    public int field10169 = -1;
 
-	@ObfuscatedName("afc.fl")
-	public int field10189 = 0;
+    public int field10189 = 0;
 
-	@ObfuscatedName("afc.fb")
-	public float fogStart;
+    public float fogStart;
 
-	@ObfuscatedName("afc.fo")
-	public float fogEnd;
+    public float fogEnd;
 
-	@ObfuscatedName("afc.fy")
-	public int field10096 = 1;
+    public int field10096 = 1;
 
-	@ObfuscatedName("afc.fe")
-	public int field10174 = -1;
+    public int field10174 = -1;
 
-	@ObfuscatedName("afc.fk")
-	public BlendMode field10211 = BlendMode.field3364;
+    public BlendMode field10211 = BlendMode.field3364;
 
-	@ObfuscatedName("afc.fh")
-	public boolean alphaBlendEnabled = true;
+    public boolean alphaBlendEnabled = true;
 
-	@ObfuscatedName("afc.fr")
-	public boolean alphaTestEnabled = true;
+    public boolean alphaTestEnabled = true;
 
-	@ObfuscatedName("afc.gu")
-	public byte alphaRef = 0;
+    public byte alphaRef = 0;
 
-	@ObfuscatedName("afc.gq")
-	public int cullModeEnabled = 2;
+    public int cullModeEnabled = 2;
 
-	@ObfuscatedName("afc.gl")
-	public final int field10180;
+    public final int field10180;
 
-	@ObfuscatedName("afc.go")
-	public int field10181;
+    public int field10181;
 
-	@ObfuscatedName("afc.gk")
-	public int field10205;
+    public int field10205;
 
-	@ObfuscatedName("afc.gp")
-	public boolean field10183 = false;
+    public boolean field10183 = false;
 
-	@ObfuscatedName("afc.gy")
-	public GpuParticleRenderer field10198;
+    public GpuParticleRenderer field10198;
 
-	@ObfuscatedName("afc.ga")
-	public int field10185;
+    public int field10185;
 
-	@ObfuscatedName("afc.gn")
-	public int maxSimutaneousTextures;
+    public int maxSimutaneousTextures;
 
-	@ObfuscatedName("afc.gc")
-	public int maxActiveLights;
+    public int maxActiveLights;
 
-	@ObfuscatedName("afc.gf")
-	public boolean hasFramebufferObject;
+    public boolean hasFramebufferObject;
 
-	@ObfuscatedName("afc.gx")
-	public boolean hasFramebufferBlit;
+    public boolean hasFramebufferBlit;
 
-	@ObfuscatedName("afc.ge")
-	public boolean hasFramebufferMultisample;
+    public boolean hasFramebufferMultisample;
 
-	@ObfuscatedName("afc.gg")
-	public boolean hasMultiSample;
+    public boolean hasMultiSample;
 
-	@ObfuscatedName("afc.gr")
-	public boolean hasTextureCubeMap;
+    public boolean hasTextureCubeMap;
 
-	@ObfuscatedName("afc.gs")
-	public boolean field10125;
+    public boolean field10125;
 
-	@ObfuscatedName("afc.gt")
-	public boolean field10116;
+    public boolean field10116;
 
-	@ObfuscatedName("afc.gh")
-	public boolean hasBlendFuncSeparate;
+    public boolean hasBlendFuncSeparate;
 
-	@ObfuscatedName("afc.gm")
-	public VertexBuffer field10196;
+    public VertexBuffer field10196;
 
-	@ObfuscatedName("afc.gv")
-	public VertexBuffer field10197;
+    public VertexBuffer field10197;
 
-	@ObfuscatedName("afc.gj")
-	public VertexBuffer field10195;
+    public VertexBuffer field10195;
 
-	@ObfuscatedName("afc.gw")
-	public VertexDeclaration field10150;
+    public VertexDeclaration field10150;
 
-	@ObfuscatedName("afc.gd")
-	public VertexDeclaration field10055;
+    public VertexDeclaration field10055;
 
-	@ObfuscatedName("afc.gz")
-	public VertexDeclaration field10184;
+    public VertexDeclaration field10184;
 
-	@ObfuscatedName("afc.gb")
-	public VertexDeclaration field10202;
+    public VertexDeclaration field10202;
 
-	@ObfuscatedName("afc.gi")
-	public VertexDeclaration field10203;
+    public VertexDeclaration field10203;
 
-	@ObfuscatedName("afc.hm")
-	public VertexDeclaration field10204;
+    public VertexDeclaration field10204;
 
-	@ObfuscatedName("afc.ha")
-	public GpuIndexBuffer field10077;
+    public GpuIndexBuffer field10077;
 
-	@ObfuscatedName("afc.hk")
-	public GpuModel[] field10058;
+    public GpuModel[] field10058;
 
-	@ObfuscatedName("afc.hu")
-	public GpuModel[] field10207;
+    public GpuModel[] field10207;
 
-	@ObfuscatedName("afc.hb")
-	public Matrix4x4 field10208;
+    public Matrix4x4 field10208;
 
-	@ObfuscatedName("afc.hl")
-	public Matrix4x3 field10209;
+    public Matrix4x3 field10209;
 
-	@ObfuscatedName("afc.hg")
-	public PrimitiveVertexBuffer field10100;
+    public PrimitiveVertexBuffer field10100;
 
-	@ObfuscatedName("afc.hd")
-	public boolean field10182;
+    public boolean field10182;
 
-	@ObfuscatedName("afc.rv(Lle;)V")
-	public void method15985(DeletableResource arg0) {
+    public void method15985(DeletableResource arg0) {
 		this.field10031.method15159(arg0, field10206);
 	}
 
-	@ObfuscatedName("afc.rh(Lle;)V")
-	public void method16198(DeletableResource arg0) {
+    public void method16198(DeletableResource arg0) {
 		this.field10031.method15160(arg0);
 	}
 
-	@ObfuscatedName("afc.ra()V")
-	public void method15956() {
+    public void method15956() {
 		ArrayList var1 = this.field10031.method15161();
 		Iterator var2 = var1.iterator();
 		while (var2.hasNext()) {
@@ -558,13 +386,11 @@ public abstract class GpuToolkit extends Toolkit {
 		}
 	}
 
-	@ObfuscatedName("afc.rz()Z")
-	public final boolean method16279() {
+    public final boolean method16279() {
 		return this.lightingEnabled;
 	}
 
-	@ObfuscatedName("afc.re(I)V")
-	public void ensureTemporaryBufferCapacity(int arg0) {
+    public void ensureTemporaryBufferCapacity(int arg0) {
 		if (arg0 > this.field10048) {
 			this.field10048 = arg0;
 			this.temporaryBuffer = ByteBuffer.allocateDirect(this.field10048);
@@ -573,25 +399,21 @@ public abstract class GpuToolkit extends Toolkit {
 		}
 	}
 
-	@ObfuscatedName("afc.rt(I)Ljava/nio/ByteBuffer;")
-	public ByteBuffer method16151(int arg0) {
+    public ByteBuffer method16151(int arg0) {
 		ByteBuffer var2 = ByteBuffer.allocateDirect(arg0);
 		var2.order(ByteOrder.nativeOrder());
 		return var2;
 	}
 
-	@ObfuscatedName("afc.rl(Ljava/nio/ByteBuffer;)J")
-	public long method15963(ByteBuffer arg0) {
+    public long method15963(ByteBuffer arg0) {
 		return DirectBufferHelper.getDirectBufferAddress(arg0);
 	}
 
-	@ObfuscatedName("afc.rr(Ljava/lang/String;Ljava/lang/String;)[B")
-	public byte[] method15965(String arg0, String arg1) {
+    public byte[] method15965(String arg0, String arg1) {
 		return this.field10041.getfile(arg0, arg1);
 	}
 
-	@ObfuscatedName("afc.rd([B)Lhj;")
-	public ShaderData method15971(byte[] arg0) {
+    public ShaderData method15971(byte[] arg0) {
 		if (arg0 == null) {
 			return null;
 		}
@@ -602,8 +424,7 @@ public abstract class GpuToolkit extends Toolkit {
 		}
 	}
 
-	@ObfuscatedName("afc.rb()V")
-	public static void method15968() throws NativeLibraryException {
+    public static void method15968() throws NativeLibraryException {
 		NativeLibraries.getLoader().load("jaclib");
 	}
 
@@ -647,8 +468,7 @@ public abstract class GpuToolkit extends Toolkit {
 		this.setBufferHeap(this.createHeap(131072));
 	}
 
-	@ObfuscatedName("afc.ru()V")
-	public final void init() {
+    public final void init() {
 		this.field10093 = new BaseTexture[this.maxSimutaneousTextures];
 		this.field10162 = new Matrix4x4[this.maxSimutaneousTextures];
 		this.field10135 = new TextureTramsformType[this.maxSimutaneousTextures];
@@ -684,8 +504,7 @@ public abstract class GpuToolkit extends Toolkit {
 		this.method2475(3, 0);
 	}
 
-	@ObfuscatedName("afc.sv()V")
-	public final void method15970() {
+    public final void method15970() {
 		this.field10049 = new GpuWaterRelated(this);
 		this.lightingEnabled = false;
 		try {
@@ -736,14 +555,12 @@ public abstract class GpuToolkit extends Toolkit {
 		this.method16105();
 	}
 
-	@ObfuscatedName("afc.sw()V")
-	public void method16232() {
+    public void method16232() {
 		this.enableColorWriteTest(7);
 		this.method16367();
 	}
 
-	@ObfuscatedName("afc.ss()V")
-	public final void method16367() {
+    public final void method16367() {
 		this.enableLightingAmbient();
 		this.enableLightingDiffuse();
 		this.enableLighting();
@@ -768,8 +585,7 @@ public abstract class GpuToolkit extends Toolkit {
 		this.method15997();
 	}
 
-	@ObfuscatedName("afc.sx()V")
-	public void method15973() {
+    public void method15973() {
 		if (this.field10155 != null) {
 			this.field10155.method5607();
 		}
@@ -802,8 +618,7 @@ public abstract class GpuToolkit extends Toolkit {
 		}
 	}
 
-	@ObfuscatedName("afc.sm()V")
-	public void method16105() {
+    public void method16105() {
 		if (this.field10155 != null) {
 			this.field10155.method5608();
 		}
@@ -825,8 +640,7 @@ public abstract class GpuToolkit extends Toolkit {
 		}
 	}
 
-	@ObfuscatedName("afc.sk()V")
-	public final void method15974() {
+    public final void method15974() {
 		this.field10197 = this.createVertexBuffer(false);
 		short var1 = 160;
 		this.field10197.allocate(var1, 32);
@@ -875,16 +689,14 @@ public abstract class GpuToolkit extends Toolkit {
 		this.field10055 = this.createVertexDeclaration(new VertexDeclarationElement[] { new VertexDeclarationElement(new VertexDeclarationElementComponent[] { VertexDeclarationElementComponent.VERTEX, VertexDeclarationElementComponent.COLOR, VertexDeclarationElementComponent.TEX_COORD_2, VertexDeclarationElementComponent.TEX_COORD_2 }) });
 	}
 
-	@ObfuscatedName("afc.si()V")
-	public final void method16125() {
+    public final void method16125() {
 		this.field10196 = this.createVertexBuffer(true);
 		byte var1 = 24;
 		this.field10196.allocate(var1, 12);
 		this.field10150 = this.createVertexDeclaration(new VertexDeclarationElement[] { new VertexDeclarationElement(VertexDeclarationElementComponent.VERTEX) });
 	}
 
-	@ObfuscatedName("afc.se()V")
-	public final void method15976() {
+    public final void method15976() {
 		this.field10195 = this.createVertexBuffer(false);
 		this.field10195.allocate(3096, 12);
 		this.temporaryBuffer.clear();
@@ -902,8 +714,7 @@ public abstract class GpuToolkit extends Toolkit {
 		this.field10195.upload(0, this.temporaryBuffer.position(), this.temporaryBufferAddress);
 	}
 
-	@ObfuscatedName("afc.sn(FFFFFF)Z")
-	public boolean method15977(float arg0, float arg1, float arg2, float arg3, float arg4, float arg5) {
+    public boolean method15977(float arg0, float arg1, float arg2, float arg3, float arg4, float arg5) {
 		this.ensureTemporaryBufferCapacity(24);
 		this.temporaryBuffer.clear();
 		this.temporaryBuffer.putFloat(arg0);
@@ -915,8 +726,7 @@ public abstract class GpuToolkit extends Toolkit {
 		return this.field10196.upload(0, this.temporaryBuffer.position(), this.temporaryBufferAddress);
 	}
 
-	@ObfuscatedName("afc.p()V")
-	public void method2369() {
+    public void method2369() {
 		if (this.field10183) {
 			return;
 		}
@@ -943,102 +753,84 @@ public abstract class GpuToolkit extends Toolkit {
 		this.field10183 = true;
 	}
 
-	@ObfuscatedName("afc.r()Z")
-	public final boolean method2194() {
+    public final boolean method2194() {
 		return true;
 	}
 
-	@ObfuscatedName("afc.v()Z")
-	public final boolean method2123() {
+    public final boolean method2123() {
 		return true;
 	}
 
-	@ObfuscatedName("afc.o()Z")
-	public final boolean method2124() {
+    public final boolean method2124() {
 		return true;
 	}
 
-	@ObfuscatedName("afc.y()Z")
-	public final boolean isBloomSupported() {
+    public final boolean isBloomSupported() {
 		return this.field10080[3] != null;
 	}
 
-	@ObfuscatedName("afc.q()Z")
-	public final boolean method2127() {
+    public final boolean method2127() {
 		return true;
 	}
 
-	@ObfuscatedName("afc.s()Z")
-	public final boolean supportsHardShadows() {
+    public final boolean supportsHardShadows() {
 		return true;
 	}
 
-	@ObfuscatedName("afc.b()Z")
-	public final boolean method2129() {
+    public final boolean method2129() {
 		return true;
 	}
 
-	@ObfuscatedName("afc.h()Z")
-	public final boolean hasExtraDrawDistance() {
+    public final boolean hasExtraDrawDistance() {
 		return true;
 	}
 
-	@ObfuscatedName("afc.a()Z")
-	public final boolean method2240() {
+    public final boolean method2240() {
 		return false;
 	}
 
-	@ObfuscatedName("afc.x()Z")
-	public final boolean supportsAntiAliasing() {
+    public final boolean supportsAntiAliasing() {
 		return this.hasMultiSample;
 	}
 
-	@ObfuscatedName("afc.i()[I")
-	public final int[] textureFormat() {
+    public final int[] textureFormat() {
 		return null;
 	}
 
-	@ObfuscatedName("afc.d(I)V")
-	public void cycle(int arg0) {
+    public void cycle(int arg0) {
 		if (this.field10188 != null) {
 			this.field10188.method5643();
 		}
 		this.field10181 = arg0 & Integer.MAX_VALUE;
 	}
 
-	@ObfuscatedName("afc.sq()Llm;")
-	public GpuImageRelated method16337() {
+    public GpuImageRelated method16337() {
 		return this.field10146 == null ? GpuImageRelated.field3236 : this.field10146.method5803();
 	}
 
-	@ObfuscatedName("afc.cm()V")
-	public void flush() {
+    public void flush() {
 		if (this.field10146 != null) {
 			this.field10146.method5796();
 		}
 	}
 
-	@ObfuscatedName("afc.cq()V")
-	public void method2203() {
+    public void method2203() {
 		if (this.field10146 != null) {
 			this.field10146.method5805();
 		}
 	}
 
-	@ObfuscatedName("afc.ch()V")
-	public void method2204() {
+    public void method2204() {
 		if (this.field10146 != null) {
 			this.field10146.method5802();
 		}
 	}
 
-	@ObfuscatedName("afc.sh()V")
-	public void method15989() {
+    public void method15989() {
 		this.method15982();
 	}
 
-	@ObfuscatedName("afc.st()V")
-	public void method15982() {
+    public void method15982() {
 		this.method16009();
 		this.method16011();
 		this.method16084();
@@ -1046,8 +838,7 @@ public abstract class GpuToolkit extends Toolkit {
 		this.resetClip();
 	}
 
-	@ObfuscatedName("afc.dy(IIII)V")
-	public final void method2172(int arg0, int arg1, int arg2, int arg3) {
+    public final void method2172(int arg0, int arg1, int arg2, int arg3) {
 		if (this.field10155 == null) {
 			return;
 		}
@@ -1062,20 +853,17 @@ public abstract class GpuToolkit extends Toolkit {
 		}
 	}
 
-	@ObfuscatedName("afc.db(II)V")
-	public final void method2233(int arg0, int arg1) {
+    public final void method2233(int arg0, int arg1) {
 		if (this.field10155 != null) {
 			this.field10155.method5605(arg0, arg1);
 		}
 	}
 
-	@ObfuscatedName("afc.dh()Z")
-	public final boolean method2234() {
+    public final boolean method2234() {
 		return this.field10155 != null && this.field10155.field3261;
 	}
 
-	@ObfuscatedName("afc.sl()Z")
-	public boolean method15980() {
+    public boolean method15980() {
 		if (this.field10080[1] == null || this.field10080[1].method5593()) {
 			return false;
 		}
@@ -1086,13 +874,11 @@ public abstract class GpuToolkit extends Toolkit {
 		return var1;
 	}
 
-	@ObfuscatedName("afc.dx()Z")
-	public boolean isLevelsEnabled() {
+    public boolean isLevelsEnabled() {
 		return this.field10080[1] != null && this.field10080[1].method5593();
 	}
 
-	@ObfuscatedName("afc.dg(FFFFF)V")
-	public void setLevels(float arg0, float arg1, float arg2, float arg3, float arg4) {
+    public void setLevels(float arg0, float arg1, float arg2, float arg3, float arg4) {
 		LevelsFilterEffect.paramsGamma = arg0;
 		LevelsFilterEffect.field10642 = arg1;
 		LevelsFilterEffect.field10643 = arg2;
@@ -1100,13 +886,11 @@ public abstract class GpuToolkit extends Toolkit {
 		LevelsFilterEffect.field10651 = arg4;
 	}
 
-	@ObfuscatedName("afc.de([I)Lcj;")
-	public ColourRemapper createColourRemapper(int[] arg0) {
+    public ColourRemapper createColourRemapper(int[] arg0) {
 		return new GpuColourRemapper(this, arg0);
 	}
 
-	@ObfuscatedName("afc.sp()Z")
-	public boolean method15986() {
+    public boolean method15986() {
 		if (this.field10080[2] == null || this.field10080[2].method5593()) {
 			return false;
 		}
@@ -1117,13 +901,11 @@ public abstract class GpuToolkit extends Toolkit {
 		return var1;
 	}
 
-	@ObfuscatedName("afc.dj()Z")
-	public boolean method2238() {
+    public boolean method2238() {
 		return this.field10080[2] != null && this.field10080[2].method5593();
 	}
 
-	@ObfuscatedName("afc.eo(Lcj;FLcj;FLcj;F)V")
-	public void setColourRemapping(ColourRemapper arg0, float arg1, ColourRemapper arg2, float arg3, ColourRemapper arg4, float arg5) {
+    public void setColourRemapping(ColourRemapper arg0, float arg1, ColourRemapper arg2, float arg3, ColourRemapper arg4, float arg5) {
 		int var7 = 0;
 		if (arg4 == null && arg5 > 0.0F) {
 			arg5 = 0.0F;
@@ -1161,8 +943,7 @@ public abstract class GpuToolkit extends Toolkit {
 		ColourRemappingFilter.field10656 = 1.0F - (arg1 + arg3 + arg5);
 	}
 
-	@ObfuscatedName("afc.ey()Z")
-	public final boolean enableBloom() {
+    public final boolean enableBloom() {
 		if (this.field10080[3] == null || this.field10080[3].method5593()) {
 			return false;
 		}
@@ -1173,64 +954,54 @@ public abstract class GpuToolkit extends Toolkit {
 		return var1;
 	}
 
-	@ObfuscatedName("afc.eu()V")
-	public final void disableBloom() {
+    public final void disableBloom() {
 		if (this.field10080[3] != null && this.field10080[3].method5593()) {
 			this.field10155.method5606(this.field10080[3]);
 			this.field10188.method5644();
 		}
 	}
 
-	@ObfuscatedName("afc.ed()Z")
-	public final boolean isBloomEnabled() {
+    public final boolean isBloomEnabled() {
 		return this.field10080[3] != null && this.field10080[3].method5593();
 	}
 
-	@ObfuscatedName("afc.es(FFFFFF)V")
-	public final void setBloom(float arg0, float arg1, float arg2, float arg3, float arg4, float arg5) {
+    public final void setBloom(float arg0, float arg1, float arg2, float arg3, float arg4, float arg5) {
 		ColourGradingBloomEffect.field10625 = arg0;
 		ColourGradingBloomEffect.field10624 = arg1;
 		ColourGradingBloomEffect.field10623 = arg2;
 		ColourGradingBloomEffect.field10626 = arg5;
 	}
 
-	@ObfuscatedName("afc.cp(I)Lakz;")
-	public final Heap createHeap(int arg0) {
+    public final Heap createHeap(int arg0) {
 		GpuHeap var2 = new GpuHeap(arg0);
 		this.field10051.addTail(var2);
 		return var2;
 	}
 
-	@ObfuscatedName("afc.ca(Lakz;)V")
-	public final void setBufferHeap(Heap arg0) {
+    public final void setBufferHeap(Heap arg0) {
 		this.field10154 = ((GpuHeap) arg0).field12208;
 	}
 
-	@ObfuscatedName("afc.su(IZ)Ljaclib/memory/heap/NativeHeapBuffer;")
-	public final NativeHeapBuffer createHeapBuffer(int arg0, boolean arg1) {
+    public final NativeHeapBuffer createHeapBuffer(int arg0, boolean arg1) {
 		return this.field10154.method92(arg0, arg1);
 	}
 
-	@ObfuscatedName("afc.sd(I)Lml;")
-	public final GpuIndexBuffer method15988(int arg0) {
+    public final GpuIndexBuffer method15988(int arg0) {
 		if (this.field10077.method5743() < arg0 * 2) {
 			this.field10077.method5831(arg0);
 		}
 		return this.field10077;
 	}
 
-	@ObfuscatedName("afc.c()I")
-	public final int method2520() {
+    public final int method2520() {
 		return this.field10053 + this.field10052 + this.field10117;
 	}
 
-	@ObfuscatedName("afc.cw(IIZZ)Lcm;")
-	public final Sprite createSprite(int arg0, int arg1, boolean arg2, boolean arg3) {
+    public final Sprite createSprite(int arg0, int arg1, boolean arg2, boolean arg3) {
 		return new GpuSprite(this, arg0, arg1, arg2, arg3);
 	}
 
-	@ObfuscatedName("afc.co(Lde;Z)Lcm;")
-	public final Sprite createSprite(SpriteData arg0, boolean arg1) {
+    public final Sprite createSprite(SpriteData arg0, boolean arg1) {
 		Sprite var4;
 		if (arg0.getWidth() == 0 || arg0.getHeight() == 0) {
 			var4 = this.createSprite(new int[] { 0 }, 0, 1, 1, 1);
@@ -1242,79 +1013,64 @@ public abstract class GpuToolkit extends Toolkit {
 		return var4;
 	}
 
-	@ObfuscatedName("afc.ct([IIIIIZ)Lcm;")
-	public final Sprite createSprite(int[] arg0, int arg1, int arg2, int arg3, int arg4, boolean arg5) {
+    public final Sprite createSprite(int[] arg0, int arg1, int arg2, int arg3, int arg4, boolean arg5) {
 		return new GpuSprite(this, arg3, arg4, arg0, arg1, arg2);
 	}
 
-	@ObfuscatedName("afc.cr(IIIIZ)Lcm;")
-	public final Sprite method2314(int arg0, int arg1, int arg2, int arg3, boolean arg4) {
+    public final Sprite method2314(int arg0, int arg1, int arg2, int arg3, boolean arg4) {
 		GpuSprite var6 = new GpuSprite(this, arg2, arg3, arg4, false);
 		var6.draw(0, 0, arg2, arg3, arg0, arg1);
 		return var6;
 	}
 
-	@ObfuscatedName("afc.cy(Laac;Lde;Z)Leu;")
-	public final Font createFont(FontMetrics arg0, SpriteData arg1, boolean arg2) {
+    public final Font createFont(FontMetrics arg0, SpriteData arg1, boolean arg2) {
 		return new GpuFont(this, arg0, arg1, arg2);
 	}
 
-	@ObfuscatedName("afc.cb(II[I[I)Lch;")
-	public final SpriteRelated method2205(int arg0, int arg1, int[] arg2, int[] arg3) {
+    public final SpriteRelated method2205(int arg0, int arg1, int[] arg2, int[] arg3) {
 		return GpuRelated2.method15388(this, arg0, arg1, arg2, arg3);
 	}
 
-	@ObfuscatedName("afc.ck(I)V")
-	public final void setVertexCapacity(int arg0) {
+    public final void setVertexCapacity(int arg0) {
 	}
 
-	@ObfuscatedName("afc.cj(Ldq;IIII)Ldo;")
-	public final Model createModel(ModelUnlit arg0, int arg1, int arg2, int arg3, int arg4) {
+    public final Model createModel(ModelUnlit arg0, int arg1, int arg2, int arg3, int arg4) {
 		return new GpuModel(this, arg0, arg1, arg3, arg4, arg2);
 	}
 
-	@ObfuscatedName("afc.cd(II)I")
-	public final int method2394(int arg0, int arg1) {
+    public final int method2394(int arg0, int arg1) {
 		return arg0 & arg1 ^ arg1;
 	}
 
-	@ObfuscatedName("afc.dd(II)I")
-	public final int method2213(int arg0, int arg1) {
+    public final int method2213(int arg0, int arg1) {
 		return arg0 | arg1;
 	}
 
-	@ObfuscatedName("afc.dr(II[[I[[IIII)Lcb;")
-	public final FloorModel createFloor(int arg0, int arg1, int[][] arg2, int[][] arg3, int arg4, int arg5, int arg6) {
+    public final FloorModel createFloor(int arg0, int arg1, int[][] arg2, int[][] arg3, int arg4, int arg5, int arg6) {
 		return new GpuFloorModel(this, arg5, arg6, arg0, arg1, arg2, arg3, arg4);
 	}
 
-	@ObfuscatedName("afc.cc()Lpq;")
-	public final Matrix4x4 method2208() {
+    public final Matrix4x4 method2208() {
 		return this.field10208;
 	}
 
-	@ObfuscatedName("afc.cz()Lou;")
-	public final Matrix4x3 method2209() {
+    public final Matrix4x3 method2209() {
 		return this.field10209;
 	}
 
-	@ObfuscatedName("afc.du(I)Ldz;")
-	public final EnvironmentSampler createEnvironmentSampler(int arg0) {
+    public final EnvironmentSampler createEnvironmentSampler(int arg0) {
 		return new GpuEnvironmentSampler_Sub1(this, arg0);
 	}
 
-	@ObfuscatedName("afc.dp(Ldz;)V")
-	public final void setEnvironmentSampler(EnvironmentSampler arg0) {
+    public final void setEnvironmentSampler(EnvironmentSampler arg0) {
 		this.field10161 = (GpuEnvironmentSampler) arg0;
 	}
 
-	@ObfuscatedName("afc.sz()Lmr;")
-	public final GpuCubeTexture getEnvMapSampler() {
+    public final GpuCubeTexture getEnvMapSampler() {
 		return this.field10161 == null ? null : this.field10161.method15652();
 	}
 
-	@ObfuscatedName("afc.bk()V")
-	public void method2263() {
+    public void method2263() {
 		this.field10097 = 0;
 		this.field10098 = 0;
 		this.field10139 = this.renderTarget.getWidth();
@@ -1322,8 +1078,7 @@ public abstract class GpuToolkit extends Toolkit {
 		this.method16063();
 	}
 
-	@ObfuscatedName("afc.bh(IIII)V")
-	public void method2164(int arg0, int arg1, int arg2, int arg3) {
+    public void method2164(int arg0, int arg1, int arg2, int arg3) {
 		this.field10097 = arg0;
 		this.field10098 = arg1;
 		this.field10139 = arg2;
@@ -1331,16 +1086,14 @@ public abstract class GpuToolkit extends Toolkit {
 		this.method16063();
 	}
 
-	@ObfuscatedName("afc.bx([I)V")
-	public void method2326(int[] arg0) {
+    public void method2326(int[] arg0) {
 		arg0[0] = this.field10097;
 		arg0[1] = this.field10098;
 		arg0[2] = this.field10139;
 		arg0[3] = this.field10082;
 	}
 
-	@ObfuscatedName("afc.sf()V")
-	public final void method16063() {
+    public final void method16063() {
 		if (GpuRendererRelated3.field3321 == this.field10050) {
 			this.field10101 = this.field10097;
 			this.field10102 = this.field10098;
@@ -1363,23 +1116,20 @@ public abstract class GpuToolkit extends Toolkit {
 		this.field10085 = (float) this.field10098 + this.field10086;
 	}
 
-	@ObfuscatedName("afc.bd(FF)V")
-	public void method2339(float arg0, float arg1) {
+    public void method2339(float arg0, float arg1) {
 		this.field10089 = arg0;
 		this.field10090 = arg1;
 		this.method16063();
 	}
 
-	@ObfuscatedName("afc.bq([I)V")
-	public final void method2171(int[] arg0) {
+    public final void method2171(int[] arg0) {
 		arg0[0] = this.left;
 		arg0[1] = this.top;
 		arg0[2] = this.right;
 		arg0[3] = this.bottom;
 	}
 
-	@ObfuscatedName("afc.bc()V")
-	public final void resetClip() {
+    public final void resetClip() {
 		if (this.renderTarget == null) {
 			this.bottom = 0;
 			this.right = 0;
@@ -1397,8 +1147,7 @@ public abstract class GpuToolkit extends Toolkit {
 		}
 	}
 
-	@ObfuscatedName("afc.bi(IIII)V")
-	public final void resetBounds(int left, int top, int right, int bottom) {
+    public final void resetBounds(int left, int top, int right, int bottom) {
 		int width;
 		int height;
 		if (this.renderTarget == null) {
@@ -1425,8 +1174,7 @@ public abstract class GpuToolkit extends Toolkit {
 		}
 	}
 
-	@ObfuscatedName("afc.bn(IIII)V")
-	public final void setBounds(int left, int top, int right, int bottom) {
+    public final void setBounds(int left, int top, int right, int bottom) {
 		int width;
 		int height;
 		if (this.renderTarget == null) {
@@ -1469,8 +1217,7 @@ public abstract class GpuToolkit extends Toolkit {
 		}
 	}
 
-	@ObfuscatedName("afc.sy(II)V")
-	public final void method15996(int arg0, int arg1) {
+    public final void method15996(int arg0, int arg1) {
 		this.field10105 = arg0;
 		this.field10132 = arg1;
 		this.method15997();
@@ -1483,23 +1230,19 @@ public abstract class GpuToolkit extends Toolkit {
 		}
 	}
 
-	@ObfuscatedName("afc.bt(Z)V")
-	public void method2170(boolean arg0) {
+    public void method2170(boolean arg0) {
 		this.field10144 = arg0;
 	}
 
-	@ObfuscatedName("afc.so()Lpq;")
-	public final Matrix4x4 getViewMatrix() {
+    public final Matrix4x4 getViewMatrix() {
 		return GpuRendererRelated3.field3321 == this.field10050 ? this.field10059 : field10064;
 	}
 
-	@ObfuscatedName("afc.sc()Lpq;")
-	public final Matrix4x4 method16035() {
+    public final Matrix4x4 method16035() {
 		return GpuRendererRelated3.field3321 == this.field10050 ? this.field10035 : field10064;
 	}
 
-	@ObfuscatedName("afc.do(Lou;)V")
-	public final void method2217(Matrix4x3 arg0) {
+    public final void method2217(Matrix4x3 arg0) {
 		this.field10201 = arg0;
 		this.field10059.setToMatrix4x3(this.field10201);
 		this.field10190.setTo(this.field10059);
@@ -1513,13 +1256,11 @@ public abstract class GpuToolkit extends Toolkit {
 		}
 	}
 
-	@ObfuscatedName("afc.dz()Lou;")
-	public Matrix4x3 method2218() {
+    public Matrix4x3 method2218() {
 		return this.field10201;
 	}
 
-	@ObfuscatedName("afc.dm(Lpq;)V")
-	public final void method2220(Matrix4x4 arg0) {
+    public final void method2220(Matrix4x4 arg0) {
 		this.field10076.setTo(arg0);
 		this.method16001();
 		if (GpuRendererRelated3.field3321 == this.field10050) {
@@ -1527,8 +1268,7 @@ public abstract class GpuToolkit extends Toolkit {
 		}
 	}
 
-	@ObfuscatedName("afc.sg()V")
-	public final void method16001() {
+    public final void method16001() {
 		this.field10145.setTo(this.field10059);
 		this.field10145.multiply(this.field10076);
 		this.field10145.method6607(this.field10061[0]);
@@ -1541,23 +1281,19 @@ public abstract class GpuToolkit extends Toolkit {
 		this.method16006(this.field10081);
 	}
 
-	@ObfuscatedName("afc.dq()Lpq;")
-	public final Matrix4x4 method2355() {
+    public final Matrix4x4 method2355() {
 		return this.field10076;
 	}
 
-	@ObfuscatedName("afc.tu()V")
-	public final void method16366() {
+    public final void method16366() {
 		this.field10070 = false;
 	}
 
-	@ObfuscatedName("afc.ta()Lpq;")
-	public Matrix4x4 getModelMatrix() {
+    public Matrix4x4 getModelMatrix() {
 		return this.field10056;
 	}
 
-	@ObfuscatedName("afc.tr()Lou;")
-	public Matrix4x3 method16003() {
+    public Matrix4x3 method16003() {
 		if (GpuRendererRelated3.field3321 != this.field10050) {
 			return this.field10200;
 		}
@@ -1570,8 +1306,7 @@ public abstract class GpuToolkit extends Toolkit {
 		return this.field10062;
 	}
 
-	@ObfuscatedName("afc.tc()Lpq;")
-	public Matrix4x4 getModelViewMatrix() {
+    public Matrix4x4 getModelViewMatrix() {
 		if (GpuRendererRelated3.field3321 == this.field10050) {
 			if (!this.field10070) {
 				this.method16003();
@@ -1582,18 +1317,15 @@ public abstract class GpuToolkit extends Toolkit {
 		}
 	}
 
-	@ObfuscatedName("afc.tj()Lpq;")
-	public final Matrix4x4 method16228() {
+    public final Matrix4x4 method16228() {
 		return this.field10081;
 	}
 
-	@ObfuscatedName("afc.te()Lpq;")
-	public final Matrix4x4 getProjectionMatrix() {
+    public final Matrix4x4 getProjectionMatrix() {
 		return this.projectionMatrix;
 	}
 
-	@ObfuscatedName("afc.tm()V")
-	public final void method16084() {
+    public final void method16084() {
 		if (GpuRendererRelated3.field3319 == this.field10050) {
 			return;
 		}
@@ -1608,8 +1340,7 @@ public abstract class GpuToolkit extends Toolkit {
 		this.field10205 &= 0xFFFFFFE0;
 	}
 
-	@ObfuscatedName("afc.ty()V")
-	public final void method15981() {
+    public final void method15981() {
 		if (GpuRendererRelated3.field3320 == this.field10050) {
 			return;
 		}
@@ -1625,8 +1356,7 @@ public abstract class GpuToolkit extends Toolkit {
 		this.field10205 &= 0xFFFFFFE7;
 	}
 
-	@ObfuscatedName("afc.tb()V")
-	public final void method16009() {
+    public final void method16009() {
 		this.field10121 = false;
 		if (GpuRendererRelated3.field3320 == this.field10050) {
 			this.method16086();
@@ -1634,8 +1364,7 @@ public abstract class GpuToolkit extends Toolkit {
 		}
 	}
 
-	@ObfuscatedName("afc.tn()V")
-	public final void method16010() {
+    public final void method16010() {
 		if (GpuRendererRelated3.field3321 == this.field10050) {
 			return;
 		}
@@ -1648,8 +1377,7 @@ public abstract class GpuToolkit extends Toolkit {
 		this.field10205 &= 0xFFFFFFF8;
 	}
 
-	@ObfuscatedName("afc.tw()V")
-	public final void method16011() {
+    public final void method16011() {
 		this.field10194 = false;
 		this.method16116();
 		if (GpuRendererRelated3.field3321 == this.field10050) {
@@ -1657,8 +1385,7 @@ public abstract class GpuToolkit extends Toolkit {
 		}
 	}
 
-	@ObfuscatedName("afc.tz()V")
-	public final void method16086() {
+    public final void method16086() {
 		if (this.field10121) {
 			return;
 		}
@@ -1682,15 +1409,13 @@ public abstract class GpuToolkit extends Toolkit {
 		this.field10121 = true;
 	}
 
-	@ObfuscatedName("afc.tf()V")
-	public final void method16116() {
+    public final void method16116() {
 		if (!this.field10194) {
 			this.field10194 = true;
 		}
 	}
 
-	@ObfuscatedName("afc.th()V")
-	public final void method16013() {
+    public final void method16013() {
 		this.projectionMatrix.setTo(this.field10078);
 		this.method16006(this.projectionMatrix);
 		this.field10092 = (this.projectionMatrix.entries[14] - this.projectionMatrix.entries[15]) / (this.projectionMatrix.entries[11] - this.projectionMatrix.entries[10]);
@@ -1698,14 +1423,12 @@ public abstract class GpuToolkit extends Toolkit {
 		this.method16088();
 	}
 
-	@ObfuscatedName("afc.dv(Z)V")
-	public final void method2219(boolean arg0) {
+    public final void method2219(boolean arg0) {
 		this.field10107 = arg0;
 		this.enableDepthWrite();
 	}
 
-	@ObfuscatedName("afc.tt(Z)V")
-	public final void method16015(boolean arg0) {
+    public final void method16015(boolean arg0) {
 		if (this.field10044 != arg0) {
 			this.field10044 = arg0;
 			this.enableDepth();
@@ -1713,8 +1436,7 @@ public abstract class GpuToolkit extends Toolkit {
 		}
 	}
 
-	@ObfuscatedName("afc.ts(Z)V")
-	public final void method16361(boolean arg0) {
+    public final void method16361(boolean arg0) {
 		if (this.field10108 != arg0) {
 			this.field10108 = arg0;
 			this.enableDepthWrite();
@@ -1722,8 +1444,7 @@ public abstract class GpuToolkit extends Toolkit {
 		}
 	}
 
-	@ObfuscatedName("afc.ev(FFF[F)V")
-	public void method2525(float arg0, float arg1, float arg2, float[] arg3) {
+    public void method2525(float arg0, float arg1, float arg2, float[] arg3) {
 		float var5 = this.field10145.entries[11] * arg2 + this.field10145.entries[7] * arg1 + this.field10145.entries[3] * arg0 + this.field10145.entries[15];
 		float var6 = this.field10145.entries[8] * arg2 + this.field10145.entries[4] * arg1 + this.field10145.entries[0] * arg0 + this.field10145.entries[12];
 		float var7 = this.field10145.entries[9] * arg2 + this.field10145.entries[5] * arg1 + this.field10145.entries[1] * arg0 + this.field10145.entries[13];
@@ -1733,8 +1454,7 @@ public abstract class GpuToolkit extends Toolkit {
 		arg3[2] = var8;
 	}
 
-	@ObfuscatedName("afc.ep(FFF[F)V")
-	public void method2507(float arg0, float arg1, float arg2, float[] arg3) {
+    public void method2507(float arg0, float arg1, float arg2, float[] arg3) {
 		float var5 = this.field10145.entries[10] * arg2 + this.field10145.entries[6] * arg1 + this.field10145.entries[2] * arg0 + this.field10145.entries[14];
 		float var6 = this.field10145.entries[11] * arg2 + this.field10145.entries[7] * arg1 + this.field10145.entries[3] * arg0 + this.field10145.entries[15];
 		if (var5 < -var6 || var5 > var6) {
@@ -1763,8 +1483,7 @@ public abstract class GpuToolkit extends Toolkit {
 		}
 	}
 
-	@ObfuscatedName("afc.cu(IIIIII)I")
-	public int method2348(int arg0, int arg1, int arg2, int arg3, int arg4, int arg5) {
+    public int method2348(int arg0, int arg1, int arg2, int arg3, int arg4, int arg5) {
 		int var7 = 0;
 		float var8 = this.field10145.entries[10] * (float) arg2 + this.field10145.entries[6] * (float) arg1 + this.field10145.entries[2] * (float) arg0 + this.field10145.entries[14];
 		float var9 = this.field10145.entries[10] * (float) arg5 + this.field10145.entries[6] * (float) arg4 + this.field10145.entries[2] * (float) arg3 + this.field10145.entries[14];
@@ -1794,29 +1513,25 @@ public abstract class GpuToolkit extends Toolkit {
 		return var7;
 	}
 
-	@ObfuscatedName("afc.cn(IIIILou;Loj;)Z")
-	public boolean pick(int arg0, int arg1, int arg2, int arg3, Matrix4x3 arg4, Cuboid arg5) {
+    public boolean pick(int arg0, int arg1, int arg2, int arg3, Matrix4x3 arg4, Cuboid arg5) {
 		Matrix4x4 var7 = this.field10066;
 		var7.setToMatrix4x3(arg4);
 		var7.multiply(this.field10145);
 		return arg5.pick(arg0, arg1, arg2, arg3, var7, this.field10083, this.field10085, this.field10084, this.field10086);
 	}
 
-	@ObfuscatedName("afc.cv(Lou;Led;Loj;)V")
-	public void method2193(Matrix4x3 arg0, ScreenBoundingBox arg1, Cuboid arg2) {
+    public void method2193(Matrix4x3 arg0, ScreenBoundingBox arg1, Cuboid arg2) {
 		Matrix4x4 var4 = this.field10066;
 		var4.setToMatrix4x3(arg0);
 		var4.multiply(this.field10145);
 		arg1.method2746(arg2, this.field10076, var4, this.field10083, this.field10085, this.field10084, this.field10086);
 	}
 
-	@ObfuscatedName("afc.df()I")
-	public final int getMaxLights() {
+    public final int getMaxLights() {
 		return this.maxActiveLights - 2;
 	}
 
-	@ObfuscatedName("afc.to(Z)V")
-	public final void method16118(boolean arg0) {
+    public final void method16118(boolean arg0) {
 		if (this.field10111 != arg0) {
 			this.field10111 = arg0;
 			this.enableLighting();
@@ -1824,16 +1539,14 @@ public abstract class GpuToolkit extends Toolkit {
 		}
 	}
 
-	@ObfuscatedName("afc.ds(I[Lakf;)V")
-	public final void setActiveLights(int arg0, Light[] arg1) {
+    public final void setActiveLights(int arg0, Light[] arg1) {
 		for (int var3 = 0; var3 < arg0; var3++) {
 			this.field10045[var3] = arg1[var3];
 		}
 		this.field10127 = arg0;
 	}
 
-	@ObfuscatedName("afc.dc(F)V")
-	public final void setSunAmbientIntensity(float arg0) {
+    public final void setSunAmbientIntensity(float arg0) {
 		if (this.field10122 != arg0) {
 			this.field10122 = arg0;
 			this.enableLightingAmbient();
@@ -1841,8 +1554,7 @@ public abstract class GpuToolkit extends Toolkit {
 		}
 	}
 
-	@ObfuscatedName("afc.di(IFFFFF)V")
-	public final void setSun(int arg0, float arg1, float arg2, float arg3, float arg4, float arg5) {
+    public final void setSun(int arg0, float arg1, float arg2, float arg3, float arg4, float arg5) {
 		boolean var7 = this.field10118 != arg0;
 		float var8 = arg1 * 0.5F;
 		float var9 = arg2 * 0.5F;
@@ -1879,8 +1591,7 @@ public abstract class GpuToolkit extends Toolkit {
 		this.method16023();
 	}
 
-	@ObfuscatedName("afc.dk(I)V")
-	public final void method2224(int arg0) {
+    public final void method2224(int arg0) {
 		this.field10129 = 0;
 		while (arg0 > 1) {
 			this.field10129++;
@@ -1889,36 +1600,30 @@ public abstract class GpuToolkit extends Toolkit {
 		this.field10128 = 0x1 << this.field10129;
 	}
 
-	@ObfuscatedName("afc.ul()V")
-	public final void method16199() {
+    public final void method16199() {
 		if (this.method16279()) {
 			this.method16025();
 		}
 		this.field10126 = this.field10127;
 	}
 
-	@ObfuscatedName("afc.ui(IIZ[I)Llz;")
-	public final GpuTexture method16204(int arg0, int arg1, boolean arg2, int[] arg3) {
+    public final GpuTexture method16204(int arg0, int arg1, boolean arg2, int[] arg3) {
 		return this.method16033(arg0, arg1, arg2, arg3, 0, 0);
 	}
 
-	@ObfuscatedName("afc.ua(Lck;IIZ[B)Llz;")
-	public final GpuTexture method16028(TextureFormat arg0, int arg1, int arg2, boolean arg3, byte[] arg4) {
+    public final GpuTexture method16028(TextureFormat arg0, int arg1, int arg2, boolean arg3, byte[] arg4) {
 		return this.method15975(arg0, arg1, arg2, arg3, arg4, 0, 0);
 	}
 
-	@ObfuscatedName("afc.uf(Lck;IIZ[F)Llz;")
-	public final GpuTexture method15992(TextureFormat arg0, int arg1, int arg2, boolean arg3, float[] arg4) {
+    public final GpuTexture method15992(TextureFormat arg0, int arg1, int arg2, boolean arg3, float[] arg4) {
 		return this.method16032(arg0, arg1, arg2, arg3, arg4, 0, 0);
 	}
 
-	@ObfuscatedName("afc.uv()I")
-	public final int method16037() {
+    public final int method16037() {
 		return this.field10177;
 	}
 
-	@ObfuscatedName("afc.uw(I)V")
-	public final void setActiveTexture(int arg0) {
+    public final void setActiveTexture(int arg0) {
 		if (this.field10177 != arg0) {
 			this.field10177 = arg0;
 			this.method16051();
@@ -1932,8 +1637,7 @@ public abstract class GpuToolkit extends Toolkit {
 		}
 	}
 
-	@ObfuscatedName("afc.up(Lmq;)V")
-	public final void setTexture(BaseTexture arg0) {
+    public final void setTexture(BaseTexture arg0) {
 		if (this.field10093[this.field10177] == arg0) {
 			return;
 		}
@@ -1946,8 +1650,7 @@ public abstract class GpuToolkit extends Toolkit {
 		this.field10205 &= 0xFFFFFFEE;
 	}
 
-	@ObfuscatedName("afc.uh(I)V")
-	public final void method15991(int arg0) {
+    public final void method15991(int arg0) {
 		switch(arg0) {
 			case 0:
 				this.method16115(TextureCombineMode.field3395, TextureCombineMode.field3395);
@@ -1966,8 +1669,7 @@ public abstract class GpuToolkit extends Toolkit {
 		}
 	}
 
-	@ObfuscatedName("afc.us(Lmk;Lmk;)V")
-	public final void method16115(TextureCombineMode arg0, TextureCombineMode arg1) {
+    public final void method16115(TextureCombineMode arg0, TextureCombineMode arg1) {
 		boolean var3 = false;
 		if (this.field10136[this.field10177] != arg0) {
 			this.field10136[this.field10177] = arg0;
@@ -1984,42 +1686,35 @@ public abstract class GpuToolkit extends Toolkit {
 		}
 	}
 
-	@ObfuscatedName("afc.ux(ILmn;)V")
-	public final void method16041(int arg0, TextureCombiner arg1) {
+    public final void method16041(int arg0, TextureCombiner arg1) {
 		this.method16031(arg0, arg1, false, false);
 	}
 
-	@ObfuscatedName("afc.uu(ILmn;)V")
-	public final void method16042(int arg0, TextureCombiner arg1) {
+    public final void method16042(int arg0, TextureCombiner arg1) {
 		this.method16043(arg0, arg1, false);
 	}
 
-	@ObfuscatedName("afc.un(I)V")
-	public void method16044(int arg0) {
+    public void method16044(int arg0) {
 		if (this.field10160 != arg0) {
 			this.field10160 = arg0;
 			this.enableTextureFactor();
 		}
 	}
 
-	@ObfuscatedName("afc.ue()Lpq;")
-	public final Matrix4x4 getTextureMatrix() {
+    public final Matrix4x4 getTextureMatrix() {
 		return this.field10162[this.field10177];
 	}
 
-	@ObfuscatedName("afc.vq()Lpq;")
-	public final Matrix4x4 method16046() {
+    public final Matrix4x4 method16046() {
 		return this.field10162[this.field10177];
 	}
 
-	@ObfuscatedName("afc.vx(Lmv;)V")
-	public final void method16174(TextureTramsformType arg0) {
+    public final void method16174(TextureTramsformType arg0) {
 		this.field10135[this.field10177] = arg0;
 		this.method16270();
 	}
 
-	@ObfuscatedName("afc.vb()V")
-	public final void method16048() {
+    public final void method16048() {
 		if (this.field10135[this.field10177] != TextureTramsformType.DISABLE) {
 			this.field10135[this.field10177] = TextureTramsformType.DISABLE;
 			this.field10162[this.field10177].setToIdentity();
@@ -2027,25 +1722,21 @@ public abstract class GpuToolkit extends Toolkit {
 		}
 	}
 
-	@ObfuscatedName("afc.vl()V")
-	public final void method16270() {
+    public final void method16270() {
 		this.method16050();
 	}
 
-	@ObfuscatedName("afc.vu()Ldy;")
-	public WaterFogData method16053() {
+    public WaterFogData method16053() {
 		return this.field10165;
 	}
 
-	@ObfuscatedName("afc.ei(ILdy;)V")
-	public final void method2245(int arg0, WaterFogData arg1) {
+    public final void method2245(int arg0, WaterFogData arg1) {
 		this.field10164 = arg0;
 		this.field10165 = arg1;
 		this.field10133 = true;
 	}
 
-	@ObfuscatedName("afc.el(ILdy;)V")
-	public final void setWaterFog(int arg0, WaterFogData arg1) {
+    public final void setWaterFog(int arg0, WaterFogData arg1) {
 		if (!this.field10133) {
 			throw new RuntimeException("");
 		}
@@ -2057,13 +1748,11 @@ public abstract class GpuToolkit extends Toolkit {
 		}
 	}
 
-	@ObfuscatedName("afc.ej()V")
-	public final void method2247() {
+    public final void method2247() {
 		this.field10133 = false;
 	}
 
-	@ObfuscatedName("afc.vi(I)V")
-	public final void method16054(int arg0) {
+    public final void method16054(int arg0) {
 		if (this.field10096 == arg0) {
 			return;
 		}
@@ -2107,16 +1796,14 @@ public abstract class GpuToolkit extends Toolkit {
 		this.field10205 &= 0xFFFFFFE3;
 	}
 
-	@ObfuscatedName("afc.va(I)V")
-	public final void method16055(int arg0) {
+    public final void method16055(int arg0) {
 		if (this.field10174 != arg0) {
 			this.field10174 = arg0;
 			this.enableBlend();
 		}
 	}
 
-	@ObfuscatedName("afc.vs(B)V")
-	public final void method16056(byte arg0) {
+    public final void method16056(byte arg0) {
 		if (this.alphaRef == arg0) {
 			return;
 		}
@@ -2131,8 +1818,7 @@ public abstract class GpuToolkit extends Toolkit {
 		this.enableAlphaTest();
 	}
 
-	@ObfuscatedName("afc.vp(Z)V")
-	public final void method16061(boolean arg0) {
+    public final void method16061(boolean arg0) {
 		if (this.field10166 != arg0) {
 			this.field10166 = arg0;
 			this.enableFog();
@@ -2140,8 +1826,7 @@ public abstract class GpuToolkit extends Toolkit {
 		}
 	}
 
-	@ObfuscatedName("afc.dn(III)V")
-	public final void setFog(int arg0, int arg1, int arg2) {
+    public final void setFog(int arg0, int arg1, int arg2) {
 		if (this.fogDensity == arg0 && this.field10169 == arg1 && this.field10189 == arg2) {
 			return;
 		}
@@ -2152,23 +1837,20 @@ public abstract class GpuToolkit extends Toolkit {
 		this.enableFog();
 	}
 
-	@ObfuscatedName("afc.vd()V")
-	public final void method16088() {
+    public final void method16088() {
 		if (this.field10067 != null) {
 			this.field10067.method5419();
 		}
 		this.setFogParameters();
 	}
 
-	@ObfuscatedName("afc.cs(ILch;II)V")
-	public final void method2206(int arg0, SpriteRelated arg1, int arg2, int arg3) {
+    public final void method2206(int arg0, SpriteRelated arg1, int arg2, int arg3) {
 		this.method2219(false);
 		this.field10143.method1454(0.0F, 0.0F, (float) this.getRenderTarget().getWidth(), 0.0F, 0.0F, (float) this.getRenderTarget().getHeight(), 0, arg1, arg2, arg3);
 		this.method2219(true);
 	}
 
-	@ObfuscatedName("afc.bv(IIIIII)V")
-	public final void fillRectangle(int x, int y, int width, int height, int rgb, int arg5) {
+    public final void fillRectangle(int x, int y, int width, int height, int rgb, int arg5) {
 		if (this.hasMultiSample && this.field10180 != 0) {
 			this.enableAntiAliasing(false);
 		}
@@ -2184,8 +1866,7 @@ public abstract class GpuToolkit extends Toolkit {
 		}
 	}
 
-	@ObfuscatedName("afc.bz(IIIIII)V")
-	public final void drawRectangle(int x, int y, int width, int height, int rgb, int arg5) {
+    public final void drawRectangle(int x, int y, int width, int height, int rgb, int arg5) {
 		int var8 = width - 1;
 		int var9 = height - 1;
 		byte var7 = 0;
@@ -2204,31 +1885,25 @@ public abstract class GpuToolkit extends Toolkit {
 		}
 	}
 
-	@ObfuscatedName("afc.br(IIFIIFIIFIIII)V")
-	public final void method2552(int arg0, int arg1, float arg2, int arg3, int arg4, float arg5, int arg6, int arg7, float arg8, int arg9, int arg10, int arg11, int arg12) {
+    public final void method2552(int arg0, int arg1, float arg2, int arg3, int arg4, float arg5, int arg6, int arg7, float arg8, int arg9, int arg10, int arg11, int arg12) {
 	}
 
-	@ObfuscatedName("afc.bg(IIIII)V")
-	public final void method2182(int arg0, int arg1, int arg2, int arg3, int arg4) {
+    public final void method2182(int arg0, int arg1, int arg2, int arg3, int arg4) {
 	}
 
-	@ObfuscatedName("afc.ba(IIIII)V")
-	public final void drawHorizontalLine(int x, int y, int width, int rgb, int arg4) {
+    public final void drawHorizontalLine(int x, int y, int width, int rgb, int arg4) {
 		this.drawLine(x, y, x + width, y, rgb, arg4);
 	}
 
-	@ObfuscatedName("afc.bp(IIIII)V")
-	public final void drawVerticalLine(int x1, int y1, int x2, int y2, int arg4) {
+    public final void drawVerticalLine(int x1, int y1, int x2, int y2, int arg4) {
 		this.drawLine(x1, y1, x1, y1 + x2, y2, arg4);
 	}
 
-	@ObfuscatedName("afc.bj(IIIIII)V")
-	public final void drawLine(int x1, int y1, int x2, int y2, int rgb, int arg5) {
+    public final void drawLine(int x1, int y1, int x2, int y2, int rgb, int arg5) {
 		this.drawLine(x1, y1, x2, y2, rgb, 1, arg5);
 	}
 
-	@ObfuscatedName("afc.cl(IIIIIIIII)V")
-	public void method2187(int arg0, int arg1, int arg2, int arg3, int arg4, int arg5, int arg6, int arg7, int arg8) {
+    public void method2187(int arg0, int arg1, int arg2, int arg3, int arg4, int arg5, int arg6, int arg7, int arg8) {
 		float var10 = (float) arg2 - (float) arg0;
 		float var11 = (float) arg3 - (float) arg1;
 		float var12;
@@ -2308,16 +1983,13 @@ public abstract class GpuToolkit extends Toolkit {
 		var14.method5416();
 	}
 
-	@ObfuscatedName("afc.cg(IIIIIILch;IIIII)V")
-	public void method2537(int arg0, int arg1, int arg2, int arg3, int arg4, int arg5, SpriteRelated arg6, int arg7, int arg8, int arg9, int arg10, int arg11) {
+    public void method2537(int arg0, int arg1, int arg2, int arg3, int arg4, int arg5, SpriteRelated arg6, int arg7, int arg8, int arg9, int arg10, int arg11) {
 	}
 
-	@ObfuscatedName("afc.bs(IIIIIILch;II)V")
-	public final void method2183(int arg0, int arg1, int arg2, int arg3, int arg4, int arg5, SpriteRelated arg6, int arg7, int arg8) {
+    public final void method2183(int arg0, int arg1, int arg2, int arg3, int arg4, int arg5, SpriteRelated arg6, int arg7, int arg8) {
 	}
 
-	@ObfuscatedName("afc.ce(IIIIIII)V")
-	public final void drawLine(int x1, int y1, int x2, int y2, int rgb, int arg5, int arg6) {
+    public final void drawLine(int x1, int y1, int x2, int y2, int rgb, int arg5, int arg6) {
 		int var8 = (int) ((float) x1 + 1.0F);
 		int var9 = (int) ((float) y1 + 1.0F);
 		int var10 = (int) ((float) x2 + 1.0F);
@@ -2335,32 +2007,27 @@ public abstract class GpuToolkit extends Toolkit {
 		this.field10057.method1442((float) var17 - var21, (float) var18 - var22, (float) var10 - var21, (float) var11 - var22, (float) var17 + var21, (float) var18 + var22, 0, rgb, arg6);
 	}
 
-	@ObfuscatedName("afc.dt(Ldm;)V")
-	public final void drawParticles(ParticleList arg0) {
+    public final void drawParticles(ParticleList arg0) {
 		this.field10198.method5770(this, arg0);
 	}
 
-	@ObfuscatedName("afc.wo()V")
-	public final void method16074() {
+    public final void method16074() {
 		this.setStreamSource(0, this.field10196);
 		this.setVertexDeclaration(this.field10150);
 		this.drawPrimitive(PrimitiveType.LINELIST, 0, 1);
 	}
 
-	@ObfuscatedName("afc.wu()V")
-	public final void method16075() {
+    public final void method16075() {
 		this.method16076(PrimitiveType.TRIANGLEFAN, 2);
 	}
 
-	@ObfuscatedName("afc.wk(Lms;I)V")
-	public final void method16076(PrimitiveType arg0, int arg1) {
+    public final void method16076(PrimitiveType arg0, int arg1) {
 		this.setStreamSource(0, this.field10197);
 		this.setVertexDeclaration(this.field10055);
 		this.drawPrimitive(arg0, 0, arg1);
 	}
 
-	@ObfuscatedName("afc.wr()V")
-	public final void method16080() {
+    public final void method16080() {
 		if (this.field10205 == 2) {
 			return;
 		}
@@ -2374,8 +2041,7 @@ public abstract class GpuToolkit extends Toolkit {
 		this.field10205 = 2;
 	}
 
-	@ObfuscatedName("afc.wl()V")
-	public final void method16022() {
+    public final void method16022() {
 		if (this.field10205 == 8) {
 			return;
 		}
@@ -2389,22 +2055,18 @@ public abstract class GpuToolkit extends Toolkit {
 	}
 
 	// line 1872
-	@ObfuscatedName("afc.wv(CCCC)I")
-	public static int makeFourCC(char arg0, char arg1, char arg2, char arg3) {
+    public static int makeFourCC(char arg0, char arg1, char arg2, char arg3) {
 		return (arg0 & 0xFF) << 0 | (arg1 & 0xFF) << 8 | (arg2 & 0xFF) << 16 | (arg3 & 0xFF) << 24;
 	}
 
-	@ObfuscatedName("mi")
-	public static class PrimitiveVertexBuffer {
+    public static class PrimitiveVertexBuffer {
 
 		// $FF: synthetic field
 		public final GpuToolkit this$0;
 
-		@ObfuscatedName("mi.e")
-		public VertexBuffer field3412;
+        public VertexBuffer field3412;
 
-		@ObfuscatedName("mi.n")
-		public int field3411;
+        public int field3411;
 
 		// line 1879
 		public PrimitiveVertexBuffer(GpuToolkit arg0, int arg1) {
@@ -2413,8 +2075,7 @@ public abstract class GpuToolkit extends Toolkit {
 			this.method5840(arg1, this.field3411);
 		}
 
-		@ObfuscatedName("mi.e()V")
-		public void method5836() {
+        public void method5836() {
 			this.field3412 = this.this$0.createVertexBuffer(true);
 			this.this$0.createVertexDeclaration(new VertexDeclarationElement[] { new VertexDeclarationElement(new VertexDeclarationElementComponent[] { VertexDeclarationElementComponent.VERTEX, VertexDeclarationElementComponent.COLOR }) });
 			this.this$0.createVertexDeclaration(new VertexDeclarationElement[] { new VertexDeclarationElement(new VertexDeclarationElementComponent[] { VertexDeclarationElementComponent.VERTEX, VertexDeclarationElementComponent.COLOR }) });
@@ -2422,178 +2083,122 @@ public abstract class GpuToolkit extends Toolkit {
 			this.field3411 = 16;
 		}
 
-		@ObfuscatedName("mi.n()V")
-		public void method5838() {
+        public void method5838() {
 			this.field3412.delete();
 		}
 
-		@ObfuscatedName("mi.m(II)V")
-		public void method5840(int arg0, int arg1) {
+        public void method5840(int arg0, int arg1) {
 			if (!this.field3412.allocate(arg0, arg1)) {
 				System.out.println("PrimitiveVertexBuffer:ensureSize: failed vertexBuffer.allocate !");
 			}
 		}
 	}
 
-	@ObfuscatedName("afc.sr()F")
-	public abstract float method15954();
+    public abstract float method15954();
 
-	@ObfuscatedName("afc.sb()V")
-	public abstract void method15955();
+    public abstract void method15955();
 
-	@ObfuscatedName("afc.rx()Z")
-	public abstract boolean hasVertexShader();
+    public abstract boolean hasVertexShader();
 
-	@ObfuscatedName("afc.ry()Z")
-	public abstract boolean hasFragmentShader();
+    public abstract boolean hasFragmentShader();
 
-	@ObfuscatedName("afc.rg(Z)Z")
-	public abstract boolean method15959(boolean arg0);
+    public abstract boolean method15959(boolean arg0);
 
-	@ObfuscatedName("afc.rc(Ljava/lang/String;)Lho;")
-	public abstract GpuShader createShader(String arg0);
+    public abstract GpuShader createShader(String arg0);
 
-	@ObfuscatedName("afc.rn(Lpq;Lpq;Lpq;)V")
-	public abstract void method15967(Matrix4x4 arg0, Matrix4x4 arg1, Matrix4x4 arg2);
+    public abstract void method15967(Matrix4x4 arg0, Matrix4x4 arg1, Matrix4x4 arg2);
 
-	@ObfuscatedName("afc.ug(Lck;IIZ[BII)Llz;")
-	public abstract GpuTexture method15975(TextureFormat arg0, int arg1, int arg2, boolean arg3, byte[] arg4, int arg5, int arg6);
+    public abstract GpuTexture method15975(TextureFormat arg0, int arg1, int arg2, boolean arg3, byte[] arg4, int arg5, int arg6);
 
-	@ObfuscatedName("afc.vz()V")
-	public abstract void enableFog();
+    public abstract void enableFog();
 
-	@ObfuscatedName("afc.g()Ljava/lang/String;")
-	public abstract String hardwareInfo();
+    public abstract String hardwareInfo();
 
-	@ObfuscatedName("afc.tq()V")
-	public abstract void enableLightingAmbient();
+    public abstract void enableLightingAmbient();
 
-	@ObfuscatedName("afc.sa()V")
-	public abstract void method15997();
+    public abstract void method15997();
 
-	@ObfuscatedName("afc.sj()V")
-	public abstract void enableScissorTest();
+    public abstract void enableScissorTest();
 
-	@ObfuscatedName("afc.ti(Lpq;)V")
-	public abstract void method16006(Matrix4x4 arg0);
+    public abstract void method16006(Matrix4x4 arg0);
 
-	@ObfuscatedName("afc.tp()V")
-	public abstract void enableDepth();
+    public abstract void enableDepth();
 
-	@ObfuscatedName("afc.tv()V")
-	public abstract void enableDepthWrite();
+    public abstract void enableDepthWrite();
 
-	@ObfuscatedName("afc.tx()V")
-	public abstract void enableLightingDiffuse();
+    public abstract void enableLightingDiffuse();
 
-	@ObfuscatedName("afc.tl()V")
-	public abstract void method16023();
+    public abstract void method16023();
 
-	@ObfuscatedName("afc.td()V")
-	public abstract void enableLighting0and1();
+    public abstract void enableLighting0and1();
 
-	@ObfuscatedName("afc.um()V")
-	public abstract void method16025();
+    public abstract void method16025();
 
-	@ObfuscatedName("afc.uq(Lck;Ldg;)Z")
-	public abstract boolean method16026(TextureFormat arg0, DataType arg1);
+    public abstract boolean method16026(TextureFormat arg0, DataType arg1);
 
-	@ObfuscatedName("afc.uz(Lck;Ldg;II)Llz;")
-	public abstract GpuTexture method16030(TextureFormat arg0, DataType arg1, int arg2, int arg3);
+    public abstract GpuTexture method16030(TextureFormat arg0, DataType arg1, int arg2, int arg3);
 
-	@ObfuscatedName("afc.ur(ILmn;ZZ)V")
-	public abstract void method16031(int arg0, TextureCombiner arg1, boolean arg2, boolean arg3);
+    public abstract void method16031(int arg0, TextureCombiner arg1, boolean arg2, boolean arg3);
 
-	@ObfuscatedName("afc.ub(Lck;IIZ[FII)Llz;")
-	public abstract GpuTexture method16032(TextureFormat arg0, int arg1, int arg2, boolean arg3, float[] arg4, int arg5, int arg6);
+    public abstract GpuTexture method16032(TextureFormat arg0, int arg1, int arg2, boolean arg3, float[] arg4, int arg5, int arg6);
 
-	@ObfuscatedName("afc.uj(IIZ[III)Llz;")
-	public abstract GpuTexture method16033(int arg0, int arg1, boolean arg2, int[] arg3, int arg4, int arg5);
+    public abstract GpuTexture method16033(int arg0, int arg1, boolean arg2, int[] arg3, int arg4, int arg5);
 
-	@ObfuscatedName("afc.ut(IZ[[I)Lmr;")
-	public abstract GpuCubeTexture method16034(int arg0, boolean arg1, int[][] arg2);
+    public abstract GpuCubeTexture method16034(int arg0, boolean arg1, int[][] arg2);
 
-	@ObfuscatedName("afc.uo(ILmn;Z)V")
-	public abstract void method16043(int arg0, TextureCombiner arg1, boolean arg2);
+    public abstract void method16043(int arg0, TextureCombiner arg1, boolean arg2);
 
-	@ObfuscatedName("afc.vr()V")
-	public abstract void enableTextureFactor();
+    public abstract void enableTextureFactor();
 
-	@ObfuscatedName("afc.vo()V")
-	public abstract void method16050();
+    public abstract void method16050();
 
-	@ObfuscatedName("afc.vv()V")
-	public abstract void method16051();
+    public abstract void method16051();
 
-	@ObfuscatedName("afc.vt()V")
-	public abstract void method16052();
+    public abstract void method16052();
 
-	@ObfuscatedName("afc.vy(I)V")
-	public abstract void enableColorWriteTest(int arg0);
+    public abstract void enableColorWriteTest(int arg0);
 
-	@ObfuscatedName("afc.ve()V")
-	public abstract void enableAlphaTest();
+    public abstract void enableAlphaTest();
 
-	@ObfuscatedName("afc.vm()V")
-	public abstract void enableBlend();
+    public abstract void enableBlend();
 
-	@ObfuscatedName("afc.vf([Llk;)Llo;")
-	public abstract VertexDeclaration createVertexDeclaration(VertexDeclarationElement[] arg0);
+    public abstract VertexDeclaration createVertexDeclaration(VertexDeclarationElement[] arg0);
 
-	@ObfuscatedName("afc.vc(Z)Lml;")
-	public abstract GpuIndexBuffer createIndexBuffer(boolean arg0);
+    public abstract GpuIndexBuffer createIndexBuffer(boolean arg0);
 
-	@ObfuscatedName("afc.wz(Lms;II)V")
-	public abstract void drawPrimitive(PrimitiveType arg0, int arg1, int arg2);
+    public abstract void drawPrimitive(PrimitiveType arg0, int arg1, int arg2);
 
-	@ObfuscatedName("afc.wj(Lml;Lms;IIII)V")
-	public abstract void drawIndexedPrimitiveIB(GpuIndexBuffer arg0, PrimitiveType arg1, int arg2, int arg3, int arg4, int arg5);
+    public abstract void drawIndexedPrimitiveIB(GpuIndexBuffer arg0, PrimitiveType arg1, int arg2, int arg3, int arg4, int arg5);
 
-	@ObfuscatedName("afc.we(Lms;IIII)V")
-	public abstract void drawIndexedPrimitive(PrimitiveType arg0, int arg1, int arg2, int arg3, int arg4);
+    public abstract void drawIndexedPrimitive(PrimitiveType arg0, int arg1, int arg2, int arg3, int arg4);
 
-	@ObfuscatedName("afc.wp(I)V")
-	public abstract void enableFillMode(int arg0);
+    public abstract void enableFillMode(int arg0);
 
-	@ObfuscatedName("afc.vn(Z)Llr;")
-	public abstract VertexBuffer createVertexBuffer(boolean arg0);
+    public abstract VertexBuffer createVertexBuffer(boolean arg0);
 
-	@ObfuscatedName("afc.uy(Lck;Ldg;II)Lmo;")
-	public abstract Texture2 method16089(TextureFormat arg0, DataType arg1, int arg2, int arg3);
+    public abstract Texture2 method16089(TextureFormat arg0, DataType arg1, int arg2, int arg3);
 
-	@ObfuscatedName("afc.ud()V")
-	public abstract void method16091();
+    public abstract void method16091();
 
-	@ObfuscatedName("afc.wa(Lml;)V")
-	public abstract void setIndices(GpuIndexBuffer arg0);
+    public abstract void setIndices(GpuIndexBuffer arg0);
 
-	@ObfuscatedName("afc.wn(ILlr;)V")
-	public abstract void setStreamSource(int arg0, VertexBuffer arg1);
+    public abstract void setStreamSource(int arg0, VertexBuffer arg1);
 
-	@ObfuscatedName("afc.vh()V")
-	public abstract void setFogParameters();
+    public abstract void setFogParameters();
 
-	@ObfuscatedName("afc.vg()V")
-	public abstract void enableAlphaBlend();
+    public abstract void enableAlphaBlend();
 
-	@ObfuscatedName("afc.vk(Llo;)V")
-	public abstract void setVertexDeclaration(VertexDeclaration arg0);
+    public abstract void setVertexDeclaration(VertexDeclaration arg0);
 
-	@ObfuscatedName("afc.uk(Lck;IIIZ[B)Lll;")
-	public abstract GpuVolumeTexture method16197(TextureFormat arg0, int arg1, int arg2, int arg3, boolean arg4, byte[] arg5);
+    public abstract GpuVolumeTexture method16197(TextureFormat arg0, int arg1, int arg2, int arg3, boolean arg4, byte[] arg5);
 
-	@ObfuscatedName("afc.tg()V")
-	public abstract void enableLighting();
+    public abstract void enableLighting();
 
-	@ObfuscatedName("afc.vw()V")
-	public abstract void method16256();
+    public abstract void method16256();
 
-	@ObfuscatedName("afc.uc(Lck;Ldg;)Z")
-	public abstract boolean method16289(TextureFormat arg0, DataType arg1);
+    public abstract boolean method16289(TextureFormat arg0, DataType arg1);
 
-	@ObfuscatedName("afc.vj(Z)V")
-	public abstract void enableAntiAliasing(boolean arg0);
+    public abstract void enableAntiAliasing(boolean arg0);
 
-	@ObfuscatedName("afc.tk()V")
-	public abstract void enableLightingView();
+    public abstract void enableLightingView();
 }

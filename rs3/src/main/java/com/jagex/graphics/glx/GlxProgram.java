@@ -9,56 +9,39 @@ import jaggl.OpenGL;
 import java.util.HashMap;
 import java.util.Map;
 
-@ObfuscatedName("agl")
 public class GlxProgram extends GpuProgram {
 
-	@ObfuscatedName("agl.l")
-	public GlxToolkit glRenderer;
+    public GlxToolkit glRenderer;
 
-	@ObfuscatedName("agl.u")
-	public GlxProgramManager glProgram;
+    public GlxProgramManager glProgram;
 
-	@ObfuscatedName("agl.z")
-	public int field10373;
+    public int field10373;
 
-	@ObfuscatedName("agl.p")
-	public int vertexShader3d;
+    public int vertexShader3d;
 
-	@ObfuscatedName("agl.d")
-	public int pixelShader3d;
+    public int pixelShader3d;
 
-	@ObfuscatedName("agl.c")
-	public boolean field10372;
+    public boolean field10372;
 
-	@ObfuscatedName("agl.r")
-	public int[] field10377;
+    public int[] field10377;
 
-	@ObfuscatedName("agl.v")
-	public static final int[] field10378 = new int[2];
+    public static final int[] field10378 = new int[2];
 
-	@ObfuscatedName("agl.o")
-	public static final float[] field10380 = new float[16];
+    public static final float[] field10380 = new float[16];
 
-	@ObfuscatedName("agl.s")
-	public final Map field10368;
+    public final Map field10368;
 
-	@ObfuscatedName("agl.y")
-	public final Map field10381;
+    public final Map field10381;
 
-	@ObfuscatedName("agl.q")
-	public final Map field10383;
+    public final Map field10383;
 
-	@ObfuscatedName("agl.x")
-	public final Map field10382;
+    public final Map field10382;
 
-	@ObfuscatedName("agl.b")
-	public final Map field10384;
+    public final Map field10384;
 
-	@ObfuscatedName("agl.h")
-	public String vertexShaderName;
+    public String vertexShaderName;
 
-	@ObfuscatedName("agl.a")
-	public String fragmentShaderName;
+    public String fragmentShaderName;
 
 	public GlxProgram(GlxToolkit glRenderer, GlxProgramManager glProgram, ProgramData programData) {
 		this(glRenderer, programData);
@@ -107,8 +90,7 @@ public class GlxProgram extends GpuProgram {
 		ArrayUtil.method14009(this.field10377, 0, this.field10377.length, -1);
 	}
 
-	@ObfuscatedName("agl.af(ILjava/lang/String;Ljava/lang/String;)I")
-	public int method16478(int arg0, String arg1, String arg2) {
+    public int method16478(int arg0, String arg1, String arg2) {
 		if (arg1 == null) {
 			return 0;
 		}
@@ -123,8 +105,7 @@ public class GlxProgram extends GpuProgram {
 		return var4;
 	}
 
-	@ObfuscatedName("agl.n()Z")
-	public boolean compile() {
+    public boolean compile() {
 		if (this.field10372) {
 			return true;
 		}
@@ -190,8 +171,7 @@ public class GlxProgram extends GpuProgram {
 		return true;
 	}
 
-	@ObfuscatedName("agl.k(Laql;F)V")
-	public void setUniform1f(ProgramUniform arg0, float arg1) {
+    public void setUniform1f(ProgramUniform arg0, float arg1) {
 		int var3 = ((GlxProgramUniform) arg0).method19681();
 		if (var3 == -1 || this.field10368.get(var3) != null && (Float) this.field10368.get(var3) == arg1) {
 			return;
@@ -203,8 +183,7 @@ public class GlxProgram extends GpuProgram {
 		OpenGL.glUniform1f(var3, arg1);
 	}
 
-	@ObfuscatedName("agl.f(Laql;FF)V")
-	public void setUniform2f(ProgramUniform arg0, float arg1, float arg2) {
+    public void setUniform2f(ProgramUniform arg0, float arg1, float arg2) {
 		int var4 = ((GlxProgramUniform) arg0).method19681();
 		if (var4 == -1 || this.field10368.get(var4) != null && this.field10381.get(var4) != null && (Float) this.field10368.get(var4) == arg1 && (Float) this.field10381.get(var4) == arg2) {
 			return;
@@ -217,8 +196,7 @@ public class GlxProgram extends GpuProgram {
 		OpenGL.glUniform2f(var4, arg1, arg2);
 	}
 
-	@ObfuscatedName("agl.w(Laql;FFF)V")
-	public void setUniform3f(ProgramUniform arg0, float arg1, float arg2, float arg3) {
+    public void setUniform3f(ProgramUniform arg0, float arg1, float arg2, float arg3) {
 		int var5 = ((GlxProgramUniform) arg0).method19681();
 		if (var5 == -1 || this.field10368.get(var5) != null && this.field10381.get(var5) != null && this.field10383.get(var5) != null && (Float) this.field10368.get(var5) == arg1 && (Float) this.field10381.get(var5) == arg2 && (Float) this.field10383.get(var5) == arg3) {
 			return;
@@ -232,8 +210,7 @@ public class GlxProgram extends GpuProgram {
 		OpenGL.glUniform3f(var5, arg1, arg2, arg3);
 	}
 
-	@ObfuscatedName("agl.l(Laql;FFFF)V")
-	public void setUniform4f(ProgramUniform arg0, float arg1, float arg2, float arg3, float arg4) {
+    public void setUniform4f(ProgramUniform arg0, float arg1, float arg2, float arg3, float arg4) {
 		int var6 = ((GlxProgramUniform) arg0).method19681();
 		if (var6 == -1 || this.field10368.get(var6) != null && this.field10381.get(var6) != null && this.field10383.get(var6) != null && this.field10382.get(var6) != null && (Float) this.field10368.get(var6) == arg1 && (Float) this.field10381.get(var6) == arg2 && (Float) this.field10383.get(var6) == arg3 && (Float) this.field10382.get(var6) == arg4) {
 			return;
@@ -248,16 +225,14 @@ public class GlxProgram extends GpuProgram {
 		OpenGL.glUniform4f(var6, arg1, arg2, arg3, arg4);
 	}
 
-	@ObfuscatedName("agl.z(Laql;[FI)V")
-	public void setUniformFloatv(ProgramUniform arg0, float[] arg1, int arg2) {
+    public void setUniformFloatv(ProgramUniform arg0, float[] arg1, int arg2) {
 		int var4 = ((GlxProgramUniform) arg0).method19681();
 		if (var4 != -1) {
 			OpenGL.glUniform4fv(var4, arg2, arg1, 0);
 		}
 	}
 
-	@ObfuscatedName("agl.p(Laql;Lpq;)V")
-	public void setUniform2fv(ProgramUniform arg0, Matrix4x4 arg1) {
+    public void setUniform2fv(ProgramUniform arg0, Matrix4x4 arg1) {
 		assert arg0.getType() == UniformType.MATRIX_4X2;
 		int var3 = ((GlxProgramUniform) arg0).method19681();
 		if (var3 != -1) {
@@ -265,8 +240,7 @@ public class GlxProgram extends GpuProgram {
 		}
 	}
 
-	@ObfuscatedName("agl.d(Laql;Lpq;)V")
-	public void setUniform4fv(ProgramUniform arg0, Matrix4x4 arg1) {
+    public void setUniform4fv(ProgramUniform arg0, Matrix4x4 arg1) {
 		assert arg0.getType() == UniformType.MATRIX_4X4;
 		int var3 = ((GlxProgramUniform) arg0).method19681();
 		if (var3 != -1) {
@@ -274,8 +248,7 @@ public class GlxProgram extends GpuProgram {
 		}
 	}
 
-	@ObfuscatedName("agl.c(Laql;ILmq;)V")
-	public void setUniform1i(ProgramUniform arg0, int arg1, BaseTexture arg2) {
+    public void setUniform1i(ProgramUniform arg0, int arg1, BaseTexture arg2) {
 		int var4 = ((GlxProgramUniform) arg0).method19681();
 		if (var4 == -1) {
 			return;
@@ -296,45 +269,37 @@ public class GlxProgram extends GpuProgram {
 		}
 	}
 
-	@ObfuscatedName("agl.r(IFFF)V")
-	public void setUniform3f(int arg0, float arg1, float arg2, float arg3) {
+    public void setUniform3f(int arg0, float arg1, float arg2, float arg3) {
 		OpenGL.glUniform3f(arg0, arg1, arg2, arg3);
 	}
 
-	@ObfuscatedName("agl.v(IFFFF)V")
-	public void setUniform4f(int arg0, float arg1, float arg2, float arg3, float arg4) {
+    public void setUniform4f(int arg0, float arg1, float arg2, float arg3, float arg4) {
 		OpenGL.glUniform4f(arg0, arg1, arg2, arg3, arg4);
 	}
 
-	@ObfuscatedName("agl.o(I[FI)V")
-	public void setUniformFloatv(int arg0, float[] arg1, int arg2) {
+    public void setUniformFloatv(int arg0, float[] arg1, int arg2) {
 		OpenGL.glUniform4fv(arg0, arg2, arg1, 0);
 	}
 
-	@ObfuscatedName("agl.s(ILpq;)V")
-	public void setUniform3fv(int arg0, Matrix4x4 arg1) {
+    public void setUniform3fv(int arg0, Matrix4x4 arg1) {
 		OpenGL.glUniform3fv(arg0, 3, arg1.method6699(field10380), 0);
 	}
 
-	@ObfuscatedName("agl.y(ILpq;)V")
-	public void setUniform2fv(int arg0, Matrix4x4 arg1) {
+    public void setUniform2fv(int arg0, Matrix4x4 arg1) {
 		OpenGL.glUniform2fv(arg0, 4, arg1.method6682(field10380), 0);
 	}
 
-	@ObfuscatedName("agl.q(ILpq;)V")
-	public void setUniform4fv(int arg0, Matrix4x4 arg1) {
+    public void setUniform4fv(int arg0, Matrix4x4 arg1) {
 		OpenGL.glUniform4fv(arg0, 4, arg1.toArray(field10380), 0);
 	}
 
-	@ObfuscatedName("agl.x(IILmq;)V")
-	public void setUniform1i(int arg0, int arg1, BaseTexture arg2) {
+    public void setUniform1i(int arg0, int arg1, BaseTexture arg2) {
 		this.glRenderer.setActiveTexture(arg1);
 		this.glRenderer.setTexture(arg2);
 		OpenGL.glUniform1i(arg0, arg1);
 	}
 
-	@ObfuscatedName("agl.m()V")
-	public void delete() {
+    public void delete() {
 		if (this.field10373 == 0) {
 			return;
 		}

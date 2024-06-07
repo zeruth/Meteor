@@ -6,29 +6,21 @@ import com.jagex.core.utils.StringTools;
 import com.jagex.game.shared.framework.chat.QuickChatDynamicCommand;
 import deob.ObfuscatedName;
 
-@ObfuscatedName("asq")
 public class QuickChatPhraseType extends SecondaryNode {
 
-	@ObfuscatedName("asq.l")
-	public QuickChatPhraseTypeList phrases;
+    public QuickChatPhraseTypeList phrases;
 
-	@ObfuscatedName("asq.u")
-	public String[] field12379;
+    public String[] field12379;
 
-	@ObfuscatedName("asq.z")
-	public int[] commands;
+    public int[] commands;
 
-	@ObfuscatedName("asq.p")
-	public int[][] field12378;
+    public int[][] field12378;
 
-	@ObfuscatedName("asq.d")
-	public int[] autoResponses;
+    public int[] autoResponses;
 
-	@ObfuscatedName("asq.c")
-	public boolean field12382 = true;
+    public boolean field12382 = true;
 
-	@ObfuscatedName("asq.e(Lalw;I)V")
-	public void decode(Packet buf) {
+    public void decode(Packet buf) {
 		while (true) {
 			int code = buf.g1();
 			if (code == 0) {
@@ -38,8 +30,7 @@ public class QuickChatPhraseType extends SecondaryNode {
 		}
 	}
 
-	@ObfuscatedName("asq.n(Lalw;IB)V")
-	public void decode(Packet buf, int code) {
+    public void decode(Packet buf, int code) {
 		if (code == 1) {
 			this.field12379 = StringTools.split(buf.gjstr(), '<');
 		} else if (code == 2) {
@@ -68,8 +59,7 @@ public class QuickChatPhraseType extends SecondaryNode {
 		}
 	}
 
-	@ObfuscatedName("asq.m(Lalw;[II)V")
-	public void putDynamics(Packet buf, int[] dynamics) {
+    public void putDynamics(Packet buf, int[] dynamics) {
 		if (this.commands == null) {
 			return;
 		}
@@ -81,8 +71,7 @@ public class QuickChatPhraseType extends SecondaryNode {
 		}
 	}
 
-	@ObfuscatedName("asq.k(Lalw;B)Ljava/lang/String;")
-	public String method19507(Packet arg0) {
+    public String method19507(Packet arg0) {
 		StringBuilder var2 = new StringBuilder(80);
 		if (this.commands != null) {
 			for (int var3 = 0; var3 < this.commands.length; var3++) {
@@ -94,8 +83,7 @@ public class QuickChatPhraseType extends SecondaryNode {
 		return var2.toString();
 	}
 
-	@ObfuscatedName("asq.f(I)Ljava/lang/String;")
-	public String getText() {
+    public String getText() {
 		StringBuilder var1 = new StringBuilder(80);
 		if (this.field12379 == null) {
 			return "";
@@ -110,18 +98,15 @@ public class QuickChatPhraseType extends SecondaryNode {
 		return var1.toString();
 	}
 
-	@ObfuscatedName("asq.w(I)I")
-	public int length() {
+    public int length() {
 		return this.commands == null ? 0 : this.commands.length;
 	}
 
-	@ObfuscatedName("asq.l(IB)Lxs;")
-	public QuickChatDynamicCommand getDynamicCommand(int arg0) {
+    public QuickChatDynamicCommand getDynamicCommand(int arg0) {
 		return this.commands == null || arg0 < 0 || arg0 > this.commands.length ? null : QuickChatDynamicCommand.getDynamicCommand(this.commands[arg0]);
 	}
 
-	@ObfuscatedName("asq.u(III)I")
-	public int method19506(int arg0, int arg1) {
+    public int method19506(int arg0, int arg1) {
 		if (this.commands == null || arg0 < 0 || arg0 > this.commands.length) {
 			return -1;
 		} else if (this.field12378[arg0] == null || arg1 < 0 || arg1 > this.field12378[arg0].length) {
@@ -131,8 +116,7 @@ public class QuickChatPhraseType extends SecondaryNode {
 		}
 	}
 
-	@ObfuscatedName("asq.z(B)V")
-	public void postDecode() {
+    public void postDecode() {
 		if (this.autoResponses != null) {
 			for (int var1 = 0; var1 < this.autoResponses.length; var1++) {
 				this.autoResponses[var1] |= 0x8000;

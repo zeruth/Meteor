@@ -4,11 +4,9 @@ import com.jagex.core.io.Packet;
 import com.jagex.js5.Js5;
 import deob.ObfuscatedName;
 
-@ObfuscatedName("wx")
 public class CutsceneDefaults {
 
-	@ObfuscatedName("wx.e")
-	public Binding cancelbinding;
+    public Binding cancelbinding;
 
 	public CutsceneDefaults(Js5 arg0) {
 		byte[] var2 = arg0.fetchFile(DefaultsGroup.CUTSCENE.js5GroupId);
@@ -17,8 +15,7 @@ public class CutsceneDefaults {
 		}
 	}
 
-	@ObfuscatedName("wx.e(Lalw;I)V")
-	public void method9847(Packet arg0) {
+    public void method9847(Packet arg0) {
 		while (true) {
 			int var2 = arg0.g1();
 			if (var2 == 0) {

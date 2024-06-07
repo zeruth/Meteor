@@ -11,14 +11,11 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-@ObfuscatedName("adh")
 public class DBTableIndex {
 
-	@ObfuscatedName("adh.m")
-	public BaseVarType field9181;
+    public BaseVarType field9181;
 
-	@ObfuscatedName("adh.k")
-	public Map field9180;
+    public Map field9180;
 
 	public DBTableIndex(Js5 arg0, int arg1, int arg2) {
 		byte[] var4 = arg0.getfile(arg1, arg2 + 1);
@@ -30,8 +27,7 @@ public class DBTableIndex {
 		this.method15188(new Packet(var3));
 	}
 
-	@ObfuscatedName("adh.e(Lalw;B)V")
-	public void method15188(Packet arg0) {
+    public void method15188(Packet arg0) {
 		this.field9181 = (BaseVarType) SerializableEnums.decode(BaseVarType.values(), arg0.g1());
 		int var2 = arg0.gVarInt2();
 		this.field9180 = new HashMap(var2);
@@ -47,8 +43,7 @@ public class DBTableIndex {
 		}
 	}
 
-	@ObfuscatedName("adh.n(Ljava/lang/Object;I)Ljava/util/List;")
-	public List method15187(Object arg0) {
+    public List method15187(Object arg0) {
 		return (List) this.field9180.get(arg0);
 	}
 }

@@ -9,90 +9,63 @@ import com.jagex.game.world.entity.ObjectNode;
 import com.jagex.math.IntMath;
 import deob.ObfuscatedName;
 
-@ObfuscatedName("kr")
 public class ClanSettings {
 
-	@ObfuscatedName("kr.n")
-	public boolean useUserHashes;
+    public boolean useUserHashes;
 
-	@ObfuscatedName("kr.m")
-	public boolean useDisplayNames;
+    public boolean useDisplayNames;
 
-	@ObfuscatedName("kr.k")
-	public long owner;
+    public long owner;
 
-	@ObfuscatedName("kr.f")
-	public int updateNum = 0;
+    public int updateNum = 0;
 
-	@ObfuscatedName("kr.w")
-	public String clanName = null;
+    public String clanName = null;
 
-	@ObfuscatedName("kr.l")
-	public int field3096 = 0;
+    public int field3096 = 0;
 
-	@ObfuscatedName("kr.u")
-	public boolean allowUnaffined;
+    public boolean allowUnaffined;
 
-	@ObfuscatedName("kr.z")
-	public byte rankTalk;
+    public byte rankTalk;
 
-	@ObfuscatedName("kr.p")
-	public byte rankKick;
+    public byte rankKick;
 
-	@ObfuscatedName("kr.d")
-	public byte rankLootshare;
+    public byte rankLootshare;
 
-	@ObfuscatedName("kr.c")
-	public byte coinshare;
+    public byte coinshare;
 
-	@ObfuscatedName("kr.r")
-	public int memberCount;
+    public int memberCount;
 
-	@ObfuscatedName("kr.v")
-	public long[] affinedUserHashes;
+    public long[] affinedUserHashes;
 
-	@ObfuscatedName("kr.o")
-	public byte[] affinedRanks;
+    public byte[] affinedRanks;
 
-	@ObfuscatedName("kr.s")
-	public int[] field3118;
+    public int[] field3118;
 
-	@ObfuscatedName("kr.y")
-	public int[] extra;
+    public int[] extra;
 
-	@ObfuscatedName("kr.q")
-	public int[] affinedJoinedRunedays;
+    public int[] affinedJoinedRunedays;
 
-	@ObfuscatedName("kr.x")
-	public boolean[] affinedMutes;
+    public boolean[] affinedMutes;
 
-	@ObfuscatedName("kr.b")
-	public int currentOwnerSlot = -1;
+    public int currentOwnerSlot = -1;
 
-	@ObfuscatedName("kr.h")
-	public int replacementOwnerSlot = -1;
+    public int replacementOwnerSlot = -1;
 
-	@ObfuscatedName("kr.a")
-	public int bannedCount;
+    public int bannedCount;
 
-	@ObfuscatedName("kr.g")
-	public long[] bannedUserHashes;
+    public long[] bannedUserHashes;
 
-	@ObfuscatedName("kr.i")
-	public String[] affinedDisplayNames;
+    public String[] affinedDisplayNames;
 
-	@ObfuscatedName("kr.j")
-	public String[] bannedDisplayNames;
+    public String[] bannedDisplayNames;
 
-	@ObfuscatedName("kr.t")
-	public HashTable settingsMap;
+    public HashTable settingsMap;
 
 	public ClanSettings(Packet buf) {
 		this.decode(buf);
 	}
 
-	@ObfuscatedName("kr.e(II)V")
-	public void allocAffined(int num) {
+    public void allocAffined(int num) {
 		if (this.useUserHashes) {
 			if (this.affinedUserHashes == null) {
 				this.affinedUserHashes = new long[num];
@@ -129,8 +102,7 @@ public class ClanSettings {
 		}
 	}
 
-	@ObfuscatedName("kr.n(II)V")
-	public void allocBanned(int num) {
+    public void allocBanned(int num) {
 		if (this.useUserHashes) {
 			if (this.bannedUserHashes == null) {
 				this.bannedUserHashes = new long[num];
@@ -148,8 +120,7 @@ public class ClanSettings {
 		}
 	}
 
-	@ObfuscatedName("kr.m(Ljava/lang/String;B)I")
-	public int getAffinedSlot(String displayName) {
+    public int getAffinedSlot(String displayName) {
 		if (displayName == null || displayName.length() == 0) {
 			return -1;
 		}
@@ -161,14 +132,12 @@ public class ClanSettings {
 		return -1;
 	}
 
-	@ObfuscatedName("kr.k(IIII)I")
-	public int getExtraInfo(int arg0, int arg1, int arg2) {
+    public int getExtraInfo(int arg0, int arg1, int arg2) {
 		int var4 = arg2 == 31 ? -1 : (0x1 << arg2 + 1) - 1;
 		return (this.extra[arg0] & var4) >>> arg1;
 	}
 
-	@ObfuscatedName("kr.f(II)Ljava/lang/Integer;")
-	public Integer getSettingInt(int uid) {
+    public Integer getSettingInt(int uid) {
 		if (this.settingsMap == null) {
 			return null;
 		} else {
@@ -177,8 +146,7 @@ public class ClanSettings {
 		}
 	}
 
-	@ObfuscatedName("kr.w(II)Ljava/lang/Long;")
-	public Long getSettingLong(int uid) {
+    public Long getSettingLong(int uid) {
 		if (this.settingsMap == null) {
 			return null;
 		} else {
@@ -187,8 +155,7 @@ public class ClanSettings {
 		}
 	}
 
-	@ObfuscatedName("kr.l(II)Ljava/lang/String;")
-	public String getSettingString(int uid) {
+    public String getSettingString(int uid) {
 		if (this.settingsMap == null) {
 			return null;
 		} else {
@@ -197,8 +164,7 @@ public class ClanSettings {
 		}
 	}
 
-	@ObfuscatedName("kr.u(B)[I")
-	public int[] getSortedAffinedSlot() {
+    public int[] getSortedAffinedSlot() {
 		if (this.field3118 == null) {
 			String[] var1 = new String[this.memberCount];
 			this.field3118 = new int[this.memberCount];
@@ -215,8 +181,7 @@ public class ClanSettings {
 		return this.field3118;
 	}
 
-	@ObfuscatedName("kr.z(JLjava/lang/String;IB)V")
-	public void doAddMember(long userhash, String displayname, int joinedRunedays) {
+    public void doAddMember(long userhash, String displayname, int joinedRunedays) {
 		if (displayname != null && displayname.length() == 0) {
 			displayname = null;
 		}
@@ -248,8 +213,7 @@ public class ClanSettings {
 		}
 	}
 
-	@ObfuscatedName("kr.p(II)V")
-	public void doDeleteMember(int pos) {
+    public void doDeleteMember(int pos) {
 		if (pos < 0 || pos >= this.memberCount) {
 			throw new RuntimeException("Invalid pos in doDeleteMember - pos:" + pos + " memberCount:" + this.memberCount);
 		}
@@ -279,8 +243,7 @@ public class ClanSettings {
 		this.method5299();
 	}
 
-	@ObfuscatedName("kr.d(I)V")
-	public void method5299() {
+    public void method5299() {
 		if (this.memberCount == 0) {
 			this.currentOwnerSlot = -1;
 			this.replacementOwnerSlot = -1;
@@ -307,8 +270,7 @@ public class ClanSettings {
 		}
 	}
 
-	@ObfuscatedName("kr.c(JLjava/lang/String;I)V")
-	public void doAddBanned(long userhash, String displayname) {
+    public void doAddBanned(long userhash, String displayname) {
 		if (displayname != null && displayname.length() == 0) {
 			displayname = null;
 		}
@@ -330,8 +292,7 @@ public class ClanSettings {
 		}
 	}
 
-	@ObfuscatedName("kr.r(II)V")
-	public void doDeleteBanned(int pos) {
+    public void doDeleteBanned(int pos) {
 		this.bannedCount--;
 		if (this.bannedCount == 0) {
 			this.bannedUserHashes = null;
@@ -346,8 +307,7 @@ public class ClanSettings {
 		}
 	}
 
-	@ObfuscatedName("kr.v(IBB)I")
-	public int doSetMemberRank(int pos, byte rank) {
+    public int doSetMemberRank(int pos, byte rank) {
 		if (rank == 126 || rank == 127) {
 			return -1;
 		} else if (this.currentOwnerSlot == pos && (this.replacementOwnerSlot == -1 || this.affinedRanks[this.replacementOwnerSlot] < 125)) {
@@ -361,8 +321,7 @@ public class ClanSettings {
 		}
 	}
 
-	@ObfuscatedName("kr.o(IZB)I")
-	public int doSetMemberMuted(int pos, boolean muted) {
+    public int doSetMemberMuted(int pos, boolean muted) {
 		if (this.affinedMutes[pos] == muted) {
 			return -1;
 		} else {
@@ -371,8 +330,7 @@ public class ClanSettings {
 		}
 	}
 
-	@ObfuscatedName("kr.s(IIIIB)I")
-	public int doSetMemberExtraInfo(int pos, int arg1, int arg2, int arg3) {
+    public int doSetMemberExtraInfo(int pos, int arg1, int arg2, int arg3) {
 		int var5 = (0x1 << arg2) - 1;
 		int var6 = arg3 == 31 ? -1 : (0x1 << arg3 + 1) - 1;
 		int var7 = var6 ^ var5;
@@ -388,8 +346,7 @@ public class ClanSettings {
 		}
 	}
 
-	@ObfuscatedName("kr.y(III)Z")
-	public boolean doExtraSettingInt(int uid, int setting) {
+    public boolean doExtraSettingInt(int uid, int setting) {
 		if (this.settingsMap == null) {
 			this.settingsMap = new HashTable(4);
 		} else {
@@ -410,8 +367,7 @@ public class ClanSettings {
 		return true;
 	}
 
-	@ObfuscatedName("kr.q(IIIII)Z")
-	public boolean doExtraSettingVarbit(int uid, int arg1, int arg2, int arg3) {
+    public boolean doExtraSettingVarbit(int uid, int arg1, int arg2, int arg3) {
 		int var5 = (0x1 << arg2) - 1;
 		int var6 = arg3 == 31 ? -1 : (0x1 << arg3 + 1) - 1;
 		int var7 = var6 ^ var5;
@@ -438,8 +394,7 @@ public class ClanSettings {
 		return true;
 	}
 
-	@ObfuscatedName("kr.x(IJ)Z")
-	public boolean doExtraSettingLong(int uid, long setting) {
+    public boolean doExtraSettingLong(int uid, long setting) {
 		if (this.settingsMap == null) {
 			this.settingsMap = new HashTable(4);
 		} else {
@@ -460,8 +415,7 @@ public class ClanSettings {
 		return true;
 	}
 
-	@ObfuscatedName("kr.b(ILjava/lang/String;I)Z")
-	public boolean doExtraSettingString(int uid, String setting) {
+    public boolean doExtraSettingString(int uid, String setting) {
 		if (setting == null) {
 			setting = "";
 		} else if (setting.length() > 80) {
@@ -490,8 +444,7 @@ public class ClanSettings {
 		return true;
 	}
 
-	@ObfuscatedName("kr.h(Lalw;B)V")
-	public void decode(Packet buf) {
+    public void decode(Packet buf) {
 		int version = buf.g1();
 		if (version < 1 || version > 6) {
 			throw new RuntimeException("Unsupported ClanSettings version: " + version);

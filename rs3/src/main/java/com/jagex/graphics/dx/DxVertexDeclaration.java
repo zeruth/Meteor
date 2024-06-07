@@ -9,14 +9,11 @@ import jagdx.IUnknown;
 
 import java.nio.ByteBuffer;
 
-@ObfuscatedName("ait")
 public class DxVertexDeclaration extends VertexDeclaration {
 
-	@ObfuscatedName("ait.n")
-	public DxToolkit renderer;
+    public DxToolkit renderer;
 
-	@ObfuscatedName("ait.m")
-	public long pointer = 0L;
+    public long pointer = 0L;
 
 	public DxVertexDeclaration(DxToolkit arg0, VertexDeclarationElement[] arg1) {
 		super(arg1);
@@ -52,8 +49,7 @@ public class DxVertexDeclaration extends VertexDeclaration {
 		this.renderer.method15985(this);
 	}
 
-	@ObfuscatedName("ait.e(Ljava/nio/ByteBuffer;SSBBBB)V")
-	public void method16795(ByteBuffer arg0, short arg1, short arg2, byte arg3, byte arg4, byte arg5, byte arg6) {
+    public void method16795(ByteBuffer arg0, short arg1, short arg2, byte arg3, byte arg4, byte arg5, byte arg6) {
 		arg0.putShort(arg1);
 		arg0.putShort(arg2);
 		arg0.put(arg3);
@@ -62,8 +58,7 @@ public class DxVertexDeclaration extends VertexDeclaration {
 		arg0.put(arg6);
 	}
 
-	@ObfuscatedName("ait.m()V")
-	public void delete() {
+    public void delete() {
 		if (this.pointer != 0L) {
 			IUnknown.Release(this.pointer);
 			this.pointer = 0L;
@@ -71,8 +66,7 @@ public class DxVertexDeclaration extends VertexDeclaration {
 		this.renderer.method16198(this);
 	}
 
-	@ObfuscatedName("ait.n()V")
-	public void method16794() {
+    public void method16794() {
 		if (this.pointer != 0L) {
 			this.renderer.method19023(this.pointer);
 			this.pointer = 0L;

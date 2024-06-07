@@ -3,29 +3,21 @@ package com.jagex.graphics.gl;
 import com.jagex.graphics.gl.effects.*;
 import deob.ObfuscatedName;
 
-@ObfuscatedName("bw")
 public class GlEffectList {
 
-	@ObfuscatedName("bw.e")
-	public GlEffect[] field1030;
+    public GlEffect[] field1030;
 
-	@ObfuscatedName("bw.n")
-	public int field1027 = 0;
+    public int field1027 = 0;
 
-	@ObfuscatedName("bw.m")
-	public int field1028 = 0;
+    public int field1028 = 0;
 
-	@ObfuscatedName("bw.k")
-	public int field1026 = 0;
+    public int field1026 = 0;
 
-	@ObfuscatedName("bw.f")
-	public final GlToolkit field1029;
+    public final GlToolkit field1029;
 
-	@ObfuscatedName("bw.w")
-	public final GlWaterRelated field1031;
+    public final GlWaterRelated field1031;
 
-	@ObfuscatedName("bw.l")
-	public final GlEffect_Sub1 field1032;
+    public final GlEffect_Sub1 field1032;
 
 	public GlEffectList(GlToolkit arg0) {
 		this.field1029 = arg0;
@@ -48,13 +40,11 @@ public class GlEffectList {
 		}
 	}
 
-	@ObfuscatedName("bw.e(I)Z")
-	public boolean method1277(int arg0) {
+    public boolean method1277(int arg0) {
 		return this.field1030[arg0].method1252();
 	}
 
-	@ObfuscatedName("bw.n(IIIZZ)V")
-	public void method1278(int arg0, int arg1, int arg2, boolean arg3, boolean arg4) {
+    public void method1278(int arg0, int arg1, int arg2, boolean arg3, boolean arg4) {
 		boolean var6 = arg4 & this.field1029.method15730();
 		if (!var6 && (arg0 == 4 || arg0 == 8 || arg0 == 9)) {
 			if (arg0 == 4) {
@@ -87,8 +77,7 @@ public class GlEffectList {
 		}
 	}
 
-	@ObfuscatedName("bw.m(Lbq;I)Z")
-	public boolean method1276(GlTexture arg0, int arg1) {
+    public boolean method1276(GlTexture arg0, int arg1) {
 		if (this.field1026 == 0) {
 			return false;
 		} else {

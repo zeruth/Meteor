@@ -5,21 +5,15 @@ import com.jagex.math.Quaternion;
 import com.jagex.math.Vector3;
 import deob.ObfuscatedName;
 
-@ObfuscatedName("jn")
 public interface CameraTrackable {
 
-	@ObfuscatedName("jn.f(B)Lox;")
-	Vector3 createVector3();
+    Vector3 createVector3();
 
-	@ObfuscatedName("jn.m(B)Lakt;")
-	CoordFine getTrackableCoord();
+    CoordFine getTrackableCoord();
 
-	@ObfuscatedName("jn.k(I)Lov;")
-	Quaternion method4668();
+    Quaternion method4668();
 
-	@ObfuscatedName("jn.n(I)I")
-	int getIndex();
+    int getIndex();
 
-	@ObfuscatedName("jn.e(I)Ljl;")
-	CameraTrackableType getCameraTrackableType();
+    CameraTrackableType getCameraTrackableType();
 }

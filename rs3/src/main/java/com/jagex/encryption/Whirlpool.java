@@ -2,41 +2,29 @@ package com.jagex.encryption;
 
 import deob.ObfuscatedName;
 
-@ObfuscatedName("aam")
 public class Whirlpool {
 
-	@ObfuscatedName("aam.f")
-	public static long[][] field8591 = new long[8][256];
+    public static long[][] field8591 = new long[8][256];
 
-	@ObfuscatedName("aam.w")
-	public static long[] field8592 = new long[11];
+    public static long[] field8592 = new long[11];
 
-	@ObfuscatedName("aam.l")
-	public byte[] field8593 = new byte[32];
+    public byte[] field8593 = new byte[32];
 
-	@ObfuscatedName("aam.u")
-	public byte[] field8595 = new byte[64];
+    public byte[] field8595 = new byte[64];
 
-	@ObfuscatedName("aam.z")
-	public int field8596 = 0;
+    public int field8596 = 0;
 
-	@ObfuscatedName("aam.p")
-	public int field8598 = 0;
+    public int field8598 = 0;
 
-	@ObfuscatedName("aam.d")
-	public long[] field8597 = new long[8];
+    public long[] field8597 = new long[8];
 
-	@ObfuscatedName("aam.c")
-	public long[] field8587 = new long[8];
+    public long[] field8587 = new long[8];
 
-	@ObfuscatedName("aam.r")
-	public long[] field8599 = new long[8];
+    public long[] field8599 = new long[8];
 
-	@ObfuscatedName("aam.v")
-	public long[] field8600 = new long[8];
+    public long[] field8600 = new long[8];
 
-	@ObfuscatedName("aam.o")
-	public long[] field8601 = new long[8];
+    public long[] field8601 = new long[8];
 
 	static {
 		for (int var0 = 0; var0 < 256; var0++) {
@@ -68,8 +56,7 @@ public class Whirlpool {
 		}
 	}
 
-	@ObfuscatedName("aam.e(I)V")
-	public void method14594() {
+    public void method14594() {
 		int var1 = 0;
 		int var2 = 0;
 		while (var1 < 8) {
@@ -114,8 +101,7 @@ public class Whirlpool {
 		}
 	}
 
-	@ObfuscatedName("aam.n(I)V")
-	public void method14597() {
+    public void method14597() {
 		for (int var1 = 0; var1 < 32; var1++) {
 			this.field8593[var1] = 0;
 		}
@@ -127,8 +113,7 @@ public class Whirlpool {
 		}
 	}
 
-	@ObfuscatedName("aam.m([BJ)V")
-	public void method14609(byte[] arg0, long arg1) {
+    public void method14609(byte[] arg0, long arg1) {
 		int var4 = 0;
 		int var5 = 8 - ((int) arg1 & 0x7) & 0x7;
 		int var6 = this.field8596 & 0x7;
@@ -183,8 +168,7 @@ public class Whirlpool {
 		this.field8596 += (int) var14;
 	}
 
-	@ObfuscatedName("aam.k([BII)V")
-	public void method14598(byte[] arg0, int arg1) {
+    public void method14598(byte[] arg0, int arg1) {
 		this.field8595[this.field8598] = (byte) (this.field8595[this.field8598] | 0x80 >>> (this.field8596 & 0x7));
 		this.field8598++;
 		if (this.field8598 > 32) {
@@ -219,8 +203,7 @@ public class Whirlpool {
 		}
 	}
 
-	@ObfuscatedName("alv.f([BIII)[B")
-	public static byte[] compute(byte[] arg0, int arg1, int arg2) {
+    public static byte[] compute(byte[] arg0, int arg1, int arg2) {
 		byte[] var3;
 		if (arg1 > 0) {
 			var3 = new byte[arg2];

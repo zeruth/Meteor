@@ -5,38 +5,27 @@ import com.jagex.game.client.DataType;
 import com.jagex.graphics.TextureFormat;
 import deob.ObfuscatedName;
 
-@ObfuscatedName("bt")
 public class GlFloorModelRelated4 {
 
-	@ObfuscatedName("bt.m")
-	public final GlToolkit field990;
+    public final GlToolkit field990;
 
-	@ObfuscatedName("bt.k")
-	public final GlFloorModelRelated3 field995;
+    public final GlFloorModelRelated3 field995;
 
-	@ObfuscatedName("bt.f")
-	public final int field991;
+    public final int field991;
 
-	@ObfuscatedName("bt.w")
-	public final int field992;
+    public final int field992;
 
-	@ObfuscatedName("bt.l")
-	public boolean field988 = true;
+    public boolean field988 = true;
 
-	@ObfuscatedName("bt.u")
-	public int field994 = -1;
+    public int field994 = -1;
 
-	@ObfuscatedName("bt.z")
-	public final int field996;
+    public final int field996;
 
-	@ObfuscatedName("bt.p")
-	public GlBinding field997;
+    public GlBinding field997;
 
-	@ObfuscatedName("bt.d")
-	public GlFloorModelRelated2_Sub1 field998;
+    public GlFloorModelRelated2_Sub1 field998;
 
-	@ObfuscatedName("bt.c")
-	public GlTexture_Sub1 field999;
+    public GlTexture_Sub1 field999;
 
 	public GlFloorModelRelated4(GlToolkit arg0, GlFloorModelRelated3 arg1, GlFloorModel arg2, int arg3, int arg4, int arg5, int arg6, int arg7) {
 		this.field990 = arg0;
@@ -91,19 +80,16 @@ public class GlFloorModelRelated4 {
 		}
 	}
 
-	@ObfuscatedName("bt.e()V")
-	public void method1067() {
+    public void method1067() {
 		this.method1073(this.field997, this.field996);
 	}
 
-	@ObfuscatedName("bt.n([BI)V")
-	public void method1079(byte[] arg0, int arg1) {
+    public void method1079(byte[] arg0, int arg1) {
 		this.field998.method1410(5123, arg0, arg1 * 2);
 		this.method1073(this.field998, arg1);
 	}
 
-	@ObfuscatedName("bt.m(Lcf;I)V")
-	public void method1073(GlBinding arg0, int arg1) {
+    public void method1073(GlBinding arg0, int arg1) {
 		if (arg1 != 0) {
 			this.method1069();
 			this.field990.method15777(this.field999);
@@ -111,8 +97,7 @@ public class GlFloorModelRelated4 {
 		}
 	}
 
-	@ObfuscatedName("bt.k()V")
-	public void method1069() {
+    public void method1069() {
 		if (!this.field988) {
 			return;
 		}

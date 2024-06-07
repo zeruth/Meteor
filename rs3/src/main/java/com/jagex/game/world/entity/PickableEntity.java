@@ -6,23 +6,17 @@ import deob.ObfuscatedName;
 
 import java.util.Stack;
 
-@ObfuscatedName("tl")
 public class PickableEntity {
 
-	@ObfuscatedName("tl.e")
-	public static Stack stack = new Stack();
+    public static Stack stack = new Stack();
 
-	@ObfuscatedName("tl.n")
-	public GraphEntity field6978;
+    public GraphEntity field6978;
 
-	@ObfuscatedName("tl.m")
-	public boolean active;
+    public boolean active;
 
-	@ObfuscatedName("tl.k")
-	public PickableEntityList pickables;
+    public PickableEntityList pickables;
 
-	@ObfuscatedName("ahe.e(ZI)Ltl;")
-	public static PickableEntity getPickableEntity(boolean arg0) {
+    public static PickableEntity getPickableEntity(boolean arg0) {
 		Stack var1 = stack;
 		synchronized (stack) {
 			PickableEntity var2;
@@ -36,8 +30,7 @@ public class PickableEntity {
 		}
 	}
 
-	@ObfuscatedName("gz.n(Ltl;B)V")
-	public static void pushPickableEntity(PickableEntity arg0) {
+    public static void pushPickableEntity(PickableEntity arg0) {
 		arg0.field6978 = null;
 		Stack var1 = stack;
 		synchronized (stack) {
@@ -47,16 +40,14 @@ public class PickableEntity {
 		}
 	}
 
-	@ObfuscatedName("acc.m(S)V")
-	public static void resetStack() {
+    public static void resetStack() {
 		Stack var0 = stack;
 		synchronized (stack) {
 			stack = new Stack();
 		}
 	}
 
-	@ObfuscatedName("tl.k(Ldh;III)Z")
-	public boolean method8889(Toolkit arg0, int arg1, int arg2) {
+    public boolean method8889(Toolkit arg0, int arg1, int arg2) {
 		int var4 = this.field6978.getPickSizeShift();
 		if (this.field6978.entityBounds != null) {
 			for (int var5 = 0; var5 < this.field6978.entityBounds.length; var5++) {

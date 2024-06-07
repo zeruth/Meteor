@@ -3,47 +3,33 @@ package com.jagex.game;
 import com.jagex.core.datastruct.SecondaryNode;
 import deob.ObfuscatedName;
 
-@ObfuscatedName("arm")
 public class MiniMenuEntry extends SecondaryNode {
 
-	@ObfuscatedName("arm.l")
-	public final String field12301;
+    public final String field12301;
 
-	@ObfuscatedName("arm.u")
-	public final String field12297;
+    public final String field12297;
 
-	@ObfuscatedName("arm.z")
-	public final boolean field12308;
+    public final boolean field12308;
 
-	@ObfuscatedName("arm.p")
-	public final int field12298;
+    public final int field12298;
 
-	@ObfuscatedName("arm.d")
-	public final int field12303;
+    public final int field12303;
 
-	@ObfuscatedName("arm.c")
-	public final long field12300;
+    public final long field12300;
 
-	@ObfuscatedName("arm.r")
-	public final int sceneBaseTileX;
+    public final int sceneBaseTileX;
 
-	@ObfuscatedName("arm.v")
-	public final int sceneBaseTileZ;
+    public final int sceneBaseTileZ;
 
-	@ObfuscatedName("arm.o")
-	public final boolean field12299;
+    public final boolean field12299;
 
-	@ObfuscatedName("arm.s")
-	public final long field12305;
+    public final long field12305;
 
-	@ObfuscatedName("arm.y")
-	public final boolean field12306;
+    public final boolean field12306;
 
-	@ObfuscatedName("arm.q")
-	public int menuAction;
+    public int menuAction;
 
-	@ObfuscatedName("arm.x")
-	public String field12296;
+    public String field12296;
 
 	public MiniMenuEntry(String arg0, String arg1, int arg2, int arg3, int arg4, long arg5, int arg6, int arg7, boolean arg8, boolean arg9, long arg10, boolean arg11) {
 		this.field12301 = arg1;
@@ -60,13 +46,11 @@ public class MiniMenuEntry extends SecondaryNode {
 		this.field12306 = arg11;
 	}
 
-	@ObfuscatedName("arm.e(I)J")
-	public long method19370() {
+    public long method19370() {
 		return this.field12300;
 	}
 
-	@ObfuscatedName("arm.n(I)J")
-	public long method19368() {
+    public long method19368() {
 		return this.field12305;
 	}
 }

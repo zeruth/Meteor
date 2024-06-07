@@ -5,11 +5,9 @@ import com.jagex.graphics.TextureFormat;
 import deob.ObfuscatedName;
 import jaggl.OpenGL;
 
-@ObfuscatedName("aew")
 public class GlUnderwaterTexture extends GlTexture {
 
-	@ObfuscatedName("aew.s")
-	public final int field9280;
+    public final int field9280;
 
 	public GlUnderwaterTexture(GlToolkit arg0, TextureFormat arg1, DataType arg2, int arg3, byte[] arg4, TextureFormat arg5) {
 		super(arg0, 3552, arg1, arg2, arg3, false);
@@ -21,8 +19,7 @@ public class GlUnderwaterTexture extends GlTexture {
 		this.method1082(true);
 	}
 
-	@ObfuscatedName("aew.ar(Z)V")
-	public void method15334(boolean arg0) {
+    public void method15334(boolean arg0) {
 		this.field1006.method15777(this);
 		OpenGL.glTexParameteri(this.field1009, 10242, arg0 ? 10497 : 33071);
 	}

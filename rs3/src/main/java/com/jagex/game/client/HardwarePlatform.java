@@ -7,83 +7,57 @@ import jaclib.hardware_info.HardwareInfo;
 
 import java.util.HashMap;
 
-@ObfuscatedName("aly")
 public class HardwarePlatform extends Node {
 
-	@ObfuscatedName("aly.z")
-	public int operatingSystem;
+    public int operatingSystem;
 
-	@ObfuscatedName("aly.p")
-	public boolean osArch64;
+    public boolean osArch64;
 
-	@ObfuscatedName("aly.al")
-	public int osVersion;
+    public int osVersion;
 
-	@ObfuscatedName("aly.ad")
-	public int javaVendor;
+    public int javaVendor;
 
-	@ObfuscatedName("aly.am")
-	public int javaVersionMajor;
+    public int javaVersionMajor;
 
-	@ObfuscatedName("aly.au")
-	public int javaVersionMinor;
+    public int javaVersionMinor;
 
-	@ObfuscatedName("aly.ar")
-	public int javaVersionPatch;
+    public int javaVersionPatch;
 
-	@ObfuscatedName("aly.ap")
-	public boolean unused;
+    public boolean unused;
 
-	@ObfuscatedName("aly.aq")
-	public int maxMemory;
+    public int maxMemory;
 
-	@ObfuscatedName("aly.av")
-	public int availableProcessors;
+    public int availableProcessors;
 
-	@ObfuscatedName("aly.aj")
-	public int cpuInfoRam;
+    public int cpuInfoRam;
 
-	@ObfuscatedName("aly.ay")
-	public int cpuInfoSpeed;
+    public int cpuInfoSpeed;
 
-	@ObfuscatedName("aly.ab")
-	public String gpuInfoDescription;
+    public String gpuInfoDescription;
 
-	@ObfuscatedName("aly.az")
-	public String unused1;
+    public String unused1;
 
-	@ObfuscatedName("aly.aa")
-	public String directXVersion;
+    public String directXVersion;
 
-	@ObfuscatedName("aly.af")
-	public String unused2;
+    public String unused2;
 
-	@ObfuscatedName("aly.ak")
-	public int dxDriverDateYear;
+    public int dxDriverDateYear;
 
-	@ObfuscatedName("aly.an")
-	public int dxDriverDateMonth;
+    public int dxDriverDateMonth;
 
-	@ObfuscatedName("aly.bf")
-	public int rawCpuInfoProcessors;
+    public int rawCpuInfoProcessors;
 
-	@ObfuscatedName("aly.bl")
-	public int rawCpuInfoProcessors2;
+    public int rawCpuInfoProcessors2;
 
-	@ObfuscatedName("aly.bk")
-	public String rawCpuInfoVendor;
+    public String rawCpuInfoVendor;
 
-	@ObfuscatedName("aly.bh")
-	public String rawCpuInfoDescription;
+    public String rawCpuInfoDescription;
 
-	@ObfuscatedName("aly.bx")
-	public int[] rawCpuInfoUnknown = new int[3];
+    public int[] rawCpuInfoUnknown = new int[3];
 
-	@ObfuscatedName("aly.bd")
-	public int rawCpuInfoUnknown1;
+    public int rawCpuInfoUnknown1;
 
-	@ObfuscatedName("aly.bc")
-	public String unused3;
+    public String unused3;
 
 	public HardwarePlatform(boolean arg0) {
 		if (arg0) {
@@ -318,8 +292,7 @@ public class HardwarePlatform extends Node {
 		this.method18187();
 	}
 
-	@ObfuscatedName("aly.e(S)V")
-	public void method18187() {
+    public void method18187() {
 		if (this.gpuInfoDescription.length() > 40) {
 			this.gpuInfoDescription = this.gpuInfoDescription.substring(0, 40);
 		}
@@ -337,8 +310,7 @@ public class HardwarePlatform extends Node {
 		}
 	}
 
-	@ObfuscatedName("aly.n(Lalw;I)V")
-	public void createHardwareBlock(Packet buf) {
+    public void createHardwareBlock(Packet buf) {
 		buf.p1(8);
 		buf.p1(this.operatingSystem);
 		buf.p1(this.osArch64 ? 1 : 0);
@@ -369,8 +341,7 @@ public class HardwarePlatform extends Node {
 		buf.pjstr2(this.unused3);
 	}
 
-	@ObfuscatedName("aly.m(I)I")
-	public int calculateHardwarePlatformSize() {
+    public int calculateHardwarePlatformSize() {
 		byte var1 = 39;
 		int var2 = var1 + Packet.method8398(this.gpuInfoDescription);
 		int var3 = var2 + Packet.method8398(this.unused1);

@@ -6,26 +6,21 @@ import deob.ObfuscatedName;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
 
-@ObfuscatedName("atb")
 public class Js5HttpRequest extends Js5Request {
 
-	@ObfuscatedName("atb.p")
-	public Future futureResponse;
+    public Future futureResponse;
 
-	@ObfuscatedName("atb.d")
-	public final int padding;
+    public final int padding;
 
 	public Js5HttpRequest(int padding) {
 		this.padding = padding;
 	}
 
-	@ObfuscatedName("atb.l(Ljava/util/concurrent/Future;B)V")
-	public void setFutureResponse(Future futureResponse) {
+    public void setFutureResponse(Future futureResponse) {
 		this.futureResponse = futureResponse;
 	}
 
-	@ObfuscatedName("atb.e(I)[B")
-	public byte[] getBytes() {
+    public byte[] getBytes() {
 		if (this.futureResponse.isDone()) {
 			try {
 				return ((Js5HttpClient.Js5HTTPClientResponse) this.futureResponse.get()).getResponseBytes();
@@ -38,8 +33,7 @@ public class Js5HttpRequest extends Js5Request {
 		return null;
 	}
 
-	@ObfuscatedName("atb.n(I)I")
-	public int getPercentageComplete() {
+    public int getPercentageComplete() {
 		if (this.futureResponse == null) {
 			return 0;
 		} else if (this.futureResponse.isDone()) {

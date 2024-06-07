@@ -7,17 +7,13 @@ import com.jagex.math.ScaleRotTrans;
 import com.jagex.math.Vector3;
 import deob.ObfuscatedName;
 
-@ObfuscatedName("asv")
 public abstract class GroundDecorLayerEntity extends GraphEntity {
 
-	@ObfuscatedName("asv.x")
-	public short field12448;
+    public short field12448;
 
-	@ObfuscatedName("asv.b")
-	public int field12449 = 0;
+    public int field12449 = 0;
 
-	@ObfuscatedName("asv.h")
-	public Light[] field12447 = new Light[4];
+    public Light[] field12447 = new Light[4];
 
 	public GroundDecorLayerEntity(Scene scene, int x, int y, int z, int level, int occludeLevel, int arg6, ScaleRotTrans scaleRotTrans) {
 		super(scene, scaleRotTrans);
@@ -33,8 +29,7 @@ public abstract class GroundDecorLayerEntity extends GraphEntity {
 		}
 	}
 
-	@ObfuscatedName("asv.gy([Lakf;S)I")
-	public int method18375(Light[] arg0) {
+    public int method18375(Light[] arg0) {
 		if (this.field8176) {
 			Vector3 var2 = this.getTransform().trans;
 			this.field12449 = this.method18362((int) var2.x >> this.scene.size, (int) var2.z >> this.scene.size, this.field12447);
@@ -46,14 +41,12 @@ public abstract class GroundDecorLayerEntity extends GraphEntity {
 		return this.field12449;
 	}
 
-	@ObfuscatedName("asv.ga(Ldh;S)Z")
-	public boolean isOccluded(Toolkit toolkit) {
+    public boolean isOccluded(Toolkit toolkit) {
 		Vector3 var2 = this.getTransform().trans;
 		return this.scene.occlusionManager.tileVisible(this.occludeLevel, (int) var2.x >> this.scene.size, (int) var2.z >> this.scene.size);
 	}
 
-	@ObfuscatedName("asv.gn(I)Z")
-	public boolean isVisible() {
+    public boolean isVisible() {
 		Vector3 var1 = this.getTransform().trans;
 		return this.scene.visibilityMap[this.scene.drawDistance + (((int) var1.x >> this.scene.size) - this.scene.eyeTileX)][this.scene.drawDistance + (((int) var1.z >> this.scene.size) - this.scene.eyeTileZ)];
 	}

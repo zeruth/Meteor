@@ -22,143 +22,97 @@ import com.jagex.graphics.SpriteDataProvider;
 import com.jagex.math.IntMath;
 import deob.ObfuscatedName;
 
-@ObfuscatedName("hs")
 public class MapElementType implements ConfigType {
 
-	@ObfuscatedName("hs.e")
-	public final MapElementTypeFactory field2368;
+    public final MapElementTypeFactory field2368;
 
-	@ObfuscatedName("hs.n")
-	public final ConfigTypeList field2412;
+    public final ConfigTypeList field2412;
 
-	@ObfuscatedName("hs.m")
-	public final int field2367;
+    public final int field2367;
 
-	@ObfuscatedName("hs.k")
-	public int sprite = -1;
+    public int sprite = -1;
 
-	@ObfuscatedName("hs.f")
-	public int field2403 = -1;
+    public int field2403 = -1;
 
-	@ObfuscatedName("hs.w")
-	public String text;
+    public String text;
 
-	@ObfuscatedName("hs.l")
-	public int field2366;
+    public int field2366;
 
-	@ObfuscatedName("hs.u")
-	public int field2372 = -1;
+    public int field2372 = -1;
 
-	@ObfuscatedName("hs.z")
-	public int textSize = 0;
+    public int textSize = 0;
 
-	@ObfuscatedName("hs.r")
-	public int field2377;
+    public int field2377;
 
-	@ObfuscatedName("hs.v")
-	public int field2378;
+    public int field2378;
 
-	@ObfuscatedName("hs.o")
-	public boolean field2379 = true;
+    public boolean field2379 = true;
 
-	@ObfuscatedName("hs.s")
-	public boolean field2404 = false;
+    public boolean field2404 = false;
 
-	@ObfuscatedName("hs.y")
-	public String[] field2381 = new String[5];
+    public String[] field2381 = new String[5];
 
-	@ObfuscatedName("hs.q")
-	public String field2382;
+    public String field2382;
 
-	@ObfuscatedName("hs.x")
-	public int field2383 = -1;
+    public int field2383 = -1;
 
-	@ObfuscatedName("hs.b")
-	public int field2386 = -1;
+    public int field2386 = -1;
 
-	@ObfuscatedName("hs.h")
-	public int field2385 = -1;
+    public int field2385 = -1;
 
-	@ObfuscatedName("hs.a")
-	public int field2371 = -1;
+    public int field2371 = -1;
 
-	@ObfuscatedName("hs.g")
-	public int field2387 = -1;
+    public int field2387 = -1;
 
-	@ObfuscatedName("hs.i")
-	public int field2380;
+    public int field2380;
 
-	@ObfuscatedName("hs.j")
-	public int field2389;
+    public int field2389;
 
-	@ObfuscatedName("hs.t")
-	public int field2390 = -1;
+    public int field2390 = -1;
 
-	@ObfuscatedName("hs.ae")
-	public int field2391 = -1;
+    public int field2391 = -1;
 
-	@ObfuscatedName("hs.ag")
-	public int[] field2392 = null;
+    public int[] field2392 = null;
 
-	@ObfuscatedName("hs.ah")
-	public int[] field2393;
+    public int[] field2393;
 
-	@ObfuscatedName("hs.al")
-	public int field2373 = Integer.MAX_VALUE;
+    public int field2373 = Integer.MAX_VALUE;
 
-	@ObfuscatedName("hs.ac")
-	public int field2395 = Integer.MAX_VALUE;
+    public int field2395 = Integer.MAX_VALUE;
 
-	@ObfuscatedName("hs.ai")
-	public int field2396 = Integer.MIN_VALUE;
+    public int field2396 = Integer.MIN_VALUE;
 
-	@ObfuscatedName("hs.aw")
-	public int field2397 = Integer.MIN_VALUE;
+    public int field2397 = Integer.MIN_VALUE;
 
-	@ObfuscatedName("hs.as")
-	public int field2398;
+    public int field2398;
 
-	@ObfuscatedName("hs.at")
-	public int field2399 = -1;
+    public int field2399 = -1;
 
-	@ObfuscatedName("hs.ad")
-	public int field2369 = -1;
+    public int field2369 = -1;
 
-	@ObfuscatedName("hs.am")
-	public int field2401 = -1;
+    public int field2401 = -1;
 
-	@ObfuscatedName("hs.au")
-	public int field2410;
+    public int field2410;
 
-	@ObfuscatedName("hs.ar")
-	public int field2394;
+    public int field2394;
 
-	@ObfuscatedName("hs.ap")
-	public MapAlignmentX field2365 = MapAlignmentX.field2417;
+    public MapAlignmentX field2365 = MapAlignmentX.field2417;
 
-	@ObfuscatedName("hs.aq")
-	public MapAlignmentY field2405 = MapAlignmentY.field2424;
+    public MapAlignmentY field2405 = MapAlignmentY.field2424;
 
-	@ObfuscatedName("hs.ax")
-	public int[] field2406;
+    public int[] field2406;
 
-	@ObfuscatedName("hs.av")
-	public byte[] field2407;
+    public byte[] field2407;
 
-	@ObfuscatedName("hs.ao")
-	public int field2408 = -1;
+    public int field2408 = -1;
 
-	@ObfuscatedName("hs.aj")
-	public boolean field2409 = true;
+    public boolean field2409 = true;
 
-	@ObfuscatedName("hs.ay")
-	public int category = -1;
+    public int category = -1;
 
-	@ObfuscatedName("hs.ab")
-	public HashTable params;
+    public HashTable params;
 
-	@ObfuscatedName("hs.az")
-	public int field2384 = -1;
+    public int field2384 = -1;
 
 	public MapElementType(int arg0, ConfigTypeList arg1, MapElementTypeFactory arg2) {
 		this.field2367 = arg0;
@@ -166,8 +120,7 @@ public class MapElementType implements ConfigType {
 		this.field2368 = arg2;
 	}
 
-	@ObfuscatedName("hs.e(Lalw;B)V")
-	public void decode(Packet buf) {
+    public void decode(Packet buf) {
 		while (true) {
 			int var2 = buf.g1();
 			if (var2 == 0) {
@@ -177,8 +130,7 @@ public class MapElementType implements ConfigType {
 		}
 	}
 
-	@ObfuscatedName("hs.u(Lalw;II)V")
-	public void method4038(Packet arg0, int arg1) {
+    public void method4038(Packet arg0, int arg1) {
 		if (arg1 == 1) {
 			this.sprite = arg0.gSmart2or4null();
 		} else if (arg1 == 2) {
@@ -313,8 +265,7 @@ public class MapElementType implements ConfigType {
 		}
 	}
 
-	@ObfuscatedName("hs.n(I)V")
-	public void postDecode() {
+    public void postDecode() {
 		if (this.field2393 == null) {
 			return;
 		}
@@ -332,8 +283,7 @@ public class MapElementType implements ConfigType {
 		}
 	}
 
-	@ObfuscatedName("hs.z(Lem;Lep;I)Z")
-	public boolean method4030(VariableTypeProvider arg0, VarIntDomain arg1) {
+    public boolean method4030(VariableTypeProvider arg0, VarIntDomain arg1) {
 		boolean var3 = true;
 		int var5;
 		if (this.field2387 == -1) {
@@ -381,8 +331,7 @@ public class MapElementType implements ConfigType {
 		}
 	}
 
-	@ObfuscatedName("hs.p(Ldh;ZI)Lcm;")
-	public Sprite method4025(Toolkit arg0, boolean arg1) {
+    public Sprite method4025(Toolkit arg0, boolean arg1) {
 		int var3 = arg1 ? this.field2403 : this.sprite;
 		int var4 = var3 | arg0.field1595 << 29;
 		Sprite var5 = (Sprite) this.field2368.elementCache.get((long) var4);
@@ -400,8 +349,7 @@ public class MapElementType implements ConfigType {
 		}
 	}
 
-	@ObfuscatedName("hs.d(Ldh;B)Lcm;")
-	public Sprite method4026(Toolkit arg0) {
+    public Sprite method4026(Toolkit arg0) {
 		int var2 = this.field2384 | arg0.field1595 << 29;
 		Sprite var3 = (Sprite) this.field2368.elementCache.get((long) var2);
 		if (var3 != null) {
@@ -418,8 +366,7 @@ public class MapElementType implements ConfigType {
 		}
 	}
 
-	@ObfuscatedName("hs.c(Ldh;I)Lcm;")
-	public Sprite method4027(Toolkit arg0) {
+    public Sprite method4027(Toolkit arg0) {
 		Sprite var2 = (Sprite) this.field2368.elementCache.get((long) (this.field2383 | 0x20000 | arg0.field1595 << 29));
 		if (var2 != null) {
 			return var2;
@@ -433,8 +380,7 @@ public class MapElementType implements ConfigType {
 		return var2;
 	}
 
-	@ObfuscatedName("hs.r(III)I")
-	public int method4028(int arg0, int arg1) {
+    public int method4028(int arg0, int arg1) {
 		if (this.params == null) {
 			return arg1;
 		} else {
@@ -443,8 +389,7 @@ public class MapElementType implements ConfigType {
 		}
 	}
 
-	@ObfuscatedName("hs.v(ILjava/lang/String;I)Ljava/lang/String;")
-	public String method4029(int arg0, String arg1) {
+    public String method4029(int arg0, String arg1) {
 		if (this.params == null) {
 			return arg1;
 		} else {
@@ -453,8 +398,7 @@ public class MapElementType implements ConfigType {
 		}
 	}
 
-	@ObfuscatedName("hs.o(Lem;Lep;S)Lhs;")
-	public final MapElementType method4024(VariableTypeProvider arg0, VarIntDomain arg1) {
+    public final MapElementType method4024(VariableTypeProvider arg0, VarIntDomain arg1) {
 		int var3 = -1;
 		if (this.field2371 != -1) {
 			VarBitType var4 = arg0.getVarBitType(this.field2371);

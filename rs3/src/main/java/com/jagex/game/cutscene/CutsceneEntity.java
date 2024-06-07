@@ -10,26 +10,19 @@ import rs2.client.Client;
 import rs2.client.scene.entities.NpcEntity;
 import rs2.client.scene.entities.PathingEntity;
 
-@ObfuscatedName("ea")
 public final class CutsceneEntity {
 
-	@ObfuscatedName("ea.n")
-	public final int field1741;
+    public final int field1741;
 
-	@ObfuscatedName("ea.m")
-	public final int field1743;
+    public final int field1743;
 
-	@ObfuscatedName("ea.k")
-	public boolean exists = false;
+    public boolean exists = false;
 
-	@ObfuscatedName("ea.f")
-	public NpcEntity field1745 = null;
+    public NpcEntity field1745 = null;
 
-	@ObfuscatedName("ea.w")
-	public PlayerEntity field1742 = null;
+    public PlayerEntity field1742 = null;
 
-	@ObfuscatedName("ea.l")
-	public int[] field1747;
+    public int[] field1747;
 
 	public CutsceneEntity(Packet arg0, int arg1) {
 		this.field1741 = arg1;
@@ -47,8 +40,7 @@ public final class CutsceneEntity {
 		arg0.gjstr();
 	}
 
-	@ObfuscatedName("ea.e(IIIII)V")
-	public void method2867(int arg0, int arg1, int arg2, int arg3) {
+    public void method2867(int arg0, int arg1, int arg2, int arg3) {
 		if (!this.exists) {
 			this.exists = true;
 			if (this.field1743 >= 0) {
@@ -77,15 +69,13 @@ public final class CutsceneEntity {
 		}
 	}
 
-	@ObfuscatedName("ea.n(B)V")
-	public void method2868() {
+    public void method2868() {
 		this.field1745 = null;
 		this.field1742 = null;
 		this.exists = false;
 	}
 
-	@ObfuscatedName("ea.m(IIII)V")
-	public void method2866(int arg0, int arg1, int arg2) {
+    public void method2866(int arg0, int arg1, int arg2) {
 		if (this.field1745 == null) {
 			this.field1742.level = this.field1742.occludeLevel = (byte) arg0;
 			this.field1742.tele(arg1, arg2);
@@ -94,13 +84,11 @@ public final class CutsceneEntity {
 		}
 	}
 
-	@ObfuscatedName("ea.k(I)Lahm;")
-	public PathingEntity getEntity() {
+    public PathingEntity getEntity() {
 		return this.field1745 == null ? this.field1742 : this.field1745;
 	}
 
-	@ObfuscatedName("ea.f(I)Z")
-	public boolean method2871() {
+    public boolean method2871() {
 		if (this.field1743 < 0) {
 			return true;
 		}

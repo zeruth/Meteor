@@ -13,22 +13,18 @@ import deob.ObfuscatedName;
 
 import java.util.Iterator;
 
-@ObfuscatedName("adj")
 public class VarPlayerTypeListClient extends VarTypeList implements ConfigTypeList {
 
-	@ObfuscatedName("adj.n")
-	public final Js5 field9255;
+    public final Js5 field9255;
 
-	@ObfuscatedName("adj.m")
-	public final SoftLruHashTable field9254 = new SoftLruHashTable(64);
+    public final SoftLruHashTable field9254 = new SoftLruHashTable(64);
 
 	public VarPlayerTypeListClient(ModeGame arg0, VarDomainType arg1, Language arg2, Js5 arg3) {
 		super(arg0, arg1, arg2, arg3 == null ? 0 : arg3.getGroupCapacity(arg1.getJs5GroupID().id));
 		this.field9255 = arg3;
 	}
 
-	@ObfuscatedName("adj.e(II)Lay;")
-	public ConfigType list(int id) {
+    public ConfigType list(int id) {
 		SoftLruHashTable var2 = this.field9254;
 		synchronized (this.field9254) {
 			VarPlayerType var3 = (VarPlayerType) this.field9254.get((long) id);
@@ -40,8 +36,7 @@ public class VarPlayerTypeListClient extends VarTypeList implements ConfigTypeLi
 		}
 	}
 
-	@ObfuscatedName("adj.r(II)Laff;")
-	public VarPlayerType method15255(int arg0) {
+    public VarPlayerType method15255(int arg0) {
 		byte[] var2 = this.field9255.getfile(this.variableDomain.getJs5GroupID().id, arg0);
 		VarPlayerType var3 = new VarPlayerType(this.variableDomain, arg0);
 		if (var2 != null) {
@@ -50,16 +45,14 @@ public class VarPlayerTypeListClient extends VarTypeList implements ConfigTypeLi
 		return var3;
 	}
 
-	@ObfuscatedName("adj.v(I)V")
-	public void cacheReset() {
+    public void cacheReset() {
 		SoftLruHashTable var1 = this.field9254;
 		synchronized (this.field9254) {
 			this.field9254.reset();
 		}
 	}
 
-	@ObfuscatedName("adj.o(II)V")
-	public void cacheClean(int arg0) {
+    public void cacheClean(int arg0) {
 		SoftLruHashTable var2 = this.field9254;
 		synchronized (this.field9254) {
 			this.field9254.clean(arg0);
@@ -67,8 +60,7 @@ public class VarPlayerTypeListClient extends VarTypeList implements ConfigTypeLi
 	}
 
 	// line 54
-	@ObfuscatedName("adj.s(B)V")
-	public void cacheRemoveSoftReferences() {
+    public void cacheRemoveSoftReferences() {
 		SoftLruHashTable var1 = this.field9254;
 		synchronized (this.field9254) {
 			this.field9254.clear();
@@ -80,14 +72,12 @@ public class VarPlayerTypeListClient extends VarTypeList implements ConfigTypeLi
 		return new VarPlayerTypeListIterator(this);
 	}
 
-	@ObfuscatedName("gj")
-	public static class VarPlayerTypeListIterator implements Iterator {
+    public static class VarPlayerTypeListIterator implements Iterator {
 
 		// $FF: synthetic field
 		public final VarPlayerTypeListClient this$0;
 
-		@ObfuscatedName("gj.e")
-		public int field1982;
+        public int field1982;
 
 		public VarPlayerTypeListIterator(VarPlayerTypeListClient arg0) {
 			this.this$0 = arg0;
@@ -110,8 +100,7 @@ public class VarPlayerTypeListClient extends VarTypeList implements ConfigTypeLi
 	}
 
 	// line 81
-	@ObfuscatedName("adj.n(I)I")
-	public int length() {
+    public int length() {
 		return super.length();
 	}
 }

@@ -9,29 +9,21 @@ import com.jagex.graphics.gl.GlShaderCompiler;
 import deob.ObfuscatedName;
 import jaggl.OpenGL;
 
-@ObfuscatedName("aeu")
 public class GlWaterEffect extends GlEffect {
 
-	@ObfuscatedName("aeu.f")
-	public GlRenderList field9284;
+    public GlRenderList field9284;
 
-	@ObfuscatedName("aeu.w")
-	public int field9285;
+    public int field9285;
 
-	@ObfuscatedName("aeu.l")
-	public float[] field9290;
+    public float[] field9290;
 
-	@ObfuscatedName("aeu.u")
-	public float field9287;
+    public float field9287;
 
-	@ObfuscatedName("aeu.z")
-	public GlShaderCompiler field9289;
+    public GlShaderCompiler field9289;
 
-	@ObfuscatedName("aeu.p")
-	public final GlWaterRelated field9288;
+    public final GlWaterRelated field9288;
 
-	@ObfuscatedName("aeu.d")
-	public static final float[] field9286 = new float[4];
+    public static final float[] field9286 = new float[4];
 
 	public GlWaterEffect(GlToolkit arg0, GlWaterRelated arg1) {
 		super(arg0);
@@ -57,13 +49,11 @@ public class GlWaterEffect extends GlEffect {
 		}
 	}
 
-	@ObfuscatedName("aeu.e()Z")
-	public boolean method1252() {
+    public boolean method1252() {
 		return true;
 	}
 
-	@ObfuscatedName("aeu.b()V")
-	public void method15339() {
+    public void method15339() {
 		this.field9284 = new GlRenderList(this.field1021, 2);
 		this.field9284.method1245(0);
 		this.field1021.method15776(1);
@@ -87,8 +77,7 @@ public class GlWaterEffect extends GlEffect {
 		this.field9284.method1243();
 	}
 
-	@ObfuscatedName("aeu.n(Z)V")
-	public void method1263(boolean arg0) {
+    public void method1263(boolean arg0) {
 		if (this.field9284 == null) {
 			return;
 		}
@@ -114,12 +103,10 @@ public class GlWaterEffect extends GlEffect {
 		this.field9285 = this.field1021.field9872;
 	}
 
-	@ObfuscatedName("aeu.m(Z)V")
-	public void method1254(boolean arg0) {
+    public void method1254(boolean arg0) {
 	}
 
-	@ObfuscatedName("aeu.k()V")
-	public void method1255() {
+    public void method1255() {
 		if (this.field9284 != null) {
 			this.field9284.method1246('\u0001');
 			this.field1021.method15776(1);
@@ -128,8 +115,7 @@ public class GlWaterEffect extends GlEffect {
 		}
 	}
 
-	@ObfuscatedName("aeu.f(II)V")
-	public void method1256(int arg0, int arg1) {
+    public void method1256(int arg0, int arg1) {
 		if (this.field9284 == null) {
 			return;
 		}
@@ -170,8 +156,7 @@ public class GlWaterEffect extends GlEffect {
 		}
 	}
 
-	@ObfuscatedName("aeu.w(Lbq;I)V")
-	public void method1251(GlTexture arg0, int arg1) {
+    public void method1251(GlTexture arg0, int arg1) {
 		this.field1021.method15777(arg0);
 		this.field1021.method15778(arg1);
 	}

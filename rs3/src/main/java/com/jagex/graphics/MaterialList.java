@@ -4,20 +4,15 @@ import com.jagex.core.io.Packet;
 import com.jagex.js5.Js5;
 import deob.ObfuscatedName;
 
-@ObfuscatedName("df")
 public class MaterialList {
 
-	@ObfuscatedName("df.e")
-	public Material[] field1453;
+    public Material[] field1453;
 
-	@ObfuscatedName("df.n")
-	public int field1451;
+    public int field1451;
 
-	@ObfuscatedName("df.m")
-	public Js5 field1452;
+    public Js5 field1452;
 
-	@ObfuscatedName("df.k")
-	public static boolean field1454 = true;
+    public static boolean field1454 = true;
 
 	public MaterialList(Js5 arg0) {
 		this.field1452 = arg0;
@@ -25,14 +20,12 @@ public class MaterialList {
 		this.method2045();
 	}
 
-	@ObfuscatedName("df.e(II)Ldv;")
-	public Material get(int arg0) {
+    public Material get(int arg0) {
 		this.method2045();
 		return this.field1453[arg0];
 	}
 
-	@ObfuscatedName("df.n(I)V")
-	public void method2045() {
+    public void method2045() {
 		if (!field1454) {
 			return;
 		}

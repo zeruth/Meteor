@@ -6,27 +6,21 @@ import com.jagex.graphics.SpriteData;
 import com.jagex.graphics.SpriteDataProvider;
 import deob.ObfuscatedName;
 
-@ObfuscatedName("xj")
 public class CursorType implements ConfigType {
 
-	@ObfuscatedName("xj.e")
-	public final CursorTypeFactory myList;
+    public final CursorTypeFactory myList;
 
-	@ObfuscatedName("xj.n")
-	public int graphic;
+    public int graphic;
 
-	@ObfuscatedName("xj.m")
-	public int hotspotx;
+    public int hotspotx;
 
-	@ObfuscatedName("xj.k")
-	public int hotspoty;
+    public int hotspoty;
 
 	public CursorType(int id, CursorTypeFactory factory) {
 		this.myList = factory;
 	}
 
-	@ObfuscatedName("xj.e(Lalw;B)V")
-	public void decode(Packet buf) {
+    public void decode(Packet buf) {
 		while (true) {
 			int code = buf.g1();
 			if (code == 0) {
@@ -36,8 +30,7 @@ public class CursorType implements ConfigType {
 		}
 	}
 
-	@ObfuscatedName("xj.u(Lalw;II)V")
-	public void decode(Packet buf, int code) {
+    public void decode(Packet buf, int code) {
 		if (code == 1) {
 			this.graphic = buf.gSmart2or4null();
 		} else if (code == 2) {
@@ -46,8 +39,7 @@ public class CursorType implements ConfigType {
 		}
 	}
 
-	@ObfuscatedName("xj.z(I)Lde;")
-	public synchronized SpriteData getCursor() {
+    public synchronized SpriteData getCursor() {
 		SpriteData cached = (SpriteData) this.myList.cursorCache.get((long) this.graphic);
 		if (cached != null) {
 			return cached;
@@ -59,7 +51,6 @@ public class CursorType implements ConfigType {
 		return sprite;
 	}
 
-	@ObfuscatedName("xj.n(I)V")
-	public void postDecode() {
+    public void postDecode() {
 	}
 }

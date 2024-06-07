@@ -8,18 +8,15 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 
-@ObfuscatedName("zn")
 public class SerializableEnums {
 
-	@ObfuscatedName("zn.e")
-	public static Map cache = new HashMap();
+    public static Map cache = new HashMap();
 
 	public SerializableEnums() throws Throwable {
 		throw new Error();
 	}
 
-	@ObfuscatedName("akf.e(Ljava/lang/Class;IB)Lza;")
-	public static SerializableEnum decode(Class arg0, int arg1) {
+    public static SerializableEnum decode(Class arg0, int arg1) {
 		Map var2 = cache;
 		synchronized (cache) {
 			Map var3 = (Map) cache.get(arg0);
@@ -36,8 +33,7 @@ public class SerializableEnums {
 		}
 	}
 
-	@ObfuscatedName("dz.n([Lza;II)Lza;")
-	public static SerializableEnum decode(SerializableEnum[] arg0, int arg1) {
+    public static SerializableEnum decode(SerializableEnum[] arg0, int arg1) {
 		SerializableEnum[] var2 = arg0;
 		for (int var3 = 0; var3 < var2.length; var3++) {
 			SerializableEnum var4 = var2[var3];
@@ -48,8 +44,7 @@ public class SerializableEnums {
 		return null;
 	}
 
-	@ObfuscatedName("g.m(Ljava/lang/Iterable;Lalw;I)V")
-	public static void encodeSet(Iterable arg0, Packet arg1) {
+    public static void encodeSet(Iterable arg0, Packet arg1) {
 		int var2 = computeSetSize(arg0);
 		arg1.pSmart1or2s(var2);
 		if (var2 == 0) {
@@ -68,8 +63,7 @@ public class SerializableEnums {
 		arg1.pos += var2;
 	}
 
-	@ObfuscatedName("ko.k(Ljava/lang/Iterable;I)I")
-	public static int computeSetSize(Iterable arg0) {
+    public static int computeSetSize(Iterable arg0) {
 		int var1 = -1;
 		Iterator var2 = arg0.iterator();
 		while (var2.hasNext()) {

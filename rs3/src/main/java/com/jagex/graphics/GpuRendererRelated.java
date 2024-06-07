@@ -5,20 +5,15 @@ import deob.ObfuscatedName;
 import java.lang.ref.ReferenceQueue;
 import java.util.ArrayList;
 
-@ObfuscatedName("adc")
 public final class GpuRendererRelated {
 
-	@ObfuscatedName("adc.e")
-	public int field9176;
+    public int field9176;
 
-	@ObfuscatedName("adc.n")
-	public GpuRendererWeakReference[] field9177 = new GpuRendererWeakReference[16];
+    public GpuRendererWeakReference[] field9177 = new GpuRendererWeakReference[16];
 
-	@ObfuscatedName("adc.m")
-	public ReferenceQueue field9175 = new ReferenceQueue();
+    public ReferenceQueue field9175 = new ReferenceQueue();
 
-	@ObfuscatedName("adc.e(Ljava/lang/Object;Ljava/lang/Object;I)V")
-	public void method15159(Object arg0, Object arg1) {
+    public void method15159(Object arg0, Object arg1) {
 		if (arg0 == null) {
 			throw new NullPointerException();
 		}
@@ -47,8 +42,7 @@ public final class GpuRendererRelated {
 		}
 	}
 
-	@ObfuscatedName("adc.n(Ljava/lang/Object;I)V")
-	public void method15160(Object arg0) {
+    public void method15160(Object arg0) {
 		if (arg0 == null) {
 			throw new NullPointerException();
 		}
@@ -78,8 +72,7 @@ public final class GpuRendererRelated {
 		}
 	}
 
-	@ObfuscatedName("adc.m(I)Ljava/util/ArrayList;")
-	public ArrayList method15161() {
+    public ArrayList method15161() {
 		this.method15163();
 		ArrayList var1 = new ArrayList(this.field9176);
 		GpuRendererWeakReference[] var2 = this.field9177;
@@ -94,8 +87,7 @@ public final class GpuRendererRelated {
 		return var1;
 	}
 
-	@ObfuscatedName("adc.k(B)V")
-	public void method15162() {
+    public void method15162() {
 		GpuRendererWeakReference[] var1 = this.field9177;
 		this.field9177 = new GpuRendererWeakReference[var1.length * 2];
 		GpuRendererWeakReference[] var2 = var1;
@@ -110,8 +102,7 @@ public final class GpuRendererRelated {
 		}
 	}
 
-	@ObfuscatedName("adc.f(B)V")
-	public void method15163() {
+    public void method15163() {
 		while (true) {
 			GpuRendererWeakReference var1 = (GpuRendererWeakReference) this.field9175.poll();
 			if (var1 == null) {

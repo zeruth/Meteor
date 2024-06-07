@@ -7,20 +7,15 @@ import java.util.Hashtable;
 
 public class OpenGL {
 
-	@ObfuscatedName("jaggl/OpenGL.peer")
-	public long peer;
+    public long peer;
 
-	@ObfuscatedName("jaggl/OpenGL.e")
-	public Hashtable field0;
+    public Hashtable field0;
 
-	@ObfuscatedName("jaggl/OpenGL.n")
-	public Thread field1;
+    public Thread field1;
 
-	@ObfuscatedName("jaggl/OpenGL.m")
-	public static Hashtable field2 = new Hashtable();
+    public static Hashtable field2 = new Hashtable();
 
-	@ObfuscatedName("jaggl/OpenGL.e(Ljava/lang/String;)Z")
-	public boolean method0(String arg0) {
+    public boolean method0(String arg0) {
 		if (this.field0 == null) {
 			this.field0 = new Hashtable();
 			String var2 = glGetString(7939);
@@ -44,8 +39,7 @@ public class OpenGL {
 		return this.field0.containsKey(arg0);
 	}
 
-	@ObfuscatedName("jaggl/OpenGL.n()Z")
-	public synchronized boolean method1() {
+    public synchronized boolean method1() {
 		Thread var1 = Thread.currentThread();
 		if (!this.attachPeer()) {
 			return false;
@@ -58,8 +52,7 @@ public class OpenGL {
 		return true;
 	}
 
-	@ObfuscatedName("jaggl/OpenGL.m()Z")
-	public synchronized boolean method2() {
+    public synchronized boolean method2() {
 		if (this.field1 == Thread.currentThread()) {
 			this.detachPeer();
 			field2.remove(this.field1);

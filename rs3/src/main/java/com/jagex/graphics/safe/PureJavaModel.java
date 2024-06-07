@@ -13,242 +13,163 @@ import com.jagex.math.Matrix4x4;
 import com.jagex.math.Trig1;
 import deob.ObfuscatedName;
 
-@ObfuscatedName("afi")
 public class PureJavaModel extends Model {
 
-	@ObfuscatedName("afi.f")
-	public PureJavaToolkit renderer;
+    public PureJavaToolkit renderer;
 
-	@ObfuscatedName("afi.w")
-	public boolean field9533 = false;
+    public boolean field9533 = false;
 
-	@ObfuscatedName("afi.l")
-	public PureJavaToolkitContext field9534;
+    public PureJavaToolkitContext field9534;
 
-	@ObfuscatedName("afi.u")
-	public PureJavaToolkitContext field9535;
+    public PureJavaToolkitContext field9535;
 
-	@ObfuscatedName("afi.z")
-	public PureJavaRasteriser rasteriser;
+    public PureJavaRasteriser rasteriser;
 
-	@ObfuscatedName("afi.p")
-	public static int field9547 = 4096;
+    public static int field9547 = 4096;
 
-	@ObfuscatedName("afi.d")
-	public static int field9564 = 4096;
+    public static int field9564 = 4096;
 
-	@ObfuscatedName("afi.q")
-	public int allowedOperations;
+    public int allowedOperations;
 
-	@ObfuscatedName("afi.x")
-	public int field9546;
+    public int field9546;
 
-	@ObfuscatedName("afi.b")
-	public int field9600;
+    public int field9600;
 
-	@ObfuscatedName("afi.h")
-	public int vertexCount = 0;
+    public int vertexCount = 0;
 
-	@ObfuscatedName("afi.a")
-	public int field9549 = 0;
+    public int field9549 = 0;
 
-	@ObfuscatedName("afi.g")
-	public int[] vertexX;
+    public int[] vertexX;
 
-	@ObfuscatedName("afi.i")
-	public int[] vertexY;
+    public int[] vertexY;
 
-	@ObfuscatedName("afi.j")
-	public int[] vertexZ;
+    public int[] vertexZ;
 
-	@ObfuscatedName("afi.t")
-	public short[] vertexSourceModels;
+    public short[] vertexSourceModels;
 
-	@ObfuscatedName("afi.ae")
-	public PureJavaVertexNormal[] vertexNormal;
+    public PureJavaVertexNormal[] vertexNormal;
 
-	@ObfuscatedName("afi.ag")
-	public PureJavaVertexNormal[] field9555;
+    public PureJavaVertexNormal[] field9555;
 
-	@ObfuscatedName("afi.ah")
-	public int faceCount = 0;
+    public int faceCount = 0;
 
-	@ObfuscatedName("afi.al")
-	public int field9557 = 0;
+    public int field9557 = 0;
 
-	@ObfuscatedName("afi.ac")
-	public short[] faceVertex1;
+    public short[] faceVertex1;
 
-	@ObfuscatedName("afi.ai")
-	public short[] faceVertex2;
+    public short[] faceVertex2;
 
-	@ObfuscatedName("afi.aw")
-	public short[] faceVertex3;
+    public short[] faceVertex3;
 
-	@ObfuscatedName("afi.as")
-	public float[][] faceVertexU;
+    public float[][] faceVertexU;
 
-	@ObfuscatedName("afi.at")
-	public float[][] faceVertexV;
+    public float[][] faceVertexV;
 
-	@ObfuscatedName("afi.ad")
-	public int[] field9563;
+    public int[] field9563;
 
-	@ObfuscatedName("afi.am")
-	public int[] field9583;
+    public int[] field9583;
 
-	@ObfuscatedName("afi.au")
-	public int[] field9565;
+    public int[] field9565;
 
-	@ObfuscatedName("afi.ax")
-	public int field9602 = 0;
+    public int field9602 = 0;
 
-	@ObfuscatedName("afi.av")
-	public PureJavaModelRelated1[] field9570;
+    public PureJavaModelRelated1[] field9570;
 
-	@ObfuscatedName("afi.ao")
-	public byte[] faceType;
+    public byte[] faceType;
 
-	@ObfuscatedName("afi.aj")
-	public byte[] facePriority;
+    public byte[] facePriority;
 
-	@ObfuscatedName("afi.ay")
-	public byte[] faceAlpha;
+    public byte[] faceAlpha;
 
-	@ObfuscatedName("afi.ab")
-	public short[] field9574;
+    public short[] field9574;
 
-	@ObfuscatedName("afi.az")
-	public short[] faceColour;
+    public short[] faceColour;
 
-	@ObfuscatedName("afi.aa")
-	public short[] field9576;
+    public short[] field9576;
 
-	@ObfuscatedName("afi.af")
-	public short[] field9554;
+    public short[] field9554;
 
-	@ObfuscatedName("afi.ak")
-	public int[][] labelVertices;
+    public int[][] labelVertices;
 
-	@ObfuscatedName("afi.an")
-	public int[][] labelFaces;
+    public int[][] labelFaces;
 
-	@ObfuscatedName("afi.bf")
-	public boolean field9580;
+    public boolean field9580;
 
-	@ObfuscatedName("afi.bl")
-	public boolean verticesUpscaled = false;
+    public boolean verticesUpscaled = false;
 
-	@ObfuscatedName("afi.bk")
-	public int baseX;
+    public int baseX;
 
-	@ObfuscatedName("afi.bh")
-	public int baseY;
+    public int baseY;
 
-	@ObfuscatedName("afi.bx")
-	public int baseZ;
+    public int baseZ;
 
-	@ObfuscatedName("afi.bd")
-	public boolean field9538 = false;
+    public boolean field9538 = false;
 
-	@ObfuscatedName("afi.bc")
-	public ModelParticleEmitter[] emitters;
+    public ModelParticleEmitter[] emitters;
 
-	@ObfuscatedName("afi.bi")
-	public ModelParticleEffector[] effectors;
+    public ModelParticleEffector[] effectors;
 
-	@ObfuscatedName("afi.bn")
-	public int billboardCount;
+    public int billboardCount;
 
-	@ObfuscatedName("afi.bt")
-	public Billboard[] billboards;
+    public Billboard[] billboards;
 
-	@ObfuscatedName("afi.bq")
-	public BillboardPlacement[] billboardPlacements;
+    public BillboardPlacement[] billboardPlacements;
 
-	@ObfuscatedName("afi.bm")
-	public int[][] labelBillboards;
+    public int[][] labelBillboards;
 
-	@ObfuscatedName("afi.bb")
-	public boolean boundsValid = false;
+    public boolean boundsValid = false;
 
-	@ObfuscatedName("afi.be")
-	public short horizontalRadius;
+    public short horizontalRadius;
 
-	@ObfuscatedName("afi.by")
-	public short radius;
+    public short radius;
 
-	@ObfuscatedName("afi.bu")
-	public short minY;
+    public short minY;
 
-	@ObfuscatedName("afi.bw")
-	public short maxY;
+    public short maxY;
 
-	@ObfuscatedName("afi.bo")
-	public short minX;
+    public short minX;
 
-	@ObfuscatedName("afi.bz")
-	public short maxX;
+    public short maxX;
 
-	@ObfuscatedName("afi.bv")
-	public short minZ;
+    public short minZ;
 
-	@ObfuscatedName("afi.br")
-	public short maxZ;
+    public short maxZ;
 
-	@ObfuscatedName("afi.bg")
-	public boolean heightValid = false;
+    public boolean heightValid = false;
 
-	@ObfuscatedName("afi.ba")
-	public short height;
+    public short height;
 
-	@ObfuscatedName("afi.bp")
-	public boolean field9548 = false;
+    public boolean field9548 = false;
 
-	@ObfuscatedName("afi.bj")
-	public boolean field9608 = false;
+    public boolean field9608 = false;
 
-	@ObfuscatedName("afi.bs")
-	public static int field9543 = 0;
+    public static int field9543 = 0;
 
-	@ObfuscatedName("afi.cl")
-	public int[] field9606;
+    public int[] field9606;
 
-	@ObfuscatedName("afi.cg")
-	public float[] field9578;
+    public float[] field9578;
 
-	@ObfuscatedName("afi.ce")
-	public float[] field9607;
+    public float[] field9607;
 
-	@ObfuscatedName("afi.cu")
-	public float[] field9609;
+    public float[] field9609;
 
-	@ObfuscatedName("afi.ci")
-	public float[] field9610;
+    public float[] field9610;
 
-	@ObfuscatedName("afi.cn")
-	public int[] field9579;
+    public int[] field9579;
 
-	@ObfuscatedName("afi.cv")
-	public int[] field9612;
+    public int[] field9612;
 
-	@ObfuscatedName("afi.cp")
-	public int[] field9594;
+    public int[] field9594;
 
-	@ObfuscatedName("afi.ca")
-	public int[] field9614;
+    public int[] field9614;
 
-	@ObfuscatedName("afi.cx")
-	public int[] field9615;
+    public int[] field9615;
 
-	@ObfuscatedName("afi.cw")
-	public int[] field9618;
+    public int[] field9618;
 
-	@ObfuscatedName("afi.ct")
-	public PureJavaModel[] field9617;
+    public PureJavaModel[] field9617;
 
-	@ObfuscatedName("afi.cf")
-	public PureJavaModel[] field9539;
+    public PureJavaModel[] field9539;
 
 	public PureJavaModel(PureJavaToolkit renderer) {
 		this.renderer = renderer;
@@ -629,8 +550,7 @@ public class PureJavaModel extends Model {
 		}
 	}
 
-	@ObfuscatedName("afi.hb(Laz;)V")
-	public void method15458(PureJavaToolkitContext arg0) {
+    public void method15458(PureJavaToolkitContext arg0) {
 		this.rasteriser = arg0.rasteriser;
 		if (this.field9534 == arg0) {
 			return;
@@ -649,8 +569,7 @@ public class PureJavaModel extends Model {
 		this.field9618 = this.field9534.field851;
 	}
 
-	@ObfuscatedName("afi.hg(Ljava/lang/Thread;)V")
-	public void method15545(Thread arg0) {
+    public void method15545(Thread arg0) {
 		PureJavaToolkitContext var2 = this.renderer.getContext(arg0);
 		if (this.field9535 != var2) {
 			this.field9535 = var2;
@@ -659,8 +578,7 @@ public class PureJavaModel extends Model {
 		}
 	}
 
-	@ObfuscatedName("afi.hd()V")
-	public void method15496() {
+    public void method15496() {
 		if (this.field9602 != 0 || this.vertexNormal != null) {
 			return;
 		}
@@ -673,8 +591,7 @@ public class PureJavaModel extends Model {
 		}
 	}
 
-	@ObfuscatedName("afi.hx()V")
-	public void method15459() {
+    public void method15459() {
 		this.vertexNormal = new PureJavaVertexNormal[this.field9549];
 		for (int var1 = 0; var1 < this.field9549; var1++) {
 			this.vertexNormal[var1] = new PureJavaVertexNormal();
@@ -737,8 +654,7 @@ public class PureJavaModel extends Model {
 		}
 	}
 
-	@ObfuscatedName("afi.hq(Z)V")
-	public void method15466(boolean arg0) {
+    public void method15466(boolean arg0) {
 		if (this.renderer.threadLocalsCount > 1) {
 			synchronized (this) {
 				this.method15460(arg0);
@@ -748,8 +664,7 @@ public class PureJavaModel extends Model {
 		}
 	}
 
-	@ObfuscatedName("afi.hf(Z)V")
-	public void method15460(boolean arg0) {
+    public void method15460(boolean arg0) {
 		if (this.field9602 == 1) {
 			this.method15546();
 		} else if (this.field9602 == 2) {
@@ -908,8 +823,7 @@ public class PureJavaModel extends Model {
 		}
 	}
 
-	@ObfuscatedName("afi.hr(ISI)I")
-	public int method15461(int arg0, short arg1, int arg2) {
+    public int method15461(int arg0, short arg1, int arg2) {
 		int var4 = ColourUtils.field8151[this.method15462(arg0, arg2)];
 		Material var5 = this.renderer.materialList.get(arg1 & 0xFFFF);
 		int var6 = var5.field1364 & 0xFF;
@@ -942,8 +856,7 @@ public class PureJavaModel extends Model {
 		return var4;
 	}
 
-	@ObfuscatedName("afi.hs(II)I")
-	public int method15462(int arg0, int arg1) {
+    public int method15462(int arg0, int arg1) {
 		int var3 = (arg0 & 0x7F) * arg1 >> 7;
 		if (var3 < 2) {
 			var3 = 2;
@@ -953,8 +866,7 @@ public class PureJavaModel extends Model {
 		return (arg0 & 0xFF80) + var3;
 	}
 
-	@ObfuscatedName("afi.hh(I)I")
-	public int method15463(int arg0) {
+    public int method15463(int arg0) {
 		if (arg0 < 2) {
 			arg0 = 2;
 		} else if (arg0 > 126) {
@@ -963,8 +875,7 @@ public class PureJavaModel extends Model {
 		return arg0;
 	}
 
-	@ObfuscatedName("afi.hp()V")
-	public void method15546() {
+    public void method15546() {
 		if (this.field9602 == 0) {
 			this.method15466(false);
 		} else if (this.renderer.threadLocalsCount > 1) {
@@ -976,8 +887,7 @@ public class PureJavaModel extends Model {
 		}
 	}
 
-	@ObfuscatedName("afi.hy()V")
-	public void method15464() {
+    public void method15464() {
 		for (int var1 = 0; var1 < this.faceCount; var1++) {
 			short var2 = this.field9574 == null ? -1 : this.field9574[var1];
 			if (var2 == -1) {
@@ -1000,8 +910,7 @@ public class PureJavaModel extends Model {
 		this.field9602 = 2;
 	}
 
-	@ObfuscatedName("afi.bo(Ldo;IIIZ)V")
-	public void method1686(Model arg0, int arg1, int arg2, int arg3, boolean arg4) {
+    public void method1686(Model arg0, int arg1, int arg2, int arg3, boolean arg4) {
 		PureJavaModel var6 = (PureJavaModel) arg0;
 		if ((this.allowedOperations & 0x10000) != 65536) {
 			throw new IllegalStateException("");
@@ -1082,8 +991,7 @@ public class PureJavaModel extends Model {
 		}
 	}
 
-	@ObfuscatedName("afi.l(BIZ)Ldo;")
-	public Model method1773(byte arg0, int arg1, boolean arg2) {
+    public Model method1773(byte arg0, int arg1, boolean arg2) {
 		this.method15545(Thread.currentThread());
 		boolean var4 = false;
 		PureJavaModel var5;
@@ -1098,8 +1006,7 @@ public class PureJavaModel extends Model {
 		return this.method15465(var6, var5, arg1, var4, arg2);
 	}
 
-	@ObfuscatedName("afi.he(Lafi;Lafi;IZZ)Ldo;")
-	public Model method15465(PureJavaModel arg0, PureJavaModel arg1, int arg2, boolean arg3, boolean arg4) {
+    public Model method15465(PureJavaModel arg0, PureJavaModel arg1, int arg2, boolean arg3, boolean arg4) {
 		arg0.boundsValid = this.boundsValid;
 		if (this.boundsValid) {
 			arg0.maxX = this.maxX;
@@ -1370,13 +1277,11 @@ public class PureJavaModel extends Model {
 		return arg0;
 	}
 
-	@ObfuscatedName("afi.z()I")
-	public int method1691() {
+    public int method1691() {
 		return this.allowedOperations;
 	}
 
-	@ObfuscatedName("afi.u(I)V")
-	public void method1690(int arg0) {
+    public void method1690(int arg0) {
 		if (this.renderer.threadLocalsCount <= 1) {
 			if ((this.allowedOperations & 0x10000) == 65536 && (arg0 & 0x10000) == 0) {
 				this.method15466(true);
@@ -1392,12 +1297,10 @@ public class PureJavaModel extends Model {
 		}
 	}
 
-	@ObfuscatedName("afi.p()V")
-	public void method1816() {
+    public void method1816() {
 	}
 
-	@ObfuscatedName("afi.d(I)V")
-	public void method1693(int arg0) {
+    public void method1693(int arg0) {
 		if ((this.allowedOperations & 0x5) != 5) {
 			throw new IllegalStateException();
 		} else if (arg0 == 4096) {
@@ -1420,8 +1323,7 @@ public class PureJavaModel extends Model {
 		}
 	}
 
-	@ObfuscatedName("afi.c(I)V")
-	public void method1694(int arg0) {
+    public void method1694(int arg0) {
 		if ((this.allowedOperations & 0xD) != 13) {
 			throw new IllegalStateException();
 		} else if (this.vertexNormal == null) {
@@ -1469,8 +1371,7 @@ public class PureJavaModel extends Model {
 		}
 	}
 
-	@ObfuscatedName("afi.hn()V")
-	public void rotateY90() {
+    public void rotateY90() {
 		synchronized (this) {
 			for (int var2 = 0; var2 < this.vertexCount; var2++) {
 				int var3 = this.vertexX[var2];
@@ -1481,8 +1382,7 @@ public class PureJavaModel extends Model {
 		}
 	}
 
-	@ObfuscatedName("afi.hi()V")
-	public void method15468() {
+    public void method15468() {
 		synchronized (this) {
 			for (int var2 = 0; var2 < this.vertexCount; var2++) {
 				this.vertexX[var2] = -this.vertexX[var2];
@@ -1492,8 +1392,7 @@ public class PureJavaModel extends Model {
 		}
 	}
 
-	@ObfuscatedName("afi.hw()V")
-	public void method15469() {
+    public void method15469() {
 		synchronized (this) {
 			for (int var2 = 0; var2 < this.vertexCount; var2++) {
 				int var3 = this.vertexZ[var2];
@@ -1504,8 +1403,7 @@ public class PureJavaModel extends Model {
 		}
 	}
 
-	@ObfuscatedName("afi.ht()V")
-	public void method15506() {
+    public void method15506() {
 		synchronized (this) {
 			for (int var2 = 0; var2 < this.field9549; var2++) {
 				int var3 = this.vertexX[var2];
@@ -1536,8 +1434,7 @@ public class PureJavaModel extends Model {
 		}
 	}
 
-	@ObfuscatedName("afi.hc()V")
-	public void method15471() {
+    public void method15471() {
 		synchronized (this) {
 			for (int var2 = 0; var2 < this.field9549; var2++) {
 				this.vertexX[var2] = -this.vertexX[var2];
@@ -1564,8 +1461,7 @@ public class PureJavaModel extends Model {
 		}
 	}
 
-	@ObfuscatedName("afi.ho()V")
-	public void method15472() {
+    public void method15472() {
 		synchronized (this) {
 			for (int var2 = 0; var2 < this.field9549; var2++) {
 				int var3 = this.vertexZ[var2];
@@ -1596,8 +1492,7 @@ public class PureJavaModel extends Model {
 		}
 	}
 
-	@ObfuscatedName("afi.r(I)V")
-	public void rotateX(int arg0) {
+    public void rotateX(int arg0) {
 		if ((this.allowedOperations & 0x6) != 6) {
 			throw new IllegalStateException();
 		}
@@ -1613,8 +1508,7 @@ public class PureJavaModel extends Model {
 		}
 	}
 
-	@ObfuscatedName("afi.v(I)V")
-	public void rotateZ(int arg0) {
+    public void rotateZ(int arg0) {
 		if ((this.allowedOperations & 0x3) != 3) {
 			throw new IllegalStateException();
 		}
@@ -1630,8 +1524,7 @@ public class PureJavaModel extends Model {
 		}
 	}
 
-	@ObfuscatedName("afi.o(III)V")
-	public void translate(int arg0, int arg1, int arg2) {
+    public void translate(int arg0, int arg1, int arg2) {
 		if (arg0 != 0 && (this.allowedOperations & 0x1) != 1) {
 			throw new IllegalStateException();
 		} else if (arg1 != 0 && (this.allowedOperations & 0x2) != 2) {
@@ -1649,8 +1542,7 @@ public class PureJavaModel extends Model {
 		}
 	}
 
-	@ObfuscatedName("afi.s()V")
-	public void method1698() {
+    public void method1698() {
 		if ((this.allowedOperations & 0x10) != 16) {
 			throw new IllegalStateException();
 		}
@@ -1701,8 +1593,7 @@ public class PureJavaModel extends Model {
 		}
 	}
 
-	@ObfuscatedName("afi.y(III)V")
-	public void scale(int arg0, int arg1, int arg2) {
+    public void scale(int arg0, int arg1, int arg2) {
 		if (arg0 != 128 && (this.allowedOperations & 0x1) != 1) {
 			throw new IllegalStateException();
 		} else if (arg1 != 128 && (this.allowedOperations & 0x2) != 2) {
@@ -1721,8 +1612,7 @@ public class PureJavaModel extends Model {
 		}
 	}
 
-	@ObfuscatedName("afi.q(IILcb;Lcb;III)V")
-	public void method1700(int arg0, int arg1, FloorModel arg2, FloorModel arg3, int arg4, int arg5, int arg6) {
+    public void method1700(int arg0, int arg1, FloorModel arg2, FloorModel arg3, int arg4, int arg5, int arg6) {
 		if (arg0 == 3) {
 			if ((this.allowedOperations & 0x7) != 7) {
 				throw new IllegalStateException();
@@ -1911,16 +1801,14 @@ public class PureJavaModel extends Model {
 		}
 	}
 
-	@ObfuscatedName("afi.hj()V")
-	public void method15477() {
+    public void method15477() {
 		this.vertexNormal = null;
 		this.field9555 = null;
 		this.field9570 = null;
 		this.boundsValid = false;
 	}
 
-	@ObfuscatedName("afi.b()V")
-	public void method1702() {
+    public void method1702() {
 		if (this.renderer.threadLocalsCount <= 1) {
 			return;
 		}
@@ -1935,8 +1823,7 @@ public class PureJavaModel extends Model {
 		}
 	}
 
-	@ObfuscatedName("afi.h()V")
-	public void method1703() {
+    public void method1703() {
 		if (this.renderer.threadLocalsCount > 1) {
 			synchronized (this) {
 				this.field1301 = false;
@@ -1945,8 +1832,7 @@ public class PureJavaModel extends Model {
 		}
 	}
 
-	@ObfuscatedName("afi.as()Z")
-	public boolean method1716() {
+    public boolean method1716() {
 		if (this.labelVertices == null) {
 			return false;
 		} else {
@@ -1957,8 +1843,7 @@ public class PureJavaModel extends Model {
 		}
 	}
 
-	@ObfuscatedName("afi.ap()V")
-	public void method1776() {
+    public void method1776() {
 		if (this.verticesUpscaled) {
 			for (int var1 = 0; var1 < this.vertexCount; var1++) {
 				this.vertexX[var1] = this.vertexX[var1] + 7 >> 4;
@@ -1974,8 +1859,7 @@ public class PureJavaModel extends Model {
 		this.boundsValid = false;
 	}
 
-	@ObfuscatedName("afi.at(I[IIIIIZ)V")
-	public void applyTransform(int type, int[] labels, int arg2, int arg3, int arg4, int arg5, boolean arg6) {
+    public void applyTransform(int type, int[] labels, int arg2, int arg3, int arg4, int arg5, boolean arg6) {
 		int var8 = labels.length;
 		if (type == 0) {
 			int x = arg2 << 4;
@@ -2234,8 +2118,7 @@ public class PureJavaModel extends Model {
 		}
 	}
 
-	@ObfuscatedName("afi.ad(I[IIIIIZ)V")
-	public void method1711(int arg0, int[] arg1, int arg2, int arg3, int arg4, int arg5, boolean arg6) {
+    public void method1711(int arg0, int[] arg1, int arg2, int arg3, int arg4, int arg5, boolean arg6) {
 		if (arg0 != 0) {
 			this.applyTransform(arg0, arg1, arg2, arg3, arg4, arg5, arg6);
 			return;
@@ -2256,8 +2139,7 @@ public class PureJavaModel extends Model {
 		this.baseZ = var10;
 	}
 
-	@ObfuscatedName("afi.au(I[IIIIZI[I)V")
-	public void method1720(int arg0, int[] arg1, int arg2, int arg3, int arg4, boolean arg5, int arg6, int[] arg7) {
+    public void method1720(int arg0, int[] arg1, int arg2, int arg3, int arg4, boolean arg5, int arg6, int[] arg7) {
 		if (arg0 != 0) {
 			this.method1719(arg0, arg1, arg2, arg3, arg4, arg5, arg6, arg7);
 			return;
@@ -2278,8 +2160,7 @@ public class PureJavaModel extends Model {
 		this.baseZ = var11;
 	}
 
-	@ObfuscatedName("afi.am(I[IIIIZI[I)V")
-	public void method1719(int arg0, int[] arg1, int arg2, int arg3, int arg4, boolean arg5, int arg6, int[] arg7) {
+    public void method1719(int arg0, int[] arg1, int arg2, int arg3, int arg4, boolean arg5, int arg6, int[] arg7) {
 		int var9 = arg1.length;
 		if (arg0 == 0) {
 			int var10 = arg2 << 4;
@@ -2712,8 +2593,7 @@ public class PureJavaModel extends Model {
 		}
 	}
 
-	@ObfuscatedName("afi.ar(IIII)V")
-	public void method1721(int arg0, int arg1, int arg2, int arg3) {
+    public void method1721(int arg0, int arg1, int arg2, int arg3) {
 		if (arg0 == 0) {
 			int var5 = 0;
 			this.baseX = 0;
@@ -2848,8 +2728,7 @@ public class PureJavaModel extends Model {
 		}
 	}
 
-	@ObfuscatedName("afi.aq(Lou;IZ)V")
-	public void method1771(Matrix4x3 arg0, int arg1, boolean arg2) {
+    public void method1771(Matrix4x3 arg0, int arg1, boolean arg2) {
 		if (this.vertexSourceModels == null) {
 			return;
 		}
@@ -2872,13 +2751,11 @@ public class PureJavaModel extends Model {
 		}
 	}
 
-	@ObfuscatedName("afi.ax(Lou;Led;I)V")
-	public void draw(Matrix4x3 arg0, ScreenBoundingBox arg1, int arg2) {
+    public void draw(Matrix4x3 arg0, ScreenBoundingBox arg1, int arg2) {
 		this.method15478(arg0, arg1, arg2);
 	}
 
-	@ObfuscatedName("afi.hv(Lou;Led;I)V")
-	public void method15478(Matrix4x3 arg0, ScreenBoundingBox arg1, int arg2) {
+    public void method15478(Matrix4x3 arg0, ScreenBoundingBox arg1, int arg2) {
 		if (this.field9549 < 1) {
 			return;
 		}
@@ -3090,8 +2967,7 @@ public class PureJavaModel extends Model {
 		}
 	}
 
-	@ObfuscatedName("afi.hz(ZZZZZ)V")
-	public final void method15490(boolean arg0, boolean arg1, boolean arg2, boolean arg3, boolean arg4) {
+    public final void method15490(boolean arg0, boolean arg1, boolean arg2, boolean arg3, boolean arg4) {
 		if (this.billboards != null) {
 			int var6 = 0;
 			while (var6 < this.billboardCount) {
@@ -3137,8 +3013,7 @@ public class PureJavaModel extends Model {
 		}
 	}
 
-	@ObfuscatedName("afi.ij(ZZZ)V")
-	public final void method15479(boolean arg0, boolean arg1, boolean arg2) {
+    public final void method15479(boolean arg0, boolean arg1, boolean arg2) {
 		for (int var4 = 0; var4 < this.billboardCount; var4++) {
 			Billboard var5 = this.billboards[var4];
 			if (var5.field898) {
@@ -3148,8 +3023,7 @@ public class PureJavaModel extends Model {
 		}
 	}
 
-	@ObfuscatedName("afi.io(I)Z")
-	public final boolean method15480(int arg0) {
+    public final boolean method15480(int arg0) {
 		if (this.faceAlpha == null) {
 			return false;
 		} else {
@@ -3157,8 +3031,7 @@ public class PureJavaModel extends Model {
 		}
 	}
 
-	@ObfuscatedName("afi.iq(I)Z")
-	public final boolean method15481(int arg0) {
+    public final boolean method15481(int arg0) {
 		if (this.field9618 == null) {
 			return false;
 		} else {
@@ -3166,8 +3039,7 @@ public class PureJavaModel extends Model {
 		}
 	}
 
-	@ObfuscatedName("afi.ig(ZZZIZZ)V")
-	public final void method15519(boolean arg0, boolean arg1, boolean arg2, int arg3, boolean arg4, boolean arg5) {
+    public final void method15519(boolean arg0, boolean arg1, boolean arg2, int arg3, boolean arg4, boolean arg5) {
 		if (this.field9565[arg3] == -2) {
 			return;
 		}
@@ -3211,8 +3083,7 @@ public class PureJavaModel extends Model {
 		this.renderer.method15686(arg0, arg1, arg2, var19.field818, var19.field812, var19.field815, var19.field820, var19.field821, var18.field895, var19.field819, var18.field900, var18.field899);
 	}
 
-	@ObfuscatedName("afi.iv(ZZZI)V")
-	public final void method15483(boolean arg0, boolean arg1, boolean arg2, int arg3) {
+    public final void method15483(boolean arg0, boolean arg1, boolean arg2, int arg3) {
 		short var5 = this.faceVertex1[arg3];
 		short var6 = this.faceVertex2[arg3];
 		short var7 = this.faceVertex3[arg3];
@@ -3245,8 +3116,7 @@ public class PureJavaModel extends Model {
 		}
 	}
 
-	@ObfuscatedName("afi.ie(ZZZI)V")
-	public final void method15484(boolean arg0, boolean arg1, boolean arg2, int arg3) {
+    public final void method15484(boolean arg0, boolean arg1, boolean arg2, int arg3) {
 		boolean var5 = false;
 		if (this.field9574 != null && this.field9574[arg3] != -1) {
 			var5 = this.renderer.materialList.get(this.field9574[arg3] & 0xFFFF).field1330;
@@ -3360,8 +3230,7 @@ public class PureJavaModel extends Model {
 		}
 	}
 
-	@ObfuscatedName("afi.av(IILou;ZI)Z")
-	public boolean method1725(int arg0, int arg1, Matrix4x3 arg2, boolean arg3, int arg4) {
+    public boolean method1725(int arg0, int arg1, Matrix4x3 arg2, boolean arg3, int arg4) {
 		this.method15458(this.renderer.getContext(Thread.currentThread()));
 		Matrix4x4 var6 = this.field9534.field828;
 		var6.setToMatrix4x3(arg2);
@@ -3466,8 +3335,7 @@ public class PureJavaModel extends Model {
 		return false;
 	}
 
-	@ObfuscatedName("afi.iu(IIFFFFFF)Z")
-	public boolean pointWithinTriangle(int arg0, int arg1, float arg2, float arg3, float arg4, float arg5, float arg6, float arg7) {
+    public boolean pointWithinTriangle(int arg0, int arg1, float arg2, float arg3, float arg4, float arg5, float arg6, float arg7) {
 		if ((float) arg1 < arg2 && (float) arg1 < arg3 && (float) arg1 < arg4) {
 			return false;
 		} else if ((float) arg1 > arg2 && (float) arg1 > arg3 && (float) arg1 > arg4) {
@@ -3479,8 +3347,7 @@ public class PureJavaModel extends Model {
 		}
 	}
 
-	@ObfuscatedName("afi.by(Lou;)V")
-	public void method1689(Matrix4x3 arg0) {
+    public void method1689(Matrix4x3 arg0) {
 		this.method15458(this.renderer.getContext(Thread.currentThread()));
 		Matrix4x4 var2 = this.field9534.field828;
 		var2.setToMatrix4x3(arg0);
@@ -3522,13 +3389,11 @@ public class PureJavaModel extends Model {
 		}
 	}
 
-	@ObfuscatedName("afi.ao(Lara;)Lara;")
-	public HardShadow method1726(HardShadow arg0) {
+    public HardShadow method1726(HardShadow arg0) {
 		return null;
 	}
 
-	@ObfuscatedName("afi.in()V")
-	public void calculateBounds() {
+    public void calculateBounds() {
 		if (this.boundsValid) {
 			return;
 		}
@@ -3582,8 +3447,7 @@ public class PureJavaModel extends Model {
 		this.boundsValid = true;
 	}
 
-	@ObfuscatedName("afi.bl()V")
-	public void method1736() {
+    public void method1736() {
 		if (this.heightValid) {
 			return;
 		}
@@ -3594,80 +3458,70 @@ public class PureJavaModel extends Model {
 		this.heightValid = true;
 	}
 
-	@ObfuscatedName("afi.aj()I")
-	public int getHorizontalRadius() {
+    public int getHorizontalRadius() {
 		if (!this.boundsValid) {
 			this.calculateBounds();
 		}
 		return this.horizontalRadius;
 	}
 
-	@ObfuscatedName("afi.ay()I")
-	public int getRadius() {
+    public int getRadius() {
 		if (!this.boundsValid) {
 			this.calculateBounds();
 		}
 		return this.radius;
 	}
 
-	@ObfuscatedName("afi.ab()I")
-	public int getMinX() {
+    public int getMinX() {
 		if (!this.boundsValid) {
 			this.calculateBounds();
 		}
 		return this.minX;
 	}
 
-	@ObfuscatedName("afi.az()I")
-	public int getMaxX() {
+    public int getMaxX() {
 		if (!this.boundsValid) {
 			this.calculateBounds();
 		}
 		return this.maxX;
 	}
 
-	@ObfuscatedName("afi.aa()I")
-	public int getMinY() {
+    public int getMinY() {
 		if (!this.boundsValid) {
 			this.calculateBounds();
 		}
 		return this.minY;
 	}
 
-	@ObfuscatedName("afi.af()I")
-	public int getMaxY() {
+    public int getMaxY() {
 		if (!this.boundsValid) {
 			this.calculateBounds();
 		}
 		return this.maxY;
 	}
 
-	@ObfuscatedName("afi.ak()I")
-	public int getMinZ() {
+    public int getMinZ() {
 		if (!this.boundsValid) {
 			this.calculateBounds();
 		}
 		return this.minZ;
 	}
 
-	@ObfuscatedName("afi.an()I")
-	public int getMaxZ() {
+    public int getMaxZ() {
 		if (!this.boundsValid) {
 			this.calculateBounds();
 		}
 		return this.maxZ;
 	}
 
-	@ObfuscatedName("afi.bf()I")
-	public int getHeight() {
+    public int getHeight() {
 		if (!this.heightValid) {
 			this.method1736();
 		}
 		return this.height;
 	}
 
-	@ObfuscatedName("afi.bk(I)V")
-	public void method1893(int arg0) {
+    public void method1893(int arg0) {
 		if ((this.allowedOperations & 0x1000) != 4096) {
 			throw new IllegalStateException();
 		}
@@ -3675,8 +3529,7 @@ public class PureJavaModel extends Model {
 		this.field9602 = 0;
 	}
 
-	@ObfuscatedName("afi.bh(I)V")
-	public void method1738(int arg0) {
+    public void method1738(int arg0) {
 		if ((this.allowedOperations & 0x2000) != 8192) {
 			throw new IllegalStateException();
 		}
@@ -3684,23 +3537,19 @@ public class PureJavaModel extends Model {
 		this.field9602 = 0;
 	}
 
-	@ObfuscatedName("afi.bx()I")
-	public int method1862() {
+    public int method1862() {
 		return this.field9546;
 	}
 
-	@ObfuscatedName("afi.bd()I")
-	public int method1740() {
+    public int method1740() {
 		return this.field9600;
 	}
 
-	@ObfuscatedName("afi.bc()[B")
-	public byte[] method1741() {
+    public byte[] method1741() {
 		return this.faceAlpha;
 	}
 
-	@ObfuscatedName("afi.bi(SS)V")
-	public void recolor(short arg0, short arg1) {
+    public void recolor(short arg0, short arg1) {
 		for (int var3 = 0; var3 < this.faceCount; var3++) {
 			if (this.faceColour[var3] == arg0) {
 				this.faceColour[var3] = arg1;
@@ -3718,8 +3567,7 @@ public class PureJavaModel extends Model {
 		}
 	}
 
-	@ObfuscatedName("afi.bn(B[B)V")
-	public void method1747(byte arg0, byte[] arg1) {
+    public void method1747(byte arg0, byte[] arg1) {
 		if ((this.allowedOperations & 0x100000) == 0) {
 			throw new RuntimeException();
 		}
@@ -3741,8 +3589,7 @@ public class PureJavaModel extends Model {
 		}
 	}
 
-	@ObfuscatedName("afi.bt(SS)V")
-	public void retexture(short arg0, short arg1) {
+    public void retexture(short arg0, short arg1) {
 		if (this.field9574 == null) {
 			return;
 		}
@@ -3759,8 +3606,7 @@ public class PureJavaModel extends Model {
 		}
 	}
 
-	@ObfuscatedName("afi.bq(IIII)V")
-	public void method1745(int arg0, int arg1, int arg2, int arg3) {
+    public void method1745(int arg0, int arg1, int arg2, int arg3) {
 		if ((this.allowedOperations & 0x80000) != 524288) {
 			throw new IllegalStateException();
 		}
@@ -3792,18 +3638,15 @@ public class PureJavaModel extends Model {
 		}
 	}
 
-	@ObfuscatedName("afi.bu()[Ldu;")
-	public ModelParticleEmitter[] method1750() {
+    public ModelParticleEmitter[] method1750() {
 		return this.emitters;
 	}
 
-	@ObfuscatedName("afi.bw()[Lcq;")
-	public ModelParticleEffector[] method1765() {
+    public ModelParticleEffector[] method1765() {
 		return this.effectors;
 	}
 
-	@ObfuscatedName("afi.bm()Z")
-	public boolean method1746() {
+    public boolean method1746() {
 		if (this.field9574 == null) {
 			return true;
 		}
@@ -3815,13 +3658,11 @@ public class PureJavaModel extends Model {
 		return true;
 	}
 
-	@ObfuscatedName("afi.bb()Z")
-	public boolean method1731() {
+    public boolean method1731() {
 		return this.field9548;
 	}
 
-	@ObfuscatedName("afi.be()Z")
-	public boolean method1812() {
+    public boolean method1812() {
 		return this.field9608;
 	}
 }

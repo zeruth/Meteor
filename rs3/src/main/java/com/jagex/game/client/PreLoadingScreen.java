@@ -14,45 +14,33 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-@ObfuscatedName("jm")
 public class PreLoadingScreen implements LoadingScreen {
 
-	@ObfuscatedName("jm.e")
-	public boolean field2895;
+    public boolean field2895;
 
-	@ObfuscatedName("jm.n")
-	public boolean field2891;
+    public boolean field2891;
 
-	@ObfuscatedName("jm.m")
-	public List field2892 = new ArrayList();
+    public List field2892 = new ArrayList();
 
-	@ObfuscatedName("jm.k")
-	public boolean field2894;
+    public boolean field2894;
 
-	@ObfuscatedName("jm.f")
-	public boolean field2893;
+    public boolean field2893;
 
-	@ObfuscatedName("jm.w")
-	public String field2896;
+    public String field2896;
 
-	@ObfuscatedName("jm.l")
-	public String field2897;
+    public String field2897;
 
-	@ObfuscatedName("jm.u")
-	public AffineTransform field2898 = new AffineTransform();
+    public AffineTransform field2898 = new AffineTransform();
 
-	@ObfuscatedName("jm.e(II)I")
-	public final int method4893(int arg0) {
+    public final int method4893(int arg0) {
 		return this.field2894 ? (GameShell.canvasWid - arg0) / 2 : 0;
 	}
 
-	@ObfuscatedName("jm.n(II)I")
-	public final int method4887(int arg0) {
+    public final int method4887(int arg0) {
 		return this.field2893 ? (GameShell.canvasHei - arg0) / 2 : 0;
 	}
 
-	@ObfuscatedName("jm.m(ZI)V")
-	public void method4888(boolean arg0) {
+    public void method4888(boolean arg0) {
 		if (!this.field2895 && !this.field2891) {
 			this.field2891 = true;
 			try {
@@ -132,8 +120,7 @@ public class PreLoadingScreen implements LoadingScreen {
 		}
 	}
 
-	@ObfuscatedName("jm.k(Ljava/lang/String;I)Ljava/awt/Image;")
-	public Image method4903(String arg0) throws IOException {
+    public Image method4903(String arg0) throws IOException {
 		InputStream var2 = null;
 		try {
 			var2 = GameShell.field11885.getClass().getClassLoader().getResourceAsStream(arg0);
@@ -156,47 +143,38 @@ public class PreLoadingScreen implements LoadingScreen {
 		}
 	}
 
-	@ObfuscatedName("jm.f(I)V")
-	public void method4890() {
+    public void method4890() {
 		GameShell.method8913(Loading.field593.method4851(), Loading.field593.method4852(), Client.loadingBarFillColour[Client.field10773], Client.loadingBarOutlineColour[Client.field10773], Client.loadingBarTextColour[Client.field10773]);
 	}
 
-	@ObfuscatedName("jm.w(B)V")
-	public void method4891() {
+    public void method4891() {
 		GameShell.method2901();
 	}
 
-	@ObfuscatedName("jm.l(S)V")
-	public void method4916() {
+    public void method4916() {
 	}
 
-	@ObfuscatedName("jm.u(I)I")
-	public int method4912() {
+    public int method4912() {
 		return 100;
 	}
 
-	@ObfuscatedName("jm.z(J)Z")
-	public boolean method4894(long arg0) {
+    public boolean method4894(long arg0) {
 		return true;
 	}
 
 	// line 177
-	@ObfuscatedName("jm.p(B)I")
-	public int method4895() {
+    public int method4895() {
 		return 0;
 	}
 
-	@ObfuscatedName("jq")
-	public abstract static class PreLoadingRelated {
+    public abstract static class PreLoadingRelated {
 
 		// $FF: synthetic field
 		public final PreLoadingScreen this$0;
 
-		@ObfuscatedName("jq.e")
-		public int field2947;
+        public int field2947;
 
-		@ObfuscatedName("jq.n")
-		public int field2948;
+        public int field2948;
 
 		// line 184
 		public PreLoadingRelated(PreLoadingScreen arg0, int arg1, int arg2) {
@@ -205,18 +183,15 @@ public class PreLoadingScreen implements LoadingScreen {
 			this.field2948 = arg2;
 		}
 
-		@ObfuscatedName("jq.e(Ljava/awt/Graphics;B)V")
-		public abstract void method4987(Graphics arg0);
+        public abstract void method4987(Graphics arg0);
 	}
 
-	@ObfuscatedName("ahw")
-	public static class PreLoadingImage extends PreLoadingRelated {
+    public static class PreLoadingImage extends PreLoadingRelated {
 
 		// $FF: synthetic field
 		public final PreLoadingScreen this$0;
 
-		@ObfuscatedName("ahw.m")
-		public Image field10470;
+        public Image field10470;
 
 		// line 195
 		public PreLoadingImage(PreLoadingScreen arg0, Image arg1, int arg2, int arg3) {
@@ -225,25 +200,21 @@ public class PreLoadingScreen implements LoadingScreen {
 			this.field10470 = arg1;
 		}
 
-		@ObfuscatedName("ahw.e(Ljava/awt/Graphics;B)V")
-		public void method4987(Graphics arg0) {
+        public void method4987(Graphics arg0) {
 			int var2 = this.this$0.method4893(this.field10470.getWidth(null)) + this.field2947;
 			int var3 = this.this$0.method4887(this.field10470.getHeight(null)) + this.field2948;
 			arg0.drawImage(this.field10470, var2, var3, null);
 		}
 	}
 
-	@ObfuscatedName("aqz")
-	public static class PreLoadingRotatingImage extends PreLoadingImage {
+    public static class PreLoadingRotatingImage extends PreLoadingImage {
 
 		// $FF: synthetic field
 		public final PreLoadingScreen this$0;
 
-		@ObfuscatedName("aqz.k")
-		public float field12091;
+        public float field12091;
 
-		@ObfuscatedName("aqz.f")
-		public float field12092;
+        public float field12092;
 
 		// line 211
 		public PreLoadingRotatingImage(PreLoadingScreen arg0, Image arg1, int arg2, int arg3, float arg4) {
@@ -253,8 +224,7 @@ public class PreLoadingScreen implements LoadingScreen {
 			this.field12092 = -this.field12091;
 		}
 
-		@ObfuscatedName("aqz.e(Ljava/awt/Graphics;B)V")
-		public void method4987(Graphics arg0) {
+        public void method4987(Graphics arg0) {
 			this.field12092 += this.field12091;
 			if (this.field12092 < 0.0F) {
 				this.field12092 += 360.0F;
@@ -271,23 +241,18 @@ public class PreLoadingScreen implements LoadingScreen {
 		}
 	}
 
-	@ObfuscatedName("ahj")
-	public static class PreLoadingProgressImage extends PreLoadingRelated {
+    public static class PreLoadingProgressImage extends PreLoadingRelated {
 
 		// $FF: synthetic field
 		public final PreLoadingScreen this$0;
 
-		@ObfuscatedName("ahj.m")
-		public boolean field10469;
+        public boolean field10469;
 
-		@ObfuscatedName("ahj.k")
-		public java.awt.Font field10467;
+        public java.awt.Font field10467;
 
-		@ObfuscatedName("ahj.f")
-		public java.awt.FontMetrics field10468;
+        public java.awt.FontMetrics field10468;
 
-		@ObfuscatedName("ahj.w")
-		public Color field10466;
+        public Color field10466;
 
 		// line 238
 		public PreLoadingProgressImage(PreLoadingScreen arg0, boolean arg1, String arg2, int arg3, int arg4, int arg5, int arg6) {
@@ -299,8 +264,7 @@ public class PreLoadingScreen implements LoadingScreen {
 			this.field10466 = new Color(arg4);
 		}
 
-		@ObfuscatedName("ahj.e(Ljava/awt/Graphics;B)V")
-		public void method4987(Graphics arg0) {
+        public void method4987(Graphics arg0) {
 			String var2;
 			if (this.field10469) {
 				var2 = this.this$0.field2896;

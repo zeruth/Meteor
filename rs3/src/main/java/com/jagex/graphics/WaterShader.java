@@ -4,74 +4,51 @@ import com.jagex.math.Matrix4x3;
 import com.jagex.math.Matrix4x4;
 import deob.ObfuscatedName;
 
-@ObfuscatedName("ahi")
 public abstract class WaterShader extends GpuRendererRelated2 {
 
-	@ObfuscatedName("ahi.n")
-	public GpuShader shader;
+    public GpuShader shader;
 
-	@ObfuscatedName("ahi.m")
-	public ProgramUniform textureMatrixUniform;
+    public ProgramUniform textureMatrixUniform;
 
-	@ObfuscatedName("ahi.k")
-	public ProgramUniform modelMatrixUniform;
+    public ProgramUniform modelMatrixUniform;
 
-	@ObfuscatedName("ahi.f")
-	public ProgramUniform viewMatrixUniform;
+    public ProgramUniform viewMatrixUniform;
 
-	@ObfuscatedName("ahi.w")
-	public ProgramUniform projectionMatrixUniform;
+    public ProgramUniform projectionMatrixUniform;
 
-	@ObfuscatedName("ahi.l")
-	public ProgramUniform field10588;
+    public ProgramUniform field10588;
 
-	@ObfuscatedName("ahi.u")
-	public ProgramUniform modelViewMatrixUniform;
+    public ProgramUniform modelViewMatrixUniform;
 
-	@ObfuscatedName("ahi.z")
-	public ProgramUniform modelViewProjectionMatrixUniform;
+    public ProgramUniform modelViewProjectionMatrixUniform;
 
-	@ObfuscatedName("ahi.p")
-	public ProgramUniform viewProjectionMatrixUniform;
+    public ProgramUniform viewProjectionMatrixUniform;
 
-	@ObfuscatedName("ahi.d")
-	public ProgramUniform eyePositionUniform;
+    public ProgramUniform eyePositionUniform;
 
-	@ObfuscatedName("ahi.c")
-	public ProgramUniform eyePositionOSUniform;
+    public ProgramUniform eyePositionOSUniform;
 
-	@ObfuscatedName("ahi.r")
-	public ProgramUniform sunDirectionOSUniform;
+    public ProgramUniform sunDirectionOSUniform;
 
-	@ObfuscatedName("ahi.v")
-	public ProgramUniform ambientColourUniform;
+    public ProgramUniform ambientColourUniform;
 
-	@ObfuscatedName("ahi.o")
-	public ProgramUniform sunColourUniform;
+    public ProgramUniform sunColourUniform;
 
-	@ObfuscatedName("ahi.s")
-	public ProgramUniform antiSunColourUniform;
+    public ProgramUniform antiSunColourUniform;
 
-	@ObfuscatedName("ahi.y")
-	public ProgramUniform sunDirectionUniform;
+    public ProgramUniform sunDirectionUniform;
 
-	@ObfuscatedName("ahi.q")
-	public ProgramUniform sunExponentUniform;
+    public ProgramUniform sunExponentUniform;
 
-	@ObfuscatedName("ahi.ae")
-	public int field10596;
+    public int field10596;
 
-	@ObfuscatedName("ahi.ag")
-	public int[] field10609;
+    public int[] field10609;
 
-	@ObfuscatedName("ahi.ah")
-	public static final Matrix4x4 viewProjectionMatrix = new Matrix4x4();
+    public static final Matrix4x4 viewProjectionMatrix = new Matrix4x4();
 
-	@ObfuscatedName("ahi.al")
-	public Matrix4x4[] field10611;
+    public Matrix4x4[] field10611;
 
-	@ObfuscatedName("ahi.ac")
-	public float[] field10612 = new float[3];
+    public float[] field10612 = new float[3];
 
 	public WaterShader(GpuToolkit gpuRenderer) {
 		super(gpuRenderer);
@@ -82,8 +59,7 @@ public abstract class WaterShader extends GpuRendererRelated2 {
 		}
 	}
 
-	@ObfuscatedName("ahi.h(Ljava/lang/String;)Z")
-	public boolean createShaderProgram(String name) throws ShaderException {
+    public boolean createShaderProgram(String name) throws ShaderException {
 		this.shader = this.gpuRenderer.createShader(name);
 		if (this.shader == null) {
 			throw new ShaderException("");
@@ -134,31 +110,27 @@ public abstract class WaterShader extends GpuRendererRelated2 {
 		return false;
 	}
 
-	@ObfuscatedName("ahi.e()V")
-	public void method5417() {
+    public void method5417() {
 		this.shader.enable();
 		this.field10609[this.shader.getCurrentProgramIndex()] = -1;
 		this.method16773(0);
 		this.method16768();
 	}
 
-	@ObfuscatedName("ahi.g()V")
-	public void method16768() {
+    public void method16768() {
 		this.method16769(this.gpuRenderer.field10111);
 		this.method16765(this.gpuRenderer.getTextureMatrix());
 		this.method16766();
 		this.method5419();
 	}
 
-	@ObfuscatedName("ahi.n()V")
-	public void method5416() {
+    public void method5416() {
 		if (this.shader != null) {
 			this.shader.method4214();
 		}
 	}
 
-	@ObfuscatedName("ahi.i(Lpq;)V")
-	public void method16765(Matrix4x4 arg0) {
+    public void method16765(Matrix4x4 arg0) {
 		if (this.shader == null || !this.shader.method4184() || this.gpuRenderer.method16037() != 0) {
 			return;
 		}
@@ -169,8 +141,7 @@ public abstract class WaterShader extends GpuRendererRelated2 {
 		}
 	}
 
-	@ObfuscatedName("ahi.j()V")
-	public void method16766() {
+    public void method16766() {
 		if (this.shader == null || !this.shader.method4184()) {
 			return;
 		}
@@ -215,8 +186,7 @@ public abstract class WaterShader extends GpuRendererRelated2 {
 		this.field10609[var1] = 0;
 	}
 
-	@ObfuscatedName("ahi.t(ILou;)V")
-	public void method16767(int arg0, Matrix4x3 arg1) {
+    public void method16767(int arg0, Matrix4x3 arg1) {
 		if (this.eyePositionOSUniform == null) {
 			return;
 		}
@@ -230,8 +200,7 @@ public abstract class WaterShader extends GpuRendererRelated2 {
 		this.shader.setUniform3f(this.eyePositionOSUniform, var4[0], var4[1], var4[2]);
 	}
 
-	@ObfuscatedName("ahi.ae(ILou;)V")
-	public void method16781(int arg0, Matrix4x3 arg1) {
+    public void method16781(int arg0, Matrix4x3 arg1) {
 		if (this.sunDirectionOSUniform != null) {
 			float[] var3 = new float[] { this.gpuRenderer.field10114[0], this.gpuRenderer.field10114[1], this.gpuRenderer.field10114[2] };
 			arg1.method6321(var3);
@@ -239,8 +208,7 @@ public abstract class WaterShader extends GpuRendererRelated2 {
 		}
 	}
 
-	@ObfuscatedName("ahi.ag(Z)V")
-	public void method16769(boolean arg0) {
+    public void method16769(boolean arg0) {
 		if (this.shader == null || !this.shader.method4184()) {
 			return;
 		}
@@ -261,19 +229,16 @@ public abstract class WaterShader extends GpuRendererRelated2 {
 		}
 	}
 
-	@ObfuscatedName("ahi.f()V")
-	public void method5419() {
+    public void method5419() {
 	}
 
-	@ObfuscatedName("ahi.ah(I)V")
-	public void method16770(int arg0) {
+    public void method16770(int arg0) {
 		for (int var2 = 0; var2 < this.field10596; var2++) {
 			this.field10609[var2] |= 0x80 << arg0;
 		}
 	}
 
-	@ObfuscatedName("ahi.al(Lou;)V")
-	public void method16771(Matrix4x3 arg0) {
+    public void method16771(Matrix4x3 arg0) {
 		Matrix4x4 var2 = this.gpuRenderer.field10066;
 		var2.setToMatrix4x3(arg0);
 		int var3 = this.shader.getCurrentProgramIndex();
@@ -295,17 +260,14 @@ public abstract class WaterShader extends GpuRendererRelated2 {
 		this.method16781(var3, arg0);
 	}
 
-	@ObfuscatedName("ahi.l()V")
-	public void method5421() {
+    public void method5421() {
 		this.method16771(Matrix4x3.IDENTITY);
 	}
 
-	@ObfuscatedName("ahi.ac(I)V")
-	public void method16773(int arg0) {
+    public void method16773(int arg0) {
 		this.field10611[0].setToIdentity();
 		this.method16770(arg0);
 	}
 
-	@ObfuscatedName("ahi.a()Z")
-	public abstract boolean method16762() throws ShaderException;
+    public abstract boolean method16762() throws ShaderException;
 }

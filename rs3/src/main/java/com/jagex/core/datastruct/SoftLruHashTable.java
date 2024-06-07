@@ -2,30 +2,23 @@ package com.jagex.core.datastruct;
 
 import deob.ObfuscatedName;
 
-@ObfuscatedName("eb")
 public final class SoftLruHashTable {
 
-	@ObfuscatedName("eb.e")
-	public int field1758;
+    public int field1758;
 
-	@ObfuscatedName("eb.n")
-	public int field1756;
+    public int field1756;
 
-	@ObfuscatedName("eb.m")
-	public HashTable hashTable;
+    public HashTable hashTable;
 
-	@ObfuscatedName("eb.k")
-	public SecondaryLinkedList queue;
+    public SecondaryLinkedList queue;
 
-	@ObfuscatedName("eb.f")
-	public SoftLruHashTableRemovalListener field1759;
+    public SoftLruHashTableRemovalListener field1759;
 
 	public SoftLruHashTable(int size) {
 		this(size, size);
 	}
 
-	@ObfuscatedName("eb.e(Len;B)V")
-	public void setRemovalListener(SoftLruHashTableRemovalListener arg0) {
+    public void setRemovalListener(SoftLruHashTableRemovalListener arg0) {
 		this.field1759 = arg0;
 	}
 
@@ -39,8 +32,7 @@ public final class SoftLruHashTable {
 		this.hashTable = new HashTable(var3);
 	}
 
-	@ObfuscatedName("eb.n(J)Ljava/lang/Object;")
-	public Object get(long arg0) {
+    public Object get(long arg0) {
 		ReferenceNode var3 = (ReferenceNode) this.hashTable.get(arg0);
 		if (var3 == null) {
 			return null;
@@ -66,14 +58,12 @@ public final class SoftLruHashTable {
 		return var4;
 	}
 
-	@ObfuscatedName("eb.m(J)V")
-	public void method2957(long arg0) {
+    public void method2957(long arg0) {
 		ReferenceNode var3 = (ReferenceNode) this.hashTable.get(arg0);
 		this.method2918(var3);
 	}
 
-	@ObfuscatedName("eb.k(Lasa;I)V")
-	public void method2918(ReferenceNode arg0) {
+    public void method2918(ReferenceNode arg0) {
 		if (arg0 != null) {
 			arg0.unlink();
 			arg0.secondaryRemove();
@@ -81,13 +71,11 @@ public final class SoftLruHashTable {
 		}
 	}
 
-	@ObfuscatedName("eb.f(Ljava/lang/Object;J)V")
-	public void put(Object arg0, long arg1) {
+    public void put(Object arg0, long arg1) {
 		this.put(arg0, arg1, 1);
 	}
 
-	@ObfuscatedName("eb.w(Ljava/lang/Object;JII)V")
-	public void put(Object arg0, long arg1, int arg2) {
+    public void put(Object arg0, long arg1, int arg2) {
 		if (arg2 > this.field1758) {
 			throw new IllegalStateException();
 		}
@@ -111,8 +99,7 @@ public final class SoftLruHashTable {
 		var6.secondaryNodeId = 0L;
 	}
 
-	@ObfuscatedName("eb.l(IB)V")
-	public void clean(int arg0) {
+    public void clean(int arg0) {
 		for (ReferenceNode var2 = (ReferenceNode) this.queue.peekFront(); var2 != null; var2 = (ReferenceNode) this.queue.prev()) {
 			if (var2.isSoft()) {
 				if (var2.getValue() == null) {
@@ -130,25 +117,21 @@ public final class SoftLruHashTable {
 		}
 	}
 
-	@ObfuscatedName("eb.u(B)V")
-	public void reset() {
+    public void reset() {
 		this.queue.removeAll();
 		this.hashTable.removeAll();
 		this.field1756 = this.field1758;
 	}
 
-	@ObfuscatedName("eb.z(I)I")
-	public int method2925() {
+    public int method2925() {
 		return this.field1758;
 	}
 
-	@ObfuscatedName("eb.p(B)I")
-	public int method2926() {
+    public int method2926() {
 		return this.field1756;
 	}
 
-	@ObfuscatedName("eb.d(B)I")
-	public int count() {
+    public int count() {
 		int var1 = 0;
 		for (ReferenceNode var2 = (ReferenceNode) this.queue.peekFront(); var2 != null; var2 = (ReferenceNode) this.queue.prev()) {
 			if (!var2.isSoft()) {
@@ -158,8 +141,7 @@ public final class SoftLruHashTable {
 		return var1;
 	}
 
-	@ObfuscatedName("eb.c(I)V")
-	public void clear() {
+    public void clear() {
 		for (ReferenceNode var1 = (ReferenceNode) this.queue.peekFront(); var1 != null; var1 = (ReferenceNode) this.queue.prev()) {
 			if (var1.isSoft()) {
 				var1.unlink();
@@ -169,8 +151,7 @@ public final class SoftLruHashTable {
 		}
 	}
 
-	@ObfuscatedName("eb.r(I)Ljava/lang/Object;")
-	public Object method2950() {
+    public Object method2950() {
 		ReferenceNode var1 = (ReferenceNode) this.hashTable.head();
 		while (var1 != null) {
 			Object var2 = var1.getValue();
@@ -186,8 +167,7 @@ public final class SoftLruHashTable {
 		return null;
 	}
 
-	@ObfuscatedName("eb.v(I)Ljava/lang/Object;")
-	public Object method2937() {
+    public Object method2937() {
 		ReferenceNode var1 = (ReferenceNode) this.hashTable.next();
 		while (var1 != null) {
 			Object var2 = var1.getValue();

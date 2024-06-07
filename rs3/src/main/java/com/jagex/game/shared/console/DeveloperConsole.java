@@ -31,66 +31,48 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.Date;
 
-@ObfuscatedName("ap")
 public class DeveloperConsole {
 
-	@ObfuscatedName("ap.n")
-	public static int field768;
+    public static int field768;
 
-	@ObfuscatedName("ap.m")
-	public static int field763;
+    public static int field763;
 
-	@ObfuscatedName("qv.k")
-	public static String[] field4845;
+    public static String[] field4845;
 
-	@ObfuscatedName("ap.f")
-	public static int field764 = 0;
+    public static int field764 = 0;
 
-	@ObfuscatedName("ap.w")
-	public static int field771 = 0;
+    public static int field771 = 0;
 
-	@ObfuscatedName("ap.l")
-	public static String currententry = "";
+    public static String currententry = "";
 
-	@ObfuscatedName("ap.u")
-	public static int commandpointer = 0;
+    public static int commandpointer = 0;
 
-	@ObfuscatedName("ap.z")
-	public static int commandcharpointer = 0;
+    public static int commandcharpointer = 0;
 
-	@ObfuscatedName("ap.p")
-	public static int field776 = 0;
+    public static int field776 = 0;
 
-	@ObfuscatedName("ap.d")
-	public static boolean field770 = false;
+    public static boolean field770 = false;
 
-	@ObfuscatedName("ap.c")
-	public static long field765;
+    public static long field765;
 
-	@ObfuscatedName("ap.r")
-	public static int field772 = -1;
+    public static int field772 = -1;
 
-	@ObfuscatedName("iv.v")
-	public static String[] field2615;
+    public static String[] field2615;
 
-	@ObfuscatedName("ap.o")
-	public static FileOutputStream field773;
+    public static FileOutputStream field773;
 
-	@ObfuscatedName("ahs.e(I)V")
-	public static void method16752() {
+    public static void method16752() {
 	}
 
 	public DeveloperConsole() throws Throwable {
 		throw new Error();
 	}
 
-	@ObfuscatedName("cc.e(B)Z")
-	public static boolean method1584() {
+    public static boolean method1584() {
 		return !Client.isStateLoading(Client.state);
 	}
 
-	@ObfuscatedName("i.n(I)V")
-	public static void method638() {
+    public static void method638() {
 		if (!method1584()) {
 			return;
 		}
@@ -101,8 +83,7 @@ public class DeveloperConsole {
 		field776 = 0;
 	}
 
-	@ObfuscatedName("sm.m(S)V")
-	public static void method8025() {
+    public static void method8025() {
 		field768 = DefaultSprites.b12FullMetrics.field8569 + DefaultSprites.b12FullMetrics.field8562 + 2;
 		field763 = DefaultSprites.p12FullMetrics.field8569 + DefaultSprites.p12FullMetrics.field8562 + 2;
 		field4845 = new String[500];
@@ -112,14 +93,12 @@ public class DeveloperConsole {
 		addline(LocalisedText.DEBUG_CONSOLE_INFO.forLang(Client.language));
 	}
 
-	@ObfuscatedName("amd.k(B)V")
-	public static void close() {
+    public static void close() {
 		field770 = false;
 		Client.method9734();
 	}
 
-	@ObfuscatedName("sx.f(I)V")
-	public static void method8023() {
+    public static void method8023() {
 		if (field773 != null) {
 			try {
 				field773.close();
@@ -129,13 +108,11 @@ public class DeveloperConsole {
 		field773 = null;
 	}
 
-	@ObfuscatedName("xh.w(I)Z")
-	public static boolean isopen() {
+    public static boolean isopen() {
 		return field770;
 	}
 
-	@ObfuscatedName("aej.l([Ljava/lang/String;I)V")
-	public static void method15383(String[] arg0) {
+    public static void method15383(String[] arg0) {
 		if (arg0.length <= 1) {
 			currententry = currententry + arg0[0];
 			commandcharpointer += arg0[0].length();
@@ -159,8 +136,7 @@ public class DeveloperConsole {
 		}
 	}
 
-	@ObfuscatedName("xd.u(B)V")
-	public static void update() {
+    public static void update() {
 		if (field776 * 36 < 102) {
 			field776 = field776 * 36 + 6;
 		}
@@ -257,8 +233,7 @@ public class DeveloperConsole {
 		Client.method9734();
 	}
 
-	@ObfuscatedName("fv.z(I)V")
-	public static void method3085() {
+    public static void method3085() {
 		if (commandpointer <= 0) {
 			currententry = "";
 			return;
@@ -275,14 +250,12 @@ public class DeveloperConsole {
 		}
 	}
 
-	@ObfuscatedName("ai.p(Ljava/lang/String;I)V")
-	public static void method722(String arg0) {
+    public static void method722(String arg0) {
 		currententry = arg0;
 		commandcharpointer = currententry.length();
 	}
 
-	@ObfuscatedName("abc.d(ZI)V")
-	public static void method14718(boolean arg0) {
+    public static void method14718(boolean arg0) {
 		currententry = currententry.trim();
 		commandpointer = 0;
 		if (currententry.length() == 0) {
@@ -299,8 +272,7 @@ public class DeveloperConsole {
 		}
 	}
 
-	@ObfuscatedName("hj.c(Ljava/lang/String;I)V")
-	public static void addline(String arg0) {
+    public static void addline(String arg0) {
 		if (field4845 == null) {
 			method8025();
 		}
@@ -330,8 +302,7 @@ public class DeveloperConsole {
 		}
 	}
 
-	@ObfuscatedName("ky.r(Ldh;I)V")
-	public static void draw(Toolkit toolkit) {
+    public static void draw(Toolkit toolkit) {
 		if (TwitchHardwarePlatform.isStreaming() && TwitchHardwarePlatform.method8634()) {
 			TwitchHardwarePlatform.drawTwitchStream(0, 0, GameShell.canvasWid, 350);
 		}
@@ -371,8 +342,7 @@ public class DeveloperConsole {
 		method16858();
 	}
 
-	@ObfuscatedName("aai.v(Ljava/lang/String;B)Ljava/lang/String;")
-	public static String method14312(String arg0) {
+    public static String method14312(String arg0) {
 		String var1 = null;
 		int var2 = arg0.indexOf("--> ");
 		if (var2 >= 0) {
@@ -393,12 +363,10 @@ public class DeveloperConsole {
 		return var1 == null ? arg0 : var1 + arg0;
 	}
 
-	@ObfuscatedName("aij.o(B)V")
-	public static void method16858() {
+    public static void method16858() {
 	}
 
-	@ObfuscatedName("aoh.s(Ljava/lang/String;ZZB)V")
-	public static void doCheat(String arg0, boolean arg1, boolean arg2) {
+    public static void doCheat(String arg0, boolean arg1, boolean arg2) {
 		try {
 			if (arg0.equalsIgnoreCase("commands") || arg0.equalsIgnoreCase("help")) {
 				addline("commands - This command");
@@ -672,8 +640,7 @@ public class DeveloperConsole {
 		}
 	}
 
-	@ObfuscatedName("ahj.y(II)V")
-	public static void method16614(int arg0) {
+    public static void method16614(int arg0) {
 		if (arg0 == 28) {
 			throw new Error();
 		} else if (arg0 == 2) {
@@ -766,8 +733,7 @@ public class DeveloperConsole {
 		}
 	}
 
-	@ObfuscatedName("xi.q(B)V")
-	public static void method10153() {
+    public static void method10153() {
 		if (Client.preferences.unknown7.getValue() == 1) {
 			Client.asyncRebuild.method7680(new RebuildRequest(RebuildType.field5070, null));
 		} else {

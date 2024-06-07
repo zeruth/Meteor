@@ -9,21 +9,17 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 
-@ObfuscatedName("abn")
 public class VarContainerSparse implements VarContainer {
 
-	@ObfuscatedName("abn.e")
-	public Map field8740;
+    public Map field8740;
 
-	@ObfuscatedName("abn.n")
-	public final DefaultVarValueProvider field8739;
+    public final DefaultVarValueProvider field8739;
 
 	public VarContainerSparse(DefaultVarValueProvider arg0) {
 		this.field8739 = arg0;
 	}
 
-	@ObfuscatedName("abn.e(II)I")
-	public int getVarValueInt(int id) {
+    public int getVarValueInt(int id) {
 		if (this.field8740 != null) {
 			VarValue var2 = (VarValue) this.field8740.get(id);
 			if (var2 != null) {
@@ -33,8 +29,7 @@ public class VarContainerSparse implements VarContainer {
 		return (Integer) this.field8739.getDefaultValue(id);
 	}
 
-	@ObfuscatedName("abn.n(IIB)V")
-	public void setVarValueInt(int id, int value) {
+    public void setVarValueInt(int id, int value) {
 		if (this.field8740 == null) {
 			this.field8740 = new HashMap();
 			this.field8740.put(id, new VarValue(id, value));
@@ -48,8 +43,7 @@ public class VarContainerSparse implements VarContainer {
 		}
 	}
 
-	@ObfuscatedName("abn.m(II)J")
-	public long getVarValueLong(int id) {
+    public long getVarValueLong(int id) {
 		if (this.field8740 != null) {
 			VarValue var2 = (VarValue) this.field8740.get(id);
 			if (var2 != null) {
@@ -59,8 +53,7 @@ public class VarContainerSparse implements VarContainer {
 		return (Long) this.field8739.getDefaultValue(id);
 	}
 
-	@ObfuscatedName("abn.k(IJ)V")
-	public void setVarValueLong(int id, long value) {
+    public void setVarValueLong(int id, long value) {
 		if (this.field8740 == null) {
 			this.field8740 = new HashMap();
 			this.field8740.put(id, new VarValue(id, value));
@@ -74,8 +67,7 @@ public class VarContainerSparse implements VarContainer {
 		}
 	}
 
-	@ObfuscatedName("abn.f(II)Ljava/lang/Object;")
-	public Object getVarValue(int id) {
+    public Object getVarValue(int id) {
 		if (this.field8740 != null) {
 			VarValue var2 = (VarValue) this.field8740.get(id);
 			if (var2 != null) {
@@ -85,8 +77,7 @@ public class VarContainerSparse implements VarContainer {
 		return this.field8739.getDefaultValue(id);
 	}
 
-	@ObfuscatedName("abn.w(ILjava/lang/Object;B)V")
-	public void setVarValue(int id, Object value) {
+    public void setVarValue(int id, Object value) {
 		if (this.field8740 == null) {
 			this.field8740 = new HashMap();
 			this.field8740.put(id, new VarValue(id, value));
@@ -100,15 +91,13 @@ public class VarContainerSparse implements VarContainer {
 		}
 	}
 
-	@ObfuscatedName("abn.l(I)V")
-	public void clear() {
+    public void clear() {
 		if (this.field8740 != null) {
 			this.field8740.clear();
 		}
 	}
 
-	@ObfuscatedName("abn.u(IB)V")
-	public void method14734(int id) {
+    public void method14734(int id) {
 		if (this.field8740 != null) {
 			this.field8740.remove(id);
 		}

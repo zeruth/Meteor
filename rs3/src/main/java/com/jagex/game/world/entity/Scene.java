@@ -13,200 +13,135 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map.Entry;
 
-@ObfuscatedName("tx")
 public class Scene {
 
-	@ObfuscatedName("tx.e")
-	public static boolean field6937 = true;
+    public static boolean field6937 = true;
 
-	@ObfuscatedName("tx.n")
-	public final int size;
+    public final int size;
 
-	@ObfuscatedName("tx.m")
-	public final int field6901;
+    public final int field6901;
 
-	@ObfuscatedName("tx.k")
-	public final int field6924;
+    public final int field6924;
 
-	@ObfuscatedName("tx.f")
-	public final int field6903 = 16;
+    public final int field6903 = 16;
 
-	@ObfuscatedName("tx.w")
-	public final Toolkit toolkit;
+    public final Toolkit toolkit;
 
-	@ObfuscatedName("tx.l")
-	public SceneDebugging debugger;
+    public SceneDebugging debugger;
 
-	@ObfuscatedName("tx.u")
-	public final boolean lighting;
+    public final boolean lighting;
 
-	@ObfuscatedName("tx.z")
-	public boolean field6955;
+    public boolean field6955;
 
-	@ObfuscatedName("tx.p")
-	public final OcclusionManager occlusionManager;
+    public final OcclusionManager occlusionManager;
 
-	@ObfuscatedName("tx.d")
-	public int maxLevel;
+    public int maxLevel;
 
-	@ObfuscatedName("tx.c")
-	public final int maxTileX;
+    public final int maxTileX;
 
-	@ObfuscatedName("tx.r")
-	public final int maxTileZ;
+    public final int maxTileZ;
 
-	@ObfuscatedName("tx.v")
-	public Tile[][][] levelTiles;
+    public Tile[][][] levelTiles;
 
-	@ObfuscatedName("tx.o")
-	public FloorModel[] levelHeightmaps;
+    public FloorModel[] levelHeightmaps;
 
-	@ObfuscatedName("tx.s")
-	public Tile[][][] field6904;
+    public Tile[][][] field6904;
 
-	@ObfuscatedName("tx.y")
-	public FloorModel[] field6915;
+    public FloorModel[] field6915;
 
-	@ObfuscatedName("tx.q")
-	public Tile[][][] field6914;
+    public Tile[][][] field6914;
 
-	@ObfuscatedName("tx.x")
-	public FloorModel[] underwaterLevelHeightMaps;
+    public FloorModel[] underwaterLevelHeightMaps;
 
-	@ObfuscatedName("tx.b")
-	public int[][] waterFogColour;
+    public int[][] waterFogColour;
 
-	@ObfuscatedName("tx.h")
-	public short[][] waterFogScale;
+    public short[][] waterFogScale;
 
-	@ObfuscatedName("tx.a")
-	public byte[][] waterFogOffset;
+    public byte[][] waterFogOffset;
 
-	@ObfuscatedName("tx.g")
-	public byte[][] field6921;
+    public byte[][] field6921;
 
-	@ObfuscatedName("tx.i")
-	public byte[][] field6963;
+    public byte[][] field6963;
 
-	@ObfuscatedName("tx.j")
-	public byte[][] field6905;
+    public byte[][] field6905;
 
-	@ObfuscatedName("tx.t")
-	public int entityCount = 0;
+    public int entityCount = 0;
 
-	@ObfuscatedName("tx.ae")
-	public final int field6925 = 10078;
+    public final int field6925 = 10078;
 
-	@ObfuscatedName("tx.ag")
-	public final int field6899 = 5096;
+    public final int field6899 = 5096;
 
-	@ObfuscatedName("tx.ah")
-	public final int field6932 = 5005;
+    public final int field6932 = 5005;
 
-	@ObfuscatedName("tx.al")
-	public final GraphEntity[] field6916;
+    public final GraphEntity[] field6916;
 
-	@ObfuscatedName("tx.ac")
-	public final GraphEntity[] field6929;
+    public final GraphEntity[] field6929;
 
-	@ObfuscatedName("tx.ai")
-	public final GraphEntity[] field6945;
+    public final GraphEntity[] field6945;
 
-	@ObfuscatedName("tx.aw")
-	public int field6931;
+    public int field6931;
 
-	@ObfuscatedName("tx.as")
-	public int field6918;
+    public int field6918;
 
-	@ObfuscatedName("tx.at")
-	public final GraphEntity[] field6933;
+    public final GraphEntity[] field6933;
 
-	@ObfuscatedName("tx.ad")
-	public final GraphEntity[] field6934;
+    public final GraphEntity[] field6934;
 
-	@ObfuscatedName("tx.am")
-	public final PrimaryLayerEntity[] entities;
+    public final PrimaryLayerEntity[] entities;
 
-	@ObfuscatedName("tx.au")
-	public int eyeTileX;
+    public int eyeTileX;
 
-	@ObfuscatedName("tx.ar")
-	public int eyeTileZ;
+    public int eyeTileZ;
 
-	@ObfuscatedName("tx.ap")
-	public int eyeX;
+    public int eyeX;
 
-	@ObfuscatedName("tx.aq")
-	public int eyeZ;
+    public int eyeZ;
 
-	@ObfuscatedName("tx.ax")
-	public int eyeY;
+    public int eyeY;
 
-	@ObfuscatedName("tx.av")
-	public int cycle;
+    public int cycle;
 
-	@ObfuscatedName("tx.ao")
-	public int drawDistance;
+    public int drawDistance;
 
-	@ObfuscatedName("tx.aj")
-	public int field6943;
+    public int field6943;
 
-	@ObfuscatedName("tx.ay")
-	public int field6944;
+    public int field6944;
 
-	@ObfuscatedName("tx.ab")
-	public int minDrawTileX;
+    public int minDrawTileX;
 
-	@ObfuscatedName("tx.az")
-	public int maxDrawTileX;
+    public int maxDrawTileX;
 
-	@ObfuscatedName("tx.aa")
-	public int minDrawTileZ;
+    public int minDrawTileZ;
 
-	@ObfuscatedName("tx.af")
-	public int maxDrawTileZ;
+    public int maxDrawTileZ;
 
-	@ObfuscatedName("tx.ak")
-	public final float[] field6927 = new float[3];
+    public final float[] field6927 = new float[3];
 
-	@ObfuscatedName("tx.an")
-	public final Light[] field6950 = new Light[8];
+    public final Light[] field6950 = new Light[8];
 
-	@ObfuscatedName("tx.bf")
-	public final int field6951 = 1;
+    public final int field6951 = 1;
 
-	@ObfuscatedName("tx.bk")
-	public int field6953;
+    public int field6953;
 
-	@ObfuscatedName("tx.bh")
-	public long[][][] field6954;
+    public long[][][] field6954;
 
-	@ObfuscatedName("tx.bx")
-	public StaticPointLight[] field6926;
+    public StaticPointLight[] field6926;
 
-	@ObfuscatedName("tx.bd")
-	public boolean[] field6956;
+    public boolean[] field6956;
 
-	@ObfuscatedName("tx.bc")
-	public HashMap field6957 = new HashMap();
+    public HashMap field6957 = new HashMap();
 
-	@ObfuscatedName("tx.bi")
-	public HashMap field6958 = new HashMap();
+    public HashMap field6958 = new HashMap();
 
-	@ObfuscatedName("tx.bn")
-	public PickableEntityList pickableEntities;
+    public PickableEntityList pickableEntities;
 
-	@ObfuscatedName("tx.bt")
-	public boolean[][] field6960;
+    public boolean[][] field6960;
 
-	@ObfuscatedName("tx.bq")
-	public final int[] field6908;
+    public final int[] field6908;
 
-	@ObfuscatedName("tx.bm")
-	public boolean[][] visibilityMap;
+    public boolean[][] visibilityMap;
 
-	@ObfuscatedName("tx.bb")
-	public boolean[][] field6922;
+    public boolean[][] field6922;
 
 	public Scene(Toolkit toolkit, int size, int maxLevel, int maxTileX, int maxTileZ, int drawDistance, boolean underwater, boolean lights) {
 		this.toolkit = toolkit;
@@ -254,16 +189,13 @@ public class Scene {
 		this.pickableEntities = new PickableEntityList(false);
 	}
 
-	@ObfuscatedName("tx.e(IB)V")
-	public void method8701(int arg0) {
+    public void method8701(int arg0) {
 	}
 
-	@ObfuscatedName("tx.n(Leu;B)V")
-	public void method8737(Font arg0) {
+    public void method8737(Font arg0) {
 	}
 
-	@ObfuscatedName("tx.m(ZI)V")
-	public void method8703(boolean arg0) {
+    public void method8703(boolean arg0) {
 		if (arg0) {
 			this.levelTiles = this.field6914;
 			this.levelHeightmaps = this.underwaterLevelHeightMaps;
@@ -274,8 +206,7 @@ public class Scene {
 		this.maxLevel = this.levelTiles.length;
 	}
 
-	@ObfuscatedName("tx.k(I)V")
-	public void reset() {
+    public void reset() {
 		for (int x = 0; x < this.maxTileX; x++) {
 			for (int z = 0; z < this.maxTileZ; z++) {
 				if (this.levelTiles[0][x][z] == null) {
@@ -285,8 +216,7 @@ public class Scene {
 		}
 	}
 
-	@ObfuscatedName("tx.f(III)V")
-	public void setBridge(int x, int z) {
+    public void setBridge(int x, int z) {
 		Tile ground = this.levelTiles[0][x][z];
 		for (int level = 0; level < 3; level++) {
 			Tile tile = this.levelTiles[level][x][z] = this.levelTiles[level + 1][x][z];
@@ -322,8 +252,7 @@ public class Scene {
 		this.levelTiles[3][x][z] = null;
 	}
 
-	@ObfuscatedName("tx.w(IIIB)Ltk;")
-	public Tile getTile(int level, int x, int z) {
+    public Tile getTile(int level, int x, int z) {
 		if (this.levelTiles[level][x][z] == null) {
 			boolean bridged = this.levelTiles[0][x][z] != null && this.levelTiles[0][x][z].bridge != null;
 			if (bridged && level >= this.maxLevel - 1) {
@@ -334,13 +263,11 @@ public class Scene {
 		return this.levelTiles[level][x][z];
 	}
 
-	@ObfuscatedName("tx.l(IIIB)Ltk;")
-	public Tile getTileCoerce(int level, int x, int z) {
+    public Tile getTileCoerce(int level, int x, int z) {
 		return this.getTile(level, Math.min(this.maxTileX - 1, Math.max(0, x)), Math.min(this.maxTileZ - 1, Math.max(0, z)));
 	}
 
-	@ObfuscatedName("tx.u(IIII)V")
-	public void createTile(int level, int x, int z) {
+    public void createTile(int level, int x, int z) {
 		boolean bridged = this.levelTiles[0][x][z] != null && this.levelTiles[0][x][z].bridge != null;
 		for (int l = level; l >= 0; l--) {
 			if (this.levelTiles[l][x][z] == null) {
@@ -352,43 +279,35 @@ public class Scene {
 		}
 	}
 
-	@ObfuscatedName("tx.z(ILcb;I)V")
-	public void setLevelHeightmap(int level, FloorModel floor) {
+    public void setLevelHeightmap(int level, FloorModel floor) {
 		this.levelHeightmaps[level] = floor;
 	}
 
-	@ObfuscatedName("tx.p(III)I")
-	public int getWaterFogScale(int x, int z) {
+    public int getWaterFogScale(int x, int z) {
 		return this.waterFogScale == null ? 0 : this.waterFogScale[x][z] & 0xFFFF;
 	}
 
-	@ObfuscatedName("tx.d(IIB)I")
-	public int getWaterFogColour(int x, int z) {
+    public int getWaterFogColour(int x, int z) {
 		return this.waterFogColour == null ? 0 : this.waterFogColour[x][z] & 0xFFFFFF;
 	}
 
-	@ObfuscatedName("tx.c(III)I")
-	public int getWaterFogOffset(int x, int z) {
+    public int getWaterFogOffset(int x, int z) {
 		return this.waterFogOffset == null ? 0 : this.waterFogOffset[x][z] & 0xFF;
 	}
 
-	@ObfuscatedName("tx.r(IIS)I")
-	public int method8713(int x, int z) {
+    public int method8713(int x, int z) {
 		return this.field6921 == null ? 0 : this.field6921[x][z] & 0xFF;
 	}
 
-	@ObfuscatedName("tx.v(IIB)I")
-	public int method8760(int x, int z) {
+    public int method8760(int x, int z) {
 		return this.field6963 == null ? 0 : this.field6963[x][z] & 0xFF;
 	}
 
-	@ObfuscatedName("tx.o(IIB)I")
-	public int method8715(int x, int z) {
+    public int method8715(int x, int z) {
 		return this.field6905 == null ? 0 : this.field6905[x][z] & 0xFF;
 	}
 
-	@ObfuscatedName("tx.s(IIIIIIIII)V")
-	public void setWaterFog(int x, int z, int colour, int scale, int offset, int arg5, int arg6, int arg7) {
+    public void setWaterFog(int x, int z, int colour, int scale, int offset, int arg5, int arg6, int arg7) {
 		if (this.waterFogColour != null) {
 			this.waterFogColour[x][z] = colour | 0xFF000000;
 		}
@@ -409,8 +328,7 @@ public class Scene {
 		}
 	}
 
-	@ObfuscatedName("tx.y(IIILasv;B)V")
-	public void addGroundDecoration(int level, int x, int z, GroundDecorLayerEntity groundDecoration) {
+    public void addGroundDecoration(int level, int x, int z, GroundDecorLayerEntity groundDecoration) {
 		Tile tile = this.getTile(level, x, z);
 		if (tile == null) {
 			return;
@@ -429,8 +347,7 @@ public class Scene {
 		}
 	}
 
-	@ObfuscatedName("tx.q(IIIILast;S)V")
-	public void addObjStack(int level, int x, int z, int arg3, ObjLayerEntity objStack) {
+    public void addObjStack(int level, int x, int z, int arg3, ObjLayerEntity objStack) {
 		Tile tile = this.getTile(level, x, z);
 		if (tile == null) {
 			return;
@@ -450,8 +367,7 @@ public class Scene {
 		}
 	}
 
-	@ObfuscatedName("tx.x(IIILasw;Lasw;I)V")
-	public void addWall(int level, int x, int z, WallLayerEntity wall, WallLayerEntity dynamicWall) {
+    public void addWall(int level, int x, int z, WallLayerEntity wall, WallLayerEntity dynamicWall) {
 		Tile tile = this.getTile(level, x, z);
 		if (tile == null) {
 			return;
@@ -484,8 +400,7 @@ public class Scene {
 		}
 	}
 
-	@ObfuscatedName("tx.b(IIILasm;Lasm;B)V")
-	public void addWallDecoration(int level, int x, int z, WallDecorLayerEntity wallDecoration, WallDecorLayerEntity dynamicWallDecoration) {
+    public void addWallDecoration(int level, int x, int z, WallDecorLayerEntity wallDecoration, WallDecorLayerEntity dynamicWallDecoration) {
 		Tile tile = this.getTile(level, x, z);
 		if (tile == null) {
 			return;
@@ -518,8 +433,7 @@ public class Scene {
 		}
 	}
 
-	@ObfuscatedName("tx.h(Lash;ZI)Z")
-	public boolean addEntity(PrimaryLayerEntity entity, boolean arg1) {
+    public boolean addEntity(PrimaryLayerEntity entity, boolean arg1) {
 		boolean var3 = this.underwaterLevelHeightMaps == this.levelHeightmaps;
 		int colour = 0;
 		short scale = 0;
@@ -591,8 +505,7 @@ public class Scene {
 		return true;
 	}
 
-	@ObfuscatedName("tx.a(IIIII)V")
-	public void setWallDecorationOffset(int level, int x, int z, int walloff) {
+    public void setWallDecorationOffset(int level, int x, int z, int walloff) {
 		Tile tile = this.levelTiles[level][x][z];
 		if (tile == null) {
 			return;
@@ -609,8 +522,7 @@ public class Scene {
 		}
 	}
 
-	@ObfuscatedName("tx.g(I)V")
-	public void clearEntities() {
+    public void clearEntities() {
 		for (int var1 = 0; var1 < this.entityCount; var1++) {
 			PrimaryLayerEntity var2 = this.entities[var1];
 			this.removeEntity(var2, true);
@@ -619,8 +531,7 @@ public class Scene {
 		this.entityCount = 0;
 	}
 
-	@ObfuscatedName("tx.i(IIIB)Lasw;")
-	public WallLayerEntity removeWall(int level, int x, int z) {
+    public WallLayerEntity removeWall(int level, int x, int z) {
 		Tile tile = this.levelTiles[level][x][z];
 		if (tile != null) {
 			this.method8732(tile.wall);
@@ -633,8 +544,7 @@ public class Scene {
 		return null;
 	}
 
-	@ObfuscatedName("tx.j(IIIB)Lasw;")
-	public WallLayerEntity removeDynamicWall(int level, int x, int z) {
+    public WallLayerEntity removeDynamicWall(int level, int x, int z) {
 		Tile tile = this.levelTiles[level][x][z];
 		if (tile != null) {
 			this.method8732(tile.dynamicWall);
@@ -647,8 +557,7 @@ public class Scene {
 		return null;
 	}
 
-	@ObfuscatedName("tx.t(IIII)Lasm;")
-	public WallDecorLayerEntity removeWallDecoration(int level, int x, int z) {
+    public WallDecorLayerEntity removeWallDecoration(int level, int x, int z) {
 		Tile tile = this.levelTiles[level][x][z];
 		if (tile != null) {
 			this.method8732(tile.wallDecoration);
@@ -661,8 +570,7 @@ public class Scene {
 		return null;
 	}
 
-	@ObfuscatedName("tx.ae(IIII)Lasm;")
-	public WallDecorLayerEntity removeDynamicWallDecoration(int level, int x, int z) {
+    public WallDecorLayerEntity removeDynamicWallDecoration(int level, int x, int z) {
 		Tile tile = this.levelTiles[level][x][z];
 		if (tile != null) {
 			this.method8732(tile.dynamicWallDecoration);
@@ -675,8 +583,7 @@ public class Scene {
 		return null;
 	}
 
-	@ObfuscatedName("tx.ag(IIIB)Lasv;")
-	public GroundDecorLayerEntity removeGroundDecoration(int level, int x, int z) {
+    public GroundDecorLayerEntity removeGroundDecoration(int level, int x, int z) {
 		Tile tile = this.levelTiles[level][x][z];
 		if (tile == null) {
 			return null;
@@ -691,8 +598,7 @@ public class Scene {
 		}
 	}
 
-	@ObfuscatedName("tx.ah(IIIB)Last;")
-	public ObjLayerEntity removeObjStack(int level, int x, int z) {
+    public ObjLayerEntity removeObjStack(int level, int x, int z) {
 		Tile tile = this.levelTiles[level][x][z];
 		if (tile == null) {
 			return null;
@@ -704,8 +610,7 @@ public class Scene {
 		}
 	}
 
-	@ObfuscatedName("tx.al(IIILtd;I)Lash;")
-	public PrimaryLayerEntity removeEntity(int level, int x, int z, PrimaryLayerEntityPredicate arg3) {
+    public PrimaryLayerEntity removeEntity(int level, int x, int z, PrimaryLayerEntityPredicate arg3) {
 		Tile tile = this.levelTiles[level][x][z];
 		if (tile == null) {
 			return null;
@@ -720,8 +625,7 @@ public class Scene {
 		return null;
 	}
 
-	@ObfuscatedName("tx.ac(Lash;ZI)V")
-	public void removeEntity(PrimaryLayerEntity entity, boolean arg1) {
+    public void removeEntity(PrimaryLayerEntity entity, boolean arg1) {
 		int minX = Math.min(this.maxTileX - 1, Math.max(0, entity.minSceneTileX));
 		int maxX = Math.min(this.maxTileX - 1, Math.max(0, entity.maxSceneTileX));
 		int minZ = Math.min(this.maxTileZ - 1, Math.max(0, entity.minSceneTileZ));
@@ -753,8 +657,7 @@ public class Scene {
 		}
 	}
 
-	@ObfuscatedName("tx.ai(Lalh;B)V")
-	public void method8732(GraphEntity arg0) {
+    public void method8732(GraphEntity arg0) {
 		if (arg0 == null) {
 			return;
 		}
@@ -799,32 +702,27 @@ public class Scene {
 		}
 	}
 
-	@ObfuscatedName("tx.aw(IIII)Lasw;")
-	public WallLayerEntity getWall(int level, int x, int z) {
+    public WallLayerEntity getWall(int level, int x, int z) {
 		Tile tile = this.levelTiles[level][x][z];
 		return tile == null ? null : tile.wall;
 	}
 
-	@ObfuscatedName("tx.as(IIII)Lasw;")
-	public WallLayerEntity getDynamicWall(int level, int x, int z) {
+    public WallLayerEntity getDynamicWall(int level, int x, int z) {
 		Tile tile = this.levelTiles[level][x][z];
 		return tile == null ? null : tile.dynamicWall;
 	}
 
-	@ObfuscatedName("tx.at(IIII)Lasm;")
-	public WallDecorLayerEntity getWallDecoration(int level, int x, int z) {
+    public WallDecorLayerEntity getWallDecoration(int level, int x, int z) {
 		Tile tile = this.levelTiles[level][x][z];
 		return tile == null ? null : tile.wallDecoration;
 	}
 
-	@ObfuscatedName("tx.ad(IIIB)Last;")
-	public ObjLayerEntity getObjStack(int level, int x, int z) {
+    public ObjLayerEntity getObjStack(int level, int x, int z) {
 		Tile tile = this.levelTiles[level][x][z];
 		return tile == null ? null : tile.objStack;
 	}
 
-	@ObfuscatedName("tx.am(IIILtd;B)Lash;")
-	public PrimaryLayerEntity getEntity(int level, int x, int z, PrimaryLayerEntityPredicate arg3) {
+    public PrimaryLayerEntity getEntity(int level, int x, int z, PrimaryLayerEntityPredicate arg3) {
 		Tile tile = this.levelTiles[level][x][z];
 		if (tile == null) {
 			return null;
@@ -838,20 +736,17 @@ public class Scene {
 		return null;
 	}
 
-	@ObfuscatedName("tx.au(IIIB)Luc;")
-	public PrimaryLayerEntityList getEntities(int level, int x, int z) {
+    public PrimaryLayerEntityList getEntities(int level, int x, int z) {
 		Tile tile = this.levelTiles[level][x][z];
 		return tile == null ? null : tile.entities;
 	}
 
-	@ObfuscatedName("tx.ar(IIII)Lasv;")
-	public GroundDecorLayerEntity getGroundDecoration(int level, int x, int z) {
+    public GroundDecorLayerEntity getGroundDecoration(int level, int x, int z) {
 		Tile tile = this.levelTiles[level][x][z];
 		return tile == null || tile.groundDecoration == null ? null : tile.groundDecoration;
 	}
 
-	@ObfuscatedName("tx.ap()V")
-	public void buildModels() {
+    public void buildModels() {
 		for (int level = 0; level < this.maxLevel; level++) {
 			for (int x = 0; x < this.maxTileX; x++) {
 				for (int z = 0; z < this.maxTileZ; z++) {
@@ -886,8 +781,7 @@ public class Scene {
 		}
 	}
 
-	@ObfuscatedName("tx.aq(Lalh;IIIS)V")
-	public void mergeGroundDecorationNormals(GraphEntity entity, int level, int x, int z) {
+    public void mergeGroundDecorationNormals(GraphEntity entity, int level, int x, int z) {
 		if (x < this.maxTileX) {
 			Tile tile = this.levelTiles[level][x + 1][z];
 			if (tile != null && tile.groundDecoration != null && tile.groundDecoration.method17379()) {
@@ -919,8 +813,7 @@ public class Scene {
 		}
 	}
 
-	@ObfuscatedName("tx.ax(Lalh;IIIII)V")
-	public void mergeLocNormals(GraphEntity entity, int level, int tileX, int tileZ, int sizeX, int sizeZ) {
+    public void mergeLocNormals(GraphEntity entity, int level, int tileX, int tileZ, int sizeX, int sizeZ) {
 		boolean allowFaceRemoval = true;
 		int minTileX = tileX;
 		int maxTileX = tileX + sizeX;
@@ -967,8 +860,7 @@ public class Scene {
         }
 	}
 
-	@ObfuscatedName("tx.av(IIII[[[B[I[I[I[I[IIBIIZZIZ)V")
-	public void draw(int cycle, int eyeX, int eyeY, int eyeZ, byte[][][] arg4, int[] arg5, int[] arg6, int[] arg7, int[] arg8, int[] arg9, int arg10, byte arg11, int arg12, int arg13, boolean arg14, boolean arg15, int arg16, boolean arg17) {
+    public void draw(int cycle, int eyeX, int eyeY, int eyeZ, byte[][][] arg4, int[] arg5, int[] arg6, int[] arg7, int[] arg8, int[] arg9, int arg10, byte arg11, int arg12, int arg13, boolean arg14, boolean arg15, int arg16, boolean arg17) {
 		this.occlusionManager.field7017 = true;
 		this.field6955 = arg15;
 		this.eyeTileX = eyeX >> this.size;
@@ -1085,8 +977,7 @@ public class Scene {
 		}
 	}
 
-	@ObfuscatedName("tx.ao(Z[[[BIBI)V")
-	public void method8744(boolean arg0, byte[][][] arg1, int arg2, byte arg3, int arg4) {
+    public void method8744(boolean arg0, byte[][][] arg1, int arg2, byte arg3, int arg4) {
 		int var6 = arg0 ? 1 : 0;
 		this.field6931 = 0;
 		this.field6918 = 0;
@@ -1206,15 +1097,13 @@ public class Scene {
 		}
 	}
 
-	@ObfuscatedName("tx.aj(Lalh;I)V")
-	public void method8745(GraphEntity arg0) {
+    public void method8745(GraphEntity arg0) {
 		Vector3 var2 = arg0.getTransform().trans;
 		this.toolkit.method2525((float) var2.x, (float) ((int) var2.y + (arg0.overlayHeight() >> 1)), (float) var2.z, this.field6927);
 		arg0.field11715 = (int) this.field6927[2];
 	}
 
-	@ObfuscatedName("tx.ay([Lalh;II)V")
-	public void method8751(GraphEntity[] arg0, int arg1, int arg2) {
+    public void method8751(GraphEntity[] arg0, int arg1, int arg2) {
 		if (arg1 >= arg2) {
 			return;
 		}
@@ -1237,8 +1126,7 @@ public class Scene {
 		this.method8751(arg0, var5 + 1, arg2);
 	}
 
-	@ObfuscatedName("tx.ab([Lalh;II)V")
-	public void method8747(GraphEntity[] arg0, int arg1, int arg2) {
+    public void method8747(GraphEntity[] arg0, int arg1, int arg2) {
 		if (arg1 >= arg2) {
 			return;
 		}
@@ -1261,8 +1149,7 @@ public class Scene {
 		this.method8747(arg0, var5 + 1, arg2);
 	}
 
-	@ObfuscatedName("tx.az(Lalh;Z[[[BIB)Z")
-	public boolean method8748(GraphEntity arg0, boolean arg1, byte[][][] arg2, int arg3, byte arg4) {
+    public boolean method8748(GraphEntity arg0, boolean arg1, byte[][][] arg2, int arg3, byte arg4) {
 		if (!this.field6955) {
 			return false;
 		} else if (arg0 instanceof PrimaryLayerEntity) {
@@ -1301,8 +1188,7 @@ public class Scene {
 		}
 	}
 
-	@ObfuscatedName("tx.aa(Lalh;[Lakf;)V")
-	public void method8749(GraphEntity arg0, Light[] arg1) {
+    public void method8749(GraphEntity arg0, Light[] arg1) {
 		if (this.lighting) {
 			int var3 = arg0.method18375(arg1);
 			this.toolkit.setActiveLights(var3, arg1);
@@ -1343,8 +1229,7 @@ public class Scene {
 		}
 	}
 
-	@ObfuscatedName("tx.af(Lara;III[ZI)Z")
-	public boolean method8750(HardShadow arg0, int arg1, int arg2, int arg3, boolean[] arg4) {
+    public boolean method8750(HardShadow arg0, int arg1, int arg2, int arg3, boolean[] arg4) {
 		boolean var6 = false;
 		if (this.underwaterLevelHeightMaps != this.levelHeightmaps) {
 			int var7 = this.field6915[arg1].getFineHeight(arg2, arg3);
@@ -1366,8 +1251,7 @@ public class Scene {
 		return var6;
 	}
 
-	@ObfuscatedName("tx.ak(Lara;III[ZI)V")
-	public void method8814(HardShadow arg0, int arg1, int arg2, int arg3, boolean[] arg4) {
+    public void method8814(HardShadow arg0, int arg1, int arg2, int arg3, boolean[] arg4) {
 		if (this.underwaterLevelHeightMaps == this.levelHeightmaps) {
 			return;
 		}
@@ -1382,8 +1266,7 @@ public class Scene {
 		}
 	}
 
-	@ObfuscatedName("tx.an(III)V")
-	public void method8870(int arg0, int arg1) {
+    public void method8870(int arg0, int arg1) {
 		HardShadow var3 = null;
 		for (int var4 = arg0; var4 < arg1; var4++) {
 			FloorModel var5 = this.field6915[var4];
@@ -1411,13 +1294,11 @@ public class Scene {
 		}
 	}
 
-	@ObfuscatedName("tx.bf(I)V")
-	public void method8753() {
+    public void method8753() {
 		this.method8870(1, this.maxLevel);
 	}
 
-	@ObfuscatedName("tx.bl(Lul;B)V")
-	public void method8754(StaticPointLight arg0) {
+    public void method8754(StaticPointLight arg0) {
 		if (this.field6953 >= 65253) {
 			return;
 		}
@@ -1486,8 +1367,7 @@ public class Scene {
 		}
 	}
 
-	@ObfuscatedName("tx.bk(I)V")
-	public void method8755() {
+    public void method8755() {
 		for (int var1 = 0; var1 < this.field6953; var1++) {
 			if (!this.field6956[var1]) {
 				StaticPointLight var2 = this.field6926[var1];
@@ -1578,8 +1458,7 @@ public class Scene {
 		}
 	}
 
-	@ObfuscatedName("tx.bh(IIII)V")
-	public void addPointLightColour(int arg0, int arg1, int arg2) {
+    public void addPointLightColour(int arg0, int arg1, int arg2) {
 		List var4 = (List) this.field6957.get(arg0);
 		if (var4 == null) {
 			return;
@@ -1591,8 +1470,7 @@ public class Scene {
 		}
 	}
 
-	@ObfuscatedName("tx.bx(IIIB)V")
-	public void setPointLightIntensity(int arg0, int arg1, int arg2) {
+    public void setPointLightIntensity(int arg0, int arg1, int arg2) {
 		List var4 = (List) this.field6957.get(arg0);
 		if (var4 == null) {
 			return;
@@ -1605,8 +1483,7 @@ public class Scene {
 		}
 	}
 
-	@ObfuscatedName("tx.bd(I)Ljava/util/HashMap;")
-	public HashMap method8733() {
+    public HashMap method8733() {
 		this.field6958.clear();
 		Iterator var1 = this.field6957.entrySet().iterator();
 		while (var1.hasNext()) {
@@ -1616,8 +1493,7 @@ public class Scene {
 		return this.field6958;
 	}
 
-	@ObfuscatedName("tx.bc(Ljava/util/HashMap;B)V")
-	public void method8759(HashMap arg0) {
+    public void method8759(HashMap arg0) {
 		this.field6958 = arg0;
 	}
 }

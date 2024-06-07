@@ -5,23 +5,19 @@ import com.jagex.core.io.Packet;
 import deob.ObfuscatedName;
 import rs2.client.Client;
 
-@ObfuscatedName("yw")
 public class ClientScriptHelpers {
 
-	@ObfuscatedName("yw.e")
-	public static ClientScriptCache cache = new ClientScriptCache(128);
+    public static ClientScriptCache cache = new ClientScriptCache(128);
 
 	public ClientScriptHelpers() throws Throwable {
 		throw new Error();
 	}
 
-	@ObfuscatedName("ss.e(I)V")
-	public static void method8004() {
+    public static void method8004() {
 		cache.removeAll();
 	}
 
-	@ObfuscatedName("lv.n(II)Lasc;")
-	public static ClientScript getScript(int scriptId) {
+    public static ClientScript getScript(int scriptId) {
 		ClientScript cached = (ClientScript) cache.get((long) scriptId);
 		if (cached != null) {
 			return cached;
@@ -40,8 +36,7 @@ public class ClientScriptHelpers {
 		return script;
 	}
 
-	@ObfuscatedName("vs.m(Luh;IIS)Lasc;")
-	public static ClientScript getByTrigger(ClientTriggerType arg0, int arg1, int arg2) {
+    public static ClientScript getByTrigger(ClientTriggerType arg0, int arg1, int arg2) {
 		int var3 = arg0.id | arg1 << 10;
 		ClientScript var4 = (ClientScript) cache.get((long) var3 << 16);
 		if (var4 != null) {
@@ -105,8 +100,7 @@ public class ClientScriptHelpers {
 		}
 	}
 
-	@ObfuscatedName("ek.k([BS)Lasc;")
-	public static ClientScript decode(byte[] bytes) {
+    public static ClientScript decode(byte[] bytes) {
 		return new ClientScript(new Packet(bytes), Client.variableTypeProvider);
 	}
 }

@@ -7,32 +7,23 @@ import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Map;
 
-@ObfuscatedName("qy")
 public final class PrioritizedCache {
 
-	@ObfuscatedName("qy.e")
-	public final Comparator field4631;
+    public final Comparator field4631;
 
-	@ObfuscatedName("qy.n")
-	public final Map field4628;
+    public final Map field4628;
 
-	@ObfuscatedName("qy.m")
-	public final SortedQueue field4629;
+    public final SortedQueue field4629;
 
-	@ObfuscatedName("qy.k")
-	public final SortedQueue field4630;
+    public final SortedQueue field4630;
 
-	@ObfuscatedName("qy.f")
-	public final long field4632;
+    public final long field4632;
 
-	@ObfuscatedName("qy.w")
-	public final PrioritizedCacheMode field4627;
+    public final PrioritizedCacheMode field4627;
 
-	@ObfuscatedName("qy.l")
-	public final int field4633;
+    public final int field4633;
 
-	@ObfuscatedName("qi")
-	public static class PrioritizedCacheComparator implements Comparator {
+    public static class PrioritizedCacheComparator implements Comparator {
 
 		// $FF: synthetic field
 		public final PrioritizedCache this$0;
@@ -42,8 +33,7 @@ public final class PrioritizedCache {
 			this.this$0 = arg0;
 		}
 
-		@ObfuscatedName("qi.e(Lqd;Lqd;B)I")
-		public int method7264(PrioritizedCacheEntry arg0, PrioritizedCacheEntry arg1) {
+        public int method7264(PrioritizedCacheEntry arg0, PrioritizedCacheEntry arg1) {
 			if (arg0.field4624 > arg1.field4624) {
 				return 1;
 			} else if (arg0.field4624 < arg1.field4624) {
@@ -85,13 +75,11 @@ public final class PrioritizedCache {
 		}
 	}
 
-	@ObfuscatedName("qy.e(B)Z")
-	public boolean method7277() {
+    public boolean method7277() {
 		return this.field4633 != -1;
 	}
 
-	@ObfuscatedName("qy.n(Ljava/lang/Object;I)Ljava/lang/Object;")
-	public Object method7278(Object arg0) {
+    public Object method7278(Object arg0) {
 		synchronized (this) {
 			if (this.field4632 != -1L) {
 				this.method7281();
@@ -106,8 +94,7 @@ public final class PrioritizedCache {
 		}
 	}
 
-	@ObfuscatedName("qy.m(Ljava/lang/Object;Ljava/lang/Object;I)Ljava/lang/Object;")
-	public Object method7279(Object arg0, Object arg1) {
+    public Object method7279(Object arg0, Object arg1) {
 		synchronized (this) {
 			if (this.field4632 != -1L) {
 				this.method7281();
@@ -131,8 +118,7 @@ public final class PrioritizedCache {
 		}
 	}
 
-	@ObfuscatedName("qy.k(Lqd;ZI)V")
-	public void method7286(PrioritizedCacheEntry arg0, boolean arg1) {
+    public void method7286(PrioritizedCacheEntry arg0, boolean arg1) {
 		if (!arg1) {
 			this.field4629.remove(arg0);
 			if (this.method7277() && !this.field4630.remove(arg0)) {
@@ -153,8 +139,7 @@ public final class PrioritizedCache {
 		this.field4629.add(arg0);
 	}
 
-	@ObfuscatedName("qy.f(I)V")
-	public void method7281() {
+    public void method7281() {
 		if (this.field4632 == -1L) {
 			throw new IllegalStateException("");
 		}

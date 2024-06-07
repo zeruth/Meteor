@@ -5,21 +5,17 @@ import com.jagex.core.io.Packet;
 import com.jagex.js5.Js5;
 import deob.ObfuscatedName;
 
-@ObfuscatedName("no")
 public class BasicParticleEffectorTypeList implements ParticleEffectorTypeList {
 
-	@ObfuscatedName("no.e")
-	public Js5 field3536;
+    public Js5 field3536;
 
-	@ObfuscatedName("no.n")
-	public SoftLruHashTable field3537 = new SoftLruHashTable(64);
+    public SoftLruHashTable field3537 = new SoftLruHashTable(64);
 
 	public BasicParticleEffectorTypeList(Js5 arg0) {
 		this.field3536 = arg0;
 	}
 
-	@ObfuscatedName("no.e(II)Lna;")
-	public ParticleEffectorType method5973(int arg0) {
+    public ParticleEffectorType method5973(int arg0) {
 		ParticleEffectorType var2 = (ParticleEffectorType) this.field3537.get((long) arg0);
 		if (var2 != null) {
 			return var2;
@@ -35,8 +31,7 @@ public class BasicParticleEffectorTypeList implements ParticleEffectorTypeList {
 		return var4;
 	}
 
-	@ObfuscatedName("no.n(I)V")
-	public void cacheReset() {
+    public void cacheReset() {
 		this.field3537.reset();
 	}
 }

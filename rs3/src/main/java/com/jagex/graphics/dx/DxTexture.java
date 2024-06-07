@@ -11,26 +11,19 @@ import jagdx.IDirect3DTexture;
 
 import java.nio.ByteBuffer;
 
-@ObfuscatedName("aiy")
 public class DxTexture extends DxBaseTexture implements GpuTexture {
 
-	@ObfuscatedName("aiy.w")
-	public final int width;
+    public final int width;
 
-	@ObfuscatedName("aiy.l")
-	public final int height;
+    public final int height;
 
-	@ObfuscatedName("aiy.u")
-	public final float field10667;
+    public final float field10667;
 
-	@ObfuscatedName("aiy.z")
-	public final float field10668;
+    public final float field10668;
 
-	@ObfuscatedName("aiy.p")
-	public boolean field10669;
+    public boolean field10669;
 
-	@ObfuscatedName("aiy.d")
-	public boolean field10670;
+    public boolean field10670;
 
 	public DxTexture(DxToolkit arg0, TextureFormat arg1, DataType arg2, int arg3, int arg4) {
 		this(arg0, arg1, arg2, arg3, arg4, 0, 1);
@@ -159,59 +152,48 @@ public class DxTexture extends DxBaseTexture implements GpuTexture {
 		IDirect3DTexture.Upload(this.field4217, 0, 0, 0, this.width, this.height, this.format.id * arg7 * 4, 0, this.renderer.temporaryBufferAddress);
 	}
 
-	@ObfuscatedName("aiy.e()I")
-	public int getWidth() {
+    public int getWidth() {
 		return this.width;
 	}
 
-	@ObfuscatedName("aiy.n()I")
-	public int getHeight() {
+    public int getHeight() {
 		return this.height;
 	}
 
-	@ObfuscatedName("aiy.k(F)F")
-	public float getU(float arg0) {
+    public float getU(float arg0) {
 		return arg0 / (float) this.width;
 	}
 
-	@ObfuscatedName("aiy.f(F)F")
-	public float getV(float arg0) {
+    public float getV(float arg0) {
 		return arg0 / (float) this.height;
 	}
 
-	@ObfuscatedName("aiy.v()F")
-	public float method5734() {
+    public float method5734() {
 		return this.field10667;
 	}
 
-	@ObfuscatedName("aiy.o()F")
-	public float method5707() {
+    public float method5707() {
 		return this.field10668;
 	}
 
-	@ObfuscatedName("aiy.w()Z")
-	public boolean method5732() {
+    public boolean method5732() {
 		return true;
 	}
 
-	@ObfuscatedName("aiy.bl()J")
-	public long method6225() {
+    public long method6225() {
 		return this.field4217;
 	}
 
-	@ObfuscatedName("aiy.ay(Llt;)V")
-	public void method5824(GpuTextureRelated arg0) {
+    public void method5824(GpuTextureRelated arg0) {
 		super.method5824(arg0);
 	}
 
-	@ObfuscatedName("aiy.l(ZZ)V")
-	public void setWarp(boolean arg0, boolean arg1) {
+    public void setWarp(boolean arg0, boolean arg1) {
 		this.field10669 = arg0;
 		this.field10670 = arg1;
 	}
 
-	@ObfuscatedName("aiy.z(IIII[III)V")
-	public void upload(int arg0, int arg1, int arg2, int arg3, int[] arg4, int arg5, int arg6) {
+    public void upload(int arg0, int arg1, int arg2, int arg3, int[] arg4, int arg5, int arg6) {
 		if (TextureFormat.RGBA != this.format || DataType.UNSIGNED_INT_8 != this.field4218) {
 			throw new RuntimeException();
 		}
@@ -225,8 +207,7 @@ public class DxTexture extends DxBaseTexture implements GpuTexture {
 		IDirect3DTexture.Upload(this.field4217, 0, arg0, arg1, arg2, arg3, this.format.id * arg6, 0, this.renderer.temporaryBufferAddress);
 	}
 
-	@ObfuscatedName("aiy.p(IIII[BLck;II)V")
-	public void upload(int arg0, int arg1, int arg2, int arg3, byte[] arg4, TextureFormat arg5, int arg6, int arg7) {
+    public void upload(int arg0, int arg1, int arg2, int arg3, byte[] arg4, TextureFormat arg5, int arg6, int arg7) {
 		if (this.format != arg5 || DataType.UNSIGNED_INT_8 != this.field4218) {
 			throw new RuntimeException();
 		}
@@ -240,8 +221,7 @@ public class DxTexture extends DxBaseTexture implements GpuTexture {
 		IDirect3DTexture.Upload(this.field4217, 0, arg0, arg1, arg2, arg3, this.format.id * arg7, 0, this.renderer.temporaryBufferAddress);
 	}
 
-	@ObfuscatedName("aiy.d(IIII[II)V")
-	public void download(int arg0, int arg1, int arg2, int arg3, int[] arg4, int arg5) {
+    public void download(int arg0, int arg1, int arg2, int arg3, int[] arg4, int arg5) {
 		if (TextureFormat.RGBA != this.format || DataType.UNSIGNED_INT_8 != this.field4218) {
 			throw new RuntimeException();
 		}
@@ -252,16 +232,14 @@ public class DxTexture extends DxBaseTexture implements GpuTexture {
 		var7.asIntBuffer().get(arg4, arg5, arg2 * arg3);
 	}
 
-	@ObfuscatedName("aiy.c(IIII[I[II)V")
-	public void download(int arg0, int arg1, int arg2, int arg3, int[] arg4, int[] arg5, int arg6) {
+    public void download(int arg0, int arg1, int arg2, int arg3, int[] arg4, int[] arg5, int arg6) {
 		if (TextureFormat.RGBA != this.format || DataType.UNSIGNED_INT_8 != this.field4218) {
 			throw new RuntimeException();
 		}
 		this.download(arg0, arg1, arg2, arg3, arg4, null, arg6);
 	}
 
-	@ObfuscatedName("aiy.r(IIIIII)V")
-	public void upload(int arg0, int arg1, int arg2, int arg3, int arg4, int arg5) {
+    public void upload(int arg0, int arg1, int arg2, int arg3, int arg4, int arg5) {
 		int[] var7 = this.renderer.method2149(arg4, arg5, arg2, arg3);
 		if (var7 != null) {
 			for (int var8 = 0; var8 < var7.length; var8++) {
@@ -271,18 +249,15 @@ public class DxTexture extends DxBaseTexture implements GpuTexture {
 		}
 	}
 
-	@ObfuscatedName("aiy.aj()V")
-	public void method5823() {
+    public void method5823() {
 		this.renderer.method19002(this);
 	}
 
-	@ObfuscatedName("aiy.s()Z")
-	public boolean method5708() {
+    public boolean method5708() {
 		return false;
 	}
 
-	@ObfuscatedName("aiy.m()V")
-	public void delete() {
+    public void delete() {
 		super.delete();
 	}
 }

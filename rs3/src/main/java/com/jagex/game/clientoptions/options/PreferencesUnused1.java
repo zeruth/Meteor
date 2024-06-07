@@ -3,7 +3,6 @@ package com.jagex.game.clientoptions.options;
 import com.jagex.game.clientoptions.ClientOptions;
 import deob.ObfuscatedName;
 
-@ObfuscatedName("amj")
 public class PreferencesUnused1 extends Preference {
 
 	public PreferencesUnused1(ClientOptions options) {
@@ -14,30 +13,25 @@ public class PreferencesUnused1 extends Preference {
 		super(value, options);
 	}
 
-	@ObfuscatedName("amj.o(B)V")
-	public void clampValue() {
+    public void clampValue() {
 		if (this.currentValue < 0 || this.currentValue > 1) {
 			this.currentValue = this.defaultValue();
 		}
 	}
 
-	@ObfuscatedName("amj.e(B)I")
-	public int defaultValue() {
+    public int defaultValue() {
 		return 1;
 	}
 
-	@ObfuscatedName("amj.n(II)I")
-	public int canSetValue(int value) {
+    public int canSetValue(int value) {
 		return 3;
 	}
 
-	@ObfuscatedName("amj.k(II)V")
-	public void setValue(int value) {
+    public void setValue(int value) {
 		this.currentValue = value;
 	}
 
-	@ObfuscatedName("amj.s(B)I")
-	public int getValue() {
+    public int getValue() {
 		return this.currentValue;
 	}
 }

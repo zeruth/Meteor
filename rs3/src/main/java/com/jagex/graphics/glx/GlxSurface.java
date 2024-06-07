@@ -6,26 +6,19 @@ import jaggl.OpenGL;
 
 import java.awt.*;
 
-@ObfuscatedName("atx")
 public class GlxSurface extends GpuSurface {
 
-	@ObfuscatedName("atx.n")
-	public final Canvas field12519;
+    public final Canvas field12519;
 
-	@ObfuscatedName("atx.m")
-	public final OpenGL field12518;
+    public final OpenGL field12518;
 
-	@ObfuscatedName("atx.k")
-	public long field12516;
+    public long field12516;
 
-	@ObfuscatedName("atx.f")
-	public int field12517;
+    public int field12517;
 
-	@ObfuscatedName("atx.w")
-	public int field12520;
+    public int field12520;
 
-	@ObfuscatedName("atx.l")
-	public boolean field12521;
+    public boolean field12521;
 
 	public GlxSurface(GlxToolkit arg0, Canvas arg1) {
 		this(arg0, arg1, arg0.opengl.prepareSurface(arg1));
@@ -40,18 +33,15 @@ public class GlxSurface extends GpuSurface {
 		this.method19660();
 	}
 
-	@ObfuscatedName("atx.e()I")
-	public int getWidth() {
+    public int getWidth() {
 		return this.field12517;
 	}
 
-	@ObfuscatedName("atx.n()I")
-	public int getHeight() {
+    public int getHeight() {
 		return this.field12520;
 	}
 
-	@ObfuscatedName("atx.i(II)V")
-	public void onResize(int arg0, int arg1) {
+    public void onResize(int arg0, int arg1) {
 		if (this.field12516 == 0L) {
 			throw new IllegalStateException("");
 		}
@@ -60,15 +50,13 @@ public class GlxSurface extends GpuSurface {
 		super.onResize(arg0, arg1);
 	}
 
-	@ObfuscatedName("atx.x()V")
-	public void method19660() {
+    public void method19660() {
 		Dimension var1 = this.field12519.getSize();
 		this.field12520 = var1.height;
 		this.field12517 = var1.width;
 	}
 
-	@ObfuscatedName("atx.a()I")
-	public int method15451() {
+    public int method15451() {
 		if (this.field12516 == 0L) {
 			throw new IllegalStateException("");
 		}
@@ -76,13 +64,11 @@ public class GlxSurface extends GpuSurface {
 		return 0;
 	}
 
-	@ObfuscatedName("atx.g(II)I")
-	public int method15450(int arg0, int arg1) {
+    public int method15450(int arg0, int arg1) {
 		return 0;
 	}
 
-	@ObfuscatedName("atx.k()Z")
-	public boolean method1630() {
+    public boolean method1630() {
 		if (this.field12516 == 0L) {
 			throw new IllegalStateException("");
 		}
@@ -94,13 +80,11 @@ public class GlxSurface extends GpuSurface {
 		return var1 && super.method1630();
 	}
 
-	@ObfuscatedName("atx.f()Z")
-	public boolean method1631() {
+    public boolean method1631() {
 		return true;
 	}
 
-	@ObfuscatedName("atx.m()V")
-	public void method1629() {
+    public void method1629() {
 		if (this.field12516 != 0L) {
 			this.field12518.releaseSurface(this.field12519, this.field12516);
 			this.field12516 = 0L;

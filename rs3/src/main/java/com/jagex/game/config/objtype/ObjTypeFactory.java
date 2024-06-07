@@ -16,38 +16,27 @@ import com.jagex.graphics.Sprite;
 import com.jagex.js5.Js5;
 import deob.ObfuscatedName;
 
-@ObfuscatedName("abr")
 public abstract class ObjTypeFactory implements ConfigTypeFactory {
 
-	@ObfuscatedName("abr.e")
-	public final Language languageId;
+    public final Language languageId;
 
-	@ObfuscatedName("abr.n")
-	public boolean allowMembers;
+    public boolean allowMembers;
 
-	@ObfuscatedName("abr.m")
-	public final Js5 configClient;
+    public final Js5 configClient;
 
-	@ObfuscatedName("abr.k")
-	public final SoftLruHashTable modelCache = new SoftLruHashTable(50);
+    public final SoftLruHashTable modelCache = new SoftLruHashTable(50);
 
-	@ObfuscatedName("abr.f")
-	public final IconCache iconCache = new IconCache(250);
+    public final IconCache iconCache = new IconCache(250);
 
-	@ObfuscatedName("abr.w")
-	public final IconCacheKey field8609 = new IconCacheKey();
+    public final IconCacheKey field8609 = new IconCacheKey();
 
-	@ObfuscatedName("abr.l")
-	public final ConfigTypeList paramTL;
+    public final ConfigTypeList paramTL;
 
-	@ObfuscatedName("abr.u")
-	public int field8611;
+    public int field8611;
 
-	@ObfuscatedName("abr.z")
-	public final String[] defaultops;
+    public final String[] defaultops;
 
-	@ObfuscatedName("abr.p")
-	public final String[] defaultiops;
+    public final String[] defaultiops;
 
 	public ObjTypeFactory(ModeGame modeGame, Language language, boolean allowMembers, Js5 configClient, ConfigTypeList list) {
 		this.languageId = language;
@@ -62,8 +51,7 @@ public abstract class ObjTypeFactory implements ConfigTypeFactory {
 		this.defaultiops = new String[] { null, null, null, null, LocalisedText.DROP.forLang(this.languageId) };
 	}
 
-	@ObfuscatedName("abr.e(Ldh;IIIIILxg;I)Lcm;")
-	public Sprite method14616(Toolkit arg0, int arg1, int arg2, int arg3, int arg4, int arg5, PlayerModel arg6) {
+    public Sprite method14616(Toolkit arg0, int arg1, int arg2, int arg3, int arg4, int arg5, PlayerModel arg6) {
 		this.field8609.field8607 = arg0.field1595;
 		this.field8609.field8602 = arg1;
 		this.field8609.field8604 = arg2;
@@ -74,8 +62,7 @@ public abstract class ObjTypeFactory implements ConfigTypeFactory {
 		return (Sprite) this.iconCache.get(this.field8609);
 	}
 
-	@ObfuscatedName("abr.n(Ldh;Ldh;IIIIZZILeu;Lxg;Lws;Lao;I)Lcm;")
-	public Sprite method14617(Toolkit arg0, Toolkit arg1, int arg2, int arg3, int arg4, int arg5, boolean arg6, boolean arg7, int arg8, Font arg9, PlayerModel arg10, GraphicsDefaults arg11, ConfigTypeList arg12) {
+    public Sprite method14617(Toolkit arg0, Toolkit arg1, int arg2, int arg3, int arg4, int arg5, boolean arg6, boolean arg7, int arg8, Font arg9, PlayerModel arg10, GraphicsDefaults arg11, ConfigTypeList arg12) {
 		if (!arg7) {
 			Sprite var14 = this.method14616(arg1, arg2, arg3, arg4, arg5, arg8, arg10);
 			if (var14 != null) {
@@ -118,16 +105,14 @@ public abstract class ObjTypeFactory implements ConfigTypeFactory {
 		return var19;
 	}
 
-	@ObfuscatedName("abr.m(ZB)V")
-	public void setAllowMembers(boolean arg0) {
+    public void setAllowMembers(boolean arg0) {
 		if (this.allowMembers != arg0) {
 			this.allowMembers = arg0;
 			this.cacheReset();
 		}
 	}
 
-	@ObfuscatedName("abr.k(II)V")
-	public void resetModelCache(int arg0) {
+    public void resetModelCache(int arg0) {
 		this.field8611 = arg0;
 		SoftLruHashTable var2 = this.modelCache;
 		synchronized (this.modelCache) {
@@ -135,8 +120,7 @@ public abstract class ObjTypeFactory implements ConfigTypeFactory {
 		}
 	}
 
-	@ObfuscatedName("abr.f(I)V")
-	public void cacheReset() {
+    public void cacheReset() {
 		SoftLruHashTable var1 = this.modelCache;
 		synchronized (this.modelCache) {
 			this.modelCache.reset();
@@ -147,16 +131,14 @@ public abstract class ObjTypeFactory implements ConfigTypeFactory {
 		}
 	}
 
-	@ObfuscatedName("abr.w(I)V")
-	public void resetIconCache() {
+    public void resetIconCache() {
 		IconCache var1 = this.iconCache;
 		synchronized (this.iconCache) {
 			this.iconCache.reset();
 		}
 	}
 
-	@ObfuscatedName("abr.l(IB)V")
-	public void cacheClean(int arg0) {
+    public void cacheClean(int arg0) {
 		SoftLruHashTable var2 = this.modelCache;
 		synchronized (this.modelCache) {
 			this.modelCache.clean(arg0);
@@ -167,8 +149,7 @@ public abstract class ObjTypeFactory implements ConfigTypeFactory {
 		}
 	}
 
-	@ObfuscatedName("abr.u(I)V")
-	public void cacheRemoveSoftReferences() {
+    public void cacheRemoveSoftReferences() {
 		SoftLruHashTable var1 = this.modelCache;
 		synchronized (this.modelCache) {
 			this.modelCache.clear();

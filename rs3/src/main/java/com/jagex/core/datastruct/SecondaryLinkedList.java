@@ -4,29 +4,24 @@ import deob.ObfuscatedName;
 
 import java.util.Iterator;
 
-@ObfuscatedName("aap")
 public class SecondaryLinkedList implements Iterable {
 
-	@ObfuscatedName("aap.e")
-	public SecondaryNode head = new SecondaryNode();
+    public SecondaryNode head = new SecondaryNode();
 
-	@ObfuscatedName("aap.n")
-	public SecondaryNode peeked;
+    public SecondaryNode peeked;
 
 	public SecondaryLinkedList() {
 		this.head.secondaryPrev = this.head;
 		this.head.secondaryNext = this.head;
 	}
 
-	@ObfuscatedName("aap.e(I)V")
-	public void removeAll() {
+    public void removeAll() {
 		while (this.head.secondaryPrev != this.head) {
 			this.head.secondaryPrev.secondaryRemove();
 		}
 	}
 
-	@ObfuscatedName("aap.n(Laky;I)V")
-	public void pushBack(SecondaryNode node) {
+    public void pushBack(SecondaryNode node) {
 		if (node.secondaryNext != null) {
 			node.secondaryRemove();
 		}
@@ -36,8 +31,7 @@ public class SecondaryLinkedList implements Iterable {
 		node.secondaryPrev.secondaryNext = node;
 	}
 
-	@ObfuscatedName("vj.m(Laky;Laky;I)V")
-	public static void pushNodeBack(SecondaryNode node, SecondaryNode head) {
+    public static void pushNodeBack(SecondaryNode node, SecondaryNode head) {
 		if (node.secondaryNext != null) {
 			node.secondaryRemove();
 		}
@@ -47,8 +41,7 @@ public class SecondaryLinkedList implements Iterable {
 		node.secondaryPrev.secondaryNext = node;
 	}
 
-	@ObfuscatedName("xg.k(Laky;Laky;I)V")
-	public static void method10144(SecondaryNode arg0, SecondaryNode arg1) {
+    public static void method10144(SecondaryNode arg0, SecondaryNode arg1) {
 		if (arg0.secondaryNext != null) {
 			arg0.secondaryRemove();
 		}
@@ -58,8 +51,7 @@ public class SecondaryLinkedList implements Iterable {
 		arg0.secondaryPrev.secondaryNext = arg0;
 	}
 
-	@ObfuscatedName("aap.f(B)Laky;")
-	public SecondaryNode pollFront() {
+    public SecondaryNode pollFront() {
 		SecondaryNode node = this.head.secondaryPrev;
 		if (this.head == node) {
 			return null;
@@ -69,13 +61,11 @@ public class SecondaryLinkedList implements Iterable {
 		}
 	}
 
-	@ObfuscatedName("aap.w(I)Laky;")
-	public SecondaryNode peekFront() {
+    public SecondaryNode peekFront() {
 		return this.peekFrontNode(null);
 	}
 
-	@ObfuscatedName("aap.l(Laky;I)Laky;")
-	public SecondaryNode peekFrontNode(SecondaryNode arg0) {
+    public SecondaryNode peekFrontNode(SecondaryNode arg0) {
 		SecondaryNode var2;
 		if (arg0 == null) {
 			var2 = this.head.secondaryPrev;
@@ -91,8 +81,7 @@ public class SecondaryLinkedList implements Iterable {
 		}
 	}
 
-	@ObfuscatedName("aap.u(I)Laky;")
-	public SecondaryNode prev() {
+    public SecondaryNode prev() {
 		SecondaryNode var1 = this.peeked;
 		if (this.head == var1) {
 			this.peeked = null;
@@ -103,8 +92,7 @@ public class SecondaryLinkedList implements Iterable {
 		}
 	}
 
-	@ObfuscatedName("aap.z(I)I")
-	public int length() {
+    public int length() {
 		int length = 0;
 		for (SecondaryNode var2 = this.head.secondaryPrev; var2 != this.head; var2 = var2.secondaryPrev) {
 			length++;

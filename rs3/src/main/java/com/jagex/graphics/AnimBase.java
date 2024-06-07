@@ -4,32 +4,23 @@ import com.jagex.core.datastruct.Node;
 import com.jagex.core.io.Packet;
 import deob.ObfuscatedName;
 
-@ObfuscatedName("ako")
 public class AnimBase extends Node {
 
-	@ObfuscatedName("ako.o")
-	public int field11312;
+    public int field11312;
 
-	@ObfuscatedName("ako.s")
-	public int field11313;
+    public int field11313;
 
-	@ObfuscatedName("ako.y")
-	public int[] field11314;
+    public int[] field11314;
 
-	@ObfuscatedName("ako.q")
-	public int[][] field11307;
+    public int[][] field11307;
 
-	@ObfuscatedName("ako.x")
-	public boolean[] field11311;
+    public boolean[] field11311;
 
-	@ObfuscatedName("ako.b")
-	public int[] field11317;
+    public int[] field11317;
 
-	@ObfuscatedName("ako.h")
-	public int[] field11302;
+    public int[] field11302;
 
-	@ObfuscatedName("ako.a")
-	public Joint[] field11319;
+    public Joint[] field11319;
 
 	public AnimBase(int arg0, byte[] arg1) {
 		this.field11312 = arg0;
@@ -73,8 +64,7 @@ public class AnimBase extends Node {
 		this.method17599();
 	}
 
-	@ObfuscatedName("ako.e(I)V")
-	public void method17599() {
+    public void method17599() {
 		Joint[] var1 = this.field11319;
 		for (int var2 = 0; var2 < var1.length; var2++) {
 			Joint var3 = var1[var2];

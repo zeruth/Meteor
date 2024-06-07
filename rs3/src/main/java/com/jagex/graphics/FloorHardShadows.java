@@ -5,35 +5,25 @@ import deob.ObfuscatedName;
 
 import java.nio.ByteBuffer;
 
-@ObfuscatedName("lg")
 public class FloorHardShadows {
 
-	@ObfuscatedName("lg.e")
-	public final GpuToolkit field3287;
+    public final GpuToolkit field3287;
 
-	@ObfuscatedName("lg.n")
-	public final GpuFloorModel field3290;
+    public final GpuFloorModel field3290;
 
-	@ObfuscatedName("lg.m")
-	public final int field3288;
+    public final int field3288;
 
-	@ObfuscatedName("lg.k")
-	public final int field3285;
+    public final int field3285;
 
-	@ObfuscatedName("lg.f")
-	public final byte[] field3289;
+    public final byte[] field3289;
 
-	@ObfuscatedName("lg.w")
-	public final int field3286;
+    public final int field3286;
 
-	@ObfuscatedName("lg.l")
-	public final int field3291;
+    public final int field3291;
 
-	@ObfuscatedName("lg.u")
-	public final int field3292;
+    public final int field3292;
 
-	@ObfuscatedName("lg.z")
-	public FloorHardShadowsBlock[][] field3293;
+    public FloorHardShadowsBlock[][] field3293;
 
 	public FloorHardShadows(GpuToolkit arg0, GpuFloorModel arg1) {
 		this.field3287 = arg0;
@@ -46,8 +36,7 @@ public class FloorHardShadows {
 		this.field3291 = this.field3290.field1234 >> this.field3292;
 	}
 
-	@ObfuscatedName("lg.e()V")
-	public void method5674() {
+    public void method5674() {
 		this.field3293 = new FloorHardShadowsBlock[this.field3286][this.field3291];
 		for (int var1 = 0; var1 < this.field3291; var1++) {
 			for (int var2 = 0; var2 < this.field3286; var2++) {
@@ -59,8 +48,7 @@ public class FloorHardShadows {
 		}
 	}
 
-	@ObfuscatedName("lg.n(Ljj;III[[ZZ)V")
-	public void method5670(ModelShader arg0, int arg1, int arg2, int arg3, boolean[][] arg4, boolean arg5) {
+    public void method5670(ModelShader arg0, int arg1, int arg2, int arg3, boolean[][] arg4, boolean arg5) {
 		this.field3287.method2219(false);
 		float var7 = 1.0F / (float) (this.field3287.field10128 * 128);
 		if (arg5) {
@@ -146,8 +134,7 @@ public class FloorHardShadows {
 		this.field3287.method2219(true);
 	}
 
-	@ObfuscatedName("lg.m(Lara;II)V")
-	public void method5663(HardShadow arg0, int arg1, int arg2) {
+    public void method5663(HardShadow arg0, int arg1, int arg2) {
 		GpuHardShadow var4 = (GpuHardShadow) arg0;
 		int var5 = var4.field12546 + 1 + arg1;
 		int var6 = var4.field12544 + 1 + arg2;
@@ -189,8 +176,7 @@ public class FloorHardShadows {
 		}
 	}
 
-	@ObfuscatedName("lg.k(Lara;II)V")
-	public void method5676(HardShadow arg0, int arg1, int arg2) {
+    public void method5676(HardShadow arg0, int arg1, int arg2) {
 		GpuHardShadow var4 = (GpuHardShadow) arg0;
 		int var5 = var4.field12546 + 1 + arg1;
 		int var6 = var4.field12544 + 1 + arg2;
@@ -232,8 +218,7 @@ public class FloorHardShadows {
 		}
 	}
 
-	@ObfuscatedName("lg.f(Lara;II)Z")
-	public boolean method5665(HardShadow arg0, int arg1, int arg2) {
+    public boolean method5665(HardShadow arg0, int arg1, int arg2) {
 		GpuHardShadow var4 = (GpuHardShadow) arg0;
 		int var5 = var4.field12546 + 1 + arg1;
 		int var6 = var4.field12544 + 1 + arg2;
@@ -272,8 +257,7 @@ public class FloorHardShadows {
 		}
 	}
 
-	@ObfuscatedName("lg.w(IIII)V")
-	public void method5666(int arg0, int arg1, int arg2, int arg3) {
+    public void method5666(int arg0, int arg1, int arg2, int arg3) {
 		if (this.field3293 == null) {
 			return;
 		}
@@ -291,8 +275,7 @@ public class FloorHardShadows {
 		}
 	}
 
-	@ObfuscatedName("lg.l([B[BIIIIII)V")
-	public static final void method5667(byte[] arg0, byte[] arg1, int arg2, int arg3, int arg4, int arg5, int arg6, int arg7) {
+    public static final void method5667(byte[] arg0, byte[] arg1, int arg2, int arg3, int arg4, int arg5, int arg6, int arg7) {
 		int var8 = -(arg4 >> 2);
 		int var9 = -(arg4 & 0x3);
 		for (int var10 = -arg5; var10 < 0; var10++) {
@@ -316,8 +299,7 @@ public class FloorHardShadows {
 		}
 	}
 
-	@ObfuscatedName("lg.u([B[BIIIIII)V")
-	public static final void method5668(byte[] arg0, byte[] arg1, int arg2, int arg3, int arg4, int arg5, int arg6, int arg7) {
+    public static final void method5668(byte[] arg0, byte[] arg1, int arg2, int arg3, int arg4, int arg5, int arg6, int arg7) {
 		int var8 = -(arg4 >> 2);
 		int var9 = -(arg4 & 0x3);
 		for (int var10 = -arg5; var10 < 0; var10++) {
@@ -341,8 +323,7 @@ public class FloorHardShadows {
 		}
 	}
 
-	@ObfuscatedName("lg.z([BIIIII)Z")
-	public static final boolean method5669(byte[] arg0, int arg1, int arg2, int arg3, int arg4, int arg5) {
+    public static final boolean method5669(byte[] arg0, int arg1, int arg2, int arg3, int arg4, int arg5) {
 		int var6 = arg2 % arg5;
 		int var7;
 		if (var6 == 0) {

@@ -5,40 +5,31 @@ import com.jagex.graphics.FrameBuffer;
 import com.jagex.graphics.GraphicsDeletable;
 import deob.ObfuscatedName;
 
-@ObfuscatedName("apn")
 public class PureJavaFrameBuffer extends FrameBuffer {
 
-	@ObfuscatedName("apn.n")
-	public PureJavaToolkit renderer;
+    public PureJavaToolkit renderer;
 
-	@ObfuscatedName("apn.m")
-	public PureJavaDepthBuffer depthBuffer;
+    public PureJavaDepthBuffer depthBuffer;
 
-	@ObfuscatedName("apn.k")
-	public PureJavaColorBuffer colorBuffer;
+    public PureJavaColorBuffer colorBuffer;
 
-	@ObfuscatedName("apn.f")
-	public int width = 0;
+    public int width = 0;
 
-	@ObfuscatedName("apn.w")
-	public int height = 0;
+    public int height = 0;
 
 	public PureJavaFrameBuffer(PureJavaToolkit renderer) {
 		this.renderer = renderer;
 	}
 
-	@ObfuscatedName("apn.e()I")
-	public int getWidth() {
+    public int getWidth() {
 		return this.width;
 	}
 
-	@ObfuscatedName("apn.n()I")
-	public int getHeight() {
+    public int getHeight() {
 		return this.height;
 	}
 
-	@ObfuscatedName("apn.b(ILdp;)V")
-	public void method15439(int arg0, GraphicsDeletable arg1) {
+    public void method15439(int arg0, GraphicsDeletable arg1) {
 		if (arg0 != 0) {
 			throw new RuntimeException();
 		}
@@ -59,8 +50,7 @@ public class PureJavaFrameBuffer extends FrameBuffer {
 		}
 	}
 
-	@ObfuscatedName("apn.x(Ldw;)V")
-	public void method15441(EffectInterface arg0) {
+    public void method15441(EffectInterface arg0) {
 		PureJavaDepthBuffer var2 = (PureJavaDepthBuffer) arg0;
 		if (this.colorBuffer != null && var2 != null && (this.colorBuffer.field893 != var2.field971 || this.colorBuffer.field892 != var2.field972)) {
 			throw new RuntimeException();
@@ -78,24 +68,20 @@ public class PureJavaFrameBuffer extends FrameBuffer {
 		}
 	}
 
-	@ObfuscatedName("apn.h()Z")
-	public boolean method15446() {
+    public boolean method15446() {
 		return true;
 	}
 
-	@ObfuscatedName("apn.k()Z")
-	public boolean method1630() {
+    public boolean method1630() {
 		this.renderer.method15662(this.width, this.height, this.colorBuffer == null ? null : this.colorBuffer.field891, this.depthBuffer == null ? null : this.depthBuffer.field973);
 		return true;
 	}
 
-	@ObfuscatedName("apn.f()Z")
-	public boolean method1631() {
+    public boolean method1631() {
 		return true;
 	}
 
-	@ObfuscatedName("apn.a(IIIIIIZZ)V")
-	public void method15440(int arg0, int arg1, int arg2, int arg3, int arg4, int arg5, boolean arg6, boolean arg7) {
+    public void method15440(int arg0, int arg1, int arg2, int arg3, int arg4, int arg5, boolean arg6, boolean arg7) {
 		int[] var9 = null;
 		int[] var10 = null;
 		float[] var11 = null;
@@ -111,8 +97,7 @@ public class PureJavaFrameBuffer extends FrameBuffer {
 		method6069(this.width, this.renderer.sizeX, var9, var10, var11, var12, arg0, arg1, arg4, arg5, arg2, arg3);
 	}
 
-	@ObfuscatedName("nr.ac(II[I[I[F[FIIIIIII)V")
-	public static void method6069(int arg0, int arg1, int[] arg2, int[] arg3, float[] arg4, float[] arg5, int arg6, int arg7, int arg8, int arg9, int arg10, int arg11) {
+    public static void method6069(int arg0, int arg1, int[] arg2, int[] arg3, float[] arg4, float[] arg5, int arg6, int arg7, int arg8, int arg9, int arg10, int arg11) {
 		int var12 = arg0 * arg7 + arg6;
 		int var13 = arg1 * arg9 + arg8;
 		int var14 = arg0 - arg10;
@@ -148,7 +133,6 @@ public class PureJavaFrameBuffer extends FrameBuffer {
 		}
 	}
 
-	@ObfuscatedName("apn.m()V")
-	public void method1629() {
+    public void method1629() {
 	}
 }

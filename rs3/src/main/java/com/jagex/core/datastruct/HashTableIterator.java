@@ -4,35 +4,28 @@ import deob.ObfuscatedName;
 
 import java.util.Iterator;
 
-@ObfuscatedName("aah")
 public class HashTableIterator implements Iterator {
 
-	@ObfuscatedName("aah.e")
-	public HashTable map;
+    public HashTable map;
 
-	@ObfuscatedName("aah.n")
-	public Node next;
+    public Node next;
 
-	@ObfuscatedName("aah.m")
-	public int currentIndex;
+    public int currentIndex;
 
-	@ObfuscatedName("aah.k")
-	public Node prev = null;
+    public Node prev = null;
 
 	public HashTableIterator(HashTable map) {
 		this.map = map;
 		this.advance();
 	}
 
-	@ObfuscatedName("aah.l(B)V")
-	public void advance() {
+    public void advance() {
 		this.next = this.map.buckets[0].next;
 		this.currentIndex = 1;
 		this.prev = null;
 	}
 
-	@ObfuscatedName("aah.u(B)Ltj;")
-	public Node nextNode() {
+    public Node nextNode() {
 		this.advance();
 		return (Node) this.next();
 	}

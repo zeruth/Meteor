@@ -2,14 +2,11 @@ package com.jagex.game.client;
 
 import deob.ObfuscatedName;
 
-@ObfuscatedName("wd")
 public class PlayerSkillXPTable {
 
-	@ObfuscatedName("wd.e")
-	public static final PlayerSkillXPTable DEFAULT = new PlayerSkillXPTable();
+    public static final PlayerSkillXPTable DEFAULT = new PlayerSkillXPTable();
 
-	@ObfuscatedName("wd.n")
-	public final int[] table;
+    public final int[] table;
 
 	public PlayerSkillXPTable() {
 		this.table = new int[120];
@@ -31,8 +28,7 @@ public class PlayerSkillXPTable {
 		this.verify();
 	}
 
-	@ObfuscatedName("wd.e(B)V")
-	public final void verify() {
+    public final void verify() {
 		for (int var1 = 1; var1 < this.table.length; var1++) {
 			if (this.table[var1 - 1] < 0) {
 				throw new IllegalArgumentException("Negative XP at pos:" + (var1 - 1));
@@ -43,8 +39,7 @@ public class PlayerSkillXPTable {
 		}
 	}
 
-	@ObfuscatedName("wd.n(II)I")
-	public int getLevel(int arg0) {
+    public int getLevel(int arg0) {
 		int var2 = 0;
 		for (int var3 = 0; var3 < this.table.length && arg0 >= this.table[var3]; var3++) {
 			var2 = var3 + 1;
@@ -52,8 +47,7 @@ public class PlayerSkillXPTable {
 		return var2;
 	}
 
-	@ObfuscatedName("wd.m(II)I")
-	public int getXP(int arg0) {
+    public int getXP(int arg0) {
 		if (arg0 < 1) {
 			return 0;
 		} else {

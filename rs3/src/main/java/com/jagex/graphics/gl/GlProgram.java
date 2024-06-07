@@ -3,20 +3,15 @@ package com.jagex.graphics.gl;
 import deob.ObfuscatedName;
 import jaggl.OpenGL;
 
-@ObfuscatedName("bn")
 public class GlProgram {
 
-	@ObfuscatedName("bn.e")
-	public static final int[] field985 = new int[2];
+    public static final int[] field985 = new int[2];
 
-	@ObfuscatedName("bn.n")
-	public final GlToolkit field986;
+    public final GlToolkit field986;
 
-	@ObfuscatedName("bn.m")
-	public final int field987;
+    public final int field987;
 
-	@ObfuscatedName("bn.e(Lafa;[Lbm;)Lbn;")
-	public static GlProgram method1065(GlToolkit arg0, GlShader[] arg1) {
+    public static GlProgram method1065(GlToolkit arg0, GlShader[] arg1) {
 		for (int var2 = 0; var2 < arg1.length; var2++) {
 			if (arg1[var2] == null || arg1[var2].field1019 <= 0) {
 				return null;

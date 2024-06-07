@@ -22,80 +22,55 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 
-@ObfuscatedName("fb")
 public class AudioApi {
 
-	@ObfuscatedName("fb.u")
-	public boolean field1860;
+    public boolean field1860;
 
-	@ObfuscatedName("fb.z")
-	public List field1848 = new ArrayList();
+    public List field1848 = new ArrayList();
 
-	@ObfuscatedName("fb.p")
-	public List sounds = new ArrayList();
+    public List sounds = new ArrayList();
 
-	@ObfuscatedName("fb.d")
-	public HashMap field1858 = new HashMap();
+    public HashMap field1858 = new HashMap();
 
-	@ObfuscatedName("fb.c")
-	public HashMap field1865 = new HashMap();
+    public HashMap field1865 = new HashMap();
 
-	@ObfuscatedName("fb.r")
-	public List field1867 = new ArrayList();
+    public List field1867 = new ArrayList();
 
-	@ObfuscatedName("fb.v")
-	public SoftLruHashTable field1856;
+    public SoftLruHashTable field1856;
 
-	@ObfuscatedName("fb.o")
-	public SoftLruHashTable field1862;
+    public SoftLruHashTable field1862;
 
-	@ObfuscatedName("fb.s")
-	public SoftLruHashTable field1863;
+    public SoftLruHashTable field1863;
 
-	@ObfuscatedName("fb.y")
-	public int field1864;
+    public int field1864;
 
-	@ObfuscatedName("fb.q")
-	public Vector3 field1873;
+    public Vector3 field1873;
 
-	@ObfuscatedName("fb.x")
-	public HashMap field1851 = new HashMap();
+    public HashMap field1851 = new HashMap();
 
-	@ObfuscatedName("fb.b")
-	public int currentSong;
+    public int currentSong;
 
-	@ObfuscatedName("fb.h")
-	public Sound field1868;
+    public Sound field1868;
 
-	@ObfuscatedName("fb.a")
-	public Sound field1869 = null;
+    public Sound field1869 = null;
 
-	@ObfuscatedName("fb.g")
-	public boolean field1870 = false;
+    public boolean field1870 = false;
 
-	@ObfuscatedName("fb.i")
-	public int titleScreenSong;
+    public int titleScreenSong;
 
-	@ObfuscatedName("fb.j")
-	public int field1861;
+    public int field1861;
 
-	@ObfuscatedName("fb.t")
-	public boolean field1857;
+    public boolean field1857;
 
-	@ObfuscatedName("fb.ae")
-	public SoundAdjuster field1874 = new SoundStereoAdjuster(this);
+    public SoundAdjuster field1874 = new SoundStereoAdjuster(this);
 
-	@ObfuscatedName("fb.ag")
-	public SoundAdjuster field1872 = new SoundSpatializer(this);
+    public SoundAdjuster field1872 = new SoundSpatializer(this);
 
-	@ObfuscatedName("fb.ah")
-	public SoundAdjuster field1876 = new SoundVolumeAdjuster(this);
+    public SoundAdjuster field1876 = new SoundVolumeAdjuster(this);
 
-	@ObfuscatedName("fb.al")
-	public SoundAdjuster field1877 = new SoundPositionAdjuster(this);
+    public SoundAdjuster field1877 = new SoundPositionAdjuster(this);
 
-	@ObfuscatedName("fn")
-	public static class SoundStereoAdjuster implements SoundAdjuster {
+    public static class SoundStereoAdjuster implements SoundAdjuster {
 
 		// $FF: synthetic field
 		public final AudioApi this$0;
@@ -105,8 +80,7 @@ public class AudioApi {
 		}
 
 		// line 61
-		@ObfuscatedName("fn.e(Ljava/lang/Object;[F[Ljava/lang/Object;B)V")
-		public void method3053(Object arg0, float[] arg1, Object[] arg2) {
+        public void method3053(Object arg0, float[] arg1, Object[] arg2) {
 			Sound var4 = (Sound) arg0;
 			Vector3 var5 = var4.method7395();
 			float var6 = var4.method7436();
@@ -171,8 +145,7 @@ public class AudioApi {
 		}
 	}
 
-	@ObfuscatedName("fd")
-	public static class SoundSpatializer implements SoundAdjuster {
+    public static class SoundSpatializer implements SoundAdjuster {
 
 		// $FF: synthetic field
 		public final AudioApi this$0;
@@ -182,8 +155,7 @@ public class AudioApi {
 		}
 
 		// line 116
-		@ObfuscatedName("fd.e(Ljava/lang/Object;[F[Ljava/lang/Object;B)V")
-		public void method3053(Object arg0, float[] arg1, Object[] arg2) {
+        public void method3053(Object arg0, float[] arg1, Object[] arg2) {
 			Sound var4 = (Sound) arg0;
 			Vector3 var5 = var4.method7395();
 			float var6 = var4.method7436();
@@ -255,8 +227,7 @@ public class AudioApi {
 		}
 	}
 
-	@ObfuscatedName("fw")
-	public static class SoundVolumeAdjuster implements SoundAdjuster {
+    public static class SoundVolumeAdjuster implements SoundAdjuster {
 
 		// $FF: synthetic field
 		public final AudioApi this$0;
@@ -266,8 +237,7 @@ public class AudioApi {
 			this.this$0 = arg0;
 		}
 
-		@ObfuscatedName("fw.e(Ljava/lang/Object;[F[Ljava/lang/Object;B)V")
-		public void method3053(Object arg0, float[] arg1, Object[] arg2) {
+        public void method3053(Object arg0, float[] arg1, Object[] arg2) {
 			Sound var4 = (Sound) arg0;
 			Vector3 var5 = var4.method7395();
 			float var6 = var4.method7436();
@@ -293,8 +263,7 @@ public class AudioApi {
 		}
 	}
 
-	@ObfuscatedName("fi")
-	public static class SoundPositionAdjuster implements SoundAdjuster {
+    public static class SoundPositionAdjuster implements SoundAdjuster {
 
 		// $FF: synthetic field
 		public final AudioApi this$0;
@@ -304,8 +273,7 @@ public class AudioApi {
 			this.this$0 = arg0;
 		}
 
-		@ObfuscatedName("fi.e(Ljava/lang/Object;[F[Ljava/lang/Object;B)V")
-		public void method3053(Object arg0, float[] arg1, Object[] arg2) {
+        public void method3053(Object arg0, float[] arg1, Object[] arg2) {
 			Sound var4 = (Sound) arg0;
 			Vector3 var5 = var4.method7395();
 			float var6 = var4.method7436();
@@ -340,34 +308,28 @@ public class AudioApi {
 	}
 
 	// line 241
-	@ObfuscatedName("fb.e(I)Ljava/util/List;")
-	public List getSounds() {
+    public List getSounds() {
 		return this.sounds;
 	}
 
-	@ObfuscatedName("fb.n(I)Ljava/util/List;")
-	public List method3233() {
+    public List method3233() {
 		return this.field1867;
 	}
 
-	@ObfuscatedName("fb.m(I)Leb;")
-	public SoftLruHashTable method3145() {
+    public SoftLruHashTable method3145() {
 		return this.field1856;
 	}
 
-	@ObfuscatedName("fb.k(I)Leb;")
-	public SoftLruHashTable method3146() {
+    public SoftLruHashTable method3146() {
 		return this.field1862;
 	}
 
-	@ObfuscatedName("fb.f(I)Lox;")
-	public Vector3 method3147() {
+    public Vector3 method3147() {
 		return this.field1873;
 	}
 
 	// line 263
-	@ObfuscatedName("fb.w(III)V")
-	public void init(int arg0, int arg1) {
+    public void init(int arg0, int arg1) {
 		if (this.field1860) {
 			return;
 		}
@@ -382,8 +344,7 @@ public class AudioApi {
 		this.field1860 = true;
 	}
 
-	@ObfuscatedName("fs")
-	public static class AudioApiRemovalListener implements SoftLruHashTableRemovalListener {
+    public static class AudioApiRemovalListener implements SoftLruHashTableRemovalListener {
 
 		// $FF: synthetic field
 		public final AudioApi this$0;
@@ -393,8 +354,7 @@ public class AudioApi {
 			this.this$0 = arg0;
 		}
 
-		@ObfuscatedName("fs.f(Lwr;I)V")
-		public void method3027(AudioProcessingInterface arg0) {
+        public void method3027(AudioProcessingInterface arg0) {
 			Iterator var2 = this.this$0.getSounds().iterator();
 			while (var2.hasNext()) {
 				Sound var3 = (Sound) var2.next();
@@ -405,15 +365,13 @@ public class AudioApi {
 			}
 		}
 
-		@ObfuscatedName("fs.e(Ljava/lang/Object;I)V")
-		public void method2914(Object arg0) {
+        public void method2914(Object arg0) {
 			this.method3027((AudioProcessingInterface) arg0);
 		}
 	}
 
 	// line 291
-	@ObfuscatedName("fb.l(S)V")
-	public void update() {
+    public void update() {
 		if (!this.field1860) {
 			return;
 		}
@@ -538,13 +496,11 @@ public class AudioApi {
 	}
 
 	// line 411
-	@ObfuscatedName("fb.u(B)V")
-	public void stop() {
+    public void stop() {
 		AudioMixer.method7606();
 	}
 
-	@ObfuscatedName("fb.z(Lrw;III)V")
-	public void method3251(Sound arg0, int arg1, int arg2) {
+    public void method3251(Sound arg0, int arg1, int arg2) {
 		if (arg0 == null) {
 			return;
 		}
@@ -559,8 +515,7 @@ public class AudioApi {
 		}
 	}
 
-	@ObfuscatedName("fb.p(IB)V")
-	public void startGroup(int arg0) {
+    public void startGroup(int arg0) {
 		AudioApiRelated5 var2 = (AudioApiRelated5) this.field1851.get(arg0);
 		if (var2 == null) {
 			return;
@@ -575,8 +530,7 @@ public class AudioApi {
 		}
 	}
 
-	@ObfuscatedName("fb.d(II)V")
-	public void stopGroup(int arg0) {
+    public void stopGroup(int arg0) {
 		AudioApiRelated5 var2 = (AudioApiRelated5) this.field1851.get(arg0);
 		if (var2 == null) {
 			return;
@@ -589,8 +543,7 @@ public class AudioApi {
 		}
 	}
 
-	@ObfuscatedName("fb.c(IB)V")
-	public void preloadSoundGroup(int arg0) {
+    public void preloadSoundGroup(int arg0) {
 		AudioApiRelated5 var2 = (AudioApiRelated5) this.field1851.get(arg0);
 		if (var2 == null) {
 			return;
@@ -604,8 +557,7 @@ public class AudioApi {
 	}
 
 	// line 470
-	@ObfuscatedName("fb.r(I)V")
-	public void configureRoutingArchitecture() {
+    public void configureRoutingArchitecture() {
 		MainEffectsVolumeProvider var1 = new MainEffectsVolumeProvider(this);
 		MainMusicVolumeProvider var2 = new MainMusicVolumeProvider(this);
 		LoginMusicVolumeProvider var3 = new LoginMusicVolumeProvider(this);
@@ -629,8 +581,7 @@ public class AudioApi {
 		AudioMixer.method5401(SubBussType.MUSIC_SUB.getId()).method5897(0.75F);
 	}
 
-	@ObfuscatedName("fv")
-	public static class MainEffectsVolumeProvider implements VolumeProvider {
+    public static class MainEffectsVolumeProvider implements VolumeProvider {
 
 		// $FF: synthetic field
 		public final AudioApi this$0;
@@ -641,14 +592,12 @@ public class AudioApi {
 		}
 
 		// line 472
-		@ObfuscatedName("fv.e(I)F")
-		public float getVolume() {
+        public float getVolume() {
 			return (float) Client.preferences.soundVolume.getValue() / 255.0F;
 		}
 	}
 
-	@ObfuscatedName("fc")
-	public static class MainMusicVolumeProvider implements VolumeProvider {
+    public static class MainMusicVolumeProvider implements VolumeProvider {
 
 		// $FF: synthetic field
 		public final AudioApi this$0;
@@ -658,14 +607,12 @@ public class AudioApi {
 			this.this$0 = arg0;
 		}
 
-		@ObfuscatedName("fc.e(I)F")
-		public float getVolume() {
+        public float getVolume() {
 			return (float) Client.preferences.unknownVolume1.getValue() / 255.0F;
 		}
 	}
 
-	@ObfuscatedName("fp")
-	public static class LoginMusicVolumeProvider implements VolumeProvider {
+    public static class LoginMusicVolumeProvider implements VolumeProvider {
 
 		// $FF: synthetic field
 		public final AudioApi this$0;
@@ -675,14 +622,12 @@ public class AudioApi {
 			this.this$0 = arg0;
 		}
 
-		@ObfuscatedName("fp.e(I)F")
-		public float getVolume() {
+        public float getVolume() {
 			return (float) Client.preferences.unknownVolume2.getValue() / 255.0F;
 		}
 	}
 
-	@ObfuscatedName("ff")
-	public static class BackgroundEffectsVolumeProvider implements VolumeProvider {
+    public static class BackgroundEffectsVolumeProvider implements VolumeProvider {
 
 		// $FF: synthetic field
 		public final AudioApi this$0;
@@ -692,14 +637,12 @@ public class AudioApi {
 			this.this$0 = arg0;
 		}
 
-		@ObfuscatedName("ff.e(I)F")
-		public float getVolume() {
+        public float getVolume() {
 			return (float) Client.preferences.backgroundSoundVolume.getValue() / 255.0F;
 		}
 	}
 
-	@ObfuscatedName("fa")
-	public static class SpeechVolumeProvider implements VolumeProvider {
+    public static class SpeechVolumeProvider implements VolumeProvider {
 
 		// $FF: synthetic field
 		public final AudioApi this$0;
@@ -709,15 +652,13 @@ public class AudioApi {
 		}
 
 		// line 492
-		@ObfuscatedName("fa.e(I)F")
-		public float getVolume() {
+        public float getVolume() {
 			return (float) Client.preferences.speechVolume.getValue() / 255.0F;
 		}
 	}
 
 	// line 514
-	@ObfuscatedName("fb.v(IIIB)V")
-	public void addBuss(int arg0, int arg1, int arg2) {
+    public void addBuss(int arg0, int arg1, int arg2) {
 		int var4 = BussType.MASTER.getId();
 		if (AudioMixer.method5401(arg0) == null && (arg1 == var4 || AudioMixer.method5401(arg1) != null)) {
 			float var5 = (float) arg2 * 1.5258789E-5F;
@@ -725,8 +666,7 @@ public class AudioApi {
 		}
 	}
 
-	@ObfuscatedName("fb.o(III)V")
-	public void setMixBussLevel(int arg0, int arg1) {
+    public void setMixBussLevel(int arg0, int arg1) {
 		AudioBuss var3 = AudioMixer.method5401(arg0);
 		if (var3 != null) {
 			float var4 = (float) arg1 * 1.5258789E-5F;
@@ -734,8 +674,7 @@ public class AudioApi {
 		}
 	}
 
-	@ObfuscatedName("fb.s(II)F")
-	public float method3189(int arg0) {
+    public float method3189(int arg0) {
 		AudioBuss var2 = AudioMixer.method5401(arg0);
 		float var3 = 1.0F;
 		while (var2 != null) {
@@ -746,8 +685,7 @@ public class AudioApi {
 	}
 
 	// line 541
-	@ObfuscatedName("fb.y(IB)V")
-	public void stopVorbisSpeech(int arg0) {
+    public void stopVorbisSpeech(int arg0) {
 		Iterator var2 = this.sounds.iterator();
 		while (var2.hasNext()) {
 			Sound var3 = (Sound) var2.next();
@@ -759,8 +697,7 @@ public class AudioApi {
 		}
 	}
 
-	@ObfuscatedName("fb.q([IB)V")
-	public void loadSounds(int[] arg0) {
+    public void loadSounds(int[] arg0) {
 		if (!this.field1860 || arg0 == null) {
 			return;
 		}
@@ -771,15 +708,13 @@ public class AudioApi {
 		}
 	}
 
-	@ObfuscatedName("fb.x(IB)V")
-	public void preloadSounds(int arg0) {
+    public void preloadSounds(int arg0) {
 		if (this.field1860 && arg0 >= 0) {
 			this.method3163(arg0, false);
 		}
 	}
 
-	@ObfuscatedName("fb.b(IZI)Lwr;")
-	public AudioProcessingInterface method3162(int arg0, boolean arg1) {
+    public AudioProcessingInterface method3162(int arg0, boolean arg1) {
 		if (!this.field1860) {
 			return null;
 		}
@@ -795,8 +730,7 @@ public class AudioApi {
 	}
 
 	// line 583
-	@ObfuscatedName("fb.h(IZI)Lwr;")
-	public AudioProcessingInterface method3163(int arg0, boolean arg1) {
+    public AudioProcessingInterface method3163(int arg0, boolean arg1) {
 		if (!this.field1860) {
 			return null;
 		}
@@ -813,8 +747,7 @@ public class AudioApi {
 		return var3;
 	}
 
-	@ObfuscatedName("fl")
-	public static class AudioMixerRelated_Sub1 implements AudioMixerRelated {
+    public static class AudioMixerRelated_Sub1 implements AudioMixerRelated {
 
 		// $FF: synthetic field
 		public final AudioApi this$0;
@@ -824,8 +757,7 @@ public class AudioApi {
 			this.this$0 = arg0;
 		}
 
-		@ObfuscatedName("fl.e(Lwr;IIZB)V")
-		public void method3130(AudioProcessingInterface arg0, int arg1, int arg2, boolean arg3) {
+        public void method3130(AudioProcessingInterface arg0, int arg1, int arg2, boolean arg3) {
 			this.this$0.method3233().add(arg0);
 			if (arg3) {
 				this.this$0.method3146().put(arg0, (long) arg2);
@@ -834,16 +766,14 @@ public class AudioApi {
 			}
 		}
 
-		@ObfuscatedName("fl.n(Lwr;I)V")
-		public void method3131(AudioProcessingInterface arg0) {
+        public void method3131(AudioProcessingInterface arg0) {
 			if (arg0 != null) {
 				this.this$0.method3145().get((long) arg0.method9680());
 			}
 		}
 	}
 
-	@ObfuscatedName("fb.a(Lwr;I)Lrw;")
-	public Sound method3164(AudioProcessingInterface arg0) {
+    public Sound method3164(AudioProcessingInterface arg0) {
 		if (!this.field1860) {
 			return null;
 		}
@@ -866,20 +796,17 @@ public class AudioApi {
 		return var4;
 	}
 
-	@ObfuscatedName("fb.g(Lrw;I)V")
-	public void play(Sound arg0) {
+    public void play(Sound arg0) {
 		arg0.setSoundSystem(this);
 		this.sounds.add(arg0);
 	}
 
-	@ObfuscatedName("fb.i(Lox;Lox;FI)Z")
-	public boolean method3231(Vector3 arg0, Vector3 arg1, float arg2) {
+    public boolean method3231(Vector3 arg0, Vector3 arg1, float arg2) {
 		Vector3 var4 = Vector3.sub(arg1, arg0);
 		return !(var4.length() >= arg2);
 	}
 
-	@ObfuscatedName("fb.j(Lft;Ljava/lang/Object;IIIILfx;FFLox;IIZI)Lrw;")
-	public Sound createSound(SoundType arg0, Object arg1, int arg2, int arg3, int arg4, int arg5, SoundShape arg6, float arg7, float arg8, Vector3 arg9, int arg10, int arg11, boolean arg12) {
+    public Sound createSound(SoundType arg0, Object arg1, int arg2, int arg3, int arg4, int arg5, SoundShape arg6, float arg7, float arg8, Vector3 arg9, int arg10, int arg11, boolean arg12) {
 		if (!this.field1860) {
 			return null;
 		} else if (arg1 == null) {
@@ -927,8 +854,7 @@ public class AudioApi {
 		}
 	}
 
-	@ObfuscatedName("fb.t(Lft;IIIILfx;FFLox;IIII)V")
-	public void playSound(SoundType arg0, int arg1, int arg2, int arg3, int arg4, SoundShape arg5, float arg6, float arg7, Vector3 arg8, int arg9, int arg10, int arg11) {
+    public void playSound(SoundType arg0, int arg1, int arg2, int arg3, int arg4, SoundShape arg5, float arg6, float arg7, Vector3 arg8, int arg9, int arg10, int arg11) {
 		if (!this.field1860) {
 			return;
 		}
@@ -944,8 +870,7 @@ public class AudioApi {
 		this.play(var13);
 	}
 
-	@ObfuscatedName("fb.ae(III)V")
-	public void preloadSong(int arg0, int arg1) {
+    public void preloadSong(int arg0, int arg1) {
 		if (this.currentSong == arg0) {
 			return;
 		}
@@ -962,23 +887,19 @@ public class AudioApi {
 		this.field1870 = false;
 	}
 
-	@ObfuscatedName("fb.ag(I)I")
-	public int getCurrentSong() {
+    public int getCurrentSong() {
 		return this.currentSong;
 	}
 
-	@ObfuscatedName("fb.ah(II)V")
-	public void setTitleScreenSong(int arg0) {
+    public void setTitleScreenSong(int arg0) {
 		this.titleScreenSong = arg0;
 	}
 
-	@ObfuscatedName("fb.al(I)I")
-	public int getTitleScreenSong() {
+    public int getTitleScreenSong() {
 		return this.titleScreenSong;
 	}
 
-	@ObfuscatedName("fb.ac(II)V")
-	public void sendSongEnd(int arg0) {
+    public void sendSongEnd(int arg0) {
 		if (Client.gameConnection.randomOut != null && Client.isStateGame(Client.state)) {
 			ClientMessage var2 = ClientMessage.createMessage(ClientProt.SOUND_SONGEND, Client.gameConnection.randomOut);
 			var2.buf.p4(arg0);
@@ -986,18 +907,15 @@ public class AudioApi {
 		}
 	}
 
-	@ObfuscatedName("fb.ai(II)V")
-	public void playSong(int arg0) {
+    public void playSong(int arg0) {
 		this.playSong(arg0, 255);
 	}
 
-	@ObfuscatedName("fb.aw(IIB)V")
-	public void playSong(int arg0, int arg1) {
+    public void playSong(int arg0, int arg1) {
 		this.playSong(arg0, arg1, false, 0, 0, 0, 0, 0);
 	}
 
-	@ObfuscatedName("fb.as(IIZIIIIIB)V")
-	public void playSong(int arg0, int arg1, boolean arg2, int arg3, int arg4, int arg5, int arg6, int arg7) {
+    public void playSong(int arg0, int arg1, boolean arg2, int arg3, int arg4, int arg5, int arg6, int arg7) {
 		if (!this.field1860 || this.currentSong == arg0) {
 			return;
 		}
@@ -1062,8 +980,7 @@ public class AudioApi {
 		}
 	}
 
-	@ObfuscatedName("fb.at(I)Lrw;")
-	public Sound method3152() {
+    public Sound method3152() {
 		Iterator var1 = this.sounds.iterator();
 		Sound var2;
 		do {
@@ -1075,8 +992,7 @@ public class AudioApi {
 		return var2;
 	}
 
-	@ObfuscatedName("fb.ad(I)V")
-	public void stopSong() {
+    public void stopSong() {
 		Iterator var1 = this.sounds.iterator();
 		while (var1.hasNext()) {
 			Sound var2 = (Sound) var1.next();
@@ -1092,8 +1008,7 @@ public class AudioApi {
 		this.currentSong = -1;
 	}
 
-	@ObfuscatedName("fb.am(III)V")
-	public void playJingle(int arg0, int arg1) {
+    public void playJingle(int arg0, int arg1) {
 		if (!this.field1860 || this.field1857 && this.field1861 == arg0) {
 			return;
 		}
@@ -1124,8 +1039,7 @@ public class AudioApi {
 		}
 	}
 
-	@ObfuscatedName("fb.au(Lfg;ILalh;B)V")
-	public void playSequenceSound(SeqType arg0, int arg1, GraphEntity arg2) {
+    public void playSequenceSound(SeqType arg0, int arg1, GraphEntity arg2) {
 		if (arg0 == null || arg0.sound == null || arg1 >= arg0.sound.length || arg0.sound[arg1] == null || (Client.localPlayerEntity.level != arg2.level || !arg2.method18359())) {
 			return;
 		}
@@ -1182,8 +1096,7 @@ public class AudioApi {
 	}
 
 	// line 916
-	@ObfuscatedName("fb.ar(Lfg;II)V")
-	public void playSequenceSound(SeqType arg0, int arg1) {
+    public void playSequenceSound(SeqType arg0, int arg1) {
 		if (arg0 == null || arg0.sound == null || arg1 >= arg0.sound.length || arg0.sound[arg1] == null) {
 			return;
 		}
@@ -1204,14 +1117,12 @@ public class AudioApi {
 		this.playSound(SoundType.field1832, var4, var5, var8, SubBussType.NPC_ANIMATION_SUB.getId(), SoundShape.field1835, 0.0F, 0.0F, null, 0, var7, 0);
 	}
 
-	@ObfuscatedName("fq")
-	public static class AudioApiRelated5 {
+    public static class AudioApiRelated5 {
 
 		// $FF: synthetic field
 		public final AudioApi this$0;
 
-		@ObfuscatedName("fq.e")
-		public List field1845;
+        public List field1845;
 
 		// line 933
 		public AudioApiRelated5(AudioApi arg0) {
@@ -1219,23 +1130,19 @@ public class AudioApi {
 			this.field1845 = new ArrayList();
 		}
 
-		@ObfuscatedName("fq.e(Lrw;I)V")
-		public void method3110(Sound arg0) {
+        public void method3110(Sound arg0) {
 			this.field1845.add(arg0);
 		}
 
-		@ObfuscatedName("fq.n(Lrw;I)V")
-		public void method3114(Sound arg0) {
+        public void method3114(Sound arg0) {
 			this.field1845.remove(arg0);
 		}
 
-		@ObfuscatedName("fq.m(B)Ljava/util/List;")
-		public List method3120() {
+        public List method3120() {
 			return this.field1845;
 		}
 
-		@ObfuscatedName("fq.k(Lrw;I)Z")
-		public boolean method3113(Sound arg0) {
+        public boolean method3113(Sound arg0) {
 			return this.field1845.contains(arg0);
 		}
 	}

@@ -9,41 +9,29 @@ import deob.ObfuscatedName;
 
 import java.util.Iterator;
 
-@ObfuscatedName("gy")
 public class PlayerGroupMember {
 
-	@ObfuscatedName("gy.m")
-	public final long groupUid;
+    public final long groupUid;
 
-	@ObfuscatedName("gy.k")
-	public final PlayerStat[] stats;
+    public final PlayerStat[] stats;
 
-	@ObfuscatedName("gy.f")
-	public final VarContainerSparse vars;
+    public final VarContainerSparse vars;
 
-	@ObfuscatedName("gy.w")
-	public boolean members;
+    public boolean members;
 
-	@ObfuscatedName("gy.l")
-	public String displayName;
+    public String displayName;
 
-	@ObfuscatedName("gy.u")
-	public int nodeId;
+    public int nodeId;
 
-	@ObfuscatedName("gy.z")
-	public boolean online;
+    public boolean online;
 
-	@ObfuscatedName("gy.p")
-	public int rank;
+    public int rank;
 
-	@ObfuscatedName("gy.d")
-	public PlayerGroupMemberStatus status;
+    public PlayerGroupMemberStatus status;
 
-	@ObfuscatedName("gy.c")
-	public int team;
+    public int team;
 
-	@ObfuscatedName("gy.r")
-	public VarContainerSparse variables;
+    public VarContainerSparse variables;
 
 	public PlayerGroupMember(Packet buf, boolean hasUid, boolean hasDisplayName, PlayerGroupResourceProvider groupResourceProvider) {
 		if (hasUid) {
@@ -86,78 +74,63 @@ public class PlayerGroupMember {
 		this.team = buf.g1();
 	}
 
-	@ObfuscatedName("gy.e(I)Ljava/lang/String;")
-	public String getDisplayName() {
+    public String getDisplayName() {
 		return this.displayName;
 	}
 
-	@ObfuscatedName("gy.n(S)I")
-	public int getRank() {
+    public int getRank() {
 		return this.rank;
 	}
 
-	@ObfuscatedName("gy.m(IB)V")
-	public void setRank(int rank) {
+    public void setRank(int rank) {
 		this.rank = rank;
 	}
 
-	@ObfuscatedName("gy.k(B)I")
-	public int getNodeId() {
+    public int getNodeId() {
 		return this.nodeId;
 	}
 
-	@ObfuscatedName("gy.f(II)V")
-	public void setNodeId(int nodeId) {
+    public void setNodeId(int nodeId) {
 		this.nodeId = nodeId;
 	}
 
-	@ObfuscatedName("gy.w(B)Z")
-	public boolean isOnline() {
+    public boolean isOnline() {
 		return this.online;
 	}
 
-	@ObfuscatedName("gy.l(ZB)V")
-	public void setOnline(boolean online) {
+    public void setOnline(boolean online) {
 		this.online = online;
 	}
 
-	@ObfuscatedName("gy.u(S)Lgv;")
-	public PlayerGroupMemberStatus getStatus() {
+    public PlayerGroupMemberStatus getStatus() {
 		return this.status;
 	}
 
-	@ObfuscatedName("gy.z(Lgv;I)V")
-	public void setStatus(PlayerGroupMemberStatus status) {
+    public void setStatus(PlayerGroupMemberStatus status) {
 		this.status = status;
 	}
 
-	@ObfuscatedName("gy.p(B)I")
-	public int getTeam() {
+    public int getTeam() {
 		return this.team;
 	}
 
-	@ObfuscatedName("gy.d(II)V")
-	public void setTeam(int team) {
+    public void setTeam(int team) {
 		this.team = team;
 	}
 
-	@ObfuscatedName("gy.c(I)J")
-	public long uid() {
+    public long uid() {
 		return this.groupUid;
 	}
 
-	@ObfuscatedName("gy.r(I)Z")
-	public boolean isMembers() {
+    public boolean isMembers() {
 		return this.members;
 	}
 
-	@ObfuscatedName("gy.v(IB)Lxz;")
-	public PlayerStat getStat(int stat) {
+    public PlayerStat getStat(int stat) {
 		return this.stats[stat];
 	}
 
-	@ObfuscatedName("gy.o(Lgy;I)V")
-	public void update(PlayerGroupMember arg0) {
+    public void update(PlayerGroupMember arg0) {
 		for (int var2 = 0; var2 < this.stats.length; var2++) {
 			this.stats[var2].setXP(arg0.stats[var2].getXP());
 			this.stats[var2].setLevel(this.stats[var2].getXPLevel());
@@ -171,8 +144,7 @@ public class PlayerGroupMember {
 		this.members = arg0.members;
 	}
 
-	@ObfuscatedName("gy.s(Lgu;B)V")
-	public void resetVariables(PlayerGroupResourceProvider arg0) {
+    public void resetVariables(PlayerGroupResourceProvider arg0) {
 		if (this.variables == null) {
 			this.variables = new VarContainerSparse(arg0.getVarPlayerTypeList());
 		} else {
@@ -180,8 +152,7 @@ public class PlayerGroupMember {
 		}
 	}
 
-	@ObfuscatedName("gy.y(I)Labn;")
-	public VarContainerSparse clearVariables() {
+    public VarContainerSparse clearVariables() {
 		return this.variables;
 	}
 }

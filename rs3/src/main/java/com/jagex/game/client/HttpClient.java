@@ -10,17 +10,13 @@ import java.net.URLConnection;
 import java.util.LinkedList;
 import java.util.Queue;
 
-@ObfuscatedName("x")
 public class HttpClient implements Runnable {
 
-	@ObfuscatedName("x.e")
-	public final Thread field591 = new Thread(this);
+    public final Thread field591 = new Thread(this);
 
-	@ObfuscatedName("x.n")
-	public volatile boolean field590;
+    public volatile boolean field590;
 
-	@ObfuscatedName("x.m")
-	public Queue field589 = new LinkedList();
+    public Queue field589 = new LinkedList();
 
 	public HttpClient() {
 		this.field591.setPriority(1);
@@ -60,8 +56,7 @@ public class HttpClient implements Runnable {
 		}
 	}
 
-	@ObfuscatedName("x.e(Ljava/net/URL;I)Lam;")
-	public HttpRequest method563(URL arg0) {
+    public HttpRequest method563(URL arg0) {
 		HttpRequest var2 = new HttpRequest(arg0);
 		synchronized (this) {
 			this.field589.add(var2);
@@ -70,8 +65,7 @@ public class HttpClient implements Runnable {
 		}
 	}
 
-	@ObfuscatedName("x.n(B)V")
-	public void method559() {
+    public void method559() {
 		this.field590 = true;
 		try {
 			synchronized (this) {

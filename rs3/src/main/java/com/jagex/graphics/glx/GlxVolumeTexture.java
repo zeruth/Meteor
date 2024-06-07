@@ -7,17 +7,13 @@ import com.jagex.graphics.TextureFormat;
 import deob.ObfuscatedName;
 import jaggl.OpenGL;
 
-@ObfuscatedName("air")
 public class GlxVolumeTexture extends GlxBaseTexture implements GpuVolumeTexture {
 
-	@ObfuscatedName("air.v")
-	public final int field10616;
+    public final int field10616;
 
-	@ObfuscatedName("air.o")
-	public final int field10617;
+    public final int field10617;
 
-	@ObfuscatedName("air.s")
-	public final int field10618;
+    public final int field10618;
 
 	public GlxVolumeTexture(GlxToolkit arg0, TextureFormat arg1, int arg2, int arg3, int arg4, boolean arg5, byte[] arg6) {
 		super(arg0, 32879, arg1, DataType.UNSIGNED_INT_8, arg2 * arg3 * arg4, arg5);
@@ -33,18 +29,15 @@ public class GlxVolumeTexture extends GlxBaseTexture implements GpuVolumeTexture
 		}
 	}
 
-	@ObfuscatedName("air.aj()V")
-	public void method5823() {
+    public void method5823() {
 		super.method5823();
 	}
 
-	@ObfuscatedName("air.ay(Llt;)V")
-	public void method5824(GpuTextureRelated arg0) {
+    public void method5824(GpuTextureRelated arg0) {
 		super.method5824(arg0);
 	}
 
-	@ObfuscatedName("air.m()V")
-	public void delete() {
+    public void delete() {
 		super.delete();
 	}
 }

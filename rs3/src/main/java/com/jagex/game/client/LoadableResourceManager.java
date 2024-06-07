@@ -10,24 +10,19 @@ import deob.ObfuscatedName;
 import jaclib.ping.Ping;
 import rs2.client.Client;
 
-@ObfuscatedName("pm")
 public class LoadableResourceManager {
 
-	@ObfuscatedName("pm.e")
-	public static LoadableResource[] loadableResources;
+    public static LoadableResource[] loadableResources;
 
-	@ObfuscatedName("pm.n")
-	public static int field4332 = 0;
+    public static int field4332 = 0;
 
-	@ObfuscatedName("pm.m")
-	public static int field4333 = 0;
+    public static int field4333 = 0;
 
 	public LoadableResourceManager() throws Throwable {
 		throw new Error();
 	}
 
-	@ObfuscatedName("kg.e(I)I")
-	public static int method5140() {
+    public static int method5140() {
 		if (field4332 == 0) {
 			LoadableResource.DLL_JACLIB.setResourceLoader(new Js5DllResourceLoader("jaclib"));
 			if (LoadableResource.DLL_JACLIB.getResourceLoader().getPercentageComplete() != 100) {
@@ -122,8 +117,7 @@ public class LoadableResourceManager {
 		return var20;
 	}
 
-	@ObfuscatedName("gb.n(B)V")
-	public static void method3670() {
+    public static void method3670() {
 		field4332 = 0;
 		field4333 = 0;
 	}

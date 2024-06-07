@@ -8,56 +8,39 @@ import deob.ObfuscatedName;
 
 import java.nio.ByteBuffer;
 
-@ObfuscatedName("ld")
 public class GpuParticleRenderer {
 
-	@ObfuscatedName("ld.e")
-	public VertexBuffer field3333;
+    public VertexBuffer field3333;
 
-	@ObfuscatedName("ld.n")
-	public VertexBuffer field3329;
+    public VertexBuffer field3329;
 
-	@ObfuscatedName("ld.m")
-	public VertexDeclaration field3326;
+    public VertexDeclaration field3326;
 
-	@ObfuscatedName("ld.k")
-	public GpuIndexBuffer field3327;
+    public GpuIndexBuffer field3327;
 
-	@ObfuscatedName("ld.f")
-	public final int field3328 = 64;
+    public final int field3328 = 64;
 
-	@ObfuscatedName("ld.w")
-	public final int field3338 = 768;
+    public final int field3338 = 768;
 
-	@ObfuscatedName("ld.l")
-	public final int field3330 = 1600;
+    public final int field3330 = 1600;
 
-	@ObfuscatedName("ld.u")
-	public final int field3331 = IntMath.ilog(1600);
+    public final int field3331 = IntMath.ilog(1600);
 
-	@ObfuscatedName("ld.z")
-	public final int field3332 = 64;
+    public final int field3332 = 64;
 
-	@ObfuscatedName("ld.p")
-	public int[] field3339 = new int[8191];
+    public int[] field3339 = new int[8191];
 
-	@ObfuscatedName("ld.d")
-	public int[] field3324 = new int[1600];
+    public int[] field3324 = new int[1600];
 
-	@ObfuscatedName("ld.c")
-	public int[] field3335 = new int[64];
+    public int[] field3335 = new int[64];
 
-	@ObfuscatedName("ld.r")
-	public Particle[][] field3336 = new Particle[1600][64];
+    public Particle[][] field3336 = new Particle[1600][64];
 
-	@ObfuscatedName("ld.v")
-	public Particle[][] field3337 = new Particle[64][768];
+    public Particle[][] field3337 = new Particle[64][768];
 
-	@ObfuscatedName("ld.o")
-	public int field3334 = 0;
+    public int field3334 = 0;
 
-	@ObfuscatedName("ld.s")
-	public static float field3325;
+    public static float field3325;
 
 	public GpuParticleRenderer(GpuToolkit arg0) {
 		this.field3326 = arg0.createVertexDeclaration(new VertexDeclarationElement[] { new VertexDeclarationElement(new VertexDeclarationElementComponent[] { VertexDeclarationElementComponent.VERTEX, VertexDeclarationElementComponent.COLOR, VertexDeclarationElementComponent.TEX_COORD_2 }), new VertexDeclarationElement(VertexDeclarationElementComponent.NORMAL) });
@@ -96,18 +79,15 @@ public class GpuParticleRenderer {
 		this.field3329.upload(0, var2.position(), arg0.temporaryBufferAddress);
 	}
 
-	@ObfuscatedName("ld.e(Lafc;)V")
-	public void method5755(GpuToolkit arg0) {
+    public void method5755(GpuToolkit arg0) {
 		this.field3333.allocate(786336, 24);
 	}
 
-	@ObfuscatedName("ld.n()V")
-	public void method5756() {
+    public void method5756() {
 		this.field3333.delete();
 	}
 
-	@ObfuscatedName("ld.m(Lafc;Ldm;)V")
-	public void method5770(GpuToolkit arg0, ParticleList arg1) {
+    public void method5770(GpuToolkit arg0, ParticleList arg1) {
 		arg0.method2219(false);
 		field3325 = arg0.field10122;
 		float var3 = arg0.field10059.entries[2];
@@ -160,8 +140,7 @@ public class GpuParticleRenderer {
 		arg0.method2219(true);
 	}
 
-	@ObfuscatedName("ld.k(Lafc;Lajn;IIILjo;Z)V")
-	public void method5766(GpuToolkit arg0, DualLink arg1, int arg2, int arg3, int arg4, ParticleShader arg5, boolean arg6) {
+    public void method5766(GpuToolkit arg0, DualLink arg1, int arg2, int arg3, int arg4, ParticleShader arg5, boolean arg6) {
 		DualLink var8 = arg1.dualPrev;
 		int var9 = 0;
 		int var10 = -2;
@@ -210,8 +189,7 @@ public class GpuParticleRenderer {
 		}
 	}
 
-	@ObfuscatedName("ld.f(ILaqb;)V")
-	public void method5764(int arg0, Particle arg1) {
+    public void method5764(int arg0, Particle arg1) {
 		if (arg0 >= 1600) {
 			return;
 		}
@@ -228,8 +206,7 @@ public class GpuParticleRenderer {
 		this.field3337[this.field3324[arg0] - 64 - 1][this.field3335[this.field3324[arg0] - 64 - 1]++] = arg1;
 	}
 
-	@ObfuscatedName("ld.w(Lafc;IZ)V")
-	public void method5759(GpuToolkit arg0, int arg1, boolean arg2) {
+    public void method5759(GpuToolkit arg0, int arg1, boolean arg2) {
 		int var4 = 0;
 		Matrix4x4 var5 = arg0.field10059;
 		float var6 = var5.entries[0];

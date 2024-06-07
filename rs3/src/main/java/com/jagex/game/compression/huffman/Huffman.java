@@ -2,17 +2,13 @@ package com.jagex.game.compression.huffman;
 
 import deob.ObfuscatedName;
 
-@ObfuscatedName("ig")
 public class Huffman {
 
-	@ObfuscatedName("ig.e")
-	public int[] encoded;
+    public int[] encoded;
 
-	@ObfuscatedName("ig.n")
-	public byte[] table;
+    public byte[] table;
 
-	@ObfuscatedName("ig.m")
-	public int[] decoded;
+    public int[] decoded;
 
 	public Huffman(byte[] table) {
 		int var2 = table.length;
@@ -79,8 +75,7 @@ public class Huffman {
 		}
 	}
 
-	@ObfuscatedName("ig.e([BII[BII)I")
-	public int compress(byte[] arg0, int arg1, int arg2, byte[] arg3, int arg4) {
+    public int compress(byte[] arg0, int arg1, int arg2, byte[] arg3, int arg4) {
 		int var6 = 0;
 		int var7 = arg4 << 3;
 		int var8 = arg1 + arg2;
@@ -123,8 +118,7 @@ public class Huffman {
 		return (var7 + 7 >> 3) - arg4;
 	}
 
-	@ObfuscatedName("ig.n([BI[BIIB)I")
-	public int decompress(byte[] arg0, int arg1, byte[] arg2, int arg3, int arg4) {
+    public int decompress(byte[] arg0, int arg1, byte[] arg2, int arg3, int arg4) {
 		if (arg4 == 0) {
 			return 0;
 		}

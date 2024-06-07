@@ -8,26 +8,19 @@ import com.jagex.game.shared.framework.chat.QuickChatDynamicCommand;
 import com.jagex.js5.Js5;
 import deob.ObfuscatedName;
 
-@ObfuscatedName("ach")
 public class QuickChatPhraseTypeList {
 
-	@ObfuscatedName("ach.e")
-	public final Js5 configClientSmall;
+    public final Js5 configClientSmall;
 
-	@ObfuscatedName("ach.n")
-	public final Js5 configClientLarge;
+    public final Js5 configClientLarge;
 
-	@ObfuscatedName("ach.m")
-	public int configClientSmallNum = 0;
+    public int configClientSmallNum = 0;
 
-	@ObfuscatedName("ach.k")
-	public int configClientLargeNum = 0;
+    public int configClientLargeNum = 0;
 
-	@ObfuscatedName("ach.f")
-	public final SoftLruHashTable recentUse = new SoftLruHashTable(64);
+    public final SoftLruHashTable recentUse = new SoftLruHashTable(64);
 
-	@ObfuscatedName("ach.u")
-	public QuickChatDynamicProvider quickChatDynamicProvider = null;
+    public QuickChatDynamicProvider quickChatDynamicProvider = null;
 
 	public QuickChatPhraseTypeList(Language arg0, Js5 configClientSmall, Js5 configClientLarge, QuickChatDynamicProvider quickChatDynamicProvider) {
 		this.configClientSmall = configClientSmall;
@@ -41,8 +34,7 @@ public class QuickChatPhraseTypeList {
 		}
 	}
 
-	@ObfuscatedName("ach.e(II)Lasq;")
-	public QuickChatPhraseType list(int id) {
+    public QuickChatPhraseType list(int id) {
 		QuickChatPhraseType cached = (QuickChatPhraseType) this.recentUse.get((long) id);
 		if (cached != null) {
 			return cached;
@@ -65,8 +57,7 @@ public class QuickChatPhraseTypeList {
 		return quickChatPhraseType;
 	}
 
-	@ObfuscatedName("ach.n(Lxs;[IJ)Ljava/lang/String;")
-	public String method14978(QuickChatDynamicCommand arg0, int[] arg1, long arg2) {
+    public String method14978(QuickChatDynamicCommand arg0, int[] arg1, long arg2) {
 		if (this.quickChatDynamicProvider != null) {
 			String var5 = this.quickChatDynamicProvider.method5945(arg0, arg1, arg2);
 			if (var5 != null) {

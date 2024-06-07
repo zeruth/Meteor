@@ -8,7 +8,6 @@ import com.jagex.game.config.Js5ConfigGroup;
 import com.jagex.js5.Js5;
 import deob.ObfuscatedName;
 
-@ObfuscatedName("aoo")
 public class SeqGroupTypeList extends CachingConfigTypeList {
 
 	public SeqGroupTypeList(ModeGame arg0, Language arg1, Js5 arg2) {

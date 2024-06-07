@@ -3,7 +3,6 @@ package com.jagex.game.clientoptions.options;
 import com.jagex.game.clientoptions.ClientOptions;
 import deob.ObfuscatedName;
 
-@ObfuscatedName("anz")
 public class PreferencesUnknown7 extends Preference {
 
 	public PreferencesUnknown7(ClientOptions options) {
@@ -14,8 +13,7 @@ public class PreferencesUnknown7 extends Preference {
 		super(value, options);
 	}
 
-	@ObfuscatedName("anz.o(I)V")
-	public void clampValue() {
+    public void clampValue() {
 		int var1 = this.options.toolkit.getValue();
 		if (var1 != 3 && var1 != 5) {
 			this.currentValue = 0;
@@ -28,14 +26,12 @@ public class PreferencesUnknown7 extends Preference {
 		}
 	}
 
-	@ObfuscatedName("anz.e(B)I")
-	public int defaultValue() {
+    public int defaultValue() {
 		int var1 = this.options.toolkit.getValue();
 		return var1 == 3 || var1 == 5 ? 0 : 0;
 	}
 
-	@ObfuscatedName("anz.n(II)I")
-	public int canSetValue(int value) {
+    public int canSetValue(int value) {
 		if (value == 0) {
 			return 1;
 		} else if (this.options.hardwareInfo().cpucount() < 2) {
@@ -46,13 +42,11 @@ public class PreferencesUnknown7 extends Preference {
 		}
 	}
 
-	@ObfuscatedName("anz.k(II)V")
-	public void setValue(int value) {
+    public void setValue(int value) {
 		this.currentValue = value;
 	}
 
-	@ObfuscatedName("anz.s(S)I")
-	public int getValue() {
+    public int getValue() {
 		return this.currentValue;
 	}
 }

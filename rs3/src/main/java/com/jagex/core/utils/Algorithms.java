@@ -2,20 +2,17 @@ package com.jagex.core.utils;
 
 import deob.ObfuscatedName;
 
-@ObfuscatedName("yg")
 public class Algorithms {
 
 	public Algorithms() throws Throwable {
 		throw new Error();
 	}
 
-	@ObfuscatedName("hh.e([Ljava/lang/String;[II)V")
-	public static void method4054(String[] arg0, int[] arg1) {
+    public static void method4054(String[] arg0, int[] arg1) {
 		method4923(arg0, arg1, 0, arg0.length - 1);
 	}
 
-	@ObfuscatedName("jw.n([Ljava/lang/String;[IIII)V")
-	public static void method4923(String[] arg0, int[] arg1, int arg2, int arg3) {
+    public static void method4923(String[] arg0, int[] arg1, int arg2, int arg3) {
 		if (arg2 >= arg3) {
 			return;
 		}
@@ -45,8 +42,7 @@ public class Algorithms {
 		method4923(arg0, arg1, var5 + 1, arg3);
 	}
 
-	@ObfuscatedName("adn.m([I[IIII)V")
-	public static void method15233(int[] arg0, int[] arg1, int arg2, int arg3) {
+    public static void method15233(int[] arg0, int[] arg1, int arg2, int arg3) {
 		if (arg2 >= arg3) {
 			return;
 		}
@@ -77,13 +73,11 @@ public class Algorithms {
 		method15233(arg0, arg1, var5 + 1, arg3);
 	}
 
-	@ObfuscatedName("jk.k([J[IB)V")
-	public static void quicksortParallel(long[] arg0, int[] arg1) {
+    public static void quicksortParallel(long[] arg0, int[] arg1) {
 		method8194(arg0, arg1, 0, arg0.length - 1);
 	}
 
-	@ObfuscatedName("sh.f([J[IIII)V")
-	public static void method8194(long[] arg0, int[] arg1, int arg2, int arg3) {
+    public static void method8194(long[] arg0, int[] arg1, int arg2, int arg3) {
 		if (arg2 >= arg3) {
 			return;
 		}
@@ -114,8 +108,7 @@ public class Algorithms {
 		method8194(arg0, arg1, var5 + 1, arg3);
 	}
 
-	@ObfuscatedName("w.w([F[IIII)V")
-	public static void method228(float[] arg0, int[] arg1, int arg2, int arg3) {
+    public static void method228(float[] arg0, int[] arg1, int arg2, int arg3) {
 		if (arg2 >= arg3) {
 			return;
 		}
@@ -145,13 +138,11 @@ public class Algorithms {
 		method228(arg0, arg1, var5 + 1, arg3);
 	}
 
-	@ObfuscatedName("aah.l([I[F[FB)V")
-	public static void method14525(int[] arg0, float[] arg1, float[] arg2) {
+    public static void method14525(int[] arg0, float[] arg1, float[] arg2) {
 		method10480(arg0, arg1, arg2, 0, arg0.length - 1);
 	}
 
-	@ObfuscatedName("yk.u([I[F[FIII)V")
-	public static void method10480(int[] arg0, float[] arg1, float[] arg2, int arg3, int arg4) {
+    public static void method10480(int[] arg0, float[] arg1, float[] arg2, int arg3, int arg4) {
 		if (arg3 >= arg4) {
 			return;
 		}
@@ -191,13 +182,11 @@ public class Algorithms {
 		method10480(arg0, arg1, arg2, var6 + 1, arg4);
 	}
 
-	@ObfuscatedName("dz.z([I[Ljava/lang/Object;I)V")
-	public static void quickSortParallel(int[] arg0, Object[] arg1) {
+    public static void quickSortParallel(int[] arg0, Object[] arg1) {
 		method4397(arg0, arg1, 0, arg0.length - 1);
 	}
 
-	@ObfuscatedName("iv.p([I[Ljava/lang/Object;III)V")
-	public static void method4397(int[] arg0, Object[] arg1, int arg2, int arg3) {
+    public static void method4397(int[] arg0, Object[] arg1, int arg2, int arg3) {
 		if (arg2 >= arg3) {
 			return;
 		}
@@ -228,13 +217,11 @@ public class Algorithms {
 		method4397(arg0, arg1, var5 + 1, arg3);
 	}
 
-	@ObfuscatedName("xh.d([J[Ljava/lang/Object;I)V")
-	public static void method10210(long[] arg0, Object[] arg1) {
+    public static void method10210(long[] arg0, Object[] arg1) {
 		method13785(arg0, arg1, 0, arg0.length - 1);
 	}
 
-	@ObfuscatedName("yf.c([J[Ljava/lang/Object;III)V")
-	public static void method13785(long[] arg0, Object[] arg1, int arg2, int arg3) {
+    public static void method13785(long[] arg0, Object[] arg1, int arg2, int arg3) {
 		if (arg2 >= arg3) {
 			return;
 		}

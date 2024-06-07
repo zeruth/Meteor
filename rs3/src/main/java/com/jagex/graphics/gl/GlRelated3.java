@@ -2,20 +2,15 @@ package com.jagex.graphics.gl;
 
 import deob.ObfuscatedName;
 
-@ObfuscatedName("bp")
 public class GlRelated3 {
 
-	@ObfuscatedName("bp.e")
-	public short field1113;
+    public short field1113;
 
-	@ObfuscatedName("bp.n")
-	public byte field1110;
+    public byte field1110;
 
-	@ObfuscatedName("bp.m")
-	public byte field1112;
+    public byte field1112;
 
-	@ObfuscatedName("bp.k")
-	public GlInterfaceRelated field1111;
+    public GlInterfaceRelated field1111;
 
 	public GlRelated3(GlInterfaceRelated arg0, int arg1, int arg2, int arg3) {
 		this.field1111 = arg0;

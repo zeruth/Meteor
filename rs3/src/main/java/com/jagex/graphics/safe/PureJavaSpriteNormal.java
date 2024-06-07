@@ -5,11 +5,9 @@ import com.jagex.graphics.GraphicsDeletable;
 import com.jagex.graphics.SpriteRelated;
 import deob.ObfuscatedName;
 
-@ObfuscatedName("apo")
 public class PureJavaSpriteNormal extends PureJavaSprite {
 
-	@ObfuscatedName("apo.am")
-	public int[] field11904;
+    public int[] field11904;
 
 	public PureJavaSpriteNormal(PureJavaToolkit arg0, int arg1, int arg2) {
 		super(arg0, arg1, arg2);
@@ -43,8 +41,7 @@ public class PureJavaSpriteNormal extends PureJavaSprite {
 		this.field11904 = arg1;
 	}
 
-	@ObfuscatedName("apo.u(IIII[III)V")
-	public void method1469(int arg0, int arg1, int arg2, int arg3, int[] arg4, int arg5, int arg6) {
+    public void method1469(int arg0, int arg1, int arg2, int arg3, int[] arg4, int arg5, int arg6) {
 		int var8 = arg6 - arg2;
 		for (int var9 = 0; var9 < arg3; var9++) {
 			int var10 = (arg1 + var9) * arg2 + arg0;
@@ -55,8 +52,7 @@ public class PureJavaSpriteNormal extends PureJavaSprite {
 		}
 	}
 
-	@ObfuscatedName("apo.cq(IIII[III)V")
-	public void method18946(int arg0, int arg1, int arg2, int arg3, int[] arg4, int arg5, int arg6) {
+    public void method18946(int arg0, int arg1, int arg2, int arg3, int[] arg4, int arg5, int arg6) {
 		int var8 = arg6 - arg2;
 		for (int var9 = 0; var9 < arg3; var9++) {
 			int var10 = (arg1 + var9) * arg2 + arg0;
@@ -67,13 +63,11 @@ public class PureJavaSpriteNormal extends PureJavaSprite {
 		}
 	}
 
-	@ObfuscatedName("apo.z(IIII[I[III)V")
-	public void download(int arg0, int arg1, int arg2, int arg3, int[] arg4, int[] arg5, int arg6, int arg7) {
+    public void download(int arg0, int arg1, int arg2, int arg3, int[] arg4, int[] arg5, int arg6, int arg7) {
 		this.method18946(arg0, arg1, arg2, arg3, arg4, arg6, arg7);
 	}
 
-	@ObfuscatedName("apo.p(IIIIII)V")
-	public void draw(int arg0, int arg1, int arg2, int arg3, int arg4, int arg5) {
+    public void draw(int arg0, int arg1, int arg2, int arg3, int arg4, int arg5) {
 		int[] var7 = this.field9373.colour;
 		if (var7 == null) {
 			throw new IllegalStateException("");
@@ -87,18 +81,15 @@ public class PureJavaSpriteNormal extends PureJavaSprite {
 		}
 	}
 
-	@ObfuscatedName("apo.d(III)V")
-	public void method1441(int arg0, int arg1, int arg2) {
+    public void method1441(int arg0, int arg1, int arg2) {
 		throw new IllegalStateException("");
 	}
 
-	@ObfuscatedName("apo.l()Ldp;")
-	public GraphicsDeletable method1437() {
+    public GraphicsDeletable method1437() {
 		return new PureJavaColorBuffer(this.field9356, this.field9372, this.field11904);
 	}
 
-	@ObfuscatedName("apo.r(IIIII)V")
-	public void drawSprite(int x, int y, int arg2, int rgb, int arg4) {
+    public void drawSprite(int x, int y, int arg2, int rgb, int arg4) {
 		if (this.field9373.method15654()) {
 			throw new IllegalStateException();
 		}
@@ -427,8 +418,7 @@ public class PureJavaSpriteNormal extends PureJavaSprite {
 		}
 	}
 
-	@ObfuscatedName("apo.v(IILch;II)V")
-	public void method1444(int arg0, int arg1, SpriteRelated arg2, int arg3, int arg4) {
+    public void method1444(int arg0, int arg1, SpriteRelated arg2, int arg3, int arg4) {
 		if (this.field9373.method15654()) {
 			throw new IllegalStateException();
 		}
@@ -525,8 +515,7 @@ public class PureJavaSpriteNormal extends PureJavaSprite {
 		}
 	}
 
-	@ObfuscatedName("apo.y(IIIIIIII)V")
-	public void drawTintedScaled(int arg0, int arg1, int arg2, int arg3, int arg4, int arg5, int arg6, int arg7) {
+    public void drawTintedScaled(int arg0, int arg1, int arg2, int arg3, int arg4, int arg5, int arg6, int arg7) {
 		if (this.field9373.method15654()) {
 			throw new IllegalStateException();
 		} else if (arg2 > 0 && arg3 > 0) {
@@ -879,8 +868,7 @@ public class PureJavaSpriteNormal extends PureJavaSprite {
 		}
 	}
 
-	@ObfuscatedName("apo.cl(ZZZIIFIIIIIIZ)V")
-	public void drawAsBillboard(boolean arg0, boolean arg1, boolean arg2, int arg3, int arg4, float arg5, int arg6, int arg7, int arg8, int arg9, int arg10, int arg11, boolean arg12) {
+    public void drawAsBillboard(boolean arg0, boolean arg1, boolean arg2, int arg3, int arg4, float arg5, int arg6, int arg7, int arg8, int arg9, int arg10, int arg11, boolean arg12) {
 		if (arg6 <= 0 || arg7 <= 0 || !arg0 && !arg1) {
 			return;
 		}
@@ -1327,8 +1315,7 @@ public class PureJavaSpriteNormal extends PureJavaSprite {
 		}
 	}
 
-	@ObfuscatedName("apo.ce(II)V")
-	public void method15354(int arg0, int arg1) {
+    public void method15354(int arg0, int arg1) {
 		int[] var3 = this.field9373.colour;
 		if (var3 == null) {
 			return;
@@ -1631,8 +1618,7 @@ public class PureJavaSpriteNormal extends PureJavaSprite {
 		}
 	}
 
-	@ObfuscatedName("apo.cu([I[III)V")
-	public void method15356(int[] arg0, int[] arg1, int arg2, int arg3) {
+    public void method15356(int[] arg0, int[] arg1, int arg2, int arg3) {
 		int[] var5 = this.field9373.colour;
 		if (var5 == null) {
 			return;
@@ -2164,8 +2150,7 @@ public class PureJavaSpriteNormal extends PureJavaSprite {
 		}
 	}
 
-	@ObfuscatedName("apo.ch(II[III)V")
-	public void method18947(int arg0, int arg1, int[] arg2, int arg3, int arg4) {
+    public void method18947(int arg0, int arg1, int[] arg2, int arg3, int arg4) {
 		int var10001;
 		if (arg4 == 0) {
 			if (arg3 == 1) {

@@ -5,32 +5,23 @@ import com.jagex.game.config.ParticleEffectorType;
 import com.jagex.graphics.ModelParticleEffector;
 import deob.ObfuscatedName;
 
-@ObfuscatedName("akb")
 public class ParticleEffector extends Node {
 
-	@ObfuscatedName("akb.k")
-	public final ModelParticleEffector field11488;
+    public final ModelParticleEffector field11488;
 
-	@ObfuscatedName("akb.f")
-	public final ParticleEffectorType field11483;
+    public final ParticleEffectorType field11483;
 
-	@ObfuscatedName("akb.w")
-	public int field11484;
+    public int field11484;
 
-	@ObfuscatedName("akb.l")
-	public int field11481;
+    public int field11481;
 
-	@ObfuscatedName("akb.u")
-	public int field11482;
+    public int field11482;
 
-	@ObfuscatedName("akb.z")
-	public float field11486;
+    public float field11486;
 
-	@ObfuscatedName("akb.p")
-	public float field11487;
+    public float field11487;
 
-	@ObfuscatedName("akb.d")
-	public static float[] field11485 = new float[3];
+    public static float[] field11485 = new float[3];
 
 	public ParticleEffector(ModelParticleEffector arg0, ParticleSystem arg1) {
 		this.field11488 = arg0;
@@ -38,8 +29,7 @@ public class ParticleEffector extends Node {
 		this.method17872();
 	}
 
-	@ObfuscatedName("akb.e(I)V")
-	public void method17872() {
+    public void method17872() {
 		this.field11484 = this.field11488.field1226;
 		this.field11481 = this.field11488.field1229;
 		this.field11482 = this.field11488.field1227;

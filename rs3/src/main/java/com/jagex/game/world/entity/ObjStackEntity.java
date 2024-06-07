@@ -12,59 +12,41 @@ import com.jagex.math.Vector3;
 import deob.ObfuscatedName;
 import rs2.client.Client;
 
-@ObfuscatedName("aut")
 public class ObjStackEntity extends ObjLayerEntity {
 
-	@ObfuscatedName("aut.x")
-	public static Matrix4x3 field12584 = new Matrix4x3();
+    public static Matrix4x3 field12584 = new Matrix4x3();
 
-	@ObfuscatedName("aut.b")
-	public int field12580;
+    public int field12580;
 
-	@ObfuscatedName("aut.h")
-	public int field12570;
+    public int field12570;
 
-	@ObfuscatedName("aut.a")
-	public int field12569 = -1;
+    public int field12569 = -1;
 
-	@ObfuscatedName("aut.g")
-	public int field12572;
+    public int field12572;
 
-	@ObfuscatedName("aut.i")
-	public int field12573 = -1;
+    public int field12573 = -1;
 
-	@ObfuscatedName("aut.j")
-	public int field12583;
+    public int field12583;
 
-	@ObfuscatedName("aut.t")
-	public Matrix4x3 field12571 = null;
+    public Matrix4x3 field12571 = null;
 
-	@ObfuscatedName("aut.ae")
-	public Matrix4x3 field12568 = null;
+    public Matrix4x3 field12568 = null;
 
-	@ObfuscatedName("aut.ag")
-	public Matrix4x3 field12577 = null;
+    public Matrix4x3 field12577 = null;
 
-	@ObfuscatedName("aut.ah")
-	public int field12578 = 0;
+    public int field12578 = 0;
 
-	@ObfuscatedName("aut.al")
-	public int field12579 = 0;
+    public int field12579 = 0;
 
-	@ObfuscatedName("aut.ac")
-	public boolean field12576 = false;
+    public boolean field12576 = false;
 
-	@ObfuscatedName("aut.ai")
-	public int field12581;
+    public int field12581;
 
-	@ObfuscatedName("aut.aw")
-	public int field12582;
+    public int field12582;
 
-	@ObfuscatedName("aut.as")
-	public int field12574;
+    public int field12574;
 
-	@ObfuscatedName("aut.at")
-	public int field12575;
+    public int field12575;
 
 	public ObjStackEntity(Scene scene, int x, int y, int z, int level, int occludeLevel) {
 		super(scene, x, y, z, level, occludeLevel);
@@ -72,8 +54,7 @@ public class ObjStackEntity extends ObjLayerEntity {
 		this.method19718();
 	}
 
-	@ObfuscatedName("aut.e(B)V")
-	public void method19718() {
+    public void method19718() {
 		this.field12581 = (int) (Math.random() * 4.0D) + 32;
 		this.field12582 = (int) (Math.random() * 2.0D) + 3;
 		this.field12574 = (int) (Math.random() * 3.0D) + 16;
@@ -84,28 +65,23 @@ public class ObjStackEntity extends ObjLayerEntity {
 		}
 	}
 
-	@ObfuscatedName("aut.bu(B)Z")
-	public boolean method16488() {
+    public boolean method16488() {
 		return false;
 	}
 
-	@ObfuscatedName("aut.bw(S)Z")
-	public boolean method16489() {
+    public boolean method16489() {
 		return this.field12576;
 	}
 
-	@ObfuscatedName("aut.fv(Ldh;B)Luq;")
-	public EntityBounds method17371(Toolkit toolkit) {
+    public EntityBounds method17371(Toolkit toolkit) {
 		return null;
 	}
 
-	@ObfuscatedName("aut.by(B)I")
-	public int overlayHeight() {
+    public int overlayHeight() {
 		return -10;
 	}
 
-	@ObfuscatedName("aut.fc(Ldh;I)Ltl;")
-	public PickableEntity draw(Toolkit toolkit) {
+    public PickableEntity draw(Toolkit toolkit) {
 		Vector3 var2 = Vector3.create(this.getTransform().trans);
 		PrimaryLayerEntityList var3 = this.scene.getEntities(this.level, (int) var2.x >> 9, (int) var2.z >> 9);
 		GroundDecorLayerEntity var4 = this.scene.getGroundDecoration(this.level, (int) var2.x >> 9, (int) var2.z >> 9);
@@ -222,8 +198,7 @@ public class ObjStackEntity extends ObjLayerEntity {
 		return var34;
 	}
 
-	@ObfuscatedName("ad.n(B)Lou;")
-	public static Matrix4x3 method820() {
+    public static Matrix4x3 method820() {
 		Matrix4x3 var0 = new Matrix4x3();
 		var0.setToRotation(0.0F, 1.0F, 0.0F, (float) (Math.random() * 3.141592653589793D * 2.0D));
 		float var1 = (float) (Math.random() * 0.5D + 0.5D) * 256.0F;
@@ -232,12 +207,10 @@ public class ObjStackEntity extends ObjLayerEntity {
 		return var0;
 	}
 
-	@ObfuscatedName("aut.fw(Ldh;I)V")
-	public void method17373(Toolkit toolkit) {
+    public void method17373(Toolkit toolkit) {
 	}
 
-	@ObfuscatedName("aut.gp(I)I")
-	public int getPickSizeShift() {
+    public int getPickSizeShift() {
 		ObjType var1 = (ObjType) Client.objTypeList.list(this.field12580);
 		int var2 = var1.picksizeshift;
 		if (this.field12569 != -1) {
@@ -255,8 +228,7 @@ public class ObjStackEntity extends ObjLayerEntity {
 		return var2;
 	}
 
-	@ObfuscatedName("aut.fa(Ldh;IIB)Z")
-	public boolean method17375(Toolkit toolkit, int arg1, int arg2) {
+    public boolean method17375(Toolkit toolkit, int arg1, int arg2) {
 		Matrix4x3 var4 = toolkit.method2209();
 		var4.setToTransform2(this.getTransform());
 		var4.translate(0.0F, -10.0F, 0.0F);
@@ -303,8 +275,7 @@ public class ObjStackEntity extends ObjLayerEntity {
 		return false;
 	}
 
-	@ObfuscatedName("aut.bo(I)I")
-	public int height() {
+    public int height() {
 		return this.field12578 - this.overlayHeight();
 	}
 }

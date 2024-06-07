@@ -8,23 +8,17 @@ import com.jagex.core.io.Packet;
 import deob.ObfuscatedName;
 import rs2.client.Client;
 
-@ObfuscatedName("agu")
 public class SoundVorbisCutsceneAction extends CutsceneAction {
 
-	@ObfuscatedName("agu.n")
-	public final int field10323;
+    public final int field10323;
 
-	@ObfuscatedName("agu.m")
-	public final int field10324;
+    public final int field10324;
 
-	@ObfuscatedName("agu.k")
-	public final int field10325;
+    public final int field10325;
 
-	@ObfuscatedName("agu.f")
-	public final int field10326;
+    public final int field10326;
 
-	@ObfuscatedName("agu.w")
-	public Sound field10327;
+    public Sound field10327;
 
 	public SoundVorbisCutsceneAction(Packet arg0) {
 		super(arg0);
@@ -38,15 +32,13 @@ public class SoundVorbisCutsceneAction extends CutsceneAction {
 		}
 	}
 
-	@ObfuscatedName("agu.n(I)V")
-	public void method2890() {
+    public void method2890() {
 		if (this.field10327 != null) {
 			this.field10327.method7441();
 		}
 	}
 
-	@ObfuscatedName("agu.m(I)V")
-	public void method2896() {
+    public void method2896() {
 		if (this.field10327 != null) {
 			this.field10327.method7380(50);
 			Client.audioApi.play(this.field10327);

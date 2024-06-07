@@ -4,29 +4,21 @@ import deob.ObfuscatedName;
 import jaclib.memory.Buffer;
 import jaggl.OpenGL;
 
-@ObfuscatedName("bs")
 public abstract class GlBufferRelated {
 
-	@ObfuscatedName("bs.m")
-	public final GlToolkit field1123;
+    public final GlToolkit field1123;
 
-	@ObfuscatedName("bs.k")
-	public final int field1120;
+    public final int field1120;
 
-	@ObfuscatedName("bs.f")
-	public final int field1122;
+    public final int field1122;
 
-	@ObfuscatedName("bs.w")
-	public int field1118;
+    public int field1118;
 
-	@ObfuscatedName("bs.l")
-	public boolean field1124;
+    public boolean field1124;
 
-	@ObfuscatedName("bs.u")
-	public boolean field1125 = false;
+    public boolean field1125 = false;
 
-	@ObfuscatedName("bs.z")
-	public static final int[] field1126 = new int[1];
+    public static final int[] field1126 = new int[1];
 
 	public GlBufferRelated(GlToolkit arg0, int arg1, byte[] arg2, int arg3, boolean arg4) {
 		this.field1123 = arg0;
@@ -52,8 +44,7 @@ public abstract class GlBufferRelated {
 		this.field1123.field9880 += this.field1118;
 	}
 
-	@ObfuscatedName("bs.c([BI)V")
-	public void method1309(byte[] arg0, int arg1) {
+    public void method1309(byte[] arg0, int arg1) {
 		this.method1311();
 		if (arg1 > this.field1118) {
 			OpenGL.glBufferDataARBub(this.field1120, arg1, arg0, 0, this.field1124 ? 35040 : 35044);
@@ -72,6 +63,5 @@ public abstract class GlBufferRelated {
 		super.finalize();
 	}
 
-	@ObfuscatedName("bs.d()V")
-	public abstract void method1311();
+    public abstract void method1311();
 }

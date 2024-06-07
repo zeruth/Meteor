@@ -6,77 +6,53 @@ import deob.ObfuscatedName;
 import java.nio.ByteBuffer;
 import java.util.Vector;
 
-@ObfuscatedName("ls")
 public class GpuPostProcessManager {
 
-	@ObfuscatedName("ls.e")
-	public GpuToolkit field3247;
+    public GpuToolkit field3247;
 
-	@ObfuscatedName("ls.n")
-	public FrameBuffer field3245;
+    public FrameBuffer field3245;
 
-	@ObfuscatedName("ls.m")
-	public FrameBuffer field3265;
+    public FrameBuffer field3265;
 
-	@ObfuscatedName("ls.k")
-	public Texture2 field3244;
+    public Texture2 field3244;
 
-	@ObfuscatedName("ls.f")
-	public Texture2 field3248;
+    public Texture2 field3248;
 
-	@ObfuscatedName("ls.w")
-	public Texture2 field3249;
+    public Texture2 field3249;
 
-	@ObfuscatedName("ls.l")
-	public GraphicsDeletable field3250;
+    public GraphicsDeletable field3250;
 
-	@ObfuscatedName("ls.u")
-	public GraphicsDeletable field3251;
+    public GraphicsDeletable field3251;
 
-	@ObfuscatedName("ls.z")
-	public GraphicsDeletable field3255;
+    public GraphicsDeletable field3255;
 
-	@ObfuscatedName("ls.p")
-	public GraphicsDeletable field3253;
+    public GraphicsDeletable field3253;
 
-	@ObfuscatedName("ls.d")
-	public EffectInterface field3254;
+    public EffectInterface field3254;
 
-	@ObfuscatedName("ls.c")
-	public EffectInterface field3262;
+    public EffectInterface field3262;
 
-	@ObfuscatedName("ls.r")
-	public int field3256;
+    public int field3256;
 
-	@ObfuscatedName("ls.v")
-	public int field3246;
+    public int field3246;
 
-	@ObfuscatedName("ls.o")
-	public int field3258;
+    public int field3258;
 
-	@ObfuscatedName("ls.s")
-	public int field3259 = 0;
+    public int field3259 = 0;
 
-	@ObfuscatedName("ls.y")
-	public DataType field3260;
+    public DataType field3260;
 
-	@ObfuscatedName("ls.q")
-	public boolean field3261;
+    public boolean field3261;
 
-	@ObfuscatedName("ls.x")
-	public Vector field3257 = new Vector();
+    public Vector field3257 = new Vector();
 
-	@ObfuscatedName("ls.b")
-	public VertexBuffer field3263;
+    public VertexBuffer field3263;
 
-	@ObfuscatedName("ls.h")
-	public VertexDeclaration field3264;
+    public VertexDeclaration field3264;
 
-	@ObfuscatedName("ls.a")
-	public int field3252 = 0;
+    public int field3252 = 0;
 
-	@ObfuscatedName("ls.g")
-	public int field3266 = 0;
+    public int field3266 = 0;
 
 	public GpuPostProcessManager(GpuToolkit arg0, int arg1, int arg2) {
 		this.field3247 = arg0;
@@ -85,8 +61,7 @@ public class GpuPostProcessManager {
 		this.field3246 = arg2;
 	}
 
-	@ObfuscatedName("ls.e()V")
-	public void method5596() {
+    public void method5596() {
 		if (this.field3263 != null) {
 			return;
 		}
@@ -101,15 +76,13 @@ public class GpuPostProcessManager {
 		this.field3264 = this.field3247.createVertexDeclaration(new VertexDeclarationElement[] { new VertexDeclarationElement(VertexDeclarationElementComponent.TEX_COORD_1) });
 	}
 
-	@ObfuscatedName("ls.n()V")
-	public void method5597() {
+    public void method5597() {
 		this.field3247.setStreamSource(0, this.field3263);
 		this.field3247.setVertexDeclaration(this.field3264);
 		this.field3247.drawPrimitive(PrimitiveType.TRIANGLELIST, 0, 1);
 	}
 
-	@ObfuscatedName("ls.m()V")
-	public void method5608() {
+    public void method5608() {
 		this.method5596();
 		switch(this.field3252) {
 			case 0:
@@ -144,8 +117,7 @@ public class GpuPostProcessManager {
 		}
 	}
 
-	@ObfuscatedName("ls.k(Llh;)Z")
-	public boolean method5599(GpuPostProcessEffect arg0) {
+    public boolean method5599(GpuPostProcessEffect arg0) {
 		Vector var2 = new Vector();
 		boolean var3 = false;
 		for (int var4 = 0; var4 < this.field3257.size(); var4++) {
@@ -165,8 +137,7 @@ public class GpuPostProcessManager {
 		}
 	}
 
-	@ObfuscatedName("ls.f(Ljava/util/Vector;ILlh;)Z")
-	public boolean method5604(Vector arg0, int arg1, GpuPostProcessEffect arg2) {
+    public boolean method5604(Vector arg0, int arg1, GpuPostProcessEffect arg2) {
 		if (!arg2.method5559() && !arg2.method5572()) {
 			return false;
 		}
@@ -180,20 +151,17 @@ public class GpuPostProcessManager {
 		return true;
 	}
 
-	@ObfuscatedName("ls.w(Llh;)V")
-	public void method5606(GpuPostProcessEffect arg0) {
+    public void method5606(GpuPostProcessEffect arg0) {
 		arg0.method5562();
 		arg0.field3243 = false;
 		this.field3257.removeElement(arg0);
 	}
 
-	@ObfuscatedName("ls.l(I)Llh;")
-	public GpuPostProcessEffect method5633(int arg0) {
+    public GpuPostProcessEffect method5633(int arg0) {
 		return (GpuPostProcessEffect) this.field3257.elementAt(arg0);
 	}
 
-	@ObfuscatedName("ls.u()Z")
-	public boolean method5603() {
+    public boolean method5603() {
 		int var1 = this.field3257.size();
 		for (int var2 = 0; var2 < var1; var2++) {
 			if (!((GpuPostProcessEffect) this.field3257.elementAt(var2)).method5571()) {
@@ -203,8 +171,7 @@ public class GpuPostProcessManager {
 		return true;
 	}
 
-	@ObfuscatedName("ls.z(IIII)Z")
-	public boolean method5600(int arg0, int arg1, int arg2, int arg3) {
+    public boolean method5600(int arg0, int arg1, int arg2, int arg3) {
 		if (this.field3257.isEmpty() || this.method5603()) {
 			return true;
 		}
@@ -239,8 +206,7 @@ public class GpuPostProcessManager {
 		return true;
 	}
 
-	@ObfuscatedName("ls.p(II)V")
-	public void method5605(int arg0, int arg1) {
+    public void method5605(int arg0, int arg1) {
 		if (!this.field3261) {
 			return;
 		}
@@ -253,8 +219,7 @@ public class GpuPostProcessManager {
 		this.field3261 = false;
 	}
 
-	@ObfuscatedName("ls.d(II)V")
-	public void method5635(int arg0, int arg1) {
+    public void method5635(int arg0, int arg1) {
 		this.field3247.method2170(true);
 		this.field3247.method16080();
 		this.field3247.method16054(0);
@@ -317,8 +282,7 @@ public class GpuPostProcessManager {
 		Object var16 = null;
 	}
 
-	@ObfuscatedName("ls.c()V")
-	public void method5607() {
+    public void method5607() {
 		if (this.field3245 != null) {
 			this.field3245.method1629();
 			this.field3245 = null;

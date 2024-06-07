@@ -5,107 +5,73 @@ import com.jagex.graphics.SpriteRelated;
 import com.jagex.graphics.Sprite;
 import deob.ObfuscatedName;
 
-@ObfuscatedName("ael")
 public abstract class PureJavaSprite extends Sprite {
 
-	@ObfuscatedName("ael.e")
-	public PureJavaToolkit field9373;
+    public PureJavaToolkit field9373;
 
-	@ObfuscatedName("ael.n")
-	public int field9356;
+    public int field9356;
 
-	@ObfuscatedName("ael.m")
-	public int field9372;
+    public int field9372;
 
-	@ObfuscatedName("ael.k")
-	public int field9358;
+    public int field9358;
 
-	@ObfuscatedName("ael.f")
-	public int field9359;
+    public int field9359;
 
-	@ObfuscatedName("ael.w")
-	public int field9355;
+    public int field9355;
 
-	@ObfuscatedName("ael.l")
-	public int field9360;
+    public int field9360;
 
-	@ObfuscatedName("ael.u")
-	public int[] field9362;
+    public int[] field9362;
 
-	@ObfuscatedName("ael.c")
-	public static int field9385;
+    public static int field9385;
 
-	@ObfuscatedName("ael.r")
-	public static int field9367;
+    public static int field9367;
 
-	@ObfuscatedName("ael.v")
-	public static int field9368;
+    public static int field9368;
 
-	@ObfuscatedName("ael.o")
-	public static int field9369;
+    public static int field9369;
 
-	@ObfuscatedName("ael.s")
-	public static int field9370;
+    public static int field9370;
 
-	@ObfuscatedName("ael.y")
-	public static int field9371;
+    public static int field9371;
 
-	@ObfuscatedName("ael.q")
-	public static int field9357;
+    public static int field9357;
 
-	@ObfuscatedName("ael.x")
-	public static int field9375;
+    public static int field9375;
 
-	@ObfuscatedName("ael.b")
-	public static int field9374;
+    public static int field9374;
 
-	@ObfuscatedName("ael.h")
-	public static int field9384;
+    public static int field9384;
 
-	@ObfuscatedName("ael.a")
-	public static int field9376;
+    public static int field9376;
 
-	@ObfuscatedName("ael.g")
-	public static int field9377;
+    public static int field9377;
 
-	@ObfuscatedName("ael.i")
-	public static int field9378;
+    public static int field9378;
 
-	@ObfuscatedName("ael.j")
-	public static int field9389;
+    public static int field9389;
 
-	@ObfuscatedName("ael.t")
-	public static int field9380;
+    public static int field9380;
 
-	@ObfuscatedName("ael.ae")
-	public static int field9381;
+    public static int field9381;
 
-	@ObfuscatedName("ael.ag")
-	public static int field9361;
+    public static int field9361;
 
-	@ObfuscatedName("ael.ah")
-	public static int field9383 = 0;
+    public static int field9383 = 0;
 
-	@ObfuscatedName("ael.al")
-	public static int field9366 = 0;
+    public static int field9366 = 0;
 
-	@ObfuscatedName("ael.ac")
-	public static int field9382 = 0;
+    public static int field9382 = 0;
 
-	@ObfuscatedName("ael.ai")
-	public static int field9386 = 0;
+    public static int field9386 = 0;
 
-	@ObfuscatedName("ael.aw")
-	public static int field9387 = 0;
+    public static int field9387 = 0;
 
-	@ObfuscatedName("ael.as")
-	public static int field9388 = 0;
+    public static int field9388 = 0;
 
-	@ObfuscatedName("ael.at")
-	public static int field9390 = 0;
+    public static int field9390 = 0;
 
-	@ObfuscatedName("ael.ad")
-	public static int field9379 = 0;
+    public static int field9379 = 0;
 
 	public PureJavaSprite(PureJavaToolkit arg0, int arg1, int arg2) {
 		this.field9373 = arg0;
@@ -113,44 +79,37 @@ public abstract class PureJavaSprite extends Sprite {
 		this.field9372 = arg2;
 	}
 
-	@ObfuscatedName("ael.e(IIII)V")
-	public void setPadding(int arg0, int arg1, int arg2, int arg3) {
+    public void setPadding(int arg0, int arg1, int arg2, int arg3) {
 		this.field9358 = arg0;
 		this.field9359 = arg1;
 		this.field9355 = arg2;
 		this.field9360 = arg3;
 	}
 
-	@ObfuscatedName("ael.n([I)V")
-	public void method1432(int[] arg0) {
+    public void method1432(int[] arg0) {
 		arg0[0] = this.field9358;
 		arg0[1] = this.field9359;
 		arg0[2] = this.field9355;
 		arg0[3] = this.field9360;
 	}
 
-	@ObfuscatedName("ael.m()I")
-	public int getWidth() {
+    public int getWidth() {
 		return this.field9356;
 	}
 
-	@ObfuscatedName("ael.f()I")
-	public int getHeight() {
+    public int getHeight() {
 		return this.field9372;
 	}
 
-	@ObfuscatedName("ael.k()I")
-	public int getX() {
+    public int getX() {
 		return this.field9358 + this.field9356 + this.field9355;
 	}
 
-	@ObfuscatedName("ael.w()I")
-	public int getY() {
+    public int getY() {
 		return this.field9372 + this.field9359 + this.field9360;
 	}
 
-	@ObfuscatedName("ael.x(IIIIIII)V")
-	public void drawTiledTinted(int arg0, int arg1, int arg2, int arg3, int arg4, int arg5, int arg6) {
+    public void drawTiledTinted(int arg0, int arg1, int arg2, int arg3, int arg4, int arg5, int arg6) {
 		if (this.field9373.method15654()) {
 			throw new IllegalStateException();
 		}
@@ -172,8 +131,7 @@ public abstract class PureJavaSprite extends Sprite {
 		this.field9373.resetBounds(this.field9362[0], this.field9362[1], this.field9362[2], this.field9362[3]);
 	}
 
-	@ObfuscatedName("ael.cg(FFFFFF)Z")
-	public boolean method15366(float arg0, float arg1, float arg2, float arg3, float arg4, float arg5) {
+    public boolean method15366(float arg0, float arg1, float arg2, float arg3, float arg4, float arg5) {
 		int var7 = this.field9358 + this.field9356 + this.field9355;
 		int var8 = this.field9372 + this.field9359 + this.field9360;
 		if (this.field9356 != var7 || this.field9372 != var8) {
@@ -281,8 +239,7 @@ public abstract class PureJavaSprite extends Sprite {
 		return true;
 	}
 
-	@ObfuscatedName("ael.ag(FFFFFFIIII)V")
-	public void method1433(float arg0, float arg1, float arg2, float arg3, float arg4, float arg5, int arg6, int arg7, int arg8, int arg9) {
+    public void method1433(float arg0, float arg1, float arg2, float arg3, float arg4, float arg5, int arg6, int arg7, int arg8, int arg9) {
 		if (this.field9373.method15654()) {
 			throw new IllegalStateException();
 		} else if (this.method15366(arg0, arg1, arg2, arg3, arg4, arg5)) {
@@ -306,8 +263,7 @@ public abstract class PureJavaSprite extends Sprite {
 		}
 	}
 
-	@ObfuscatedName("ael.al(FFFFFFILch;II)V")
-	public void method1454(float arg0, float arg1, float arg2, float arg3, float arg4, float arg5, int arg6, SpriteRelated arg7, int arg8, int arg9) {
+    public void method1454(float arg0, float arg1, float arg2, float arg3, float arg4, float arg5, int arg6, SpriteRelated arg7, int arg8, int arg9) {
 		if (this.field9373.method15654()) {
 			throw new IllegalStateException();
 		} else if (this.method15366(arg0, arg1, arg2, arg3, arg4, arg5)) {
@@ -316,24 +272,17 @@ public abstract class PureJavaSprite extends Sprite {
 		}
 	}
 
-	@ObfuscatedName("ael.ce(II)V")
-	public abstract void method15354(int arg0, int arg1);
+    public abstract void method15354(int arg0, int arg1);
 
-	@ObfuscatedName("ael.v(IILch;II)V")
-	public abstract void method1444(int arg0, int arg1, SpriteRelated arg2, int arg3, int arg4);
+    public abstract void method1444(int arg0, int arg1, SpriteRelated arg2, int arg3, int arg4);
 
-	@ObfuscatedName("ael.y(IIIIIIII)V")
-	public abstract void drawTintedScaled(int arg0, int arg1, int arg2, int arg3, int arg4, int arg5, int arg6, int arg7);
+    public abstract void drawTintedScaled(int arg0, int arg1, int arg2, int arg3, int arg4, int arg5, int arg6, int arg7);
 
-	@ObfuscatedName("ael.u(IIII[III)V")
-	public abstract void method1469(int arg0, int arg1, int arg2, int arg3, int[] arg4, int arg5, int arg6);
+    public abstract void method1469(int arg0, int arg1, int arg2, int arg3, int[] arg4, int arg5, int arg6);
 
-	@ObfuscatedName("ael.cu([I[III)V")
-	public abstract void method15356(int[] arg0, int[] arg1, int arg2, int arg3);
+    public abstract void method15356(int[] arg0, int[] arg1, int arg2, int arg3);
 
-	@ObfuscatedName("ael.cl(ZZZIIFIIIIIIZ)V")
-	public abstract void drawAsBillboard(boolean arg0, boolean arg1, boolean arg2, int arg3, int arg4, float arg5, int arg6, int arg7, int arg8, int arg9, int arg10, int arg11, boolean arg12);
+    public abstract void drawAsBillboard(boolean arg0, boolean arg1, boolean arg2, int arg3, int arg4, float arg5, int arg6, int arg7, int arg8, int arg9, int arg10, int arg11, boolean arg12);
 
-	@ObfuscatedName("ael.r(IIIII)V")
-	public abstract void drawSprite(int x, int y, int arg2, int rgb, int arg4);
+    public abstract void drawSprite(int x, int y, int arg2, int rgb, int arg4);
 }

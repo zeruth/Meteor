@@ -7,11 +7,9 @@ import rs2.client.Client;
 
 import java.math.BigInteger;
 
-@ObfuscatedName("qp")
 public class Js5MasterIndex {
 
-	@ObfuscatedName("qp.e")
-	public Js5MasterIndexArchiveData[] archiveData;
+    public Js5MasterIndexArchiveData[] archiveData;
 
 	public Js5MasterIndex(Packet buf, BigInteger exponent, BigInteger modulus) {
 		buf.pos = 5;

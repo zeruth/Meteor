@@ -13,104 +13,71 @@ import jaclib.memory.Stream;
 import jaclib.memory.heap.NativeHeapBuffer;
 import jaggl.OpenGL;
 
-@ObfuscatedName("aek")
 public class GlFloorModel extends FloorModel {
 
-	@ObfuscatedName("aek.u")
-	public final GlToolkit field9453;
+    public final GlToolkit field9453;
 
-	@ObfuscatedName("aek.z")
-	public int field9454;
+    public int field9454;
 
-	@ObfuscatedName("aek.p")
-	public int field9455;
+    public int field9455;
 
-	@ObfuscatedName("aek.d")
-	public int field9481;
+    public int field9481;
 
-	@ObfuscatedName("aek.c")
-	public final int field9457;
+    public final int field9457;
 
-	@ObfuscatedName("aek.r")
-	public int field9466;
+    public int field9466;
 
-	@ObfuscatedName("aek.v")
-	public int field9459;
+    public int field9459;
 
-	@ObfuscatedName("aek.o")
-	public short[][] field9460;
+    public short[][] field9460;
 
-	@ObfuscatedName("aek.s")
-	public GlFloorModelRelated1[][][] field9461;
+    public GlFloorModelRelated1[][][] field9461;
 
-	@ObfuscatedName("aek.y")
-	public int[][][] field9462;
+    public int[][][] field9462;
 
-	@ObfuscatedName("aek.q")
-	public int[][][] field9463;
+    public int[][][] field9463;
 
-	@ObfuscatedName("aek.x")
-	public int[][][] field9464;
+    public int[][][] field9464;
 
-	@ObfuscatedName("aek.b")
-	public int[][][] field9451;
+    public int[][][] field9451;
 
-	@ObfuscatedName("aek.h")
-	public int[][][] field9473;
+    public int[][][] field9473;
 
-	@ObfuscatedName("aek.a")
-	public int[][][] field9467;
+    public int[][][] field9467;
 
-	@ObfuscatedName("aek.g")
-	public byte[][] field9468;
+    public byte[][] field9468;
 
-	@ObfuscatedName("aek.i")
-	public GlFloorModelRelated3 field9465;
+    public GlFloorModelRelated3 field9465;
 
-	@ObfuscatedName("aek.j")
-	public LinkList field9470 = new LinkList();
+    public LinkList field9470 = new LinkList();
 
-	@ObfuscatedName("aek.t")
-	public Node[] field9471;
+    public Node[] field9471;
 
-	@ObfuscatedName("aek.ae")
-	public GlInterfaceRelated field9472;
+    public GlInterfaceRelated field9472;
 
-	@ObfuscatedName("aek.ag")
-	public GlRelated3 field9456;
+    public GlRelated3 field9456;
 
-	@ObfuscatedName("aek.ah")
-	public GlRelated3 field9474;
+    public GlRelated3 field9474;
 
-	@ObfuscatedName("aek.al")
-	public GlRelated3 field9480;
+    public GlRelated3 field9480;
 
-	@ObfuscatedName("aek.ac")
-	public GlRelated3 field9476;
+    public GlRelated3 field9476;
 
-	@ObfuscatedName("aek.ai")
-	public int field9477;
+    public int field9477;
 
-	@ObfuscatedName("aek.aw")
-	public int field9478;
+    public int field9478;
 
-	@ObfuscatedName("aek.as")
-	public byte[][] field9479;
+    public byte[][] field9479;
 
-	@ObfuscatedName("aek.at")
-	public float[][] field9469;
+    public float[][] field9469;
 
-	@ObfuscatedName("aek.ad")
-	public float[][] field9458;
+    public float[][] field9458;
 
-	@ObfuscatedName("aek.am")
-	public float[][] field9482;
+    public float[][] field9482;
 
-	@ObfuscatedName("aek.au")
-	public HashTable field9483;
+    public HashTable field9483;
 
-	@ObfuscatedName("aek.ar")
-	public static final float[] field9484 = new float[16];
+    public static final float[] field9484 = new float[16];
 
 	public GlFloorModel(GlToolkit arg0, int arg1, int arg2, int arg3, int arg4, int[][] arg5, int[][] arg6, int arg7) {
 		super(arg3, arg4, arg7, arg5);
@@ -147,8 +114,7 @@ public class GlFloorModel extends FloorModel {
 		}
 	}
 
-	@ObfuscatedName("aek.e(III)V")
-	public void setLevelShadeMap(int arg0, int arg1, int arg2) {
+    public void setLevelShadeMap(int arg0, int arg1, int arg2) {
 		int var4 = Math.min(this.field9479.length - 1, Math.max(0, arg0));
 		int var5 = Math.min(this.field9479[var4].length - 1, Math.max(0, arg1));
 		if ((this.field9479[var4][var5] & 0xFF) < arg2) {
@@ -156,8 +122,7 @@ public class GlFloorModel extends FloorModel {
 		}
 	}
 
-	@ObfuscatedName("aek.n(II[I[I[I[I[I[I[I[ILdy;Z)V")
-	public void method1557(int arg0, int arg1, int[] arg2, int[] arg3, int[] arg4, int[] arg5, int[] arg6, int[] arg7, int[] arg8, int[] arg9, WaterFogData arg10, boolean arg11) {
+    public void method1557(int arg0, int arg1, int[] arg2, int[] arg3, int[] arg4, int[] arg5, int[] arg6, int[] arg7, int[] arg8, int[] arg9, WaterFogData arg10, boolean arg11) {
 		MaterialList var13 = this.field9453.materialList;
 		if (arg5 != null && this.field9467 == null) {
 			this.field9467 = new int[this.field1235][this.field1234][];
@@ -207,8 +172,7 @@ public class GlFloorModel extends FloorModel {
 		this.field9477 += arg6.length;
 	}
 
-	@ObfuscatedName("aek.m(II[I[I[I[I[I[I[I[I[I[I[ILdy;Z)V")
-	public void addTileUnblended(int arg0, int arg1, int[] arg2, int[] arg3, int[] arg4, int[] arg5, int[] arg6, int[] arg7, int[] arg8, int[] arg9, int[] arg10, int[] arg11, int[] arg12, WaterFogData arg13, boolean arg14) {
+    public void addTileUnblended(int arg0, int arg1, int[] arg2, int[] arg3, int[] arg4, int[] arg5, int[] arg6, int[] arg7, int[] arg8, int[] arg9, int[] arg10, int[] arg11, int[] arg12, WaterFogData arg13, boolean arg14) {
 		int var16 = arg9.length;
 		int[] var17 = new int[var16 * 3];
 		int[] var18 = new int[var16 * 3];
@@ -272,8 +236,7 @@ public class GlFloorModel extends FloorModel {
 		this.method1557(arg0, arg1, var17, var23, var18, var24, var19, var20, var21, var22, arg13, arg14);
 	}
 
-	@ObfuscatedName("aek.k()V")
-	public void method1555() {
+    public void method1555() {
 		if (this.field9477 > 0) {
 			byte[][] var1 = new byte[this.field1235 + 1][this.field1234 + 1];
 			for (int var2 = 1; var2 < this.field1235; var2++) {
@@ -611,13 +574,11 @@ public class GlFloorModel extends FloorModel {
 		this.field9469 = null;
 	}
 
-	@ObfuscatedName("aek.f(III[[ZZI)V")
-	public void method1548(int arg0, int arg1, int arg2, boolean[][] arg3, boolean arg4, int arg5) {
+    public void method1548(int arg0, int arg1, int arg2, boolean[][] arg3, boolean arg4, int arg5) {
 		this.method15409(arg0, arg1, arg2, arg3, arg4, arg5);
 	}
 
-	@ObfuscatedName("aek.av(III[[ZZI)V")
-	public void method15409(int arg0, int arg1, int arg2, boolean[][] arg3, boolean arg4, int arg5) {
+    public void method15409(int arg0, int arg1, int arg2, boolean[][] arg3, boolean arg4, int arg5) {
 		if (this.field9471 == null) {
 			return;
 		}
@@ -693,8 +654,7 @@ public class GlFloorModel extends FloorModel {
 		OpenGL.glPopMatrix();
 	}
 
-	@ObfuscatedName("aek.w(IIIIIII[[Z)V")
-	public void method1526(int arg0, int arg1, int arg2, int arg3, int arg4, int arg5, int arg6, boolean[][] arg7) {
+    public void method1526(int arg0, int arg1, int arg2, int arg3, int arg4, int arg5, int arg6, boolean[][] arg7) {
 		RenderTarget var9 = this.field9453.getRenderTarget();
 		if (this.field9477 <= 0 || var9 == null) {
 			return;
@@ -796,8 +756,7 @@ public class GlFloorModel extends FloorModel {
 		}
 	}
 
-	@ObfuscatedName("aek.d(IILara;)Lara;")
-	public HardShadow method1531(int arg0, int arg1, HardShadow arg2) {
+    public HardShadow method1531(int arg0, int arg1, HardShadow arg2) {
 		if ((this.field9468[arg0][arg1] & 0x1) == 0) {
 			return null;
 		}
@@ -815,8 +774,7 @@ public class GlFloorModel extends FloorModel {
 		return var6;
 	}
 
-	@ObfuscatedName("aek.ao(Latk;II)V")
-	public void method15412(GlHardShadow arg0, int arg1, int arg2) {
+    public void method15412(GlHardShadow arg0, int arg1, int arg2) {
 		int[] var4 = this.field9464[arg1][arg2];
 		int[] var5 = this.field9451[arg1][arg2];
 		int var6 = var4.length;
@@ -844,8 +802,7 @@ public class GlFloorModel extends FloorModel {
 		}
 	}
 
-	@ObfuscatedName("aek.v(Lara;IIIIZ)Z")
-	public boolean method1535(HardShadow arg0, int arg1, int arg2, int arg3, int arg4, boolean arg5) {
+    public boolean method1535(HardShadow arg0, int arg1, int arg2, int arg3, int arg4, boolean arg5) {
 		if (this.field9465 == null || arg0 == null) {
 			return false;
 		} else {
@@ -855,8 +812,7 @@ public class GlFloorModel extends FloorModel {
 		}
 	}
 
-	@ObfuscatedName("aek.c(Lara;IIIIZ)V")
-	public void method1532(HardShadow arg0, int arg1, int arg2, int arg3, int arg4, boolean arg5) {
+    public void method1532(HardShadow arg0, int arg1, int arg2, int arg3, int arg4, boolean arg5) {
 		if (this.field9465 != null && arg0 != null) {
 			int var7 = arg1 - (this.field9453.field9915 * arg2 >> 8) >> this.field9453.field9874;
 			int var8 = arg3 - (this.field9453.field9953 * arg2 >> 8) >> this.field9453.field9874;
@@ -864,8 +820,7 @@ public class GlFloorModel extends FloorModel {
 		}
 	}
 
-	@ObfuscatedName("aek.r(Lara;IIIIZ)V")
-	public void method1543(HardShadow arg0, int arg1, int arg2, int arg3, int arg4, boolean arg5) {
+    public void method1543(HardShadow arg0, int arg1, int arg2, int arg3, int arg4, boolean arg5) {
 		if (this.field9465 != null && arg0 != null) {
 			int var7 = arg1 - (this.field9453.field9915 * arg2 >> 8) >> this.field9453.field9874;
 			int var8 = arg3 - (this.field9453.field9953 * arg2 >> 8) >> this.field9453.field9874;
@@ -873,8 +828,7 @@ public class GlFloorModel extends FloorModel {
 		}
 	}
 
-	@ObfuscatedName("aek.o(Lakf;[I)V")
-	public void method1549(Light arg0, int[] arg1) {
+    public void method1549(Light arg0, int[] arg1) {
 		this.field9470.addTail(new GlFloorModelRelated5(this.field9453, this, arg0, arg1));
 	}
 }

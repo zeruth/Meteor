@@ -6,41 +6,29 @@ import deob.ObfuscatedName;
 import java.io.EOFException;
 import java.io.IOException;
 
-@ObfuscatedName("abp")
 public class BufferedFile {
 
-	@ObfuscatedName("abp.n")
-	public FileOnDisk fileOnDisk;
+    public FileOnDisk fileOnDisk;
 
-	@ObfuscatedName("abp.m")
-	public byte[] field8765;
+    public byte[] field8765;
 
-	@ObfuscatedName("abp.k")
-	public long field8766 = -1L;
+    public long field8766 = -1L;
 
-	@ObfuscatedName("abp.f")
-	public int field8764;
+    public int field8764;
 
-	@ObfuscatedName("abp.w")
-	public byte[] field8768;
+    public byte[] field8768;
 
-	@ObfuscatedName("abp.l")
-	public long field8769 = -1L;
+    public long field8769 = -1L;
 
-	@ObfuscatedName("abp.u")
-	public int field8770 = 0;
+    public int field8770 = 0;
 
-	@ObfuscatedName("abp.z")
-	public long field8771;
+    public long field8771;
 
-	@ObfuscatedName("abp.p")
-	public long field8763;
+    public long field8763;
 
-	@ObfuscatedName("abp.d")
-	public long field8767;
+    public long field8767;
 
-	@ObfuscatedName("abp.c")
-	public long field8774;
+    public long field8774;
 
 	public BufferedFile(FileOnDisk arg0, int arg1, int arg2) throws IOException {
 		this.fileOnDisk = arg0;
@@ -50,32 +38,27 @@ public class BufferedFile {
 		this.field8771 = 0L;
 	}
 
-	@ObfuscatedName("abp.e(I)V")
-	public void method14834() throws IOException {
+    public void method14834() throws IOException {
 		this.method14822();
 		this.fileOnDisk.close();
 	}
 
-	@ObfuscatedName("abp.n(J)V")
-	public void method14824(long arg0) throws IOException {
+    public void method14824(long arg0) throws IOException {
 		if (arg0 < 0L) {
 			throw new IOException("");
 		}
 		this.field8771 = arg0;
 	}
 
-	@ObfuscatedName("abp.m(B)J")
-	public long method14825() {
+    public long method14825() {
 		return this.field8767;
 	}
 
-	@ObfuscatedName("abp.k([BI)V")
-	public void method14826(byte[] arg0) throws IOException {
+    public void method14826(byte[] arg0) throws IOException {
 		this.method14827(arg0, 0, arg0.length);
 	}
 
-	@ObfuscatedName("abp.f([BIII)V")
-	public void method14827(byte[] arg0, int arg1, int arg2) throws IOException {
+    public void method14827(byte[] arg0, int arg1, int arg2) throws IOException {
 		try {
 			if (arg1 + arg2 > arg0.length) {
 				throw new ArrayIndexOutOfBoundsException(arg1 + arg2 - arg0.length);
@@ -164,8 +147,7 @@ public class BufferedFile {
 		}
 	}
 
-	@ObfuscatedName("abp.w(B)V")
-	public void method14840() throws IOException {
+    public void method14840() throws IOException {
 		this.field8764 = 0;
 		if (this.field8774 != this.field8771) {
 			this.fileOnDisk.seek(this.field8771);
@@ -186,8 +168,7 @@ public class BufferedFile {
 		}
 	}
 
-	@ObfuscatedName("abp.l([BIII)V")
-	public void method14828(byte[] arg0, int arg1, int arg2) throws IOException {
+    public void method14828(byte[] arg0, int arg1, int arg2) throws IOException {
 		try {
 			if (this.field8771 + (long) arg2 > this.field8767) {
 				this.field8767 = this.field8771 + (long) arg2;
@@ -247,8 +228,7 @@ public class BufferedFile {
 		}
 	}
 
-	@ObfuscatedName("abp.u(B)V")
-	public void method14822() throws IOException {
+    public void method14822() throws IOException {
 		if (this.field8769 == -1L) {
 			return;
 		}

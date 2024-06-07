@@ -4,23 +4,17 @@ import deob.ObfuscatedName;
 
 import java.util.*;
 
-@ObfuscatedName("att")
 public class SortedQueue extends AbstractQueue {
 
-	@ObfuscatedName("att.e")
-	public SortedQueueEntry[] sortedEntries;
+    public SortedQueueEntry[] sortedEntries;
 
-	@ObfuscatedName("att.n")
-	public Map entries;
+    public Map entries;
 
-	@ObfuscatedName("att.m")
-	public int size;
+    public int size;
 
-	@ObfuscatedName("att.k")
-	public final Comparator comparator;
+    public final Comparator comparator;
 
-	@ObfuscatedName("att.f")
-	public int modCount;
+    public int modCount;
 
 	public SortedQueue(int arg0) {
 		this(arg0, (Comparator) null);
@@ -33,8 +27,7 @@ public class SortedQueue extends AbstractQueue {
 		this.comparator = arg1;
 	}
 
-	@ObfuscatedName("att.e(I)V")
-	public void method19607() {
+    public void method19607() {
 		int var1 = (this.sortedEntries.length << 1) + 1;
 		this.sortedEntries = (SortedQueueEntry[]) Arrays.copyOf(this.sortedEntries, var1);
 	}
@@ -109,8 +102,7 @@ public class SortedQueue extends AbstractQueue {
 		return true;
 	}
 
-	@ObfuscatedName("att.n(II)V")
-	public void heapifyUp(int arg0) {
+    public void heapifyUp(int arg0) {
 		SortedQueueEntry var2 = this.sortedEntries[arg0];
 		while (arg0 > 0) {
 			int var3 = arg0 - 1 >>> 1;
@@ -130,8 +122,7 @@ public class SortedQueue extends AbstractQueue {
 		this.sortedEntries[arg0].slot = arg0;
 	}
 
-	@ObfuscatedName("att.m(II)V")
-	public void heapifyDown(int arg0) {
+    public void heapifyDown(int arg0) {
 		SortedQueueEntry var2 = this.sortedEntries[arg0];
 		int var3 = this.size >>> 1;
 		while (arg0 < var3) {

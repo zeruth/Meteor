@@ -15,44 +15,34 @@ import java.awt.*;
 import java.util.Queue;
 import java.util.*;
 
-@ObfuscatedName("xc")
 public class ClientWatch {
 
-	@ObfuscatedName("xc.e")
 	public static long field7947 = -1L;
 
-	@ObfuscatedName("xc.n")
 	public static int field7945 = 0;
 
-	@ObfuscatedName("xc.m")
 	public static boolean field7944 = true;
 
-	@ObfuscatedName("xc.k")
 	public static final AppletMouseLogger field7949 = new AppletMouseLogger();
 
-	@ObfuscatedName("xc.f")
 	public static final NativeMouseLogger field7948 = new NativeMouseLogger();
 
-	@ObfuscatedName("xc.w")
 	public static Queue field7946 = new LinkedList();
 
 	public ClientWatch() throws Throwable {
 		throw new Error();
 	}
 
-	@ObfuscatedName("cr.e(I)V")
 	public static void method1427() {
 		if (NativeMouse.method5216()) {
 			NativeMouse.method17426(new NativeMouseLoggerNativeMouseListener());
 		}
 	}
 
-	@ObfuscatedName("arw.n(I)V")
 	public static void method19265() {
 		NativeMouse.method13850();
 	}
 
-	@ObfuscatedName("yu.m(S)V")
 	public static void method13845() {
 		field7949.method10260();
 		field7948.method10260();
@@ -60,7 +50,6 @@ public class ClientWatch {
 		field7944 = true;
 	}
 
-	@ObfuscatedName("ag.k(Lakm;I)V")
 	public static void method670(MouseEvent arg0) {
 		if (Client.isStateGame(Client.state)) {
 			field7949.method10261(arg0);
@@ -69,7 +58,6 @@ public class ClientWatch {
 		}
 	}
 
-	@ObfuscatedName("na.f(B)V")
 	public static void method5995() {
 		Queue var0 = field7946;
 		synchronized (field7946) {
@@ -103,7 +91,6 @@ public class ClientWatch {
 		}
 	}
 
-	@ObfuscatedName("wc.w(B)V")
 	public static void method9835() {
 		Queue var0 = field7946;
 		synchronized (field7946) {
@@ -117,7 +104,6 @@ public class ClientWatch {
 		}
 	}
 
-	@ObfuscatedName("gd.l(I)V")
 	public static void method3648() {
 		method5995();
 		field7949.method10280();

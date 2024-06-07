@@ -10,17 +10,13 @@ import java.awt.image.BufferedImage;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 
-@ObfuscatedName("dk")
 public abstract class BasicTextureListInner implements TextureList {
 
-	@ObfuscatedName("dk.e")
-	public static double field1432 = -1.0D;
+    public static double field1432 = -1.0D;
 
-	@ObfuscatedName("dk.n")
-	public static final int[] field1433 = new int[256];
+    public static final int[] field1433 = new int[256];
 
-	@ObfuscatedName("kp.e([ID)V")
-	public static void method5366(int[] arg0, double arg1) {
+    public static void method5366(int[] arg0, double arg1) {
 		if (field1432 != arg1) {
 			for (int var3 = 0; var3 < 256; var3++) {
 				int var4 = (int) (Math.pow((double) var3 / 255.0D, arg1) * 255.0D);
@@ -36,8 +32,7 @@ public abstract class BasicTextureListInner implements TextureList {
 		}
 	}
 
-	@ObfuscatedName("dk.k(Lvk;ID)[I")
-	public int[] method1992(TextureRelated2 arg0, int arg1, double arg2) {
+    public int[] method1992(TextureRelated2 arg0, int arg1, double arg2) {
 		int[] var5 = this.method1979(arg0, arg1, arg2);
 		if (var5 == null) {
 			return null;
@@ -52,8 +47,7 @@ public abstract class BasicTextureListInner implements TextureList {
 		return var5;
 	}
 
-	@ObfuscatedName("dk.f(Lvk;ID)[I")
-	public int[] method1979(TextureRelated2 arg0, int arg1, double arg2) {
+    public int[] method1979(TextureRelated2 arg0, int arg1, double arg2) {
 		byte[] var5 = this.method2002(arg0, arg1);
 		if (var5 == null) {
 			return null;
@@ -101,8 +95,7 @@ public abstract class BasicTextureListInner implements TextureList {
 		}
 	}
 
-	@ObfuscatedName("dk.w(Lvk;IID)[F")
-	public float[] method1980(TextureRelated2 arg0, int arg1, int arg2, double arg3) {
+    public float[] method1980(TextureRelated2 arg0, int arg1, int arg2, double arg3) {
 		if (TextureRelated2.field7586 != arg0) {
 			return null;
 		}
@@ -147,27 +140,22 @@ public abstract class BasicTextureListInner implements TextureList {
 		return var13;
 	}
 
-	@ObfuscatedName("dk.l(B)V")
-	public void method1982() {
+    public void method1982() {
 	}
 
-	@ObfuscatedName("dk.u(Lvk;IFIIZI)[I")
-	public int[] getTexture(TextureRelated2 arg0, int arg1, float arg2, int arg3, int arg4, boolean arg5) {
+    public int[] getTexture(TextureRelated2 arg0, int arg1, float arg2, int arg3, int arg4, boolean arg5) {
 		return this.method1992(arg0, arg1, (double) arg2);
 	}
 
-	@ObfuscatedName("dk.z(Lvk;IFIIZB)[I")
-	public int[] getSpecialTexture(TextureRelated2 arg0, int arg1, float arg2, int arg3, int arg4, boolean arg5) {
+    public int[] getSpecialTexture(TextureRelated2 arg0, int arg1, float arg2, int arg3, int arg4, boolean arg5) {
 		return this.method1979(arg0, arg1, (double) arg2);
 	}
 
-	@ObfuscatedName("dk.p(Lvk;IIFIIZB)[F")
-	public float[] method1984(TextureRelated2 arg0, int arg1, int arg2, float arg3, int arg4, int arg5, boolean arg6) {
+    public float[] method1984(TextureRelated2 arg0, int arg1, int arg2, float arg3, int arg4, int arg5, boolean arg6) {
 		return this.method1980(arg0, arg1, arg2, (double) arg3);
 	}
 
-	@ObfuscatedName("dk.d([BZI)[I")
-	public int[] method1996(byte[] arg0, boolean arg1) throws IOException {
+    public int[] method1996(byte[] arg0, boolean arg1) throws IOException {
 		BufferedImage var3 = ImageIO.read(new ByteArrayInputStream(arg0));
 		if (var3 == null) {
 			return null;
@@ -189,8 +177,7 @@ public abstract class BasicTextureListInner implements TextureList {
 		return var4;
 	}
 
-	@ObfuscatedName("abu.c(Ljava/awt/image/BufferedImage;I)[I")
-	public static int[] method14804(BufferedImage arg0) {
+    public static int[] method14804(BufferedImage arg0) {
 		if (arg0.getType() != 10 && arg0.getType() != 0) {
 			return arg0.getRGB(0, 0, arg0.getWidth(), arg0.getHeight(), null, 0, arg0.getWidth());
 		}
@@ -210,9 +197,7 @@ public abstract class BasicTextureListInner implements TextureList {
 		return var3;
 	}
 
-	@ObfuscatedName("dk.m(Lvk;IILvc;FIIZI)Z")
-	public abstract boolean loadTexture(TextureRelated2 arg0, int arg1, int arg2, TextureRelated1 arg3, float arg4, int arg5, int arg6, boolean arg7);
+    public abstract boolean loadTexture(TextureRelated2 arg0, int arg1, int arg2, TextureRelated1 arg3, float arg4, int arg5, int arg6, boolean arg7);
 
-	@ObfuscatedName("dk.n(Lvk;IB)[B")
-	public abstract byte[] method2002(TextureRelated2 arg0, int arg1);
+    public abstract byte[] method2002(TextureRelated2 arg0, int arg1);
 }

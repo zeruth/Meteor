@@ -2,22 +2,18 @@ package com.jagex.core.datastruct;
 
 import deob.ObfuscatedName;
 
-@ObfuscatedName("aas")
 public class LinkQueue {
 
-	@ObfuscatedName("aas.e")
-	public Link head = new Link();
+    public Link head = new Link();
 
-	@ObfuscatedName("aas.n")
-	public Link peeked;
+    public Link peeked;
 
 	public LinkQueue() {
 		this.head.prev = this.head;
 		this.head.next = this.head;
 	}
 
-	@ObfuscatedName("aas.e(I)V")
-	public void clear() {
+    public void clear() {
 		while (true) {
 			Link node = this.head.prev;
 			if (this.head == node) {
@@ -28,8 +24,7 @@ public class LinkQueue {
 		}
 	}
 
-	@ObfuscatedName("aas.n(Ltc;B)V")
-	public void pushBack(Link node) {
+    public void pushBack(Link node) {
 		if (node.next != null) {
 			node.unlink();
 		}
@@ -39,8 +34,7 @@ public class LinkQueue {
 		node.prev.next = node;
 	}
 
-	@ObfuscatedName("aas.m(Ltc;I)V")
-	public void pushFront(Link node) {
+    public void pushFront(Link node) {
 		if (node.next != null) {
 			node.unlink();
 		}
@@ -50,8 +44,7 @@ public class LinkQueue {
 		node.prev.next = node;
 	}
 
-	@ObfuscatedName("adz.k(Ltc;Ltc;B)V")
-	public static void pushNode(Link node, Link head) {
+    public static void pushNode(Link node, Link head) {
 		if (node.next != null) {
 			node.unlink();
 		}
@@ -61,8 +54,7 @@ public class LinkQueue {
 		node.prev.next = node;
 	}
 
-	@ObfuscatedName("aas.f(I)Ltc;")
-	public Link pollFront() {
+    public Link pollFront() {
 		Link node = this.head.prev;
 		if (this.head == node) {
 			return null;
@@ -72,8 +64,7 @@ public class LinkQueue {
 		}
 	}
 
-	@ObfuscatedName("aas.w(S)Ltc;")
-	public Link peekFront() {
+    public Link peekFront() {
 		Link node = this.head.prev;
 		if (this.head == node) {
 			this.peeked = null;
@@ -84,8 +75,7 @@ public class LinkQueue {
 		}
 	}
 
-	@ObfuscatedName("aas.l(I)Ltc;")
-	public Link prev() {
+    public Link prev() {
 		Link node = this.peeked;
 		if (this.head == node) {
 			this.peeked = null;
@@ -96,8 +86,7 @@ public class LinkQueue {
 		}
 	}
 
-	@ObfuscatedName("aas.u(B)Z")
-	public boolean isEmpty() {
+    public boolean isEmpty() {
 		return this.head.prev == this.head;
 	}
 }

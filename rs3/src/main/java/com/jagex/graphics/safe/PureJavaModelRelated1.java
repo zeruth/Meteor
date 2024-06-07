@@ -2,17 +2,13 @@ package com.jagex.graphics.safe;
 
 import deob.ObfuscatedName;
 
-@ObfuscatedName("aa")
 public class PureJavaModelRelated1 {
 
-	@ObfuscatedName("aa.e")
-	public int field871;
+    public int field871;
 
-	@ObfuscatedName("aa.n")
-	public int field869;
+    public int field869;
 
-	@ObfuscatedName("aa.m")
-	public int field870;
+    public int field870;
 
 	public PureJavaModelRelated1() {
 	}

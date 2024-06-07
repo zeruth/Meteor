@@ -7,47 +7,33 @@ import sun.misc.Unsafe;
 
 import java.nio.ByteBuffer;
 
-@ObfuscatedName("md")
 public class GpuRendererRelated6 {
 
-	@ObfuscatedName("md.e")
-	public final GpuToolkit field3389;
+    public final GpuToolkit field3389;
 
-	@ObfuscatedName("md.n")
-	public GpuImageRelated field3391 = GpuImageRelated.field3235;
+    public GpuImageRelated field3391 = GpuImageRelated.field3235;
 
-	@ObfuscatedName("md.m")
-	public GpuImageRelated field3383;
+    public GpuImageRelated field3383;
 
-	@ObfuscatedName("md.k")
-	public int field3387 = 128;
+    public int field3387 = 128;
 
-	@ObfuscatedName("md.f")
-	public int field3385 = 0;
+    public int field3385 = 0;
 
-	@ObfuscatedName("md.w")
-	public float[] field3386 = new float[this.field3387 * 16];
+    public float[] field3386 = new float[this.field3387 * 16];
 
-	@ObfuscatedName("md.l")
-	public GpuTexture[] field3382 = new GpuTexture[this.field3387];
+    public GpuTexture[] field3382 = new GpuTexture[this.field3387];
 
-	@ObfuscatedName("md.u")
-	public int[] field3388 = new int[this.field3387];
+    public int[] field3388 = new int[this.field3387];
 
-	@ObfuscatedName("md.z")
-	public int field3384;
+    public int field3384;
 
-	@ObfuscatedName("md.p")
-	public VertexBuffer field3390;
+    public VertexBuffer field3390;
 
-	@ObfuscatedName("md.d")
-	public VertexDeclaration field3381;
+    public VertexDeclaration field3381;
 
-	@ObfuscatedName("md.c")
-	public GpuIndexBuffer field3392;
+    public GpuIndexBuffer field3392;
 
-	@ObfuscatedName("md.r")
-	public int[] field3393 = new int[4];
+    public int[] field3393 = new int[4];
 
 	public GpuRendererRelated6(GpuToolkit arg0, int arg1) {
 		this.field3389 = arg0;
@@ -74,8 +60,7 @@ public class GpuRendererRelated6 {
 		this.field3385 = 0;
 	}
 
-	@ObfuscatedName("md.e()V")
-	public void method5795() {
+    public void method5795() {
 		this.field3390.delete();
 		this.field3392.delete();
 		this.field3390 = null;
@@ -84,8 +69,7 @@ public class GpuRendererRelated6 {
 		this.field3385 = 0;
 	}
 
-	@ObfuscatedName("md.n()V")
-	public void method5796() {
+    public void method5796() {
 		if (this.field3385 == 0) {
 			return;
 		}
@@ -147,8 +131,7 @@ public class GpuRendererRelated6 {
 		this.field3385 = 0;
 	}
 
-	@ObfuscatedName("md.m(FFFFFFFFLlz;I)V")
-	public void method5797(float arg0, float arg1, float arg2, float arg3, float arg4, float arg5, float arg6, float arg7, GpuTexture arg8, int arg9) {
+    public void method5797(float arg0, float arg1, float arg2, float arg3, float arg4, float arg5, float arg6, float arg7, GpuTexture arg8, int arg9) {
 		if ((arg9 & 0xFF000000) == 0) {
 			return;
 		}
@@ -213,8 +196,7 @@ public class GpuRendererRelated6 {
 		}
 	}
 
-	@ObfuscatedName("md.k(FFFFFFFFFFFFFFFFLlz;I)V")
-	public void method5806(float arg0, float arg1, float arg2, float arg3, float arg4, float arg5, float arg6, float arg7, float arg8, float arg9, float arg10, float arg11, float arg12, float arg13, float arg14, float arg15, GpuTexture arg16, int arg17) {
+    public void method5806(float arg0, float arg1, float arg2, float arg3, float arg4, float arg5, float arg6, float arg7, float arg8, float arg9, float arg10, float arg11, float arg12, float arg13, float arg14, float arg15, GpuTexture arg16, int arg17) {
 		if ((arg17 & 0xFF000000) == 0) {
 			return;
 		}
@@ -291,8 +273,7 @@ public class GpuRendererRelated6 {
 		}
 	}
 
-	@ObfuscatedName("md.f()V")
-	public void method5798() {
+    public void method5798() {
 		if (this.field3387 != this.field3385) {
 			return;
 		}
@@ -312,34 +293,29 @@ public class GpuRendererRelated6 {
 		this.field3388 = var4;
 	}
 
-	@ObfuscatedName("md.w(F)F")
-	public float method5799(float arg0) {
+    public float method5799(float arg0) {
 		int var2 = this.field3389.getRenderTarget().getWidth();
 		return (arg0 + this.field3389.method15954()) / (float) var2 * 2.0F - 1.0F;
 	}
 
-	@ObfuscatedName("md.l(F)F")
-	public float method5800(float arg0) {
+    public float method5800(float arg0) {
 		int var2 = this.field3389.getRenderTarget().getHeight();
 		return (1.0F - (arg0 + this.field3389.method15954()) / (float) var2) * 2.0F - 1.0F;
 	}
 
-	@ObfuscatedName("md.u()V")
-	public void method5805() {
+    public void method5805() {
 		this.field3383 = this.field3391;
 		this.field3391 = GpuImageRelated.field3236;
 	}
 
-	@ObfuscatedName("md.z()V")
-	public void method5802() {
+    public void method5802() {
 		if (this.field3383 != null) {
 			this.field3391 = this.field3383;
 			this.field3383 = null;
 		}
 	}
 
-	@ObfuscatedName("md.p()Llm;")
-	public GpuImageRelated method5803() {
+    public GpuImageRelated method5803() {
 		return this.field3391;
 	}
 }

@@ -6,24 +6,19 @@ import java.io.File;
 import java.io.RandomAccessFile;
 import java.util.Hashtable;
 
-@ObfuscatedName("sn")
 public class CacheUtil {
 
-	@ObfuscatedName("sn.e")
-	public static boolean field6627 = false;
+    public static boolean field6627 = false;
 
-	@ObfuscatedName("sn.n")
-	public static File field6626;
+    public static File field6626;
 
-	@ObfuscatedName("sn.m")
-	public static Hashtable field6628 = new Hashtable(16);
+    public static Hashtable field6628 = new Hashtable(16);
 
 	public CacheUtil() throws Throwable {
 		throw new Error();
 	}
 
-	@ObfuscatedName("gn.e(Ljava/io/File;B)V")
-	public static void method3546(File arg0) {
+    public static void method3546(File arg0) {
 		field6626 = arg0;
 		if (!field6626.exists()) {
 			throw new RuntimeException("");
@@ -31,13 +26,11 @@ public class CacheUtil {
 		field6627 = true;
 	}
 
-	@ObfuscatedName("wt.n(I)Ljava/lang/String;")
-	public static String method9844() {
+    public static String method9844() {
 		return field6626.getAbsolutePath();
 	}
 
-	@ObfuscatedName("aou.m(Ljava/lang/String;I)Ljava/io/File;")
-	public static File method18852(String arg0) {
+    public static File method18852(String arg0) {
 		if (!field6627) {
 			throw new RuntimeException("");
 		}

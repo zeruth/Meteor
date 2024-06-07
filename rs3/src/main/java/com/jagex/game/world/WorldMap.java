@@ -35,219 +35,148 @@ import java.util.Arrays;
 import java.util.Date;
 import java.util.Iterator;
 
-@ObfuscatedName("tf")
 public class WorldMap {
 
-	@ObfuscatedName("tf.e")
-	public static ConfigTypeList field6839 = null;
+    public static ConfigTypeList field6839 = null;
 
-	@ObfuscatedName("tf.n")
-	public static ConfigTypeList field6849 = null;
+    public static ConfigTypeList field6849 = null;
 
-	@ObfuscatedName("tf.m")
-	public static LocTypeList field6785;
+    public static LocTypeList field6785;
 
-	@ObfuscatedName("tf.k")
-	public static MapElementTypeList field6788;
+    public static MapElementTypeList field6788;
 
-	@ObfuscatedName("tf.f")
-	public static MSITypeList field6789;
+    public static MSITypeList field6789;
 
-	@ObfuscatedName("tf.w")
-	public static VarIntDomain field6790;
+    public static VarIntDomain field6790;
 
-	@ObfuscatedName("tf.l")
-	public static VariableTypeProvider field6791;
+    public static VariableTypeProvider field6791;
 
-	@ObfuscatedName("tf.u")
-	public static WorldMapDefaults worldMapDefaults;
+    public static WorldMapDefaults worldMapDefaults;
 
-	@ObfuscatedName("tf.z")
-	public static WorldMapAreaMetadata currentWorldMap;
+    public static WorldMapAreaMetadata currentWorldMap;
 
-	@ObfuscatedName("tf.p")
-	public static Js5 field6794;
+    public static Js5 field6794;
 
-	@ObfuscatedName("tf.d")
-	public static Js5 field6795;
+    public static Js5 field6795;
 
-	@ObfuscatedName("tf.c")
-	public static HashTable field6796 = new HashTable(16);
+    public static HashTable field6796 = new HashTable(16);
 
-	@ObfuscatedName("tf.r")
-	public static int field6797 = (int) (Math.random() * 11.0D) - 5;
+    public static int field6797 = (int) (Math.random() * 11.0D) - 5;
 
-	@ObfuscatedName("tf.v")
-	public static int field6798 = (int) (Math.random() * 17.0D) - 8;
+    public static int field6798 = (int) (Math.random() * 17.0D) - 8;
 
-	@ObfuscatedName("tf.o")
-	public static byte[][][] field6799;
+    public static byte[][][] field6799;
 
-	@ObfuscatedName("tf.s")
-	public static int field6840;
+    public static int field6840;
 
-	@ObfuscatedName("tf.y")
-	public static int[] field6816 = new int[1];
+    public static int[] field6816 = new int[1];
 
-	@ObfuscatedName("tf.q")
-	public static byte[] field6850 = new byte[1];
+    public static byte[] field6850 = new byte[1];
 
-	@ObfuscatedName("tf.x")
-	public static float field6803;
+    public static float field6803;
 
-	@ObfuscatedName("tf.b")
-	public static float field6804;
+    public static float field6804;
 
-	@ObfuscatedName("tf.h")
-	public static WorldMapRelated field6805;
+    public static WorldMapRelated field6805;
 
-	@ObfuscatedName("tf.a")
-	public static LinkList field6806 = new LinkList();
+    public static LinkList field6806 = new LinkList();
 
-	@ObfuscatedName("tf.g")
-	public static int field6786;
+    public static int field6786;
 
-	@ObfuscatedName("tf.i")
-	public static int field6808;
+    public static int field6808;
 
-	@ObfuscatedName("tf.j")
-	public static int field6812;
+    public static int field6812;
 
-	@ObfuscatedName("tf.t")
-	public static int field6810;
+    public static int field6810;
 
-	@ObfuscatedName("tf.ae")
-	public static int[] field6854;
+    public static int[] field6854;
 
-	@ObfuscatedName("tf.ag")
-	public static short[] field6809;
+    public static short[] field6809;
 
-	@ObfuscatedName("tf.ah")
-	public static byte[] field6813;
+    public static byte[] field6813;
 
-	@ObfuscatedName("tf.al")
-	public static short[] field6814;
+    public static short[] field6814;
 
-	@ObfuscatedName("tf.ac")
-	public static short[] field6815;
+    public static short[] field6815;
 
-	@ObfuscatedName("tf.ai")
-	public static byte[] field6802;
+    public static byte[] field6802;
 
-	@ObfuscatedName("tf.aw")
-	public static Object[] field6817;
+    public static Object[] field6817;
 
-	@ObfuscatedName("tf.as")
-	public static byte[] field6818;
+    public static byte[] field6818;
 
-	@ObfuscatedName("tf.at")
-	public static boolean field6819 = true;
+    public static boolean field6819 = true;
 
-	@ObfuscatedName("tf.ad")
-	public static boolean[][] field6820;
+    public static boolean[][] field6820;
 
-	@ObfuscatedName("tf.am")
-	public static int[][] field6800 = new int[][] { { 2, 2, 0, 0, 0, 0 }, { 2, 2, 2, 0, 0, 0 }, { 1, 2, 2, 2, 0, 0 }, { 1, 1, 1, 2, 2, 0 }, { 1, 1, 1, 2, 2, 2 }, { 1, 1, 1, 1, 2, 2 } };
+    public static int[][] field6800 = new int[][] { { 2, 2, 0, 0, 0, 0 }, { 2, 2, 2, 0, 0, 0 }, { 1, 2, 2, 2, 0, 0 }, { 1, 1, 1, 2, 2, 0 }, { 1, 1, 1, 2, 2, 2 }, { 1, 1, 1, 1, 2, 2 } };
 
-	@ObfuscatedName("tf.au")
-	public static final int NORTH = CompassPoint.NORTH.getId();
+    public static final int NORTH = CompassPoint.NORTH.getId();
 
-	@ObfuscatedName("tf.ar")
-	public static final int NORTHWEST = CompassPoint.NORTHWEST.getId();
+    public static final int NORTHWEST = CompassPoint.NORTHWEST.getId();
 
-	@ObfuscatedName("tf.ap")
-	public static final int NORTHEAST = CompassPoint.NORTHEAST.getId();
+    public static final int NORTHEAST = CompassPoint.NORTHEAST.getId();
 
-	@ObfuscatedName("tf.aq")
-	public static final int SOUTHWEST = CompassPoint.SOUTHWEST.getId();
+    public static final int SOUTHWEST = CompassPoint.SOUTHWEST.getId();
 
-	@ObfuscatedName("tf.ax")
-	public static final int SOUTH = CompassPoint.SOUTH.getId();
+    public static final int SOUTH = CompassPoint.SOUTH.getId();
 
-	@ObfuscatedName("tf.av")
-	public static final int WEST = CompassPoint.WEST.getId();
+    public static final int WEST = CompassPoint.WEST.getId();
 
-	@ObfuscatedName("tf.ao")
-	public static final int EAST = CompassPoint.EAST.getId();
+    public static final int EAST = CompassPoint.EAST.getId();
 
-	@ObfuscatedName("tf.aj")
-	public static final int SOUTHEAST = CompassPoint.SOUTHEAST.getId();
+    public static final int SOUTHEAST = CompassPoint.SOUTHEAST.getId();
 
-	@ObfuscatedName("tf.ay")
-	public static java.util.HashMap[][][] field6830;
+    public static java.util.HashMap[][][] field6830;
 
-	@ObfuscatedName("tf.ab")
-	public static SoftLruHashTable field6831 = new SoftLruHashTable(4096, 256);
+    public static SoftLruHashTable field6831 = new SoftLruHashTable(4096, 256);
 
-	@ObfuscatedName("tf.az")
-	public static SoftLruHashTable field6832 = new SoftLruHashTable(4096, 1024);
+    public static SoftLruHashTable field6832 = new SoftLruHashTable(4096, 1024);
 
-	@ObfuscatedName("tf.aa")
-	public static SoftLruHashTable field6833 = field6831;
+    public static SoftLruHashTable field6833 = field6831;
 
-	@ObfuscatedName("tf.ak")
-	public static ArrayList field6835 = new ArrayList();
+    public static ArrayList field6835 = new ArrayList();
 
-	@ObfuscatedName("tf.an")
-	public static int field6836 = 262144;
+    public static int field6836 = 262144;
 
-	@ObfuscatedName("tf.bf")
-	public static int[] field6838;
+    public static int[] field6838;
 
-	@ObfuscatedName("tf.bl")
-	public static int field6793 = 0;
+    public static int field6793 = 0;
 
-	@ObfuscatedName("tf.bk")
-	public static int field6828 = 5;
+    public static int field6828 = 5;
 
-	@ObfuscatedName("tf.bh")
-	public static Packet field6821 = null;
+    public static Packet field6821 = null;
 
-	@ObfuscatedName("tf.bx")
-	public static Packet field6841 = null;
+    public static Packet field6841 = null;
 
-	@ObfuscatedName("tf.bd")
-	public static boolean field6842 = true;
+    public static boolean field6842 = true;
 
-	@ObfuscatedName("tf.bc")
-	public static int[] field6787;
+    public static int[] field6787;
 
-	@ObfuscatedName("tf.bi")
-	public static int[] field6844;
+    public static int[] field6844;
 
-	@ObfuscatedName("tf.bn")
-	public static int field6845;
+    public static int field6845;
 
-	@ObfuscatedName("tf.bt")
-	public static int field6846;
+    public static int field6846;
 
 
-	@ObfuscatedName("tf.bq")
-	public static int field6847;
+    public static int field6847;
 
-	@ObfuscatedName("tf.bm")
-	public static int field6848;
+    public static int field6848;
 
-	@ObfuscatedName("tf.bb")
-	public static int field6801;
+    public static int field6801;
 
-	@ObfuscatedName("tf.be")
-	public static int field6837;
+    public static int field6837;
 
-	@ObfuscatedName("tf.by")
-	public static int field6851;
+    public static int field6851;
 
-	@ObfuscatedName("tf.bu")
-	public static int field6852;
+    public static int field6852;
 
-	@ObfuscatedName("tf.bw")
-	public static int field6853;
+    public static int field6853;
 
-	@ObfuscatedName("tf.bo")
-	public static int field6807;
+    public static int field6807;
 
-	@ObfuscatedName("tf.bz")
-	public static boolean[] field6855;
+    public static boolean[] field6855;
 
 	static {
 		new Date();
@@ -260,8 +189,7 @@ public class WorldMap {
 		throw new Error();
 	}
 
-	@ObfuscatedName("tf.e(Lpy;Lpy;Laoa;Laoe;Laop;Laoc;Laox;Lem;Lep;)V")
-	public static void method8506(Js5 arg0, Js5 arg1, FloorOverlayTypeList arg2, FloorUnderlayTypeList arg3, LocTypeList arg4, MapElementTypeList arg5, MSITypeList arg6, VariableTypeProvider arg7, VarIntDomain arg8) {
+    public static void method8506(Js5 arg0, Js5 arg1, FloorOverlayTypeList arg2, FloorUnderlayTypeList arg3, LocTypeList arg4, MapElementTypeList arg5, MSITypeList arg6, VariableTypeProvider arg7, VarIntDomain arg8) {
 		field6794 = arg0;
 		field6795 = arg1;
 		field6839 = arg2;
@@ -282,8 +210,7 @@ public class WorldMap {
 		ColourUtils.method10156(true, false);
 	}
 
-	@ObfuscatedName("tf.n()V")
-	public static void method8619() {
+    public static void method8619() {
 		field6809 = new short[field6812 * field6810];
 		field6815 = new short[field6812 * field6810];
 		field6802 = new byte[field6812 * field6810];
@@ -294,8 +221,7 @@ public class WorldMap {
 		field6820 = new boolean[field6812 / 8][field6810 / 8];
 	}
 
-	@ObfuscatedName("tf.m()V")
-	public static void method8508() {
+    public static void method8508() {
 		field6809 = null;
 		field6813 = null;
 		field6814 = null;
@@ -308,8 +234,7 @@ public class WorldMap {
 		field6820 = null;
 	}
 
-	@ObfuscatedName("tf.k(I)V")
-	public static void method8521(int arg0) {
+    public static void method8521(int arg0) {
 		WorldMapAreaMetadata var1 = (WorldMapAreaMetadata) field6796.get((long) arg0);
 		if (var1 != null && currentWorldMap != var1) {
 			currentWorldMap = var1;
@@ -317,8 +242,7 @@ public class WorldMap {
 		}
 	}
 
-	@ObfuscatedName("tf.f(Lasy;)Z")
-	public static boolean method8510(WorldMapAreaMetadata arg0) {
+    public static boolean method8510(WorldMapAreaMetadata arg0) {
 		if (arg0 == null || currentWorldMap == arg0) {
 			return false;
 		} else {
@@ -328,8 +252,7 @@ public class WorldMap {
 		}
 	}
 
-	@ObfuscatedName("tf.w(II)Lasy;")
-	public static WorldMapAreaMetadata getMap(int arg0, int arg1) {
+    public static WorldMapAreaMetadata getMap(int arg0, int arg1) {
 		for (WorldMapAreaMetadata var2 = (WorldMapAreaMetadata) field6796.head(); var2 != null; var2 = (WorldMapAreaMetadata) field6796.next()) {
 			if (var2.field12350 && var2.method19469(arg0, arg1)) {
 				return var2;
@@ -338,13 +261,11 @@ public class WorldMap {
 		return null;
 	}
 
-	@ObfuscatedName("tf.l(I)Lasy;")
-	public static WorldMapAreaMetadata getMapByName(int arg0) {
+    public static WorldMapAreaMetadata getMapByName(int arg0) {
 		return (WorldMapAreaMetadata) field6796.get((long) arg0);
 	}
 
-	@ObfuscatedName("tf.u(II)Laap;")
-	public static SecondaryLinkedList method8513(int arg0, int arg1) {
+    public static SecondaryLinkedList method8513(int arg0, int arg1) {
 		SecondaryLinkedList var2 = new SecondaryLinkedList();
 		for (WorldMapAreaMetadata var3 = (WorldMapAreaMetadata) field6796.head(); var3 != null; var3 = (WorldMapAreaMetadata) field6796.next()) {
 			if (var3.field12350 && var3.method19469(arg0, arg1)) {
@@ -354,20 +275,17 @@ public class WorldMap {
 		return var2;
 	}
 
-	@ObfuscatedName("tf.z(Ldf;II)V")
-	public static void method8514(MaterialList arg0, int arg1, int arg2) {
+    public static void method8514(MaterialList arg0, int arg1, int arg2) {
 		for (int var3 = 0; var3 < field6839.length(); var3++) {
 			field6854[var3 + 1] = method8515(arg0, var3, arg1, arg2);
 		}
 	}
 
-	@ObfuscatedName("tf.p(Ldf;III)I")
-	public static int method8515(MaterialList arg0, int arg1, int arg2, int arg3) {
+    public static int method8515(MaterialList arg0, int arg1, int arg2, int arg3) {
 		return method8587(field6839, arg0, arg1, arg2, arg3);
 	}
 
-	@ObfuscatedName("tf.d(Lao;Ldf;III)I")
-	public static int method8587(ConfigTypeList arg0, MaterialList arg1, int arg2, int arg3, int arg4) {
+    public static int method8587(ConfigTypeList arg0, MaterialList arg1, int arg2, int arg3, int arg4) {
 		FloorOverlayType var5 = (FloorOverlayType) arg0.list(arg2);
 		if (var5 == null) {
 			return 0;
@@ -405,8 +323,7 @@ public class WorldMap {
 		return var10;
 	}
 
-	@ObfuscatedName("tf.c(Ldh;IIZ)Z")
-	public static boolean method8542(Toolkit arg0, int arg1, int arg2, boolean arg3) {
+    public static boolean method8542(Toolkit arg0, int arg1, int arg2, boolean arg3) {
 		long var4 = MonotonicTime.get();
 		if (field6793 == 0) {
 			if (worldMapDefaults.field7695 == currentWorldMap.id) {
@@ -520,8 +437,7 @@ public class WorldMap {
 		}
 	}
 
-	@ObfuscatedName("tf.r(Ldh;Lalw;IIII[I[I)V")
-	public static void method8518(Toolkit arg0, Packet arg1, int arg2, int arg3, int arg4, int arg5, int[] arg6, int[] arg7) {
+    public static void method8518(Toolkit arg0, Packet arg1, int arg2, int arg3, int arg4, int arg5, int[] arg6, int[] arg7) {
 		int var8 = arg1.g1();
 		if ((var8 & 0x1) == 0) {
 			boolean var9 = (var8 & 0x2) == 0;
@@ -599,8 +515,7 @@ public class WorldMap {
 		}
 	}
 
-	@ObfuscatedName("tf.v()V")
-	public static void method8519() {
+    public static void method8519() {
 		for (int var0 = 0; var0 < field6812; var0++) {
 			for (int var1 = 0; var1 < field6810; var1++) {
 				Object var2 = field6817[field6812 * var1 + var0];
@@ -682,8 +597,7 @@ public class WorldMap {
 		}
 	}
 
-	@ObfuscatedName("tf.o([S[B[SII)V")
-	public static void method8509(short[] arg0, byte[] arg1, short[] arg2, int arg3, int arg4) {
+    public static void method8509(short[] arg0, byte[] arg1, short[] arg2, int arg3, int arg4) {
 		int[] var5 = new int[field6810];
 		int[] var6 = new int[field6810];
 		int[] var7 = new int[field6810];
@@ -765,8 +679,7 @@ public class WorldMap {
 		}
 	}
 
-	@ObfuscatedName("tf.s()V")
-	public static void method8505() {
+    public static void method8505() {
 		int[] var0 = new int[3];
 		for (int var1 = 0; var1 < field6805.field6777; var1++) {
 			boolean var2 = currentWorldMap.method19471(field6805.field6776[var1] >> 28 & 0x3, field6805.field6776[var1] >> 14 & 0x3FFF, field6805.field6776[var1] & 0x3FFF, var0);
@@ -779,8 +692,7 @@ public class WorldMap {
 		}
 	}
 
-	@ObfuscatedName("tf.y(IIIIIIII)V")
-	public static void method8620(int arg0, int arg1, int arg2, int arg3, int arg4, int arg5, int arg6, int arg7) {
+    public static void method8620(int arg0, int arg1, int arg2, int arg3, int arg4, int arg5, int arg6, int arg7) {
 		field6845 = arg0 - field6786;
 		field6846 = arg1 - field6808;
 		field6847 = arg2 - field6786;
@@ -791,8 +703,7 @@ public class WorldMap {
 		field6852 = arg7;
 	}
 
-	@ObfuscatedName("tf.q(Ldh;ZZZZ)V")
-	public static void method8523(Toolkit arg0, boolean arg1, boolean arg2, boolean arg3, boolean arg4) {
+    public static void method8523(Toolkit arg0, boolean arg1, boolean arg2, boolean arg3, boolean arg4) {
 		int var5 = field6847 - field6845;
 		int var6 = field6846 - field6848;
 		int var7 = (field6851 - field6801 << 16) / var5;
@@ -800,8 +711,7 @@ public class WorldMap {
 		method8524(arg0, arg1, arg2, var7, var8, 0, 0, arg3, arg4);
 	}
 
-	@ObfuscatedName("tf.x(Ldh;ZZIIIIZZ)V")
-	public static void method8524(Toolkit arg0, boolean arg1, boolean arg2, int arg3, int arg4, int arg5, int arg6, boolean arg7, boolean arg8) {
+    public static void method8524(Toolkit arg0, boolean arg1, boolean arg2, int arg3, int arg4, int arg5, int arg6, boolean arg7, boolean arg8) {
 		int var9 = field6847 - field6845;
 		int var10 = field6846 - field6848;
 		if (field6847 < field6812) {
@@ -885,8 +795,7 @@ public class WorldMap {
 		}
 	}
 
-	@ObfuscatedName("tf.b(Ldh;IIII)V")
-	public static void method8536(Toolkit arg0, int arg1, int arg2, int arg3, int arg4) {
+    public static void method8536(Toolkit arg0, int arg1, int arg2, int arg3, int arg4) {
 		Sprite var5 = (Sprite) field6833.get(-1L);
 		if (var5 == null || var5.getWidth() != arg3) {
 			int var6;
@@ -905,8 +814,7 @@ public class WorldMap {
 		field6833.put(var5, (long) arg4);
 	}
 
-	@ObfuscatedName("tf.h(IIIIZZZLdh;)V")
-	public static void method8526(int arg0, int arg1, int arg2, int arg3, boolean arg4, boolean arg5, boolean arg6, Toolkit arg7) {
+    public static void method8526(int arg0, int arg1, int arg2, int arg3, boolean arg4, boolean arg5, boolean arg6, Toolkit arg7) {
 		int var8 = arg0 * 64;
 		int var9 = arg1 * 64;
 		if (field6838 == null || arg2 * arg2 != field6838.length) {
@@ -1064,8 +972,7 @@ public class WorldMap {
 		field6833.put(arg7.createSprite(field6838, 0, arg2, arg2, arg2, true), (long) arg3);
 	}
 
-	@ObfuscatedName("tf.a([IIIIIIZIII[I[BZ)V")
-	public static void method8612(int[] arg0, int arg1, int arg2, int arg3, int arg4, int arg5, boolean arg6, int arg7, int arg8, int arg9, int[] arg10, byte[] arg11, boolean arg12) {
+    public static void method8612(int[] arg0, int arg1, int arg2, int arg3, int arg4, int arg5, boolean arg6, int arg7, int arg8, int arg9, int[] arg10, byte[] arg11, boolean arg12) {
 		if (arg12 || arg7 != 0 || arg8 > 0) {
 			if (arg8 == 0) {
 				method8537(arg0, arg1, arg2, arg3, arg4, arg5, arg5, arg7 | 0xFF000000);
@@ -1149,8 +1056,7 @@ public class WorldMap {
 		}
 	}
 
-	@ObfuscatedName("tf.g(Ldh;[IIIIIII)V")
-	public static void method8528(Toolkit arg0, int[] arg1, int arg2, int arg3, int arg4, int arg5, int arg6, int arg7) {
+    public static void method8528(Toolkit arg0, int[] arg1, int arg2, int arg3, int arg4, int arg5, int arg6, int arg7) {
 		Object var8 = field6817[arg7];
 		if (var8 == null) {
 			return;
@@ -1168,8 +1074,7 @@ public class WorldMap {
 		}
 	}
 
-	@ObfuscatedName("tf.i(Ldh;[IIII[I[B)V")
-	public static void method8529(Toolkit arg0, int[] arg1, int arg2, int arg3, int arg4, int[] arg5, byte[] arg6) {
+    public static void method8529(Toolkit arg0, int[] arg1, int arg2, int arg3, int arg4, int[] arg5, byte[] arg6) {
 		if (arg5 == null) {
 			return;
 		}
@@ -1226,8 +1131,7 @@ public class WorldMap {
 		}
 	}
 
-	@ObfuscatedName("tf.j(Ldh;)Laat;")
-	public static LinkList method8602(Toolkit arg0) {
+    public static LinkList method8602(Toolkit arg0) {
 		int var1 = field6847 - field6845;
 		int var2 = field6846 - field6848;
 		int var3 = (field6851 - field6801 << 16) / var1;
@@ -1235,22 +1139,19 @@ public class WorldMap {
 		return method8531(arg0, var3, var4, 0, 0);
 	}
 
-	@ObfuscatedName("tf.t(Ldh;IIII)Laat;")
-	public static LinkList method8531(Toolkit arg0, int arg1, int arg2, int arg3, int arg4) {
+    public static LinkList method8531(Toolkit arg0, int arg1, int arg2, int arg3, int arg4) {
 		for (WorldMapElement var5 = (WorldMapElement) field6806.head(); var5 != null; var5 = (WorldMapElement) field6806.next()) {
 			method8525(arg0, var5, arg1, arg2, arg3, arg4);
 		}
 		return field6806;
 	}
 
-	@ObfuscatedName("tf.ae(Ldh;Laks;IIII)V")
-	public static void method8525(Toolkit arg0, WorldMapElement arg1, int arg2, int arg3, int arg4, int arg5) {
+    public static void method8525(Toolkit arg0, WorldMapElement arg1, int arg2, int arg3, int arg4, int arg5) {
 		arg1.field11449 = ((arg1.field11448 - field6845) * arg2 + arg4 >> 16) + field6801;
 		arg1.field11451 = field6852 - ((arg1.field11452 - field6848) * arg3 + arg5 >> 16);
 	}
 
-	@ObfuscatedName("tf.ag(Ldh;Laks;Lhs;)V")
-	public static void method8533(Toolkit arg0, WorldMapElement arg1, MapElementType arg2) {
+    public static void method8533(Toolkit arg0, WorldMapElement arg1, MapElementType arg2) {
 		if (arg2.field2393 == null) {
 			return;
 		}
@@ -1307,26 +1208,22 @@ public class WorldMap {
 		arg0.method2187(var15, var16, var17, var18, arg2.field2406[arg2.field2407[arg2.field2407.length - 1] & 0xFF], 1, arg2.field2399, arg2.field2369, arg2.field2401);
 	}
 
-	@ObfuscatedName("tf.ah(II)Z")
-	public static boolean method8534(int arg0, int arg1) {
+    public static boolean method8534(int arg0, int arg1) {
 		int var2 = arg0 >> 3;
 		int var3 = arg1 >> 3;
 		return var2 >= 0 && var3 >= 0 && var2 < field6820.length && var3 < field6820[var2].length ? field6820[var2][var3] : false;
 	}
 
-	@ObfuscatedName("tf.al()I")
-	public static int method8535() {
+    public static int method8535() {
 		return (int) (field6804 * 64.0F / 2.0F);
 	}
 
-	@ObfuscatedName("tf.ac(J)I")
-	public static int method8588(long arg0) {
+    public static int method8588(long arg0) {
 		Sprite var2 = (Sprite) field6833.get(arg0);
 		return var2 == null ? -1 : var2.getWidth();
 	}
 
-	@ObfuscatedName("tf.ai([IIIIIIII)V")
-	public static void method8537(int[] arg0, int arg1, int arg2, int arg3, int arg4, int arg5, int arg6, int arg7) {
+    public static void method8537(int[] arg0, int arg1, int arg2, int arg3, int arg4, int arg5, int arg6, int arg7) {
 		for (int var8 = arg1; var8 <= arg2; var8++) {
 			for (int var9 = arg3; var9 <= arg4; var9++) {
 				arg0[(arg6 - var9 - 1) * arg5 + var8] = arg7;
@@ -1334,8 +1231,7 @@ public class WorldMap {
 		}
 	}
 
-	@ObfuscatedName("tf.aw([IIIIII)V")
-	public static void method8538(int[] arg0, int arg1, int arg2, int arg3, int arg4, int arg5) {
+    public static void method8538(int[] arg0, int arg1, int arg2, int arg3, int arg4, int arg5) {
 		int var6 = worldMapDefaults.field7691 >> 24 & 0xFF;
 		int var7 = 255 - var6;
 		if ((!field6855[NORTH] || !field6855[NORTHEAST] && !field6855[EAST]) && (!field6855[SOUTH] || !field6855[NORTHEAST] && !field6855[EAST])) {
@@ -1411,8 +1307,7 @@ public class WorldMap {
 		}
 	}
 
-	@ObfuscatedName("tf.as([IIIIII)V")
-	public static void method8522(int[] arg0, int arg1, int arg2, int arg3, int arg4, int arg5) {
+    public static void method8522(int[] arg0, int arg1, int arg2, int arg3, int arg4, int arg5) {
 		int var6 = worldMapDefaults.field7691 >> 24 & 0xFF;
 		int var7 = 255 - var6;
 		for (int var8 = arg1; var8 <= arg2; var8++) {
@@ -1427,8 +1322,7 @@ public class WorldMap {
 		}
 	}
 
-	@ObfuscatedName("tf.at([IIIIIIIIZZZZ)V")
-	public static void method8539(int[] arg0, int arg1, int arg2, int arg3, int arg4, int arg5, int arg6, int arg7, boolean arg8, boolean arg9, boolean arg10, boolean arg11) {
+    public static void method8539(int[] arg0, int arg1, int arg2, int arg3, int arg4, int arg5, int arg6, int arg7, boolean arg8, boolean arg9, boolean arg10, boolean arg11) {
 		for (int var12 = arg1; var12 <= arg2; var12++) {
 			boolean var13 = arg9 ? field6855[NORTHEAST] && arg2 - var12 < worldMapDefaults.field7693 : false;
 			boolean var14 = arg11 ? field6855[EAST] && var12 - arg1 < worldMapDefaults.field7693 : false;
@@ -1453,8 +1347,7 @@ public class WorldMap {
 		}
 	}
 
-	@ObfuscatedName("tf.ad([IIIIIII)V")
-	public static void method8541(int[] arg0, int arg1, int arg2, int arg3, int arg4, int arg5, int arg6) {
+    public static void method8541(int[] arg0, int arg1, int arg2, int arg3, int arg4, int arg5, int arg6) {
 		for (int var7 = 0; var7 < worldMapDefaults.field7694; var7++) {
 			int var8 = var7;
 			if (NORTHWEST == arg6 || SOUTHWEST == arg6) {
@@ -1482,8 +1375,7 @@ public class WorldMap {
 		}
 	}
 
-	@ObfuscatedName("tf.am([IIIIIIIII[BII)V")
-	public static void method8585(int[] arg0, int arg1, int arg2, int arg3, int arg4, int arg5, int arg6, int arg7, int arg8, byte[] arg9, int arg10, int arg11) {
+    public static void method8585(int[] arg0, int arg1, int arg2, int arg3, int arg4, int arg5, int arg6, int arg7, int arg8, byte[] arg9, int arg10, int arg11) {
 		int var12 = 0;
 		int var13 = 0;
 		int var14 = arg2 - arg1 + 1;
@@ -1533,16 +1425,14 @@ public class WorldMap {
 		}
 	}
 
-	@ObfuscatedName("tf.au([IIIIII)V")
-	public static void method8543(int[] arg0, int arg1, int arg2, int arg3, int arg4, int arg5) {
+    public static void method8543(int[] arg0, int arg1, int arg2, int arg3, int arg4, int arg5) {
 		int var6 = (arg4 - arg2 - 1) * arg4 + arg1;
 		for (int var7 = 0; var7 < arg3; var7++) {
 			arg0[var6 + var7] = arg5;
 		}
 	}
 
-	@ObfuscatedName("tf.ar([IIIIII)V")
-	public static void method8544(int[] arg0, int arg1, int arg2, int arg3, int arg4, int arg5) {
+    public static void method8544(int[] arg0, int arg1, int arg2, int arg3, int arg4, int arg5) {
 		int var6 = (arg4 - arg2 - 1) * arg4 + arg1;
 		for (int var7 = 0; var7 < arg3; var7++) {
 			arg0[arg4 * var7 + var6] = arg5;

@@ -2,66 +2,45 @@ package com.jagex.graphics;
 
 import deob.ObfuscatedName;
 
-@ObfuscatedName("de")
 public abstract class SpriteData {
 
-	@ObfuscatedName("de.e()Z")
-	public abstract boolean isPaletted();
+    public abstract boolean isPaletted();
 
-	@ObfuscatedName("de.y()V")
-	public abstract void rotate();
+    public abstract void rotate();
 
-	@ObfuscatedName("de.f()I")
-	public abstract int getPaddingLeft();
+    public abstract int getPaddingLeft();
 
-	@ObfuscatedName("de.l()I")
-	public abstract int getPaddingTop();
+    public abstract int getPaddingTop();
 
-	@ObfuscatedName("de.z()V")
-	public abstract void method2595();
+    public abstract void method2595();
 
-	@ObfuscatedName("de.p()I")
-	public abstract int method2596();
+    public abstract int method2596();
 
-	@ObfuscatedName("de.d()I")
-	public abstract int method2597();
+    public abstract int method2597();
 
-	@ObfuscatedName("de.r(I)V")
-	public abstract void method2599(int arg0);
+    public abstract void method2599(int arg0);
 
-	@ObfuscatedName("de.v(I)V")
-	public abstract void method2600(int arg0);
+    public abstract void method2600(int arg0);
 
-	@ObfuscatedName("de.o()V")
-	public abstract void flipHorizontally();
+    public abstract void flipHorizontally();
 
-	@ObfuscatedName("de.s()V")
-	public abstract void flipVertically();
+    public abstract void flipVertically();
 
-	@ObfuscatedName("de.w()I")
-	public abstract int getPaddingRight();
+    public abstract int getPaddingRight();
 
-	@ObfuscatedName("de.q(Z)[I")
-	public abstract int[] method2604(boolean arg0);
+    public abstract int[] method2604(boolean arg0);
 
-	@ObfuscatedName("de.x(III)V")
-	public abstract void method2605(int arg0, int arg1, int arg2);
+    public abstract void method2605(int arg0, int arg1, int arg2);
 
-	@ObfuscatedName("de.b(II)I")
-	public abstract int method2617(int arg0, int arg1);
+    public abstract int method2617(int arg0, int arg1);
 
-	@ObfuscatedName("de.k()I")
-	public abstract int getHeight();
+    public abstract int getHeight();
 
-	@ObfuscatedName("de.m()I")
-	public abstract int getWidth();
+    public abstract int getWidth();
 
-	@ObfuscatedName("de.n()Z")
-	public abstract boolean isTranslucent();
+    public abstract boolean isTranslucent();
 
-	@ObfuscatedName("de.c(I)V")
-	public abstract void method2646(int arg0);
+    public abstract void method2646(int arg0);
 
-	@ObfuscatedName("de.u()I")
-	public abstract int getPaddingBottom();
+    public abstract int getPaddingBottom();
 }

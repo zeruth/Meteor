@@ -23,142 +23,97 @@ import jaggl.OpenGL;
 
 import java.awt.*;
 
-@ObfuscatedName("aqv")
 public final class GlxToolkit extends GpuToolkit {
 
-	@ObfuscatedName("aqv.hx")
-	public OpenGL opengl;
+    public OpenGL opengl;
 
-	@ObfuscatedName("aqv.hq")
-	public LinkList field12011 = new LinkList();
+    public LinkList field12011 = new LinkList();
 
-	@ObfuscatedName("aqv.hf")
-	public LinkList field12000 = new LinkList();
+    public LinkList field12000 = new LinkList();
 
-	@ObfuscatedName("aqv.hr")
-	public LinkList field12023 = new LinkList();
+    public LinkList field12023 = new LinkList();
 
-	@ObfuscatedName("aqv.hs")
-	public LinkList field12035 = new LinkList();
+    public LinkList field12035 = new LinkList();
 
-	@ObfuscatedName("aqv.hh")
-	public LinkList field12003 = new LinkList();
+    public LinkList field12003 = new LinkList();
 
-	@ObfuscatedName("aqv.hp")
-	public LinkList field12004 = new LinkList();
+    public LinkList field12004 = new LinkList();
 
-	@ObfuscatedName("aqv.hy")
-	public LinkList field12005 = new LinkList();
+    public LinkList field12005 = new LinkList();
 
-	@ObfuscatedName("aqv.he")
-	public long field12006;
+    public long field12006;
 
-	@ObfuscatedName("aqv.hn")
-	public final int[] field12007 = new int[1000];
+    public final int[] field12007 = new int[1000];
 
-	@ObfuscatedName("aqv.hi")
-	public boolean field12008;
+    public boolean field12008;
 
-	@ObfuscatedName("aqv.hw")
-	public boolean field12009;
+    public boolean field12009;
 
-	@ObfuscatedName("aqv.ht")
-	public boolean field12010;
+    public boolean field12010;
 
-	@ObfuscatedName("aqv.hc")
-	public int field12040;
+    public int field12040;
 
-	@ObfuscatedName("aqv.ho")
-	public GlxVertexBuffer[] field12012 = new GlxVertexBuffer[16];
+    public GlxVertexBuffer[] field12012 = new GlxVertexBuffer[16];
 
-	@ObfuscatedName("aqv.hj")
-	public GlxIndexBuffer field12036;
+    public GlxIndexBuffer field12036;
 
-	@ObfuscatedName("aqv.hv")
-	public int[] field12014;
+    public int[] field12014;
 
-	@ObfuscatedName("aqv.hz")
-	public GlxProgram field12015;
+    public GlxProgram field12015;
 
-	@ObfuscatedName("aqv.ij")
-	public boolean field12016;
+    public boolean field12016;
 
-	@ObfuscatedName("aqv.io")
-	public final String field12037;
+    public final String field12037;
 
-	@ObfuscatedName("aqv.iq")
-	public final String field12001;
+    public final String field12001;
 
-	@ObfuscatedName("aqv.ig")
-	public final int field11999;
+    public final int field11999;
 
-	@ObfuscatedName("aqv.iv")
-	public boolean hasVertexBufferObject;
+    public boolean hasVertexBufferObject;
 
-	@ObfuscatedName("aqv.ie")
-	public boolean hasTextureRectangle;
+    public boolean hasTextureRectangle;
 
-	@ObfuscatedName("aqv.iu")
-	public boolean hasTextureNonPowerOfTwo;
+    public boolean hasTextureNonPowerOfTwo;
 
-	@ObfuscatedName("aqv.in")
-	public final boolean hasVertexShader;
+    public final boolean hasVertexShader;
 
-	@ObfuscatedName("aqv.ir")
-	public final boolean hasVertexProgram;
+    public final boolean hasVertexProgram;
 
-	@ObfuscatedName("aqv.it")
-	public final boolean hasFragmentShader;
+    public final boolean hasFragmentShader;
 
-	@ObfuscatedName("aqv.ix")
-	public final boolean hasFragmentProgram;
+    public final boolean hasFragmentProgram;
 
-	@ObfuscatedName("aqv.is")
-	public final int field12027;
+    public final int field12027;
 
-	@ObfuscatedName("aqv.ib")
-	public boolean field12028;
+    public boolean field12028;
 
-	@ObfuscatedName("aqv.il")
-	public boolean field12029;
+    public boolean field12029;
 
-	@ObfuscatedName("aqv.iw")
-	public final float[] field12030;
+    public final float[] field12030;
 
-	@ObfuscatedName("aqv.ip")
-	public final float[] field12031;
+    public final float[] field12031;
 
-	@ObfuscatedName("aqv.ia")
-	public Sprite field12033;
+    public Sprite field12033;
 
-	@ObfuscatedName("aqv.if")
-	public Sprite field12034;
+    public Sprite field12034;
 
-	@ObfuscatedName("aqv.ih")
-	public FrameBuffer field12018;
+    public FrameBuffer field12018;
 
-	@ObfuscatedName("aqv.iy")
-	public int[] field12017;
+    public int[] field12017;
 
-	@ObfuscatedName("aqv.ii")
-	public long[] field11998;
+    public long[] field11998;
 
-	@ObfuscatedName("aqv.iz")
-	public int[] field12038;
+    public int[] field12038;
 
-	@ObfuscatedName("aqv.ik")
-	public int field12039;
+    public int field12039;
 
-	@ObfuscatedName("aqv.im")
-	public int field12019;
+    public int field12019;
 
-	@ObfuscatedName("aqv.ahu(Ljava/lang/String;)[B")
-	public byte[] method19089(String arg0) {
+    public byte[] method19089(String arg0) {
 		return this.method15965("gl", arg0);
 	}
 
-	@ObfuscatedName("aqv.rc(Ljava/lang/String;)Lho;")
-	public GpuShader createShader(String arg0) {
+    public GpuShader createShader(String arg0) {
 		byte[] var2 = this.method19089(arg0);
 		if (var2 == null) {
 			return null;
@@ -168,18 +123,15 @@ public final class GlxToolkit extends GpuToolkit {
 		}
 	}
 
-	@ObfuscatedName("aqv.rx()Z")
-	public boolean hasVertexShader() {
+    public boolean hasVertexShader() {
 		return this.hasVertexShader;
 	}
 
-	@ObfuscatedName("aqv.ry()Z")
-	public boolean hasFragmentShader() {
+    public boolean hasFragmentShader() {
 		return this.hasFragmentShader;
 	}
 
-	@ObfuscatedName("aqv.rg(Z)Z")
-	public boolean method15959(boolean arg0) {
+    public boolean method15959(boolean arg0) {
 		return true;
 	}
 
@@ -336,8 +288,7 @@ public final class GlxToolkit extends GpuToolkit {
 		}
 	}
 
-	@ObfuscatedName("aqv.sw()V")
-	public void method16232() {
+    public void method16232() {
 		OpenGL.glDepthFunc(515);
 		this.enableCullFace();
 		OpenGL.glClearDepth(1.0F);
@@ -375,8 +326,7 @@ public final class GlxToolkit extends GpuToolkit {
 		super.method16232();
 	}
 
-	@ObfuscatedName("aqv.f()Lcz;")
-	public RendererInfo getRendererInfo() {
+    public RendererInfo getRendererInfo() {
 		int var1 = -1;
 		if (this.field12037.indexOf("nvidia") != -1) {
 			var1 = 4318;
@@ -388,21 +338,18 @@ public final class GlxToolkit extends GpuToolkit {
 		return new RendererInfo(var1, this.method16279() ? "OpenGL FF" : "OpenGL", this.field11999, this.field12001, 0L, this.method16279());
 	}
 
-	@ObfuscatedName("aqv.l(II)V")
-	public void method2116(int arg0, int arg1) throws RendererException {
+    public void method2116(int arg0, int arg1) throws RendererException {
 		this.surface.method15451();
 		if (this.field1596 != null) {
 			this.field1596.method1982();
 		}
 	}
 
-	@ObfuscatedName("aqv.u()V")
-	public void method2117() {
+    public void method2117() {
 		OpenGL.glFinish();
 	}
 
-	@ObfuscatedName("aqv.p()V")
-	public void method2369() {
+    public void method2369() {
 		super.method2369();
 		if (this.opengl != null) {
 			this.opengl.method2();
@@ -411,38 +358,31 @@ public final class GlxToolkit extends GpuToolkit {
 		}
 	}
 
-	@ObfuscatedName("aqv.sr()F")
-	public float method15954() {
+    public float method15954() {
 		return 0.0F;
 	}
 
-	@ObfuscatedName("aqv.ad(Ljava/awt/Canvas;II)Lafy;")
-	public Surface createSurface(Canvas arg0, int arg1, int arg2) {
+    public Surface createSurface(Canvas arg0, int arg1, int arg2) {
 		return new GlxSurface(this, arg0);
 	}
 
-	@ObfuscatedName("aqv.am()Lafq;")
-	public FrameBuffer createFramebuffer() {
+    public FrameBuffer createFramebuffer() {
 		return new GlxFrameBuffer(this);
 	}
 
-	@ObfuscatedName("aqv.au(IILck;Ldg;I)Ldp;")
-	public GraphicsDeletable method2146(int arg0, int arg1, TextureFormat arg2, DataType arg3, int arg4) {
+    public GraphicsDeletable method2146(int arg0, int arg1, TextureFormat arg2, DataType arg3, int arg4) {
 		return new GlxRenderBuffer(this, arg2, arg3, arg0, arg1, arg4);
 	}
 
-	@ObfuscatedName("aqv.ar(II)Ldw;")
-	public EffectInterface method2121(int arg0, int arg1) {
+    public EffectInterface method2121(int arg0, int arg1) {
 		return new GlxRenderBuffer(this, TextureFormat.DEPTH, DataType.UNSIGNED_INT_24, arg0, arg1);
 	}
 
-	@ObfuscatedName("aqv.ap(III)Ldw;")
-	public EffectInterface method2356(int arg0, int arg1, int arg2) {
+    public EffectInterface method2356(int arg0, int arg1, int arg2) {
 		return new GlxRenderBuffer(this, TextureFormat.DEPTH, DataType.UNSIGNED_INT_24, arg0, arg1, arg2);
 	}
 
-	@ObfuscatedName("aqv.aq(IIII)[I")
-	public int[] method2149(int arg0, int arg1, int arg2, int arg3) {
+    public int[] method2149(int arg0, int arg1, int arg2, int arg3) {
 		int[] var5 = new int[arg2 * arg3];
 		int var6 = this.renderTarget.getHeight();
 		for (int var7 = 0; var7 < arg3; var7++) {
@@ -451,8 +391,7 @@ public final class GlxToolkit extends GpuToolkit {
 		return var5;
 	}
 
-	@ObfuscatedName("aqv.ax()V")
-	public void method2150() {
+    public void method2150() {
 		if (this.renderTarget == null) {
 			return;
 		}
@@ -497,28 +436,23 @@ public final class GlxToolkit extends GpuToolkit {
 		this.method2164(var3, var4, var5, var6);
 	}
 
-	@ObfuscatedName("aqv.av()Z")
-	public boolean method2360() {
+    public boolean method2360() {
 		return this.field12028;
 	}
 
-	@ObfuscatedName("aqv.ao()Z")
-	public boolean method2196() {
+    public boolean method2196() {
 		return !this.field12028 || this.field11998[this.field12019] == 0L;
 	}
 
-	@ObfuscatedName("aqv.aj()Z")
-	public boolean method2153() {
+    public boolean method2153() {
 		return true;
 	}
 
-	@ObfuscatedName("aqv.ay()Z")
-	public boolean method2304() {
+    public boolean method2304() {
 		return false;
 	}
 
-	@ObfuscatedName("aqv.ab()I")
-	public int method2502() {
+    public int method2502() {
 		if (!this.field12028) {
 			return -1;
 		} else if (this.field11998[this.field12039] == 0L) {
@@ -536,8 +470,7 @@ public final class GlxToolkit extends GpuToolkit {
 		}
 	}
 
-	@ObfuscatedName("aqv.aa(III)V")
-	public void method2163(int arg0, int arg1, int arg2) {
+    public void method2163(int arg0, int arg1, int arg2) {
 		this.method2203();
 		if (this.field12018 == null) {
 			this.method19069(arg1, arg2);
@@ -562,8 +495,7 @@ public final class GlxToolkit extends GpuToolkit {
 		this.method2204();
 	}
 
-	@ObfuscatedName("aqv.az()V")
-	public void method2156() {
+    public void method2156() {
 		for (int var1 = 0; var1 < 3; var1++) {
 			if (this.field11998[var1] != 0L) {
 				OpenGL.glDeleteSync(this.field11998[var1]);
@@ -574,18 +506,15 @@ public final class GlxToolkit extends GpuToolkit {
 		this.field12039 = 0;
 	}
 
-	@ObfuscatedName("aqv.af(II)J")
-	public long method2158(int arg0, int arg1) {
+    public long method2158(int arg0, int arg1) {
 		return this.method19070(arg0, arg1, null, null);
 	}
 
-	@ObfuscatedName("aqv.an(II[I[I)V")
-	public void method2160(int arg0, int arg1, int[] arg2, int[] arg3) {
+    public void method2160(int arg0, int arg1, int[] arg2, int[] arg3) {
 		this.method19070(arg0, arg1, arg2, arg3);
 	}
 
-	@ObfuscatedName("aqv.ahz(II[I[I)J")
-	public long method19070(int arg0, int arg1, int[] arg2, int[] arg3) {
+    public long method19070(int arg0, int arg1, int[] arg2, int[] arg3) {
 		if (!this.field12028) {
 			if (this.field12034 == null) {
 				this.method19069(arg0, arg1);
@@ -623,8 +552,7 @@ public final class GlxToolkit extends GpuToolkit {
 		return var5;
 	}
 
-	@ObfuscatedName("aqv.ak(J)V")
-	public void method2159(long arg0) {
+    public void method2159(long arg0) {
 		if (arg0 != 0L) {
 			if (!OpenGL.glUnmapBufferARB(35051)) {
 			}
@@ -632,8 +560,7 @@ public final class GlxToolkit extends GpuToolkit {
 		}
 	}
 
-	@ObfuscatedName("aqv.bl()V")
-	public void method2126() {
+    public void method2126() {
 		if (this.field12028) {
 			this.field12033 = null;
 			if (this.field12018 != null) {
@@ -657,8 +584,7 @@ public final class GlxToolkit extends GpuToolkit {
 		this.field12039 = 0;
 	}
 
-	@ObfuscatedName("aqv.aha(II)V")
-	public void method19069(int arg0, int arg1) {
+    public void method19069(int arg0, int arg1) {
 		this.method2126();
 		this.method2419(arg0, arg1);
 		if (!this.field12028) {
@@ -678,13 +604,11 @@ public final class GlxToolkit extends GpuToolkit {
 		}
 	}
 
-	@ObfuscatedName("aqv.dl(Ldz;Ldz;FLdz;)Ldz;")
-	public EnvironmentSampler method2435(EnvironmentSampler arg0, EnvironmentSampler arg1, float arg2, EnvironmentSampler arg3) {
+    public EnvironmentSampler method2435(EnvironmentSampler arg0, EnvironmentSampler arg1, float arg2, EnvironmentSampler arg3) {
 		return arg2 < 0.5F ? arg0 : arg1;
 	}
 
-	@ObfuscatedName("aqv.bm(II)V")
-	public void method2475(int arg0, int arg1) {
+    public void method2475(int arg0, int arg1) {
 		int var3 = 0;
 		if ((arg0 & 0x1) != 0) {
 			OpenGL.glClearColor((float) (arg1 & 0xFF0000) / 1.671168E7F, (float) (arg1 & 0xFF00) / 65280.0F, (float) (arg1 & 0xFF) / 255.0F, (float) (arg1 >>> 24) / 255.0F);
@@ -700,16 +624,14 @@ public final class GlxToolkit extends GpuToolkit {
 		OpenGL.glClear(var3);
 	}
 
-	@ObfuscatedName("aqv.sa()V")
-	public void method15997() {
+    public void method15997() {
 		if (this.renderTarget != null) {
 			OpenGL.glViewport(this.field10105 + this.field10101, this.field10132 + this.renderTarget.getHeight() - this.field10102 - this.field10104, this.field10103, this.field10104);
 		}
 		OpenGL.glDepthRange(this.field10087, this.field10088);
 	}
 
-	@ObfuscatedName("aqv.sb()V")
-	public void method15955() {
+    public void method15955() {
 		if (this.renderTarget == null) {
 			return;
 		}
@@ -726,8 +648,7 @@ public final class GlxToolkit extends GpuToolkit {
 		OpenGL.glScissor(var1, var2, var3, var4);
 	}
 
-	@ObfuscatedName("aqv.sj()V")
-	public void enableScissorTest() {
+    public void enableScissorTest() {
 		if (this.field10182) {
 			OpenGL.glEnable(3089);
 		} else {
@@ -735,8 +656,7 @@ public final class GlxToolkit extends GpuToolkit {
 		}
 	}
 
-	@ObfuscatedName("aqv.rn(Lpq;Lpq;Lpq;)V")
-	public void method15967(Matrix4x4 arg0, Matrix4x4 arg1, Matrix4x4 arg2) {
+    public void method15967(Matrix4x4 arg0, Matrix4x4 arg1, Matrix4x4 arg2) {
 		OpenGL.glMatrixMode(5888);
 		this.field10066.setToProduct(arg0, arg1);
 		OpenGL.glLoadMatrixf(this.field10066.entries, 0);
@@ -744,8 +664,7 @@ public final class GlxToolkit extends GpuToolkit {
 		OpenGL.glLoadMatrixf(arg2.entries, 0);
 	}
 
-	@ObfuscatedName("aqv.ti(Lpq;)V")
-	public void method16006(Matrix4x4 arg0) {
+    public void method16006(Matrix4x4 arg0) {
 		float[] var2 = arg0.entries;
 		var2[1] = -var2[1];
 		var2[5] = -var2[5];
@@ -753,8 +672,7 @@ public final class GlxToolkit extends GpuToolkit {
 		var2[13] = -var2[13];
 	}
 
-	@ObfuscatedName("aqv.tp()V")
-	public void enableDepth() {
+    public void enableDepth() {
 		if (this.field10109 && this.field10044) {
 			OpenGL.glEnable(2929);
 		} else {
@@ -762,13 +680,11 @@ public final class GlxToolkit extends GpuToolkit {
 		}
 	}
 
-	@ObfuscatedName("aqv.tv()V")
-	public void enableDepthWrite() {
+    public void enableDepthWrite() {
 		OpenGL.glDepthMask(this.field10107 && this.field10108);
 	}
 
-	@ObfuscatedName("aqv.tg()V")
-	public void enableLighting() {
+    public void enableLighting() {
 		if (this.field10111 && !this.field10113) {
 			OpenGL.glEnable(2896);
 		} else {
@@ -776,8 +692,7 @@ public final class GlxToolkit extends GpuToolkit {
 		}
 	}
 
-	@ObfuscatedName("aqv.tq()V")
-	public void enableLightingAmbient() {
+    public void enableLightingAmbient() {
 		this.field12030[0] = this.field10142 * this.field10122;
 		this.field12030[1] = this.field10122 * this.field10120;
 		this.field12030[2] = this.field10210 * this.field10122;
@@ -785,8 +700,7 @@ public final class GlxToolkit extends GpuToolkit {
 		OpenGL.glLightModelfv(2899, this.field12030, 0);
 	}
 
-	@ObfuscatedName("aqv.tx()V")
-	public void enableLightingDiffuse() {
+    public void enableLightingDiffuse() {
 		this.field12030[0] = this.field10142 * this.field10123;
 		this.field12030[1] = this.field10123 * this.field10120;
 		this.field12030[2] = this.field10210 * this.field10123;
@@ -799,16 +713,14 @@ public final class GlxToolkit extends GpuToolkit {
 		OpenGL.glLightfv(16385, 4609, this.field12030, 0);
 	}
 
-	@ObfuscatedName("aqv.tk()V")
-	public void enableLightingView() {
+    public void enableLightingView() {
 		OpenGL.glMatrixMode(5888);
 		OpenGL.glLoadMatrixf(this.field10059.entries, 0);
 		OpenGL.glLightfv(16384, 4611, this.field10114, 0);
 		OpenGL.glLightfv(16385, 4611, this.field10072, 0);
 	}
 
-	@ObfuscatedName("aqv.td()V")
-	public void enableLighting0and1() {
+    public void enableLighting0and1() {
 		if (this.field10112) {
 			OpenGL.glEnable(16384);
 			OpenGL.glEnable(16385);
@@ -818,12 +730,10 @@ public final class GlxToolkit extends GpuToolkit {
 		}
 	}
 
-	@ObfuscatedName("aqv.tl()V")
-	public void method16023() {
+    public void method16023() {
 	}
 
-	@ObfuscatedName("aqv.um()V")
-	public void method16025() {
+    public void method16025() {
 		OpenGL.glMatrixMode(5888);
 		OpenGL.glLoadMatrixf(this.field10059.entries, 0);
 		int var1;
@@ -851,53 +761,43 @@ public final class GlxToolkit extends GpuToolkit {
 		}
 	}
 
-	@ObfuscatedName("aqv.uq(Lck;Ldg;)Z")
-	public boolean method16026(TextureFormat arg0, DataType arg1) {
+    public boolean method16026(TextureFormat arg0, DataType arg1) {
 		return true;
 	}
 
-	@ObfuscatedName("aqv.uc(Lck;Ldg;)Z")
-	public boolean method16289(TextureFormat arg0, DataType arg1) {
+    public boolean method16289(TextureFormat arg0, DataType arg1) {
 		return this.field10125;
 	}
 
-	@ObfuscatedName("aqv.uz(Lck;Ldg;II)Llz;")
-	public GpuTexture method16030(TextureFormat arg0, DataType arg1, int arg2, int arg3) {
+    public GpuTexture method16030(TextureFormat arg0, DataType arg1, int arg2, int arg3) {
 		return this.method16089(arg0, arg1, arg2, arg3);
 	}
 
-	@ObfuscatedName("aqv.uj(IIZ[III)Llz;")
-	public GpuTexture method16033(int arg0, int arg1, boolean arg2, int[] arg3, int arg4, int arg5) {
+    public GpuTexture method16033(int arg0, int arg1, boolean arg2, int[] arg3, int arg4, int arg5) {
 		return new GlxTexture(this, arg0, arg1, arg2, arg3, arg4, arg5);
 	}
 
-	@ObfuscatedName("aqv.ug(Lck;IIZ[BII)Llz;")
-	public GpuTexture method15975(TextureFormat arg0, int arg1, int arg2, boolean arg3, byte[] arg4, int arg5, int arg6) {
+    public GpuTexture method15975(TextureFormat arg0, int arg1, int arg2, boolean arg3, byte[] arg4, int arg5, int arg6) {
 		return new GlxTexture(this, arg0, arg1, arg2, arg3, arg4, arg5, arg6);
 	}
 
-	@ObfuscatedName("aqv.ub(Lck;IIZ[FII)Llz;")
-	public GpuTexture method16032(TextureFormat arg0, int arg1, int arg2, boolean arg3, float[] arg4, int arg5, int arg6) {
+    public GpuTexture method16032(TextureFormat arg0, int arg1, int arg2, boolean arg3, float[] arg4, int arg5, int arg6) {
 		return new GlxTexture(this, arg0, arg1, arg2, arg3, arg4, arg5, arg6);
 	}
 
-	@ObfuscatedName("aqv.uy(Lck;Ldg;II)Lmo;")
-	public Texture2 method16089(TextureFormat arg0, DataType arg1, int arg2, int arg3) {
+    public Texture2 method16089(TextureFormat arg0, DataType arg1, int arg2, int arg3) {
 		return new GlxTexture(this, arg0, arg1, arg2, arg3);
 	}
 
-	@ObfuscatedName("aqv.ut(IZ[[I)Lmr;")
-	public GpuCubeTexture method16034(int arg0, boolean arg1, int[][] arg2) {
+    public GpuCubeTexture method16034(int arg0, boolean arg1, int[][] arg2) {
 		return new GlxCubeTexture(this, arg0, arg1, arg2);
 	}
 
-	@ObfuscatedName("aqv.uk(Lck;IIIZ[B)Lll;")
-	public GpuVolumeTexture method16197(TextureFormat arg0, int arg1, int arg2, int arg3, boolean arg4, byte[] arg5) {
+    public GpuVolumeTexture method16197(TextureFormat arg0, int arg1, int arg2, int arg3, boolean arg4, byte[] arg5) {
 		return new GlxVolumeTexture(this, arg0, arg1, arg2, arg3, arg4, arg5);
 	}
 
-	@ObfuscatedName("aqv.ud()V")
-	public void method16091() {
+    public void method16091() {
 		int var1 = this.field12014[this.field10177];
 		if (var1 != 0) {
 			this.field12014[this.field10177] = 0;
@@ -906,8 +806,7 @@ public final class GlxToolkit extends GpuToolkit {
 		}
 	}
 
-	@ObfuscatedName("aqv.vo()V")
-	public void method16050() {
+    public void method16050() {
 		OpenGL.glMatrixMode(5890);
 		if (this.field10135[this.field10177] == TextureTramsformType.DISABLE) {
 			OpenGL.glLoadIdentity();
@@ -917,23 +816,19 @@ public final class GlxToolkit extends GpuToolkit {
 		OpenGL.glMatrixMode(5888);
 	}
 
-	@ObfuscatedName("aqv.vv()V")
-	public void method16051() {
+    public void method16051() {
 		OpenGL.glActiveTexture(this.field10177 + 33984);
 	}
 
-	@ObfuscatedName("aqv.vw()V")
-	public void method16256() {
+    public void method16256() {
 		OpenGL.glTexEnvi(8960, 34161, method19066(this.field10136[this.field10177]));
 	}
 
-	@ObfuscatedName("aqv.vt()V")
-	public void method16052() {
+    public void method16052() {
 		OpenGL.glTexEnvi(8960, 34162, method19066(this.field10137[this.field10177]));
 	}
 
-	@ObfuscatedName("aqv.ur(ILmn;ZZ)V")
-	public final void method16031(int arg0, TextureCombiner arg1, boolean arg2, boolean arg3) {
+    public final void method16031(int arg0, TextureCombiner arg1, boolean arg2, boolean arg3) {
 		OpenGL.glTexEnvi(8960, arg0 + 34176, method19082(arg1));
 		if (arg2) {
 			OpenGL.glTexEnvi(8960, arg0 + 34192, arg3 ? 771 : 770);
@@ -942,14 +837,12 @@ public final class GlxToolkit extends GpuToolkit {
 		}
 	}
 
-	@ObfuscatedName("aqv.uo(ILmn;Z)V")
-	public final void method16043(int arg0, TextureCombiner arg1, boolean arg2) {
+    public final void method16043(int arg0, TextureCombiner arg1, boolean arg2) {
 		OpenGL.glTexEnvi(8960, arg0 + 34184, method19082(arg1));
 		OpenGL.glTexEnvi(8960, arg0 + 34200, arg2 ? 771 : 770);
 	}
 
-	@ObfuscatedName("aqv.vr()V")
-	public final void enableTextureFactor() {
+    public final void enableTextureFactor() {
 		this.field12030[0] = (float) (this.field10160 & 0xFF0000) / 1.671168E7F;
 		this.field12030[1] = (float) (this.field10160 & 0xFF00) / 65280.0F;
 		this.field12030[2] = (float) (this.field10160 & 0xFF) / 255.0F;
@@ -957,8 +850,7 @@ public final class GlxToolkit extends GpuToolkit {
 		OpenGL.glTexEnvfv(8960, 8705, this.field12030, 0);
 	}
 
-	@ObfuscatedName("aqv.ahx(Lmk;)I")
-	public static final int method19066(TextureCombineMode arg0) {
+    public static final int method19066(TextureCombineMode arg0) {
 		if (TextureCombineMode.field3396 == arg0) {
 			return 7681;
 		} else if (TextureCombineMode.field3395 == arg0) {
@@ -974,8 +866,7 @@ public final class GlxToolkit extends GpuToolkit {
 		}
 	}
 
-	@ObfuscatedName("aqv.ahb(Lmn;)I")
-	public static final int method19082(TextureCombiner arg0) {
+    public static final int method19082(TextureCombiner arg0) {
 		if (TextureCombiner.field3365 == arg0) {
 			return 5890;
 		} else if (TextureCombiner.field3367 == arg0) {
@@ -989,13 +880,11 @@ public final class GlxToolkit extends GpuToolkit {
 		}
 	}
 
-	@ObfuscatedName("aqv.vy(I)V")
-	public void enableColorWriteTest(int arg0) {
+    public void enableColorWriteTest(int arg0) {
 		OpenGL.glColorMask((arg0 & 0x1) != 0, (arg0 & 0x2) != 0, (arg0 & 0x4) != 0, (arg0 & 0x8) != 0);
 	}
 
-	@ObfuscatedName("aqv.ve()V")
-	public void enableAlphaTest() {
+    public void enableAlphaTest() {
 		if (this.alphaTestEnabled) {
 			OpenGL.glEnable(3008);
 		} else {
@@ -1012,8 +901,7 @@ public final class GlxToolkit extends GpuToolkit {
 		}
 	}
 
-	@ObfuscatedName("aqv.vm()V")
-	public void enableBlend() {
+    public void enableBlend() {
 		if (this.hasBlendFuncSeparate) {
 			byte var1 = 0;
 			byte var2 = 0;
@@ -1053,8 +941,7 @@ public final class GlxToolkit extends GpuToolkit {
 		}
 	}
 
-	@ObfuscatedName("aqv.vg()V")
-	public void enableAlphaBlend() {
+    public void enableAlphaBlend() {
 		if (this.alphaBlendEnabled) {
 			OpenGL.glEnable(3042);
 		} else {
@@ -1062,8 +949,7 @@ public final class GlxToolkit extends GpuToolkit {
 		}
 	}
 
-	@ObfuscatedName("aqv.aho()V")
-	public void enableCullFace() {
+    public void enableCullFace() {
 		if (this.cullModeEnabled == 1) {
 			OpenGL.glDisable(2884);
 			return;
@@ -1076,8 +962,7 @@ public final class GlxToolkit extends GpuToolkit {
 		}
 	}
 
-	@ObfuscatedName("aqv.vz()V")
-	public void enableFog() {
+    public void enableFog() {
 		if (this.field10167 && this.field10166 && this.field10169 >= 0) {
 			OpenGL.glEnable(2912);
 		} else {
@@ -1085,8 +970,7 @@ public final class GlxToolkit extends GpuToolkit {
 		}
 	}
 
-	@ObfuscatedName("aqv.vh()V")
-	public void setFogParameters() {
+    public void setFogParameters() {
 		this.fogEnd = this.field10092 - (float) this.field10189;
 		this.fogStart = this.fogEnd - (float) this.field10169;
 		if (this.fogStart < this.field10170) {
@@ -1103,8 +987,7 @@ public final class GlxToolkit extends GpuToolkit {
 		OpenGL.glFogfv(2918, this.field12030, 0);
 	}
 
-	@ObfuscatedName("aqv.vj(Z)V")
-	public void enableAntiAliasing(boolean arg0) {
+    public void enableAntiAliasing(boolean arg0) {
 		if (arg0) {
 			OpenGL.glEnable(32925);
 		} else {
@@ -1112,34 +995,28 @@ public final class GlxToolkit extends GpuToolkit {
 		}
 	}
 
-	@ObfuscatedName("aqv.vn(Z)Llr;")
-	public final VertexBuffer createVertexBuffer(boolean arg0) {
+    public final VertexBuffer createVertexBuffer(boolean arg0) {
 		return new GlxVertexBuffer(this, arg0);
 	}
 
-	@ObfuscatedName("aqv.vc(Z)Lml;")
-	public final GpuIndexBuffer createIndexBuffer(boolean arg0) {
+    public final GpuIndexBuffer createIndexBuffer(boolean arg0) {
 		return new GlxIndexBuffer(this, DataType.UNSIGNED_INT_16, arg0);
 	}
 
-	@ObfuscatedName("aqv.vf([Llk;)Llo;")
-	public VertexDeclaration createVertexDeclaration(VertexDeclarationElement[] arg0) {
+    public VertexDeclaration createVertexDeclaration(VertexDeclarationElement[] arg0) {
 		return new VertexDeclaration_Sub1(arg0);
 	}
 
-	@ObfuscatedName("aqv.wn(ILlr;)V")
-	public void setStreamSource(int arg0, VertexBuffer arg1) {
+    public void setStreamSource(int arg0, VertexBuffer arg1) {
 		this.field12012[arg0] = (GlxVertexBuffer) arg1;
 	}
 
-	@ObfuscatedName("aqv.wa(Lml;)V")
-	public void setIndices(GpuIndexBuffer arg0) {
+    public void setIndices(GpuIndexBuffer arg0) {
 		this.field12036 = (GlxIndexBuffer) arg0;
 		this.field12036.method7658();
 	}
 
-	@ObfuscatedName("aqv.vk(Llo;)V")
-	public void setVertexDeclaration(VertexDeclaration arg0) {
+    public void setVertexDeclaration(VertexDeclaration arg0) {
 		VertexDeclarationElement[] var2 = arg0.elements;
 		int var3 = 0;
 		boolean var4 = false;
@@ -1229,8 +1106,7 @@ public final class GlxToolkit extends GpuToolkit {
 		}
 	}
 
-	@ObfuscatedName("aqv.wz(Lms;II)V")
-	public final void drawPrimitive(PrimitiveType arg0, int arg1, int arg2) {
+    public final void drawPrimitive(PrimitiveType arg0, int arg1, int arg2) {
 		byte var4;
 		int var5;
 		if (PrimitiveType.LINELIST == arg0) {
@@ -1255,8 +1131,7 @@ public final class GlxToolkit extends GpuToolkit {
 		OpenGL.glDrawArrays(var4, arg1, var5);
 	}
 
-	@ObfuscatedName("aqv.wj(Lml;Lms;IIII)V")
-	public final void drawIndexedPrimitiveIB(GpuIndexBuffer arg0, PrimitiveType arg1, int arg2, int arg3, int arg4, int arg5) {
+    public final void drawIndexedPrimitiveIB(GpuIndexBuffer arg0, PrimitiveType arg1, int arg2, int arg3, int arg4, int arg5) {
 		byte var7;
 		int var8;
 		if (PrimitiveType.LINELIST == arg1) {
@@ -1284,8 +1159,7 @@ public final class GlxToolkit extends GpuToolkit {
 		OpenGL.glDrawElements(var7, var8, method19076(var9), var10.getAddress() + (long) (var9.field1652 * arg4));
 	}
 
-	@ObfuscatedName("aqv.we(Lms;IIII)V")
-	public final void drawIndexedPrimitive(PrimitiveType arg0, int arg1, int arg2, int arg3, int arg4) {
+    public final void drawIndexedPrimitive(PrimitiveType arg0, int arg1, int arg2, int arg3, int arg4) {
 		byte var6;
 		int var7;
 		if (PrimitiveType.LINELIST == arg0) {
@@ -1311,8 +1185,7 @@ public final class GlxToolkit extends GpuToolkit {
 		OpenGL.glDrawElements(var6, var7, method19076(var8), this.field12036.getAddress() + (long) (var8.field1652 * arg3));
 	}
 
-	@ObfuscatedName("aqv.d(I)V")
-	public final synchronized void cycle(int arg0) {
+    public final synchronized void cycle(int arg0) {
 		try {
 			this.method19078();
 		} catch (Exception var14) {
@@ -1394,49 +1267,42 @@ public final class GlxToolkit extends GpuToolkit {
 		super.cycle(var4);
 	}
 
-	@ObfuscatedName("aqv.ahg(II)V")
-	public final synchronized void method19072(int arg0, int arg1) {
+    public final synchronized void method19072(int arg0, int arg1) {
 		IntNode var3 = new IntNode(arg1);
 		var3.nodeId = arg0;
 		this.field12000.addTail(var3);
 	}
 
-	@ObfuscatedName("aqv.ahh(II)V")
-	public final synchronized void method19073(int arg0, int arg1) {
+    public final synchronized void method19073(int arg0, int arg1) {
 		IntNode var3 = new IntNode(arg1);
 		var3.nodeId = arg0;
 		this.field12023.addTail(var3);
 	}
 
-	@ObfuscatedName("aqv.ahd(I)V")
-	public final synchronized void method19074(int arg0) {
+    public final synchronized void method19074(int arg0) {
 		IntNode var2 = new IntNode(arg0);
 		this.field12035.addTail(var2);
 	}
 
-	@ObfuscatedName("aqv.ahn(II)V")
-	public final synchronized void method19071(int arg0, int arg1) {
+    public final synchronized void method19071(int arg0, int arg1) {
 		IntNode var3 = new IntNode(arg1);
 		var3.nodeId = arg0;
 		this.field12003.addTail(var3);
 	}
 
-	@ObfuscatedName("aqv.ahp(J)V")
-	public final synchronized void method19075(long arg0) {
+    public final synchronized void method19075(long arg0) {
 		Node var3 = new Node();
 		var3.nodeId = arg0;
 		this.field12005.addTail(var3);
 	}
 
-	@ObfuscatedName("aqv.ahe(I)V")
-	public final synchronized void method19087(int arg0) {
+    public final synchronized void method19087(int arg0) {
 		Node var2 = new Node();
 		var2.nodeId = arg0;
 		this.field12004.addTail(var2);
 	}
 
-	@ObfuscatedName("aqv.ahs(Ldg;)I")
-	public static final int method19076(DataType arg0) {
+    public static final int method19076(DataType arg0) {
 		switch(arg0.index) {
 			case 0:
 				return 5126;
@@ -1460,8 +1326,7 @@ public final class GlxToolkit extends GpuToolkit {
 		}
 	}
 
-	@ObfuscatedName("aqv.aht(Lck;)I")
-	public static int method19085(TextureFormat arg0) {
+    public static int method19085(TextureFormat arg0) {
 		switch(arg0.index) {
 			case 0:
 				return 6402;
@@ -1482,8 +1347,7 @@ public final class GlxToolkit extends GpuToolkit {
 		}
 	}
 
-	@ObfuscatedName("aqv.ahi(Lck;Ldg;)I")
-	public static int method19077(TextureFormat arg0, DataType arg1) {
+    public static int method19077(TextureFormat arg0, DataType arg1) {
 		if (DataType.UNSIGNED_INT_8 == arg1) {
 			switch(arg0.index) {
 				case 1:
@@ -1574,12 +1438,10 @@ public final class GlxToolkit extends GpuToolkit {
 		}
 	}
 
-	@ObfuscatedName("aqv.eh(Z)V")
-	public void method2253(boolean arg0) {
+    public void method2253(boolean arg0) {
 	}
 
-	@ObfuscatedName("aqv.ahy()V")
-	public void method19078() {
+    public void method19078() {
 		int var1 = 0;
 		while (!this.opengl.method1()) {
 			if (var1++ > 5) {
@@ -1589,15 +1451,13 @@ public final class GlxToolkit extends GpuToolkit {
 		}
 	}
 
-	@ObfuscatedName("aqv.wp(I)V")
-	public void enableFillMode(int arg0) {
+    public void enableFillMode(int arg0) {
 		if (!this.field12029) {
 			OpenGL.glPolygonMode(1028, (arg0 & 0x2) == 0 ? 6914 : 6913);
 		}
 	}
 
-	@ObfuscatedName("aqv.g()Ljava/lang/String;")
-	public String hardwareInfo() {
+    public String hardwareInfo() {
 		String var1 = "Caps: 4:";
 		String var2 = ":";
 		String var3 = var1 + this.field10180 + var2;

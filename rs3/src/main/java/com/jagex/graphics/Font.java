@@ -6,78 +6,61 @@ import deob.ObfuscatedName;
 
 import java.util.Random;
 
-@ObfuscatedName("eu")
 public abstract class Font {
 
-	@ObfuscatedName("eu.e")
-	public FontMetrics fontMetrics;
+    public FontMetrics fontMetrics;
 
-	@ObfuscatedName("eu.n")
-	public Toolkit toolkit;
+    public Toolkit toolkit;
 
-	@ObfuscatedName("eu.w")
-	public static int strikethrough = -1;
+    public static int strikethrough = -1;
 
-	@ObfuscatedName("eu.l")
-	public static int underline = -1;
+    public static int underline = -1;
 
-	@ObfuscatedName("eu.u")
-	public static int originalRgb = 0;
+    public static int originalRgb = 0;
 
-	@ObfuscatedName("eu.z")
-	public static int rgb = 0;
+    public static int rgb = 0;
 
-	@ObfuscatedName("eu.p")
-	public static int originalShadow = 0;
+    public static int originalShadow = 0;
 
-	@ObfuscatedName("eu.d")
-	public static int shadow = 0;
+    public static int shadow = 0;
 
-	@ObfuscatedName("eu.c")
-	public static int field1677 = 0;
+    public static int field1677 = 0;
 
-	@ObfuscatedName("eu.r")
-	public static int field1678 = 0;
+    public static int field1678 = 0;
 
-	@ObfuscatedName("eu.v")
-	public static String[] stringBuilder = new String[100];
+    public static String[] stringBuilder = new String[100];
 
 	public Font(Toolkit toolkit, FontMetrics fontMetrics) {
 		this.toolkit = toolkit;
 		this.fontMetrics = fontMetrics;
 	}
 
-	@ObfuscatedName("eu.e(Ljava/lang/String;IIIIB)V")
-	public void drawString(String str, int x, int y, int rgb, int shadow) {
+    public void drawString(String str, int x, int y, int rgb, int shadow) {
 		if (str != null) {
 			this.setStyle(rgb, shadow);
 			this.drawChars(str, x, y, null, null, null, 0, 0);
 		}
 	}
 
-	@ObfuscatedName("eu.n(Ljava/lang/String;IIIII)V")
-	public void drawStringRight(String str, int x, int y, int rgb, int shadow) {
+    public void drawStringRight(String str, int x, int y, int rgb, int shadow) {
 		if (str != null) {
 			this.setStyle(rgb, shadow);
 			this.drawChars(str, x - this.fontMetrics.stringWidth(str), y, null, null, null, 0, 0);
 		}
 	}
 
-	@ObfuscatedName("eu.m(Ljava/lang/String;IIIII)V")
-	public void drawStringCenter(String str, int x, int y, int rgb, int shadow) {
+    public void drawStringCenter(String str, int x, int y, int rgb, int shadow) {
 		if (str != null) {
 			this.setStyle(rgb, shadow);
 			this.drawChars(str, x - this.fontMetrics.stringWidth(str) / 2, y, null, null, null, 0, 0);
 		}
 	}
 
-	@ObfuscatedName("eu.k(Ljava/lang/String;IIIIIIIII[Lcm;[ILch;IIS)I")
-	public int drawStringTaggable(String str, int x, int y, int width, int height, int rgb, int shadow, int arg7, int arg8, int arg9, Sprite[] glyphs, int[] arg11, SpriteRelated arg12, int arg13, int arg14) {
+    public int drawStringTaggable(String str, int x, int y, int width, int height, int rgb, int shadow, int arg7, int arg8, int arg9, Sprite[] glyphs, int[] arg11, SpriteRelated arg12, int arg13, int arg14) {
 		return this.drawStringTaggable(str, x, y, width, height, rgb, shadow, arg7, arg8, arg9, 0, glyphs, arg11, arg12, arg13, arg14);
 	}
 
-	@ObfuscatedName("eu.f(Ljava/lang/String;IIIIIIIIII[Lcm;[ILch;III)I")
-	public int drawStringTaggable(String str, int x, int y, int width, int height, int rgb, int shadow, int arg7, int arg8, int arg9, int arg10, Sprite[] glyphs, int[] arg12, SpriteRelated arg13, int arg14, int arg15) {
+    public int drawStringTaggable(String str, int x, int y, int width, int height, int rgb, int shadow, int arg7, int arg8, int arg9, int arg10, Sprite[] glyphs, int[] arg12, SpriteRelated arg13, int arg14, int arg15) {
 		if (str == null) {
 			return 0;
 		}
@@ -139,8 +122,7 @@ public abstract class Font {
 		return split;
 	}
 
-	@ObfuscatedName("eu.w(Ljava/lang/String;IIIIII)V")
-	public void drawCenteredWave(String str, int x, int y, int rgb, int shadow, int phase) {
+    public void drawCenteredWave(String str, int x, int y, int rgb, int shadow, int phase) {
 		if (str == null) {
 			return;
 		}
@@ -153,8 +135,7 @@ public abstract class Font {
 		this.drawCharsAlpha(str, x - this.fontMetrics.stringWidth(str) / 2, y, null, null, null, wave);
 	}
 
-	@ObfuscatedName("eu.l(Ljava/lang/String;IIIIIB)V")
-	public void drawCenteredWave2(String str, int x, int y, int rgb, int shadow, int phase) {
+    public void drawCenteredWave2(String str, int x, int y, int rgb, int shadow, int phase) {
 		if (str == null) {
 			return;
 		}
@@ -169,8 +150,7 @@ public abstract class Font {
 		this.drawCharsAlpha(str, x - this.fontMetrics.stringWidth(str) / 2, y, null, null, wave1, wave2);
 	}
 
-	@ObfuscatedName("eu.u(Ljava/lang/String;IIIIIII)V")
-	public void drawCenteredShake(String str, int x, int y, int rgb, int shadow, int phase, int arg6) {
+    public void drawCenteredShake(String str, int x, int y, int rgb, int shadow, int phase, int arg6) {
 		if (str == null) {
 			return;
 		}
@@ -187,8 +167,7 @@ public abstract class Font {
 		this.drawCharsAlpha(str, x - this.fontMetrics.stringWidth(str) / 2, y, null, null, null, pixels);
 	}
 
-	@ObfuscatedName("eu.z(Ljava/lang/String;IIIILjava/util/Random;I[Lcm;[IB)I")
-	public int method2689(String str, int x, int y, int rgb, int shadow, Random random, int seed, Sprite[] arg7, int[] arg8) {
+    public int method2689(String str, int x, int y, int rgb, int shadow, Random random, int seed, Sprite[] arg7, int[] arg8) {
 		if (str == null) {
 			return 0;
 		}
@@ -208,8 +187,7 @@ public abstract class Font {
 		return modified;
 	}
 
-	@ObfuscatedName("eu.p(Ljava/lang/String;IIIIIIIILjava/util/Random;I[I[Lcm;[II)I")
-	public int drawStringTaggableAntimacro(String str, int x, int y, int width, int height, int rgb, int shadow, int arg7, int arg8, Random random, int seed, int[] arg11, Sprite[] arg12, int[] arg13) {
+    public int drawStringTaggableAntimacro(String str, int x, int y, int width, int height, int rgb, int shadow, int arg7, int arg8, Random random, int seed, int[] arg11, Sprite[] arg12, int[] arg13) {
 		if (str == null) {
 			return 0;
 		}
@@ -253,8 +231,7 @@ public abstract class Font {
 		return modified;
 	}
 
-	@ObfuscatedName("eu.d(III)V")
-	public void setStyle(int rgb, int shadow) {
+    public void setStyle(int rgb, int shadow) {
 		strikethrough = -1;
 		underline = -1;
 		originalRgb = rgb;
@@ -268,8 +245,7 @@ public abstract class Font {
 		Font.shadow = shadow;
 	}
 
-	@ObfuscatedName("eu.c(Ljava/lang/String;I)V")
-	public void evaluateTag(String tag) {
+    public void evaluateTag(String tag) {
 		try {
 			if (tag.startsWith("col=")) {
 				rgb = rgb & 0xFF000000 | StringTools.method4321(tag.substring(4), 16) & 0xFFFFFF;
@@ -307,8 +283,7 @@ public abstract class Font {
 		}
 	}
 
-	@ObfuscatedName("eu.r(Ljava/lang/String;II)V")
-	public void method2716(String arg0, int arg1) {
+    public void method2716(String arg0, int arg1) {
 		int var3 = 0;
 		boolean var4 = false;
 		for (int var5 = 0; var5 < arg0.length(); var5++) {
@@ -326,8 +301,7 @@ public abstract class Font {
 		}
 	}
 
-	@ObfuscatedName("eu.v(Ljava/lang/String;II[Lcm;[ILch;III)V")
-	public void drawChars(String str, int x, int y, Sprite[] glyphs, int[] arg4, SpriteRelated arg5, int arg6, int arg7) {
+    public void drawChars(String str, int x, int y, Sprite[] glyphs, int[] arg4, SpriteRelated arg5, int arg6, int arg7) {
 		int var9 = y - this.fontMetrics.field8566;
 		int var10 = -1;
 		int var11 = -1;
@@ -438,8 +412,7 @@ public abstract class Font {
 		}
 	}
 
-	@ObfuscatedName("eu.o(Ljava/lang/String;II[Lcm;[I[I[II)V")
-	public void drawCharsAlpha(String str, int x, int y, Sprite[] glyphs, int[] arg4, int[] arg5, int[] arg6) {
+    public void drawCharsAlpha(String str, int x, int y, Sprite[] glyphs, int[] arg4, int[] arg5, int[] arg6) {
 		int yoff = y - this.fontMetrics.field8566;
 		int var9 = -1;
 		int var10 = -1;
@@ -575,9 +548,7 @@ public abstract class Font {
 		}
 	}
 
-	@ObfuscatedName("eu.s(CIIIZ)V")
-	public abstract void drawChar(char arg0, int arg1, int arg2, int arg3, boolean arg4);
+    public abstract void drawChar(char arg0, int arg1, int arg2, int arg3, boolean arg4);
 
-	@ObfuscatedName("eu.y(CIIIZLch;II)V")
-	public abstract void drawChar2(char arg0, int arg1, int arg2, int arg3, boolean arg4, SpriteRelated arg5, int arg6, int arg7);
+    public abstract void drawChar2(char arg0, int arg1, int arg2, int arg3, boolean arg4, SpriteRelated arg5, int arg6, int arg7);
 }

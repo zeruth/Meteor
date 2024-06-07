@@ -16,85 +16,60 @@ import com.jagex.graphics.SpriteDataProvider;
 import com.jagex.js5.Js5;
 import deob.ObfuscatedName;
 
-@ObfuscatedName("vb")
 public class HitmarkType implements ConfigType {
 
-	@ObfuscatedName("vb.e")
-	public final ConfigTypeList myList;
+    public final ConfigTypeList myList;
 
-	@ObfuscatedName("vb.n")
-	public final HitmarkTypeFactory factory;
+    public final HitmarkTypeFactory factory;
 
-	@ObfuscatedName("vb.u")
-	public boolean damagecolour_set = false;
+    public boolean damagecolour_set = false;
 
-	@ObfuscatedName("vb.z")
-	public int damagefont = -1;
+    public int damagefont = -1;
 
-	@ObfuscatedName("vb.p")
-	public int damagecolour = 16777215;
+    public int damagecolour = 16777215;
 
-	@ObfuscatedName("vb.d")
-	public int sticktime = 70;
+    public int sticktime = 70;
 
-	@ObfuscatedName("vb.c")
-	public int classgraphic = -1;
+    public int classgraphic = -1;
 
-	@ObfuscatedName("vb.r")
-	public int middlegraphic = -1;
+    public int middlegraphic = -1;
 
-	@ObfuscatedName("vb.v")
-	public int leftgraphic = -1;
+    public int leftgraphic = -1;
 
-	@ObfuscatedName("vb.o")
-	public int rightgraphic = -1;
+    public int rightgraphic = -1;
 
-	@ObfuscatedName("vb.s")
-	public int scrolltooffsetx = 0;
+    public int scrolltooffsetx = 0;
 
-	@ObfuscatedName("vb.y")
-	public int scrolltooffsety = 0;
+    public int scrolltooffsety = 0;
 
-	@ObfuscatedName("vb.q")
-	public int fadeat = -1;
+    public int fadeat = -1;
 
-	@ObfuscatedName("vb.x")
-	public String damageformat = "";
+    public String damageformat = "";
 
-	@ObfuscatedName("vb.b")
-	public int replacemode = -1;
+    public int replacemode = -1;
 
-	@ObfuscatedName("vb.h")
-	public int damageyof = 0;
+    public int damageyof = 0;
 
-	@ObfuscatedName("vb.a")
-	public int graphicxof = 0;
+    public int graphicxof = 0;
 
-	@ObfuscatedName("vb.g")
-	public int graphicyof = 0;
+    public int graphicyof = 0;
 
-	@ObfuscatedName("vb.i")
-	public int[] multimark;
+    public int[] multimark;
 
-	@ObfuscatedName("vb.j")
-	public int multivarbit = -1;
+    public int multivarbit = -1;
 
-	@ObfuscatedName("vb.t")
-	public int multivarp = -1;
+    public int multivarp = -1;
 
-	@ObfuscatedName("vb.ae")
-	public int damagescaleto = 1;
+    public int damagescaleto = 1;
 
-	@ObfuscatedName("vb.ag")
-	public int damagescalefrom = 1;
+    public int damagescalefrom = 1;
 
 	public HitmarkType(int arg0, HitmarkTypeFactory factory, ConfigTypeList hitmarks) {
 		this.factory = factory;
 		this.myList = hitmarks;
 	}
 
-	@ObfuscatedName("vb.e(Lalw;B)V")
-	public void decode(Packet buf) {
+    public void decode(Packet buf) {
 		while (true) {
 			int code = buf.g1();
 			if (code == 0) {
@@ -104,8 +79,7 @@ public class HitmarkType implements ConfigType {
 		}
 	}
 
-	@ObfuscatedName("vb.u(Lalw;II)V")
-	public void decode(Packet buf, int code) {
+    public void decode(Packet buf, int code) {
 		if (code == 1) {
 			this.damagefont = buf.gSmart2or4null();
 		} else if (code == 2) {
@@ -170,8 +144,7 @@ public class HitmarkType implements ConfigType {
 		}
 	}
 
-	@ObfuscatedName("vb.z(Lem;Lep;I)Lvb;")
-	public final HitmarkType getVisible(VariableTypeProvider varProvider, VarIntDomain varDomain) {
+    public final HitmarkType getVisible(VariableTypeProvider varProvider, VarIntDomain varDomain) {
 		int i = -1;
 		if (this.multimark == null) {
 			return this;
@@ -198,8 +171,7 @@ public class HitmarkType implements ConfigType {
 		}
 	}
 
-	@ObfuscatedName("vb.p(II)Ljava/lang/String;")
-	public String method9252(int arg0) {
+    public String method9252(int arg0) {
 		String var2 = this.damageformat;
 		int var3 = this.damagescaleto * arg0 / this.damagescalefrom;
 		while (true) {
@@ -211,8 +183,7 @@ public class HitmarkType implements ConfigType {
 		}
 	}
 
-	@ObfuscatedName("vb.d(Ldh;I)Lcm;")
-	public Sprite getSprite(Toolkit toolkit) {
+    public Sprite getSprite(Toolkit toolkit) {
 		if (this.classgraphic < 0) {
 			return null;
 		}
@@ -224,8 +195,7 @@ public class HitmarkType implements ConfigType {
 		return sprite;
 	}
 
-	@ObfuscatedName("vb.c(Ldh;I)Lcm;")
-	public Sprite getMiddleGraphicSprite(Toolkit toolkit) {
+    public Sprite getMiddleGraphicSprite(Toolkit toolkit) {
 		if (this.middlegraphic < 0) {
 			return null;
 		}
@@ -237,8 +207,7 @@ public class HitmarkType implements ConfigType {
 		return sprite;
 	}
 
-	@ObfuscatedName("vb.r(Ldh;I)Lcm;")
-	public Sprite getLeftGraphicSprite(Toolkit toolkit) {
+    public Sprite getLeftGraphicSprite(Toolkit toolkit) {
 		if (this.leftgraphic < 0) {
 			return null;
 		}
@@ -250,8 +219,7 @@ public class HitmarkType implements ConfigType {
 		return sprite;
 	}
 
-	@ObfuscatedName("vb.v(Ldh;B)Lcm;")
-	public Sprite getRightGraphicSprite(Toolkit toolkit) {
+    public Sprite getRightGraphicSprite(Toolkit toolkit) {
 		if (this.rightgraphic < 0) {
 			return null;
 		}
@@ -263,8 +231,7 @@ public class HitmarkType implements ConfigType {
 		return sprite;
 	}
 
-	@ObfuscatedName("vb.o(Ldh;I)V")
-	public void loadSprites(Toolkit toolkit) {
+    public void loadSprites(Toolkit toolkit) {
 		Js5 js5 = this.factory.configClient;
 		if (this.classgraphic >= 0 && this.factory.spriteCache.get((long) this.classgraphic) == null && js5.loadFile(this.classgraphic)) {
 			SpriteData sprite = SpriteDataProvider.get(js5, this.classgraphic);
@@ -284,7 +251,6 @@ public class HitmarkType implements ConfigType {
 		}
 	}
 
-	@ObfuscatedName("vb.n(I)V")
-	public void postDecode() {
+    public void postDecode() {
 	}
 }

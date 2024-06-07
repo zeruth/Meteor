@@ -2,38 +2,27 @@ package com.jagex.math;
 
 import deob.ObfuscatedName;
 
-@ObfuscatedName("oj")
 public class Cuboid {
 
-	@ObfuscatedName("oj.e")
-	public float minX;
+    public float minX;
 
-	@ObfuscatedName("oj.n")
-	public float minY;
+    public float minY;
 
-	@ObfuscatedName("oj.m")
-	public float minZ;
+    public float minZ;
 
-	@ObfuscatedName("oj.k")
-	public float maxX;
+    public float maxX;
 
-	@ObfuscatedName("oj.f")
-	public float maxY;
+    public float maxY;
 
-	@ObfuscatedName("oj.w")
-	public float maxZ;
+    public float maxZ;
 
-	@ObfuscatedName("oj.l")
-	public static final float[] VERTEX_X = new float[8];
+    public static final float[] VERTEX_X = new float[8];
 
-	@ObfuscatedName("oj.u")
-	public static final float[] VERTEX_Y = new float[8];
+    public static final float[] VERTEX_Y = new float[8];
 
-	@ObfuscatedName("oj.z")
-	public static final float[] VERTEX_Z = new float[8];
+    public static final float[] VERTEX_Z = new float[8];
 
-	@ObfuscatedName("oj.e(IIIILpq;FFFF)Z")
-	public boolean pick(int arg0, int arg1, int arg2, int arg3, Matrix4x4 arg4, float arg5, float arg6, float arg7, float arg8) {
+    public boolean pick(int arg0, int arg1, int arg2, int arg3, Matrix4x4 arg4, float arg5, float arg6, float arg7, float arg8) {
 		boolean var10 = false;
 		float var11 = Float.MAX_VALUE;
 		float var12 = -3.4028235E38F;

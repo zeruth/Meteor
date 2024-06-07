@@ -5,32 +5,23 @@ import deob.ObfuscatedName;
 import java.io.IOException;
 import java.io.OutputStream;
 
-@ObfuscatedName("ug")
 public class SocketStreamWriter implements Runnable {
 
-	@ObfuscatedName("ug.e")
-	public Thread thread;
+    public Thread thread;
 
-	@ObfuscatedName("ug.n")
-	public OutputStream outputStream;
+    public OutputStream outputStream;
 
-	@ObfuscatedName("ug.m")
-	public int bufLimit;
+    public int bufLimit;
 
-	@ObfuscatedName("ug.k")
-	public byte[] buf;
+    public byte[] buf;
 
-	@ObfuscatedName("ug.f")
-	public int bufLen = 0;
+    public int bufLen = 0;
 
-	@ObfuscatedName("ug.w")
-	public int bufPos = 0;
+    public int bufPos = 0;
 
-	@ObfuscatedName("ug.l")
-	public IOException ioerror;
+    public IOException ioerror;
 
-	@ObfuscatedName("ug.u")
-	public boolean closed;
+    public boolean closed;
 
 	public SocketStreamWriter(OutputStream outputStream, int limit) {
 		this.outputStream = outputStream;
@@ -41,8 +32,7 @@ public class SocketStreamWriter implements Runnable {
 		this.thread.start();
 	}
 
-	@ObfuscatedName("ug.e(B)Z")
-	public boolean isClosed() {
+    public boolean isClosed() {
 		if (!this.closed) {
 			return false;
 		}
@@ -111,8 +101,7 @@ public class SocketStreamWriter implements Runnable {
 		} while (!this.isClosed());
 	}
 
-	@ObfuscatedName("ug.n([BIIB)V")
-	public void write(byte[] bytes, int off, int len) throws IOException {
+    public void write(byte[] bytes, int off, int len) throws IOException {
 		if (len < 0 || off < 0 || off + len > bytes.length) {
 			throw new IOException();
 		}
@@ -141,8 +130,7 @@ public class SocketStreamWriter implements Runnable {
 		}
 	}
 
-	@ObfuscatedName("ug.m(B)V")
-	public void closeGracefully() {
+    public void closeGracefully() {
 		synchronized (this) {
 			this.closed = true;
 			this.notifyAll();
@@ -153,8 +141,7 @@ public class SocketStreamWriter implements Runnable {
 		}
 	}
 
-	@ObfuscatedName("ug.k(I)V")
-	public void closeForcefully() {
+    public void closeForcefully() {
 		this.outputStream = new BrokenOutputStream();
 	}
 }

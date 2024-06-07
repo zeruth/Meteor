@@ -9,18 +9,15 @@ import deob.ObfuscatedName;
 
 import java.util.Iterator;
 
-@ObfuscatedName("ahc")
 public class BasicCamera extends Camera {
 
-	@ObfuscatedName("ahc.au")
-	public int field10465 = 0;
+    public int field10465 = 0;
 
 	public BasicCamera(CameraTrackableProvider arg0) {
 		super(CameraRelated.field2813, arg0);
 	}
 
-	@ObfuscatedName("ahc.fs(B)I")
-	public int method16602() {
+    public int method16602() {
 		this.field10465++;
 		if (this.field10465 == 126) {
 			this.field10465 = 0;
@@ -28,8 +25,7 @@ public class BasicCamera extends Camera {
 		return this.field10465;
 	}
 
-	@ObfuscatedName("ahc.fz(Lalw;II)V")
-	public void decode(Packet buf, int size) {
+    public void decode(Packet buf, int size) {
 		int var3 = buf.pos;
 		int var4 = buf.g1();
 		this.setControlMode(CameraControlMode.of(var4 & 0x1));

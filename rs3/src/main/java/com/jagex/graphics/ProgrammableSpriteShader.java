@@ -4,34 +4,26 @@ import com.jagex.game.client.PrimitiveType;
 import com.jagex.math.Vector4;
 import deob.ObfuscatedName;
 
-@ObfuscatedName("ahz")
 public final class ProgrammableSpriteShader extends SpriteShader {
 
-	@ObfuscatedName("ahz.p")
-	public GpuShader field10532;
+    public GpuShader field10532;
 
-	@ObfuscatedName("ahz.g")
-	public final GpuProgram[] field10527 = new GpuProgram[3];
+    public final GpuProgram[] field10527 = new GpuProgram[3];
 
-	@ObfuscatedName("ahz.i")
-	public final int[][] field10533 = new int[3][7];
+    public final int[][] field10533 = new int[3][7];
 
-	@ObfuscatedName("ahz.j")
-	public int[] field10534;
+    public int[] field10534;
 
-	@ObfuscatedName("ahz.t")
-	public Vector4 field10535 = new Vector4(1.0F, 1.0F, 1.0F, 1.0F);
+    public Vector4 field10535 = new Vector4(1.0F, 1.0F, 1.0F, 1.0F);
 
-	@ObfuscatedName("ahz.ae")
-	public Vector4 field10536 = new Vector4(0.0F, 0.0F, 0.0F, 0.0F);
+    public Vector4 field10536 = new Vector4(0.0F, 0.0F, 0.0F, 0.0F);
 
 	public ProgrammableSpriteShader(GpuToolkit arg0) throws ShaderException {
 		super(arg0);
 		this.method16651();
 	}
 
-	@ObfuscatedName("ahz.u(B)Z")
-	public boolean method16651() throws ShaderException {
+    public boolean method16651() throws ShaderException {
 		this.field10532 = this.field3002.createShader("Sprite");
 		ProgramUniform var1 = this.field10532.getUniform("WVPMatrix");
 		ProgramUniform var2 = this.field10532.getUniform("SpriteSampler");
@@ -57,8 +49,7 @@ public final class ProgrammableSpriteShader extends SpriteShader {
 		return true;
 	}
 
-	@ObfuscatedName("ahz.e(II)V")
-	public void method5050(int arg0, int arg1) {
+    public void method5050(int arg0, int arg1) {
 		switch(arg0) {
 			case 0:
 				this.field10535.method6249(arg1);
@@ -83,8 +74,7 @@ public final class ProgrammableSpriteShader extends SpriteShader {
 		}
 	}
 
-	@ObfuscatedName("ahz.z(I)V")
-	public void method16649() {
+    public void method16649() {
 		this.field10532.setUniform1i(this.field10534[1], 0, this.field2997);
 		this.field3002.method16006(this.field2995);
 		this.field10532.setUniform4fv(this.field10534[0], this.field2995);
@@ -96,16 +86,14 @@ public final class ProgrammableSpriteShader extends SpriteShader {
 		this.field3002.drawPrimitive(PrimitiveType.TRIANGLEFAN, this.field3001, 2);
 	}
 
-	@ObfuscatedName("ahz.n()V")
-	public void method5051() {
+    public void method5051() {
 		this.field10532.setCurrentProgram(this.field10527[0]);
 		this.field10532.enable();
 		this.field10534 = this.field10533[this.field10532.getCurrentProgramIndex()];
 		this.method16649();
 	}
 
-	@ObfuscatedName("ahz.m()V")
-	public void method5054() {
+    public void method5054() {
 		this.field10532.setCurrentProgram(this.field10527[1]);
 		this.field10532.enable();
 		this.field10534 = this.field10533[this.field10532.getCurrentProgramIndex()];

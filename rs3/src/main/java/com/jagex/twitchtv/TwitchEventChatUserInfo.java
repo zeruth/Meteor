@@ -27,12 +27,10 @@ public class TwitchEventChatUserInfo extends TwitchEvent {
 		this.subscriptions = arg6;
 	}
 
-	@ObfuscatedName("com/jagex/twitchtv/TwitchEventChatUserInfo.n()Lud;")
-	public TwitchEventSubject method11() {
+    public TwitchEventSubject method11() {
 		return null;
 	}
 
-	@ObfuscatedName("com/jagex/twitchtv/TwitchEventChatUserInfo.e([I[J[Ljava/lang/Object;)V")
-	public void method12(int[] arg0, long[] arg1, Object[] arg2) {
+    public void method12(int[] arg0, long[] arg1, Object[] arg2) {
 	}
 }

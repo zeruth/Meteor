@@ -18,245 +18,165 @@ import deob.ObfuscatedName;
 
 import java.util.Arrays;
 
-@ObfuscatedName("vd")
 public class LocType implements ConfigType {
 
-	@ObfuscatedName("vd.n")
-	public static short[] clientpalette = new short[256];
+    public static short[] clientpalette = new short[256];
 
-	@ObfuscatedName("vd.m")
-	public int id;
+    public int id;
 
-	@ObfuscatedName("vd.k")
-	public LocTypeFactory factory;
+    public LocTypeFactory factory;
 
-	@ObfuscatedName("vd.f")
-	public ConfigTypeList myList;
+    public ConfigTypeList myList;
 
-	@ObfuscatedName("vd.w")
-	public byte[] shapes;
+    public byte[] shapes;
 
-	@ObfuscatedName("vd.l")
-	public int[][] models;
+    public int[][] models;
 
-	@ObfuscatedName("vd.u")
-	public String name = "null";
+    public String name = "null";
 
-	@ObfuscatedName("vd.z")
-	public short[] recol_s;
+    public short[] recol_s;
 
-	@ObfuscatedName("vd.p")
-	public short[] recol_d;
+    public short[] recol_d;
 
-	@ObfuscatedName("vd.d")
-	public byte[] recol_d_palette;
+    public byte[] recol_d_palette;
 
-	@ObfuscatedName("vd.c")
-	public short[] retex_s;
+    public short[] retex_s;
 
-	@ObfuscatedName("vd.r")
-	public short[] retex_d;
+    public short[] retex_d;
 
-	@ObfuscatedName("vd.v")
-	public byte[] recolindices;
+    public byte[] recolindices;
 
-	@ObfuscatedName("vd.o")
-	public byte[] retexindices;
+    public byte[] retexindices;
 
-	@ObfuscatedName("vd.s")
-	public byte tint_hue;
+    public byte tint_hue;
 
-	@ObfuscatedName("vd.y")
-	public byte tint_saturation;
+    public byte tint_saturation;
 
-	@ObfuscatedName("vd.q")
-	public byte tint_luminence;
+    public byte tint_luminence;
 
-	@ObfuscatedName("vd.x")
-	public byte tint_weight = 0;
+    public byte tint_weight = 0;
 
-	@ObfuscatedName("vd.b")
-	public int width = 1;
+    public int width = 1;
 
-	@ObfuscatedName("vd.h")
-	public int length = 1;
+    public int length = 1;
 
-	@ObfuscatedName("vd.a")
-	public int blockwalk = 2;
+    public int blockwalk = 2;
 
-	@ObfuscatedName("vd.g")
-	public int active = -1;
+    public int active = -1;
 
-	@ObfuscatedName("vd.i")
-	public byte hillchange = 0;
+    public byte hillchange = 0;
 
-	@ObfuscatedName("vd.j")
-	public int hillchange_value = -1;
+    public int hillchange_value = -1;
 
-	@ObfuscatedName("vd.t")
-	public boolean sharelight = false;
+    public boolean sharelight = false;
 
-	@ObfuscatedName("vd.ae")
-	public int occlude = -1;
+    public int occlude = -1;
 
-	@ObfuscatedName("vd.ag")
-	public int field7475 = 960;
+    public int field7475 = 960;
 
-	@ObfuscatedName("vd.ah")
-	public int field7476 = 0;
+    public int field7476 = 0;
 
-	@ObfuscatedName("vd.al")
-	public int[] anim = null;
+    public int[] anim = null;
 
-	@ObfuscatedName("vd.ac")
-	public int[] anim_weight = null;
+    public int[] anim_weight = null;
 
-	@ObfuscatedName("vd.ai")
-	public boolean field7479 = false;
+    public boolean field7479 = false;
 
-	@ObfuscatedName("vd.aw")
-	public int walloff = 64;
+    public int walloff = 64;
 
-	@ObfuscatedName("vd.as")
-	public int ambient = 0;
+    public int ambient = 0;
 
-	@ObfuscatedName("vd.at")
-	public int contrast = 0;
+    public int contrast = 0;
 
-	@ObfuscatedName("vd.ad")
-	public String[] op;
+    public String[] op;
 
-	@ObfuscatedName("vd.am")
-	public int[] cursor;
+    public int[] cursor;
 
-	@ObfuscatedName("vd.au")
-	public int mapelement = -1;
+    public int mapelement = -1;
 
-	@ObfuscatedName("vd.ar")
-	public int mapsceneicon = -1;
+    public int mapsceneicon = -1;
 
-	@ObfuscatedName("vd.ap")
-	public boolean mapsceneiconrotate = false;
+    public boolean mapsceneiconrotate = false;
 
-	@ObfuscatedName("vd.aq")
-	public int field7488 = 0;
+    public int field7488 = 0;
 
-	@ObfuscatedName("vd.ax")
-	public boolean mapsceneiconmirror = false;
+    public boolean mapsceneiconmirror = false;
 
-	@ObfuscatedName("vd.av")
-	public boolean mirror = false;
+    public boolean mirror = false;
 
-	@ObfuscatedName("vd.ao")
-	public boolean hasHardShadow = true;
+    public boolean hasHardShadow = true;
 
-	@ObfuscatedName("vd.aj")
-	public int resizex = 128;
+    public int resizex = 128;
 
-	@ObfuscatedName("vd.ay")
-	public int resizey = 128;
+    public int resizey = 128;
 
-	@ObfuscatedName("vd.ab")
-	public int resizez = 128;
+    public int resizez = 128;
 
-	@ObfuscatedName("vd.az")
-	public int xoff = 0;
+    public int xoff = 0;
 
-	@ObfuscatedName("vd.aa")
-	public int yoff = 0;
+    public int yoff = 0;
 
-	@ObfuscatedName("vd.af")
-	public int zoff = 0;
+    public int zoff = 0;
 
-	@ObfuscatedName("vd.ak")
-	public int post_xoff = 0;
+    public int post_xoff = 0;
 
-	@ObfuscatedName("vd.an")
-	public int post_yoff = 0;
+    public int post_yoff = 0;
 
-	@ObfuscatedName("vd.bf")
-	public int post_zoff = 0;
+    public int post_zoff = 0;
 
-	@ObfuscatedName("vd.bl")
-	public boolean forcedecor = false;
+    public boolean forcedecor = false;
 
-	@ObfuscatedName("vd.bk")
-	public boolean breakroutefinding = false;
+    public boolean breakroutefinding = false;
 
-	@ObfuscatedName("vd.bh")
-	public int raiseobject = -1;
+    public int raiseobject = -1;
 
-	@ObfuscatedName("vd.bx")
-	public int field7448 = 0;
+    public int field7448 = 0;
 
-	@ObfuscatedName("vd.bd")
-	public int[] multiloc;
+    public int[] multiloc;
 
-	@ObfuscatedName("vd.bc")
-	public int multivarbit = -1;
+    public int multivarbit = -1;
 
-	@ObfuscatedName("vd.bi")
-	public int multivarp = -1;
+    public int multivarp = -1;
 
-	@ObfuscatedName("vd.bn")
-	public int bgsound_sound = -1;
+    public int bgsound_sound = -1;
 
-	@ObfuscatedName("vd.bt")
-	public int bgsound_range = 0;
+    public int bgsound_range = 0;
 
-	@ObfuscatedName("vd.bq")
-	public int bgsound_size = 0;
+    public int bgsound_size = 0;
 
-	@ObfuscatedName("vd.bm")
-	public int bgsound_volume = 255;
+    public int bgsound_volume = 255;
 
-	@ObfuscatedName("vd.bb")
-	public int bgsound_mindelay = 0;
+    public int bgsound_mindelay = 0;
 
-	@ObfuscatedName("vd.be")
-	public int bgsound_maxdelay = 0;
+    public int bgsound_maxdelay = 0;
 
-	@ObfuscatedName("vd.by")
-	public int[] bgsound_random;
+    public int[] bgsound_random;
 
-	@ObfuscatedName("vd.bu")
-	public boolean randomanimframe = true;
+    public boolean randomanimframe = true;
 
-	@ObfuscatedName("vd.bw")
-	public boolean istexture = false;
+    public boolean istexture = false;
 
-	@ObfuscatedName("vd.bo")
-	public boolean hardshadow = true;
+    public boolean hardshadow = true;
 
-	@ObfuscatedName("vd.bz")
-	public boolean members = false;
+    public boolean members = false;
 
-	@ObfuscatedName("vd.bv")
-	public HashTable params;
+    public HashTable params;
 
-	@ObfuscatedName("vd.br")
-	public boolean field7520 = false;
+    public boolean field7520 = false;
 
-	@ObfuscatedName("vd.bg")
-	public int[] quests;
+    public int[] quests;
 
-	@ObfuscatedName("vd.ba")
-	public int bgsound_minrate = 256;
+    public int bgsound_minrate = 256;
 
-	@ObfuscatedName("vd.bp")
-	public int bgsound_maxrate = 256;
+    public int bgsound_maxrate = 256;
 
-	@ObfuscatedName("vd.bj")
-	public boolean field7524 = false;
+    public boolean field7524 = false;
 
-	@ObfuscatedName("vd.bs")
-	public boolean antimacro = false;
+    public boolean antimacro = false;
 
-	@ObfuscatedName("vd.cl")
-	public LocTypeRelated field7526 = LocTypeRelated.field7439;
+    public LocTypeRelated field7526 = LocTypeRelated.field7439;
 
-	@ObfuscatedName("vd.cg")
-	public Cuboid clickbox;
+    public Cuboid clickbox;
 
 	public LocType(int id, LocTypeFactory factory, ConfigTypeList locs) {
 		this.id = id;
@@ -265,8 +185,7 @@ public class LocType implements ConfigType {
 		this.op = (String[]) this.factory.defaultops.clone();
 	}
 
-	@ObfuscatedName("vd.e(Lalw;B)V")
-	public void decode(Packet buf) {
+    public void decode(Packet buf) {
 		while (true) {
 			int code = buf.g1();
 			if (code == 0) {
@@ -276,8 +195,7 @@ public class LocType implements ConfigType {
 		}
 	}
 
-	@ObfuscatedName("vd.n(I)V")
-	public void postDecode() {
+    public void postDecode() {
 		this.postDecodeActive();
 		if (this.breakroutefinding) {
 			this.blockwalk = 0;
@@ -288,8 +206,7 @@ public class LocType implements ConfigType {
 		}
 	}
 
-	@ObfuscatedName("vd.u(Lalw;II)V")
-	public void decode(Packet buf, int code) {
+    public void decode(Packet buf, int code) {
 		if (code == 1) {
 			int shapes = buf.g1();
 			this.shapes = new byte[shapes];
@@ -580,8 +497,7 @@ public class LocType implements ConfigType {
 		}
 	}
 
-	@ObfuscatedName("vd.z(I)V")
-	public void postDecodeActive() {
+    public void postDecodeActive() {
 		if (this.active == -1) {
 			this.active = 0;
 			if (this.shapes != null && this.shapes.length == 1 && LocShape.CENTREPIECE_STRAIGHT.id == this.shapes[0]) {
@@ -604,8 +520,7 @@ public class LocType implements ConfigType {
 		}
 	}
 
-	@ObfuscatedName("vd.p(IB)Z")
-	public final boolean method9473(int arg0) {
+    public final boolean method9473(int arg0) {
 		if (this.models == null) {
 			return true;
 		}
@@ -622,8 +537,7 @@ public class LocType implements ConfigType {
 		return var2;
 	}
 
-	@ObfuscatedName("vd.d(Lxe;S)Z")
-	public final boolean method9489(IntegerBox arg0) {
+    public final boolean method9489(IntegerBox arg0) {
 		if (this.models == null) {
 			return true;
 		}
@@ -640,8 +554,7 @@ public class LocType implements ConfigType {
 		return var2;
 	}
 
-	@ObfuscatedName("vd.c(Ldh;IIILcb;Lcb;IIIZLvp;B)Labg;")
-	public final synchronized Pair method9475(Toolkit arg0, int arg1, int arg2, int arg3, FloorModel arg4, FloorModel arg5, int arg6, int arg7, int arg8, boolean arg9, LocTypeCustomisation arg10) {
+    public final synchronized Pair method9475(Toolkit arg0, int arg1, int arg2, int arg3, FloorModel arg4, FloorModel arg5, int arg6, int arg7, int arg8, boolean arg9, LocTypeCustomisation arg10) {
 		if (LocShape.isWallDecor(arg2)) {
 			arg2 = LocShape.WALLDECOR_STRAIGHT_NOOFFSET.id;
 		}
@@ -727,8 +640,7 @@ public class LocType implements ConfigType {
 		return this.factory.field7529;
 	}
 
-	@ObfuscatedName("vd.r(Ldh;IIILcb;Lcb;IIILaaq;Lvp;B)Ldo;")
-	public final synchronized Model method9470(Toolkit arg0, int arg1, int arg2, int arg3, FloorModel arg4, FloorModel arg5, int arg6, int arg7, int arg8, AnimationNode arg9, LocTypeCustomisation arg10) {
+    public final synchronized Model method9470(Toolkit arg0, int arg1, int arg2, int arg3, FloorModel arg4, FloorModel arg5, int arg6, int arg7, int arg8, AnimationNode arg9, LocTypeCustomisation arg10) {
 		if (LocShape.isWallDecor(arg2)) {
 			arg2 = LocShape.WALLDECOR_STRAIGHT_NOOFFSET.id;
 		}
@@ -808,8 +720,7 @@ public class LocType implements ConfigType {
 		return var18;
 	}
 
-	@ObfuscatedName("vd.v(Ldh;IIILvp;I)Ldo;")
-	public Model method9476(Toolkit arg0, int arg1, int arg2, int arg3, LocTypeCustomisation arg4) {
+    public Model method9476(Toolkit arg0, int arg1, int arg2, int arg3, LocTypeCustomisation arg4) {
 		int var6 = this.ambient + 64;
 		int var7 = this.contrast * 5 + 850;
 		int var8 = arg1;
@@ -972,8 +883,7 @@ public class LocType implements ConfigType {
 		return var28;
 	}
 
-	@ObfuscatedName("vd.o(Lem;Lep;I)Lvd;")
-	public final LocType getMultiLoc(VariableTypeProvider varProvider, VarIntDomain varDomain) {
+    public final LocType getMultiLoc(VariableTypeProvider varProvider, VarIntDomain varDomain) {
 		int i = -1;
 		if (this.multivarbit != -1) {
 			VarBitType var4 = varProvider.getVarBitType(this.multivarbit);
@@ -994,8 +904,7 @@ public class LocType implements ConfigType {
 		}
 	}
 
-	@ObfuscatedName("vd.s(III)I")
-	public int getParam(int arg0, int arg1) {
+    public int getParam(int arg0, int arg1) {
 		if (this.params == null) {
 			return arg1;
 		} else {
@@ -1004,8 +913,7 @@ public class LocType implements ConfigType {
 		}
 	}
 
-	@ObfuscatedName("vd.y(ILjava/lang/String;B)Ljava/lang/String;")
-	public String getParam(int arg0, String arg1) {
+    public String getParam(int arg0, String arg1) {
 		if (this.params == null) {
 			return arg1;
 		} else {
@@ -1014,8 +922,7 @@ public class LocType implements ConfigType {
 		}
 	}
 
-	@ObfuscatedName("vd.q(I)Z")
-	public boolean method9480() {
+    public boolean method9480() {
 		if (this.multiloc == null) {
 			return this.bgsound_sound != -1 || this.bgsound_random != null;
 		}
@@ -1030,18 +937,15 @@ public class LocType implements ConfigType {
 		return false;
 	}
 
-	@ObfuscatedName("vd.x(B)Z")
-	public boolean method9504() {
+    public boolean method9504() {
 		return this.anim != null;
 	}
 
-	@ObfuscatedName("vd.b(I)Z")
-	public boolean method9514() {
+    public boolean method9514() {
 		return this.anim != null && this.anim.length > 1;
 	}
 
-	@ObfuscatedName("vd.h(S)I")
-	public int method9483() {
+    public int method9483() {
 		if (this.anim != null) {
 			if (this.anim.length <= 1) {
 				return this.anim[0];
@@ -1057,13 +961,11 @@ public class LocType implements ConfigType {
 		return -1;
 	}
 
-	@ObfuscatedName("vd.a(I)[I")
-	public int[] getAnim() {
+    public int[] getAnim() {
 		return this.anim;
 	}
 
-	@ObfuscatedName("vd.g(IB)Z")
-	public boolean hasAnim(int id) {
+    public boolean hasAnim(int id) {
 		if (this.anim != null && id != -1) {
 			for (int index = 0; index < this.anim.length; index++) {
 				if (this.anim[index] == id) {
@@ -1074,8 +976,7 @@ public class LocType implements ConfigType {
 		return false;
 	}
 
-	@ObfuscatedName("vd.i(IS)I")
-	public int getCursor(int op) {
+    public int getCursor(int op) {
 		return this.cursor == null ? -1 : this.cursor[op];
 	}
 }

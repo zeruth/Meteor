@@ -7,179 +7,121 @@ import com.jagex.game.client.GameShell;
 import com.jagex.game.clientoptions.options.*;
 import deob.ObfuscatedName;
 
-@ObfuscatedName("ali")
 public class ClientOptions extends Node {
 
-	@ObfuscatedName("ali.u")
-	public final ModeGame modeGame;
+    public final ModeGame modeGame;
 
-	@ObfuscatedName("ali.z")
-	public final PreferencesHardwareInfo hardwareInfo;
+    public final PreferencesHardwareInfo hardwareInfo;
 
-	@ObfuscatedName("ali.p")
-	public PreferencesAnimDetail animDetail;
+    public PreferencesAnimDetail animDetail;
 
-	@ObfuscatedName("ali.d")
-	public PreferencesAntiAliasing antiAliasing;
+    public PreferencesAntiAliasing antiAliasing;
 
-	@ObfuscatedName("ali.c")
-	public PreferencesAntiAliasing antiAliasing2;
+    public PreferencesAntiAliasing antiAliasing2;
 
-	@ObfuscatedName("ali.r")
-	public PreferencesUnused0 unused;
+    public PreferencesUnused0 unused;
 
-	@ObfuscatedName("ali.v")
-	public PreferencesBloom bloom;
+    public PreferencesBloom bloom;
 
-	@ObfuscatedName("ali.o")
-	public PreferencesBrightness brightness;
+    public PreferencesBrightness brightness;
 
-	@ObfuscatedName("ali.s")
-	public PreferencesBuildArea buildArea;
+    public PreferencesBuildArea buildArea;
 
-	@ObfuscatedName("ali.y")
-	public PreferencesUnknown8 consoleKeyPress;
+    public PreferencesUnknown8 consoleKeyPress;
 
-	@ObfuscatedName("ali.q")
-	public PreferencesDrawDistance drawDistance;
+    public PreferencesDrawDistance drawDistance;
 
-	@ObfuscatedName("ali.x")
-	public PreferencesFlickeringEffects flickeringEffects;
+    public PreferencesFlickeringEffects flickeringEffects;
 
-	@ObfuscatedName("ali.b")
-	public PreferencesFog fog;
+    public PreferencesFog fog;
 
-	@ObfuscatedName("ali.h")
-	public PreferencesGroundBlending groundBlending;
+    public PreferencesGroundBlending groundBlending;
 
-	@ObfuscatedName("ali.a")
-	public PreferencesGroundDecoration groundDecoration;
+    public PreferencesGroundDecoration groundDecoration;
 
-	@ObfuscatedName("ali.g")
-	public PreferencesIdleAnimations idleAnimations;
+    public PreferencesIdleAnimations idleAnimations;
 
-	@ObfuscatedName("ali.i")
-	public PreferencesLightingDetail lightingDetail;
+    public PreferencesLightingDetail lightingDetail;
 
-	@ObfuscatedName("ali.j")
-	public PreferencesSceneryShadows sceneryShadows;
+    public PreferencesSceneryShadows sceneryShadows;
 
-	@ObfuscatedName("ali.t")
-	public PreferencesShadowQuality shadowQuality;
+    public PreferencesShadowQuality shadowQuality;
 
-	@ObfuscatedName("ali.ae")
-	public PreferencesOrthographic orthographic;
+    public PreferencesOrthographic orthographic;
 
-	@ObfuscatedName("ali.ag")
-	public PreferencesParticles particles;
+    public PreferencesParticles particles;
 
-	@ObfuscatedName("ali.ah")
-	public PreferencesRemoveRoofs removeRoofs;
+    public PreferencesRemoveRoofs removeRoofs;
 
-	@ObfuscatedName("ali.al")
-	public PreferencesRemoveRoofs removeRoofs2;
+    public PreferencesRemoveRoofs removeRoofs2;
 
-	@ObfuscatedName("ali.ac")
-	public PreferencesScreenSize screenSize;
+    public PreferencesScreenSize screenSize;
 
-	@ObfuscatedName("ali.ai")
-	public PreferencesSkyboxes skyboxes;
+    public PreferencesSkyboxes skyboxes;
 
-	@ObfuscatedName("ali.aw")
-	public PreferencesCharacterShadows characterShadows;
+    public PreferencesCharacterShadows characterShadows;
 
-	@ObfuscatedName("ali.as")
-	public PreferencesTextures textures;
+    public PreferencesTextures textures;
 
-	@ObfuscatedName("ali.at")
-	public PreferencesDisplayMode toolkit;
+    public PreferencesDisplayMode toolkit;
 
-	@ObfuscatedName("ali.ad")
-	public PreferencesDisplayMode displayMode;
+    public PreferencesDisplayMode displayMode;
 
-	@ObfuscatedName("ali.am")
-	public PreferencesWaterDetail waterDetail;
+    public PreferencesWaterDetail waterDetail;
 
-	@ObfuscatedName("ali.au")
-	public PreferencesMaxScreenSize windowMode;
+    public PreferencesMaxScreenSize windowMode;
 
-	@ObfuscatedName("ali.ar")
-	public PreferencesMaxScreenSize maxScreenSize2;
+    public PreferencesMaxScreenSize maxScreenSize2;
 
-	@ObfuscatedName("ali.ap")
-	public PreferencesUnused4 unused4;
+    public PreferencesUnused4 unused4;
 
-	@ObfuscatedName("ali.aq")
-	public PreferencesUnused1 unused1;
+    public PreferencesUnused1 unused1;
 
-	@ObfuscatedName("ali.ax")
-	public PreferencesUnused2 unused2;
+    public PreferencesUnused2 unused2;
 
-	@ObfuscatedName("ali.av")
-	public PreferencesUnused3 unused3;
+    public PreferencesUnused3 unused3;
 
-	@ObfuscatedName("ali.ao")
-	public PreferencesUnused5 unused5;
+    public PreferencesUnused5 unused5;
 
-	@ObfuscatedName("ali.aj")
-	public PreferencesUnused6 unused6;
+    public PreferencesUnused6 unused6;
 
-	@ObfuscatedName("ali.ay")
-	public PreferencesUnused7 unused7;
+    public PreferencesUnused7 unused7;
 
-	@ObfuscatedName("ali.ab")
-	public PreferencesUnused8 unused8;
+    public PreferencesUnused8 unused8;
 
-	@ObfuscatedName("ali.az")
-	public PreferencesUnused9 unused9;
+    public PreferencesUnused9 unused9;
 
-	@ObfuscatedName("ali.aa")
-	public PreferencesUnused10 unused10;
+    public PreferencesUnused10 unused10;
 
-	@ObfuscatedName("ali.af")
-	public PreferencesUnused11 unused11;
+    public PreferencesUnused11 unused11;
 
-	@ObfuscatedName("ali.ak")
-	public PreferencesUnused12 unused12;
+    public PreferencesUnused12 unused12;
 
-	@ObfuscatedName("ali.an")
-	public PreferencesCustomCursors customCursors;
+    public PreferencesCustomCursors customCursors;
 
-	@ObfuscatedName("ali.bf")
-	public PreferencesPreset preset;
+    public PreferencesPreset preset;
 
-	@ObfuscatedName("ali.bl")
-	public PreferencesCpuUsage cpuUsage;
+    public PreferencesCpuUsage cpuUsage;
 
-	@ObfuscatedName("ali.bk")
-	public PreferencesLoadingScreen loadingScreen;
+    public PreferencesLoadingScreen loadingScreen;
 
-	@ObfuscatedName("ali.bh")
-	public PreferencesUnknown6 safeMode;
+    public PreferencesUnknown6 safeMode;
 
-	@ObfuscatedName("ali.bx")
-	public PreferencesUnknown7 unknown7;
+    public PreferencesUnknown7 unknown7;
 
-	@ObfuscatedName("ali.bd")
-	public PreferencesUnused13 unused13;
+    public PreferencesUnused13 unused13;
 
-	@ObfuscatedName("ali.bc")
-	public PreferencesVolume soundVolume;
+    public PreferencesVolume soundVolume;
 
-	@ObfuscatedName("ali.bi")
-	public PreferencesVolume backgroundSoundVolume;
+    public PreferencesVolume backgroundSoundVolume;
 
-	@ObfuscatedName("ali.bn")
-	public PreferencesVolume speechVolume;
+    public PreferencesVolume speechVolume;
 
-	@ObfuscatedName("ali.bt")
-	public PreferencesVolume unknownVolume1;
+    public PreferencesVolume unknownVolume1;
 
-	@ObfuscatedName("ali.bq")
-	public PreferencesVolume unknownVolume2;
+    public PreferencesVolume unknownVolume2;
 
-	@ObfuscatedName("ali.bm")
-	public PreferencesStereo stereo;
+    public PreferencesStereo stereo;
 
 	public ClientOptions(ModeGame arg0, int displayModeValue) {
 		this.modeGame = arg0;
@@ -195,8 +137,7 @@ public class ClientOptions extends Node {
 		this.readPreferences(buf);
 	}
 
-	@ObfuscatedName("ali.e(Lalw;B)V")
-	public void readPreferences(Packet buf) {
+    public void readPreferences(Packet buf) {
 		if (buf == null || buf.data == null) {
 			this.setDefaultPreferences(true, true);
 		} else {
@@ -305,8 +246,7 @@ public class ClientOptions extends Node {
 		this.clampPreferencesValues();
 	}
 
-	@ObfuscatedName("ali.n(ZZB)V")
-	public void setDefaultPreferences(boolean preferences, boolean sounds) {
+    public void setDefaultPreferences(boolean preferences, boolean sounds) {
 		if (preferences || this.animDetail == null) {
 			this.animDetail = new PreferencesAnimDetail(this);
 		}
@@ -474,8 +414,7 @@ public class ClientOptions extends Node {
 		}
 	}
 
-	@ObfuscatedName("ali.m(Lalw;IB)V")
-	public void method18155(Packet buf, int version) {
+    public void method18155(Packet buf, int version) {
 		this.brightness = new PreferencesBrightness(buf.g1(), this);
 		buf.pos++;
 		this.removeRoofs = new PreferencesRemoveRoofs(buf.g1() + 1, this);
@@ -576,8 +515,7 @@ public class ClientOptions extends Node {
 		}
 	}
 
-	@ObfuscatedName("ali.k(I)Lalw;")
-	public Packet createPreferencesBlock() {
+    public Packet createPreferencesBlock() {
 		Packet buf = new Packet(59);
 		buf.p1(38);
 		buf.p1(this.animDetail.getValue());
@@ -636,20 +574,17 @@ public class ClientOptions extends Node {
 		return buf;
 	}
 
-	@ObfuscatedName("ali.f(Lzf;IB)V")
-	public void setPreference(Preference arg0, int arg1) {
+    public void setPreference(Preference arg0, int arg1) {
 		arg0.method14071(arg1);
 		this.clampPreferencesValues();
 	}
 
-	@ObfuscatedName("ali.w(Lamd;ZI)V")
-	public void setPreferencesDisplayMode(PreferencesDisplayMode arg0, boolean arg1) {
+    public void setPreferencesDisplayMode(PreferencesDisplayMode arg0, boolean arg1) {
 		arg0.method18544(arg1);
 		this.clampPreferencesValues();
 	}
 
-	@ObfuscatedName("ali.l(I)V")
-	public void clampPreferencesValues() {
+    public void clampPreferencesValues() {
 		this.animDetail.clampValue();
 		this.antiAliasing.clampValue();
 		this.unused.clampValue();
@@ -707,13 +642,11 @@ public class ClientOptions extends Node {
 		this.stereo.clampValue();
 	}
 
-	@ObfuscatedName("ali.u(B)Lzd;")
-	public ModeGame modeGame() {
+    public ModeGame modeGame() {
 		return this.modeGame;
 	}
 
-	@ObfuscatedName("ali.z(I)Laag;")
-	public PreferencesHardwareInfo hardwareInfo() {
+    public PreferencesHardwareInfo hardwareInfo() {
 		return this.hardwareInfo;
 	}
 }

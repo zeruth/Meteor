@@ -16,218 +16,147 @@ import deob.ObfuscatedName;
 import jaclib.memory.Stream;
 import jaggl.OpenGL;
 
-@ObfuscatedName("afk")
 public class GlModel extends Model {
 
-	@ObfuscatedName("afk.c")
-	public final GlToolkit field9626;
+    public final GlToolkit field9626;
 
-	@ObfuscatedName("afk.r")
-	public int field9627;
+    public int field9627;
 
-	@ObfuscatedName("afk.v")
-	public int field9628;
+    public int field9628;
 
-	@ObfuscatedName("afk.o")
-	public byte field9629;
+    public byte field9629;
 
-	@ObfuscatedName("afk.s")
-	public short field9630;
+    public short field9630;
 
-	@ObfuscatedName("afk.y")
-	public short field9631;
+    public short field9631;
 
-	@ObfuscatedName("afk.q")
-	public boolean field9632 = false;
+    public boolean field9632 = false;
 
-	@ObfuscatedName("afk.x")
-	public boolean field9633 = false;
+    public boolean field9633 = false;
 
-	@ObfuscatedName("afk.b")
-	public int field9634 = 0;
+    public int field9634 = 0;
 
-	@ObfuscatedName("afk.h")
-	public int field9635 = 0;
+    public int field9635 = 0;
 
-	@ObfuscatedName("afk.a")
-	public int[] field9636;
+    public int[] field9636;
 
-	@ObfuscatedName("afk.g")
-	public int[] field9637;
+    public int[] field9637;
 
-	@ObfuscatedName("afk.i")
-	public int[] field9619;
+    public int[] field9619;
 
-	@ObfuscatedName("afk.j")
-	public int[][] field9638;
+    public int[][] field9638;
 
-	@ObfuscatedName("afk.t")
-	public short[] field9640;
+    public short[] field9640;
 
-	@ObfuscatedName("afk.ae")
-	public int field9658 = 0;
+    public int field9658 = 0;
 
-	@ObfuscatedName("afk.ag")
-	public short[] field9681;
+    public short[] field9681;
 
-	@ObfuscatedName("afk.ah")
-	public short[] field9682;
+    public short[] field9682;
 
-	@ObfuscatedName("afk.al")
-	public short[] field9644;
+    public short[] field9644;
 
-	@ObfuscatedName("afk.ac")
-	public byte[] field9690;
+    public byte[] field9690;
 
-	@ObfuscatedName("afk.ai")
-	public GlModelRelated1 field9684;
+    public GlModelRelated1 field9684;
 
-	@ObfuscatedName("afk.aw")
-	public float[] field9647;
+    public float[] field9647;
 
-	@ObfuscatedName("afk.as")
-	public float[] field9648;
+    public float[] field9648;
 
-	@ObfuscatedName("afk.at")
-	public int field9670 = 0;
+    public int field9670 = 0;
 
-	@ObfuscatedName("afk.ad")
-	public int field9650 = 0;
+    public int field9650 = 0;
 
-	@ObfuscatedName("afk.am")
-	public short[] field9651;
+    public short[] field9651;
 
-	@ObfuscatedName("afk.au")
-	public byte[] field9683;
+    public byte[] field9683;
 
-	@ObfuscatedName("afk.ar")
-	public short[] field9653;
+    public short[] field9653;
 
-	@ObfuscatedName("afk.ap")
-	public short[] field9652;
+    public short[] field9652;
 
-	@ObfuscatedName("afk.aq")
-	public short[] field9646;
+    public short[] field9646;
 
-	@ObfuscatedName("afk.ax")
-	public short[] field9685;
+    public short[] field9685;
 
-	@ObfuscatedName("afk.av")
-	public int[][] field9649;
+    public int[][] field9649;
 
-	@ObfuscatedName("afk.ao")
-	public short[] field9662;
+    public short[] field9662;
 
-	@ObfuscatedName("afk.aj")
-	public GlRelated3 field9659;
+    public GlRelated3 field9659;
 
-	@ObfuscatedName("afk.ay")
-	public GlRelated3 field9665;
+    public GlRelated3 field9665;
 
-	@ObfuscatedName("afk.ab")
-	public GlRelated3 field9673;
+    public GlRelated3 field9673;
 
-	@ObfuscatedName("afk.az")
-	public GlRelated3 field9664;
+    public GlRelated3 field9664;
 
-	@ObfuscatedName("afk.aa")
-	public GlModelBindingRelated field9663;
+    public GlModelBindingRelated field9663;
 
-	@ObfuscatedName("afk.af")
-	public GlBinding field9654;
+    public GlBinding field9654;
 
-	@ObfuscatedName("afk.ak")
-	public GlInterfaceRelated field9655;
+    public GlInterfaceRelated field9655;
 
-	@ObfuscatedName("afk.an")
-	public boolean field9666 = true;
+    public boolean field9666 = true;
 
-	@ObfuscatedName("afk.bf")
-	public int field9667;
+    public int field9667;
 
-	@ObfuscatedName("afk.bl")
-	public int field9668;
+    public int field9668;
 
-	@ObfuscatedName("afk.bk")
-	public boolean field9669 = false;
+    public boolean field9669 = false;
 
-	@ObfuscatedName("afk.bh")
-	public short field9657;
+    public short field9657;
 
-	@ObfuscatedName("afk.bx")
-	public short field9674;
+    public short field9674;
 
-	@ObfuscatedName("afk.bd")
-	public short field9672;
+    public short field9672;
 
-	@ObfuscatedName("afk.bc")
-	public short field9643;
+    public short field9643;
 
-	@ObfuscatedName("afk.bi")
-	public short field9671;
+    public short field9671;
 
-	@ObfuscatedName("afk.bn")
-	public short field9675;
+    public short field9675;
 
-	@ObfuscatedName("afk.bt")
-	public boolean field9676 = false;
+    public boolean field9676 = false;
 
-	@ObfuscatedName("afk.bq")
-	public short field9677;
+    public short field9677;
 
-	@ObfuscatedName("afk.bm")
-	public int[] field9678;
+    public int[] field9678;
 
-	@ObfuscatedName("afk.bb")
-	public int[] field9679;
+    public int[] field9679;
 
-	@ObfuscatedName("afk.be")
-	public short[] field9680;
+    public short[] field9680;
 
-	@ObfuscatedName("afk.by")
-	public ModelParticleEmitter[] field9687;
+    public ModelParticleEmitter[] field9687;
 
-	@ObfuscatedName("afk.bu")
-	public ModelParticleEffector[] field9641;
+    public ModelParticleEffector[] field9641;
 
-	@ObfuscatedName("afk.bw")
-	public int field9660;
+    public int field9660;
 
-	@ObfuscatedName("afk.bo")
-	public GlModelRelated2[] field9656;
+    public GlModelRelated2[] field9656;
 
-	@ObfuscatedName("afk.bz")
-	public GlModelRelated3[] field9639;
+    public GlModelRelated3[] field9639;
 
-	@ObfuscatedName("afk.bv")
-	public int[][] field9686;
+    public int[][] field9686;
 
-	@ObfuscatedName("afk.br")
-	public static long[] field9661;
+    public static long[] field9661;
 
-	@ObfuscatedName("afk.bg")
-	public static float[] field9688 = new float[2];
+    public static float[] field9688 = new float[2];
 
-	@ObfuscatedName("afk.ba")
-	public static final int[] field9689 = new int[8];
+    public static final int[] field9689 = new int[8];
 
-	@ObfuscatedName("afk.bp")
-	public static final int[] field9642 = new int[8];
+    public static final int[] field9642 = new int[8];
 
-	@ObfuscatedName("afk.bj")
-	public static final int[] field9691 = new int[8];
+    public static final int[] field9691 = new int[8];
 
-	@ObfuscatedName("afk.bs")
-	public static int field9692;
+    public static int field9692;
 
-	@ObfuscatedName("afk.cl")
-	public static int field9693;
+    public static int field9693;
 
-	@ObfuscatedName("afk.cg")
-	public static int field9694;
+    public static int field9694;
 
-	@ObfuscatedName("afk.ce")
-	public static boolean field9695;
+    public static boolean field9695;
 
 	public GlModel(GlToolkit arg0) {
 		this.field9626 = arg0;
@@ -784,8 +713,7 @@ public class GlModel extends Model {
 		}
 	}
 
-	@ObfuscatedName("afk.hb(Ldq;IJIIIIFF)S")
-	public short method15568(ModelUnlit arg0, int arg1, long arg2, int arg3, int arg4, int arg5, int arg6, float arg7, float arg8) {
+    public short method15568(ModelUnlit arg0, int arg1, long arg2, int arg3, int arg4, int arg5, int arg6, float arg7, float arg8) {
 		int var11 = this.field9679[arg1];
 		int var12 = this.field9679[arg1 + 1];
 		int var13 = 0;
@@ -810,34 +738,29 @@ public class GlModel extends Model {
 		return (short) this.field9658++;
 	}
 
-	@ObfuscatedName("afk.hg([BI)[B")
-	public static byte[] method15565(byte[] arg0, int arg1) {
+    public static byte[] method15565(byte[] arg0, int arg1) {
 		byte[] var2 = new byte[arg1];
 		System.arraycopy(arg0, 0, var2, 0, arg1);
 		return var2;
 	}
 
-	@ObfuscatedName("afk.hd([SI)[S")
-	public static short[] method15569(short[] arg0, int arg1) {
+    public static short[] method15569(short[] arg0, int arg1) {
 		short[] var2 = new short[arg1];
 		System.arraycopy(arg0, 0, var2, 0, arg1);
 		return var2;
 	}
 
-	@ObfuscatedName("afk.hx([FI)[F")
-	public static float[] method15571(float[] arg0, int arg1) {
+    public static float[] method15571(float[] arg0, int arg1) {
 		float[] var2 = new float[arg1];
 		System.arraycopy(arg0, 0, var2, 0, arg1);
 		return var2;
 	}
 
-	@ObfuscatedName("afk.z()I")
-	public int method1691() {
+    public int method1691() {
 		return this.field9627;
 	}
 
-	@ObfuscatedName("afk.u(I)V")
-	public void method1690(int arg0) {
+    public void method1690(int arg0) {
 		this.field9627 = arg0;
 		if (this.field9684 != null && (this.field9627 & 0x10000) == 0) {
 			this.field9681 = this.field9684.field1191;
@@ -850,8 +773,7 @@ public class GlModel extends Model {
 		this.method15551();
 	}
 
-	@ObfuscatedName("afk.p()V")
-	public void method1816() {
+    public void method1816() {
 		if (this.field9658 <= 0 || this.field9650 <= 0) {
 			return;
 		}
@@ -862,8 +784,7 @@ public class GlModel extends Model {
 		this.method15551();
 	}
 
-	@ObfuscatedName("afk.l(BIZ)Ldo;")
-	public Model method1773(byte arg0, int arg1, boolean arg2) {
+    public Model method1773(byte arg0, int arg1, boolean arg2) {
 		boolean var4 = false;
 		GlModel var5;
 		GlModel var6;
@@ -877,8 +798,7 @@ public class GlModel extends Model {
 		return this.method15550(var6, var5, arg1, var4, arg2);
 	}
 
-	@ObfuscatedName("afk.hq(Lafk;Lafk;IZZ)Ldo;")
-	public Model method15550(GlModel arg0, GlModel arg1, int arg2, boolean arg3, boolean arg4) {
+    public Model method15550(GlModel arg0, GlModel arg1, int arg2, boolean arg3, boolean arg4) {
 		arg0.field9629 = 0;
 		arg0.field9627 = arg2;
 		arg0.field9628 = this.field9628;
@@ -1166,8 +1086,7 @@ public class GlModel extends Model {
 		return arg0;
 	}
 
-	@ObfuscatedName("afk.hf()V")
-	public void method15551() {
+    public void method15551() {
 		if (!this.field9666) {
 			return;
 		}
@@ -1293,8 +1212,7 @@ public class GlModel extends Model {
 		}
 	}
 
-	@ObfuscatedName("afk.d(I)V")
-	public void method1693(int arg0) {
+    public void method1693(int arg0) {
 		int var2 = Trig1.sin[arg0];
 		int var3 = Trig1.cos[arg0];
 		for (int var4 = 0; var4 < this.field9635; var4++) {
@@ -1308,8 +1226,7 @@ public class GlModel extends Model {
 		this.field9669 = false;
 	}
 
-	@ObfuscatedName("afk.c(I)V")
-	public void method1694(int arg0) {
+    public void method1694(int arg0) {
 		int var2 = Trig1.sin[arg0];
 		int var3 = Trig1.cos[arg0];
 		for (int var4 = 0; var4 < this.field9635; var4++) {
@@ -1334,8 +1251,7 @@ public class GlModel extends Model {
 		this.field9669 = false;
 	}
 
-	@ObfuscatedName("afk.r(I)V")
-	public void rotateX(int arg0) {
+    public void rotateX(int arg0) {
 		int var2 = Trig1.sin[arg0];
 		int var3 = Trig1.cos[arg0];
 		for (int var4 = 0; var4 < this.field9635; var4++) {
@@ -1349,8 +1265,7 @@ public class GlModel extends Model {
 		this.field9669 = false;
 	}
 
-	@ObfuscatedName("afk.v(I)V")
-	public void rotateZ(int arg0) {
+    public void rotateZ(int arg0) {
 		int var2 = Trig1.sin[arg0];
 		int var3 = Trig1.cos[arg0];
 		for (int var4 = 0; var4 < this.field9635; var4++) {
@@ -1364,8 +1279,7 @@ public class GlModel extends Model {
 		this.field9669 = false;
 	}
 
-	@ObfuscatedName("afk.o(III)V")
-	public void translate(int arg0, int arg1, int arg2) {
+    public void translate(int arg0, int arg1, int arg2) {
 		for (int var4 = 0; var4 < this.field9635; var4++) {
 			if (arg0 != 0) {
 				this.field9636[var4] += arg0;
@@ -1383,8 +1297,7 @@ public class GlModel extends Model {
 		this.field9669 = false;
 	}
 
-	@ObfuscatedName("afk.s()V")
-	public void method1698() {
+    public void method1698() {
 		for (int var1 = 0; var1 < this.field9635; var1++) {
 			this.field9619[var1] = -this.field9619[var1];
 		}
@@ -1411,8 +1324,7 @@ public class GlModel extends Model {
 		this.field9669 = false;
 	}
 
-	@ObfuscatedName("afk.y(III)V")
-	public void scale(int arg0, int arg1, int arg2) {
+    public void scale(int arg0, int arg1, int arg2) {
 		for (int var4 = 0; var4 < this.field9635; var4++) {
 			if (arg0 != 128) {
 				this.field9636[var4] = this.field9636[var4] * arg0 >> 7;
@@ -1430,8 +1342,7 @@ public class GlModel extends Model {
 		this.field9669 = false;
 	}
 
-	@ObfuscatedName("afk.q(IILcb;Lcb;III)V")
-	public void method1700(int arg0, int arg1, FloorModel arg2, FloorModel arg3, int arg4, int arg5, int arg6) {
+    public void method1700(int arg0, int arg1, FloorModel arg2, FloorModel arg3, int arg4, int arg5, int arg6) {
 		if (!this.field9669) {
 			this.method15552();
 		}
@@ -1504,8 +1415,7 @@ public class GlModel extends Model {
 		this.field9669 = false;
 	}
 
-	@ObfuscatedName("afk.hr()V")
-	public void method15552() {
+    public void method15552() {
 		int var1 = 32767;
 		int var2 = 32767;
 		int var3 = 32767;
@@ -1556,8 +1466,7 @@ public class GlModel extends Model {
 		this.field9669 = true;
 	}
 
-	@ObfuscatedName("afk.bl()V")
-	public void method1736() {
+    public void method1736() {
 		if (this.field9676) {
 			return;
 		}
@@ -1568,80 +1477,70 @@ public class GlModel extends Model {
 		this.field9676 = true;
 	}
 
-	@ObfuscatedName("afk.aj()I")
-	public int getHorizontalRadius() {
+    public int getHorizontalRadius() {
 		if (!this.field9669) {
 			this.method15552();
 		}
 		return this.field9668;
 	}
 
-	@ObfuscatedName("afk.ay()I")
-	public int getRadius() {
+    public int getRadius() {
 		if (!this.field9669) {
 			this.method15552();
 		}
 		return this.field9667;
 	}
 
-	@ObfuscatedName("afk.ab()I")
-	public int getMinX() {
+    public int getMinX() {
 		if (!this.field9669) {
 			this.method15552();
 		}
 		return this.field9672;
 	}
 
-	@ObfuscatedName("afk.az()I")
-	public int getMaxX() {
+    public int getMaxX() {
 		if (!this.field9669) {
 			this.method15552();
 		}
 		return this.field9643;
 	}
 
-	@ObfuscatedName("afk.aa()I")
-	public int getMinY() {
+    public int getMinY() {
 		if (!this.field9669) {
 			this.method15552();
 		}
 		return this.field9657;
 	}
 
-	@ObfuscatedName("afk.af()I")
-	public int getMaxY() {
+    public int getMaxY() {
 		if (!this.field9669) {
 			this.method15552();
 		}
 		return this.field9674;
 	}
 
-	@ObfuscatedName("afk.ak()I")
-	public int getMinZ() {
+    public int getMinZ() {
 		if (!this.field9669) {
 			this.method15552();
 		}
 		return this.field9671;
 	}
 
-	@ObfuscatedName("afk.an()I")
-	public int getMaxZ() {
+    public int getMaxZ() {
 		if (!this.field9669) {
 			this.method15552();
 		}
 		return this.field9675;
 	}
 
-	@ObfuscatedName("afk.bf()I")
-	public int getHeight() {
+    public int getHeight() {
 		if (!this.field9676) {
 			this.method1736();
 		}
 		return this.field9677;
 	}
 
-	@ObfuscatedName("afk.bo(Ldo;IIIZ)V")
-	public void method1686(Model arg0, int arg1, int arg2, int arg3, boolean arg4) {
+    public void method1686(Model arg0, int arg1, int arg2, int arg3, boolean arg4) {
 		GlModel var6 = (GlModel) arg0;
 		if (this.field9670 == 0 || var6.field9670 == 0) {
 			return;
@@ -1793,16 +1692,14 @@ public class GlModel extends Model {
 		}
 	}
 
-	@ObfuscatedName("afk.bk(I)V")
-	public void method1893(int arg0) {
+    public void method1893(int arg0) {
 		this.field9630 = (short) arg0;
 		if (this.field9665 != null) {
 			this.field9665.field1111 = null;
 		}
 	}
 
-	@ObfuscatedName("afk.bh(I)V")
-	public void method1738(int arg0) {
+    public void method1738(int arg0) {
 		this.field9631 = (short) arg0;
 		if (this.field9665 != null) {
 			this.field9665.field1111 = null;
@@ -1812,23 +1709,19 @@ public class GlModel extends Model {
 		}
 	}
 
-	@ObfuscatedName("afk.bx()I")
-	public int method1862() {
+    public int method1862() {
 		return this.field9630;
 	}
 
-	@ObfuscatedName("afk.bd()I")
-	public int method1740() {
+    public int method1740() {
 		return this.field9631;
 	}
 
-	@ObfuscatedName("afk.bc()[B")
-	public byte[] method1741() {
+    public byte[] method1741() {
 		return this.field9683;
 	}
 
-	@ObfuscatedName("afk.bi(SS)V")
-	public void recolor(short arg0, short arg1) {
+    public void recolor(short arg0, short arg1) {
 		for (int var3 = 0; var3 < this.field9670; var3++) {
 			if (this.field9651[var3] == arg0) {
 				this.field9651[var3] = arg1;
@@ -1846,8 +1739,7 @@ public class GlModel extends Model {
 		}
 	}
 
-	@ObfuscatedName("afk.bn(B[B)V")
-	public void method1747(byte arg0, byte[] arg1) {
+    public void method1747(byte arg0, byte[] arg1) {
 		if (arg1 == null) {
 			for (int var3 = 0; var3 < this.field9670; var3++) {
 				this.field9683[var3] = arg0;
@@ -1863,8 +1755,7 @@ public class GlModel extends Model {
 		}
 	}
 
-	@ObfuscatedName("afk.bt(SS)V")
-	public void retexture(short arg0, short arg1) {
+    public void retexture(short arg0, short arg1) {
 		MaterialList var3 = this.field9626.materialList;
 		for (int var4 = 0; var4 < this.field9670; var4++) {
 			if (this.field9685[var4] == arg0) {
@@ -1903,8 +1794,7 @@ public class GlModel extends Model {
 		}
 	}
 
-	@ObfuscatedName("afk.bq(IIII)V")
-	public void method1745(int arg0, int arg1, int arg2, int arg3) {
+    public void method1745(int arg0, int arg1, int arg2, int arg3) {
 		for (int var5 = 0; var5 < this.field9670; var5++) {
 			int var6 = this.field9651[var5] & 0xFFFF;
 			int var7 = var6 >> 10 & 0x3F;
@@ -1933,8 +1823,7 @@ public class GlModel extends Model {
 		}
 	}
 
-	@ObfuscatedName("afk.bm()Z")
-	public boolean method1746() {
+    public boolean method1746() {
 		if (this.field9685 == null) {
 			return true;
 		}
@@ -1949,26 +1838,21 @@ public class GlModel extends Model {
 		return true;
 	}
 
-	@ObfuscatedName("afk.bb()Z")
-	public boolean method1731() {
+    public boolean method1731() {
 		return this.field9632;
 	}
 
-	@ObfuscatedName("afk.be()Z")
-	public boolean method1812() {
+    public boolean method1812() {
 		return this.field9633;
 	}
 
-	@ObfuscatedName("afk.b()V")
-	public void method1702() {
+    public void method1702() {
 	}
 
-	@ObfuscatedName("afk.h()V")
-	public void method1703() {
+    public void method1703() {
 	}
 
-	@ObfuscatedName("afk.as()Z")
-	public boolean method1716() {
+    public boolean method1716() {
 		if (this.field9638 == null) {
 			return false;
 		}
@@ -1983,8 +1867,7 @@ public class GlModel extends Model {
 		return true;
 	}
 
-	@ObfuscatedName("afk.am(I[IIIIZI[I)V")
-	public void method1719(int arg0, int[] arg1, int arg2, int arg3, int arg4, boolean arg5, int arg6, int[] arg7) {
+    public void method1719(int arg0, int[] arg1, int arg2, int arg3, int arg4, boolean arg5, int arg6, int[] arg7) {
 		int var9 = arg1.length;
 		if (arg0 == 0) {
 			int var10 = arg2 << 4;
@@ -2435,8 +2318,7 @@ public class GlModel extends Model {
 		}
 	}
 
-	@ObfuscatedName("afk.ar(IIII)V")
-	public void method1721(int arg0, int arg1, int arg2, int arg3) {
+    public void method1721(int arg0, int arg1, int arg2, int arg3) {
 		if (arg0 == 0) {
 			int var5 = 0;
 			field9692 = 0;
@@ -2576,8 +2458,7 @@ public class GlModel extends Model {
 		}
 	}
 
-	@ObfuscatedName("afk.at(I[IIIIIZ)V")
-	public void applyTransform(int type, int[] labels, int arg2, int arg3, int arg4, int arg5, boolean arg6) {
+    public void applyTransform(int type, int[] labels, int arg2, int arg3, int arg4, int arg5, boolean arg6) {
 		int var8 = labels.length;
 		if (type == 0) {
 			int var9 = arg2 << 4;
@@ -2868,8 +2749,7 @@ public class GlModel extends Model {
 		}
 	}
 
-	@ObfuscatedName("afk.ad(I[IIIIIZ)V")
-	public void method1711(int arg0, int[] arg1, int arg2, int arg3, int arg4, int arg5, boolean arg6) {
+    public void method1711(int arg0, int[] arg1, int arg2, int arg3, int arg4, int arg5, boolean arg6) {
 		if (arg0 != 0) {
 			this.applyTransform(arg0, arg1, arg2, arg3, arg4, arg5, arg6);
 			return;
@@ -2882,8 +2762,7 @@ public class GlModel extends Model {
 		field9694 = var10;
 	}
 
-	@ObfuscatedName("afk.au(I[IIIIZI[I)V")
-	public void method1720(int arg0, int[] arg1, int arg2, int arg3, int arg4, boolean arg5, int arg6, int[] arg7) {
+    public void method1720(int arg0, int[] arg1, int arg2, int arg3, int arg4, boolean arg5, int arg6, int[] arg7) {
 		if (arg0 != 0) {
 			this.method1719(arg0, arg1, arg2, arg3, arg4, arg5, arg6, arg7);
 			return;
@@ -2896,8 +2775,7 @@ public class GlModel extends Model {
 		field9694 = var11;
 	}
 
-	@ObfuscatedName("afk.ap()V")
-	public void method1776() {
+    public void method1776() {
 		for (int var1 = 0; var1 < this.field9634; var1++) {
 			this.field9636[var1] = this.field9636[var1] + 7 >> 4;
 			this.field9637[var1] = this.field9637[var1] + 7 >> 4;
@@ -2909,8 +2787,7 @@ public class GlModel extends Model {
 		this.field9669 = false;
 	}
 
-	@ObfuscatedName("afk.aq(Lou;IZ)V")
-	public void method1771(Matrix4x3 arg0, int arg1, boolean arg2) {
+    public void method1771(Matrix4x3 arg0, int arg1, boolean arg2) {
 		if (this.field9640 == null) {
 			return;
 		}
@@ -2930,18 +2807,15 @@ public class GlModel extends Model {
 		}
 	}
 
-	@ObfuscatedName("afk.bw()[Lcq;")
-	public ModelParticleEffector[] method1765() {
+    public ModelParticleEffector[] method1765() {
 		return this.field9641;
 	}
 
-	@ObfuscatedName("afk.bu()[Ldu;")
-	public ModelParticleEmitter[] method1750() {
+    public ModelParticleEmitter[] method1750() {
 		return this.field9687;
 	}
 
-	@ObfuscatedName("afk.by(Lou;)V")
-	public void method1689(Matrix4x3 arg0) {
+    public void method1689(Matrix4x3 arg0) {
 		Matrix4x4 var2 = this.field9626.field9919;
 		var2.setToMatrix4x3(arg0);
 		if (this.field9687 != null) {
@@ -2982,8 +2856,7 @@ public class GlModel extends Model {
 		}
 	}
 
-	@ObfuscatedName("afk.av(IILou;ZI)Z")
-	public boolean method1725(int arg0, int arg1, Matrix4x3 arg2, boolean arg3, int arg4) {
+    public boolean method1725(int arg0, int arg1, Matrix4x3 arg2, boolean arg3, int arg4) {
 		Matrix4x4 var6 = this.field9626.field9919;
 		var6.setToMatrix4x3(arg2);
 		var6.multiply(this.field9626.field10005);
@@ -3101,8 +2974,7 @@ public class GlModel extends Model {
 		return false;
 	}
 
-	@ObfuscatedName("afk.hs(IIIIIIII)Z")
-	public boolean method15554(int arg0, int arg1, int arg2, int arg3, int arg4, int arg5, int arg6, int arg7) {
+    public boolean method15554(int arg0, int arg1, int arg2, int arg3, int arg4, int arg5, int arg6, int arg7) {
 		if (arg1 < arg2 && arg1 < arg3 && arg1 < arg4) {
 			return false;
 		} else if (arg1 > arg2 && arg1 > arg3 && arg1 > arg4) {
@@ -3114,8 +2986,7 @@ public class GlModel extends Model {
 		}
 	}
 
-	@ObfuscatedName("afk.ao(Lara;)Lara;")
-	public HardShadow method1726(HardShadow arg0) {
+    public HardShadow method1726(HardShadow arg0) {
 		if (this.field9658 == 0) {
 			return null;
 		}
@@ -3155,8 +3026,7 @@ public class GlModel extends Model {
 		return var9;
 	}
 
-	@ObfuscatedName("afk.hh(Latk;)V")
-	public void method15555(GlHardShadow arg0) {
+    public void method15555(GlHardShadow arg0) {
 		if (this.field9626.field9993.length < this.field9658) {
 			this.field9626.field9993 = new int[this.field9658];
 			this.field9626.field9913 = new int[this.field9658];
@@ -3192,8 +3062,7 @@ public class GlModel extends Model {
 		}
 	}
 
-	@ObfuscatedName("afk.ax(Lou;Led;I)V")
-	public void draw(Matrix4x3 arg0, ScreenBoundingBox arg1, int arg2) {
+    public void draw(Matrix4x3 arg0, ScreenBoundingBox arg1, int arg2) {
 		if ((arg2 & 0x2) != 0) {
 			OpenGL.glPolygonMode(1032, 6913);
 		}
@@ -3296,8 +3165,7 @@ public class GlModel extends Model {
 		}
 	}
 
-	@ObfuscatedName("afk.hp()V")
-	public void method15556() {
+    public void method15556() {
 		if (this.field9650 == 0) {
 			return;
 		}
@@ -3325,8 +3193,7 @@ public class GlModel extends Model {
 		this.method15551();
 	}
 
-	@ObfuscatedName("afk.hy(Lpq;)V")
-	public void method15557(Matrix4x4 arg0) {
+    public void method15557(Matrix4x4 arg0) {
 		if (this.field9656 == null) {
 			return;
 		}
@@ -3359,8 +3226,7 @@ public class GlModel extends Model {
 		this.field9626.method15745();
 	}
 
-	@ObfuscatedName("afk.he(Z)V")
-	public void method15553(boolean arg0) {
+    public void method15553(boolean arg0) {
 		if (this.field9626.field10016.data.length < this.field9650 * 6) {
 			this.field9626.field10016 = new GpuPacket((this.field9650 + 100) * 6);
 		} else {
@@ -3398,8 +3264,7 @@ public class GlModel extends Model {
 		}
 	}
 
-	@ObfuscatedName("afk.hn(Z)V")
-	public void method15558(boolean arg0) {
+    public void method15558(boolean arg0) {
 		boolean var2 = this.field9665 != null && this.field9665.field1111 == null;
 		boolean var3 = this.field9673 != null && this.field9673.field1111 == null;
 		boolean var4 = this.field9659 != null && this.field9659.field1111 == null;
@@ -3709,8 +3574,7 @@ public class GlModel extends Model {
 		}
 	}
 
-	@ObfuscatedName("afk.hi(ISIB)I")
-	public int method15548(int arg0, short arg1, int arg2, byte arg3) {
+    public int method15548(int arg0, short arg1, int arg2, byte arg3) {
 		int var5 = ColourUtils.field8151[method15559(arg0, arg2)];
 		if (arg1 != -1) {
 			Material var6 = this.field9626.materialList.get(arg1 & 0xFFFF);
@@ -3752,8 +3616,7 @@ public class GlModel extends Model {
 		return var5 << 8 | 255 - (arg3 & 0xFF);
 	}
 
-	@ObfuscatedName("afk.hw(II)I")
-	public static final int method15559(int arg0, int arg1) {
+    public static final int method15559(int arg0, int arg1) {
 		int var2 = (arg0 & 0x7F) * arg1 >> 7;
 		if (var2 < 2) {
 			var2 = 2;

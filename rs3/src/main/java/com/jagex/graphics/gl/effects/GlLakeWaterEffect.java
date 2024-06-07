@@ -7,17 +7,13 @@ import com.jagex.graphics.gl.GlTexture;
 import deob.ObfuscatedName;
 import jaggl.OpenGL;
 
-@ObfuscatedName("aeh")
 public class GlLakeWaterEffect extends GlEffect {
 
-	@ObfuscatedName("aeh.k")
-	public GlRenderList field9297;
+    public GlRenderList field9297;
 
-	@ObfuscatedName("aeh.f")
-	public GlWaterRelated field9295;
+    public GlWaterRelated field9295;
 
-	@ObfuscatedName("aeh.w")
-	public static final float[] field9296 = new float[4];
+    public static final float[] field9296 = new float[4];
 
 	public GlLakeWaterEffect(GlToolkit arg0, GlWaterRelated arg1) {
 		super(arg0);
@@ -46,13 +42,11 @@ public class GlLakeWaterEffect extends GlEffect {
 		this.field9297.method1243();
 	}
 
-	@ObfuscatedName("aeh.e()Z")
-	public boolean method1252() {
+    public boolean method1252() {
 		return true;
 	}
 
-	@ObfuscatedName("aeh.n(Z)V")
-	public void method1263(boolean arg0) {
+    public void method1263(boolean arg0) {
 		this.field9297.method1246('\u0000');
 		if (this.field9295.field1040) {
 			this.field1021.method15776(1);
@@ -61,20 +55,17 @@ public class GlLakeWaterEffect extends GlEffect {
 		}
 	}
 
-	@ObfuscatedName("aeh.m(Z)V")
-	public void method1254(boolean arg0) {
+    public void method1254(boolean arg0) {
 	}
 
-	@ObfuscatedName("aeh.k()V")
-	public void method1255() {
+    public void method1255() {
 		this.field9297.method1246('\u0001');
 		this.field1021.method15776(1);
 		this.field1021.method15777(null);
 		this.field1021.method15776(0);
 	}
 
-	@ObfuscatedName("aeh.f(II)V")
-	public void method1256(int arg0, int arg1) {
+    public void method1256(int arg0, int arg1) {
 		float var3 = (float) ((arg0 & 0x3) + 1) * -5.0E-4F;
 		float var4 = (float) ((arg0 >> 3 & 0x3) + 1) * 5.0E-4F;
 		float var5 = (arg0 & 0x40) == 0 ? 4.8828125E-4F : 9.765625E-4F;
@@ -110,8 +101,7 @@ public class GlLakeWaterEffect extends GlEffect {
 		this.field1021.method15776(0);
 	}
 
-	@ObfuscatedName("aeh.w(Lbq;I)V")
-	public void method1251(GlTexture arg0, int arg1) {
+    public void method1251(GlTexture arg0, int arg1) {
 		this.field1021.method15777(arg0);
 		this.field1021.method15778(arg1);
 	}

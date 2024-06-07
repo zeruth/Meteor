@@ -12,24 +12,19 @@ import rs2.client.Client;
 
 import java.awt.*;
 
-@ObfuscatedName("ag")
 public class ObjIconFactory {
 
-	@ObfuscatedName("ag.e")
-	public static Toolkit toolkit;
+    public static Toolkit toolkit;
 
-	@ObfuscatedName("ag.n")
-	public static Font font;
+    public static Font font;
 
-	@ObfuscatedName("ag.m")
-	public static LinkList icons = new LinkList();
+    public static LinkList icons = new LinkList();
 
 	public ObjIconFactory() throws Throwable {
 		throw new Error();
 	}
 
-	@ObfuscatedName("y.e(Ldh;Lhf;I)V")
-	public static void method539(Toolkit arg0, Component arg1) {
+    public static void method539(Toolkit arg0, Component arg1) {
 		boolean var2 = Client.objTypeList.method18900(arg0, arg1.invobject, arg1.invcount, arg1.outline, arg1.graphicshadow | 0xFF000000, arg1.field2241, arg1.field2246 ? Client.localPlayerEntity.model : null) == null;
 		if (var2) {
 			icons.addTail(new ObjIconRequest(arg1.invobject, arg1.invcount, arg1.outline, arg1.graphicshadow | 0xFF000000, arg1.field2241, arg1.field2246));
@@ -37,8 +32,7 @@ public class ObjIconFactory {
 		}
 	}
 
-	@ObfuscatedName("xk.n(Ldh;S)V")
-	public static void update(Toolkit arg0) {
+    public static void update(Toolkit arg0) {
 		if (icons._size() == 0) {
 			return;
 		}
@@ -62,8 +56,7 @@ public class ObjIconFactory {
 		}
 	}
 
-	@ObfuscatedName("akf.m(I)V")
-	public static void reset() {
+    public static void reset() {
 		if (toolkit != null) {
 			toolkit.dispose();
 			toolkit = null;

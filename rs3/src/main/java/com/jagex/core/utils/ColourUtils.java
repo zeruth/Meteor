@@ -2,30 +2,23 @@ package com.jagex.core.utils;
 
 import deob.ObfuscatedName;
 
-@ObfuscatedName("yk")
 public class ColourUtils {
 
-	@ObfuscatedName("yk.e")
-	public static int field8147 = 0;
+    public static int field8147 = 0;
 
-	@ObfuscatedName("yk.n")
-	public static int field8148 = 0;
+    public static int field8148 = 0;
 
-	@ObfuscatedName("yk.m")
-	public static int[] field8149;
+    public static int[] field8149;
 
-	@ObfuscatedName("yk.k")
-	public static int[] field8151;
+    public static int[] field8151;
 
-	@ObfuscatedName("yk.f")
-	public static int[] field8150;
+    public static int[] field8150;
 
 	public ColourUtils() throws Throwable {
 		throw new Error();
 	}
 
-	@ObfuscatedName("xi.e(ZZI)V")
-	public static void method10156(boolean arg0, boolean arg1) {
+    public static void method10156(boolean arg0, boolean arg1) {
 		if (arg0) {
 			field8147++;
 			method5131();
@@ -36,8 +29,7 @@ public class ColourUtils {
 		}
 	}
 
-	@ObfuscatedName("abu.n(ZZI)V")
-	public static void method14805(boolean arg0, boolean arg1) {
+    public static void method14805(boolean arg0, boolean arg1) {
 		if (arg0) {
 			field8147--;
 			if (field8147 == 0) {
@@ -52,8 +44,7 @@ public class ColourUtils {
 		}
 	}
 
-	@ObfuscatedName("ke.m(I)V")
-	public static void method5131() {
+    public static void method5131() {
 		if (field8149 != null) {
 			return;
 		}
@@ -112,8 +103,7 @@ public class ColourUtils {
 		}
 	}
 
-	@ObfuscatedName("ff.k(S)V")
-	public static void method3129() {
+    public static void method3129() {
 		if (field8151 != null) {
 			return;
 		}
@@ -184,8 +174,7 @@ public class ColourUtils {
 		}
 	}
 
-	@ObfuscatedName("jr.f(II)S")
-	public static short method4937(int arg0) {
+    public static short method4937(int arg0) {
 		int var1 = arg0 >> 10 & 0x3F;
 		int var2 = arg0 >> 3 & 0x70;
 		int var3 = arg0 & 0x7F;
@@ -200,8 +189,7 @@ public class ColourUtils {
 		return (short) (var1 << 10 | var6 >> 4 << 7 | var5);
 	}
 
-	@ObfuscatedName("pm.w(IIB)I")
-	public static int method6807(int arg0, int arg1) {
+    public static int method6807(int arg0, int arg1) {
 		int var2 = (arg0 & 0x7F) * arg1 >> 7;
 		if (var2 < 2) {
 			var2 = 2;
@@ -211,28 +199,24 @@ public class ColourUtils {
 		return (arg0 & 0xFF80) + var2;
 	}
 
-	@ObfuscatedName("mb.l(III)I")
-	public static int method5859(int arg0, int arg1) {
+    public static int method5859(int arg0, int arg1) {
 		int var2 = arg1 >>> 24;
 		int var3 = 255 - var2;
 		int var4 = ((arg1 & 0xFF00FF) * var2 & 0xFF00FF00 | (arg1 & 0xFF00) * var2 & 0xFF0000) >>> 8;
 		return (((arg0 & 0xFF00FF) * var3 & 0xFF00FF00 | (arg0 & 0xFF00) * var3 & 0xFF0000) >>> 8) + var4;
 	}
 
-	@ObfuscatedName("fd.u(IIII)I")
-	public static int method3057(int arg0, int arg1, int arg2) {
+    public static int method3057(int arg0, int arg1, int arg2) {
 		int var3 = 255 - arg2;
 		int var4 = ((arg1 & 0xFF00FF) * arg2 & 0xFF00FF00 | (arg1 & 0xFF00) * arg2 & 0xFF0000) >>> 8;
 		return (((arg0 & 0xFF00FF) * var3 & 0xFF00FF00 | (arg0 & 0xFF00) * var3 & 0xFF0000) >>> 8) + var4;
 	}
 
-	@ObfuscatedName("aqy.z(IIFI)I")
-	public static int interpolateColours(int arg0, int arg1, float arg2) {
+    public static int interpolateColours(int arg0, int arg1, float arg2) {
 		return method3057(arg0, arg1, (int) arg2);
 	}
 
-	@ObfuscatedName("yg.p(II)I")
-	public static int hslToRgb(int arg0) {
+    public static int hslToRgb(int arg0) {
 		double var1 = (double) (arg0 >> 16 & 0xFF) / 256.0D;
 		double var3 = (double) (arg0 >> 8 & 0xFF) / 256.0D;
 		double var5 = (double) (arg0 & 0xFF) / 256.0D;
@@ -294,8 +278,7 @@ public class ColourUtils {
 		return (var21 >> 1) + ((var19 & 0xFF) >> 2 << 10) + (var20 >> 5 << 7);
 	}
 
-	@ObfuscatedName("dd.d(IIB)I")
-	public static final int mulHSL(int arg0, int arg1) {
+    public static final int mulHSL(int arg0, int arg1) {
 		if (arg0 == -1) {
 			return 12345678;
 		}
@@ -308,8 +291,7 @@ public class ColourUtils {
 		return (arg0 & 0xFF80) + var2;
 	}
 
-	@ObfuscatedName("xs.c(IIB)I")
-	public static final int adjustLightness(int arg0, int arg1) {
+    public static final int adjustLightness(int arg0, int arg1) {
 		if (arg0 == -2) {
 			return 12345678;
 		} else if (arg0 == -1) {
@@ -330,8 +312,7 @@ public class ColourUtils {
 		}
 	}
 
-	@ObfuscatedName("akm.r(IIIB)I")
-	public static final int hsl24to16(int arg0, int arg1, int arg2) {
+    public static final int hsl24to16(int arg0, int arg1, int arg2) {
 		if (arg2 > 243) {
 			arg1 >>= 0x4;
 		} else if (arg2 > 217) {

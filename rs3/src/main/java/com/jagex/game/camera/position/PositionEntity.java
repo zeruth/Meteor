@@ -12,45 +12,33 @@ import com.jagex.math.Vector3;
 import com.jagex.math.Vector3i;
 import deob.ObfuscatedName;
 
-@ObfuscatedName("ahd")
 public class PositionEntity extends Position {
 
-	@ObfuscatedName("ahd.n")
-	public CameraTrackable field10552;
+    public CameraTrackable field10552;
 
-	@ObfuscatedName("ahd.m")
-	public final Vector3 field10553 = new Vector3();
+    public final Vector3 field10553 = new Vector3();
 
-	@ObfuscatedName("ahd.k")
-	public final Quaternion field10554 = new Quaternion();
+    public final Quaternion field10554 = new Quaternion();
 
-	@ObfuscatedName("ahd.f")
-	public boolean field10556;
+    public boolean field10556;
 
-	@ObfuscatedName("ahd.w")
-	public int field10561 = 200;
+    public int field10561 = 200;
 
-	@ObfuscatedName("ahd.l")
-	public int field10557;
+    public int field10557;
 
-	@ObfuscatedName("ahd.u")
-	public final Vector3 field10558 = new Vector3(Float.NaN, Float.NaN, Float.NaN);
+    public final Vector3 field10558 = new Vector3(Float.NaN, Float.NaN, Float.NaN);
 
-	@ObfuscatedName("ahd.z")
-	public final Vector3 field10559 = new Vector3(Float.NaN, Float.NaN, Float.NaN);
+    public final Vector3 field10559 = new Vector3(Float.NaN, Float.NaN, Float.NaN);
 
-	@ObfuscatedName("ahd.p")
-	public final Vector3 field10560 = new Vector3();
+    public final Vector3 field10560 = new Vector3();
 
-	@ObfuscatedName("ahd.d")
-	public final Quaternion field10555 = new Quaternion();
+    public final Quaternion field10555 = new Quaternion();
 
 	public PositionEntity(Camera arg0) {
 		super(arg0);
 	}
 
-	@ObfuscatedName("ahd.t(Ljn;Lox;Lov;ZI[[[ILqx;III)V")
-	public void method16683(CameraTrackable arg0, Vector3 arg1, Quaternion arg2, boolean arg3, int arg4, int[][][] arg5, SceneLevelTileFlags arg6, int arg7, int arg8) {
+    public void method16683(CameraTrackable arg0, Vector3 arg1, Quaternion arg2, boolean arg3, int arg4, int[][][] arg5, SceneLevelTileFlags arg6, int arg7, int arg8) {
 		this.field10552 = arg0;
 		this.field10553.setTo(arg1);
 		this.field10554.setTo(arg2);
@@ -60,15 +48,13 @@ public class PositionEntity extends Position {
 		this.method16686(arg5, arg6, arg7, arg8);
 	}
 
-	@ObfuscatedName("ahd.ae(B)V")
-	public void method16684() {
+    public void method16684() {
 		if (this.field10552 != null) {
 			this.field10552 = this.camera.method4697().getCameraTrackable(this.field10552.getCameraTrackableType(), this.field10552.getIndex());
 		}
 	}
 
-	@ObfuscatedName("ahd.e(F[[[ILqx;IIB)V")
-	public void method5238(float arg0, int[][][] arg1, SceneLevelTileFlags arg2, int arg3, int arg4) {
+    public void method5238(float arg0, int[][][] arg1, SceneLevelTileFlags arg2, int arg3, int arg4) {
 		if (this.field10552 == null) {
 			return;
 		}
@@ -83,8 +69,7 @@ public class PositionEntity extends Position {
 		this.camera.method4807(true, arg0, this.field10558, this.camera.method4721(), this.field10559, this.field10560);
 	}
 
-	@ObfuscatedName("ahd.ag(B)Lov;")
-	public Quaternion method16685() {
+    public Quaternion method16685() {
 		Quaternion var1 = Quaternion.create(this.field10554);
 		if (this.field10556) {
 			Vector3 var2 = this.field10552.createVector3();
@@ -103,8 +88,7 @@ public class PositionEntity extends Position {
 		return var1;
 	}
 
-	@ObfuscatedName("ahd.ah([[[ILqx;IIB)V")
-	public void method16686(int[][][] arg0, SceneLevelTileFlags arg1, int arg2, int arg3) {
+    public void method16686(int[][][] arg0, SceneLevelTileFlags arg1, int arg2, int arg3) {
 		if (!this.method5218() || !this.camera.method4730() && !this.camera.method4731()) {
 			return;
 		}
@@ -160,8 +144,7 @@ public class PositionEntity extends Position {
 		}
 	}
 
-	@ObfuscatedName("ahd.al([[[ILqx;IIIZI)F")
-	public float method16687(int[][][] arg0, SceneLevelTileFlags arg1, int arg2, int arg3, int arg4, boolean arg5) {
+    public float method16687(int[][][] arg0, SceneLevelTileFlags arg1, int arg2, int arg3, int arg4, boolean arg5) {
 		Quaternion var7 = this.method16685();
 		Vector3 var8 = this.method16696(var7);
 		var7.release();
@@ -188,8 +171,7 @@ public class PositionEntity extends Position {
 		return var28;
 	}
 
-	@ObfuscatedName("ahd.ac(Lov;I)Lox;")
-	public Vector3 method16696(Quaternion arg0) {
+    public Vector3 method16696(Quaternion arg0) {
 		Vector3 var2 = Vector3.create(this.field10553);
 		var2.rotate(arg0);
 		Vector3 var3 = Vector3.add(this.field10559, var2);
@@ -197,13 +179,11 @@ public class PositionEntity extends Position {
 		return var3;
 	}
 
-	@ObfuscatedName("ahd.n(I)Z")
-	public boolean method5218() {
+    public boolean method5218() {
 		return !Float.isNaN(this.field10558.x);
 	}
 
-	@ObfuscatedName("ahd.m(B)Lox;")
-	public Vector3 method5219() {
+    public Vector3 method5219() {
 		Vector3 var1 = Vector3.create(this.field10553);
 		var1.rotate(this.field10555);
 		Vector3 var2 = Vector3.add(this.field10558, var1);
@@ -211,8 +191,7 @@ public class PositionEntity extends Position {
 		return var2;
 	}
 
-	@ObfuscatedName("ahd.k(I)[D")
-	public double[] method5230() {
+    public double[] method5230() {
 		double[] var1 = new double[3];
 		Vector3 var2 = this.method5219();
 		var1[0] = var2.x;
@@ -221,41 +200,34 @@ public class PositionEntity extends Position {
 		return var1;
 	}
 
-	@ObfuscatedName("ahd.f(B)Lakt;")
-	public CoordFine method5221() {
+    public CoordFine method5221() {
 		Vector3 var1 = this.method5219();
 		CoordFine var2 = new CoordFine(this.field10557, (int) var1.x, (int) var1.y, (int) var1.z);
 		var1.release();
 		return var2;
 	}
 
-	@ObfuscatedName("ahd.ai(I)Lox;")
-	public Vector3 method16691() {
+    public Vector3 method16691() {
 		return this.field10558;
 	}
 
-	@ObfuscatedName("ahd.aw(I)Lox;")
-	public Vector3 method16692() {
+    public Vector3 method16692() {
 		return this.field10553;
 	}
 
-	@ObfuscatedName("ahd.as(B)F")
-	public float method16693() {
+    public float method16693() {
 		return CameraHelpers.method16445(this.field10554);
 	}
 
-	@ObfuscatedName("ahd.at(I)F")
-	public float method16694() {
+    public float method16694() {
 		return CameraHelpers.method4498(this.field10554);
 	}
 
-	@ObfuscatedName("ahd.w(I)F")
-	public float method5222() {
+    public float method5222() {
 		return 0.0F;
 	}
 
-	@ObfuscatedName("ahd.l(Lju;IIB)V")
-	public void method5223(Vector3i arg0, int arg1, int arg2) {
+    public void method5223(Vector3i arg0, int arg1, int arg2) {
 		Vector3 var4 = this.method5219();
 		arg0.field2835 = (int) var4.x - arg1;
 		arg0.field2836 = (int) -var4.y;
@@ -263,8 +235,7 @@ public class PositionEntity extends Position {
 		var4.release();
 	}
 
-	@ObfuscatedName("ahd.u(Lalw;I)V")
-	public void method5224(Packet arg0) {
+    public void method5224(Packet arg0) {
 		CameraTrackableType var2 = CameraTrackableType.of(arg0.g1());
 		int var3 = arg0.g2();
 		this.field10553.decode(arg0);

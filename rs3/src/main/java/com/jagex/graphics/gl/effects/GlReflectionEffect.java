@@ -7,14 +7,11 @@ import com.jagex.graphics.gl.GlTexture;
 import deob.ObfuscatedName;
 import jaggl.OpenGL;
 
-@ObfuscatedName("aez")
 public class GlReflectionEffect extends GlEffect {
 
-	@ObfuscatedName("aez.k")
-	public GlRenderList field9291;
+    public GlRenderList field9291;
 
-	@ObfuscatedName("aez.f")
-	public boolean field9294 = false;
+    public boolean field9294 = false;
 
 	public GlReflectionEffect(GlToolkit arg0) {
 		super(arg0);
@@ -49,13 +46,11 @@ public class GlReflectionEffect extends GlEffect {
 		}
 	}
 
-	@ObfuscatedName("aez.e()Z")
-	public boolean method1252() {
+    public boolean method1252() {
 		return true;
 	}
 
-	@ObfuscatedName("aez.n(Z)V")
-	public void method1263(boolean arg0) {
+    public void method1263(boolean arg0) {
 		GlCubeTexture var2 = this.field1021.method15760();
 		if (this.field9291 == null || var2 == null || !arg0) {
 			this.field1021.method15781(0, 34168, 770);
@@ -72,13 +67,11 @@ public class GlReflectionEffect extends GlEffect {
 		this.field9294 = true;
 	}
 
-	@ObfuscatedName("aez.m(Z)V")
-	public void method1254(boolean arg0) {
+    public void method1254(boolean arg0) {
 		this.field1021.method15810(8448, 7681);
 	}
 
-	@ObfuscatedName("aez.k()V")
-	public void method1255() {
+    public void method1255() {
 		if (this.field9294) {
 			this.field9291.method1246('\u0001');
 			this.field1021.method15776(1);
@@ -91,12 +84,10 @@ public class GlReflectionEffect extends GlEffect {
 		this.field9294 = false;
 	}
 
-	@ObfuscatedName("aez.f(II)V")
-	public void method1256(int arg0, int arg1) {
+    public void method1256(int arg0, int arg1) {
 	}
 
-	@ObfuscatedName("aez.w(Lbq;I)V")
-	public void method1251(GlTexture arg0, int arg1) {
+    public void method1251(GlTexture arg0, int arg1) {
 		this.field1021.method15777(arg0);
 		this.field1021.method15778(arg1);
 	}

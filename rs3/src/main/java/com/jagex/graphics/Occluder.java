@@ -3,44 +3,31 @@ package com.jagex.graphics;
 import com.jagex.game.world.entity.Scene;
 import deob.ObfuscatedName;
 
-@ObfuscatedName("ui")
 public class Occluder {
 
-	@ObfuscatedName("ui.w")
-	public final byte type;
+    public final byte type;
 
-	@ObfuscatedName("ui.l")
-	public final byte level;
+    public final byte level;
 
-	@ObfuscatedName("ui.u")
-	public final short minTileX;
+    public final short minTileX;
 
-	@ObfuscatedName("ui.z")
-	public final short maxTileX;
+    public final short maxTileX;
 
-	@ObfuscatedName("ui.p")
-	public final short minTileZ;
+    public final short minTileZ;
 
-	@ObfuscatedName("ui.d")
-	public final short maxTileZ;
+    public final short maxTileZ;
 
-	@ObfuscatedName("ui.c")
-	public final int[] x;
+    public final int[] x;
 
-	@ObfuscatedName("ui.r")
-	public final int[] y;
+    public final int[] y;
 
-	@ObfuscatedName("ui.v")
-	public final int[] z;
+    public final int[] z;
 
-	@ObfuscatedName("ui.o")
-	public final short[] field7063;
+    public final short[] field7063;
 
-	@ObfuscatedName("ui.s")
-	public final short[] field7076;
+    public final short[] field7076;
 
-	@ObfuscatedName("ui.y")
-	public final short[] field7077;
+    public final short[] field7077;
 
 	public Occluder(Scene arg0, int type, int level, int minX, int arg4, int maxX, int arg6, int minY, int arg8, int maxY, int arg10, int minZ, int arg12, int maxZ, int arg14) {
 		this.type = (byte) type;

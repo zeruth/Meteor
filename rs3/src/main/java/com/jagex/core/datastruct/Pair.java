@@ -2,14 +2,11 @@ package com.jagex.core.datastruct;
 
 import deob.ObfuscatedName;
 
-@ObfuscatedName("abg")
 public class Pair {
 
-	@ObfuscatedName("abg.e")
-	public Object first;
+    public Object first;
 
-	@ObfuscatedName("abg.n")
-	public Object second;
+    public Object second;
 
 	public Pair(Object first, Object second) {
 		this.first = first;

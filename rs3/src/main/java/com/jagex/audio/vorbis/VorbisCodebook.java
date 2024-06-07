@@ -3,35 +3,25 @@ package com.jagex.audio.vorbis;
 import com.jagex.math.IntMath;
 import deob.ObfuscatedName;
 
-@ObfuscatedName("hu")
 public class VorbisCodebook {
 
-	@ObfuscatedName("hu.e")
-	public int dim;
+    public int dim;
 
-	@ObfuscatedName("hu.n")
-	public int[] lengthlist;
+    public int[] lengthlist;
 
-	@ObfuscatedName("hu.m")
-	public int[] entryTree;
+    public int[] entryTree;
 
-	@ObfuscatedName("hu.k")
-	public int entries;
+    public int entries;
 
-	@ObfuscatedName("hu.f")
-	public int[] quantlist;
+    public int[] quantlist;
 
-	@ObfuscatedName("hu.w")
-	public int field2114 = 0;
+    public int field2114 = 0;
 
-	@ObfuscatedName("hu.l")
-	public int field2120 = 0;
+    public int field2120 = 0;
 
-	@ObfuscatedName("hu.u")
-	public float[][] valueVector;
+    public float[][] valueVector;
 
-	@ObfuscatedName("hu.e(II)I")
-	public static int maptype1_quantvals(int arg0, int arg1) {
+    public static int maptype1_quantvals(int arg0, int arg1) {
 		int var2 = (int) Math.pow(arg0, 1.0D / (double) arg1) + 1;
 		while (true) {
 			int var3 = var2;
@@ -57,13 +47,11 @@ public class VorbisCodebook {
 		}
 	}
 
-	@ObfuscatedName("hu.n(Lhk;)V")
-	public void method3880(VorbisSound arg0) {
+    public void method3880(VorbisSound arg0) {
 		arg0.read(this.field2114 * 8 + this.field2120);
 	}
 
-	@ObfuscatedName("hu.m(Lhk;)V")
-	public void unpack(VorbisSound opb) {
+    public void unpack(VorbisSound opb) {
 		int var2 = opb.method3752();
 		int var3 = opb.method3751();
 
@@ -154,8 +142,7 @@ public class VorbisCodebook {
 		this.field2114 = opb.method3751() - var3;
 	}
 
-	@ObfuscatedName("hu.k()V")
-	public void makeWords() {
+    public void makeWords() {
 		int[] r = new int[this.entries];
 		int[] marker = new int[33];
 
@@ -240,16 +227,14 @@ public class VorbisCodebook {
 		}
 	}
 
-	@ObfuscatedName("hu.f(Lhk;)I")
-	public int decodeScalar(VorbisSound arg0) {
+    public int decodeScalar(VorbisSound arg0) {
 		int var2;
 		for (var2 = 0; this.entryTree[var2] >= 0; var2 = arg0.readBit() == 0 ? var2 + 1 : this.entryTree[var2]) {
 		}
 		return ~this.entryTree[var2];
 	}
 
-	@ObfuscatedName("hu.w(Lhk;)[F")
-	public float[] decodeVq(VorbisSound arg0) {
+    public float[] decodeVq(VorbisSound arg0) {
 		return this.valueVector[this.decodeScalar(arg0)];
 	}
 }

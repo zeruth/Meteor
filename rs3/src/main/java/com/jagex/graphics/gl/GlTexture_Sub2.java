@@ -5,17 +5,13 @@ import com.jagex.graphics.TextureFormat;
 import deob.ObfuscatedName;
 import jaggl.OpenGL;
 
-@ObfuscatedName("adu")
 public class GlTexture_Sub2 extends GlTexture {
 
-	@ObfuscatedName("adu.s")
-	public final int field9269;
+    public final int field9269;
 
-	@ObfuscatedName("adu.y")
-	public final int field9268;
+    public final int field9268;
 
-	@ObfuscatedName("adu.q")
-	public final int field9270;
+    public final int field9270;
 
 	public GlTexture_Sub2(GlToolkit arg0, TextureFormat arg1, DataType arg2, int arg3, int arg4, int arg5) {
 		super(arg0, 32879, arg1, arg2, arg3 * arg4 * arg5, false);
@@ -39,8 +35,7 @@ public class GlTexture_Sub2 extends GlTexture {
 		this.method1082(true);
 	}
 
-	@ObfuscatedName("adu.ar(IIIIIII)V")
-	public void method15310(int arg0, int arg1, int arg2, int arg3, int arg4, int arg5, int arg6) {
+    public void method15310(int arg0, int arg1, int arg2, int arg3, int arg4, int arg5, int arg6) {
 		this.field1006.method15777(this);
 		OpenGL.glCopyTexSubImage3D(this.field1009, 0, arg0, arg1, arg2, arg5, arg6, arg3, arg4);
 		OpenGL.glFlush();

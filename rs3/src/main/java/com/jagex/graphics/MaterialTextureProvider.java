@@ -3,30 +3,24 @@ package com.jagex.graphics;
 import com.jagex.core.datastruct.SoftLruHashTable;
 import deob.ObfuscatedName;
 
-@ObfuscatedName("lu")
 public class MaterialTextureProvider {
 
-	@ObfuscatedName("lu.e")
-	public final GpuToolkit field3269;
+    public final GpuToolkit field3269;
 
-	@ObfuscatedName("lu.n")
-	public final TextureList field3268;
+    public final TextureList field3268;
 
-	@ObfuscatedName("lu.m")
-	public SoftLruHashTable field3267 = new SoftLruHashTable(10485760, 256);
+    public SoftLruHashTable field3267 = new SoftLruHashTable(10485760, 256);
 
 	public MaterialTextureProvider(GpuToolkit arg0, TextureList arg1) {
 		this.field3269 = arg0;
 		this.field3268 = arg1;
 	}
 
-	@ObfuscatedName("lu.e(Ldv;)Llz;")
-	public GpuTexture method5639(Material arg0) {
+    public GpuTexture method5639(Material arg0) {
 		return this.method5645(arg0, arg0.size);
 	}
 
-	@ObfuscatedName("lu.n(Ldv;I)Llz;")
-	public GpuTexture method5645(Material arg0, int arg1) {
+    public GpuTexture method5645(Material arg0, int arg1) {
 		long var3 = (long) (arg1 << 16 | arg0.field1329);
 		GpuTexture var5 = (GpuTexture) this.field3267.get(var3);
 		if (var5 != null) {
@@ -59,8 +53,7 @@ public class MaterialTextureProvider {
 		}
 	}
 
-	@ObfuscatedName("lu.m(Ldv;I)Z")
-	public boolean method5642(Material arg0, int arg1) {
+    public boolean method5642(Material arg0, int arg1) {
 		if (arg1 == -1) {
 			arg1 = arg0.size;
 		}
@@ -73,13 +66,11 @@ public class MaterialTextureProvider {
 		}
 	}
 
-	@ObfuscatedName("lu.k()V")
-	public void method5643() {
+    public void method5643() {
 		this.field3267.clean(5);
 	}
 
-	@ObfuscatedName("lu.f()V")
-	public void method5644() {
+    public void method5644() {
 		this.field3267.reset();
 	}
 }

@@ -3,59 +3,41 @@ package com.jagex.graphics;
 import com.jagex.core.io.Packet;
 import deob.ObfuscatedName;
 
-@ObfuscatedName("dx")
 public class AnimFrame {
 
-	@ObfuscatedName("dx.e")
-	public static short[] field1626 = new short[500];
+    public static short[] field1626 = new short[500];
 
-	@ObfuscatedName("dx.n")
-	public static short[] field1623 = new short[500];
+    public static short[] field1623 = new short[500];
 
-	@ObfuscatedName("dx.m")
-	public static short[] field1633 = new short[500];
+    public static short[] field1633 = new short[500];
 
-	@ObfuscatedName("dx.k")
-	public static short[] field1625 = new short[500];
+    public static short[] field1625 = new short[500];
 
-	@ObfuscatedName("dx.f")
-	public static short[] field1629 = new short[500];
+    public static short[] field1629 = new short[500];
 
-	@ObfuscatedName("dx.w")
-	public static byte[] field1624 = new byte[500];
+    public static byte[] field1624 = new byte[500];
 
-	@ObfuscatedName("dx.l")
-	public AnimBase field1628 = null;
+    public AnimBase field1628 = null;
 
-	@ObfuscatedName("dx.u")
-	public int field1631 = 0;
+    public int field1631 = 0;
 
-	@ObfuscatedName("dx.z")
-	public short[] field1630;
+    public short[] field1630;
 
-	@ObfuscatedName("dx.p")
-	public short[] field1627;
+    public short[] field1627;
 
-	@ObfuscatedName("dx.d")
-	public short[] field1622;
+    public short[] field1622;
 
-	@ObfuscatedName("dx.c")
-	public short[] field1632;
+    public short[] field1632;
 
-	@ObfuscatedName("dx.r")
-	public short[] field1634;
+    public short[] field1634;
 
-	@ObfuscatedName("dx.v")
-	public byte[] field1635;
+    public byte[] field1635;
 
-	@ObfuscatedName("dx.o")
-	public boolean field1636 = false;
+    public boolean field1636 = false;
 
-	@ObfuscatedName("dx.s")
-	public boolean field1637 = false;
+    public boolean field1637 = false;
 
-	@ObfuscatedName("dx.y")
-	public boolean field1638 = false;
+    public boolean field1638 = false;
 
 	public AnimFrame(byte[] arg0, AnimBase arg1) {
 		this.field1628 = arg1;

@@ -6,65 +6,45 @@ import com.jagex.encryption.Whirlpool;
 import com.jagex.js5.Js5;
 import deob.ObfuscatedName;
 
-@ObfuscatedName("pl")
 public class Js5Index {
 
-	@ObfuscatedName("pl.n")
-	public int crc;
+    public int crc;
 
-	@ObfuscatedName("pl.m")
-	public byte[] whirlpool;
+    public byte[] whirlpool;
 
-	@ObfuscatedName("pl.k")
-	public int version;
+    public int version;
 
-	@ObfuscatedName("pl.f")
-	public int size;
+    public int size;
 
-	@ObfuscatedName("pl.w")
-	public int[] groupIds;
+    public int[] groupIds;
 
-	@ObfuscatedName("pl.l")
-	public int[] groupNameHash;
+    public int[] groupNameHash;
 
-	@ObfuscatedName("pl.u")
-	public IntHashTable groupNameHashTable;
+    public IntHashTable groupNameHashTable;
 
-	@ObfuscatedName("pl.z")
-	public int capacity;
+    public int capacity;
 
-	@ObfuscatedName("pl.p")
-	public int[] groupChecksums;
+    public int[] groupChecksums;
 
-	@ObfuscatedName("pl.d")
-	public int[] groupUncompressedChecksums;
+    public int[] groupUncompressedChecksums;
 
-	@ObfuscatedName("pl.c")
-	public byte[][] groupDigests;
+    public byte[][] groupDigests;
 
-	@ObfuscatedName("pl.r")
-	public int[] groupVersions;
+    public int[] groupVersions;
 
-	@ObfuscatedName("pl.v")
-	public int[] groupLengths;
+    public int[] groupLengths;
 
-	@ObfuscatedName("pl.o")
-	public int[] groupUncompressedLengths;
+    public int[] groupUncompressedLengths;
 
-	@ObfuscatedName("pl.s")
-	public int[] groupSizes;
+    public int[] groupSizes;
 
-	@ObfuscatedName("pl.y")
-	public int[][] fileIds;
+    public int[][] fileIds;
 
-	@ObfuscatedName("pl.q")
-	public int[][] fileNameHashes;
+    public int[][] fileNameHashes;
 
-	@ObfuscatedName("pl.x")
-	public IntHashTable[] fileNameHashTables;
+    public IntHashTable[] fileNameHashTables;
 
-	@ObfuscatedName("pl.b")
-	public int[] groupCapacities;
+    public int[] groupCapacities;
 
 	public Js5Index(byte[] src, int crc, byte[] expectedwhirlpool) {
 		this.crc = Packet.getcrc(src, src.length);
@@ -90,8 +70,7 @@ public class Js5Index {
 		this.decode(src);
 	}
 
-	@ObfuscatedName("pl.e([BI)V")
-	public void decode(byte[] bytes) {
+    public void decode(byte[] bytes) {
 		Packet buf = new Packet(Js5.decompress(bytes));
 
 		int protocol = buf.g1();

@@ -6,32 +6,23 @@ import com.jagex.graphics.GraphicsDeletable;
 import deob.ObfuscatedName;
 import jaggl.OpenGL;
 
-@ObfuscatedName("app")
 public class GlFrameBuffer extends FrameBuffer {
 
-	@ObfuscatedName("app.m")
-	public final GlToolkit field11915;
+    public final GlToolkit field11915;
 
-	@ObfuscatedName("app.k")
-	public int field11916;
+    public int field11916;
 
-	@ObfuscatedName("app.f")
-	public int field11918;
+    public int field11918;
 
-	@ObfuscatedName("app.w")
-	public int field11914;
+    public int field11914;
 
-	@ObfuscatedName("app.l")
-	public int field11919;
+    public int field11919;
 
-	@ObfuscatedName("app.u")
-	public int field11917;
+    public int field11917;
 
-	@ObfuscatedName("app.z")
-	public GlPostProcessingRelated field11920;
+    public GlPostProcessingRelated field11920;
 
-	@ObfuscatedName("app.p")
-	public final GlPostProcessingRelated[] field11922 = new GlPostProcessingRelated[4];
+    public final GlPostProcessingRelated[] field11922 = new GlPostProcessingRelated[4];
 
 	public GlFrameBuffer(GlToolkit arg0) {
 		if (!arg0.field9985) {
@@ -43,18 +34,15 @@ public class GlFrameBuffer extends FrameBuffer {
 		this.field11916 = var2[0];
 	}
 
-	@ObfuscatedName("app.e()I")
-	public int getWidth() {
+    public int getWidth() {
 		return this.field11918;
 	}
 
-	@ObfuscatedName("app.n()I")
-	public int getHeight() {
+    public int getHeight() {
 		return this.field11914;
 	}
 
-	@ObfuscatedName("app.b(ILdp;)V")
-	public void method15439(int arg0, GraphicsDeletable arg1) {
+    public void method15439(int arg0, GraphicsDeletable arg1) {
 		int var3 = 0x1 << arg0;
 		GlPostProcessingRelated var4 = (GlPostProcessingRelated) arg1;
 		if (arg1 == null) {
@@ -84,8 +72,7 @@ public class GlFrameBuffer extends FrameBuffer {
 		}
 	}
 
-	@ObfuscatedName("app.x(Ldw;)V")
-	public void method15441(EffectInterface arg0) {
+    public void method15441(EffectInterface arg0) {
 		GlPostProcessingRelated var2 = (GlPostProcessingRelated) arg0;
 		if (arg0 == null) {
 			this.field11919 &= 0xFFFFFFEF;
@@ -114,8 +101,7 @@ public class GlFrameBuffer extends FrameBuffer {
 		}
 	}
 
-	@ObfuscatedName("app.ac(I)V")
-	public void method18962(int arg0) {
+    public void method18962(int arg0) {
 		GlPostProcessingRelated var2 = this.field11922[arg0];
 		if (var2 == null) {
 			OpenGL.glFramebufferRenderbufferEXT(36160, arg0 + 36064, 36161, 0);
@@ -124,8 +110,7 @@ public class GlFrameBuffer extends FrameBuffer {
 		}
 	}
 
-	@ObfuscatedName("app.ai()V")
-	public void method18965() {
+    public void method18965() {
 		if (this.field11920 == null) {
 			OpenGL.glFramebufferRenderbufferEXT(36160, 36096, 36161, 0);
 		} else {
@@ -133,14 +118,12 @@ public class GlFrameBuffer extends FrameBuffer {
 		}
 	}
 
-	@ObfuscatedName("app.h()Z")
-	public boolean method15446() {
+    public boolean method15446() {
 		int var1 = OpenGL.glCheckFramebufferStatusEXT(36160);
 		return var1 == 36053;
 	}
 
-	@ObfuscatedName("app.k()Z")
-	public boolean method1630() {
+    public boolean method1630() {
 		OpenGL.glBindFramebufferEXT(36160, this.field11916);
 		for (int var1 = 0; var1 < 4; var1++) {
 			if ((this.field11917 & 0x1 << var1) != 0) {
@@ -155,19 +138,16 @@ public class GlFrameBuffer extends FrameBuffer {
 		return true;
 	}
 
-	@ObfuscatedName("app.f()Z")
-	public boolean method1631() {
+    public boolean method1631() {
 		OpenGL.glBindFramebufferEXT(36160, 0);
 		return true;
 	}
 
-	@ObfuscatedName("app.aw(I)V")
-	public void method18966(int arg0) {
+    public void method18966(int arg0) {
 		OpenGL.glDrawBuffer(arg0 + 36064);
 	}
 
-	@ObfuscatedName("app.a(IIIIIIZZ)V")
-	public void method15440(int arg0, int arg1, int arg2, int arg3, int arg4, int arg5, boolean arg6, boolean arg7) {
+    public void method15440(int arg0, int arg1, int arg2, int arg3, int arg4, int arg5, boolean arg6, boolean arg7) {
 		if (!(arg6 | arg7)) {
 			return;
 		}
@@ -185,8 +165,7 @@ public class GlFrameBuffer extends FrameBuffer {
 		OpenGL.glBindFramebufferEXT(36008, 0);
 	}
 
-	@ObfuscatedName("app.m()V")
-	public void method1629() {
+    public void method1629() {
 		if (this.field11916 != 0) {
 			this.field11915.method15802(this.field11916);
 			this.field11916 = 0;

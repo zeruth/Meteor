@@ -6,11 +6,9 @@ import com.jagex.graphics.TextureFormat;
 import deob.ObfuscatedName;
 import jaggl.OpenGL;
 
-@ObfuscatedName("adq")
 public class GlCubeTexture extends GlTexture {
 
-	@ObfuscatedName("adq.a")
-	public final int field9279;
+    public final int field9279;
 
 	public GlCubeTexture(GlToolkit arg0, TextureFormat arg1, DataType arg2, int arg3) {
 		super(arg0, 34067, arg1, arg2, arg3 * arg3 * 6, false);
@@ -48,8 +46,7 @@ public class GlCubeTexture extends GlTexture {
 		this.method1082(true);
 	}
 
-	@ObfuscatedName("adq.ar(II)Ldp;")
-	public GraphicsDeletable method15332(int arg0, int arg1) {
+    public GraphicsDeletable method15332(int arg0, int arg1) {
 		return new GlCubeTextureRelated(this, arg0, arg1);
 	}
 }

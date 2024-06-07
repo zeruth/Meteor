@@ -2,15 +2,13 @@ package com.jagex.core.utils;
 
 import deob.ObfuscatedName;
 
-@ObfuscatedName("zp")
 public class ArrayUtil {
 
 	public ArrayUtil() throws Throwable {
 		throw new Error();
 	}
 
-	@ObfuscatedName("zp.w([FI[FII)V")
-	public static void method14023(float[] arg0, int arg1, float[] arg2, int arg3, int arg4) {
+    public static void method14023(float[] arg0, int arg1, float[] arg2, int arg3, int arg4) {
 		if (arg0 == arg2) {
 			if (arg1 == arg3) {
 				return;
@@ -56,8 +54,7 @@ public class ArrayUtil {
 		}
 	}
 
-	@ObfuscatedName("zp.z([Ljava/lang/Object;I[Ljava/lang/Object;II)V")
-	public static void copy(Object[] arg0, int arg1, Object[] arg2, int arg3, int arg4) {
+    public static void copy(Object[] arg0, int arg1, Object[] arg2, int arg3, int arg4) {
 		if (arg0 == arg2) {
 			if (arg1 == arg3) {
 				return;
@@ -103,8 +100,7 @@ public class ArrayUtil {
 		}
 	}
 
-	@ObfuscatedName("zp.p([IIII)V")
-	public static void method14009(int[] arg0, int arg1, int arg2, int arg3) {
+    public static void method14009(int[] arg0, int arg1, int arg2, int arg3) {
 		int var4 = arg1 + arg2 - 7;
 		while (arg1 < var4) {
 			arg0[arg1++] = arg3;

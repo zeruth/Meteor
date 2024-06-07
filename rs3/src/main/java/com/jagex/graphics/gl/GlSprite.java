@@ -8,35 +8,25 @@ import com.jagex.graphics.TextureFormat;
 import deob.ObfuscatedName;
 import jaggl.OpenGL;
 
-@ObfuscatedName("aei")
 public class GlSprite extends Sprite {
 
-	@ObfuscatedName("aei.e")
-	public final GlTexture_Sub1_Sub1 field9396;
+    public final GlTexture_Sub1_Sub1 field9396;
 
-	@ObfuscatedName("aei.n")
-	public final GlToolkit field9399;
+    public final GlToolkit field9399;
 
-	@ObfuscatedName("aei.m")
-	public GlTexture_Sub1_Sub1 field9393;
+    public GlTexture_Sub1_Sub1 field9393;
 
-	@ObfuscatedName("aei.k")
-	public int field9394 = 0;
+    public int field9394 = 0;
 
-	@ObfuscatedName("aei.f")
-	public boolean field9395 = false;
+    public boolean field9395 = false;
 
-	@ObfuscatedName("aei.w")
-	public int field9392 = 0;
+    public int field9392 = 0;
 
-	@ObfuscatedName("aei.l")
-	public int field9391 = 0;
+    public int field9391 = 0;
 
-	@ObfuscatedName("aei.u")
-	public int field9398 = 0;
+    public int field9398 = 0;
 
-	@ObfuscatedName("aei.z")
-	public int field9397 = 0;
+    public int field9397 = 0;
 
 	public GlSprite(GlToolkit arg0, int arg1, int arg2, boolean arg3) {
 		this.field9399 = arg0;
@@ -53,8 +43,7 @@ public class GlSprite extends Sprite {
 		this.field9396 = GlTexture_Sub1_Sub1.method18931(arg0, arg1, arg2, false, arg3, arg5, arg4);
 	}
 
-	@ObfuscatedName("aei.e(IIII)V")
-	public void setPadding(int arg0, int arg1, int arg2, int arg3) {
+    public void setPadding(int arg0, int arg1, int arg2, int arg3) {
 		this.field9391 = arg0;
 		this.field9392 = arg1;
 		this.field9397 = arg2;
@@ -62,46 +51,38 @@ public class GlSprite extends Sprite {
 		this.field9395 = this.field9391 != 0 || this.field9392 != 0 || this.field9397 != 0 || this.field9398 != 0;
 	}
 
-	@ObfuscatedName("aei.n([I)V")
-	public void method1432(int[] arg0) {
+    public void method1432(int[] arg0) {
 		arg0[0] = this.field9391;
 		arg0[1] = this.field9392;
 		arg0[2] = this.field9397;
 		arg0[3] = this.field9398;
 	}
 
-	@ObfuscatedName("aei.m()I")
-	public int getWidth() {
+    public int getWidth() {
 		return this.field9396.field11900;
 	}
 
-	@ObfuscatedName("aei.k()I")
-	public int getX() {
+    public int getX() {
 		return this.field9396.field11900 + this.field9391 + this.field9397;
 	}
 
-	@ObfuscatedName("aei.f()I")
-	public int getHeight() {
+    public int getHeight() {
 		return this.field9396.field11902;
 	}
 
-	@ObfuscatedName("aei.w()I")
-	public int getY() {
+    public int getY() {
 		return this.field9396.field11902 + this.field9392 + this.field9398;
 	}
 
-	@ObfuscatedName("aei.l()Ldp;")
-	public GraphicsDeletable method1437() {
+    public GraphicsDeletable method1437() {
 		return this.field9396.method15317(0);
 	}
 
-	@ObfuscatedName("aei.p(IIIIII)V")
-	public void draw(int arg0, int arg1, int arg2, int arg3, int arg4, int arg5) {
+    public void draw(int arg0, int arg1, int arg2, int arg3, int arg4, int arg5) {
 		this.method15372(arg0, arg1, arg2, arg3, arg4, arg5, false);
 	}
 
-	@ObfuscatedName("aei.cl(IIIIIIZ)V")
-	public void method15372(int arg0, int arg1, int arg2, int arg3, int arg4, int arg5, boolean arg6) {
+    public void method15372(int arg0, int arg1, int arg2, int arg3, int arg4, int arg5, boolean arg6) {
 		if (!this.field9399.field9981 || arg6) {
 			this.field9396.method15315(arg0, arg1, arg2, arg3, arg4, arg5);
 			return;
@@ -115,8 +96,7 @@ public class GlSprite extends Sprite {
 		}
 	}
 
-	@ObfuscatedName("aei.d(III)V")
-	public void method1441(int arg0, int arg1, int arg2) {
+    public void method1441(int arg0, int arg1, int arg2) {
 		OpenGL.glPixelTransferf(3348, 0.5F);
 		OpenGL.glPixelTransferf(3349, 0.499F);
 		OpenGL.glPixelTransferf(3352, 0.5F);
@@ -133,18 +113,15 @@ public class GlSprite extends Sprite {
 		OpenGL.glPixelTransferf(3355, 0.0F);
 	}
 
-	@ObfuscatedName("aei.u(IIII[III)V")
-	public void method1469(int arg0, int arg1, int arg2, int arg3, int[] arg4, int arg5, int arg6) {
+    public void method1469(int arg0, int arg1, int arg2, int arg3, int[] arg4, int arg5, int arg6) {
 		this.field9396.method15313(arg0, arg1, arg2, arg3, arg4, arg5, arg6, true);
 	}
 
-	@ObfuscatedName("aei.z(IIII[I[III)V")
-	public void download(int arg0, int arg1, int arg2, int arg3, int[] arg4, int[] arg5, int arg6, int arg7) {
+    public void download(int arg0, int arg1, int arg2, int arg3, int[] arg4, int[] arg5, int arg6, int arg7) {
 		this.field9396.method15314(arg0, arg1, arg2, arg3, arg4, arg5, arg6);
 	}
 
-	@ObfuscatedName("aei.cg(I)V")
-	public void method15370(int arg0) {
+    public void method15370(int arg0) {
 		this.field9399.method15776(1);
 		this.field9399.method15777(this.field9396);
 		this.field9399.method15810(this.field9399.method15779(arg0), 7681);
@@ -165,8 +142,7 @@ public class GlSprite extends Sprite {
 		}
 	}
 
-	@ObfuscatedName("aei.ce()V")
-	public void method15371() {
+    public void method15371() {
 		this.field9399.method15776(1);
 		this.field9399.method15777(null);
 		this.field9399.method15810(8448, 8448);
@@ -176,8 +152,7 @@ public class GlSprite extends Sprite {
 		this.field9399.method15780(1, 34168, 768);
 	}
 
-	@ObfuscatedName("aei.r(IIIII)V")
-	public void drawSprite(int x, int y, int arg2, int rgb, int arg4) {
+    public void drawSprite(int x, int y, int arg2, int rgb, int arg4) {
 		this.field9396.method1082(false);
 		this.field9399.method15772();
 		this.field9399.method15791(arg4);
@@ -218,8 +193,7 @@ public class GlSprite extends Sprite {
 		this.method15371();
 	}
 
-	@ObfuscatedName("aei.v(IILch;II)V")
-	public void method1444(int arg0, int arg1, SpriteRelated arg2, int arg3, int arg4) {
+    public void method1444(int arg0, int arg1, SpriteRelated arg2, int arg3, int arg4) {
 		GlSpriteRelated var6 = (GlSpriteRelated) arg2;
 		GlTexture_Sub1_Sub1 var7 = var6.field9416;
 		this.field9396.method1082(false);
@@ -262,8 +236,7 @@ public class GlSprite extends Sprite {
 		this.field9399.method15776(0);
 	}
 
-	@ObfuscatedName("aei.y(IIIIIIII)V")
-	public void drawTintedScaled(int arg0, int arg1, int arg2, int arg3, int arg4, int arg5, int arg6, int arg7) {
+    public void drawTintedScaled(int arg0, int arg1, int arg2, int arg3, int arg4, int arg5, int arg6, int arg7) {
 		this.field9396.method1082((arg7 & 0x1) != 0);
 		this.field9399.method15772();
 		this.field9399.method15791(arg6);
@@ -341,8 +314,7 @@ public class GlSprite extends Sprite {
 		}
 	}
 
-	@ObfuscatedName("aei.x(IIIIIII)V")
-	public void drawTiledTinted(int arg0, int arg1, int arg2, int arg3, int arg4, int arg5, int arg6) {
+    public void drawTiledTinted(int arg0, int arg1, int arg2, int arg3, int arg4, int arg5, int arg6) {
 		int var8 = arg0 + arg2;
 		int var9 = arg1 + arg3;
 		this.field9396.method1082(false);
@@ -434,8 +406,7 @@ public class GlSprite extends Sprite {
 		OpenGL.glPopMatrix();
 	}
 
-	@ObfuscatedName("aei.ag(FFFFFFIIII)V")
-	public void method1433(float arg0, float arg1, float arg2, float arg3, float arg4, float arg5, int arg6, int arg7, int arg8, int arg9) {
+    public void method1433(float arg0, float arg1, float arg2, float arg3, float arg4, float arg5, int arg6, int arg7, int arg8, int arg9) {
 		if (this.field9395) {
 			float var11 = (float) this.getX();
 			float var12 = (float) this.getY();
@@ -478,8 +449,7 @@ public class GlSprite extends Sprite {
 		OpenGL.glEnd();
 	}
 
-	@ObfuscatedName("aei.al(FFFFFFILch;II)V")
-	public void method1454(float arg0, float arg1, float arg2, float arg3, float arg4, float arg5, int arg6, SpriteRelated arg7, int arg8, int arg9) {
+    public void method1454(float arg0, float arg1, float arg2, float arg3, float arg4, float arg5, int arg6, SpriteRelated arg7, int arg8, int arg9) {
 		GlTexture_Sub1_Sub1 var11 = ((GlSpriteRelated) arg7).field9416;
 		if (this.field9395) {
 			float var12 = (float) this.getX();

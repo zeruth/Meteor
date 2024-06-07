@@ -13,20 +13,15 @@ import java.util.Enumeration;
 import java.util.Hashtable;
 import java.util.Vector;
 
-@ObfuscatedName("ty")
 public class HardwarePlatformLoader implements NativeLibraryLoader {
 
-	@ObfuscatedName("ty.e")
-	public final Js5 field6764;
+    public final Js5 field6764;
 
-	@ObfuscatedName("ty.n")
-	public final String field6763;
+    public final String field6763;
 
-	@ObfuscatedName("ty.m")
-	public Hashtable field6765 = new Hashtable();
+    public Hashtable field6765 = new Hashtable();
 
-	@ObfuscatedName("ty.k")
-	public Hashtable field6766 = new Hashtable();
+    public Hashtable field6766 = new Hashtable();
 
 	public HardwarePlatformLoader(Js5 arg0) {
 		this.field6764 = arg0;
@@ -51,8 +46,7 @@ public class HardwarePlatformLoader implements NativeLibraryLoader {
 		this.field6763 = var3;
 	}
 
-	@ObfuscatedName("nn.c(Ljava/lang/String;I)Ljava/lang/String;")
-	public static String method6049(String arg0) {
+    public static String method6049(String arg0) {
 		if (NativeLibraryConfig.osName.startsWith("win")) {
 			return arg0 + ".dll";
 		} else if (NativeLibraryConfig.osName.startsWith("linux")) {
@@ -64,8 +58,7 @@ public class HardwarePlatformLoader implements NativeLibraryLoader {
 		}
 	}
 
-	@ObfuscatedName("ty.r(Ljava/lang/String;ZI)I")
-	public int method8464(String arg0, boolean arg1) throws HardwarePlatformLoaderException {
+    public int method8464(String arg0, boolean arg1) throws HardwarePlatformLoaderException {
 		if (this.field6765.containsKey(arg0)) {
 			return 100;
 		}
@@ -129,23 +122,19 @@ public class HardwarePlatformLoader implements NativeLibraryLoader {
 		return 100;
 	}
 
-	@ObfuscatedName("ty.v(Ljava/lang/String;Ljava/io/File;I)V")
-	public void method8465(String arg0, File arg1) {
+    public void method8465(String arg0, File arg1) {
 		this.field6765.put(arg0, arg1);
 	}
 
-	@ObfuscatedName("ty.n(Ljava/lang/String;I)Z")
-	public boolean method7900(String arg0) {
+    public boolean method7900(String arg0) {
 		return this.field6765.containsKey(arg0);
 	}
 
-	@ObfuscatedName("ty.e(Ljava/lang/String;B)V")
-	public void load(String arg0) throws NativeLibraryException {
+    public void load(String arg0) throws NativeLibraryException {
 		this.method8467(arg0, HardwarePlatformLoaderRelated.class);
 	}
 
-	@ObfuscatedName("ty.o(Ljava/lang/String;Ljava/lang/Class;I)V")
-	public void method8467(String arg0, Class arg1) throws NativeLibraryException {
+    public void method8467(String arg0, Class arg1) throws NativeLibraryException {
 		Class var3 = (Class) this.field6766.get(arg0);
 		if (var3 != null && var3.getClassLoader() != arg1.getClassLoader()) {
 			throw new NativeLibraryException(1, arg0);
@@ -176,8 +165,7 @@ public class HardwarePlatformLoader implements NativeLibraryLoader {
 		}
 	}
 
-	@ObfuscatedName("ty.m(I)Z")
-	public boolean method7909() {
+    public boolean method7909() {
 		Hashtable var1 = new Hashtable();
 		Enumeration var2 = this.field6766.keys();
 		while (var2.hasMoreElements()) {

@@ -5,26 +5,19 @@ import com.jagex.core.io.Packet;
 import com.jagex.core.utils.Cp1252;
 import deob.ObfuscatedName;
 
-@ObfuscatedName("asd")
 public class QuickChatCatType extends SecondaryNode {
 
-	@ObfuscatedName("asd.l")
-	public String description;
+    public String description;
 
-	@ObfuscatedName("asd.u")
-	public int[] subCategories;
+    public int[] subCategories;
 
-	@ObfuscatedName("asd.z")
-	public char[] subCategoriesShortcuts;
+    public char[] subCategoriesShortcuts;
 
-	@ObfuscatedName("asd.p")
-	public int[] phrases;
+    public int[] phrases;
 
-	@ObfuscatedName("asd.d")
-	public char[] phrasesShortcuts;
+    public char[] phrasesShortcuts;
 
-	@ObfuscatedName("asd.e(Lalw;I)V")
-	public void decode(Packet buf) {
+    public void decode(Packet buf) {
 		while (true) {
 			int code = buf.g1();
 			if (code == 0) {
@@ -34,8 +27,7 @@ public class QuickChatCatType extends SecondaryNode {
 		}
 	}
 
-	@ObfuscatedName("asd.n(Lalw;II)V")
-	public void decode(Packet buf, int code) {
+    public void decode(Packet buf, int code) {
 		if (code == 1) {
 			this.description = buf.gjstr();
 		} else if (code == 2) {
@@ -60,8 +52,7 @@ public class QuickChatCatType extends SecondaryNode {
 		}
 	}
 
-	@ObfuscatedName("asd.m(CI)I")
-	public int getSubCategoryByShortcut(char shortcut) {
+    public int getSubCategoryByShortcut(char shortcut) {
 		if (this.subCategories == null) {
 			return -1;
 		}
@@ -73,8 +64,7 @@ public class QuickChatCatType extends SecondaryNode {
 		return -1;
 	}
 
-	@ObfuscatedName("asd.k(CI)I")
-	public int getPhraseByShortcut(char shortcut) {
+    public int getPhraseByShortcut(char shortcut) {
 		if (this.phrases == null) {
 			return -1;
 		}
@@ -86,8 +76,7 @@ public class QuickChatCatType extends SecondaryNode {
 		return -1;
 	}
 
-	@ObfuscatedName("asd.f(I)V")
-	public void postDecode() {
+    public void postDecode() {
 		if (this.phrases != null) {
 			for (int index = 0; index < this.phrases.length; index++) {
 				this.phrases[index] |= 0x8000;

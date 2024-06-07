@@ -7,7 +7,6 @@ import com.jagex.graphics.TextureFormat;
 import deob.ObfuscatedName;
 import jaggl.OpenGL;
 
-@ObfuscatedName("ail")
 public class GlxCubeTexture extends GlxBaseTexture implements GpuCubeTexture {
 
 	public GlxCubeTexture(GlxToolkit arg0, int arg1, boolean arg2, int[][] arg3) {
@@ -30,18 +29,15 @@ public class GlxCubeTexture extends GlxBaseTexture implements GpuCubeTexture {
 		}
 	}
 
-	@ObfuscatedName("ail.aj()V")
-	public void method5823() {
+    public void method5823() {
 		super.method5823();
 	}
 
-	@ObfuscatedName("ail.ay(Llt;)V")
-	public void method5824(GpuTextureRelated arg0) {
+    public void method5824(GpuTextureRelated arg0) {
 		super.method5824(arg0);
 	}
 
-	@ObfuscatedName("ail.m()V")
-	public void delete() {
+    public void delete() {
 		super.delete();
 	}
 }

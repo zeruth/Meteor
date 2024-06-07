@@ -4,24 +4,19 @@ import com.jagex.core.datastruct.LinkList;
 import com.jagex.core.io.Packet;
 import deob.ObfuscatedName;
 
-@ObfuscatedName("kc")
 public class ClanChannelDelta {
 
-	@ObfuscatedName("kc.e")
-	public long clanHash;
+    public long clanHash;
 
-	@ObfuscatedName("kc.n")
-	public long updateNum = -1L;
+    public long updateNum = -1L;
 
-	@ObfuscatedName("kc.m")
-	public LinkList queue = new LinkList();
+    public LinkList queue = new LinkList();
 
 	public ClanChannelDelta(Packet buf) {
 		this.decode(buf);
 	}
 
-	@ObfuscatedName("kc.e(Lalw;I)V")
-	public void decode(Packet buf) {
+    public void decode(Packet buf) {
 		this.clanHash = buf.g8();
 		this.updateNum = buf.g8();
 		for (int code = buf.g1(); code != 0; code = buf.g1()) {
@@ -45,8 +40,7 @@ public class ClanChannelDelta {
 	}
 
 	// line 40
-	@ObfuscatedName("kc.n(Lakr;B)V")
-	public void applyToClanChannel(ClanChannel clanChannel) {
+    public void applyToClanChannel(ClanChannel clanChannel) {
 		if (this.clanHash != clanChannel.nodeId || this.updateNum != clanChannel.updateNum) {
             // throw new RuntimeException("ClanChannelDelta.applyToClanChannel(): Credentials do not match! cc.clanHash:" + dr574.bq + " updateNum:" + dr574.n + " delta.clanHash:" + this.g + " updateNum:" + this.d);
 			throw new RuntimeException("ClanChannelDelta.applyToClanChannel(): Credentials do not match!");
@@ -57,20 +51,16 @@ public class ClanChannelDelta {
 		clanChannel.updateNum++;
 	}
 
-	@ObfuscatedName("arz")
-	public static class AddUser extends ClanChannelDeltaEntry {
+    public static class AddUser extends ClanChannelDeltaEntry {
 
 		// $FF: synthetic field
 		public final ClanChannelDelta this$0;
 
-		@ObfuscatedName("arz.k")
-		public String membername;
+        public String membername;
 
-		@ObfuscatedName("arz.f")
-		public int memberworld;
+        public int memberworld;
 
-		@ObfuscatedName("arz.w")
-		public byte memberrank;
+        public byte memberrank;
 
 		// line 58
 		public AddUser(ClanChannelDelta arg0) {
@@ -78,8 +68,7 @@ public class ClanChannelDelta {
 			this.membername = null;
 		}
 
-		@ObfuscatedName("arz.e(Lalw;I)V")
-		public void decode(Packet buf) {
+        public void decode(Packet buf) {
 			if (buf.g1() != 255) {
 				buf.pos -= 1;
 				buf.g8();
@@ -90,8 +79,7 @@ public class ClanChannelDelta {
 			buf.g8();
 		}
 
-		@ObfuscatedName("arz.n(Lakr;S)V")
-		public void apply(ClanChannel channel) {
+        public void apply(ClanChannel channel) {
 			ClanChannelUser user = new ClanChannelUser();
 			user.name = this.membername;
 			user.world = this.memberworld;
@@ -100,14 +88,12 @@ public class ClanChannelDelta {
 		}
 	}
 
-	@ObfuscatedName("aru")
-	public static class DeleteUser extends ClanChannelDeltaEntry {
+    public static class DeleteUser extends ClanChannelDeltaEntry {
 
 		// $FF: synthetic field
 		public final ClanChannelDelta this$0;
 
-		@ObfuscatedName("aru.k")
-		public int pos;
+        public int pos;
 
 		// line 83
 		public DeleteUser(ClanChannelDelta arg0) {
@@ -115,8 +101,7 @@ public class ClanChannelDelta {
 			this.pos = -1;
 		}
 
-		@ObfuscatedName("aru.e(Lalw;I)V")
-		public void decode(Packet buf) {
+        public void decode(Packet buf) {
 			this.pos = buf.g2();
 			buf.g1();
 			if (buf.g1() != 255) {
@@ -125,29 +110,23 @@ public class ClanChannelDelta {
 			}
 		}
 
-		@ObfuscatedName("aru.n(Lakr;S)V")
-		public void apply(ClanChannel channel) {
+        public void apply(ClanChannel channel) {
 			channel.doDeleteUser(this.pos);
 		}
 	}
 
-	@ObfuscatedName("arh")
-	public static class UpdateUserDetails extends ClanChannelDeltaEntry {
+    public static class UpdateUserDetails extends ClanChannelDeltaEntry {
 
 		// $FF: synthetic field
 		public final ClanChannelDelta this$0;
 
-		@ObfuscatedName("arh.k")
-		public int field12252;
+        public int field12252;
 
-		@ObfuscatedName("arh.f")
-		public byte memberrank;
+        public byte memberrank;
 
-		@ObfuscatedName("arh.w")
-		public int memberworld;
+        public int memberworld;
 
-		@ObfuscatedName("arh.l")
-		public String membername;
+        public String membername;
 
 		// line 105
 		public UpdateUserDetails(ClanChannelDelta arg0) {
@@ -155,8 +134,7 @@ public class ClanChannelDelta {
 			this.field12252 = -1;
 		}
 
-		@ObfuscatedName("arh.e(Lalw;I)V")
-		public void decode(Packet buf) {
+        public void decode(Packet buf) {
 			this.field12252 = buf.g2();
 			this.memberrank = buf.g1b();
 			this.memberworld = buf.g2();
@@ -164,8 +142,7 @@ public class ClanChannelDelta {
 			this.membername = buf.gjstr();
 		}
 
-		@ObfuscatedName("arh.n(Lakr;S)V")
-		public void apply(ClanChannel channel) {
+        public void apply(ClanChannel channel) {
 			ClanChannelUser var2 = channel.channelUsers[this.field12252];
 			var2.rank = this.memberrank;
 			var2.world = this.memberworld;
@@ -173,23 +150,18 @@ public class ClanChannelDelta {
 		}
 	}
 
-	@ObfuscatedName("arv")
-	public static class UpdateUserDetailsV2 extends ClanChannelDeltaEntry {
+    public static class UpdateUserDetailsV2 extends ClanChannelDeltaEntry {
 
 		// $FF: synthetic field
 		public final ClanChannelDelta this$0;
 
-		@ObfuscatedName("arv.k")
-		public int pos;
+        public int pos;
 
-		@ObfuscatedName("arv.f")
-		public byte memberrank;
+        public byte memberrank;
 
-		@ObfuscatedName("arv.w")
-		public int memberworld;
+        public int memberworld;
 
-		@ObfuscatedName("arv.l")
-		public String membername;
+        public String membername;
 
 		// line 129
 		public UpdateUserDetailsV2(ClanChannelDelta arg0) {
@@ -197,8 +169,7 @@ public class ClanChannelDelta {
 			this.pos = -1;
 		}
 
-		@ObfuscatedName("arv.e(Lalw;I)V")
-		public void decode(Packet buf) {
+        public void decode(Packet buf) {
 			buf.g1();
 			this.pos = buf.g2();
 			this.memberrank = buf.g1b();
@@ -208,8 +179,7 @@ public class ClanChannelDelta {
 			buf.g1();
 		}
 
-		@ObfuscatedName("arv.n(Lakr;S)V")
-		public void apply(ClanChannel channel) {
+        public void apply(ClanChannel channel) {
 			ClanChannelUser user = channel.channelUsers[this.pos];
 			user.rank = this.memberrank;
 			user.world = this.memberworld;
@@ -217,28 +187,23 @@ public class ClanChannelDelta {
 		}
 	}
 
-	@ObfuscatedName("arf")
-	public static class UpdateBaseSettings extends ClanChannelDeltaEntry {
+    public static class UpdateBaseSettings extends ClanChannelDeltaEntry {
 
 		// $FF: synthetic field
 		public final ClanChannelDelta this$0;
 
-		@ObfuscatedName("arf.k")
-		public String clanName;
+        public String clanName;
 
-		@ObfuscatedName("arf.f")
-		public byte rankTalk;
+        public byte rankTalk;
 
-		@ObfuscatedName("arf.w")
-		public byte rankKick;
+        public byte rankKick;
 
 		// line 154
 		public UpdateBaseSettings(ClanChannelDelta arg0) {
 			this.this$0 = arg0;
 		}
 
-		@ObfuscatedName("arf.e(Lalw;I)V")
-		public void decode(Packet buf) {
+        public void decode(Packet buf) {
 			this.clanName = buf.fastgstr();
 			if (this.clanName != null) {
 				buf.g1();
@@ -247,8 +212,7 @@ public class ClanChannelDelta {
 			}
 		}
 
-		@ObfuscatedName("arf.n(Lakr;S)V")
-		public void apply(ClanChannel channel) {
+        public void apply(ClanChannel channel) {
 			channel.clanName = this.clanName;
 			if (this.clanName != null) {
 				channel.rankTalk = this.rankTalk;

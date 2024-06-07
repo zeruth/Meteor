@@ -4,32 +4,25 @@ import com.jagex.core.io.Packet;
 import com.jagex.graphics.camera.Camera;
 import deob.ObfuscatedName;
 
-@ObfuscatedName("aqh")
 public class PositionSpline_Sub3 extends PositionSpline {
 
-	@ObfuscatedName("aqh.u")
-	public float[] field12098;
+    public float[] field12098;
 
-	@ObfuscatedName("aqh.z")
-	public float[] field12097;
+    public float[] field12097;
 
-	@ObfuscatedName("aqh.p")
-	public float[] field12099;
+    public float[] field12099;
 
-	@ObfuscatedName("aqh.d")
-	public int field12096 = 0;
+    public int field12096 = 0;
 
 	public PositionSpline_Sub3(Camera arg0) {
 		super(arg0);
 	}
 
-	@ObfuscatedName("aqh.ah(I)V")
-	public void method16723() {
+    public void method16723() {
 		this.field12096++;
 	}
 
-	@ObfuscatedName("aqh.ag(FFFB)F")
-	public float method16722(float arg0, float arg1, float arg2) {
+    public float method16722(float arg0, float arg1, float arg2) {
 		float var4 = this.field10563 / arg0;
 		if (var4 < 0.0F) {
 			var4 = 0.0F;
@@ -40,8 +33,7 @@ public class PositionSpline_Sub3 extends PositionSpline {
 		return arg0 / this.field12099[this.field12096] * ((this.field12097[this.field12096] - this.field12098[this.field12096]) * var4 + this.field12098[this.field12096]);
 	}
 
-	@ObfuscatedName("aqh.ac(Lalw;IS)V")
-	public void method16724(Packet arg0, int arg1) {
+    public void method16724(Packet arg0, int arg1) {
 		this.field12098 = new float[arg1];
 		this.field12097 = new float[arg1];
 		this.field12099 = new float[arg1];

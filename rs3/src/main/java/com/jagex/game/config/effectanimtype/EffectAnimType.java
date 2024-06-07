@@ -6,70 +6,50 @@ import com.jagex.game.config.ConfigType;
 import com.jagex.graphics.*;
 import deob.ObfuscatedName;
 
-@ObfuscatedName("yy")
 public class EffectAnimType implements ConfigType {
 
-	@ObfuscatedName("yy.n")
-	public final EffectAnimTypeFactory factory;
+    public final EffectAnimTypeFactory factory;
 
-	@ObfuscatedName("yy.m")
-	public final int id;
+    public final int id;
 
-	@ObfuscatedName("yy.k")
-	public int model;
+    public int model;
 
-	@ObfuscatedName("yy.f")
-	public int anim = -1;
+    public int anim = -1;
 
-	@ObfuscatedName("yy.w")
-	public short[] recol_s;
+    public short[] recol_s;
 
-	@ObfuscatedName("yy.l")
-	public short[] recol_d;
+    public short[] recol_d;
 
-	@ObfuscatedName("yy.u")
-	public short[] retex_s;
+    public short[] retex_s;
 
-	@ObfuscatedName("yy.z")
-	public short[] retex_d;
+    public short[] retex_d;
 
-	@ObfuscatedName("yy.p")
-	public byte[] recolindices;
+    public byte[] recolindices;
 
-	@ObfuscatedName("yy.d")
-	public byte[] retexindices;
+    public byte[] retexindices;
 
-	@ObfuscatedName("yy.c")
-	public int resizeh = 128;
+    public int resizeh = 128;
 
-	@ObfuscatedName("yy.r")
-	public int resizev = 128;
+    public int resizev = 128;
 
-	@ObfuscatedName("yy.v")
-	public int orientation = 0;
+    public int orientation = 0;
 
-	@ObfuscatedName("yy.o")
-	public int ambient = 0;
+    public int ambient = 0;
 
-	@ObfuscatedName("yy.s")
-	public int contrast = 0;
+    public int contrast = 0;
 
-	@ObfuscatedName("yy.y")
-	public boolean field8261 = false;
+    public boolean field8261 = false;
 
-	@ObfuscatedName("yy.q")
-	public byte hillskew_mode = 0;
+    public byte hillskew_mode = 0;
 
-	@ObfuscatedName("yy.x")
-	public int hillskew_value = -1;
+    public int hillskew_value = -1;
 
 	public EffectAnimType(int id, EffectAnimTypeFactory factory) {
 		this.id = id;
 		this.factory = factory;
 	}
 
-	@ObfuscatedName("yy.e(Lalw;B)V")
-	public void decode(Packet buf) {
+    public void decode(Packet buf) {
 		while (true) {
 			int code = buf.g1();
 			if (code == 0) {
@@ -79,8 +59,7 @@ public class EffectAnimType implements ConfigType {
 		}
 	}
 
-	@ObfuscatedName("yy.u(Lalw;II)V")
-	public void decode(Packet buf, int code) {
+    public void decode(Packet buf, int code) {
 		if (code == 1) {
 			this.model = buf.gSmart2or4null();
 		} else if (code == 2) {
@@ -156,23 +135,19 @@ public class EffectAnimType implements ConfigType {
 		}
 	}
 
-	@ObfuscatedName("yy.z(Ldh;ILaaq;BI)Ldo;")
-	public final Model getModel(Toolkit arg0, int arg1, AnimationNode arg2, byte arg3) {
+    public final Model getModel(Toolkit arg0, int arg1, AnimationNode arg2, byte arg3) {
 		return this.getModel(arg0, arg1, false, null, null, 0, 0, 0, 0, 0, 0, 0, arg2, arg3);
 	}
 
-	@ObfuscatedName("yy.p(Ldh;IIIIILaaq;BI)Ldo;")
-	public final Model getModel(Toolkit arg0, int arg1, int arg2, int arg3, int arg4, int arg5, AnimationNode arg6, byte arg7) {
+    public final Model getModel(Toolkit arg0, int arg1, int arg2, int arg3, int arg4, int arg5, AnimationNode arg6, byte arg7) {
 		return this.hillskew_mode == 3 ? this.getModel(arg0, arg1, true, null, null, 0, 0, 0, arg2, arg3, arg4, arg5, arg6, arg7) : this.getModel(arg0, arg1, false, null, null, 0, 0, 0, arg2, 0, 0, 0, arg6, arg7);
 	}
 
-	@ObfuscatedName("yy.d(Ldh;IILcb;Lcb;IIILaaq;BB)Ldo;")
-	public final Model getModel(Toolkit arg0, int arg1, int arg2, FloorModel arg3, FloorModel arg4, int arg5, int arg6, int arg7, AnimationNode arg8, byte arg9) {
+    public final Model getModel(Toolkit arg0, int arg1, int arg2, FloorModel arg3, FloorModel arg4, int arg5, int arg6, int arg7, AnimationNode arg8, byte arg9) {
 		return this.getModel(arg0, arg1, true, arg3, arg4, arg5, arg6, arg7, arg2, 0, 0, 0, arg8, arg9);
 	}
 
-	@ObfuscatedName("yy.c(Ldh;IZLcb;Lcb;IIIIIIILaaq;BI)Ldo;")
-	public final Model getModel(Toolkit arg0, int arg1, boolean arg2, FloorModel arg3, FloorModel arg4, int arg5, int arg6, int arg7, int arg8, int arg9, int arg10, int arg11, AnimationNode arg12, byte arg13) {
+    public final Model getModel(Toolkit arg0, int arg1, boolean arg2, FloorModel arg3, FloorModel arg4, int arg5, int arg6, int arg7, int arg8, int arg9, int arg10, int arg11, AnimationNode arg12, byte arg13) {
 		int var15 = arg1;
 		boolean var16 = arg2 & this.hillskew_mode != 0;
 		if (arg12 != null) {
@@ -268,12 +243,10 @@ public class EffectAnimType implements ConfigType {
 		return var26;
 	}
 
-	@ObfuscatedName("yy.r(B)Z")
-	public final boolean hasReadyModel() {
+    public final boolean hasReadyModel() {
 		return this.model == -1 ? true : this.factory.configClient.requestdownload(this.model, 0);
 	}
 
-	@ObfuscatedName("yy.n(I)V")
-	public void postDecode() {
+    public void postDecode() {
 	}
 }

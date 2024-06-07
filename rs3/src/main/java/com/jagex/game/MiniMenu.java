@@ -32,237 +32,165 @@ import rs2.client.scene.entities.PathingEntity;
 import java.util.Iterator;
 import java.util.List;
 
-@ObfuscatedName("o")
 public class MiniMenu {
 
-	@ObfuscatedName("zc.m")
-	public static MiniMenuEntry field8348;
+    public static MiniMenuEntry field8348;
 
-	@ObfuscatedName("o.k")
-	public static int field536 = 16;
+    public static int field536 = 16;
 
-	@ObfuscatedName("o.l")
-	public static boolean open = false;
+    public static boolean open = false;
 
-	@ObfuscatedName("o.u")
-	public static boolean field540 = false;
+    public static boolean field540 = false;
 
-	@ObfuscatedName("o.z")
-	public static MiniMenuSubMenu field541 = null;
+    public static MiniMenuSubMenu field541 = null;
 
-	@ObfuscatedName("o.r")
-	public static int field545 = 0;
+    public static int field545 = 0;
 
-	@ObfuscatedName("cj.v")
-	public static MiniMenuEntry field1280;
+    public static MiniMenuEntry field1280;
 
-	@ObfuscatedName("apn.o")
-	public static MiniMenuEntry field11913;
+    public static MiniMenuEntry field11913;
 
-	@ObfuscatedName("ug.s")
-	public static MiniMenuEntry field7100;
+    public static MiniMenuEntry field7100;
 
-	@ObfuscatedName("fq.y")
-	public static MiniMenuEntry field1846;
+    public static MiniMenuEntry field1846;
 
-	@ObfuscatedName("o.q")
-	public static int field546 = 0;
+    public static int field546 = 0;
 
-	@ObfuscatedName("o.x")
-	public static int field543 = 0;
+    public static int field543 = 0;
 
-	@ObfuscatedName("o.b")
-	public static LinkList field542 = new LinkList();
+    public static LinkList field542 = new LinkList();
 
-	@ObfuscatedName("o.h")
-	public static HashTable field549 = new HashTable(16);
+    public static HashTable field549 = new HashTable(16);
 
-	@ObfuscatedName("o.a")
-	public static SecondaryLinkedList field550 = new SecondaryLinkedList();
+    public static SecondaryLinkedList field550 = new SecondaryLinkedList();
 
-	@ObfuscatedName("o.g")
-	public static LinkList field538 = new LinkList();
+    public static LinkList field538 = new LinkList();
 
-	@ObfuscatedName("o.i")
-	public static LinkList field552 = new LinkList();
+    public static LinkList field552 = new LinkList();
 
-	@ObfuscatedName("o.j")
-	public static SoftLruHashTable field534 = new SoftLruHashTable(30);
+    public static SoftLruHashTable field534 = new SoftLruHashTable(30);
 
-	@ObfuscatedName("amq.t")
-	public static int field11738;
+    public static int field11738;
 
-	@ObfuscatedName("jv.ae")
-	public static int field2960;
+    public static int field2960;
 
-	@ObfuscatedName("da.ag")
-	public static int field1289;
+    public static int field1289;
 
-	@ObfuscatedName("ho.ah")
-	public static int field2576;
+    public static int field2576;
 
-	@ObfuscatedName("gv.al")
-	public static int field1981;
+    public static int field1981;
 
-	@ObfuscatedName("hn.ac")
-	public static int field2433;
+    public static int field2433;
 
-	@ObfuscatedName("o.ai")
-	public static int field554;
+    public static int field554;
 
-	@ObfuscatedName("jg.aw")
-	public static int field3005;
+    public static int field3005;
 
-	@ObfuscatedName("o.as")
-	public static Component field576 = null;
+    public static Component field576 = null;
 
-	@ObfuscatedName("o.at")
-	public static int field556 = -1;
+    public static int field556 = -1;
 
-	@ObfuscatedName("o.ad")
-	public static int field557 = -1;
+    public static int field557 = -1;
 
-	@ObfuscatedName("o.am")
-	public static int viewportX = -1;
+    public static int viewportX = -1;
 
-	@ObfuscatedName("o.au")
-	public static int viewportY = -1;
+    public static int viewportY = -1;
 
-	@ObfuscatedName("o.ar")
-	public static int viewportWidth = 0;
+    public static int viewportWidth = 0;
 
-	@ObfuscatedName("o.ap")
-	public static int viewportHeight = 0;
+    public static int viewportHeight = 0;
 
-	@ObfuscatedName("o.aq")
-	public static Matrix4x4 field553 = null;
+    public static Matrix4x4 field553 = null;
 
-	@ObfuscatedName("o.ax")
-	public static Matrix4x4 field555 = new Matrix4x4();
+    public static Matrix4x4 field555 = new Matrix4x4();
 
-	@ObfuscatedName("o.av")
-	public static Matrix4x3 field572 = new Matrix4x3();
+    public static Matrix4x3 field572 = new Matrix4x3();
 
-	@ObfuscatedName("o.ao")
-	public static boolean field564 = false;
+    public static boolean field564 = false;
 
-	@ObfuscatedName("wx.aj")
-	public static int field7676;
+    public static int field7676;
 
-	@ObfuscatedName("qx.ay")
-	public static int field4488;
+    public static int field4488;
 
-	@ObfuscatedName("sy.ab")
-	public static int field6708;
+    public static int field6708;
 
-	@ObfuscatedName("ank.az")
-	public static int field11830;
+    public static int field11830;
 
-	@ObfuscatedName("am.aa")
-	public static int field740;
+    public static int field740;
 
-	@ObfuscatedName("asg.af")
-	public static int field12340;
+    public static int field12340;
 
-	@ObfuscatedName("ea.ak")
-	public static int field1748;
+    public static int field1748;
 
-	@ObfuscatedName("alk.an")
-	public static int field11642;
+    public static int field11642;
 
-	@ObfuscatedName("fl.bf")
-	public static int field1847;
+    public static int field1847;
 
-	@ObfuscatedName("aak.bl")
-	public static int field8463;
+    public static int field8463;
 
-	@ObfuscatedName("aax.bk")
-	public static Sprite field8480;
+    public static Sprite field8480;
 
-	@ObfuscatedName("nl.bh")
-	public static Sprite field3568;
+    public static Sprite field3568;
 
-	@ObfuscatedName("adw.bx")
-	public static Sprite field9253;
+    public static Sprite field9253;
 
-	@ObfuscatedName("ahn.bd")
-	public static Sprite field10568;
+    public static Sprite field10568;
 
-	@ObfuscatedName("o.bc")
-	public static Sprite field566;
+    public static Sprite field566;
 
-	@ObfuscatedName("cr.bi")
-	public static Sprite field1224;
+    public static Sprite field1224;
 
-	@ObfuscatedName("alv.bn")
-	public static Sprite field11699;
+    public static Sprite field11699;
 
-	@ObfuscatedName("ank.bt")
-	public static Sprite field11831;
+    public static Sprite field11831;
 
-	@ObfuscatedName("cz.bq")
-	public static int field1266;
+    public static int field1266;
 
-	@ObfuscatedName("jm.bm")
-	public static int field2901;
+    public static int field2901;
 
-	@ObfuscatedName("fv.bb")
-	public static Font field1841;
+    public static Font field1841;
 
-	@ObfuscatedName("abx.be")
-	public static FontMetrics field8786;
+    public static FontMetrics field8786;
 
-	@ObfuscatedName("o.by")
-	public static int field567 = 0;
+    public static int field567 = 0;
 
-	@ObfuscatedName("vp.bu")
-	public static boolean showFaceHere;
+    public static boolean showFaceHere;
 
-	@ObfuscatedName("o.bw")
-	public static int minLength = -1;
+    public static int minLength = -1;
 
-	@ObfuscatedName("gh.bo")
-	public static MiniMenuDefaults miniMenuDefaults;
+    public static MiniMenuDefaults miniMenuDefaults;
 
-	@ObfuscatedName("o.bz")
-	public static float[] field569 = new float[4];
+    public static float[] field569 = new float[4];
 
 	public MiniMenu() throws Throwable {
 		throw new Error();
 	}
 
-	@ObfuscatedName("aba.e(I)Z")
-	public static boolean isCtrlKeyHeld() {
+    public static boolean isCtrlKeyHeld() {
 		return method15214(miniMenuDefaults.ctrlrunning);
 	}
 
-	@ObfuscatedName("rd.n(B)Z")
-	public static boolean method7893() {
+    public static boolean method7893() {
 		return method15214(miniMenuDefaults.field7663);
 	}
 
-	@ObfuscatedName("ng.m(B)Z")
-	public static boolean isShiftKeyHeld() {
+    public static boolean isShiftKeyHeld() {
 		return method15214(miniMenuDefaults.shiftteleport);
 	}
 
-	@ObfuscatedName("ads.k(Lvy;I)Z")
-	public static boolean method15214(KeyHeldBinding arg0) {
+    public static boolean method15214(KeyHeldBinding arg0) {
 		return method3483(arg0, null);
 	}
 
-	@ObfuscatedName("gp.f(Lvt;Lakm;I)Z")
-	public static boolean method3483(Binding arg0, MouseEvent arg1) {
+    public static boolean method3483(Binding arg0, MouseEvent arg1) {
 		return arg0 != null && arg0.test(arg1, Client.keyboardEvents, Client.keyboardEventCount, Client.keyboard);
 	}
 
-	@ObfuscatedName("sf.w(B)V")
-	public static void method8326() {
+    public static void method8326() {
 		field8348 = new MiniMenuEntry(LocalisedText.CANCEL.forLang(Client.language), "", Client.defaultCursor, 1006, -1, 0L, 0, 0, true, false, 0L, true);
 	}
 
-	@ObfuscatedName("uf.l(B)V")
-	public static void method9026() {
+    public static void method9026() {
 		if (Client.cutsceneId >= 0) {
 			return;
 		}
@@ -481,8 +409,7 @@ public class MiniMenu {
 		}
 	}
 
-	@ObfuscatedName("xh.u(IIB)V")
-	public static void method10201(int arg0, int arg1) {
+    public static void method10201(int arg0, int arg1) {
 		if (field545 == 1) {
 			useMenuOption(field1280, arg0, arg1, false);
 		} else if (field545 == 2) {
@@ -492,8 +419,7 @@ public class MiniMenu {
 		field1280 = null;
 	}
 
-	@ObfuscatedName("ps.z(B)Z")
-	public static boolean method6848() {
+    public static boolean method6848() {
 		if (field7100 == null) {
 			return false;
 		} else {
@@ -504,8 +430,7 @@ public class MiniMenu {
 		}
 	}
 
-	@ObfuscatedName("abd.p(IIS)V")
-	public static void method14926(int arg0, int arg1) {
+    public static void method14926(int arg0, int arg1) {
 		if (!Client.graphicsDefaults.field7727) {
 			if (field546 == 1) {
 				return;
@@ -565,8 +490,7 @@ public class MiniMenu {
 		open = true;
 	}
 
-	@ObfuscatedName("im.d(Larn;IB)V")
-	public static void method4629(MiniMenuSubMenu arg0, int arg1) {
+    public static void method4629(MiniMenuSubMenu arg0, int arg1) {
 		if (!open) {
 			return;
 		}
@@ -602,8 +526,7 @@ public class MiniMenu {
 		field541 = arg0;
 	}
 
-	@ObfuscatedName("aih.c(B)Laac;")
-	public static FontMetrics method16902() {
+    public static FontMetrics method16902() {
 		FontMetrics var0;
 		if (!field564) {
 			var0 = DefaultSprites.b12FullMetrics;
@@ -616,8 +539,7 @@ public class MiniMenu {
 		return var0;
 	}
 
-	@ObfuscatedName("ng.r(I)V")
-	public static void close() {
+    public static void close() {
 		method1594();
 		open = false;
 		Client.requestRedrawAtPoint(field11738, field2960, field1289, field2576);
@@ -625,16 +547,14 @@ public class MiniMenu {
 		field1846 = null;
 	}
 
-	@ObfuscatedName("cz.v(I)V")
-	public static void method1594() {
+    public static void method1594() {
 		if (field541 != null) {
 			field541 = null;
 			Client.requestRedrawAtPoint(field1981, field2433, field554, field3005);
 		}
 	}
 
-	@ObfuscatedName("fz.o(Ljava/lang/String;Ljava/lang/String;IIIJIIZZJZB)V")
-	public static void method3042(String arg0, String arg1, int arg2, int arg3, int arg4, long arg5, int arg6, int arg7, boolean arg8, boolean arg9, long arg10, boolean arg11) {
+    public static void method3042(String arg0, String arg1, int arg2, int arg3, int arg4, long arg5, int arg6, int arg7, boolean arg8, boolean arg9, long arg10, boolean arg11) {
 		if (!open && field546 < 505) {
 			int var14 = arg2 == -1 ? Client.defaultCursor : arg2;
 			MiniMenuEntry var15 = new MiniMenuEntry(arg0, arg1, var14, arg3, arg4, arg5, arg6, arg7, arg8, arg9, arg10, arg11);
@@ -642,8 +562,7 @@ public class MiniMenu {
 		}
 	}
 
-	@ObfuscatedName("ej.s(Larm;B)V")
-	public static void method2771(MiniMenuEntry arg0) {
+    public static void method2771(MiniMenuEntry arg0) {
 		if (arg0 == null) {
 			return;
 		}
@@ -675,8 +594,7 @@ public class MiniMenu {
 		}
 	}
 
-	@ObfuscatedName("mj.y(Larn;I)V")
-	public static void method5924(MiniMenuSubMenu arg0) {
+    public static void method5924(MiniMenuSubMenu arg0) {
 		boolean var1 = false;
 		arg0.secondaryRemove();
 		for (MiniMenuSubMenu var2 = (MiniMenuSubMenu) field550.peekFront(); var2 != null; var2 = (MiniMenuSubMenu) field550.prev()) {
@@ -691,8 +609,7 @@ public class MiniMenu {
 		}
 	}
 
-	@ObfuscatedName("rm.q(Lhf;III)V")
-	public static void method7624(Component arg0, int arg1, int arg2) {
+    public static void method7624(Component arg0, int arg1, int arg2) {
 		if (Client.targetModeActive) {
 			ParamType var3 = (ParamType) (Client.field7677 == -1 ? null : Client.paramTypeList.list(Client.field7677));
 			if (Client.method17197(arg0).method17708() && (Client.field1765 & 0x20) != 0 && (var3 == null || arg0.getParam(Client.field7677, var3.defaultint) != var3.defaultint)) {
@@ -725,8 +642,7 @@ public class MiniMenu {
 		}
 	}
 
-	@ObfuscatedName("ew.x(Lahm;B)V")
-	public static void method2897(PathingEntity arg0) {
+    public static void method2897(PathingEntity arg0) {
 		if (arg0 instanceof NpcEntity) {
 			NpcEntity var1 = (NpcEntity) arg0;
 			if (var1.npcType != null) {
@@ -738,8 +654,7 @@ public class MiniMenu {
 		}
 	}
 
-	@ObfuscatedName("nt.b(Ldh;I)V")
-	public static void drawMenu(Toolkit arg0) {
+    public static void drawMenu(Toolkit arg0) {
 		if (field553 != null) {
 			arg0.method2220(field553);
 			arg0.method2217(field572);
@@ -748,8 +663,7 @@ public class MiniMenu {
 		}
 	}
 
-	@ObfuscatedName("ja.h(Ldh;IIB)V")
-	public static void method5015(Toolkit arg0, int arg1, int arg2) {
+    public static void method5015(Toolkit arg0, int arg1, int arg2) {
 		if (arg1 < 0 || arg2 < 0 || field553 == null) {
 			return;
 		}
@@ -1042,8 +956,7 @@ public class MiniMenu {
 		}
 	}
 
-	@ObfuscatedName("py.a(Lst;III)J")
-	public static long method6964(Location arg0, int arg1, int arg2) {
+    public static long method6964(Location arg0, int arg1, int arg2) {
 		long var3 = 4194304L;
 		long var5 = Long.MIN_VALUE;
 		LocType var7 = (LocType) Client.world.getLocTypeList().list(arg0.getId());
@@ -1057,8 +970,7 @@ public class MiniMenu {
 		return var8 | (long) arg0.getId() << 32;
 	}
 
-	@ObfuscatedName("wb.g(Larm;I)V")
-	public static void method9773(MiniMenuEntry arg0) {
+    public static void method9773(MiniMenuEntry arg0) {
 		if (open) {
 			return;
 		}
@@ -1093,8 +1005,7 @@ public class MiniMenu {
 		}
 	}
 
-	@ObfuscatedName("acz.i(IB)V")
-	public static void method15023(int arg0) {
+    public static void method15023(int arg0) {
 		for (MiniMenuEntry var1 = (MiniMenuEntry) field542.head(); var1 != null; var1 = (MiniMenuEntry) field542.next()) {
 			if (method13985(var1.menuAction) && var1.sceneBaseTileZ >> 16 == arg0) {
 				method9773(var1);
@@ -1102,8 +1013,7 @@ public class MiniMenu {
 		}
 	}
 
-	@ObfuscatedName("tb.j(IB)Z")
-	public static boolean method8494(int arg0) {
+    public static boolean method8494(int arg0) {
 		for (MiniMenuEntry var1 = (MiniMenuEntry) field542.head(); var1 != null; var1 = (MiniMenuEntry) field542.next()) {
 			if (method16450(var1.menuAction) && var1.field12300 == (long) arg0) {
 				return true;
@@ -1112,13 +1022,11 @@ public class MiniMenu {
 		return false;
 	}
 
-	@ObfuscatedName("adv.t(I)Z")
-	public static boolean method15249() {
+    public static boolean method15249() {
 		return field546 > 0;
 	}
 
-	@ObfuscatedName("qm.ae(Ldh;I)V")
-	public static void method7316(Toolkit arg0) {
+    public static void method7316(Toolkit arg0) {
 		if (open) {
 			method5200(arg0);
 		} else {
@@ -1126,8 +1034,7 @@ public class MiniMenu {
 		}
 	}
 
-	@ObfuscatedName("fi.ag(B)V")
-	public static void method3074() {
+    public static void method3074() {
 		for (MiniMenuSubMenu var0 = (MiniMenuSubMenu) field550.peekFront(); var0 != null; var0 = (MiniMenuSubMenu) field550.prev()) {
 			if (var0.field12310 > 1) {
 				var0.field12310 = 0;
@@ -1143,8 +1050,7 @@ public class MiniMenu {
 		method2771(field8348);
 	}
 
-	@ObfuscatedName("ki.ah(B)V")
-	public static void method5175() {
+    public static void method5175() {
 		for (MiniMenuSubMenu var0 = (MiniMenuSubMenu) field550.peekFront(); var0 != null; var0 = (MiniMenuSubMenu) field550.prev()) {
 			if (var0.field12310 > 1) {
 				var0.field12310 = 0;
@@ -1160,8 +1066,7 @@ public class MiniMenu {
 		open = false;
 	}
 
-	@ObfuscatedName("rk.al(I)V")
-	public static void method7617() {
+    public static void method7617() {
 		field8480 = null;
 		field3568 = null;
 		field9253 = null;
@@ -1174,26 +1079,22 @@ public class MiniMenu {
 		field8786 = null;
 	}
 
-	@ObfuscatedName("ku.ac(B)V")
-	public static void setFormattingDefault() {
+    public static void setFormattingDefault() {
 		method7617();
 	}
 
-	@ObfuscatedName("py.ai(IIB)V")
-	public static void setBounds(int viewportX, int viewportY) {
+    public static void setBounds(int viewportX, int viewportY) {
 		MiniMenu.viewportX = viewportX;
 		MiniMenu.viewportY = viewportY;
 	}
 
-	@ObfuscatedName("aoq.aw(Lhf;IIB)V")
-	public static void updateMouseOverText(Component arg0, int arg1, int arg2) {
+    public static void updateMouseOverText(Component arg0, int arg1, int arg2) {
 		field576 = arg0;
 		field556 = arg1;
 		field557 = arg2;
 	}
 
-	@ObfuscatedName("ap.as(I)I")
-	public static int method895() {
+    public static int method895() {
 		if (Client.field10989 == null) {
 			if (open) {
 				FontMetrics var0 = method16902();
@@ -1285,8 +1186,7 @@ public class MiniMenu {
 		return -1;
 	}
 
-	@ObfuscatedName("ax.at(IIB)Z")
-	public static boolean isOpen(int arg0, int arg1) {
+    public static boolean isOpen(int arg0, int arg1) {
 		if (!open) {
 			return false;
 		}
@@ -1316,23 +1216,19 @@ public class MiniMenu {
 		return false;
 	}
 
-	@ObfuscatedName("jw.ad(I)Larm;")
-	public static MiniMenuEntry getActiveMiniMenuEntry() {
+    public static MiniMenuEntry getActiveMiniMenuEntry() {
 		return field11913;
 	}
 
-	@ObfuscatedName("ge.am(I)Larm;")
-	public static MiniMenuEntry getSecondaryMiniMenuEntry() {
+    public static MiniMenuEntry getSecondaryMiniMenuEntry() {
 		return field1846;
 	}
 
-	@ObfuscatedName("jd.au(Larm;I)Ljava/lang/String;")
-	public static String getEntryOp(MiniMenuEntry arg0) {
+    public static String getEntryOp(MiniMenuEntry arg0) {
 		return open || arg0 == null ? "" : arg0.field12297;
 	}
 
-	@ObfuscatedName("nw.ar(Larm;B)Ljava/lang/String;")
-	public static String getEntryOpBase(MiniMenuEntry arg0) {
+    public static String getEntryOpBase(MiniMenuEntry arg0) {
 		if (open || arg0 == null) {
 			return "";
 		} else if ((arg0.field12301 == null || arg0.field12301.length() == 0) && arg0.field12296 != null && arg0.field12296.length() > 0) {
@@ -1342,8 +1238,7 @@ public class MiniMenu {
 		}
 	}
 
-	@ObfuscatedName("amn.ap(Larm;I)I")
-	public static int getEntryEntityType(MiniMenuEntry arg0) {
+    public static int getEntryEntityType(MiniMenuEntry arg0) {
 		if (open) {
 			return 6;
 		} else if (arg0 == null) {
@@ -1368,8 +1263,7 @@ public class MiniMenu {
 		}
 	}
 
-	@ObfuscatedName("c.aq(Larm;I)Ljava/lang/String;")
-	public static String method313(MiniMenuEntry arg0) {
+    public static String method313(MiniMenuEntry arg0) {
 		if (open || arg0 == null) {
 			return "";
 		} else {
@@ -1378,8 +1272,7 @@ public class MiniMenu {
 		}
 	}
 
-	@ObfuscatedName("mw.ax(Lou;Lpq;IIB)V")
-	public static void method5928(Matrix4x3 arg0, Matrix4x4 arg1, int viewportWidth, int viewportHeight) {
+    public static void method5928(Matrix4x3 arg0, Matrix4x4 arg1, int viewportWidth, int viewportHeight) {
 		if (field553 == null) {
 			field553 = new Matrix4x4(arg1);
 		} else {
@@ -1390,13 +1283,11 @@ public class MiniMenu {
 		MiniMenu.viewportHeight = viewportHeight;
 	}
 
-	@ObfuscatedName("xl.av(Lpq;B)V")
-	public static void method9927(Matrix4x4 arg0) {
+    public static void method9927(Matrix4x4 arg0) {
 		field555.setTo(arg0);
 	}
 
-	@ObfuscatedName("kh.ao(Ldh;I)V")
-	public static void method5200(Toolkit arg0) {
+    public static void method5200(Toolkit arg0) {
 		if (field564) {
 			method17807(arg0);
 		} else {
@@ -1404,8 +1295,7 @@ public class MiniMenu {
 		}
 	}
 
-	@ObfuscatedName("vf.aj(Ldh;I)V")
-	public static void method9594(Toolkit arg0) {
+    public static void method9594(Toolkit arg0) {
 		if (field546 < 2 && !Client.targetModeActive || Client.field10989 != null) {
 			return;
 		}
@@ -1439,15 +1329,13 @@ public class MiniMenu {
 		Client.requestRedrawAtPoint(Client.field11042[0], Client.field11042[1], Client.field11042[2], Client.field11042[3]);
 	}
 
-	@ObfuscatedName("hp.ay(Ldh;IIIIIII)V")
-	public static void method4064(Toolkit arg0, int arg1, int arg2, int arg3, int arg4, int arg5, int arg6) {
+    public static void method4064(Toolkit arg0, int arg1, int arg2, int arg3, int arg4, int arg5, int arg6) {
 		arg0.fillRectangle(arg1, arg2, arg3, arg4, arg5);
 		arg0.fillRectangle(arg1 + 1, arg2 + 1, arg3 - 2, 16, arg6);
 		arg0.drawRectangle(arg1 + 1, arg2 + 18, arg3 - 2, arg4 - 19, arg6);
 	}
 
-	@ObfuscatedName("pc.ab(Larm;I)[I")
-	public static int[] method7096(MiniMenuEntry arg0) {
+    public static int[] method7096(MiniMenuEntry arg0) {
 		int[] var1 = null;
 		if (method9907(arg0.menuAction)) {
 			var1 = ((ObjType) Client.objTypeList.list((int) arg0.field12300)).quests;
@@ -1477,8 +1365,7 @@ public class MiniMenu {
 		return var1;
 	}
 
-	@ObfuscatedName("vl.az(IIIIIIILarm;Leu;Laac;IIS)V")
-	public static void method9284(int arg0, int arg1, int arg2, int arg3, int arg4, int arg5, int arg6, MiniMenuEntry arg7, Font arg8, FontMetrics arg9, int arg10, int arg11) {
+    public static void method9284(int arg0, int arg1, int arg2, int arg3, int arg4, int arg5, int arg6, MiniMenuEntry arg7, Font arg8, FontMetrics arg9, int arg10, int arg11) {
 		if (arg0 > arg2 && arg0 < arg2 + arg4 && arg1 > arg6 - arg9.field8562 - 1 && arg1 < arg9.field8569 + arg6 && arg7.field12308) {
 			arg10 = arg11;
 		}
@@ -1493,8 +1380,7 @@ public class MiniMenu {
 		}
 	}
 
-	@ObfuscatedName("ahe.aa(IIIIIIILarn;Leu;Laac;III)V")
-	public static void method16748(int arg0, int arg1, int arg2, int arg3, int arg4, int arg5, int arg6, MiniMenuSubMenu arg7, Font arg8, FontMetrics arg9, int arg10, int arg11) {
+    public static void method16748(int arg0, int arg1, int arg2, int arg3, int arg4, int arg5, int arg6, MiniMenuSubMenu arg7, Font arg8, FontMetrics arg9, int arg10, int arg11) {
 		if (arg0 > arg2 && arg0 < arg2 + arg4 && arg1 > arg6 - arg9.field8562 - 1 && arg1 < arg9.field8569 + arg6) {
 			arg10 = arg11;
 		}
@@ -1502,8 +1388,7 @@ public class MiniMenu {
 		arg8.method2689(var12, arg2 + 3, arg6, arg10, 0, Client.field10890, Client.field1681, DefaultSprites.field10302, null);
 	}
 
-	@ObfuscatedName("k.af(Ldh;I)V")
-	public static void method213(Toolkit arg0) {
+    public static void method213(Toolkit arg0) {
 		int var1 = -10660793;
 		method4064(arg0, field11738, field2960, field1289, field2576, var1, -16777216);
 		DefaultSprites.b12FullFont.drawString(LocalisedText.CHOOSEOPTION.forLang(Client.language), field11738 + 3, field2960 + 14, var1, -1);
@@ -1541,8 +1426,7 @@ public class MiniMenu {
 		}
 	}
 
-	@ObfuscatedName("gl.ak(Ldh;IIIIILeu;Laac;Ljava/lang/String;I)V")
-	public static void method3469(Toolkit arg0, int arg1, int arg2, int arg3, int arg4, int arg5, Font arg6, FontMetrics arg7, String arg8) {
+    public static void method3469(Toolkit arg0, int arg1, int arg2, int arg3, int arg4, int arg5, Font arg6, FontMetrics arg7, String arg8) {
 		int var9 = 255 - field4488 - field567;
 		if (var9 < 0) {
 			var9 = 0;
@@ -1570,8 +1454,7 @@ public class MiniMenu {
 		arg0.fillRectangle(arg1, arg2 + arg5, arg3, arg4 - arg5, var9 << 24 | field7676, 1);
 	}
 
-	@ObfuscatedName("tm.an(Ldh;IIIIII)V")
-	public static void method8462(Toolkit arg0, int arg1, int arg2, int arg3, int arg4, int arg5) {
+    public static void method8462(Toolkit arg0, int arg1, int arg2, int arg3, int arg4, int arg5) {
 		if ((field1224 == null || field10568 == null || field11699 == null) && Client.spritesJs5.loadFile(field11642) && Client.spritesJs5.loadFile(field1748) && Client.spritesJs5.loadFile(field1847)) {
 			SpriteData var6 = SpriteDataProvider.method1609(Client.spritesJs5, field1748, 0);
 			field10568 = arg0.createSprite(var6, true);
@@ -1599,8 +1482,7 @@ public class MiniMenu {
 		field11831.drawSprite(arg1 + arg3 - field11699.getWidth(), arg2 + arg4 - field11699.getHeight());
 	}
 
-	@ObfuscatedName("aky.bf(Ldh;I)V")
-	public static void method17807(Toolkit arg0) {
+    public static void method17807(Toolkit arg0) {
 		int var1 = field11738;
 		int var2 = field2960;
 		int var3 = field1289;
@@ -1698,8 +1580,7 @@ public class MiniMenu {
 		}
 	}
 
-	@ObfuscatedName("agw.bl(Larm;I)Ljava/lang/String;")
-	public static String method16451(MiniMenuEntry arg0) {
+    public static String method16451(MiniMenuEntry arg0) {
 		if (arg0.field12296 == null || arg0.field12296.length() == 0) {
 			return arg0.field12301 == null || arg0.field12301.length() <= 0 ? arg0.field12297 : arg0.field12297 + LocalisedText.MINISEPERATOR.forLang(Client.language) + arg0.field12301;
 		} else if (arg0.field12301 == null || arg0.field12301.length() <= 0) {
@@ -1709,19 +1590,16 @@ public class MiniMenu {
 		}
 	}
 
-	@ObfuscatedName("adf.bk(Larn;B)Ljava/lang/String;")
-	public static String method15244(MiniMenuSubMenu arg0) {
+    public static String method15244(MiniMenuSubMenu arg0) {
 		return arg0.field12311 + TextUtil.colTag(16777215) + " >";
 	}
 
-	@ObfuscatedName("aiv.bh(Larn;Laac;B)I")
-	public static int method16910(MiniMenuSubMenu arg0, FontMetrics arg1) {
+    public static int method16910(MiniMenuSubMenu arg0, FontMetrics arg1) {
 		String var2 = method15244(arg0);
 		return arg1.stringWidth(var2, DefaultSprites.field10302);
 	}
 
-	@ObfuscatedName("ii.bx(Larm;Laac;I)I")
-	public static int method4610(MiniMenuEntry arg0, FontMetrics arg1) {
+    public static int method4610(MiniMenuEntry arg0, FontMetrics arg1) {
 		String var2 = method16451(arg0);
 		int[] var3 = method7096(arg0);
 		if (var3 != null) {
@@ -1734,8 +1612,7 @@ public class MiniMenu {
 		return var4;
 	}
 
-	@ObfuscatedName("aae.bd([II)Ljava/lang/String;")
-	public static String method14480(int[] arg0) {
+    public static String method14480(int[] arg0) {
 		StringBuilder var1 = new StringBuilder();
 		for (int var2 = 0; var2 < arg0.length; var2++) {
 			QuestType var3 = (QuestType) Client.questTypeList.list(arg0[var2]);
@@ -1746,13 +1623,11 @@ public class MiniMenu {
 		return var1.toString();
 	}
 
-	@ObfuscatedName("zd.bc(IB)Z")
-	public static boolean method13985(int arg0) {
+    public static boolean method13985(int arg0) {
 		return arg0 == 57 || arg0 == 58 || arg0 == 1007 || arg0 == 25 || arg0 == 30;
 	}
 
-	@ObfuscatedName("xm.bi(II)Z")
-	public static boolean method9907(int arg0) {
+    public static boolean method9907(int arg0) {
 		if (arg0 == 18 || arg0 == 19 || arg0 == 20 || arg0 == 21 || arg0 == 22 || arg0 == 1004) {
 			return true;
 		} else {
@@ -1760,8 +1635,7 @@ public class MiniMenu {
 		}
 	}
 
-	@ObfuscatedName("agb.bn(IB)Z")
-	public static boolean method16450(int arg0) {
+    public static boolean method16450(int arg0) {
 		if (arg0 == 9 || arg0 == 10 || arg0 == 11 || arg0 == 12 || arg0 == 13 || arg0 == 1003) {
 			return true;
 		} else {
@@ -1769,13 +1643,11 @@ public class MiniMenu {
 		}
 	}
 
-	@ObfuscatedName("ne.bt(II)Z")
-	public static boolean method5944(int arg0) {
+    public static boolean method5944(int arg0) {
 		return arg0 == 44 || arg0 == 45 || arg0 == 46 || arg0 == 47 || arg0 == 48 || arg0 == 49 || arg0 == 50 || arg0 == 51 || arg0 == 52 || arg0 == 53 || arg0 == 15;
 	}
 
-	@ObfuscatedName("hh.bq(IB)Z")
-	public static boolean method4053(int arg0) {
+    public static boolean method4053(int arg0) {
 		if (arg0 == 3 || arg0 == 4 || arg0 == 5 || arg0 == 6 || arg0 == 1001 || arg0 == 1002) {
 			return true;
 		} else {
@@ -1783,8 +1655,7 @@ public class MiniMenu {
 		}
 	}
 
-	@ObfuscatedName("xi.bm(Laqc;ZI)V")
-	public static void addNPCEntries(NpcEntity arg0, boolean arg1) {
+    public static void addNPCEntries(NpcEntity arg0, boolean arg1) {
 		if (field546 >= 407) {
 			return;
 		}
@@ -1885,8 +1756,7 @@ public class MiniMenu {
 		}
 	}
 
-	@ObfuscatedName("ga.bb(Laqk;ZI)V")
-	public static void addPlayerEntries(PlayerEntity arg0, boolean arg1) {
+    public static void addPlayerEntries(PlayerEntity arg0, boolean arg1) {
 		if (field546 >= 407) {
 			return;
 		}
@@ -1977,8 +1847,7 @@ public class MiniMenu {
 		}
 	}
 
-	@ObfuscatedName("ez.be(Lhf;II)Ljava/lang/String;")
-	public static String method2846(Component arg0, int arg1) {
+    public static String method2846(Component arg0, int arg1) {
 		if (!Client.method17197(arg0).method17690(arg1) && arg0.onop == null) {
 			return null;
 		} else if (arg0.op == null || arg0.op.length <= arg1 || arg0.op[arg1] == null || arg0.op[arg1].trim().length() == 0) {
@@ -1988,8 +1857,7 @@ public class MiniMenu {
 		}
 	}
 
-	@ObfuscatedName("aku.by(III)Ljava/lang/String;")
-	public static String method17760(int arg0, int arg1) {
+    public static String method17760(int arg0, int arg1) {
 		int var2 = arg1 - arg0;
 		if (var2 < -9) {
 			return TextUtil.colTag(16711680);
@@ -2012,8 +1880,7 @@ public class MiniMenu {
 		}
 	}
 
-	@ObfuscatedName("aq.bu(Larm;IIZI)V")
-	public static void useMenuOption(MiniMenuEntry arg0, int arg1, int arg2, boolean arg3) {
+    public static void useMenuOption(MiniMenuEntry arg0, int arg1, int arg2, boolean arg3) {
 		if (arg0 == null || field542.sentinel == arg0) {
 			return;
 		}
@@ -2321,8 +2188,7 @@ public class MiniMenu {
 		}
 	}
 
-	@ObfuscatedName("wc.bw(IIII)Lakl;")
-	public static ClientMessage method9839(int arg0, int arg1, int arg2) {
+    public static ClientMessage method9839(int arg0, int arg1, int arg2) {
 		ClientMessage var3 = null;
 		if (arg2 == 0) {
 			var3 = ClientMessage.createMessage(ClientProt.MOVE_GAMECLICK, Client.gameConnection.randomOut);
@@ -2341,8 +2207,7 @@ public class MiniMenu {
 		return var3;
 	}
 
-	@ObfuscatedName("aoy.bo(III)Z")
-	public static boolean method18853(int arg0, int arg1) {
+    public static boolean method18853(int arg0, int arg1) {
 		if (arg1 >= 1000 && arg0 < 1000) {
 			return true;
 		} else if (arg1 >= 1000 || arg0 >= 1000) {
@@ -2354,13 +2219,11 @@ public class MiniMenu {
 		}
 	}
 
-	@ObfuscatedName("re.bz(II)Z")
-	public static boolean method7715(int arg0) {
+    public static boolean method7715(int arg0) {
 		return arg0 == 59 || arg0 == 2 || arg0 == 8 || arg0 == 17 || arg0 == 15 || arg0 == 16 || arg0 == 58;
 	}
 
-	@ObfuscatedName("pf.bv(FFFFFFII)F")
-	public static float method7009(float arg0, float arg1, float arg2, float arg3, float arg4, float arg5, int arg6) {
+    public static float method7009(float arg0, float arg1, float arg2, float arg3, float arg4, float arg5, int arg6) {
 		float var7 = 0.0F;
 		float var8 = arg3 - arg0;
 		float var9 = arg4 - arg1;

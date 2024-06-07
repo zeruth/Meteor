@@ -2,15 +2,13 @@ package com.jagex.game.world;
 
 import deob.ObfuscatedName;
 
-@ObfuscatedName("tb")
 public class WorldMapTileShapes {
 
 	public WorldMapTileShapes() throws Throwable {
 		throw new Error();
 	}
 
-	@ObfuscatedName("agh.e(III)I")
-	public static int method16462(int arg0, int arg1) {
+    public static int method16462(int arg0, int arg1) {
 		if (arg1 == 9) {
 			arg0 = arg0 + 1 & 0x3;
 		}
@@ -23,8 +21,7 @@ public class WorldMapTileShapes {
 		return arg0;
 	}
 
-	@ObfuscatedName("uz.n(II)I")
-	public static int method9049(int arg0) {
+    public static int method9049(int arg0) {
 		if (arg0 == 9 || arg0 == 10) {
 			return 1;
 		} else if (arg0 == 11) {
@@ -34,8 +31,7 @@ public class WorldMapTileShapes {
 		}
 	}
 
-	@ObfuscatedName("amf.m(IB)[[[B")
-	public static byte[][][] method18477(int arg0) {
+    public static byte[][][] method18477(int arg0) {
 		byte[][][] var1 = new byte[8][4][];
 		int var2 = arg0;
 		int var3 = arg0;

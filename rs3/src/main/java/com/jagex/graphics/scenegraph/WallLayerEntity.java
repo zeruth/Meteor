@@ -7,23 +7,17 @@ import com.jagex.math.ScaleRotTrans;
 import com.jagex.math.Vector3;
 import deob.ObfuscatedName;
 
-@ObfuscatedName("asw")
 public abstract class WallLayerEntity extends GraphEntity {
 
-	@ObfuscatedName("asw.j")
-	public static final int field12460 = 64;
+    public static final int field12460 = 64;
 
-	@ObfuscatedName("asw.ae")
-	public static final int[] FRONT_WALL_TYPES = new int[] { 19, 55, 38, 155, 255, 110, 137, 205, 76 };
+    public static final int[] FRONT_WALL_TYPES = new int[] { 19, 55, 38, 155, 255, 110, 137, 205, 76 };
 
-	@ObfuscatedName("asw.ag")
-	public short type;
+    public short type;
 
-	@ObfuscatedName("asw.ah")
-	public int field12464 = 0;
+    public int field12464 = 0;
 
-	@ObfuscatedName("asw.al")
-	public Light[] field12459 = new Light[4];
+    public Light[] field12459 = new Light[4];
 
 	public WallLayerEntity(Scene scene, int x, int y, int z, int level, int occludeLevel, int type, ScaleRotTrans scaleRotTrans) {
 		super(scene, scaleRotTrans);
@@ -39,8 +33,7 @@ public abstract class WallLayerEntity extends GraphEntity {
 		}
 	}
 
-	@ObfuscatedName("asw.gy([Lakf;S)I")
-	public int method18375(Light[] arg0) {
+    public int method18375(Light[] arg0) {
 		if (this.field8176) {
 			Vector3 var2 = this.getTransform().trans;
 			int tileX = (int) var2.x >> this.scene.size;
@@ -91,14 +84,12 @@ public abstract class WallLayerEntity extends GraphEntity {
 		return this.field12464;
 	}
 
-	@ObfuscatedName("asw.ga(Ldh;S)Z")
-	public boolean isOccluded(Toolkit toolkit) {
+    public boolean isOccluded(Toolkit toolkit) {
 		Vector3 var2 = this.getTransform().trans;
 		return this.scene.occlusionManager.wallVisible(this, this.occludeLevel, (int) var2.x >> this.scene.size, (int) var2.z >> this.scene.size);
 	}
 
-	@ObfuscatedName("asw.gn(I)Z")
-	public boolean isVisible() {
+    public boolean isVisible() {
 		Vector3 var1 = this.getTransform().trans;
 		return this.scene.visibilityMap[this.scene.drawDistance + (((int) var1.x >> this.scene.size) - this.scene.eyeTileX)][this.scene.drawDistance + (((int) var1.z >> this.scene.size) - this.scene.eyeTileZ)];
 	}

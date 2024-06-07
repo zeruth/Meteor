@@ -3,26 +3,19 @@ package com.jagex.graphics.safe;
 import com.jagex.core.datastruct.Node;
 import deob.ObfuscatedName;
 
-@ObfuscatedName("aje")
 public class PureJavaTexture extends Node {
 
-	@ObfuscatedName("aje.k")
-	public final int field11267;
+    public final int field11267;
 
-	@ObfuscatedName("aje.f")
-	public final int field11264;
+    public final int field11264;
 
-	@ObfuscatedName("aje.w")
-	public int field11266;
+    public int field11266;
 
-	@ObfuscatedName("aje.l")
-	public boolean field11265;
+    public boolean field11265;
 
-	@ObfuscatedName("aje.u")
-	public int[] field11268;
+    public int[] field11268;
 
-	@ObfuscatedName("aje.z")
-	public static int[] field11269;
+    public static int[] field11269;
 
 	public PureJavaTexture(int arg0, int arg1, int arg2, int[] arg3, boolean arg4) {
 		this.field11267 = arg1;
@@ -117,13 +110,11 @@ public class PureJavaTexture extends Node {
 		}
 	}
 
-	@ObfuscatedName("aje.e()[I")
-	public int[] getPixels() {
+    public int[] getPixels() {
 		return this.field11268;
 	}
 
-	@ObfuscatedName("aje.n(II)V")
-	public void method17527(int arg0, int arg1) {
+    public void method17527(int arg0, int arg1) {
 		if (arg0 == 0 && arg1 == 0) {
 			return;
 		}

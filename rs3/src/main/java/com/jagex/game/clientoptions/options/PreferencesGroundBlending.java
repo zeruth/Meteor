@@ -4,7 +4,6 @@ import com.jagex.core.constants.ModeGame;
 import com.jagex.game.clientoptions.ClientOptions;
 import deob.ObfuscatedName;
 
-@ObfuscatedName("any")
 public class PreferencesGroundBlending extends Preference {
 
 	public PreferencesGroundBlending(ClientOptions options) {
@@ -15,8 +14,7 @@ public class PreferencesGroundBlending extends Preference {
 		super(value, options);
 	}
 
-	@ObfuscatedName("any.o(I)V")
-	public void clampValue() {
+    public void clampValue() {
 		if (this.options.modeGame() != ModeGame.RUNESCAPE) {
 			this.currentValue = 1;
 		}
@@ -25,18 +23,15 @@ public class PreferencesGroundBlending extends Preference {
 		}
 	}
 
-	@ObfuscatedName("any.e(B)I")
-	public int defaultValue() {
+    public int defaultValue() {
 		return 1;
 	}
 
-	@ObfuscatedName("any.s(I)Z")
-	public boolean canMod() {
+    public boolean canMod() {
 		return this.options.modeGame() == ModeGame.RUNESCAPE;
 	}
 
-	@ObfuscatedName("any.n(II)I")
-	public int canSetValue(int value) {
+    public int canSetValue(int value) {
 		if (this.options.modeGame() != ModeGame.RUNESCAPE) {
 			return 3;
 		}
@@ -54,13 +49,11 @@ public class PreferencesGroundBlending extends Preference {
 		return 1;
 	}
 
-	@ObfuscatedName("any.k(II)V")
-	public void setValue(int value) {
+    public void setValue(int value) {
 		this.currentValue = value;
 	}
 
-	@ObfuscatedName("any.y(I)I")
-	public int getValue() {
+    public int getValue() {
 		return this.currentValue;
 	}
 }

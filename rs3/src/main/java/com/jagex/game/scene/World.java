@@ -38,272 +38,201 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
 
-@ObfuscatedName("rl")
 public class World {
 
-	@ObfuscatedName("rl.e")
-	public boolean asyncRebuilding;
+    public boolean asyncRebuilding;
 
-	@ObfuscatedName("rl.n")
-	public RebuildType rebuildType;
+    public RebuildType rebuildType;
 
-	@ObfuscatedName("rl.m")
-	public RebuildType field5020;
+    public RebuildType field5020;
 
-	@ObfuscatedName("rl.k")
-	public BuildAreaSize buildAreaSize;
+    public BuildAreaSize buildAreaSize;
 
-	@ObfuscatedName("rl.f")
-	public ClientMapLoader underwaterMapLoader;
+    public ClientMapLoader underwaterMapLoader;
 
-	@ObfuscatedName("rl.w")
-	public ClientMapLoader mapLoader;
+    public ClientMapLoader mapLoader;
 
-	@ObfuscatedName("rl.l")
-	public CoordGrid sceneBaseTile = new CoordGrid();
+    public CoordGrid sceneBaseTile = new CoordGrid();
 
-	@ObfuscatedName("rl.u")
-	public CoordGrid mapLastBase = new CoordGrid();
+    public CoordGrid mapLastBase = new CoordGrid();
 
-	@ObfuscatedName("rl.z")
-	public int field5022;
+    public int field5022;
 
-	@ObfuscatedName("rl.p")
-	public int field5059;
+    public int field5059;
 
-	@ObfuscatedName("rl.d")
-	public int mapSizeX;
+    public int mapSizeX;
 
-	@ObfuscatedName("rl.c")
-	public int mapSizeZ;
+    public int mapSizeZ;
 
-	@ObfuscatedName("rl.r")
-	public Scene scene;
+    public Scene scene;
 
-	@ObfuscatedName("rl.v")
-	public EnvironmentManager environmentManager;
+    public EnvironmentManager environmentManager;
 
-	@ObfuscatedName("rl.o")
-	public SceneLevelTileFlags sceneLevelTileFlags;
+    public SceneLevelTileFlags sceneLevelTileFlags;
 
-	@ObfuscatedName("rl.s")
-	public int field5042;
+    public int field5042;
 
-	@ObfuscatedName("rl.y")
-	public int field5034;
+    public int field5034;
 
-	@ObfuscatedName("rl.q")
-	public WorldMapAreaMetadata field5035;
+    public WorldMapAreaMetadata field5035;
 
-	@ObfuscatedName("rl.x")
-	public WorldMapRelated field5058;
+    public WorldMapRelated field5058;
 
-	@ObfuscatedName("rl.b")
-	public LocTint field5050 = new LocTint(0, 0, 0, 0);
+    public LocTint field5050 = new LocTint(0, 0, 0, 0);
 
-	@ObfuscatedName("rl.h")
-	public float field5038;
+    public float field5038;
 
-	@ObfuscatedName("rl.a")
-	public LocTypeList locTypeList;
+    public LocTypeList locTypeList;
 
-	@ObfuscatedName("rl.g")
-	public int[][] field5040;
+    public int[][] field5040;
 
-	@ObfuscatedName("rl.i")
-	public int[][] field5041;
+    public int[][] field5041;
 
-	@ObfuscatedName("rl.j")
-	public byte[][][] field5029;
+    public byte[][][] field5029;
 
-	@ObfuscatedName("rl.t")
-	public RebuildStage rebuildStage;
+    public RebuildStage rebuildStage;
 
-	@ObfuscatedName("rl.ae")
-	public int field5044 = 0;
+    public int field5044 = 0;
 
-	@ObfuscatedName("rl.ag")
-	public int field5045 = 1;
+    public int field5045 = 1;
 
-	@ObfuscatedName("rl.ah")
-	public int rebuildLocsCount = 0;
+    public int rebuildLocsCount = 0;
 
-	@ObfuscatedName("rl.al")
-	public int field5047 = 1;
+    public int field5047 = 1;
 
-	@ObfuscatedName("rl.ac")
-	public int field5048;
+    public int field5048;
 
-	@ObfuscatedName("rl.ai")
-	public int rebuildMapSquaresCount = 0;
+    public int rebuildMapSquaresCount = 0;
 
-	@ObfuscatedName("rl.aw")
-	public int[] rebuildMapSquares;
+    public int[] rebuildMapSquares;
 
-	@ObfuscatedName("rl.as")
-	public int[] rebuildMapSquaresGroupIds;
+    public int[] rebuildMapSquaresGroupIds;
 
-	@ObfuscatedName("rl.at")
-	public byte[][] rebuildMapSquaresLands;
+    public byte[][] rebuildMapSquaresLands;
 
-	@ObfuscatedName("rl.ad")
-	public byte[][] rebuildMapSquaresLocs;
+    public byte[][] rebuildMapSquaresLocs;
 
-	@ObfuscatedName("rl.am")
-	public byte[][] rebuildMapSquaresNpcs;
+    public byte[][] rebuildMapSquaresNpcs;
 
-	@ObfuscatedName("rl.au")
-	public byte[][] rebuildMapSquaresUnderwaterLands;
+    public byte[][] rebuildMapSquaresUnderwaterLands;
 
-	@ObfuscatedName("rl.ar")
-	public byte[][] rebuildMapSquaresUnderwaterLocs;
+    public byte[][] rebuildMapSquaresUnderwaterLocs;
 
-	@ObfuscatedName("rl.ap")
-	public int[][][] field5057;
+    public int[][][] field5057;
 
-	@ObfuscatedName("rl.aq")
-	public boolean field5037 = false;
+    public boolean field5037 = false;
 
-	@ObfuscatedName("rl.ax")
-	public long field5056;
+    public long field5056;
 
-	@ObfuscatedName("rl.av")
-	public long field5060 = -1L;
+    public long field5060 = -1L;
 
-	@ObfuscatedName("rl.ao")
-	public HashMap field5061 = new HashMap();
+    public HashMap field5061 = new HashMap();
 
-	@ObfuscatedName("rl.aj")
-	public int npcViewDistance;
+    public int npcViewDistance;
 
 	public World(boolean asyncRebuilding) {
 		this.asyncRebuilding = asyncRebuilding;
 	}
 
-	@ObfuscatedName("rl.e(I)Lrc;")
-	public RebuildType getRebuildType() {
+    public RebuildType getRebuildType() {
 		return this.rebuildType;
 	}
 
-	@ObfuscatedName("rl.n(I)Lrg;")
-	public RebuildStage getRebuildStage() {
+    public RebuildStage getRebuildStage() {
 		return this.rebuildStage;
 	}
 
-	@ObfuscatedName("rl.m(I)I")
-	public int method7725() {
+    public int method7725() {
 		return 100 - this.field5044 * 100 / this.field5045;
 	}
 
-	@ObfuscatedName("rl.k(I)I")
-	public int method7726() {
+    public int method7726() {
 		return 100 - this.rebuildLocsCount * 100 / this.field5047;
 	}
 
-	@ObfuscatedName("rl.f(I)Lve;")
-	public CoordGrid getBase() {
+    public CoordGrid getBase() {
 		return this.sceneBaseTile;
 	}
 
-	@ObfuscatedName("rl.w(I)I")
-	public int getSizeX() {
+    public int getSizeX() {
 		return this.mapSizeX;
 	}
 
-	@ObfuscatedName("rl.l(S)I")
-	public int getSizeZ() {
+    public int getSizeZ() {
 		return this.mapSizeZ;
 	}
 
-	@ObfuscatedName("rl.u(I)Ltw;")
-	public WorldMapRelated method7871() {
+    public WorldMapRelated method7871() {
 		return this.field5058;
 	}
 
-	@ObfuscatedName("rl.z(B)Lre;")
-	public LocTint method7722() {
+    public LocTint method7722() {
 		return this.field5050;
 	}
 
-	@ObfuscatedName("rl.p(I)F")
-	public float getAntiMacroBrightnessAdjustment() {
+    public float getAntiMacroBrightnessAdjustment() {
 		return this.field5038;
 	}
 
-	@ObfuscatedName("rl.d(I)I")
-	public int method7760() {
+    public int method7760() {
 		return this.field5042;
 	}
 
-	@ObfuscatedName("rl.c(I)I")
-	public int method7734() {
+    public int method7734() {
 		return this.field5034;
 	}
 
-	@ObfuscatedName("rl.r(I)Ltx;")
-	public Scene getScene() {
+    public Scene getScene() {
 		return this.scene;
 	}
 
-	@ObfuscatedName("rl.v(II)[[B")
-	public byte[][] method7736(int arg0) {
+    public byte[][] method7736(int arg0) {
 		return this.mapLoader == null || this.mapLoader.field4517 == null || this.mapLoader.field4517[arg0] == null ? (byte[][]) null : this.mapLoader.field4517[arg0];
 	}
 
-	@ObfuscatedName("rl.o(I)Lqx;")
-	public SceneLevelTileFlags getSceneLevelTileFlags() {
+    public SceneLevelTileFlags getSceneLevelTileFlags() {
 		return this.sceneLevelTileFlags;
 	}
 
-	@ObfuscatedName("rl.s(B)Lxu;")
-	public EnvironmentManager getEnvironmentManager() {
+    public EnvironmentManager getEnvironmentManager() {
 		return this.environmentManager;
 	}
 
-	@ObfuscatedName("rl.y(I)Laop;")
-	public LocTypeList getLocTypeList() {
+    public LocTypeList getLocTypeList() {
 		return this.locTypeList;
 	}
 
-	@ObfuscatedName("rl.q(I)[[I")
-	public int[][] method7740() {
+    public int[][] method7740() {
 		return this.field5040;
 	}
 
-	@ObfuscatedName("rl.x(B)[[I")
-	public int[][] method7858() {
+    public int[][] method7858() {
 		return this.field5041;
 	}
 
-	@ObfuscatedName("rl.b(B)[[[B")
-	public byte[][][] method7742() {
+    public byte[][][] method7742() {
 		return this.field5029;
 	}
 
-	@ObfuscatedName("rl.h([[[BI)V")
-	public void method7775(byte[][][] arg0) {
+    public void method7775(byte[][][] arg0) {
 		this.field5029 = arg0;
 	}
 
-	@ObfuscatedName("rl.a(I)Laih;")
-	public ClientMapLoader method7744() {
+    public ClientMapLoader method7744() {
 		return this.mapLoader;
 	}
 
-	@ObfuscatedName("rl.g(Laop;I)V")
-	public void method7733(LocTypeList arg0) {
+    public void method7733(LocTypeList arg0) {
 		this.locTypeList = arg0;
 	}
 
-	@ObfuscatedName("rl.i(B)V")
-	public void method7746() {
+    public void method7746() {
 		this.sceneBaseTile = new CoordGrid();
 		this.field5059 = 0;
 		this.field5022 = 0;
 	}
 
-	@ObfuscatedName("rl.j(B)V")
-	public void method7747() {
+    public void method7747() {
 		if (this.scene != null) {
 			PickableEntity.resetStack();
 			this.field5061 = this.scene.method8733();
@@ -312,8 +241,7 @@ public class World {
 		}
 	}
 
-	@ObfuscatedName("rl.t(I)V")
-	public void completeRebuild() {
+    public void completeRebuild() {
 		this.rebuildStage = RebuildStage.field5007;
 		this.field5044 = 0;
 		this.field5045 = 1;
@@ -322,8 +250,7 @@ public class World {
 		this.field5048 = 0;
 	}
 
-	@ObfuscatedName("rl.ae(ZI)V")
-	public void createEnvironmentManager(boolean arg0) {
+    public void createEnvironmentManager(boolean arg0) {
 		EnvironmentOverride var2 = null;
 		if (this.environmentManager != null && arg0) {
 			var2 = this.environmentManager.getOverride();
@@ -334,13 +261,11 @@ public class World {
 		}
 	}
 
-	@ObfuscatedName("rl.ag(I)V")
-	public void clearEnvironmentOverride() {
+    public void clearEnvironmentOverride() {
 		this.environmentManager.setOverride(this, null, 0);
 	}
 
-	@ObfuscatedName("rl.ah(B)V")
-	public void method7820() {
+    public void method7820() {
 		this.field5042 = 200;
 		if (this.mapSizeX == 0) {
 			this.field5034 = 430;
@@ -353,8 +278,7 @@ public class World {
 		}
 	}
 
-	@ObfuscatedName("rl.al(Lrl;I)V")
-	public void method7752(World arg0) {
+    public void method7752(World arg0) {
 		boolean var2 = arg0.asyncRebuilding;
 		arg0.asyncRebuilding = this.asyncRebuilding;
 		this.asyncRebuilding = var2;
@@ -366,8 +290,7 @@ public class World {
 		this.environmentManager.method9992(arg0.getEnvironmentManager());
 	}
 
-	@ObfuscatedName("rl.ac(B)V")
-	public void rebuild() {
+    public void rebuild() {
 		if (this.asyncRebuilding) {
 			this.completeRebuild();
 			this.field5060 = -1L;
@@ -411,8 +334,7 @@ public class World {
 		}
 	}
 
-	@ObfuscatedName("rl.ai(Lrt;I)V")
-	public void rebuildMap(RebuildRequest request) {
+    public void rebuildMap(RebuildRequest request) {
 		this.rebuildType = request.rebuildType;
 		if (RebuildType.field5063 == this.rebuildType) {
 			this.method7773();
@@ -425,8 +347,7 @@ public class World {
 		}
 	}
 
-	@ObfuscatedName("rl.aw(B)V")
-	public void method7773() {
+    public void method7773() {
 		this.setBuildAreaSize(BuildAreaSize.buildAreaSizeForId(Client.preferences.buildArea.getValue()));
 		int var1 = this.sceneBaseTile.x;
 		int var2 = this.sceneBaseTile.z;
@@ -470,8 +391,7 @@ public class World {
 		this.method7829(var3, var4, var10, false);
 	}
 
-	@ObfuscatedName("rl.as(Lase;I)V")
-	public void rebuildNormalMap(PacketBit arg0) {
+    public void rebuildNormalMap(PacketBit arg0) {
 		int z = arg0.g2_alt2();
 		this.npcViewDistance = arg0.g1();
 		int count = arg0.g1_alt3();
@@ -503,8 +423,7 @@ public class World {
 		this.method7829(z, x, 3, forceRebuild);
 	}
 
-	@ObfuscatedName("rl.at(Lase;I)V")
-	public void rebuildRegionMap(PacketBit arg0) {
+    public void rebuildRegionMap(PacketBit arg0) {
 		this.npcViewDistance = arg0.g1();
 		int var2 = arg0.g1();
 		int var3 = arg0.g1();
@@ -585,8 +504,7 @@ public class World {
 		this.method7829(var4, var5, 3, var7);
 	}
 
-	@ObfuscatedName("rl.ad(I)V")
-	public void method7824() {
+    public void method7824() {
 		this.field5020 = this.rebuildType;
 		this.setBuildAreaSize(BuildAreaSize.STANDARD);
 		for (int var1 = 0; var1 < 4; var1++) {
@@ -683,13 +601,11 @@ public class World {
 		this.method7829(this.mapSizeX >> 4, this.mapSizeZ >> 4, 3, false);
 	}
 
-	@ObfuscatedName("rl.am(III)I")
-	public int mapSquareGroupId(int zoneX, int zoneZ) {
+    public int mapSquareGroupId(int zoneX, int zoneZ) {
 		return zoneX | zoneZ << 7;
 	}
 
-	@ObfuscatedName("rl.au(Lib;I)V")
-	public void setBuildAreaSize(BuildAreaSize buildAreaSize) {
+    public void setBuildAreaSize(BuildAreaSize buildAreaSize) {
 		if (this.buildAreaSize == buildAreaSize) {
 			return;
 		}
@@ -704,8 +620,7 @@ public class World {
 		this.buildAreaSize = buildAreaSize;
 	}
 
-	@ObfuscatedName("rl.ar(I)V")
-	public void method7854() {
+    public void method7854() {
 		if (RebuildType.CUTSCENE == this.rebuildType || RebuildType.CUTSCENE == this.field5020) {
 			return;
 		}
@@ -722,8 +637,7 @@ public class World {
 		this.field5020 = this.rebuildType;
 	}
 
-	@ObfuscatedName("rl.ap(IIIZB)V")
-	public void method7829(int arg0, int arg1, int arg2, boolean forceRebuild) {
+    public void method7829(int arg0, int arg1, int arg2, boolean forceRebuild) {
 		if (Client.sceneState == 4) {
 			if (this.asyncRebuilding) {
 				throw new IllegalStateException();
@@ -754,8 +668,7 @@ public class World {
 		}
 	}
 
-	@ObfuscatedName("rl.aq(II)V")
-	public void method7762(int arg0) {
+    public void method7762(int arg0) {
 		int dx = this.sceneBaseTile.x - this.mapLastBase.x;
 		int dz = this.sceneBaseTile.z - this.mapLastBase.z;
 		if (arg0 == 3) {
@@ -925,8 +838,7 @@ public class World {
 		ParticleSystemRenderer.method3561();
 	}
 
-	@ObfuscatedName("rl.ax(I)V")
-	public void method7763() {
+    public void method7763() {
 		this.underwaterMapLoader = null;
 		this.mapLoader = null;
 		if (this.sceneLevelTileFlags != null) {
@@ -941,8 +853,7 @@ public class World {
 		}
 	}
 
-	@ObfuscatedName("rl.av(B)Z")
-	public boolean rebuildScene() {
+    public boolean rebuildScene() {
 		if (!this.asyncRebuilding) {
 			MapLogicRelated.noTimeoutConnections(false);
 		}
@@ -1276,16 +1187,14 @@ public class World {
 		return true;
 	}
 
-	@ObfuscatedName("rl.ao(II)V")
-	public void sleep(int millis) {
+    public void sleep(int millis) {
 		try {
 			Thread.sleep((long) millis);
 		} catch (InterruptedException var3) {
 		}
 	}
 
-	@ObfuscatedName("rl.aj(Laih;[[BI)V")
-	public void readNormalLandscape(ClientMapLoader mapLoader, byte[][] mapSquareLands) {
+    public void readNormalLandscape(ClientMapLoader mapLoader, byte[][] mapSquareLands) {
 		int length = mapSquareLands.length;
 		for (int index = 0; index < length; index++) {
 			byte[] lands = mapSquareLands[index];
@@ -1315,8 +1224,7 @@ public class World {
 		}
 	}
 
-	@ObfuscatedName("rl.ay(Laih;[[BI)V")
-	public void readRegionLandscape(ClientMapLoader mapLoader, byte[][] mapSquareLands) {
+    public void readRegionLandscape(ClientMapLoader mapLoader, byte[][] mapSquareLands) {
 		for (int level = 0; level < mapLoader.levels; level++) {
 			if (!this.asyncRebuilding) {
 				Client.audioApi.update();
@@ -1359,8 +1267,7 @@ public class World {
 		}
 	}
 
-	@ObfuscatedName("rl.ab(Laih;[[BB)V")
-	public void readNormalLocs(ClientMapLoader mapLoader, byte[][] mapSquareLocs) {
+    public void readNormalLocs(ClientMapLoader mapLoader, byte[][] mapSquareLocs) {
 		for (int index = 0; index < this.rebuildMapSquaresCount; index++) {
 			byte[] locs = mapSquareLocs[index];
 			if (locs != null) {
@@ -1377,8 +1284,7 @@ public class World {
 		}
 	}
 
-	@ObfuscatedName("rl.az(Laih;[[BS)V")
-	public void readRegionLocs(ClientMapLoader mapLoader, byte[][] mapSquareLocs) {
+    public void readRegionLocs(ClientMapLoader mapLoader, byte[][] mapSquareLocs) {
 		for (int level = 0; level < mapLoader.levels; level++) {
 			if (!this.asyncRebuilding) {
 				Client.audioApi.update();
@@ -1409,8 +1315,7 @@ public class World {
 		}
 	}
 
-	@ObfuscatedName("rl.aa(B)V")
-	public void readNpcs() {
+    public void readNpcs() {
 		int length = this.rebuildMapSquaresNpcs.length;
 		for (int index = 0; index < length; index++) {
 			if (this.rebuildMapSquaresNpcs[index] != null) {

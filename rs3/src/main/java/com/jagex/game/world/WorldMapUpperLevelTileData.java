@@ -2,29 +2,21 @@ package com.jagex.game.world;
 
 import deob.ObfuscatedName;
 
-@ObfuscatedName("tn")
 public class WorldMapUpperLevelTileData {
 
-	@ObfuscatedName("tn.e")
-	public byte field6774;
+    public byte field6774;
 
-	@ObfuscatedName("tn.n")
-	public byte field6769;
+    public byte field6769;
 
-	@ObfuscatedName("tn.m")
-	public int field6770;
+    public int field6770;
 
-	@ObfuscatedName("tn.k")
-	public short field6768;
+    public short field6768;
 
-	@ObfuscatedName("tn.f")
-	public byte field6772;
+    public byte field6772;
 
-	@ObfuscatedName("tn.w")
-	public int[] field6773;
+    public int[] field6773;
 
-	@ObfuscatedName("tn.l")
-	public byte[] field6771;
+    public byte[] field6771;
 
 	public WorldMapUpperLevelTileData(int arg0, int arg1, int arg2, int arg3, int arg4, int[] arg5, byte[] arg6) {
 		this.field6774 = (byte) arg0;

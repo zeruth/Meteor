@@ -5,14 +5,11 @@ import com.jagex.graphics.ColourRemapper;
 import com.jagex.graphics.TextureFormat;
 import deob.ObfuscatedName;
 
-@ObfuscatedName("aep")
 public class GlColourRemapper extends ColourRemapper {
 
-	@ObfuscatedName("aep.e")
-	public final GlToolkit field9528;
+    public final GlToolkit field9528;
 
-	@ObfuscatedName("aep.n")
-	public GlTexture field9527;
+    public GlTexture field9527;
 
 	public GlColourRemapper(GlToolkit arg0, int[] arg1) {
 		this.field9528 = arg0;
@@ -24,13 +21,11 @@ public class GlColourRemapper extends ColourRemapper {
 		}
 	}
 
-	@ObfuscatedName("aep.e()Lbq;")
-	public GlTexture method15425() {
+    public GlTexture method15425() {
 		return this.field9527;
 	}
 
-	@ObfuscatedName("aep.n([I)[B")
-	public byte[] method15426(int[] arg0) {
+    public byte[] method15426(int[] arg0) {
 		byte[] var2 = new byte[16384];
 		for (int var3 = 0; var3 < 16; var3++) {
 			for (int var4 = 0; var4 < 16; var4++) {

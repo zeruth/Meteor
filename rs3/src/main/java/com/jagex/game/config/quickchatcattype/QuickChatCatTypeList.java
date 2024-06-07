@@ -6,17 +6,13 @@ import com.jagex.core.io.Packet;
 import com.jagex.js5.Js5;
 import deob.ObfuscatedName;
 
-@ObfuscatedName("qr")
 public class QuickChatCatTypeList {
 
-	@ObfuscatedName("qr.e")
-	public final Js5 configClientSmall;
+    public final Js5 configClientSmall;
 
-	@ObfuscatedName("qr.n")
-	public final Js5 configClientLarge;
+    public final Js5 configClientLarge;
 
-	@ObfuscatedName("qr.m")
-	public final SoftLruHashTable recentUse = new SoftLruHashTable(64);
+    public final SoftLruHashTable recentUse = new SoftLruHashTable(64);
 
 	public QuickChatCatTypeList(Language arg0, Js5 arg1, Js5 arg2) {
 		this.configClientSmall = arg1;
@@ -29,8 +25,7 @@ public class QuickChatCatTypeList {
 		}
 	}
 
-	@ObfuscatedName("qr.e(IB)Lasd;")
-	public QuickChatCatType list(int id) {
+    public QuickChatCatType list(int id) {
 		QuickChatCatType cached = (QuickChatCatType) this.recentUse.get((long) id);
 		if (cached != null) {
 			return cached;

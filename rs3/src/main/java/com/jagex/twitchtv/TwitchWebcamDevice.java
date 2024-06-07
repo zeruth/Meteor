@@ -6,20 +6,15 @@ import java.util.LinkedList;
 
 public class TwitchWebcamDevice {
 
-	@ObfuscatedName("com/jagex/twitchtv/TwitchWebcamDevice.e")
-	public String field236;
+    public String field236;
 
-	@ObfuscatedName("com/jagex/twitchtv/TwitchWebcamDevice.n")
-	public String field237;
+    public String field237;
 
-	@ObfuscatedName("com/jagex/twitchtv/TwitchWebcamDevice.m")
-	public int field238;
+    public int field238;
 
-	@ObfuscatedName("com/jagex/twitchtv/TwitchWebcamDevice.k")
-	public int field239;
+    public int field239;
 
-	@ObfuscatedName("com/jagex/twitchtv/TwitchWebcamDevice.f")
-	public LinkedList field240 = new LinkedList();
+    public LinkedList field240 = new LinkedList();
 
 	public TwitchWebcamDevice(int arg0, int arg1, String arg2, String arg3) {
 		this.field238 = arg0;
@@ -32,13 +27,11 @@ public class TwitchWebcamDevice {
 		this.field240.add(new TwitchWebcamDeviceCapability(arg0, arg1, arg2, arg3, arg4));
 	}
 
-	@ObfuscatedName("com/jagex/twitchtv/TwitchWebcamDevice.e(I)Lcom/jagex/twitchtv/TwitchWebcamDeviceCapability;")
-	public TwitchWebcamDeviceCapability method26(int arg0) {
+    public TwitchWebcamDeviceCapability method26(int arg0) {
 		return arg0 >= 0 && arg0 < this.field240.size() ? (TwitchWebcamDeviceCapability) this.field240.get(arg0) : null;
 	}
 
-	@ObfuscatedName("com/jagex/twitchtv/TwitchWebcamDevice.n(I)Lcom/jagex/twitchtv/TwitchWebcamDeviceCapability;")
-	public TwitchWebcamDeviceCapability method27(int arg0) {
+    public TwitchWebcamDeviceCapability method27(int arg0) {
 		for (int var2 = 0; var2 < this.field240.size(); var2++) {
 			if (((TwitchWebcamDeviceCapability) this.field240.get(var2)).field215 == arg0) {
 				return (TwitchWebcamDeviceCapability) this.field240.get(var2);
@@ -47,8 +40,7 @@ public class TwitchWebcamDevice {
 		return null;
 	}
 
-	@ObfuscatedName("com/jagex/twitchtv/TwitchWebcamDevice.m()I")
-	public int method28() {
+    public int method28() {
 		return this.field240.size();
 	}
 }

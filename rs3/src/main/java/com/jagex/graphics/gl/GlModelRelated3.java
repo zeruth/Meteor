@@ -2,26 +2,19 @@ package com.jagex.graphics.gl;
 
 import deob.ObfuscatedName;
 
-@ObfuscatedName("br")
 public class GlModelRelated3 {
 
-	@ObfuscatedName("br.e")
-	public int field1054;
+    public int field1054;
 
-	@ObfuscatedName("br.n")
-	public int field1050 = 128;
+    public int field1050 = 128;
 
-	@ObfuscatedName("br.m")
-	public int field1051 = 128;
+    public int field1051 = 128;
 
-	@ObfuscatedName("br.k")
-	public int field1049;
+    public int field1049;
 
-	@ObfuscatedName("br.f")
-	public int field1052;
+    public int field1052;
 
-	@ObfuscatedName("br.w")
-	public int field1053;
+    public int field1053;
 
 	public GlModelRelated3(int arg0) {
 		this.field1054 = arg0;
@@ -36,13 +29,11 @@ public class GlModelRelated3 {
 		this.field1053 = arg5;
 	}
 
-	@ObfuscatedName("br.e()Lbr;")
-	public GlModelRelated3 method1299() {
+    public GlModelRelated3 method1299() {
 		return new GlModelRelated3(this.field1054, this.field1050, this.field1051, this.field1049, this.field1052, this.field1053);
 	}
 
-	@ObfuscatedName("br.n(Lbr;)V")
-	public void method1298(GlModelRelated3 arg0) {
+    public void method1298(GlModelRelated3 arg0) {
 		this.field1050 = arg0.field1050;
 		this.field1051 = arg0.field1051;
 		this.field1049 = arg0.field1049;

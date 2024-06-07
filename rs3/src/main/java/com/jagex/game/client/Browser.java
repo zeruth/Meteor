@@ -8,32 +8,26 @@ import java.awt.Desktop.Action;
 import java.net.URI;
 import java.net.URL;
 
-@ObfuscatedName("sx")
 public class Browser {
 
-	@ObfuscatedName("sx.e")
-	public static Applet field6574 = null;
+    public static Applet field6574 = null;
 
-	@ObfuscatedName("sx.n")
-	public static String field6575 = null;
+    public static String field6575 = null;
 
 	public Browser() throws Throwable {
 		throw new Error();
 	}
 
-	@ObfuscatedName("uk.e(Ljava/applet/Applet;Ljava/lang/String;I)V")
-	public static void method9163(Applet arg0, String arg1) {
+    public static void method9163(Applet arg0, String arg1) {
 		field6574 = arg0;
 		field6575 = arg1;
 	}
 
-	@ObfuscatedName("ii.n(Ljava/lang/String;ZZB)V")
-	public static void openUrl(String arg0, boolean arg1, boolean arg2) {
+    public static void openUrl(String arg0, boolean arg1, boolean arg2) {
 		method6081(arg0, arg1, "openjs", arg2);
 	}
 
-	@ObfuscatedName("nz.m(Ljava/lang/String;ZLjava/lang/String;ZB)V")
-	public static void method6081(String arg0, boolean arg1, String arg2, boolean arg3) {
+    public static void method6081(String arg0, boolean arg1, String arg2, boolean arg3) {
 		if (!arg1) {
 			method4408(arg0, 3);
 			return;
@@ -56,13 +50,11 @@ public class Browser {
 		method4408(arg0, 2);
 	}
 
-	@ObfuscatedName("iu.k(Ljava/lang/String;II)Z")
-	public static boolean method4408(String arg0, int arg1) {
+    public static boolean method4408(String arg0, int arg1) {
 		return method2898(arg0, arg1, "openjs");
 	}
 
-	@ObfuscatedName("ew.f(Ljava/lang/String;ILjava/lang/String;S)Z")
-	public static boolean method2898(String arg0, int arg1, String arg2) {
+    public static boolean method2898(String arg0, int arg1, String arg2) {
 		if (arg1 == 0) {
 			try {
 				if (!field6575.startsWith("win")) {

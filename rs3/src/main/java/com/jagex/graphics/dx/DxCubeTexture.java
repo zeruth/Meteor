@@ -10,11 +10,9 @@ import jagdx.IDirect3DDevice;
 
 import java.nio.ByteBuffer;
 
-@ObfuscatedName("aif")
 public class DxCubeTexture extends DxBaseTexture implements GpuCubeTexture {
 
-	@ObfuscatedName("aif.w")
-	public final int field10676;
+    public final int field10676;
 
 	public DxCubeTexture(DxToolkit arg0, int arg1, boolean arg2, int[][] arg3) {
 		super(arg0, TextureFormat.RGBA, DataType.UNSIGNED_INT_8, arg2 && arg0.field11967, arg1 * arg1 * 6);
@@ -33,18 +31,15 @@ public class DxCubeTexture extends DxBaseTexture implements GpuCubeTexture {
 		}
 	}
 
-	@ObfuscatedName("aif.aj()V")
-	public void method5823() {
+    public void method5823() {
 		this.renderer.method19001(this);
 	}
 
-	@ObfuscatedName("aif.m()V")
-	public void delete() {
+    public void delete() {
 		super.delete();
 	}
 
-	@ObfuscatedName("aif.ay(Llt;)V")
-	public void method5824(GpuTextureRelated arg0) {
+    public void method5824(GpuTextureRelated arg0) {
 		super.method5824(arg0);
 	}
 }

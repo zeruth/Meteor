@@ -2,20 +2,15 @@ package com.jagex.core.utils;
 
 import deob.ObfuscatedName;
 
-@ObfuscatedName("zk")
 public class Base64 {
 
-	@ObfuscatedName("zk.e")
-	public static char[] BASE64_ALPHABET = new char[64];
+    public static char[] BASE64_ALPHABET = new char[64];
 
-	@ObfuscatedName("zk.n")
-	public static char[] unused1;
+    public static char[] unused1;
 
-	@ObfuscatedName("zk.m")
-	public static char[] BASE64_URL_ALPHABET;
+    public static char[] BASE64_URL_ALPHABET;
 
-	@ObfuscatedName("zk.k")
-	public static int[] unused2;
+    public static int[] unused2;
 
 	static {
 		for (int index = 0; index < 26; index++) {
@@ -78,13 +73,11 @@ public class Base64 {
 		throw new Error();
 	}
 
-	@ObfuscatedName("xs.e([BI)Ljava/lang/String;")
-	public static String toBase64(byte[] bytes) {
+    public static String toBase64(byte[] bytes) {
 		return toBase64(bytes, 0, bytes.length);
 	}
 
-	@ObfuscatedName("bl.n([BIII)Ljava/lang/String;")
-	public static String toBase64(byte[] bytes, int off, int length) {
+    public static String toBase64(byte[] bytes, int off, int length) {
 		StringBuilder base64 = new StringBuilder();
 		for (int index = off; index < off + length; index += 3) {
 			int one = bytes[index] & 0xFF;

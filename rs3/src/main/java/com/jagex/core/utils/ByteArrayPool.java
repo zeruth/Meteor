@@ -2,42 +2,31 @@ package com.jagex.core.utils;
 
 import deob.ObfuscatedName;
 
-@ObfuscatedName("zz")
 public class ByteArrayPool {
 
-	@ObfuscatedName("zz.e")
-	public static int minCount = 0;
+    public static int minCount = 0;
 
-	@ObfuscatedName("zz.n")
-	public static int midCount = 0;
+    public static int midCount = 0;
 
-	@ObfuscatedName("zz.m")
-	public static int maxCount = 0;
+    public static int maxCount = 0;
 
-	@ObfuscatedName("zz.k")
-	public static byte[][] minPool = new byte[1000][];
+    public static byte[][] minPool = new byte[1000][];
 
-	@ObfuscatedName("zz.f")
-	public static byte[][] midPool = new byte[250][];
+    public static byte[][] midPool = new byte[250][];
 
-	@ObfuscatedName("zz.w")
-	public static byte[][] maxPool = new byte[50][];
+    public static byte[][] maxPool = new byte[50][];
 
-	@ObfuscatedName("u.l")
-	public static int[] field518;
+    public static int[] field518;
 
-	@ObfuscatedName("zz.u")
-	public static int[] field8350;
+    public static int[] field8350;
 
-	@ObfuscatedName("zz.z")
-	public static byte[][][] field8357;
+    public static byte[][][] field8357;
 
 	public ByteArrayPool() {
 		throw new Error();
 	}
 
-	@ObfuscatedName("iv.e([I[II)V")
-	public static void method4398(int[] arg0, int[] arg1) {
+    public static void method4398(int[] arg0, int[] arg1) {
 		if (arg0 == null || arg1 == null) {
 			field518 = null;
 			field8350 = null;
@@ -54,8 +43,7 @@ public class ByteArrayPool {
 		}
 	}
 
-	@ObfuscatedName("zz.n(IZI)[B")
-	public static synchronized byte[] alloc(int size, boolean arg1) {
+    public static synchronized byte[] alloc(int size, boolean arg1) {
 		if ((size == 100 || size < 100 && arg1) && minCount > 0) {
 			byte[] data = minPool[--minCount];
 			minPool[minCount] = null;
@@ -91,13 +79,11 @@ public class ByteArrayPool {
 		}
 	}
 
-	@ObfuscatedName("zz.m(II)[B")
-	public static synchronized byte[] alloc(int size) {
+    public static synchronized byte[] alloc(int size) {
 		return alloc(size, false);
 	}
 
-	@ObfuscatedName("zz.k([BB)V")
-	public static synchronized void release(byte[] src) {
+    public static synchronized void release(byte[] src) {
 		if (src.length == 100 && minCount < 1000) {
 			minPool[++minCount - 1] = src;
 		} else if (src.length == 5000 && midCount < 250) {

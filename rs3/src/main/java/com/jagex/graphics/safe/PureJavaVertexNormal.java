@@ -2,20 +2,15 @@ package com.jagex.graphics.safe;
 
 import deob.ObfuscatedName;
 
-@ObfuscatedName("ak")
 public class PureJavaVertexNormal {
 
-	@ObfuscatedName("ak.e")
-	public int field875;
+    public int field875;
 
-	@ObfuscatedName("ak.n")
-	public int field874;
+    public int field874;
 
-	@ObfuscatedName("ak.m")
-	public int field873;
+    public int field873;
 
-	@ObfuscatedName("ak.k")
-	public int field876;
+    public int field876;
 
 	public PureJavaVertexNormal() {
 	}

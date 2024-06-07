@@ -11,26 +11,19 @@ import com.jagex.math.Matrix4x3;
 import com.jagex.math.ScaleRotTrans;
 import deob.ObfuscatedName;
 
-@ObfuscatedName("ajj")
 public class DynamicWallEntity extends WallLayerEntity implements Location {
 
-	@ObfuscatedName("ajj.c")
-	public DynamicLoc loc;
+    public DynamicLoc loc;
 
-	@ObfuscatedName("ajj.r")
-	public boolean active;
+    public boolean active;
 
-	@ObfuscatedName("ajj.v")
-	public EntityBounds field11181;
+    public EntityBounds field11181;
 
-	@ObfuscatedName("ajj.o")
-	public static final int[] ROTATION_WALL_TYPE = new int[] { 1, 2, 4, 8 };
+    public static final int[] ROTATION_WALL_TYPE = new int[] { 1, 2, 4, 8 };
 
-	@ObfuscatedName("ajj.s")
-	public static final int[] ROTATION_WALL_CORNER_TYPE = new int[] { 16, 32, 64, 128 };
+    public static final int[] ROTATION_WALL_CORNER_TYPE = new int[] { 16, 32, 64, 128 };
 
-	@ObfuscatedName("ajj.y")
-	public boolean field11183 = true;
+    public boolean field11183 = true;
 
 	public DynamicWallEntity(Scene scene, Toolkit toolkit, LocTypeList locTypeList, LocType locType, int level, int occludeLevel, int x, int y, int z, boolean underwater, int shape, int angle, int arg12, int arg13, ScaleRotTrans scaleRotTrans) {
 		super(scene, x, y, z, level, occludeLevel, getType(shape, angle), scaleRotTrans);
@@ -39,43 +32,35 @@ public class DynamicWallEntity extends WallLayerEntity implements Location {
 		this.createEntityBounds(1);
 	}
 
-	@ObfuscatedName("ajj.bu(B)Z")
-	public boolean method16488() {
+    public boolean method16488() {
 		return false;
 	}
 
-	@ObfuscatedName("ajj.bw(S)Z")
-	public boolean method16489() {
+    public boolean method16489() {
 		return this.field11183;
 	}
 
-	@ObfuscatedName("xm.bz(III)I")
-	public static int getType(int arg0, int arg1) {
+    public static int getType(int arg0, int arg1) {
 		return LocShape.WALL_DIAGONAL_CORNER.id == arg0 || LocShape.WALL_SQUARE_CORNER.id == arg0 ? ROTATION_WALL_CORNER_TYPE[arg1 & 0x3] : ROTATION_WALL_TYPE[arg1 & 0x3];
 	}
 
-	@ObfuscatedName("ajj.fv(Ldh;B)Luq;")
-	public EntityBounds method17371(Toolkit toolkit) {
+    public EntityBounds method17371(Toolkit toolkit) {
 		return this.field11181;
 	}
 
-	@ObfuscatedName("ajj.by(B)I")
-	public int overlayHeight() {
+    public int overlayHeight() {
 		return this.loc.overlayHeight();
 	}
 
-	@ObfuscatedName("ajj.bo(I)I")
-	public int height() {
+    public int height() {
 		return this.loc.height();
 	}
 
-	@ObfuscatedName("ajj.bv(Lvp;I)V")
-	public void method17429(LocTypeCustomisation arg0) {
+    public void method17429(LocTypeCustomisation arg0) {
 		this.loc.method8265(arg0);
 	}
 
-	@ObfuscatedName("ajj.fc(Ldh;I)Ltl;")
-	public PickableEntity draw(Toolkit toolkit) {
+    public PickableEntity draw(Toolkit toolkit) {
 		Model var2 = this.loc.getModel(toolkit, 2048, false, true);
 		if (var2 == null) {
 			return null;
@@ -106,8 +91,7 @@ public class DynamicWallEntity extends WallLayerEntity implements Location {
 		return var5;
 	}
 
-	@ObfuscatedName("ajj.fw(Ldh;I)V")
-	public void method17373(Toolkit toolkit) {
+    public void method17373(Toolkit toolkit) {
 		Model var2 = this.loc.getModel(toolkit, 262144, true, true);
 		if (var2 == null) {
 			return;
@@ -119,8 +103,7 @@ public class DynamicWallEntity extends WallLayerEntity implements Location {
 		this.loc.method8239(toolkit, var2, var3, var5, var5, var6, var6, false);
 	}
 
-	@ObfuscatedName("ajj.fa(Ldh;IIB)Z")
-	public boolean method17375(Toolkit toolkit, int arg1, int arg2) {
+    public boolean method17375(Toolkit toolkit, int arg1, int arg2) {
 		LocType var4 = this.loc.getLocType();
 		if (var4.clickbox == null) {
 			Model var5 = this.loc.getModel(toolkit, 131072, false, false);
@@ -130,57 +113,46 @@ public class DynamicWallEntity extends WallLayerEntity implements Location {
 		}
 	}
 
-	@ObfuscatedName("ajj.fp(I)Z")
-	public final boolean method17379() {
+    public final boolean method17379() {
 		return false;
 	}
 
-	@ObfuscatedName("ajj.fq(Ldh;Lalh;IIIZB)V")
-	public final void mergeNormals(Toolkit toolkit, GraphEntity entity, int arg2, int arg3, int arg4, boolean arg5) {
+    public final void mergeNormals(Toolkit toolkit, GraphEntity entity, int arg2, int arg3, int arg4, boolean arg5) {
 		throw new IllegalStateException();
 	}
 
-	@ObfuscatedName("ajj.ff(B)V")
-	public final void applyLighting() {
+    public final void applyLighting() {
 		throw new IllegalStateException();
 	}
 
-	@ObfuscatedName("ajj.e(I)I")
-	public int getId() {
+    public int getId() {
 		return this.loc.id;
 	}
 
-	@ObfuscatedName("ajj.n(I)I")
-	public int getShape() {
+    public int getShape() {
 		return this.loc.shape;
 	}
 
-	@ObfuscatedName("ajj.m(I)I")
-	public int getAngle() {
+    public int getAngle() {
 		return this.loc.angle;
 	}
 
-	@ObfuscatedName("ajj.k(I)V")
-	public void method8205() {
+    public void method8205() {
 	}
 
-	@ObfuscatedName("ajj.w(B)Z")
-	public boolean method8207() {
+    public boolean method8207() {
 		return true;
 	}
 
-	@ObfuscatedName("ajj.f(I)Z")
-	public boolean hasShadow() {
+    public boolean hasShadow() {
 		return this.loc.hasShadow();
 	}
 
-	@ObfuscatedName("ajj.l(Ldh;B)V")
-	public void method8217(Toolkit arg0) {
+    public void method8217(Toolkit arg0) {
 		this.loc.method8241(arg0);
 	}
 
-	@ObfuscatedName("ajj.u(Ldh;B)V")
-	public void method8209(Toolkit arg0) {
+    public void method8209(Toolkit arg0) {
 		this.loc.method8242(arg0);
 	}
 }

@@ -2,36 +2,25 @@ package rs2.client.logic.friendchat;
 
 import deob.ObfuscatedName;
 
-@ObfuscatedName("g")
 public class Friend {
 
-	@ObfuscatedName("g.e")
-	public String field606;
+    public String field606;
 
-	@ObfuscatedName("g.n")
-	public String field607;
+    public String field607;
 
-	@ObfuscatedName("g.m")
-	public int worldId;
+    public int worldId;
 
-	@ObfuscatedName("g.k")
-	public String worldName;
+    public String worldName;
 
-	@ObfuscatedName("g.f")
-	public int rank;
+    public int rank;
 
-	@ObfuscatedName("g.w")
-	public int platform;
+    public int platform;
 
-	@ObfuscatedName("g.l")
-	public boolean referrer;
+    public boolean referrer;
 
-	@ObfuscatedName("g.u")
-	public boolean referred;
+    public boolean referred;
 
-	@ObfuscatedName("g.z")
-	public String notes;
+    public String notes;
 
-	@ObfuscatedName("g.p")
-	public int worldFlags;
+    public int worldFlags;
 }

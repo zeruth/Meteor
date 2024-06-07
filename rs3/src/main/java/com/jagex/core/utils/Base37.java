@@ -2,14 +2,11 @@ package com.jagex.core.utils;
 
 import deob.ObfuscatedName;
 
-@ObfuscatedName("zq")
 public final class Base37 {
 
-	@ObfuscatedName("zq.e")
-	public static final char[] ALPHABET = new char[] { '_', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9' };
+    public static final char[] ALPHABET = new char[] { '_', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9' };
 
-	@ObfuscatedName("zq.n")
-	public static long[] unused = new long[12];
+    public static long[] unused = new long[12];
 
 	static {
 		for (int var0 = 0; var0 < unused.length; var0++) {
@@ -21,8 +18,7 @@ public final class Base37 {
 		throw new Error();
 	}
 
-	@ObfuscatedName("yk.e(Ljava/lang/CharSequence;B)J")
-	public static long toBase37(CharSequence chars) {
+    public static long toBase37(CharSequence chars) {
 		long base37 = 0L;
 		int length = chars.length();
 		for (int index = 0; index < length; index++) {
@@ -45,8 +41,7 @@ public final class Base37 {
 		return base37;
 	}
 
-	@ObfuscatedName("va.n(J)Ljava/lang/String;")
-	public static String fromBase37(long base37) {
+    public static String fromBase37(long base37) {
 		if (base37 <= 0L || base37 >= 6582952005840035281L) {
 			return null;
 		}
@@ -77,8 +72,7 @@ public final class Base37 {
         return chars.toString();
     }
 
-	@ObfuscatedName("ady.m(Ljava/lang/CharSequence;B)Ljava/lang/String;")
-	public static String fromBase37orEmpty(CharSequence chars) {
+    public static String fromBase37orEmpty(CharSequence chars) {
 		String result = fromBase37(toBase37(chars));
 		if (result == null) {
 			result = "";

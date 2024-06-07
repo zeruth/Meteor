@@ -99,45 +99,33 @@ import java.awt.datatransfer.Transferable;
 import java.util.*;
 import java.util.List;
 
-@ObfuscatedName("ym")
 public class ScriptRunner {
 
-	@ObfuscatedName("ym.e")
-	public static final TimeZone UTC = TimeZone.getTimeZone("UTC");
+    public static final TimeZone UTC = TimeZone.getTimeZone("UTC");
 
-	@ObfuscatedName("ym.k")
-	public static int opcount = 0;
+    public static int opcount = 0;
 
-	@ObfuscatedName("ym.f")
-	public static int[] result = new int[3];
+    public static int[] result = new int[3];
 
-	@ObfuscatedName("ym.w")
-	public static SoftLruHashTable field8204 = new SoftLruHashTable(4);
+    public static SoftLruHashTable field8204 = new SoftLruHashTable(4);
 
-	@ObfuscatedName("ym.l")
-	public static Vector3[] field8210 = new Vector3[2];
+    public static Vector3[] field8210 = new Vector3[2];
 
-	@ObfuscatedName("ym.u")
-	public static boolean field8206 = false;
+    public static boolean field8206 = false;
 
-	@ObfuscatedName("ym.z")
-	public static String field8205 = null;
+    public static String field8205 = null;
 
-	@ObfuscatedName("ym.p")
-	public static ArrayList clientScriptStatePool = new ArrayList();
+    public static ArrayList clientScriptStatePool = new ArrayList();
 
-	@ObfuscatedName("ym.d")
-	public static int clientScriptStatePoolUsedCount = 0;
+    public static int clientScriptStatePoolUsedCount = 0;
 
-	@ObfuscatedName("ym.c")
-	public static int field8209 = 0;
+    public static int field8209 = 0;
 
 	public ScriptRunner() throws Throwable {
 		throw new Error();
 	}
 
-	@ObfuscatedName("ch.e(I)Lyf;")
-	public static final ClientScriptState createClientScriptState() {
+    public static final ClientScriptState createClientScriptState() {
 		if (clientScriptStatePoolUsedCount == clientScriptStatePool.size()) {
 			clientScriptStatePool.add(new ClientScriptState());
 		}
@@ -147,26 +135,22 @@ public class ScriptRunner {
 		return state;
 	}
 
-	@ObfuscatedName("vu.n(B)V")
-	public static final void releaseClientScriptState() {
+    public static final void releaseClientScriptState() {
 		clientScriptStatePoolUsedCount--;
 	}
 
-	@ObfuscatedName("cr.m(Lals;I)V")
-	public static void runHook(HookRequest arg0) {
+    public static void runHook(HookRequest arg0) {
 		executeHookInnter(arg0, 500000);
 	}
 
-	@ObfuscatedName("ace.k(I[II)V")
-	public static void executeOnLoad(int arg0, int[] arg1) {
+    public static void executeOnLoad(int arg0, int[] arg1) {
 		if (arg0 != -1 && Component.openInterface(arg0, arg1)) {
 			Component[] var2 = Component.interfaces[arg0].components;
 			executeOnLoadComponents(var2);
 		}
 	}
 
-	@ObfuscatedName("agr.f([Lhf;I)V")
-	public static void executeOnLoadComponents(Component[] arg0) {
+    public static void executeOnLoadComponents(Component[] arg0) {
 		for (int var1 = 0; var1 < arg0.length; var1++) {
 			Component var2 = arg0[var1];
 			if (var2.onload != null) {
@@ -178,8 +162,7 @@ public class ScriptRunner {
 		}
 	}
 
-	@ObfuscatedName("yo.w(Lals;II)V")
-	public static void executeHookInnter(HookRequest arg0, int arg1) {
+    public static void executeHookInnter(HookRequest arg0, int arg1) {
 		Object[] var2 = arg0.onop;
 		int var3 = (Integer) var2[0];
 		ClientScript var4 = ClientScriptHelpers.getScript(var3);
@@ -240,8 +223,7 @@ public class ScriptRunner {
 		var5.nestedCount = 0;
 	}
 
-	@ObfuscatedName("gz.l(Luh;IILahm;II)V")
-	public static void executeTriggeredScriptPathingEntity(ClientTriggerType arg0, int arg1, int arg2, PathingEntity arg3, int arg4) {
+    public static void executeTriggeredScriptPathingEntity(ClientTriggerType arg0, int arg1, int arg2, PathingEntity arg3, int arg4) {
 		ClientScriptState var5 = createClientScriptState();
 		var5.activeEntity = arg3;
 		var5.field8231 = arg4;
@@ -250,30 +232,26 @@ public class ScriptRunner {
 		var5.field8231 = -1;
 	}
 
-	@ObfuscatedName("acl.u(Luh;IILst;I)V")
-	public static void executeTriggeredScriptLoc(ClientTriggerType arg0, int arg1, int arg2, Location arg3) {
+    public static void executeTriggeredScriptLoc(ClientTriggerType arg0, int arg1, int arg2, Location arg3) {
 		ClientScriptState var4 = createClientScriptState();
 		var4.activeLoc = arg3;
 		executeTrigger(arg0, arg1, arg2, var4);
 		var4.activeLoc = null;
 	}
 
-	@ObfuscatedName("uf.z(Luh;IILyd;Laut;I)V")
-	public static void executeTriggeredScriptObj(ClientTriggerType arg0, int arg1, int arg2, ObjReference arg3, ObjStackEntity arg4) {
+    public static void executeTriggeredScriptObj(ClientTriggerType arg0, int arg1, int arg2, ObjReference arg3, ObjStackEntity arg4) {
 		ClientScriptState var5 = createClientScriptState();
 		var5.activeObj = arg4;
 		executeTrigger(arg0, arg1, arg2, var5);
 		var5.activeObj = null;
 	}
 
-	@ObfuscatedName("am.p(Luh;III)V")
-	public static void executeTriggeredScriptMapElement(ClientTriggerType arg0, int arg1, int arg2) {
+    public static void executeTriggeredScriptMapElement(ClientTriggerType arg0, int arg1, int arg2) {
 		ClientScriptState var3 = createClientScriptState();
 		executeTrigger(arg0, arg1, arg2, var3);
 	}
 
-	@ObfuscatedName("iq.d(Luh;IILyf;I)V")
-	public static void executeTrigger(ClientTriggerType arg0, int arg1, int arg2, ClientScriptState state) {
+    public static void executeTrigger(ClientTriggerType arg0, int arg1, int arg2, ClientScriptState state) {
 		ClientScript script = ClientScriptHelpers.getByTrigger(arg0, arg1, arg2);
 		if (script == null) {
 			releaseClientScriptState();
@@ -293,8 +271,7 @@ public class ScriptRunner {
 		executeScript(script, 500000, state);
 	}
 
-	@ObfuscatedName("jf.c(ILjava/lang/String;II)V")
-	public static void executeTriggeredScriptCutscene(int arg0, String arg1, int arg2) {
+    public static void executeTriggeredScriptCutscene(int arg0, String arg1, int arg2) {
 		ClientScript var3 = ClientScriptHelpers.getByTrigger(ClientTriggerType.CUTSCENE_SUBTITLE, arg0, -1);
 		if (var3 == null) {
 			return;
@@ -307,8 +284,7 @@ public class ScriptRunner {
 		executeScript(var3, 500000, state);
 	}
 
-	@ObfuscatedName("zj.r(ILcom/jagex/twitchtv/TwitchEvent;B)V")
-	public static void executeTriggeredScriptTwitch(int arg0, TwitchEvent arg1) {
+    public static void executeTriggeredScriptTwitch(int arg0, TwitchEvent arg1) {
 		ClientScript script = ClientScriptHelpers.getByTrigger(ClientTriggerType.TWITCH, arg0, -1);
 		if (script == null) {
 			return;
@@ -327,8 +303,7 @@ public class ScriptRunner {
 		executeScript(script, 500000, state);
 	}
 
-	@ObfuscatedName("adv.v(Lasc;ILyf;I)V")
-	public static void executeScript(ClientScript script, int oplimit, ClientScriptState state) {
+    public static void executeScript(ClientScript script, int oplimit, ClientScriptState state) {
 		state.isp = 0;
 		state.osp = 0;
 		state.pc = -1;
@@ -382,8 +357,7 @@ public class ScriptRunner {
 		}
 	}
 
-	@ObfuscatedName("jh.o(Lyf;Lss;Ljava/lang/Exception;Ljava/lang/String;I)V")
-	public static void error(ClientScriptState state, ClientScriptCommand command, Exception exception, String arg3) {
+    public static void error(ClientScriptState state, ClientScriptCommand command, Exception exception, String arg3) {
 		StringBuilder var4 = new StringBuilder(30);
 		var4.append(arg3 + " ").append(state.script.nodeId).append(" ");
 		for (int var5 = state.fp - 1; var5 >= 0; var5--) {
@@ -393,8 +367,7 @@ public class ScriptRunner {
 		JagException.report(var4.toString(), exception);
 	}
 
-	@ObfuscatedName("ki.s(Lhq;IIIZLyf;I)V")
-	public static void cc_create_inner(Interface arg0, int arg1, int arg2, int arg3, boolean arg4, ClientScriptState arg5) {
+    public static void cc_create_inner(Interface arg0, int arg1, int arg2, int arg3, boolean arg4, ClientScriptState arg5) {
 		if (arg2 == 0) {
 			throw new RuntimeException();
 		}
@@ -443,8 +416,7 @@ public class ScriptRunner {
 		Client.requestRedrawComponent(var6);
 	}
 
-	@ObfuscatedName("eb.y(Lhq;Lhf;S)V")
-	public static void cc_if_sendtofront(Interface arg0, Component arg1) {
+    public static void cc_if_sendtofront(Interface arg0, Component arg1) {
 		if (arg1 == null) {
 			return;
 		}
@@ -483,8 +455,7 @@ public class ScriptRunner {
 		var4[var2.sortedsubcomponents.length - 1] = arg1;
 	}
 
-	@ObfuscatedName("ig.q(Lhq;Lhf;I)V")
-	public static void cc_if_sendtoback(Interface arg0, Component arg1) {
+    public static void cc_if_sendtoback(Interface arg0, Component arg1) {
 		if (arg1 == null) {
 			return;
 		}
@@ -523,8 +494,7 @@ public class ScriptRunner {
 		var4[0] = arg1;
 	}
 
-	@ObfuscatedName("pf.x(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ZZI)V")
-	public static void openUrl(String arg0, String arg1, String arg2, boolean arg3, boolean arg4) {
+    public static void openUrl(String arg0, String arg1, String arg2, boolean arg3, boolean arg4) {
 		ServerConnection var5 = Client.getCurrentConnection();
 		if (var5.getStream() == null) {
 			return;
@@ -545,16 +515,14 @@ public class ScriptRunner {
 		var5.queue(var6);
 	}
 
-	@ObfuscatedName("iy.b(Larm;Lyf;I)V")
-	public static final void pushMinimenuEntry(MiniMenuEntry arg0, ClientScriptState arg1) {
+    public static final void pushMinimenuEntry(MiniMenuEntry arg0, ClientScriptState arg1) {
 		arg1.intStack[++arg1.isp - 1] = MiniMenu.getEntryEntityType(arg0);
 		arg1.objectStack[++arg1.osp - 1] = MiniMenu.getEntryOp(arg0);
 		arg1.objectStack[++arg1.osp - 1] = MiniMenu.getEntryOpBase(arg0);
 		arg1.objectStack[++arg1.osp - 1] = MiniMenu.method313(arg0);
 	}
 
-	@ObfuscatedName("yx.h(Lss;Lyf;I)V")
-	public static final void executeCommand(ClientScriptCommand command, ClientScriptState state) throws CameraException, VarBitOverflowException {
+    public static final void executeCommand(ClientScriptCommand command, ClientScriptState state) throws CameraException, VarBitOverflowException {
 		switch(command.index) {
 			case 0:
 				telemetry_get_group_count(state);
@@ -4845,13 +4813,11 @@ public class ScriptRunner {
 		}
 	}
 
-	@ObfuscatedName("ahd.a(Lyf;B)V")
-	public static final void push_constant_int(ClientScriptState arg0) {
+    public static final void push_constant_int(ClientScriptState arg0) {
 		arg0.intStack[++arg0.isp - 1] = arg0.intOperands[arg0.pc];
 	}
 
-	@ObfuscatedName("pu.g(Lyf;B)V")
-	public static final void push_var(ClientScriptState arg0) {
+    public static final void push_var(ClientScriptState arg0) {
 		VarType var1 = (VarType) arg0.script.objectOperands[arg0.pc];
 		VarDomain var2 = (VarDomain) (arg0.intOperands[arg0.pc] == 0 ? arg0.primaryVars.get(var1.domain) : arg0.secondaryVars.get(var1.domain));
 		BaseVarType var3 = var1.dataType.getVarBaseType();
@@ -4875,8 +4841,7 @@ public class ScriptRunner {
 		}
 	}
 
-	@ObfuscatedName("oh.i(Lyf;I)V")
-	public static final void pop_var(ClientScriptState arg0) {
+    public static final void pop_var(ClientScriptState arg0) {
 		VarType var1 = (VarType) arg0.script.objectOperands[arg0.pc];
 		VarDomain var2 = (VarDomain) (arg0.intOperands[arg0.pc] == 0 ? arg0.primaryVars.get(var1.domain) : arg0.secondaryVars.get(var1.domain));
 		BaseVarType var3 = var1.dataType.getVarBaseType();
@@ -4897,50 +4862,43 @@ public class ScriptRunner {
 		}
 	}
 
-	@ObfuscatedName("nj.j(Lyf;I)V")
-	public static final void push_constant_string(ClientScriptState arg0) {
+    public static final void push_constant_string(ClientScriptState arg0) {
 		arg0.objectStack[++arg0.osp - 1] = arg0.script.objectOperands[arg0.pc];
 	}
 
-	@ObfuscatedName("zz.t(Lyf;I)V")
-	public static final void branch(ClientScriptState arg0) {
+    public static final void branch(ClientScriptState arg0) {
 		arg0.pc += arg0.intOperands[arg0.pc];
 	}
 
-	@ObfuscatedName("ie.ae(Lyf;B)V")
-	public static final void branch_not(ClientScriptState arg0) {
+    public static final void branch_not(ClientScriptState arg0) {
 		arg0.isp -= 2;
 		if (arg0.intStack[arg0.isp] != arg0.intStack[arg0.isp + 1]) {
 			arg0.pc += arg0.intOperands[arg0.pc];
 		}
 	}
 
-	@ObfuscatedName("acv.ag(Lyf;I)V")
-	public static final void branch_equals(ClientScriptState arg0) {
+    public static final void branch_equals(ClientScriptState arg0) {
 		arg0.isp -= 2;
 		if (arg0.intStack[arg0.isp] == arg0.intStack[arg0.isp + 1]) {
 			arg0.pc += arg0.intOperands[arg0.pc];
 		}
 	}
 
-	@ObfuscatedName("vo.ah(Lyf;I)V")
-	public static final void branch_less_than(ClientScriptState arg0) {
+    public static final void branch_less_than(ClientScriptState arg0) {
 		arg0.isp -= 2;
 		if (arg0.intStack[arg0.isp] < arg0.intStack[arg0.isp + 1]) {
 			arg0.pc += arg0.intOperands[arg0.pc];
 		}
 	}
 
-	@ObfuscatedName("qn.al(Lyf;S)V")
-	public static final void branch_greater_than(ClientScriptState arg0) {
+    public static final void branch_greater_than(ClientScriptState arg0) {
 		arg0.isp -= 2;
 		if (arg0.intStack[arg0.isp] > arg0.intStack[arg0.isp + 1]) {
 			arg0.pc += arg0.intOperands[arg0.pc];
 		}
 	}
 
-	@ObfuscatedName("vr.ac(Lyf;B)V")
-	public static final void _return(ClientScriptState state) {
+    public static final void _return(ClientScriptState state) {
 		if (state.fp == 0) {
 			return;
 		}
@@ -4954,15 +4912,13 @@ public class ScriptRunner {
 		state.longLocals = frame.longLocals;
 	}
 
-	@ObfuscatedName("xt.ai(Lyf;B)V")
-	public static final void push_varbit(ClientScriptState arg0) {
+    public static final void push_varbit(ClientScriptState arg0) {
 		VarBitType var1 = (VarBitType) arg0.script.objectOperands[arg0.pc];
 		VarDomain var2 = (VarDomain) (arg0.intOperands[arg0.pc] == 0 ? arg0.primaryVars.get(var1.baseVar.domain) : arg0.secondaryVars.get(var1.baseVar.domain));
 		arg0.intStack[++arg0.isp - 1] = var2.getVarBitValue(var1);
 	}
 
-	@ObfuscatedName("ace.aw(Lyf;I)V")
-	public static final void pop_varbit(ClientScriptState arg0) throws VarBitOverflowException {
+    public static final void pop_varbit(ClientScriptState arg0) throws VarBitOverflowException {
 		VarBitType var1 = (VarBitType) arg0.script.objectOperands[arg0.pc];
 		VarDomain var2 = (VarDomain) (arg0.intOperands[arg0.pc] == 0 ? arg0.primaryVars.get(var1.baseVar.domain) : arg0.secondaryVars.get(var1.baseVar.domain));
 		try {
@@ -4975,62 +4931,52 @@ public class ScriptRunner {
 		}
 	}
 
-	@ObfuscatedName("ng.as(Lyf;I)V")
-	public static final void branch_less_than_or_equals(ClientScriptState arg0) {
+    public static final void branch_less_than_or_equals(ClientScriptState arg0) {
 		arg0.isp -= 2;
 		if (arg0.intStack[arg0.isp] <= arg0.intStack[arg0.isp + 1]) {
 			arg0.pc += arg0.intOperands[arg0.pc];
 		}
 	}
 
-	@ObfuscatedName("gh.at(Lyf;I)V")
-	public static final void branch_greater_than_or_equals(ClientScriptState arg0) {
+    public static final void branch_greater_than_or_equals(ClientScriptState arg0) {
 		arg0.isp -= 2;
 		if (arg0.intStack[arg0.isp] >= arg0.intStack[arg0.isp + 1]) {
 			arg0.pc += arg0.intOperands[arg0.pc];
 		}
 	}
 
-	@ObfuscatedName("aat.ad(Lyf;I)V")
-	public static final void push_int_local(ClientScriptState state) {
+    public static final void push_int_local(ClientScriptState state) {
 		state.intStack[++state.isp - 1] = state.intLocals[state.intOperands[state.pc]];
 	}
 
-	@ObfuscatedName("dr.am(Lyf;B)V")
-	public static final void pop_int_local(ClientScriptState arg0) {
+    public static final void pop_int_local(ClientScriptState arg0) {
 		arg0.intLocals[arg0.intOperands[arg0.pc]] = arg0.intStack[--arg0.isp];
 	}
 
-	@ObfuscatedName("er.au(Lyf;I)V")
-	public static final void push_string_local(ClientScriptState arg0) {
+    public static final void push_string_local(ClientScriptState arg0) {
 		arg0.objectStack[++arg0.osp - 1] = arg0.objectLocals[arg0.intOperands[arg0.pc]];
 	}
 
-	@ObfuscatedName("hw.ar(Lyf;B)V")
-	public static final void pop_string_local(ClientScriptState arg0) {
+    public static final void pop_string_local(ClientScriptState arg0) {
 		arg0.objectLocals[arg0.intOperands[arg0.pc]] = arg0.objectStack[--arg0.osp];
 	}
 
-	@ObfuscatedName("ea.ap(Lyf;B)V")
-	public static final void join_string(ClientScriptState arg0) {
+    public static final void join_string(ClientScriptState arg0) {
 		int var1 = arg0.intOperands[arg0.pc];
 		arg0.osp -= var1;
 		String var2 = StringTools.method9007(arg0.objectStack, arg0.osp, var1);
 		arg0.objectStack[++arg0.osp - 1] = var2;
 	}
 
-	@ObfuscatedName("xh.aq(Lyf;B)V")
-	public static final void pop_int_discard(ClientScriptState arg0) {
+    public static final void pop_int_discard(ClientScriptState arg0) {
 		arg0.isp--;
 	}
 
-	@ObfuscatedName("wi.ax(Lyf;I)V")
-	public static final void pop_string_discard(ClientScriptState arg0) {
+    public static final void pop_string_discard(ClientScriptState arg0) {
 		arg0.osp--;
 	}
 
-	@ObfuscatedName("amy.av(Lyf;I)V")
-	public static final void gosub_with_params(ClientScriptState state) {
+    public static final void gosub_with_params(ClientScriptState state) {
 		int scriptId = state.intOperands[state.pc];
 		ClientScript script = ClientScriptHelpers.getScript(scriptId);
 		if (script == null) {
@@ -5070,8 +5016,7 @@ public class ScriptRunner {
 		state.longLocals = longLocals;
 	}
 
-	@ObfuscatedName("ef.ao(Lyf;B)V")
-	public static final void define_array(ClientScriptState arg0) {
+    public static final void define_array(ClientScriptState arg0) {
 		int var1 = arg0.intOperands[arg0.pc] >> 16;
 		int var2 = arg0.intOperands[arg0.pc] & 0xFFFF;
 		int var3 = arg0.intStack[--arg0.isp];
@@ -5088,8 +5033,7 @@ public class ScriptRunner {
 		}
 	}
 
-	@ObfuscatedName("no.aj(Lyf;ZZB)V")
-	public static final void push_array(ClientScriptState arg0, boolean arg1, boolean arg2) {
+    public static final void push_array(ClientScriptState arg0, boolean arg1, boolean arg2) {
 		int var3 = arg0.intOperands[arg0.pc];
 		int var4 = arg0.intStack[--arg0.isp];
 		if (var4 < 0 || var4 >= arg0.field8214[var3]) {
@@ -5105,8 +5049,7 @@ public class ScriptRunner {
 		}
 	}
 
-	@ObfuscatedName("ho.ay(Lyf;ZI)V")
-	public static final void pop_array(ClientScriptState arg0, boolean arg1) {
+    public static final void pop_array(ClientScriptState arg0, boolean arg1) {
 		int var2 = arg0.intOperands[arg0.pc];
 		arg0.isp -= 2;
 		int var3 = arg0.intStack[arg0.isp];
@@ -5120,8 +5063,7 @@ public class ScriptRunner {
 		}
 	}
 
-	@ObfuscatedName("agj.ab(Lyf;I)V")
-	public static final void _switch(ClientScriptState arg0) {
+    public static final void _switch(ClientScriptState arg0) {
 		HashTable var1 = arg0.script.switchTables[arg0.intOperands[arg0.pc]];
 		IntNode var2 = (IntNode) var1.get((long) arg0.intStack[--arg0.isp]);
 		if (var2 != null) {
@@ -5129,90 +5071,77 @@ public class ScriptRunner {
 		}
 	}
 
-	@ObfuscatedName("o.az(Lyf;B)V")
-	public static final void push_long_constant(ClientScriptState arg0) {
+    public static final void push_long_constant(ClientScriptState arg0) {
 		arg0.longStack[++arg0.lsp - 1] = (Long) arg0.script.objectOperands[arg0.pc];
 	}
 
-	@ObfuscatedName("fg.aa(Lyf;I)V")
-	public static final void pop_long_discard(ClientScriptState arg0) {
+    public static final void pop_long_discard(ClientScriptState arg0) {
 		arg0.lsp--;
 	}
 
-	@ObfuscatedName("el.af(Lyf;B)V")
-	public static final void push_long_local(ClientScriptState arg0) {
+    public static final void push_long_local(ClientScriptState arg0) {
 		arg0.longStack[++arg0.lsp - 1] = arg0.longLocals[arg0.intOperands[arg0.pc]];
 	}
 
-	@ObfuscatedName("xd.ak(Lyf;B)V")
-	public static final void pop_long_local(ClientScriptState arg0) {
+    public static final void pop_long_local(ClientScriptState arg0) {
 		arg0.longLocals[arg0.intOperands[arg0.pc]] = arg0.longStack[--arg0.lsp];
 	}
 
-	@ObfuscatedName("xj.an(Lyf;B)V")
-	public static final void long_branch_not(ClientScriptState arg0) {
+    public static final void long_branch_not(ClientScriptState arg0) {
 		arg0.lsp -= 2;
 		if (arg0.longStack[arg0.lsp] != arg0.longStack[arg0.lsp + 1]) {
 			arg0.pc += arg0.intOperands[arg0.pc];
 		}
 	}
 
-	@ObfuscatedName("kw.bf(Lyf;B)V")
-	public static final void long_branch_equals(ClientScriptState arg0) {
+    public static final void long_branch_equals(ClientScriptState arg0) {
 		arg0.lsp -= 2;
 		if (arg0.longStack[arg0.lsp] == arg0.longStack[arg0.lsp + 1]) {
 			arg0.pc += arg0.intOperands[arg0.pc];
 		}
 	}
 
-	@ObfuscatedName("ajc.bl(Lyf;I)V")
-	public static final void long_branch_less_than(ClientScriptState arg0) {
+    public static final void long_branch_less_than(ClientScriptState arg0) {
 		arg0.lsp -= 2;
 		if (arg0.longStack[arg0.lsp] < arg0.longStack[arg0.lsp + 1]) {
 			arg0.pc += arg0.intOperands[arg0.pc];
 		}
 	}
 
-	@ObfuscatedName("qy.bk(Lyf;B)V")
-	public static final void long_branch_greater_than(ClientScriptState arg0) {
+    public static final void long_branch_greater_than(ClientScriptState arg0) {
 		arg0.lsp -= 2;
 		if (arg0.longStack[arg0.lsp] > arg0.longStack[arg0.lsp + 1]) {
 			arg0.pc += arg0.intOperands[arg0.pc];
 		}
 	}
 
-	@ObfuscatedName("ue.bh(Lyf;B)V")
-	public static final void long_branch_less_than_or_equals(ClientScriptState arg0) {
+    public static final void long_branch_less_than_or_equals(ClientScriptState arg0) {
 		arg0.lsp -= 2;
 		if (arg0.longStack[arg0.lsp] <= arg0.longStack[arg0.lsp + 1]) {
 			arg0.pc += arg0.intOperands[arg0.pc];
 		}
 	}
 
-	@ObfuscatedName("nk.bx(Lyf;I)V")
-	public static final void long_branch_greater_than_or_equals(ClientScriptState arg0) {
+    public static final void long_branch_greater_than_or_equals(ClientScriptState arg0) {
 		arg0.lsp -= 2;
 		if (arg0.longStack[arg0.lsp] >= arg0.longStack[arg0.lsp + 1]) {
 			arg0.pc += arg0.intOperands[arg0.pc];
 		}
 	}
 
-	@ObfuscatedName("aiv.bd(Lyf;I)V")
-	public static final void branch_if_true(ClientScriptState arg0) {
+    public static final void branch_if_true(ClientScriptState arg0) {
 		if (arg0.intStack[--arg0.isp] == 1) {
 			arg0.pc += arg0.intOperands[arg0.pc];
 		}
 	}
 
-	@ObfuscatedName("nr.bc(Lyf;I)V")
-	public static final void branch_if_false(ClientScriptState arg0) {
+    public static final void branch_if_false(ClientScriptState arg0) {
 		if (arg0.intStack[--arg0.isp] == 0) {
 			arg0.pc += arg0.intOperands[arg0.pc];
 		}
 	}
 
-	@ObfuscatedName("qx.bi(Lyf;I)V")
-	public static final void cc_create(ClientScriptState arg0) {
+    public static final void cc_create(ClientScriptState arg0) {
 		arg0.isp -= 3;
 		int var1 = arg0.intStack[arg0.isp];
 		int var2 = arg0.intStack[arg0.isp + 1];
@@ -5221,8 +5150,7 @@ public class ScriptRunner {
 		cc_create_inner(Component.interfaces[var1 >>> 16], var1 & 0xFFFF, var2, var3, arg0.secondary, arg0);
 	}
 
-	@ObfuscatedName("iy.bn(Lyf;B)V")
-	public static final void cc_delete(ClientScriptState arg0) {
+    public static final void cc_delete(ClientScriptState arg0) {
 		ActiveComponent var1 = arg0.secondary ? arg0.activeComponent2 : arg0.activeComponent;
 		if (var1.com.id != -1) {
 			Component var2 = var1.method13790();
@@ -5235,16 +5163,14 @@ public class ScriptRunner {
 		}
 	}
 
-	@ObfuscatedName("ab.bt(Lyf;I)V")
-	public static final void cc_deleteall(ClientScriptState arg0) {
+    public static final void cc_deleteall(ClientScriptState arg0) {
 		Component var1 = Component.get(arg0.intStack[--arg0.isp]);
 		var1.subcomponents = null;
 		var1.sortedsubcomponents = null;
 		Client.requestRedrawComponent(var1);
 	}
 
-	@ObfuscatedName("y.bq(Lyf;I)V")
-	public static final void cc_find(ClientScriptState arg0) {
+    public static final void cc_find(ClientScriptState arg0) {
 		arg0.isp -= 2;
 		int var1 = arg0.intStack[arg0.isp];
 		int var2 = arg0.intStack[arg0.isp + 1];
@@ -5257,8 +5183,7 @@ public class ScriptRunner {
 		arg0.intStack[++arg0.isp - 1] = var2 != -1 && var3.method13787(var1, var2) ? 1 : 0;
 	}
 
-	@ObfuscatedName("wu.bm(Lyf;I)V")
-	public static final void if_find(ClientScriptState arg0) {
+    public static final void if_find(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		ActiveComponent var2;
 		if (arg0.secondary) {
@@ -5269,8 +5194,7 @@ public class ScriptRunner {
 		arg0.intStack[++arg0.isp - 1] = var2.method13787(var1, -1) ? 1 : 0;
 	}
 
-	@ObfuscatedName("qe.bb(ZLyf;B)V")
-	public static final void if_sendto(boolean arg0, ClientScriptState arg1) {
+    public static final void if_sendto(boolean arg0, ClientScriptState arg1) {
 		int var2 = arg1.intStack[--arg1.isp];
 		Component var3 = Component.get(var2);
 		Interface var4 = Component.interfaces[var2 >> 16];
@@ -5281,8 +5205,7 @@ public class ScriptRunner {
 		}
 	}
 
-	@ObfuscatedName("jd.be(ZLyf;I)V")
-	public static final void cc_sendto(boolean arg0, ClientScriptState arg1) {
+    public static final void cc_sendto(boolean arg0, ClientScriptState arg1) {
 		ActiveComponent var2 = arg1.secondary ? arg1.activeComponent2 : arg1.activeComponent;
 		Component var3 = var2.com;
 		Interface var4 = var2.itf;
@@ -5293,22 +5216,19 @@ public class ScriptRunner {
 		}
 	}
 
-	@ObfuscatedName("wc.by(Lyf;I)V")
-	public static final void if_resume_pausebutton(ClientScriptState arg0) {
+    public static final void if_resume_pausebutton(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		Component var2 = Component.get(var1);
 		cc_if_resume_pausebutton(var2, arg0);
 	}
 
-	@ObfuscatedName("nl.bu(Lyf;I)V")
-	public static final void cc_resume_pausebutton(ClientScriptState arg0) {
+    public static final void cc_resume_pausebutton(ClientScriptState arg0) {
 		ActiveComponent var1 = arg0.secondary ? arg0.activeComponent2 : arg0.activeComponent;
 		Component var2 = var1.com;
 		cc_if_resume_pausebutton(var2, arg0);
 	}
 
-	@ObfuscatedName("tp.bw(Lhf;Lyf;I)V")
-	public static final void cc_if_resume_pausebutton(Component arg0, ClientScriptState arg1) {
+    public static final void cc_if_resume_pausebutton(Component arg0, ClientScriptState arg1) {
 		if (Client.method17197(arg0).method17689() && Client.pressedContinueOption == null) {
 			Client.method612(arg0.parentlayer, arg0.id);
 			Client.pressedContinueOption = Component.method16682(arg0.parentlayer, arg0.id);
@@ -5316,8 +5236,7 @@ public class ScriptRunner {
 		}
 	}
 
-	@ObfuscatedName("aqc.bo(Lyf;I)V")
-	public static final void baseidkit(ClientScriptState arg0) {
+    public static final void baseidkit(ClientScriptState arg0) {
 		arg0.isp -= 2;
 		int var1 = arg0.intStack[arg0.isp];
 		int var2 = arg0.intStack[arg0.isp + 1];
@@ -5338,8 +5257,7 @@ public class ScriptRunner {
 		}
 	}
 
-	@ObfuscatedName("wm.bz(Lyf;I)V")
-	public static final void basecolour(ClientScriptState arg0) {
+    public static final void basecolour(ClientScriptState arg0) {
 		arg0.isp -= 2;
 		int var1 = arg0.intStack[arg0.isp];
 		int var2 = arg0.intStack[arg0.isp + 1];
@@ -5348,8 +5266,7 @@ public class ScriptRunner {
 		}
 	}
 
-	@ObfuscatedName("we.bv(Lyf;B)V")
-	public static final void basematerial(ClientScriptState arg0) {
+    public static final void basematerial(ClientScriptState arg0) {
 		arg0.isp -= 2;
 		int var1 = arg0.intStack[arg0.isp];
 		int var2 = arg0.intStack[arg0.isp + 1];
@@ -5358,16 +5275,14 @@ public class ScriptRunner {
 		}
 	}
 
-	@ObfuscatedName("ul.br(Lyf;I)V")
-	public static final void setgender(ClientScriptState arg0) {
+    public static final void setgender(ClientScriptState arg0) {
 		boolean var1 = arg0.intStack[--arg0.isp] != 0;
 		if (Client.localPlayerEntity.model != null) {
 			Client.localPlayerEntity.model.setGender(var1);
 		}
 	}
 
-	@ObfuscatedName("ik.bg(Lyf;S)V")
-	public static final void setobj(ClientScriptState arg0) {
+    public static final void setobj(ClientScriptState arg0) {
 		arg0.isp -= 2;
 		int var1 = arg0.intStack[arg0.isp];
 		int var2 = arg0.intStack[arg0.isp + 1];
@@ -5376,8 +5291,7 @@ public class ScriptRunner {
 		}
 	}
 
-	@ObfuscatedName("kw.ba(Lhf;Lhq;Lyf;I)V")
-	public static final void cc_if_setposition(Component arg0, Interface arg1, ClientScriptState arg2) {
+    public static final void cc_if_setposition(Component arg0, Interface arg1, ClientScriptState arg2) {
 		arg2.isp -= 4;
 		arg0.xpos = arg2.intStack[arg2.isp];
 		arg0.ypos = arg2.intStack[arg2.isp + 1];
@@ -5405,24 +5319,21 @@ public class ScriptRunner {
 		}
 	}
 
-	@ObfuscatedName("ig.bp(Lyf;B)V")
-	public static final void if_setposition(ClientScriptState arg0) {
+    public static final void if_setposition(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		Component var2 = Component.get(var1);
 		Interface var3 = Component.interfaces[var1 >> 16];
 		cc_if_setposition(var2, var3, arg0);
 	}
 
-	@ObfuscatedName("sh.bj(Lyf;I)V")
-	public static final void cc_setposition(ClientScriptState arg0) {
+    public static final void cc_setposition(ClientScriptState arg0) {
 		ActiveComponent var1 = arg0.secondary ? arg0.activeComponent2 : arg0.activeComponent;
 		Component var2 = var1.com;
 		Interface var3 = var1.itf;
 		cc_if_setposition(var2, var3, arg0);
 	}
 
-	@ObfuscatedName("ge.bs(Lhf;Lhq;Lyf;I)V")
-	public static final void cc_if_setsize(Component arg0, Interface arg1, ClientScriptState arg2) {
+    public static final void cc_if_setsize(Component arg0, Interface arg1, ClientScriptState arg2) {
 		arg2.isp -= 4;
 		arg0.wsize = arg2.intStack[arg2.isp];
 		arg0.hsize = arg2.intStack[arg2.isp + 1];
@@ -5449,24 +5360,21 @@ public class ScriptRunner {
 		}
 	}
 
-	@ObfuscatedName("aq.cl(Lyf;B)V")
-	public static final void if_setsize(ClientScriptState arg0) {
+    public static final void if_setsize(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		Component var2 = Component.get(var1);
 		Interface var3 = Component.interfaces[var1 >> 16];
 		cc_if_setsize(var2, var3, arg0);
 	}
 
-	@ObfuscatedName("hp.cg(Lyf;I)V")
-	public static final void cc_setsize(ClientScriptState arg0) {
+    public static final void cc_setsize(ClientScriptState arg0) {
 		ActiveComponent var1 = arg0.secondary ? arg0.activeComponent2 : arg0.activeComponent;
 		Component var2 = var1.com;
 		Interface var3 = var1.itf;
 		cc_if_setsize(var2, var3, arg0);
 	}
 
-	@ObfuscatedName("ju.ce(Lhf;Lhq;Lyf;I)V")
-	public static final void cc_if_sethide(Component arg0, Interface arg1, ClientScriptState arg2) {
+    public static final void cc_if_sethide(Component arg0, Interface arg1, ClientScriptState arg2) {
 		boolean var3 = arg2.intStack[--arg2.isp] == 1;
 		if (arg0.hide != var3) {
 			arg0.hide = var3;
@@ -5477,24 +5385,21 @@ public class ScriptRunner {
 		}
 	}
 
-	@ObfuscatedName("km.cu(Lyf;S)V")
-	public static final void if_sethide(ClientScriptState arg0) {
+    public static final void if_sethide(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		Component var2 = Component.get(var1);
 		Interface var3 = Component.interfaces[var1 >> 16];
 		cc_if_sethide(var2, var3, arg0);
 	}
 
-	@ObfuscatedName("ea.ci(Lyf;I)V")
-	public static final void cc_sethide(ClientScriptState arg0) {
+    public static final void cc_sethide(ClientScriptState arg0) {
 		ActiveComponent var1 = arg0.secondary ? arg0.activeComponent2 : arg0.activeComponent;
 		Component var2 = var1.com;
 		Interface var3 = var1.itf;
 		cc_if_sethide(var2, var3, arg0);
 	}
 
-	@ObfuscatedName("rz.cn(Lhf;Lhq;Lyf;I)V")
-	public static final void cc_if_setaspect(Component arg0, Interface arg1, ClientScriptState arg2) {
+    public static final void cc_if_setaspect(Component arg0, Interface arg1, ClientScriptState arg2) {
 		arg2.isp -= 2;
 		arg0.aspectwidth = arg2.intStack[arg2.isp];
 		arg0.aspectheight = arg2.intStack[arg2.isp + 1];
@@ -5505,45 +5410,39 @@ public class ScriptRunner {
 		}
 	}
 
-	@ObfuscatedName("er.cv(Lyf;I)V")
-	public static final void if_setaspect(ClientScriptState arg0) {
+    public static final void if_setaspect(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		Component var2 = Component.get(var1);
 		Interface var3 = Component.interfaces[var1 >> 16];
 		cc_if_setaspect(var2, var3, arg0);
 	}
 
-	@ObfuscatedName("xt.cp(Lyf;I)V")
-	public static final void cc_setaspect(ClientScriptState arg0) {
+    public static final void cc_setaspect(ClientScriptState arg0) {
 		ActiveComponent var1 = arg0.secondary ? arg0.activeComponent2 : arg0.activeComponent;
 		Component var2 = var1.com;
 		Interface var3 = var1.itf;
 		cc_if_setaspect(var2, var3, arg0);
 	}
 
-	@ObfuscatedName("z.ca(Lhf;Lhq;Lyf;I)V")
-	public static final void cc_if_setnoclickthrough(Component arg0, Interface arg1, ClientScriptState arg2) {
+    public static final void cc_if_setnoclickthrough(Component arg0, Interface arg1, ClientScriptState arg2) {
 		arg0.noclickthrough = arg2.intStack[--arg2.isp] == 1;
 	}
 
-	@ObfuscatedName("au.cx(Lyf;B)V")
-	public static final void if_setnoclickthrough(ClientScriptState arg0) {
+    public static final void if_setnoclickthrough(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		Component var2 = Component.get(var1);
 		Interface var3 = Component.interfaces[var1 >> 16];
 		cc_if_setnoclickthrough(var2, var3, arg0);
 	}
 
-	@ObfuscatedName("qf.cw(Lyf;I)V")
-	public static final void cc_setnoclickthrough(ClientScriptState arg0) {
+    public static final void cc_setnoclickthrough(ClientScriptState arg0) {
 		ActiveComponent var1 = arg0.secondary ? arg0.activeComponent2 : arg0.activeComponent;
 		Component var2 = var1.com;
 		Interface var3 = var1.itf;
 		cc_if_setnoclickthrough(var2, var3, arg0);
 	}
 
-	@ObfuscatedName("any.ct(Lhf;Lhq;Lyf;I)V")
-	public static final void cc_if_setscrollpos(Component arg0, Interface arg1, ClientScriptState arg2) {
+    public static final void cc_if_setscrollpos(Component arg0, Interface arg1, ClientScriptState arg2) {
 		arg2.isp -= 2;
 		arg0.scrollx = arg2.intStack[arg2.isp];
 		if (arg0.scrollx > arg0.scrollwidth - arg0.width) {
@@ -5565,24 +5464,21 @@ public class ScriptRunner {
 		}
 	}
 
-	@ObfuscatedName("jk.cf(Lyf;I)V")
-	public static final void if_setscrollpos(ClientScriptState arg0) {
+    public static final void if_setscrollpos(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		Component var2 = Component.get(var1);
 		Interface var3 = Component.interfaces[var1 >> 16];
 		cc_if_setscrollpos(var2, var3, arg0);
 	}
 
-	@ObfuscatedName("dg.co(Lyf;I)V")
-	public static final void cc_setscrollpos(ClientScriptState arg0) {
+    public static final void cc_setscrollpos(ClientScriptState arg0) {
 		ActiveComponent var1 = arg0.secondary ? arg0.activeComponent2 : arg0.activeComponent;
 		Component var2 = var1.com;
 		Interface var3 = var1.itf;
 		cc_if_setscrollpos(var2, var3, arg0);
 	}
 
-	@ObfuscatedName("mj.cr(Lhf;Lhq;Lyf;I)V")
-	public static final void cc_if_setcolour(Component arg0, Interface arg1, ClientScriptState arg2) {
+    public static final void cc_if_setcolour(Component arg0, Interface arg1, ClientScriptState arg2) {
 		arg0.colour = arg2.intStack[--arg2.isp];
 		Client.requestRedrawComponent(arg0);
 		if (arg0.id == -1 && !arg1.field2150) {
@@ -5590,90 +5486,78 @@ public class ScriptRunner {
 		}
 	}
 
-	@ObfuscatedName("aku.cm(Lyf;B)V")
-	public static final void if_setcolour(ClientScriptState arg0) {
+    public static final void if_setcolour(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		Component var2 = Component.get(var1);
 		Interface var3 = Component.interfaces[var1 >> 16];
 		cc_if_setcolour(var2, var3, arg0);
 	}
 
-	@ObfuscatedName("ir.cq(Lyf;I)V")
-	public static final void cc_setcolour(ClientScriptState arg0) {
+    public static final void cc_setcolour(ClientScriptState arg0) {
 		ActiveComponent var1 = arg0.secondary ? arg0.activeComponent2 : arg0.activeComponent;
 		Component var2 = var1.com;
 		Interface var3 = var1.itf;
 		cc_if_setcolour(var2, var3, arg0);
 	}
 
-	@ObfuscatedName("ch.ch(Lhf;Lhq;Lyf;I)V")
-	public static final void cc_if_setfill(Component arg0, Interface arg1, ClientScriptState arg2) {
+    public static final void cc_if_setfill(Component arg0, Interface arg1, ClientScriptState arg2) {
 		arg0.fill = arg2.intStack[--arg2.isp] == 1;
 		Client.requestRedrawComponent(arg0);
 	}
 
-	@ObfuscatedName("cq.cb(Lyf;I)V")
-	public static final void if_setfill(ClientScriptState arg0) {
+    public static final void if_setfill(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		Component var2 = Component.get(var1);
 		Interface var3 = Component.interfaces[var1 >> 16];
 		cc_if_setfill(var2, var3, arg0);
 	}
 
-	@ObfuscatedName("ajd.cs(Lyf;I)V")
-	public static final void cc_setfill(ClientScriptState arg0) {
+    public static final void cc_setfill(ClientScriptState arg0) {
 		ActiveComponent var1 = arg0.secondary ? arg0.activeComponent2 : arg0.activeComponent;
 		Component var2 = var1.com;
 		Interface var3 = var1.itf;
 		cc_if_setfill(var2, var3, arg0);
 	}
 
-	@ObfuscatedName("hx.cy(Lhf;Lhq;Lyf;B)V")
-	public static final void cc_if_settrans(Component arg0, Interface arg1, ClientScriptState arg2) {
+    public static final void cc_if_settrans(Component arg0, Interface arg1, ClientScriptState arg2) {
 		arg0.trans = arg2.intStack[--arg2.isp];
 		Client.requestRedrawComponent(arg0);
 	}
 
-	@ObfuscatedName("ht.cc(Lyf;I)V")
-	public static final void if_settrans(ClientScriptState arg0) {
+    public static final void if_settrans(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		Component var2 = Component.get(var1);
 		Interface var3 = Component.interfaces[var1 >> 16];
 		cc_if_settrans(var2, var3, arg0);
 	}
 
-	@ObfuscatedName("ky.cz(Lyf;I)V")
-	public static final void cc_settrans(ClientScriptState arg0) {
+    public static final void cc_settrans(ClientScriptState arg0) {
 		ActiveComponent var1 = arg0.secondary ? arg0.activeComponent2 : arg0.activeComponent;
 		Component var2 = var1.com;
 		Interface var3 = var1.itf;
 		cc_if_settrans(var2, var3, arg0);
 	}
 
-	@ObfuscatedName("sv.ck(Lhf;Lhq;Lyf;B)V")
-	public static final void cc_if_setlinewid(Component arg0, Interface arg1, ClientScriptState arg2) {
+    public static final void cc_if_setlinewid(Component arg0, Interface arg1, ClientScriptState arg2) {
 		arg0.linewid = arg2.intStack[--arg2.isp];
 		Client.requestRedrawComponent(arg0);
 	}
 
-	@ObfuscatedName("iv.cj(Lyf;I)V")
-	public static final void if_setlinewid(ClientScriptState arg0) {
+    public static final void if_setlinewid(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		Component var2 = Component.get(var1);
 		Interface var3 = Component.interfaces[var1 >> 16];
 		cc_if_setlinewid(var2, var3, arg0);
 	}
 
-	@ObfuscatedName("iw.cd(Lyf;I)V")
-	public static final void cc_setlinewid(ClientScriptState arg0) {
+    public static final void cc_setlinewid(ClientScriptState arg0) {
 		ActiveComponent var1 = arg0.secondary ? arg0.activeComponent2 : arg0.activeComponent;
 		Component var2 = var1.com;
 		Interface var3 = var1.itf;
 		cc_if_setlinewid(var2, var3, arg0);
 	}
 
-	@ObfuscatedName("jx.dd(Lhf;Lhq;Lyf;I)V")
-	public static final void cc_if_setgraphic(Component arg0, Interface arg1, ClientScriptState arg2) {
+    public static final void cc_if_setgraphic(Component arg0, Interface arg1, ClientScriptState arg2) {
 		int var3 = arg2.intStack[--arg2.isp];
 		arg0.invobject = -1;
 		if (arg0.graphic != var3) {
@@ -5685,68 +5569,59 @@ public class ScriptRunner {
 		}
 	}
 
-	@ObfuscatedName("ka.dr(Lyf;I)V")
-	public static final void if_setgraphic(ClientScriptState arg0) {
+    public static final void if_setgraphic(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		Component var2 = Component.get(var1);
 		Interface var3 = Component.interfaces[var1 >> 16];
 		cc_if_setgraphic(var2, var3, arg0);
 	}
 
-	@ObfuscatedName("qk.da(Lyf;B)V")
-	public static final void cc_setgraphic(ClientScriptState arg0) {
+    public static final void cc_setgraphic(ClientScriptState arg0) {
 		ActiveComponent var1 = arg0.secondary ? arg0.activeComponent2 : arg0.activeComponent;
 		Component var2 = var1.com;
 		Interface var3 = var1.itf;
 		cc_if_setgraphic(var2, var3, arg0);
 	}
 
-	@ObfuscatedName("dd.dt(Lhf;Lhq;Lyf;I)V")
-	public static final void cc_if_set2dangle(Component arg0, Interface arg1, ClientScriptState arg2) {
+    public static final void cc_if_set2dangle(Component arg0, Interface arg1, ClientScriptState arg2) {
 		arg0.angle2d = arg2.intStack[--arg2.isp];
 		Client.requestRedrawComponent(arg0);
 	}
 
-	@ObfuscatedName("dc.do(Lyf;B)V")
-	public static final void if_set2dangle(ClientScriptState arg0) {
+    public static final void if_set2dangle(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		Component var2 = Component.get(var1);
 		Interface var3 = Component.interfaces[var1 >> 16];
 		cc_if_set2dangle(var2, var3, arg0);
 	}
 
-	@ObfuscatedName("nv.dz(Lyf;I)V")
-	public static final void cc_set2dangle(ClientScriptState arg0) {
+    public static final void cc_set2dangle(ClientScriptState arg0) {
 		ActiveComponent var1 = arg0.secondary ? arg0.activeComponent2 : arg0.activeComponent;
 		Component var2 = var1.com;
 		Interface var3 = var1.itf;
 		cc_if_set2dangle(var2, var3, arg0);
 	}
 
-	@ObfuscatedName("wq.dv(Lhf;Lhq;Lyf;I)V")
-	public static final void cc_if_settiling(Component arg0, Interface arg1, ClientScriptState arg2) {
+    public static final void cc_if_settiling(Component arg0, Interface arg1, ClientScriptState arg2) {
 		arg0.tiling = arg2.intStack[--arg2.isp] == 1;
 		Client.requestRedrawComponent(arg0);
 	}
 
-	@ObfuscatedName("amq.dm(Lyf;I)V")
-	public static final void if_settiling(ClientScriptState arg0) {
+    public static final void if_settiling(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		Component var2 = Component.get(var1);
 		Interface var3 = Component.interfaces[var1 >> 16];
 		cc_if_settiling(var2, var3, arg0);
 	}
 
-	@ObfuscatedName("dy.dq(Lyf;I)V")
-	public static final void cc_settiling(ClientScriptState arg0) {
+    public static final void cc_settiling(ClientScriptState arg0) {
 		ActiveComponent var1 = arg0.secondary ? arg0.activeComponent2 : arg0.activeComponent;
 		Component var2 = var1.com;
 		Interface var3 = var1.itf;
 		cc_if_settiling(var2, var3, arg0);
 	}
 
-	@ObfuscatedName("l.dc(Lhf;Lhq;Lyf;B)V")
-	public static final void cc_if_setmodel(Component arg0, Interface arg1, ClientScriptState arg2) {
+    public static final void cc_if_setmodel(Component arg0, Interface arg1, ClientScriptState arg2) {
 		arg0.modelkind = 1;
 		arg0.model = arg2.intStack[--arg2.isp];
 		Client.requestRedrawComponent(arg0);
@@ -5755,24 +5630,21 @@ public class ScriptRunner {
 		}
 	}
 
-	@ObfuscatedName("xv.di(Lyf;B)V")
-	public static final void if_setmodel(ClientScriptState arg0) {
+    public static final void if_setmodel(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		Component var2 = Component.get(var1);
 		Interface var3 = Component.interfaces[var1 >> 16];
 		cc_if_setmodel(var2, var3, arg0);
 	}
 
-	@ObfuscatedName("ui.dk(Lyf;I)V")
-	public static final void cc_setmodel(ClientScriptState arg0) {
+    public static final void cc_setmodel(ClientScriptState arg0) {
 		ActiveComponent var1 = arg0.secondary ? arg0.activeComponent2 : arg0.activeComponent;
 		Component var2 = var1.com;
 		Interface var3 = var1.itf;
 		cc_if_setmodel(var2, var3, arg0);
 	}
 
-	@ObfuscatedName("sd.dn(Lhf;Lhq;Lyf;I)V")
-	public static final void cc_if_setmodelangle(Component arg0, Interface arg1, ClientScriptState arg2) {
+    public static final void cc_if_setmodelangle(Component arg0, Interface arg1, ClientScriptState arg2) {
 		arg2.isp -= 6;
 		arg0.modelxof = arg2.intStack[arg2.isp];
 		arg0.modelyof = arg2.intStack[arg2.isp + 1];
@@ -5787,24 +5659,21 @@ public class ScriptRunner {
 		}
 	}
 
-	@ObfuscatedName("xv.df(Lyf;I)V")
-	public static final void if_setmodelangle(ClientScriptState arg0) {
+    public static final void if_setmodelangle(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		Component var2 = Component.get(var1);
 		Interface var3 = Component.interfaces[var1 >> 16];
 		cc_if_setmodelangle(var2, var3, arg0);
 	}
 
-	@ObfuscatedName("anv.dw(Lyf;I)V")
-	public static final void cc_setmodelangle(ClientScriptState arg0) {
+    public static final void cc_setmodelangle(ClientScriptState arg0) {
 		ActiveComponent var1 = arg0.secondary ? arg0.activeComponent2 : arg0.activeComponent;
 		Component var2 = var1.com;
 		Interface var3 = var1.itf;
 		cc_if_setmodelangle(var2, var3, arg0);
 	}
 
-	@ObfuscatedName("yl.ds(Lhf;Lhq;Lyf;I)V")
-	public static final void cc_if_setmodelanim(Component arg0, Interface arg1, ClientScriptState arg2) {
+    public static final void cc_if_setmodelanim(Component arg0, Interface arg1, ClientScriptState arg2) {
 		int var3 = arg2.intStack[--arg2.isp];
 		if (arg0.modelanim != var3) {
 			if (var3 == -1) {
@@ -5823,46 +5692,40 @@ public class ScriptRunner {
 		}
 	}
 
-	@ObfuscatedName("ajn.du(Lyf;B)V")
-	public static final void if_setmodelanim(ClientScriptState arg0) {
+    public static final void if_setmodelanim(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		Component var2 = Component.get(var1);
 		Interface var3 = Component.interfaces[var1 >> 16];
 		cc_if_setmodelanim(var2, var3, arg0);
 	}
 
-	@ObfuscatedName("adn.dl(Lyf;I)V")
-	public static final void cc_setmodelanim(ClientScriptState arg0) {
+    public static final void cc_setmodelanim(ClientScriptState arg0) {
 		ActiveComponent var1 = arg0.secondary ? arg0.activeComponent2 : arg0.activeComponent;
 		Component var2 = var1.com;
 		Interface var3 = var1.itf;
 		cc_if_setmodelanim(var2, var3, arg0);
 	}
 
-	@ObfuscatedName("db.dp(Lhf;Lhq;Lyf;S)V")
-	public static final void cc_if_setmodelorthog(Component arg0, Interface arg1, ClientScriptState arg2) {
+    public static final void cc_if_setmodelorthog(Component arg0, Interface arg1, ClientScriptState arg2) {
 		arg0.modelorthog = arg2.intStack[--arg2.isp] == 1;
 		Client.requestRedrawComponent(arg0);
 	}
 
-	@ObfuscatedName("agu.dy(Lyf;B)V")
-	public static final void if_setmodelorthog(ClientScriptState arg0) {
+    public static final void if_setmodelorthog(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		Component var2 = Component.get(var1);
 		Interface var3 = Component.interfaces[var1 >> 16];
 		cc_if_setmodelorthog(var2, var3, arg0);
 	}
 
-	@ObfuscatedName("ru.db(Lyf;I)V")
-	public static final void cc_setmodelorthog(ClientScriptState arg0) {
+    public static final void cc_setmodelorthog(ClientScriptState arg0) {
 		ActiveComponent var1 = arg0.secondary ? arg0.activeComponent2 : arg0.activeComponent;
 		Component var2 = var1.com;
 		Interface var3 = var1.itf;
 		cc_if_setmodelorthog(var2, var3, arg0);
 	}
 
-	@ObfuscatedName("dy.dh(Lhf;Lhq;Lyf;S)V")
-	public static final void cc_if_setmodeltint(Component arg0, Interface arg1, ClientScriptState arg2) {
+    public static final void cc_if_setmodeltint(Component arg0, Interface arg1, ClientScriptState arg2) {
 		arg2.isp -= 4;
 		arg0.tint_hue = arg2.intStack[arg2.isp];
 		arg0.tint_saturation = arg2.intStack[arg2.isp + 1];
@@ -5871,24 +5734,21 @@ public class ScriptRunner {
 		Client.requestRedrawComponent(arg0);
 	}
 
-	@ObfuscatedName("xc.dx(Lyf;B)V")
-	public static final void if_setmodeltint(ClientScriptState arg0) {
+    public static final void if_setmodeltint(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		Component var2 = Component.get(var1);
 		Interface var3 = Component.interfaces[var1 >> 16];
 		cc_if_setmodeltint(var2, var3, arg0);
 	}
 
-	@ObfuscatedName("gq.dg(Lyf;I)V")
-	public static final void cc_setmodeltint(ClientScriptState arg0) {
+    public static final void cc_setmodeltint(ClientScriptState arg0) {
 		ActiveComponent var1 = arg0.secondary ? arg0.activeComponent2 : arg0.activeComponent;
 		Component var2 = var1.com;
 		Interface var3 = var1.itf;
 		cc_if_setmodeltint(var2, var3, arg0);
 	}
 
-	@ObfuscatedName("adg.de(Lhf;Lhq;Lyf;I)V")
-	public static final void cc_if_setmodellighting(Component arg0, Interface arg1, ClientScriptState arg2) {
+    public static final void cc_if_setmodellighting(Component arg0, Interface arg1, ClientScriptState arg2) {
 		arg2.isp -= 10;
 		arg0.customlighting = true;
 		arg0.field2248 = Math.max(Math.min(arg2.intStack[arg2.isp], 2816), 0);
@@ -5905,46 +5765,40 @@ public class ScriptRunner {
 		Client.requestRedrawComponent(arg0);
 	}
 
-	@ObfuscatedName("sd.dj(Lyf;B)V")
-	public static final void if_setmodellighting(ClientScriptState arg0) {
+    public static final void if_setmodellighting(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		Component var2 = Component.get(var1);
 		Interface var3 = Component.interfaces[var1 >> 16];
 		cc_if_setmodellighting(var2, var3, arg0);
 	}
 
-	@ObfuscatedName("iq.eo(Lyf;I)V")
-	public static final void cc_setmodellighting(ClientScriptState arg0) {
+    public static final void cc_setmodellighting(ClientScriptState arg0) {
 		ActiveComponent var1 = arg0.secondary ? arg0.activeComponent2 : arg0.activeComponent;
 		Component var2 = var1.com;
 		Interface var3 = var1.itf;
 		cc_if_setmodellighting(var2, var3, arg0);
 	}
 
-	@ObfuscatedName("gz.ey(Lhf;Lhq;Lyf;I)V")
-	public static final void cc_if_resetmodellighting(Component arg0, Interface arg1, ClientScriptState arg2) {
+    public static final void cc_if_resetmodellighting(Component arg0, Interface arg1, ClientScriptState arg2) {
 		arg0.customlighting = false;
 		Client.requestRedrawComponent(arg0);
 	}
 
-	@ObfuscatedName("gr.eu(Lyf;I)V")
-	public static final void if_resetmodellighting(ClientScriptState arg0) {
+    public static final void if_resetmodellighting(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		Component var2 = Component.get(var1);
 		Interface var3 = Component.interfaces[var1 >> 16];
 		cc_if_resetmodellighting(var2, var3, arg0);
 	}
 
-	@ObfuscatedName("kj.ed(Lyf;I)V")
-	public static final void cc_resetmodellighting(ClientScriptState arg0) {
+    public static final void cc_resetmodellighting(ClientScriptState arg0) {
 		ActiveComponent var1 = arg0.secondary ? arg0.activeComponent2 : arg0.activeComponent;
 		Component var2 = var1.com;
 		Interface var3 = var1.itf;
 		cc_if_resetmodellighting(var2, var3, arg0);
 	}
 
-	@ObfuscatedName("fb.ee(Lhf;Lhq;Lyf;I)V")
-	public static final void cc_if_settext(Component arg0, Interface arg1, ClientScriptState arg2) {
+    public static final void cc_if_settext(Component arg0, Interface arg1, ClientScriptState arg2) {
 		String var3 = (String) arg2.objectStack[--arg2.osp];
 		if (!var3.equals(arg0.text)) {
 			arg0.text = var3;
@@ -5955,24 +5809,21 @@ public class ScriptRunner {
 		}
 	}
 
-	@ObfuscatedName("abo.es(Lyf;B)V")
-	public static final void if_settext(ClientScriptState arg0) {
+    public static final void if_settext(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		Component var2 = Component.get(var1);
 		Interface var3 = Component.interfaces[var1 >> 16];
 		cc_if_settext(var2, var3, arg0);
 	}
 
-	@ObfuscatedName("ef.ei(Lyf;B)V")
-	public static final void cc_settext(ClientScriptState arg0) {
+    public static final void cc_settext(ClientScriptState arg0) {
 		ActiveComponent var1 = arg0.secondary ? arg0.activeComponent2 : arg0.activeComponent;
 		Component var2 = var1.com;
 		Interface var3 = var1.itf;
 		cc_if_settext(var2, var3, arg0);
 	}
 
-	@ObfuscatedName("ft.el(Lhf;Lhq;Lyf;I)V")
-	public static final void cc_if_settextfont(Component arg0, Interface arg1, ClientScriptState arg2) {
+    public static final void cc_if_settextfont(Component arg0, Interface arg1, ClientScriptState arg2) {
 		arg0.textfont = arg2.intStack[--arg2.isp];
 		Client.requestRedrawComponent(arg0);
 		if (arg0.id == -1 && !arg1.field2150) {
@@ -5980,24 +5831,21 @@ public class ScriptRunner {
 		}
 	}
 
-	@ObfuscatedName("gt.ej(Lyf;I)V")
-	public static final void if_settextfont(ClientScriptState arg0) {
+    public static final void if_settextfont(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		Component var2 = Component.get(var1);
 		Interface var3 = Component.interfaces[var1 >> 16];
 		cc_if_settextfont(var2, var3, arg0);
 	}
 
-	@ObfuscatedName("ana.ep(Lyf;B)V")
-	public static final void cc_settextfont(ClientScriptState arg0) {
+    public static final void cc_settextfont(ClientScriptState arg0) {
 		ActiveComponent var1 = arg0.secondary ? arg0.activeComponent2 : arg0.activeComponent;
 		Component var2 = var1.com;
 		Interface var3 = var1.itf;
 		cc_if_settextfont(var2, var3, arg0);
 	}
 
-	@ObfuscatedName("hn.ev(Lhf;Lhq;Lyf;I)V")
-	public static final void cc_if_settextalign(Component arg0, Interface arg1, ClientScriptState arg2) {
+    public static final void cc_if_settextalign(Component arg0, Interface arg1, ClientScriptState arg2) {
 		arg2.isp -= 3;
 		arg0.field2223 = arg2.intStack[arg2.isp];
 		arg0.field2264 = arg2.intStack[arg2.isp + 1];
@@ -6005,46 +5853,40 @@ public class ScriptRunner {
 		Client.requestRedrawComponent(arg0);
 	}
 
-	@ObfuscatedName("uo.ec(Lyf;I)V")
-	public static final void if_settextalign(ClientScriptState arg0) {
+    public static final void if_settextalign(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		Component var2 = Component.get(var1);
 		Interface var3 = Component.interfaces[var1 >> 16];
 		cc_if_settextalign(var2, var3, arg0);
 	}
 
-	@ObfuscatedName("dm.ek(Lyf;I)V")
-	public static final void cc_settextalign(ClientScriptState arg0) {
+    public static final void cc_settextalign(ClientScriptState arg0) {
 		ActiveComponent var1 = arg0.secondary ? arg0.activeComponent2 : arg0.activeComponent;
 		Component var2 = var1.com;
 		Interface var3 = var1.itf;
 		cc_if_settextalign(var2, var3, arg0);
 	}
 
-	@ObfuscatedName("yu.em(Lhf;Lhq;Lyf;I)V")
-	public static final void cc_if_settextshadow(Component arg0, Interface arg1, ClientScriptState arg2) {
+    public static final void cc_if_settextshadow(Component arg0, Interface arg1, ClientScriptState arg2) {
 		arg0.textshadow = arg2.intStack[--arg2.isp] == 1;
 		Client.requestRedrawComponent(arg0);
 	}
 
-	@ObfuscatedName("is.eh(Lyf;I)V")
-	public static final void if_settextshadow(ClientScriptState arg0) {
+    public static final void if_settextshadow(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		Component var2 = Component.get(var1);
 		Interface var3 = Component.interfaces[var1 >> 16];
 		cc_if_settextshadow(var2, var3, arg0);
 	}
 
-	@ObfuscatedName("xh.eq(Lyf;S)V")
-	public static final void cc_settextshadow(ClientScriptState arg0) {
+    public static final void cc_settextshadow(ClientScriptState arg0) {
 		ActiveComponent var1 = arg0.secondary ? arg0.activeComponent2 : arg0.activeComponent;
 		Component var2 = var1.com;
 		Interface var3 = var1.itf;
 		cc_if_settextshadow(var2, var3, arg0);
 	}
 
-	@ObfuscatedName("if.eg(Lhf;Lhq;Lyf;S)V")
-	public static final void cc_if_settextantimacro(Component arg0, Interface arg1, ClientScriptState arg2) {
+    public static final void cc_if_settextantimacro(Component arg0, Interface arg1, ClientScriptState arg2) {
 		arg0.textantimacro = arg2.intStack[--arg2.isp] == 1;
 		Client.requestRedrawComponent(arg0);
 		if (arg0.id == -1 && !arg1.field2150) {
@@ -6052,112 +5894,97 @@ public class ScriptRunner {
 		}
 	}
 
-	@ObfuscatedName("xm.ez(Lyf;I)V")
-	public static final void if_settextantimacro(ClientScriptState arg0) {
+    public static final void if_settextantimacro(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		Component var2 = Component.get(var1);
 		Interface var3 = Component.interfaces[var1 >> 16];
 		cc_if_settextantimacro(var2, var3, arg0);
 	}
 
-	@ObfuscatedName("sx.ef(Lyf;I)V")
-	public static final void cc_settextantimacro(ClientScriptState arg0) {
+    public static final void cc_settextantimacro(ClientScriptState arg0) {
 		ActiveComponent var1 = arg0.secondary ? arg0.activeComponent2 : arg0.activeComponent;
 		Component var2 = var1.com;
 		Interface var3 = var1.itf;
 		cc_if_settextantimacro(var2, var3, arg0);
 	}
 
-	@ObfuscatedName("jq.et(Lhf;Lhq;Lyf;B)V")
-	public static final void cc_if_setoutline(Component arg0, Interface arg1, ClientScriptState arg2) {
+    public static final void cc_if_setoutline(Component arg0, Interface arg1, ClientScriptState arg2) {
 		arg0.outline = arg2.intStack[--arg2.isp];
 		Client.requestRedrawComponent(arg0);
 	}
 
-	@ObfuscatedName("va.ea(Lyf;I)V")
-	public static final void if_setoutline(ClientScriptState arg0) {
+    public static final void if_setoutline(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		Component var2 = Component.get(var1);
 		Interface var3 = Component.interfaces[var1 >> 16];
 		cc_if_setoutline(var2, var3, arg0);
 	}
 
-	@ObfuscatedName("ax.ew(Lyf;I)V")
-	public static final void cc_setoutline(ClientScriptState arg0) {
+    public static final void cc_setoutline(ClientScriptState arg0) {
 		ActiveComponent var1 = arg0.secondary ? arg0.activeComponent2 : arg0.activeComponent;
 		Component var2 = var1.com;
 		Interface var3 = var1.itf;
 		cc_if_setoutline(var2, var3, arg0);
 	}
 
-	@ObfuscatedName("wq.er(Lhf;Lhq;Lyf;B)V")
-	public static final void cc_if_setgraphicshadow(Component arg0, Interface arg1, ClientScriptState arg2) {
+    public static final void cc_if_setgraphicshadow(Component arg0, Interface arg1, ClientScriptState arg2) {
 		arg0.graphicshadow = arg2.intStack[--arg2.isp];
 		Client.requestRedrawComponent(arg0);
 	}
 
-	@ObfuscatedName("sj.en(Lyf;I)V")
-	public static final void if_setgraphicshadow(ClientScriptState arg0) {
+    public static final void if_setgraphicshadow(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		Component var2 = Component.get(var1);
 		Interface var3 = Component.interfaces[var1 >> 16];
 		cc_if_setgraphicshadow(var2, var3, arg0);
 	}
 
-	@ObfuscatedName("ka.eb(Lyf;I)V")
-	public static final void cc_setgraphicshadow(ClientScriptState arg0) {
+    public static final void cc_setgraphicshadow(ClientScriptState arg0) {
 		ActiveComponent var1 = arg0.secondary ? arg0.activeComponent2 : arg0.activeComponent;
 		Component var2 = var1.com;
 		Interface var3 = var1.itf;
 		cc_if_setgraphicshadow(var2, var3, arg0);
 	}
 
-	@ObfuscatedName("uf.ex(Lhf;Lhq;Lyf;I)V")
-	public static final void cc_if_setvflip(Component arg0, Interface arg1, ClientScriptState arg2) {
+    public static final void cc_if_setvflip(Component arg0, Interface arg1, ClientScriptState arg2) {
 		arg0.vflip = arg2.intStack[--arg2.isp] == 1;
 		Client.requestRedrawComponent(arg0);
 	}
 
-	@ObfuscatedName("jv.fg(Lyf;I)V")
-	public static final void if_setvflip(ClientScriptState arg0) {
+    public static final void if_setvflip(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		Component var2 = Component.get(var1);
 		Interface var3 = Component.interfaces[var1 >> 16];
 		cc_if_setvflip(var2, var3, arg0);
 	}
 
-	@ObfuscatedName("ys.fm(Lyf;I)V")
-	public static final void cc_setvflip(ClientScriptState arg0) {
+    public static final void cc_setvflip(ClientScriptState arg0) {
 		ActiveComponent var1 = arg0.secondary ? arg0.activeComponent2 : arg0.activeComponent;
 		Component var2 = var1.com;
 		Interface var3 = var1.itf;
 		cc_if_setvflip(var2, var3, arg0);
 	}
 
-	@ObfuscatedName("dh.fu(Lhf;Lhq;Lyf;B)V")
-	public static final void cc_if_sethflip(Component arg0, Interface arg1, ClientScriptState arg2) {
+    public static final void cc_if_sethflip(Component arg0, Interface arg1, ClientScriptState arg2) {
 		arg0.hflip = arg2.intStack[--arg2.isp] == 1;
 		Client.requestRedrawComponent(arg0);
 	}
 
-	@ObfuscatedName("ib.fs(Lyf;B)V")
-	public static final void if_sethflip(ClientScriptState arg0) {
+    public static final void if_sethflip(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		Component var2 = Component.get(var1);
 		Interface var3 = Component.interfaces[var1 >> 16];
 		cc_if_sethflip(var2, var3, arg0);
 	}
 
-	@ObfuscatedName("hs.fz(Lyf;I)V")
-	public static final void cc_sethflip(ClientScriptState arg0) {
+    public static final void cc_sethflip(ClientScriptState arg0) {
 		ActiveComponent var1 = arg0.secondary ? arg0.activeComponent2 : arg0.activeComponent;
 		Component var2 = var1.com;
 		Interface var3 = var1.itf;
 		cc_if_sethflip(var2, var3, arg0);
 	}
 
-	@ObfuscatedName("tv.fj(Lhf;Lhq;Lyf;I)V")
-	public static final void cc_if_setscrollsize(Component arg0, Interface arg1, ClientScriptState arg2) {
+    public static final void cc_if_setscrollsize(Component arg0, Interface arg1, ClientScriptState arg2) {
 		arg2.isp -= 2;
 		arg0.scrollwidth = arg2.intStack[arg2.isp];
 		arg0.scrollheight = arg2.intStack[arg2.isp + 1];
@@ -6167,46 +5994,40 @@ public class ScriptRunner {
 		}
 	}
 
-	@ObfuscatedName("nk.fd(Lyf;I)V")
-	public static final void if_setscrollsize(ClientScriptState arg0) {
+    public static final void if_setscrollsize(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		Component var2 = Component.get(var1);
 		Interface var3 = Component.interfaces[var1 >> 16];
 		cc_if_setscrollsize(var2, var3, arg0);
 	}
 
-	@ObfuscatedName("ry.fn(Lyf;I)V")
-	public static final void cc_setscrollsize(ClientScriptState arg0) {
+    public static final void cc_setscrollsize(ClientScriptState arg0) {
 		ActiveComponent var1 = arg0.secondary ? arg0.activeComponent2 : arg0.activeComponent;
 		Component var2 = var1.com;
 		Interface var3 = var1.itf;
 		cc_if_setscrollsize(var2, var3, arg0);
 	}
 
-	@ObfuscatedName("rm.fi(Lhf;Lhq;Lyf;B)V")
-	public static final void cc_if_setalpha(Component arg0, Interface arg1, ClientScriptState arg2) {
+    public static final void cc_if_setalpha(Component arg0, Interface arg1, ClientScriptState arg2) {
 		arg0.alpha = arg2.intStack[--arg2.isp] == 1;
 		Client.requestRedrawComponent(arg0);
 	}
 
-	@ObfuscatedName("ky.ft(Lyf;I)V")
-	public static final void if_setalpha(ClientScriptState arg0) {
+    public static final void if_setalpha(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		Component var2 = Component.get(var1);
 		Interface var3 = Component.interfaces[var1 >> 16];
 		cc_if_setalpha(var2, var3, arg0);
 	}
 
-	@ObfuscatedName("ff.fx(Lyf;I)V")
-	public static final void cc_setalpha(ClientScriptState arg0) {
+    public static final void cc_setalpha(ClientScriptState arg0) {
 		ActiveComponent var1 = arg0.secondary ? arg0.activeComponent2 : arg0.activeComponent;
 		Component var2 = var1.com;
 		Interface var3 = var1.itf;
 		cc_if_setalpha(var2, var3, arg0);
 	}
 
-	@ObfuscatedName("fa.fv(Lhf;Lhq;Lyf;B)V")
-	public static final void cc_if_setmodelzoom(Component arg0, Interface arg1, ClientScriptState arg2) {
+    public static final void cc_if_setmodelzoom(Component arg0, Interface arg1, ClientScriptState arg2) {
 		arg0.modelzoom = arg2.intStack[--arg2.isp];
 		Client.requestRedrawComponent(arg0);
 		if (arg0.id == -1 && !arg1.field2150) {
@@ -6214,93 +6035,81 @@ public class ScriptRunner {
 		}
 	}
 
-	@ObfuscatedName("na.fc(Lyf;I)V")
-	public static final void if_setmodelzoom(ClientScriptState arg0) {
+    public static final void if_setmodelzoom(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		Component var2 = Component.get(var1);
 		Interface var3 = Component.interfaces[var1 >> 16];
 		cc_if_setmodelzoom(var2, var3, arg0);
 	}
 
-	@ObfuscatedName("ip.fw(Lyf;B)V")
-	public static final void cc_setmodelzoom(ClientScriptState arg0) {
+    public static final void cc_setmodelzoom(ClientScriptState arg0) {
 		ActiveComponent var1 = arg0.secondary ? arg0.activeComponent2 : arg0.activeComponent;
 		Component var2 = var1.com;
 		Interface var3 = var1.itf;
 		cc_if_setmodelzoom(var2, var3, arg0);
 	}
 
-	@ObfuscatedName("nz.fa(Lhf;Lhq;Lyf;S)V")
-	public static final void cc_if_setlinedirection(Component arg0, Interface arg1, ClientScriptState arg2) {
+    public static final void cc_if_setlinedirection(Component arg0, Interface arg1, ClientScriptState arg2) {
 		int var3 = arg2.intStack[--arg2.isp];
 		arg0.linedirection = var3 == 1;
 		Client.requestRedrawComponent(arg0);
 	}
 
-	@ObfuscatedName("na.fp(Lyf;I)V")
-	public static final void if_setlinedirection(ClientScriptState arg0) {
+    public static final void if_setlinedirection(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		Component var2 = Component.get(var1);
 		Interface var3 = Component.interfaces[var1 >> 16];
 		cc_if_setlinedirection(var2, var3, arg0);
 	}
 
-	@ObfuscatedName("xn.fq(Lyf;I)V")
-	public static final void cc_setlinedirection(ClientScriptState arg0) {
+    public static final void cc_setlinedirection(ClientScriptState arg0) {
 		ActiveComponent var1 = arg0.secondary ? arg0.activeComponent2 : arg0.activeComponent;
 		Component var2 = var1.com;
 		Interface var3 = var1.itf;
 		cc_if_setlinedirection(var2, var3, arg0);
 	}
 
-	@ObfuscatedName("il.ff(Lhf;Lhq;Lyf;I)V")
-	public static final void cc_if_setmodelorigin(Component arg0, Interface arg1, ClientScriptState arg2) {
+    public static final void cc_if_setmodelorigin(Component arg0, Interface arg1, ClientScriptState arg2) {
 		arg2.isp -= 2;
 		arg0.modelorigin_x = arg2.intStack[arg2.isp];
 		arg0.modelorigin_y = arg2.intStack[arg2.isp + 1];
 		Client.requestRedrawComponent(arg0);
 	}
 
-	@ObfuscatedName("jr.fl(Lyf;I)V")
-	public static final void if_setmodelorigin(ClientScriptState arg0) {
+    public static final void if_setmodelorigin(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		Component var2 = Component.get(var1);
 		Interface var3 = Component.interfaces[var1 >> 16];
 		cc_if_setmodelorigin(var2, var3, arg0);
 	}
 
-	@ObfuscatedName("ip.fb(Lyf;I)V")
-	public static final void cc_setmodelorigin(ClientScriptState arg0) {
+    public static final void cc_setmodelorigin(ClientScriptState arg0) {
 		ActiveComponent var1 = arg0.secondary ? arg0.activeComponent2 : arg0.activeComponent;
 		Component var2 = var1.com;
 		Interface var3 = var1.itf;
 		cc_if_setmodelorigin(var2, var3, arg0);
 	}
 
-	@ObfuscatedName("d.fo(Lhf;Lhq;Lyf;B)V")
-	public static final void cc_if_setmaxlines(Component arg0, Interface arg1, ClientScriptState arg2) {
+    public static final void cc_if_setmaxlines(Component arg0, Interface arg1, ClientScriptState arg2) {
 		arg0.maxlines = arg2.intStack[--arg2.isp];
 		Client.requestRedrawComponent(arg0);
 	}
 
-	@ObfuscatedName("p.fy(Lyf;I)V")
-	public static final void if_setmaxlines(ClientScriptState arg0) {
+    public static final void if_setmaxlines(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		Component var2 = Component.get(var1);
 		Interface var3 = Component.interfaces[var1 >> 16];
 		cc_if_setmaxlines(var2, var3, arg0);
 	}
 
-	@ObfuscatedName("aq.fe(Lyf;I)V")
-	public static final void cc_setmaxlines(ClientScriptState arg0) {
+    public static final void cc_setmaxlines(ClientScriptState arg0) {
 		ActiveComponent var1 = arg0.secondary ? arg0.activeComponent2 : arg0.activeComponent;
 		Component var2 = var1.com;
 		Interface var3 = var1.itf;
 		cc_if_setmaxlines(var2, var3, arg0);
 	}
 
-	@ObfuscatedName("vx.fk(Lhf;Lhq;Lyf;I)V")
-	public static final void cc_if_setparam_int(Component arg0, Interface arg1, ClientScriptState arg2) {
+    public static final void cc_if_setparam_int(Component arg0, Interface arg1, ClientScriptState arg2) {
 		arg2.isp -= 2;
 		int var3 = arg2.intStack[arg2.isp];
 		int var4 = arg2.intStack[arg2.isp + 1];
@@ -6312,24 +6121,21 @@ public class ScriptRunner {
 		}
 	}
 
-	@ObfuscatedName("fk.fh(Lyf;B)V")
-	public static final void if_setparam_int(ClientScriptState arg0) {
+    public static final void if_setparam_int(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		Component var2 = Component.get(var1);
 		Interface var3 = Component.interfaces[var1 >> 16];
 		cc_if_setparam_int(var2, var3, arg0);
 	}
 
-	@ObfuscatedName("jd.fr(Lyf;I)V")
-	public static final void cc_setparam_int(ClientScriptState arg0) {
+    public static final void cc_setparam_int(ClientScriptState arg0) {
 		ActiveComponent var1 = arg0.secondary ? arg0.activeComponent2 : arg0.activeComponent;
 		Component var2 = var1.com;
 		Interface var3 = var1.itf;
 		cc_if_setparam_int(var2, var3, arg0);
 	}
 
-	@ObfuscatedName("abh.gu(Lhf;Lhq;Lyf;I)V")
-	public static final void cc_if_setparam_string(Component arg0, Interface arg1, ClientScriptState arg2) {
+    public static final void cc_if_setparam_string(Component arg0, Interface arg1, ClientScriptState arg2) {
 		int var3 = arg2.intStack[--arg2.isp];
 		String var4 = (String) arg2.objectStack[--arg2.osp];
 		ParamType var5 = (ParamType) Client.paramTypeList.list(var3);
@@ -6340,24 +6146,21 @@ public class ScriptRunner {
 		}
 	}
 
-	@ObfuscatedName("x.gq(Lyf;I)V")
-	public static final void if_setparam_string(ClientScriptState arg0) {
+    public static final void if_setparam_string(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		Component var2 = Component.get(var1);
 		Interface var3 = Component.interfaces[var1 >> 16];
 		cc_if_setparam_string(var2, var3, arg0);
 	}
 
-	@ObfuscatedName("ts.gl(Lyf;B)V")
-	public static final void cc_setparam_string(ClientScriptState arg0) {
+    public static final void cc_setparam_string(ClientScriptState arg0) {
 		ActiveComponent var1 = arg0.secondary ? arg0.activeComponent2 : arg0.activeComponent;
 		Component var2 = var1.com;
 		Interface var3 = var1.itf;
 		cc_if_setparam_string(var2, var3, arg0);
 	}
 
-	@ObfuscatedName("abc.go(Lhf;Lhq;Lyf;I)V")
-	public static final void cc_if_setrecol(Component arg0, Interface arg1, ClientScriptState arg2) {
+    public static final void cc_if_setrecol(Component arg0, Interface arg1, ClientScriptState arg2) {
 		arg2.isp -= 3;
 		int var3 = arg2.intStack[arg2.isp];
 		short var4 = (short) arg2.intStack[arg2.isp + 1];
@@ -6372,24 +6175,21 @@ public class ScriptRunner {
 		}
 	}
 
-	@ObfuscatedName("apn.gk(Lyf;I)V")
-	public static final void if_setrecol(ClientScriptState arg0) {
+    public static final void if_setrecol(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		Component var2 = Component.get(var1);
 		Interface var3 = Component.interfaces[var1 >> 16];
 		cc_if_setrecol(var2, var3, arg0);
 	}
 
-	@ObfuscatedName("aag.gp(Lyf;B)V")
-	public static final void cc_setrecol(ClientScriptState arg0) {
+    public static final void cc_setrecol(ClientScriptState arg0) {
 		ActiveComponent var1 = arg0.secondary ? arg0.activeComponent2 : arg0.activeComponent;
 		Component var2 = var1.com;
 		Interface var3 = var1.itf;
 		cc_if_setrecol(var2, var3, arg0);
 	}
 
-	@ObfuscatedName("aiu.gy(Lhf;Lhq;Lyf;I)V")
-	public static final void if_setretex(Component arg0, Interface arg1, ClientScriptState arg2) {
+    public static final void if_setretex(Component arg0, Interface arg1, ClientScriptState arg2) {
 		arg2.isp -= 3;
 		int var3 = arg2.intStack[arg2.isp];
 		short var4 = (short) arg2.intStack[arg2.isp + 1];
@@ -6404,24 +6204,21 @@ public class ScriptRunner {
 		}
 	}
 
-	@ObfuscatedName("jg.ga(Lyf;I)V")
-	public static final void if_setretex(ClientScriptState arg0) {
+    public static final void if_setretex(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		Component var2 = Component.get(var1);
 		Interface var3 = Component.interfaces[var1 >> 16];
 		if_setretex(var2, var3, arg0);
 	}
 
-	@ObfuscatedName("jq.gn(Lyf;I)V")
-	public static final void cc_setretex(ClientScriptState arg0) {
+    public static final void cc_setretex(ClientScriptState arg0) {
 		ActiveComponent var1 = arg0.secondary ? arg0.activeComponent2 : arg0.activeComponent;
 		Component var2 = var1.com;
 		Interface var3 = var1.itf;
 		if_setretex(var2, var3, arg0);
 	}
 
-	@ObfuscatedName("v.gc(Lhf;Lhq;Lyf;B)V")
-	public static final void cc_if_setfontmono(Component arg0, Interface arg1, ClientScriptState arg2) {
+    public static final void cc_if_setfontmono(Component arg0, Interface arg1, ClientScriptState arg2) {
 		arg0.fontmono = arg2.intStack[--arg2.isp] == 1;
 		Client.requestRedrawComponent(arg0);
 		if (arg0.id == -1 && !arg1.field2150) {
@@ -6429,24 +6226,21 @@ public class ScriptRunner {
 		}
 	}
 
-	@ObfuscatedName("qw.gf(Lyf;I)V")
-	public static final void if_setfontmono(ClientScriptState arg0) {
+    public static final void if_setfontmono(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		Component var2 = Component.get(var1);
 		Interface var3 = Component.interfaces[var1 >> 16];
 		cc_if_setfontmono(var2, var3, arg0);
 	}
 
-	@ObfuscatedName("w.gx(Lyf;S)V")
-	public static final void cc_setfontmono(ClientScriptState arg0) {
+    public static final void cc_setfontmono(ClientScriptState arg0) {
 		ActiveComponent var1 = arg0.secondary ? arg0.activeComponent2 : arg0.activeComponent;
 		Component var2 = var1.com;
 		Interface var3 = var1.itf;
 		cc_if_setfontmono(var2, var3, arg0);
 	}
 
-	@ObfuscatedName("ae.ge(Lyf;I)V")
-	public static final void cc_setparam(ClientScriptState arg0) {
+    public static final void cc_setparam(ClientScriptState arg0) {
 		ActiveComponent var1 = arg0.secondary ? arg0.activeComponent2 : arg0.activeComponent;
 		Component var2 = var1.com;
 		arg0.isp -= 2;
@@ -6460,8 +6254,7 @@ public class ScriptRunner {
 		}
 	}
 
-	@ObfuscatedName("abv.gg(Lhf;Lhq;Lyf;I)V")
-	public static final void cc_if_setclickmask(Component arg0, Interface arg1, ClientScriptState arg2) {
+    public static final void cc_if_setclickmask(Component arg0, Interface arg1, ClientScriptState arg2) {
 		arg0.clickmask = arg2.intStack[--arg2.isp] == 1;
 		Client.requestRedrawComponent(arg0);
 		if (arg0.id == -1 && !arg1.field2150) {
@@ -6469,46 +6262,40 @@ public class ScriptRunner {
 		}
 	}
 
-	@ObfuscatedName("wv.gr(Lyf;I)V")
-	public static final void if_setclickmask(ClientScriptState arg0) {
+    public static final void if_setclickmask(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		Component var2 = Component.get(var1);
 		Interface var3 = Component.interfaces[var1 >> 16];
 		cc_if_setclickmask(var2, var3, arg0);
 	}
 
-	@ObfuscatedName("tp.gs(Lyf;I)V")
-	public static final void cc_setclickmask(ClientScriptState arg0) {
+    public static final void cc_setclickmask(ClientScriptState arg0) {
 		ActiveComponent var1 = arg0.secondary ? arg0.activeComponent2 : arg0.activeComponent;
 		Component var2 = var1.com;
 		Interface var3 = var1.itf;
 		cc_if_setclickmask(var2, var3, arg0);
 	}
 
-	@ObfuscatedName("jp.gt(Lhf;Lhq;Lyf;I)V")
-	public static final void cc_if_setheld(Component arg0, Interface arg1, ClientScriptState arg2) {
+    public static final void cc_if_setheld(Component arg0, Interface arg1, ClientScriptState arg2) {
 		arg0.held = arg2.intStack[--arg2.isp] == 1;
 		Client.requestRedrawComponent(arg0);
 	}
 
-	@ObfuscatedName("je.gh(Lyf;I)V")
-	public static final void if_setheld(ClientScriptState arg0) {
+    public static final void if_setheld(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		Component var2 = Component.get(var1);
 		Interface var3 = Component.interfaces[var1 >> 16];
 		cc_if_setheld(var2, var3, arg0);
 	}
 
-	@ObfuscatedName("iq.gm(Lyf;I)V")
-	public static final void cc_setheld(ClientScriptState arg0) {
+    public static final void cc_setheld(ClientScriptState arg0) {
 		ActiveComponent var1 = arg0.secondary ? arg0.activeComponent2 : arg0.activeComponent;
 		Component var2 = var1.com;
 		Interface var3 = var1.itf;
 		cc_if_setheld(var2, var3, arg0);
 	}
 
-	@ObfuscatedName("ws.gv(Lhf;Lhq;Lyf;I)V")
-	public static final void cc_if_setnpchead(Component arg0, Interface arg1, ClientScriptState arg2) {
+    public static final void cc_if_setnpchead(Component arg0, Interface arg1, ClientScriptState arg2) {
 		arg0.modelkind = 2;
 		arg0.customisation = null;
 		arg0.model = arg2.intStack[--arg2.isp];
@@ -6517,24 +6304,21 @@ public class ScriptRunner {
 		}
 	}
 
-	@ObfuscatedName("qk.gj(Lyf;I)V")
-	public static final void if_setnpchead(ClientScriptState arg0) {
+    public static final void if_setnpchead(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		Component var2 = Component.get(var1);
 		Interface var3 = Component.interfaces[var1 >> 16];
 		cc_if_setnpchead(var2, var3, arg0);
 	}
 
-	@ObfuscatedName("pb.gw(Lyf;B)V")
-	public static final void cc_setnpchead(ClientScriptState arg0) {
+    public static final void cc_setnpchead(ClientScriptState arg0) {
 		ActiveComponent var1 = arg0.secondary ? arg0.activeComponent2 : arg0.activeComponent;
 		Component var2 = var1.com;
 		Interface var3 = var1.itf;
 		cc_if_setnpchead(var2, var3, arg0);
 	}
 
-	@ObfuscatedName("ge.gd(Lhf;Lhq;Lyf;B)V")
-	public static final void cc_if_setplayerhead_self(Component arg0, Interface arg1, ClientScriptState arg2) {
+    public static final void cc_if_setplayerhead_self(Component arg0, Interface arg1, ClientScriptState arg2) {
 		arg0.modelkind = 3;
 		arg0.model = Client.currentPlayerUid;
 		arg0.field2298 = 0;
@@ -6543,24 +6327,21 @@ public class ScriptRunner {
 		}
 	}
 
-	@ObfuscatedName("ja.gz(Lyf;I)V")
-	public static final void if_setplayerhead_self(ClientScriptState arg0) {
+    public static final void if_setplayerhead_self(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		Component var2 = Component.get(var1);
 		Interface var3 = Component.interfaces[var1 >> 16];
 		cc_if_setplayerhead_self(var2, var3, arg0);
 	}
 
-	@ObfuscatedName("uf.gb(Lyf;I)V")
-	public static final void cc_setplayerhead_self(ClientScriptState arg0) {
+    public static final void cc_setplayerhead_self(ClientScriptState arg0) {
 		ActiveComponent var1 = arg0.secondary ? arg0.activeComponent2 : arg0.activeComponent;
 		Component var2 = var1.com;
 		Interface var3 = var1.itf;
 		cc_if_setplayerhead_self(var2, var3, arg0);
 	}
 
-	@ObfuscatedName("aaj.gi(Lhf;Lhq;ZILyf;I)V")
-	public static final void cc_if_setobject_data(Component arg0, Interface arg1, boolean arg2, int arg3, ClientScriptState arg4) {
+    public static final void cc_if_setobject_data(Component arg0, Interface arg1, boolean arg2, int arg3, ClientScriptState arg4) {
 		arg4.isp -= 2;
 		int var5 = arg4.intStack[arg4.isp];
 		int var6 = arg4.intStack[arg4.isp + 1];
@@ -6593,104 +6374,91 @@ public class ScriptRunner {
 		}
 	}
 
-	@ObfuscatedName("yl.hm(Lyf;B)V")
-	public static final void if_setobject(ClientScriptState arg0) {
+    public static final void if_setobject(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		Component var2 = Component.get(var1);
 		Interface var3 = Component.interfaces[var1 >> 16];
 		cc_if_setobject_data(var2, var3, false, 2, arg0);
 	}
 
-	@ObfuscatedName("nd.ha(Lyf;I)V")
-	public static final void cc_setobject(ClientScriptState arg0) {
+    public static final void cc_setobject(ClientScriptState arg0) {
 		ActiveComponent var1 = arg0.secondary ? arg0.activeComponent2 : arg0.activeComponent;
 		Component var2 = var1.com;
 		Interface var3 = var1.itf;
 		cc_if_setobject_data(var2, var3, false, 2, arg0);
 	}
 
-	@ObfuscatedName("po.hk(Lyf;I)V")
-	public static final void if_setobject_nonum(ClientScriptState arg0) {
+    public static final void if_setobject_nonum(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		Component var2 = Component.get(var1);
 		Interface var3 = Component.interfaces[var1 >> 16];
 		cc_if_setobject_data(var2, var3, false, 0, arg0);
 	}
 
-	@ObfuscatedName("vi.hu(Lyf;I)V")
-	public static final void cc_setobject_nonum(ClientScriptState arg0) {
+    public static final void cc_setobject_nonum(ClientScriptState arg0) {
 		ActiveComponent var1 = arg0.secondary ? arg0.activeComponent2 : arg0.activeComponent;
 		Component var2 = var1.com;
 		Interface var3 = var1.itf;
 		cc_if_setobject_data(var2, var3, false, 0, arg0);
 	}
 
-	@ObfuscatedName("qm.hb(Lyf;B)V")
-	public static final void if_setobject_wearcol(ClientScriptState arg0) {
+    public static final void if_setobject_wearcol(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		Component var2 = Component.get(var1);
 		Interface var3 = Component.interfaces[var1 >> 16];
 		cc_if_setobject_data(var2, var3, true, 2, arg0);
 	}
 
-	@ObfuscatedName("abt.hg(Lyf;B)V")
-	public static final void cc_setobject_wearcol(ClientScriptState arg0) {
+    public static final void cc_setobject_wearcol(ClientScriptState arg0) {
 		ActiveComponent var1 = arg0.secondary ? arg0.activeComponent2 : arg0.activeComponent;
 		Component var2 = var1.com;
 		Interface var3 = var1.itf;
 		cc_if_setobject_data(var2, var3, true, 2, arg0);
 	}
 
-	@ObfuscatedName("tg.hd(Lyf;I)V")
-	public static final void if_setobject_wearcol_nonum(ClientScriptState arg0) {
+    public static final void if_setobject_wearcol_nonum(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		Component var2 = Component.get(var1);
 		Interface var3 = Component.interfaces[var1 >> 16];
 		cc_if_setobject_data(var2, var3, true, 0, arg0);
 	}
 
-	@ObfuscatedName("agg.hx(Lyf;B)V")
-	public static final void cc_setobject_wearcol_nonum(ClientScriptState arg0) {
+    public static final void cc_setobject_wearcol_nonum(ClientScriptState arg0) {
 		ActiveComponent var1 = arg0.secondary ? arg0.activeComponent2 : arg0.activeComponent;
 		Component var2 = var1.com;
 		Interface var3 = var1.itf;
 		cc_if_setobject_data(var2, var3, true, 0, arg0);
 	}
 
-	@ObfuscatedName("je.hq(Lyf;I)V")
-	public static final void if_setobject_alwaysnum(ClientScriptState arg0) {
+    public static final void if_setobject_alwaysnum(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		Component var2 = Component.get(var1);
 		Interface var3 = Component.interfaces[var1 >> 16];
 		cc_if_setobject_data(var2, var3, false, 1, arg0);
 	}
 
-	@ObfuscatedName("kc.hf(Lyf;I)V")
-	public static final void cc_setobject_alwaysnum(ClientScriptState arg0) {
+    public static final void cc_setobject_alwaysnum(ClientScriptState arg0) {
 		ActiveComponent var1 = arg0.secondary ? arg0.activeComponent2 : arg0.activeComponent;
 		Component var2 = var1.com;
 		Interface var3 = var1.itf;
 		cc_if_setobject_data(var2, var3, false, 1, arg0);
 	}
 
-	@ObfuscatedName("agf.hr(Lyf;I)V")
-	public static final void if_setobject_wearcol_alwaysnum(ClientScriptState arg0) {
+    public static final void if_setobject_wearcol_alwaysnum(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		Component var2 = Component.get(var1);
 		Interface var3 = Component.interfaces[var1 >> 16];
 		cc_if_setobject_data(var2, var3, true, 1, arg0);
 	}
 
-	@ObfuscatedName("xk.hs(Lyf;B)V")
-	public static final void cc_setobject_wearcol_alwaysnum(ClientScriptState arg0) {
+    public static final void cc_setobject_wearcol_alwaysnum(ClientScriptState arg0) {
 		ActiveComponent var1 = arg0.secondary ? arg0.activeComponent2 : arg0.activeComponent;
 		Component var2 = var1.com;
 		Interface var3 = var1.itf;
 		cc_if_setobject_data(var2, var3, true, 1, arg0);
 	}
 
-	@ObfuscatedName("tx.hh(Lhf;Lhq;Lyf;I)V")
-	public static final void cc_if_setnpcmodel(Component arg0, Interface arg1, ClientScriptState arg2) {
+    public static final void cc_if_setnpcmodel(Component arg0, Interface arg1, ClientScriptState arg2) {
 		arg0.modelkind = 6;
 		arg0.customisation = null;
 		arg0.model = arg2.intStack[--arg2.isp];
@@ -6699,24 +6467,21 @@ public class ScriptRunner {
 		}
 	}
 
-	@ObfuscatedName("nj.hp(Lyf;B)V")
-	public static final void if_setnpcmodel(ClientScriptState arg0) {
+    public static final void if_setnpcmodel(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		Component var2 = Component.get(var1);
 		Interface var3 = Component.interfaces[var1 >> 16];
 		cc_if_setnpcmodel(var2, var3, arg0);
 	}
 
-	@ObfuscatedName("qz.hy(Lyf;B)V")
-	public static final void cc_setnpcmodel(ClientScriptState arg0) {
+    public static final void cc_setnpcmodel(ClientScriptState arg0) {
 		ActiveComponent var1 = arg0.secondary ? arg0.activeComponent2 : arg0.activeComponent;
 		Component var2 = var1.com;
 		Interface var3 = var1.itf;
 		cc_if_setnpcmodel(var2, var3, arg0);
 	}
 
-	@ObfuscatedName("ty.he(Lhf;Lhq;Lyf;B)V")
-	public static final void cc_if_setplayermodel(Component arg0, Interface arg1, ClientScriptState arg2) {
+    public static final void cc_if_setplayermodel(Component arg0, Interface arg1, ClientScriptState arg2) {
 		arg0.modelkind = 5;
 		arg0.model = arg2.intStack[--arg2.isp];
 		if (arg0.id == -1 && !arg1.field2150) {
@@ -6724,24 +6489,21 @@ public class ScriptRunner {
 		}
 	}
 
-	@ObfuscatedName("acg.hn(Lyf;I)V")
-	public static final void if_setplayermodel(ClientScriptState arg0) {
+    public static final void if_setplayermodel(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		Component var2 = Component.get(var1);
 		Interface var3 = Component.interfaces[var1 >> 16];
 		cc_if_setplayermodel(var2, var3, arg0);
 	}
 
-	@ObfuscatedName("vs.hi(Lyf;I)V")
-	public static final void cc_setplayermodel(ClientScriptState arg0) {
+    public static final void cc_setplayermodel(ClientScriptState arg0) {
 		ActiveComponent var1 = arg0.secondary ? arg0.activeComponent2 : arg0.activeComponent;
 		Component var2 = var1.com;
 		Interface var3 = var1.itf;
 		cc_if_setplayermodel(var2, var3, arg0);
 	}
 
-	@ObfuscatedName("nz.hw(Lhf;Lhq;Lyf;Lhd;B)V")
-	public static final void cc_if_setlink(Component arg0, Interface arg1, ClientScriptState arg2, GroupUserKind arg3) {
+    public static final void cc_if_setlink(Component arg0, Interface arg1, ClientScriptState arg2, GroupUserKind arg3) {
 		int var4 = arg2.intStack[--arg2.isp];
 		switch(arg3.index) {
 			case 0:
@@ -6771,40 +6533,35 @@ public class ScriptRunner {
 		arg0.groupKind = arg3;
 	}
 
-	@ObfuscatedName("jb.ht(Lyf;I)V")
-	public static final void if_setlinkfriend(ClientScriptState arg0) {
+    public static final void if_setlinkfriend(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		Component var2 = Component.get(var1);
 		Interface var3 = Component.interfaces[var1 >> 16];
 		cc_if_setlink(var2, var3, arg0, GroupUserKind.field2136);
 	}
 
-	@ObfuscatedName("ve.hc(Lyf;B)V")
-	public static final void cc_setlinkfriend(ClientScriptState arg0) {
+    public static final void cc_setlinkfriend(ClientScriptState arg0) {
 		ActiveComponent var1 = arg0.secondary ? arg0.activeComponent2 : arg0.activeComponent;
 		Component var2 = var1.com;
 		Interface var3 = var1.itf;
 		cc_if_setlink(var2, var3, arg0, GroupUserKind.field2136);
 	}
 
-	@ObfuscatedName("pr.ho(Lyf;I)V")
-	public static final void if_setlinkfriendchat(ClientScriptState arg0) {
+    public static final void if_setlinkfriendchat(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		Component var2 = Component.get(var1);
 		Interface var3 = Component.interfaces[var1 >> 16];
 		cc_if_setlink(var2, var3, arg0, GroupUserKind.field2140);
 	}
 
-	@ObfuscatedName("aq.hj(Lyf;I)V")
-	public static final void cc_setlinkfriendchat(ClientScriptState arg0) {
+    public static final void cc_setlinkfriendchat(ClientScriptState arg0) {
 		ActiveComponent var1 = arg0.secondary ? arg0.activeComponent2 : arg0.activeComponent;
 		Component var2 = var1.com;
 		Interface var3 = var1.itf;
 		cc_if_setlink(var2, var3, arg0, GroupUserKind.field2140);
 	}
 
-	@ObfuscatedName("ga.hv(Lyf;I)V")
-	public static final void if_setlinkplayergroup(ClientScriptState arg0) {
+    public static final void if_setlinkplayergroup(ClientScriptState arg0) {
 		arg0.isp -= 2;
 		boolean var1 = arg0.intStack[arg0.isp] == 1;
 		int var2 = arg0.intStack[arg0.isp + 1];
@@ -6813,8 +6570,7 @@ public class ScriptRunner {
 		cc_if_setlink(var3, var4, arg0, var1 ? GroupUserKind.field2138 : GroupUserKind.field2137);
 	}
 
-	@ObfuscatedName("uy.hz(Lyf;I)V")
-	public static final void cc_setlinkplayergroup(ClientScriptState arg0) {
+    public static final void cc_setlinkplayergroup(ClientScriptState arg0) {
 		ActiveComponent var1 = arg0.secondary ? arg0.activeComponent2 : arg0.activeComponent;
 		Component var2 = var1.com;
 		Interface var3 = var1.itf;
@@ -6822,46 +6578,40 @@ public class ScriptRunner {
 		cc_if_setlink(var2, var3, arg0, var4 ? GroupUserKind.field2138 : GroupUserKind.field2137);
 	}
 
-	@ObfuscatedName("akr.ij(Lyf;I)V")
-	public static final void if_setlinkactiveclanchannel(ClientScriptState arg0) {
+    public static final void if_setlinkactiveclanchannel(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		Component var2 = Component.get(var1);
 		Interface var3 = Component.interfaces[var1 >> 16];
 		cc_if_setlink(var2, var3, arg0, Client.affinedClanChannel == arg0.activeClanChannel ? GroupUserKind.field2139 : GroupUserKind.field2135);
 	}
 
-	@ObfuscatedName("tv.io(Lyf;I)V")
-	public static final void cc_setlinkactiveclanchannel(ClientScriptState arg0) {
+    public static final void cc_setlinkactiveclanchannel(ClientScriptState arg0) {
 		ActiveComponent var1 = arg0.secondary ? arg0.activeComponent2 : arg0.activeComponent;
 		Component var2 = var1.com;
 		Interface var3 = var1.itf;
 		cc_if_setlink(var2, var3, arg0, Client.affinedClanChannel == arg0.activeClanChannel ? GroupUserKind.field2139 : GroupUserKind.field2135);
 	}
 
-	@ObfuscatedName("bf.iq(Lhf;Lhq;Lyf;I)V")
-	public static final void cc_if_resetlinkplayer(Component arg0, Interface arg1, ClientScriptState arg2) {
+    public static final void cc_if_resetlinkplayer(Component arg0, Interface arg1, ClientScriptState arg2) {
 		arg0.link = null;
 		arg0.groupKind = null;
 	}
 
-	@ObfuscatedName("fp.ig(Lyf;B)V")
-	public static final void if_resetlinkplayer(ClientScriptState arg0) {
+    public static final void if_resetlinkplayer(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		Component var2 = Component.get(var1);
 		Interface var3 = Component.interfaces[var1 >> 16];
 		cc_if_resetlinkplayer(var2, var3, arg0);
 	}
 
-	@ObfuscatedName("nu.iv(Lyf;I)V")
-	public static final void cc_resetlinkplayer(ClientScriptState arg0) {
+    public static final void cc_resetlinkplayer(ClientScriptState arg0) {
 		ActiveComponent var1 = arg0.secondary ? arg0.activeComponent2 : arg0.activeComponent;
 		Component var2 = var1.com;
 		Interface var3 = var1.itf;
 		cc_if_resetlinkplayer(var2, var3, arg0);
 	}
 
-	@ObfuscatedName("age.ie(Lhf;Lhq;Lyf;S)V")
-	public static final void cc_if_setplayermodel_self(Component arg0, Interface arg1, ClientScriptState arg2) {
+    public static final void cc_if_setplayermodel_self(Component arg0, Interface arg1, ClientScriptState arg2) {
 		arg0.modelkind = 5;
 		arg0.model = Client.currentPlayerUid;
 		arg0.field2298 = 0;
@@ -6870,24 +6620,21 @@ public class ScriptRunner {
 		}
 	}
 
-	@ObfuscatedName("gb.iu(Lyf;I)V")
-	public static final void if_setplayermodel_self(ClientScriptState arg0) {
+    public static final void if_setplayermodel_self(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		Component var2 = Component.get(var1);
 		Interface var3 = Component.interfaces[var1 >> 16];
 		cc_if_setplayermodel_self(var2, var3, arg0);
 	}
 
-	@ObfuscatedName("w.in(Lyf;I)V")
-	public static final void cc_setplayermodel_self(ClientScriptState arg0) {
+    public static final void cc_setplayermodel_self(ClientScriptState arg0) {
 		ActiveComponent var1 = arg0.secondary ? arg0.activeComponent2 : arg0.activeComponent;
 		Component var2 = var1.com;
 		Interface var3 = var1.itf;
 		cc_if_setplayermodel_self(var2, var3, arg0);
 	}
 
-	@ObfuscatedName("n.ir(Lhf;Lhq;Lyf;I)V")
-	public static final void cc_if_setop(Component arg0, Interface arg1, ClientScriptState arg2) {
+    public static final void cc_if_setop(Component arg0, Interface arg1, ClientScriptState arg2) {
 		int var3 = arg2.intStack[--arg2.isp] - 1;
 		if (var3 >= 0 && var3 <= 9) {
 			arg0.setop(var3, (String) arg2.objectStack[--arg2.osp]);
@@ -6896,24 +6643,21 @@ public class ScriptRunner {
 		}
 	}
 
-	@ObfuscatedName("vo.it(Lyf;I)V")
-	public static final void if_setop(ClientScriptState arg0) {
+    public static final void if_setop(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		Component var2 = Component.get(var1);
 		Interface var3 = Component.interfaces[var1 >> 16];
 		cc_if_setop(var2, var3, arg0);
 	}
 
-	@ObfuscatedName("abr.ix(Lyf;I)V")
-	public static final void cc_setop(ClientScriptState arg0) {
+    public static final void cc_setop(ClientScriptState arg0) {
 		ActiveComponent var1 = arg0.secondary ? arg0.activeComponent2 : arg0.activeComponent;
 		Component var2 = var1.com;
 		Interface var3 = var1.itf;
 		cc_if_setop(var2, var3, arg0);
 	}
 
-	@ObfuscatedName("g.is(Lhf;Lhq;Lyf;I)V")
-	public static final void cc_if_setdraggable(Component arg0, Interface arg1, ClientScriptState arg2) {
+    public static final void cc_if_setdraggable(Component arg0, Interface arg1, ClientScriptState arg2) {
 		arg2.isp -= 2;
 		int var3 = arg2.intStack[arg2.isp];
 		int var4 = arg2.intStack[arg2.isp + 1];
@@ -6924,295 +6668,247 @@ public class ScriptRunner {
 		}
 	}
 
-	@ObfuscatedName("vv.ib(Lyf;I)V")
-	public static final void if_setdraggable(ClientScriptState arg0) {
+    public static final void if_setdraggable(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		Component var2 = Component.get(var1);
 		Interface var3 = Component.interfaces[var1 >> 16];
 		cc_if_setdraggable(var2, var3, arg0);
 	}
 
-	@ObfuscatedName("jd.il(Lyf;B)V")
-	public static final void cc_setdraggable(ClientScriptState arg0) {
+    public static final void cc_setdraggable(ClientScriptState arg0) {
 		ActiveComponent var1 = arg0.secondary ? arg0.activeComponent2 : arg0.activeComponent;
 		Component var2 = var1.com;
 		Interface var3 = var1.itf;
 		cc_if_setdraggable(var2, var3, arg0);
 	}
 
-	@ObfuscatedName("gm.iw(Lhf;Lhq;Lyf;I)V")
-	public static final void cc_if_setdragrenderbehaviour(Component arg0, Interface arg1, ClientScriptState arg2) {
+    public static final void cc_if_setdragrenderbehaviour(Component arg0, Interface arg1, ClientScriptState arg2) {
 		int var3 = arg2.intStack[--arg2.isp];
 		if (Component.field2234 == var3 || Component.field2301 == var3 || Component.field2157 == var3 || Component.field2266 == var3) {
 			arg0.dragrenderbehaviour = var3;
 		}
 	}
 
-	@ObfuscatedName("sc.ip(Lyf;I)V")
-	public static final void if_setdragrenderbehaviour(ClientScriptState arg0) {
+    public static final void if_setdragrenderbehaviour(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		Component var2 = Component.get(var1);
 		Interface var3 = Component.interfaces[var1 >> 16];
 		cc_if_setdragrenderbehaviour(var2, var3, arg0);
 	}
 
-	@ObfuscatedName("pv.id(Lyf;I)V")
-	public static final void cc_setdragrenderbehaviour(ClientScriptState arg0) {
+    public static final void cc_setdragrenderbehaviour(ClientScriptState arg0) {
 		ActiveComponent var1 = arg0.secondary ? arg0.activeComponent2 : arg0.activeComponent;
 		Component var2 = var1.com;
 		Interface var3 = var1.itf;
 		cc_if_setdragrenderbehaviour(var2, var3, arg0);
 	}
 
-	@ObfuscatedName("vm.ia(Lhf;Lhq;Lyf;I)V")
-	public static final void cc_if_setdragdeadzone(Component arg0, Interface arg1, ClientScriptState arg2) {
+    public static final void cc_if_setdragdeadzone(Component arg0, Interface arg1, ClientScriptState arg2) {
 		arg0.dragdeadzone = arg2.intStack[--arg2.isp];
 	}
 
-	@ObfuscatedName("ud.if(Lyf;B)V")
-	public static final void if_setdragdeadzone(ClientScriptState arg0) {
+    public static final void if_setdragdeadzone(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		Component var2 = Component.get(var1);
 		Interface var3 = Component.interfaces[var1 >> 16];
 		cc_if_setdragdeadzone(var2, var3, arg0);
 	}
 
-	@ObfuscatedName("hi.ih(Lyf;I)V")
-	public static final void cc_setdragdeadzone(ClientScriptState arg0) {
+    public static final void cc_setdragdeadzone(ClientScriptState arg0) {
 		ActiveComponent var1 = arg0.secondary ? arg0.activeComponent2 : arg0.activeComponent;
 		Component var2 = var1.com;
 		Interface var3 = var1.itf;
 		cc_if_setdragdeadzone(var2, var3, arg0);
 	}
 
-	@ObfuscatedName("db.iy(Lhf;Lhq;Lyf;I)V")
-	public static final void cc_if_setdragdeadtime(Component arg0, Interface arg1, ClientScriptState arg2) {
+    public static final void cc_if_setdragdeadtime(Component arg0, Interface arg1, ClientScriptState arg2) {
 		arg0.dragdeadtime = arg2.intStack[--arg2.isp];
 	}
 
-	@ObfuscatedName("ii.ii(Lyf;B)V")
-	public static final void if_setdragdeadtime(ClientScriptState arg0) {
+    public static final void if_setdragdeadtime(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		Component var2 = Component.get(var1);
 		Interface var3 = Component.interfaces[var1 >> 16];
 		cc_if_setdragdeadtime(var2, var3, arg0);
 	}
 
-	@ObfuscatedName("fb.iz(Lyf;B)V")
-	public static final void cc_setdragdeadtime(ClientScriptState arg0) {
+    public static final void cc_setdragdeadtime(ClientScriptState arg0) {
 		ActiveComponent var1 = arg0.secondary ? arg0.activeComponent2 : arg0.activeComponent;
 		Component var2 = var1.com;
 		Interface var3 = var1.itf;
 		cc_if_setdragdeadtime(var2, var3, arg0);
 	}
 
-	@ObfuscatedName("ev.ik(Lyf;I)V")
-	public static final void method2775(ClientScriptState arg0) {
+    public static final void method2775(ClientScriptState arg0) {
 		arg0.isp -= 2;
 	}
 
-	@ObfuscatedName("hg.im(Lyf;I)V")
-	public static final void method3911(ClientScriptState arg0) {
+    public static final void method3911(ClientScriptState arg0) {
 		arg0.isp--;
 	}
 
-	@ObfuscatedName("hh.ic(Lyf;I)V")
-	public static final void method4048(ClientScriptState arg0) {
+    public static final void method4048(ClientScriptState arg0) {
 		arg0.isp -= 2;
 	}
 
-	@ObfuscatedName("vu.jd(Lyf;B)V")
-	public static final void cc_setswipeunknown2(ClientScriptState arg0) {
+    public static final void cc_setswipeunknown2(ClientScriptState arg0) {
 		arg0.isp--;
 	}
 
-	@ObfuscatedName("vh.jf(Lyf;B)V")
-	public static final void if_setswipedeadtime(ClientScriptState arg0) {
+    public static final void if_setswipedeadtime(ClientScriptState arg0) {
 		arg0.isp -= 2;
 	}
 
-	@ObfuscatedName("pp.ju(Lyf;I)V")
-	public static final void cc_setswipedeadtime(ClientScriptState arg0) {
+    public static final void cc_setswipedeadtime(ClientScriptState arg0) {
 		arg0.isp--;
 	}
 
-	@ObfuscatedName("au.jy(Lyf;I)V")
-	public static final void if_setswipedeadzone(ClientScriptState arg0) {
+    public static final void if_setswipedeadzone(ClientScriptState arg0) {
 		arg0.isp -= 2;
 	}
 
-	@ObfuscatedName("tg.jl(Lyf;I)V")
-	public static final void cc_setswipedeadzone(ClientScriptState arg0) {
+    public static final void cc_setswipedeadzone(ClientScriptState arg0) {
 		arg0.isp--;
 	}
 
-	@ObfuscatedName("vh.jn(Lyf;B)V")
-	public static final void if_setswipeflags(ClientScriptState arg0) {
+    public static final void if_setswipeflags(ClientScriptState arg0) {
 		arg0.isp -= 2;
 	}
 
-	@ObfuscatedName("iu.je(Lyf;I)V")
-	public static final void cc_setswipeflags(ClientScriptState arg0) {
+    public static final void cc_setswipeflags(ClientScriptState arg0) {
 		arg0.isp--;
 	}
 
-	@ObfuscatedName("il.jb(Lyf;B)V")
-	public static final void if_addswipeflags(ClientScriptState arg0) {
+    public static final void if_addswipeflags(ClientScriptState arg0) {
 		arg0.isp -= 2;
 	}
 
-	@ObfuscatedName("vz.jm(Lyf;B)V")
-	public static final void cc_addswipeflags(ClientScriptState arg0) {
+    public static final void cc_addswipeflags(ClientScriptState arg0) {
 		arg0.isp--;
 	}
 
-	@ObfuscatedName("ajo.jw(Lyf;I)V")
-	public static final void if_delswipeflags(ClientScriptState arg0) {
+    public static final void if_delswipeflags(ClientScriptState arg0) {
 		arg0.isp -= 2;
 	}
 
-	@ObfuscatedName("wo.jr(Lyf;B)V")
-	public static final void cc_delswipeflags(ClientScriptState arg0) {
+    public static final void cc_delswipeflags(ClientScriptState arg0) {
 		arg0.isp--;
 	}
 
-	@ObfuscatedName("aky.js(Lyf;I)V")
-	public static final void if_setpinchflags(ClientScriptState arg0) {
+    public static final void if_setpinchflags(ClientScriptState arg0) {
 		arg0.isp -= 2;
 	}
 
-	@ObfuscatedName("fa.ji(Lyf;I)V")
-	public static final void cc_setpinchflags(ClientScriptState arg0) {
+    public static final void cc_setpinchflags(ClientScriptState arg0) {
 		arg0.isp--;
 	}
 
-	@ObfuscatedName("ju.jt(Lyf;I)V")
-	public static final void if_addpinchflags(ClientScriptState arg0) {
+    public static final void if_addpinchflags(ClientScriptState arg0) {
 		arg0.isp -= 2;
 	}
 
-	@ObfuscatedName("nh.jq(Lyf;B)V")
-	public static final void cc_addpinchflags(ClientScriptState arg0) {
+    public static final void cc_addpinchflags(ClientScriptState arg0) {
 		arg0.isp--;
 	}
 
-	@ObfuscatedName("vv.jv(Lyf;I)V")
-	public static final void if_delpinchflags(ClientScriptState arg0) {
+    public static final void if_delpinchflags(ClientScriptState arg0) {
 		arg0.isp -= 2;
 	}
 
-	@ObfuscatedName("fd.ja(Lyf;I)V")
-	public static final void cc_delpinchflags(ClientScriptState arg0) {
+    public static final void cc_delpinchflags(ClientScriptState arg0) {
 		arg0.isp--;
 	}
 
-	@ObfuscatedName("qs.jj(Lyf;B)V")
-	public static final void if_setpinchdeadzone(ClientScriptState arg0) {
+    public static final void if_setpinchdeadzone(ClientScriptState arg0) {
 		arg0.isp -= 2;
 	}
 
-	@ObfuscatedName("ty.jo(Lyf;I)V")
-	public static final void cc_setpinchdeadzone(ClientScriptState arg0) {
+    public static final void cc_setpinchdeadzone(ClientScriptState arg0) {
 		arg0.isp--;
 	}
 
-	@ObfuscatedName("ff.jz(Lyf;I)V")
-	public static final void if_setsubtractinsets(ClientScriptState arg0) {
+    public static final void if_setsubtractinsets(ClientScriptState arg0) {
 		arg0.isp -= 2;
 	}
 
-	@ObfuscatedName("pf.jc(Lyf;S)V")
-	public static final void cc_setsubtractinsets(ClientScriptState arg0) {
+    public static final void cc_setsubtractinsets(ClientScriptState arg0) {
 		arg0.isp--;
 	}
 
-	@ObfuscatedName("hz.jg(Lhf;Lhq;Lyf;I)V")
-	public static final void cc_if_setopbase(Component arg0, Interface arg1, ClientScriptState arg2) {
+    public static final void cc_if_setopbase(Component arg0, Interface arg1, ClientScriptState arg2) {
 		arg0.opbase = (String) arg2.objectStack[--arg2.osp];
 	}
 
-	@ObfuscatedName("ie.jx(Lyf;I)V")
-	public static final void if_setopbase(ClientScriptState arg0) {
+    public static final void if_setopbase(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		Component var2 = Component.get(var1);
 		Interface var3 = Component.interfaces[var1 >> 16];
 		cc_if_setopbase(var2, var3, arg0);
 	}
 
-	@ObfuscatedName("db.jh(Lyf;I)V")
-	public static final void cc_setopbase(ClientScriptState arg0) {
+    public static final void cc_setopbase(ClientScriptState arg0) {
 		ActiveComponent var1 = arg0.secondary ? arg0.activeComponent2 : arg0.activeComponent;
 		Component var2 = var1.com;
 		Interface var3 = var1.itf;
 		cc_if_setopbase(var2, var3, arg0);
 	}
 
-	@ObfuscatedName("ahd.jp(Lhf;Lhq;Lyf;I)V")
-	public static final void cc_if_settargetverb(Component arg0, Interface arg1, ClientScriptState arg2) {
+    public static final void cc_if_settargetverb(Component arg0, Interface arg1, ClientScriptState arg2) {
 		arg0.targetverb = (String) arg2.objectStack[--arg2.osp];
 	}
 
-	@ObfuscatedName("abr.jk(Lyf;I)V")
-	public static final void if_settargetverb(ClientScriptState arg0) {
+    public static final void if_settargetverb(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		Component var2 = Component.get(var1);
 		Interface var3 = Component.interfaces[var1 >> 16];
 		cc_if_settargetverb(var2, var3, arg0);
 	}
 
-	@ObfuscatedName("hy.kw(Lyf;I)V")
-	public static final void cc_settargetverb(ClientScriptState arg0) {
+    public static final void cc_settargetverb(ClientScriptState arg0) {
 		ActiveComponent var1 = arg0.secondary ? arg0.activeComponent2 : arg0.activeComponent;
 		Component var2 = var1.com;
 		Interface var3 = var1.itf;
 		cc_if_settargetverb(var2, var3, arg0);
 	}
 
-	@ObfuscatedName("mj.kz(Lhf;Lhq;Lyf;B)V")
-	public static final void cc_if_clearops(Component arg0, Interface arg1, ClientScriptState arg2) {
+    public static final void cc_if_clearops(Component arg0, Interface arg1, ClientScriptState arg2) {
 		arg0.op = null;
 	}
 
-	@ObfuscatedName("kh.ke(Lyf;I)V")
-	public static final void if_clearops(ClientScriptState arg0) {
+    public static final void if_clearops(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		Component var2 = Component.get(var1);
 		Interface var3 = Component.interfaces[var1 >> 16];
 		cc_if_clearops(var2, var3, arg0);
 	}
 
-	@ObfuscatedName("ig.kq(Lyf;I)V")
-	public static final void cc_clearops(ClientScriptState arg0) {
+    public static final void cc_clearops(ClientScriptState arg0) {
 		ActiveComponent var1 = arg0.secondary ? arg0.activeComponent2 : arg0.activeComponent;
 		Component var2 = var1.com;
 		Interface var3 = var1.itf;
 		cc_if_clearops(var2, var3, arg0);
 	}
 
-	@ObfuscatedName("fr.kg(Lhf;Lhq;Lyf;I)V")
-	public static final void cc_if_settargetcursors(Component arg0, Interface arg1, ClientScriptState arg2) {
+    public static final void cc_if_settargetcursors(Component arg0, Interface arg1, ClientScriptState arg2) {
 		arg0.field2269 = arg2.intStack[--arg2.isp];
 		arg0.field2202 = arg2.intStack[--arg2.isp];
 	}
 
-	@ObfuscatedName("e.ku(Lyf;I)V")
-	public static final void if_settargetcursors(ClientScriptState arg0) {
+    public static final void if_settargetcursors(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		Component var2 = Component.get(var1);
 		Interface var3 = Component.interfaces[var1 >> 16];
 		cc_if_settargetcursors(var2, var3, arg0);
 	}
 
-	@ObfuscatedName("pk.ko(Lyf;B)V")
-	public static final void cc_settargetcursors(ClientScriptState arg0) {
+    public static final void cc_settargetcursors(ClientScriptState arg0) {
 		ActiveComponent var1 = arg0.secondary ? arg0.activeComponent2 : arg0.activeComponent;
 		Component var2 = var1.com;
 		Interface var3 = var1.itf;
 		cc_if_settargetcursors(var2, var3, arg0);
 	}
 
-	@ObfuscatedName("aj.kf(Lhf;Lhq;Lyf;B)V")
-	public static final void cc_if_setopcursor(Component arg0, Interface arg1, ClientScriptState arg2) {
+    public static final void cc_if_setopcursor(Component arg0, Interface arg1, ClientScriptState arg2) {
 		int var3 = arg2.intStack[--arg2.isp];
 		int var4 = arg2.intStack[--arg2.isp];
 		if (var4 >= 1 && var4 <= 10) {
@@ -7220,66 +6916,57 @@ public class ScriptRunner {
 		}
 	}
 
-	@ObfuscatedName("el.kx(Lyf;S)V")
-	public static final void if_setopcursor(ClientScriptState arg0) {
+    public static final void if_setopcursor(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		Component var2 = Component.get(var1);
 		Interface var3 = Component.interfaces[var1 >> 16];
 		cc_if_setopcursor(var2, var3, arg0);
 	}
 
-	@ObfuscatedName("af.ki(Lyf;I)V")
-	public static final void cc_setopcursor(ClientScriptState arg0) {
+    public static final void cc_setopcursor(ClientScriptState arg0) {
 		ActiveComponent var1 = arg0.secondary ? arg0.activeComponent2 : arg0.activeComponent;
 		Component var2 = var1.com;
 		Interface var3 = var1.itf;
 		cc_if_setopcursor(var2, var3, arg0);
 	}
 
-	@ObfuscatedName("aba.ks(Lhf;Lhq;Lyf;B)V")
-	public static final void cc_if_setpausetext(Component arg0, Interface arg1, ClientScriptState arg2) {
+    public static final void cc_if_setpausetext(Component arg0, Interface arg1, ClientScriptState arg2) {
 		arg0.pausetext = (String) arg2.objectStack[--arg2.osp];
 	}
 
-	@ObfuscatedName("ke.kh(Lyf;I)V")
-	public static final void if_setpausetext(ClientScriptState arg0) {
+    public static final void if_setpausetext(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		Component var2 = Component.get(var1);
 		Interface var3 = Component.interfaces[var1 >> 16];
 		cc_if_setpausetext(var2, var3, arg0);
 	}
 
-	@ObfuscatedName("vv.ka(Lyf;B)V")
-	public static final void cc_setpausetext(ClientScriptState arg0) {
+    public static final void cc_setpausetext(ClientScriptState arg0) {
 		ActiveComponent var1 = arg0.secondary ? arg0.activeComponent2 : arg0.activeComponent;
 		Component var2 = var1.com;
 		Interface var3 = var1.itf;
 		cc_if_setpausetext(var2, var3, arg0);
 	}
 
-	@ObfuscatedName("abh.kl(Lhf;Lhq;Lyf;S)V")
-	public static final void cc_if_settargetopcursor(Component arg0, Interface arg1, ClientScriptState arg2) {
+    public static final void cc_if_settargetopcursor(Component arg0, Interface arg1, ClientScriptState arg2) {
 		arg0.targetopcursor = arg2.intStack[--arg2.isp];
 	}
 
-	@ObfuscatedName("agu.kb(Lyf;I)V")
-	public static final void if_settargetopcursor(ClientScriptState arg0) {
+    public static final void if_settargetopcursor(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		Component var2 = Component.get(var1);
 		Interface var3 = Component.interfaces[var1 >> 16];
 		cc_if_settargetopcursor(var2, var3, arg0);
 	}
 
-	@ObfuscatedName("ake.kr(Lyf;I)V")
-	public static final void cc_settargetopcursor(ClientScriptState arg0) {
+    public static final void cc_settargetopcursor(ClientScriptState arg0) {
 		ActiveComponent var1 = arg0.secondary ? arg0.activeComponent2 : arg0.activeComponent;
 		Component var2 = var1.com;
 		Interface var3 = var1.itf;
 		cc_if_settargetopcursor(var2, var3, arg0);
 	}
 
-	@ObfuscatedName("su.kd(Lhf;IILyf;I)V")
-	public static final void cc_if_setopchar(Component arg0, int arg1, int arg2, ClientScriptState arg3) {
+    public static final void cc_if_setopchar(Component arg0, int arg1, int arg2, ClientScriptState arg3) {
 		if (arg0.field2300 == null) {
 			if (arg2 <= 0) {
 				return;
@@ -7304,8 +6991,7 @@ public class ScriptRunner {
 		}
 	}
 
-	@ObfuscatedName("fk.kc(Lhf;Lyf;B)V")
-	public static final void cc_if_setopchar(Component arg0, ClientScriptState arg1) {
+    public static final void cc_if_setopchar(Component arg0, ClientScriptState arg1) {
 		arg1.isp -= 2;
 		int var2 = arg1.intStack[arg1.isp] - 1;
 		int var3 = arg1.intStack[arg1.isp + 1];
@@ -7315,43 +7001,37 @@ public class ScriptRunner {
 		cc_if_setopchar(arg0, var2, var3, arg1);
 	}
 
-	@ObfuscatedName("jl.kj(Lyf;I)V")
-	public static final void if_setopchar(ClientScriptState arg0) {
+    public static final void if_setopchar(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		Component var2 = Component.get(var1);
 		cc_if_setopchar(var2, arg0);
 	}
 
-	@ObfuscatedName("xb.kn(Lyf;S)V")
-	public static final void cc_setopchar(ClientScriptState arg0) {
+    public static final void cc_setopchar(ClientScriptState arg0) {
 		ActiveComponent var1 = arg0.secondary ? arg0.activeComponent2 : arg0.activeComponent;
 		Component var2 = var1.com;
 		cc_if_setopchar(var2, arg0);
 	}
 
-	@ObfuscatedName("ag.kp(Lhf;Lyf;I)V")
-	public static final void cc_if_setoptchar(Component arg0, ClientScriptState arg1) {
+    public static final void cc_if_setoptchar(Component arg0, ClientScriptState arg1) {
 		byte var2 = 10;
 		int var3 = arg1.intStack[--arg1.isp];
 		cc_if_setopchar(arg0, var2, var3, arg1);
 	}
 
-	@ObfuscatedName("ux.km(Lyf;I)V")
-	public static final void if_setoptchar(ClientScriptState arg0) {
+    public static final void if_setoptchar(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		Component var2 = Component.get(var1);
 		cc_if_setoptchar(var2, arg0);
 	}
 
-	@ObfuscatedName("gk.ky(Lyf;B)V")
-	public static final void cc_setoptchar(ClientScriptState arg0) {
+    public static final void cc_setoptchar(ClientScriptState arg0) {
 		ActiveComponent var1 = arg0.secondary ? arg0.activeComponent2 : arg0.activeComponent;
 		Component var2 = var1.com;
 		cc_if_setoptchar(var2, arg0);
 	}
 
-	@ObfuscatedName("vm.kk(Lhf;I[B[BLyf;I)V")
-	public static final void cc_if_setopkey(Component arg0, int arg1, byte[] arg2, byte[] arg3, ClientScriptState arg4) {
+    public static final void cc_if_setopkey(Component arg0, int arg1, byte[] arg2, byte[] arg3, ClientScriptState arg4) {
 		if (arg0.field2270 == null) {
 			if (arg2 == null) {
 				return;
@@ -7377,8 +7057,7 @@ public class ScriptRunner {
 		arg0.field2281[arg1] = arg3;
 	}
 
-	@ObfuscatedName("ky.kv(Lhf;[B[BLyf;B)V")
-	public static final void method5380(Component arg0, byte[] arg1, byte[] arg2, ClientScriptState arg3) {
+    public static final void method5380(Component arg0, byte[] arg1, byte[] arg2, ClientScriptState arg3) {
 		int var4 = arg3.intStack[--arg3.isp] - 1;
 		if (var4 < 0 || var4 > 9) {
 			throw new RuntimeException();
@@ -7386,8 +7065,7 @@ public class ScriptRunner {
 		cc_if_setopkey(arg0, var4, arg1, arg2, arg3);
 	}
 
-	@ObfuscatedName("b.kt(Lyf;I)V")
-	public static final void if_setopkey(ClientScriptState arg0) {
+    public static final void if_setopkey(ClientScriptState arg0) {
 		arg0.isp -= 3;
 		byte[] var1 = new byte[] { (byte) arg0.intStack[arg0.isp] };
 		byte[] var2 = new byte[] { (byte) arg0.intStack[arg0.isp + 1] };
@@ -7396,8 +7074,7 @@ public class ScriptRunner {
 		method5380(var4, var1, var2, arg0);
 	}
 
-	@ObfuscatedName("uu.li(Lyf;B)V")
-	public static final void cc_setopkey(ClientScriptState arg0) {
+    public static final void cc_setopkey(ClientScriptState arg0) {
 		ActiveComponent var1 = arg0.secondary ? arg0.activeComponent2 : arg0.activeComponent;
 		Component var2 = var1.com;
 		arg0.isp -= 10;
@@ -7417,8 +7094,7 @@ public class ScriptRunner {
 		method5380(var2, var3, var4, arg0);
 	}
 
-	@ObfuscatedName("cq.lv(Lhf;Lhq;Lyf;I)V")
-	public static final void cc_if_setoptkey(Component arg0, Interface arg1, ClientScriptState arg2) {
+    public static final void cc_if_setoptkey(Component arg0, Interface arg1, ClientScriptState arg2) {
 		arg2.isp -= 2;
 		byte var3 = 10;
 		byte[] var4 = new byte[] { (byte) arg2.intStack[arg2.isp] };
@@ -7426,24 +7102,21 @@ public class ScriptRunner {
 		cc_if_setopkey(arg0, var3, var4, var5, arg2);
 	}
 
-	@ObfuscatedName("yx.la(Lyf;I)V")
-	public static final void if_setoptkey(ClientScriptState arg0) {
+    public static final void if_setoptkey(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		Component var2 = Component.get(var1);
 		Interface var3 = Component.interfaces[var1 >> 16];
 		cc_if_setoptkey(var2, var3, arg0);
 	}
 
-	@ObfuscatedName("gm.lp(Lyf;I)V")
-	public static final void cc_setoptkey(ClientScriptState arg0) {
+    public static final void cc_setoptkey(ClientScriptState arg0) {
 		ActiveComponent var1 = arg0.secondary ? arg0.activeComponent2 : arg0.activeComponent;
 		Component var2 = var1.com;
 		Interface var3 = var1.itf;
 		cc_if_setoptkey(var2, var3, arg0);
 	}
 
-	@ObfuscatedName("qp.lc(Lhf;IIILyf;S)V")
-	public static final void cc_if_setopkeyrate(Component arg0, int arg1, int arg2, int arg3, ClientScriptState arg4) {
+    public static final void cc_if_setopkeyrate(Component arg0, int arg1, int arg2, int arg3, ClientScriptState arg4) {
 		if (arg0.field2211 == null) {
 			throw new RuntimeException();
 		}
@@ -7451,8 +7124,7 @@ public class ScriptRunner {
 		arg0.field2273[arg1] = arg3;
 	}
 
-	@ObfuscatedName("n.lf(Lhf;Lyf;I)V")
-	public static final void cc_if_setopkeyrate(Component arg0, ClientScriptState arg1) {
+    public static final void cc_if_setopkeyrate(Component arg0, ClientScriptState arg1) {
 		arg1.isp -= 3;
 		int var2 = arg1.intStack[arg1.isp] - 1;
 		int var3 = arg1.intStack[arg1.isp + 1];
@@ -7463,44 +7135,38 @@ public class ScriptRunner {
 		cc_if_setopkeyrate(arg0, var2, var3, var4, arg1);
 	}
 
-	@ObfuscatedName("ww.lm(Lyf;I)V")
-	public static final void if_setopkeyrate(ClientScriptState arg0) {
+    public static final void if_setopkeyrate(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		Component var2 = Component.get(var1);
 		cc_if_setopkeyrate(var2, arg0);
 	}
 
-	@ObfuscatedName("ua.ll(Lyf;I)V")
-	public static final void cc_setopkeyrate(ClientScriptState arg0) {
+    public static final void cc_setopkeyrate(ClientScriptState arg0) {
 		ActiveComponent var1 = arg0.secondary ? arg0.activeComponent2 : arg0.activeComponent;
 		Component var2 = var1.com;
 		cc_if_setopkeyrate(var2, arg0);
 	}
 
-	@ObfuscatedName("fz.lb(Lhf;Lyf;I)V")
-	public static final void cc_if_setoptkeyrate(Component arg0, ClientScriptState arg1) {
+    public static final void cc_if_setoptkeyrate(Component arg0, ClientScriptState arg1) {
 		byte var2 = 10;
 		int var3 = arg1.intStack[--arg1.isp];
 		int var4 = arg1.intStack[--arg1.isp];
 		cc_if_setopkeyrate(arg0, var2, var3, var4, arg1);
 	}
 
-	@ObfuscatedName("yx.le(Lyf;B)V")
-	public static final void if_setoptkeyrate(ClientScriptState arg0) {
+    public static final void if_setoptkeyrate(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		Component var2 = Component.get(var1);
 		cc_if_setoptkeyrate(var2, arg0);
 	}
 
-	@ObfuscatedName("fj.lr(Lyf;I)V")
-	public static final void cc_setoptkeyrate(ClientScriptState arg0) {
+    public static final void cc_setoptkeyrate(ClientScriptState arg0) {
 		ActiveComponent var1 = arg0.secondary ? arg0.activeComponent2 : arg0.activeComponent;
 		Component var2 = var1.com;
 		cc_if_setoptkeyrate(var2, arg0);
 	}
 
-	@ObfuscatedName("is.lq(Lhf;ILyf;I)V")
-	public static final void cc_if_setopkeyignoreheld(Component arg0, int arg1, ClientScriptState arg2) {
+    public static final void cc_if_setopkeyignoreheld(Component arg0, int arg1, ClientScriptState arg2) {
 		if (arg0.field2270 == null) {
 			throw new RuntimeException();
 		}
@@ -7510,8 +7176,7 @@ public class ScriptRunner {
 		arg0.field2361[arg1] = Integer.MAX_VALUE;
 	}
 
-	@ObfuscatedName("if.lo(Lhf;Lyf;I)V")
-	public static final void cc_if_setopkeyignoreheld(Component arg0, ClientScriptState arg1) {
+    public static final void cc_if_setopkeyignoreheld(Component arg0, ClientScriptState arg1) {
 		arg1.isp--;
 		int var2 = arg1.intStack[arg1.isp] - 1;
 		if (var2 < 0 || var2 > 9) {
@@ -7520,84 +7185,72 @@ public class ScriptRunner {
 		cc_if_setopkeyignoreheld(arg0, var2, arg1);
 	}
 
-	@ObfuscatedName("iw.lh(Lyf;I)V")
-	public static final void if_setopkeyignoreheld(ClientScriptState arg0) {
+    public static final void if_setopkeyignoreheld(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		Component var2 = Component.get(var1);
 		cc_if_setopkeyignoreheld(var2, arg0);
 	}
 
-	@ObfuscatedName("pp.ls(Lyf;I)V")
-	public static final void cc_setopkeyignoreheld(ClientScriptState arg0) {
+    public static final void cc_setopkeyignoreheld(ClientScriptState arg0) {
 		ActiveComponent var1 = arg0.secondary ? arg0.activeComponent2 : arg0.activeComponent;
 		Component var2 = var1.com;
 		cc_if_setopkeyignoreheld(var2, arg0);
 	}
 
-	@ObfuscatedName("hj.lu(Lhf;Lyf;I)V")
-	public static final void cc_if_setoptkeyignoreheld(Component arg0, ClientScriptState arg1) {
+    public static final void cc_if_setoptkeyignoreheld(Component arg0, ClientScriptState arg1) {
 		byte var2 = 10;
 		cc_if_setopkeyignoreheld(arg0, var2, arg1);
 	}
 
-	@ObfuscatedName("ku.ly(Lyf;B)V")
-	public static final void if_setoptkeyignoreheld(ClientScriptState arg0) {
+    public static final void if_setoptkeyignoreheld(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		Component var2 = Component.get(var1);
 		cc_if_setoptkeyignoreheld(var2, arg0);
 	}
 
-	@ObfuscatedName("gl.lg(Lyf;I)V")
-	public static final void cc_setoptkeyignoreheld(ClientScriptState arg0) {
+    public static final void cc_setoptkeyignoreheld(ClientScriptState arg0) {
 		ActiveComponent var1 = arg0.secondary ? arg0.activeComponent2 : arg0.activeComponent;
 		Component var2 = var1.com;
 		cc_if_setoptkeyignoreheld(var2, arg0);
 	}
 
-	@ObfuscatedName("xz.lx(Lhf;Lhq;Lyf;I)V")
-	public static final void cc_if_setmouseovercursor(Component arg0, Interface arg1, ClientScriptState arg2) {
+    public static final void cc_if_setmouseovercursor(Component arg0, Interface arg1, ClientScriptState arg2) {
 		arg0.mouseovercursor = arg2.intStack[--arg2.isp];
 	}
 
-	@ObfuscatedName("uw.lj(Lyf;I)V")
-	public static final void if_setmouseovercursor(ClientScriptState arg0) {
+    public static final void if_setmouseovercursor(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		Component var2 = Component.get(var1);
 		Interface var3 = Component.interfaces[var1 >> 16];
 		cc_if_setmouseovercursor(var2, var3, arg0);
 	}
 
-	@ObfuscatedName("u.lw(Lyf;I)V")
-	public static final void cc_setmouseovercursor(ClientScriptState arg0) {
+    public static final void cc_setmouseovercursor(ClientScriptState arg0) {
 		ActiveComponent var1 = arg0.secondary ? arg0.activeComponent2 : arg0.activeComponent;
 		Component var2 = var1.com;
 		Interface var3 = var1.itf;
 		cc_if_setmouseovercursor(var2, var3, arg0);
 	}
 
-	@ObfuscatedName("el.lz(Lhf;Lhq;Lyf;I)V")
-	public static final void cc_if_clearscripthooks(Component arg0, Interface arg1, ClientScriptState arg2) {
+    public static final void cc_if_clearscripthooks(Component arg0, Interface arg1, ClientScriptState arg2) {
 		arg0.clearscripthooks();
 	}
 
-	@ObfuscatedName("aga.ln(Lyf;B)V")
-	public static final void cc_clearscripthooks(ClientScriptState arg0) {
+    public static final void cc_clearscripthooks(ClientScriptState arg0) {
 		ActiveComponent var1 = arg0.secondary ? arg0.activeComponent2 : arg0.activeComponent;
 		Component var2 = var1.com;
 		Interface var3 = var1.itf;
 		cc_if_clearscripthooks(var2, var3, arg0);
 	}
 
-	@ObfuscatedName("uo.lt(Lyf;B)V")
-	public static final void if_clearscripthooks(ClientScriptState arg0) {
+    public static final void if_clearscripthooks(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		Component var2 = Component.get(var1);
 		Interface var3 = Component.interfaces[var1 >> 16];
 		cc_if_clearscripthooks(var2, var3, arg0);
 	}
 
-	@ObfuscatedName("rl.ld(Ljava/lang/String;Lyf;I)[I")
-	public static final int[] method7881(String arg0, ClientScriptState arg1) {
+    public static final int[] method7881(String arg0, ClientScriptState arg1) {
 		int[] var2 = null;
 		if (arg0.length() > 0 && arg0.charAt(arg0.length() - 1) == 'Y') {
 			int var3 = arg1.intStack[--arg1.isp];
@@ -7611,8 +7264,7 @@ public class ScriptRunner {
 		return var2;
 	}
 
-	@ObfuscatedName("q.lk(Ljava/lang/String;Lyf;I)[Ljava/lang/Object;")
-	public static final Object[] method552(String arg0, ClientScriptState arg1) {
+    public static final Object[] method552(String arg0, ClientScriptState arg1) {
 		Object[] var2 = new Object[arg0.length() + 1];
 		for (int var3 = var2.length - 1; var3 >= 1; var3--) {
 			if (arg0.charAt(var3 - 1) == 's') {
@@ -7632,8 +7284,7 @@ public class ScriptRunner {
 		return var2;
 	}
 
-	@ObfuscatedName("vs.mf(Lhf;Lhq;Lyf;I)V")
-	public static final void cc_if_setonclick(Component arg0, Interface arg1, ClientScriptState arg2) {
+    public static final void cc_if_setonclick(Component arg0, Interface arg1, ClientScriptState arg2) {
 		String var3 = (String) arg2.objectStack[--arg2.osp];
 		if (method7881(var3, arg2) != null) {
 			var3 = var3.substring(0, var3.length() - 1);
@@ -7642,24 +7293,21 @@ public class ScriptRunner {
 		arg0.hashook = true;
 	}
 
-	@ObfuscatedName("ek.mh(Lyf;I)V")
-	public static final void if_setonclick(ClientScriptState arg0) {
+    public static final void if_setonclick(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		Component var2 = Component.get(var1);
 		Interface var3 = Component.interfaces[var1 >> 16];
 		cc_if_setonclick(var2, var3, arg0);
 	}
 
-	@ObfuscatedName("gk.mx(Lyf;S)V")
-	public static final void cc_setonclick(ClientScriptState arg0) {
+    public static final void cc_setonclick(ClientScriptState arg0) {
 		ActiveComponent var1 = arg0.secondary ? arg0.activeComponent2 : arg0.activeComponent;
 		Component var2 = var1.com;
 		Interface var3 = var1.itf;
 		cc_if_setonclick(var2, var3, arg0);
 	}
 
-	@ObfuscatedName("hf.mg(Lhf;Lhq;Lyf;I)V")
-	public static final void cc_if_setonhold(Component arg0, Interface arg1, ClientScriptState arg2) {
+    public static final void cc_if_setonhold(Component arg0, Interface arg1, ClientScriptState arg2) {
 		String var3 = (String) arg2.objectStack[--arg2.osp];
 		if (method7881(var3, arg2) != null) {
 			var3 = var3.substring(0, var3.length() - 1);
@@ -7668,24 +7316,21 @@ public class ScriptRunner {
 		arg0.hashook = true;
 	}
 
-	@ObfuscatedName("dm.me(Lyf;B)V")
-	public static final void if_setonhold(ClientScriptState arg0) {
+    public static final void if_setonhold(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		Component var2 = Component.get(var1);
 		Interface var3 = Component.interfaces[var1 >> 16];
 		cc_if_setonhold(var2, var3, arg0);
 	}
 
-	@ObfuscatedName("a.mn(Lyf;B)V")
-	public static final void cc_setonhold(ClientScriptState arg0) {
+    public static final void cc_setonhold(ClientScriptState arg0) {
 		ActiveComponent var1 = arg0.secondary ? arg0.activeComponent2 : arg0.activeComponent;
 		Component var2 = var1.com;
 		Interface var3 = var1.itf;
 		cc_if_setonhold(var2, var3, arg0);
 	}
 
-	@ObfuscatedName("uf.mv(Lhf;Lhq;Lyf;S)V")
-	public static final void cc_if_setonrelease(Component arg0, Interface arg1, ClientScriptState arg2) {
+    public static final void cc_if_setonrelease(Component arg0, Interface arg1, ClientScriptState arg2) {
 		String var3 = (String) arg2.objectStack[--arg2.osp];
 		if (method7881(var3, arg2) != null) {
 			var3 = var3.substring(0, var3.length() - 1);
@@ -7694,24 +7339,21 @@ public class ScriptRunner {
 		arg0.hashook = true;
 	}
 
-	@ObfuscatedName("ux.my(Lyf;I)V")
-	public static final void if_setonrelease(ClientScriptState arg0) {
+    public static final void if_setonrelease(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		Component var2 = Component.get(var1);
 		Interface var3 = Component.interfaces[var1 >> 16];
 		cc_if_setonrelease(var2, var3, arg0);
 	}
 
-	@ObfuscatedName("zl.md(Lyf;B)V")
-	public static final void cc_setonrelease(ClientScriptState arg0) {
+    public static final void cc_setonrelease(ClientScriptState arg0) {
 		ActiveComponent var1 = arg0.secondary ? arg0.activeComponent2 : arg0.activeComponent;
 		Component var2 = var1.com;
 		Interface var3 = var1.itf;
 		cc_if_setonrelease(var2, var3, arg0);
 	}
 
-	@ObfuscatedName("uz.mk(Lhf;Lhq;Lyf;I)V")
-	public static final void cc_if_setonmouseover(Component arg0, Interface arg1, ClientScriptState arg2) {
+    public static final void cc_if_setonmouseover(Component arg0, Interface arg1, ClientScriptState arg2) {
 		String var3 = (String) arg2.objectStack[--arg2.osp];
 		if (method7881(var3, arg2) != null) {
 			var3 = var3.substring(0, var3.length() - 1);
@@ -7720,24 +7362,21 @@ public class ScriptRunner {
 		arg0.hashook = true;
 	}
 
-	@ObfuscatedName("dd.mq(Lyf;B)V")
-	public static final void if_setonmouseover(ClientScriptState arg0) {
+    public static final void if_setonmouseover(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		Component var2 = Component.get(var1);
 		Interface var3 = Component.interfaces[var1 >> 16];
 		cc_if_setonmouseover(var2, var3, arg0);
 	}
 
-	@ObfuscatedName("ap.ms(Lyf;I)V")
-	public static final void cc_setonmouseover(ClientScriptState arg0) {
+    public static final void cc_setonmouseover(ClientScriptState arg0) {
 		ActiveComponent var1 = arg0.secondary ? arg0.activeComponent2 : arg0.activeComponent;
 		Component var2 = var1.com;
 		Interface var3 = var1.itf;
 		cc_if_setonmouseover(var2, var3, arg0);
 	}
 
-	@ObfuscatedName("ad.mp(Lhf;Lhq;Lyf;B)V")
-	public static final void cc_if_setonmouseleave(Component arg0, Interface arg1, ClientScriptState arg2) {
+    public static final void cc_if_setonmouseleave(Component arg0, Interface arg1, ClientScriptState arg2) {
 		String var3 = (String) arg2.objectStack[--arg2.osp];
 		if (method7881(var3, arg2) != null) {
 			var3 = var3.substring(0, var3.length() - 1);
@@ -7746,24 +7385,21 @@ public class ScriptRunner {
 		arg0.hashook = true;
 	}
 
-	@ObfuscatedName("fa.mo(Lyf;S)V")
-	public static final void if_setonmouseleave(ClientScriptState arg0) {
+    public static final void if_setonmouseleave(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		Component var2 = Component.get(var1);
 		Interface var3 = Component.interfaces[var1 >> 16];
 		cc_if_setonmouseleave(var2, var3, arg0);
 	}
 
-	@ObfuscatedName("zo.ml(Lyf;I)V")
-	public static final void cc_setonmouseleave(ClientScriptState arg0) {
+    public static final void cc_setonmouseleave(ClientScriptState arg0) {
 		ActiveComponent var1 = arg0.secondary ? arg0.activeComponent2 : arg0.activeComponent;
 		Component var2 = var1.com;
 		Interface var3 = var1.itf;
 		cc_if_setonmouseleave(var2, var3, arg0);
 	}
 
-	@ObfuscatedName("yv.mi(Lhf;Lhq;Lyf;I)V")
-	public static final void cc_if_setondrag(Component arg0, Interface arg1, ClientScriptState arg2) {
+    public static final void cc_if_setondrag(Component arg0, Interface arg1, ClientScriptState arg2) {
 		String var3 = (String) arg2.objectStack[--arg2.osp];
 		if (method7881(var3, arg2) != null) {
 			var3 = var3.substring(0, var3.length() - 1);
@@ -7772,24 +7408,21 @@ public class ScriptRunner {
 		arg0.hashook = true;
 	}
 
-	@ObfuscatedName("ht.mr(Lyf;B)V")
-	public static final void if_setondrag(ClientScriptState arg0) {
+    public static final void if_setondrag(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		Component var2 = Component.get(var1);
 		Interface var3 = Component.interfaces[var1 >> 16];
 		cc_if_setondrag(var2, var3, arg0);
 	}
 
-	@ObfuscatedName("xg.mz(Lyf;B)V")
-	public static final void cc_setondrag(ClientScriptState arg0) {
+    public static final void cc_setondrag(ClientScriptState arg0) {
 		ActiveComponent var1 = arg0.secondary ? arg0.activeComponent2 : arg0.activeComponent;
 		Component var2 = var1.com;
 		Interface var3 = var1.itf;
 		cc_if_setondrag(var2, var3, arg0);
 	}
 
-	@ObfuscatedName("nd.mb(Lhf;Lhq;Lyf;B)V")
-	public static final void cc_if_setontargetleave(Component arg0, Interface arg1, ClientScriptState arg2) {
+    public static final void cc_if_setontargetleave(Component arg0, Interface arg1, ClientScriptState arg2) {
 		String var3 = (String) arg2.objectStack[--arg2.osp];
 		if (method7881(var3, arg2) != null) {
 			var3 = var3.substring(0, var3.length() - 1);
@@ -7798,24 +7431,21 @@ public class ScriptRunner {
 		arg0.hashook = true;
 	}
 
-	@ObfuscatedName("sn.mu(Lyf;I)V")
-	public static final void if_setontargetleave(ClientScriptState arg0) {
+    public static final void if_setontargetleave(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		Component var2 = Component.get(var1);
 		Interface var3 = Component.interfaces[var1 >> 16];
 		cc_if_setontargetleave(var2, var3, arg0);
 	}
 
-	@ObfuscatedName("gr.mt(Lyf;I)V")
-	public static final void cc_setontargetleave(ClientScriptState arg0) {
+    public static final void cc_setontargetleave(ClientScriptState arg0) {
 		ActiveComponent var1 = arg0.secondary ? arg0.activeComponent2 : arg0.activeComponent;
 		Component var2 = var1.com;
 		Interface var3 = var1.itf;
 		cc_if_setontargetleave(var2, var3, arg0);
 	}
 
-	@ObfuscatedName("ahc.mc(Lhf;Lhq;Lyf;B)V")
-	public static final void cc_if_setonvartransmit(Component arg0, Interface arg1, ClientScriptState arg2) {
+    public static final void cc_if_setonvartransmit(Component arg0, Interface arg1, ClientScriptState arg2) {
 		String var3 = (String) arg2.objectStack[--arg2.osp];
 		int[] var4 = method7881(var3, arg2);
 		if (var4 != null) {
@@ -7826,24 +7456,21 @@ public class ScriptRunner {
 		arg0.hashook = true;
 	}
 
-	@ObfuscatedName("gw.ma(Lyf;I)V")
-	public static final void if_setonvartransmit(ClientScriptState arg0) {
+    public static final void if_setonvartransmit(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		Component var2 = Component.get(var1);
 		Interface var3 = Component.interfaces[var1 >> 16];
 		cc_if_setonvartransmit(var2, var3, arg0);
 	}
 
-	@ObfuscatedName("hw.mj(Lyf;B)V")
-	public static final void cc_setonvartransmit(ClientScriptState arg0) {
+    public static final void cc_setonvartransmit(ClientScriptState arg0) {
 		ActiveComponent var1 = arg0.secondary ? arg0.activeComponent2 : arg0.activeComponent;
 		Component var2 = var1.com;
 		Interface var3 = var1.itf;
 		cc_if_setonvartransmit(var2, var3, arg0);
 	}
 
-	@ObfuscatedName("d.mw(Lhf;Lhq;Lyf;I)V")
-	public static final void cc_if_setontimer(Component arg0, Interface arg1, ClientScriptState arg2) {
+    public static final void cc_if_setontimer(Component arg0, Interface arg1, ClientScriptState arg2) {
 		String var3 = (String) arg2.objectStack[--arg2.osp];
 		if (method7881(var3, arg2) != null) {
 			var3 = var3.substring(0, var3.length() - 1);
@@ -7852,24 +7479,21 @@ public class ScriptRunner {
 		arg0.hashook = true;
 	}
 
-	@ObfuscatedName("ea.mm(Lyf;B)V")
-	public static final void if_setontimer(ClientScriptState arg0) {
+    public static final void if_setontimer(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		Component var2 = Component.get(var1);
 		Interface var3 = Component.interfaces[var1 >> 16];
 		cc_if_setontimer(var2, var3, arg0);
 	}
 
-	@ObfuscatedName("yp.nd(Lyf;B)V")
-	public static final void cc_setontimer(ClientScriptState arg0) {
+    public static final void cc_setontimer(ClientScriptState arg0) {
 		ActiveComponent var1 = arg0.secondary ? arg0.activeComponent2 : arg0.activeComponent;
 		Component var2 = var1.com;
 		Interface var3 = var1.itf;
 		cc_if_setontimer(var2, var3, arg0);
 	}
 
-	@ObfuscatedName("jq.ne(Lhf;Lhq;Lyf;B)V")
-	public static final void cc_if_setonop(Component arg0, Interface arg1, ClientScriptState arg2) {
+    public static final void cc_if_setonop(Component arg0, Interface arg1, ClientScriptState arg2) {
 		String var3 = (String) arg2.objectStack[--arg2.osp];
 		if (method7881(var3, arg2) != null) {
 			var3 = var3.substring(0, var3.length() - 1);
@@ -7878,24 +7502,21 @@ public class ScriptRunner {
 		arg0.hashook = true;
 	}
 
-	@ObfuscatedName("tr.ny(Lyf;B)V")
-	public static final void if_setonop(ClientScriptState arg0) {
+    public static final void if_setonop(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		Component var2 = Component.get(var1);
 		Interface var3 = Component.interfaces[var1 >> 16];
 		cc_if_setonop(var2, var3, arg0);
 	}
 
-	@ObfuscatedName("vd.nm(Lyf;B)V")
-	public static final void cc_setonop(ClientScriptState arg0) {
+    public static final void cc_setonop(ClientScriptState arg0) {
 		ActiveComponent var1 = arg0.secondary ? arg0.activeComponent2 : arg0.activeComponent;
 		Component var2 = var1.com;
 		Interface var3 = var1.itf;
 		cc_if_setonop(var2, var3, arg0);
 	}
 
-	@ObfuscatedName("jw.nj(Lhf;Lhq;Lyf;B)V")
-	public static final void cc_if_setondragcomplete(Component arg0, Interface arg1, ClientScriptState arg2) {
+    public static final void cc_if_setondragcomplete(Component arg0, Interface arg1, ClientScriptState arg2) {
 		String var3 = (String) arg2.objectStack[--arg2.osp];
 		if (method7881(var3, arg2) != null) {
 			var3 = var3.substring(0, var3.length() - 1);
@@ -7904,24 +7525,21 @@ public class ScriptRunner {
 		arg0.hashook = true;
 	}
 
-	@ObfuscatedName("ty.no(Lyf;I)V")
-	public static final void if_setondragcomplete(ClientScriptState arg0) {
+    public static final void if_setondragcomplete(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		Component var2 = Component.get(var1);
 		Interface var3 = Component.interfaces[var1 >> 16];
 		cc_if_setondragcomplete(var2, var3, arg0);
 	}
 
-	@ObfuscatedName("ie.np(Lyf;B)V")
-	public static final void cc_setondragcomplete(ClientScriptState arg0) {
+    public static final void cc_setondragcomplete(ClientScriptState arg0) {
 		ActiveComponent var1 = arg0.secondary ? arg0.activeComponent2 : arg0.activeComponent;
 		Component var2 = var1.com;
 		Interface var3 = var1.itf;
 		cc_if_setondragcomplete(var2, var3, arg0);
 	}
 
-	@ObfuscatedName("afp.na(Lhf;Lhq;Lyf;I)V")
-	public static final void cc_if_setonverticalswipe(Component arg0, Interface arg1, ClientScriptState arg2) {
+    public static final void cc_if_setonverticalswipe(Component arg0, Interface arg1, ClientScriptState arg2) {
 		String var3 = (String) arg2.objectStack[--arg2.osp];
 		if (method7881(var3, arg2) != null) {
 			var3 = var3.substring(0, var3.length() - 1);
@@ -7929,24 +7547,21 @@ public class ScriptRunner {
 		method552(var3, arg2);
 	}
 
-	@ObfuscatedName("ac.ni(Lyf;I)V")
-	public static final void if_setonverticalswipe(ClientScriptState arg0) {
+    public static final void if_setonverticalswipe(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		Component var2 = Component.get(var1);
 		Interface var3 = Component.interfaces[var1 >> 16];
 		cc_if_setonverticalswipe(var2, var3, arg0);
 	}
 
-	@ObfuscatedName("vz.nb(Lyf;B)V")
-	public static final void cc_setonverticalswipe(ClientScriptState arg0) {
+    public static final void cc_setonverticalswipe(ClientScriptState arg0) {
 		ActiveComponent var1 = arg0.secondary ? arg0.activeComponent2 : arg0.activeComponent;
 		Component var2 = var1.com;
 		Interface var3 = var1.itf;
 		cc_if_setonverticalswipe(var2, var3, arg0);
 	}
 
-	@ObfuscatedName("kh.nw(Lhf;Lhq;Lyf;B)V")
-	public static final void cc_if_setonhorizontalswipe(Component arg0, Interface arg1, ClientScriptState arg2) {
+    public static final void cc_if_setonhorizontalswipe(Component arg0, Interface arg1, ClientScriptState arg2) {
 		String var3 = (String) arg2.objectStack[--arg2.osp];
 		if (method7881(var3, arg2) != null) {
 			var3 = var3.substring(0, var3.length() - 1);
@@ -7954,24 +7569,21 @@ public class ScriptRunner {
 		method552(var3, arg2);
 	}
 
-	@ObfuscatedName("nd.nx(Lyf;I)V")
-	public static final void if_setonhorizontalswipe(ClientScriptState arg0) {
+    public static final void if_setonhorizontalswipe(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		Component var2 = Component.get(var1);
 		Interface var3 = Component.interfaces[var1 >> 16];
 		cc_if_setonhorizontalswipe(var2, var3, arg0);
 	}
 
-	@ObfuscatedName("xu.nl(Lyf;I)V")
-	public static final void cc_setonhorizontalswipe(ClientScriptState arg0) {
+    public static final void cc_setonhorizontalswipe(ClientScriptState arg0) {
 		ActiveComponent var1 = arg0.secondary ? arg0.activeComponent2 : arg0.activeComponent;
 		Component var2 = var1.com;
 		Interface var3 = var1.itf;
 		cc_if_setonhorizontalswipe(var2, var3, arg0);
 	}
 
-	@ObfuscatedName("vh.ng(Lhf;Lhq;Lyf;I)V")
-	public static final void method9545(Component arg0, Interface arg1, ClientScriptState arg2) {
+    public static final void method9545(Component arg0, Interface arg1, ClientScriptState arg2) {
 		String var3 = (String) arg2.objectStack[--arg2.osp];
 		if (method7881(var3, arg2) != null) {
 			var3 = var3.substring(0, var3.length() - 1);
@@ -7980,24 +7592,21 @@ public class ScriptRunner {
 		arg0.hashook = true;
 	}
 
-	@ObfuscatedName("vb.nt(Lyf;B)V")
-	public static final void method9271(ClientScriptState arg0) {
+    public static final void method9271(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		Component var2 = Component.get(var1);
 		Interface var3 = Component.interfaces[var1 >> 16];
 		method9545(var2, var3, arg0);
 	}
 
-	@ObfuscatedName("l.nn(Lyf;B)V")
-	public static final void method253(ClientScriptState arg0) {
+    public static final void method253(ClientScriptState arg0) {
 		ActiveComponent var1 = arg0.secondary ? arg0.activeComponent2 : arg0.activeComponent;
 		Component var2 = var1.com;
 		Interface var3 = var1.itf;
 		method9545(var2, var3, arg0);
 	}
 
-	@ObfuscatedName("ji.nk(Lhf;Lhq;Lyf;I)V")
-	public static final void cc_if_setonverticalpinch(Component arg0, Interface arg1, ClientScriptState arg2) {
+    public static final void cc_if_setonverticalpinch(Component arg0, Interface arg1, ClientScriptState arg2) {
 		String var3 = (String) arg2.objectStack[--arg2.osp];
 		if (method7881(var3, arg2) != null) {
 			var3 = var3.substring(0, var3.length() - 1);
@@ -8005,24 +7614,21 @@ public class ScriptRunner {
 		method552(var3, arg2);
 	}
 
-	@ObfuscatedName("ali.nq(Lyf;I)V")
-	public static final void if_setonverticalpinch(ClientScriptState arg0) {
+    public static final void if_setonverticalpinch(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		Component var2 = Component.get(var1);
 		Interface var3 = Component.interfaces[var1 >> 16];
 		cc_if_setonverticalpinch(var2, var3, arg0);
 	}
 
-	@ObfuscatedName("tz.nr(Lyf;B)V")
-	public static final void cc_setonverticalpinch(ClientScriptState arg0) {
+    public static final void cc_setonverticalpinch(ClientScriptState arg0) {
 		ActiveComponent var1 = arg0.secondary ? arg0.activeComponent2 : arg0.activeComponent;
 		Component var2 = var1.com;
 		Interface var3 = var1.itf;
 		cc_if_setonverticalpinch(var2, var3, arg0);
 	}
 
-	@ObfuscatedName("ar.nu(Lhf;Lhq;Lyf;B)V")
-	public static final void cc_if_setonhorizontalpinch(Component arg0, Interface arg1, ClientScriptState arg2) {
+    public static final void cc_if_setonhorizontalpinch(Component arg0, Interface arg1, ClientScriptState arg2) {
 		String var3 = (String) arg2.objectStack[--arg2.osp];
 		if (method7881(var3, arg2) != null) {
 			var3 = var3.substring(0, var3.length() - 1);
@@ -8030,24 +7636,21 @@ public class ScriptRunner {
 		method552(var3, arg2);
 	}
 
-	@ObfuscatedName("z.nf(Lyf;B)V")
-	public static final void if_setonhorizontalpinch(ClientScriptState arg0) {
+    public static final void if_setonhorizontalpinch(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		Component var2 = Component.get(var1);
 		Interface var3 = Component.interfaces[var1 >> 16];
 		cc_if_setonhorizontalpinch(var2, var3, arg0);
 	}
 
-	@ObfuscatedName("cs.nz(Lyf;B)V")
-	public static final void cc_setonhorizontalpinch(ClientScriptState arg0) {
+    public static final void cc_setonhorizontalpinch(ClientScriptState arg0) {
 		ActiveComponent var1 = arg0.secondary ? arg0.activeComponent2 : arg0.activeComponent;
 		Component var2 = var1.com;
 		Interface var3 = var1.itf;
 		cc_if_setonhorizontalpinch(var2, var3, arg0);
 	}
 
-	@ObfuscatedName("xj.ns(Lhf;Lhq;Lyf;I)V")
-	public static final void method10311(Component arg0, Interface arg1, ClientScriptState arg2) {
+    public static final void method10311(Component arg0, Interface arg1, ClientScriptState arg2) {
 		String var3 = (String) arg2.objectStack[--arg2.osp];
 		if (method7881(var3, arg2) != null) {
 			var3 = var3.substring(0, var3.length() - 1);
@@ -8055,32 +7658,28 @@ public class ScriptRunner {
 		method552(var3, arg2);
 	}
 
-	@ObfuscatedName("dv.nc(Lyf;S)V")
-	public static final void method1921(ClientScriptState arg0) {
+    public static final void method1921(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		Component var2 = Component.get(var1);
 		Interface var3 = Component.interfaces[var1 >> 16];
 		method10311(var2, var3, arg0);
 	}
 
-	@ObfuscatedName("zm.nv(Lyf;I)V")
-	public static final void method13982(ClientScriptState arg0) {
+    public static final void method13982(ClientScriptState arg0) {
 		ActiveComponent var1 = arg0.secondary ? arg0.activeComponent2 : arg0.activeComponent;
 		Component var2 = var1.com;
 		Interface var3 = var1.itf;
 		method10311(var2, var3, arg0);
 	}
 
-	@ObfuscatedName("acq.nh(Lyf;I)V")
-	public static final void window_getinsets(ClientScriptState arg0) {
+    public static final void window_getinsets(ClientScriptState arg0) {
 		arg0.intStack[++arg0.isp - 1] = 0;
 		arg0.intStack[++arg0.isp - 1] = 0;
 		arg0.intStack[++arg0.isp - 1] = GameShell.canvasWid;
 		arg0.intStack[++arg0.isp - 1] = GameShell.canvasHei;
 	}
 
-	@ObfuscatedName("yx.oh(Lhf;Lhq;Lyf;I)V")
-	public static final void cc_if_setonclickrepeat(Component arg0, Interface arg1, ClientScriptState arg2) {
+    public static final void cc_if_setonclickrepeat(Component arg0, Interface arg1, ClientScriptState arg2) {
 		String var3 = (String) arg2.objectStack[--arg2.osp];
 		if (method7881(var3, arg2) != null) {
 			var3 = var3.substring(0, var3.length() - 1);
@@ -8089,24 +7688,21 @@ public class ScriptRunner {
 		arg0.hashook = true;
 	}
 
-	@ObfuscatedName("agd.oo(Lyf;I)V")
-	public static final void if_setonclickrepeat(ClientScriptState arg0) {
+    public static final void if_setonclickrepeat(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		Component var2 = Component.get(var1);
 		Interface var3 = Component.interfaces[var1 >> 16];
 		cc_if_setonclickrepeat(var2, var3, arg0);
 	}
 
-	@ObfuscatedName("ge.ol(Lyf;B)V")
-	public static final void cc_setonclickrepeat(ClientScriptState arg0) {
+    public static final void cc_setonclickrepeat(ClientScriptState arg0) {
 		ActiveComponent var1 = arg0.secondary ? arg0.activeComponent2 : arg0.activeComponent;
 		Component var2 = var1.com;
 		Interface var3 = var1.itf;
 		cc_if_setonclickrepeat(var2, var3, arg0);
 	}
 
-	@ObfuscatedName("zq.oq(Lhf;Lhq;Lyf;B)V")
-	public static final void cc_if_setonmouserepeat(Component arg0, Interface arg1, ClientScriptState arg2) {
+    public static final void cc_if_setonmouserepeat(Component arg0, Interface arg1, ClientScriptState arg2) {
 		String var3 = (String) arg2.objectStack[--arg2.osp];
 		if (method7881(var3, arg2) != null) {
 			var3 = var3.substring(0, var3.length() - 1);
@@ -8115,24 +7711,21 @@ public class ScriptRunner {
 		arg0.hashook = true;
 	}
 
-	@ObfuscatedName("hs.oi(Lyf;S)V")
-	public static final void if_setonmouserepeat(ClientScriptState arg0) {
+    public static final void if_setonmouserepeat(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		Component var2 = Component.get(var1);
 		Interface var3 = Component.interfaces[var1 >> 16];
 		cc_if_setonmouserepeat(var2, var3, arg0);
 	}
 
-	@ObfuscatedName("xz.ot(Lyf;I)V")
-	public static final void cc_setonmouserepeat(ClientScriptState arg0) {
+    public static final void cc_setonmouserepeat(ClientScriptState arg0) {
 		ActiveComponent var1 = arg0.secondary ? arg0.activeComponent2 : arg0.activeComponent;
 		Component var2 = var1.com;
 		Interface var3 = var1.itf;
 		cc_if_setonmouserepeat(var2, var3, arg0);
 	}
 
-	@ObfuscatedName("pz.ow(Lhf;Lhq;Lyf;B)V")
-	public static final void cc_if_setoninvtransmit(Component arg0, Interface arg1, ClientScriptState arg2) {
+    public static final void cc_if_setoninvtransmit(Component arg0, Interface arg1, ClientScriptState arg2) {
 		String var3 = (String) arg2.objectStack[--arg2.osp];
 		int[] var4 = method7881(var3, arg2);
 		if (var4 != null) {
@@ -8143,24 +7736,21 @@ public class ScriptRunner {
 		arg0.hashook = true;
 	}
 
-	@ObfuscatedName("aco.oa(Lyf;B)V")
-	public static final void if_setoninvtransmit(ClientScriptState arg0) {
+    public static final void if_setoninvtransmit(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		Component var2 = Component.get(var1);
 		Interface var3 = Component.interfaces[var1 >> 16];
 		cc_if_setoninvtransmit(var2, var3, arg0);
 	}
 
-	@ObfuscatedName("aax.oz(Lyf;B)V")
-	public static final void cc_setoninvtransmit(ClientScriptState arg0) {
+    public static final void cc_setoninvtransmit(ClientScriptState arg0) {
 		ActiveComponent var1 = arg0.secondary ? arg0.activeComponent2 : arg0.activeComponent;
 		Component var2 = var1.com;
 		Interface var3 = var1.itf;
 		cc_if_setoninvtransmit(var2, var3, arg0);
 	}
 
-	@ObfuscatedName("re.ob(Lhf;Lhq;Lyf;B)V")
-	public static final void cc_if_setonstattransmit(Component arg0, Interface arg1, ClientScriptState arg2) {
+    public static final void cc_if_setonstattransmit(Component arg0, Interface arg1, ClientScriptState arg2) {
 		String var3 = (String) arg2.objectStack[--arg2.osp];
 		int[] var4 = method7881(var3, arg2);
 		if (var4 != null) {
@@ -8171,24 +7761,21 @@ public class ScriptRunner {
 		arg0.hashook = true;
 	}
 
-	@ObfuscatedName("ch.op(Lyf;B)V")
-	public static final void if_setonstattransmit(ClientScriptState arg0) {
+    public static final void if_setonstattransmit(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		Component var2 = Component.get(var1);
 		Interface var3 = Component.interfaces[var1 >> 16];
 		cc_if_setonstattransmit(var2, var3, arg0);
 	}
 
-	@ObfuscatedName("cz.om(Lyf;B)V")
-	public static final void cc_setonstattransmit(ClientScriptState arg0) {
+    public static final void cc_setonstattransmit(ClientScriptState arg0) {
 		ActiveComponent var1 = arg0.secondary ? arg0.activeComponent2 : arg0.activeComponent;
 		Component var2 = var1.com;
 		Interface var3 = var1.itf;
 		cc_if_setonstattransmit(var2, var3, arg0);
 	}
 
-	@ObfuscatedName("wo.of(Lhf;Lhq;Lyf;I)V")
-	public static final void cc_if_setontargetenter(Component arg0, Interface arg1, ClientScriptState arg2) {
+    public static final void cc_if_setontargetenter(Component arg0, Interface arg1, ClientScriptState arg2) {
 		String var3 = (String) arg2.objectStack[--arg2.osp];
 		if (method7881(var3, arg2) != null) {
 			var3 = var3.substring(0, var3.length() - 1);
@@ -8197,24 +7784,21 @@ public class ScriptRunner {
 		arg0.hashook = true;
 	}
 
-	@ObfuscatedName("rm.oy(Lyf;I)V")
-	public static final void if_setontargetenter(ClientScriptState arg0) {
+    public static final void if_setontargetenter(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		Component var2 = Component.get(var1);
 		Interface var3 = Component.interfaces[var1 >> 16];
 		cc_if_setontargetenter(var2, var3, arg0);
 	}
 
-	@ObfuscatedName("l.od(Lyf;I)V")
-	public static final void cc_setontargetenter(ClientScriptState arg0) {
+    public static final void cc_setontargetenter(ClientScriptState arg0) {
 		ActiveComponent var1 = arg0.secondary ? arg0.activeComponent2 : arg0.activeComponent;
 		Component var2 = var1.com;
 		Interface var3 = var1.itf;
 		cc_if_setontargetenter(var2, var3, arg0);
 	}
 
-	@ObfuscatedName("amq.on(Lhf;Lhq;Lyf;I)V")
-	public static final void cc_if_setonscrollwheel(Component arg0, Interface arg1, ClientScriptState arg2) {
+    public static final void cc_if_setonscrollwheel(Component arg0, Interface arg1, ClientScriptState arg2) {
 		String var3 = (String) arg2.objectStack[--arg2.osp];
 		if (method7881(var3, arg2) != null) {
 			var3 = var3.substring(0, var3.length() - 1);
@@ -8223,24 +7807,21 @@ public class ScriptRunner {
 		arg0.hashook = true;
 	}
 
-	@ObfuscatedName("kv.os(Lyf;I)V")
-	public static final void if_setonscrollwheel(ClientScriptState arg0) {
+    public static final void if_setonscrollwheel(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		Component var2 = Component.get(var1);
 		Interface var3 = Component.interfaces[var1 >> 16];
 		cc_if_setonscrollwheel(var2, var3, arg0);
 	}
 
-	@ObfuscatedName("vf.og(Lyf;I)V")
-	public static final void cc_setonscrollwheel(ClientScriptState arg0) {
+    public static final void cc_setonscrollwheel(ClientScriptState arg0) {
 		ActiveComponent var1 = arg0.secondary ? arg0.activeComponent2 : arg0.activeComponent;
 		Component var2 = var1.com;
 		Interface var3 = var1.itf;
 		cc_if_setonscrollwheel(var2, var3, arg0);
 	}
 
-	@ObfuscatedName("ji.oj(Lhf;Lhq;Lyf;I)V")
-	public static final void cc_if_setonchattransmit(Component arg0, Interface arg1, ClientScriptState arg2) {
+    public static final void cc_if_setonchattransmit(Component arg0, Interface arg1, ClientScriptState arg2) {
 		String var3 = (String) arg2.objectStack[--arg2.osp];
 		if (method7881(var3, arg2) != null) {
 			var3 = var3.substring(0, var3.length() - 1);
@@ -8249,24 +7830,21 @@ public class ScriptRunner {
 		arg0.hashook = true;
 	}
 
-	@ObfuscatedName("qu.ok(Lyf;I)V")
-	public static final void if_setonchattransmit(ClientScriptState arg0) {
+    public static final void if_setonchattransmit(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		Component var2 = Component.get(var1);
 		Interface var3 = Component.interfaces[var1 >> 16];
 		cc_if_setonchattransmit(var2, var3, arg0);
 	}
 
-	@ObfuscatedName("kp.ou(Lyf;I)V")
-	public static final void cc_setonchattransmit(ClientScriptState arg0) {
+    public static final void cc_setonchattransmit(ClientScriptState arg0) {
 		ActiveComponent var1 = arg0.secondary ? arg0.activeComponent2 : arg0.activeComponent;
 		Component var2 = var1.com;
 		Interface var3 = var1.itf;
 		cc_if_setonchattransmit(var2, var3, arg0);
 	}
 
-	@ObfuscatedName("pp.oe(Lhf;Lhq;Lyf;I)V")
-	public static final void cc_if_setonkey(Component arg0, Interface arg1, ClientScriptState arg2) {
+    public static final void cc_if_setonkey(Component arg0, Interface arg1, ClientScriptState arg2) {
 		String var3 = (String) arg2.objectStack[--arg2.osp];
 		if (method7881(var3, arg2) != null) {
 			var3 = var3.substring(0, var3.length() - 1);
@@ -8275,88 +7853,77 @@ public class ScriptRunner {
 		arg0.hashook = true;
 	}
 
-	@ObfuscatedName("vh.ov(Lyf;I)V")
-	public static final void if_setonkey(ClientScriptState arg0) {
+    public static final void if_setonkey(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		Component var2 = Component.get(var1);
 		Interface var3 = Component.interfaces[var1 >> 16];
 		cc_if_setonkey(var2, var3, arg0);
 	}
 
-	@ObfuscatedName("qh.oc(Lyf;I)V")
-	public static final void cc_setonkey(ClientScriptState arg0) {
+    public static final void cc_setonkey(ClientScriptState arg0) {
 		ActiveComponent var1 = arg0.secondary ? arg0.activeComponent2 : arg0.activeComponent;
 		Component var2 = var1.com;
 		Interface var3 = var1.itf;
 		cc_if_setonkey(var2, var3, arg0);
 	}
 
-	@ObfuscatedName("iy.ox(Lyf;I)V")
-	public static final void if_setongamepadbutton(ClientScriptState arg0) {
+    public static final void if_setongamepadbutton(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		Component var2 = Component.get(var1);
 		Interface var3 = Component.interfaces[var1 >> 16];
 		cc_if_setongamepad(var2, var3, arg0);
 	}
 
-	@ObfuscatedName("tu.pt(Lyf;I)V")
-	public static final void cc_setongamepadbutton(ClientScriptState arg0) {
+    public static final void cc_setongamepadbutton(ClientScriptState arg0) {
 		ActiveComponent var1 = arg0.secondary ? arg0.activeComponent2 : arg0.activeComponent;
 		Component var2 = var1.com;
 		Interface var3 = var1.itf;
 		cc_if_setongamepad(var2, var3, arg0);
 	}
 
-	@ObfuscatedName("kr.pi(Lyf;I)V")
-	public static final void if_setongamepadbuttonheld(ClientScriptState arg0) {
+    public static final void if_setongamepadbuttonheld(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		Component var2 = Component.get(var1);
 		Interface var3 = Component.interfaces[var1 >> 16];
 		cc_if_setongamepad(var2, var3, arg0);
 	}
 
-	@ObfuscatedName("yx.pq(Lyf;I)V")
-	public static final void cc_setongamepadbuttonheld(ClientScriptState arg0) {
+    public static final void cc_setongamepadbuttonheld(ClientScriptState arg0) {
 		ActiveComponent var1 = arg0.secondary ? arg0.activeComponent2 : arg0.activeComponent;
 		Component var2 = var1.com;
 		Interface var3 = var1.itf;
 		cc_if_setongamepad(var2, var3, arg0);
 	}
 
-	@ObfuscatedName("aht.ph(Lyf;I)V")
-	public static final void if_setongamepadaxis(ClientScriptState arg0) {
+    public static final void if_setongamepadaxis(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		Component var2 = Component.get(var1);
 		Interface var3 = Component.interfaces[var1 >> 16];
 		cc_if_setongamepad(var2, var3, arg0);
 	}
 
-	@ObfuscatedName("acd.pe(Lyf;B)V")
-	public static final void cc_setongamepadaxis(ClientScriptState arg0) {
+    public static final void cc_setongamepadaxis(ClientScriptState arg0) {
 		ActiveComponent var1 = arg0.secondary ? arg0.activeComponent2 : arg0.activeComponent;
 		Component var2 = var1.com;
 		Interface var3 = var1.itf;
 		cc_if_setongamepad(var2, var3, arg0);
 	}
 
-	@ObfuscatedName("fp.pb(Lyf;I)V")
-	public static final void if_setongamepadtrigger(ClientScriptState arg0) {
+    public static final void if_setongamepadtrigger(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		Component var2 = Component.get(var1);
 		Interface var3 = Component.interfaces[var1 >> 16];
 		cc_if_setongamepad(var2, var3, arg0);
 	}
 
-	@ObfuscatedName("aib.pw(Lyf;B)V")
-	public static final void cc_setongamepadtrigger(ClientScriptState arg0) {
+    public static final void cc_setongamepadtrigger(ClientScriptState arg0) {
 		ActiveComponent var1 = arg0.secondary ? arg0.activeComponent2 : arg0.activeComponent;
 		Component var2 = var1.com;
 		Interface var3 = var1.itf;
 		cc_if_setongamepad(var2, var3, arg0);
 	}
 
-	@ObfuscatedName("bf.pk(Lhf;Lhq;Lyf;I)V")
-	public static final void cc_if_setongamepad(Component arg0, Interface arg1, ClientScriptState arg2) {
+    public static final void cc_if_setongamepad(Component arg0, Interface arg1, ClientScriptState arg2) {
 		String var3 = (String) arg2.objectStack[--arg2.osp];
 		if (method7881(var3, arg2) != null) {
 			var3 = var3.substring(0, var3.length() - 1);
@@ -8364,8 +7931,7 @@ public class ScriptRunner {
 		method552(var3, arg2);
 	}
 
-	@ObfuscatedName("et.pm(Lhf;Lhq;Lyf;I)V")
-	public static final void cc_if_setonfriendtransmit(Component arg0, Interface arg1, ClientScriptState arg2) {
+    public static final void cc_if_setonfriendtransmit(Component arg0, Interface arg1, ClientScriptState arg2) {
 		String var3 = (String) arg2.objectStack[--arg2.osp];
 		if (method7881(var3, arg2) != null) {
 			var3 = var3.substring(0, var3.length() - 1);
@@ -8374,24 +7940,21 @@ public class ScriptRunner {
 		arg0.hashook = true;
 	}
 
-	@ObfuscatedName("ss.pa(Lyf;B)V")
-	public static final void if_setonfriendtransmit(ClientScriptState arg0) {
+    public static final void if_setonfriendtransmit(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		Component var2 = Component.get(var1);
 		Interface var3 = Component.interfaces[var1 >> 16];
 		cc_if_setonfriendtransmit(var2, var3, arg0);
 	}
 
-	@ObfuscatedName("yo.pz(Lyf;B)V")
-	public static final void cc_setonfriendtransmit(ClientScriptState arg0) {
+    public static final void cc_setonfriendtransmit(ClientScriptState arg0) {
 		ActiveComponent var1 = arg0.secondary ? arg0.activeComponent2 : arg0.activeComponent;
 		Component var2 = var1.com;
 		Interface var3 = var1.itf;
 		cc_if_setonfriendtransmit(var2, var3, arg0);
 	}
 
-	@ObfuscatedName("ur.pd(Lhf;Lhq;Lyf;I)V")
-	public static final void cc_if_setonclantransmit(Component arg0, Interface arg1, ClientScriptState arg2) {
+    public static final void cc_if_setonclantransmit(Component arg0, Interface arg1, ClientScriptState arg2) {
 		String var3 = (String) arg2.objectStack[--arg2.osp];
 		if (method7881(var3, arg2) != null) {
 			var3 = var3.substring(0, var3.length() - 1);
@@ -8400,24 +7963,21 @@ public class ScriptRunner {
 		arg0.hashook = true;
 	}
 
-	@ObfuscatedName("r.pn(Lyf;I)V")
-	public static final void if_setonclantransmit(ClientScriptState arg0) {
+    public static final void if_setonclantransmit(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		Component var2 = Component.get(var1);
 		Interface var3 = Component.interfaces[var1 >> 16];
 		cc_if_setonclantransmit(var2, var3, arg0);
 	}
 
-	@ObfuscatedName("qs.px(Lyf;I)V")
-	public static final void cc_setonclantransmit(ClientScriptState arg0) {
+    public static final void cc_setonclantransmit(ClientScriptState arg0) {
 		ActiveComponent var1 = arg0.secondary ? arg0.activeComponent2 : arg0.activeComponent;
 		Component var2 = var1.com;
 		Interface var3 = var1.itf;
 		cc_if_setonclantransmit(var2, var3, arg0);
 	}
 
-	@ObfuscatedName("ib.ps(Lhf;Lhq;Lyf;B)V")
-	public static final void cc_if_setonmisctransmit(Component arg0, Interface arg1, ClientScriptState arg2) {
+    public static final void cc_if_setonmisctransmit(Component arg0, Interface arg1, ClientScriptState arg2) {
 		String var3 = (String) arg2.objectStack[--arg2.osp];
 		if (method7881(var3, arg2) != null) {
 			var3 = var3.substring(0, var3.length() - 1);
@@ -8426,24 +7986,21 @@ public class ScriptRunner {
 		arg0.hashook = true;
 	}
 
-	@ObfuscatedName("vn.pl(Lyf;I)V")
-	public static final void if_setonmisctransmit(ClientScriptState arg0) {
+    public static final void if_setonmisctransmit(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		Component var2 = Component.get(var1);
 		Interface var3 = Component.interfaces[var1 >> 16];
 		cc_if_setonmisctransmit(var2, var3, arg0);
 	}
 
-	@ObfuscatedName("hw.po(Lyf;B)V")
-	public static final void cc_setonmisctransmit(ClientScriptState arg0) {
+    public static final void cc_setonmisctransmit(ClientScriptState arg0) {
 		ActiveComponent var1 = arg0.secondary ? arg0.activeComponent2 : arg0.activeComponent;
 		Component var2 = var1.com;
 		Interface var3 = var1.itf;
 		cc_if_setonmisctransmit(var2, var3, arg0);
 	}
 
-	@ObfuscatedName("wu.pr(Lhf;Lhq;Lyf;I)V")
-	public static final void cc_if_setondialogabort(Component arg0, Interface arg1, ClientScriptState arg2) {
+    public static final void cc_if_setondialogabort(Component arg0, Interface arg1, ClientScriptState arg2) {
 		String var3 = (String) arg2.objectStack[--arg2.osp];
 		if (method7881(var3, arg2) != null) {
 			var3 = var3.substring(0, var3.length() - 1);
@@ -8452,24 +8009,21 @@ public class ScriptRunner {
 		arg0.hashook = true;
 	}
 
-	@ObfuscatedName("kn.py(Lyf;I)V")
-	public static final void if_setondialogabort(ClientScriptState arg0) {
+    public static final void if_setondialogabort(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		Component var2 = Component.get(var1);
 		Interface var3 = Component.interfaces[var1 >> 16];
 		cc_if_setondialogabort(var2, var3, arg0);
 	}
 
-	@ObfuscatedName("nf.pg(Lyf;B)V")
-	public static final void cc_setondialogabort(ClientScriptState arg0) {
+    public static final void cc_setondialogabort(ClientScriptState arg0) {
 		ActiveComponent var1 = arg0.secondary ? arg0.activeComponent2 : arg0.activeComponent;
 		Component var2 = var1.com;
 		Interface var3 = var1.itf;
 		cc_if_setondialogabort(var2, var3, arg0);
 	}
 
-	@ObfuscatedName("aov.pv(Lhf;Lhq;Lyf;I)V")
-	public static final void cc_if_setonsubchange(Component arg0, Interface arg1, ClientScriptState arg2) {
+    public static final void cc_if_setonsubchange(Component arg0, Interface arg1, ClientScriptState arg2) {
 		String var3 = (String) arg2.objectStack[--arg2.osp];
 		if (method7881(var3, arg2) != null) {
 			var3 = var3.substring(0, var3.length() - 1);
@@ -8478,24 +8032,21 @@ public class ScriptRunner {
 		arg0.hashook = true;
 	}
 
-	@ObfuscatedName("ir.pj(Lyf;S)V")
-	public static final void if_setonsubchange(ClientScriptState arg0) {
+    public static final void if_setonsubchange(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		Component var2 = Component.get(var1);
 		Interface var3 = Component.interfaces[var1 >> 16];
 		cc_if_setonsubchange(var2, var3, arg0);
 	}
 
-	@ObfuscatedName("d.pf(Lyf;I)V")
-	public static final void cc_setonsubchange(ClientScriptState arg0) {
+    public static final void cc_setonsubchange(ClientScriptState arg0) {
 		ActiveComponent var1 = arg0.secondary ? arg0.activeComponent2 : arg0.activeComponent;
 		Component var2 = var1.com;
 		Interface var3 = var1.itf;
 		cc_if_setonsubchange(var2, var3, arg0);
 	}
 
-	@ObfuscatedName("aba.pp(Lhf;Lhq;Lyf;B)V")
-	public static final void cc_if_setonstocktransmit(Component arg0, Interface arg1, ClientScriptState arg2) {
+    public static final void cc_if_setonstocktransmit(Component arg0, Interface arg1, ClientScriptState arg2) {
 		String var3 = (String) arg2.objectStack[--arg2.osp];
 		if (method7881(var3, arg2) != null) {
 			var3 = var3.substring(0, var3.length() - 1);
@@ -8504,24 +8055,21 @@ public class ScriptRunner {
 		arg0.hashook = true;
 	}
 
-	@ObfuscatedName("dn.pu(Lyf;I)V")
-	public static final void if_setonstocktransmit(ClientScriptState arg0) {
+    public static final void if_setonstocktransmit(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		Component var2 = Component.get(var1);
 		Interface var3 = Component.interfaces[var1 >> 16];
 		cc_if_setonstocktransmit(var2, var3, arg0);
 	}
 
-	@ObfuscatedName("uk.pc(Lyf;B)V")
-	public static final void cc_setonstocktransmit(ClientScriptState arg0) {
+    public static final void cc_setonstocktransmit(ClientScriptState arg0) {
 		ActiveComponent var1 = arg0.secondary ? arg0.activeComponent2 : arg0.activeComponent;
 		Component var2 = var1.com;
 		Interface var3 = var1.itf;
 		cc_if_setonstocktransmit(var2, var3, arg0);
 	}
 
-	@ObfuscatedName("jr.qp(Lhf;Lhq;Lyf;B)V")
-	public static final void cc_if_setoncamfinished(Component arg0, Interface arg1, ClientScriptState arg2) {
+    public static final void cc_if_setoncamfinished(Component arg0, Interface arg1, ClientScriptState arg2) {
 		String var3 = (String) arg2.objectStack[--arg2.osp];
 		if (method7881(var3, arg2) != null) {
 			var3 = var3.substring(0, var3.length() - 1);
@@ -8530,24 +8078,21 @@ public class ScriptRunner {
 		arg0.hashook = true;
 	}
 
-	@ObfuscatedName("a.qx(Lyf;B)V")
-	public static final void if_setoncamfinished(ClientScriptState arg0) {
+    public static final void if_setoncamfinished(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		Component var2 = Component.get(var1);
 		Interface var3 = Component.interfaces[var1 >> 16];
 		cc_if_setoncamfinished(var2, var3, arg0);
 	}
 
-	@ObfuscatedName("qz.qt(Lyf;I)V")
-	public static final void cc_setoncamfinished(ClientScriptState arg0) {
+    public static final void cc_setoncamfinished(ClientScriptState arg0) {
 		ActiveComponent var1 = arg0.secondary ? arg0.activeComponent2 : arg0.activeComponent;
 		Component var2 = var1.com;
 		Interface var3 = var1.itf;
 		cc_if_setoncamfinished(var2, var3, arg0);
 	}
 
-	@ObfuscatedName("xn.qz(Lhf;Lhq;Lyf;I)V")
-	public static final void cc_if_setonresize(Component arg0, Interface arg1, ClientScriptState arg2) {
+    public static final void cc_if_setonresize(Component arg0, Interface arg1, ClientScriptState arg2) {
 		String var3 = (String) arg2.objectStack[--arg2.osp];
 		if (method7881(var3, arg2) != null) {
 			var3 = var3.substring(0, var3.length() - 1);
@@ -8556,24 +8101,21 @@ public class ScriptRunner {
 		arg0.hashook = true;
 	}
 
-	@ObfuscatedName("ny.qg(Lyf;I)V")
-	public static final void if_setonresize(ClientScriptState arg0) {
+    public static final void if_setonresize(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		Component var2 = Component.get(var1);
 		Interface var3 = Component.interfaces[var1 >> 16];
 		cc_if_setonresize(var2, var3, arg0);
 	}
 
-	@ObfuscatedName("wy.qe(Lyf;I)V")
-	public static final void cc_setonresize(ClientScriptState arg0) {
+    public static final void cc_setonresize(ClientScriptState arg0) {
 		ActiveComponent var1 = arg0.secondary ? arg0.activeComponent2 : arg0.activeComponent;
 		Component var2 = var1.com;
 		Interface var3 = var1.itf;
 		cc_if_setonresize(var2, var3, arg0);
 	}
 
-	@ObfuscatedName("zj.ql(Lhf;Lhq;Lyf;I)V")
-	public static final void cc_if_setonvarctransmit(Component arg0, Interface arg1, ClientScriptState arg2) {
+    public static final void cc_if_setonvarctransmit(Component arg0, Interface arg1, ClientScriptState arg2) {
 		String var3 = (String) arg2.objectStack[--arg2.osp];
 		int[] var4 = method7881(var3, arg2);
 		if (var4 != null) {
@@ -8584,24 +8126,21 @@ public class ScriptRunner {
 		arg0.hashook = true;
 	}
 
-	@ObfuscatedName("pn.qj(Lyf;B)V")
-	public static final void if_setonvarctransmit(ClientScriptState arg0) {
+    public static final void if_setonvarctransmit(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		Component var2 = Component.get(var1);
 		Interface var3 = Component.interfaces[var1 >> 16];
 		cc_if_setonvarctransmit(var2, var3, arg0);
 	}
 
-	@ObfuscatedName("jm.qr(Lyf;B)V")
-	public static final void cc_setonvarctransmit(ClientScriptState arg0) {
+    public static final void cc_setonvarctransmit(ClientScriptState arg0) {
 		ActiveComponent var1 = arg0.secondary ? arg0.activeComponent2 : arg0.activeComponent;
 		Component var2 = var1.com;
 		Interface var3 = var1.itf;
 		cc_if_setonvarctransmit(var2, var3, arg0);
 	}
 
-	@ObfuscatedName("tj.qc(Lhf;Lhq;Lyf;I)V")
-	public static final void cc_if_setonvarcstrtransmit(Component arg0, Interface arg1, ClientScriptState arg2) {
+    public static final void cc_if_setonvarcstrtransmit(Component arg0, Interface arg1, ClientScriptState arg2) {
 		String var3 = (String) arg2.objectStack[--arg2.osp];
 		int[] var4 = method7881(var3, arg2);
 		if (var4 != null) {
@@ -8612,24 +8151,21 @@ public class ScriptRunner {
 		arg0.hashook = true;
 	}
 
-	@ObfuscatedName("l.qd(Lyf;I)V")
-	public static final void if_setonvarcstrtransmit(ClientScriptState arg0) {
+    public static final void if_setonvarcstrtransmit(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		Component var2 = Component.get(var1);
 		Interface var3 = Component.interfaces[var1 >> 16];
 		cc_if_setonvarcstrtransmit(var2, var3, arg0);
 	}
 
-	@ObfuscatedName("anb.qi(Lyf;I)V")
-	public static final void cc_setonvarcstrtransmit(ClientScriptState arg0) {
+    public static final void cc_setonvarcstrtransmit(ClientScriptState arg0) {
 		ActiveComponent var1 = arg0.secondary ? arg0.activeComponent2 : arg0.activeComponent;
 		Component var2 = var1.com;
 		Interface var3 = var1.itf;
 		cc_if_setonvarcstrtransmit(var2, var3, arg0);
 	}
 
-	@ObfuscatedName("ajk.qy(Lhf;Lhq;Lyf;B)V")
-	public static final void cc_if_setonopt(Component arg0, Interface arg1, ClientScriptState arg2) {
+    public static final void cc_if_setonopt(Component arg0, Interface arg1, ClientScriptState arg2) {
 		String var3 = (String) arg2.objectStack[--arg2.osp];
 		if (method7881(var3, arg2) != null) {
 			var3 = var3.substring(0, var3.length() - 1);
@@ -8638,24 +8174,21 @@ public class ScriptRunner {
 		arg0.hashook = true;
 	}
 
-	@ObfuscatedName("tu.qw(Lyf;I)V")
-	public static final void if_setonopt(ClientScriptState arg0) {
+    public static final void if_setonopt(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		Component var2 = Component.get(var1);
 		Interface var3 = Component.interfaces[var1 >> 16];
 		cc_if_setonopt(var2, var3, arg0);
 	}
 
-	@ObfuscatedName("amb.qo(Lyf;B)V")
-	public static final void cc_setonopt(ClientScriptState arg0) {
+    public static final void cc_setonopt(ClientScriptState arg0) {
 		ActiveComponent var1 = arg0.secondary ? arg0.activeComponent2 : arg0.activeComponent;
 		Component var2 = var1.com;
 		Interface var3 = var1.itf;
 		cc_if_setonopt(var2, var3, arg0);
 	}
 
-	@ObfuscatedName("ku.qm(Lhf;Lhq;Lyf;I)V")
-	public static final void cc_if_setonclansettingstransmit(Component arg0, Interface arg1, ClientScriptState arg2) {
+    public static final void cc_if_setonclansettingstransmit(Component arg0, Interface arg1, ClientScriptState arg2) {
 		String var3 = (String) arg2.objectStack[--arg2.osp];
 		if (method7881(var3, arg2) != null) {
 			var3 = var3.substring(0, var3.length() - 1);
@@ -8664,24 +8197,21 @@ public class ScriptRunner {
 		arg0.hashook = true;
 	}
 
-	@ObfuscatedName("acd.qq(Lyf;I)V")
-	public static final void if_setonclansettingstransmit(ClientScriptState arg0) {
+    public static final void if_setonclansettingstransmit(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		Component var2 = Component.get(var1);
 		Interface var3 = Component.interfaces[var1 >> 16];
 		cc_if_setonclansettingstransmit(var2, var3, arg0);
 	}
 
-	@ObfuscatedName("qd.qf(Lyf;I)V")
-	public static final void cc_setonclansettingstransmit(ClientScriptState arg0) {
+    public static final void cc_setonclansettingstransmit(ClientScriptState arg0) {
 		ActiveComponent var1 = arg0.secondary ? arg0.activeComponent2 : arg0.activeComponent;
 		Component var2 = var1.com;
 		Interface var3 = var1.itf;
 		cc_if_setonclansettingstransmit(var2, var3, arg0);
 	}
 
-	@ObfuscatedName("xt.qu(Lhf;Lhq;Lyf;I)V")
-	public static final void cc_if_setonclanchanneltransmit(Component arg0, Interface arg1, ClientScriptState arg2) {
+    public static final void cc_if_setonclanchanneltransmit(Component arg0, Interface arg1, ClientScriptState arg2) {
 		String var3 = (String) arg2.objectStack[--arg2.osp];
 		if (method7881(var3, arg2) != null) {
 			var3 = var3.substring(0, var3.length() - 1);
@@ -8690,24 +8220,21 @@ public class ScriptRunner {
 		arg0.hashook = true;
 	}
 
-	@ObfuscatedName("vj.qs(Lyf;B)V")
-	public static final void if_setonclanchanneltransmit(ClientScriptState arg0) {
+    public static final void if_setonclanchanneltransmit(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		Component var2 = Component.get(var1);
 		Interface var3 = Component.interfaces[var1 >> 16];
 		cc_if_setonclanchanneltransmit(var2, var3, arg0);
 	}
 
-	@ObfuscatedName("yx.qa(Lyf;I)V")
-	public static final void cc_setonclanchanneltransmit(ClientScriptState arg0) {
+    public static final void cc_setonclanchanneltransmit(ClientScriptState arg0) {
 		ActiveComponent var1 = arg0.secondary ? arg0.activeComponent2 : arg0.activeComponent;
 		Component var2 = var1.com;
 		Interface var3 = var1.itf;
 		cc_if_setonclanchanneltransmit(var2, var3, arg0);
 	}
 
-	@ObfuscatedName("acg.qh(Lhf;Lhq;Lyf;I)V")
-	public static final void cc_if_setonvarclantransmit(Component arg0, Interface arg1, ClientScriptState arg2) {
+    public static final void cc_if_setonvarclantransmit(Component arg0, Interface arg1, ClientScriptState arg2) {
 		String var3 = (String) arg2.objectStack[--arg2.osp];
 		if (method7881(var3, arg2) != null) {
 			var3 = var3.substring(0, var3.length() - 1);
@@ -8716,24 +8243,21 @@ public class ScriptRunner {
 		arg0.hashook = true;
 	}
 
-	@ObfuscatedName("fg.qv(Lyf;B)V")
-	public static final void if_setonvarclantransmit(ClientScriptState arg0) {
+    public static final void if_setonvarclantransmit(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		Component var2 = Component.get(var1);
 		Interface var3 = Component.interfaces[var1 >> 16];
 		cc_if_setonvarclantransmit(var2, var3, arg0);
 	}
 
-	@ObfuscatedName("su.qk(Lyf;I)V")
-	public static final void cc_setonvarclantransmit(ClientScriptState arg0) {
+    public static final void cc_setonvarclantransmit(ClientScriptState arg0) {
 		ActiveComponent var1 = arg0.secondary ? arg0.activeComponent2 : arg0.activeComponent;
 		Component var2 = var1.com;
 		Interface var3 = var1.itf;
 		cc_if_setonvarclantransmit(var2, var3, arg0);
 	}
 
-	@ObfuscatedName("ap.qn(Lhf;Lhq;Lyf;B)V")
-	public static final void cc_if_setonplayergrouptransmit(Component arg0, Interface arg1, ClientScriptState arg2) {
+    public static final void cc_if_setonplayergrouptransmit(Component arg0, Interface arg1, ClientScriptState arg2) {
 		String var3 = (String) arg2.objectStack[--arg2.osp];
 		if (method7881(var3, arg2) != null) {
 			var3 = var3.substring(0, var3.length() - 1);
@@ -8742,24 +8266,21 @@ public class ScriptRunner {
 		arg0.hashook = true;
 	}
 
-	@ObfuscatedName("aej.qb(Lyf;B)V")
-	public static final void if_setonplayergrouptransmit(ClientScriptState arg0) {
+    public static final void if_setonplayergrouptransmit(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		Component var2 = Component.get(var1);
 		Interface var3 = Component.interfaces[var1 >> 16];
 		cc_if_setonplayergrouptransmit(var2, var3, arg0);
 	}
 
-	@ObfuscatedName("io.rw(Lyf;I)V")
-	public static final void cc_setonplayergrouptransmit(ClientScriptState arg0) {
+    public static final void cc_setonplayergrouptransmit(ClientScriptState arg0) {
 		ActiveComponent var1 = arg0.secondary ? arg0.activeComponent2 : arg0.activeComponent;
 		Component var2 = var1.com;
 		Interface var3 = var1.itf;
 		cc_if_setonplayergrouptransmit(var2, var3, arg0);
 	}
 
-	@ObfuscatedName("yo.rf(Lhf;Lhq;Lyf;I)V")
-	public static final void cc_if_setonplayergroupvarptransmit(Component arg0, Interface arg1, ClientScriptState arg2) {
+    public static final void cc_if_setonplayergroupvarptransmit(Component arg0, Interface arg1, ClientScriptState arg2) {
 		String var3 = (String) arg2.objectStack[--arg2.osp];
 		if (method7881(var3, arg2) != null) {
 			var3 = var3.substring(0, var3.length() - 1);
@@ -8768,24 +8289,21 @@ public class ScriptRunner {
 		arg0.hashook = true;
 	}
 
-	@ObfuscatedName("v.rv(Lyf;B)V")
-	public static final void if_setonplayergroupvarptransmit(ClientScriptState arg0) {
+    public static final void if_setonplayergroupvarptransmit(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		Component var2 = Component.get(var1);
 		Interface var3 = Component.interfaces[var1 >> 16];
 		cc_if_setonplayergroupvarptransmit(var2, var3, arg0);
 	}
 
-	@ObfuscatedName("at.rh(Lyf;I)V")
-	public static final void cc_setonplayergroupvarptransmit(ClientScriptState arg0) {
+    public static final void cc_setonplayergroupvarptransmit(ClientScriptState arg0) {
 		ActiveComponent var1 = arg0.secondary ? arg0.activeComponent2 : arg0.activeComponent;
 		Component var2 = var1.com;
 		Interface var3 = var1.itf;
 		cc_if_setonplayergroupvarptransmit(var2, var3, arg0);
 	}
 
-	@ObfuscatedName("kd.ra(Lhf;Lhq;Lyf;B)V")
-	public static final void cc_if_setoncameraupdatetransmit(Component arg0, Interface arg1, ClientScriptState arg2) {
+    public static final void cc_if_setoncameraupdatetransmit(Component arg0, Interface arg1, ClientScriptState arg2) {
 		String var3 = (String) arg2.objectStack[--arg2.osp];
 		if (method7881(var3, arg2) != null) {
 			var3 = var3.substring(0, var3.length() - 1);
@@ -8794,66 +8312,57 @@ public class ScriptRunner {
 		arg0.hashook = true;
 	}
 
-	@ObfuscatedName("kh.rx(Lyf;I)V")
-	public static final void if_setoncameraupdatetransmit(ClientScriptState arg0) {
+    public static final void if_setoncameraupdatetransmit(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		Component var2 = Component.get(var1);
 		Interface var3 = Component.interfaces[var1 >> 16];
 		cc_if_setoncameraupdatetransmit(var2, var3, arg0);
 	}
 
-	@ObfuscatedName("gd.ry(Lyf;B)V")
-	public static final void cc_setoncameraupdatetransmit(ClientScriptState arg0) {
+    public static final void cc_setoncameraupdatetransmit(ClientScriptState arg0) {
 		ActiveComponent var1 = arg0.secondary ? arg0.activeComponent2 : arg0.activeComponent;
 		Component var2 = var1.com;
 		Interface var3 = var1.itf;
 		cc_if_setoncameraupdatetransmit(var2, var3, arg0);
 	}
 
-	@ObfuscatedName("fl.rg(Lyf;I)V")
-	public static final void cc_getx(ClientScriptState arg0) {
+    public static final void cc_getx(ClientScriptState arg0) {
 		ActiveComponent var1 = arg0.secondary ? arg0.activeComponent2 : arg0.activeComponent;
 		Component var2 = var1.com;
 		arg0.intStack[++arg0.isp - 1] = var2.x;
 	}
 
-	@ObfuscatedName("vq.rz(Lyf;I)V")
-	public static final void cc_gety(ClientScriptState arg0) {
+    public static final void cc_gety(ClientScriptState arg0) {
 		ActiveComponent var1 = arg0.secondary ? arg0.activeComponent2 : arg0.activeComponent;
 		Component var2 = var1.com;
 		arg0.intStack[++arg0.isp - 1] = var2.y;
 	}
 
-	@ObfuscatedName("aqc.re(Lyf;I)V")
-	public static final void cc_getwidth(ClientScriptState arg0) {
+    public static final void cc_getwidth(ClientScriptState arg0) {
 		ActiveComponent var1 = arg0.secondary ? arg0.activeComponent2 : arg0.activeComponent;
 		Component var2 = var1.com;
 		arg0.intStack[++arg0.isp - 1] = var2.width;
 	}
 
-	@ObfuscatedName("fu.rt(Lyf;I)V")
-	public static final void cc_getheight(ClientScriptState arg0) {
+    public static final void cc_getheight(ClientScriptState arg0) {
 		ActiveComponent var1 = arg0.secondary ? arg0.activeComponent2 : arg0.activeComponent;
 		Component var2 = var1.com;
 		arg0.intStack[++arg0.isp - 1] = var2.height;
 	}
 
-	@ObfuscatedName("ac.rl(Lyf;B)V")
-	public static final void cc_gethide(ClientScriptState arg0) {
+    public static final void cc_gethide(ClientScriptState arg0) {
 		ActiveComponent var1 = arg0.secondary ? arg0.activeComponent2 : arg0.activeComponent;
 		Component var2 = var1.com;
 		arg0.intStack[++arg0.isp - 1] = var2.hide ? 1 : 0;
 	}
 
-	@ObfuscatedName("tb.rc(Lyf;B)V")
-	public static final void cc_getlayer(ClientScriptState arg0) {
+    public static final void cc_getlayer(ClientScriptState arg0) {
 		ActiveComponent var1 = arg0.secondary ? arg0.activeComponent2 : arg0.activeComponent;
 		Component var2 = var1.com;
 		arg0.intStack[++arg0.isp - 1] = var2.layer;
 	}
 
-	@ObfuscatedName("ez.rr(Lyf;I)V")
-	public static final void cc_getparentlayer(ClientScriptState arg0) {
+    public static final void cc_getparentlayer(ClientScriptState arg0) {
 		ActiveComponent var1 = arg0.secondary ? arg0.activeComponent2 : arg0.activeComponent;
 		Component var2 = var1.com;
 		Interface var3 = var1.itf;
@@ -8861,106 +8370,91 @@ public class ScriptRunner {
 		arg0.intStack[++arg0.isp - 1] = var4 == null ? -1 : var4.parentlayer;
 	}
 
-	@ObfuscatedName("sq.rd(Lyf;I)V")
-	public static final void cc_getcolour(ClientScriptState arg0) {
+    public static final void cc_getcolour(ClientScriptState arg0) {
 		ActiveComponent var1 = arg0.secondary ? arg0.activeComponent2 : arg0.activeComponent;
 		Component var2 = var1.com;
 		arg0.intStack[++arg0.isp - 1] = var2.colour;
 	}
 
-	@ObfuscatedName("iy.rn(Lyf;I)V")
-	public static final void cc_getscrollx(ClientScriptState arg0) {
+    public static final void cc_getscrollx(ClientScriptState arg0) {
 		ActiveComponent var1 = arg0.secondary ? arg0.activeComponent2 : arg0.activeComponent;
 		Component var2 = var1.com;
 		arg0.intStack[++arg0.isp - 1] = var2.scrollx;
 	}
 
-	@ObfuscatedName("cy.rb(Lyf;I)V")
-	public static final void cc_getscrolly(ClientScriptState arg0) {
+    public static final void cc_getscrolly(ClientScriptState arg0) {
 		ActiveComponent var1 = arg0.secondary ? arg0.activeComponent2 : arg0.activeComponent;
 		Component var2 = var1.com;
 		arg0.intStack[++arg0.isp - 1] = var2.scrolly;
 	}
 
-	@ObfuscatedName("sh.ru(Lyf;I)V")
-	public static final void cc_gettext(ClientScriptState arg0) {
+    public static final void cc_gettext(ClientScriptState arg0) {
 		ActiveComponent var1 = arg0.secondary ? arg0.activeComponent2 : arg0.activeComponent;
 		Component var2 = var1.com;
 		arg0.objectStack[++arg0.osp - 1] = var2.text;
 	}
 
-	@ObfuscatedName("tj.sv(Lyf;I)V")
-	public static final void cc_getscrollwidth(ClientScriptState arg0) {
+    public static final void cc_getscrollwidth(ClientScriptState arg0) {
 		ActiveComponent var1 = arg0.secondary ? arg0.activeComponent2 : arg0.activeComponent;
 		Component var2 = var1.com;
 		arg0.intStack[++arg0.isp - 1] = var2.scrollwidth;
 	}
 
-	@ObfuscatedName("xv.sw(Lyf;I)V")
-	public static final void cc_getscrollheight(ClientScriptState arg0) {
+    public static final void cc_getscrollheight(ClientScriptState arg0) {
 		ActiveComponent var1 = arg0.secondary ? arg0.activeComponent2 : arg0.activeComponent;
 		Component var2 = var1.com;
 		arg0.intStack[++arg0.isp - 1] = var2.scrollheight;
 	}
 
-	@ObfuscatedName("nk.ss(Lyf;I)V")
-	public static final void cc_getmodelzoom(ClientScriptState arg0) {
+    public static final void cc_getmodelzoom(ClientScriptState arg0) {
 		ActiveComponent var1 = arg0.secondary ? arg0.activeComponent2 : arg0.activeComponent;
 		Component var2 = var1.com;
 		arg0.intStack[++arg0.isp - 1] = var2.modelzoom;
 	}
 
-	@ObfuscatedName("hi.sx(Lyf;I)V")
-	public static final void cc_getmodelangle_x(ClientScriptState arg0) {
+    public static final void cc_getmodelangle_x(ClientScriptState arg0) {
 		ActiveComponent var1 = arg0.secondary ? arg0.activeComponent2 : arg0.activeComponent;
 		Component var2 = var1.com;
 		arg0.intStack[++arg0.isp - 1] = var2.modelangle_x;
 	}
 
-	@ObfuscatedName("ajd.sm(Lyf;B)V")
-	public static final void cc_getmodelangle_z(ClientScriptState arg0) {
+    public static final void cc_getmodelangle_z(ClientScriptState arg0) {
 		ActiveComponent var1 = arg0.secondary ? arg0.activeComponent2 : arg0.activeComponent;
 		Component var2 = var1.com;
 		arg0.intStack[++arg0.isp - 1] = var2.modelangle_z;
 	}
 
-	@ObfuscatedName("zd.sk(Lyf;B)V")
-	public static final void cc_getmodelangle_y(ClientScriptState arg0) {
+    public static final void cc_getmodelangle_y(ClientScriptState arg0) {
 		ActiveComponent var1 = arg0.secondary ? arg0.activeComponent2 : arg0.activeComponent;
 		Component var2 = var1.com;
 		arg0.intStack[++arg0.isp - 1] = var2.modelangle_y;
 	}
 
-	@ObfuscatedName("gc.si(Lyf;I)V")
-	public static final void cc_gettrans(ClientScriptState arg0) {
+    public static final void cc_gettrans(ClientScriptState arg0) {
 		ActiveComponent var1 = arg0.secondary ? arg0.activeComponent2 : arg0.activeComponent;
 		Component var2 = var1.com;
 		arg0.intStack[++arg0.isp - 1] = var2.trans;
 	}
 
-	@ObfuscatedName("sf.se(Lyf;I)V")
-	public static final void cc_getmodelxof(ClientScriptState arg0) {
+    public static final void cc_getmodelxof(ClientScriptState arg0) {
 		ActiveComponent var1 = arg0.secondary ? arg0.activeComponent2 : arg0.activeComponent;
 		Component var2 = var1.com;
 		arg0.intStack[++arg0.isp - 1] = var2.modelxof;
 	}
 
-	@ObfuscatedName("ns.sn(Lyf;I)V")
-	public static final void cc_getmodelyof(ClientScriptState arg0) {
+    public static final void cc_getmodelyof(ClientScriptState arg0) {
 		ActiveComponent var1 = arg0.secondary ? arg0.activeComponent2 : arg0.activeComponent;
 		Component var2 = var1.com;
 		arg0.intStack[++arg0.isp - 1] = var2.modelyof;
 	}
 
-	@ObfuscatedName("dc.sr(Lyf;I)V")
-	public static final void cc_getgraphic(ClientScriptState arg0) {
+    public static final void cc_getgraphic(ClientScriptState arg0) {
 		ActiveComponent var1 = arg0.secondary ? arg0.activeComponent2 : arg0.activeComponent;
 		Component var2 = var1.com;
 		arg0.intStack[++arg0.isp - 1] = var2.graphic;
 	}
 
-	@ObfuscatedName("iw.sq(Lyf;I)V")
-	public static final void cc_param(ClientScriptState arg0) {
+    public static final void cc_param(ClientScriptState arg0) {
 		ActiveComponent var1 = arg0.secondary ? arg0.activeComponent2 : arg0.activeComponent;
 		Component var2 = var1.com;
 		int var3 = arg0.intStack[--arg0.isp];
@@ -8972,29 +8466,25 @@ public class ScriptRunner {
 		}
 	}
 
-	@ObfuscatedName("rb.sh(Lyf;I)V")
-	public static final void cc_get2dangle(ClientScriptState arg0) {
+    public static final void cc_get2dangle(ClientScriptState arg0) {
 		ActiveComponent var1 = arg0.secondary ? arg0.activeComponent2 : arg0.activeComponent;
 		Component var2 = var1.com;
 		arg0.intStack[++arg0.isp - 1] = var2.angle2d;
 	}
 
-	@ObfuscatedName("th.st(Lyf;I)V")
-	public static final void cc_getmodel(ClientScriptState arg0) {
+    public static final void cc_getmodel(ClientScriptState arg0) {
 		ActiveComponent var1 = arg0.secondary ? arg0.activeComponent2 : arg0.activeComponent;
 		Component var2 = var1.com;
 		arg0.intStack[++arg0.isp - 1] = var2.modelkind == 1 ? var2.model : -1;
 	}
 
-	@ObfuscatedName("ace.sl(Lyf;I)V")
-	public static final void cc_getfontgraphic(ClientScriptState arg0) {
+    public static final void cc_getfontgraphic(ClientScriptState arg0) {
 		ActiveComponent var1 = arg0.secondary ? arg0.activeComponent2 : arg0.activeComponent;
 		Component var2 = var1.com;
 		arg0.intStack[++arg0.isp - 1] = var2.textfont;
 	}
 
-	@ObfuscatedName("ane.sp(Lyf;I)V")
-	public static final void cc_getgraphicdimensions(ClientScriptState arg0) {
+    public static final void cc_getgraphicdimensions(ClientScriptState arg0) {
 		ActiveComponent var1 = arg0.secondary ? arg0.activeComponent2 : arg0.activeComponent;
 		Component var2 = var1.com;
 		int var3 = -1;
@@ -9008,22 +8498,19 @@ public class ScriptRunner {
 		arg0.intStack[++arg0.isp - 1] = var4;
 	}
 
-	@ObfuscatedName("bc.su(Lyf;I)V")
-	public static final void cc_getfontmetrics(ClientScriptState arg0) {
+    public static final void cc_getfontmetrics(ClientScriptState arg0) {
 		ActiveComponent var1 = arg0.secondary ? arg0.activeComponent2 : arg0.activeComponent;
 		Component var2 = var1.com;
 		arg0.intStack[++arg0.isp - 1] = var2.textfont;
 	}
 
-	@ObfuscatedName("rm.sd(Lyf;S)V")
-	public static final void cc_getinvobject(ClientScriptState arg0) {
+    public static final void cc_getinvobject(ClientScriptState arg0) {
 		ActiveComponent var1 = arg0.secondary ? arg0.activeComponent2 : arg0.activeComponent;
 		Component var2 = var1.com;
 		arg0.intStack[++arg0.isp - 1] = var2.invobject;
 	}
 
-	@ObfuscatedName("va.sz(Lyf;I)V")
-	public static final void cc_getinvcount(ClientScriptState arg0) {
+    public static final void cc_getinvcount(ClientScriptState arg0) {
 		ActiveComponent var1 = arg0.secondary ? arg0.activeComponent2 : arg0.activeComponent;
 		Component var2 = var1.com;
 		if (var2.invobject == -1) {
@@ -9033,22 +8520,19 @@ public class ScriptRunner {
 		}
 	}
 
-	@ObfuscatedName("fw.sf(Lyf;B)V")
-	public static final void cc_getid(ClientScriptState arg0) {
+    public static final void cc_getid(ClientScriptState arg0) {
 		ActiveComponent var1 = arg0.secondary ? arg0.activeComponent2 : arg0.activeComponent;
 		Component var2 = var1.com;
 		arg0.intStack[++arg0.isp - 1] = var2.id;
 	}
 
-	@ObfuscatedName("dd.sy(Lyf;B)V")
-	public static final void cc_gettargetmask(ClientScriptState arg0) {
+    public static final void cc_gettargetmask(ClientScriptState arg0) {
 		ActiveComponent var1 = arg0.secondary ? arg0.activeComponent2 : arg0.activeComponent;
 		Component var2 = var1.com;
 		arg0.intStack[++arg0.isp - 1] = Client.method17197(var2).method17691();
 	}
 
-	@ObfuscatedName("ww.sa(Lyf;B)V")
-	public static final void cc_getop(ClientScriptState arg0) {
+    public static final void cc_getop(ClientScriptState arg0) {
 		ActiveComponent var1 = arg0.secondary ? arg0.activeComponent2 : arg0.activeComponent;
 		Component var2 = var1.com;
 		int var3 = arg0.intStack[--arg0.isp];
@@ -9060,8 +8544,7 @@ public class ScriptRunner {
 		}
 	}
 
-	@ObfuscatedName("sf.sb(Lyf;I)V")
-	public static final void cc_getopbase(ClientScriptState arg0) {
+    public static final void cc_getopbase(ClientScriptState arg0) {
 		ActiveComponent var1 = arg0.secondary ? arg0.activeComponent2 : arg0.activeComponent;
 		Component var2 = var1.com;
 		if (var2.opbase == null) {
@@ -9071,8 +8554,7 @@ public class ScriptRunner {
 		}
 	}
 
-	@ObfuscatedName("agy.sj(Lhf;Lyf;I)V")
-	public static final void cc_if_callonresize(Component arg0, ClientScriptState arg1) {
+    public static final void cc_if_callonresize(Component arg0, ClientScriptState arg1) {
 		if (arg1.nestedCount >= 10) {
 			throw new RuntimeException();
 		} else if (arg0.onresize != null) {
@@ -9084,22 +8566,19 @@ public class ScriptRunner {
 		}
 	}
 
-	@ObfuscatedName("ka.so(Lyf;B)V")
-	public static final void if_callonresize(ClientScriptState arg0) {
+    public static final void if_callonresize(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		Component var2 = Component.get(var1);
 		cc_if_callonresize(var2, arg0);
 	}
 
-	@ObfuscatedName("sn.sc(Lyf;I)V")
-	public static final void cc_callonresize(ClientScriptState arg0) {
+    public static final void cc_callonresize(ClientScriptState arg0) {
 		ActiveComponent var1 = arg0.secondary ? arg0.activeComponent2 : arg0.activeComponent;
 		Component var2 = var1.com;
 		cc_if_callonresize(var2, arg0);
 	}
 
-	@ObfuscatedName("pu.sg(Lhf;Lyf;I)V")
-	public static final void cc_if_getcharindexatpos(Component arg0, ClientScriptState arg1) {
+    public static final void cc_if_getcharindexatpos(Component arg0, ClientScriptState arg1) {
 		FontMetrics var2 = arg0.method3943(Client.fontProvider, Client.fontFactory);
 		int var3 = arg1.intStack[--arg1.isp];
 		int var4 = arg1.intStack[--arg1.isp];
@@ -9107,22 +8586,19 @@ public class ScriptRunner {
 		arg1.intStack[++arg1.isp - 1] = var5;
 	}
 
-	@ObfuscatedName("xh.tu(Lyf;I)V")
-	public static final void if_getcharindexatpos(ClientScriptState arg0) {
+    public static final void if_getcharindexatpos(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		Component var2 = Component.get(var1);
 		cc_if_getcharindexatpos(var2, arg0);
 	}
 
-	@ObfuscatedName("ge.ta(Lyf;S)V")
-	public static final void cc_getcharindexatpos(ClientScriptState arg0) {
+    public static final void cc_getcharindexatpos(ClientScriptState arg0) {
 		ActiveComponent var1 = arg0.secondary ? arg0.activeComponent2 : arg0.activeComponent;
 		Component var2 = var1.com;
 		cc_if_getcharindexatpos(var2, arg0);
 	}
 
-	@ObfuscatedName("dm.tr(Lhf;Lyf;B)V")
-	public static final void cc_if_getcharposatindex(Component arg0, ClientScriptState arg1) {
+    public static final void cc_if_getcharposatindex(Component arg0, ClientScriptState arg1) {
 		FontMetrics var2 = arg0.method3943(Client.fontProvider, Client.fontFactory);
 		int var3 = arg1.intStack[--arg1.isp];
 		Point var4 = var2.getCharPosAtIndex(arg0.text, arg0.width, arg0.field2229, var3, DefaultSprites.field10302);
@@ -9130,27 +8606,23 @@ public class ScriptRunner {
 		arg1.intStack[++arg1.isp - 1] = var4.y;
 	}
 
-	@ObfuscatedName("wi.tc(Lyf;I)V")
-	public static final void if_getcharposatindex(ClientScriptState arg0) {
+    public static final void if_getcharposatindex(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		Component var2 = Component.get(var1);
 		cc_if_getcharposatindex(var2, arg0);
 	}
 
-	@ObfuscatedName("pp.tj(Lyf;I)V")
-	public static final void cc_getcharposatindex(ClientScriptState arg0) {
+    public static final void cc_getcharposatindex(ClientScriptState arg0) {
 		ActiveComponent var1 = arg0.secondary ? arg0.activeComponent2 : arg0.activeComponent;
 		Component var2 = var1.com;
 		cc_if_getcharposatindex(var2, arg0);
 	}
 
-	@ObfuscatedName("kt.te(B)J")
-	public static final long method5390() {
+    public static final long method5390() {
 		return (long) (++field8209 - 1) << 32 | 0xFFFFFFFFL;
 	}
 
-	@ObfuscatedName("mj.ti(Lhf;IIFIIIIIIB)V")
-	public static void method5921(Component arg0, int arg1, int arg2, float arg3, int arg4, int arg5, int arg6, int arg7, int arg8, int arg9) {
+    public static void method5921(Component arg0, int arg1, int arg2, float arg3, int arg4, int arg5, int arg6, int arg7, int arg8, int arg9) {
 		if (arg0.customisation == null) {
 			NPCType var10 = (NPCType) Client.npcTypeList.list(arg0.model);
 			arg0.customisation = new NPCTypeCustomisation(var10, true);
@@ -9159,8 +8631,7 @@ public class ScriptRunner {
 		arg0.customisation.method4528(arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9);
 	}
 
-	@ObfuscatedName("du.tm(Lhf;IIB)V")
-	public static void method2088(Component arg0, int arg1, int arg2) {
+    public static void method2088(Component arg0, int arg1, int arg2) {
 		if (arg0.customisation == null) {
 			NPCType var3 = (NPCType) Client.npcTypeList.list(arg0.model);
 			arg0.customisation = new NPCTypeCustomisation(var3, false);
@@ -9169,8 +8640,7 @@ public class ScriptRunner {
 		arg0.customisation.method4529(arg1, arg2);
 	}
 
-	@ObfuscatedName("cc.ty(Lhf;Lyf;I)V")
-	public static final void cc_if_npc_setcustombodymodel(Component arg0, ClientScriptState arg1) {
+    public static final void cc_if_npc_setcustombodymodel(Component arg0, ClientScriptState arg1) {
 		int var2 = arg1.intStack[--arg1.isp];
 		int var3 = arg1.intStack[--arg1.isp] - 1;
 		if (arg0.modelkind != 6) {
@@ -9183,22 +8653,19 @@ public class ScriptRunner {
 		}
 	}
 
-	@ObfuscatedName("ho.tb(Lyf;I)V")
-	public static final void if_npc_setcustombodymodel(ClientScriptState arg0) {
+    public static final void if_npc_setcustombodymodel(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		Component var2 = Component.get(var1);
 		cc_if_npc_setcustombodymodel(var2, arg0);
 	}
 
-	@ObfuscatedName("i.tn(Lyf;I)V")
-	public static final void cc_npc_setcustombodymodel(ClientScriptState arg0) {
+    public static final void cc_npc_setcustombodymodel(ClientScriptState arg0) {
 		ActiveComponent var1 = arg0.secondary ? arg0.activeComponent2 : arg0.activeComponent;
 		Component var2 = var1.com;
 		cc_if_npc_setcustombodymodel(var2, arg0);
 	}
 
-	@ObfuscatedName("wi.tw(Lhf;Lyf;B)V")
-	public static final void cc_if_npc_setcustombodymodel_transformed(Component arg0, ClientScriptState arg1) {
+    public static final void cc_if_npc_setcustombodymodel_transformed(Component arg0, ClientScriptState arg1) {
 		arg1.isp -= 10;
 		int var2 = arg1.intStack[arg1.isp] - 1;
 		int var3 = arg1.intStack[arg1.isp + 1];
@@ -9221,22 +8688,19 @@ public class ScriptRunner {
 		}
 	}
 
-	@ObfuscatedName("yr.tz(Lyf;I)V")
-	public static final void if_npc_setcustombodymodel_transformed(ClientScriptState arg0) {
+    public static final void if_npc_setcustombodymodel_transformed(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		Component var2 = Component.get(var1);
 		cc_if_npc_setcustombodymodel_transformed(var2, arg0);
 	}
 
-	@ObfuscatedName("vc.tf(Lyf;I)V")
-	public static final void cc_npc_setcustombodymodel_transformed(ClientScriptState arg0) {
+    public static final void cc_npc_setcustombodymodel_transformed(ClientScriptState arg0) {
 		ActiveComponent var1 = arg0.secondary ? arg0.activeComponent2 : arg0.activeComponent;
 		Component var2 = var1.com;
 		cc_if_npc_setcustombodymodel_transformed(var2, arg0);
 	}
 
-	@ObfuscatedName("dm.th(Lhf;Lyf;B)V")
-	public static final void cc_if_npc_setcustomheadmodel(Component arg0, ClientScriptState arg1) {
+    public static final void cc_if_npc_setcustomheadmodel(Component arg0, ClientScriptState arg1) {
 		int var2 = arg1.intStack[--arg1.isp];
 		int var3 = arg1.intStack[--arg1.isp] - 1;
 		if (arg0.modelkind != 2) {
@@ -9249,22 +8713,19 @@ public class ScriptRunner {
 		}
 	}
 
-	@ObfuscatedName("ii.tt(Lyf;I)V")
-	public static final void if_npc_setcustomheadmodel(ClientScriptState arg0) {
+    public static final void if_npc_setcustomheadmodel(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		Component var2 = Component.get(var1);
 		cc_if_npc_setcustomheadmodel(var2, arg0);
 	}
 
-	@ObfuscatedName("hq.ts(Lyf;I)V")
-	public static final void cc_npc_setcustomheadmodel(ClientScriptState arg0) {
+    public static final void cc_npc_setcustomheadmodel(ClientScriptState arg0) {
 		ActiveComponent var1 = arg0.secondary ? arg0.activeComponent2 : arg0.activeComponent;
 		Component var2 = var1.com;
 		cc_if_npc_setcustomheadmodel(var2, arg0);
 	}
 
-	@ObfuscatedName("aov.tp(Lhf;Lyf;S)V")
-	public static final void cc_if_npc_setcustomrecol(Component arg0, ClientScriptState arg1) {
+    public static final void cc_if_npc_setcustomrecol(Component arg0, ClientScriptState arg1) {
 		int var2 = arg1.intStack[--arg1.isp];
 		int var3 = arg1.intStack[--arg1.isp] - 1;
 		int var4 = var3;
@@ -9289,22 +8750,19 @@ public class ScriptRunner {
 		Client.requestRedrawComponent(arg0);
 	}
 
-	@ObfuscatedName("acr.tv(Lyf;I)V")
-	public static final void if_npc_setcustomrecol(ClientScriptState arg0) {
+    public static final void if_npc_setcustomrecol(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		Component var2 = Component.get(var1);
 		cc_if_npc_setcustomrecol(var2, arg0);
 	}
 
-	@ObfuscatedName("kn.to(Lyf;I)V")
-	public static final void cc_npc_setcustomrecol(ClientScriptState arg0) {
+    public static final void cc_npc_setcustomrecol(ClientScriptState arg0) {
 		ActiveComponent var1 = arg0.secondary ? arg0.activeComponent2 : arg0.activeComponent;
 		Component var2 = var1.com;
 		cc_if_npc_setcustomrecol(var2, arg0);
 	}
 
-	@ObfuscatedName("ajf.tg(Lhf;Lyf;I)V")
-	public static final void cc_if_npc_setcustomretex(Component arg0, ClientScriptState arg1) {
+    public static final void cc_if_npc_setcustomretex(Component arg0, ClientScriptState arg1) {
 		int var2 = arg1.intStack[--arg1.isp];
 		int var3 = arg1.intStack[--arg1.isp] - 1;
 		int var4 = var3;
@@ -9329,64 +8787,55 @@ public class ScriptRunner {
 		Client.requestRedrawComponent(arg0);
 	}
 
-	@ObfuscatedName("kh.tq(Lyf;B)V")
-	public static final void if_npc_setcustomretex(ClientScriptState arg0) {
+    public static final void if_npc_setcustomretex(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		Component var2 = Component.get(var1);
 		cc_if_npc_setcustomretex(var2, arg0);
 	}
 
-	@ObfuscatedName("f.tx(Lyf;S)V")
-	public static final void cc_npc_setcustomretex(ClientScriptState arg0) {
+    public static final void cc_npc_setcustomretex(ClientScriptState arg0) {
 		ActiveComponent var1 = arg0.secondary ? arg0.activeComponent2 : arg0.activeComponent;
 		Component var2 = var1.com;
 		cc_if_npc_setcustomretex(var2, arg0);
 	}
 
-	@ObfuscatedName("sy.tk(Lyf;I)V")
-	public static final void if_getx(ClientScriptState arg0) {
+    public static final void if_getx(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		Component var2 = Component.get(var1);
 		arg0.intStack[++arg0.isp - 1] = var2.x;
 	}
 
-	@ObfuscatedName("as.tl(Lyf;S)V")
-	public static final void if_gety(ClientScriptState arg0) {
+    public static final void if_gety(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		Component var2 = Component.get(var1);
 		arg0.intStack[++arg0.isp - 1] = var2.y;
 	}
 
-	@ObfuscatedName("hv.td(Lyf;I)V")
-	public static final void if_getwidth(ClientScriptState arg0) {
+    public static final void if_getwidth(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		Component var2 = Component.get(var1);
 		arg0.intStack[++arg0.isp - 1] = var2.width;
 	}
 
-	@ObfuscatedName("vm.ul(Lyf;I)V")
-	public static final void if_getheight(ClientScriptState arg0) {
+    public static final void if_getheight(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		Component var2 = Component.get(var1);
 		arg0.intStack[++arg0.isp - 1] = var2.height;
 	}
 
-	@ObfuscatedName("wi.um(Lyf;I)V")
-	public static final void if_gethide(ClientScriptState arg0) {
+    public static final void if_gethide(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		Component var2 = Component.get(var1);
 		arg0.intStack[++arg0.isp - 1] = Client.ifIsVisible(var2) ? 1 : 0;
 	}
 
-	@ObfuscatedName("ack.uq(Lyf;I)V")
-	public static final void if_getlayer(ClientScriptState arg0) {
+    public static final void if_getlayer(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		Component var2 = Component.get(var1);
 		arg0.intStack[++arg0.isp - 1] = var2.layer;
 	}
 
-	@ObfuscatedName("wf.uc(Lyf;I)V")
-	public static final void if_getparentlayer(ClientScriptState arg0) {
+    public static final void if_getparentlayer(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		Component var2 = Component.get(var1);
 		Interface var3 = Component.interfaces[var1 >>> 16];
@@ -9394,127 +8843,109 @@ public class ScriptRunner {
 		arg0.intStack[++arg0.isp - 1] = var4 == null ? -1 : var4.parentlayer;
 	}
 
-	@ObfuscatedName("ng.ui(Lyf;I)V")
-	public static final void if_getcolour(ClientScriptState arg0) {
+    public static final void if_getcolour(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		Component var2 = Component.get(var1);
 		arg0.intStack[++arg0.isp - 1] = var2.colour;
 	}
 
-	@ObfuscatedName("q.ua(Lyf;B)V")
-	public static final void if_getscrollx(ClientScriptState arg0) {
+    public static final void if_getscrollx(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		Component var2 = Component.get(var1);
 		arg0.intStack[++arg0.isp - 1] = var2.scrollx;
 	}
 
-	@ObfuscatedName("ef.uf(Lyf;I)V")
-	public static final void if_getscrolly(ClientScriptState arg0) {
+    public static final void if_getscrolly(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		Component var2 = Component.get(var1);
 		arg0.intStack[++arg0.isp - 1] = var2.scrolly;
 	}
 
-	@ObfuscatedName("jv.ug(Lyf;I)V")
-	public static final void if_getscrollwidth(ClientScriptState arg0) {
+    public static final void if_getscrollwidth(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		Component var2 = Component.get(var1);
 		arg0.intStack[++arg0.isp - 1] = var2.scrollwidth;
 	}
 
-	@ObfuscatedName("ain.ub(Lyf;B)V")
-	public static final void if_getscrollheight(ClientScriptState arg0) {
+    public static final void if_getscrollheight(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		Component var2 = Component.get(var1);
 		arg0.intStack[++arg0.isp - 1] = var2.scrollheight;
 	}
 
-	@ObfuscatedName("zt.uj(Lyf;S)V")
-	public static final void if_getmodelzoom(ClientScriptState arg0) {
+    public static final void if_getmodelzoom(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		Component var2 = Component.get(var1);
 		arg0.intStack[++arg0.isp - 1] = var2.modelzoom;
 	}
 
-	@ObfuscatedName("aat.ut(Lyf;S)V")
-	public static final void if_getmodelangle_x(ClientScriptState arg0) {
+    public static final void if_getmodelangle_x(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		Component var2 = Component.get(var1);
 		arg0.intStack[++arg0.isp - 1] = var2.modelangle_x;
 	}
 
-	@ObfuscatedName("acp.uk(Lyf;B)V")
-	public static final void if_getmodelangle_z(ClientScriptState arg0) {
+    public static final void if_getmodelangle_z(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		Component var2 = Component.get(var1);
 		arg0.intStack[++arg0.isp - 1] = var2.modelangle_z;
 	}
 
-	@ObfuscatedName("gv.uy(Lyf;B)V")
-	public static final void if_getmodelangle_y(ClientScriptState arg0) {
+    public static final void if_getmodelangle_y(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		Component var2 = Component.get(var1);
 		arg0.intStack[++arg0.isp - 1] = var2.modelangle_y;
 	}
 
-	@ObfuscatedName("zt.uv(Lyf;I)V")
-	public static final void if_gettrans(ClientScriptState arg0) {
+    public static final void if_gettrans(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		Component var2 = Component.get(var1);
 		arg0.intStack[++arg0.isp - 1] = var2.trans;
 	}
 
-	@ObfuscatedName("ar.uw(Lyf;I)V")
-	public static final void if_getmodelxof(ClientScriptState arg0) {
+    public static final void if_getmodelxof(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		Component var2 = Component.get(var1);
 		arg0.intStack[++arg0.isp - 1] = var2.modelxof;
 	}
 
-	@ObfuscatedName("agy.up(Lyf;I)V")
-	public static final void if_getmodelyof(ClientScriptState arg0) {
+    public static final void if_getmodelyof(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		Component var2 = Component.get(var1);
 		arg0.intStack[++arg0.isp - 1] = var2.modelyof;
 	}
 
-	@ObfuscatedName("cj.ud(Lyf;B)V")
-	public static final void if_getgraphic(ClientScriptState arg0) {
+    public static final void if_getgraphic(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		Component var2 = Component.get(var1);
 		arg0.intStack[++arg0.isp - 1] = var2.graphic;
 	}
 
-	@ObfuscatedName("dz.uz(Lyf;I)V")
-	public static final void if_gettext(ClientScriptState arg0) {
+    public static final void if_gettext(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		Component var2 = Component.get(var1);
 		arg0.objectStack[++arg0.osp - 1] = var2.text;
 	}
 
-	@ObfuscatedName("po.uh(Lyf;I)V")
-	public static final void if_get2dangle(ClientScriptState arg0) {
+    public static final void if_get2dangle(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		Component var2 = Component.get(var1);
 		arg0.intStack[++arg0.isp - 1] = var2.angle2d;
 	}
 
-	@ObfuscatedName("kv.us(Lyf;I)V")
-	public static final void if_getmodel(ClientScriptState arg0) {
+    public static final void if_getmodel(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		Component var2 = Component.get(var1);
 		arg0.intStack[++arg0.isp - 1] = var2.modelkind == 1 ? var2.model : -1;
 	}
 
-	@ObfuscatedName("iw.ux(Lyf;B)V")
-	public static final void if_getfontgraphic(ClientScriptState arg0) {
+    public static final void if_getfontgraphic(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		Component var2 = Component.get(var1);
 		arg0.intStack[++arg0.isp - 1] = var2.textfont;
 	}
 
-	@ObfuscatedName("ac.ur(Lyf;I)V")
-	public static final void if_getgraphicdimensions(ClientScriptState arg0) {
+    public static final void if_getgraphicdimensions(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		Component var2 = Component.get(var1);
 		int var3 = -1;
@@ -9528,21 +8959,18 @@ public class ScriptRunner {
 		arg0.intStack[++arg0.isp - 1] = var4;
 	}
 
-	@ObfuscatedName("vg.uu(Lyf;I)V")
-	public static final void if_getfontmetrics(ClientScriptState arg0) {
+    public static final void if_getfontmetrics(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		Component var2 = Component.get(var1);
 		arg0.intStack[++arg0.isp - 1] = var2.textfont;
 	}
 
-	@ObfuscatedName("to.uo(Lyf;S)V")
-	public static final void if_getinvobject(ClientScriptState arg0) {
+    public static final void if_getinvobject(ClientScriptState arg0) {
 		Component var1 = Component.get(arg0.intStack[--arg0.isp]);
 		arg0.intStack[++arg0.isp - 1] = var1.invobject;
 	}
 
-	@ObfuscatedName("h.un(Lyf;I)V")
-	public static final void if_getinvcount(ClientScriptState arg0) {
+    public static final void if_getinvcount(ClientScriptState arg0) {
 		Component var1 = Component.get(arg0.intStack[--arg0.isp]);
 		if (var1.invobject == -1) {
 			arg0.intStack[++arg0.isp - 1] = 0;
@@ -9551,8 +8979,7 @@ public class ScriptRunner {
 		}
 	}
 
-	@ObfuscatedName("gz.ue(Lyf;B)V")
-	public static final void if_hassub(ClientScriptState arg0) {
+    public static final void if_hassub(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		SubInterface var2 = (SubInterface) Client.openedSubInterfaces.get((long) var1);
 		if (var2 == null) {
@@ -9562,8 +8989,7 @@ public class ScriptRunner {
 		}
 	}
 
-	@ObfuscatedName("hp.vq(Lyf;I)V")
-	public static final void if_getnextsubid(ClientScriptState arg0) {
+    public static final void if_getnextsubid(ClientScriptState arg0) {
 		Component var1 = Component.get(arg0.intStack[--arg0.isp]);
 		if (var1.subcomponents == null) {
 			arg0.intStack[++arg0.isp - 1] = 0;
@@ -9579,8 +9005,7 @@ public class ScriptRunner {
 		arg0.intStack[++arg0.isp - 1] = var2;
 	}
 
-	@ObfuscatedName("hy.vx(Lyf;I)V")
-	public static final void if_hassubmodal_hassuboverlay(ClientScriptState arg0) {
+    public static final void if_hassubmodal_hassuboverlay(ClientScriptState arg0) {
 		arg0.isp -= 2;
 		int var1 = arg0.intStack[arg0.isp];
 		int var2 = arg0.intStack[arg0.isp + 1];
@@ -9592,25 +9017,21 @@ public class ScriptRunner {
 		}
 	}
 
-	@ObfuscatedName("jx.vb(Lyf;B)V")
-	public static final void if_hassubmodal(ClientScriptState arg0) {
+    public static final void if_hassubmodal(ClientScriptState arg0) {
 		if_hassubmodal_hassuboverlay(arg0);
 	}
 
-	@ObfuscatedName("vc.vl(Lyf;B)V")
-	public static final void if_hassuboverlay(ClientScriptState arg0) {
+    public static final void if_hassuboverlay(ClientScriptState arg0) {
 		if_hassubmodal_hassuboverlay(arg0);
 	}
 
-	@ObfuscatedName("agk.vr(Lyf;I)V")
-	public static final void if_gettargetmask(ClientScriptState arg0) {
+    public static final void if_gettargetmask(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		Component var2 = Component.get(var1);
 		arg0.intStack[++arg0.isp - 1] = Client.method17197(var2).method17691();
 	}
 
-	@ObfuscatedName("va.vo(Lyf;I)V")
-	public static final void if_getop(ClientScriptState arg0) {
+    public static final void if_getop(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		Component var2 = Component.get(var1);
 		int var3 = arg0.intStack[--arg0.isp];
@@ -9622,8 +9043,7 @@ public class ScriptRunner {
 		}
 	}
 
-	@ObfuscatedName("fv.vv(Lyf;I)V")
-	public static final void if_getopbase(ClientScriptState arg0) {
+    public static final void if_getopbase(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		Component var2 = Component.get(var1);
 		if (var2.opbase == null) {
@@ -9633,19 +9053,16 @@ public class ScriptRunner {
 		}
 	}
 
-	@ObfuscatedName("kf.vw(Lyf;B)V")
-	public static final void mes(ClientScriptState arg0) {
+    public static final void mes(ClientScriptState arg0) {
 		String var1 = (String) arg0.objectStack[--arg0.osp];
 		ChatHistory.method4943(var1);
 	}
 
-	@ObfuscatedName("aau.vt(Lyf;I)V")
-	public static final void if_close(ClientScriptState arg0) {
+    public static final void if_close(ClientScriptState arg0) {
 		Client.ifClose(true);
 	}
 
-	@ObfuscatedName("mz.vu(Lyf;B)V")
-	public static final void resume_countdialog(ClientScriptState arg0) {
+    public static final void resume_countdialog(ClientScriptState arg0) {
 		String var1 = (String) arg0.objectStack[--arg0.osp];
 		int var2 = 0;
 		if (StringTools.method9836(var1)) {
@@ -9656,8 +9073,7 @@ public class ScriptRunner {
 		Client.gameConnection.queue(var3);
 	}
 
-	@ObfuscatedName("yj.vi(Lyf;I)V")
-	public static final void resume_namedialog(ClientScriptState arg0) {
+    public static final void resume_namedialog(ClientScriptState arg0) {
 		String var1 = (String) arg0.objectStack[--arg0.osp];
 		ClientMessage var2 = ClientMessage.createMessage(ClientProt.RESUME_P_NAMEDIALOG, Client.gameConnection.randomOut);
 		var2.buf.p1(var1.length() + 1);
@@ -9665,8 +9081,7 @@ public class ScriptRunner {
 		Client.gameConnection.queue(var2);
 	}
 
-	@ObfuscatedName("qh.va(Lyf;I)V")
-	public static final void resume_stringdialog(ClientScriptState arg0) {
+    public static final void resume_stringdialog(ClientScriptState arg0) {
 		String var1 = (String) arg0.objectStack[--arg0.osp];
 		ClientMessage var2 = ClientMessage.createMessage(ClientProt.RESUME_P_STRINGDIALOG, Client.gameConnection.randomOut);
 		var2.buf.p1(var1.length() + 1);
@@ -9674,21 +9089,18 @@ public class ScriptRunner {
 		Client.gameConnection.queue(var2);
 	}
 
-	@ObfuscatedName("sq.vs(Lyf;I)V")
-	public static final void abort_dialog(ClientScriptState arg0) {
+    public static final void abort_dialog(ClientScriptState arg0) {
 		ClientMessage var1 = ClientMessage.createMessage(ClientProt.ABORT_P_DIALOG, Client.gameConnection.randomOut);
 		Client.gameConnection.queue(var1);
 	}
 
-	@ObfuscatedName("ub.vy(Lyf;S)V")
-	public static final void opplayer(ClientScriptState arg0) {
+    public static final void opplayer(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		String var2 = (String) arg0.objectStack[--arg0.osp];
 		Client.opplayer(var1, var2);
 	}
 
-	@ObfuscatedName("ge.ve(Lyf;I)V")
-	public static final void if_dragpickup(ClientScriptState arg0) {
+    public static final void if_dragpickup(ClientScriptState arg0) {
 		arg0.isp -= 3;
 		int var1 = arg0.intStack[arg0.isp];
 		int var2 = arg0.intStack[arg0.isp + 1];
@@ -9697,8 +9109,7 @@ public class ScriptRunner {
 		Client.ifDragPickup(var4, var1, var2);
 	}
 
-	@ObfuscatedName("qe.vm(Lyf;I)V")
-	public static final void cc_dragpickup(ClientScriptState arg0) {
+    public static final void cc_dragpickup(ClientScriptState arg0) {
 		arg0.isp -= 2;
 		int var1 = arg0.intStack[arg0.isp];
 		int var2 = arg0.intStack[arg0.isp + 1];
@@ -9706,24 +9117,21 @@ public class ScriptRunner {
 		Client.ifDragPickup(var3.com, var1, var2);
 	}
 
-	@ObfuscatedName("na.vg(Lyf;B)V")
-	public static final void resume_objdialog(ClientScriptState arg0) {
+    public static final void resume_objdialog(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		ClientMessage var2 = ClientMessage.createMessage(ClientProt.RESUME_P_OBJDIALOG, Client.gameConnection.randomOut);
 		var2.buf.p2(var1);
 		Client.gameConnection.queue(var2);
 	}
 
-	@ObfuscatedName("acb.vp(Lyf;S)V")
-	public static final void if_opensubclient(ClientScriptState arg0) {
+    public static final void if_opensubclient(ClientScriptState arg0) {
 		arg0.isp -= 2;
 		int var1 = arg0.intStack[arg0.isp];
 		int var2 = arg0.intStack[arg0.isp + 1];
 		Client.ifOpenSub(var1, new SubInterface(var2, 3), null, true);
 	}
 
-	@ObfuscatedName("aar.vd(Lyf;S)V")
-	public static final void if_closesubclient(ClientScriptState arg0) {
+    public static final void if_closesubclient(ClientScriptState arg0) {
 		arg0.isp--;
 		int var1 = arg0.intStack[arg0.isp];
 		SubInterface var2 = (SubInterface) Client.openedSubInterfaces.get((long) var1);
@@ -9732,13 +9140,11 @@ public class ScriptRunner {
 		}
 	}
 
-	@ObfuscatedName("hv.vh(Lyf;B)V")
-	public static final void opplayert(ClientScriptState arg0) {
+    public static final void opplayert(ClientScriptState arg0) {
 		Client.opplayert((String) arg0.objectStack[--arg0.osp]);
 	}
 
-	@ObfuscatedName("ah.vz(Lyf;I)V")
-	public static final void mes_typed(ClientScriptState arg0) {
+    public static final void mes_typed(ClientScriptState arg0) {
 		arg0.isp -= 2;
 		int var1 = arg0.intStack[arg0.isp];
 		int var2 = arg0.intStack[arg0.isp + 1];
@@ -9752,24 +9158,21 @@ public class ScriptRunner {
 		}
 	}
 
-	@ObfuscatedName("nk.vj(Lyf;B)V")
-	public static final void setup_messagebox(ClientScriptState arg0) {
+    public static final void setup_messagebox(ClientScriptState arg0) {
 		arg0.isp -= 11;
 		LoadingScreenAlignmentX[] var1 = LoadingScreenAlignmentX.method13948();
 		LoadingScreenAlignmentY[] var2 = LoadingScreenAlignmentY.method2774();
 		MessageBox.setup(var1[arg0.intStack[arg0.isp]], var2[arg0.intStack[arg0.isp + 1]], arg0.intStack[arg0.isp + 2], arg0.intStack[arg0.isp + 3], arg0.intStack[arg0.isp + 4], arg0.intStack[arg0.isp + 5], arg0.intStack[arg0.isp + 6], arg0.intStack[arg0.isp + 7], arg0.intStack[arg0.isp + 8], arg0.intStack[arg0.isp + 9], arg0.intStack[arg0.isp + 10]);
 	}
 
-	@ObfuscatedName("uv.vc(Lyf;I)V")
-	public static final void resume_hsldialog(ClientScriptState arg0) {
+    public static final void resume_hsldialog(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		ClientMessage var2 = ClientMessage.createMessage(ClientProt.RESUME_P_HSLDIALOG, Client.gameConnection.randomOut);
 		var2.buf.p2(var1);
 		Client.gameConnection.queue(var2);
 	}
 
-	@ObfuscatedName("qa.vn(Lyf;S)V")
-	public static final void resume_clanforumqfcdialog(ClientScriptState arg0) {
+    public static final void resume_clanforumqfcdialog(ClientScriptState arg0) {
 		String var1 = (String) arg0.objectStack[--arg0.osp];
 		ClientMessage var2 = ClientMessage.createMessage(ClientProt.RESUME_P_CLANFORUMQFCDIALOG, Client.gameConnection.randomOut);
 		var2.buf.p1(var1.length() + 1);
@@ -9777,8 +9180,7 @@ public class ScriptRunner {
 		Client.gameConnection.queue(var2);
 	}
 
-	@ObfuscatedName("qo.vf(Lyf;I)V")
-	public static final void sound_synth(ClientScriptState arg0) {
+    public static final void sound_synth(ClientScriptState arg0) {
 		arg0.isp -= 3;
 		int var1 = arg0.intStack[arg0.isp];
 		int var2 = arg0.intStack[arg0.isp + 1];
@@ -9788,19 +9190,16 @@ public class ScriptRunner {
 		Client.audioApi.playSound(SoundType.field1828, var1, var2, var4, SubBussType.SFX_SUB.getId(), SoundShape.field1835, 0.0F, 0.0F, null, 0, var5, var3);
 	}
 
-	@ObfuscatedName("jf.vk(Lyf;I)V")
-	public static final void sound_song(ClientScriptState arg0) {
+    public static final void sound_song(ClientScriptState arg0) {
 		Client.audioApi.playSong(arg0.intStack[--arg0.isp]);
 	}
 
-	@ObfuscatedName("o.wn(Lyf;I)V")
-	public static final void sound_jingle(ClientScriptState arg0) {
+    public static final void sound_jingle(ClientScriptState arg0) {
 		arg0.isp -= 2;
 		Client.audioApi.playSong(arg0.intStack[arg0.isp], 255);
 	}
 
-	@ObfuscatedName("e.wa(Lyf;I)V")
-	public static final void sound_synth_volume(ClientScriptState arg0) {
+    public static final void sound_synth_volume(ClientScriptState arg0) {
 		arg0.isp -= 4;
 		int var1 = arg0.intStack[arg0.isp];
 		int var2 = arg0.intStack[arg0.isp + 1];
@@ -9810,20 +9209,17 @@ public class ScriptRunner {
 		Client.audioApi.playSound(SoundType.field1828, var1, var2, var4, SubBussType.SFX_SUB.getId(), SoundShape.field1835, 0.0F, 0.0F, null, 0, var5, var3);
 	}
 
-	@ObfuscatedName("ahb.wo(Lyf;I)V")
-	public static final void sound_song_volume(ClientScriptState arg0) {
+    public static final void sound_song_volume(ClientScriptState arg0) {
 		arg0.isp -= 3;
 		Client.audioApi.playSong(arg0.intStack[arg0.isp], arg0.intStack[arg0.isp + 1]);
 	}
 
-	@ObfuscatedName("aj.wu(Lyf;I)V")
-	public static final void sound_jingle_volume(ClientScriptState arg0) {
+    public static final void sound_jingle_volume(ClientScriptState arg0) {
 		arg0.isp -= 3;
 		Client.audioApi.playSong(arg0.intStack[arg0.isp], arg0.intStack[arg0.isp + 2]);
 	}
 
-	@ObfuscatedName("ev.wk(Lyf;I)V")
-	public static final void sound_vorbis_volume(ClientScriptState arg0) {
+    public static final void sound_vorbis_volume(ClientScriptState arg0) {
 		arg0.isp -= 4;
 		int var1 = arg0.intStack[arg0.isp];
 		int var2 = arg0.intStack[arg0.isp + 1];
@@ -9833,8 +9229,7 @@ public class ScriptRunner {
 		Client.audioApi.playSound(SoundType.field1828, var1, var2, var4, SubBussType.SFX_SUB.getId(), SoundShape.field1835, 0.0F, 0.0F, null, 0, var5, var3);
 	}
 
-	@ObfuscatedName("tg.wz(Lyf;B)V")
-	public static final void sound_speech_volume(ClientScriptState arg0) {
+    public static final void sound_speech_volume(ClientScriptState arg0) {
 		arg0.isp -= 4;
 		int var1 = arg0.intStack[arg0.isp];
 		int var2 = arg0.intStack[arg0.isp + 1];
@@ -9844,8 +9239,7 @@ public class ScriptRunner {
 		Client.audioApi.playSound(SoundType.field1828, var1, var2, var4, SubBussType.SFX_SUB.getId(), SoundShape.field1835, 0.0F, 0.0F, null, 0, var5, var3);
 	}
 
-	@ObfuscatedName("iq.wj(Lyf;I)V")
-	public static final void sound_synth_rate(ClientScriptState arg0) {
+    public static final void sound_synth_rate(ClientScriptState arg0) {
 		arg0.isp -= 5;
 		int var1 = arg0.intStack[arg0.isp];
 		int var2 = arg0.intStack[arg0.isp + 1];
@@ -9855,8 +9249,7 @@ public class ScriptRunner {
 		Client.audioApi.playSound(SoundType.field1828, var1, var2, var4, SubBussType.SFX_SUB.getId(), SoundShape.field1835, 0.0F, 0.0F, null, 0, var5, var3);
 	}
 
-	@ObfuscatedName("ahp.we(Lyf;I)V")
-	public static final void sound_vorbis_rate(ClientScriptState arg0) {
+    public static final void sound_vorbis_rate(ClientScriptState arg0) {
 		arg0.isp -= 5;
 		int var1 = arg0.intStack[arg0.isp];
 		int var2 = arg0.intStack[arg0.isp + 1];
@@ -9866,13 +9259,11 @@ public class ScriptRunner {
 		Client.audioApi.playSound(SoundType.field1828, var1, var2, var4, SubBussType.SFX_SUB.getId(), SoundShape.field1835, 0.0F, 0.0F, null, 0, var5, var3);
 	}
 
-	@ObfuscatedName("pw.wr(Lyf;I)V")
-	public static final void sound_song_stop(ClientScriptState arg0) {
+    public static final void sound_song_stop(ClientScriptState arg0) {
 		Client.audioApi.stopSong();
 	}
 
-	@ObfuscatedName("sk.wl(Lyf;I)V")
-	public static final void sound_vorbis_volume_rate_group(ClientScriptState arg0) {
+    public static final void sound_vorbis_volume_rate_group(ClientScriptState arg0) {
 		arg0.isp -= 6;
 		int var1 = arg0.intStack[arg0.isp];
 		int var2 = arg0.intStack[arg0.isp + 1];
@@ -9886,22 +9277,19 @@ public class ScriptRunner {
 		}
 	}
 
-	@ObfuscatedName("wb.wp(Lyf;I)V")
-	public static final void sound_group_start(ClientScriptState arg0) {
+    public static final void sound_group_start(ClientScriptState arg0) {
 		arg0.isp--;
 		int var1 = arg0.intStack[arg0.isp];
 		Client.audioApi.startGroup(var1);
 	}
 
-	@ObfuscatedName("hx.wv(Lyf;S)V")
-	public static final void sound_group_stop(ClientScriptState arg0) {
+    public static final void sound_group_stop(ClientScriptState arg0) {
 		arg0.isp--;
 		int var1 = arg0.intStack[arg0.isp];
 		Client.audioApi.stopGroup(var1);
 	}
 
-	@ObfuscatedName("a.wg(Lyf;B)V")
-	public static final void sound_mixbuss_add(ClientScriptState arg0) {
+    public static final void sound_mixbuss_add(ClientScriptState arg0) {
 		arg0.isp -= 3;
 		int var1 = arg0.intStack[arg0.isp];
 		int var2 = arg0.intStack[arg0.isp + 1];
@@ -9909,64 +9297,55 @@ public class ScriptRunner {
 		Client.audioApi.addBuss(var1, var2, var3);
 	}
 
-	@ObfuscatedName("ge.wb(Lyf;I)V")
-	public static final void sound_mixbuss_setlevel(ClientScriptState arg0) {
+    public static final void sound_mixbuss_setlevel(ClientScriptState arg0) {
 		arg0.isp -= 2;
 		int var1 = arg0.intStack[arg0.isp];
 		int var2 = arg0.intStack[arg0.isp + 1];
 		Client.audioApi.setMixBussLevel(var1, var2);
 	}
 
-	@ObfuscatedName("nv.wq(Lyf;B)V")
-	public static final void sound_distancefocusfilter_setparams(ClientScriptState arg0) {
+    public static final void sound_distancefocusfilter_setparams(ClientScriptState arg0) {
 		arg0.isp -= 5;
 	}
 
-	@ObfuscatedName("ey.wm(Lyf;I)V")
-	public static final void clientclock(ClientScriptState arg0) {
+    public static final void clientclock(ClientScriptState arg0) {
 		arg0.intStack[++arg0.isp - 1] = Client.loopCycle;
 	}
 
-	@ObfuscatedName("ru.wf(Lyf;S)V")
-	public static final void inv_getobj(ClientScriptState arg0) {
+    public static final void inv_getobj(ClientScriptState arg0) {
 		arg0.isp -= 2;
 		int var1 = arg0.intStack[arg0.isp];
 		int var2 = arg0.intStack[arg0.isp + 1];
 		arg0.intStack[++arg0.isp - 1] = ClientInvCache.getObj(var1, var2, false);
 	}
 
-	@ObfuscatedName("alm.wc(Lyf;B)V")
-	public static final void inv_getnum(ClientScriptState arg0) {
+    public static final void inv_getnum(ClientScriptState arg0) {
 		arg0.isp -= 2;
 		int var1 = arg0.intStack[arg0.isp];
 		int var2 = arg0.intStack[arg0.isp + 1];
 		arg0.intStack[++arg0.isp - 1] = ClientInvCache.getNum(var1, var2, false);
 	}
 
-	@ObfuscatedName("iz.wt(Lyf;I)V")
-	public static final void inv_total(ClientScriptState arg0) {
+    public static final void inv_total(ClientScriptState arg0) {
 		arg0.isp -= 2;
 		int var1 = arg0.intStack[arg0.isp];
 		int var2 = arg0.intStack[arg0.isp + 1];
 		arg0.intStack[++arg0.isp - 1] = ClientInvCache.total(var1, var2, false);
 	}
 
-	@ObfuscatedName("tg.wx(Lyf;S)V")
-	public static final void inv_totalcat(ClientScriptState arg0) {
+    public static final void inv_totalcat(ClientScriptState arg0) {
 		arg0.isp -= 2;
 		int var1 = arg0.intStack[arg0.isp];
 		int var2 = arg0.intStack[arg0.isp + 1];
 		arg0.intStack[++arg0.isp - 1] = ClientInvCache.totalCat(var1, var2, false);
 	}
 
-	@ObfuscatedName("yc.wh(Lyf;I)V")
-	public static final void inv_size(ClientScriptState arg0) {
+    public static final void inv_size(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		arg0.intStack[++arg0.isp - 1] = ((InvType) Client.invTypeList.list(var1)).size;
 	}
 
-	@ObfuscatedName("su.wd(Lyf;I)V")
-	public static final void inv_stockbase(ClientScriptState arg0) {
+    public static final void inv_stockbase(ClientScriptState arg0) {
 		arg0.isp -= 2;
 		InvType var1 = (InvType) Client.invTypeList.list(arg0.intStack[arg0.isp]);
 		int var2 = arg0.intStack[arg0.isp + 1];
@@ -9980,8 +9359,7 @@ public class ScriptRunner {
 		arg0.intStack[++arg0.isp - 1] = var3;
 	}
 
-	@ObfuscatedName("jh.ww(Lyf;B)V")
-	public static final void inv_getvar(ClientScriptState arg0) {
+    public static final void inv_getvar(ClientScriptState arg0) {
 		arg0.isp -= 3;
 		int var1 = arg0.intStack[arg0.isp];
 		int var2 = arg0.intStack[arg0.isp + 1];
@@ -9989,95 +9367,79 @@ public class ScriptRunner {
 		arg0.intStack[++arg0.isp - 1] = ClientInvCache.getVar(var1, var2, var3, false);
 	}
 
-	@ObfuscatedName("nn.ws(Lyf;S)V")
-	public static final void stat(ClientScriptState arg0) {
+    public static final void stat(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		arg0.intStack[++arg0.isp - 1] = Client.localPlayerGameState.getStatLevel(var1);
 	}
 
-	@ObfuscatedName("eb.wi(Lyf;I)V")
-	public static final void stat_base(ClientScriptState arg0) {
+    public static final void stat_base(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		arg0.intStack[++arg0.isp - 1] = Client.localPlayerGameState.getStatLevelMax(var1);
 	}
 
-	@ObfuscatedName("xa.wy(Lyf;B)V")
-	public static final void stat_visible_xp(ClientScriptState arg0) {
+    public static final void stat_visible_xp(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		arg0.intStack[++arg0.isp - 1] = Client.localPlayerGameState.getStatXP(var1);
 	}
 
-	@ObfuscatedName("xl.xm(Lyf;I)V")
-	public static final void stat_base_actual(ClientScriptState arg0) {
+    public static final void stat_base_actual(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		arg0.intStack[++arg0.isp - 1] = Client.localPlayerGameState.getStatLevelMaxActual(var1);
 	}
 
-	@ObfuscatedName("ze.xl(Lyf;I)V")
-	public static final void stat_visible_xp_actual(ClientScriptState arg0) {
+    public static final void stat_visible_xp_actual(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		arg0.intStack[++arg0.isp - 1] = Client.localPlayerGameState.getStatXPActual(var1);
 	}
 
-	@ObfuscatedName("afv.xy(Lyf;I)V")
-	public static final void facing_fine(ClientScriptState arg0) {
+    public static final void facing_fine(ClientScriptState arg0) {
 		arg0.intStack[++arg0.isp - 1] = Client.localPlayerEntity.field10395.method316();
 	}
 
-	@ObfuscatedName("xr.xw(Lyf;S)V")
-	public static final void coord(ClientScriptState arg0) {
+    public static final void coord(ClientScriptState arg0) {
 		arg0.intStack[++arg0.isp - 1] = Client.localPlayerEntity.coord().pack();
 	}
 
-	@ObfuscatedName("gd.xu(Lyf;I)V")
-	public static final void coordx(ClientScriptState arg0) {
+    public static final void coordx(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		arg0.intStack[++arg0.isp - 1] = var1 >> 14 & 0x3FFF;
 	}
 
-	@ObfuscatedName("xk.xv(Lyf;I)V")
-	public static final void coordy(ClientScriptState arg0) {
+    public static final void coordy(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		arg0.intStack[++arg0.isp - 1] = var1 >> 28;
 	}
 
-	@ObfuscatedName("ain.xn(Lyf;I)V")
-	public static final void coordz(ClientScriptState arg0) {
+    public static final void coordz(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		arg0.intStack[++arg0.isp - 1] = var1 & 0x3FFF;
 	}
 
-	@ObfuscatedName("tg.xg(Lyf;B)V")
-	public static final void coord_fine(ClientScriptState arg0) {
+    public static final void coord_fine(ClientScriptState arg0) {
 		arg0.objectStack[++arg0.osp - 1] = Client.localPlayerEntity.coordFine();
 	}
 
-	@ObfuscatedName("yw.xa(Lyf;I)V")
-	public static final void coordx_fine(ClientScriptState arg0) {
+    public static final void coordx_fine(ClientScriptState arg0) {
 		CoordFine var1 = (CoordFine) arg0.objectStack[--arg0.osp];
 		arg0.intStack[++arg0.isp - 1] = var1.x;
 	}
 
-	@ObfuscatedName("tk.xi(Lyf;I)V")
-	public static final void coordy_fine(ClientScriptState arg0) {
+    public static final void coordy_fine(ClientScriptState arg0) {
 		CoordFine var1 = (CoordFine) arg0.objectStack[--arg0.osp];
 		arg0.intStack[++arg0.isp - 1] = var1.y;
 	}
 
-	@ObfuscatedName("abd.xz(Lyf;I)V")
-	public static final void coordz_fine(ClientScriptState arg0) {
+    public static final void coordz_fine(ClientScriptState arg0) {
 		CoordFine var1 = (CoordFine) arg0.objectStack[--arg0.osp];
 		arg0.intStack[++arg0.isp - 1] = var1.z;
 	}
 
-	@ObfuscatedName("po.xh(Lyf;I)V")
-	public static final void coordlevel_fine(ClientScriptState arg0) {
+    public static final void coordlevel_fine(ClientScriptState arg0) {
 		CoordFine var1 = (CoordFine) arg0.objectStack[--arg0.osp];
 		arg0.intStack[++arg0.isp - 1] = var1.level;
 	}
 
-	@ObfuscatedName("xk.xp(Lyf;I)V")
-	public static final void movecoord_fine(ClientScriptState arg0) {
+    public static final void movecoord_fine(ClientScriptState arg0) {
 		CoordFine var1 = CoordFine.method7078((CoordFine) arg0.objectStack[--arg0.osp]);
 		arg0.isp -= 4;
 		var1.level += arg0.intStack[arg0.isp];
@@ -10087,72 +9449,61 @@ public class ScriptRunner {
 		arg0.objectStack[++arg0.osp - 1] = var1;
 	}
 
-	@ObfuscatedName("h.xx(Lyf;I)V")
-	public static final void coord_finetogrid(ClientScriptState arg0) {
+    public static final void coord_finetogrid(ClientScriptState arg0) {
 		CoordGrid var1 = new CoordGrid();
 		var1.fromFine((CoordFine) arg0.objectStack[--arg0.osp]);
 		arg0.intStack[++arg0.isp - 1] = var1.pack();
 	}
 
-	@ObfuscatedName("rl.xs(Lyf;B)V")
-	public static final void coord_gridtofine(ClientScriptState arg0) {
+    public static final void coord_gridtofine(ClientScriptState arg0) {
 		arg0.isp -= 2;
 		int var1 = arg0.intStack[arg0.isp];
 		boolean var2 = arg0.intStack[arg0.isp + 1] == 1;
 		arg0.objectStack[++arg0.osp - 1] = CoordFine.method849(var1, var2);
 	}
 
-	@ObfuscatedName("kh.xr(Lyf;I)V")
-	public static final void map_members(ClientScriptState arg0) {
+    public static final void map_members(ClientScriptState arg0) {
 		arg0.intStack[++arg0.isp - 1] = Client.loggedInMembers ? 1 : 0;
 	}
 
-	@ObfuscatedName("mc.xc(Lyf;I)V")
-	public static final void map_preload(ClientScriptState arg0) {
+    public static final void map_preload(ClientScriptState arg0) {
 		arg0.isp--;
 	}
 
-	@ObfuscatedName("xd.xb(Lyf;B)V")
-	public static final void map_loadedpercent(ClientScriptState arg0) {
+    public static final void map_loadedpercent(ClientScriptState arg0) {
 		arg0.intStack[++arg0.isp - 1] = 100;
 	}
 
-	@ObfuscatedName("ir.xe(Lyf;B)V")
-	public static final void map_loadingscreen_settriggerpercent(ClientScriptState arg0) {
+    public static final void map_loadingscreen_settriggerpercent(ClientScriptState arg0) {
 		arg0.isp -= 2;
 	}
 
-	@ObfuscatedName("nv.xd(Lyf;I)V")
-	public static final void map_loadingscreen_isopen(ClientScriptState arg0) {
+    public static final void map_loadingscreen_isopen(ClientScriptState arg0) {
 		arg0.intStack[++arg0.isp - 1] = 0;
 	}
 
-	@ObfuscatedName("bc.xj(Lyf;I)V")
-	public static final void invother_getobj(ClientScriptState arg0) {
+    public static final void invother_getobj(ClientScriptState arg0) {
 		arg0.isp -= 2;
 		int var1 = arg0.intStack[arg0.isp];
 		int var2 = arg0.intStack[arg0.isp + 1];
 		arg0.intStack[++arg0.isp - 1] = ClientInvCache.getObj(var1, var2, true);
 	}
 
-	@ObfuscatedName("ahd.xo(Lyf;I)V")
-	public static final void invother_getnum(ClientScriptState arg0) {
+    public static final void invother_getnum(ClientScriptState arg0) {
 		arg0.isp -= 2;
 		int var1 = arg0.intStack[arg0.isp];
 		int var2 = arg0.intStack[arg0.isp + 1];
 		arg0.intStack[++arg0.isp - 1] = ClientInvCache.getNum(var1, var2, true);
 	}
 
-	@ObfuscatedName("ul.xk(Lyf;I)V")
-	public static final void invother_total(ClientScriptState arg0) {
+    public static final void invother_total(ClientScriptState arg0) {
 		arg0.isp -= 2;
 		int var1 = arg0.intStack[arg0.isp];
 		int var2 = arg0.intStack[arg0.isp + 1];
 		arg0.intStack[++arg0.isp - 1] = ClientInvCache.total(var1, var2, true);
 	}
 
-	@ObfuscatedName("iy.xq(Lyf;I)V")
-	public static final void invother_getvar(ClientScriptState arg0) {
+    public static final void invother_getvar(ClientScriptState arg0) {
 		arg0.isp -= 3;
 		int var1 = arg0.intStack[arg0.isp];
 		int var2 = arg0.intStack[arg0.isp + 1];
@@ -10160,8 +9511,7 @@ public class ScriptRunner {
 		arg0.intStack[++arg0.isp - 1] = ClientInvCache.getVar(var1, var2, var3, true);
 	}
 
-	@ObfuscatedName("pm.xf(Lyf;I)V")
-	public static final void staffmodlevel(ClientScriptState arg0) {
+    public static final void staffmodlevel(ClientScriptState arg0) {
 		if (Client.staffModLevel >= 2) {
 			arg0.intStack[++arg0.isp - 1] = Client.staffModLevel;
 		} else {
@@ -10169,28 +9519,23 @@ public class ScriptRunner {
 		}
 	}
 
-	@ObfuscatedName("iq.xt(Lyf;I)V")
-	public static final void reboottimer(ClientScriptState arg0) {
+    public static final void reboottimer(ClientScriptState arg0) {
 		arg0.intStack[++arg0.isp - 1] = Client.rebootTimer;
 	}
 
-	@ObfuscatedName("vp.ye(Lyf;I)V")
-	public static final void map_world(ClientScriptState arg0) {
+    public static final void map_world(ClientScriptState arg0) {
 		arg0.intStack[++arg0.isp - 1] = WorldSwitcher.currentWorld.node;
 	}
 
-	@ObfuscatedName("zu.yo(Lyf;I)V")
-	public static final void runenergy_visible(ClientScriptState arg0) {
+    public static final void runenergy_visible(ClientScriptState arg0) {
 		arg0.intStack[++arg0.isp - 1] = Client.runEnergy;
 	}
 
-	@ObfuscatedName("xs.yj(Lyf;B)V")
-	public static final void runweight_visible(ClientScriptState arg0) {
+    public static final void runweight_visible(ClientScriptState arg0) {
 		arg0.intStack[++arg0.isp - 1] = Client.runWeight;
 	}
 
-	@ObfuscatedName("qh.ys(Lyf;B)V")
-	public static final void playermod(ClientScriptState arg0) {
+    public static final void playermod(ClientScriptState arg0) {
 		if (Client.playerModLevel >= 5 && Client.playerModLevel <= 9) {
 			arg0.intStack[++arg0.isp - 1] = 1;
 		} else {
@@ -10198,8 +9543,7 @@ public class ScriptRunner {
 		}
 	}
 
-	@ObfuscatedName("amz.yk(Lyf;I)V")
-	public static final void playermodlevel(ClientScriptState arg0) {
+    public static final void playermodlevel(ClientScriptState arg0) {
 		if (Client.playerModLevel >= 5 && Client.playerModLevel <= 9) {
 			arg0.intStack[++arg0.isp - 1] = Client.playerModLevel;
 		} else {
@@ -10207,55 +9551,46 @@ public class ScriptRunner {
 		}
 	}
 
-	@ObfuscatedName("rz.yn(Lyf;B)V")
-	public static final void playermember(ClientScriptState arg0) {
+    public static final void playermember(ClientScriptState arg0) {
 		arg0.intStack[++arg0.isp - 1] = Client.playerIsMembers ? 1 : 0;
 	}
 
-	@ObfuscatedName("fl.yg(Lyf;I)V")
-	public static final void comlevel_active(ClientScriptState arg0) {
+    public static final void comlevel_active(ClientScriptState arg0) {
 		arg0.intStack[++arg0.isp - 1] = Client.localPlayerEntity.combatLevel;
 	}
 
-	@ObfuscatedName("ux.yq(Lyf;I)V")
-	public static final void gender(ClientScriptState arg0) {
+    public static final void gender(ClientScriptState arg0) {
 		arg0.intStack[++arg0.isp - 1] = Client.localPlayerEntity.model != null && Client.localPlayerEntity.model.isFemale ? 1 : 0;
 	}
 
-	@ObfuscatedName("uh.yh(Lyf;I)V")
-	public static final void map_quickchat(ClientScriptState arg0) {
+    public static final void map_quickchat(ClientScriptState arg0) {
 		arg0.intStack[++arg0.isp - 1] = Client.loggedInQuickChat ? 1 : 0;
 	}
 
-	@ObfuscatedName("hn.yb(Lyf;B)V")
-	public static final void inv_freespace(ClientScriptState arg0) {
+    public static final void inv_freespace(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		arg0.intStack[++arg0.isp - 1] = ClientInvCache.freespace(var1, false);
 	}
 
-	@ObfuscatedName("vd.yp(Lyf;I)V")
-	public static final void inv_totalparam(ClientScriptState arg0) {
+    public static final void inv_totalparam(ClientScriptState arg0) {
 		arg0.isp -= 2;
 		int var1 = arg0.intStack[arg0.isp];
 		int var2 = arg0.intStack[arg0.isp + 1];
 		arg0.intStack[++arg0.isp - 1] = ClientInvCache.totalParam(var1, var2, false, false);
 	}
 
-	@ObfuscatedName("kl.yz(Lyf;B)V")
-	public static final void inv_totalparam_stack(ClientScriptState arg0) {
+    public static final void inv_totalparam_stack(ClientScriptState arg0) {
 		arg0.isp -= 2;
 		int var1 = arg0.intStack[arg0.isp];
 		int var2 = arg0.intStack[arg0.isp + 1];
 		arg0.intStack[++arg0.isp - 1] = ClientInvCache.totalParam(var1, var2, true, false);
 	}
 
-	@ObfuscatedName("kg.yw(Lyf;I)V")
-	public static final void map_lang(ClientScriptState arg0) {
+    public static final void map_lang(ClientScriptState arg0) {
 		arg0.intStack[++arg0.isp - 1] = Client.language.getId();
 	}
 
-	@ObfuscatedName("va.yx(Lyf;S)V")
-	public static final void movecoord(ClientScriptState arg0) {
+    public static final void movecoord(ClientScriptState arg0) {
 		arg0.isp -= 4;
 		int var1 = arg0.intStack[arg0.isp];
 		int var2 = arg0.intStack[arg0.isp + 1];
@@ -10267,59 +9602,48 @@ public class ScriptRunner {
 		arg0.intStack[++arg0.isp - 1] = var7;
 	}
 
-	@ObfuscatedName("fr.yr(Lyf;B)V")
-	public static final void affiliate(ClientScriptState arg0) {
+    public static final void affiliate(ClientScriptState arg0) {
 		arg0.intStack[++arg0.isp - 1] = Client.playerIsAffiliate;
 	}
 
-	@ObfuscatedName("uf.yl(Lyf;I)V")
-	public static final void profile_cpu(ClientScriptState arg0) {
+    public static final void profile_cpu(ClientScriptState arg0) {
 		arg0.intStack[++arg0.isp - 1] = CpuProfiling.profile();
 	}
 
-	@ObfuscatedName("sd.yi(Lyf;I)V")
-	public static final void playerdemo(ClientScriptState arg0) {
+    public static final void playerdemo(ClientScriptState arg0) {
 		arg0.intStack[++arg0.isp - 1] = 0;
 	}
 
-	@ObfuscatedName("adp.yv(Lyf;I)V")
-	public static final void applet_hasfocus(ClientScriptState arg0) {
+    public static final void applet_hasfocus(ClientScriptState arg0) {
 		arg0.intStack[++arg0.isp - 1] = GameShell.focus ? 1 : 0;
 	}
 
-	@ObfuscatedName("ach.ym(Lyf;B)V")
-	public static final void frombilling(ClientScriptState arg0) {
+    public static final void frombilling(ClientScriptState arg0) {
 		arg0.intStack[++arg0.isp - 1] = Client.fromBilling ? 1 : 0;
 	}
 
-	@ObfuscatedName("ank.yf(Lyf;B)V")
-	public static final void get_mousex(ClientScriptState arg0) {
+    public static final void get_mousex(ClientScriptState arg0) {
 		arg0.intStack[++arg0.isp - 1] = Client.mouse.getX();
 	}
 
-	@ObfuscatedName("dl.ya(Lyf;I)V")
-	public static final void get_mousey(ClientScriptState arg0) {
+    public static final void get_mousey(ClientScriptState arg0) {
 		arg0.intStack[++arg0.isp - 1] = Client.mouse.getY();
 	}
 
-	@ObfuscatedName("aks.yd(Lyf;I)V")
-	public static final void get_active_minimenu_entry(ClientScriptState arg0) {
+    public static final void get_active_minimenu_entry(ClientScriptState arg0) {
 		pushMinimenuEntry(MiniMenu.getActiveMiniMenuEntry(), arg0);
 	}
 
-	@ObfuscatedName("oh.yy(Lyf;B)V")
-	public static final void get_second_minimenu_entry(ClientScriptState arg0) {
+    public static final void get_second_minimenu_entry(ClientScriptState arg0) {
 		pushMinimenuEntry(MiniMenu.getSecondaryMiniMenuEntry(), arg0);
 	}
 
-	@ObfuscatedName("jk.yc(Lyf;B)V")
-	public static final void get_minimenu_length(ClientScriptState arg0) {
+    public static final void get_minimenu_length(ClientScriptState arg0) {
 		arg0.intStack[++arg0.isp - 1] = MiniMenu.field546;
 		arg0.intStack[++arg0.isp - 1] = MiniMenu.field543;
 	}
 
-	@ObfuscatedName("ake.yu(Lyf;I)V")
-	public static final void npc_find_active_minimenu_entry(ClientScriptState arg0) {
+    public static final void npc_find_active_minimenu_entry(ClientScriptState arg0) {
 		MiniMenuEntry var1 = MiniMenu.getActiveMiniMenuEntry();
 		if (MiniMenu.getEntryEntityType(var1) == 4) {
 			ObjectNode var2 = (ObjectNode) Client.npcs.get(var1.method19370());
@@ -10332,8 +9656,7 @@ public class ScriptRunner {
 		arg0.intStack[++arg0.isp - 1] = 0;
 	}
 
-	@ObfuscatedName("ai.yt(Lyf;I)V")
-	public static final void player_find_active_minimenu_entry(ClientScriptState arg0) {
+    public static final void player_find_active_minimenu_entry(ClientScriptState arg0) {
 		MiniMenuEntry var1 = MiniMenu.getActiveMiniMenuEntry();
 		if (MiniMenu.getEntryEntityType(var1) == 7) {
 			int var2 = (int) var1.method19368();
@@ -10349,18 +9672,15 @@ public class ScriptRunner {
 		arg0.intStack[++arg0.isp - 1] = 0;
 	}
 
-	@ObfuscatedName("fj.zh(Lyf;I)V")
-	public static final void get_currentcursor(ClientScriptState arg0) {
+    public static final void get_currentcursor(ClientScriptState arg0) {
 		arg0.intStack[++arg0.isp - 1] = Client.currentCursor;
 	}
 
-	@ObfuscatedName("nu.za(Lyf;I)V")
-	public static final void get_selfyangle(ClientScriptState arg0) {
+    public static final void get_selfyangle(ClientScriptState arg0) {
 		arg0.intStack[++arg0.isp - 1] = Client.localPlayerEntity.field10395.method316() >> 3;
 	}
 
-	@ObfuscatedName("ve.zn(Lyf;S)V")
-	public static final void map_isowner(ClientScriptState arg0) {
+    public static final void map_isowner(ClientScriptState arg0) {
 		String var1 = (String) arg0.objectStack[--arg0.osp];
 		if (Client.owner != null && Client.owner.equalsIgnoreCase(var1)) {
 			arg0.intStack[++arg0.isp - 1] = 1;
@@ -10369,27 +9689,23 @@ public class ScriptRunner {
 		}
 	}
 
-	@ObfuscatedName("sn.zt(Lyf;B)V")
-	public static final void get_mousebuttons(ClientScriptState arg0) {
+    public static final void get_mousebuttons(ClientScriptState arg0) {
 		arg0.intStack[++arg0.isp - 1] = Client.mouse.method9101() ? 1 : 0;
 		arg0.intStack[++arg0.isp - 1] = Client.mouse.method9121() ? 1 : 0;
 		arg0.intStack[++arg0.isp - 1] = Client.mouse.method9125() ? 1 : 0;
 	}
 
-	@ObfuscatedName("qw.zy(Lyf;S)V")
-	public static final void self_player_uid(ClientScriptState arg0) {
+    public static final void self_player_uid(ClientScriptState arg0) {
 		arg0.intStack[++arg0.isp - 1] = Client.currentPlayerUid;
 	}
 
-	@ObfuscatedName("dz.zi(Lyf;B)V")
-	public static final void get_minimenu_target(ClientScriptState arg0) {
+    public static final void get_minimenu_target(ClientScriptState arg0) {
 		arg0.intStack[++arg0.isp - 1] = Client.targetModeActive ? 1 : 0;
 		arg0.objectStack[++arg0.osp - 1] = Client.field10977 == null ? "" : Client.field10977;
 		arg0.objectStack[++arg0.osp - 1] = Client.field11039 == null ? "" : Client.field11039;
 	}
 
-	@ObfuscatedName("aob.zj(Lyf;I)V")
-	public static final void enum_string(ClientScriptState arg0) {
+    public static final void enum_string(ClientScriptState arg0) {
 		arg0.isp -= 2;
 		int var1 = arg0.intStack[arg0.isp];
 		int var2 = arg0.intStack[arg0.isp + 1];
@@ -10399,8 +9715,7 @@ public class ScriptRunner {
 		arg0.objectStack[++arg0.osp - 1] = var3.getValueString(var2);
 	}
 
-	@ObfuscatedName("uw.zw(Lyf;I)V")
-	public static final void _enum(ClientScriptState arg0) {
+    public static final void _enum(ClientScriptState arg0) {
 		arg0.isp -= 4;
 		int var1 = arg0.intStack[arg0.isp];
 		int var2 = arg0.intStack[arg0.isp + 1];
@@ -10416,8 +9731,7 @@ public class ScriptRunner {
 		}
 	}
 
-	@ObfuscatedName("sd.zq(Lyf;I)V")
-	public static final void enum_hasoutput(ClientScriptState arg0) {
+    public static final void enum_hasoutput(ClientScriptState arg0) {
 		arg0.isp -= 3;
 		int var1 = arg0.intStack[arg0.isp];
 		int var2 = arg0.intStack[arg0.isp + 1];
@@ -10432,8 +9746,7 @@ public class ScriptRunner {
 		arg0.intStack[++arg0.isp - 1] = var4.hasOutputString(var3) ? 1 : 0;
 	}
 
-	@ObfuscatedName("gj.zo(Lyf;I)V")
-	public static final void enum_hasoutput_string(ClientScriptState arg0) {
+    public static final void enum_hasoutput_string(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		String var2 = (String) arg0.objectStack[--arg0.osp];
 		if (var1 == -1) {
@@ -10446,15 +9759,13 @@ public class ScriptRunner {
 		arg0.intStack[++arg0.isp - 1] = var3.hasOutputString(var2) ? 1 : 0;
 	}
 
-	@ObfuscatedName("xh.zk(Lyf;I)V")
-	public static final void enum_getoutputcount(ClientScriptState arg0) {
+    public static final void enum_getoutputcount(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		EnumType var2 = (EnumType) Client.enumTypeList.list(var1);
 		arg0.intStack[++arg0.isp - 1] = var2.getOutputCount();
 	}
 
-	@ObfuscatedName("aaj.zm(Lyf;I)V")
-	public static final void enum_getreversecount(ClientScriptState arg0) {
+    public static final void enum_getreversecount(ClientScriptState arg0) {
 		arg0.isp -= 3;
 		int var1 = arg0.intStack[arg0.isp];
 		int var2 = arg0.intStack[arg0.isp + 1];
@@ -10474,8 +9785,7 @@ public class ScriptRunner {
 		arg0.intStack[++arg0.isp - 1] = var6;
 	}
 
-	@ObfuscatedName("wa.zd(Lyf;I)V")
-	public static final void enum_getreversecount_string(ClientScriptState arg0) {
+    public static final void enum_getreversecount_string(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		String var2 = (String) arg0.objectStack[--arg0.osp];
 		if (var1 == -1) {
@@ -10493,8 +9803,7 @@ public class ScriptRunner {
 		arg0.intStack[++arg0.isp - 1] = var5;
 	}
 
-	@ObfuscatedName("to.zu(Lyf;I)V")
-	public static final void enum_getreverseindex(ClientScriptState arg0) {
+    public static final void enum_getreverseindex(ClientScriptState arg0) {
 		arg0.isp -= 5;
 		int var1 = arg0.intStack[arg0.isp];
 		int var2 = arg0.intStack[arg0.isp + 1];
@@ -10518,8 +9827,7 @@ public class ScriptRunner {
 		}
 	}
 
-	@ObfuscatedName("rg.ze(Lyf;I)V")
-	public static final void enum_getreverseindex_string(ClientScriptState arg0) {
+    public static final void enum_getreverseindex_string(ClientScriptState arg0) {
 		arg0.isp -= 3;
 		int var1 = arg0.intStack[arg0.isp];
 		int var2 = arg0.intStack[arg0.isp + 1];
@@ -10542,8 +9850,7 @@ public class ScriptRunner {
 		}
 	}
 
-	@ObfuscatedName("va.zv(Lyf;I)V")
-	public static final void email_validation_submit_code(ClientScriptState arg0) {
+    public static final void email_validation_submit_code(ClientScriptState arg0) {
 		String var1 = (String) arg0.objectStack[--arg0.osp];
 		ClientMessage var2 = ClientMessage.createMessage(ClientProt.SEND_EMAIL_VALIDATION_CODE, Client.lobbyConnection.randomOut);
 		var2.buf.p1(Packet.pjstrlen(var1));
@@ -10551,8 +9858,7 @@ public class ScriptRunner {
 		Client.lobbyConnection.queue(var2);
 	}
 
-	@ObfuscatedName("sc.zc(Lyf;I)V")
-	public static final void email_validation_change_address(ClientScriptState arg0) {
+    public static final void email_validation_change_address(ClientScriptState arg0) {
 		String var1 = (String) arg0.objectStack[--arg0.osp];
 		String var2 = (String) arg0.objectStack[--arg0.osp];
 		ClientMessage var3 = ClientMessage.createMessage(ClientProt.CHANGE_EMAIL_ADDRESS, Client.lobbyConnection.randomOut);
@@ -10562,8 +9868,7 @@ public class ScriptRunner {
 		Client.lobbyConnection.queue(var3);
 	}
 
-	@ObfuscatedName("du.zp(Lyf;I)V")
-	public static final void email_validation_add_new_address(ClientScriptState arg0) {
+    public static final void email_validation_add_new_address(ClientScriptState arg0) {
 		arg0.osp--;
 		arg0.isp -= 3;
 		String var1 = (String) arg0.objectStack[arg0.osp];
@@ -10587,8 +9892,7 @@ public class ScriptRunner {
 		Client.lobbyConnection.queue(var5);
 	}
 
-	@ObfuscatedName("vc.zz(Lyf;I)V")
-	public static final void friend_count(ClientScriptState arg0) {
+    public static final void friend_count(ClientScriptState arg0) {
 		if (Client.friendsListState == 0) {
 			arg0.intStack[++arg0.isp - 1] = -2;
 		} else if (Client.friendsListState == 1) {
@@ -10598,8 +9902,7 @@ public class ScriptRunner {
 		}
 	}
 
-	@ObfuscatedName("pz.zs(Lyf;I)V")
-	public static final void friend_getname(ClientScriptState arg0) {
+    public static final void friend_getname(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		if (Client.friendsListState != 2 || var1 >= Client.friendsCount) {
 			arg0.objectStack[++arg0.osp - 1] = "";
@@ -10615,8 +9918,7 @@ public class ScriptRunner {
 		}
 	}
 
-	@ObfuscatedName("vv.zl(Lyf;I)V")
-	public static final void friend_getworld(ClientScriptState arg0) {
+    public static final void friend_getworld(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		if (Client.friendsListState == 2 && var1 < Client.friendsCount) {
 			arg0.intStack[++arg0.isp - 1] = Client.friends[var1].worldId;
@@ -10625,8 +9927,7 @@ public class ScriptRunner {
 		}
 	}
 
-	@ObfuscatedName("ajd.zb(Lyf;I)V")
-	public static final void friend_getrank(ClientScriptState arg0) {
+    public static final void friend_getrank(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		if (Client.friendsListState == 2 && var1 < Client.friendsCount) {
 			arg0.intStack[++arg0.isp - 1] = Client.friends[var1].rank;
@@ -10635,8 +9936,7 @@ public class ScriptRunner {
 		}
 	}
 
-	@ObfuscatedName("ik.zg(Lyf;B)V")
-	public static final void friend_getnotes(ClientScriptState arg0) {
+    public static final void friend_getnotes(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		if (Client.friendsListState == 2 && var1 < Client.friendsCount) {
 			arg0.objectStack[++arg0.osp - 1] = Client.friends[var1].notes;
@@ -10645,8 +9945,7 @@ public class ScriptRunner {
 		}
 	}
 
-	@ObfuscatedName("qm.zx(Lyf;B)V")
-	public static final void friend_getworldflags(ClientScriptState arg0) {
+    public static final void friend_getworldflags(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		if (Client.friendsListState == 2 && var1 < Client.friendsCount) {
 			arg0.intStack[++arg0.isp - 1] = Client.friends[var1].worldFlags;
@@ -10655,55 +9954,47 @@ public class ScriptRunner {
 		}
 	}
 
-	@ObfuscatedName("xs.zr(Lyf;I)V")
-	public static final void friend_setrank(ClientScriptState arg0) {
+    public static final void friend_setrank(ClientScriptState arg0) {
 		String var1 = (String) arg0.objectStack[--arg0.osp];
 		int var2 = arg0.intStack[--arg0.isp];
 		Client.friendSetRank(var1, var2);
 	}
 
-	@ObfuscatedName("pj.zf(Lyf;I)V")
-	public static final void friend_setnotes(ClientScriptState arg0) {
+    public static final void friend_setnotes(ClientScriptState arg0) {
 		arg0.osp -= 2;
 		String var1 = (String) arg0.objectStack[arg0.osp];
 		String var2 = (String) arg0.objectStack[arg0.osp + 1];
 		Client.friendSetNotes(var1, var2);
 	}
 
-	@ObfuscatedName("ij.aag(Lyf;I)V")
-	public static final void friend_add(ClientScriptState arg0) {
+    public static final void friend_add(ClientScriptState arg0) {
 		String var1 = (String) arg0.objectStack[--arg0.osp];
 		Client.friendAdd(var1);
 	}
 
-	@ObfuscatedName("yg.aak(Lyf;I)V")
-	public static final void friend_del(ClientScriptState arg0) {
+    public static final void friend_del(ClientScriptState arg0) {
 		String var1 = (String) arg0.objectStack[--arg0.osp];
 		Client.friendDelete(var1);
 	}
 
-	@ObfuscatedName("vx.aad(Lyf;I)V")
-	public static final void ignore_add(ClientScriptState arg0) {
+    public static final void ignore_add(ClientScriptState arg0) {
 		String var1 = (String) arg0.objectStack[--arg0.osp];
 		Client.ignoreAdd(var1, false);
 	}
 
-	@ObfuscatedName("qn.aaa(Lyf;I)V")
-	public static final void ignore_del(ClientScriptState arg0) {
+    public static final void ignore_del(ClientScriptState arg0) {
 		String var1 = (String) arg0.objectStack[--arg0.osp];
 		Client.ignoreDelete(var1);
 	}
 
-	@ObfuscatedName("ex.aax(Lyf;I)V")
-	public static final void ignore_setnotes(ClientScriptState arg0) {
+    public static final void ignore_setnotes(ClientScriptState arg0) {
 		arg0.osp -= 2;
 		String var1 = (String) arg0.objectStack[arg0.osp];
 		String var2 = (String) arg0.objectStack[arg0.osp + 1];
 		Client.ignoreSetNotes(var1, var2);
 	}
 
-	@ObfuscatedName("nd.aat(Lyf;B)V")
-	public static final void friend_test(ClientScriptState arg0) {
+    public static final void friend_test(ClientScriptState arg0) {
 		String var1 = (String) arg0.objectStack[--arg0.osp];
 		if (var1.startsWith(TextUtil.imgTag(0)) || var1.startsWith(TextUtil.imgTag(1))) {
 			var1 = var1.substring(7);
@@ -10711,8 +10002,7 @@ public class ScriptRunner {
 		arg0.intStack[++arg0.isp - 1] = Client.friendTest(var1) ? 1 : 0;
 	}
 
-	@ObfuscatedName("hs.aas(Lyf;B)V")
-	public static final void friend_getworldname(ClientScriptState arg0) {
+    public static final void friend_getworldname(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		if (Client.friendsListState == 2 && var1 < Client.friendsCount) {
 			arg0.objectStack[++arg0.osp - 1] = Client.friends[var1].worldName;
@@ -10721,8 +10011,7 @@ public class ScriptRunner {
 		}
 	}
 
-	@ObfuscatedName("wm.aaf(Lyf;I)V")
-	public static final void clan_getchatdisplayname(ClientScriptState arg0) {
+    public static final void clan_getchatdisplayname(ClientScriptState arg0) {
 		if (Client.clanChatDisplayName == null) {
 			arg0.objectStack[++arg0.osp - 1] = "";
 		} else {
@@ -10730,8 +10019,7 @@ public class ScriptRunner {
 		}
 	}
 
-	@ObfuscatedName("px.aar(Lyf;I)V")
-	public static final void clan_getchatcount(ClientScriptState arg0) {
+    public static final void clan_getchatcount(ClientScriptState arg0) {
 		if (Client.clanChatDisplayName == null) {
 			arg0.intStack[++arg0.isp - 1] = 0;
 		} else {
@@ -10739,8 +10027,7 @@ public class ScriptRunner {
 		}
 	}
 
-	@ObfuscatedName("vr.aai(Lyf;I)V")
-	public static final void clan_getchatusername(ClientScriptState arg0) {
+    public static final void clan_getchatusername(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		if (Client.clanChatDisplayName == null || var1 >= Client.clanChatCount) {
 			arg0.objectStack[++arg0.osp - 1] = "";
@@ -10749,8 +10036,7 @@ public class ScriptRunner {
 		}
 	}
 
-	@ObfuscatedName("afq.aap(Lyf;I)V")
-	public static final void clan_getchatuserworld(ClientScriptState arg0) {
+    public static final void clan_getchatuserworld(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		if (Client.clanChatDisplayName == null || var1 >= Client.clanChatCount) {
 			arg0.intStack[++arg0.isp - 1] = 0;
@@ -10759,8 +10045,7 @@ public class ScriptRunner {
 		}
 	}
 
-	@ObfuscatedName("fo.aaq(Lyf;B)V")
-	public static final void clan_getchatuserrank(ClientScriptState arg0) {
+    public static final void clan_getchatuserrank(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		if (Client.clanChatDisplayName == null || var1 >= Client.clanChatCount) {
 			arg0.intStack[++arg0.isp - 1] = 0;
@@ -10769,35 +10054,29 @@ public class ScriptRunner {
 		}
 	}
 
-	@ObfuscatedName("nq.aau(Lyf;I)V")
-	public static final void clan_getchatminkick(ClientScriptState arg0) {
+    public static final void clan_getchatminkick(ClientScriptState arg0) {
 		arg0.intStack[++arg0.isp - 1] = Client.clanChatMinKick;
 	}
 
-	@ObfuscatedName("dm.aao(Lyf;I)V")
-	public static final void clan_kickuser(ClientScriptState arg0) {
+    public static final void clan_kickuser(ClientScriptState arg0) {
 		String var1 = (String) arg0.objectStack[--arg0.osp];
 		Client.clanKickUser(var1);
 	}
 
-	@ObfuscatedName("yo.aaj(Lyf;I)V")
-	public static final void clan_getchatrank(ClientScriptState arg0) {
+    public static final void clan_getchatrank(ClientScriptState arg0) {
 		arg0.intStack[++arg0.isp - 1] = Client.clanChatRank;
 	}
 
-	@ObfuscatedName("ka.aab(Lyf;B)V")
-	public static final void clan_joinchat(ClientScriptState arg0) {
+    public static final void clan_joinchat(ClientScriptState arg0) {
 		String var1 = (String) arg0.objectStack[--arg0.osp];
 		Client.clanJoinChat(var1);
 	}
 
-	@ObfuscatedName("ap.aae(Lyf;I)V")
-	public static final void clan_leavechat(ClientScriptState arg0) {
+    public static final void clan_leavechat(ClientScriptState arg0) {
 		Client.clanLeaveChat();
 	}
 
-	@ObfuscatedName("zs.aal(Lyf;S)V")
-	public static final void ignore_count(ClientScriptState arg0) {
+    public static final void ignore_count(ClientScriptState arg0) {
 		if (Client.friendsListState == 0) {
 			arg0.intStack[++arg0.isp - 1] = -1;
 		} else {
@@ -10805,8 +10084,7 @@ public class ScriptRunner {
 		}
 	}
 
-	@ObfuscatedName("fl.aaz(Lyf;I)V")
-	public static final void ignore_getname(ClientScriptState arg0) {
+    public static final void ignore_getname(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		if (Client.friendsListState == 0 || var1 >= Client.ignoresCount) {
 			arg0.objectStack[++arg0.osp - 1] = "";
@@ -10822,8 +10100,7 @@ public class ScriptRunner {
 		}
 	}
 
-	@ObfuscatedName("ad.aan(Lyf;I)V")
-	public static final void ignore_getnotes(ClientScriptState arg0) {
+    public static final void ignore_getnotes(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		if (Client.friendsListState == 0 || var1 >= Client.ignoresCount) {
 			arg0.objectStack[++arg0.osp - 1] = "";
@@ -10832,8 +10109,7 @@ public class ScriptRunner {
 		}
 	}
 
-	@ObfuscatedName("ts.aah(Lyf;S)V")
-	public static final void ignore_test(ClientScriptState arg0) {
+    public static final void ignore_test(ClientScriptState arg0) {
 		String var1 = (String) arg0.objectStack[--arg0.osp];
 		if (var1.startsWith(TextUtil.imgTag(0)) || var1.startsWith(TextUtil.imgTag(1))) {
 			var1 = var1.substring(7);
@@ -10841,8 +10117,7 @@ public class ScriptRunner {
 		arg0.intStack[++arg0.isp - 1] = Client.ignoreTest(var1) ? 1 : 0;
 	}
 
-	@ObfuscatedName("eb.aaw(Lyf;I)V")
-	public static final void clan_isself(ClientScriptState arg0) {
+    public static final void clan_isself(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		if (Client.clanChatUsers == null || var1 >= Client.clanChatCount || !Client.clanChatUsers[var1].nameUnfiltered.equalsIgnoreCase(Client.localPlayerEntity.nameUnfiltered)) {
 			arg0.intStack[++arg0.isp - 1] = 0;
@@ -10851,8 +10126,7 @@ public class ScriptRunner {
 		}
 	}
 
-	@ObfuscatedName("ft.aay(Lyf;I)V")
-	public static final void clan_getchatownername(ClientScriptState arg0) {
+    public static final void clan_getchatownername(ClientScriptState arg0) {
 		if (Client.clanChatOwnerName == null) {
 			arg0.objectStack[++arg0.osp - 1] = "";
 		} else {
@@ -10860,8 +10134,7 @@ public class ScriptRunner {
 		}
 	}
 
-	@ObfuscatedName("ip.aac(Lyf;I)V")
-	public static final void clan_getchatuserworldname(ClientScriptState arg0) {
+    public static final void clan_getchatuserworldname(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		if (Client.clanChatDisplayName == null || var1 >= Client.clanChatCount) {
 			arg0.objectStack[++arg0.osp - 1] = "";
@@ -10870,8 +10143,7 @@ public class ScriptRunner {
 		}
 	}
 
-	@ObfuscatedName("ad.aav(Lyf;B)V")
-	public static final void friend_platform(ClientScriptState arg0) {
+    public static final void friend_platform(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		if (Client.friendsListState == 2 && var1 >= 0 && var1 < Client.friendsCount) {
 			arg0.intStack[++arg0.isp - 1] = Client.friends[var1].platform;
@@ -10880,8 +10152,7 @@ public class ScriptRunner {
 		}
 	}
 
-	@ObfuscatedName("sg.aam(Lyf;I)V")
-	public static final void friend_getslotfromname(ClientScriptState arg0) {
+    public static final void friend_getslotfromname(ClientScriptState arg0) {
 		String var1 = (String) arg0.objectStack[--arg0.osp];
 		if (var1.startsWith(TextUtil.imgTag(0)) || var1.startsWith(TextUtil.imgTag(1))) {
 			var1 = var1.substring(7);
@@ -10889,8 +10160,7 @@ public class ScriptRunner {
 		arg0.intStack[++arg0.isp - 1] = Client.friendGetSlotFromName(var1);
 	}
 
-	@ObfuscatedName("ey.abo(Lyf;I)V")
-	public static final void ignore_getslotfromname(ClientScriptState arg0) {
+    public static final void ignore_getslotfromname(ClientScriptState arg0) {
 		String var1 = (String) arg0.objectStack[--arg0.osp];
 		if (var1.startsWith(TextUtil.imgTag(0)) || var1.startsWith(TextUtil.imgTag(1))) {
 			var1 = var1.substring(7);
@@ -10898,25 +10168,21 @@ public class ScriptRunner {
 		arg0.intStack[++arg0.isp - 1] = Client.ignoreGetSlotFromName(var1);
 	}
 
-	@ObfuscatedName("ad.abr(Lyf;I)V")
-	public static final void playercountry(ClientScriptState arg0) {
+    public static final void playercountry(ClientScriptState arg0) {
 		arg0.intStack[++arg0.isp - 1] = Client.currentPlayerCountry;
 	}
 
-	@ObfuscatedName("uw.abv(Lyf;I)V")
-	public static final void ignore_add_temp(ClientScriptState arg0) {
+    public static final void ignore_add_temp(ClientScriptState arg0) {
 		String var1 = (String) arg0.objectStack[--arg0.osp];
 		Client.ignoreAdd(var1, true);
 	}
 
-	@ObfuscatedName("xq.abq(Lyf;B)V")
-	public static final void ignore_is_temp(ClientScriptState arg0) {
+    public static final void ignore_is_temp(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		arg0.intStack[++arg0.isp - 1] = Client.ignores[var1].temporary ? 1 : 0;
 	}
 
-	@ObfuscatedName("re.abw(Lyf;I)V")
-	public static final void clan_getchatusername_unfiltered(ClientScriptState arg0) {
+    public static final void clan_getchatusername_unfiltered(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		if (Client.clanChatDisplayName == null || var1 >= Client.clanChatCount) {
 			arg0.objectStack[++arg0.osp - 1] = "";
@@ -10925,8 +10191,7 @@ public class ScriptRunner {
 		}
 	}
 
-	@ObfuscatedName("tc.abh(Lyf;I)V")
-	public static final void ignore_getname_unfiltered(ClientScriptState arg0) {
+    public static final void ignore_getname_unfiltered(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		if (Client.friendsListState == 0 || var1 >= Client.ignoresCount) {
 			arg0.objectStack[++arg0.osp - 1] = "";
@@ -10935,8 +10200,7 @@ public class ScriptRunner {
 		}
 	}
 
-	@ObfuscatedName("eu.abf(Lyf;B)V")
-	public static final void friend_is_referrer(ClientScriptState arg0) {
+    public static final void friend_is_referrer(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		if (Client.friendsListState == 2 && var1 < Client.friendsCount) {
 			arg0.intStack[++arg0.isp - 1] = Client.friends[var1].referrer ? 1 : 0;
@@ -10945,8 +10209,7 @@ public class ScriptRunner {
 		}
 	}
 
-	@ObfuscatedName("pj.abi(Lyf;I)V")
-	public static final void friend_is_referred(ClientScriptState arg0) {
+    public static final void friend_is_referred(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		if (Client.friendsListState == 2 && var1 < Client.friendsCount) {
 			arg0.intStack[++arg0.isp - 1] = Client.friends[var1].referred ? 1 : 0;
@@ -10955,18 +10218,15 @@ public class ScriptRunner {
 		}
 	}
 
-	@ObfuscatedName("ahj.abb(Lyf;B)V")
-	public static final void player_group_find(ClientScriptState arg0) {
+    public static final void player_group_find(ClientScriptState arg0) {
 		arg0.intStack[++arg0.isp - 1] = Client.currentPlayerGroup == null ? 0 : 1;
 	}
 
-	@ObfuscatedName("tj.abc(Lyf;I)V")
-	public static final void player_group_member_count(ClientScriptState arg0) {
+    public static final void player_group_member_count(ClientScriptState arg0) {
 		arg0.intStack[++arg0.isp - 1] = Client.currentPlayerGroup.getMembers().size();
 	}
 
-	@ObfuscatedName("yd.abg(Lyf;I)V")
-	public static final void player_group_member_get_same_world_var(ClientScriptState arg0) {
+    public static final void player_group_member_get_same_world_var(ClientScriptState arg0) {
 		arg0.isp -= 3;
 		int var1 = arg0.intStack[arg0.isp];
 		boolean var2 = arg0.intStack[arg0.isp + 1] == 1;
@@ -10993,50 +10253,42 @@ public class ScriptRunner {
 		}
 	}
 
-	@ObfuscatedName("io.abn(Lyf;I)V")
-	public static final void player_group_member_get_rank(ClientScriptState arg0) {
+    public static final void player_group_member_get_rank(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		arg0.intStack[++arg0.isp - 1] = Client.currentPlayerGroup.doGetMember(var1).getRank();
 	}
 
-	@ObfuscatedName("pv.abj(Lyf;I)V")
-	public static final void player_group_member_get_team(ClientScriptState arg0) {
+    public static final void player_group_member_get_team(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		arg0.intStack[++arg0.isp - 1] = Client.currentPlayerGroup.doGetMember(var1).getTeam();
 	}
 
-	@ObfuscatedName("dg.aba(Lyf;I)V")
-	public static final void player_group_member_get_last_seen_node_id(ClientScriptState arg0) {
+    public static final void player_group_member_get_last_seen_node_id(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		arg0.intStack[++arg0.isp - 1] = Client.currentPlayerGroup.doGetMember(var1).getNodeId();
 	}
 
-	@ObfuscatedName("au.abz(Lyf;I)V")
-	public static final void player_group_member_get_status(ClientScriptState arg0) {
+    public static final void player_group_member_get_status(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		arg0.intStack[++arg0.isp - 1] = Client.currentPlayerGroup.doGetMember(var1).getStatus().getId();
 	}
 
-	@ObfuscatedName("dm.abu(Lyf;S)V")
-	public static final void player_group_member_is_online(ClientScriptState arg0) {
+    public static final void player_group_member_is_online(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		arg0.intStack[++arg0.isp - 1] = Client.currentPlayerGroup.doGetMember(var1).isOnline() ? 1 : 0;
 	}
 
-	@ObfuscatedName("tz.abl(Lyf;B)V")
-	public static final void player_group_member_is_member(ClientScriptState arg0) {
+    public static final void player_group_member_is_member(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		arg0.intStack[++arg0.isp - 1] = Client.currentPlayerGroup.doGetMember(var1).isMembers() ? 1 : 0;
 	}
 
-	@ObfuscatedName("eb.abp(Lyf;I)V")
-	public static final void player_group_member_get_displayname(ClientScriptState arg0) {
+    public static final void player_group_member_get_displayname(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		arg0.objectStack[++arg0.osp - 1] = Client.currentPlayerGroup.doGetMember(var1).getDisplayName();
 	}
 
-	@ObfuscatedName("l.abm(Lyf;B)V")
-	public static final void player_group_member_get_join_xp(ClientScriptState arg0) {
+    public static final void player_group_member_get_join_xp(ClientScriptState arg0) {
 		arg0.isp -= 3;
 		int var1 = arg0.intStack[arg0.isp];
 		int var2 = arg0.intStack[arg0.isp + 1];
@@ -11045,60 +10297,49 @@ public class ScriptRunner {
 		arg0.intStack[++arg0.isp - 1] = var3 ? var4.getXPLevel() : var4.getXP();
 	}
 
-	@ObfuscatedName("ahb.abx(Lyf;I)V")
-	public static final void player_group_member_is_owner(ClientScriptState arg0) {
+    public static final void player_group_member_is_owner(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		arg0.intStack[++arg0.isp - 1] = Client.currentPlayerGroup.getOwnerSlot() == var1 ? 1 : 0;
 	}
 
-	@ObfuscatedName("xd.abk(Lyf;I)V")
-	public static final void player_group_banned_count(ClientScriptState arg0) {
+    public static final void player_group_banned_count(ClientScriptState arg0) {
 		arg0.intStack[++arg0.isp - 1] = Client.currentPlayerGroup.getBanned().size();
 	}
 
-	@ObfuscatedName("qs.aby(Lyf;I)V")
-	public static final void player_group_banned_get_displayname(ClientScriptState arg0) {
+    public static final void player_group_banned_get_displayname(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		arg0.objectStack[++arg0.osp - 1] = ((PlayerGroupBanned) Client.currentPlayerGroup.getBanned().get(var1)).getDisplayName();
 	}
 
-	@ObfuscatedName("ux.abe(Lyf;B)V")
-	public static final void player_group_get_displayname(ClientScriptState arg0) {
+    public static final void player_group_get_displayname(ClientScriptState arg0) {
 		arg0.objectStack[++arg0.osp - 1] = Client.currentPlayerGroup.getDisplayName();
 	}
 
-	@ObfuscatedName("km.abd(Lyf;I)V")
-	public static final void player_group_get_max_size(ClientScriptState arg0) {
+    public static final void player_group_get_max_size(ClientScriptState arg0) {
 		arg0.intStack[++arg0.isp - 1] = Client.currentPlayerGroup.getMaxSize();
 	}
 
-	@ObfuscatedName("au.abt(Lyf;B)V")
-	public static final void player_group_get_create_mins_since_epoch(ClientScriptState arg0) {
+    public static final void player_group_get_create_mins_since_epoch(ClientScriptState arg0) {
 		arg0.intStack[++arg0.isp - 1] = (int) (Client.currentPlayerGroup.getCreationTime() / 60000L);
 	}
 
-	@ObfuscatedName("nj.aca(Lyf;B)V")
-	public static final void player_group_get_create_seconds_to_now(ClientScriptState arg0) {
+    public static final void player_group_get_create_seconds_to_now(ClientScriptState arg0) {
 		arg0.intStack[++arg0.isp - 1] = (int) ((MonotonicTime.get() - Client.currentPlayerGroup.getCreationTime() - Client.field1238) / 1000L);
 	}
 
-	@ObfuscatedName("sv.acd(Lyf;B)V")
-	public static final void player_group_is_members_only(ClientScriptState arg0) {
+    public static final void player_group_is_members_only(ClientScriptState arg0) {
 		arg0.intStack[++arg0.isp - 1] = Client.currentPlayerGroup.isMembersOnly() ? 1 : 0;
 	}
 
-	@ObfuscatedName("ahs.ack(Lyf;I)V")
-	public static final void player_group_get_overall_status(ClientScriptState arg0) {
+    public static final void player_group_get_overall_status(ClientScriptState arg0) {
 		arg0.intStack[++arg0.isp - 1] = Client.currentPlayerGroup.overallStatus().getId();
 	}
 
-	@ObfuscatedName("ew.acm(Lyf;B)V")
-	public static final void player_group_get_owner_slot(ClientScriptState arg0) {
+    public static final void player_group_get_owner_slot(ClientScriptState arg0) {
 		arg0.intStack[++arg0.isp - 1] = Client.currentPlayerGroup.getOwnerSlot();
 	}
 
-	@ObfuscatedName("fn.act(Lyf;B)V")
-	public static final void activeclansettings_find_listened(ClientScriptState arg0) {
+    public static final void activeclansettings_find_listened(ClientScriptState arg0) {
 		if (Client.listenedClanSettings == null) {
 			arg0.intStack[++arg0.isp - 1] = 0;
 		} else {
@@ -11108,8 +10349,7 @@ public class ScriptRunner {
 		}
 	}
 
-	@ObfuscatedName("acn.aci(Lyf;I)V")
-	public static final void activeclansettings_find_affined(ClientScriptState arg0) {
+    public static final void activeclansettings_find_affined(ClientScriptState arg0) {
 		if (Client.affinedClanSettings == null) {
 			arg0.intStack[++arg0.isp - 1] = 0;
 		} else {
@@ -11119,72 +10359,59 @@ public class ScriptRunner {
 		}
 	}
 
-	@ObfuscatedName("oh.ach(Lyf;B)V")
-	public static final void activeclansettings_getclanname(ClientScriptState arg0) {
+    public static final void activeclansettings_getclanname(ClientScriptState arg0) {
 		arg0.objectStack[++arg0.osp - 1] = arg0.activeClanSettings.clanName;
 	}
 
-	@ObfuscatedName("fs.acb(Lyf;I)V")
-	public static final void activeclansettings_getallowunaffined(ClientScriptState arg0) {
+    public static final void activeclansettings_getallowunaffined(ClientScriptState arg0) {
 		arg0.intStack[++arg0.isp - 1] = arg0.activeClanSettings.allowUnaffined ? 1 : 0;
 	}
 
-	@ObfuscatedName("nq.acx(Lyf;I)V")
-	public static final void activeclansettings_getranktalk(ClientScriptState arg0) {
+    public static final void activeclansettings_getranktalk(ClientScriptState arg0) {
 		arg0.intStack[++arg0.isp - 1] = arg0.activeClanSettings.rankTalk;
 	}
 
-	@ObfuscatedName("ry.acc(Lyf;B)V")
-	public static final void activeclansettings_getrankkick(ClientScriptState arg0) {
+    public static final void activeclansettings_getrankkick(ClientScriptState arg0) {
 		arg0.intStack[++arg0.isp - 1] = arg0.activeClanSettings.rankKick;
 	}
 
-	@ObfuscatedName("kh.acw(Lyf;B)V")
-	public static final void activeclansettings_getranklootshare(ClientScriptState arg0) {
+    public static final void activeclansettings_getranklootshare(ClientScriptState arg0) {
 		arg0.intStack[++arg0.isp - 1] = arg0.activeClanSettings.rankLootshare;
 	}
 
-	@ObfuscatedName("ng.acv(Lyf;I)V")
-	public static final void activeclansettings_getcoinshare(ClientScriptState arg0) {
+    public static final void activeclansettings_getcoinshare(ClientScriptState arg0) {
 		arg0.intStack[++arg0.isp - 1] = arg0.activeClanSettings.coinshare;
 	}
 
-	@ObfuscatedName("hy.acu(Lyf;I)V")
-	public static final void activeclansettings_getaffinedcount(ClientScriptState arg0) {
+    public static final void activeclansettings_getaffinedcount(ClientScriptState arg0) {
 		arg0.intStack[++arg0.isp - 1] = arg0.activeClanSettings.memberCount;
 	}
 
-	@ObfuscatedName("qw.acg(Lyf;I)V")
-	public static final void activeclansettings_getaffineddisplayname(ClientScriptState arg0) {
+    public static final void activeclansettings_getaffineddisplayname(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		arg0.objectStack[++arg0.osp - 1] = arg0.activeClanSettings.affinedDisplayNames[var1];
 	}
 
-	@ObfuscatedName("eu.acz(Lyf;I)V")
-	public static final void activeclansettings_getaffinedrank(ClientScriptState arg0) {
+    public static final void activeclansettings_getaffinedrank(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		arg0.intStack[++arg0.isp - 1] = arg0.activeClanSettings.affinedRanks[var1];
 	}
 
-	@ObfuscatedName("jk.acp(Lyf;I)V")
-	public static final void activeclansettings_getaffinedmuted(ClientScriptState arg0) {
+    public static final void activeclansettings_getaffinedmuted(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		arg0.intStack[++arg0.isp - 1] = arg0.activeClanSettings.affinedMutes[var1] ? 1 : 0;
 	}
 
-	@ObfuscatedName("fj.acq(Lyf;B)V")
-	public static final void activeclansettings_getbannedcount(ClientScriptState arg0) {
+    public static final void activeclansettings_getbannedcount(ClientScriptState arg0) {
 		arg0.intStack[++arg0.isp - 1] = arg0.activeClanSettings.bannedCount;
 	}
 
-	@ObfuscatedName("ji.acr(Lyf;I)V")
-	public static final void activeclansettings_getbanneddisplayname(ClientScriptState arg0) {
+    public static final void activeclansettings_getbanneddisplayname(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		arg0.objectStack[++arg0.osp - 1] = arg0.activeClanSettings.bannedDisplayNames[var1];
 	}
 
-	@ObfuscatedName("o.acj(Lyf;S)V")
-	public static final void activeclansettings_getaffinedextrainfo(ClientScriptState arg0) {
+    public static final void activeclansettings_getaffinedextrainfo(ClientScriptState arg0) {
 		arg0.isp -= 3;
 		int var1 = arg0.intStack[arg0.isp];
 		int var2 = arg0.intStack[arg0.isp + 1];
@@ -11192,47 +10419,39 @@ public class ScriptRunner {
 		arg0.intStack[++arg0.isp - 1] = arg0.activeClanSettings.getExtraInfo(var1, var2, var3);
 	}
 
-	@ObfuscatedName("rl.aco(Lyf;I)V")
-	public static final void activeclansettings_getcurrentowner_slot(ClientScriptState arg0) {
+    public static final void activeclansettings_getcurrentowner_slot(ClientScriptState arg0) {
 		arg0.intStack[++arg0.isp - 1] = arg0.activeClanSettings.currentOwnerSlot;
 	}
 
-	@ObfuscatedName("aof.ace(Lyf;I)V")
-	public static final void activeclansettings_getreplacementowner_slot(ClientScriptState arg0) {
+    public static final void activeclansettings_getreplacementowner_slot(ClientScriptState arg0) {
 		arg0.intStack[++arg0.isp - 1] = arg0.activeClanSettings.replacementOwnerSlot;
 	}
 
-	@ObfuscatedName("ho.acl(Lyf;I)V")
-	public static final void activeclansettings_getaffinedslot(ClientScriptState arg0) {
+    public static final void activeclansettings_getaffinedslot(ClientScriptState arg0) {
 		arg0.intStack[++arg0.isp - 1] = arg0.activeClanSettings.getAffinedSlot((String) arg0.objectStack[--arg0.osp]);
 	}
 
-	@ObfuscatedName("to.acy(Lyf;I)V")
-	public static final void activeclansettings_getsortedaffinedslot(ClientScriptState arg0) {
+    public static final void activeclansettings_getsortedaffinedslot(ClientScriptState arg0) {
 		arg0.intStack[arg0.isp - 1] = arg0.activeClanSettings.getSortedAffinedSlot()[arg0.intStack[arg0.isp - 1]];
 	}
 
-	@ObfuscatedName("df.acf(Lyf;B)V")
-	public static final void affinedclansettings_addbanned_fromchannel(ClientScriptState arg0) {
+    public static final void affinedclansettings_addbanned_fromchannel(ClientScriptState arg0) {
 		Client.affinedClanSettingsAddBannedFromChannel(arg0.intStack[--arg0.isp]);
 	}
 
-	@ObfuscatedName("anw.acs(Lyf;I)V")
-	public static final void affinedclansettings_setmuted_fromchannel(ClientScriptState arg0) {
+    public static final void affinedclansettings_setmuted_fromchannel(ClientScriptState arg0) {
 		arg0.isp -= 2;
 		int var1 = arg0.intStack[arg0.isp];
 		boolean var2 = arg0.intStack[arg0.isp + 1] == 1;
 		Client.affinedClanSettingsSetMutedFromChannel(var1, var2);
 	}
 
-	@ObfuscatedName("lv.acn(Lyf;I)V")
-	public static final void activeclansettings_getaffinedjoinruneday(ClientScriptState arg0) {
+    public static final void activeclansettings_getaffinedjoinruneday(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		arg0.intStack[++arg0.isp - 1] = arg0.activeClanSettings.affinedJoinedRunedays[var1];
 	}
 
-	@ObfuscatedName("n.adl(Lyf;I)V")
-	public static final void activeclanchannel_find_listened(ClientScriptState arg0) {
+    public static final void activeclanchannel_find_listened(ClientScriptState arg0) {
 		if (Client.listenedClanChannel == null) {
 			arg0.intStack[++arg0.isp - 1] = 0;
 		} else {
@@ -11241,8 +10460,7 @@ public class ScriptRunner {
 		}
 	}
 
-	@ObfuscatedName("b.adp(Lyf;I)V")
-	public static final void activeclanchannel_find_affined(ClientScriptState arg0) {
+    public static final void activeclanchannel_find_affined(ClientScriptState arg0) {
 		if (Client.affinedClanChannel == null) {
 			arg0.intStack[++arg0.isp - 1] = 0;
 		} else {
@@ -11251,115 +10469,97 @@ public class ScriptRunner {
 		}
 	}
 
-	@ObfuscatedName("pu.adc(Lyf;I)V")
-	public static final void activeclanchannel_getclanname(ClientScriptState arg0) {
+    public static final void activeclanchannel_getclanname(ClientScriptState arg0) {
 		arg0.objectStack[++arg0.osp - 1] = arg0.activeClanChannel.clanName;
 	}
 
-	@ObfuscatedName("zr.ada(Lyf;I)V")
-	public static final void activeclanchannel_getrankkick(ClientScriptState arg0) {
+    public static final void activeclanchannel_getrankkick(ClientScriptState arg0) {
 		arg0.intStack[++arg0.isp - 1] = arg0.activeClanChannel.rankKick;
 	}
 
-	@ObfuscatedName("q.adh(Lyf;I)V")
-	public static final void activeclanchannel_getranktalk(ClientScriptState arg0) {
+    public static final void activeclanchannel_getranktalk(ClientScriptState arg0) {
 		arg0.intStack[++arg0.isp - 1] = arg0.activeClanChannel.rankTalk;
 	}
 
-	@ObfuscatedName("qg.adb(Lyf;B)V")
-	public static final void activeclanchannel_getusercount(ClientScriptState arg0) {
+    public static final void activeclanchannel_getusercount(ClientScriptState arg0) {
 		arg0.intStack[++arg0.isp - 1] = arg0.activeClanChannel.userCount;
 	}
 
-	@ObfuscatedName("qt.adi(Lyf;I)V")
-	public static final void activeclanchannel_getuserdisplayname(ClientScriptState arg0) {
+    public static final void activeclanchannel_getuserdisplayname(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		arg0.objectStack[++arg0.osp - 1] = arg0.activeClanChannel.channelUsers[var1].name;
 	}
 
-	@ObfuscatedName("akz.adz(Lyf;I)V")
-	public static final void activeclanchannel_getuserrank(ClientScriptState arg0) {
+    public static final void activeclanchannel_getuserrank(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		arg0.intStack[++arg0.isp - 1] = arg0.activeClanChannel.channelUsers[var1].rank;
 	}
 
-	@ObfuscatedName("dj.ads(Lyf;I)V")
-	public static final void activeclanchannel_getuserworld(ClientScriptState arg0) {
+    public static final void activeclanchannel_getuserworld(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		arg0.intStack[++arg0.isp - 1] = arg0.activeClanChannel.channelUsers[var1].world;
 	}
 
-	@ObfuscatedName("amg.adg(Lyf;B)V")
-	public static final void activeclanchannel_kickuser(ClientScriptState arg0) {
+    public static final void activeclanchannel_kickuser(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		Client.clanChannelKickUser(Client.affinedClanChannel == arg0.activeClanChannel, var1);
 	}
 
-	@ObfuscatedName("il.adn(Lyf;B)V")
-	public static final void activeclanchannel_getuserslot(ClientScriptState arg0) {
+    public static final void activeclanchannel_getuserslot(ClientScriptState arg0) {
 		arg0.intStack[++arg0.isp - 1] = arg0.activeClanChannel.getUserSlot((String) arg0.objectStack[--arg0.osp]);
 	}
 
-	@ObfuscatedName("gr.adk(Lyf;S)V")
-	public static final void activeclanchannel_getsorteduserslot(ClientScriptState arg0) {
+    public static final void activeclanchannel_getsorteduserslot(ClientScriptState arg0) {
 		arg0.intStack[arg0.isp - 1] = arg0.activeClanChannel.getSortedUserSlot()[arg0.intStack[arg0.isp - 1]];
 	}
 
-	@ObfuscatedName("qp.ado(Lyf;B)V")
-	public static final void clanprofile_find(ClientScriptState arg0) {
+    public static final void clanprofile_find(ClientScriptState arg0) {
 		arg0.intStack[++arg0.isp - 1] = Client.varClan == null ? 0 : 1;
 	}
 
-	@ObfuscatedName("abn.adr(Lyf;I)V")
-	public static final void stockmarket_getoffertype(ClientScriptState arg0) {
+    public static final void stockmarket_getoffertype(ClientScriptState arg0) {
 		arg0.isp -= 2;
 		int var1 = arg0.intStack[arg0.isp];
 		int var2 = arg0.intStack[arg0.isp + 1];
 		arg0.intStack[++arg0.isp - 1] = Client.stockmarketSlots[var2][var1].getOfferType();
 	}
 
-	@ObfuscatedName("fm.ade(Lyf;B)V")
-	public static final void stockmarket_getofferitem(ClientScriptState arg0) {
+    public static final void stockmarket_getofferitem(ClientScriptState arg0) {
 		arg0.isp -= 2;
 		int var1 = arg0.intStack[arg0.isp];
 		int var2 = arg0.intStack[arg0.isp + 1];
 		arg0.intStack[++arg0.isp - 1] = Client.stockmarketSlots[var2][var1].obj;
 	}
 
-	@ObfuscatedName("xu.adf(Lyf;I)V")
-	public static final void stockmarket_getofferprice(ClientScriptState arg0) {
+    public static final void stockmarket_getofferprice(ClientScriptState arg0) {
 		arg0.isp -= 2;
 		int var1 = arg0.intStack[arg0.isp];
 		int var2 = arg0.intStack[arg0.isp + 1];
 		arg0.intStack[++arg0.isp - 1] = Client.stockmarketSlots[var2][var1].price;
 	}
 
-	@ObfuscatedName("nk.adv(Lyf;I)V")
-	public static final void stockmarket_getoffercount(ClientScriptState arg0) {
+    public static final void stockmarket_getoffercount(ClientScriptState arg0) {
 		arg0.isp -= 2;
 		int var1 = arg0.intStack[arg0.isp];
 		int var2 = arg0.intStack[arg0.isp + 1];
 		arg0.intStack[++arg0.isp - 1] = Client.stockmarketSlots[var2][var1].count;
 	}
 
-	@ObfuscatedName("vx.adw(Lyf;I)V")
-	public static final void stockmarket_getoffercompletedcount(ClientScriptState arg0) {
+    public static final void stockmarket_getoffercompletedcount(ClientScriptState arg0) {
 		arg0.isp -= 2;
 		int var1 = arg0.intStack[arg0.isp];
 		int var2 = arg0.intStack[arg0.isp + 1];
 		arg0.intStack[++arg0.isp - 1] = Client.stockmarketSlots[var2][var1].completedCount;
 	}
 
-	@ObfuscatedName("kl.adj(Lyf;I)V")
-	public static final void stockmarket_getoffercompletedgold(ClientScriptState arg0) {
+    public static final void stockmarket_getoffercompletedgold(ClientScriptState arg0) {
 		arg0.isp -= 2;
 		int var1 = arg0.intStack[arg0.isp];
 		int var2 = arg0.intStack[arg0.isp + 1];
 		arg0.intStack[++arg0.isp - 1] = Client.stockmarketSlots[var2][var1].completedGold;
 	}
 
-	@ObfuscatedName("jw.adm(Lyf;I)V")
-	public static final void stockmarket_isofferempty(ClientScriptState arg0) {
+    public static final void stockmarket_isofferempty(ClientScriptState arg0) {
 		arg0.isp -= 2;
 		int var1 = arg0.intStack[arg0.isp];
 		int var2 = arg0.intStack[arg0.isp + 1];
@@ -11367,8 +10567,7 @@ public class ScriptRunner {
 		arg0.intStack[++arg0.isp - 1] = var3 == 0 ? 1 : 0;
 	}
 
-	@ObfuscatedName("ru.adx(Lyf;I)V")
-	public static final void stockmarket_isofferstable(ClientScriptState arg0) {
+    public static final void stockmarket_isofferstable(ClientScriptState arg0) {
 		arg0.isp -= 2;
 		int var1 = arg0.intStack[arg0.isp];
 		int var2 = arg0.intStack[arg0.isp + 1];
@@ -11376,8 +10575,7 @@ public class ScriptRunner {
 		arg0.intStack[++arg0.isp - 1] = var3 == 2 ? 1 : 0;
 	}
 
-	@ObfuscatedName("ch.ady(Lyf;S)V")
-	public static final void stockmarket_isofferfinished(ClientScriptState arg0) {
+    public static final void stockmarket_isofferfinished(ClientScriptState arg0) {
 		arg0.isp -= 2;
 		int var1 = arg0.intStack[arg0.isp];
 		int var2 = arg0.intStack[arg0.isp + 1];
@@ -11385,8 +10583,7 @@ public class ScriptRunner {
 		arg0.intStack[++arg0.isp - 1] = var3 == 5 ? 1 : 0;
 	}
 
-	@ObfuscatedName("nw.adu(Lyf;I)V")
-	public static final void stockmarket_isofferadding(ClientScriptState arg0) {
+    public static final void stockmarket_isofferadding(ClientScriptState arg0) {
 		arg0.isp -= 2;
 		int var1 = arg0.intStack[arg0.isp];
 		int var2 = arg0.intStack[arg0.isp + 1];
@@ -11394,52 +10591,45 @@ public class ScriptRunner {
 		arg0.intStack[++arg0.isp - 1] = var3 == 1 ? 1 : 0;
 	}
 
-	@ObfuscatedName("py.adt(Lyf;B)V")
-	public static final void add(ClientScriptState arg0) {
+    public static final void add(ClientScriptState arg0) {
 		arg0.isp -= 2;
 		int var1 = arg0.intStack[arg0.isp];
 		int var2 = arg0.intStack[arg0.isp + 1];
 		arg0.intStack[++arg0.isp - 1] = var1 + var2;
 	}
 
-	@ObfuscatedName("xs.add(Lclient!yf;S)V")
-	public static final void sub(ClientScriptState arg0) {
+    public static final void sub(ClientScriptState arg0) {
 		arg0.isp -= 2;
 		int var2 = arg0.intStack[arg0.isp];
 		int var3 = arg0.intStack[arg0.isp + 1];
 		arg0.intStack[++arg0.isp - 1] = var2 - var3;
 	}
 
-	@ObfuscatedName("yx.adq(Lyf;I)V")
-	public static final void multiply(ClientScriptState arg0) {
+    public static final void multiply(ClientScriptState arg0) {
 		arg0.isp -= 2;
 		int var1 = arg0.intStack[arg0.isp];
 		int var2 = arg0.intStack[arg0.isp + 1];
 		arg0.intStack[++arg0.isp - 1] = var1 * var2;
 	}
 
-	@ObfuscatedName("pc.aew(Lyf;I)V")
-	public static final void divide(ClientScriptState arg0) {
+    public static final void divide(ClientScriptState arg0) {
 		arg0.isp -= 2;
 		int var1 = arg0.intStack[arg0.isp];
 		int var2 = arg0.intStack[arg0.isp + 1];
 		arg0.intStack[++arg0.isp - 1] = var1 / var2;
 	}
 
-	@ObfuscatedName("in.aeu(Lyf;I)V")
-	public static final void random(ClientScriptState arg0) {
+    public static final void random(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		arg0.intStack[++arg0.isp - 1] = (int) (Math.random() * (double) var1);
 	}
 
-	@ObfuscatedName("ck.aez(Lyf;I)V")
-	public static final void randominc(ClientScriptState arg0) {
+    public static final void randominc(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		arg0.intStack[++arg0.isp - 1] = (int) (Math.random() * (double) (var1 + 1));
 	}
 
-	@ObfuscatedName("at.aeh(Lyf;I)V")
-	public static final void interpolate(ClientScriptState arg0) {
+    public static final void interpolate(ClientScriptState arg0) {
 		arg0.isp -= 5;
 		int var1 = arg0.intStack[arg0.isp];
 		int var2 = arg0.intStack[arg0.isp + 1];
@@ -11449,48 +10639,42 @@ public class ScriptRunner {
 		arg0.intStack[++arg0.isp - 1] = (var2 - var1) * (var5 - var3) / (var4 - var3) + var1;
 	}
 
-	@ObfuscatedName("hz.aen(Lyf;I)V")
-	public static final void addpercent(ClientScriptState arg0) {
+    public static final void addpercent(ClientScriptState arg0) {
 		arg0.isp -= 2;
 		long var1 = (long) arg0.intStack[arg0.isp];
 		long var3 = (long) arg0.intStack[arg0.isp + 1];
 		arg0.intStack[++arg0.isp - 1] = (int) (var1 * var3 / 100L + var1);
 	}
 
-	@ObfuscatedName("uy.aet(Lyf;I)V")
-	public static final void setbit(ClientScriptState arg0) {
+    public static final void setbit(ClientScriptState arg0) {
 		arg0.isp -= 2;
 		int var1 = arg0.intStack[arg0.isp];
 		int var2 = arg0.intStack[arg0.isp + 1];
 		arg0.intStack[++arg0.isp - 1] = var1 | 0x1 << var2;
 	}
 
-	@ObfuscatedName("jx.aer(Lyf;I)V")
-	public static final void clearbit(ClientScriptState arg0) {
+    public static final void clearbit(ClientScriptState arg0) {
 		arg0.isp -= 2;
 		int var1 = arg0.intStack[arg0.isp];
 		int var2 = arg0.intStack[arg0.isp + 1];
 		arg0.intStack[++arg0.isp - 1] = var1 & -1 - (0x1 << var2);
 	}
 
-	@ObfuscatedName("ahd.aes(Lyf;I)V")
-	public static final void testbit(ClientScriptState arg0) {
+    public static final void testbit(ClientScriptState arg0) {
 		arg0.isp -= 2;
 		int var1 = arg0.intStack[arg0.isp];
 		int var2 = arg0.intStack[arg0.isp + 1];
 		arg0.intStack[++arg0.isp - 1] = (var1 & 0x1 << var2) == 0 ? 0 : 1;
 	}
 
-	@ObfuscatedName("k.aeb(Lyf;I)V")
-	public static final void modulo(ClientScriptState arg0) {
+    public static final void modulo(ClientScriptState arg0) {
 		arg0.isp -= 2;
 		int var1 = arg0.intStack[arg0.isp];
 		int var2 = arg0.intStack[arg0.isp + 1];
 		arg0.intStack[++arg0.isp - 1] = var1 % var2;
 	}
 
-	@ObfuscatedName("kc.aev(Lyf;I)V")
-	public static final void pow(ClientScriptState arg0) {
+    public static final void pow(ClientScriptState arg0) {
 		arg0.isp -= 2;
 		int var1 = arg0.intStack[arg0.isp];
 		int var2 = arg0.intStack[arg0.isp + 1];
@@ -11501,8 +10685,7 @@ public class ScriptRunner {
 		}
 	}
 
-	@ObfuscatedName("kc.aey(Lyf;I)V")
-	public static final void invpow(ClientScriptState arg0) {
+    public static final void invpow(ClientScriptState arg0) {
 		arg0.isp -= 2;
 		int var1 = arg0.intStack[arg0.isp];
 		int var2 = arg0.intStack[arg0.isp + 1];
@@ -11528,40 +10711,35 @@ public class ScriptRunner {
 		}
 	}
 
-	@ObfuscatedName("sf.aex(Lyf;I)V")
-	public static final void and(ClientScriptState arg0) {
+    public static final void and(ClientScriptState arg0) {
 		arg0.isp -= 2;
 		int var1 = arg0.intStack[arg0.isp];
 		int var2 = arg0.intStack[arg0.isp + 1];
 		arg0.intStack[++arg0.isp - 1] = var1 & var2;
 	}
 
-	@ObfuscatedName("aik.aec(Lyf;I)V")
-	public static final void or(ClientScriptState arg0) {
+    public static final void or(ClientScriptState arg0) {
 		arg0.isp -= 2;
 		int var1 = arg0.intStack[arg0.isp];
 		int var2 = arg0.intStack[arg0.isp + 1];
 		arg0.intStack[++arg0.isp - 1] = var1 | var2;
 	}
 
-	@ObfuscatedName("acg.or(Lyf;B)V")
-	public static final void min(ClientScriptState arg0) {
+    public static final void min(ClientScriptState arg0) {
 		arg0.isp -= 2;
 		int var1 = arg0.intStack[arg0.isp];
 		int var2 = arg0.intStack[arg0.isp + 1];
 		arg0.intStack[++arg0.isp - 1] = var1 < var2 ? var1 : var2;
 	}
 
-	@ObfuscatedName("aht.aeo(Lyf;I)V")
-	public static final void max(ClientScriptState arg0) {
+    public static final void max(ClientScriptState arg0) {
 		arg0.isp -= 2;
 		int var1 = arg0.intStack[arg0.isp];
 		int var2 = arg0.intStack[arg0.isp + 1];
 		arg0.intStack[++arg0.isp - 1] = var1 > var2 ? var1 : var2;
 	}
 
-	@ObfuscatedName("nf.aeg(Lyf;B)V")
-	public static final void scale(ClientScriptState arg0) {
+    public static final void scale(ClientScriptState arg0) {
 		arg0.isp -= 3;
 		long var1 = (long) arg0.intStack[arg0.isp];
 		long var3 = (long) arg0.intStack[arg0.isp + 1];
@@ -11569,21 +10747,18 @@ public class ScriptRunner {
 		arg0.intStack[++arg0.isp - 1] = (int) (var1 * var5 / var3);
 	}
 
-	@ObfuscatedName("ye.ael(Lyf;I)V")
-	public static final void bitcount(ClientScriptState arg0) {
+    public static final void bitcount(ClientScriptState arg0) {
 		arg0.intStack[arg0.isp - 1] = IntMath.method14573(arg0.intStack[arg0.isp - 1]);
 	}
 
-	@ObfuscatedName("va.aei(Lyf;B)V")
-	public static final void togglebit(ClientScriptState arg0) {
+    public static final void togglebit(ClientScriptState arg0) {
 		arg0.isp -= 2;
 		int var1 = arg0.intStack[arg0.isp];
 		int var2 = arg0.intStack[arg0.isp + 1];
 		arg0.intStack[++arg0.isp - 1] = var1 ^ 0x1 << var2;
 	}
 
-	@ObfuscatedName("qv.aef(Lyf;I)V")
-	public static final void setbit_range(ClientScriptState arg0) {
+    public static final void setbit_range(ClientScriptState arg0) {
 		arg0.isp -= 3;
 		int var1 = arg0.intStack[arg0.isp];
 		int var2 = arg0.intStack[arg0.isp + 1];
@@ -11591,8 +10766,7 @@ public class ScriptRunner {
 		arg0.intStack[++arg0.isp - 1] = IntMath.method3256(var1, var2, var3);
 	}
 
-	@ObfuscatedName("el.aej(Lyf;B)V")
-	public static final void clearbit_range(ClientScriptState arg0) {
+    public static final void clearbit_range(ClientScriptState arg0) {
 		arg0.isp -= 3;
 		int var1 = arg0.intStack[arg0.isp];
 		int var2 = arg0.intStack[arg0.isp + 1];
@@ -11600,8 +10774,7 @@ public class ScriptRunner {
 		arg0.intStack[++arg0.isp - 1] = IntMath.method3588(var1, var2, var3);
 	}
 
-	@ObfuscatedName("jq.aea(Lyf;S)V")
-	public static final void getbit_range(ClientScriptState arg0) {
+    public static final void getbit_range(ClientScriptState arg0) {
 		arg0.isp -= 3;
 		int var1 = arg0.intStack[arg0.isp];
 		int var2 = arg0.intStack[arg0.isp + 1];
@@ -11610,8 +10783,7 @@ public class ScriptRunner {
 		arg0.intStack[++arg0.isp - 1] = var1 << var4 >>> var2 + var4;
 	}
 
-	@ObfuscatedName("yx.aed(Lyf;I)V")
-	public static final void setbit_range_toint(ClientScriptState arg0) {
+    public static final void setbit_range_toint(ClientScriptState arg0) {
 		arg0.isp -= 4;
 		int var1 = arg0.intStack[arg0.isp];
 		int var2 = arg0.intStack[arg0.isp + 1];
@@ -11625,40 +10797,34 @@ public class ScriptRunner {
 		arg0.intStack[++arg0.isp - 1] = var6 | var2 << var3;
 	}
 
-	@ObfuscatedName("ags.aee(Lyf;I)V")
-	public static final void sqrt(ClientScriptState arg0) {
+    public static final void sqrt(ClientScriptState arg0) {
 		int var1 = arg0.intStack[arg0.isp - 1];
 		arg0.intStack[arg0.isp - 1] = (int) Math.sqrt((double) var1);
 	}
 
-	@ObfuscatedName("fa.aek(Lyf;I)V")
-	public static final void sin_deg(ClientScriptState arg0) {
+    public static final void sin_deg(ClientScriptState arg0) {
 		int var1 = arg0.intStack[arg0.isp - 1];
 		arg0.intStack[arg0.isp - 1] = Trig1.sin(var1);
 	}
 
-	@ObfuscatedName("ju.aem(Lyf;B)V")
-	public static final void cos_deg(ClientScriptState arg0) {
+    public static final void cos_deg(ClientScriptState arg0) {
 		int var1 = arg0.intStack[arg0.isp - 1];
 		arg0.intStack[arg0.isp - 1] = Trig1.cos(var1);
 	}
 
-	@ObfuscatedName("akp.aep(Lyf;B)V")
-	public static final void atan2_deg(ClientScriptState arg0) {
+    public static final void atan2_deg(ClientScriptState arg0) {
 		arg0.isp -= 2;
 		int var1 = arg0.intStack[arg0.isp];
 		int var2 = arg0.intStack[arg0.isp + 1];
 		arg0.intStack[++arg0.isp - 1] = Trig1.atan2(var1, var2);
 	}
 
-	@ObfuscatedName("art.aeq(Lyf;I)V")
-	public static final void abs(ClientScriptState arg0) {
+    public static final void abs(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		arg0.intStack[++arg0.isp - 1] = Math.abs(var1);
 	}
 
-	@ObfuscatedName("ex.abs(Lyf;I)V")
-	public static final void random_sound_pitch(ClientScriptState arg0) {
+    public static final void random_sound_pitch(ClientScriptState arg0) {
 		arg0.isp -= 2;
 		int var1 = arg0.intStack[arg0.isp];
 		int var2 = arg0.intStack[arg0.isp + 1];
@@ -11670,59 +10836,50 @@ public class ScriptRunner {
 		}
 	}
 
-	@ObfuscatedName("kz.afq(Lyf;I)V")
-	public static final void hsvtorgb(ClientScriptState arg0) {
+    public static final void hsvtorgb(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		arg0.intStack[++arg0.isp - 1] = ColourUtils.field8149[var1 & 0xFFFF];
 	}
 
-	@ObfuscatedName("qi.afy(Lyf;I)V")
-	public static final void not(ClientScriptState arg0) {
+    public static final void not(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		arg0.intStack[++arg0.isp - 1] = ~var1;
 	}
 
-	@ObfuscatedName("xh.afi(Lyf;B)V")
-	public static final void append_num(ClientScriptState arg0) {
+    public static final void append_num(ClientScriptState arg0) {
 		String var1 = (String) arg0.objectStack[--arg0.osp];
 		int var2 = arg0.intStack[--arg0.isp];
 		arg0.objectStack[++arg0.osp - 1] = var1 + var2;
 	}
 
-	@ObfuscatedName("aj.afk(Lyf;I)V")
-	public static final void append(ClientScriptState arg0) {
+    public static final void append(ClientScriptState arg0) {
 		arg0.osp -= 2;
 		String var1 = (String) arg0.objectStack[arg0.osp];
 		String var2 = (String) arg0.objectStack[arg0.osp + 1];
 		arg0.objectStack[++arg0.osp - 1] = var1 + var2;
 	}
 
-	@ObfuscatedName("qx.afo(Lyf;I)V")
-	public static final void append_signnum(ClientScriptState arg0) {
+    public static final void append_signnum(ClientScriptState arg0) {
 		String var1 = (String) arg0.objectStack[--arg0.osp];
 		int var2 = arg0.intStack[--arg0.isp];
 		arg0.objectStack[++arg0.osp - 1] = var1 + StringTools.method1898(var2, true);
 	}
 
-	@ObfuscatedName("tl.afz(Lyf;B)V")
-	public static final void get_col_tag(ClientScriptState arg0) {
+    public static final void get_col_tag(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		arg0.objectStack[++arg0.osp - 1] = TextUtil.colTag(var1);
 	}
 
-	@ObfuscatedName("jx.afe(Lyf;I)V")
-	public static final void lowercase(ClientScriptState arg0) {
+    public static final void lowercase(ClientScriptState arg0) {
 		String var1 = (String) arg0.objectStack[--arg0.osp];
 		arg0.objectStack[++arg0.osp - 1] = var1.toLowerCase();
 	}
 
-	@ObfuscatedName("hx.afm(Lyf;B)V")
-	public static final void fromdate(ClientScriptState arg0) {
+    public static final void fromdate(ClientScriptState arg0) {
 		arg0.objectStack[++arg0.osp - 1] = TimeFormatter.method14482(TimeFormatter.method14612(arg0.intStack[--arg0.isp]), Client.language.getId());
 	}
 
-	@ObfuscatedName("vm.afg(Lyf;I)V")
-	public static final void text_gender(ClientScriptState arg0) {
+    public static final void text_gender(ClientScriptState arg0) {
 		arg0.osp -= 2;
 		String var1 = (String) arg0.objectStack[arg0.osp];
 		String var2 = (String) arg0.objectStack[arg0.osp + 1];
@@ -11733,20 +10890,17 @@ public class ScriptRunner {
 		}
 	}
 
-	@ObfuscatedName("cj.afa(Lyf;I)V")
-	public static final void tostring(ClientScriptState arg0) {
+    public static final void tostring(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		arg0.objectStack[++arg0.osp - 1] = Integer.toString(var1);
 	}
 
-	@ObfuscatedName("ku.afc(Lyf;B)V")
-	public static final void compare(ClientScriptState arg0) {
+    public static final void compare(ClientScriptState arg0) {
 		arg0.osp -= 2;
 		arg0.intStack[++arg0.isp - 1] = StringComparator.method6827((String) arg0.objectStack[arg0.osp], (String) arg0.objectStack[arg0.osp + 1], Client.language);
 	}
 
-	@ObfuscatedName("ea.afb(Lyf;B)V")
-	public static final void paraheight(ClientScriptState arg0) {
+    public static final void paraheight(ClientScriptState arg0) {
 		String var1 = (String) arg0.objectStack[--arg0.osp];
 		arg0.isp -= 2;
 		int var2 = arg0.intStack[arg0.isp];
@@ -11755,8 +10909,7 @@ public class ScriptRunner {
 		arg0.intStack[++arg0.isp - 1] = var4.paraheight(var1, var2, DefaultSprites.field10302);
 	}
 
-	@ObfuscatedName("hv.afr(Lyf;I)V")
-	public static final void parawidth(ClientScriptState arg0) {
+    public static final void parawidth(ClientScriptState arg0) {
 		String var1 = (String) arg0.objectStack[--arg0.osp];
 		arg0.isp -= 2;
 		int var2 = arg0.intStack[arg0.isp];
@@ -11765,8 +10918,7 @@ public class ScriptRunner {
 		arg0.intStack[++arg0.isp - 1] = var4.parawidth(var1, var2, DefaultSprites.field10302);
 	}
 
-	@ObfuscatedName("vc.afh(Lyf;I)V")
-	public static final void paraline(ClientScriptState arg0) {
+    public static final void paraline(ClientScriptState arg0) {
 		String var1 = (String) arg0.objectStack[--arg0.osp];
 		arg0.isp -= 3;
 		int var2 = arg0.intStack[arg0.isp];
@@ -11777,8 +10929,7 @@ public class ScriptRunner {
 		arg0.objectStack[++arg0.osp - 1] = var6 == null ? "" : var6;
 	}
 
-	@ObfuscatedName("ku.afw(Lyf;I)V")
-	public static final void text_switch(ClientScriptState arg0) {
+    public static final void text_switch(ClientScriptState arg0) {
 		arg0.osp -= 2;
 		String var1 = (String) arg0.objectStack[arg0.osp];
 		String var2 = (String) arg0.objectStack[arg0.osp + 1];
@@ -11789,14 +10940,12 @@ public class ScriptRunner {
 		}
 	}
 
-	@ObfuscatedName("sx.afd(Lyf;I)V")
-	public static final void escape(ClientScriptState arg0) {
+    public static final void escape(ClientScriptState arg0) {
 		String var1 = (String) arg0.objectStack[--arg0.osp];
 		arg0.objectStack[++arg0.osp - 1] = StringHelper.escape(var1);
 	}
 
-	@ObfuscatedName("fs.afl(Lyf;I)V")
-	public static final void append_char(ClientScriptState arg0) {
+    public static final void append_char(ClientScriptState arg0) {
 		String var1 = (String) arg0.objectStack[--arg0.osp];
 		int var2 = arg0.intStack[--arg0.isp];
 		if (var2 == -1) {
@@ -11805,38 +10954,32 @@ public class ScriptRunner {
 		arg0.objectStack[++arg0.osp - 1] = var1 + (char) var2;
 	}
 
-	@ObfuscatedName("wi.afs(Lyf;B)V")
-	public static final void char_isprintable(ClientScriptState arg0) {
+    public static final void char_isprintable(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		arg0.intStack[++arg0.isp - 1] = StringTools.charIsPrintable((char) var1) ? 1 : 0;
 	}
 
-	@ObfuscatedName("pn.afx(Lyf;I)V")
-	public static final void char_isvalid(ClientScriptState arg0) {
+    public static final void char_isvalid(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		arg0.intStack[++arg0.isp - 1] = Cp1252.charIsValid((char) var1) ? 1 : 0;
 	}
 
-	@ObfuscatedName("ahx.aff(Lyf;B)V")
-	public static final void char_isalphanumeric(ClientScriptState arg0) {
+    public static final void char_isalphanumeric(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		arg0.intStack[++arg0.isp - 1] = StringTools.charIsAlphaNumeric((char) var1) ? 1 : 0;
 	}
 
-	@ObfuscatedName("dz.afv(Lyf;I)V")
-	public static final void char_isalpha(ClientScriptState arg0) {
+    public static final void char_isalpha(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		arg0.intStack[++arg0.isp - 1] = StringTools.charIsAlpha((char) var1) ? 1 : 0;
 	}
 
-	@ObfuscatedName("sr.afu(Lyf;I)V")
-	public static final void char_isnumeric(ClientScriptState arg0) {
+    public static final void char_isnumeric(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		arg0.intStack[++arg0.isp - 1] = StringTools.charIsNumeric((char) var1) ? 1 : 0;
 	}
 
-	@ObfuscatedName("vc.aft(Lyf;S)V")
-	public static final void string_length(ClientScriptState arg0) {
+    public static final void string_length(ClientScriptState arg0) {
 		String var1 = (String) arg0.objectStack[--arg0.osp];
 		if (var1 == null) {
 			arg0.intStack[++arg0.isp - 1] = 0;
@@ -11845,8 +10988,7 @@ public class ScriptRunner {
 		}
 	}
 
-	@ObfuscatedName("ex.afn(Lyf;I)V")
-	public static final void substring(ClientScriptState arg0) {
+    public static final void substring(ClientScriptState arg0) {
 		String var1 = (String) arg0.objectStack[--arg0.osp];
 		arg0.isp -= 2;
 		int var2 = arg0.intStack[arg0.isp];
@@ -11854,8 +10996,7 @@ public class ScriptRunner {
 		arg0.objectStack[++arg0.osp - 1] = var1.substring(var2, var3);
 	}
 
-	@ObfuscatedName("tj.afj(Lyf;I)V")
-	public static final void removetags(ClientScriptState arg0) {
+    public static final void removetags(ClientScriptState arg0) {
 		String var1 = (String) arg0.objectStack[--arg0.osp];
 		StringBuilder var2 = new StringBuilder(var1.length());
 		boolean var3 = false;
@@ -11872,8 +11013,7 @@ public class ScriptRunner {
 		arg0.objectStack[++arg0.osp - 1] = var2.toString();
 	}
 
-	@ObfuscatedName("aak.afp(Lyf;I)V")
-	public static final void string_indexof_char(ClientScriptState arg0) {
+    public static final void string_indexof_char(ClientScriptState arg0) {
 		String var1 = (String) arg0.objectStack[--arg0.osp];
 		arg0.isp -= 2;
 		int var2 = arg0.intStack[arg0.isp];
@@ -11881,8 +11021,7 @@ public class ScriptRunner {
 		arg0.intStack[++arg0.isp - 1] = var1.indexOf(var2, var3);
 	}
 
-	@ObfuscatedName("nq.agv(Lyf;I)V")
-	public static final void string_indexof_string(ClientScriptState arg0) {
+    public static final void string_indexof_string(ClientScriptState arg0) {
 		arg0.osp -= 2;
 		String var1 = (String) arg0.objectStack[arg0.osp];
 		String var2 = (String) arg0.objectStack[arg0.osp + 1];
@@ -11890,60 +11029,51 @@ public class ScriptRunner {
 		arg0.intStack[++arg0.isp - 1] = var1.indexOf(var2, var3);
 	}
 
-	@ObfuscatedName("gj.aga(Lyf;I)V")
-	public static final void char_tolowercase(ClientScriptState arg0) {
+    public static final void char_tolowercase(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		arg0.intStack[++arg0.isp - 1] = Character.toLowerCase((char) var1);
 	}
 
-	@ObfuscatedName("ex.agi(Lyf;I)V")
-	public static final void char_touppercase(ClientScriptState arg0) {
+    public static final void char_touppercase(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		arg0.intStack[++arg0.isp - 1] = Character.toUpperCase((char) var1);
 	}
 
-	@ObfuscatedName("tb.agg(Lyf;B)V")
-	public static final void tostring_localised(ClientScriptState arg0) {
+    public static final void tostring_localised(ClientScriptState arg0) {
 		boolean var1 = arg0.intStack[--arg0.isp] != 0;
 		int var2 = arg0.intStack[--arg0.isp];
 		arg0.objectStack[++arg0.osp - 1] = StringComparator.localised((long) var2, 0, var1, Client.language);
 	}
 
-	@ObfuscatedName("xh.agx(Lyf;I)V")
-	public static final void stringwidth(ClientScriptState arg0) {
+    public static final void stringwidth(ClientScriptState arg0) {
 		String var1 = (String) arg0.objectStack[--arg0.osp];
 		int var2 = arg0.intStack[--arg0.isp];
 		FontMetrics var3 = Client.fontProvider.getFontMetrics(Client.fontFactory, var2);
 		arg0.intStack[++arg0.isp - 1] = var3.stringWidth(var1, DefaultSprites.field10302);
 	}
 
-	@ObfuscatedName("ap.agj(Lyf;B)V")
-	public static final void string_distance(ClientScriptState arg0) {
+    public static final void string_distance(ClientScriptState arg0) {
 		arg0.osp -= 2;
 		String var1 = (String) arg0.objectStack[arg0.osp];
 		String var2 = (String) arg0.objectStack[arg0.osp + 1];
 		arg0.intStack[++arg0.isp - 1] = StringTools.distance(var1, var2);
 	}
 
-	@ObfuscatedName("gq.age(Lyf;B)V")
-	public static final void format_datetime_from_minutes(ClientScriptState arg0) {
+    public static final void format_datetime_from_minutes(ClientScriptState arg0) {
 		arg0.objectStack[++arg0.osp - 1] = TimeFormatter.method6058((long) arg0.intStack[--arg0.isp] * 60000L, Client.language.getId(), true) + " UTC";
 	}
 
-	@ObfuscatedName("t.agk(Lyf;S)V")
-	public static final void clanforumqfc_tostring(ClientScriptState arg0) {
+    public static final void clanforumqfc_tostring(ClientScriptState arg0) {
 		long var1 = arg0.longStack[--arg0.lsp];
 		arg0.objectStack[++arg0.osp - 1] = var1 == -1L ? "" : Long.toString(var1, 36).toUpperCase();
 	}
 
-	@ObfuscatedName("oo.agm(Lyf;I)V")
-	public static final void oc_name(ClientScriptState arg0) {
+    public static final void oc_name(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		arg0.objectStack[++arg0.osp - 1] = ((ObjType) Client.objTypeList.list(var1)).name;
 	}
 
-	@ObfuscatedName("hx.agf(Lyf;S)V")
-	public static final void oc_op(ClientScriptState arg0) {
+    public static final void oc_op(ClientScriptState arg0) {
 		arg0.isp -= 2;
 		int var1 = arg0.intStack[arg0.isp];
 		int var2 = arg0.intStack[arg0.isp + 1];
@@ -11955,8 +11085,7 @@ public class ScriptRunner {
 		}
 	}
 
-	@ObfuscatedName("ji.agd(Lyf;I)V")
-	public static final void oc_iop(ClientScriptState arg0) {
+    public static final void oc_iop(ClientScriptState arg0) {
 		arg0.isp -= 2;
 		int var1 = arg0.intStack[arg0.isp];
 		int var2 = arg0.intStack[arg0.isp + 1];
@@ -11968,20 +11097,17 @@ public class ScriptRunner {
 		}
 	}
 
-	@ObfuscatedName("ajf.agb(Lyf;B)V")
-	public static final void oc_cost(ClientScriptState arg0) {
+    public static final void oc_cost(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		arg0.intStack[++arg0.isp - 1] = ((ObjType) Client.objTypeList.list(var1)).cost;
 	}
 
-	@ObfuscatedName("hf.agw(Lyf;I)V")
-	public static final void oc_stackable(ClientScriptState arg0) {
+    public static final void oc_stackable(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		arg0.intStack[++arg0.isp - 1] = ((ObjType) Client.objTypeList.list(var1)).stackable == 1 ? 1 : 0;
 	}
 
-	@ObfuscatedName("aac.agn(Lyf;I)V")
-	public static final void oc_cert(ClientScriptState arg0) {
+    public static final void oc_cert(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		ObjType var2 = (ObjType) Client.objTypeList.list(var1);
 		if (var2.certtemplate == -1 && var2.certlink >= 0) {
@@ -11991,8 +11117,7 @@ public class ScriptRunner {
 		}
 	}
 
-	@ObfuscatedName("nv.agu(Lyf;I)V")
-	public static final void oc_uncert(ClientScriptState arg0) {
+    public static final void oc_uncert(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		ObjType var2 = (ObjType) Client.objTypeList.list(var1);
 		if (var2.certtemplate >= 0 && var2.certlink >= 0) {
@@ -12002,8 +11127,7 @@ public class ScriptRunner {
 		}
 	}
 
-	@ObfuscatedName("no.ags(Lyf;B)V")
-	public static final void oc_shard(ClientScriptState arg0) {
+    public static final void oc_shard(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		ObjType var2 = (ObjType) Client.objTypeList.list(var1);
 		if (var2.shardtemplate == -1 && var2.shardlink >= 0) {
@@ -12013,8 +11137,7 @@ public class ScriptRunner {
 		}
 	}
 
-	@ObfuscatedName("aj.agp(Lyf;B)V")
-	public static final void oc_unshard(ClientScriptState arg0) {
+    public static final void oc_unshard(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		ObjType var2 = (ObjType) Client.objTypeList.list(var1);
 		if (var2.shardtemplate >= 0 && var2.shardlink >= 0) {
@@ -12024,39 +11147,33 @@ public class ScriptRunner {
 		}
 	}
 
-	@ObfuscatedName("nh.agz(Lyf;I)V")
-	public static final void oc_shardcount(ClientScriptState arg0) {
+    public static final void oc_shardcount(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		ObjType var2 = (ObjType) Client.objTypeList.list(var1);
 		arg0.intStack[++arg0.isp - 1] = var2.shardcount;
 	}
 
-	@ObfuscatedName("fw.agh(Lyf;I)V")
-	public static final void oc_wearpos(ClientScriptState arg0) {
+    public static final void oc_wearpos(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		arg0.intStack[++arg0.isp - 1] = ((ObjType) Client.objTypeList.list(var1)).wearpos;
 	}
 
-	@ObfuscatedName("ki.agq(Lyf;I)V")
-	public static final void oc_wearpos2(ClientScriptState arg0) {
+    public static final void oc_wearpos2(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		arg0.intStack[++arg0.isp - 1] = ((ObjType) Client.objTypeList.list(var1)).wearpos2;
 	}
 
-	@ObfuscatedName("kr.agr(Lyf;I)V")
-	public static final void oc_wearpos3(ClientScriptState arg0) {
+    public static final void oc_wearpos3(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		arg0.intStack[++arg0.isp - 1] = ((ObjType) Client.objTypeList.list(var1)).wearpos3;
 	}
 
-	@ObfuscatedName("wm.agt(Lyf;I)V")
-	public static final void oc_members(ClientScriptState arg0) {
+    public static final void oc_members(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		arg0.intStack[++arg0.isp - 1] = ((ObjType) Client.objTypeList.list(var1)).members ? 1 : 0;
 	}
 
-	@ObfuscatedName("ul.agl(Lyf;I)V")
-	public static final void oc_param(ClientScriptState arg0) {
+    public static final void oc_param(ClientScriptState arg0) {
 		arg0.isp -= 2;
 		int var1 = arg0.intStack[arg0.isp];
 		int var2 = arg0.intStack[arg0.isp + 1];
@@ -12068,8 +11185,7 @@ public class ScriptRunner {
 		}
 	}
 
-	@ObfuscatedName("ye.agc(Lyf;I)V")
-	public static final void oc_icursor(ClientScriptState arg0) {
+    public static final void oc_icursor(ClientScriptState arg0) {
 		arg0.isp -= 2;
 		int var1 = arg0.intStack[arg0.isp];
 		int var2 = arg0.intStack[arg0.isp + 1] - 1;
@@ -12077,15 +11193,13 @@ public class ScriptRunner {
 		arg0.intStack[++arg0.isp - 1] = var3.getICursor(var2);
 	}
 
-	@ObfuscatedName("ae.ago(Lyf;I)V")
-	public static final void oc_find(ClientScriptState arg0) {
+    public static final void oc_find(ClientScriptState arg0) {
 		String var1 = (String) arg0.objectStack[--arg0.osp];
 		int var2 = arg0.intStack[--arg0.isp];
 		arg0.intStack[++arg0.isp - 1] = Client.findObjs(var1, var2 == 1);
 	}
 
-	@ObfuscatedName("zl.agy(Lyf;I)V")
-	public static final void oc_findnext(ClientScriptState arg0) {
+    public static final void oc_findnext(ClientScriptState arg0) {
 		if (Client.objFindResults == null || Client.objFindResultsIndex >= Client.objFindResults.length) {
 			arg0.intStack[++arg0.isp - 1] = -1;
 		} else {
@@ -12093,20 +11207,17 @@ public class ScriptRunner {
 		}
 	}
 
-	@ObfuscatedName("ajd.ahm(Lyf;B)V")
-	public static final void oc_findrestart(ClientScriptState arg0) {
+    public static final void oc_findrestart(ClientScriptState arg0) {
 		Client.objFindResultsIndex = 0;
 	}
 
-	@ObfuscatedName("abq.ahc(Lyf;I)V")
-	public static final void oc_minimenu_colour_overridden(ClientScriptState arg0) {
+    public static final void oc_minimenu_colour_overridden(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		ObjType var2 = (ObjType) Client.objTypeList.list(var1);
 		arg0.intStack[++arg0.isp - 1] = var2.minimenu_colour_overridden ? 1 : 0;
 	}
 
-	@ObfuscatedName("xd.ahj(Lyf;I)V")
-	public static final void oc_minimenu_colour(ClientScriptState arg0) {
+    public static final void oc_minimenu_colour(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		ObjType var2 = (ObjType) Client.objTypeList.list(var1);
 		int var3;
@@ -12120,42 +11231,36 @@ public class ScriptRunner {
 		arg0.intStack[++arg0.isp - 1] = var3;
 	}
 
-	@ObfuscatedName("tz.ahw(Lyf;S)V")
-	public static final void oc_category(ClientScriptState arg0) {
+    public static final void oc_category(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		ObjType var2 = (ObjType) Client.objTypeList.list(var1);
 		arg0.intStack[++arg0.isp - 1] = var2.category;
 	}
 
-	@ObfuscatedName("gy.ahl(Lyf;S)V")
-	public static final void oc_hasvarobj(ClientScriptState arg0) {
+    public static final void oc_hasvarobj(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		ObjType var2 = (ObjType) Client.objTypeList.list(var1);
 		arg0.intStack[++arg0.isp - 1] = var2.stackable == 2 ? 1 : 0;
 	}
 
-	@ObfuscatedName("tv.ahv(Lyf;B)V")
-	public static final void oc_tradeable(ClientScriptState arg0) {
+    public static final void oc_tradeable(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		ObjType var2 = (ObjType) Client.objTypeList.list(var1);
 		arg0.intStack[++arg0.isp - 1] = var2.tradeable ? 1 : 0;
 	}
 
-	@ObfuscatedName("nz.ahf(Lyf;I)V")
-	public static final void oc_placeholder(ClientScriptState arg0) {
+    public static final void oc_placeholder(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		ObjType var2 = (ObjType) Client.objTypeList.list(var1);
 		arg0.intStack[++arg0.isp - 1] = var2.placeholder ? 1 : 0;
 	}
 
-	@ObfuscatedName("aal.ahr(Lyf;I)V")
-	public static final void oc_id(ClientScriptState arg0) {
+    public static final void oc_id(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		arg0.intStack[++arg0.isp - 1] = ((ObjType) Client.objTypeList.list(var1)).id;
 	}
 
-	@ObfuscatedName("a.ahk(Lyf;I)V")
-	public static final void nc_param(ClientScriptState arg0) {
+    public static final void nc_param(ClientScriptState arg0) {
 		arg0.isp -= 2;
 		int var1 = arg0.intStack[arg0.isp];
 		int var2 = arg0.intStack[arg0.isp + 1];
@@ -12167,8 +11272,7 @@ public class ScriptRunner {
 		}
 	}
 
-	@ObfuscatedName("vg.ahq(Lyf;B)V")
-	public static final void lc_param(ClientScriptState arg0) {
+    public static final void lc_param(ClientScriptState arg0) {
 		arg0.isp -= 2;
 		int var1 = arg0.intStack[arg0.isp];
 		int var2 = arg0.intStack[arg0.isp + 1];
@@ -12180,8 +11284,7 @@ public class ScriptRunner {
 		}
 	}
 
-	@ObfuscatedName("vn.ahu(Lyf;B)V")
-	public static final void struct_param(ClientScriptState arg0) {
+    public static final void struct_param(ClientScriptState arg0) {
 		arg0.isp -= 2;
 		int var1 = arg0.intStack[arg0.isp];
 		int var2 = arg0.intStack[arg0.isp + 1];
@@ -12193,8 +11296,7 @@ public class ScriptRunner {
 		}
 	}
 
-	@ObfuscatedName("yb.ahz(Lyf;I)V")
-	public static final void seq_param(ClientScriptState arg0) {
+    public static final void seq_param(ClientScriptState arg0) {
 		arg0.isp -= 2;
 		int var1 = arg0.intStack[arg0.isp];
 		int var2 = arg0.intStack[arg0.isp + 1];
@@ -12206,14 +11308,12 @@ public class ScriptRunner {
 		}
 	}
 
-	@ObfuscatedName("fw.aha(Lyf;B)V")
-	public static final void seqlength(ClientScriptState arg0) {
+    public static final void seqlength(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		arg0.intStack[++arg0.isp - 1] = ((SeqType) Client.seqTypeList.list(var1)).length;
 	}
 
-	@ObfuscatedName("ij.ahx(Lyf;I)V")
-	public static final void bas_getanim_ready(ClientScriptState arg0) {
+    public static final void bas_getanim_ready(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		BASType var2 = (BASType) Client.basTypeList.list(var1);
 		if (var2.field7335 == null || var2.field7335.length <= 0) {
@@ -12231,13 +11331,11 @@ public class ScriptRunner {
 		arg0.intStack[++arg0.isp - 1] = var2.field7335[var3];
 	}
 
-	@ObfuscatedName("ahz.ahb(Lyf;B)V")
-	public static final void chat_getfilter_public(ClientScriptState arg0) {
+    public static final void chat_getfilter_public(ClientScriptState arg0) {
 		arg0.intStack[++arg0.isp - 1] = Client.publicChatFilter;
 	}
 
-	@ObfuscatedName("pl.aho(Lyf;S)V")
-	public static final void chat_setfilter(ClientScriptState arg0) {
+    public static final void chat_setfilter(ClientScriptState arg0) {
 		arg0.isp -= 3;
 		Client.publicChatFilter = arg0.intStack[arg0.isp];
 		Client.privateChatFilter = PrivateChatFilter.method3374(arg0.intStack[arg0.isp + 1]);
@@ -12253,8 +11351,7 @@ public class ScriptRunner {
 		var1.queue(var2);
 	}
 
-	@ObfuscatedName("anr.ahg(Lyf;I)V")
-	public static final void chat_sendabusereport(ClientScriptState arg0) {
+    public static final void chat_sendabusereport(ClientScriptState arg0) {
 		arg0.osp -= 2;
 		String var1 = (String) arg0.objectStack[arg0.osp];
 		String var2 = (String) arg0.objectStack[arg0.osp + 1];
@@ -12277,8 +11374,7 @@ public class ScriptRunner {
 		var5.queue(var6);
 	}
 
-	@ObfuscatedName("aas.ahh(Lyf;S)V")
-	public static final void chat_gethistory_bytypeandline(ClientScriptState arg0) {
+    public static final void chat_gethistory_bytypeandline(ClientScriptState arg0) {
 		arg0.isp -= 2;
 		int var1 = arg0.intStack[arg0.isp];
 		int var2 = arg0.intStack[arg0.isp + 1];
@@ -12308,8 +11404,7 @@ public class ScriptRunner {
 		arg0.intStack[++arg0.isp - 1] = -1;
 	}
 
-	@ObfuscatedName("no.ahd(Lyf;B)V")
-	public static final void chat_gethistory_byuid(ClientScriptState arg0) {
+    public static final void chat_gethistory_byuid(ClientScriptState arg0) {
 		arg0.isp--;
 		int var1 = arg0.intStack[arg0.isp];
 		ChatLine var2 = ChatHistory.method304(var1);
@@ -12338,18 +11433,15 @@ public class ScriptRunner {
 		arg0.intStack[++arg0.isp - 1] = -1;
 	}
 
-	@ObfuscatedName("fw.ahn(Lyf;I)V")
-	public static final void chat_lastuid(ClientScriptState arg0) {
+    public static final void chat_lastuid(ClientScriptState arg0) {
 		arg0.intStack[++arg0.isp - 1] = ChatHistory.lastUid();
 	}
 
-	@ObfuscatedName("vo.ahp(Lyf;B)V")
-	public static final void chat_clear(ClientScriptState arg0) {
+    public static final void chat_clear(ClientScriptState arg0) {
 		ChatHistory.clear();
 	}
 
-	@ObfuscatedName("xo.ahe(Lyf;S)V")
-	public static final void chat_getfilter_private(ClientScriptState arg0) {
+    public static final void chat_getfilter_private(ClientScriptState arg0) {
 		if (Client.privateChatFilter == null) {
 			arg0.intStack[++arg0.isp - 1] = -1;
 		} else {
@@ -12357,8 +11449,7 @@ public class ScriptRunner {
 		}
 	}
 
-	@ObfuscatedName("mj.ahs(Lyf;I)V")
-	public static final void chat_setmode(ClientScriptState arg0) {
+    public static final void chat_setmode(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		ServerConnection var2 = Client.getCurrentConnection();
 		ClientMessage var3 = ClientMessage.createMessage(ClientProt.CHAT_SETMODE, var2.randomOut);
@@ -12366,8 +11457,7 @@ public class ScriptRunner {
 		var2.queue(var3);
 	}
 
-	@ObfuscatedName("ki.aht(Lyf;I)V")
-	public static final void chat_sendpublic(ClientScriptState arg0) {
+    public static final void chat_sendpublic(ClientScriptState arg0) {
 		String var1 = (String) arg0.objectStack[--arg0.osp];
 		if (Client.staffModLevel == 0 && (Client.field10951 && !Client.playerIsQuickChat || Client.loggedInQuickChat)) {
 			return;
@@ -12495,8 +11585,7 @@ public class ScriptRunner {
 		var6.queue(var7);
 	}
 
-	@ObfuscatedName("iw.ahi(Lyf;I)V")
-	public static final void chat_sendprivate(ClientScriptState arg0) {
+    public static final void chat_sendprivate(ClientScriptState arg0) {
 		arg0.osp -= 2;
 		String var1 = (String) arg0.objectStack[arg0.osp];
 		String var2 = (String) arg0.objectStack[arg0.osp + 1];
@@ -12513,8 +11602,7 @@ public class ScriptRunner {
 		var3.queue(var4);
 	}
 
-	@ObfuscatedName("yw.ahy(Lyf;S)V")
-	public static final void chat_playername(ClientScriptState arg0) {
+    public static final void chat_playername(ClientScriptState arg0) {
 		String var1;
 		if (Client.localPlayerEntity == null || Client.localPlayerEntity.name == null) {
 			var1 = "";
@@ -12524,34 +11612,29 @@ public class ScriptRunner {
 		arg0.objectStack[++arg0.osp - 1] = var1;
 	}
 
-	@ObfuscatedName("fs.air(Lyf;I)V")
-	public static final void chat_getfilter_trade(ClientScriptState arg0) {
+    public static final void chat_getfilter_trade(ClientScriptState arg0) {
 		arg0.intStack[++arg0.isp - 1] = Client.tradeChatFilter;
 	}
 
-	@ObfuscatedName("wq.aix(Lyf;I)V")
-	public static final void chat_gethistorylength(ClientScriptState arg0) {
+    public static final void chat_gethistorylength(ClientScriptState arg0) {
 		arg0.isp--;
 		int var1 = arg0.intStack[arg0.isp];
 		arg0.intStack[++arg0.isp - 1] = ChatHistory.length(var1);
 	}
 
-	@ObfuscatedName("oh.ait(Lyf;I)V")
-	public static final void chat_getnextuid(ClientScriptState arg0) {
+    public static final void chat_getnextuid(ClientScriptState arg0) {
 		arg0.isp--;
 		int var1 = arg0.intStack[arg0.isp];
 		arg0.intStack[++arg0.isp - 1] = ChatHistory.nextUid(var1);
 	}
 
-	@ObfuscatedName("hc.aiq(Lyf;I)V")
-	public static final void chat_getprevuid(ClientScriptState arg0) {
+    public static final void chat_getprevuid(ClientScriptState arg0) {
 		arg0.isp--;
 		int var1 = arg0.intStack[arg0.isp];
 		arg0.intStack[++arg0.isp - 1] = ChatHistory.previousUid(var1);
 	}
 
-	@ObfuscatedName("abv.aii(Lyf;I)V")
-	public static final void chat_playername_unfiltered(ClientScriptState arg0) {
+    public static final void chat_playername_unfiltered(ClientScriptState arg0) {
 		String var1;
 		if (Client.localPlayerEntity == null || Client.localPlayerEntity.name == null) {
 			var1 = "";
@@ -12561,14 +11644,12 @@ public class ScriptRunner {
 		arg0.objectStack[++arg0.osp - 1] = var1;
 	}
 
-	@ObfuscatedName("fl.aia(Lyf;I)V")
-	public static final void chatcat_getdesc(ClientScriptState arg0) {
+    public static final void chatcat_getdesc(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		arg0.objectStack[++arg0.osp - 1] = Client.quickChatCatTypeList.list(var1).description;
 	}
 
-	@ObfuscatedName("tr.ais(Lyf;I)V")
-	public static final void chatcat_getsubcatcount(ClientScriptState arg0) {
+    public static final void chatcat_getsubcatcount(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		QuickChatCatType var2 = Client.quickChatCatTypeList.list(var1);
 		if (var2.subCategories == null) {
@@ -12578,8 +11659,7 @@ public class ScriptRunner {
 		}
 	}
 
-	@ObfuscatedName("ir.aiy(Lyf;B)V")
-	public static final void chatcat_getsubcat(ClientScriptState arg0) {
+    public static final void chatcat_getsubcat(ClientScriptState arg0) {
 		arg0.isp -= 2;
 		int var1 = arg0.intStack[arg0.isp];
 		int var2 = arg0.intStack[arg0.isp + 1];
@@ -12588,8 +11668,7 @@ public class ScriptRunner {
 		arg0.intStack[++arg0.isp - 1] = var4;
 	}
 
-	@ObfuscatedName("qa.aio(Lyf;B)V")
-	public static final void chatcat_getphrasecount(ClientScriptState arg0) {
+    public static final void chatcat_getphrasecount(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		QuickChatCatType var2 = Client.quickChatCatTypeList.list(var1);
 		if (var2.phrases == null) {
@@ -12599,22 +11678,19 @@ public class ScriptRunner {
 		}
 	}
 
-	@ObfuscatedName("hh.aig(Lyf;B)V")
-	public static final void chatcat_getphrase(ClientScriptState arg0) {
+    public static final void chatcat_getphrase(ClientScriptState arg0) {
 		arg0.isp -= 2;
 		int var1 = arg0.intStack[arg0.isp];
 		int var2 = arg0.intStack[arg0.isp + 1];
 		arg0.intStack[++arg0.isp - 1] = Client.quickChatCatTypeList.list(var1).phrases[var2];
 	}
 
-	@ObfuscatedName("ho.aid(Lyf;S)V")
-	public static final void chatphrase_gettext(ClientScriptState arg0) {
+    public static final void chatphrase_gettext(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		arg0.objectStack[++arg0.osp - 1] = Client.quickChatPhraseTypeList.list(var1).getText();
 	}
 
-	@ObfuscatedName("sv.aif(Lyf;B)V")
-	public static final void chatphrase_getautoresponsecount(ClientScriptState arg0) {
+    public static final void chatphrase_getautoresponsecount(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		QuickChatPhraseType var2 = Client.quickChatPhraseTypeList.list(var1);
 		if (var2.autoResponses == null) {
@@ -12624,24 +11700,21 @@ public class ScriptRunner {
 		}
 	}
 
-	@ObfuscatedName("la.ail(Lyf;B)V")
-	public static final void chatphrase_getautoresponse(ClientScriptState arg0) {
+    public static final void chatphrase_getautoresponse(ClientScriptState arg0) {
 		arg0.isp -= 2;
 		int var1 = arg0.intStack[arg0.isp];
 		int var2 = arg0.intStack[arg0.isp + 1];
 		arg0.intStack[++arg0.isp - 1] = Client.quickChatPhraseTypeList.list(var1).autoResponses[var2];
 	}
 
-	@ObfuscatedName("fi.aiw(Lyf;I)V")
-	public static final void activechatphrase_prepare(ClientScriptState arg0) {
+    public static final void activechatphrase_prepare(ClientScriptState arg0) {
 		arg0.activeChatPhrase = new QuickChatPhrase();
 		arg0.activeChatPhrase.id = arg0.intStack[--arg0.isp];
 		arg0.activeChatPhrase.quickChatPhraseType = Client.quickChatPhraseTypeList.list(arg0.activeChatPhrase.id);
 		arg0.activeChatPhrase.dynamics = new int[arg0.activeChatPhrase.quickChatPhraseType.length()];
 	}
 
-	@ObfuscatedName("jr.aiz(Lyf;I)V")
-	public static final void activechatphrase_send(ClientScriptState arg0) {
+    public static final void activechatphrase_send(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		ServerConnection var2 = Client.getCurrentConnection();
 		ClientMessage var3 = ClientMessage.createMessage(ClientProt.MESSAGE_QUICKCHAT_PUBLIC, var2.randomOut);
@@ -12654,8 +11727,7 @@ public class ScriptRunner {
 		var2.queue(var3);
 	}
 
-	@ObfuscatedName("qh.aim(Lyf;B)V")
-	public static final void activechatphrase_sendprivate(ClientScriptState arg0) {
+    public static final void activechatphrase_sendprivate(ClientScriptState arg0) {
 		String var1 = (String) arg0.objectStack[--arg0.osp];
 		ServerConnection var2 = Client.getCurrentConnection();
 		ClientMessage var3 = ClientMessage.createMessage(ClientProt.MESSAGE_QUICKCHAT_PRIVATE, var2.randomOut);
@@ -12668,24 +11740,21 @@ public class ScriptRunner {
 		var2.queue(var3);
 	}
 
-	@ObfuscatedName("atf.aie(Lyf;I)V")
-	public static final void chatcat_getsubcatshortcut(ClientScriptState arg0) {
+    public static final void chatcat_getsubcatshortcut(ClientScriptState arg0) {
 		arg0.isp -= 2;
 		int var1 = arg0.intStack[arg0.isp];
 		int var2 = arg0.intStack[arg0.isp + 1];
 		arg0.intStack[++arg0.isp - 1] = Client.quickChatCatTypeList.list(var1).subCategoriesShortcuts[var2];
 	}
 
-	@ObfuscatedName("xr.aic(Lyf;I)V")
-	public static final void chatcat_getphraseshortcut(ClientScriptState arg0) {
+    public static final void chatcat_getphraseshortcut(ClientScriptState arg0) {
 		arg0.isp -= 2;
 		int var1 = arg0.intStack[arg0.isp];
 		int var2 = arg0.intStack[arg0.isp + 1];
 		arg0.intStack[++arg0.isp - 1] = Client.quickChatCatTypeList.list(var1).phrasesShortcuts[var2];
 	}
 
-	@ObfuscatedName("wg.aij(Lyf;I)V")
-	public static final void chatcat_findsubcatbyshortcut(ClientScriptState arg0) {
+    public static final void chatcat_findsubcatbyshortcut(ClientScriptState arg0) {
 		arg0.isp -= 2;
 		int var1 = arg0.intStack[arg0.isp];
 		int var2 = arg0.intStack[arg0.isp + 1];
@@ -12696,8 +11765,7 @@ public class ScriptRunner {
 		}
 	}
 
-	@ObfuscatedName("rl.aik(Lyf;I)V")
-	public static final void chatcat_findphrasebyshortcut(ClientScriptState arg0) {
+    public static final void chatcat_findphrasebyshortcut(ClientScriptState arg0) {
 		arg0.isp -= 2;
 		int var1 = arg0.intStack[arg0.isp];
 		int var2 = arg0.intStack[arg0.isp + 1];
@@ -12708,14 +11776,12 @@ public class ScriptRunner {
 		}
 	}
 
-	@ObfuscatedName("hi.aih(Lyf;I)V")
-	public static final void chatphrase_getdynamiccommandcount(ClientScriptState arg0) {
+    public static final void chatphrase_getdynamiccommandcount(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		arg0.intStack[++arg0.isp - 1] = Client.quickChatPhraseTypeList.list(var1).length();
 	}
 
-	@ObfuscatedName("rc.aip(Lyf;I)V")
-	public static final void chatphrase_getdynamiccommand(ClientScriptState arg0) {
+    public static final void chatphrase_getdynamiccommand(ClientScriptState arg0) {
 		arg0.isp -= 2;
 		int var1 = arg0.intStack[arg0.isp];
 		int var2 = arg0.intStack[arg0.isp + 1];
@@ -12723,24 +11789,21 @@ public class ScriptRunner {
 		arg0.intStack[++arg0.isp - 1] = var3;
 	}
 
-	@ObfuscatedName("dn.aiu(Lyf;I)V")
-	public static final void activechatphrase_setdynamicint(ClientScriptState arg0) {
+    public static final void activechatphrase_setdynamicint(ClientScriptState arg0) {
 		arg0.isp -= 2;
 		int var1 = arg0.intStack[arg0.isp];
 		int var2 = arg0.intStack[arg0.isp + 1];
 		arg0.activeChatPhrase.dynamics[var1] = var2;
 	}
 
-	@ObfuscatedName("ek.aib(Lyf;I)V")
-	public static final void activechatphrase_setdynamicobj(ClientScriptState arg0) {
+    public static final void activechatphrase_setdynamicobj(ClientScriptState arg0) {
 		arg0.isp -= 2;
 		int var1 = arg0.intStack[arg0.isp];
 		int var2 = arg0.intStack[arg0.isp + 1];
 		arg0.activeChatPhrase.dynamics[var1] = var2;
 	}
 
-	@ObfuscatedName("aaa.ain(Lyf;I)V")
-	public static final void chatphrase_getdynamiccommandparam_enum(ClientScriptState arg0) {
+    public static final void chatphrase_getdynamiccommandparam_enum(ClientScriptState arg0) {
 		arg0.isp -= 3;
 		int var1 = arg0.intStack[arg0.isp];
 		int var2 = arg0.intStack[arg0.isp + 1];
@@ -12752,15 +11815,13 @@ public class ScriptRunner {
 		arg0.intStack[++arg0.isp - 1] = var4.method19506(var2, var3);
 	}
 
-	@ObfuscatedName("agu.aiv(Lyf;I)V")
-	public static final void chatphrase_find(ClientScriptState arg0) {
+    public static final void chatphrase_find(ClientScriptState arg0) {
 		String var1 = (String) arg0.objectStack[--arg0.osp];
 		boolean var2 = arg0.intStack[--arg0.isp] == 1;
 		arg0.intStack[++arg0.isp - 1] = Client.findChatPhrases(var1, var2);
 	}
 
-	@ObfuscatedName("yr.aja(Lyf;I)V")
-	public static final void chatphrase_findnext(ClientScriptState arg0) {
+    public static final void chatphrase_findnext(ClientScriptState arg0) {
 		if (Client.chatPhraseFindResults == null || Client.chatPhraseFindResultsIndex >= Client.chatPhraseFindResults.length) {
 			arg0.intStack[++arg0.isp - 1] = -1;
 		} else {
@@ -12768,13 +11829,11 @@ public class ScriptRunner {
 		}
 	}
 
-	@ObfuscatedName("hr.ajp(Lyf;B)V")
-	public static final void chatphrase_findrestart(ClientScriptState arg0) {
+    public static final void chatphrase_findrestart(ClientScriptState arg0) {
 		Client.chatPhraseFindResultsIndex = 0;
 	}
 
-	@ObfuscatedName("aos.ajy(Lyf;I)V")
-	public static final void keyheld_alt(ClientScriptState arg0) {
+    public static final void keyheld_alt(ClientScriptState arg0) {
 		if (Client.keyboard.keyheld(86)) {
 			arg0.intStack[++arg0.isp - 1] = 1;
 		} else {
@@ -12782,8 +11841,7 @@ public class ScriptRunner {
 		}
 	}
 
-	@ObfuscatedName("er.ajs(Lyf;B)V")
-	public static final void keyheld_ctrl(ClientScriptState arg0) {
+    public static final void keyheld_ctrl(ClientScriptState arg0) {
 		if (Client.keyboard.keyheld(82)) {
 			arg0.intStack[++arg0.isp - 1] = 1;
 		} else {
@@ -12791,8 +11849,7 @@ public class ScriptRunner {
 		}
 	}
 
-	@ObfuscatedName("amt.ajv(Lyf;B)V")
-	public static final void keyheld_shift(ClientScriptState arg0) {
+    public static final void keyheld_shift(ClientScriptState arg0) {
 		if (Client.keyboard.keyheld(81)) {
 			arg0.intStack[++arg0.isp - 1] = 1;
 		} else {
@@ -12800,100 +11857,81 @@ public class ScriptRunner {
 		}
 	}
 
-	@ObfuscatedName("ql.ajk(Lyf;I)V")
-	public static final void method7233(ClientScriptState arg0) {
+    public static final void method7233(ClientScriptState arg0) {
 		arg0.isp -= 2;
 		arg0.osp--;
 	}
 
-	@ObfuscatedName("kz.ajg(Lyf;I)V")
-	public static final void method5129(ClientScriptState arg0) {
+    public static final void method5129(ClientScriptState arg0) {
 	}
 
-	@ObfuscatedName("tc.ajh(Lyf;I)V")
-	public static final void method8435(ClientScriptState arg0) {
+    public static final void method8435(ClientScriptState arg0) {
 		arg0.intStack[++arg0.isp - 1] = 0;
 	}
 
-	@ObfuscatedName("yv.ajj(Lyf;I)V")
-	public static final void worldmap_3dview_enable(ClientScriptState arg0) {
+    public static final void worldmap_3dview_enable(ClientScriptState arg0) {
 		throw new RuntimeException("");
 	}
 
-	@ObfuscatedName("io.ajz(Lyf;I)V")
-	public static final void worldmap_3dview_disable(ClientScriptState arg0) {
+    public static final void worldmap_3dview_disable(ClientScriptState arg0) {
 		throw new RuntimeException("");
 	}
 
-	@ObfuscatedName("zc.ajb(Lyf;I)V")
-	public static final void worldmap_3dview_active(ClientScriptState arg0) {
+    public static final void worldmap_3dview_active(ClientScriptState arg0) {
 		arg0.intStack[++arg0.isp - 1] = 0;
 	}
 
-	@ObfuscatedName("re.ajq(Lyf;I)V")
-	public static final void worldmap_3dview_setlighting(ClientScriptState arg0) {
+    public static final void worldmap_3dview_setlighting(ClientScriptState arg0) {
 		throw new RuntimeException("");
 	}
 
-	@ObfuscatedName("ajs.aju(Lyf;I)V")
-	public static final void worldmap_setcategorypriority(ClientScriptState arg0) {
+    public static final void worldmap_setcategorypriority(ClientScriptState arg0) {
 	}
 
-	@ObfuscatedName("aht.ajd(Lyf;I)V")
-	public static final void worldmap_getcategorypriority(ClientScriptState arg0) {
+    public static final void worldmap_getcategorypriority(ClientScriptState arg0) {
 		arg0.intStack[++arg0.isp - 1] = 0;
 	}
 
-	@ObfuscatedName("yw.ajn(Lyf;I)V")
-	public static final void worldmap_3dview_getcoordfine(ClientScriptState arg0) {
+    public static final void worldmap_3dview_getcoordfine(ClientScriptState arg0) {
 		throw new RuntimeException("");
 	}
 
-	@ObfuscatedName("sv.aji(Lyf;S)V")
-	public static final void worldmap_3dview_setloddistance(ClientScriptState arg0) {
+    public static final void worldmap_3dview_setloddistance(ClientScriptState arg0) {
 		throw new RuntimeException("");
 	}
 
-	@ObfuscatedName("aj.ajc(Lyf;I)V")
-	public static final void worldmap_3dview_getloddistance(ClientScriptState arg0) {
+    public static final void worldmap_3dview_getloddistance(ClientScriptState arg0) {
 		arg0.intStack[++arg0.isp - 1] = -1;
 	}
 
-	@ObfuscatedName("je.ajo(Lyf;I)V")
-	public static final void worldmap_3dview_settextfont(ClientScriptState arg0) {
+    public static final void worldmap_3dview_settextfont(ClientScriptState arg0) {
 		arg0.isp -= 2;
 	}
 
-	@ObfuscatedName("rs.ajt(Lyf;B)V")
-	public static final void worldmap_3dview_gettextfont(ClientScriptState arg0) {
+    public static final void worldmap_3dview_gettextfont(ClientScriptState arg0) {
 		arg0.isp--;
 		arg0.intStack[++arg0.isp - 1] = -1;
 	}
 
-	@ObfuscatedName("gk.ajw(Lyf;I)V")
-	public static final void worldmap_3dview_getscreenposition(ClientScriptState arg0) {
+    public static final void worldmap_3dview_getscreenposition(ClientScriptState arg0) {
 		arg0.isp -= 2;
 		arg0.intStack[++arg0.isp - 1] = -1;
 		arg0.intStack[++arg0.isp - 1] = -1;
 	}
 
-	@ObfuscatedName("rp.ajx(Lyf;I)V")
-	public static final void worldmap_setzoom(ClientScriptState arg0) {
+    public static final void worldmap_setzoom(ClientScriptState arg0) {
 		ClientWorldMap.setZoom(arg0.intStack[--arg0.isp]);
 	}
 
-	@ObfuscatedName("im.ajf(Lyf;I)V")
-	public static final void worldmap_getzoom(ClientScriptState arg0) {
+    public static final void worldmap_getzoom(ClientScriptState arg0) {
 		arg0.intStack[++arg0.isp - 1] = ClientWorldMap.getZoom();
 	}
 
-	@ObfuscatedName("hi.ajm(Lyf;I)V")
-	public static final void worldmap_setmap(ClientScriptState arg0) {
+    public static final void worldmap_setmap(ClientScriptState arg0) {
 		ClientWorldMap.setMap(arg0.intStack[--arg0.isp], -1, -1, false);
 	}
 
-	@ObfuscatedName("uu.aje(Lyf;I)V")
-	public static final void worldmap_getmap(ClientScriptState arg0) {
+    public static final void worldmap_getmap(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		WorldMapAreaMetadata var2 = WorldMap.getMap(var1 >> 14 & 0x3FFF, var1 & 0x3FFF);
 		if (var2 == null) {
@@ -12903,8 +11941,7 @@ public class ScriptRunner {
 		}
 	}
 
-	@ObfuscatedName("je.ajl(Lyf;I)V")
-	public static final void worldmap_getmapname(ClientScriptState arg0) {
+    public static final void worldmap_getmapname(ClientScriptState arg0) {
 		WorldMapAreaMetadata var1 = WorldMap.getMapByName(arg0.intStack[--arg0.isp]);
 		if (var1 == null || var1.mapName == null) {
 			arg0.objectStack[++arg0.osp - 1] = "";
@@ -12913,20 +11950,17 @@ public class ScriptRunner {
 		}
 	}
 
-	@ObfuscatedName("tw.ajr(Lyf;I)V")
-	public static final void worldmap_getsize(ClientScriptState arg0) {
+    public static final void worldmap_getsize(ClientScriptState arg0) {
 		arg0.intStack[++arg0.isp - 1] = ClientWorldMap.field3121;
 		arg0.intStack[++arg0.isp - 1] = ClientWorldMap.field4603;
 	}
 
-	@ObfuscatedName("vz.akn(Lyf;B)V")
-	public static final void worldmap_getdisplayposition(ClientScriptState arg0) {
+    public static final void worldmap_getdisplayposition(ClientScriptState arg0) {
 		arg0.intStack[++arg0.isp - 1] = ClientWorldMap.field11443 + WorldMap.field6786;
 		arg0.intStack[++arg0.isp - 1] = ClientWorldMap.field11654 + WorldMap.field6808;
 	}
 
-	@ObfuscatedName("wo.ako(Lyf;B)V")
-	public static final void worldmap_getconfigorigin(ClientScriptState arg0) {
+    public static final void worldmap_getconfigorigin(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		WorldMapAreaMetadata var2 = WorldMap.getMapByName(var1);
 		if (var2 == null) {
@@ -12936,8 +11970,7 @@ public class ScriptRunner {
 		}
 	}
 
-	@ObfuscatedName("pn.akz(Lyf;B)V")
-	public static final void worldmap_getconfigsize(ClientScriptState arg0) {
+    public static final void worldmap_getconfigsize(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		WorldMapAreaMetadata var2 = WorldMap.getMapByName(var1);
 		if (var2 == null) {
@@ -12949,8 +11982,7 @@ public class ScriptRunner {
 		}
 	}
 
-	@ObfuscatedName("alw.akf(Lyf;I)V")
-	public static final void worldmap_getconfigbounds(ClientScriptState arg0) {
+    public static final void worldmap_getconfigbounds(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		WorldMapAreaMetadata var2 = WorldMap.getMapByName(var1);
 		if (var2 == null) {
@@ -12966,8 +11998,7 @@ public class ScriptRunner {
 		}
 	}
 
-	@ObfuscatedName("k.akq(Lyf;I)V")
-	public static final void worldmap_listelement_start(ClientScriptState arg0) {
+    public static final void worldmap_listelement_start(ClientScriptState arg0) {
 		WorldMapElement var1 = ClientWorldMap.method9829();
 		if (var1 == null) {
 			arg0.intStack[++arg0.isp - 1] = -1;
@@ -12979,8 +12010,7 @@ public class ScriptRunner {
 		}
 	}
 
-	@ObfuscatedName("ux.akc(Lyf;I)V")
-	public static final void worldmap_listelement_next(ClientScriptState arg0) {
+    public static final void worldmap_listelement_next(ClientScriptState arg0) {
 		WorldMapElement var1 = ClientWorldMap.method13882();
 		if (var1 == null) {
 			arg0.intStack[++arg0.isp - 1] = -1;
@@ -12992,8 +12022,7 @@ public class ScriptRunner {
 		}
 	}
 
-	@ObfuscatedName("q.aki(Lyf;B)V")
-	public static final void worldmap_jumptosourcecoord(ClientScriptState arg0) {
+    public static final void worldmap_jumptosourcecoord(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		WorldMapAreaMetadata var2 = ClientWorldMap.method17877();
 		if (var2 != null) {
@@ -13004,8 +12033,7 @@ public class ScriptRunner {
 		}
 	}
 
-	@ObfuscatedName("ys.akw(Lyf;I)V")
-	public static final void worldmap_jumptosourcecoord_instant(ClientScriptState arg0) {
+    public static final void worldmap_jumptosourcecoord_instant(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		WorldMapAreaMetadata var2 = ClientWorldMap.method17877();
 		if (var2 != null) {
@@ -13016,8 +12044,7 @@ public class ScriptRunner {
 		}
 	}
 
-	@ObfuscatedName("uc.akp(Lyf;I)V")
-	public static final void worldmap_coordinmap(ClientScriptState arg0) {
+    public static final void worldmap_coordinmap(ClientScriptState arg0) {
 		arg0.isp -= 2;
 		int var1 = arg0.intStack[arg0.isp];
 		int var2 = arg0.intStack[arg0.isp + 1];
@@ -13036,8 +12063,7 @@ public class ScriptRunner {
 		}
 	}
 
-	@ObfuscatedName("dk.akr(Lyf;I)V")
-	public static final void worldmap_getconfigzoom(ClientScriptState arg0) {
+    public static final void worldmap_getconfigzoom(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		WorldMapAreaMetadata var2 = WorldMap.getMapByName(var1);
 		if (var2 == null) {
@@ -13047,25 +12073,21 @@ public class ScriptRunner {
 		}
 	}
 
-	@ObfuscatedName("xi.aku(Lyf;B)V")
-	public static final void worldmap_isloaded(ClientScriptState arg0) {
+    public static final void worldmap_isloaded(ClientScriptState arg0) {
 		arg0.intStack[++arg0.isp - 1] = ClientWorldMap.loading == 100 ? 1 : 0;
 	}
 
-	@ObfuscatedName("agh.akh(Lyf;I)V")
-	public static final void worldmap_jumptodisplaycoord(ClientScriptState arg0) {
+    public static final void worldmap_jumptodisplaycoord(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		ClientWorldMap.jumpToDisplayCoord(var1 >> 14 & 0x3FFF, var1 & 0x3FFF);
 	}
 
-	@ObfuscatedName("ua.akx(Lyf;I)V")
-	public static final void worldmap_jumptodisplaycoord_instant(ClientScriptState arg0) {
+    public static final void worldmap_jumptodisplaycoord_instant(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		ClientWorldMap.jumpToDisplayCoordInstant(var1 >> 14 & 0x3FFF, var1 & 0x3FFF);
 	}
 
-	@ObfuscatedName("vh.akl(Lyf;B)V")
-	public static final void worldmap_getsourceposition(ClientScriptState arg0) {
+    public static final void worldmap_getsourceposition(ClientScriptState arg0) {
 		WorldMapAreaMetadata var1 = ClientWorldMap.method17877();
 		if (var1 == null) {
 			arg0.intStack[++arg0.isp - 1] = -1;
@@ -13082,16 +12104,14 @@ public class ScriptRunner {
 		}
 	}
 
-	@ObfuscatedName("xo.ake(Lyf;B)V")
-	public static final void worldmap_setmap_coord(ClientScriptState arg0) {
+    public static final void worldmap_setmap_coord(ClientScriptState arg0) {
 		arg0.isp -= 2;
 		int var1 = arg0.intStack[arg0.isp];
 		int var2 = arg0.intStack[arg0.isp + 1];
 		ClientWorldMap.setMap(var1, var2 >> 14 & 0x3FFF, var2 & 0x3FFF, false);
 	}
 
-	@ObfuscatedName("vq.akj(Lyf;I)V")
-	public static final void worldmap_getdisplaycoord(ClientScriptState arg0) {
+    public static final void worldmap_getdisplaycoord(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		WorldMapAreaMetadata var2 = ClientWorldMap.method17877();
 		if (var2 == null) {
@@ -13109,8 +12129,7 @@ public class ScriptRunner {
 		}
 	}
 
-	@ObfuscatedName("dy.aky(Lyf;I)V")
-	public static final void worldmap_getsourcecoord(ClientScriptState arg0) {
+    public static final void worldmap_getsourcecoord(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		WorldMapAreaMetadata var2 = ClientWorldMap.method17877();
 		if (var2 == null) {
@@ -13128,37 +12147,31 @@ public class ScriptRunner {
 		}
 	}
 
-	@ObfuscatedName("kb.aka(Lyf;B)V")
-	public static final void worldmap_flashelement(ClientScriptState arg0) {
+    public static final void worldmap_flashelement(ClientScriptState arg0) {
 		ClientWorldMap.flashElement(arg0.intStack[--arg0.isp]);
 	}
 
-	@ObfuscatedName("yo.akd(Lyf;I)V")
-	public static final void worldmap_setmap_coord_override(ClientScriptState arg0) {
+    public static final void worldmap_setmap_coord_override(ClientScriptState arg0) {
 		arg0.isp -= 2;
 		int var1 = arg0.intStack[arg0.isp];
 		int var2 = arg0.intStack[arg0.isp + 1];
 		ClientWorldMap.setMap(var1, var2 >> 14 & 0x3FFF, var2 & 0x3FFF, true);
 	}
 
-	@ObfuscatedName("apc.akg(Lyf;B)V")
-	public static final void worldmap_disableelements(ClientScriptState arg0) {
+    public static final void worldmap_disableelements(ClientScriptState arg0) {
 		ClientWorldMap.disableElements = arg0.intStack[--arg0.isp] == 1;
 	}
 
-	@ObfuscatedName("vl.aks(Lyf;I)V")
-	public static final void worldmap_getdisableelements(ClientScriptState arg0) {
+    public static final void worldmap_getdisableelements(ClientScriptState arg0) {
 		arg0.intStack[++arg0.isp - 1] = ClientWorldMap.disableElements ? 1 : 0;
 	}
 
-	@ObfuscatedName("xf.akv(Lyf;I)V")
-	public static final void worldmap_flashelementcategory(ClientScriptState arg0) {
+    public static final void worldmap_flashelementcategory(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		ClientWorldMap.flashElementCategory(var1);
 	}
 
-	@ObfuscatedName("tc.akk(Lyf;I)V")
-	public static final void worldmap_disableelementcategory(ClientScriptState arg0) {
+    public static final void worldmap_disableelementcategory(ClientScriptState arg0) {
 		arg0.isp -= 2;
 		int var1 = arg0.intStack[arg0.isp];
 		boolean var2 = arg0.intStack[arg0.isp + 1] == 1;
@@ -13174,8 +12187,7 @@ public class ScriptRunner {
 		}
 	}
 
-	@ObfuscatedName("gf.akm(Lyf;I)V")
-	public static final void worldmap_getdisableelementcategory(ClientScriptState arg0) {
+    public static final void worldmap_getdisableelementcategory(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		if (ClientWorldMap.field11668 == null) {
 			arg0.intStack[++arg0.isp - 1] = 0;
@@ -13185,8 +12197,7 @@ public class ScriptRunner {
 		}
 	}
 
-	@ObfuscatedName("wd.akt(Lyf;I)V")
-	public static final void worldmap_disableelement(ClientScriptState arg0) {
+    public static final void worldmap_disableelement(ClientScriptState arg0) {
 		arg0.isp -= 2;
 		int var1 = arg0.intStack[arg0.isp];
 		boolean var2 = arg0.intStack[arg0.isp + 1] == 1;
@@ -13202,8 +12213,7 @@ public class ScriptRunner {
 		}
 	}
 
-	@ObfuscatedName("sv.akb(Lyf;I)V")
-	public static final void worldmap_getdisableelement(ClientScriptState arg0) {
+    public static final void worldmap_getdisableelement(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		if (ClientWorldMap.field11667 == null) {
 			arg0.intStack[++arg0.isp - 1] = 0;
@@ -13213,13 +12223,11 @@ public class ScriptRunner {
 		}
 	}
 
-	@ObfuscatedName("fd.als(Lyf;I)V")
-	public static final void worldmap_getcurrentmap(ClientScriptState arg0) {
+    public static final void worldmap_getcurrentmap(ClientScriptState arg0) {
 		arg0.intStack[++arg0.isp - 1] = WorldMap.currentWorldMap == null ? -1 : WorldMap.currentWorldMap.id;
 	}
 
-	@ObfuscatedName("sl.alw(Lyf;B)V")
-	public static final void worldmap_findnearestelement(ClientScriptState arg0) {
+    public static final void worldmap_findnearestelement(ClientScriptState arg0) {
 		arg0.isp -= 2;
 		int var1 = arg0.intStack[arg0.isp];
 		int var2 = arg0.intStack[arg0.isp + 1];
@@ -13233,13 +12241,11 @@ public class ScriptRunner {
 		}
 	}
 
-	@ObfuscatedName("qe.ali(Lyf;B)V")
-	public static final void worldmap_closemap(ClientScriptState arg0) {
+    public static final void worldmap_closemap(ClientScriptState arg0) {
 		ClientWorldMap.closeMap();
 	}
 
-	@ObfuscatedName("ys.alu(Lyf;S)V")
-	public static final void worldmap_disabletextsize(ClientScriptState arg0) {
+    public static final void worldmap_disabletextsize(ClientScriptState arg0) {
 		arg0.isp -= 2;
 		int var1 = arg0.intStack[arg0.isp];
 		boolean var2 = arg0.intStack[arg0.isp + 1] == 1;
@@ -13254,8 +12260,7 @@ public class ScriptRunner {
 		}
 	}
 
-	@ObfuscatedName("ud.aly(Lyf;I)V")
-	public static final void worldmap_getdisabletextsize(ClientScriptState arg0) {
+    public static final void worldmap_getdisabletextsize(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		if (var1 == 0) {
 			arg0.intStack[++arg0.isp - 1] = ClientWorldMap.field11670 ? 1 : 0;
@@ -13268,8 +12273,7 @@ public class ScriptRunner {
 		}
 	}
 
-	@ObfuscatedName("hp.alm(Lyf;I)V")
-	public static final void worldmap_disabletype(ClientScriptState arg0) {
+    public static final void worldmap_disabletype(ClientScriptState arg0) {
 		arg0.isp -= 2;
 		int var1 = arg0.intStack[arg0.isp];
 		boolean var2 = arg0.intStack[arg0.isp + 1] == 1;
@@ -13278,8 +12282,7 @@ public class ScriptRunner {
 		}
 	}
 
-	@ObfuscatedName("aw.alk(Lyf;I)V")
-	public static final void worldmap_getdisabletype(ClientScriptState arg0) {
+    public static final void worldmap_getdisabletype(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		int var2 = ClientWorldMap.getDisableType(var1);
 		if (var2 < 0) {
@@ -13288,8 +12291,7 @@ public class ScriptRunner {
 		arg0.intStack[++arg0.isp - 1] = var2;
 	}
 
-	@ObfuscatedName("z.aln(Lyf;B)V")
-	public static final void fullscreen_enter(ClientScriptState arg0) {
+    public static final void fullscreen_enter(ClientScriptState arg0) {
 		arg0.isp -= 2;
 		int var1 = arg0.intStack[arg0.isp];
 		int var2 = arg0.intStack[arg0.isp + 1];
@@ -13301,15 +12303,13 @@ public class ScriptRunner {
 		}
 	}
 
-	@ObfuscatedName("wy.alj(Lyf;I)V")
-	public static final void fullscreen_exit(ClientScriptState arg0) {
+    public static final void fullscreen_exit(ClientScriptState arg0) {
 		if (Fullscreen.allowed && GameShell.fsframe != null) {
 			Client.setWindowMode(Client.preferences.windowMode.getValue(), -1, -1, false);
 		}
 	}
 
-	@ObfuscatedName("acb.all(Lyf;I)V")
-	public static final void fullscreen_modecount(ClientScriptState arg0) {
+    public static final void fullscreen_modecount(ClientScriptState arg0) {
 		if (Fullscreen.allowed) {
 			FullscreenMode[] var1 = Client.getFullscreenModes();
 			arg0.intStack[++arg0.isp - 1] = var1.length;
@@ -13318,8 +12318,7 @@ public class ScriptRunner {
 		}
 	}
 
-	@ObfuscatedName("wt.alg(Lyf;B)V")
-	public static final void fullscreen_getmode(ClientScriptState arg0) {
+    public static final void fullscreen_getmode(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		if (Fullscreen.allowed) {
 			FullscreenMode[] var2 = Client.getFullscreenModes();
@@ -13331,8 +12330,7 @@ public class ScriptRunner {
 		}
 	}
 
-	@ObfuscatedName("kb.alb(Lyf;I)V")
-	public static final void fullscreen_lastmode(ClientScriptState arg0) {
+    public static final void fullscreen_lastmode(ClientScriptState arg0) {
 		int var1 = GameShell.lastFullscreenWidth;
 		int var2 = GameShell.lastFullscreenHeight;
 		int var3 = -1;
@@ -13349,26 +12347,22 @@ public class ScriptRunner {
 		arg0.intStack[++arg0.isp - 1] = var3;
 	}
 
-	@ObfuscatedName("qi.ale(Lyf;S)V")
-	public static final void getwindowmode(ClientScriptState arg0) {
+    public static final void getwindowmode(ClientScriptState arg0) {
 		arg0.intStack[++arg0.isp - 1] = Client.getWindowMode();
 	}
 
-	@ObfuscatedName("et.ald(Lyf;I)V")
-	public static final void setwindowmode(ClientScriptState arg0) {
+    public static final void setwindowmode(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		if (var1 >= 1 && var1 <= 2) {
 			Client.setWindowMode(var1, -1, -1, false);
 		}
 	}
 
-	@ObfuscatedName("xa.alz(Lyf;B)V")
-	public static final void getdefaultwindowmode(ClientScriptState arg0) {
+    public static final void getdefaultwindowmode(ClientScriptState arg0) {
 		arg0.intStack[++arg0.isp - 1] = Client.preferences.windowMode.getValue();
 	}
 
-	@ObfuscatedName("uw.alv(Lyf;I)V")
-	public static final void setdefaultwindowmode(ClientScriptState arg0) {
+    public static final void setdefaultwindowmode(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		if (var1 >= 1 && var1 <= 2) {
 			Client.preferences.setPreference(Client.preferences.windowMode, var1);
@@ -13377,20 +12371,17 @@ public class ScriptRunner {
 		}
 	}
 
-	@ObfuscatedName("aja.alq(Lyf;B)V")
-	public static final void openurl(ClientScriptState arg0) {
+    public static final void openurl(ClientScriptState arg0) {
 		arg0.osp -= 2;
 		openUrl((String) arg0.objectStack[arg0.osp], (String) arg0.objectStack[arg0.osp + 1], "", arg0.intStack[--arg0.isp] == 1, false);
 	}
 
-	@ObfuscatedName("va.ala(Lyf;I)V")
-	public static final void urlencode(ClientScriptState arg0) {
+    public static final void urlencode(ClientScriptState arg0) {
 		CharSequence var1 = (CharSequence) arg0.objectStack[--arg0.osp];
 		arg0.objectStack[++arg0.osp - 1] = WebTools.urlencode(var1);
 	}
 
-	@ObfuscatedName("ab.alf(Lyf;I)V")
-	public static final void spline_new(ClientScriptState arg0) {
+    public static final void spline_new(ClientScriptState arg0) {
 		arg0.isp -= 2;
 		int var1 = arg0.intStack[arg0.isp];
 		int var2 = arg0.intStack[arg0.isp + 1];
@@ -13399,8 +12390,7 @@ public class ScriptRunner {
 		}
 	}
 
-	@ObfuscatedName("wv.alc(Lyf;I)V")
-	public static final void spline_addpoint(ClientScriptState arg0) {
+    public static final void spline_addpoint(ClientScriptState arg0) {
 		arg0.isp -= 7;
 		int var1 = arg0.intStack[arg0.isp];
 		int var2 = arg0.intStack[arg0.isp + 1] << 1;
@@ -13415,14 +12405,12 @@ public class ScriptRunner {
 		}
 	}
 
-	@ObfuscatedName("ff.alp(Lyf;I)V")
-	public static final void spline_length(ClientScriptState arg0) {
+    public static final void spline_length(ClientScriptState arg0) {
 		int var1 = Client.cutsceneSpline[arg0.intStack[--arg0.isp]].length >> 1;
 		arg0.intStack[++arg0.isp - 1] = var1;
 	}
 
-	@ObfuscatedName("eg.alt(Lyf;I)V")
-	public static final void quit(ClientScriptState arg0) {
+    public static final void quit(ClientScriptState arg0) {
 		if (Fullscreen.allowed && GameShell.fsframe != null) {
 			Client.setWindowMode(Client.preferences.windowMode.getValue(), -1, -1, false);
 		}
@@ -13434,8 +12422,7 @@ public class ScriptRunner {
 		}
 	}
 
-	@ObfuscatedName("in.alo(Lyf;I)V")
-	public static final void lastlogin(ClientScriptState arg0) {
+    public static final void lastlogin(ClientScriptState arg0) {
 		String var1 = null;
 		if (Client.hostNameProvider != null) {
 			var1 = Client.hostNameProvider.method544();
@@ -13446,8 +12433,7 @@ public class ScriptRunner {
 		arg0.objectStack[++arg0.osp - 1] = var1;
 	}
 
-	@ObfuscatedName("ud.alh(Lyf;I)V")
-	public static final void openurl_nologin(ClientScriptState arg0) {
+    public static final void openurl_nologin(ClientScriptState arg0) {
 		if (Fullscreen.allowed && GameShell.fsframe != null) {
 			Client.setWindowMode(Client.preferences.windowMode.getValue(), -1, -1, false);
 		}
@@ -13457,20 +12443,17 @@ public class ScriptRunner {
 		Browser.openUrl(var3, var2, Client.field10784);
 	}
 
-	@ObfuscatedName("dm.alr(Lyf;I)V")
-	public static final void openurlraw(ClientScriptState arg0) {
+    public static final void openurlraw(ClientScriptState arg0) {
 		String var1 = (String) arg0.objectStack[--arg0.osp];
 		boolean var2 = arg0.intStack[--arg0.isp] == 1;
 		Browser.openUrl(var1, var2, Client.field10784);
 	}
 
-	@ObfuscatedName("yg.alx(Lyf;S)V")
-	public static final void writeconsole(ClientScriptState arg0) {
+    public static final void writeconsole(ClientScriptState arg0) {
 		System.out.println(arg0.objectStack[--arg0.osp]);
 	}
 
-	@ObfuscatedName("fi.ams(Lyf;I)V")
-	public static final void formatminimenu(ClientScriptState arg0) {
+    public static final void formatminimenu(ClientScriptState arg0) {
 		arg0.isp -= 12;
 		MiniMenu.close();
 		MiniMenu.method7617();
@@ -13504,49 +12487,41 @@ public class ScriptRunner {
 		MiniMenu.field564 = true;
 	}
 
-	@ObfuscatedName("yj.ame(Lyf;I)V")
-	public static final void defaultminimenu(ClientScriptState arg0) {
+    public static final void defaultminimenu(ClientScriptState arg0) {
 		MiniMenu.setFormattingDefault();
 		MiniMenu.field564 = false;
 	}
 
-	@ObfuscatedName("nr.ama(Lyf;B)V")
-	public static final void setdefaultcursors(ClientScriptState arg0) {
+    public static final void setdefaultcursors(ClientScriptState arg0) {
 		arg0.isp -= 2;
 		Client.field11038 = arg0.intStack[arg0.isp];
 		Client.field10971 = arg0.intStack[arg0.isp + 1];
 	}
 
-	@ObfuscatedName("if.amg(Lyf;I)V")
-	public static final void sethardcodedopcursors(ClientScriptState arg0) {
+    public static final void sethardcodedopcursors(ClientScriptState arg0) {
 		arg0.isp -= 2;
 	}
 
-	@ObfuscatedName("gb.amy(Lyf;B)V")
-	public static final void minimenuopen(ClientScriptState arg0) {
+    public static final void minimenuopen(ClientScriptState arg0) {
 		arg0.isp -= 2;
 		int var1 = arg0.intStack[arg0.isp];
 		int var2 = arg0.intStack[arg0.isp + 1];
 		arg0.intStack[++arg0.isp - 1] = MiniMenu.isOpen(var1, var2) ? 1 : 0;
 	}
 
-	@ObfuscatedName("na.amn(Lyf;I)V")
-	public static final void docheat(ClientScriptState arg0) {
+    public static final void docheat(ClientScriptState arg0) {
 		DeveloperConsole.doCheat((String) arg0.objectStack[--arg0.osp], false, false);
 	}
 
-	@ObfuscatedName("ah.amb(Lyf;I)V")
-	public static final void notify_accountcreated(ClientScriptState arg0) {
+    public static final void notify_accountcreated(ClientScriptState arg0) {
 		JavascriptFunction.ACCOUNT_CREATED.method6090();
 	}
 
-	@ObfuscatedName("adg.amu(Lyf;I)V")
-	public static final void notify_accountcreatestarted(ClientScriptState arg0) {
+    public static final void notify_accountcreatestarted(ClientScriptState arg0) {
 		JavascriptFunction.ACCOUNT_CREATE_STARTED.method6090();
 	}
 
-	@ObfuscatedName("akw.amq(Lyf;I)V")
-	public static final void getclipboard(ClientScriptState arg0) {
+    public static final void getclipboard(ClientScriptState arg0) {
 		String var1 = "";
 		if (Client.clipboard != null) {
 			Transferable var2 = Client.clipboard.getContents(null);
@@ -13563,49 +12538,40 @@ public class ScriptRunner {
 		arg0.objectStack[++arg0.osp - 1] = var1;
 	}
 
-	@ObfuscatedName("mj.amf(Lyf;I)V")
-	public static final void setsubmenuminlength(ClientScriptState arg0) {
+    public static final void setsubmenuminlength(ClientScriptState arg0) {
 		MiniMenu.minLength = arg0.intStack[--arg0.isp];
 	}
 
-	@ObfuscatedName("ys.amk(Lyf;B)V")
-	public static final void openurl_shim(ClientScriptState arg0) {
+    public static final void openurl_shim(ClientScriptState arg0) {
 		arg0.osp -= 3;
 		openUrl((String) arg0.objectStack[arg0.osp], (String) arg0.objectStack[arg0.osp + 1], (String) arg0.objectStack[arg0.osp + 2], arg0.intStack[--arg0.isp] == 1, true);
 	}
 
-	@ObfuscatedName("ev.amc(Lyf;I)V")
-	public static final void has_html5(ClientScriptState arg0) {
+    public static final void has_html5(ClientScriptState arg0) {
 		arg0.intStack[++arg0.isp - 1] = 0;
 	}
 
-	@ObfuscatedName("nv.amo(Lyf;I)V")
-	public static final void has_nxt(ClientScriptState arg0) {
+    public static final void has_nxt(ClientScriptState arg0) {
 		arg0.intStack[++arg0.isp - 1] = 0;
 	}
 
-	@ObfuscatedName("acx.amm(Lyf;I)V")
-	public static final void clienttype(ClientScriptState arg0) {
+    public static final void clienttype(ClientScriptState arg0) {
 		arg0.intStack[++arg0.isp - 1] = Client.clientType & 0x1;
 	}
 
-	@ObfuscatedName("ku.amz(Lyf;I)V")
-	public static final void method5146(ClientScriptState arg0) {
+    public static final void method5146(ClientScriptState arg0) {
 		RuneScapeSetup.method4589();
 	}
 
-	@ObfuscatedName("ge.amh(Lyf;B)V")
-	public static final void method3564(ClientScriptState arg0) {
+    public static final void method3564(ClientScriptState arg0) {
 		arg0.intStack[++arg0.isp - 1] = RuneScapeSetup.method312();
 	}
 
-	@ObfuscatedName("nd.amt(Lyf;S)V")
-	public static final void is_gamescreen_state(ClientScriptState arg0) {
+    public static final void is_gamescreen_state(ClientScriptState arg0) {
 		arg0.intStack[++arg0.isp - 1] = Client.isStateGame(Client.state) ? 1 : 0;
 	}
 
-	@ObfuscatedName("xm.amv(Lyf;I)V")
-	public static final void cam_moveto(ClientScriptState arg0) {
+    public static final void cam_moveto(ClientScriptState arg0) {
 		arg0.isp -= 4;
 		int var1 = arg0.intStack[arg0.isp];
 		int var2 = arg0.intStack[arg0.isp + 1];
@@ -13616,8 +12582,7 @@ public class ScriptRunner {
 		Client.field10902 = true;
 	}
 
-	@ObfuscatedName("s.amw(Lyf;I)V")
-	public static final void cam_lookat(ClientScriptState arg0) {
+    public static final void cam_lookat(ClientScriptState arg0) {
 		arg0.isp -= 4;
 		int var1 = arg0.intStack[arg0.isp];
 		int var2 = arg0.intStack[arg0.isp + 1];
@@ -13628,8 +12593,7 @@ public class ScriptRunner {
 		Client.field10902 = true;
 	}
 
-	@ObfuscatedName("po.amd(Lyf;I)V")
-	public static final void cam_movealong(ClientScriptState arg0) {
+    public static final void cam_movealong(ClientScriptState arg0) {
 		arg0.isp -= 6;
 		int var1 = arg0.intStack[arg0.isp];
 		if (var1 >= 2) {
@@ -13659,24 +12623,20 @@ public class ScriptRunner {
 		Client.field810 = -1;
 	}
 
-	@ObfuscatedName("ua.amr(Lyf;I)V")
-	public static final void cam_reset(ClientScriptState arg0) {
+    public static final void cam_reset(ClientScriptState arg0) {
 		Client.cameraReset(Client.getDefaultCameraState());
 	}
 
-	@ObfuscatedName("vx.aml(Lyf;I)V")
-	public static final void cam_forceangle(ClientScriptState arg0) {
+    public static final void cam_forceangle(ClientScriptState arg0) {
 		arg0.isp -= 2;
 		Client.cameraForceAngle(arg0.intStack[arg0.isp], arg0.intStack[arg0.isp + 1], 0);
 	}
 
-	@ObfuscatedName("ke.amx(Lyf;I)V")
-	public static final void cam_getangle_xa(ClientScriptState arg0) {
+    public static final void cam_getangle_xa(ClientScriptState arg0) {
 		arg0.intStack[++arg0.isp - 1] = (int) Client.orbitCameraPitch >> 3;
 	}
 
-	@ObfuscatedName("cs.ami(Lyf;B)V")
-	public static final void cam_getangle_ya(ClientScriptState arg0) {
+    public static final void cam_getangle_ya(ClientScriptState arg0) {
 		if (Client.cameraState == 3) {
 			arg0.intStack[++arg0.isp - 1] = (int) ((double) Client.cam2.method4719() * 2607.5945876176133D) >> 3;
 		} else {
@@ -13684,28 +12644,23 @@ public class ScriptRunner {
 		}
 	}
 
-	@ObfuscatedName("vy.amp(Lyf;B)V")
-	public static final void cam_inc_x(ClientScriptState arg0) {
+    public static final void cam_inc_x(ClientScriptState arg0) {
 		Client.cameraIncX();
 	}
 
-	@ObfuscatedName("ql.amj(Lyf;I)V")
-	public static final void cam_dec_x(ClientScriptState arg0) {
+    public static final void cam_dec_x(ClientScriptState arg0) {
 		Client.cameraDecX();
 	}
 
-	@ObfuscatedName("sg.ane(Lyf;I)V")
-	public static final void cam_inc_y(ClientScriptState arg0) {
+    public static final void cam_inc_y(ClientScriptState arg0) {
 		Client.cameraIncY();
 	}
 
-	@ObfuscatedName("vz.ann(Lyf;I)V")
-	public static final void cam_dec_y(ClientScriptState arg0) {
+    public static final void cam_dec_y(ClientScriptState arg0) {
 		Client.cameraDecY();
 	}
 
-	@ObfuscatedName("vg.and(Lyf;I)V")
-	public static final void cam_setfollowheight(ClientScriptState arg0) {
+    public static final void cam_setfollowheight(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		if (var1 < 0) {
 			var1 = 0;
@@ -13713,13 +12668,11 @@ public class ScriptRunner {
 		Client.cameraFollowHeight = Client.field11089 * 35 + var1;
 	}
 
-	@ObfuscatedName("jx.anf(Lyf;B)V")
-	public static final void cam_getfollowheight(ClientScriptState arg0) {
+    public static final void cam_getfollowheight(ClientScriptState arg0) {
 		arg0.intStack[++arg0.isp - 1] = Client.cameraFollowHeight - Client.field11089 * 35;
 	}
 
-	@ObfuscatedName("wv.anq(Lyf;B)V")
-	public static final void cam_followcoord(ClientScriptState arg0) {
+    public static final void cam_followcoord(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		int var2 = var1 >> 14 & 0x3FFF;
 		int var3 = var1 & 0x3FFF;
@@ -13744,13 +12697,11 @@ public class ScriptRunner {
 		Client.field10902 = true;
 	}
 
-	@ObfuscatedName("j.anm(Lyf;I)V")
-	public static final void cam_smoothreset(ClientScriptState arg0) {
+    public static final void cam_smoothreset(ClientScriptState arg0) {
 		Client.cameraSmoothReset();
 	}
 
-	@ObfuscatedName("dz.any(Lyf;B)V")
-	public static final void cam_removeroof(ClientScriptState arg0) {
+    public static final void cam_removeroof(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		if (var1 == -1) {
 			Client.field810 = -1;
@@ -13776,18 +12727,15 @@ public class ScriptRunner {
 		Client.field3538 = (var6 << 9) + 256;
 	}
 
-	@ObfuscatedName("fo.ang(Lyf;I)V")
-	public static final void cam_modeisfollowplayer(ClientScriptState arg0) {
+    public static final void cam_modeisfollowplayer(ClientScriptState arg0) {
 		arg0.intStack[++arg0.isp - 1] = Client.cameraState == 2 ? 1 : 0;
 	}
 
-	@ObfuscatedName("sr.ana(Lyf;I)V")
-	public static final void cam2_legacycam_ready(ClientScriptState arg0) {
+    public static final void cam2_legacycam_ready(ClientScriptState arg0) {
 		arg0.intStack[++arg0.isp - 1] = 1;
 	}
 
-	@ObfuscatedName("fu.anv(Lyf;B)V")
-	public static final void login_request(ClientScriptState arg0) {
+    public static final void login_request(ClientScriptState arg0) {
 		arg0.osp -= 3;
 		String var1 = (String) arg0.objectStack[arg0.osp];
 		String var2 = (String) arg0.objectStack[arg0.osp + 1];
@@ -13796,22 +12744,19 @@ public class ScriptRunner {
 		LoginManager.requestLogin(var1, var2, var3, var4);
 	}
 
-	@ObfuscatedName("nv.anu(Lyf;B)V")
-	public static final void cam2_setlookatmode(ClientScriptState arg0) throws CameraException {
+    public static final void cam2_setlookatmode(ClientScriptState arg0) throws CameraException {
 		int var1 = arg0.intStack[--arg0.isp];
 		Client.cam2.setLookatMode(LookatMode.of(var1), true);
 		Client.field10902 = true;
 	}
 
-	@ObfuscatedName("nu.ant(Lyf;B)V")
-	public static final void cam2_setpositionmode(ClientScriptState arg0) throws CameraException {
+    public static final void cam2_setpositionmode(ClientScriptState arg0) throws CameraException {
 		int var1 = arg0.intStack[--arg0.isp];
 		Client.cam2.setPositionMode(PositionMode.method1058(var1), true);
 		Client.field10902 = true;
 	}
 
-	@ObfuscatedName("xe.anh(Lyf;I)V")
-	public static final void cam2_setlookatacceleration(ClientScriptState arg0) throws CameraException {
+    public static final void cam2_setlookatacceleration(ClientScriptState arg0) throws CameraException {
 		arg0.isp -= 2;
 		int var1 = arg0.intStack[arg0.isp];
 		int var2 = arg0.intStack[arg0.isp + 1];
@@ -13830,8 +12775,7 @@ public class ScriptRunner {
 		var3.release();
 	}
 
-	@ObfuscatedName("wu.anp(Lyf;I)V")
-	public static final void cam2_setpositionacceleration(ClientScriptState arg0) throws CameraException {
+    public static final void cam2_setpositionacceleration(ClientScriptState arg0) throws CameraException {
 		arg0.isp -= 2;
 		int var1 = arg0.intStack[arg0.isp];
 		int var2 = arg0.intStack[arg0.isp + 1];
@@ -13850,8 +12794,7 @@ public class ScriptRunner {
 		var3.release();
 	}
 
-	@ObfuscatedName("akb.anr(Lyf;I)V")
-	public static final void cam2_setlookatmaxspeed(ClientScriptState arg0) throws CameraException {
+    public static final void cam2_setlookatmaxspeed(ClientScriptState arg0) throws CameraException {
 		arg0.isp -= 2;
 		int var1 = arg0.intStack[arg0.isp];
 		Vector3 var2 = Vector3.create((float) var1, (float) var1, (float) var1);
@@ -13859,8 +12802,7 @@ public class ScriptRunner {
 		var2.release();
 	}
 
-	@ObfuscatedName("uv.ank(Lyf;I)V")
-	public static final void cam2_setpositionmaxspeed(ClientScriptState arg0) throws CameraException {
+    public static final void cam2_setpositionmaxspeed(ClientScriptState arg0) throws CameraException {
 		arg0.isp -= 2;
 		int var1 = arg0.intStack[arg0.isp];
 		Vector3 var2 = Vector3.create((float) var1, (float) var1, (float) var1);
@@ -13868,24 +12810,21 @@ public class ScriptRunner {
 		var2.release();
 	}
 
-	@ObfuscatedName("aca.anx(Lyf;I)V")
-	public static final void cam2_setdepthplanes(ClientScriptState arg0) throws CameraException {
+    public static final void cam2_setdepthplanes(ClientScriptState arg0) throws CameraException {
 		arg0.isp -= 2;
 		int var1 = arg0.intStack[arg0.isp];
 		int var2 = arg0.intStack[arg0.isp + 1];
 		Client.cam2.setDepthPlanes((float) var1, (float) var2);
 	}
 
-	@ObfuscatedName("eu.anz(Lyf;B)V")
-	public static final void cam2_setfieldofview(ClientScriptState arg0) throws CameraException {
+    public static final void cam2_setfieldofview(ClientScriptState arg0) throws CameraException {
 		arg0.isp -= 2;
 		int var1 = arg0.intStack[arg0.isp];
 		int var2 = arg0.intStack[arg0.isp + 1];
 		Client.cam2.setFieldOfView((float) ((double) var1 * 3.141592653589793D * 2.0D / 16384.0D), (float) ((double) var2 * 3.141592653589793D * 2.0D / 16384.0D));
 	}
 
-	@ObfuscatedName("kl.anj(Lyf;I)V")
-	public static final void cam2_setlookatpoint_point(ClientScriptState arg0) {
+    public static final void cam2_setlookatpoint_point(ClientScriptState arg0) {
 		CoordFine var1 = (CoordFine) arg0.objectStack[--arg0.osp];
 		if (Client.cam2.getLookatMode() != LookatMode.POINT) {
 			throw new RuntimeException();
@@ -13895,8 +12834,7 @@ public class ScriptRunner {
 		Client.field10902 = true;
 	}
 
-	@ObfuscatedName("agz.anl(Lyf;I)V")
-	public static final void cam2_setpositionpoint_point(ClientScriptState arg0) {
+    public static final void cam2_setpositionpoint_point(ClientScriptState arg0) {
 		CoordFine var1 = (CoordFine) arg0.objectStack[--arg0.osp];
 		if (Client.cam2.getPositionMode() != PositionMode.POINT) {
 			throw new RuntimeException();
@@ -13906,16 +12844,14 @@ public class ScriptRunner {
 		Client.field10902 = true;
 	}
 
-	@ObfuscatedName("kj.ans(Lyf;I)V")
-	public static final void cam2_getpositionpoint_point(ClientScriptState arg0) {
+    public static final void cam2_getpositionpoint_point(ClientScriptState arg0) {
 		if (Client.cam2.getPositionMode() != PositionMode.POINT) {
 			throw new RuntimeException();
 		}
 		arg0.objectStack[++arg0.osp - 1] = Client.cam2.method4717();
 	}
 
-	@ObfuscatedName("hq.anc(Lyf;Lahm;I)V")
-	public static final void cameraLookatEntity(ClientScriptState arg0, PathingEntity arg1) {
+    public static final void cameraLookatEntity(ClientScriptState arg0, PathingEntity arg1) {
 		arg0.isp -= 4;
 		int var2 = arg0.intStack[arg0.isp];
 		int var3 = arg0.intStack[arg0.isp + 1];
@@ -13931,18 +12867,15 @@ public class ScriptRunner {
 		Client.field10902 = true;
 	}
 
-	@ObfuscatedName("pj.anb(Lyf;B)V")
-	public static final void cam2_setlookatentity_player(ClientScriptState arg0) {
+    public static final void cam2_setlookatentity_player(ClientScriptState arg0) {
 		cameraLookatEntity(arg0, Client.localPlayerEntity);
 	}
 
-	@ObfuscatedName("as.anw(Lyf;I)V")
-	public static final void cam2_setlookatentity_npc(ClientScriptState arg0) {
+    public static final void cam2_setlookatentity_npc(ClientScriptState arg0) {
 		cameraLookatEntity(arg0, arg0.activeEntity);
 	}
 
-	@ObfuscatedName("go.ano(Lyf;Lahm;I)V")
-	public static final void cam2_setpositionentity(ClientScriptState arg0, PathingEntity arg1) {
+    public static final void cam2_setpositionentity(ClientScriptState arg0, PathingEntity arg1) {
 		arg0.isp -= 7;
 		int var2 = arg0.intStack[arg0.isp];
 		int var3 = arg0.intStack[arg0.isp + 1];
@@ -13972,18 +12905,15 @@ public class ScriptRunner {
 		Client.field10902 = true;
 	}
 
-	@ObfuscatedName("bf.ani(Lyf;B)V")
-	public static final void cam2_setpositionentity_player(ClientScriptState arg0) {
+    public static final void cam2_setpositionentity_player(ClientScriptState arg0) {
 		cam2_setpositionentity(arg0, Client.localPlayerEntity);
 	}
 
-	@ObfuscatedName("pv.aou(Lyf;B)V")
-	public static final void cam2_setpositionentity_npc(ClientScriptState arg0) {
+    public static final void cam2_setpositionentity_npc(ClientScriptState arg0) {
 		cam2_setpositionentity(arg0, arg0.activeEntity);
 	}
 
-	@ObfuscatedName("tv.aoy(Lyf;B)V")
-	public static final void cam2_setfieldofviewscreen(ClientScriptState arg0) throws CameraException {
+    public static final void cam2_setfieldofviewscreen(ClientScriptState arg0) throws CameraException {
 		arg0.isp -= 3;
 		int var1 = arg0.intStack[arg0.isp];
 		int var2 = arg0.intStack[arg0.isp + 1];
@@ -13993,8 +12923,7 @@ public class ScriptRunner {
 		Client.cam2.setFieldOfView(var4, var5);
 	}
 
-	@ObfuscatedName("gq.aoi(Lyf;I)V")
-	public static final void cam2_setpositionspline_spline(ClientScriptState arg0) {
+    public static final void cam2_setpositionspline_spline(ClientScriptState arg0) {
 		if (!Client.cam2.getPositionMode().method4623()) {
 			throw new RuntimeException();
 		}
@@ -14003,8 +12932,7 @@ public class ScriptRunner {
 		Client.field10902 = true;
 	}
 
-	@ObfuscatedName("aal.aow(Lyf;I)V")
-	public static final void cam2_setlookatspline_spline(ClientScriptState arg0) {
+    public static final void cam2_setlookatspline_spline(ClientScriptState arg0) {
 		if (!Client.cam2.getLookatMode().method4602()) {
 			throw new RuntimeException();
 		}
@@ -14013,23 +12941,19 @@ public class ScriptRunner {
 		Client.field10902 = true;
 	}
 
-	@ObfuscatedName("if.aob(Lyf;I)V")
-	public static final void cam2_getcontrolmode(ClientScriptState arg0) {
+    public static final void cam2_getcontrolmode(ClientScriptState arg0) {
 		arg0.intStack[++arg0.isp - 1] = Client.cam2.getControlMode().index;
 	}
 
-	@ObfuscatedName("vw.aoo(Lyf;I)V")
-	public static final void cam2_getlookatmode(ClientScriptState arg0) {
+    public static final void cam2_getlookatmode(ClientScriptState arg0) {
 		arg0.intStack[++arg0.isp - 1] = Client.cam2.getLookatMode() == null ? -1 : Client.cam2.getLookatMode().id;
 	}
 
-	@ObfuscatedName("he.aos(Lyf;I)V")
-	public static final void cam2_getpositionmode(ClientScriptState arg0) {
+    public static final void cam2_getpositionmode(ClientScriptState arg0) {
 		arg0.intStack[++arg0.isp - 1] = Client.cam2.getPositionMode() == null ? -1 : Client.cam2.getPositionMode().index;
 	}
 
-	@ObfuscatedName("rp.aoc(Lyf;I)V")
-	public static final void cam2_getpositionentity_angleoffsets(ClientScriptState arg0) {
+    public static final void cam2_getpositionentity_angleoffsets(ClientScriptState arg0) {
 		if (Client.cam2.getPositionMode() != PositionMode.ENTITY) {
 			throw new RuntimeException();
 		}
@@ -14038,8 +12962,7 @@ public class ScriptRunner {
 		arg0.intStack[++arg0.isp - 1] = (int) ((double) var1.method16694() * 2607.5945876176133D) & 0x3FFF;
 	}
 
-	@ObfuscatedName("qb.aod(Lyf;B)V")
-	public static final void cam2_addeffect_shake(ClientScriptState arg0) {
+    public static final void cam2_addeffect_shake(ClientScriptState arg0) {
 		arg0.isp -= 3;
 		int var1 = arg0.intStack[arg0.isp];
 		int var2 = arg0.intStack[arg0.isp + 1];
@@ -14054,19 +12977,16 @@ public class ScriptRunner {
 		arg0.intStack[++arg0.isp - 1] = var6.id;
 	}
 
-	@ObfuscatedName("aaq.aok(Lyf;I)V")
-	public static final void cam2_removeeffect(ClientScriptState arg0) {
+    public static final void cam2_removeeffect(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		Client.cam2.removeEffect(var1);
 	}
 
-	@ObfuscatedName("sn.aov(Lyf;B)V")
-	public static final void cam2_removealleffects(ClientScriptState arg0) {
+    public static final void cam2_removealleffects(ClientScriptState arg0) {
 		Client.cam2.removeAllEffects();
 	}
 
-	@ObfuscatedName("ar.aor(Lyf;I)V")
-	public static final void cam2_setlookatacceleration_axis(ClientScriptState arg0) throws CameraException {
+    public static final void cam2_setlookatacceleration_axis(ClientScriptState arg0) throws CameraException {
 		arg0.isp -= 4;
 		int var1 = arg0.intStack[arg0.isp];
 		int var2 = arg0.intStack[arg0.isp + 1];
@@ -14087,8 +13007,7 @@ public class ScriptRunner {
 		var5.release();
 	}
 
-	@ObfuscatedName("qn.aol(Lyf;S)V")
-	public static final void cam2_setpositionacceleration_axis(ClientScriptState arg0) throws CameraException {
+    public static final void cam2_setpositionacceleration_axis(ClientScriptState arg0) throws CameraException {
 		arg0.isp -= 4;
 		int var1 = arg0.intStack[arg0.isp];
 		int var2 = arg0.intStack[arg0.isp + 1];
@@ -14109,8 +13028,7 @@ public class ScriptRunner {
 		var5.release();
 	}
 
-	@ObfuscatedName("x.aom(Lyf;B)V")
-	public static final void cam2_setlookatmaxspeed_axis(ClientScriptState arg0) throws CameraException {
+    public static final void cam2_setlookatmaxspeed_axis(ClientScriptState arg0) throws CameraException {
 		arg0.isp -= 4;
 		int var1 = arg0.intStack[arg0.isp];
 		int var2 = arg0.intStack[arg0.isp + 1];
@@ -14120,8 +13038,7 @@ public class ScriptRunner {
 		var4.release();
 	}
 
-	@ObfuscatedName("bc.aoj(Lyf;I)V")
-	public static final void cam2_setpositionmaxspeed_axis(ClientScriptState arg0) throws CameraException {
+    public static final void cam2_setpositionmaxspeed_axis(ClientScriptState arg0) throws CameraException {
 		arg0.isp -= 4;
 		int var1 = arg0.intStack[arg0.isp];
 		int var2 = arg0.intStack[arg0.isp + 1];
@@ -14131,8 +13048,7 @@ public class ScriptRunner {
 		var4.release();
 	}
 
-	@ObfuscatedName("aqy.aof(Lyf;B)V")
-	public static final void cam2_getpositionentity_lookatangleoffsets(ClientScriptState arg0) {
+    public static final void cam2_getpositionentity_lookatangleoffsets(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		if (Client.cam2.getPositionMode() != PositionMode.ENTITY || Client.cam2.getLookatMode() != LookatMode.ENTITY) {
 			throw new RuntimeException();
@@ -14163,8 +13079,7 @@ public class ScriptRunner {
 		arg0.intStack[++arg0.isp - 1] = (int) ((double) var10 * 2607.5945876176133D) & 0x3FFF;
 	}
 
-	@ObfuscatedName("pz.aop(Lyf;I)V")
-	public static final void cam2_getpositionentity_lookatangle(ClientScriptState arg0) {
+    public static final void cam2_getpositionentity_lookatangle(ClientScriptState arg0) {
 		if (Client.cam2.getPositionMode() != PositionMode.ENTITY || Client.cam2.getLookatMode() != LookatMode.ENTITY) {
 			throw new RuntimeException();
 		}
@@ -14176,8 +13091,7 @@ public class ScriptRunner {
 		arg0.intStack[++arg0.isp - 1] = (int) ((double) var4 * 2607.5945876176133D) & 0x3FFF;
 	}
 
-	@ObfuscatedName("f.aog(Lyf;I)V")
-	public static final void cam2_getpositionentity_lookatdistance(ClientScriptState arg0) {
+    public static final void cam2_getpositionentity_lookatdistance(ClientScriptState arg0) {
 		if (Client.cam2.getPositionMode() != PositionMode.ENTITY || Client.cam2.getLookatMode() != LookatMode.ENTITY) {
 			throw new RuntimeException();
 		}
@@ -14188,32 +13102,28 @@ public class ScriptRunner {
 		arg0.intStack[++arg0.isp - 1] = (int) var3.length();
 	}
 
-	@ObfuscatedName("qe.aoa(Lyf;I)V")
-	public static final void cam2_setcollisionmode(ClientScriptState arg0) throws CameraException {
+    public static final void cam2_setcollisionmode(ClientScriptState arg0) throws CameraException {
 		arg0.isp -= 2;
 		boolean var1 = arg0.intStack[arg0.isp] == 1;
 		boolean var2 = arg0.intStack[arg0.isp + 1] == 1;
 		Client.cam2.setCollisionMode(var1, var2);
 	}
 
-	@ObfuscatedName("qf.aot(Lyf;I)V")
-	public static final void cam2_setpositionpointcollision(ClientScriptState arg0) {
+    public static final void cam2_setpositionpointcollision(ClientScriptState arg0) {
 		if (Client.cam2.getPositionMode() != PositionMode.POINT) {
 			throw new RuntimeException();
 		}
 		((PositionPoint) Client.cam2.getPosition()).setCollision(arg0.intStack[--arg0.isp] == 1);
 	}
 
-	@ObfuscatedName("dl.aoe(Lyf;I)V")
-	public static final void cam2_addeffect_ztilt(ClientScriptState arg0) {
+    public static final void cam2_addeffect_ztilt(ClientScriptState arg0) {
 		float var1 = Trig1.radians(arg0.intStack[--arg0.isp]);
 		ZTilt var2 = new ZTilt(Client.cam2.method16602(), var1);
 		Client.cam2.addEffect(var2);
 		arg0.intStack[++arg0.isp - 1] = var2.id;
 	}
 
-	@ObfuscatedName("mz.aon(Lyf;I)V")
-	public static final void cam2_updateeffect_ztilt(ClientScriptState arg0) {
+    public static final void cam2_updateeffect_ztilt(ClientScriptState arg0) {
 		arg0.isp -= 2;
 		int var1 = arg0.intStack[arg0.isp];
 		float var2 = Trig1.radians(arg0.intStack[arg0.isp + 1]);
@@ -14227,16 +13137,14 @@ public class ScriptRunner {
 		}
 	}
 
-	@ObfuscatedName("xc.aoh(Lyf;I)V")
-	public static final void cam2_settraildistance(ClientScriptState arg0) throws CameraException {
+    public static final void cam2_settraildistance(ClientScriptState arg0) throws CameraException {
 		arg0.isp -= 2;
 		int var1 = arg0.intStack[arg0.isp];
 		float var2 = (float) arg0.intStack[arg0.isp + 1] / 1000.0F;
 		Client.cam2.setTrailDistance(var1, var2);
 	}
 
-	@ObfuscatedName("wg.aox(Lyf;S)V")
-	public static final void cam2_setlinearmovementmode(ClientScriptState arg0) throws CameraException {
+    public static final void cam2_setlinearmovementmode(ClientScriptState arg0) throws CameraException {
 		int var1 = arg0.intStack[--arg0.isp];
 		CameraLinearMovementMode var2 = CameraLinearMovementMode.method17805(var1);
 		if (var2 == null) {
@@ -14245,8 +13153,7 @@ public class ScriptRunner {
 		Client.cam2.setLinearMovementMode(var2);
 	}
 
-	@ObfuscatedName("ur.aoq(Lyf;S)V")
-	public static final void cam2_setspringproperties(ClientScriptState arg0) throws CameraException {
+    public static final void cam2_setspringproperties(ClientScriptState arg0) throws CameraException {
 		arg0.isp -= 4;
 		float var1 = (float) arg0.intStack[arg0.isp];
 		float var2 = (float) arg0.intStack[arg0.isp + 1];
@@ -14255,18 +13162,15 @@ public class ScriptRunner {
 		Client.cam2.setSpringProperties(Vector3.create(var1, var2, var3), var4);
 	}
 
-	@ObfuscatedName("qd.aoz(Lyf;I)V")
-	public static final void cam2_setlookatangularinterpolation(ClientScriptState arg0) throws CameraException {
+    public static final void cam2_setlookatangularinterpolation(ClientScriptState arg0) throws CameraException {
 		Client.cam2.setLookatAngularInterpolation((float) arg0.intStack[--arg0.isp] / 1000.0F);
 	}
 
-	@ObfuscatedName("qj.api(Lyf;B)V")
-	public static final void cam2_setpositionangularinterpolation(ClientScriptState arg0) throws CameraException {
+    public static final void cam2_setpositionangularinterpolation(ClientScriptState arg0) throws CameraException {
 		Client.cam2.setPositionAngularInterpolation((float) arg0.intStack[--arg0.isp] / 1000.0F);
 	}
 
-	@ObfuscatedName("qo.apw(Lyf;I)V")
-	public static final void cam2_setlookatspringproperties(ClientScriptState arg0) throws CameraException {
+    public static final void cam2_setlookatspringproperties(ClientScriptState arg0) throws CameraException {
 		arg0.isp -= 4;
 		float var1 = (float) arg0.intStack[arg0.isp];
 		float var2 = (float) arg0.intStack[arg0.isp + 1];
@@ -14275,8 +13179,7 @@ public class ScriptRunner {
 		Client.cam2.setLookatSpringProperties(Vector3.create(var1, var2, var3), var4);
 	}
 
-	@ObfuscatedName("ajd.ape(Lyf;I)V")
-	public static final void cam2_setpositionspringproperties(ClientScriptState arg0) throws CameraException {
+    public static final void cam2_setpositionspringproperties(ClientScriptState arg0) throws CameraException {
 		arg0.isp -= 4;
 		float var1 = (float) arg0.intStack[arg0.isp];
 		float var2 = (float) arg0.intStack[arg0.isp + 1];
@@ -14285,8 +13188,7 @@ public class ScriptRunner {
 		Client.cam2.setPositionSpringProperties(Vector3.create(var1, var2, var3), var4);
 	}
 
-	@ObfuscatedName("rt.apq(Lyf;S)V")
-	public static final void cam2_enable(ClientScriptState arg0) {
+    public static final void cam2_enable(ClientScriptState arg0) {
 		boolean var1 = arg0.intStack[--arg0.isp] == 1;
 		if (var1) {
 			Client.cameraReset(3);
@@ -14295,24 +13197,20 @@ public class ScriptRunner {
 		}
 	}
 
-	@ObfuscatedName("ua.apm(Lyf;I)V")
-	public static final void cam2_isenabled(ClientScriptState arg0) {
+    public static final void cam2_isenabled(ClientScriptState arg0) {
 		arg0.intStack[++arg0.isp - 1] = Client.cameraState == 3 ? 1 : 0;
 	}
 
-	@ObfuscatedName("ho.apy(Lyf;I)V")
-	public static final void cam2_setsnapdistances(ClientScriptState arg0) throws CameraException {
+    public static final void cam2_setsnapdistances(ClientScriptState arg0) throws CameraException {
 		arg0.isp -= 3;
 		Client.cam2.setSnapDistances((float) arg0.intStack[arg0.isp], (float) arg0.intStack[arg0.isp + 1], (float) arg0.intStack[arg0.isp + 2]);
 	}
 
-	@ObfuscatedName("eq.apj(Lyf;B)V")
-	public static final void cam2_resetsnapdistances(ClientScriptState arg0) throws CameraException {
+    public static final void cam2_resetsnapdistances(ClientScriptState arg0) throws CameraException {
 		Client.cam2.resetSnapDistances();
 	}
 
-	@ObfuscatedName("wg.apu(Lyf;I)V")
-	public static final void cam2_setlookatorientation_vector(ClientScriptState arg0) {
+    public static final void cam2_setlookatorientation_vector(ClientScriptState arg0) {
 		arg0.isp -= 3;
 		if (Client.cam2.getLookatMode() != LookatMode.ORIENTATION) {
 			throw new RuntimeException();
@@ -14320,40 +13218,35 @@ public class ScriptRunner {
 		((LookatOrientation) Client.cam2.getLookat()).setVector(arg0.intStack[arg0.isp], arg0.intStack[arg0.isp + 1], arg0.intStack[arg0.isp + 2]);
 	}
 
-	@ObfuscatedName("tt.apc(Lyf;I)V")
-	public static final void cam2_setlookatorientation_yrotation(ClientScriptState arg0) {
+    public static final void cam2_setlookatorientation_yrotation(ClientScriptState arg0) {
 		if (Client.cam2.getLookatMode() != LookatMode.ORIENTATION) {
 			throw new RuntimeException();
 		}
 		((LookatOrientation) Client.cam2.getLookat()).setRotationY(arg0.intStack[--arg0.isp]);
 	}
 
-	@ObfuscatedName("ga.apg(Lyf;B)V")
-	public static final void cam2_setlookatorientation_xrotation(ClientScriptState arg0) {
+    public static final void cam2_setlookatorientation_xrotation(ClientScriptState arg0) {
 		if (Client.cam2.getLookatMode() != LookatMode.ORIENTATION) {
 			throw new RuntimeException();
 		}
 		((LookatOrientation) Client.cam2.getLookat()).setRotationX(arg0.intStack[--arg0.isp]);
 	}
 
-	@ObfuscatedName("e.apx(Lyf;I)V")
-	public static final void cam2_setlookatorientation_xmovement(ClientScriptState arg0) {
+    public static final void cam2_setlookatorientation_xmovement(ClientScriptState arg0) {
 		if (Client.cam2.getLookatMode() != LookatMode.ORIENTATION) {
 			throw new RuntimeException();
 		}
 		((LookatOrientation) Client.cam2.getLookat()).setMovementX(arg0.intStack[--arg0.isp]);
 	}
 
-	@ObfuscatedName("tl.apb(Lyf;I)V")
-	public static final void cam2_setlookatorientation_zmovement(ClientScriptState arg0) {
+    public static final void cam2_setlookatorientation_zmovement(ClientScriptState arg0) {
 		if (Client.cam2.getLookatMode() != LookatMode.ORIENTATION) {
 			throw new RuntimeException();
 		}
 		((LookatOrientation) Client.cam2.getLookat()).setMovementZ(arg0.intStack[--arg0.isp]);
 	}
 
-	@ObfuscatedName("yu.apl(Lyf;I)V")
-	public static final void cam2_setlookatorientation_maxdistanceclamping(ClientScriptState arg0) {
+    public static final void cam2_setlookatorientation_maxdistanceclamping(ClientScriptState arg0) {
 		arg0.isp -= 6;
 		CoordFine var1 = (CoordFine) arg0.objectStack[--arg0.osp];
 		if (Client.cam2.getLookatMode() != LookatMode.ORIENTATION) {
@@ -14362,84 +13255,69 @@ public class ScriptRunner {
 		((LookatOrientation) Client.cam2.getLookat()).setMaxDistanceClamping(var1.method17853(), arg0.intStack[arg0.isp], arg0.intStack[arg0.isp + 1], arg0.intStack[arg0.isp + 2], arg0.intStack[arg0.isp + 3], arg0.intStack[arg0.isp + 4], arg0.intStack[arg0.isp + 5]);
 	}
 
-	@ObfuscatedName("eu.apr(Lyf;I)V")
-	public static final void login_continue(ClientScriptState arg0) {
+    public static final void login_continue(ClientScriptState arg0) {
 		LoginManager.continueLogin();
 	}
 
-	@ObfuscatedName("ek.apo(Lyf;I)V")
-	public static final void login_resetreply(ClientScriptState arg0) {
+    public static final void login_resetreply(ClientScriptState arg0) {
 		if (!LoginManager.isInProgress()) {
 			LoginManager.resetLoginState();
 		}
 	}
 
-	@ObfuscatedName("ag.apv(Lyf;I)V")
-	public static final void create_availablerequest(ClientScriptState arg0) {
+    public static final void create_availablerequest(ClientScriptState arg0) {
 		String var1 = (String) arg0.objectStack[--arg0.osp];
 		AccountCreationManager.requestEmailAvailableCheck(var1);
 	}
 
-	@ObfuscatedName("pc.apd(Lyf;B)V")
-	public static final void create_name_availablerequest(ClientScriptState arg0) {
+    public static final void create_name_availablerequest(ClientScriptState arg0) {
 		String var1 = (String) arg0.objectStack[--arg0.osp];
 		AccountCreationManager.requestDisplayNameAvailableCheck(var1);
 	}
 
-	@ObfuscatedName("aaj.apn(Lyf;I)V")
-	public static final void create_suggest_name_request(ClientScriptState arg0) {
+    public static final void create_suggest_name_request(ClientScriptState arg0) {
 		AccountCreationManager.requestDisplayNameSuggestion();
 	}
 
-	@ObfuscatedName("ki.app(Lyf;B)V")
-	public static final void create_connectrequest(ClientScriptState arg0) {
+    public static final void create_connectrequest(ClientScriptState arg0) {
 		AccountCreationManager.method2009();
 	}
 
-	@ObfuscatedName("ags.apz(Lyf;I)V")
-	public static final void create_createrequest(ClientScriptState arg0) {
+    public static final void create_createrequest(ClientScriptState arg0) {
 		arg0.osp -= 3;
 		arg0.isp -= 2;
 		AccountCreationManager.requestAccountCreation((String) arg0.objectStack[arg0.osp], (String) arg0.objectStack[arg0.osp + 1], arg0.intStack[arg0.isp], arg0.intStack[arg0.isp + 1] == 1, (String) arg0.objectStack[arg0.osp + 2]);
 	}
 
-	@ObfuscatedName("sp.aph(Lyf;I)V")
-	public static final void create_step_reached(ClientScriptState arg0) {
+    public static final void create_step_reached(ClientScriptState arg0) {
 		AccountCreationManager.requestStatsLogging(arg0.intStack[--arg0.isp]);
 	}
 
-	@ObfuscatedName("xn.apt(Lyf;I)V")
-	public static final void login_reply(ClientScriptState arg0) {
+    public static final void login_reply(ClientScriptState arg0) {
 		arg0.intStack[++arg0.isp - 1] = LoginManager.enterGameReply;
 	}
 
-	@ObfuscatedName("yu.apa(Lyf;I)V")
-	public static final void login_hoptime(ClientScriptState arg0) {
+    public static final void login_hoptime(ClientScriptState arg0) {
 		arg0.intStack[++arg0.isp - 1] = LoginManager.hoptime * 2500;
 	}
 
-	@ObfuscatedName("ea.apf(Lyf;I)V")
-	public static final void login_ban_duration(ClientScriptState arg0) {
+    public static final void login_ban_duration(ClientScriptState arg0) {
 		arg0.intStack[++arg0.isp - 1] = LoginManager.banDuration;
 	}
 
-	@ObfuscatedName("ahz.apk(Lyf;B)V")
-	public static final void create_reply(ClientScriptState arg0) {
+    public static final void create_reply(ClientScriptState arg0) {
 		arg0.intStack[++arg0.isp - 1] = AccountCreationManager.getReply().getId();
 	}
 
-	@ObfuscatedName("acl.aps(Lyf;I)V")
-	public static final void create_email_validate_reply(ClientScriptState arg0) {
+    public static final void create_email_validate_reply(ClientScriptState arg0) {
 		arg0.intStack[++arg0.isp - 1] = AccountCreationManager.getEmailValidateReply().getId();
 	}
 
-	@ObfuscatedName("ge.aqd(Lyf;B)V")
-	public static final void create_name_validate_reply(ClientScriptState arg0) {
+    public static final void create_name_validate_reply(ClientScriptState arg0) {
 		arg0.intStack[++arg0.isp - 1] = AccountCreationManager.getNameValidateReply().getId();
 	}
 
-	@ObfuscatedName("ake.aqv(Lyf;I)V")
-	public static final void create_suggest_name_reply(ClientScriptState arg0) {
+    public static final void create_suggest_name_reply(ClientScriptState arg0) {
 		SuggestNameReply var1 = AccountCreationManager.getSuggestNameReply();
 		String var2 = AccountCreationManager.method10209();
 		if (var2 == null) {
@@ -14449,28 +13327,23 @@ public class ScriptRunner {
 		arg0.objectStack[++arg0.osp - 1] = var2;
 	}
 
-	@ObfuscatedName("qf.aqn(Lyf;I)V")
-	public static final void create_connect_reply(ClientScriptState arg0) {
+    public static final void create_connect_reply(ClientScriptState arg0) {
 		arg0.intStack[++arg0.isp - 1] = AccountCreationManager.getConnectReply().getId();
 	}
 
-	@ObfuscatedName("if.aqm(Lyf;B)V")
-	public static final void login_disallowresult(ClientScriptState arg0) {
+    public static final void login_disallowresult(ClientScriptState arg0) {
 		arg0.intStack[++arg0.isp - 1] = LoginManager.disallowResult;
 	}
 
-	@ObfuscatedName("qg.aqk(Lyf;I)V")
-	public static final void lobby_entergame(ClientScriptState arg0) {
+    public static final void lobby_entergame(ClientScriptState arg0) {
 		LoginManager.enterGame((String) arg0.objectStack[--arg0.osp], arg0.intStack[--arg0.isp] == 1);
 	}
 
-	@ObfuscatedName("et.aqc(Lyf;I)V")
-	public static final void lobby_entergamereply(ClientScriptState arg0) {
+    public static final void lobby_entergamereply(ClientScriptState arg0) {
 		arg0.intStack[++arg0.isp - 1] = LoginManager.enterGameReply;
 	}
 
-	@ObfuscatedName("vo.aqz(Lyf;I)V")
-	public static final void lobby_enterlobby(ClientScriptState arg0) {
+    public static final void lobby_enterlobby(ClientScriptState arg0) {
 		arg0.osp -= 3;
 		String var1 = (String) arg0.objectStack[arg0.osp];
 		String var2 = (String) arg0.objectStack[arg0.osp + 1];
@@ -14479,96 +13352,79 @@ public class ScriptRunner {
 		LoginManager.enterLobby(var1, var2, var3, var4);
 	}
 
-	@ObfuscatedName("u.aqp(Lyf;I)V")
-	public static final void lobby_enterlobby_sso(ClientScriptState arg0) {
+    public static final void lobby_enterlobby_sso(ClientScriptState arg0) {
 		arg0.osp--;
 		arg0.isp--;
 	}
 
-	@ObfuscatedName("hv.aqx(Lyf;I)V")
-	public static final void sso_available(ClientScriptState arg0) {
+    public static final void sso_available(ClientScriptState arg0) {
 		arg0.intStack[++arg0.isp - 1] = 0;
 	}
 
-	@ObfuscatedName("mt.aqt(Lyf;I)V")
-	public static final void sso_displayname(ClientScriptState arg0) {
+    public static final void sso_displayname(ClientScriptState arg0) {
 		arg0.objectStack[++arg0.osp - 1] = "";
 	}
 
-	@ObfuscatedName("fm.aqh(Lyf;I)V")
-	public static final void shop_open(ClientScriptState arg0) {
+    public static final void shop_open(ClientScriptState arg0) {
 		arg0.isp--;
 	}
 
-	@ObfuscatedName("kj.aqy(Lyf;I)V")
-	public static final void method5356(ClientScriptState arg0) {
+    public static final void method5356(ClientScriptState arg0) {
 		arg0.intStack[++arg0.isp - 1] = 0;
 	}
 
-	@ObfuscatedName("sx.aqw(Lyf;S)V")
-	public static final void shop_applypendingtransactions(ClientScriptState arg0) {
+    public static final void shop_applypendingtransactions(ClientScriptState arg0) {
 	}
 
-	@ObfuscatedName("gl.aqe(Lyf;I)V")
-	public static final void shop_requestdata(ClientScriptState arg0) {
+    public static final void shop_requestdata(ClientScriptState arg0) {
 	}
 
-	@ObfuscatedName("kl.aqr(Lyf;I)V")
-	public static final void shop_requestdatastatus(ClientScriptState arg0) {
+    public static final void shop_requestdatastatus(ClientScriptState arg0) {
 		arg0.intStack[++arg0.isp - 1] = 0;
 	}
 
-	@ObfuscatedName("u.aqu(Lyf;B)V")
-	public static final void shop_getcategorycount(ClientScriptState arg0) {
+    public static final void shop_getcategorycount(ClientScriptState arg0) {
 		arg0.intStack[++arg0.isp - 1] = 0;
 	}
 
-	@ObfuscatedName("tr.aqq(Lyf;B)V")
-	public static final void shop_getcategoryid(ClientScriptState arg0) {
+    public static final void shop_getcategoryid(ClientScriptState arg0) {
 		arg0.isp--;
 		arg0.intStack[++arg0.isp - 1] = -1;
 	}
 
-	@ObfuscatedName("tu.aqs(Lyf;B)V")
-	public static final void shop_getindexforcategoryid(ClientScriptState arg0) {
+    public static final void shop_getindexforcategoryid(ClientScriptState arg0) {
 		arg0.isp--;
 		arg0.intStack[++arg0.isp - 1] = -1;
 	}
 
-	@ObfuscatedName("ahj.aqb(Lyf;I)V")
-	public static final void shop_getindexforcategoryname(ClientScriptState arg0) {
+    public static final void shop_getindexforcategoryname(ClientScriptState arg0) {
 		arg0.osp--;
 		arg0.intStack[++arg0.isp - 1] = -1;
 	}
 
-	@ObfuscatedName("dm.aqo(Lyf;I)V")
-	public static final void shop_getcategorydescription(ClientScriptState arg0) {
+    public static final void shop_getcategorydescription(ClientScriptState arg0) {
 		arg0.isp--;
 		arg0.objectStack[++arg0.osp - 1] = "";
 	}
 
-	@ObfuscatedName("vz.aqi(Lyf;I)V")
-	public static final void shop_getproductcount(ClientScriptState arg0) {
+    public static final void shop_getproductcount(ClientScriptState arg0) {
 		arg0.isp--;
 		arg0.intStack[++arg0.isp - 1] = 0;
 	}
 
-	@ObfuscatedName("x.aqf(Lyf;I)V")
-	public static final void shop_isproductavailable(ClientScriptState arg0) {
-		arg0.isp--;
-		arg0.isp--;
-		arg0.intStack[++arg0.isp - 1] = 0;
-	}
-
-	@ObfuscatedName("uf.aqg(Lyf;B)V")
-	public static final void shop_isproductrecommended(ClientScriptState arg0) {
+    public static final void shop_isproductavailable(ClientScriptState arg0) {
 		arg0.isp--;
 		arg0.isp--;
 		arg0.intStack[++arg0.isp - 1] = 0;
 	}
 
-	@ObfuscatedName("jk.aqa(Lyf;B)V")
-	public static final void shop_getproductdetails(ClientScriptState arg0) {
+    public static final void shop_isproductrecommended(ClientScriptState arg0) {
+		arg0.isp--;
+		arg0.isp--;
+		arg0.intStack[++arg0.isp - 1] = 0;
+	}
+
+    public static final void shop_getproductdetails(ClientScriptState arg0) {
 		arg0.isp--;
 		arg0.isp--;
 		arg0.objectStack[++arg0.osp - 1] = "";
@@ -14582,66 +13438,54 @@ public class ScriptRunner {
 		arg0.objectStack[++arg0.osp - 1] = "";
 	}
 
-	@ObfuscatedName("ib.aql(Lyf;B)V")
-	public static final void marketing_init(ClientScriptState arg0) {
+    public static final void marketing_init(ClientScriptState arg0) {
 	}
 
-	@ObfuscatedName("il.aqj(Lyf;I)V")
-	public static final void marketing_sendevent(ClientScriptState arg0) {
+    public static final void marketing_sendevent(ClientScriptState arg0) {
 		arg0.osp--;
 	}
 
-	@ObfuscatedName("acv.are(Lyf;I)V")
-	public static final void notifications_init(ClientScriptState arg0) {
+    public static final void notifications_init(ClientScriptState arg0) {
 	}
 
-	@ObfuscatedName("qd.arx(Lyf;B)V")
-	public static final void notifications_opensettings(ClientScriptState arg0) {
+    public static final void notifications_opensettings(ClientScriptState arg0) {
 	}
 
-	@ObfuscatedName("akv.arg(Lyf;I)V")
-	public static final void lobby_leavelobby(ClientScriptState arg0) {
+    public static final void lobby_leavelobby(ClientScriptState arg0) {
 		Client.logout(false);
 	}
 
-	@ObfuscatedName("fx.arp(Lyf;I)V")
-	public static final void lobby_enterlobbyreply(ClientScriptState arg0) {
+    public static final void lobby_enterlobbyreply(ClientScriptState arg0) {
 		arg0.intStack[++arg0.isp - 1] = LoginManager.enterLobbyReply;
 	}
 
-	@ObfuscatedName("qw.ari(Lyf;B)V")
-	public static final void resend_uid_passport_request(ClientScriptState arg0) {
+    public static final void resend_uid_passport_request(ClientScriptState arg0) {
 		if (Client.state == 17) {
 			ClientMessage var1 = ClientMessage.createMessage(ClientProt.UID_PASSPORT_RESEND_REQUEST, Client.lobbyConnection.randomOut);
 			Client.lobbyConnection.queue(var1);
 		}
 	}
 
-	@ObfuscatedName("wu.ary(Lyf;B)V")
-	public static final void userflowflags(ClientScriptState arg0) {
+    public static final void userflowflags(ClientScriptState arg0) {
 		arg0.intStack[++arg0.isp - 1] = Client.userFlow2;
 		arg0.intStack[++arg0.isp - 1] = Client.userFlow1;
 	}
 
-	@ObfuscatedName("er.aro(Lyf;B)V")
-	public static final void automatedtestflags(ClientScriptState arg0) {
+    public static final void automatedtestflags(ClientScriptState arg0) {
 		arg0.intStack[++arg0.isp - 1] = Client.field10778;
 		arg0.intStack[++arg0.isp - 1] = Client.field10777;
 	}
 
-	@ObfuscatedName("tu.arl(Lyf;I)V")
-	public static final void create_under13(ClientScriptState arg0) {
+    public static final void create_under13(ClientScriptState arg0) {
 		arg0.intStack[++arg0.isp - 1] = Client.isUnder13 ? 1 : 0;
 	}
 
-	@ObfuscatedName("ahg.arj(Lyf;B)V")
-	public static final void create_setunder13(ClientScriptState arg0) {
+    public static final void create_setunder13(ClientScriptState arg0) {
 		Client.isUnder13 = true;
 		Client.method3094();
 	}
 
-	@ObfuscatedName("adv.arc(Lyf;B)V")
-	public static final void login_last_transfer_reply(ClientScriptState arg0) {
+    public static final void login_last_transfer_reply(ClientScriptState arg0) {
 		arg0.intStack[++arg0.isp - 1] = LoginManager.lastTransferReply;
 		arg0.intStack[++arg0.isp - 1] = LoginManager.lastTransferDisallowResult;
 		arg0.intStack[++arg0.isp - 1] = LoginManager.lastTransferDisallowTrigger;
@@ -14650,23 +13494,19 @@ public class ScriptRunner {
 		LoginManager.lastTransferDisallowTrigger = -1;
 	}
 
-	@ObfuscatedName("gr.art(Lyf;B)V")
-	public static final void login_inprogress(ClientScriptState arg0) {
+    public static final void login_inprogress(ClientScriptState arg0) {
 		arg0.intStack[++arg0.isp - 1] = LoginManager.isInProgress() ? 1 : 0;
 	}
 
-	@ObfuscatedName("sx.arb(Lyf;B)V")
-	public static final void login_queue_position(ClientScriptState arg0) {
+    public static final void login_queue_position(ClientScriptState arg0) {
 		arg0.intStack[++arg0.isp - 1] = LoginManager.queuePosition;
 	}
 
-	@ObfuscatedName("ys.arw(Lyf;S)V")
-	public static final void login_cancel(ClientScriptState arg0) {
+    public static final void login_cancel(ClientScriptState arg0) {
 		LoginManager.cancelLogin();
 	}
 
-	@ObfuscatedName("oo.arh(Lyf;B)V")
-	public static final void login_request_social_network(ClientScriptState arg0) {
+    public static final void login_request_social_network(ClientScriptState arg0) {
 		arg0.isp -= 2;
 		int var1 = arg0.intStack[arg0.isp];
 		String var2 = (String) arg0.objectStack[--arg0.osp];
@@ -14674,8 +13514,7 @@ public class ScriptRunner {
 		LoginManager.requestSocialNetworkLogin(var1, var2, var3);
 	}
 
-	@ObfuscatedName("cc.aru(Lyf;I)V")
-	public static final void lobby_enterlobby_social_network(ClientScriptState arg0) {
+    public static final void lobby_enterlobby_social_network(ClientScriptState arg0) {
 		arg0.isp -= 2;
 		int var1 = arg0.intStack[arg0.isp];
 		String var2 = (String) arg0.objectStack[--arg0.osp];
@@ -14683,13 +13522,11 @@ public class ScriptRunner {
 		LoginManager.enterLobbySocialNetwork(var1, var2, var3);
 	}
 
-	@ObfuscatedName("ahq.arf(Lyf;B)V")
-	public static final void login_disallowtrigger(ClientScriptState arg0) {
+    public static final void login_disallowtrigger(ClientScriptState arg0) {
 		arg0.intStack[++arg0.isp - 1] = LoginManager.disallowTrigger;
 	}
 
-	@ObfuscatedName("on.arz(Lyf;B)V")
-	public static final void create_get_email(ClientScriptState arg0) {
+    public static final void create_get_email(ClientScriptState arg0) {
 		if (Client.createEmail == null) {
 			arg0.objectStack[++arg0.osp - 1] = "";
 		} else {
@@ -14697,8 +13534,7 @@ public class ScriptRunner {
 		}
 	}
 
-	@ObfuscatedName("kr.arv(Lyf;I)V")
-	public static final void login_accountappeal(ClientScriptState arg0) {
+    public static final void login_accountappeal(ClientScriptState arg0) {
 		String var1 = (String) arg0.objectStack[--arg0.osp];
 		long var2 = AccountAppealLogin.method14886();
 		if (var2 == 0L) {
@@ -14708,8 +13544,7 @@ public class ScriptRunner {
 		}
 	}
 
-	@ObfuscatedName("pu.arq(Lyf;I)V")
-	public static final void detail_brightness(ClientScriptState arg0) {
+    public static final void detail_brightness(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		Client.preferences.setPreference(Client.preferences.brightness, var1);
 		Client.world.rebuild();
@@ -14717,8 +13552,7 @@ public class ScriptRunner {
 		Client.preferencesChangeNotified = false;
 	}
 
-	@ObfuscatedName("akw.ars(Lyf;I)V")
-	public static final void detail_removeroofs_option(ClientScriptState arg0) {
+    public static final void detail_removeroofs_option(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		Client.preferences.setPreference(Client.preferences.removeRoofs, var1);
 		Client.preferences.setPreference(Client.preferences.removeRoofs2, var1);
@@ -14729,53 +13563,46 @@ public class ScriptRunner {
 		Client.preferencesChangeNotified = false;
 	}
 
-	@ObfuscatedName("fv.arm(Lyf;I)V")
-	public static final void detail_grounddecor_on(ClientScriptState arg0) {
+    public static final void detail_grounddecor_on(ClientScriptState arg0) {
 		Client.preferences.setPreference(Client.preferences.groundDecoration, arg0.intStack[--arg0.isp] == 1 ? 1 : 0);
 		Client.world.rebuild();
 		Preferences.save();
 		Client.preferencesChangeNotified = false;
 	}
 
-	@ObfuscatedName("ec.ark(Lyf;B)V")
-	public static final void detail_idleanims_many(ClientScriptState arg0) {
+    public static final void detail_idleanims_many(ClientScriptState arg0) {
 		Client.preferences.setPreference(Client.preferences.idleAnimations, arg0.intStack[--arg0.isp]);
 		Preferences.save();
 		Client.preferencesChangeNotified = false;
 	}
 
-	@ObfuscatedName("any.arn(Lyf;I)V")
-	public static final void detail_flickering_on(ClientScriptState arg0) {
+    public static final void detail_flickering_on(ClientScriptState arg0) {
 		Client.preferences.setPreference(Client.preferences.flickeringEffects, arg0.intStack[--arg0.isp] == 1 ? 1 : 0);
 		Preferences.save();
 		Client.preferencesChangeNotified = false;
 	}
 
-	@ObfuscatedName("fz.ara(Lyf;I)V")
-	public static final void detail_spotshadows_on(ClientScriptState arg0) {
+    public static final void detail_spotshadows_on(ClientScriptState arg0) {
 		Client.preferences.setPreference(Client.preferences.characterShadows, arg0.intStack[--arg0.isp] == 1 ? 1 : 0);
 		Preferences.save();
 		Client.preferencesChangeNotified = false;
 	}
 
-	@ObfuscatedName("aae.ard(Lyf;I)V")
-	public static final void detail_hardshadows(ClientScriptState arg0) {
+    public static final void detail_hardshadows(ClientScriptState arg0) {
 		Client.preferences.setPreference(Client.preferences.sceneryShadows, arg0.intStack[--arg0.isp]);
 		Client.world.rebuild();
 		Preferences.save();
 		Client.preferencesChangeNotified = false;
 	}
 
-	@ObfuscatedName("ju.arr(Lyf;S)V")
-	public static final void detail_shadowquality(ClientScriptState arg0) {
+    public static final void detail_shadowquality(ClientScriptState arg0) {
 		Client.preferences.setPreference(Client.preferences.shadowQuality, arg0.intStack[--arg0.isp]);
 		Client.world.rebuild();
 		Preferences.save();
 		Client.preferencesChangeNotified = false;
 	}
 
-	@ObfuscatedName("no.asa(Lyf;I)V")
-	public static final void detail_lightdetail_high(ClientScriptState arg0) {
+    public static final void detail_lightdetail_high(ClientScriptState arg0) {
 		Client.preferences.setPreference(Client.preferences.lightingDetail, arg0.intStack[--arg0.isp] == 1 ? 1 : 0);
 		Client.resetModelCaches();
 		Client.world.getEnvironmentManager().resetFade();
@@ -14783,45 +13610,39 @@ public class ScriptRunner {
 		Client.preferencesChangeNotified = false;
 	}
 
-	@ObfuscatedName("yu.asg(Lyf;B)V")
-	public static final void detail_waterdetail_high(ClientScriptState arg0) {
+    public static final void detail_waterdetail_high(ClientScriptState arg0) {
 		Client.preferences.setPreference(Client.preferences.waterDetail, arg0.intStack[--arg0.isp] == 1 ? 2 : 0);
 		Client.world.rebuild();
 		Preferences.save();
 		Client.preferencesChangeNotified = false;
 	}
 
-	@ObfuscatedName("ck.aso(Lyf;B)V")
-	public static final void detail_fog_on(ClientScriptState arg0) {
+    public static final void detail_fog_on(ClientScriptState arg0) {
 		Client.preferences.setPreference(Client.preferences.fog, arg0.intStack[--arg0.isp] == 1 ? 1 : 0);
 		Client.world.rebuild();
 		Preferences.save();
 		Client.preferencesChangeNotified = false;
 	}
 
-	@ObfuscatedName("xe.ask(Lyf;B)V")
-	public static final void detail_antialiasing(ClientScriptState arg0) {
+    public static final void detail_antialiasing(ClientScriptState arg0) {
 		Client.preferences.setPreference(Client.preferences.antiAliasing2, arg0.intStack[--arg0.isp]);
 		Client.setToolkit(Client.preferences.displayMode.getValue(), false);
 		Preferences.save();
 	}
 
-	@ObfuscatedName("oo.asd(Lyf;I)V")
-	public static final void detail_stereo(ClientScriptState arg0) {
+    public static final void detail_stereo(ClientScriptState arg0) {
 		Client.preferences.setPreference(Client.preferences.stereo, arg0.intStack[--arg0.isp] == 1 ? 1 : 0);
 		Preferences.save();
 		Client.preferencesChangeNotified = false;
 	}
 
-	@ObfuscatedName("io.asy(Lyf;I)V")
-	public static final void detail_soundvol(ClientScriptState arg0) {
+    public static final void detail_soundvol(ClientScriptState arg0) {
 		Client.preferences.setPreference(Client.preferences.soundVolume, arg0.intStack[--arg0.isp]);
 		Preferences.save();
 		Client.preferencesChangeNotified = false;
 	}
 
-	@ObfuscatedName("pd.asr(Lyf;B)V")
-	public static final void detail_musicvol(ClientScriptState arg0) {
+    public static final void detail_musicvol(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		int var2 = Client.preferences.unknownVolume1.getValue();
 		if (var1 != var2) {
@@ -14831,15 +13652,13 @@ public class ScriptRunner {
 		}
 	}
 
-	@ObfuscatedName("e.asc(Lyf;I)V")
-	public static final void detail_bgsoundvol(ClientScriptState arg0) {
+    public static final void detail_bgsoundvol(ClientScriptState arg0) {
 		Client.preferences.setPreference(Client.preferences.backgroundSoundVolume, arg0.intStack[--arg0.isp]);
 		Preferences.save();
 		Client.preferencesChangeNotified = false;
 	}
 
-	@ObfuscatedName("mw.asq(Lyf;B)V")
-	public static final void detail_removeroofs_option_override(ClientScriptState arg0) {
+    public static final void detail_removeroofs_option_override(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		if (var1 == -1) {
 			Client.preferences.setPreference(Client.preferences.removeRoofs2, Client.preferences.removeRoofs.getValue());
@@ -14849,29 +13668,25 @@ public class ScriptRunner {
 		Client.method3128();
 	}
 
-	@ObfuscatedName("vj.asf(Lyf;B)V")
-	public static final void detail_particles(ClientScriptState arg0) {
+    public static final void detail_particles(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		Client.preferences.setPreference(Client.preferences.particles, var1);
 		Preferences.save();
 		Client.preferencesChangeNotified = false;
 	}
 
-	@ObfuscatedName("akw.asp(Lyf;I)V")
-	public static final void detail_antialiasing_default(ClientScriptState arg0) {
+    public static final void detail_antialiasing_default(ClientScriptState arg0) {
 		Client.preferences.setPreference(Client.preferences.antiAliasing, arg0.intStack[--arg0.isp]);
 		Preferences.save();
 	}
 
-	@ObfuscatedName("sz.asb(Lyf;B)V")
-	public static final void detail_buildarea(ClientScriptState arg0) {
+    public static final void detail_buildarea(ClientScriptState arg0) {
 		Client.preferences.setPreference(Client.preferences.buildArea, arg0.intStack[--arg0.isp]);
 		Preferences.save();
 		Client.preferencesChangeNotified = false;
 	}
 
-	@ObfuscatedName("ajf.ase(Lyf;I)V")
-	public static final void detail_bloom(ClientScriptState arg0) {
+    public static final void detail_bloom(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		if (var1 < 0 || var1 > 1) {
 			var1 = 0;
@@ -14879,27 +13694,23 @@ public class ScriptRunner {
 		Client.setBloom(var1 == 1);
 	}
 
-	@ObfuscatedName("py.asz(Lyf;I)V")
-	public static final void detail_customcursors(ClientScriptState arg0) {
+    public static final void detail_customcursors(ClientScriptState arg0) {
 		Client.preferences.setPreference(Client.preferences.customCursors, arg0.intStack[--arg0.isp] == 0 ? 0 : 1);
 		Preferences.save();
 	}
 
-	@ObfuscatedName("uk.asl(Lyf;I)V")
-	public static final void detail_idleanims(ClientScriptState arg0) {
+    public static final void detail_idleanims(ClientScriptState arg0) {
 		Client.preferences.setPreference(Client.preferences.idleAnimations, arg0.intStack[--arg0.isp]);
 		Preferences.save();
 	}
 
-	@ObfuscatedName("ht.asu(Lyf;I)V")
-	public static final void detail_groundblending(ClientScriptState arg0) {
+    public static final void detail_groundblending(ClientScriptState arg0) {
 		Client.preferences.setPreference(Client.preferences.groundBlending, arg0.intStack[--arg0.isp] == 0 ? 0 : 1);
 		Preferences.save();
 		Client.world.rebuild();
 	}
 
-	@ObfuscatedName("pu.asn(Lyf;I)V")
-	public static final void detail_toolkit(ClientScriptState arg0) {
+    public static final void detail_toolkit(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		if (var1 < 0 || var1 > 5 || var1 == 2) {
 			var1 = 3;
@@ -14907,8 +13718,7 @@ public class ScriptRunner {
 		Client.setToolkit(var1, false);
 	}
 
-	@ObfuscatedName("pm.asj(Lyf;S)V")
-	public static final void detail_toolkit_default(ClientScriptState arg0) {
+    public static final void detail_toolkit_default(ClientScriptState arg0) {
 		arg0.isp -= 2;
 		int var1 = arg0.intStack[arg0.isp];
 		boolean var2 = arg0.intStack[arg0.isp + 1] == 1;
@@ -14920,14 +13730,12 @@ public class ScriptRunner {
 		Client.preferencesChangeNotified = false;
 	}
 
-	@ObfuscatedName("aax.asv(Lyf;I)V")
-	public static final void detail_cpuusage(ClientScriptState arg0) {
+    public static final void detail_cpuusage(ClientScriptState arg0) {
 		Client.preferences.setPreference(Client.preferences.cpuUsage, arg0.intStack[--arg0.isp]);
 		Preferences.save();
 	}
 
-	@ObfuscatedName("ge.asm(Lyf;I)V")
-	public static final void detail_texturing(ClientScriptState arg0) {
+    public static final void detail_texturing(ClientScriptState arg0) {
 		Client.preferences.setPreference(Client.preferences.textures, arg0.intStack[--arg0.isp] == 1 ? 1 : 0);
 		Preferences.save();
 		Client.resetModelCaches();
@@ -14935,22 +13743,19 @@ public class ScriptRunner {
 		Client.preferencesChangeNotified = false;
 	}
 
-	@ObfuscatedName("fl.asw(Lyf;I)V")
-	public static final void detail_maxscreensize(ClientScriptState arg0) {
+    public static final void detail_maxscreensize(ClientScriptState arg0) {
 		Client.preferences.setPreference(Client.preferences.screenSize, arg0.intStack[--arg0.isp]);
 		Preferences.save();
 		Client.field10836 = true;
 	}
 
-	@ObfuscatedName("wu.ast(Lyf;B)V")
-	public static final void detail_speechvol(ClientScriptState arg0) {
+    public static final void detail_speechvol(ClientScriptState arg0) {
 		Client.preferences.setPreference(Client.preferences.speechVolume, arg0.intStack[--arg0.isp]);
 		Preferences.save();
 		Client.preferencesChangeNotified = false;
 	}
 
-	@ObfuscatedName("nv.ash(Lyf;I)V")
-	public static final void detail_loginvol(ClientScriptState arg0) {
+    public static final void detail_loginvol(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		int var2 = Client.preferences.unknownVolume2.getValue();
 		if (var1 != var2) {
@@ -14960,8 +13765,7 @@ public class ScriptRunner {
 		}
 	}
 
-	@ObfuscatedName("tc.asi(Lyf;B)V")
-	public static final void detail_loadingscreentype(ClientScriptState arg0) {
+    public static final void detail_loadingscreentype(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		if (var1 > 255 || var1 < 0) {
 			var1 = 0;
@@ -14973,8 +13777,7 @@ public class ScriptRunner {
 		}
 	}
 
-	@ObfuscatedName("ajh.ass(Lyf;B)V")
-	public static final void detail_skydetail(ClientScriptState arg0) {
+    public static final void detail_skydetail(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		if (var1 != Client.preferences.skyboxes.getValue()) {
 			Client.preferences.setPreference(Client.preferences.skyboxes, var1);
@@ -14983,8 +13786,7 @@ public class ScriptRunner {
 		}
 	}
 
-	@ObfuscatedName("wo.asx(Lyf;B)V")
-	public static final void detail_animdetail(ClientScriptState arg0) {
+    public static final void detail_animdetail(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		if (var1 != Client.preferences.animDetail.getValue()) {
 			Client.preferences.setPreference(Client.preferences.animDetail, var1);
@@ -14994,363 +13796,291 @@ public class ScriptRunner {
 		}
 	}
 
-	@ObfuscatedName("gm.ato(Lyf;B)V")
-	public static final void detail_drawdistance(ClientScriptState arg0) {
+    public static final void detail_drawdistance(ClientScriptState arg0) {
 		arg0.isp--;
 	}
 
-	@ObfuscatedName("fc.att(Lyf;B)V")
-	public static final void detail_diskcachesize(ClientScriptState arg0) {
+    public static final void detail_diskcachesize(ClientScriptState arg0) {
 		arg0.isp--;
 	}
 
-	@ObfuscatedName("vq.atu(Lyf;I)V")
-	public static final void detail_shadows(ClientScriptState arg0) {
+    public static final void detail_shadows(ClientScriptState arg0) {
 		arg0.isp--;
 	}
 
-	@ObfuscatedName("ye.atp(Lyf;I)V")
-	public static final void detail_lightingquality(ClientScriptState arg0) {
+    public static final void detail_lightingquality(ClientScriptState arg0) {
 		arg0.isp--;
 	}
 
-	@ObfuscatedName("wu.atl(Lyf;B)V")
-	public static final void detail_antialiasingmode(ClientScriptState arg0) {
+    public static final void detail_antialiasingmode(ClientScriptState arg0) {
 		arg0.isp--;
 	}
 
-	@ObfuscatedName("adc.atv(Lyf;I)V")
-	public static final void detail_ambientocclusion(ClientScriptState arg0) {
+    public static final void detail_ambientocclusion(ClientScriptState arg0) {
 		arg0.isp--;
 	}
 
-	@ObfuscatedName("go.atw(Lyf;I)V")
-	public static final void detail_reflections(ClientScriptState arg0) {
+    public static final void detail_reflections(ClientScriptState arg0) {
 		arg0.isp--;
 	}
 
-	@ObfuscatedName("abq.atc(Lyf;I)V")
-	public static final void detail_vsync(ClientScriptState arg0) {
+    public static final void detail_vsync(ClientScriptState arg0) {
 		arg0.isp--;
 	}
 
-	@ObfuscatedName("xq.atn(Lyf;I)V")
-	public static final void detail_anisotropicfiltering(ClientScriptState arg0) {
+    public static final void detail_anisotropicfiltering(ClientScriptState arg0) {
 		arg0.isp--;
 	}
 
-	@ObfuscatedName("nq.atq(Lyf;I)V")
-	public static final void detail_volumetriclighting(ClientScriptState arg0) {
+    public static final void detail_volumetriclighting(ClientScriptState arg0) {
 		arg0.isp--;
 	}
 
-	@ObfuscatedName("aav.aty(Lyf;I)V")
-	public static final void detail_maxforegroundfps(ClientScriptState arg0) {
+    public static final void detail_maxforegroundfps(ClientScriptState arg0) {
 		arg0.isp--;
 	}
 
-	@ObfuscatedName("yl.ath(Lyf;I)V")
-	public static final void detail_maxbackgroundfps(ClientScriptState arg0) {
+    public static final void detail_maxbackgroundfps(ClientScriptState arg0) {
 		arg0.isp--;
 	}
 
-	@ObfuscatedName("gk.ata(Lyf;I)V")
-	public static final void detail_gamerenderscale(ClientScriptState arg0) {
+    public static final void detail_gamerenderscale(ClientScriptState arg0) {
 		arg0.isp--;
 	}
 
-	@ObfuscatedName("nw.ats(Lyf;B)V")
-	public static final void detail_interfacescale(ClientScriptState arg0) {
+    public static final void detail_interfacescale(ClientScriptState arg0) {
 		arg0.isp--;
 	}
 
-	@ObfuscatedName("kt.atx(Lyf;I)V")
-	public static final void detail_dof(ClientScriptState arg0) {
+    public static final void detail_dof(ClientScriptState arg0) {
 		arg0.isp--;
 	}
 
-	@ObfuscatedName("ul.atz(Lyf;I)V")
-	public static final void detailget_brightness(ClientScriptState arg0) {
+    public static final void detailget_brightness(ClientScriptState arg0) {
 		arg0.intStack[++arg0.isp - 1] = Client.preferences.brightness.getValue();
 	}
 
-	@ObfuscatedName("ahb.atg(Lyf;I)V")
-	public static final void detailget_removeroofs_option(ClientScriptState arg0) {
+    public static final void detailget_removeroofs_option(ClientScriptState arg0) {
 		arg0.intStack[++arg0.isp - 1] = Client.preferences.removeRoofs.getValue();
 	}
 
-	@ObfuscatedName("cb.atr(Lyf;I)V")
-	public static final void detailget_grounddecor_on(ClientScriptState arg0) {
+    public static final void detailget_grounddecor_on(ClientScriptState arg0) {
 		arg0.intStack[++arg0.isp - 1] = Client.preferences.groundDecoration.getValue() == 1 ? 1 : 0;
 	}
 
-	@ObfuscatedName("abv.atk(Lyf;I)V")
-	public static final void detailget_idleanims_many(ClientScriptState arg0) {
+    public static final void detailget_idleanims_many(ClientScriptState arg0) {
 		arg0.intStack[++arg0.isp - 1] = Client.preferences.idleAnimations.getValue();
 	}
 
-	@ObfuscatedName("gk.ati(Lyf;I)V")
-	public static final void detailget_flickering_on(ClientScriptState arg0) {
+    public static final void detailget_flickering_on(ClientScriptState arg0) {
 		arg0.intStack[++arg0.isp - 1] = Client.preferences.flickeringEffects.getValue() == 1 ? 1 : 0;
 	}
 
-	@ObfuscatedName("yu.atm(Lyf;I)V")
-	public static final void detailget_spotshadows_on(ClientScriptState arg0) {
+    public static final void detailget_spotshadows_on(ClientScriptState arg0) {
 		arg0.intStack[++arg0.isp - 1] = Client.preferences.characterShadows.getValue() == 1 ? 1 : 0;
 	}
 
-	@ObfuscatedName("ji.ate(Lyf;B)V")
-	public static final void detailget_hardshadows(ClientScriptState arg0) {
+    public static final void detailget_hardshadows(ClientScriptState arg0) {
 		arg0.intStack[++arg0.isp - 1] = Client.preferences.sceneryShadows.getValue();
 	}
 
-	@ObfuscatedName("ew.atj(Lyf;I)V")
-	public static final void detailget_shadowquality(ClientScriptState arg0) {
+    public static final void detailget_shadowquality(ClientScriptState arg0) {
 		arg0.intStack[++arg0.isp - 1] = Client.preferences.shadowQuality.getValue();
 	}
 
-	@ObfuscatedName("ub.atd(Lyf;I)V")
-	public static final void detailget_lightdetail_high(ClientScriptState arg0) {
+    public static final void detailget_lightdetail_high(ClientScriptState arg0) {
 		arg0.intStack[++arg0.isp - 1] = Client.preferences.lightingDetail.getValue() == 1 ? 1 : 0;
 	}
 
-	@ObfuscatedName("yo.atf(Lyf;I)V")
-	public static final void detailget_waterdetail_high(ClientScriptState arg0) {
+    public static final void detailget_waterdetail_high(ClientScriptState arg0) {
 		arg0.intStack[++arg0.isp - 1] = Client.preferences.waterDetail.getValue() == 2 ? 1 : 0;
 	}
 
-	@ObfuscatedName("s.atb(Lyf;I)V")
-	public static final void detailget_fog_on(ClientScriptState arg0) {
+    public static final void detailget_fog_on(ClientScriptState arg0) {
 		arg0.intStack[++arg0.isp - 1] = Client.preferences.fog.getValue() == 1 ? 1 : 0;
 	}
 
-	@ObfuscatedName("xc.auq(Lyf;I)V")
-	public static final void detailget_antialiasing(ClientScriptState arg0) {
+    public static final void detailget_antialiasing(ClientScriptState arg0) {
 		arg0.intStack[++arg0.isp - 1] = Client.preferences.antiAliasing2.getValue();
 	}
 
-	@ObfuscatedName("kt.auf(Lyf;I)V")
-	public static final void detailget_stereo(ClientScriptState arg0) {
+    public static final void detailget_stereo(ClientScriptState arg0) {
 		arg0.intStack[++arg0.isp - 1] = Client.preferences.stereo.getValue() == 1 ? 1 : 0;
 	}
 
-	@ObfuscatedName("el.auj(Lyf;B)V")
-	public static final void detailget_soundvol(ClientScriptState arg0) {
+    public static final void detailget_soundvol(ClientScriptState arg0) {
 		arg0.intStack[++arg0.isp - 1] = Client.preferences.soundVolume.getValue();
 	}
 
-	@ObfuscatedName("ye.aut(Lyf;I)V")
-	public static final void detailget_musicvol(ClientScriptState arg0) {
+    public static final void detailget_musicvol(ClientScriptState arg0) {
 		arg0.intStack[++arg0.isp - 1] = Client.preferences.unknownVolume1.getValue();
 	}
 
-	@ObfuscatedName("sa.aue(Lyf;I)V")
-	public static final void detailget_bgsoundvol(ClientScriptState arg0) {
+    public static final void detailget_bgsoundvol(ClientScriptState arg0) {
 		arg0.intStack[++arg0.isp - 1] = Client.preferences.backgroundSoundVolume.getValue();
 	}
 
-	@ObfuscatedName("jg.aur(Lyf;B)V")
-	public static final void detailget_particles(ClientScriptState arg0) {
+    public static final void detailget_particles(ClientScriptState arg0) {
 		arg0.intStack[++arg0.isp - 1] = ParticleSystemRenderer.method8461();
 	}
 
-	@ObfuscatedName("wn.auu(Lyf;I)V")
-	public static final void detailget_antialiasing_default(ClientScriptState arg0) {
+    public static final void detailget_antialiasing_default(ClientScriptState arg0) {
 		arg0.intStack[++arg0.isp - 1] = Client.preferences.antiAliasing.getValue();
 	}
 
-	@ObfuscatedName("ane.auv(Lyf;S)V")
-	public static final void detailget_buildarea(ClientScriptState arg0) {
+    public static final void detailget_buildarea(ClientScriptState arg0) {
 		arg0.intStack[++arg0.isp - 1] = Client.preferences.buildArea.getValue();
 	}
 
-	@ObfuscatedName("hh.aus(Lyf;B)V")
-	public static final void detailget_bloom(ClientScriptState arg0) {
+    public static final void detailget_bloom(ClientScriptState arg0) {
 		arg0.intStack[++arg0.isp - 1] = Client.preferences.bloom.getValue() == 1 ? 1 : 0;
 	}
 
-	@ObfuscatedName("afg.auc(Lyf;I)V")
-	public static final void detailget_customcursors(ClientScriptState arg0) {
+    public static final void detailget_customcursors(ClientScriptState arg0) {
 		arg0.intStack[++arg0.isp - 1] = Client.preferences.customCursors.getValue() == 1 ? 1 : 0;
 	}
 
-	@ObfuscatedName("db.aud(Lyf;I)V")
-	public static final void detailget_idleanims(ClientScriptState arg0) {
+    public static final void detailget_idleanims(ClientScriptState arg0) {
 		arg0.intStack[++arg0.isp - 1] = Client.preferences.idleAnimations.getValue();
 	}
 
-	@ObfuscatedName("bf.aup(Lyf;I)V")
-	public static final void detailget_groundblending(ClientScriptState arg0) {
+    public static final void detailget_groundblending(ClientScriptState arg0) {
 		arg0.intStack[++arg0.isp - 1] = Client.preferences.groundBlending.getValue() == 1 ? 1 : 0;
 	}
 
-	@ObfuscatedName("du.aum(Lyf;I)V")
-	public static final void detailget_toolkit(ClientScriptState arg0) {
+    public static final void detailget_toolkit(ClientScriptState arg0) {
 		arg0.intStack[++arg0.isp - 1] = Client.preferences.displayMode.getValue();
 	}
 
-	@ObfuscatedName("gj.auk(Lyf;I)V")
-	public static final void detailget_toolkit_default(ClientScriptState arg0) {
+    public static final void detailget_toolkit_default(ClientScriptState arg0) {
 		arg0.intStack[++arg0.isp - 1] = Client.preferences.toolkit.getValue();
 	}
 
-	@ObfuscatedName("nt.aux(Lyf;B)V")
-	public static final void detailget_cpuusage(ClientScriptState arg0) {
+    public static final void detailget_cpuusage(ClientScriptState arg0) {
 		arg0.intStack[++arg0.isp - 1] = Client.preferences.cpuUsage.getValue();
 	}
 
-	@ObfuscatedName("db.auw(Lyf;I)V")
-	public static final void detailget_texturing(ClientScriptState arg0) {
+    public static final void detailget_texturing(ClientScriptState arg0) {
 		arg0.intStack[++arg0.isp - 1] = Client.preferences.textures.getValue() == 1 ? 1 : 0;
 	}
 
-	@ObfuscatedName("kf.aul(Lyf;B)V")
-	public static final void detailget_performance_metric(ClientScriptState arg0) {
+    public static final void detailget_performance_metric(ClientScriptState arg0) {
 		arg0.intStack[++arg0.isp - 1] = Client.getPerformanceMetric(Client.preferences.displayMode.getValue(), 200);
 	}
 
-	@ObfuscatedName("fd.aui(Lyf;I)V")
-	public static final void detailget_maxscreensize(ClientScriptState arg0) {
+    public static final void detailget_maxscreensize(ClientScriptState arg0) {
 		arg0.intStack[++arg0.isp - 1] = Client.preferences.screenSize.getValue();
 	}
 
-	@ObfuscatedName("wd.auz(Lyf;I)V")
-	public static final void detailget_speechvol(ClientScriptState arg0) {
+    public static final void detailget_speechvol(ClientScriptState arg0) {
 		arg0.intStack[++arg0.isp - 1] = Client.preferences.speechVolume.getValue();
 	}
 
-	@ObfuscatedName("ach.auh(Lyf;B)V")
-	public static final void detailget_loginvol(ClientScriptState arg0) {
+    public static final void detailget_loginvol(ClientScriptState arg0) {
 		arg0.intStack[++arg0.isp - 1] = Client.preferences.unknownVolume2.getValue();
 	}
 
-	@ObfuscatedName("j.aua(Lyf;B)V")
-	public static final void detailget_safemode(ClientScriptState arg0) {
+    public static final void detailget_safemode(ClientScriptState arg0) {
 		arg0.intStack[++arg0.isp - 1] = Client.isSafeMode ? 1 : 0;
 	}
 
-	@ObfuscatedName("dy.aub(Lyf;B)V")
-	public static final void detailget_loadingscreentype(ClientScriptState arg0) {
+    public static final void detailget_loadingscreentype(ClientScriptState arg0) {
 		arg0.intStack[++arg0.isp - 1] = Client.preferences.loadingScreen.getValue();
 	}
 
-	@ObfuscatedName("jd.aun(Lyf;I)V")
-	public static final void detailget_orthographic(ClientScriptState arg0) {
+    public static final void detailget_orthographic(ClientScriptState arg0) {
 		arg0.intStack[++arg0.isp - 1] = Client.preferences.orthographic.getValue();
 	}
 
-	@ObfuscatedName("ec.auy(Lyf;I)V")
-	public static final void detailget_canchoosesafemode(ClientScriptState arg0) {
+    public static final void detailget_canchoosesafemode(ClientScriptState arg0) {
 		arg0.intStack[++arg0.isp - 1] = Client.hardwarePlatform.cpuInfoRam < 512 || Client.isSafeMode || Client.field10796 ? 1 : 0;
 	}
 
-	@ObfuscatedName("wp.aug(Lyf;I)V")
-	public static final void detailget_chosesafemode(ClientScriptState arg0) {
+    public static final void detailget_chosesafemode(ClientScriptState arg0) {
 		arg0.intStack[++arg0.isp - 1] = Client.field10812 ? 1 : 0;
 	}
 
-	@ObfuscatedName("aks.auo(Lyf;B)V")
-	public static final void detailget_drawdistance(ClientScriptState arg0) {
+    public static final void detailget_drawdistance(ClientScriptState arg0) {
 		arg0.intStack[++arg0.isp - 1] = Client.preferences.drawDistance.getValue();
 	}
 
-	@ObfuscatedName("aoq.avs(Lyf;I)V")
-	public static final void detailget_skydetail(ClientScriptState arg0) {
+    public static final void detailget_skydetail(ClientScriptState arg0) {
 		arg0.intStack[++arg0.isp - 1] = Client.preferences.skyboxes.getValue();
 	}
 
-	@ObfuscatedName("iu.avm(Lyf;I)V")
-	public static final void detailget_diskcachesize(ClientScriptState arg0) {
+    public static final void detailget_diskcachesize(ClientScriptState arg0) {
 		arg0.intStack[++arg0.isp - 1] = 0;
 	}
 
-	@ObfuscatedName("ur.avn(Lyf;I)V")
-	public static final void detailget_mindiskcachesize(ClientScriptState arg0) {
+    public static final void detailget_mindiskcachesize(ClientScriptState arg0) {
 		arg0.intStack[++arg0.isp - 1] = 0;
 	}
 
-	@ObfuscatedName("uc.avb(Lyf;I)V")
-	public static final void detailget_maxdiskcachesize(ClientScriptState arg0) {
+    public static final void detailget_maxdiskcachesize(ClientScriptState arg0) {
 		arg0.intStack[++arg0.isp - 1] = 0;
 	}
 
-	@ObfuscatedName("fq.avo(Lyf;I)V")
-	public static final void detailget_recommendeddiskcachesize(ClientScriptState arg0) {
+    public static final void detailget_recommendeddiskcachesize(ClientScriptState arg0) {
 		arg0.intStack[++arg0.isp - 1] = 0;
 	}
 
-	@ObfuscatedName("afd.avr(Lyf;B)V")
-	public static final void detailget_shadows(ClientScriptState arg0) {
+    public static final void detailget_shadows(ClientScriptState arg0) {
 		arg0.intStack[++arg0.isp - 1] = 0;
 	}
 
-	@ObfuscatedName("pj.avh(Lyf;I)V")
-	public static final void detailget_lightingquality(ClientScriptState arg0) {
+    public static final void detailget_lightingquality(ClientScriptState arg0) {
 		arg0.intStack[++arg0.isp - 1] = 0;
 	}
 
-	@ObfuscatedName("fy.avj(Lyf;I)V")
-	public static final void detailget_antialiasingmode(ClientScriptState arg0) {
+    public static final void detailget_antialiasingmode(ClientScriptState arg0) {
 		arg0.intStack[++arg0.isp - 1] = 0;
 	}
 
-	@ObfuscatedName("pj.ava(Lyf;I)V")
-	public static final void detailget_ambientocclusion(ClientScriptState arg0) {
+    public static final void detailget_ambientocclusion(ClientScriptState arg0) {
 		arg0.intStack[++arg0.isp - 1] = 0;
 	}
 
-	@ObfuscatedName("ns.avk(Lyf;I)V")
-	public static final void detailget_reflections(ClientScriptState arg0) {
+    public static final void detailget_reflections(ClientScriptState arg0) {
 		arg0.intStack[++arg0.isp - 1] = 0;
 	}
 
-	@ObfuscatedName("abr.ave(Lyf;I)V")
-	public static final void detailget_vsync(ClientScriptState arg0) {
+    public static final void detailget_vsync(ClientScriptState arg0) {
 		arg0.intStack[++arg0.isp - 1] = 0;
 	}
 
-	@ObfuscatedName("iz.avg(Lyf;S)V")
-	public static final void detailget_anisotropicfiltering(ClientScriptState arg0) {
+    public static final void detailget_anisotropicfiltering(ClientScriptState arg0) {
 		arg0.intStack[++arg0.isp - 1] = 0;
 	}
 
-	@ObfuscatedName("gc.avf(Lyf;I)V")
-	public static final void detailget_volumetriclighting(ClientScriptState arg0) {
+    public static final void detailget_volumetriclighting(ClientScriptState arg0) {
 		arg0.intStack[++arg0.isp - 1] = 0;
 	}
 
-	@ObfuscatedName("mj.avy(Lyf;I)V")
-	public static final void detailget_maxforegroundfps(ClientScriptState arg0) {
+    public static final void detailget_maxforegroundfps(ClientScriptState arg0) {
 		arg0.intStack[++arg0.isp - 1] = 0;
 	}
 
-	@ObfuscatedName("ur.avv(Lyf;I)V")
-	public static final void detailget_maxbackgroundfps(ClientScriptState arg0) {
+    public static final void detailget_maxbackgroundfps(ClientScriptState arg0) {
 		arg0.intStack[++arg0.isp - 1] = 0;
 	}
 
-	@ObfuscatedName("fr.avx(Lyf;B)V")
-	public static final void detailget_gamerenderscale(ClientScriptState arg0) {
+    public static final void detailget_gamerenderscale(ClientScriptState arg0) {
 		arg0.intStack[++arg0.isp - 1] = 0;
 	}
 
-	@ObfuscatedName("ec.avw(Lyf;I)V")
-	public static final void detailget_interfacescale(ClientScriptState arg0) {
+    public static final void detailget_interfacescale(ClientScriptState arg0) {
 		arg0.intStack[++arg0.isp - 1] = 0;
 	}
 
-	@ObfuscatedName("nc.avd(Lyf;I)V")
-	public static final void detailget_dof(ClientScriptState arg0) {
+    public static final void detailget_dof(ClientScriptState arg0) {
 		arg0.intStack[++arg0.isp - 1] = 0;
 	}
 
-	@ObfuscatedName("ty.avp(Lyf;I)V")
-	public static final void detailget_animdetail(ClientScriptState arg0) {
+    public static final void detailget_animdetail(ClientScriptState arg0) {
 		arg0.intStack[++arg0.isp - 1] = Client.preferences.animDetail.getValue();
 	}
 
-	@ObfuscatedName("abx.avq(Lyf;B)V")
-	public static final void viewport_setfov(ClientScriptState arg0) {
+    public static final void viewport_setfov(ClientScriptState arg0) {
 		arg0.isp -= 2;
 		Client.viewportFovMax = (short) arg0.intStack[arg0.isp];
 		if (Client.viewportFovMax <= 0) {
@@ -15362,8 +14092,7 @@ public class ScriptRunner {
 		}
 	}
 
-	@ObfuscatedName("pp.avt(Lyf;I)V")
-	public static final void viewport_setzoom(ClientScriptState arg0) {
+    public static final void viewport_setzoom(ClientScriptState arg0) {
 		arg0.isp -= 2;
 		Client.viewportZoomMin = (short) arg0.intStack[arg0.isp];
 		if (Client.viewportZoomMin <= 0) {
@@ -15375,8 +14104,7 @@ public class ScriptRunner {
 		}
 	}
 
-	@ObfuscatedName("gw.avz(Lyf;I)V")
-	public static final void viewport_clampfov(ClientScriptState arg0) {
+    public static final void viewport_clampfov(ClientScriptState arg0) {
 		arg0.isp -= 4;
 		Client.field11070 = (short) arg0.intStack[arg0.isp];
 		if (Client.field11070 <= 0) {
@@ -15400,39 +14128,33 @@ public class ScriptRunner {
 		}
 	}
 
-	@ObfuscatedName("yb.avl(Lyf;I)V")
-	public static final void viewport_geteffectivesize(ClientScriptState arg0) {
+    public static final void viewport_geteffectivesize(ClientScriptState arg0) {
 		Client.setViewport(0, 0, Client.field10986.width, Client.field10986.height, false);
 		arg0.intStack[++arg0.isp - 1] = Client.viewportWidth;
 		arg0.intStack[++arg0.isp - 1] = Client.viewportHeight;
 	}
 
-	@ObfuscatedName("nc.avc(Lyf;I)V")
-	public static final void viewport_getzoom(ClientScriptState arg0) {
+    public static final void viewport_getzoom(ClientScriptState arg0) {
 		arg0.intStack[++arg0.isp - 1] = Client.viewportZoomMin;
 		arg0.intStack[++arg0.isp - 1] = Client.viewportZoomMax;
 	}
 
-	@ObfuscatedName("gt.avu(Lyf;I)V")
-	public static final void viewport_getfov(ClientScriptState arg0) {
+    public static final void viewport_getfov(ClientScriptState arg0) {
 		arg0.intStack[++arg0.isp - 1] = Client.viewportFovMax;
 		arg0.intStack[++arg0.isp - 1] = Client.viewportFovMin;
 	}
 
-	@ObfuscatedName("fj.avi(Lyf;B)V")
-	public static final void date_minutes(ClientScriptState arg0) {
+    public static final void date_minutes(ClientScriptState arg0) {
 		long var1 = MonotonicTime.get();
 		arg0.intStack[++arg0.isp - 1] = (int) (var1 / 60000L);
 	}
 
-	@ObfuscatedName("ahp.awu(Lyf;I)V")
-	public static final void date_runeday(ClientScriptState arg0) {
+    public static final void date_runeday(ClientScriptState arg0) {
 		long var1 = MonotonicTime.get();
 		arg0.intStack[++arg0.isp - 1] = (int) (var1 / 86400000L) - 11745;
 	}
 
-	@ObfuscatedName("gq.awn(Lyf;B)V")
-	public static final void date_runeday_fromdate(ClientScriptState arg0) {
+    public static final void date_runeday_fromdate(ClientScriptState arg0) {
 		arg0.isp -= 3;
 		int var1 = arg0.intStack[arg0.isp];
 		int var2 = arg0.intStack[arg0.isp + 1];
@@ -15445,14 +14167,12 @@ public class ScriptRunner {
 		arg0.intStack[++arg0.isp - 1] = var6;
 	}
 
-	@ObfuscatedName("aqc.awk(Lyf;I)V")
-	public static final void date_year(ClientScriptState arg0) {
+    public static final void date_year(ClientScriptState arg0) {
 		long var1 = MonotonicTime.get();
 		arg0.intStack[++arg0.isp - 1] = TimeFormatter.method16390(var1);
 	}
 
-	@ObfuscatedName("ko.awp(Lyf;I)V")
-	public static final void date_isleapyear(ClientScriptState arg0) {
+    public static final void date_isleapyear(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		boolean var2 = true;
 		if (var1 < 0) {
@@ -15469,8 +14189,7 @@ public class ScriptRunner {
 		arg0.intStack[++arg0.isp - 1] = var2 ? 1 : 0;
 	}
 
-	@ObfuscatedName("nm.awm(Lyf;I)V")
-	public static final void date_runeday_todate(ClientScriptState arg0) {
+    public static final void date_runeday_todate(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		Date var2 = TimeZones.getRuneDay(var1);
 		arg0.intStack[++arg0.isp - 1] = TimeZones.method3628(var2, UTC);
@@ -15478,14 +14197,12 @@ public class ScriptRunner {
 		arg0.intStack[++arg0.isp - 1] = TimeZones.method3627(var2, UTC);
 	}
 
-	@ObfuscatedName("ks.awr(Lyf;B)V")
-	public static final void date_minutes_fromruneday(ClientScriptState arg0) {
+    public static final void date_minutes_fromruneday(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		arg0.intStack[++arg0.isp - 1] = (int) (TimeFormatter.method14612(var1) / 60000L);
 	}
 
-	@ObfuscatedName("ana.awl(Lyf;I)V")
-	public static final void worldlist_fetch(ClientScriptState arg0) {
+    public static final void worldlist_fetch(ClientScriptState arg0) {
 		if (Client.state != 13 && Client.state != 18 || LoginManager.isInProgress()) {
 			arg0.intStack[++arg0.isp - 1] = 1;
 		} else if (WorldSwitcher.field8754) {
@@ -15502,8 +14219,7 @@ public class ScriptRunner {
 		}
 	}
 
-	@ObfuscatedName("fw.awo(Lyf;B)V")
-	public static final void worldlist_start(ClientScriptState arg0) {
+    public static final void worldlist_start(ClientScriptState arg0) {
 		GWCWorld var1 = WorldSwitcher.method13782();
 		if (var1 != null) {
 			arg0.intStack[++arg0.isp - 1] = var1.field11705;
@@ -15526,8 +14242,7 @@ public class ScriptRunner {
 		arg0.objectStack[++arg0.osp - 1] = "";
 	}
 
-	@ObfuscatedName("wh.awv(Lyf;B)V")
-	public static final void worldlist_next(ClientScriptState arg0) {
+    public static final void worldlist_next(ClientScriptState arg0) {
 		GWCWorld var1 = WorldSwitcher.method6048();
 		if (var1 != null) {
 			arg0.intStack[++arg0.isp - 1] = var1.field11705;
@@ -15550,8 +14265,7 @@ public class ScriptRunner {
 		arg0.objectStack[++arg0.osp - 1] = "";
 	}
 
-	@ObfuscatedName("ar.awh(Lyf;B)V")
-	public static final void worldlist_switch(ClientScriptState arg0) {
+    public static final void worldlist_switch(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		String var2 = (String) arg0.objectStack[--arg0.osp];
 		int var3 = ServerPorts.method2912(Client.modewhere, ServerType.field8347, var1);
@@ -15563,8 +14277,7 @@ public class ScriptRunner {
 		}
 	}
 
-	@ObfuscatedName("f.awx(Lyf;I)V")
-	public static final void worldlist_specific(ClientScriptState arg0) {
+    public static final void worldlist_specific(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		GWCWorld var2 = GWC.method4944(var1);
 		if (var2 != null) {
@@ -15586,8 +14299,7 @@ public class ScriptRunner {
 		arg0.objectStack[++arg0.osp - 1] = "";
 	}
 
-	@ObfuscatedName("yy.aws(Lyf;B)V")
-	public static final void worldlist_sort(ClientScriptState arg0) {
+    public static final void worldlist_sort(ClientScriptState arg0) {
 		arg0.isp -= 4;
 		int var1 = arg0.intStack[arg0.isp];
 		boolean var2 = arg0.intStack[arg0.isp + 1] == 1;
@@ -15596,31 +14308,26 @@ public class ScriptRunner {
 		WorldSwitcher.method5394(var1, var2, var3, var4);
 	}
 
-	@ObfuscatedName("xv.awa(Lyf;I)V")
-	public static final void worldlist_autoworld(ClientScriptState arg0) {
+    public static final void worldlist_autoworld(ClientScriptState arg0) {
 		WorldSwitcher.method10337();
 	}
 
-	@ObfuscatedName("dd.awc(Lyf;I)V")
-	public static final void worldlist_pingworlds(ClientScriptState arg0) {
+    public static final void worldlist_pingworlds(ClientScriptState arg0) {
 		if (Client.state == 13) {
 			WorldSwitcher.field8759 = arg0.intStack[--arg0.isp] == 1;
 		}
 	}
 
-	@ObfuscatedName("dc.awz(Lyf;B)V")
-	public static final void worldlist_specific_thisworld(ClientScriptState arg0) {
+    public static final void worldlist_specific_thisworld(ClientScriptState arg0) {
 		GWCWorld var1 = WorldSwitcher.method477();
 		arg0.intStack[++arg0.isp - 1] = var1 == null ? 0 : var1.field7639;
 	}
 
-	@ObfuscatedName("ji.awe(Lyf;B)V")
-	public static final void if_gettop(ClientScriptState arg0) {
+    public static final void if_gettop(ClientScriptState arg0) {
 		arg0.intStack[++arg0.isp - 1] = Client.openedTopInterface;
 	}
 
-	@ObfuscatedName("rp.awi(Lyf;I)V")
-	public static final void if_debug_getopenifcount(ClientScriptState arg0) {
+    public static final void if_debug_getopenifcount(ClientScriptState arg0) {
 		int var1 = Client.openedSubInterfaces.size();
 		if (Client.openedTopInterface != -1) {
 			var1++;
@@ -15628,8 +14335,7 @@ public class ScriptRunner {
 		arg0.intStack[++arg0.isp - 1] = var1;
 	}
 
-	@ObfuscatedName("fo.awy(Lyf;I)V")
-	public static final void if_debug_getopenifid(ClientScriptState arg0) {
+    public static final void if_debug_getopenifid(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		if (Client.openedTopInterface != -1) {
 			if (var1 == 0) {
@@ -15645,8 +14351,7 @@ public class ScriptRunner {
 		arg0.intStack[++arg0.isp - 1] = var2.field11571;
 	}
 
-	@ObfuscatedName("er.awq(Lyf;B)V")
-	public static final void if_debug_getname(ClientScriptState arg0) {
+    public static final void if_debug_getname(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		if (Component.interfaces[var1] == null) {
 			arg0.objectStack[++arg0.osp - 1] = "";
@@ -15660,8 +14365,7 @@ public class ScriptRunner {
 		}
 	}
 
-	@ObfuscatedName("arl.aww(Lyf;I)V")
-	public static final void if_debug_getcomcount(ClientScriptState arg0) {
+    public static final void if_debug_getcomcount(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		if (Component.interfaces[var1] == null) {
 			arg0.intStack[++arg0.isp - 1] = 0;
@@ -15670,8 +14374,7 @@ public class ScriptRunner {
 		}
 	}
 
-	@ObfuscatedName("iu.awd(Lyf;I)V")
-	public static final void if_debug_getcomname(ClientScriptState arg0) {
+    public static final void if_debug_getcomname(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		int var2 = var1 >> 16;
 		if (Component.interfaces[var2] == null) {
@@ -15686,8 +14389,7 @@ public class ScriptRunner {
 		}
 	}
 
-	@ObfuscatedName("hh.awg(Lyf;I)V")
-	public static final void if_debug_getservertriggers(ClientScriptState arg0) {
+    public static final void if_debug_getservertriggers(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		int var2 = var1 >> 16;
 		if (Component.interfaces[var2] == null) {
@@ -15697,96 +14399,84 @@ public class ScriptRunner {
 		}
 	}
 
-	@ObfuscatedName("at.awb(Lyf;B)V")
-	public static final void if_debug_button1(ClientScriptState arg0) {
+    public static final void if_debug_button1(ClientScriptState arg0) {
 		arg0.isp -= 2;
 		int var1 = arg0.intStack[arg0.isp];
 		int var2 = arg0.intStack[arg0.isp + 1];
 		Client.method4527(1, var1, var2, "");
 	}
 
-	@ObfuscatedName("ys.awf(Lyf;B)V")
-	public static final void if_debug_button2(ClientScriptState arg0) {
+    public static final void if_debug_button2(ClientScriptState arg0) {
 		arg0.isp -= 2;
 		int var1 = arg0.intStack[arg0.isp];
 		int var2 = arg0.intStack[arg0.isp + 1];
 		Client.method4527(2, var1, var2, "");
 	}
 
-	@ObfuscatedName("yi.awt(Lyf;I)V")
-	public static final void if_debug_button3(ClientScriptState arg0) {
+    public static final void if_debug_button3(ClientScriptState arg0) {
 		arg0.isp -= 2;
 		int var1 = arg0.intStack[arg0.isp];
 		int var2 = arg0.intStack[arg0.isp + 1];
 		Client.method4527(3, var1, var2, "");
 	}
 
-	@ObfuscatedName("iw.awj(Lyf;B)V")
-	public static final void if_debug_button4(ClientScriptState arg0) {
+    public static final void if_debug_button4(ClientScriptState arg0) {
 		arg0.isp -= 2;
 		int var1 = arg0.intStack[arg0.isp];
 		int var2 = arg0.intStack[arg0.isp + 1];
 		Client.method4527(4, var1, var2, "");
 	}
 
-	@ObfuscatedName("aas.axc(Lyf;I)V")
-	public static final void if_debug_button5(ClientScriptState arg0) {
+    public static final void if_debug_button5(ClientScriptState arg0) {
 		arg0.isp -= 2;
 		int var1 = arg0.intStack[arg0.isp];
 		int var2 = arg0.intStack[arg0.isp + 1];
 		Client.method4527(5, var1, var2, "");
 	}
 
-	@ObfuscatedName("sx.axs(Lyf;B)V")
-	public static final void if_debug_button6(ClientScriptState arg0) {
+    public static final void if_debug_button6(ClientScriptState arg0) {
 		arg0.isp -= 2;
 		int var1 = arg0.intStack[arg0.isp];
 		int var2 = arg0.intStack[arg0.isp + 1];
 		Client.method4527(6, var1, var2, "");
 	}
 
-	@ObfuscatedName("jh.axa(Lyf;I)V")
-	public static final void if_debug_button7(ClientScriptState arg0) {
+    public static final void if_debug_button7(ClientScriptState arg0) {
 		arg0.isp -= 2;
 		int var1 = arg0.intStack[arg0.isp];
 		int var2 = arg0.intStack[arg0.isp + 1];
 		Client.method4527(7, var1, var2, "");
 	}
 
-	@ObfuscatedName("aax.axn(Lyf;I)V")
-	public static final void if_debug_button8(ClientScriptState arg0) {
+    public static final void if_debug_button8(ClientScriptState arg0) {
 		arg0.isp -= 2;
 		int var1 = arg0.intStack[arg0.isp];
 		int var2 = arg0.intStack[arg0.isp + 1];
 		Client.method4527(8, var1, var2, "");
 	}
 
-	@ObfuscatedName("afg.axd(Lyf;I)V")
-	public static final void if_debug_button9(ClientScriptState arg0) {
+    public static final void if_debug_button9(ClientScriptState arg0) {
 		arg0.isp -= 2;
 		int var1 = arg0.intStack[arg0.isp];
 		int var2 = arg0.intStack[arg0.isp + 1];
 		Client.method4527(9, var1, var2, "");
 	}
 
-	@ObfuscatedName("ig.axo(Lyf;I)V")
-	public static final void if_debug_button10(ClientScriptState arg0) {
+    public static final void if_debug_button10(ClientScriptState arg0) {
 		arg0.isp -= 2;
 		int var1 = arg0.intStack[arg0.isp];
 		int var2 = arg0.intStack[arg0.isp + 1];
 		Client.method4527(10, var1, var2, "");
 	}
 
-	@ObfuscatedName("fk.axx(ILhf;Lyf;B)V")
-	public static final void cc_if_triggerop(int arg0, Component arg1, ClientScriptState arg2) {
+    public static final void cc_if_triggerop(int arg0, Component arg1, ClientScriptState arg2) {
 		if (arg0 < 1 || arg0 > 10) {
 			throw new RuntimeException();
 		}
 		Client.method4527(arg0, arg1.parentlayer, arg1.id, "");
 	}
 
-	@ObfuscatedName("il.axk(Lyf;I)V")
-	public static final void if_triggerop(ClientScriptState arg0) {
+    public static final void if_triggerop(ClientScriptState arg0) {
 		arg0.isp -= 3;
 		int var1 = arg0.intStack[arg0.isp];
 		int var2 = arg0.intStack[arg0.isp + 1];
@@ -15794,16 +14484,14 @@ public class ScriptRunner {
 		cc_if_triggerop(var3, Component.method16682(var1, var2), arg0);
 	}
 
-	@ObfuscatedName("ux.axv(Lyf;B)V")
-	public static final void cc_triggerop(ClientScriptState arg0) {
+    public static final void cc_triggerop(ClientScriptState arg0) {
 		ActiveComponent var1 = arg0.secondary ? arg0.activeComponent2 : arg0.activeComponent;
 		Component var2 = var1.com;
 		int var3 = arg0.intStack[--arg0.isp];
 		cc_if_triggerop(var3, var2, arg0);
 	}
 
-	@ObfuscatedName("ik.axq(Lyf;B)V")
-	public static final void if_debug_target(ClientScriptState arg0) {
+    public static final void if_debug_target(ClientScriptState arg0) {
 		arg0.isp -= 2;
 		int var1 = arg0.intStack[arg0.isp];
 		int var2 = arg0.intStack[arg0.isp + 1];
@@ -15813,48 +14501,39 @@ public class ScriptRunner {
 		Client.setTargetActiveComponent(var3, var4.method17691(), var4.field11381);
 	}
 
-	@ObfuscatedName("kb.axp(Lyf;B)V")
-	public static final void force_interface_drag(ClientScriptState arg0) {
+    public static final void force_interface_drag(ClientScriptState arg0) {
 		Client.method17515();
 	}
 
-	@ObfuscatedName("gl.axz(Lyf;I)V")
-	public static final void cancel_interface_drag(ClientScriptState arg0) {
+    public static final void cancel_interface_drag(ClientScriptState arg0) {
 		Client.field10989 = null;
 		Client.field10828 = null;
 	}
 
-	@ObfuscatedName("nl.axh(Lyf;B)V")
-	public static final void method6023(ClientScriptState arg0) {
+    public static final void method6023(ClientScriptState arg0) {
 	}
 
-	@ObfuscatedName("l.axy(Lyf;I)V")
-	public static final void method257(ClientScriptState arg0) {
+    public static final void method257(ClientScriptState arg0) {
 		arg0.intStack[++arg0.isp - 1] = 0;
 	}
 
-	@ObfuscatedName("jx.axj(Lyf;I)V")
-	public static final void method5073(ClientScriptState arg0) {
+    public static final void method5073(ClientScriptState arg0) {
 		arg0.intStack[++arg0.isp - 1] = 0;
 	}
 
-	@ObfuscatedName("wn.axm(Lyf;B)V")
-	public static final void targetmode_active(ClientScriptState arg0) {
+    public static final void targetmode_active(ClientScriptState arg0) {
 		arg0.intStack[++arg0.isp - 1] = Client.targetModeActive ? 1 : 0;
 	}
 
-	@ObfuscatedName("pp.axt(Lyf;I)V")
-	public static final void targetmode_cancel(ClientScriptState arg0) {
+    public static final void targetmode_cancel(ClientScriptState arg0) {
 		Client.method9403();
 	}
 
-	@ObfuscatedName("y.axb(Lyf;I)V")
-	public static final void opcount(ClientScriptState arg0) {
+    public static final void opcount(ClientScriptState arg0) {
 		arg0.intStack[++arg0.isp - 1] = opcount;
 	}
 
-	@ObfuscatedName("sp.axe(Lyf;I)V")
-	public static final void mec_text(ClientScriptState arg0) {
+    public static final void mec_text(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		MapElementType var2 = (MapElementType) Client.mapElementTypeList.list(var1);
 		if (var2.text == null) {
@@ -15864,29 +14543,25 @@ public class ScriptRunner {
 		}
 	}
 
-	@ObfuscatedName("fi.axr(Lyf;B)V")
-	public static final void mec_sprite(ClientScriptState arg0) {
+    public static final void mec_sprite(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		MapElementType var2 = (MapElementType) Client.mapElementTypeList.list(var1);
 		arg0.intStack[++arg0.isp - 1] = var2.sprite;
 	}
 
-	@ObfuscatedName("aoh.axg(Lyf;I)V")
-	public static final void mec_textsize(ClientScriptState arg0) {
+    public static final void mec_textsize(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		MapElementType var2 = (MapElementType) Client.mapElementTypeList.list(var1);
 		arg0.intStack[++arg0.isp - 1] = var2.textSize;
 	}
 
-	@ObfuscatedName("fc.axf(Lyf;I)V")
-	public static final void mec_category(ClientScriptState arg0) {
+    public static final void mec_category(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		MapElementType var2 = (MapElementType) Client.mapElementTypeList.list(var1);
 		arg0.intStack[++arg0.isp - 1] = var2.category;
 	}
 
-	@ObfuscatedName("pu.axu(Lyf;B)V")
-	public static final void mec_param(ClientScriptState arg0) {
+    public static final void mec_param(ClientScriptState arg0) {
 		arg0.isp -= 2;
 		int var1 = arg0.intStack[arg0.isp];
 		int var2 = arg0.intStack[arg0.isp + 1];
@@ -15898,35 +14573,29 @@ public class ScriptRunner {
 		}
 	}
 
-	@ObfuscatedName("tg.axl(Lyf;B)V")
-	public static final void userdetail_quickchat(ClientScriptState arg0) {
+    public static final void userdetail_quickchat(ClientScriptState arg0) {
 		arg0.intStack[++arg0.isp - 1] = Client.field10951 && !Client.playerIsQuickChat ? 1 : 0;
 	}
 
-	@ObfuscatedName("ii.axi(Lyf;B)V")
-	public static final void userdetail_lobby_membership(ClientScriptState arg0) {
+    public static final void userdetail_lobby_membership(ClientScriptState arg0) {
 		arg0.intStack[++arg0.isp - 1] = (int) (Client.lobbyMembership / 60000L);
 		arg0.intStack[++arg0.isp - 1] = (int) ((Client.lobbyMembership - MonotonicTime.get() - Client.field1238) / 60000L);
 		arg0.intStack[++arg0.isp - 1] = Client.field11709 ? 1 : 0;
 	}
 
-	@ObfuscatedName("af.axw(Lyf;I)V")
-	public static final void userdetail_lobby_recoveryday(ClientScriptState arg0) {
+    public static final void userdetail_lobby_recoveryday(ClientScriptState arg0) {
 		arg0.intStack[++arg0.isp - 1] = Client.lobbyRecoveryDay;
 	}
 
-	@ObfuscatedName("li.ayg(Lyf;B)V")
-	public static final void userdetail_lobby_unreadmessages(ClientScriptState arg0) {
+    public static final void userdetail_lobby_unreadmessages(ClientScriptState arg0) {
 		arg0.intStack[++arg0.isp - 1] = Client.lobbyUnreadMessages;
 	}
 
-	@ObfuscatedName("fp.ayn(Lyf;B)V")
-	public static final void userdetail_lobby_lastloginday(ClientScriptState arg0) {
+    public static final void userdetail_lobby_lastloginday(ClientScriptState arg0) {
 		arg0.intStack[++arg0.isp - 1] = Client.lobbyLastLoginDay;
 	}
 
-	@ObfuscatedName("sc.ayp(Lyf;B)V")
-	public static final void userdetail_lobby_lastloginaddress(ClientScriptState arg0) {
+    public static final void userdetail_lobby_lastloginaddress(ClientScriptState arg0) {
 		String var1 = null;
 		if (Client.hostNameProvider != null) {
 			var1 = Client.hostNameProvider.method544();
@@ -15937,53 +14606,43 @@ public class ScriptRunner {
 		arg0.objectStack[++arg0.osp - 1] = var1;
 	}
 
-	@ObfuscatedName("pw.ayv(Lyf;B)V")
-	public static final void userdetail_lobby_emailstatus(ClientScriptState arg0) {
+    public static final void userdetail_lobby_emailstatus(ClientScriptState arg0) {
 		arg0.intStack[++arg0.isp - 1] = Client.lobbyEmailStatus;
 	}
 
-	@ObfuscatedName("ny.ayu(Lyf;B)V")
-	public static final void userdetail_lobby_ccexpiry(ClientScriptState arg0) {
+    public static final void userdetail_lobby_ccexpiry(ClientScriptState arg0) {
 		arg0.intStack[++arg0.isp - 1] = Client.lobbyCCExpiry;
 	}
 
-	@ObfuscatedName("ju.ays(Lyf;B)V")
-	public static final void userdetail_lobby_graceexpiry(ClientScriptState arg0) {
+    public static final void userdetail_lobby_graceexpiry(ClientScriptState arg0) {
 		arg0.intStack[++arg0.isp - 1] = Client.lobbyGraceExpiry;
 	}
 
-	@ObfuscatedName("nd.ayf(Lyf;B)V")
-	public static final void userdetail_lobby_dobrequested(ClientScriptState arg0) {
+    public static final void userdetail_lobby_dobrequested(ClientScriptState arg0) {
 		arg0.intStack[++arg0.isp - 1] = Client.lobbyDOBRequested ? 1 : 0;
 	}
 
-	@ObfuscatedName("ar.aym(Lyf;I)V")
-	public static final void userdetail_dob(ClientScriptState arg0) {
+    public static final void userdetail_dob(ClientScriptState arg0) {
 		arg0.intStack[++arg0.isp - 1] = Client.lobbyDOB;
 	}
 
-	@ObfuscatedName("oh.ayr(Lyf;I)V")
-	public static final void userdetail_lobby_membersstats(ClientScriptState arg0) {
+    public static final void userdetail_lobby_membersstats(ClientScriptState arg0) {
 		arg0.intStack[++arg0.isp - 1] = Client.lobbyMembersStats;
 	}
 
-	@ObfuscatedName("ju.ayc(Lyf;B)V")
-	public static final void userdetail_lobby_playage(ClientScriptState arg0) {
+    public static final void userdetail_lobby_playage(ClientScriptState arg0) {
 		arg0.intStack[++arg0.isp - 1] = Client.lobbyPlayAge;
 	}
 
-	@ObfuscatedName("iz.ayx(Lyf;I)V")
-	public static final void userdetail_lobby_jcoins_balance(ClientScriptState arg0) {
+    public static final void userdetail_lobby_jcoins_balance(ClientScriptState arg0) {
 		arg0.intStack[++arg0.isp - 1] = Client.lobbyJCoinsBalance;
 	}
 
-	@ObfuscatedName("wb.ayk(Lyf;B)V")
-	public static final void userdetail_lobby_loyalty_balance(ClientScriptState arg0) {
+    public static final void userdetail_lobby_loyalty_balance(ClientScriptState arg0) {
 		arg0.intStack[++arg0.isp - 1] = Client.lobbyLoyaltyBalance;
 	}
 
-	@ObfuscatedName("adv.ayo(Lyf;I)V")
-	public static final void autosetup_dosetup(ClientScriptState arg0) {
+    public static final void autosetup_dosetup(ClientScriptState arg0) {
 		int var1 = Preferences.getAutoSetupResult();
 		arg0.intStack[++arg0.isp - 1] = Preferences.field11775 = Client.preferences.displayMode.getValue();
 		arg0.intStack[++arg0.isp - 1] = var1;
@@ -15993,22 +14652,18 @@ public class ScriptRunner {
 		Client.preferencesChangeNotified = false;
 	}
 
-	@ObfuscatedName("jx.ayd(Lyf;I)V")
-	public static final void method5069(ClientScriptState arg0) {
+    public static final void method5069(ClientScriptState arg0) {
 	}
 
-	@ObfuscatedName("yj.ayz(Lyf;I)V")
-	public static final void autosetup_dosetupstatus(ClientScriptState arg0) {
+    public static final void autosetup_dosetupstatus(ClientScriptState arg0) {
 		arg0.intStack[++arg0.isp - 1] = 0;
 		arg0.intStack[++arg0.isp - 1] = 0;
 	}
 
-	@ObfuscatedName("all.ayq(Lyf;I)V")
-	public static final void autosetup_setultra(ClientScriptState arg0) {
+    public static final void autosetup_setultra(ClientScriptState arg0) {
 	}
 
-	@ObfuscatedName("yk.ayt(Lyf;I)V")
-	public static final void autosetup_sethigh(ClientScriptState arg0) {
+    public static final void autosetup_sethigh(ClientScriptState arg0) {
 		Preferences.setHigh();
 		SpotShadowFactory.cacheReset();
 		Client.world.rebuild();
@@ -16016,8 +14671,7 @@ public class ScriptRunner {
 		Client.preferencesChangeNotified = false;
 	}
 
-	@ObfuscatedName("alk.aya(Lyf;I)V")
-	public static final void autosetup_setmedium(ClientScriptState arg0) {
+    public static final void autosetup_setmedium(ClientScriptState arg0) {
 		Preferences.setMedium();
 		SpotShadowFactory.cacheReset();
 		Client.world.rebuild();
@@ -16025,8 +14679,7 @@ public class ScriptRunner {
 		Client.preferencesChangeNotified = false;
 	}
 
-	@ObfuscatedName("hf.aye(Lyf;B)V")
-	public static final void autosetup_setlow(ClientScriptState arg0) {
+    public static final void autosetup_setlow(ClientScriptState arg0) {
 		Preferences.setLow();
 		SpotShadowFactory.cacheReset();
 		Client.world.rebuild();
@@ -16034,8 +14687,7 @@ public class ScriptRunner {
 		Client.preferencesChangeNotified = false;
 	}
 
-	@ObfuscatedName("w.ayh(Lyf;I)V")
-	public static final void autosetup_setmin(ClientScriptState arg0) {
+    public static final void autosetup_setmin(ClientScriptState arg0) {
 		Preferences.setMin(true);
 		SpotShadowFactory.cacheReset();
 		Client.world.rebuild();
@@ -16043,15 +14695,13 @@ public class ScriptRunner {
 		Client.preferencesChangeNotified = false;
 	}
 
-	@ObfuscatedName("sc.ayl(Lyf;I)V")
-	public static final void autosetup_setcustom(ClientScriptState arg0) {
+    public static final void autosetup_setcustom(ClientScriptState arg0) {
 		Client.preferences.setPreference(Client.preferences.preset, 0);
 		Preferences.save();
 		Client.preferencesChangeNotified = false;
 	}
 
-	@ObfuscatedName("qo.ayy(Lyf;I)V")
-	public static final void autosetup_blackflaglast(ClientScriptState arg0) {
+    public static final void autosetup_blackflaglast(ClientScriptState arg0) {
 		if (Preferences.field11775 == 1) {
 			Preferences.field786 = true;
 		} else if (Preferences.field11775 == 3) {
@@ -16059,13 +14709,11 @@ public class ScriptRunner {
 		}
 	}
 
-	@ObfuscatedName("oi.ayb(Lyf;I)V")
-	public static final void autosetup_getlevel(ClientScriptState arg0) {
+    public static final void autosetup_getlevel(ClientScriptState arg0) {
 		arg0.intStack[++arg0.isp - 1] = Client.preferences.preset.getValue();
 	}
 
-	@ObfuscatedName("aih.ayi(Lyf;I)V")
-	public static final void video_advert_play(ClientScriptState arg0) {
+    public static final void video_advert_play(ClientScriptState arg0) {
 		boolean var1 = false;
 		if (Client.javascriptEnabled) {
 			try {
@@ -16079,22 +14727,19 @@ public class ScriptRunner {
 		arg0.intStack[++arg0.isp - 1] = var1 ? 1 : 0;
 	}
 
-	@ObfuscatedName("jp.ayj(Lyf;I)V")
-	public static final void video_advert_force_remove(ClientScriptState arg0) {
+    public static final void video_advert_force_remove(ClientScriptState arg0) {
 		if (Client.javascriptEnabled) {
 			JavascriptFunction.ADVERT_FORCE_REMOVE.method6090();
 		}
 	}
 
-	@ObfuscatedName("sb.ayw(Lyf;I)V")
-	public static final void video_advert_allow_skip(ClientScriptState arg0) {
+    public static final void video_advert_allow_skip(ClientScriptState arg0) {
 		if (Client.javascriptEnabled) {
 			JavascriptFunction.ADVERT_ALLOW_SKIP.method6090();
 		}
 	}
 
-	@ObfuscatedName("ul.aze(Lyf;I)V")
-	public static final void video_advert_has_finished(ClientScriptState arg0) {
+    public static final void video_advert_has_finished(ClientScriptState arg0) {
 		boolean var1 = true;
 		if (Client.javascriptEnabled) {
 			try {
@@ -16108,188 +14753,152 @@ public class ScriptRunner {
 		arg0.intStack[++arg0.isp - 1] = var1 ? 1 : 0;
 	}
 
-	@ObfuscatedName("ij.azx(Lyf;I)V")
-	public static final void detailcanmod_grounddecor(ClientScriptState arg0) {
+    public static final void detailcanmod_grounddecor(ClientScriptState arg0) {
 		arg0.intStack[++arg0.isp - 1] = Client.preferences.groundDecoration.canMod() ? 1 : 0;
 	}
 
-	@ObfuscatedName("rk.azd(Lyf;B)V")
-	public static final void detailcanmod_spotshadows(ClientScriptState arg0) {
+    public static final void detailcanmod_spotshadows(ClientScriptState arg0) {
 		arg0.intStack[++arg0.isp - 1] = Client.preferences.characterShadows.canMod() ? 1 : 0;
 	}
 
-	@ObfuscatedName("nd.azg(Lyf;I)V")
-	public static final void detailcanmod_hardshadows(ClientScriptState arg0) {
+    public static final void detailcanmod_hardshadows(ClientScriptState arg0) {
 		arg0.intStack[++arg0.isp - 1] = Client.preferences.sceneryShadows.canMod() ? 1 : 0;
 	}
 
-	@ObfuscatedName("r.azu(Lyf;I)V")
-	public static final void detailcanmod_shadowquality(ClientScriptState arg0) {
+    public static final void detailcanmod_shadowquality(ClientScriptState arg0) {
 		arg0.intStack[++arg0.isp - 1] = Client.preferences.shadowQuality.canMod() ? 1 : 0;
 	}
 
-	@ObfuscatedName("jf.azj(Lyf;B)V")
-	public static final void detailcanmod_waterdetail(ClientScriptState arg0) {
+    public static final void detailcanmod_waterdetail(ClientScriptState arg0) {
 		arg0.intStack[++arg0.isp - 1] = Client.preferences.waterDetail.canMod() ? 1 : 0;
 	}
 
-	@ObfuscatedName("qf.azz(Lyf;B)V")
-	public static final void detailcanmod_antialiasing(ClientScriptState arg0) {
+    public static final void detailcanmod_antialiasing(ClientScriptState arg0) {
 		arg0.intStack[++arg0.isp - 1] = Client.preferences.antiAliasing.canMod() && Client.toolkit.supportsAntiAliasing() ? 1 : 0;
 	}
 
-	@ObfuscatedName("sl.azb(Lyf;I)V")
-	public static final void detailcanmod_particles(ClientScriptState arg0) {
+    public static final void detailcanmod_particles(ClientScriptState arg0) {
 		arg0.intStack[++arg0.isp - 1] = Client.preferences.particles.canMod() ? 1 : 0;
 	}
 
-	@ObfuscatedName("f.azt(Lyf;B)V")
-	public static final void detailcanmod_buildarea(ClientScriptState arg0) {
+    public static final void detailcanmod_buildarea(ClientScriptState arg0) {
 		arg0.intStack[++arg0.isp - 1] = Client.preferences.buildArea.canMod() ? 1 : 0;
 	}
 
-	@ObfuscatedName("ik.azw(Lyf;I)V")
-	public static final void detailcanmod_bloom(ClientScriptState arg0) {
+    public static final void detailcanmod_bloom(ClientScriptState arg0) {
 		arg0.intStack[++arg0.isp - 1] = Client.preferences.bloom.canMod() && Client.toolkit.isBloomSupported() ? 1 : 0;
 	}
 
-	@ObfuscatedName("ip.azs(Lyf;I)V")
-	public static final void detailcanmod_groundblending(ClientScriptState arg0) {
+    public static final void detailcanmod_groundblending(ClientScriptState arg0) {
 		arg0.intStack[++arg0.isp - 1] = Client.preferences.groundBlending.canMod() ? 1 : 0;
 	}
 
-	@ObfuscatedName("dh.azv(Lyf;B)V")
-	public static final void detailcanmod_texturing(ClientScriptState arg0) {
+    public static final void detailcanmod_texturing(ClientScriptState arg0) {
 		arg0.intStack[++arg0.isp - 1] = Client.preferences.textures.canMod() ? 1 : 0;
 	}
 
-	@ObfuscatedName("anw.azc(Lyf;I)V")
-	public static final void detailcanmod_maxscreensize(ClientScriptState arg0) {
+    public static final void detailcanmod_maxscreensize(ClientScriptState arg0) {
 		arg0.intStack[++arg0.isp - 1] = Client.preferences.screenSize.canMod() ? 1 : 0;
 	}
 
-	@ObfuscatedName("gd.azy(Lyf;B)V")
-	public static final void detailcanmod_fog(ClientScriptState arg0) {
+    public static final void detailcanmod_fog(ClientScriptState arg0) {
 		arg0.intStack[++arg0.isp - 1] = Client.preferences.fog.canMod() ? 1 : 0;
 	}
 
-	@ObfuscatedName("ie.azq(Lyf;I)V")
-	public static final void detailcanmod_orthographic(ClientScriptState arg0) {
+    public static final void detailcanmod_orthographic(ClientScriptState arg0) {
 		arg0.intStack[++arg0.isp - 1] = Client.preferences.orthographic.canMod() ? 1 : 0;
 	}
 
-	@ObfuscatedName("vg.azh(Lyf;B)V")
-	public static final void detailcanmod_toolkit_default(ClientScriptState arg0) {
+    public static final void detailcanmod_toolkit_default(ClientScriptState arg0) {
 		arg0.intStack[++arg0.isp - 1] = Client.preferences.toolkit.canMod() ? 1 : 0;
 	}
 
-	@ObfuscatedName("sz.azl(Lyf;I)V")
-	public static final void detailcanmod_skydetail(ClientScriptState arg0) {
+    public static final void detailcanmod_skydetail(ClientScriptState arg0) {
 		arg0.intStack[++arg0.isp - 1] = Client.preferences.skyboxes.canMod() ? 1 : 0;
 	}
 
-	@ObfuscatedName("dy.azi(Lyf;B)V")
-	public static final void detailcanmod_animdetail(ClientScriptState arg0) {
+    public static final void detailcanmod_animdetail(ClientScriptState arg0) {
 		arg0.intStack[++arg0.isp - 1] = Client.preferences.animDetail.canMod() ? 1 : 0;
 	}
 
-	@ObfuscatedName("bl.azm(Lyf;B)V")
-	public static final void detailcanmod_shadows(ClientScriptState arg0) {
+    public static final void detailcanmod_shadows(ClientScriptState arg0) {
 		arg0.intStack[++arg0.isp - 1] = 0;
 	}
 
-	@ObfuscatedName("nh.azf(Lyf;I)V")
-	public static final void detailcanmod_lightingquality(ClientScriptState arg0) {
+    public static final void detailcanmod_lightingquality(ClientScriptState arg0) {
 		arg0.intStack[++arg0.isp - 1] = 0;
 	}
 
-	@ObfuscatedName("acv.azr(Lyf;B)V")
-	public static final void detailcanmod_antialiasingmode(ClientScriptState arg0) {
+    public static final void detailcanmod_antialiasingmode(ClientScriptState arg0) {
 		arg0.intStack[++arg0.isp - 1] = 0;
 	}
 
-	@ObfuscatedName("na.azp(Lyf;I)V")
-	public static final void detailcanmod_ambientocclusion(ClientScriptState arg0) {
+    public static final void detailcanmod_ambientocclusion(ClientScriptState arg0) {
 		arg0.intStack[++arg0.isp - 1] = 0;
 	}
 
-	@ObfuscatedName("ud.aza(Lyf;B)V")
-	public static final void detailcanmod_reflections(ClientScriptState arg0) {
+    public static final void detailcanmod_reflections(ClientScriptState arg0) {
 		arg0.intStack[++arg0.isp - 1] = 0;
 	}
 
-	@ObfuscatedName("rt.azn(Lyf;B)V")
-	public static final void detailcanmod_vsync(ClientScriptState arg0) {
+    public static final void detailcanmod_vsync(ClientScriptState arg0) {
 		arg0.intStack[++arg0.isp - 1] = 0;
 	}
 
-	@ObfuscatedName("jp.azk(Lyf;I)V")
-	public static final void detailcanmod_anisotropicfiltering(ClientScriptState arg0) {
+    public static final void detailcanmod_anisotropicfiltering(ClientScriptState arg0) {
 		arg0.intStack[++arg0.isp - 1] = 0;
 	}
 
-	@ObfuscatedName("xv.azo(Lyf;I)V")
-	public static final void detailcanmod_volumetriclighting(ClientScriptState arg0) {
+    public static final void detailcanmod_volumetriclighting(ClientScriptState arg0) {
 		arg0.intStack[++arg0.isp - 1] = 0;
 	}
 
-	@ObfuscatedName("ax.baj(Lyf;I)V")
-	public static final void detailcanmod_maxforegroundfps(ClientScriptState arg0) {
+    public static final void detailcanmod_maxforegroundfps(ClientScriptState arg0) {
 		arg0.intStack[++arg0.isp - 1] = 0;
 	}
 
-	@ObfuscatedName("uz.bab(Lyf;I)V")
-	public static final void detailcanmod_maxbackgroundfps(ClientScriptState arg0) {
+    public static final void detailcanmod_maxbackgroundfps(ClientScriptState arg0) {
 		arg0.intStack[++arg0.isp - 1] = 0;
 	}
 
-	@ObfuscatedName("no.bav(Lyf;S)V")
-	public static final void detailcanmod_gamerenderscale(ClientScriptState arg0) {
+    public static final void detailcanmod_gamerenderscale(ClientScriptState arg0) {
 		arg0.intStack[++arg0.isp - 1] = 0;
 	}
 
-	@ObfuscatedName("dv.bax(Lyf;I)V")
-	public static final void detailcanmod_interfacescale(ClientScriptState arg0) {
+    public static final void detailcanmod_interfacescale(ClientScriptState arg0) {
 		arg0.intStack[++arg0.isp - 1] = 0;
 	}
 
-	@ObfuscatedName("jr.baf(Lyf;S)V")
-	public static final void detailcanmod_dof(ClientScriptState arg0) {
+    public static final void detailcanmod_dof(ClientScriptState arg0) {
 		arg0.intStack[++arg0.isp - 1] = 0;
 	}
 
-	@ObfuscatedName("jp.bag(Lyf;B)V")
-	public static final void detailcanset_grounddecor(ClientScriptState arg0) {
+    public static final void detailcanset_grounddecor(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		arg0.intStack[++arg0.isp - 1] = Client.preferences.groundDecoration.canSetValue(var1);
 	}
 
-	@ObfuscatedName("jd.bau(Lyf;I)V")
-	public static final void detailcanset_spotshadows(ClientScriptState arg0) {
+    public static final void detailcanset_spotshadows(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		arg0.intStack[++arg0.isp - 1] = Client.preferences.characterShadows.canSetValue(var1);
 	}
 
-	@ObfuscatedName("pn.bam(Lyf;I)V")
-	public static final void detailcanset_hardshadows(ClientScriptState arg0) {
+    public static final void detailcanset_hardshadows(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		arg0.intStack[++arg0.isp - 1] = Client.preferences.sceneryShadows.canSetValue(var1);
 	}
 
-	@ObfuscatedName("ia.bah(Lyf;I)V")
-	public static final void detailcanset_shadowquality(ClientScriptState arg0) {
+    public static final void detailcanset_shadowquality(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		arg0.intStack[++arg0.isp - 1] = Client.preferences.shadowQuality.canSetValue(var1);
 	}
 
-	@ObfuscatedName("vm.baw(Lyf;I)V")
-	public static final void detailcanset_waterdetail(ClientScriptState arg0) {
+    public static final void detailcanset_waterdetail(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		arg0.intStack[++arg0.isp - 1] = Client.preferences.waterDetail.canSetValue(var1);
 	}
 
-	@ObfuscatedName("rd.bay(Lyf;B)V")
-	public static final void detailcanset_antialiasing(ClientScriptState arg0) {
+    public static final void detailcanset_antialiasing(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		if (Client.toolkit.supportsAntiAliasing()) {
 			arg0.intStack[++arg0.isp - 1] = Client.preferences.antiAliasing.canSetValue(var1);
@@ -16298,20 +14907,17 @@ public class ScriptRunner {
 		}
 	}
 
-	@ObfuscatedName("no.bas(Lyf;B)V")
-	public static final void detailcanset_particles(ClientScriptState arg0) {
+    public static final void detailcanset_particles(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		arg0.intStack[++arg0.isp - 1] = Client.preferences.particles.canSetValue(var1);
 	}
 
-	@ObfuscatedName("nr.bac(Lyf;B)V")
-	public static final void detailcanset_buildarea(ClientScriptState arg0) {
+    public static final void detailcanset_buildarea(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		arg0.intStack[++arg0.isp - 1] = Client.preferences.buildArea.canSetValue(var1);
 	}
 
-	@ObfuscatedName("xc.bar(Lyf;B)V")
-	public static final void detailcanset_bloom(ClientScriptState arg0) {
+    public static final void detailcanset_bloom(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		if (Client.toolkit.isBloomSupported()) {
 			arg0.intStack[++arg0.isp - 1] = Client.preferences.bloom.canSetValue(var1);
@@ -16320,157 +14926,129 @@ public class ScriptRunner {
 		}
 	}
 
-	@ObfuscatedName("pc.bap(Lyf;B)V")
-	public static final void detailcanset_groundblending(ClientScriptState arg0) {
+    public static final void detailcanset_groundblending(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		arg0.intStack[++arg0.isp - 1] = Client.preferences.groundBlending.canSetValue(var1);
 	}
 
-	@ObfuscatedName("ib.bae(Lyf;I)V")
-	public static final void detailcanset_texturing(ClientScriptState arg0) {
+    public static final void detailcanset_texturing(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		arg0.intStack[++arg0.isp - 1] = Client.preferences.textures.canSetValue(var1);
 	}
 
-	@ObfuscatedName("d.bal(Lyf;B)V")
-	public static final void detailcanset_maxscreensize(ClientScriptState arg0) {
+    public static final void detailcanset_maxscreensize(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		arg0.intStack[++arg0.isp - 1] = Client.preferences.screenSize.canSetValue(var1);
 	}
 
-	@ObfuscatedName("kb.bak(Lyf;I)V")
-	public static final void detailcanset_fog(ClientScriptState arg0) {
+    public static final void detailcanset_fog(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		arg0.intStack[++arg0.isp - 1] = Client.preferences.fog.canSetValue(var1);
 	}
 
-	@ObfuscatedName("pn.baz(Lyf;I)V")
-	public static final void detailcanset_orthographic(ClientScriptState arg0) {
+    public static final void detailcanset_orthographic(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		arg0.intStack[++arg0.isp - 1] = Client.preferences.orthographic.canSetValue(var1);
 	}
 
-	@ObfuscatedName("ze.baq(Lyf;I)V")
-	public static final void detailcanset_toolkit_default(ClientScriptState arg0) {
+    public static final void detailcanset_toolkit_default(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		arg0.intStack[++arg0.isp - 1] = Client.preferences.toolkit.canSetValue(var1);
 	}
 
-	@ObfuscatedName("xo.bai(Lyf;B)V")
-	public static final void detailcanset_skydetail(ClientScriptState arg0) {
+    public static final void detailcanset_skydetail(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		arg0.intStack[++arg0.isp - 1] = Client.preferences.skyboxes.canSetValue(var1);
 	}
 
-	@ObfuscatedName("so.baa(Lyf;I)V")
-	public static final void detailcanset_animdetail(ClientScriptState arg0) {
+    public static final void detailcanset_animdetail(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		arg0.intStack[++arg0.isp - 1] = Client.preferences.animDetail.canSetValue(var1);
 	}
 
-	@ObfuscatedName("rq.bat(Lyf;I)V")
-	public static final void detailcanset_shadows(ClientScriptState arg0) {
+    public static final void detailcanset_shadows(ClientScriptState arg0) {
 		arg0.intStack[++arg0.isp - 1] = 0;
 	}
 
-	@ObfuscatedName("hj.ban(Lyf;B)V")
-	public static final void detailcanset_lightingquality(ClientScriptState arg0) {
+    public static final void detailcanset_lightingquality(ClientScriptState arg0) {
 		arg0.intStack[++arg0.isp - 1] = 0;
 	}
 
-	@ObfuscatedName("ane.bao(Lyf;I)V")
-	public static final void detailcanset_antialiasingmode(ClientScriptState arg0) {
+    public static final void detailcanset_antialiasingmode(ClientScriptState arg0) {
 		arg0.intStack[++arg0.isp - 1] = 0;
 	}
 
-	@ObfuscatedName("uw.bad(Lyf;I)V")
-	public static final void detailcanset_ambientocclusion(ClientScriptState arg0) {
+    public static final void detailcanset_ambientocclusion(ClientScriptState arg0) {
 		arg0.intStack[++arg0.isp - 1] = 0;
 	}
 
-	@ObfuscatedName("nt.bbd(Lyf;B)V")
-	public static final void detailcanset_reflections(ClientScriptState arg0) {
+    public static final void detailcanset_reflections(ClientScriptState arg0) {
 		arg0.intStack[++arg0.isp - 1] = 0;
 	}
 
-	@ObfuscatedName("in.bby(Lyf;B)V")
-	public static final void detailcanset_vsync(ClientScriptState arg0) {
+    public static final void detailcanset_vsync(ClientScriptState arg0) {
 		arg0.intStack[++arg0.isp - 1] = 0;
 	}
 
-	@ObfuscatedName("cz.bbk(Lyf;I)V")
-	public static final void detailcanset_anisotropicfiltering(ClientScriptState arg0) {
+    public static final void detailcanset_anisotropicfiltering(ClientScriptState arg0) {
 		arg0.intStack[++arg0.isp - 1] = 0;
 	}
 
-	@ObfuscatedName("qh.bbr(Lyf;I)V")
-	public static final void detailcanset_volumetriclighting(ClientScriptState arg0) {
+    public static final void detailcanset_volumetriclighting(ClientScriptState arg0) {
 		arg0.intStack[++arg0.isp - 1] = 0;
 	}
 
-	@ObfuscatedName("ab.bbg(Lyf;I)V")
-	public static final void detailcanset_maxforegroundfps(ClientScriptState arg0) {
+    public static final void detailcanset_maxforegroundfps(ClientScriptState arg0) {
 		arg0.intStack[++arg0.isp - 1] = 0;
 	}
 
-	@ObfuscatedName("ahc.bbp(Lyf;S)V")
-	public static final void detailcanset_maxbackgroundfps(ClientScriptState arg0) {
+    public static final void detailcanset_maxbackgroundfps(ClientScriptState arg0) {
 		arg0.intStack[++arg0.isp - 1] = 0;
 	}
 
-	@ObfuscatedName("aq.bbu(Lyf;S)V")
-	public static final void detailcanset_gamerenderscale(ClientScriptState arg0) {
+    public static final void detailcanset_gamerenderscale(ClientScriptState arg0) {
 		arg0.isp--;
 		arg0.intStack[++arg0.isp - 1] = 0;
 	}
 
-	@ObfuscatedName("wc.bbv(Lyf;B)V")
-	public static final void detailcanset_interfacescale(ClientScriptState arg0) {
+    public static final void detailcanset_interfacescale(ClientScriptState arg0) {
 		arg0.isp--;
 		arg0.intStack[++arg0.isp - 1] = 0;
 	}
 
-	@ObfuscatedName("gt.bbt(Lyf;I)V")
-	public static final void detailcanset_dof(ClientScriptState arg0) {
+    public static final void detailcanset_dof(ClientScriptState arg0) {
 		arg0.isp--;
 		arg0.intStack[++arg0.isp - 1] = 0;
 	}
 
-	@ObfuscatedName("ix.bbq(Lyf;I)V")
-	public static final void method4479(ClientScriptState arg0) {
+    public static final void method4479(ClientScriptState arg0) {
 		arg0.isp -= 2;
 	}
 
-	@ObfuscatedName("fz.bbw(Lyf;I)V")
-	public static final void method3039(ClientScriptState arg0) {
+    public static final void method3039(ClientScriptState arg0) {
 		arg0.isp -= 2;
 	}
 
-	@ObfuscatedName("ajj.bbj(Lyf;I)V")
-	public static final void method17434(ClientScriptState arg0) {
+    public static final void method17434(ClientScriptState arg0) {
 		arg0.intStack[++arg0.isp - 1] = GameShell.canvasWid;
 		arg0.intStack[++arg0.isp - 1] = GameShell.canvasHei;
 	}
 
-	@ObfuscatedName("s.bbo(Lyf;I)V")
-	public static final void method484(ClientScriptState arg0) {
+    public static final void method484(ClientScriptState arg0) {
 		arg0.intStack[++arg0.isp - 1] = 0;
 		arg0.intStack[++arg0.isp - 1] = 0;
 		arg0.intStack[++arg0.isp - 1] = 0;
 		arg0.intStack[++arg0.isp - 1] = 0;
 	}
 
-	@ObfuscatedName("io.bbb(Lyf;I)V")
-	public static final void method4373(ClientScriptState arg0) {
+    public static final void method4373(ClientScriptState arg0) {
 		arg0.isp -= 4;
 	}
 
-	@ObfuscatedName("hp.bbh(Lyf;I)V")
-	public static final void method4065(ClientScriptState arg0) {
+    public static final void method4065(ClientScriptState arg0) {
 	}
 
-	@ObfuscatedName("xc.bbe(Lyf;I)V")
-	public static final void get_entity_say(ClientScriptState arg0) {
+    public static final void get_entity_say(ClientScriptState arg0) {
 		EntityChatLine var1 = arg0.activeEntity.getChatLine();
 		if (var1 == null) {
 			arg0.objectStack[++arg0.osp - 1] = "";
@@ -16479,13 +15057,11 @@ public class ScriptRunner {
 		}
 	}
 
-	@ObfuscatedName("abx.bbf(Lyf;B)V")
-	public static final void get_displayname_withextras(ClientScriptState arg0) {
+    public static final void get_displayname_withextras(ClientScriptState arg0) {
 		arg0.objectStack[++arg0.osp - 1] = ((PlayerEntity) arg0.activeEntity).getNameWithExtras(true);
 	}
 
-	@ObfuscatedName("d.bbn(Lyf;B)V")
-	public static final void get_npc_name(ClientScriptState arg0) {
+    public static final void get_npc_name(ClientScriptState arg0) {
 		NpcEntity var1 = (NpcEntity) arg0.activeEntity;
 		String var2 = var1.name;
 		NPCType var3 = var1.npcType;
@@ -16503,40 +15079,34 @@ public class ScriptRunner {
 		arg0.objectStack[++arg0.osp - 1] = var2;
 	}
 
-	@ObfuscatedName("fw.bbx(Lyf;I)V")
-	public static final void get_npc_vislevel(ClientScriptState arg0) {
+    public static final void get_npc_vislevel(ClientScriptState arg0) {
 		NpcEntity var1 = (NpcEntity) arg0.activeEntity;
 		arg0.intStack[++arg0.isp - 1] = var1.vislevel;
 	}
 
-	@ObfuscatedName("zl.bbi(Lyf;I)V")
-	public static final void get_entity_screen_position(ClientScriptState arg0) {
+    public static final void get_entity_screen_position(ClientScriptState arg0) {
 		Client.projectFromEntity3d(arg0.activeEntity, arg0.intStack[--arg0.isp], true);
 		arg0.intStack[++arg0.isp - 1] = (int) Client.projection[0];
 		arg0.intStack[++arg0.isp - 1] = (int) Client.projection[1];
 		arg0.intStack[++arg0.isp - 1] = (int) Client.projection[2];
 	}
 
-	@ObfuscatedName("gv.bbs(Lyf;B)V")
-	public static final void if_get_gamescreen(ClientScriptState arg0) {
+    public static final void if_get_gamescreen(ClientScriptState arg0) {
 		arg0.intStack[++arg0.isp - 1] = Client.field10986 == null ? -1 : Client.field10986.parentlayer;
 	}
 
-	@ObfuscatedName("sb.bbl(Lyf;I)V")
-	public static final void if_set_gamescreen_enabled(ClientScriptState arg0) {
+    public static final void if_set_gamescreen_enabled(ClientScriptState arg0) {
 		Client.gameScreenEnabled = arg0.intStack[--arg0.isp] == 1;
 		if (Client.gameScreenEnabled) {
 			MiniMap.method16601();
 		}
 	}
 
-	@ObfuscatedName("wu.bba(Lyf;I)V")
-	public static final void get_entity_overlay_height(ClientScriptState arg0) {
+    public static final void get_entity_overlay_height(ClientScriptState arg0) {
 		arg0.intStack[++arg0.isp - 1] = arg0.activeEntity.height();
 	}
 
-	@ObfuscatedName("gv.bbz(Lyf;S)V")
-	public static final void get_npc_stat(ClientScriptState arg0) {
+    public static final void get_npc_stat(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		NpcEntity var2 = (NpcEntity) arg0.activeEntity;
 		int var3 = var2.method19163(var1);
@@ -16545,8 +15115,7 @@ public class ScriptRunner {
 		arg0.intStack[++arg0.isp - 1] = var4;
 	}
 
-	@ObfuscatedName("fz.bbm(Lyf;B)V")
-	public static final void is_npc_active(ClientScriptState arg0) {
+    public static final void is_npc_active(ClientScriptState arg0) {
 		NpcEntity var1 = (NpcEntity) arg0.activeEntity;
 		boolean var2 = false;
 		NPCType var3 = var1.npcType;
@@ -16559,8 +15128,7 @@ public class ScriptRunner {
 		arg0.intStack[++arg0.isp - 1] = var2 ? 1 : 0;
 	}
 
-	@ObfuscatedName("xn.bbc(Lyf;I)V")
-	public static final void is_npc_visible(ClientScriptState arg0) {
+    public static final void is_npc_visible(ClientScriptState arg0) {
 		NpcEntity var1 = (NpcEntity) arg0.activeEntity;
 		NPCType var2 = var1.npcType;
 		if (var2.multinpc != null) {
@@ -16569,44 +15137,37 @@ public class ScriptRunner {
 		arg0.intStack[++arg0.isp - 1] = var2 == null ? 0 : 1;
 	}
 
-	@ObfuscatedName("yu.bce(Lyf;I)V")
-	public static final void npc_type(ClientScriptState arg0) {
+    public static final void npc_type(ClientScriptState arg0) {
 		arg0.intStack[++arg0.isp - 1] = ((NpcEntity) arg0.activeEntity).npcType.id;
 	}
 
-	@ObfuscatedName("cj.bcd(Lyf;I)V")
-	public static final void is_targeted_entity(ClientScriptState arg0) {
+    public static final void is_targeted_entity(ClientScriptState arg0) {
 		arg0.intStack[++arg0.isp - 1] = Client.activeTarget == arg0.activeEntity.targeted() ? 1 : 0;
 	}
 
-	@ObfuscatedName("uj.bcj(Lyf;I)V")
-	public static final void get_loc_screen_position(ClientScriptState arg0) {
+    public static final void get_loc_screen_position(ClientScriptState arg0) {
 		Client.projectFromEntity3d((GraphEntity) arg0.activeLoc, arg0.intStack[--arg0.isp], true);
 		arg0.intStack[++arg0.isp - 1] = (int) Client.projection[0];
 		arg0.intStack[++arg0.isp - 1] = (int) Client.projection[1];
 		arg0.intStack[++arg0.isp - 1] = (int) Client.projection[2];
 	}
 
-	@ObfuscatedName("ty.bci(Lyf;B)V")
-	public static final void get_obj_screen_position(ClientScriptState arg0) {
+    public static final void get_obj_screen_position(ClientScriptState arg0) {
 		Client.projectFromEntity3d(arg0.activeObj, arg0.intStack[--arg0.isp], true);
 		arg0.intStack[++arg0.isp - 1] = (int) Client.projection[0];
 		arg0.intStack[++arg0.isp - 1] = (int) Client.projection[1];
 		arg0.intStack[++arg0.isp - 1] = (int) Client.projection[2];
 	}
 
-	@ObfuscatedName("akr.bcx(Lyf;B)V")
-	public static final void get_loc_overlay_height(ClientScriptState arg0) {
+    public static final void get_loc_overlay_height(ClientScriptState arg0) {
 		arg0.intStack[++arg0.isp - 1] = ((GraphEntity) arg0.activeLoc).height();
 	}
 
-	@ObfuscatedName("qo.bch(Lyf;B)V")
-	public static final void get_obj_overlay_height(ClientScriptState arg0) {
+    public static final void get_obj_overlay_height(ClientScriptState arg0) {
 		arg0.intStack[++arg0.isp - 1] = arg0.activeObj.height();
 	}
 
-	@ObfuscatedName("yn.bcb(Lalh;Lyf;I)V")
-	public static final void get_bounding_box(GraphEntity arg0, ClientScriptState arg1) {
+    public static final void get_bounding_box(GraphEntity arg0, ClientScriptState arg1) {
 		boolean var2 = false;
 		int var3 = 0;
 		int var4 = 0;
@@ -16657,28 +15218,23 @@ public class ScriptRunner {
 		arg1.intStack[++arg1.isp - 1] = var6;
 	}
 
-	@ObfuscatedName("vo.bcp(Lyf;B)V")
-	public static final void get_loc_bounding_box(ClientScriptState arg0) {
+    public static final void get_loc_bounding_box(ClientScriptState arg0) {
 		get_bounding_box((GraphEntity) arg0.activeLoc, arg0);
 	}
 
-	@ObfuscatedName("ta.bcl(Lyf;B)V")
-	public static final void get_obj_bounding_box(ClientScriptState arg0) {
+    public static final void get_obj_bounding_box(ClientScriptState arg0) {
 		get_bounding_box(arg0.activeObj, arg0);
 	}
 
-	@ObfuscatedName("vy.bcm(Lyf;I)V")
-	public static final void get_entity_bounding_box(ClientScriptState arg0) {
+    public static final void get_entity_bounding_box(ClientScriptState arg0) {
 		get_bounding_box(arg0.activeEntity, arg0);
 	}
 
-	@ObfuscatedName("ab.bcv(Lkr;I)Leh;")
-	public static VarDomain createVarClanSettingsDomain(ClanSettings arg0) {
+    public static VarDomain createVarClanSettingsDomain(ClanSettings arg0) {
 		return new VarClanSettingsDomain(arg0);
 	}
 
-	@ObfuscatedName("wh.bcy(Lyf;I)V")
-	public static final void bug_report(ClientScriptState arg0) {
+    public static final void bug_report(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		arg0.osp -= 2;
 		String var2 = (String) arg0.objectStack[arg0.osp];
@@ -16688,8 +15244,7 @@ public class ScriptRunner {
 		}
 	}
 
-	@ObfuscatedName("i.bcg(ILjava/lang/String;Ljava/lang/String;B)V")
-	public static void method639(int arg0, String arg1, String arg2) {
+    public static void method639(int arg0, String arg1, String arg2) {
 		if (Client.gameConnection == null) {
 			return;
 		}
@@ -16701,8 +15256,7 @@ public class ScriptRunner {
 		Client.gameConnection.queue(var3);
 	}
 
-	@ObfuscatedName("eg.bcz(Lyf;I)V")
-	public static void array_sort(ClientScriptState arg0) {
+    public static void array_sort(ClientScriptState arg0) {
 		int var1 = arg0.intStack[arg0.isp - 3];
 		int var2 = arg0.intStack[arg0.isp - 2];
 		int var3 = arg0.intStack[arg0.isp - 1];
@@ -16718,13 +15272,11 @@ public class ScriptRunner {
 		}
 	}
 
-	@ObfuscatedName("nz.bcu(Lyf;I)V")
-	public static final void map_build_complete(ClientScriptState arg0) {
+    public static final void map_build_complete(ClientScriptState arg0) {
 		arg0.intStack[++arg0.isp - 1] = 1;
 	}
 
-	@ObfuscatedName("qs.bcc(Lyf;I)V")
-	public static final void preload_percent(ClientScriptState arg0) {
+    public static final void preload_percent(ClientScriptState arg0) {
 		int var1 = 0;
 		int var2 = 0;
 		for (int var3 = 0; var3 < Client.js5Providers.length; var3++) {
@@ -16736,8 +15288,7 @@ public class ScriptRunner {
 		arg0.intStack[++arg0.isp - 1] = var1 == 0 ? 0 : var2 * 100 / var1;
 	}
 
-	@ObfuscatedName("no.bcn(Lyf;I)V")
-	public static final void preload_progress(ClientScriptState arg0) {
+    public static final void preload_progress(ClientScriptState arg0) {
 		int var1 = 0;
 		int var2 = 0;
 		for (int var3 = 0; var3 < Client.js5Providers.length; var3++) {
@@ -16749,143 +15300,116 @@ public class ScriptRunner {
 		arg0.intStack[++arg0.isp - 1] = var1 == 0 ? 0 : var2 * 100 / var1;
 	}
 
-	@ObfuscatedName("we.bca(Lyf;B)V")
-	public static final void preload_download_complete(ClientScriptState arg0) {
+    public static final void preload_download_complete(ClientScriptState arg0) {
 		arg0.intStack[++arg0.isp - 1] = 1;
 	}
 
-	@ObfuscatedName("vg.bcr(Lyf;I)V")
-	public static final void preload_download_downloadedsize(ClientScriptState arg0) {
+    public static final void preload_download_downloadedsize(ClientScriptState arg0) {
 		arg0.intStack[++arg0.isp - 1] = 0;
 	}
 
-	@ObfuscatedName("tg.bck(Lyf;I)V")
-	public static final void preload_download_remainingsize(ClientScriptState arg0) {
+    public static final void preload_download_remainingsize(ClientScriptState arg0) {
 		arg0.intStack[++arg0.isp - 1] = 0;
 	}
 
-	@ObfuscatedName("ii.bcw(Lyf;I)V")
-	public static final void preload_download_totalsize(ClientScriptState arg0) {
+    public static final void preload_download_totalsize(ClientScriptState arg0) {
 		arg0.intStack[++arg0.isp - 1] = 0;
 	}
 
-	@ObfuscatedName("wa.bcf(Lyf;I)V")
-	public static final void preload_download_rate(ClientScriptState arg0) {
+    public static final void preload_download_rate(ClientScriptState arg0) {
 		arg0.intStack[++arg0.isp - 1] = 0;
 	}
 
-	@ObfuscatedName("qc.bct(Lyf;S)V")
-	public static final void shader_preload_allow(ClientScriptState arg0) {
+    public static final void shader_preload_allow(ClientScriptState arg0) {
 		arg0.isp--;
 	}
 
-	@ObfuscatedName("ej.bcq(Lyf;I)V")
-	public static final void shader_preload_percent(ClientScriptState arg0) {
+    public static final void shader_preload_percent(ClientScriptState arg0) {
 		arg0.intStack[++arg0.isp - 1] = 100;
 	}
 
-	@ObfuscatedName("wx.bco(Lyf;B)V")
-	public static final void shader_preload_throttle(ClientScriptState arg0) {
+    public static final void shader_preload_throttle(ClientScriptState arg0) {
 		arg0.isp--;
 	}
 
-	@ObfuscatedName("nh.bcs(Lyf;I)V")
-	public static final void can_run_java_client(ClientScriptState arg0) {
+    public static final void can_run_java_client(ClientScriptState arg0) {
 		arg0.intStack[++arg0.isp - 1] = 1;
 	}
 
-	@ObfuscatedName("nt.bda(Lyf;B)V")
-	public static final void fps_stats(ClientScriptState arg0) {
+    public static final void fps_stats(ClientScriptState arg0) {
 		arg0.intStack[++arg0.isp - 1] = GameShell.fps;
 		arg0.intStack[++arg0.isp - 1] = GameShell.fps;
 		arg0.intStack[++arg0.isp - 1] = 1;
 	}
 
-	@ObfuscatedName("fd.bdk(Lyf;I)V")
-	public static final void runjavascript(ClientScriptState arg0) {
+    public static final void runjavascript(ClientScriptState arg0) {
 	}
 
-	@ObfuscatedName("q.bdl(Lyf;I)V")
-	public static final void worldmap_setflashloops(ClientScriptState arg0) {
+    public static final void worldmap_setflashloops(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		ClientWorldMap.setFlashLoops(var1);
 	}
 
-	@ObfuscatedName("acw.bde(Lyf;B)V")
-	public static final void worldmap_setflashloops_default(ClientScriptState arg0) {
+    public static final void worldmap_setflashloops_default(ClientScriptState arg0) {
 		ClientWorldMap.setFlashLoops(ClientWorldMap.field11649);
 	}
 
-	@ObfuscatedName("acp.bdv(Lyf;B)V")
-	public static final void worldmap_setflashtics(ClientScriptState arg0) {
+    public static final void worldmap_setflashtics(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		ClientWorldMap.setFlashTics(var1);
 	}
 
-	@ObfuscatedName("cs.bds(Lyf;B)V")
-	public static final void worldmap_setflashtics_default(ClientScriptState arg0) {
+    public static final void worldmap_setflashtics_default(ClientScriptState arg0) {
 		ClientWorldMap.setFlashTics(ClientWorldMap.field11650);
 	}
 
-	@ObfuscatedName("cr.bdh(Lyf;B)V")
-	public static final void worldmap_perpetualflash(ClientScriptState arg0) {
+    public static final void worldmap_perpetualflash(ClientScriptState arg0) {
 		boolean var1 = arg0.intStack[--arg0.isp] == 1;
 		ClientWorldMap.perpetualFlash(var1);
 	}
 
-	@ObfuscatedName("ka.bdm(Lyf;I)V")
-	public static final void worldmap_stopcurrentflashes(ClientScriptState arg0) {
+    public static final void worldmap_stopcurrentflashes(ClientScriptState arg0) {
 		ClientWorldMap.stopCurrentFlashes();
 	}
 
-	@ObfuscatedName("kn.bdi(Lyf;I)V")
-	public static final void os_ismac(ClientScriptState arg0) {
+    public static final void os_ismac(ClientScriptState arg0) {
 		arg0.intStack[++arg0.isp - 1] = NativeLibraryConfig.osName.startsWith("mac") ? 1 : 0;
 	}
 
-	@ObfuscatedName("ic.bdb(Lyf;I)V")
-	public static final void os_iswindows(ClientScriptState arg0) {
+    public static final void os_iswindows(ClientScriptState arg0) {
 		arg0.intStack[++arg0.isp - 1] = NativeLibraryConfig.osName.startsWith("win") ? 1 : 0;
 	}
 
-	@ObfuscatedName("sa.bdp(Lyf;I)V")
-	public static final void os_islinux(ClientScriptState arg0) {
+    public static final void os_islinux(ClientScriptState arg0) {
 		arg0.intStack[++arg0.isp - 1] = NativeLibraryConfig.osName.startsWith("linux") ? 1 : 0;
 	}
 
-	@ObfuscatedName("fi.bdx(Lyf;I)V")
-	public static final void os_isandroid(ClientScriptState arg0) {
+    public static final void os_isandroid(ClientScriptState arg0) {
 		arg0.intStack[++arg0.isp - 1] = 0;
 	}
 
-	@ObfuscatedName("ac.bdy(Lyf;I)V")
-	public static final void os_isios(ClientScriptState arg0) {
+    public static final void os_isios(ClientScriptState arg0) {
 		arg0.intStack[++arg0.isp - 1] = 0;
 	}
 
-	@ObfuscatedName("adj.bdc(Lyf;I)V")
-	public static final void os_physicalmemorysize(ClientScriptState arg0) {
+    public static final void os_physicalmemorysize(ClientScriptState arg0) {
 		arg0.intStack[++arg0.isp - 1] = Client.hardwarePlatform.cpuInfoRam;
 	}
 
-	@ObfuscatedName("aow.bdn(Lyf;I)V")
-	public static final void os_driver_outdated(ClientScriptState arg0) {
+    public static final void os_driver_outdated(ClientScriptState arg0) {
 		arg0.intStack[++arg0.isp - 1] = 0;
 	}
 
-	@ObfuscatedName("ny.bdq(Lyf;I)V")
-	public static final void os_driver_vendor(ClientScriptState arg0) {
+    public static final void os_driver_vendor(ClientScriptState arg0) {
 		arg0.intStack[++arg0.isp - 1] = -1;
 	}
 
-	@ObfuscatedName("sh.bdd(Lyf;B)V")
-	public static final void getgridcoordrelativetocamera(ClientScriptState arg0) {
+    public static final void getgridcoordrelativetocamera(ClientScriptState arg0) {
 		arg0.isp--;
 		arg0.intStack[++arg0.isp - 1] = Client.localPlayerEntity.coord().pack();
 	}
 
-	@ObfuscatedName("dj.bdu(Lyf;I)V")
-	public static final void movescripted(ClientScriptState arg0) {
+    public static final void movescripted(ClientScriptState arg0) {
 		arg0.isp -= 2;
 		MoveSpeed var1 = (MoveSpeed) SerializableEnums.decode(MoveSpeed.values(), arg0.intStack[arg0.isp]);
 		CoordGrid var2 = new CoordGrid(arg0.intStack[arg0.isp + 1]);
@@ -16902,77 +15426,66 @@ public class ScriptRunner {
 		}
 	}
 
-	@ObfuscatedName("ix.bdz(Lyf;I)V")
-	public static final void telemetry_get_group_count(ClientScriptState arg0) {
+    public static final void telemetry_get_group_count(ClientScriptState arg0) {
 		arg0.intStack[++arg0.isp - 1] = Client.telemetry.getGroupCount();
 	}
 
-	@ObfuscatedName("zk.bdf(Lyf;B)V")
-	public static final void telemetry_get_group_index(ClientScriptState arg0) {
+    public static final void telemetry_get_group_index(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		arg0.intStack[++arg0.isp - 1] = Client.telemetry.getGroupIndex(var1);
 	}
 
-	@ObfuscatedName("je.bdj(Lyf;I)V")
-	public static final void telemetry_get_group_id(ClientScriptState arg0) {
+    public static final void telemetry_get_group_id(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		arg0.intStack[++arg0.isp - 1] = Client.telemetry.getGroup(var1).id;
 	}
 
-	@ObfuscatedName("sz.bdw(Lyf;I)V")
-	public static final void telemetry_get_row_count(ClientScriptState arg0) {
+    public static final void telemetry_get_row_count(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		arg0.intStack[++arg0.isp - 1] = Client.telemetry.getGroup(var1).getRowCount();
 	}
 
-	@ObfuscatedName("vu.bdt(Lyf;B)V")
-	public static final void telemetry_get_row_index(ClientScriptState arg0) {
+    public static final void telemetry_get_row_index(ClientScriptState arg0) {
 		arg0.isp -= 2;
 		int var1 = arg0.intStack[arg0.isp];
 		int var2 = arg0.intStack[arg0.isp + 1];
 		arg0.intStack[++arg0.isp - 1] = Client.telemetry.getGroup(var1).getRowIndex(var2);
 	}
 
-	@ObfuscatedName("tg.bdg(Lyf;I)V")
-	public static final void telemetry_get_row_id(ClientScriptState arg0) {
+    public static final void telemetry_get_row_id(ClientScriptState arg0) {
 		arg0.isp -= 2;
 		int var1 = arg0.intStack[arg0.isp];
 		int var2 = arg0.intStack[arg0.isp + 1];
 		arg0.intStack[++arg0.isp - 1] = Client.telemetry.getGroup(var1).getRowId(var2);
 	}
 
-	@ObfuscatedName("ts.bdo(Lyf;B)V")
-	public static final void telemetry_is_row_pinned(ClientScriptState arg0) {
+    public static final void telemetry_is_row_pinned(ClientScriptState arg0) {
 		arg0.isp -= 2;
 		int var1 = arg0.intStack[arg0.isp];
 		int var2 = arg0.intStack[arg0.isp + 1];
 		arg0.intStack[++arg0.isp - 1] = Client.telemetry.getGroup(var1).isRowPinned(var2) ? 1 : 0;
 	}
 
-	@ObfuscatedName("wf.bdr(Lyf;I)V")
-	public static final void telemetry_get_column_count(ClientScriptState arg0) {
+    public static final void telemetry_get_column_count(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		arg0.intStack[++arg0.isp - 1] = Client.telemetry.getGroup(var1).getColumnCount();
 	}
 
-	@ObfuscatedName("uh.bev(Lyf;B)V")
-	public static final void telemetry_get_column_index(ClientScriptState arg0) {
+    public static final void telemetry_get_column_index(ClientScriptState arg0) {
 		arg0.isp -= 2;
 		int var1 = arg0.intStack[arg0.isp];
 		int var2 = arg0.intStack[arg0.isp + 1];
 		arg0.intStack[++arg0.isp - 1] = Client.telemetry.getGroup(var1).getColumnIndex(var2);
 	}
 
-	@ObfuscatedName("vg.bel(Lyf;I)V")
-	public static final void telemetry_get_column_id(ClientScriptState arg0) {
+    public static final void telemetry_get_column_id(ClientScriptState arg0) {
 		arg0.isp -= 2;
 		int var1 = arg0.intStack[arg0.isp];
 		int var2 = arg0.intStack[arg0.isp + 1];
 		arg0.intStack[++arg0.isp - 1] = Client.telemetry.getGroup(var1).getColumnId(var2);
 	}
 
-	@ObfuscatedName("kl.bec(Lyf;I)V")
-	public static final void telemetry_get_grid_value(ClientScriptState arg0) {
+    public static final void telemetry_get_grid_value(ClientScriptState arg0) {
 		arg0.isp -= 3;
 		int var1 = arg0.intStack[arg0.isp];
 		int var2 = arg0.intStack[arg0.isp + 1];
@@ -16985,8 +15498,7 @@ public class ScriptRunner {
 		}
 	}
 
-	@ObfuscatedName("yz.bej(Lyf;I)V")
-	public static final void telemetry_is_grid_processor_set(ClientScriptState arg0) {
+    public static final void telemetry_is_grid_processor_set(ClientScriptState arg0) {
 		arg0.isp -= 3;
 		int var1 = arg0.intStack[arg0.isp];
 		int var2 = arg0.intStack[arg0.isp + 1];
@@ -16994,8 +15506,7 @@ public class ScriptRunner {
 		arg0.intStack[++arg0.isp - 1] = Client.telemetry.getGroup(var1).getGridValue(var2, var3) == null ? 0 : 1;
 	}
 
-	@ObfuscatedName("pw.bei(Lyf;I)V")
-	public static final void emoji_add(ClientScriptState arg0) {
+    public static final void emoji_add(ClientScriptState arg0) {
 		arg0.isp -= 2;
 		String var1 = (String) arg0.objectStack[--arg0.osp];
 		int var2 = arg0.intStack[arg0.isp];
@@ -17009,19 +15520,16 @@ public class ScriptRunner {
 		}
 	}
 
-	@ObfuscatedName("kt.beu(Lyf;I)V")
-	public static final void emoji_remove(ClientScriptState arg0) {
+    public static final void emoji_remove(ClientScriptState arg0) {
 		String var1 = (String) arg0.objectStack[--arg0.osp];
 		Client.emojiList.remove(var1);
 	}
 
-	@ObfuscatedName("ho.bex(Lyf;B)V")
-	public static final void emoji_removeall(ClientScriptState arg0) {
+    public static final void emoji_removeall(ClientScriptState arg0) {
 		Client.emojiList.removeAll();
 	}
 
-	@ObfuscatedName("fu.ben(Lyf;I)V")
-	public static final void emoji_substitute(ClientScriptState arg0) {
+    public static final void emoji_substitute(ClientScriptState arg0) {
 		if (Client.emojiList.getSize() > 0) {
 			String var1 = (String) arg0.objectStack[--arg0.osp];
 			String var2 = Client.emojiList.substitute(var1);
@@ -17029,14 +15537,12 @@ public class ScriptRunner {
 		}
 	}
 
-	@ObfuscatedName("qn.bes(Lyf;B)V")
-	public static final void emoji_enable_auto_chatline(ClientScriptState arg0) {
+    public static final void emoji_enable_auto_chatline(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		Client.emojiList.setAutochat(var1 != 0);
 	}
 
-	@ObfuscatedName("vj.beg(Lyf;ZI)V")
-	public static final void db_find(ClientScriptState arg0, boolean arg1) {
+    public static final void db_find(ClientScriptState arg0, boolean arg1) {
 		arg0.isp -= 2;
 		int var2 = arg0.intStack[arg0.isp];
 		int var3 = arg0.intStack[arg0.isp + 1];
@@ -17060,8 +15566,7 @@ public class ScriptRunner {
 		}
 	}
 
-	@ObfuscatedName("hf.bea(Lyf;B)V")
-	public static final void db_listall(ClientScriptState arg0) {
+    public static final void db_listall(ClientScriptState arg0) {
 		arg0.isp--;
 		int var1 = arg0.intStack[arg0.isp];
 		DBTableIndex var2 = Client.method4574(var1);
@@ -17076,8 +15581,7 @@ public class ScriptRunner {
 		}
 	}
 
-	@ObfuscatedName("aht.bew(Lyf;I)V")
-	public static final void db_findnext(ClientScriptState arg0) {
+    public static final void db_findnext(ClientScriptState arg0) {
 		if (Client.field8853 != null && Client.field8853.hasNext()) {
 			arg0.intStack[++arg0.isp - 1] = (Integer) Client.field8853.next();
 		} else {
@@ -17085,8 +15589,7 @@ public class ScriptRunner {
 		}
 	}
 
-	@ObfuscatedName("pk.beq(Lyf;B)V")
-	public static final void db_getfield(ClientScriptState arg0) {
+    public static final void db_getfield(ClientScriptState arg0) {
 		arg0.isp -= 3;
 		int var1 = arg0.intStack[arg0.isp];
 		int var2 = arg0.intStack[arg0.isp + 1];
@@ -17127,8 +15630,7 @@ public class ScriptRunner {
 		}
 	}
 
-	@ObfuscatedName("fu.beo(Lyf;I)V")
-	public static final void db_getfieldcount(ClientScriptState arg0) {
+    public static final void db_getfieldcount(ClientScriptState arg0) {
 		arg0.isp -= 2;
 		int var1 = arg0.intStack[arg0.isp];
 		int var2 = arg0.intStack[arg0.isp + 1];
@@ -17148,8 +15650,7 @@ public class ScriptRunner {
 		arg0.intStack[++arg0.isp - 1] = var3;
 	}
 
-	@ObfuscatedName("wn.bey(Lyf;I)V")
-	public static final void db_find_get(ClientScriptState arg0) {
+    public static final void db_find_get(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		int var2 = -1;
 		if (Client.field754 != null && var1 >= 0 && var1 < Client.field754.size()) {
@@ -17158,8 +15659,7 @@ public class ScriptRunner {
 		arg0.intStack[++arg0.isp - 1] = var2;
 	}
 
-	@ObfuscatedName("vy.bep(Lyf;I)V")
-	public static final void db_find_refine(ClientScriptState arg0) {
+    public static final void db_find_refine(ClientScriptState arg0) {
 		arg0.isp -= 2;
 		int var1 = arg0.intStack[arg0.isp];
 		int var2 = arg0.intStack[arg0.isp + 1];
@@ -17183,110 +15683,91 @@ public class ScriptRunner {
 		}
 	}
 
-	@ObfuscatedName("ei.beb(Lyf;B)V")
-	public static final void db_getrowtable(ClientScriptState arg0) {
+    public static final void db_getrowtable(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		DBRowType var2 = (DBRowType) Client.dbRowTypeList.list(var1);
 		arg0.intStack[++arg0.isp - 1] = var2.tableId;
 	}
 
-	@ObfuscatedName("agf.bez(Lyf;B)V")
-	public static final void method16447(ClientScriptState arg0) {
+    public static final void method16447(ClientScriptState arg0) {
 		arg0.isp -= 3;
 		Client.method7623(arg0.intStack[arg0.isp + 1]);
 	}
 
-	@ObfuscatedName("qu.bed(Lyf;B)V")
-	public static final void method7328(ClientScriptState arg0) {
+    public static final void method7328(ClientScriptState arg0) {
 		arg0.isp -= 4;
 	}
 
-	@ObfuscatedName("yi.bet(Lyf;B)V")
-	public static final void method10757(ClientScriptState arg0) {
+    public static final void method10757(ClientScriptState arg0) {
 	}
 
-	@ObfuscatedName("vl.bee(Lyf;I)V")
-	public static final void method9286(ClientScriptState arg0) {
+    public static final void method9286(ClientScriptState arg0) {
 		arg0.isp--;
 	}
 
-	@ObfuscatedName("x.ber(Lyf;I)V")
-	public static final void minimenu_close(ClientScriptState arg0) {
+    public static final void minimenu_close(ClientScriptState arg0) {
 	}
 
-	@ObfuscatedName("yi.bef(Lyf;I)V")
-	public static final void method10758(ClientScriptState arg0) {
+    public static final void method10758(ClientScriptState arg0) {
 		arg0.isp--;
 	}
 
-	@ObfuscatedName("xg.bek(Lyf;I)V")
-	public static final void unknown_command_98(ClientScriptState arg0) {
+    public static final void unknown_command_98(ClientScriptState arg0) {
 		arg0.isp--;
 		arg0.intStack[++arg0.isp - 1] = 0;
 		arg0.objectStack[++arg0.osp - 1] = "";
 	}
 
-	@ObfuscatedName("gh.bem(Lyf;I)V")
-	public static final void method3591(ClientScriptState arg0) {
+    public static final void method3591(ClientScriptState arg0) {
 		arg0.isp -= 2;
 		arg0.intStack[++arg0.isp - 1] = 0;
 		arg0.objectStack[++arg0.osp - 1] = "";
 		arg0.intStack[++arg0.isp - 1] = 0;
 	}
 
-	@ObfuscatedName("mc.beh(Lyf;B)V")
-	public static final void method5896(ClientScriptState arg0) {
+    public static final void method5896(ClientScriptState arg0) {
 		arg0.isp -= 2;
 		arg0.intStack[++arg0.isp - 1] = 0;
 	}
 
-	@ObfuscatedName("nf.bfi(Lyf;I)V")
-	public static final void method6079(ClientScriptState arg0) {
+    public static final void method6079(ClientScriptState arg0) {
 		arg0.isp -= 2;
 		arg0.intStack[++arg0.isp - 1] = 0;
 	}
 
-	@ObfuscatedName("xq.bfg(Lyf;I)V")
-	public static final void method10336(ClientScriptState arg0) {
+    public static final void method10336(ClientScriptState arg0) {
 		arg0.isp -= 2;
 		arg0.intStack[++arg0.isp - 1] = 0;
 	}
 
-	@ObfuscatedName("rl.bfl(Lyf;B)V")
-	public static final void method7884(ClientScriptState arg0) {
+    public static final void method7884(ClientScriptState arg0) {
 		arg0.isp -= 2;
 		arg0.intStack[++arg0.isp - 1] = 0;
 	}
 
-	@ObfuscatedName("ji.bfv(Lyf;I)V")
-	public static final void method4982(ClientScriptState arg0) {
+    public static final void method4982(ClientScriptState arg0) {
 		arg0.isp -= 2;
 		arg0.intStack[++arg0.isp - 1] = 0;
 	}
 
-	@ObfuscatedName("mt.bfq(Lyf;I)V")
-	public static final void method5893(ClientScriptState arg0) {
+    public static final void method5893(ClientScriptState arg0) {
 		arg0.isp -= 4;
 		arg0.intStack[++arg0.isp - 1] = 0;
 	}
 
-	@ObfuscatedName("tu.bfo(Lyf;I)V")
-	public static final void method8396(ClientScriptState arg0) {
+    public static final void method8396(ClientScriptState arg0) {
 		arg0.isp -= 3;
 	}
 
-	@ObfuscatedName("yz.bfk(Lyf;I)V")
-	public static final void interface_setpickingradius(ClientScriptState arg0) {
+    public static final void interface_setpickingradius(ClientScriptState arg0) {
 		arg0.isp--;
 	}
 
-	@ObfuscatedName("tp.bff(Lyf;I)V")
-	public static final void interface_getpickingradius(ClientScriptState arg0) {
+    public static final void interface_getpickingradius(ClientScriptState arg0) {
 		arg0.intStack[++arg0.isp - 1] = 0;
 	}
 
-	@ObfuscatedName("ace.bfr(Lyf;B)V")
-	public static final void method15087(ClientScriptState arg0) {
+    public static final void method15087(ClientScriptState arg0) {
 		int var1 = arg0.intStack[--arg0.isp];
 		FontMetrics var2 = Client.fontProvider.getFontMetrics(Client.fontFactory, var1);
 		arg0.intStack[++arg0.isp - 1] = var2.field8566;
@@ -17296,95 +15777,77 @@ public class ScriptRunner {
 		arg0.intStack[++arg0.isp - 1] = var2.field8567;
 	}
 
-	@ObfuscatedName("ny.bfp(Lyf;I)V")
-	public static final void method5949(ClientScriptState arg0) {
+    public static final void method5949(ClientScriptState arg0) {
 		arg0.isp--;
 	}
 
-	@ObfuscatedName("gp.bfu(Lyf;B)V")
-	public static final void method3485(ClientScriptState arg0) {
+    public static final void method3485(ClientScriptState arg0) {
 		arg0.intStack[++arg0.isp - 1] = 1;
 	}
 
-	@ObfuscatedName("kr.bfy(Lyf;I)V")
-	public static final void battery_ischarging(ClientScriptState arg0) {
+    public static final void battery_ischarging(ClientScriptState arg0) {
 		arg0.intStack[++arg0.isp - 1] = 1;
 	}
 
-	@ObfuscatedName("jb.bfn(Lyf;B)V")
-	public static final void battery_getlevelpercent(ClientScriptState arg0) {
+    public static final void battery_getlevelpercent(ClientScriptState arg0) {
 		arg0.intStack[++arg0.isp - 1] = 100;
 	}
 
-	@ObfuscatedName("sg.bfx(Lyf;I)V")
-	public static final void method8382(ClientScriptState arg0) {
+    public static final void method8382(ClientScriptState arg0) {
 		arg0.isp--;
 	}
 
-	@ObfuscatedName("kz.bfm(Lyf;I)V")
-	public static final void logout_getreason(ClientScriptState arg0) {
+    public static final void logout_getreason(ClientScriptState arg0) {
 		arg0.intStack[++arg0.isp - 1] = Client.logoutReason.getId();
 	}
 
-	@ObfuscatedName("hp.bfz(Lyf;I)V")
-	public static final void method4060(ClientScriptState arg0) {
+    public static final void method4060(ClientScriptState arg0) {
 		arg0.intStack[++arg0.isp - 1] = 1;
 	}
 
-	@ObfuscatedName("rm.bfs(Lyf;I)V")
-	public static final void show_software_license(ClientScriptState arg0) {
+    public static final void show_software_license(ClientScriptState arg0) {
 	}
 
-	@ObfuscatedName("dh.bfd(Lyf;I)V")
-	public static final void method2581(ClientScriptState arg0) {
+    public static final void method2581(ClientScriptState arg0) {
 	}
 
-	@ObfuscatedName("nr.bfa(Lyf;I)V")
-	public static final void shop_opencategories(ClientScriptState arg0) {
+    public static final void shop_opencategories(ClientScriptState arg0) {
 		arg0.isp -= 2;
 	}
 
-	@ObfuscatedName("we.bfe(Lyf;I)V")
-	public static final void notifications_sendlocal(ClientScriptState arg0) {
+    public static final void notifications_sendlocal(ClientScriptState arg0) {
 		arg0.osp -= 2;
 		arg0.isp -= 2;
 		arg0.intStack[++arg0.isp - 1] = 0;
 	}
 
-	@ObfuscatedName("yb.bfc(Lyf;I)V")
-	public static final void notifications_sendgroupedlocal(ClientScriptState arg0) {
+    public static final void notifications_sendgroupedlocal(ClientScriptState arg0) {
 		arg0.osp -= 3;
 		arg0.isp -= 3;
 		arg0.intStack[++arg0.isp - 1] = 0;
 	}
 
-	@ObfuscatedName("am.bfw(Lyf;I)V")
-	public static final void notifications_cancellocal(ClientScriptState arg0) {
+    public static final void notifications_cancellocal(ClientScriptState arg0) {
 		arg0.isp--;
 	}
 
-	@ObfuscatedName("in.bft(Lyf;S)V")
-	public static final void method4422(ClientScriptState arg0) {
+    public static final void method4422(ClientScriptState arg0) {
 		arg0.isp--;
 		arg0.intStack[++arg0.isp - 1] = 0;
 	}
 
-	@ObfuscatedName("alw.bfh(Lyf;I)V")
-	public static final void method18150(ClientScriptState arg0) {
+    public static final void method18150(ClientScriptState arg0) {
 		arg0.osp--;
 	}
 
-	@ObfuscatedName("apm.bfj(Lyf;B)V")
-	public static final void method18922(ClientScriptState arg0) {
+    public static final void method18922(ClientScriptState arg0) {
 		arg0.intStack[++arg0.isp - 1] = 1;
 	}
 
-	@ObfuscatedName("qh.bfb(Lyf;I)V")
-	public static final void method7352(ClientScriptState arg0) {
+    public static final void method7352(ClientScriptState arg0) {
 	}
 
-	@ObfuscatedName("uh.bgy(Lyf;I)V")
-	public static final void setwalkmarker(ClientScriptState arg0) {
+    public static final void setwalkmarker(ClientScriptState arg0) {
 		arg0.isp -= 2;
 	}
 }

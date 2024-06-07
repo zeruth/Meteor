@@ -3,49 +3,37 @@ package com.jagex.game.world;
 import com.jagex.graphics.Toolkit;
 import deob.ObfuscatedName;
 
-@ObfuscatedName("ds")
 public class WorldMapRelated2 {
 
-	@ObfuscatedName("ds.e")
-	public static int field1459;
+    public static int field1459;
 
-	@ObfuscatedName("ds.n")
-	public static int field1456;
+    public static int field1456;
 
-	@ObfuscatedName("ds.m")
-	public static int field1457;
+    public static int field1457;
 
-	@ObfuscatedName("ds.k")
-	public static int[] field1460;
+    public static int[] field1460;
 
-	@ObfuscatedName("ds.f")
-	public static int field1458;
+    public static int field1458;
 
-	@ObfuscatedName("ds.w")
-	public static int field1455;
+    public static int field1455;
 
-	@ObfuscatedName("ds.l")
-	public static int field1461;
+    public static int field1461;
 
-	@ObfuscatedName("ds.u")
-	public static int field1462;
+    public static int field1462;
 
 	public WorldMapRelated2() throws Throwable {
 		throw new Error();
 	}
 
-	@ObfuscatedName("ds.e(Ldh;[II)V")
-	public static void method2053(Toolkit arg0, int[] arg1, int arg2) {
+    public static void method2053(Toolkit arg0, int[] arg1, int arg2) {
 		method2055(arg0, arg1, 0, arg1.length, arg2, null, null);
 	}
 
-	@ObfuscatedName("ds.n(Ldh;[II[I[I)V")
-	public static void method2054(Toolkit arg0, int[] arg1, int arg2, int[] arg3, int[] arg4) {
+    public static void method2054(Toolkit arg0, int[] arg1, int arg2, int[] arg3, int[] arg4) {
 		method2055(arg0, arg1, 0, arg1.length, arg2, arg3, arg4);
 	}
 
-	@ObfuscatedName("ds.m(Ldh;[IIII[I[I)V")
-	public static void method2055(Toolkit arg0, int[] arg1, int arg2, int arg3, int arg4, int[] arg5, int[] arg6) {
+    public static void method2055(Toolkit arg0, int[] arg1, int arg2, int arg3, int arg4, int[] arg5, int[] arg6) {
 		int[] var7 = new int[4];
 		arg0.method2171(var7);
 		if (arg5 != null && var7[3] - var7[1] != arg5.length) {
@@ -80,13 +68,11 @@ public class WorldMapRelated2 {
 		}
 	}
 
-	@ObfuscatedName("ds.k()V")
-	public static void method2056() {
+    public static void method2056() {
 		field1458 = 0;
 	}
 
-	@ObfuscatedName("ds.f([III)V")
-	public static void method2057(int[] arg0, int arg1, int arg2) {
+    public static void method2057(int[] arg0, int arg1, int arg2) {
 		int var3 = (arg2 << 1) + field1458;
 		if (field1460 == null || field1460.length < var3) {
 			int[] var4 = new int[var3];
@@ -115,8 +101,7 @@ public class WorldMapRelated2 {
 		}
 	}
 
-	@ObfuscatedName("ds.w(I)V")
-	public static void method2074(int arg0) {
+    public static void method2074(int arg0) {
 		if (field1458 < 0) {
 			field1462 = 0;
 			field1461 = 0;
@@ -150,8 +135,7 @@ public class WorldMapRelated2 {
 		field1457 = var1 - 1;
 	}
 
-	@ObfuscatedName("ds.l(I)Z")
-	public static boolean method2059(int arg0) {
+    public static boolean method2059(int arg0) {
 		int var1 = field1461;
 		int var2 = field1462;
 		int var3 = field1457;
@@ -204,8 +188,7 @@ public class WorldMapRelated2 {
 		return true;
 	}
 
-	@ObfuscatedName("ds.u(II)V")
-	public static void method2060(int arg0, int arg1) {
+    public static void method2060(int arg0, int arg1) {
 		if (arg1 <= arg0 + 4) {
 			return;
 		}
@@ -236,8 +219,7 @@ public class WorldMapRelated2 {
 		method2060(var2 + 4, arg1);
 	}
 
-	@ObfuscatedName("ds.z(II)V")
-	public static void method2068(int arg0, int arg1) {
+    public static void method2068(int arg0, int arg1) {
 		while (true) {
 			if (arg1 >= arg0 + 8) {
 				boolean var2 = true;

@@ -4,18 +4,15 @@ import com.jagex.graphics.scenegraph.PrimaryLayerEntity;
 import deob.ObfuscatedName;
 import rs2.client.Client;
 
-@ObfuscatedName("ad")
 public class SceneManager {
 
-	@ObfuscatedName("ad.e")
-	public static boolean field735 = false;
+    public static boolean field735 = false;
 
 	public SceneManager() throws Throwable {
 		throw new Error();
 	}
 
-	@ObfuscatedName("qm.e(B)V")
-	public static void method7319() {
+    public static void method7319() {
 		if (field735) {
 			return;
 		}
@@ -26,8 +23,7 @@ public class SceneManager {
 		field735 = true;
 	}
 
-	@ObfuscatedName("fw.n([[[Ltk;I)V")
-	public static void method3097(Tile[][][] arg0) {
+    public static void method3097(Tile[][][] arg0) {
 		for (int var1 = 0; var1 < arg0.length; var1++) {
 			Tile[][] var2 = arg0[var1];
 			for (int var3 = 0; var3 < var2.length; var3++) {

@@ -5,56 +5,39 @@ import com.jagex.graphics.KeyFrame;
 import com.jagex.graphics.TransformInfinityType;
 import deob.ObfuscatedName;
 
-@ObfuscatedName("dn")
 public class Curve {
 
-	@ObfuscatedName("dn.e")
-	public boolean field1435;
+    public boolean field1435;
 
-	@ObfuscatedName("dn.n")
-	public boolean field1444;
+    public boolean field1444;
 
-	@ObfuscatedName("dn.m")
-	public TransformInfinityType field1437;
+    public TransformInfinityType field1437;
 
-	@ObfuscatedName("dn.k")
-	public TransformInfinityType field1438;
+    public TransformInfinityType field1438;
 
-	@ObfuscatedName("dn.f")
-	public KeyFrame[] field1439;
+    public KeyFrame[] field1439;
 
-	@ObfuscatedName("dn.w")
-	public boolean field1440;
+    public boolean field1440;
 
-	@ObfuscatedName("dn.l")
-	public float field1441;
+    public float field1441;
 
-	@ObfuscatedName("dn.u")
-	public float field1443;
+    public float field1443;
 
-	@ObfuscatedName("dn.z")
-	public float[] field1449 = new float[4];
+    public float[] field1449 = new float[4];
 
-	@ObfuscatedName("dn.p")
-	public float[] field1442 = new float[4];
+    public float[] field1442 = new float[4];
 
-	@ObfuscatedName("dn.d")
-	public boolean field1445 = true;
+    public boolean field1445 = true;
 
-	@ObfuscatedName("dn.c")
-	public int field1446 = 0;
+    public int field1446 = 0;
 
-	@ObfuscatedName("dn.r")
-	public float[] field1447;
+    public float[] field1447;
 
-	@ObfuscatedName("dn.v")
-	public float field1448;
+    public float field1448;
 
-	@ObfuscatedName("dn.o")
-	public float field1436;
+    public float field1436;
 
-	@ObfuscatedName("dn.e(Lalw;II)I")
-	public int method2036(Packet arg0, int arg1) {
+    public int method2036(Packet arg0, int arg1) {
 		int var3 = arg0.g2();
 		CurveType.method2995(arg0.g1());
 		this.field1437 = TransformInfinityType.method713(arg0.g1());
@@ -80,8 +63,7 @@ public class Curve {
 		return var3;
 	}
 
-	@ObfuscatedName("dn.n(II)F")
-	public float method2017(int arg0) {
+    public float method2017(int arg0) {
 		if (arg0 < this.method2018()) {
 			return this.field1448;
 		} else if (arg0 > this.method2029()) {
@@ -91,23 +73,19 @@ public class Curve {
 		}
 	}
 
-	@ObfuscatedName("dn.m(I)I")
-	public int method2018() {
+    public int method2018() {
 		return this.field1439 == null ? 0 : this.field1439[0].field1663;
 	}
 
-	@ObfuscatedName("dn.k(I)I")
-	public int method2029() {
+    public int method2029() {
 		return this.field1439 == null ? 0 : this.field1439[this.method2015() - 1].field1663;
 	}
 
-	@ObfuscatedName("dn.f(I)I")
-	public int method2020() {
+    public int method2020() {
 		return this.method2029() - this.method2018();
 	}
 
-	@ObfuscatedName("dn.w(FB)I")
-	public int method2021(float arg0) {
+    public int method2021(float arg0) {
 		if (this.field1446 >= 0 && (float) this.field1439[this.field1446].field1663 <= arg0 && (this.field1439[this.field1446].field1665 == null || (float) this.field1439[this.field1446].field1665.field1663 > arg0)) {
 			return this.field1446;
 		} else if (arg0 < (float) this.method2018() || arg0 > (float) this.method2029()) {
@@ -147,14 +125,12 @@ public class Curve {
 		}
 	}
 
-	@ObfuscatedName("dn.l(FI)Ley;")
-	public KeyFrame method2022(float arg0) {
+    public KeyFrame method2022(float arg0) {
 		int var2 = this.method2021(arg0);
 		return var2 >= 0 && var2 < this.field1439.length ? this.field1439[var2] : null;
 	}
 
-	@ObfuscatedName("dn.u(I)I")
-	public int method2015() {
+    public int method2015() {
 		return this.field1439 == null ? 0 : this.field1439.length;
 	}
 }

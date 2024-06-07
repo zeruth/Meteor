@@ -2,35 +2,25 @@ package com.jagex.game.client;
 
 import deob.ObfuscatedName;
 
-@ObfuscatedName("acb")
 public abstract class MapBuildStuck {
 
-	@ObfuscatedName("acb.e")
-	public final int field8870;
+    public final int field8870;
 
-	@ObfuscatedName("acb.n")
-	public final int field8863;
+    public final int field8863;
 
-	@ObfuscatedName("acb.m")
-	public final int field8864;
+    public final int field8864;
 
-	@ObfuscatedName("acb.k")
-	public final int field8865;
+    public final int field8865;
 
-	@ObfuscatedName("acb.f")
-	public final int field8866;
+    public final int field8866;
 
-	@ObfuscatedName("acb.w")
-	public final int field8862;
+    public final int field8862;
 
-	@ObfuscatedName("acb.l")
-	public final boolean field8867;
+    public final boolean field8867;
 
-	@ObfuscatedName("acb.u")
-	public final boolean field8869;
+    public final boolean field8869;
 
-	@ObfuscatedName("acb.z")
-	public final int field8868;
+    public final int field8868;
 
 	public MapBuildStuck(int arg0, int arg1, int arg2, int arg3, int arg4, int arg5, boolean arg6, boolean arg7, int arg8) {
 		this.field8870 = arg0;

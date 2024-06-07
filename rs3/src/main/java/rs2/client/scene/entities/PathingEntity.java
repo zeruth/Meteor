@@ -30,218 +30,147 @@ import deob.ObfuscatedName;
 import rs2.client.Client;
 import rs2.client.clientscript.ScriptRunner;
 
-@ObfuscatedName("ahm")
 public abstract class PathingEntity extends PrimaryLayerEntity implements CameraTrackable {
 
-	@ObfuscatedName("ahm.v")
-	public int localPlayerIndex;
+    public int localPlayerIndex;
 
-	@ObfuscatedName("ahm.o")
-	public int size;
+    public int size;
 
-	@ObfuscatedName("ahm.s")
-	public int field11715;
+    public int field11715;
 
-	@ObfuscatedName("ahm.y")
-	public int minY;
+    public int minY;
 
-	@ObfuscatedName("ahm.q")
-	public int height;
+    public int height;
 
-	@ObfuscatedName("ahm.x")
-	public boolean field10452;
+    public boolean field10452;
 
-	@ObfuscatedName("ahm.b")
-	public boolean field10401;
+    public boolean field10401;
 
-	@ObfuscatedName("ahm.h")
-	public int field10402;
+    public int field10402;
 
-	@ObfuscatedName("ahm.a")
-	public int field10403;
+    public int field10403;
 
-	@ObfuscatedName("ahm.g")
-	public int field10404;
+    public int field10404;
 
-	@ObfuscatedName("ahm.i")
-	public int field10405;
+    public int field10405;
 
-	@ObfuscatedName("ahm.j")
-	public int field12466;
+    public int field12466;
 
-	@ObfuscatedName("ahm.t")
-	public int field10407;
+    public int field10407;
 
-	@ObfuscatedName("ahm.ae")
-	public int field10408;
+    public int field10408;
 
-	@ObfuscatedName("ahm.ag")
-	public EntityChatLine currentChatLine;
+    public EntityChatLine currentChatLine;
 
-	@ObfuscatedName("ahm.ah")
-	public byte field10410;
+    public byte field10410;
 
-	@ObfuscatedName("ahm.al")
-	public int[] field10411;
+    public int[] field10411;
 
-	@ObfuscatedName("ahm.ac")
-	public int[] field10412;
+    public int[] field10412;
 
-	@ObfuscatedName("ahm.ai")
-	public int[] field10421;
+    public int[] field10421;
 
-	@ObfuscatedName("ahm.aw")
-	public int[] field10456;
+    public int[] field10456;
 
-	@ObfuscatedName("ahm.as")
-	public int[] field10445;
+    public int[] field10445;
 
-	@ObfuscatedName("ahm.at")
-	public LinkQueue field10416;
+    public LinkQueue field10416;
 
-	@ObfuscatedName("ahm.ad")
-	public int targetId;
+    public int targetId;
 
-	@ObfuscatedName("ahm.am")
-	public int[] field10418;
+    public int[] field10418;
 
-	@ObfuscatedName("ahm.au")
-	public int[] field10427;
+    public int[] field10427;
 
-	@ObfuscatedName("ahm.ar")
-	public EntityWalkAnimationNode field10432;
+    public EntityWalkAnimationNode field10432;
 
-	@ObfuscatedName("ahm.ap")
-	public AnimationNode field10454;
+    public AnimationNode field10454;
 
-	@ObfuscatedName("ahm.aq")
-	public EntitySpotAnim[] spotAnims;
+    public EntitySpotAnim[] spotAnims;
 
-	@ObfuscatedName("ahm.ax")
-	public int forceMoveStartSceneTileX;
+    public int forceMoveStartSceneTileX;
 
-	@ObfuscatedName("ahm.av")
-	public int forceMoveEndSceneTileX;
+    public int forceMoveEndSceneTileX;
 
-	@ObfuscatedName("ahm.ao")
-	public int forceMoveStartSceneTileZ;
+    public int forceMoveStartSceneTileZ;
 
-	@ObfuscatedName("ahm.aj")
-	public int forceMoveEndSceneTileZ;
+    public int forceMoveEndSceneTileZ;
 
-	@ObfuscatedName("ahm.ay")
-	public int field10419;
+    public int field10419;
 
-	@ObfuscatedName("ahm.ab")
-	public int field10428;
+    public int field10428;
 
-	@ObfuscatedName("ahm.az")
-	public int forceMoveEndCycle;
+    public int forceMoveEndCycle;
 
-	@ObfuscatedName("ahm.aa")
-	public int forceMoveStartCycle;
+    public int forceMoveStartCycle;
 
-	@ObfuscatedName("ahm.af")
-	public int field10431;
+    public int field10431;
 
-	@ObfuscatedName("ahm.ak")
-	public int field10446;
+    public int field10446;
 
-	@ObfuscatedName("ahm.an")
-	public int field10464;
+    public int field10464;
 
-	@ObfuscatedName("ahm.bf")
-	public byte field10434;
+    public byte field10434;
 
-	@ObfuscatedName("ahm.bl")
-	public byte field10435;
+    public byte field10435;
 
-	@ObfuscatedName("ahm.bk")
-	public byte field10436;
+    public byte field10436;
 
-	@ObfuscatedName("ahm.bh")
-	public byte field10437;
+    public byte field10437;
 
-	@ObfuscatedName("ahm.bx")
-	public int field10438;
+    public int field10438;
 
-	@ObfuscatedName("ahm.bd")
-	public int field10433;
+    public int field10433;
 
-	@ObfuscatedName("ahm.bc")
-	public int field10440;
+    public int field10440;
 
-	@ObfuscatedName("ahm.bi")
-	public final UnknownEntityAnimationNode[] field10398;
+    public final UnknownEntityAnimationNode[] field10398;
 
-	@ObfuscatedName("ahm.bn")
-	public int[] field10442;
+    public int[] field10442;
 
-	@ObfuscatedName("ahm.bt")
-	public int field10443;
+    public int field10443;
 
-	@ObfuscatedName("ahm.bq")
-	public int field10444;
+    public int field10444;
 
-	@ObfuscatedName("ahm.bm")
-	public int field10414;
+    public int field10414;
 
-	@ObfuscatedName("ahm.bb")
-	public EasedAngle field10395;
+    public EasedAngle field10395;
 
-	@ObfuscatedName("ahm.be")
-	public EasedAngle field10447;
+    public EasedAngle field10447;
 
-	@ObfuscatedName("ahm.by")
-	public EasedAngle field10413;
+    public EasedAngle field10413;
 
-	@ObfuscatedName("ahm.bu")
-	public int routeLength;
+    public int routeLength;
 
-	@ObfuscatedName("ahm.bw")
-	public int[] routeWaypointX;
+    public int[] routeWaypointX;
 
-	@ObfuscatedName("ahm.bo")
-	public int[] routeWaypointZ;
+    public int[] routeWaypointZ;
 
-	@ObfuscatedName("ahm.bz")
-	public byte[] routeSpeeds;
+    public byte[] routeSpeeds;
 
-	@ObfuscatedName("ahm.bv")
-	public int seqTrigger;
+    public int seqTrigger;
 
-	@ObfuscatedName("ahm.br")
-	public int field10396;
+    public int field10396;
 
-	@ObfuscatedName("ahm.bg")
-	public int field10455;
+    public int field10455;
 
-	@ObfuscatedName("ahm.ba")
-	public ParticleSystem field10393;
+    public ParticleSystem field10393;
 
-	@ObfuscatedName("ahm.bp")
-	public boolean field10449;
+    public boolean field10449;
 
-	@ObfuscatedName("ahm.bj")
-	public boolean field10458;
+    public boolean field10458;
 
-	@ObfuscatedName("ahm.bs")
-	public Model[] idk;
+    public Model[] idk;
 
-	@ObfuscatedName("ahm.cl")
-	public final VarContainer vars;
+    public final VarContainer vars;
 
-	@ObfuscatedName("ahm.cg")
-	public Interface field10461;
+    public Interface field10461;
 
-	@ObfuscatedName("ahm.ce")
-	public int field10462;
+    public int field10462;
 
-	@ObfuscatedName("ahm.cu")
-	public int field10439;
+    public int field10439;
 
-	@ObfuscatedName("ahm.ci")
-	public VarDomain varDomain;
+    public VarDomain varDomain;
 
 	public PathingEntity(Scene arg0, int arg1, VarTypeList arg2) {
 		super(arg0, 0, 0, 0, 0, 0, 0, 0, 0, 0, false, (byte) 0);
@@ -301,23 +230,19 @@ public abstract class PathingEntity extends PrimaryLayerEntity implements Camera
 		this(arg0, 10, arg1);
 	}
 
-	@ObfuscatedName("ahm.by(B)I")
-	public int overlayHeight() {
+    public int overlayHeight() {
 		return this.minY == -32768 ? 0 : this.minY;
 	}
 
-	@ObfuscatedName("ahm.bu(B)Z")
-	public boolean method16488() {
+    public boolean method16488() {
 		return false;
 	}
 
-	@ObfuscatedName("ahm.bw(S)Z")
-	public boolean method16489() {
+    public boolean method16489() {
 		return this.field10458;
 	}
 
-	@ObfuscatedName("ahm.o(IB)V")
-	public void method16490(int arg0) {
+    public void method16490(int arg0) {
 		BASType var2 = this.getBASType();
 		if (var2.field7321 == 0 && this.field10444 == 0) {
 			return;
@@ -331,8 +256,7 @@ public abstract class PathingEntity extends PrimaryLayerEntity implements Camera
 		}
 	}
 
-	@ObfuscatedName("ahm.s(IZI)V")
-	public void method16491(int arg0, boolean arg1) {
+    public void method16491(int arg0, boolean arg1) {
 		BASType var3 = this.getBASType();
 		if (arg1 || var3.field7321 != 0 || this.field10444 != 0) {
 			this.field10414 = arg0 & 0x3FFF;
@@ -340,8 +264,7 @@ public abstract class PathingEntity extends PrimaryLayerEntity implements Camera
 		}
 	}
 
-	@ObfuscatedName("ahm.y(I)I")
-	public int method16539() {
+    public int method16539() {
 		BASType var1 = this.getBASType();
 		int var2 = this.field10395.field528;
 		boolean var3;
@@ -383,8 +306,7 @@ public abstract class PathingEntity extends PrimaryLayerEntity implements Camera
 		return var4;
 	}
 
-	@ObfuscatedName("ahm.q([I[II)V")
-	public void method16493(int[] arg0, int[] arg1) {
+    public void method16493(int[] arg0, int[] arg1) {
 		if (this.field10418 == null && arg0 != null) {
 			this.field10418 = new int[Client.wearposDefaults.field7766.length];
 		} else if (arg0 == null) {
@@ -407,8 +329,7 @@ public abstract class PathingEntity extends PrimaryLayerEntity implements Camera
 		}
 	}
 
-	@ObfuscatedName("ahm.x(IIB)Z")
-	public boolean method16583(int arg0, int arg1) {
+    public boolean method16583(int arg0, int arg1) {
 		if (this.field10442 == null) {
 			if (arg1 == -1) {
 				return true;
@@ -464,8 +385,7 @@ public abstract class PathingEntity extends PrimaryLayerEntity implements Camera
 		}
 	}
 
-	@ObfuscatedName("ahm.b(Ldh;[Ldo;Lou;ZI)V")
-	public void method16576(Toolkit arg0, Model[] arg1, Matrix4x3 arg2, boolean arg3) {
+    public void method16576(Toolkit arg0, Model[] arg1, Matrix4x3 arg2, boolean arg3) {
 		if (!arg3) {
 			int var5 = 0;
 			int var6 = 0;
@@ -535,8 +455,7 @@ public abstract class PathingEntity extends PrimaryLayerEntity implements Camera
 		}
 	}
 
-	@ObfuscatedName("ahm.h(IIIIZIB)V")
-	public final void addSpotAnimation(int spotAnimId, int arg1, int arg2, int arg3, boolean arg4, int index) {
+    public final void addSpotAnimation(int spotAnimId, int arg1, int arg2, int arg3, boolean arg4, int index) {
 		EntitySpotAnim var7 = this.spotAnims[index];
 		int var8 = var7.field6657;
 		if (spotAnimId != -1 && var8 != -1) {
@@ -579,14 +498,12 @@ public abstract class PathingEntity extends PrimaryLayerEntity implements Camera
 		var7.field6659.method14353(spotAnimId == -1 ? -1 : ((EffectAnimType) Client.effectAnimTypeList.list(spotAnimId)).anim, arg1 & 0xFFFF, var16, false);
 	}
 
-	@ObfuscatedName("ahm.a(B)V")
-	public final void method16517() {
+    public final void method16517() {
 		this.routeLength = 0;
 		this.field10396 = 0;
 	}
 
-	@ObfuscatedName("ahm.g(IIIIIII)V")
-	public final void addHitmark(int hitmarkId, int arg1, int arg2, int arg3, int arg4, int arg5) {
+    public final void addHitmark(int hitmarkId, int arg1, int arg2, int arg3, int arg4, int arg5) {
 		boolean var7 = true;
 		boolean var8 = true;
 		for (int var9 = 0; var9 < Client.graphicsDefaults.maxhitmarks; var9++) {
@@ -652,8 +569,7 @@ public abstract class PathingEntity extends PrimaryLayerEntity implements Camera
 		this.field10421[var10] = arg4 + var12 + arg5;
 	}
 
-	@ObfuscatedName("ahm.i(IIIIIII)V")
-	public final void addHeadbar(int headbarId, int arg1, int arg2, int arg3, int arg4, int arg5) {
+    public final void addHeadbar(int headbarId, int arg1, int arg2, int arg3, int arg4, int arg5) {
 		HeadbarType var7 = (HeadbarType) Client.headbarTypeList.list(headbarId);
 		Headbar var8 = null;
 		Headbar var9 = null;
@@ -688,8 +604,7 @@ public abstract class PathingEntity extends PrimaryLayerEntity implements Camera
 		}
 	}
 
-	@ObfuscatedName("ahm.j(II)V")
-	public final void method16500(int arg0) {
+    public final void method16500(int arg0) {
 		HeadbarType var2 = (HeadbarType) Client.headbarTypeList.list(arg0);
 		for (Headbar var3 = (Headbar) this.field10416.peekFront(); var3 != null; var3 = (Headbar) this.field10416.prev()) {
 			if (var3.field11215 == var2) {
@@ -699,8 +614,7 @@ public abstract class PathingEntity extends PrimaryLayerEntity implements Camera
 		}
 	}
 
-	@ObfuscatedName("ahm.bo(I)I")
-	public int height() {
+    public int height() {
 		BASType var1 = this.getBASType();
 		int var2;
 		if (var1.field7360 != -1) {
@@ -722,18 +636,15 @@ public abstract class PathingEntity extends PrimaryLayerEntity implements Camera
 		return var2;
 	}
 
-	@ObfuscatedName("ahm.t(II)V")
-	public void setSize(int size) {
+    public void setSize(int size) {
 		this.size = size;
 	}
 
-	@ObfuscatedName("ahm.bz(I)I")
-	public int size() {
+    public int size() {
 		return this.size;
 	}
 
-	@ObfuscatedName("ahm.bv(I)V")
-	public void method16529() {
+    public void method16529() {
 		int var1 = (this.size - 1 << 8) + 240;
 		Vector3 var2 = this.getTransform().trans;
 		this.minSceneTileX = (short) ((int) var2.x - var1 >> 9);
@@ -742,8 +653,7 @@ public abstract class PathingEntity extends PrimaryLayerEntity implements Camera
 		this.maxSceneTileZ = (short) ((int) var2.z + var1 >> 9);
 	}
 
-	@ObfuscatedName("ahm.br(Ldo;I)V")
-	public void method16505(Model arg0) {
+    public void method16505(Model arg0) {
 		int var2 = this.field10447.field528;
 		int var3 = this.field10413.field528;
 		if (var2 == 0 && var3 == 0) {
@@ -756,8 +666,7 @@ public abstract class PathingEntity extends PrimaryLayerEntity implements Camera
 		arg0.translate(0, var4, 0);
 	}
 
-	@ObfuscatedName("ahm.bg(Ldh;Lvr;IIIII)V")
-	public void method16506(Toolkit arg0, BASType arg1, int arg2, int arg3, int arg4, int arg5) {
+    public void method16506(Toolkit arg0, BASType arg1, int arg2, int arg3, int arg4, int arg5) {
 		for (int var7 = 0; var7 < this.spotAnims.length; var7++) {
 			byte var8 = 0;
 			if (var7 == 0) {
@@ -836,8 +745,7 @@ public abstract class PathingEntity extends PrimaryLayerEntity implements Camera
 		}
 	}
 
-	@ObfuscatedName("ahm.ba(IIIIIB)V")
-	public void method16507(int arg0, int arg1, int arg2, int arg3, int arg4) {
+    public void method16507(int arg0, int arg1, int arg2, int arg3, int arg4) {
 		Vector3 var6 = this.getTransform().trans;
 		int var7 = this.maxSceneTileX + this.minSceneTileX >> 1;
 		int var8 = this.minSceneTileZ + this.maxSceneTileZ >> 1;
@@ -896,14 +804,12 @@ public abstract class PathingEntity extends PrimaryLayerEntity implements Camera
 		this.field10407 = (this.field10407 >> 1) - (int) var6.y;
 	}
 
-	@ObfuscatedName("ahm.bp(I)Lvr;")
-	public BASType getBASType() {
+    public BASType getBASType() {
 		int var1 = this.getBASId();
 		return var1 == -1 ? BASTypeList.field11886 : (BASType) Client.basTypeList.list(var1);
 	}
 
-	@ObfuscatedName("ahm.cl(B)V")
-	public void removeChatLine() {
+    public void removeChatLine() {
 		if (this.currentChatLine != null && this.currentChatLine.text != null) {
 			this.currentChatLine.time--;
 			if (this.currentChatLine.time == 0) {
@@ -912,8 +818,7 @@ public abstract class PathingEntity extends PrimaryLayerEntity implements Camera
 		}
 	}
 
-	@ObfuscatedName("ahm.cu(Ljava/lang/String;IIII)V")
-	public void setChatLine(String text, int color, int effect, int time) {
+    public void setChatLine(String text, int color, int effect, int time) {
 		if (this.currentChatLine == null) {
 			this.currentChatLine = new EntityChatLine();
 		}
@@ -923,13 +828,11 @@ public abstract class PathingEntity extends PrimaryLayerEntity implements Camera
 		this.currentChatLine.time = this.currentChatLine.field6685 = time;
 	}
 
-	@ObfuscatedName("ahm.ci(I)Z")
-	public boolean method16515() {
+    public boolean method16515() {
 		return this.field10439 == -1 ? false : this.method16516(this.field10439);
 	}
 
-	@ObfuscatedName("ahm.cn(II)Z")
-	public boolean method16516(int arg0) {
+    public boolean method16516(int arg0) {
 		if (this.field10462 == arg0) {
 			return true;
 		}
@@ -943,15 +846,13 @@ public abstract class PathingEntity extends PrimaryLayerEntity implements Camera
 		}
 	}
 
-	@ObfuscatedName("ahm.cv(IIIIIIIII)V")
-	public void method16571(int arg0, int arg1, int arg2, int arg3, int arg4, int arg5, int arg6, int arg7) {
+    public void method16571(int arg0, int arg1, int arg2, int arg3, int arg4, int arg5, int arg6, int arg7) {
 		if (this.method16515()) {
 			Client.updateInterfaceAnimation(this.field10461, this.field10461.method3923(), -1, arg0, arg1, arg2, arg3, arg4, arg5, arg6, arg7);
 		}
 	}
 
-	@ObfuscatedName("ahm.cp(IIIIIIII)V")
-	public void method16518(int arg0, int arg1, int arg2, int arg3, int arg4, int arg5, int arg6) {
+    public void method16518(int arg0, int arg1, int arg2, int arg3, int arg4, int arg5, int arg6) {
 		if (this.method16515()) {
 			Client.drawInterfaceComponents(this.field10461.method3923(), -1, arg1, arg2, arg3, arg4, arg5, arg6, arg0, false);
 		} else if (arg0 == -1) {
@@ -963,15 +864,13 @@ public abstract class PathingEntity extends PrimaryLayerEntity implements Camera
 		}
 	}
 
-	@ObfuscatedName("ahm.ca(IIZB)V")
-	public void method16519(int arg0, int arg1, boolean arg2) {
+    public void method16519(int arg0, int arg1, boolean arg2) {
 		if (this.method16515()) {
 			Client.method1597(this.field10461.components, -1, arg0, arg1, arg2);
 		}
 	}
 
-	@ObfuscatedName("ahm.cw(I)Lve;")
-	public CoordGrid coord() {
+    public CoordGrid coord() {
 		Vector3 var1 = this.getTransform().trans;
 		CoordGrid var2 = Client.world.getBase();
 		int var3 = ((int) var1.x >> 9) + var2.x;
@@ -979,8 +878,7 @@ public abstract class PathingEntity extends PrimaryLayerEntity implements Camera
 		return new CoordGrid(this.level, var3, var4);
 	}
 
-	@ObfuscatedName("ahm.ct(I)Lakt;")
-	public CoordFine coordFine() {
+    public CoordFine coordFine() {
 		Vector3 var1 = this.getTransform().trans;
 		CoordGrid var2 = Client.world.getBase();
 		int var3 = var2.x * 512 + (int) var1.x;
@@ -995,18 +893,13 @@ public abstract class PathingEntity extends PrimaryLayerEntity implements Camera
 		}
 	}
 
-	@ObfuscatedName("ahm.bs(B)I")
-	public abstract int getCoverMarker();
+    public abstract int getCoverMarker();
 
-	@ObfuscatedName("ahm.bj(S)I")
-	public abstract int getBASId();
+    public abstract int getBASId();
 
-	@ObfuscatedName("ahm.cg(I)Z")
-	public abstract boolean showChat();
+    public abstract boolean showChat();
 
-	@ObfuscatedName("ahm.ce(I)Lsu;")
-	public abstract EntityChatLine getChatLine();
+    public abstract EntityChatLine getChatLine();
 
-	@ObfuscatedName("ahm.cx(I)I")
-	public abstract int targeted();
+    public abstract int targeted();
 }

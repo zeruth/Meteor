@@ -8,7 +8,6 @@ import com.jagex.game.config.Js5ConfigGroup;
 import com.jagex.js5.Js5;
 import deob.ObfuscatedName;
 
-@ObfuscatedName("aom")
 public class SkyBoxTypeList extends CachingConfigTypeList {
 
 	public SkyBoxTypeList(ModeGame arg0, Language arg1, Js5 arg2) {

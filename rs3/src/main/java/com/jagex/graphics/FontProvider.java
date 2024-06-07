@@ -8,32 +8,23 @@ import deob.ObfuscatedName;
 import java.util.HashMap;
 import java.util.Map;
 
-@ObfuscatedName("oi")
 public class FontProvider implements FontIconProvider {
 
-	@ObfuscatedName("oi.e")
-	public final Js5 js5Sprites;
+    public final Js5 js5Sprites;
 
-	@ObfuscatedName("oi.n")
-	public final Js5 js5FontMetrics;
+    public final Js5 js5FontMetrics;
 
-	@ObfuscatedName("oi.m")
-	public final SoftLruHashTable fontCache = new SoftLruHashTable(20);
+    public final SoftLruHashTable fontCache = new SoftLruHashTable(20);
 
-	@ObfuscatedName("oi.k")
-	public final SoftLruHashTable fontMetricsCache = new SoftLruHashTable(20);
+    public final SoftLruHashTable fontMetricsCache = new SoftLruHashTable(20);
 
-	@ObfuscatedName("oi.f")
-	public final int[] fontIds;
+    public final int[] fontIds;
 
-	@ObfuscatedName("oi.w")
-	public SoftLruHashTable iconCache;
+    public SoftLruHashTable iconCache;
 
-	@ObfuscatedName("oi.l")
-	public Toolkit toolkit = null;
+    public Toolkit toolkit = null;
 
-	@ObfuscatedName("oi.u")
-	public Map fonts = null;
+    public Map fonts = null;
 
 	public FontProvider(Toolkit toolkit, Js5 js5Sprites, Js5 js5FontMetrics, int[] fontIds) {
 		this.toolkit = toolkit;
@@ -43,8 +34,7 @@ public class FontProvider implements FontIconProvider {
 		this.iconCache = new SoftLruHashTable(20);
 	}
 
-	@ObfuscatedName("oi.e(Loq;I)V")
-	public void loadFonts(FontFactory factory) {
+    public void loadFonts(FontFactory factory) {
 		this.fonts = new HashMap(this.fontIds.length);
 		for (int index = 0; index < this.fontIds.length; index++) {
 			int fontId = this.fontIds[index];
@@ -55,18 +45,15 @@ public class FontProvider implements FontIconProvider {
 		}
 	}
 
-	@ObfuscatedName("oi.n(S)V")
-	public void clearFonts() {
+    public void clearFonts() {
 		this.fonts = null;
 	}
 
-	@ObfuscatedName("oi.m(I)I")
-	public int getLoadedFontsCount() {
+    public int getLoadedFontsCount() {
 		return this.getLoadedFontsCount(false);
 	}
 
-	@ObfuscatedName("oi.k(ZI)I")
-	public int getLoadedFontsCount(boolean arg0) {
+    public int getLoadedFontsCount(boolean arg0) {
 		if (this.fontIds == null) {
 			return 0;
 		} else if (arg0 || this.fonts == null) {
@@ -86,13 +73,11 @@ public class FontProvider implements FontIconProvider {
 		}
 	}
 
-	@ObfuscatedName("oi.f(B)I")
-	public int getFontsCount() {
+    public int getFontsCount() {
 		return this.fontIds == null ? 0 : this.fontIds.length * 2;
 	}
 
-	@ObfuscatedName("oi.w(Loq;IZZI)Ljava/lang/Object;")
-	public Object getFont(FontFactory factory, int fontId, boolean cache, boolean arg3) {
+    public Object getFont(FontFactory factory, int fontId, boolean cache, boolean arg3) {
 		if (fontId == -1) {
 			return null;
 		}
@@ -121,13 +106,11 @@ public class FontProvider implements FontIconProvider {
 		}
 	}
 
-	@ObfuscatedName("oi.l(Loq;II)Laac;")
-	public FontMetrics getFontMetrics(FontFactory factory, int fontId) {
+    public FontMetrics getFontMetrics(FontFactory factory, int fontId) {
 		return this.getFontMetrics(factory, fontId, true, true);
 	}
 
-	@ObfuscatedName("oi.u(Loq;IZZB)Laac;")
-	public FontMetrics getFontMetrics(FontFactory arg0, int fontId, boolean cache, boolean arg3) {
+    public FontMetrics getFontMetrics(FontFactory arg0, int fontId, boolean cache, boolean arg3) {
 		if (fontId == -1) {
 			return null;
 		}
@@ -156,8 +139,7 @@ public class FontProvider implements FontIconProvider {
 		}
 	}
 
-	@ObfuscatedName("oi.z(B)V")
-	public void cacheReset() {
+    public void cacheReset() {
 		this.fontMetricsCache.reset();
 		this.fontCache.reset();
 		if (this.iconCache != null) {
@@ -165,8 +147,7 @@ public class FontProvider implements FontIconProvider {
 		}
 	}
 
-	@ObfuscatedName("oi.p(II)V")
-	public void cacheClean(int arg0) {
+    public void cacheClean(int arg0) {
 		this.fontMetricsCache.clean(arg0);
 		this.fontCache.clean(arg0);
 		if (this.iconCache != null) {
@@ -174,8 +155,7 @@ public class FontProvider implements FontIconProvider {
 		}
 	}
 
-	@ObfuscatedName("oi.d(I)V")
-	public void cacheRemoveSoftReferences() {
+    public void cacheRemoveSoftReferences() {
 		this.fontMetricsCache.clear();
 		this.fontCache.clear();
 		if (this.iconCache != null) {
@@ -183,8 +163,7 @@ public class FontProvider implements FontIconProvider {
 		}
 	}
 
-	@ObfuscatedName("oi.c(Ldh;II)[Lcm;")
-	public Sprite[] getIconSprites(Toolkit toolkit, int id) {
+    public Sprite[] getIconSprites(Toolkit toolkit, int id) {
 		if (this.iconCache == null) {
 			return null;
 		}
@@ -213,8 +192,7 @@ public class FontProvider implements FontIconProvider {
 		return cached;
 	}
 
-	@ObfuscatedName("oi.r(II)I")
-	public int getIconWidth(int id) {
+    public int getIconWidth(int id) {
 		Sprite[] sprites = this.getIconSprites(this.toolkit, id);
 		return sprites == null ? 0 : sprites[0].getX();
 	}

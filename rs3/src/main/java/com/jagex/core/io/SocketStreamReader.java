@@ -6,29 +6,21 @@ import java.io.EOFException;
 import java.io.IOException;
 import java.io.InputStream;
 
-@ObfuscatedName("ua")
 public class SocketStreamReader implements Runnable {
 
-	@ObfuscatedName("ua.e")
-	public Thread thread;
+    public Thread thread;
 
-	@ObfuscatedName("ua.n")
-	public InputStream inputStream;
+    public InputStream inputStream;
 
-	@ObfuscatedName("ua.m")
-	public int bufLimit;
+    public int bufLimit;
 
-	@ObfuscatedName("ua.k")
-	public byte[] buf;
+    public byte[] buf;
 
-	@ObfuscatedName("ua.f")
-	public int bufPos = 0;
+    public int bufPos = 0;
 
-	@ObfuscatedName("ua.w")
-	public int bufLen = 0;
+    public int bufLen = 0;
 
-	@ObfuscatedName("ua.l")
-	public IOException ioerror;
+    public IOException ioerror;
 
 	public SocketStreamReader(InputStream inputStream, int limit) {
 		this.inputStream = inputStream;
@@ -82,8 +74,7 @@ public class SocketStreamReader implements Runnable {
 		}
 	}
 
-	@ObfuscatedName("ua.e(II)Z")
-	public boolean hasAvailable(int amount) throws IOException {
+    public boolean hasAvailable(int amount) throws IOException {
 		if (amount == 0) {
 			return true;
 		} else if (amount > 0 && amount < this.bufLimit) {
@@ -108,8 +99,7 @@ public class SocketStreamReader implements Runnable {
 		}
 	}
 
-	@ObfuscatedName("ua.n(I)I")
-	public int available() throws IOException {
+    public int available() throws IOException {
 		synchronized (this) {
 			int available;
 			if (this.bufPos <= this.bufLen) {
@@ -125,8 +115,7 @@ public class SocketStreamReader implements Runnable {
 		}
 	}
 
-	@ObfuscatedName("ua.m([BIII)I")
-	public int read(byte[] bytes, int off, int len) throws IOException {
+    public int read(byte[] bytes, int off, int len) throws IOException {
 		if (len < 0 || off < 0 || off + len > bytes.length) {
 			throw new IOException();
 		}
@@ -156,8 +145,7 @@ public class SocketStreamReader implements Runnable {
 		}
 	}
 
-	@ObfuscatedName("ua.k(I)V")
-	public void closeGracefully() {
+    public void closeGracefully() {
 		synchronized (this) {
 			if (this.ioerror == null) {
 				this.ioerror = new IOException("");
@@ -170,8 +158,7 @@ public class SocketStreamReader implements Runnable {
 		}
 	}
 
-	@ObfuscatedName("ua.f(I)V")
-	public void closeForcefully() {
+    public void closeForcefully() {
 		this.inputStream = new BrokenInputStream();
 	}
 }

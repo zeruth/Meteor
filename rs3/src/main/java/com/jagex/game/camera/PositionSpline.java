@@ -11,33 +11,25 @@ import com.jagex.math.Vector3;
 import com.jagex.math.Vector3i;
 import deob.ObfuscatedName;
 
-@ObfuscatedName("ahn")
 public abstract class PositionSpline extends Position {
 
-	@ObfuscatedName("ahn.n")
-	public Spline[] field10565;
+    public Spline[] field10565;
 
-	@ObfuscatedName("ahn.m")
-	public float[] field10562;
+    public float[] field10562;
 
-	@ObfuscatedName("ahn.k")
-	public int field10564 = 0;
+    public int field10564 = 0;
 
-	@ObfuscatedName("ahn.f")
-	public float field10563 = 0.0F;
+    public float field10563 = 0.0F;
 
-	@ObfuscatedName("ahn.w")
-	public float field10566 = 0.0F;
+    public float field10566 = 0.0F;
 
-	@ObfuscatedName("ahn.l")
-	public int[] field10567;
+    public int[] field10567;
 
 	public PositionSpline(Camera arg0) {
 		super(arg0);
 	}
 
-	@ObfuscatedName("ahn.t(Lpe;IFI)V")
-	public void method16720(Spline arg0, int arg1, float arg2) {
+    public void method16720(Spline arg0, int arg1, float arg2) {
 		if (this.field10565 == null) {
 			this.field10565 = new Spline[] { arg0 };
 			this.field10562 = new float[] { arg2 };
@@ -58,8 +50,7 @@ public abstract class PositionSpline extends Position {
 		this.field10567[this.field10567.length - 1] = arg1;
 	}
 
-	@ObfuscatedName("ahn.e(F[[[ILqx;IIB)V")
-	public void method5238(float arg0, int[][][] arg1, SceneLevelTileFlags arg2, int arg3, int arg4) {
+    public void method5238(float arg0, int[][][] arg1, SceneLevelTileFlags arg2, int arg3, int arg4) {
 		Spline var6 = this.field10565[this.field10564];
 		if (this.field10562[this.field10564] > 0.0F) {
 			if (this.field10562[this.field10564] >= arg0) {
@@ -97,21 +88,18 @@ public abstract class PositionSpline extends Position {
 		}
 	}
 
-	@ObfuscatedName("ahn.ae(FFI)V")
-	public void method16721(float arg0, float arg1) {
+    public void method16721(float arg0, float arg1) {
 		this.field10563 += arg0;
 		if (this.field10563 > arg1) {
 			this.field10563 = arg1;
 		}
 	}
 
-	@ObfuscatedName("ahn.n(I)Z")
-	public boolean method5218() {
+    public boolean method5218() {
 		return this.field10565 != null;
 	}
 
-	@ObfuscatedName("ahn.m(B)Lox;")
-	public Vector3 method5219() {
+    public Vector3 method5219() {
 		Vector3 var1 = Vector3.create();
 		double[] var2 = this.field10565[this.field10564].method6765(this.field10563);
 		var1.x = (float) var2[0];
@@ -120,37 +108,31 @@ public abstract class PositionSpline extends Position {
 		return var1;
 	}
 
-	@ObfuscatedName("ahn.k(I)[D")
-	public double[] method5230() {
+    public double[] method5230() {
 		return this.field10565[this.field10564].method6765(this.field10563);
 	}
 
-	@ObfuscatedName("ahn.f(B)Lakt;")
-	public CoordFine method5221() {
+    public CoordFine method5221() {
 		Vector3 var1 = this.method5219();
 		return new CoordFine(0, (int) var1.x, (int) var1.y, (int) var1.z);
 	}
 
-	@ObfuscatedName("ahn.al(I)F")
-	public float method16733() {
+    public float method16733() {
 		return this.field10565[this.field10564].method6771(this.field10563);
 	}
 
-	@ObfuscatedName("ahn.w(I)F")
-	public float method5222() {
+    public float method5222() {
 		return this.field10565[this.field10564].method6762(this.field10563);
 	}
 
-	@ObfuscatedName("ahn.l(Lju;IIB)V")
-	public void method5223(Vector3i arg0, int arg1, int arg2) {
+    public void method5223(Vector3i arg0, int arg1, int arg2) {
 		Vector3 var4 = this.method5219();
 		arg0.field2835 = (int) var4.x - arg1;
 		arg0.field2836 = (int) -var4.y;
 		arg0.field2837 = (int) var4.z - arg2;
 	}
 
-	@ObfuscatedName("ahn.u(Lalw;I)V")
-	public void method5224(Packet arg0) {
+    public void method5224(Packet arg0) {
 		this.field10563 = 0.0F;
 		this.field10566 = 0.0F;
 		this.field10564 = 0;
@@ -164,12 +146,9 @@ public abstract class PositionSpline extends Position {
 		this.method16724(arg0, var2);
 	}
 
-	@ObfuscatedName("ahn.ag(FFFB)F")
-	public abstract float method16722(float arg0, float arg1, float arg2);
+    public abstract float method16722(float arg0, float arg1, float arg2);
 
-	@ObfuscatedName("ahn.ah(I)V")
-	public abstract void method16723();
+    public abstract void method16723();
 
-	@ObfuscatedName("ahn.ac(Lalw;IS)V")
-	public abstract void method16724(Packet arg0, int arg1);
+    public abstract void method16724(Packet arg0, int arg1);
 }

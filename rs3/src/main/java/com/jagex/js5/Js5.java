@@ -13,35 +13,25 @@ import lzma.sdk.lzma.LZMA;
 
 import java.io.IOException;
 
-@ObfuscatedName("py")
 public final class Js5 {
 
-	@ObfuscatedName("py.e")
-	public Js5Index index = null;
+    public Js5Index index = null;
 
-	@ObfuscatedName("py.n")
-	public Object[] packed;
+    public Object[] packed;
 
-	@ObfuscatedName("py.m")
-	public Object[][] unpacked;
+    public Object[][] unpacked;
 
-	@ObfuscatedName("py.k")
-	public static GZip gzip = new GZip();
+    public static GZip gzip = new GZip();
 
-	@ObfuscatedName("py.f")
-	public boolean discardPacked;
+    public boolean discardPacked;
 
-	@ObfuscatedName("py.z")
-	public int discardUnpacked;
+    public int discardUnpacked;
 
-	@ObfuscatedName("py.p")
-	public Js5ResourceProvider provider;
+    public Js5ResourceProvider provider;
 
-	@ObfuscatedName("py.d")
-	public static boolean RAISE_EXCEPTIONS = false;
+    public static boolean RAISE_EXCEPTIONS = false;
 
-	@ObfuscatedName("py.c")
-	public static int maxsize = 0;
+    public static int maxsize = 0;
 
 	public Js5(Js5ResourceProvider provider, boolean discardPacked, int discardUnpacked) {
 		if (discardUnpacked < 0 || discardUnpacked > 2) {
@@ -53,8 +43,7 @@ public final class Js5 {
 		this.discardUnpacked = discardUnpacked;
 	}
 
-	@ObfuscatedName("py.e(B)Z")
-	public synchronized boolean isIndexReady() {
+    public synchronized boolean isIndexReady() {
 		if (this.index == null) {
 			this.index = this.provider.fetchindex();
 			if (this.index == null) {
@@ -68,8 +57,7 @@ public final class Js5 {
 		return true;
 	}
 
-	@ObfuscatedName("py.n(S)I")
-	public int getChecksum() {
+    public int getChecksum() {
 		if (!this.isIndexReady()) {
 			throw new IllegalStateException("");
 		}
@@ -77,8 +65,7 @@ public final class Js5 {
 		return this.index.crc;
 	}
 
-	@ObfuscatedName("py.m(IB)Z")
-	public synchronized boolean isGroupValid(int group) {
+    public synchronized boolean isGroupValid(int group) {
 		if (!this.isIndexReady()) {
 			return false;
 		} else if (group >= 0 && group < this.index.groupCapacities.length && this.index.groupCapacities[group] != 0) {
@@ -90,8 +77,7 @@ public final class Js5 {
 		}
 	}
 
-	@ObfuscatedName("py.k(IIB)Z")
-	public synchronized boolean isGroupValid(int group, int file) {
+    public synchronized boolean isGroupValid(int group, int file) {
 		if (!this.isIndexReady()) {
 			return false;
 		} else if (group >= 0 && file >= 0 && group < this.index.groupCapacities.length && file < this.index.groupCapacities[group]) {
@@ -103,8 +89,7 @@ public final class Js5 {
 		}
 	}
 
-	@ObfuscatedName("py.f(II)V")
-	public synchronized void fetchgroup(int group) {
+    public synchronized void fetchgroup(int group) {
 		if (this.discardPacked) {
 			this.packed[group] = this.provider.fetchgroup(group);
 		} else {
@@ -112,18 +97,15 @@ public final class Js5 {
 		}
 	}
 
-	@ObfuscatedName("py.w(II)V")
-	public void prefetchGroup(int group) {
+    public void prefetchGroup(int group) {
 		this.provider.prefetchGroup(group);
 	}
 
-	@ObfuscatedName("py.l(IIB)[B")
-	public byte[] getfile(int group, int file) {
+    public byte[] getfile(int group, int file) {
 		return this.getfile(group, file, null);
 	}
 
-	@ObfuscatedName("py.u(II[IB)[B")
-	public synchronized byte[] getfile(int group, int file, int[] key) {
+    public synchronized byte[] getfile(int group, int file, int[] key) {
 		if (!this.isGroupValid(group, file)) {
 			return null;
 		}
@@ -168,8 +150,7 @@ public final class Js5 {
 		return bytes;
 	}
 
-	@ObfuscatedName("py.z(III)Z")
-	public synchronized boolean requestdownload(int group, int file) {
+    public synchronized boolean requestdownload(int group, int file) {
 		if (!this.isGroupValid(group, file)) {
 			return false;
 		} else if (this.unpacked[group] != null && this.unpacked[group][file] != null) {
@@ -182,8 +163,7 @@ public final class Js5 {
 		}
 	}
 
-	@ObfuscatedName("py.p(II)Z")
-	public synchronized boolean loadFile(int group) {
+    public synchronized boolean loadFile(int group) {
 		if (!this.isIndexReady()) {
 			return false;
 		} else if (this.index.groupCapacities.length == 1) {
@@ -197,8 +177,7 @@ public final class Js5 {
 		}
 	}
 
-	@ObfuscatedName("py.d(II)Z")
-	public synchronized boolean isGroupReady(int group) {
+    public synchronized boolean isGroupReady(int group) {
 		if (!this.isGroupValid(group)) {
 			return false;
 		} else if (this.packed[group] == null) {
@@ -209,8 +188,7 @@ public final class Js5 {
 		}
 	}
 
-	@ObfuscatedName("py.c(I)Z")
-	public synchronized boolean fetchAll() {
+    public synchronized boolean fetchAll() {
 		if (!this.isIndexReady()) {
 			return false;
 		}
@@ -231,8 +209,7 @@ public final class Js5 {
 		return success;
 	}
 
-	@ObfuscatedName("py.r(II)I")
-	public synchronized int getPercentageComplete(int group) {
+    public synchronized int getPercentageComplete(int group) {
 		if (this.isGroupValid(group)) {
 			return this.packed[group] == null ? this.provider.getPercentageComplete(group) : 100;
 		} else {
@@ -240,8 +217,7 @@ public final class Js5 {
 		}
 	}
 
-	@ObfuscatedName("py.v(I)I")
-	public synchronized int getPercentageComplete() {
+    public synchronized int getPercentageComplete() {
 		if (!this.isIndexReady()) {
 			return 0;
 		}
@@ -263,8 +239,7 @@ public final class Js5 {
 		}
 	}
 
-	@ObfuscatedName("py.o(IB)[B")
-	public synchronized byte[] fetchFile(int id) {
+    public synchronized byte[] fetchFile(int id) {
 		if (!this.isIndexReady()) {
 			return null;
 		} else if (this.index.groupCapacities.length == 1) {
@@ -278,8 +253,7 @@ public final class Js5 {
 		}
 	}
 
-	@ObfuscatedName("py.s(IB)[I")
-	public synchronized int[] getFileIds(int group) {
+    public synchronized int[] getFileIds(int group) {
 		if (!this.isGroupValid(group)) {
 			return null;
 		}
@@ -294,8 +268,7 @@ public final class Js5 {
 		return fileIds;
 	}
 
-	@ObfuscatedName("py.y(II)Z")
-	public boolean isFileReady(int id) {
+    public boolean isFileReady(int id) {
 		if (!this.isIndexReady()) {
 			return false;
 		} else if (this.index.groupCapacities.length == 1) {
@@ -309,25 +282,21 @@ public final class Js5 {
 		}
 	}
 
-	@ObfuscatedName("py.q(II)I")
-	public int getGroupCapacity(int group) {
+    public int getGroupCapacity(int group) {
 		return this.isGroupValid(group) ? this.index.groupCapacities[group] : 0;
 	}
 
-	@ObfuscatedName("py.x(B)I")
-	public int capacity() {
+    public int capacity() {
 		return this.isIndexReady() ? this.index.groupCapacities.length : -1;
 	}
 
-	@ObfuscatedName("py.b(II)V")
-	public synchronized void discardUnpacked(int group) {
+    public synchronized void discardUnpacked(int group) {
 		if (this.isGroupValid(group) && this.unpacked != null) {
 			this.unpacked[group] = null;
 		}
 	}
 
-	@ObfuscatedName("py.h(ZZB)V")
-	public void discardNames(boolean arg0, boolean arg1) {
+    public void discardNames(boolean arg0, boolean arg1) {
 		if (!this.isIndexReady()) {
 			return;
 		}
@@ -343,8 +312,7 @@ public final class Js5 {
 		}
 	}
 
-	@ObfuscatedName("py.a(II[IB)Z")
-	public synchronized boolean unpackGroup(int group, int file, int[] key) {
+    public synchronized boolean unpackGroup(int group, int file, int[] key) {
 		if (!this.isGroupValid(group)) {
 			return false;
 		}
@@ -537,8 +505,7 @@ public final class Js5 {
         return true;
     }
 
-	@ObfuscatedName("py.g(Ljava/lang/String;I)I")
-	public int getgroupid(String name) {
+    public int getgroupid(String name) {
 		if (this.isIndexReady()) {
 			String lower = name.toLowerCase();
 			int groupId = this.index.groupNameHashTable.get(StringTools.hashCode(lower));
@@ -548,8 +515,7 @@ public final class Js5 {
 		}
 	}
 
-	@ObfuscatedName("py.i(IS)I")
-	public int getGroupId(int hash) {
+    public int getGroupId(int hash) {
 		if (this.isIndexReady()) {
 			int groupId = this.index.groupNameHashTable.get(hash);
 			return this.isGroupValid(groupId) ? groupId : -1;
@@ -558,8 +524,7 @@ public final class Js5 {
 		}
 	}
 
-	@ObfuscatedName("py.j(Ljava/lang/String;B)Z")
-	public boolean isGroupNameValid(String name) {
+    public boolean isGroupNameValid(String name) {
 		if (this.isIndexReady()) {
 			String lower = name.toLowerCase();
 			int groupId = this.index.groupNameHashTable.get(StringTools.hashCode(lower));
@@ -569,8 +534,7 @@ public final class Js5 {
 		}
 	}
 
-	@ObfuscatedName("py.t(Ljava/lang/String;Ljava/lang/String;I)Z")
-	public boolean isFileNameValid(String group, String file) {
+    public boolean isFileNameValid(String group, String file) {
 		if (!this.isIndexReady()) {
 			return false;
 		}
@@ -585,8 +549,7 @@ public final class Js5 {
 		}
 	}
 
-	@ObfuscatedName("py.ae(Ljava/lang/String;Ljava/lang/String;I)[B")
-	public synchronized byte[] getfile(String group, String file) {
+    public synchronized byte[] getfile(String group, String file) {
 		if (!this.isIndexReady()) {
 			return null;
 		}
@@ -601,8 +564,7 @@ public final class Js5 {
 		}
 	}
 
-	@ObfuscatedName("py.ag(Ljava/lang/String;Ljava/lang/String;I)Z")
-	public boolean requestdownload(String group, String file) {
+    public boolean requestdownload(String group, String file) {
 		if (!this.isIndexReady()) {
 			return false;
 		}
@@ -617,14 +579,12 @@ public final class Js5 {
 		}
 	}
 
-	@ObfuscatedName("py.ah(Ljava/lang/String;I)Z")
-	public boolean method6908(String arg0) {
+    public boolean method6908(String arg0) {
 		int var2 = this.getgroupid("");
 		return var2 == -1 ? this.requestdownload(arg0, "") : this.requestdownload("", arg0);
 	}
 
-	@ObfuscatedName("py.al(Ljava/lang/String;I)Z")
-	public boolean isGroupReady(String name) {
+    public boolean isGroupReady(String name) {
 		if (this.isIndexReady()) {
 			String lower = name.toLowerCase();
 			int groupId = this.index.groupNameHashTable.get(StringTools.hashCode(lower));
@@ -634,8 +594,7 @@ public final class Js5 {
 		}
 	}
 
-	@ObfuscatedName("py.ac(Ljava/lang/String;I)I")
-	public int getPercentageComplete(String name) {
+    public int getPercentageComplete(String name) {
 		if (this.isIndexReady()) {
 			String lower = name.toLowerCase();
 			int groupId = this.index.groupNameHashTable.get(StringTools.hashCode(lower));
@@ -645,8 +604,7 @@ public final class Js5 {
 		}
 	}
 
-	@ObfuscatedName("qi.ai([BB)[B")
-	public static byte[] decompress(byte[] src) {
+    public static byte[] decompress(byte[] src) {
 		Packet buf = new Packet(src);
 		JS5CompressionHeader header = new JS5CompressionHeader(buf);
 		Js5CompressionType ctype = header.getCompressionType();

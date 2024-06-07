@@ -6,143 +6,97 @@ import com.jagex.js5.Js5;
 import com.jagex.math.Trig1;
 import deob.ObfuscatedName;
 
-@ObfuscatedName("dq")
 public class ModelUnlit {
 
-	@ObfuscatedName("dq.k")
-	public int version = 12;
+    public int version = 12;
 
-	@ObfuscatedName("dq.f")
-	public int vertexCount = 0;
+    public int vertexCount = 0;
 
-	@ObfuscatedName("dq.w")
-	public int field1374 = 0;
+    public int field1374 = 0;
 
-	@ObfuscatedName("dq.l")
-	public int[] vertexX;
+    public int[] vertexX;
 
-	@ObfuscatedName("dq.u")
-	public float[] textureVertexV;
+    public float[] textureVertexV;
 
-	@ObfuscatedName("dq.z")
-	public int[] vertexY;
+    public int[] vertexY;
 
-	@ObfuscatedName("dq.p")
-	public int[] vertexZ;
+    public int[] vertexZ;
 
-	@ObfuscatedName("dq.d")
-	public int[] vertexTextureVertex;
+    public int[] vertexTextureVertex;
 
-	@ObfuscatedName("dq.c")
-	public int[] vertexLabel;
+    public int[] vertexLabel;
 
-	@ObfuscatedName("dq.r")
-	public short[] vertexSourceModels;
+    public short[] vertexSourceModels;
 
-	@ObfuscatedName("dq.v")
-	public int faceCount = 0;
+    public int faceCount = 0;
 
-	@ObfuscatedName("dq.o")
-	public int field1381;
+    public int field1381;
 
-	@ObfuscatedName("dq.s")
-	public float[] textureVertexU;
+    public float[] textureVertexU;
 
-	@ObfuscatedName("dq.y")
-	public short[] faceVertex1;
+    public short[] faceVertex1;
 
-	@ObfuscatedName("dq.q")
-	public short[] faceVertex2;
+    public short[] faceVertex2;
 
-	@ObfuscatedName("dq.x")
-	public short[] faceVertex3;
+    public short[] faceVertex3;
 
-	@ObfuscatedName("dq.b")
-	public byte[] faceTextureVertexOffset1;
+    public byte[] faceTextureVertexOffset1;
 
-	@ObfuscatedName("dq.h")
-	public byte[] faceTextureVertexOffset2;
+    public byte[] faceTextureVertexOffset2;
 
-	@ObfuscatedName("dq.a")
-	public byte[] faceTextureVertexOffset3;
+    public byte[] faceTextureVertexOffset3;
 
-	@ObfuscatedName("dq.g")
-	public byte[] faceType;
+    public byte[] faceType;
 
-	@ObfuscatedName("dq.i")
-	public byte[] facePriority;
+    public byte[] facePriority;
 
-	@ObfuscatedName("dq.j")
-	public byte[] faceTrans;
+    public byte[] faceTrans;
 
-	@ObfuscatedName("dq.t")
-	public short[] faceMapping;
+    public short[] faceMapping;
 
-	@ObfuscatedName("dq.ae")
-	public short[] faceColour;
+    public short[] faceColour;
 
-	@ObfuscatedName("dq.ag")
-	public short[] faceMaterial;
+    public short[] faceMaterial;
 
-	@ObfuscatedName("dq.ah")
-	public int[] faceLabel;
+    public int[] faceLabel;
 
-	@ObfuscatedName("dq.al")
-	public byte field1394 = 0;
+    public byte field1394 = 0;
 
-	@ObfuscatedName("dq.ac")
-	public short[] field1399;
+    public short[] field1399;
 
-	@ObfuscatedName("dq.as")
-	public int field1387 = 0;
+    public int field1387 = 0;
 
-	@ObfuscatedName("dq.at")
-	public byte[] textureTriangleType;
+    public byte[] textureTriangleType;
 
-	@ObfuscatedName("dq.ad")
-	public short[] textureTriangleVertex1;
+    public short[] textureTriangleVertex1;
 
-	@ObfuscatedName("dq.am")
-	public short[] textureTriangleVertex2;
+    public short[] textureTriangleVertex2;
 
-	@ObfuscatedName("dq.au")
-	public short[] textureTriangleVertex3;
+    public short[] textureTriangleVertex3;
 
-	@ObfuscatedName("dq.ar")
-	public int[] textureTriangleScaleX;
+    public int[] textureTriangleScaleX;
 
-	@ObfuscatedName("dq.ap")
-	public int[] textureTriangleScaleY;
+    public int[] textureTriangleScaleY;
 
-	@ObfuscatedName("dq.aq")
-	public int[] textureTriangleScaleZ;
+    public int[] textureTriangleScaleZ;
 
-	@ObfuscatedName("dq.ax")
-	public int[] textureTriangleSpeed;
+    public int[] textureTriangleSpeed;
 
-	@ObfuscatedName("dq.av")
-	public int[] textureTriangleTranslationU;
+    public int[] textureTriangleTranslationU;
 
-	@ObfuscatedName("dq.ao")
-	public int[] textureTriangleTranslationV;
+    public int[] textureTriangleTranslationV;
 
-	@ObfuscatedName("dq.aj")
-	public byte[] field1402;
+    public byte[] field1402;
 
-	@ObfuscatedName("dq.ay")
-	public byte[] textureTriangleDirection;
+    public byte[] textureTriangleDirection;
 
-	@ObfuscatedName("dq.ab")
-	public ModelParticleEmitter[] emitters;
+    public ModelParticleEmitter[] emitters;
 
-	@ObfuscatedName("dq.az")
-	public ModelParticleEffector[] effectors;
+    public ModelParticleEffector[] effectors;
 
-	@ObfuscatedName("dq.aa")
-	public ModelBillboard[] billboard;
+    public ModelBillboard[] billboard;
 
-	@ObfuscatedName("dq.e(Lpy;II)Ldq;")
-	public static ModelUnlit get(Js5 arg0, int arg1, int arg2) {
+    public static ModelUnlit get(Js5 arg0, int arg1, int arg2) {
 		byte[] var3 = arg0.getfile(arg1, arg2);
 		return var3 == null ? null : new ModelUnlit(var3);
 	}
@@ -799,8 +753,7 @@ public class ModelUnlit {
 		}
 	}
 
-	@ObfuscatedName("dq.n(Ldq;IS)I")
-	public final int method1933(ModelUnlit arg0, int arg1, short arg2) {
+    public final int method1933(ModelUnlit arg0, int arg1, short arg2) {
 		int var4 = arg0.vertexX[arg1];
 		int var5 = arg0.vertexY[arg1];
 		int var6 = arg0.vertexZ[arg1];
@@ -818,8 +771,7 @@ public class ModelUnlit {
 		return this.vertexCount++;
 	}
 
-	@ObfuscatedName("dq.m(Lalw;Lalw;Lalw;)V")
-	public void method1949(Packet arg0, Packet arg1, Packet arg2) {
+    public void method1949(Packet arg0, Packet arg1, Packet arg2) {
 		short var4 = 0;
 		short var5 = 0;
 		short var6 = 0;
@@ -886,8 +838,7 @@ public class ModelUnlit {
 		this.field1374++;
 	}
 
-	@ObfuscatedName("dq.k(Lalw;Lalw;Lalw;Lalw;Lalw;Lalw;)V")
-	public void method1939(Packet arg0, Packet arg1, Packet arg2, Packet arg3, Packet arg4, Packet arg5) {
+    public void method1939(Packet arg0, Packet arg1, Packet arg2, Packet arg3, Packet arg4, Packet arg5) {
 		for (int var7 = 0; var7 < this.field1387; var7++) {
 			int var8 = this.textureTriangleType[var7] & 0xFF;
 			if (var8 == 0) {
@@ -963,8 +914,7 @@ public class ModelUnlit {
 		}
 	}
 
-	@ObfuscatedName("dq.f(III)I")
-	public int method1936(int arg0, int arg1, int arg2) {
+    public int method1936(int arg0, int arg1, int arg2) {
 		for (int var4 = 0; var4 < this.vertexCount; var4++) {
 			if (this.vertexX[var4] == arg0 && this.vertexY[var4] == arg1 && this.vertexZ[var4] == arg2) {
 				return var4;
@@ -977,8 +927,7 @@ public class ModelUnlit {
 		return this.vertexCount++;
 	}
 
-	@ObfuscatedName("dq.w(IIIBBSBS)I")
-	public int method1966(int arg0, int arg1, int arg2, byte arg3, byte arg4, short arg5, byte arg6, short arg7) {
+    public int method1966(int arg0, int arg1, int arg2, byte arg3, byte arg4, short arg5, byte arg6, short arg7) {
 		this.faceVertex1[this.faceCount] = (short) arg0;
 		this.faceVertex2[this.faceCount] = (short) arg1;
 		this.faceVertex3[this.faceCount] = (short) arg2;
@@ -990,8 +939,7 @@ public class ModelUnlit {
 		return this.faceCount++;
 	}
 
-	@ObfuscatedName("dq.l(SSS)B")
-	public byte method1938(short arg0, short arg1, short arg2) {
+    public byte method1938(short arg0, short arg1, short arg2) {
 		if (this.field1387 >= 255) {
 			throw new IllegalStateException();
 		}
@@ -1002,8 +950,7 @@ public class ModelUnlit {
 		return (byte) this.field1387++;
 	}
 
-	@ObfuscatedName("dq.u(SSSSSSBBB)B")
-	public byte method1935(short arg0, short arg1, short arg2, short arg3, short arg4, short arg5, byte arg6, byte arg7, byte arg8) {
+    public byte method1935(short arg0, short arg1, short arg2, short arg3, short arg4, short arg5, byte arg6, byte arg7, byte arg8) {
 		if (this.field1387 >= 255) {
 			throw new IllegalStateException();
 		}
@@ -1020,8 +967,7 @@ public class ModelUnlit {
 		return (byte) this.field1387++;
 	}
 
-	@ObfuscatedName("dq.z(Z)[[I")
-	public int[][] method1940(boolean arg0) {
+    public int[][] method1940(boolean arg0) {
 		int[] var2 = new int[800];
 		int var3 = 0;
 		int var4 = arg0 ? this.vertexCount : this.field1374;
@@ -1048,8 +994,7 @@ public class ModelUnlit {
 		return var7;
 	}
 
-	@ObfuscatedName("dq.p()[[I")
-	public int[][] method1941() {
+    public int[][] method1941() {
 		int[] var1 = new int[256];
 		int var2 = 0;
 		for (int var3 = 0; var3 < this.faceCount; var3++) {
@@ -1075,8 +1020,7 @@ public class ModelUnlit {
 		return var5;
 	}
 
-	@ObfuscatedName("dq.d()[[I")
-	public int[][] method1963() {
+    public int[][] method1963() {
 		int[] var1 = new int[256];
 		int var2 = 0;
 		for (int var3 = 0; var3 < this.billboard.length; var3++) {
@@ -1102,8 +1046,7 @@ public class ModelUnlit {
 		return var5;
 	}
 
-	@ObfuscatedName("dq.c(SS)V")
-	public void method1943(short arg0, short arg1) {
+    public void method1943(short arg0, short arg1) {
 		for (int var3 = 0; var3 < this.faceCount; var3++) {
 			if (this.faceColour[var3] == arg0) {
 				this.faceColour[var3] = arg1;
@@ -1111,8 +1054,7 @@ public class ModelUnlit {
 		}
 	}
 
-	@ObfuscatedName("dq.r(SS)V")
-	public void method1937(short arg0, short arg1) {
+    public void method1937(short arg0, short arg1) {
 		if (this.faceMaterial == null) {
 			return;
 		}
@@ -1123,8 +1065,7 @@ public class ModelUnlit {
 		}
 	}
 
-	@ObfuscatedName("dq.v(III)V")
-	public void method1945(int arg0, int arg1, int arg2) {
+    public void method1945(int arg0, int arg1, int arg2) {
 		for (int var4 = 0; var4 < this.vertexCount; var4++) {
 			this.vertexX[var4] += arg0;
 			this.vertexY[var4] += arg1;
@@ -1132,8 +1073,7 @@ public class ModelUnlit {
 		}
 	}
 
-	@ObfuscatedName("dq.o(III)V")
-	public void method1946(int arg0, int arg1, int arg2) {
+    public void method1946(int arg0, int arg1, int arg2) {
 		if (arg2 != 0) {
 			int var4 = Trig1.sin[arg2];
 			int var5 = Trig1.cos[arg2];
@@ -1164,8 +1104,7 @@ public class ModelUnlit {
 		}
 	}
 
-	@ObfuscatedName("dq.s(I)V")
-	public void scaleByPowerOfTwo(int arg0) {
+    public void scaleByPowerOfTwo(int arg0) {
 		for (int var2 = 0; var2 < this.vertexCount; var2++) {
 			this.vertexX[var2] <<= arg0;
 			this.vertexY[var2] <<= arg0;
@@ -1183,8 +1122,7 @@ public class ModelUnlit {
 		}
 	}
 
-	@ObfuscatedName("dq.y(F)V")
-	public void method1948(float arg0) {
+    public void method1948(float arg0) {
 		for (int var2 = 0; var2 < this.vertexCount; var2++) {
 			this.vertexX[var2] = (int) ((float) this.vertexX[var2] * arg0);
 			this.vertexY[var2] = (int) ((float) this.vertexY[var2] * arg0);

@@ -8,20 +8,15 @@ import com.jagex.js5.Js5;
 import deob.ObfuscatedName;
 import rs2.client.Client;
 
-@ObfuscatedName("ki")
 public class LoginRelated3 implements LoadingScreenElement {
 
-	@ObfuscatedName("ki.e")
-	public final LoginRelated6 field3054;
+    public final LoginRelated6 field3054;
 
-	@ObfuscatedName("ki.n")
-	public final Js5 field3053;
+    public final Js5 field3053;
 
-	@ObfuscatedName("ki.m")
-	public final Js5 field3052;
+    public final Js5 field3052;
 
-	@ObfuscatedName("ki.k")
-	public Font field3055;
+    public Font field3055;
 
 	public LoginRelated3(Js5 arg0, Js5 arg1, LoginRelated6 arg2) {
 		this.field3054 = arg2;
@@ -29,14 +24,12 @@ public class LoginRelated3 implements LoadingScreenElement {
 		this.field3052 = arg1;
 	}
 
-	@ObfuscatedName("ki.e(I)V")
-	public void method5104() {
+    public void method5104() {
 		FontMetrics var1 = FontMetrics.createFontMetrics(this.field3052, this.field3054.field3211, Client.fontProvider);
 		this.field3055 = Client.toolkit.createFont(var1, SpriteDataProvider.get(this.field3053, this.field3054.field3211), true);
 	}
 
-	@ObfuscatedName("ki.n(ZI)V")
-	public void method5105(boolean arg0) {
+    public void method5105(boolean arg0) {
 		if (arg0) {
 			int var2 = this.field3054.field3201.computeX(this.field3054.field3209, Client.frameWidth) + this.field3054.field3204;
 			int var3 = this.field3054.field3208.computeY(this.field3054.field3206, Client.frameHeight) + this.field3054.field3205;
@@ -44,8 +37,7 @@ public class LoginRelated3 implements LoadingScreenElement {
 		}
 	}
 
-	@ObfuscatedName("ki.m(I)Z")
-	public boolean method5106() {
+    public boolean method5106() {
 		boolean var1 = true;
 		if (!this.field3053.loadFile(this.field3054.field3211)) {
 			var1 = false;

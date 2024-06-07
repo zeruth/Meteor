@@ -7,26 +7,19 @@ import rs2.client.Client;
 
 import java.util.Iterator;
 
-@ObfuscatedName("xb")
 public abstract class MouseLogger {
 
-	@ObfuscatedName("xb.e")
-	public final LinkList field7955 = new LinkList();
+    public final LinkList field7955 = new LinkList();
 
-	@ObfuscatedName("xb.n")
-	public long field7952 = -1L;
+    public long field7952 = -1L;
 
-	@ObfuscatedName("xb.m")
-	public long field7953 = -1L;
+    public long field7953 = -1L;
 
-	@ObfuscatedName("xb.k")
-	public int field7954 = -1;
+    public int field7954 = -1;
 
-	@ObfuscatedName("xb.f")
-	public int field7951 = -1;
+    public int field7951 = -1;
 
-	@ObfuscatedName("xb.e(S)V")
-	public void method10280() {
+    public void method10280() {
 		if (this.method10272()) {
 			ClientMessage var1 = null;
 			int var2 = 0;
@@ -125,8 +118,7 @@ public abstract class MouseLogger {
 		this.method10270();
 	}
 
-	@ObfuscatedName("xb.n(I)V")
-	public void method10260() {
+    public void method10260() {
 		this.field7955.removeAll();
 		this.field7952 = -1L;
 		this.field7953 = -1L;
@@ -134,13 +126,11 @@ public abstract class MouseLogger {
 		this.field7951 = -1;
 	}
 
-	@ObfuscatedName("xb.m(Lakm;I)V")
-	public void method10261(MouseEvent arg0) {
+    public void method10261(MouseEvent arg0) {
 		this.field7955.addTail(arg0);
 	}
 
-	@ObfuscatedName("xb.k(Lakm;II)I")
-	public int method10262(MouseEvent arg0, int arg1) {
+    public int method10262(MouseEvent arg0, int arg1) {
 		long var3;
 		if (this.field7952 == -1L) {
 			var3 = arg1;
@@ -154,18 +144,13 @@ public abstract class MouseLogger {
 		return (int) var3;
 	}
 
-	@ObfuscatedName("xb.f(I)I")
-	public abstract int method10263();
+    public abstract int method10263();
 
-	@ObfuscatedName("xb.w(Lalw;Lakm;I)V")
-	public abstract void method10264(Packet arg0, MouseEvent arg1);
+    public abstract void method10264(Packet arg0, MouseEvent arg1);
 
-	@ObfuscatedName("xb.z(S)Lakl;")
-	public abstract ClientMessage method10267();
+    public abstract ClientMessage method10267();
 
-	@ObfuscatedName("xb.l(I)V")
-	public abstract void method10270();
+    public abstract void method10270();
 
-	@ObfuscatedName("xb.u(I)Z")
-	public abstract boolean method10272();
+    public abstract boolean method10272();
 }

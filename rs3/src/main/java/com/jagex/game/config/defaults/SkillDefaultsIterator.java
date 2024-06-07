@@ -5,14 +5,11 @@ import deob.ObfuscatedName;
 
 import java.util.Iterator;
 
-@ObfuscatedName("wi")
 public class SkillDefaultsIterator implements Iterator {
 
-	@ObfuscatedName("wi.e")
-	public PlayerSkill[] field7760;
+    public PlayerSkill[] field7760;
 
-	@ObfuscatedName("wi.n")
-	public int field7761;
+    public int field7761;
 
 	public SkillDefaultsIterator(PlayerSkill[] arg0) {
 		this.field7760 = arg0;

@@ -3,26 +3,19 @@ package com.jagex.game.world.entity;
 import com.jagex.core.datastruct.Node;
 import deob.ObfuscatedName;
 
-@ObfuscatedName("ajx")
 public class ObjIconRequest extends Node {
 
-	@ObfuscatedName("ajx.k")
-	public int field11256;
+    public int field11256;
 
-	@ObfuscatedName("ajx.f")
-	public int field11255;
+    public int field11255;
 
-	@ObfuscatedName("ajx.w")
-	public int field11258;
+    public int field11258;
 
-	@ObfuscatedName("ajx.l")
-	public int field11257;
+    public int field11257;
 
-	@ObfuscatedName("ajx.u")
-	public int field11254;
+    public int field11254;
 
-	@ObfuscatedName("ajx.z")
-	public boolean field11259;
+    public boolean field11259;
 
 	public ObjIconRequest(int arg0, int arg1, int arg2, int arg3, int arg4, boolean arg5) {
 		this.field11256 = arg0;

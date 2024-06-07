@@ -16,21 +16,17 @@ import java.net.URL;
 import java.net.URLConnection;
 import java.util.Random;
 
-@ObfuscatedName("w")
 public class AccountAppealLogin {
 
-	@ObfuscatedName("w.f")
-	public static final BigInteger field495 = new BigInteger("80782894952180643741752986186714059433953886149239752893425047584684715842049");
+    public static final BigInteger field495 = new BigInteger("80782894952180643741752986186714059433953886149239752893425047584684715842049");
 
-	@ObfuscatedName("w.w")
-	public static final BigInteger field496 = new BigInteger("7237300117305667488707183861728052766358166655052137727439795191253340127955075499635575104901523446809299097934591732635674173519120047404024393881551683");
+    public static final BigInteger field496 = new BigInteger("7237300117305667488707183861728052766358166655052137727439795191253340127955075499635575104901523446809299097934591732635674173519120047404024393881551683");
 
 	public AccountAppealLogin() throws Throwable {
 		throw new Error();
 	}
 
-	@ObfuscatedName("abx.e(I)J")
-	public static long method14886() {
+    public static long method14886() {
 		try {
 			URL var0 = new URL(Client.method4591("services", false) + "m=accountappeal/login.ws");
 			URLConnection var1 = var0.openConnection();
@@ -57,8 +53,7 @@ public class AccountAppealLogin {
 		}
 	}
 
-	@ObfuscatedName("abn.n(JLjava/lang/String;B)I")
-	public static final int method14753(long arg0, String arg1) {
+    public static final int method14753(long arg0, String arg1) {
 		Random var3 = new Random();
 		Packet var4 = new Packet(128);
 		Packet var5 = new Packet(128);
@@ -149,8 +144,7 @@ public class AccountAppealLogin {
 		}
 	}
 
-	@ObfuscatedName("adr.m(Ljava/lang/String;B)Z")
-	public static boolean method15242(String arg0) {
+    public static boolean method15242(String arg0) {
 		if (arg0 == null) {
 			return false;
 		}

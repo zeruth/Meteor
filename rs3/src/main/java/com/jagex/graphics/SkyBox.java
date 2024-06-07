@@ -8,96 +8,67 @@ import com.jagex.math.Matrix4x4;
 import com.jagex.math.Trig1;
 import deob.ObfuscatedName;
 
-@ObfuscatedName("sv")
 public class SkyBox {
 
-	@ObfuscatedName("sv.n")
-	public final int field5084;
+    public final int field5084;
 
-	@ObfuscatedName("sv.m")
-	public int field5085;
+    public int field5085;
 
-	@ObfuscatedName("sv.k")
-	public SkyboxRelated field5086;
+    public SkyboxRelated field5086;
 
-	@ObfuscatedName("sv.f")
-	public SkyboxRelated[] field5094;
+    public SkyboxRelated[] field5094;
 
-	@ObfuscatedName("sv.w")
-	public SkyboxRelated[] field5088;
+    public SkyboxRelated[] field5088;
 
-	@ObfuscatedName("sv.l")
-	public int field5087;
+    public int field5087;
 
-	@ObfuscatedName("sv.u")
-	public int field5083 = -1;
+    public int field5083 = -1;
 
-	@ObfuscatedName("sv.z")
-	public final int field5089;
+    public final int field5089;
 
-	@ObfuscatedName("sv.p")
-	public final int field5090;
+    public final int field5090;
 
-	@ObfuscatedName("sv.d")
-	public final int field5091;
+    public final int field5091;
 
-	@ObfuscatedName("sv.c")
-	public Sprite field5095;
+    public Sprite field5095;
 
-	@ObfuscatedName("sv.r")
-	public SkyBoxFillMode field5099;
+    public SkyBoxFillMode field5099;
 
-	@ObfuscatedName("sv.v")
-	public int field5096;
+    public int field5096;
 
-	@ObfuscatedName("sv.o")
-	public int field5097;
+    public int field5097;
 
-	@ObfuscatedName("sv.s")
-	public boolean field5098 = true;
+    public boolean field5098 = true;
 
-	@ObfuscatedName("fz.y")
-	public static Js5 field1810;
+    public static Js5 field1810;
 
-	@ObfuscatedName("kt.q")
-	public static MaterialList field3199;
+    public static MaterialList field3199;
 
-	@ObfuscatedName("hp.x")
-	public static TextureList field2421;
+    public static TextureList field2421;
 
-	@ObfuscatedName("sv.b")
-	public int field5093;
+    public int field5093;
 
-	@ObfuscatedName("sv.h")
-	public Model field5103;
+    public Model field5103;
 
-	@ObfuscatedName("sv.a")
-	public byte[] field5101;
+    public byte[] field5101;
 
-	@ObfuscatedName("sv.g")
-	public boolean field5102;
+    public boolean field5102;
 
-	@ObfuscatedName("sv.i")
-	public SkyBox field5092;
+    public SkyBox field5092;
 
-	@ObfuscatedName("sv.j")
-	public int field5104;
+    public int field5104;
 
-	@ObfuscatedName("sv.t")
-	public int field5105;
+    public int field5105;
 
-	@ObfuscatedName("sv.ae")
-	public int field5106;
+    public int field5106;
 
-	@ObfuscatedName("zn.e(Lpy;Ldf;Les;I)V")
-	public static void method13864(Js5 arg0, MaterialList arg1, TextureList arg2) {
+    public static void method13864(Js5 arg0, MaterialList arg1, TextureList arg2) {
 		field1810 = arg0;
 		field3199 = arg1;
 		field2421 = arg2;
 	}
 
-	@ObfuscatedName("rz.n(I)V")
-	public static void method7713() {
+    public static void method7713() {
 		SkyboxRelated.method7979();
 	}
 
@@ -118,15 +89,13 @@ public class SkyBox {
 		this.field5093 = arg7;
 	}
 
-	@ObfuscatedName("sv.m(III)V")
-	public void method7941(int arg0, int arg1) {
+    public void method7941(int arg0, int arg1) {
 		if (!this.field5102) {
 		}
 		this.field5104 = (arg1 - this.field5106) * arg0 / 255 + this.field5106;
 	}
 
-	@ObfuscatedName("sv.k(Lsv;I)V")
-	public void method7962(SkyBox arg0) {
+    public void method7962(SkyBox arg0) {
 		if (this.field5102) {
 			this.field5106 = this.field5104;
 		} else if (arg0 != null && arg0.field5102) {
@@ -139,25 +108,21 @@ public class SkyBox {
 		this.field5104 = 0;
 	}
 
-	@ObfuscatedName("sv.f(I)V")
-	public void method7958() {
+    public void method7958() {
 		this.field5102 = false;
 		this.field5092 = null;
 		this.field5104 = 0;
 	}
 
-	@ObfuscatedName("sv.w(B)Z")
-	public boolean method7960() {
+    public boolean method7960() {
 		return this.field5102;
 	}
 
-	@ObfuscatedName("sv.l(I)Lsv;")
-	public SkyBox method7942() {
+    public SkyBox method7942() {
 		return this.field5092;
 	}
 
-	@ObfuscatedName("sv.u(Ldh;III)Z")
-	public boolean method7944(Toolkit arg0, int arg1, int arg2) {
+    public boolean method7944(Toolkit arg0, int arg1, int arg2) {
 		if (this.field5083 != arg1) {
 			this.field5083 = arg1;
 			int var4 = IntMath.method3082(arg1);
@@ -206,8 +171,7 @@ public class SkyBox {
 		return var8;
 	}
 
-	@ObfuscatedName("sv.z(Ldh;I)V")
-	public void method7938(Toolkit arg0) {
+    public void method7938(Toolkit arg0) {
 		try {
 			boolean var2 = field1810.isGroupReady(this.field5093);
 			if (var2) {
@@ -226,13 +190,11 @@ public class SkyBox {
 		}
 	}
 
-	@ObfuscatedName("sv.p(Ldh;IIIIIIIIII)V")
-	public void method7945(Toolkit arg0, int arg1, int arg2, int arg3, int arg4, int arg5, int arg6, int arg7, int arg8, int arg9) {
+    public void method7945(Toolkit arg0, int arg1, int arg2, int arg3, int arg4, int arg5, int arg6, int arg7, int arg8, int arg9) {
 		this.method7946(arg0, arg1, arg2, arg3, arg4, arg5, arg6, arg7, 0, arg9, true, false);
 	}
 
-	@ObfuscatedName("sv.d(Ldh;IIIIIIIIIZZI)V")
-	public void method7946(Toolkit arg0, int arg1, int arg2, int arg3, int arg4, int arg5, int arg6, int arg7, int arg8, int arg9, boolean arg10, boolean arg11) {
+    public void method7946(Toolkit arg0, int arg1, int arg2, int arg3, int arg4, int arg5, int arg6, int arg7, int arg8, int arg9, boolean arg10, boolean arg11) {
 		int var13 = 0;
 		if (this.field5102) {
 			var13 = this.field5104;
@@ -255,8 +217,7 @@ public class SkyBox {
 		var15.method7947(arg0, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9, false, arg11, 255 - var13);
 	}
 
-	@ObfuscatedName("sv.c(Ldh;IIIIIIIIIZZII)V")
-	public void method7947(Toolkit arg0, int arg1, int arg2, int arg3, int arg4, int arg5, int arg6, int arg7, int arg8, int arg9, boolean arg10, boolean arg11, int arg12) {
+    public void method7947(Toolkit arg0, int arg1, int arg2, int arg3, int arg4, int arg5, int arg6, int arg7, int arg8, int arg9, boolean arg10, boolean arg11, int arg12) {
 		int var14 = 255 - arg12;
 		arg0.flush();
 		arg0.method2203();
@@ -333,8 +294,7 @@ public class SkyBox {
 		arg0.method2204();
 	}
 
-	@ObfuscatedName("sv.r(Ldh;IIIII)V")
-	public void method7948(Toolkit arg0, int arg1, int arg2, int arg3, int arg4) {
+    public void method7948(Toolkit arg0, int arg1, int arg2, int arg3, int arg4) {
 		Matrix4x3 var6 = arg0.method2218();
 		Matrix4x3 var7 = new Matrix4x3();
 		var7.setToTranslation(0.0F, 0.0F, 0.0F);

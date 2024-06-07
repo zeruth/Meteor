@@ -2,48 +2,33 @@ package com.jagex.graphics;
 
 import deob.ObfuscatedName;
 
-@ObfuscatedName("an")
 public class UnblendedTileData2 {
 
-	@ObfuscatedName("an.e")
-	public short field878;
+    public short field878;
 
-	@ObfuscatedName("an.n")
-	public short field887;
+    public short field887;
 
-	@ObfuscatedName("an.m")
-	public byte field879;
+    public byte field879;
 
-	@ObfuscatedName("an.k")
-	public short[] field884;
+    public short[] field884;
 
-	@ObfuscatedName("an.f")
-	public short[] field888;
+    public short[] field888;
 
-	@ObfuscatedName("an.w")
-	public short[] field882;
+    public short[] field882;
 
-	@ObfuscatedName("an.l")
-	public short[] field883;
+    public short[] field883;
 
-	@ObfuscatedName("an.u")
-	public short[] field881;
+    public short[] field881;
 
-	@ObfuscatedName("an.z")
-	public short[] field885;
+    public short[] field885;
 
-	@ObfuscatedName("an.p")
-	public short[] field886;
+    public short[] field886;
 
-	@ObfuscatedName("an.d")
-	public short[] field880;
+    public short[] field880;
 
-	@ObfuscatedName("an.c")
-	public short[] field877;
+    public short[] field877;
 
-	@ObfuscatedName("an.r")
-	public int[] field889;
+    public int[] field889;
 
-	@ObfuscatedName("an.v")
-	public int[] field890;
+    public int[] field890;
 }

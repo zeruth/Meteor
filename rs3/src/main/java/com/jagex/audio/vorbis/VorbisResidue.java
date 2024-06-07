@@ -2,41 +2,29 @@ package com.jagex.audio.vorbis;
 
 import deob.ObfuscatedName;
 
-@ObfuscatedName("gi")
 public class VorbisResidue {
 
-	@ObfuscatedName("gi.e")
-	public int field2019;
+    public int field2019;
 
-	@ObfuscatedName("gi.n")
-	public int begin;
+    public int begin;
 
-	@ObfuscatedName("gi.m")
-	public int end;
+    public int end;
 
-	@ObfuscatedName("gi.k")
-	public int grouping;
+    public int grouping;
 
-	@ObfuscatedName("gi.f")
-	public int partitions;
+    public int partitions;
 
-	@ObfuscatedName("gi.w")
-	public int groupbook;
+    public int groupbook;
 
-	@ObfuscatedName("gi.l")
-	public int[] booklist;
+    public int[] booklist;
 
-	@ObfuscatedName("gi.u")
-	public int[] secondstages;
+    public int[] secondstages;
 
-	@ObfuscatedName("gi.z")
-	public VorbisSound opb;
+    public VorbisSound opb;
 
-	@ObfuscatedName("gi.p")
-	public int[][] field2023;
+    public int[][] field2023;
 
-	@ObfuscatedName("gi.e(Lhk;)V")
-	public void unpack(VorbisSound opb) {
+    public void unpack(VorbisSound opb) {
 		this.opb = opb;
 		this.field2019 = this.opb.read(16);
 		this.begin = this.opb.read(24);
@@ -68,8 +56,7 @@ public class VorbisResidue {
 		}
 	}
 
-	@ObfuscatedName("gi.n([I)V")
-	public void method3675(int[] arg0) {
+    public void method3675(int[] arg0) {
 		if (arg0 != null) {
 			for (int var2 = 0; var2 < arg0.length; var2++) {
 				arg0[var2] = 0;
@@ -77,8 +64,7 @@ public class VorbisResidue {
 		}
 	}
 
-	@ObfuscatedName("gi.m([Lhb;I[Z)[Lhb;")
-	public VorbisSound.WindowFunction[] method3676(VorbisSound.WindowFunction[] arg0, int arg1, boolean[] arg2) {
+    public VorbisSound.WindowFunction[] method3676(VorbisSound.WindowFunction[] arg0, int arg1, boolean[] arg2) {
 		int var4 = arg0.length;
 		for (int var5 = 0; var5 < var4; var5++) {
 			if (!arg2[var5]) {

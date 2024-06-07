@@ -5,31 +5,25 @@ import com.jagex.graphics.Font;
 import deob.ObfuscatedName;
 import rs2.client.Client;
 
-@ObfuscatedName("kw")
 public class LoadingScreenNewsDisplay implements LoadingScreenElement {
 
-	@ObfuscatedName("kw.e")
-	public final LoadingScreenNewsDisplayConfig field3025;
+    public final LoadingScreenNewsDisplayConfig field3025;
 
-	@ObfuscatedName("kw.n")
-	public final LoadingScreenNewsManager field3024;
+    public final LoadingScreenNewsManager field3024;
 
 	public LoadingScreenNewsDisplay(LoadingScreenNewsManager arg0, LoadingScreenNewsDisplayConfig arg1) {
 		this.field3025 = arg1;
 		this.field3024 = arg0;
 	}
 
-	@ObfuscatedName("kw.m(I)Z")
-	public boolean method5106() {
+    public boolean method5106() {
 		return this.field3024.method5164();
 	}
 
-	@ObfuscatedName("kw.e(I)V")
-	public void method5104() {
+    public void method5104() {
 	}
 
-	@ObfuscatedName("kw.n(ZI)V")
-	public void method5105(boolean arg0) {
+    public void method5105(boolean arg0) {
 		LoadingScreenNewsEntry var2 = this.field3024.method5160(this.field3025.field3157);
 		if (var2 == null) {
 			return;
@@ -50,8 +44,7 @@ public class LoadingScreenNewsDisplay implements LoadingScreenElement {
 		int var10000 = var9 + this.method5117(DefaultSprites.b12FullFont, var2.field3034, var3, var9, 5) * 12;
 	}
 
-	@ObfuscatedName("kw.z(Leu;Ljava/lang/String;IIII)I")
-	public int method5117(Font arg0, String arg1, int arg2, int arg3, int arg4) {
+    public int method5117(Font arg0, String arg1, int arg2, int arg3, int arg4) {
 		return arg0.drawStringTaggable(arg1, arg2 + arg4, arg3 + arg4, this.field3025.field3154 - arg4 * 2, this.field3025.field3156 - arg4 * 2, this.field3025.field3152, this.field3025.field3153, 0, 0, 0, null, null, null, 0, 0);
 	}
 }

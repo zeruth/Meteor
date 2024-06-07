@@ -2,20 +2,15 @@ package com.jagex.graphics;
 
 import deob.ObfuscatedName;
 
-@ObfuscatedName("hj")
 public class ShaderData {
 
-	@ObfuscatedName("hj.e")
-	public String name;
+    public String name;
 
-	@ObfuscatedName("hj.k")
-	public ProgramUniformData[] vertexUniforms;
+    public ProgramUniformData[] vertexUniforms;
 
-	@ObfuscatedName("hj.f")
-	public ProgramUniformData[] fragmentUniforms;
+    public ProgramUniformData[] fragmentUniforms;
 
-	@ObfuscatedName("hj.w")
-	public ProgramData[] programs;
+    public ProgramData[] programs;
 
 	// line 13
 	public ShaderData(byte[] arg0) throws ShaderDataException {
@@ -23,8 +18,7 @@ public class ShaderData {
 	}
 
 	// line 18
-	@ObfuscatedName("hj.e([BB)V")
-	public void decode(byte[] bytes) throws ShaderDataException {
+    public void decode(byte[] bytes) throws ShaderDataException {
 		ShaderDataReader buf = new ShaderDataReader(bytes);
 		int var3 = buf.g2();
 		if (var3 != 4) {
@@ -48,8 +42,7 @@ public class ShaderData {
 		}
 	}
 
-	@ObfuscatedName("apu")
-	public static class ShaderDataException extends Exception {
+    public static class ShaderDataException extends Exception {
 
 		// $FF: synthetic field
 		public final ShaderData this$0;

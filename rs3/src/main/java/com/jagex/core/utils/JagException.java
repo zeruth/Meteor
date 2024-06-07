@@ -6,32 +6,23 @@ import java.applet.Applet;
 import java.io.*;
 import java.net.URL;
 
-@ObfuscatedName("atc")
 public class JagException extends RuntimeException {
 
-	@ObfuscatedName("atc.e")
-	public static long field12496;
+    public static long field12496;
 
-	@ObfuscatedName("atc.n")
-	public static String user;
+    public static String user;
 
-	@ObfuscatedName("atc.m")
-	public static int field12493;
+    public static int field12493;
 
-	@ObfuscatedName("atc.k")
-	public static int field12494;
+    public static int field12494;
 
-	@ObfuscatedName("acs.f")
-	public static Applet field9164;
+    public static Applet field9164;
 
-	@ObfuscatedName("atc.w")
-	public static URLWrapper field12495 = null;
+    public static URLWrapper field12495 = null;
 
-	@ObfuscatedName("atc.l")
-	public String field12491;
+    public String field12491;
 
-	@ObfuscatedName("atc.u")
-	public Throwable field12497;
+    public Throwable field12497;
 
 	public JagException(Throwable arg0, String arg1) {
 		this.field12491 = arg1;
@@ -39,8 +30,7 @@ public class JagException extends RuntimeException {
 		this.initCause(arg0);
 	}
 
-	@ObfuscatedName("wt.e(Ljava/lang/String;Ljava/lang/Throwable;I)V")
-	public static void report(String arg0, Throwable arg1) {
+    public static void report(String arg0, Throwable arg1) {
 		arg1.printStackTrace();
 
 		try {
@@ -86,8 +76,7 @@ public class JagException extends RuntimeException {
 		}
 	}
 
-	@ObfuscatedName("atl.n(Ljava/lang/Throwable;Ljava/lang/String;)Latc;")
-	public static JagException report(Throwable arg0, String arg1) {
+    public static JagException report(Throwable arg0, String arg1) {
 		JagException var2;
 		if (arg0 instanceof JagException) {
 			var2 = (JagException) arg0;
@@ -98,8 +87,7 @@ public class JagException extends RuntimeException {
 		return var2;
 	}
 
-	@ObfuscatedName("anl.m(Ljava/lang/Throwable;I)Ljava/lang/String;")
-	public static String method18769(Throwable arg0) throws IOException {
+    public static String method18769(Throwable arg0) throws IOException {
 		String var2;
 		if (arg0 instanceof JagException) {
 			JagException var1 = (JagException) arg0;
@@ -142,13 +130,11 @@ public class JagException extends RuntimeException {
 		}
 	}
 
-	@ObfuscatedName("fr.k(Ljava/lang/String;S)V")
-	public static final void method3380(String arg0) {
+    public static final void method3380(String arg0) {
 		System.out.println("Error: " + method9588(arg0, "%0a", "\n"));
 	}
 
-	@ObfuscatedName("vn.f(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;I)Ljava/lang/String;")
-	public static final String method9588(String arg0, String arg1, String arg2) {
+    public static final String method9588(String arg0, String arg1, String arg2) {
 		for (int var3 = arg0.indexOf(arg1); var3 != -1; var3 = arg0.indexOf(arg1, var3 + arg2.length())) {
 			arg0 = arg0.substring(0, var3) + arg2 + arg0.substring(var3 + arg1.length());
 		}

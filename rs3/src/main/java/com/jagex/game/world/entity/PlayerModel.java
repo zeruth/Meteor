@@ -23,62 +23,43 @@ import com.jagex.math.Matrix4x3;
 import com.jagex.math.Trig1;
 import deob.ObfuscatedName;
 
-@ObfuscatedName("xg")
 public class PlayerModel {
 
-	@ObfuscatedName("xg.u")
-	public int field7891;
+    public int field7891;
 
-	@ObfuscatedName("xg.z")
-	public int[] field7890;
+    public int[] field7890;
 
-	@ObfuscatedName("xg.p")
-	public ObjTypeCustomisation[] field7887;
+    public ObjTypeCustomisation[] field7887;
 
-	@ObfuscatedName("xg.d")
-	public int[] field7894;
+    public int[] field7894;
 
-	@ObfuscatedName("xg.c")
-	public int[] field7895;
+    public int[] field7895;
 
-	@ObfuscatedName("xg.r")
-	public boolean isFemale;
+    public boolean isFemale;
 
-	@ObfuscatedName("xg.v")
-	public int field7892 = -1;
+    public int field7892 = -1;
 
-	@ObfuscatedName("xg.o")
-	public long field7888;
+    public long field7888;
 
-	@ObfuscatedName("xg.s")
-	public long field7899;
+    public long field7899;
 
-	@ObfuscatedName("vn.y")
-	public static short[][] field7577;
+    public static short[][] field7577;
 
-	@ObfuscatedName("dk.q")
-	public static short[][][] field1434;
+    public static short[][][] field1434;
 
-	@ObfuscatedName("aip.x")
-	public static short[][] field10766;
+    public static short[][] field10766;
 
-	@ObfuscatedName("adm.b")
-	public static short[][][] field9259;
+    public static short[][][] field9259;
 
-	@ObfuscatedName("xg.h")
-	public static final int[] field7900 = new int[] { 8, 11, 4, 6, 9, 7, 10, 0 };
+    public static final int[] field7900 = new int[] { 8, 11, 4, 6, 9, 7, 10, 0 };
 
-	@ObfuscatedName("xg.a")
-	public static SoftLruHashTable field7901 = new SoftLruHashTable(260);
+    public static SoftLruHashTable field7901 = new SoftLruHashTable(260);
 
-	@ObfuscatedName("xg.g")
-	public static SoftLruHashTable field7902 = new SoftLruHashTable(5);
+    public static SoftLruHashTable field7902 = new SoftLruHashTable(5);
 
-	@ObfuscatedName("ns.i")
-	public static int field4037;
+    public static int field4037;
 
-	@ObfuscatedName("xg.e(I[I[Labw;[I[IZII)V")
-	public void setAppearance(int arg0, int[] arg1, ObjTypeCustomisation[] arg2, int[] arg3, int[] arg4, boolean arg5, int arg6) {
+    public void setAppearance(int arg0, int[] arg1, ObjTypeCustomisation[] arg2, int[] arg3, int[] arg4, boolean arg5, int arg6) {
 		if (this.field7891 != arg0) {
 			this.field7891 = arg0;
 		}
@@ -91,8 +72,7 @@ public class PlayerModel {
 		this.method10118();
 	}
 
-	@ObfuscatedName("xg.n(IILaov;I)V")
-	public void setIDKPart(int arg0, int arg1, IDKTypeList arg2) {
+    public void setIDKPart(int arg0, int arg1, IDKTypeList arg2) {
 		int var4 = field7900[arg0];
 		if (arg2.list(arg1) != null) {
 			this.field7890[var4] = arg1 | Integer.MIN_VALUE;
@@ -100,26 +80,22 @@ public class PlayerModel {
 		}
 	}
 
-	@ObfuscatedName("xg.m(III)V")
-	public void setIDKRecolourSlot(int arg0, int arg1) {
+    public void setIDKRecolourSlot(int arg0, int arg1) {
 		this.field7894[arg0] = arg1;
 		this.method10118();
 	}
 
-	@ObfuscatedName("xg.k(IIB)V")
-	public void setIDKRematerialSlot(int arg0, int arg1) {
+    public void setIDKRematerialSlot(int arg0, int arg1) {
 		this.field7895[arg0] = arg1;
 		this.method10118();
 	}
 
-	@ObfuscatedName("xg.f(ZB)V")
-	public void setGender(boolean arg0) {
+    public void setGender(boolean arg0) {
 		this.isFemale = arg0;
 		this.method10118();
 	}
 
-	@ObfuscatedName("xg.w(IILaon;B)V")
-	public void setObject(int arg0, int arg1, ObjTypeList arg2) {
+    public void setObject(int arg0, int arg1, ObjTypeList arg2) {
 		if (arg1 == -1) {
 			this.field7890[arg0] = 0;
 		} else if (arg2.list(arg1) == null) {
@@ -130,8 +106,7 @@ public class PlayerModel {
 		}
 	}
 
-	@ObfuscatedName("xg.l(I)V")
-	public void method10118() {
+    public void method10118() {
 		long[] var1 = Packet.crc64table;
 		this.field7888 = -1L;
 		this.field7888 = this.field7888 >>> 8 ^ var1[(int) ((this.field7888 ^ (long) (this.field7891 >> 8)) & 0xFFL)];
@@ -190,8 +165,7 @@ public class PlayerModel {
 		this.field7888 = this.field7888 >>> 8 ^ var1[(int) ((this.field7888 ^ (long) (this.isFemale ? 1 : 0)) & 0xFFL)];
 	}
 
-	@ObfuscatedName("xg.u(Ldh;ILaof;Laov;Laod;Laon;Lem;Lep;Laaq;Laaq;[Laaq;[IIZLwy;B)Ldo;")
-	public Model getBodyModel(Toolkit arg0, int arg1, BASTypeList arg2, IDKTypeList arg3, NPCTypeList arg4, ObjTypeList arg5, VariableTypeProvider arg6, VarIntDomain arg7, AnimationNode arg8, AnimationNode arg9, AnimationNode[] arg10, int[] arg11, int arg12, boolean arg13, WearposDefaults arg14) {
+    public Model getBodyModel(Toolkit arg0, int arg1, BASTypeList arg2, IDKTypeList arg3, NPCTypeList arg4, ObjTypeList arg5, VariableTypeProvider arg6, VarIntDomain arg7, AnimationNode arg8, AnimationNode arg9, AnimationNode[] arg10, int[] arg11, int arg12, boolean arg13, WearposDefaults arg14) {
 		if (this.field7892 != -1) {
 			return ((NPCType) arg4.list(this.field7892)).getSequencedModel(arg0, arg1, arg2, arg6, arg7, arg8, arg9, arg10, arg11, arg12, null);
 		}
@@ -461,8 +435,7 @@ public class PlayerModel {
 		return var69;
 	}
 
-	@ObfuscatedName("xg.z(Ldh;ILaov;Laod;Laon;Lem;Lep;Laaq;B)Ldo;")
-	public Model getHeadModel(Toolkit arg0, int arg1, IDKTypeList arg2, NPCTypeList arg3, ObjTypeList arg4, VariableTypeProvider arg5, VarIntDomain arg6, AnimationNode arg7) {
+    public Model getHeadModel(Toolkit arg0, int arg1, IDKTypeList arg2, NPCTypeList arg3, ObjTypeList arg4, VariableTypeProvider arg5, VarIntDomain arg6, AnimationNode arg7) {
 		if (this.field7892 != -1) {
 			return ((NPCType) arg3.list(this.field7892)).getHeadModel(arg0, arg1, arg5, arg6, arg7, null);
 		}
@@ -546,8 +519,7 @@ public class PlayerModel {
 		}
 	}
 
-	@ObfuscatedName("xg.p(Ldh;ILaov;Laos;Laaq;IIIB)Ldo;")
-	public Model method10130(Toolkit arg0, int arg1, IDKTypeList arg2, SeqTypeList arg3, AnimationNode arg4, int arg5, int arg6, int arg7) {
+    public Model method10130(Toolkit arg0, int arg1, IDKTypeList arg2, SeqTypeList arg3, AnimationNode arg4, int arg5, int arg6, int arg7) {
 		int var9 = arg4 == null ? arg1 : arg1 | arg4.method14358();
 		long var10 = (long) arg7 << 32 | (long) (arg6 << 16) | (long) arg5;
 		SoftLruHashTable var12 = field7902;
@@ -608,16 +580,14 @@ public class PlayerModel {
 		}
 	}
 
-	@ObfuscatedName("alb.d(I)I")
-	public static int method18304() {
+    public static int method18304() {
 		SoftLruHashTable var0 = field7901;
 		synchronized (field7901) {
 			return field7901.count();
 		}
 	}
 
-	@ObfuscatedName("eg.c(IS)V")
-	public static void resetModelCache(int arg0) {
+    public static void resetModelCache(int arg0) {
 		field4037 = arg0;
 		SoftLruHashTable var1 = field7902;
 		synchronized (field7902) {
@@ -629,8 +599,7 @@ public class PlayerModel {
 		}
 	}
 
-	@ObfuscatedName("ada.r(I)V")
-	public static void cacheReset() {
+    public static void cacheReset() {
 		SoftLruHashTable var0 = field7901;
 		synchronized (field7901) {
 			field7901.reset();
@@ -641,8 +610,7 @@ public class PlayerModel {
 		}
 	}
 
-	@ObfuscatedName("xw.v(IB)V")
-	public static void cacheClean(int arg0) {
+    public static void cacheClean(int arg0) {
 		SoftLruHashTable var1 = field7901;
 		synchronized (field7901) {
 			field7901.clean(arg0);
@@ -653,8 +621,7 @@ public class PlayerModel {
 		}
 	}
 
-	@ObfuscatedName("sc.o(S)V")
-	public static void cacheRemoveSoftReferences() {
+    public static void cacheRemoveSoftReferences() {
 		SoftLruHashTable var0 = field7901;
 		synchronized (field7901) {
 			field7901.clear();

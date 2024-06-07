@@ -4,14 +4,11 @@ import deob.ObfuscatedName;
 
 public final class NativeHeap {
 
-	@ObfuscatedName("jaclib/memory/heap/NativeHeap.peer")
-	public long peer;
+    public long peer;
 
-	@ObfuscatedName("jaclib/memory/heap/NativeHeap.e")
-	public final int field415;
+    public final int field415;
 
-	@ObfuscatedName("jaclib/memory/heap/NativeHeap.n")
-	public boolean field416;
+    public boolean field416;
 
 	public NativeHeap(int arg0) {
 		this.field415 = arg0;
@@ -19,21 +16,18 @@ public final class NativeHeap {
 		this.field416 = true;
 	}
 
-	@ObfuscatedName("jaclib/memory/heap/NativeHeap.e()Z")
-	public synchronized boolean method91() {
+    public synchronized boolean method91() {
 		return this.field416;
 	}
 
-	@ObfuscatedName("jaclib/memory/heap/NativeHeap.n(IZ)Ljaclib/memory/heap/NativeHeapBuffer;")
-	public NativeHeapBuffer method92(int arg0, boolean arg1) {
+    public NativeHeapBuffer method92(int arg0, boolean arg1) {
 		if (!this.field416) {
 			throw new IllegalStateException();
 		}
 		return new NativeHeapBuffer(this, this.allocateBuffer(arg0, arg1), arg0);
 	}
 
-	@ObfuscatedName("jaclib/memory/heap/NativeHeap.m()V")
-	public synchronized void method93() {
+    public synchronized void method93() {
 		if (this.field416) {
 			this.deallocateHeap();
 		}

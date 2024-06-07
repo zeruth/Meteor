@@ -4,23 +4,17 @@ import deob.ObfuscatedName;
 
 public class Stream {
 
-	@ObfuscatedName("jaclib/memory/Stream.e")
-	public Buffer field403;
+    public Buffer field403;
 
-	@ObfuscatedName("jaclib/memory/Stream.n")
-	public int field404;
+    public int field404;
 
-	@ObfuscatedName("jaclib/memory/Stream.m")
-	public int field405;
+    public int field405;
 
-	@ObfuscatedName("jaclib/memory/Stream.k")
-	public int field406;
+    public int field406;
 
-	@ObfuscatedName("jaclib/memory/Stream.f")
-	public final byte[] field407;
+    public final byte[] field407;
 
-	@ObfuscatedName("jaclib/memory/Stream.w")
-	public static final boolean field408 = getLSB(-65536) == -1;
+    public static final boolean field408 = getLSB(-65536) == -1;
 
 	public Stream() {
 		this(4096);
@@ -39,8 +33,7 @@ public class Stream {
 		this.method54(arg0, arg1, arg2);
 	}
 
-	@ObfuscatedName("jaclib/memory/Stream.e(Ljaclib/memory/Buffer;II)V")
-	public void method54(Buffer arg0, int arg1, int arg2) {
+    public void method54(Buffer arg0, int arg1, int arg2) {
 		this.method60();
 		this.field403 = arg0;
 		this.field405 = arg1;
@@ -50,27 +43,23 @@ public class Stream {
 		}
 	}
 
-	@ObfuscatedName("jaclib/memory/Stream.n()I")
-	public int method55() {
+    public int method55() {
 		return this.field406 + this.field405;
 	}
 
-	@ObfuscatedName("jaclib/memory/Stream.m(I)V")
-	public void method56(int arg0) {
+    public void method56(int arg0) {
 		this.method60();
 		this.field405 = arg0;
 	}
 
-	@ObfuscatedName("jaclib/memory/Stream.k(I)V")
-	public void method57(int arg0) {
+    public void method57(int arg0) {
 		if (this.field406 >= this.field407.length) {
 			this.method60();
 		}
 		this.field407[++this.field406 - 1] = (byte) arg0;
 	}
 
-	@ObfuscatedName("jaclib/memory/Stream.f(F)V")
-	public void method58(float arg0) {
+    public void method58(float arg0) {
 		if (this.field406 + 3 >= this.field407.length) {
 			this.method60();
 		}
@@ -81,8 +70,7 @@ public class Stream {
 		this.field407[++this.field406 - 1] = (byte) var2;
 	}
 
-	@ObfuscatedName("jaclib/memory/Stream.w(F)V")
-	public void method59(float arg0) {
+    public void method59(float arg0) {
 		if (this.field406 + 3 >= this.field407.length) {
 			this.method60();
 		}
@@ -93,8 +81,7 @@ public class Stream {
 		this.field407[++this.field406 - 1] = (byte) (var2 >> 24);
 	}
 
-	@ObfuscatedName("jaclib/memory/Stream.l()V")
-	public void method60() {
+    public void method60() {
 		if (this.field406 <= 0) {
 			return;
 		}
@@ -106,8 +93,7 @@ public class Stream {
 		this.field406 = 0;
 	}
 
-	@ObfuscatedName("jaclib/memory/Stream.u()Z")
-	public static boolean method61() {
+    public static boolean method61() {
 		return field408;
 	}
 

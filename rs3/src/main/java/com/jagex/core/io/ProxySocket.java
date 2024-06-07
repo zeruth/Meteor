@@ -13,14 +13,11 @@ import java.net.Proxy.Type;
 import java.nio.charset.Charset;
 import java.util.List;
 
-@ObfuscatedName("aob")
 public class ProxySocket extends AbstractSocket {
 
-	@ObfuscatedName("aob.m")
-	public final ProxySelector field11880 = ProxySelector.getDefault();
+    public final ProxySelector field11880 = ProxySelector.getDefault();
 
-	@ObfuscatedName("aob.n(I)Ljava/net/Socket;")
-	public Socket getSocket() throws IOException {
+    public Socket getSocket() throws IOException {
 		boolean var1 = Boolean.parseBoolean(System.getProperty("java.net.useSystemProxies"));
 		if (!var1) {
 			System.setProperty("java.net.useSystemProxies", "true");
@@ -61,8 +58,7 @@ public class ProxySocket extends AbstractSocket {
 		return this.createSocket();
 	}
 
-	@ObfuscatedName("aob.o(Ljava/net/Proxy;B)Ljava/net/Socket;")
-	public Socket method18856(Proxy arg0) throws IOException {
+    public Socket method18856(Proxy arg0) throws IOException {
 		if (arg0.type() == Type.DIRECT) {
 			return this.createSocket();
 		}
@@ -103,8 +99,7 @@ public class ProxySocket extends AbstractSocket {
 		}
 	}
 
-	@ObfuscatedName("aob.s(Ljava/lang/String;ILjava/lang/String;I)Ljava/net/Socket;")
-	public Socket method18860(String arg0, int arg1, String arg2) throws IOException {
+    public Socket method18860(String arg0, int arg1, String arg2) throws IOException {
 		Socket var4 = new Socket(arg0, arg1);
 		var4.setSoTimeout(10000);
 		OutputStream var5 = var4.getOutputStream();

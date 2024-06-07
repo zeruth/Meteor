@@ -10,23 +10,17 @@ import deob.ObfuscatedName;
 
 import java.util.Iterator;
 
-@ObfuscatedName("abe")
 public class CachingConfigTypeList implements ConfigTypeList {
 
-	@ObfuscatedName("abe.e")
-	public final Js5 configClient;
+    public final Js5 configClient;
 
-	@ObfuscatedName("abe.n")
-	public final Js5ConfigGroup configGroup;
+    public final Js5ConfigGroup configGroup;
 
-	@ObfuscatedName("abe.m")
-	public int num;
+    public int num;
 
-	@ObfuscatedName("abe.k")
-	public SoftLruHashTable recentUse;
+    public SoftLruHashTable recentUse;
 
-	@ObfuscatedName("abe.f")
-	public final ConfigTypeFactory factory;
+    public final ConfigTypeFactory factory;
 
 	// line 20
 	public CachingConfigTypeList(ModeGame modeGame, Language language, Js5 configClient, Js5ConfigGroup configGroup, int cacheSize, ConfigTypeFactory factory) {
@@ -38,8 +32,7 @@ public class CachingConfigTypeList implements ConfigTypeList {
 	}
 
 	// line 30
-	@ObfuscatedName("abe.e(II)Lay;")
-	public ConfigType list(int id) {
+    public ConfigType list(int id) {
 		SoftLruHashTable var2 = this.recentUse;
 		ConfigType cachedConfigType;
 		synchronized (this.recentUse) {
@@ -56,8 +49,7 @@ public class CachingConfigTypeList implements ConfigTypeList {
 		}
 	}
 
-	@ObfuscatedName("abe.u(II)Lay;")
-	public ConfigType list_uncached(int id) {
+    public ConfigType list_uncached(int id) {
 		Js5 var2 = this.configClient;
 		byte[] file;
 		synchronized (this.configClient) {
@@ -71,13 +63,11 @@ public class CachingConfigTypeList implements ConfigTypeList {
 		return type;
 	}
 
-	@ObfuscatedName("abe.n(I)I")
-	public int length() {
+    public int length() {
 		return this.num;
 	}
 
-	@ObfuscatedName("abe.z(II)V")
-	public void cacheResize(int size) {
+    public void cacheResize(int size) {
 		SoftLruHashTable var2 = this.recentUse;
 		synchronized (this.recentUse) {
 			this.recentUse.reset();
@@ -85,24 +75,21 @@ public class CachingConfigTypeList implements ConfigTypeList {
 		}
 	}
 
-	@ObfuscatedName("abe.r(I)V")
-	public void cacheReset() {
+    public void cacheReset() {
 		SoftLruHashTable var1 = this.recentUse;
 		synchronized (this.recentUse) {
 			this.recentUse.reset();
 		}
 	}
 
-	@ObfuscatedName("abe.v(II)V")
-	public void cacheClean(int num) {
+    public void cacheClean(int num) {
 		SoftLruHashTable var2 = this.recentUse;
 		synchronized (this.recentUse) {
 			this.recentUse.clean(num);
 		}
 	}
 
-	@ObfuscatedName("abe.o(I)V")
-	public void cacheRemoveSoftReferences() {
+    public void cacheRemoveSoftReferences() {
 		SoftLruHashTable var1 = this.recentUse;
 		synchronized (this.recentUse) {
 			this.recentUse.clear();
@@ -114,14 +101,12 @@ public class CachingConfigTypeList implements ConfigTypeList {
 		return new CachingConfigTypeListIterator(this);
 	}
 
-	@ObfuscatedName("acm")
-	public static class CachingConfigTypeListIterator implements Iterator {
+    public static class CachingConfigTypeListIterator implements Iterator {
 
 		// $FF: synthetic field
 		public final CachingConfigTypeList this$0;
 
-		@ObfuscatedName("acm.e")
-		public int field8852;
+        public int field8852;
 
 		public CachingConfigTypeListIterator(CachingConfigTypeList arg0) {
 			this.this$0 = arg0;

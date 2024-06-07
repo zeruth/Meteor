@@ -19,32 +19,23 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
 
-@ObfuscatedName("afu")
 public final class ClientVarDomain extends SparseVarDomain {
 
-	@ObfuscatedName("afu.m")
-	public boolean field10252 = false;
+    public boolean field10252 = false;
 
-	@ObfuscatedName("afu.k")
-	public long field10253 = -1L;
+    public long field10253 = -1L;
 
-	@ObfuscatedName("afu.f")
-	public boolean field10254 = false;
+    public boolean field10254 = false;
 
-	@ObfuscatedName("afu.w")
-	public Set field10255;
+    public Set field10255;
 
-	@ObfuscatedName("afu.l")
-	public long field10259 = -1L;
+    public long field10259 = -1L;
 
-	@ObfuscatedName("afu.u")
-	public VarValue[] field10257;
+    public VarValue[] field10257;
 
-	@ObfuscatedName("afu.z")
-	public int field10258 = 0;
+    public int field10258 = 0;
 
-	@ObfuscatedName("afu.p")
-	public final VarLifetime[] field10251;
+    public final VarLifetime[] field10251;
 
 	public ClientVarDomain(VarTypeList arg0) {
 		super(arg0);
@@ -55,8 +46,7 @@ public final class ClientVarDomain extends SparseVarDomain {
 		this.field10255 = new HashSet(arg0.length());
 	}
 
-	@ObfuscatedName("afu.e(Lec;II)V")
-	public void setVarValueInt(VarType arg0, int arg1) {
+    public void setVarValueInt(VarType arg0, int arg1) {
 		if (this.field10251[arg0.id] == VarLifetime.PERMANENT) {
 			this.field10252 = true;
 		} else if (this.field10251[arg0.id] == VarLifetime.SERVER_PERMANENT && this.getVarValueInt(arg0) != arg1) {
@@ -66,8 +56,7 @@ public final class ClientVarDomain extends SparseVarDomain {
 		super.setVarValueInt(arg0, arg1);
 	}
 
-	@ObfuscatedName("afu.m(Lec;J)V")
-	public void setVarValueLong(VarType arg0, long arg1) {
+    public void setVarValueLong(VarType arg0, long arg1) {
 		if (this.field10251[arg0.id] == VarLifetime.PERMANENT) {
 			this.field10252 = true;
 		} else if (this.field10251[arg0.id] == VarLifetime.SERVER_PERMANENT && this.getVarValueLong(arg0) != arg1) {
@@ -77,8 +66,7 @@ public final class ClientVarDomain extends SparseVarDomain {
 		super.setVarValueLong(arg0, arg1);
 	}
 
-	@ObfuscatedName("afu.f(Lec;Ljava/lang/Object;I)V")
-	public void setVarValue(VarType arg0, Object arg1) {
+    public void setVarValue(VarType arg0, Object arg1) {
 		if (this.field10251[arg0.id] == VarLifetime.PERMANENT) {
 			this.field10252 = true;
 		} else if (this.field10251[arg0.id] == VarLifetime.SERVER_PERMANENT) {
@@ -100,8 +88,7 @@ public final class ClientVarDomain extends SparseVarDomain {
 		super.setVarValue(arg0, arg1);
 	}
 
-	@ObfuscatedName("afu.i(I)V")
-	public void method16415() {
+    public void method16415() {
 		for (int var1 = 0; var1 < this.field10251.length; var1++) {
 			if (this.field10251[var1] == VarLifetime.TEMPORARY || this.field10251[var1] == VarLifetime.SERVER_PERMANENT) {
 				this.field1708.method14734(var1);
@@ -113,13 +100,11 @@ public final class ClientVarDomain extends SparseVarDomain {
 		this.field10259 = -1L;
 	}
 
-	@ObfuscatedName("afu.j(I)V")
-	public void method16421() {
+    public void method16421() {
 		this.field10258 = 0;
 	}
 
-	@ObfuscatedName("afu.t(Labl;B)V")
-	public void method16420(FileOnDisk arg0) {
+    public void method16420(FileOnDisk arg0) {
 		try {
 			byte[] var2 = new byte[(int) arg0.length()];
 			int var4;
@@ -160,8 +145,7 @@ public final class ClientVarDomain extends SparseVarDomain {
 		}
 	}
 
-	@ObfuscatedName("afu.ae(Labl;B)V")
-	public void method16418(FileOnDisk arg0) {
+    public void method16418(FileOnDisk arg0) {
 		try {
 			int var2 = 3;
 			int var3 = 0;
@@ -195,8 +179,7 @@ public final class ClientVarDomain extends SparseVarDomain {
 		this.field10252 = false;
 	}
 
-	@ObfuscatedName("afu.ag(I)V")
-	public void method16414() {
+    public void method16414() {
 		if (MonotonicTime.get() < this.field10259) {
 			return;
 		}
@@ -244,8 +227,7 @@ public final class ClientVarDomain extends SparseVarDomain {
 		this.field10259 = MonotonicTime.get() + 1000L;
 	}
 
-	@ObfuscatedName("afu.ad(I)V")
-	public void method16413() {
+    public void method16413() {
 		if (this.field10257 != null && this.field10258 >= this.field10257.length) {
 			this.field10257 = null;
 			this.field10258 = 0;

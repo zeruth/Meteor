@@ -24,221 +24,149 @@ import deob.ObfuscatedName;
 
 import java.util.Arrays;
 
-@ObfuscatedName("if")
 public class NPCType implements ConfigType {
 
-	@ObfuscatedName("if.f")
-	public static short[] clientpalette = new short[256];
+    public static short[] clientpalette = new short[256];
 
-	@ObfuscatedName("if.w")
-	public NPCTypeFactory factory;
+    public NPCTypeFactory factory;
 
-	@ObfuscatedName("if.l")
-	public ConfigTypeList myList;
+    public ConfigTypeList myList;
 
-	@ObfuscatedName("if.u")
-	public int id;
+    public int id;
 
-	@ObfuscatedName("if.z")
-	public String name = "null";
+    public String name = "null";
 
-	@ObfuscatedName("if.p")
-	public int size = 1;
+    public int size = 1;
 
-	@ObfuscatedName("if.d")
-	public int[] models;
+    public int[] models;
 
-	@ObfuscatedName("if.c")
-	public int[] heads;
+    public int[] heads;
 
-	@ObfuscatedName("if.r")
-	public int[][] modeloffset;
+    public int[][] modeloffset;
 
-	@ObfuscatedName("if.v")
-	public int bas = -1;
+    public int bas = -1;
 
-	@ObfuscatedName("if.o")
-	public short[] recol_s;
+    public short[] recol_s;
 
-	@ObfuscatedName("if.s")
-	public short[] recol_d;
+    public short[] recol_d;
 
-	@ObfuscatedName("if.y")
-	public byte[] recol_d_palette;
+    public byte[] recol_d_palette;
 
-	@ObfuscatedName("if.q")
-	public short[] retex_s;
+    public short[] retex_s;
 
-	@ObfuscatedName("if.x")
-	public short[] retex_d;
+    public short[] retex_d;
 
-	@ObfuscatedName("if.b")
-	public byte[] recolindices;
+    public byte[] recolindices;
 
-	@ObfuscatedName("if.h")
-	public byte[] retexindices;
+    public byte[] retexindices;
 
-	@ObfuscatedName("if.a")
-	public byte tint_hue;
+    public byte tint_hue;
 
-	@ObfuscatedName("if.g")
-	public byte tint_saturation;
+    public byte tint_saturation;
 
-	@ObfuscatedName("if.i")
-	public byte tint_luminence;
+    public byte tint_luminence;
 
-	@ObfuscatedName("if.j")
-	public byte tint_weight = 0;
+    public byte tint_weight = 0;
 
-	@ObfuscatedName("if.t")
-	public String[] op;
+    public String[] op;
 
-	@ObfuscatedName("if.ae")
-	public int[] cursor;
+    public int[] cursor;
 
-	@ObfuscatedName("if.ag")
-	public int cursorattack = -1;
+    public int cursorattack = -1;
 
-	@ObfuscatedName("if.ah")
-	public boolean minimap = true;
+    public boolean minimap = true;
 
-	@ObfuscatedName("if.al")
-	public int vislevel = -1;
+    public int vislevel = -1;
 
-	@ObfuscatedName("if.ac")
-	public int resizeh = 128;
+    public int resizeh = 128;
 
-	@ObfuscatedName("if.ai")
-	public int resizev = 128;
+    public int resizev = 128;
 
-	@ObfuscatedName("if.aw")
-	public boolean drawabove = false;
+    public boolean drawabove = false;
 
-	@ObfuscatedName("if.as")
-	public boolean drawbelow = false;
+    public boolean drawbelow = false;
 
-	@ObfuscatedName("if.at")
-	public boolean follower = false;
+    public boolean follower = false;
 
-	@ObfuscatedName("if.ad")
-	public int ambient = 0;
+    public int ambient = 0;
 
-	@ObfuscatedName("if.am")
-	public int contrast = 0;
+    public int contrast = 0;
 
-	@ObfuscatedName("if.au")
-	public int[] headicon_groupid = null;
+    public int[] headicon_groupid = null;
 
-	@ObfuscatedName("if.ar")
-	public short[] headicon_id = null;
+    public short[] headicon_id = null;
 
-	@ObfuscatedName("if.ap")
-	public int covermarker = -1;
+    public int covermarker = -1;
 
-	@ObfuscatedName("if.aq")
-	public int turnspeed = 32;
+    public int turnspeed = 32;
 
-	@ObfuscatedName("if.ax")
-	public int[] multinpc;
+    public int[] multinpc;
 
-	@ObfuscatedName("if.av")
-	public int multivarbit = -1;
+    public int multivarbit = -1;
 
-	@ObfuscatedName("if.ao")
-	public int multivarp = -1;
+    public int multivarp = -1;
 
-	@ObfuscatedName("if.aj")
-	public boolean active = true;
+    public boolean active = true;
 
-	@ObfuscatedName("if.ay")
-	public boolean walksmoothing = true;
+    public boolean walksmoothing = true;
 
-	@ObfuscatedName("if.ab")
-	public boolean spotshadow = true;
+    public boolean spotshadow = true;
 
-	@ObfuscatedName("if.az")
-	public short spotshadowcolour_1 = 0;
+    public short spotshadowcolour_1 = 0;
 
-	@ObfuscatedName("if.aa")
-	public short spotshadowcolour_2 = 0;
+    public short spotshadowcolour_2 = 0;
 
-	@ObfuscatedName("if.af")
-	public byte spotshadowtrans_1 = -96;
+    public byte spotshadowtrans_1 = -96;
 
-	@ObfuscatedName("if.ak")
-	public byte spotshadowtrans_2 = -16;
+    public byte spotshadowtrans_2 = -16;
 
-	@ObfuscatedName("if.an")
-	public short spotshadowtexture = -1;
+    public short spotshadowtexture = -1;
 
-	@ObfuscatedName("if.bf")
-	public byte spotshadowtexture_alpha = 0;
+    public byte spotshadowtexture_alpha = 0;
 
-	@ObfuscatedName("if.bl")
-	public byte walkflags = 0;
+    public byte walkflags = 0;
 
-	@ObfuscatedName("if.bx")
-	public int bgsound = -1;
+    public int bgsound = -1;
 
-	@ObfuscatedName("if.bd")
-	public int bgsound_crawl = -1;
+    public int bgsound_crawl = -1;
 
-	@ObfuscatedName("if.bc")
-	public int bgsound_walk = -1;
+    public int bgsound_walk = -1;
 
-	@ObfuscatedName("if.bi")
-	public int bgsound_run = -1;
+    public int bgsound_run = -1;
 
-	@ObfuscatedName("if.bn")
-	public int bgsound_range = 0;
+    public int bgsound_range = 0;
 
-	@ObfuscatedName("if.bt")
-	public int bgsound_size = 0;
+    public int bgsound_size = 0;
 
-	@ObfuscatedName("if.bq")
-	public int bgsound_volume = 255;
+    public int bgsound_volume = 255;
 
-	@ObfuscatedName("if.bm")
-	public HashTable params;
+    public HashTable params;
 
-	@ObfuscatedName("if.bb")
-	public int overlayheight = -1;
+    public int overlayheight = -1;
 
-	@ObfuscatedName("if.be")
-	public CompassPoint respawndir = CompassPoint.SOUTH;
+    public CompassPoint respawndir = CompassPoint.SOUTH;
 
-	@ObfuscatedName("if.by")
-	public int mapelement = -1;
+    public int mapelement = -1;
 
-	@ObfuscatedName("if.bu")
-	public int[] quests;
+    public int[] quests;
 
-	@ObfuscatedName("if.bw")
-	public byte reprioritiseattackop = -1;
+    public byte reprioritiseattackop = -1;
 
-	@ObfuscatedName("if.bo")
-	public int picksize = -1;
+    public int picksize = -1;
 
-	@ObfuscatedName("if.bz")
-	public Cuboid clickbox;
+    public Cuboid clickbox;
 
-	@ObfuscatedName("if.bv")
-	public int bgsound_minrate = 256;
+    public int bgsound_minrate = 256;
 
-	@ObfuscatedName("if.br")
-	public int bgsound_maxrate = 256;
+    public int bgsound_maxrate = 256;
 
-	@ObfuscatedName("if.bg")
-	public int picksizeshift = 0;
+    public int picksizeshift = 0;
 
-	@ObfuscatedName("if.ba")
-	public boolean antimacro = true;
+    public boolean antimacro = true;
 
-	@ObfuscatedName("if.bp")
-	public int field2765 = 0;
+    public int field2765 = 0;
 
-	@ObfuscatedName("if.bj")
-	public boolean transmogfakenpc = false;
+    public boolean transmogfakenpc = false;
 
 	public NPCType(int id, NPCTypeFactory factory, ConfigTypeList npcs) {
 		this.id = id;
@@ -247,8 +175,7 @@ public class NPCType implements ConfigType {
 		this.op = (String[]) this.factory.defaultops.clone();
 	}
 
-	@ObfuscatedName("if.e(Lalw;B)V")
-	public void decode(Packet buf) {
+    public void decode(Packet buf) {
 		while (true) {
 			int code = buf.g1();
 			if (code == 0) {
@@ -258,8 +185,7 @@ public class NPCType implements ConfigType {
 		}
 	}
 
-	@ObfuscatedName("if.u(Lalw;II)V")
-	public void decode(Packet buf, int code) {
+    public void decode(Packet buf, int code) {
 		if (code == 1) {
 			int length = buf.g1();
 			this.models = new int[length];
@@ -533,8 +459,7 @@ public class NPCType implements ConfigType {
 		}
 	}
 
-	@ObfuscatedName("if.n(I)V")
-	public void postDecode() {
+    public void postDecode() {
 		if (this.models == null) {
 			this.models = new int[0];
 		}
@@ -548,13 +473,11 @@ public class NPCType implements ConfigType {
 		}
 	}
 
-	@ObfuscatedName("if.z(Ldh;ILaof;Lem;Lep;Laaq;Laaq;[Laaq;[IILia;I)Ldo;")
-	public final Model getSequencedModel(Toolkit arg0, int arg1, BASTypeList arg2, VariableTypeProvider arg3, VarIntDomain arg4, AnimationNode arg5, AnimationNode arg6, AnimationNode[] arg7, int[] arg8, int arg9, NPCTypeCustomisation arg10) {
+    public final Model getSequencedModel(Toolkit arg0, int arg1, BASTypeList arg2, VariableTypeProvider arg3, VarIntDomain arg4, AnimationNode arg5, AnimationNode arg6, AnimationNode[] arg7, int[] arg8, int arg9, NPCTypeCustomisation arg10) {
 		return this.getSequencedModel(arg0, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9, arg10, this.bas, true);
 	}
 
-	@ObfuscatedName("if.p(Ldh;ILaof;Lem;Lep;Laaq;Laaq;[Laaq;[IILia;IZB)Ldo;")
-	public final Model getSequencedModel(Toolkit arg0, int arg1, BASTypeList arg2, VariableTypeProvider arg3, VarIntDomain arg4, AnimationNode arg5, AnimationNode arg6, AnimationNode[] arg7, int[] arg8, int arg9, NPCTypeCustomisation arg10, int arg11, boolean arg12) {
+    public final Model getSequencedModel(Toolkit arg0, int arg1, BASTypeList arg2, VariableTypeProvider arg3, VarIntDomain arg4, AnimationNode arg5, AnimationNode arg6, AnimationNode[] arg7, int[] arg8, int arg9, NPCTypeCustomisation arg10, int arg11, boolean arg12) {
 		if (this.multinpc != null) {
 			NPCType var14 = this.getMultiNPC(arg3, arg4);
 			return var14 == null ? null : var14.getSequencedModel(arg0, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9, arg10, arg11, arg12);
@@ -789,8 +712,7 @@ public class NPCType implements ConfigType {
 		return var50;
 	}
 
-	@ObfuscatedName("if.d(Ldh;ILem;Lep;Laaq;Lia;S)Ldo;")
-	public final Model getHeadModel(Toolkit arg0, int arg1, VariableTypeProvider arg2, VarIntDomain arg3, AnimationNode arg4, NPCTypeCustomisation arg5) {
+    public final Model getHeadModel(Toolkit arg0, int arg1, VariableTypeProvider arg2, VarIntDomain arg3, AnimationNode arg4, NPCTypeCustomisation arg5) {
 		if (this.multinpc != null) {
 			NPCType var7 = this.getMultiNPC(arg2, arg3);
 			return var7 == null ? null : var7.getHeadModel(arg0, arg1, arg2, arg3, arg4, arg5);
@@ -905,8 +827,7 @@ public class NPCType implements ConfigType {
 		}
 	}
 
-	@ObfuscatedName("if.c(I)Z")
-	public final boolean hasReadyModels() {
+    public final boolean hasReadyModels() {
 		if (this.models == null) {
 			return true;
 		}
@@ -921,8 +842,7 @@ public class NPCType implements ConfigType {
 		return ready;
 	}
 
-	@ObfuscatedName("if.r(IIB)I")
-	public int getParam(int arg0, int arg1) {
+    public int getParam(int arg0, int arg1) {
 		if (this.params == null) {
 			return arg1;
 		} else {
@@ -931,8 +851,7 @@ public class NPCType implements ConfigType {
 		}
 	}
 
-	@ObfuscatedName("if.v(ILjava/lang/String;I)Ljava/lang/String;")
-	public String getParam(int arg0, String arg1) {
+    public String getParam(int arg0, String arg1) {
 		if (this.params == null) {
 			return arg1;
 		} else {
@@ -941,8 +860,7 @@ public class NPCType implements ConfigType {
 		}
 	}
 
-	@ObfuscatedName("if.o(Lem;Lep;S)Lif;")
-	public final NPCType getMultiNPC(VariableTypeProvider varProvider, VarIntDomain varDomain) {
+    public final NPCType getMultiNPC(VariableTypeProvider varProvider, VarIntDomain varDomain) {
 		int i = -1;
 		if (this.multivarbit != -1) {
 			VarBitType var4 = varProvider.getVarBitType(this.multivarbit);
@@ -963,8 +881,7 @@ public class NPCType implements ConfigType {
 		}
 	}
 
-	@ObfuscatedName("if.s(Lem;Lep;I)Z")
-	public boolean isVisible(VariableTypeProvider varProvider, VarIntDomain varDomain) {
+    public boolean isVisible(VariableTypeProvider varProvider, VarIntDomain varDomain) {
 		if (this.multinpc == null) {
 			return true;
 		}
@@ -988,8 +905,7 @@ public class NPCType implements ConfigType {
 		}
 	}
 
-	@ObfuscatedName("if.y(S)Z")
-	public boolean hasBackgroundSound() {
+    public boolean hasBackgroundSound() {
 		if (this.multinpc == null) {
 			return this.bgsound != -1 || this.bgsound_walk != -1 || this.bgsound_run != -1;
 		}
@@ -1004,8 +920,7 @@ public class NPCType implements ConfigType {
 		return false;
 	}
 
-	@ObfuscatedName("if.q(II)I")
-	public int getCursor(int op) {
+    public int getCursor(int op) {
 		return this.cursor == null ? -1 : this.cursor[op];
 	}
 }

@@ -6,15 +6,13 @@ import com.jagex.game.client.KeyHeldBinding;
 import com.jagex.game.client.MouseBinding;
 import deob.ObfuscatedName;
 
-@ObfuscatedName("vi")
 public class Bindings {
 
 	public Bindings() throws Throwable {
 		throw new Error();
 	}
 
-	@ObfuscatedName("hh.e(Lalw;I)Lvt;")
-	public static Binding method4055(Packet arg0) {
+    public static Binding method4055(Packet arg0) {
 		BindingType var1 = BindingType.method4512(arg0.g1());
 		if (BindingType.field7417 == var1) {
 			return MouseBinding.method9770(arg0);

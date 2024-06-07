@@ -4,35 +4,25 @@ import com.jagex.core.datastruct.Node;
 import com.jagex.core.io.Packet;
 import deob.ObfuscatedName;
 
-@ObfuscatedName("akq")
 public class CutsceneTemplate extends Node {
 
-	@ObfuscatedName("akq.k")
-	public final int field11344;
+    public final int field11344;
 
-	@ObfuscatedName("akq.f")
-	public final int field11337;
+    public final int field11337;
 
-	@ObfuscatedName("akq.w")
-	public final int field11338;
+    public final int field11338;
 
-	@ObfuscatedName("akq.l")
-	public final int field11339;
+    public final int field11339;
 
-	@ObfuscatedName("akq.u")
-	public final int field11336;
+    public final int field11336;
 
-	@ObfuscatedName("akq.z")
-	public final int field11341;
+    public final int field11341;
 
-	@ObfuscatedName("akq.p")
-	public final int field11340;
+    public final int field11340;
 
-	@ObfuscatedName("akq.d")
-	public final int field11343;
+    public final int field11343;
 
-	@ObfuscatedName("akq.c")
-	public final int field11342;
+    public final int field11342;
 
 	public CutsceneTemplate(Packet arg0) {
 		int var2 = arg0.g4s();

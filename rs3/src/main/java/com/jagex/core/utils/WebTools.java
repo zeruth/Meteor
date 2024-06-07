@@ -2,15 +2,13 @@ package com.jagex.core.utils;
 
 import deob.ObfuscatedName;
 
-@ObfuscatedName("adw")
 public class WebTools {
 
 	public WebTools() throws Throwable {
 		throw new Error();
 	}
 
-	@ObfuscatedName("anc.e(Ljava/lang/CharSequence;B)Ljava/lang/String;")
-	public static String urlencode(CharSequence arg0) {
+    public static String urlencode(CharSequence arg0) {
 		int var1 = arg0.length();
 		StringBuilder var2 = new StringBuilder(var1);
 		for (int var3 = 0; var3 < var1; var3++) {

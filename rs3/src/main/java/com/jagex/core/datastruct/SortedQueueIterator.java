@@ -6,17 +6,13 @@ import java.util.ConcurrentModificationException;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
-@ObfuscatedName("ng")
 public class SortedQueueIterator implements Iterator {
 
-	@ObfuscatedName("ng.e")
-	public SortedQueue field3571;
+    public SortedQueue field3571;
 
-	@ObfuscatedName("ng.n")
-	public int field3570 = 0;
+    public int field3570 = 0;
 
-	@ObfuscatedName("ng.m")
-	public int field3572 = this.field3571.modCount;
+    public int field3572 = this.field3571.modCount;
 
 	public SortedQueueIterator(SortedQueue arg0) {
 		this.field3571 = arg0;

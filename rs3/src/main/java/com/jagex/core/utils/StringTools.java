@@ -2,15 +2,13 @@ package com.jagex.core.utils;
 
 import deob.ObfuscatedName;
 
-@ObfuscatedName("zm")
 public final class StringTools {
 
 	public StringTools() throws Throwable {
 		throw new Error();
 	}
 
-	@ObfuscatedName("in.e(Ljava/lang/CharSequence;CI)I")
-	public static int method4423(CharSequence arg0, char arg1) {
+    public static int method4423(CharSequence arg0, char arg1) {
 		int var2 = 0;
 		int var3 = arg0.length();
 		for (int var4 = 0; var4 < var3; var4++) {
@@ -21,8 +19,7 @@ public final class StringTools {
 		return var2;
 	}
 
-	@ObfuscatedName("ua.n([Ljava/lang/Object;III)Ljava/lang/String;")
-	public static String method9007(Object[] arg0, int arg1, int arg2) {
+    public static String method9007(Object[] arg0, int arg1, int arg2) {
 		if (arg2 == 0) {
 			return "";
 		} else if (arg2 == 1) {
@@ -52,13 +49,11 @@ public final class StringTools {
 		}
 	}
 
-	@ObfuscatedName("wc.m(Ljava/lang/CharSequence;I)Z")
-	public static boolean method9836(CharSequence arg0) {
+    public static boolean method9836(CharSequence arg0) {
 		return method17520(arg0, 10, true);
 	}
 
-	@ObfuscatedName("ajw.k(Ljava/lang/CharSequence;IZI)Z")
-	public static boolean method17520(CharSequence arg0, int arg1, boolean arg2) {
+    public static boolean method17520(CharSequence arg0, int arg1, boolean arg2) {
 		if (arg1 < 2 || arg1 > 36) {
 			throw new IllegalArgumentException("" + arg1);
 		}
@@ -103,18 +98,15 @@ public final class StringTools {
 		return var4;
 	}
 
-	@ObfuscatedName("vk.f(Ljava/lang/CharSequence;B)I")
-	public static int parseInt(CharSequence arg0) {
+    public static int parseInt(CharSequence arg0) {
 		return method9587(arg0, 10, true);
 	}
 
-	@ObfuscatedName("hz.w(Ljava/lang/CharSequence;II)I")
-	public static int method4321(CharSequence arg0, int arg1) {
+    public static int method4321(CharSequence arg0, int arg1) {
 		return method9587(arg0, arg1, true);
 	}
 
-	@ObfuscatedName("vn.l(Ljava/lang/CharSequence;IZI)I")
-	public static int method9587(CharSequence arg0, int arg1, boolean arg2) {
+    public static int method9587(CharSequence arg0, int arg1, boolean arg2) {
 		if (arg1 < 2 || arg1 > 36) {
 			throw new IllegalArgumentException("" + arg1);
 		}
@@ -162,13 +154,11 @@ public final class StringTools {
 		return var5;
 	}
 
-	@ObfuscatedName("dz.u(IZI)Ljava/lang/String;")
-	public static String method1898(int arg0, boolean arg1) {
+    public static String method1898(int arg0, boolean arg1) {
 		return arg1 && arg0 >= 0 ? method13992(arg0, 10, arg1) : Integer.toString(arg0);
 	}
 
-	@ObfuscatedName("ze.z(IIZI)Ljava/lang/String;")
-	public static String method13992(int arg0, int arg1, boolean arg2) {
+    public static String method13992(int arg0, int arg1, boolean arg2) {
 		if (arg1 < 2 || arg1 > 36) {
 			throw new IllegalArgumentException("" + arg1);
 		} else if (arg2 && arg0 >= 0) {
@@ -196,8 +186,7 @@ public final class StringTools {
 		}
 	}
 
-	@ObfuscatedName("go.p(Ljava/lang/CharSequence;B)I")
-	public static int hashCode(CharSequence arg0) {
+    public static int hashCode(CharSequence arg0) {
 		int var1 = arg0.length();
 		int var2 = 0;
 		for (int var3 = 0; var3 < var1; var3++) {
@@ -206,8 +195,7 @@ public final class StringTools {
 		return var2;
 	}
 
-	@ObfuscatedName("zg.d(Ljava/lang/CharSequence;I)I")
-	public static int method14059(CharSequence arg0) {
+    public static int method14059(CharSequence arg0) {
 		int var1 = arg0.length();
 		int var2 = 0;
 		for (int var3 = 0; var3 < var1; var3++) {
@@ -216,8 +204,7 @@ public final class StringTools {
 		return var2;
 	}
 
-	@ObfuscatedName("aej.c(Ljava/lang/CharSequence;I)J")
-	public static long method15380(CharSequence arg0) {
+    public static long method15380(CharSequence arg0) {
 		int var1 = arg0.length();
 		long var2 = 0L;
 		for (int var4 = 0; var4 < var1; var4++) {
@@ -226,8 +213,7 @@ public final class StringTools {
 		return var2;
 	}
 
-	@ObfuscatedName("yc.r(Ljava/lang/CharSequence;Ljava/lang/CharSequence;I)I")
-	public static int distance(CharSequence arg0, CharSequence arg1) {
+    public static int distance(CharSequence arg0, CharSequence arg1) {
 		int var2 = arg0.length();
 		int var3 = arg1.length();
 		if (var2 == 0) {
@@ -255,23 +241,19 @@ public final class StringTools {
 		}
 	}
 
-	@ObfuscatedName("abi.v(CI)Z")
-	public static boolean charIsAlpha(char arg0) {
+    public static boolean charIsAlpha(char arg0) {
 		return arg0 >= 'A' && arg0 <= 'Z' || arg0 >= 'a' && arg0 <= 'z';
 	}
 
-	@ObfuscatedName("pz.o(CB)Z")
-	public static boolean charIsNumeric(char arg0) {
+    public static boolean charIsNumeric(char arg0) {
 		return arg0 >= '0' && arg0 <= '9';
 	}
 
-	@ObfuscatedName("ea.s(CI)Z")
-	public static boolean charIsAlphaNumeric(char arg0) {
+    public static boolean charIsAlphaNumeric(char arg0) {
 		return arg0 >= '0' && arg0 <= '9' || arg0 >= 'A' && arg0 <= 'Z' || arg0 >= 'a' && arg0 <= 'z';
 	}
 
-	@ObfuscatedName("akc.y(Ljava/lang/String;CLjava/lang/String;I)Ljava/lang/String;")
-	public static String method17687(String arg0, char arg1, String arg2) {
+    public static String method17687(String arg0, char arg1, String arg2) {
 		int var3 = arg0.length();
 		int var4 = arg2.length();
 		int var5 = var3;
@@ -301,8 +283,7 @@ public final class StringTools {
 		}
 	}
 
-	@ObfuscatedName("client.q(Ljava/lang/String;CI)[Ljava/lang/String;")
-	public static String[] split(String arg0, char arg1) {
+    public static String[] split(String arg0, char arg1) {
 		int var2 = method4423(arg0, arg1);
 		String[] var3 = new String[var2 + 1];
 		int var4 = 0;
@@ -318,8 +299,7 @@ public final class StringTools {
 		return var3;
 	}
 
-	@ObfuscatedName("akv.x(CI)Z")
-	public static boolean charIsPrintable(char arg0) {
+    public static boolean charIsPrintable(char arg0) {
 		if (arg0 >= ' ' && arg0 <= '~') {
 			return true;
 		} else if (arg0 >= 160 && arg0 <= 255) {

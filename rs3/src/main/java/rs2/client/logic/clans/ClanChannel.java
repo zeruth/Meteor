@@ -7,42 +7,31 @@ import deob.ObfuscatedName;
 
 import java.util.BitSet;
 
-@ObfuscatedName("akr")
 public class ClanChannel extends Node {
 
-	@ObfuscatedName("akr.k")
-	public boolean useUserHashes;
+    public boolean useUserHashes;
 
-	@ObfuscatedName("akr.f")
-	public boolean useDisplayNames = true;
+    public boolean useDisplayNames = true;
 
-	@ObfuscatedName("akr.w")
-	public ClanChannelUser[] channelUsers;
+    public ClanChannelUser[] channelUsers;
 
-	@ObfuscatedName("akr.l")
-	public int userCount = 0;
+    public int userCount = 0;
 
-	@ObfuscatedName("akr.u")
-	public int[] sortedUserSlots;
+    public int[] sortedUserSlots;
 
-	@ObfuscatedName("akr.z")
-	public long updateNum;
+    public long updateNum;
 
-	@ObfuscatedName("akr.p")
-	public String clanName = null;
+    public String clanName = null;
 
-	@ObfuscatedName("akr.d")
-	public byte rankTalk;
+    public byte rankTalk;
 
-	@ObfuscatedName("akr.c")
-	public byte rankKick;
+    public byte rankKick;
 
 	static {
 		new BitSet(65536);
 	}
 
-	@ObfuscatedName("akr.e(IB)V")
-	public void allocChannelUsers(int num) {
+    public void allocChannelUsers(int num) {
 		if (this.channelUsers == null) {
 			this.channelUsers = new ClanChannelUser[num];
 		} else {
@@ -54,8 +43,7 @@ public class ClanChannel extends Node {
 		this.decode(buf);
 	}
 
-	@ObfuscatedName("akr.n(I)[I")
-	public int[] getSortedUserSlot() {
+    public int[] getSortedUserSlot() {
 		if (this.sortedUserSlots == null) {
 			String[] names = new String[this.userCount];
 			this.sortedUserSlots = new int[this.userCount];
@@ -69,8 +57,7 @@ public class ClanChannel extends Node {
 		return this.sortedUserSlots;
 	}
 
-	@ObfuscatedName("akr.m(Lkb;I)V")
-	public void doAddUser(ClanChannelUser user) {
+    public void doAddUser(ClanChannelUser user) {
 		if (this.channelUsers == null || this.userCount >= this.channelUsers.length) {
 			this.allocChannelUsers(this.userCount + 5);
 		}
@@ -78,8 +65,7 @@ public class ClanChannel extends Node {
 		this.sortedUserSlots = null;
 	}
 
-	@ObfuscatedName("akr.k(II)V")
-	public void doDeleteUser(int pos) {
+    public void doDeleteUser(int pos) {
 		this.userCount--;
 		if (this.userCount == 0) {
 			this.channelUsers = null;
@@ -89,8 +75,7 @@ public class ClanChannel extends Node {
 		this.sortedUserSlots = null;
 	}
 
-	@ObfuscatedName("akr.f(Ljava/lang/String;B)I")
-	public int getUserSlot(String name) {
+    public int getUserSlot(String name) {
 		for (int index = 0; index < this.userCount; index++) {
 			if (this.channelUsers[index].name.equalsIgnoreCase(name)) {
 				return index;
@@ -99,8 +84,7 @@ public class ClanChannel extends Node {
 		return -1;
 	}
 
-	@ObfuscatedName("akr.w(Lalw;I)V")
-	public void decode(Packet buf) {
+    public void decode(Packet buf) {
 		int info = buf.g1();
 		if ((info & 0x1) != 0) {
 			this.useUserHashes = true;

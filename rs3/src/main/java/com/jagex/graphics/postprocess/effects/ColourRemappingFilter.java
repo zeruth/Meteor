@@ -3,61 +3,45 @@ package com.jagex.graphics.postprocess.effects;
 import com.jagex.graphics.*;
 import deob.ObfuscatedName;
 
-@ObfuscatedName("ais")
 public class ColourRemappingFilter extends GpuPostProcessEffect {
 
-	@ObfuscatedName("ais.m")
-	public static float[] field10663 = new float[] { 0.0F, 0.0F, 0.0F };
+    public static float[] field10663 = new float[] { 0.0F, 0.0F, 0.0F };
 
-	@ObfuscatedName("ais.k")
-	public static float field10656 = 1.0F;
+    public static float field10656 = 1.0F;
 
-	@ObfuscatedName("ais.f")
-	public static int field10655 = 1;
+    public static int field10655 = 1;
 
-	@ObfuscatedName("ais.w")
-	public static GpuColourRemapper[] field10653 = new GpuColourRemapper[] { null, null, null };
+    public static GpuColourRemapper[] field10653 = new GpuColourRemapper[] { null, null, null };
 
-	@ObfuscatedName("ais.l")
-	public GpuShader shader;
+    public GpuShader shader;
 
-	@ObfuscatedName("ais.u")
-	public ProgramUniform sceneTexUniform;
+    public ProgramUniform sceneTexUniform;
 
-	@ObfuscatedName("ais.z")
-	public GpuProgram[] techRemap3DPrograms = null;
+    public GpuProgram[] techRemap3DPrograms = null;
 
-	@ObfuscatedName("ais.p")
-	public ProgramUniform[] remapTex3DPrograms = null;
+    public ProgramUniform[] remapTex3DPrograms = null;
 
-	@ObfuscatedName("ais.d")
-	public ProgramUniform paramsWeightingsUniform;
+    public ProgramUniform paramsWeightingsUniform;
 
-	@ObfuscatedName("ais.c")
-	public ProgramUniform pixelOffsetUniforms;
+    public ProgramUniform pixelOffsetUniforms;
 
-	@ObfuscatedName("ais.r")
-	public ProgramUniform posAndTexCoordsUniform;
+    public ProgramUniform posAndTexCoordsUniform;
 
-	@ObfuscatedName("ais.v")
-	public boolean field10664;
+    public boolean field10664;
 
 	public ColourRemappingFilter(GpuToolkit arg0) {
 		super(arg0);
 	}
 
-	@ObfuscatedName("ais.e()Z")
-	public boolean method5558() {
+    public boolean method5558() {
 		return this.gpuRenderer.hasFramebufferObject && this.gpuRenderer.hasFragmentShader();
 	}
 
-	@ObfuscatedName("ais.n()Z")
-	public boolean method5559() {
+    public boolean method5559() {
 		return this.field10664;
 	}
 
-	@ObfuscatedName("ais.m()Z")
-	public boolean method5572() {
+    public boolean method5572() {
 		if (!this.method5558()) {
 			return false;
 		}
@@ -100,21 +84,17 @@ public class ColourRemappingFilter extends GpuPostProcessEffect {
 		}
 	}
 
-	@ObfuscatedName("ais.w(II)V")
-	public void method5574(int arg0, int arg1) {
+    public void method5574(int arg0, int arg1) {
 	}
 
-	@ObfuscatedName("ais.f()V")
-	public void method5562() {
+    public void method5562() {
 	}
 
-	@ObfuscatedName("ais.z()I")
-	public int method5566() {
+    public int method5566() {
 		return 1;
 	}
 
-	@ObfuscatedName("ais.l(ILafq;Llz;Ldw;Llz;Z)V")
-	public void method5564(int arg0, FrameBuffer arg1, GpuTexture arg2, EffectInterface arg3, GpuTexture arg4, boolean arg5) {
+    public void method5564(int arg0, FrameBuffer arg1, GpuTexture arg2, EffectInterface arg3, GpuTexture arg4, boolean arg5) {
 		float var7 = this.gpuRenderer.method15954();
 		float var8 = (float) arg1.getWidth();
 		float var9 = (float) arg1.getHeight();
@@ -152,23 +132,19 @@ public class ColourRemappingFilter extends GpuPostProcessEffect {
 		this.gpuRenderer.method2164(0, 0, var14, var15);
 	}
 
-	@ObfuscatedName("ais.u(I)V")
-	public void method5565(int arg0) {
+    public void method5565(int arg0) {
 		this.shader.method4214();
 	}
 
-	@ObfuscatedName("ais.d()I")
-	public int method5568() {
+    public int method5568() {
 		return 0;
 	}
 
-	@ObfuscatedName("ais.p()I")
-	public int method5567() {
+    public int method5567() {
 		return 2;
 	}
 
-	@ObfuscatedName("ais.v()Z")
-	public boolean method5571() {
+    public boolean method5571() {
 		return field10655 == 0 || field10656 == 1.0F || field10663[0] + field10663[1] + field10663[2] == 0.0F || field10653[0] == null && field10653[1] == null && field10653[2] == null;
 	}
 }

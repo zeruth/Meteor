@@ -2,35 +2,25 @@ package com.jagex.graphics;
 
 import deob.ObfuscatedName;
 
-@ObfuscatedName("mf")
 public class GpuModelRelated2 {
 
-	@ObfuscatedName("mf.e")
-	public final int field3348;
+    public final int field3348;
 
-	@ObfuscatedName("mf.n")
-	public final int field3343;
+    public final int field3343;
 
-	@ObfuscatedName("mf.m")
-	public final int field3344;
+    public final int field3344;
 
-	@ObfuscatedName("mf.k")
-	public final int field3345;
+    public final int field3345;
 
-	@ObfuscatedName("mf.f")
-	public final short field3346;
+    public final short field3346;
 
-	@ObfuscatedName("mf.w")
-	public final short field3342;
+    public final short field3342;
 
-	@ObfuscatedName("mf.l")
-	public final short field3347;
+    public final short field3347;
 
-	@ObfuscatedName("mf.u")
-	public final boolean field3349;
+    public final boolean field3349;
 
-	@ObfuscatedName("mf.z")
-	public final int field3350;
+    public final int field3350;
 
 	public GpuModelRelated2(int arg0, int arg1, int arg2, int arg3, int arg4, int arg5, int arg6, int arg7, int arg8, boolean arg9, boolean arg10, int arg11) {
 		this.field3345 = arg0;

@@ -9,71 +9,49 @@ import com.jagex.graphics.gl.GlToolkit;
 import deob.ObfuscatedName;
 import jaggl.OpenGL;
 
-@ObfuscatedName("cv")
 public class GlPostProcessing {
 
-	@ObfuscatedName("cv.e")
-	public final GlToolkit field1169;
+    public final GlToolkit field1169;
 
-	@ObfuscatedName("cv.n")
-	public GlFrameBuffer field1162;
+    public GlFrameBuffer field1162;
 
-	@ObfuscatedName("cv.m")
-	public GlFrameBuffer field1163;
+    public GlFrameBuffer field1163;
 
-	@ObfuscatedName("cv.k")
-	public GlFrameBuffer field1164;
+    public GlFrameBuffer field1164;
 
-	@ObfuscatedName("cv.f")
-	public int field1165 = 0;
+    public int field1165 = 0;
 
-	@ObfuscatedName("cv.w")
-	public int field1166 = 0;
+    public int field1166 = 0;
 
-	@ObfuscatedName("cv.l")
-	public int field1177 = 1;
+    public int field1177 = 1;
 
-	@ObfuscatedName("cv.u")
-	public int field1167 = 1;
+    public int field1167 = 1;
 
-	@ObfuscatedName("cv.z")
-	public boolean field1180;
+    public boolean field1180;
 
-	@ObfuscatedName("cv.p")
-	public LinkList field1170 = new LinkList();
+    public LinkList field1170 = new LinkList();
 
-	@ObfuscatedName("cv.d")
-	public boolean field1171 = true;
+    public boolean field1171 = true;
 
-	@ObfuscatedName("cv.c")
-	public boolean field1172 = true;
+    public boolean field1172 = true;
 
-	@ObfuscatedName("cv.r")
-	public boolean field1173 = true;
+    public boolean field1173 = true;
 
-	@ObfuscatedName("cv.v")
-	public boolean field1174 = true;
+    public boolean field1174 = true;
 
-	@ObfuscatedName("cv.o")
-	public GlTexture_Sub1[] field1175 = new GlTexture_Sub1[2];
+    public GlTexture_Sub1[] field1175 = new GlTexture_Sub1[2];
 
-	@ObfuscatedName("cv.s")
-	public PostProcessingRelated field1176;
+    public PostProcessingRelated field1176;
 
-	@ObfuscatedName("cv.y")
-	public GlTexture_Sub1 field1161;
+    public GlTexture_Sub1 field1161;
 
-	@ObfuscatedName("cv.q")
-	public PostProcessingRelated field1178;
+    public PostProcessingRelated field1178;
 
-	@ObfuscatedName("cv.x")
-	public boolean field1179 = false;
+    public boolean field1179 = false;
 
-	@ObfuscatedName("cv.b")
-	public int field1168 = 0;
+    public int field1168 = 0;
 
-	@ObfuscatedName("cv.h")
-	public DataType field1181 = DataType.UNSIGNED_INT_8;
+    public DataType field1181 = DataType.UNSIGNED_INT_8;
 
 	public GlPostProcessing(GlToolkit arg0) {
 		this.field1169 = arg0;
@@ -85,8 +63,7 @@ public class GlPostProcessing {
 		}
 	}
 
-	@ObfuscatedName("cv.e()V")
-	public void method1375() {
+    public void method1375() {
 		this.field1162 = null;
 		this.field1163 = null;
 		this.field1164 = null;
@@ -103,18 +80,15 @@ public class GlPostProcessing {
 		this.field1177 = 1;
 	}
 
-	@ObfuscatedName("cv.n()Z")
-	public boolean method1363() {
+    public boolean method1363() {
 		return this.field1164 != null;
 	}
 
-	@ObfuscatedName("cv.m()Z")
-	public boolean method1378() {
+    public boolean method1378() {
 		return this.field1180;
 	}
 
-	@ObfuscatedName("cv.k()Z")
-	public boolean method1364() {
+    public boolean method1364() {
 		for (PostProcessingFilter var1 = (PostProcessingFilter) this.field1170.head(); var1 != null; var1 = (PostProcessingFilter) this.field1170.next()) {
 			if (!var1.method17551()) {
 				return false;
@@ -123,8 +97,7 @@ public class GlPostProcessing {
 		return true;
 	}
 
-	@ObfuscatedName("cv.f()Z")
-	public boolean method1362() {
+    public boolean method1362() {
 		if (this.field1172) {
 			if (this.field1178 != null) {
 				this.field1178.delete();
@@ -215,8 +188,7 @@ public class GlPostProcessing {
 		return !this.field1174;
 	}
 
-	@ObfuscatedName("cv.w(IIII)Z")
-	public boolean method1367(int arg0, int arg1, int arg2, int arg3) {
+    public boolean method1367(int arg0, int arg1, int arg2, int arg3) {
 		if (this.field1164 == null || this.field1170._isEmpty() || this.method1364()) {
 			return false;
 		}
@@ -243,8 +215,7 @@ public class GlPostProcessing {
 		return true;
 	}
 
-	@ObfuscatedName("cv.l(II)V")
-	public void method1368(int arg0, int arg1) {
+    public void method1368(int arg0, int arg1) {
 		if (!this.field1180) {
 			return;
 		}
@@ -330,8 +301,7 @@ public class GlPostProcessing {
 		Object var17 = null;
 	}
 
-	@ObfuscatedName("cv.u(Lajl;)Z")
-	public boolean method1369(PostProcessingFilter arg0) {
+    public boolean method1369(PostProcessingFilter arg0) {
 		if (this.field1164 != null) {
 			if (arg0.method17539() || arg0.method17534()) {
 				this.field1170.addTail(arg0);
@@ -349,16 +319,14 @@ public class GlPostProcessing {
 		return false;
 	}
 
-	@ObfuscatedName("cv.z(Lajl;)V")
-	public void method1370(PostProcessingFilter arg0) {
+    public void method1370(PostProcessingFilter arg0) {
 		arg0.field11271 = false;
 		arg0.method17570();
 		arg0.unlink();
 		this.method1365();
 	}
 
-	@ObfuscatedName("cv.p()V")
-	public void method1365() {
+    public void method1365() {
 		int var1 = 0;
 		boolean var2 = false;
 		DataType var3 = DataType.UNSIGNED_INT_8;

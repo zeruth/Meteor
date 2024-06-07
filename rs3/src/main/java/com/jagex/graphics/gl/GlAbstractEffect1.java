@@ -5,27 +5,21 @@ import deob.ObfuscatedName;
 
 import java.util.Random;
 
-@ObfuscatedName("aln")
 public class GlAbstractEffect1 extends AbstractEffect1 {
 
-	@ObfuscatedName("aln.e")
-	public int[] field11644 = new int[512];
+    public int[] field11644 = new int[512];
 
-	@ObfuscatedName("aln.n")
-	public static final float[][] field11643 = new float[][] { { -0.333333F, -0.333333F, -0.333333F }, { 0.333333F, -0.333333F, -0.333333F }, { -0.333333F, 0.333333F, -0.333333F }, { 0.333333F, 0.333333F, -0.333333F }, { -0.333333F, -0.333333F, 0.333333F }, { 0.333333F, -0.333333F, 0.333333F }, { -0.333333F, 0.333333F, 0.333333F }, { 0.333333F, 0.333333F, 0.333333F } };
+    public static final float[][] field11643 = new float[][] { { -0.333333F, -0.333333F, -0.333333F }, { 0.333333F, -0.333333F, -0.333333F }, { -0.333333F, 0.333333F, -0.333333F }, { 0.333333F, 0.333333F, -0.333333F }, { -0.333333F, -0.333333F, 0.333333F }, { 0.333333F, -0.333333F, 0.333333F }, { -0.333333F, 0.333333F, 0.333333F }, { 0.333333F, 0.333333F, 0.333333F } };
 
-	@ObfuscatedName("aln.k(F)F")
-	public static final float method18204(float arg0) {
+    public static final float method18204(float arg0) {
 		return arg0 * arg0 * arg0 * ((arg0 * 6.0F - 15.0F) * arg0 + 10.0F);
 	}
 
-	@ObfuscatedName("aln.f(FFF)F")
-	public static final float method18197(float arg0, float arg1, float arg2) {
+    public static final float method18197(float arg0, float arg1, float arg2) {
 		return (arg1 - arg0) * arg2 + arg0;
 	}
 
-	@ObfuscatedName("aln.w(IFFF)F")
-	public static final float method18205(int arg0, float arg1, float arg2, float arg3) {
+    public static final float method18205(int arg0, float arg1, float arg2, float arg3) {
 		float[] var4 = field11643[arg0];
 		return var4[2] * arg3 + var4[0] * arg1 + var4[1] * arg2;
 	}
@@ -43,8 +37,7 @@ public class GlAbstractEffect1 extends AbstractEffect1 {
 		}
 	}
 
-	@ObfuscatedName("aln.e(IIIIFFFF[FI)V")
-	public void method8447(int arg0, int arg1, int arg2, int arg3, float arg4, float arg5, float arg6, float arg7, float[] arg8, int arg9) {
+    public void method8447(int arg0, int arg1, int arg2, int arg3, float arg4, float arg5, float arg6, float arg7, float[] arg8, int arg9) {
 		int var11 = (int) ((float) arg1 * arg4 - 1.0F);
 		int var12 = var11 & 0xFF;
 		int var13 = (int) ((float) arg2 * arg5 - 1.0F);

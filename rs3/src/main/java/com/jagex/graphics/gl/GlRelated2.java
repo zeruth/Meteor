@@ -5,30 +5,24 @@ import com.jagex.game.client.DataType;
 import com.jagex.graphics.*;
 import deob.ObfuscatedName;
 
-@ObfuscatedName("ca")
 public class GlRelated2 {
 
-	@ObfuscatedName("ca.e")
-	public final GlToolkit field1187;
+    public final GlToolkit field1187;
 
-	@ObfuscatedName("ca.n")
-	public final TextureList field1186;
+    public final TextureList field1186;
 
-	@ObfuscatedName("ca.m")
-	public final SoftLruHashTable field1185 = new SoftLruHashTable(10485760, 256);
+    public final SoftLruHashTable field1185 = new SoftLruHashTable(10485760, 256);
 
 	public GlRelated2(GlToolkit arg0, TextureList arg1) {
 		this.field1187 = arg0;
 		this.field1186 = arg1;
 	}
 
-	@ObfuscatedName("ca.e(Ldv;)Ladt;")
-	public GlTexture_Sub1 method1404(Material arg0) {
+    public GlTexture_Sub1 method1404(Material arg0) {
 		return this.method1398(arg0, arg0.size);
 	}
 
-	@ObfuscatedName("ca.n(Ldv;I)Ladt;")
-	public GlTexture_Sub1 method1398(Material arg0, int arg1) {
+    public GlTexture_Sub1 method1398(Material arg0, int arg1) {
 		GlTexture_Sub1 var3 = (GlTexture_Sub1) this.field1185.get((long) arg0.field1329);
 		if (var3 != null) {
 			return var3;
@@ -57,8 +51,7 @@ public class GlRelated2 {
 		}
 	}
 
-	@ObfuscatedName("ca.m(Lvk;Ldv;I)Z")
-	public boolean method1397(TextureRelated2 arg0, Material arg1, int arg2) {
+    public boolean method1397(TextureRelated2 arg0, Material arg1, int arg2) {
 		if (arg2 == -1) {
 			arg2 = arg1.size;
 		}
@@ -71,13 +64,11 @@ public class GlRelated2 {
 		}
 	}
 
-	@ObfuscatedName("ca.k()V")
-	public void method1402() {
+    public void method1402() {
 		this.field1185.clean(5);
 	}
 
-	@ObfuscatedName("ca.f()V")
-	public void method1399() {
+    public void method1399() {
 		this.field1185.reset();
 	}
 }

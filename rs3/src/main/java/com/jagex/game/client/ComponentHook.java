@@ -4,14 +4,12 @@ import com.jagex.core.io.Packet;
 import com.jagex.game.config.vartype.constants.BaseVarType;
 import deob.ObfuscatedName;
 
-@ObfuscatedName("hr")
 public class ComponentHook {
 
 	public ComponentHook(int arg0, Object[] arg1) {
 	}
 
-	@ObfuscatedName("ey.e(Lalw;I)Lhr;")
-	public static ComponentHook method2679(Packet arg0) {
+    public static ComponentHook method2679(Packet arg0) {
 		int var1 = arg0.g1();
 		if (var1 == 0) {
 			return null;

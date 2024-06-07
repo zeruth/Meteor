@@ -3,7 +3,6 @@ package com.jagex.game.clientoptions.options;
 import com.jagex.game.clientoptions.ClientOptions;
 import deob.ObfuscatedName;
 
-@ObfuscatedName("amb")
 public class PreferencesFog extends Preference {
 
 	public PreferencesFog(ClientOptions options) {
@@ -14,8 +13,7 @@ public class PreferencesFog extends Preference {
 		super(value, options);
 	}
 
-	@ObfuscatedName("amb.o(I)V")
-	public void clampValue() {
+    public void clampValue() {
 		if (this.currentValue != 0 && this.options.groundBlending.getValue() != 1) {
 			this.currentValue = 0;
 		}
@@ -27,18 +25,15 @@ public class PreferencesFog extends Preference {
 		}
 	}
 
-	@ObfuscatedName("amb.e(B)I")
-	public int defaultValue() {
+    public int defaultValue() {
 		return 1;
 	}
 
-	@ObfuscatedName("amb.s(B)Z")
-	public boolean canMod() {
+    public boolean canMod() {
 		return true;
 	}
 
-	@ObfuscatedName("amb.n(II)I")
-	public int canSetValue(int value) {
+    public int canSetValue(int value) {
 		if (value != 0 && this.options.orthographic.getValue() == 2) {
 			return 3;
 		} else if (value == 0 || this.options.groundBlending.getValue() == 1) {
@@ -48,13 +43,11 @@ public class PreferencesFog extends Preference {
 		}
 	}
 
-	@ObfuscatedName("amb.k(II)V")
-	public void setValue(int value) {
+    public void setValue(int value) {
 		this.currentValue = value;
 	}
 
-	@ObfuscatedName("amb.y(I)I")
-	public int getValue() {
+    public int getValue() {
 		return this.currentValue;
 	}
 }

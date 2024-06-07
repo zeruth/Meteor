@@ -13,71 +13,49 @@ import rs2.client.Client;
 
 import java.io.IOException;
 
-@ObfuscatedName("ax")
 public class ServerConnection {
 
-	@ObfuscatedName("ax.e")
-	public Stream stream;
+    public Stream stream;
 
-	@ObfuscatedName("ax.n")
-	public LinkList writeQueue = new LinkList();
+    public LinkList writeQueue = new LinkList();
 
-	@ObfuscatedName("ax.m")
-	public int writePos = 0;
+    public int writePos = 0;
 
-	@ObfuscatedName("ax.k")
-	public Packet out = new Packet(1700);
+    public Packet out = new Packet(1700);
 
-	@ObfuscatedName("ax.f")
-	public Isaac randomOut;
+    public Isaac randomOut;
 
-	@ObfuscatedName("ax.w")
-	public PacketBit in = new PacketBit(40000);
+    public PacketBit in = new PacketBit(40000);
 
-	@ObfuscatedName("ax.l")
-	public Isaac randomIn;
+    public Isaac randomIn;
 
-	@ObfuscatedName("ax.u")
-	public ServerProt packetType = null;
+    public ServerProt packetType = null;
 
-	@ObfuscatedName("ax.z")
-	public int packetSize = 0;
+    public int packetSize = 0;
 
-	@ObfuscatedName("ax.p")
-	public boolean field799 = true;
+    public boolean field799 = true;
 
-	@ObfuscatedName("ax.d")
-	public int idleNetCycles = 0;
+    public int idleNetCycles = 0;
 
-	@ObfuscatedName("ax.c")
-	public int numConnections = 0;
+    public int numConnections = 0;
 
-	@ObfuscatedName("ax.r")
-	public int totalBytesSent;
+    public int totalBytesSent;
 
-	@ObfuscatedName("ax.v")
-	public int readPos;
+    public int readPos;
 
-	@ObfuscatedName("ax.o")
-	public int outBytesPerSecond;
+    public int outBytesPerSecond;
 
-	@ObfuscatedName("ax.s")
-	public int inBytesPerSecond;
+    public int inBytesPerSecond;
 
-	@ObfuscatedName("ax.y")
-	public ServerProt lastPacketType0;
+    public ServerProt lastPacketType0;
 
-	@ObfuscatedName("ax.q")
-	public ServerProt lastPacketType1;
+    public ServerProt lastPacketType1;
 
-	@ObfuscatedName("ax.x")
-	public ServerProt lastPacketType2;
+    public ServerProt lastPacketType2;
 
-	@ObfuscatedName("ax.b")
-	public boolean disconnected = false;
+    public boolean disconnected = false;
 
-	@ObfuscatedName("ax.h")
-	public PingProvider pingProvider = new PingProvider();
+    public PingProvider pingProvider = new PingProvider();
 
 	public ServerConnection() {
 		Thread thread = new Thread(this.pingProvider);
@@ -86,14 +64,12 @@ public class ServerConnection {
 		thread.start();
 	}
 
-	@ObfuscatedName("ax.e(I)V")
-	public final void clearWriteQueue() {
+    public final void clearWriteQueue() {
 		this.writeQueue.removeAll();
 		this.writePos = 0;
 	}
 
-	@ObfuscatedName("ax.n(B)V")
-	public final void flush() throws IOException {
+    public final void flush() throws IOException {
 		if (this.stream == null || this.writePos <= 0) {
 			return;
 		}
@@ -114,16 +90,14 @@ public class ServerConnection {
 		}
 	}
 
-	@ObfuscatedName("ax.m(Lakl;I)V")
-	public final void queue(ClientMessage message) {
+    public final void queue(ClientMessage message) {
 		this.writeQueue.addTail(message);
 		message.pos = message.buf.pos;
 		message.buf.pos = 0;
 		this.writePos += message.pos;
 	}
 
-	@ObfuscatedName("ax.k(I)V")
-	public void refreshNetStats() {
+    public void refreshNetStats() {
 		if (Client.loopCycle % 50 == 0) {
 			this.outBytesPerSecond = this.totalBytesSent;
 			this.totalBytesSent = 0;
@@ -132,14 +106,12 @@ public class ServerConnection {
 		}
 	}
 
-	@ObfuscatedName("ax.f(Luz;Ljava/lang/String;I)V")
-	public void setStream(Stream stream, String host) {
+    public void setStream(Stream stream, String host) {
 		this.stream = stream;
 		this.pingProvider.setPingHost(host);
 	}
 
-	@ObfuscatedName("ax.w(B)V")
-	public void closeGracefully() {
+    public void closeGracefully() {
 		if (this.stream != null) {
 			this.stream.closeGracefully();
 			this.stream = null;
@@ -147,14 +119,12 @@ public class ServerConnection {
 		this.pingProvider.setPingHost(null);
 	}
 
-	@ObfuscatedName("ax.l(B)V")
-	public void closeForcefully() {
+    public void closeForcefully() {
 		this.stream = null;
 		this.pingProvider.setPingHost(null);
 	}
 
-	@ObfuscatedName("ax.u(B)Luz;")
-	public Stream getStream() {
+    public Stream getStream() {
 		return this.stream;
 	}
 }

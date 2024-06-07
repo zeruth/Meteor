@@ -11,9 +11,7 @@ public abstract class TwitchEvent {
 		this.eventType = arg0;
 	}
 
-	@ObfuscatedName("com/jagex/twitchtv/TwitchEvent.e([I[J[Ljava/lang/Object;)V")
-	public abstract void method12(int[] arg0, long[] arg1, Object[] arg2);
+    public abstract void method12(int[] arg0, long[] arg1, Object[] arg2);
 
-	@ObfuscatedName("com/jagex/twitchtv/TwitchEvent.n()Lud;")
-	public abstract TwitchEventSubject method11();
+    public abstract TwitchEventSubject method11();
 }

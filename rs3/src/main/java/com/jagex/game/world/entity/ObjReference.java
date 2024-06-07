@@ -5,22 +5,18 @@ import deob.ObfuscatedName;
 import rs2.client.Client;
 import rs2.client.scene.ObjStackList;
 
-@ObfuscatedName("yd")
 public class ObjReference {
 
-	@ObfuscatedName("yd.e")
-	public final CoordGrid field8244;
+    public final CoordGrid field8244;
 
-	@ObfuscatedName("yd.n")
-	public final int field8243;
+    public final int field8243;
 
 	public ObjReference(CoordGrid arg0, int arg1) {
 		this.field8244 = arg0;
 		this.field8243 = arg1;
 	}
 
-	@ObfuscatedName("yd.e(I)Laut;")
-	public ObjStackEntity method13793() {
+    public ObjStackEntity method13793() {
 		ObjStackList var1 = (ObjStackList) Client.objStacks.get((long) (this.field8244.level << 28 | this.field8244.z << 14 | this.field8244.x));
 		if (var1 == null) {
 			return null;

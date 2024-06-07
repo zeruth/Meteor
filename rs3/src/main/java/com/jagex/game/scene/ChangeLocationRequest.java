@@ -10,65 +10,45 @@ import com.jagex.math.ScaleRotTrans;
 import deob.ObfuscatedName;
 import rs2.client.Client;
 
-@ObfuscatedName("ajt")
 public final class ChangeLocationRequest extends Node {
 
-	@ObfuscatedName("ajt.k")
-	public int level;
+    public int level;
 
-	@ObfuscatedName("ajt.f")
-	public int field11229;
+    public int field11229;
 
-	@ObfuscatedName("ajt.w")
-	public int x;
+    public int x;
 
-	@ObfuscatedName("ajt.l")
-	public int z;
+    public int z;
 
-	@ObfuscatedName("ajt.u")
-	public int field11227;
+    public int field11227;
 
-	@ObfuscatedName("ajt.z")
-	public int field11231;
+    public int field11231;
 
-	@ObfuscatedName("ajt.p")
-	public int field11232;
+    public int field11232;
 
-	@ObfuscatedName("ajt.d")
-	public ScaleRotTrans field11233;
+    public ScaleRotTrans field11233;
 
-	@ObfuscatedName("ajt.c")
-	public int field11234;
+    public int field11234;
 
-	@ObfuscatedName("ajt.r")
-	public int field11235;
+    public int field11235;
 
-	@ObfuscatedName("ajt.v")
-	public int field11236;
+    public int field11236;
 
-	@ObfuscatedName("ajt.o")
-	public ScaleRotTrans field11230;
+    public ScaleRotTrans field11230;
 
-	@ObfuscatedName("ajt.s")
-	public LocTypeCustomisation field11241;
+    public LocTypeCustomisation field11241;
 
-	@ObfuscatedName("ajt.y")
-	public boolean field11239 = true;
+    public boolean field11239 = true;
 
-	@ObfuscatedName("ajt.q")
-	public boolean field11240 = false;
+    public boolean field11240 = false;
 
-	@ObfuscatedName("ajt.x")
-	public static LinkList field11237 = new LinkList();
+    public static LinkList field11237 = new LinkList();
 
-	@ObfuscatedName("ajt.b")
-	public static LinkList field11242 = new LinkList();
+    public static LinkList field11242 = new LinkList();
 
-	@ObfuscatedName("ajt.h")
-	public static long field11243 = 1L;
+    public static long field11243 = 1L;
 
-	@ObfuscatedName("jf.e(IIIIIIILoe;B)V")
-	public static void method4653(int arg0, int arg1, int arg2, int arg3, int arg4, int arg5, int arg6, ScaleRotTrans arg7) {
+    public static void method4653(int arg0, int arg1, int arg2, int arg3, int arg4, int arg5, int arg6, ScaleRotTrans arg7) {
 		ChangeLocationRequest var8 = null;
 		for (ChangeLocationRequest var9 = (ChangeLocationRequest) field11237.head(); var9 != null; var9 = (ChangeLocationRequest) field11237.next()) {
 			if (var9.level == arg0 && var9.x == arg1 && var9.z == arg2 && var9.field11229 == arg3) {
@@ -97,8 +77,7 @@ public final class ChangeLocationRequest extends Node {
 		var8.field11240 = false;
 	}
 
-	@ObfuscatedName("pa.n(IIIIIILvp;B)V")
-	public static void method6816(int arg0, int arg1, int arg2, int arg3, int arg4, int arg5, LocTypeCustomisation arg6) {
+    public static void method6816(int arg0, int arg1, int arg2, int arg3, int arg4, int arg5, LocTypeCustomisation arg6) {
 		ChangeLocationRequest var7 = null;
 		for (ChangeLocationRequest var8 = (ChangeLocationRequest) field11242.head(); var8 != null; var8 = (ChangeLocationRequest) field11242.next()) {
 			if (var8.level == arg0 && var8.x == arg1 && var8.z == arg2 && var8.field11229 == arg3) {
@@ -121,8 +100,7 @@ public final class ChangeLocationRequest extends Node {
 		var7.field11240 = false;
 	}
 
-	@ObfuscatedName("jx.m(B)V")
-	public static final void method5070() {
+    public static final void method5070() {
 		for (ChangeLocationRequest var0 = (ChangeLocationRequest) field11237.head(); var0 != null; var0 = (ChangeLocationRequest) field11237.next()) {
 			if (var0.field11240) {
 				var0.unlink();
@@ -142,8 +120,7 @@ public final class ChangeLocationRequest extends Node {
 		}
 	}
 
-	@ObfuscatedName("uf.k(Lajt;B)V")
-	public static final void method9023(ChangeLocationRequest arg0) {
+    public static final void method9023(ChangeLocationRequest arg0) {
 		Scene var1 = Client.world.getScene();
 		if (var1 == null) {
 			return;
@@ -176,8 +153,7 @@ public final class ChangeLocationRequest extends Node {
 		}
 	}
 
-	@ObfuscatedName("gp.f(B)V")
-	public static final void updateLocs() {
+    public static final void updateLocs() {
 		for (ChangeLocationRequest var0 = (ChangeLocationRequest) field11237.head(); var0 != null; var0 = (ChangeLocationRequest) field11237.next()) {
 			method2834(var0, false);
 		}
@@ -186,8 +162,7 @@ public final class ChangeLocationRequest extends Node {
 		}
 	}
 
-	@ObfuscatedName("eq.w(Lajt;ZI)V")
-	public static final void method2834(ChangeLocationRequest arg0, boolean arg1) {
+    public static final void method2834(ChangeLocationRequest arg0, boolean arg1) {
 		if (arg0.field11240) {
 			if (arg0.field11227 < 0 || ClientMapLoader.method14705(Client.world.getLocTypeList(), arg0.field11227, arg0.field11232)) {
 				if (arg1) {
@@ -212,8 +187,7 @@ public final class ChangeLocationRequest extends Node {
 		}
 	}
 
-	@ObfuscatedName("acv.l(IIIIIIILoe;IIB)V")
-	public static final void method15005(int arg0, int arg1, int arg2, int arg3, int arg4, int arg5, int arg6, ScaleRotTrans arg7, int arg8, int arg9) {
+    public static final void method15005(int arg0, int arg1, int arg2, int arg3, int arg4, int arg5, int arg6, ScaleRotTrans arg7, int arg8, int arg9) {
 		if (arg2 < 1 || arg3 < 1 || arg2 > Client.world.getSizeX() - 2 || arg3 > Client.world.getSizeZ() - 2) {
 			return;
 		}
@@ -234,8 +208,7 @@ public final class ChangeLocationRequest extends Node {
 		MiniMap.method16444(Client.localPlayerEntity.level);
 	}
 
-	@ObfuscatedName("ud.u(IIIILvp;I)V")
-	public static final void method9194(int arg0, int arg1, int arg2, int arg3, LocTypeCustomisation arg4) {
+    public static final void method9194(int arg0, int arg1, int arg2, int arg3, LocTypeCustomisation arg4) {
 		if (arg2 < 1 || arg3 < 1 || arg2 > Client.world.getSizeX() - 2 || arg3 > Client.world.getSizeZ() - 2) {
 			return;
 		}

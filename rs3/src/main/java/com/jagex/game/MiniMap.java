@@ -29,96 +29,73 @@ import rs2.client.logic.friendchat.Friend;
 import rs2.client.scene.ObjStackList;
 import rs2.client.scene.entities.NpcEntity;
 
-@ObfuscatedName("at")
 public class MiniMap {
 
-	@ObfuscatedName("at.n")
-	public static boolean field728 = false;
+    public static boolean field728 = false;
 
-	@ObfuscatedName("at.m")
-	public static boolean field720 = false;
+    public static boolean field720 = false;
 
-	@ObfuscatedName("at.k")
-	public static int[] field721 = new int[4];
+    public static int[] field721 = new int[4];
 
-	@ObfuscatedName("at.f")
-	public static int field722 = -1;
+    public static int field722 = -1;
 
-	@ObfuscatedName("at.w")
-	public static int field723 = 0;
+    public static int field723 = 0;
 
-	@ObfuscatedName("at.l")
-	public static int[] field725 = new int[1008];
+    public static int[] field725 = new int[1008];
 
-	@ObfuscatedName("at.u")
-	public static int[] field733 = new int[1006];
+    public static int[] field733 = new int[1006];
 
-	@ObfuscatedName("at.z")
-	public static int[] field726 = new int[1013];
+    public static int[] field726 = new int[1013];
 
-	@ObfuscatedName("at.p")
-	public static LinkList field727 = new LinkList();
+    public static LinkList field727 = new LinkList();
 
-	@ObfuscatedName("at.d")
-	public static int flagSceneTileX = -1;
+    public static int flagSceneTileX = -1;
 
-	@ObfuscatedName("at.c")
-	public static int flagSceneTileZ = -1;
+    public static int flagSceneTileZ = -1;
 
-	@ObfuscatedName("at.r")
-	public static boolean mapFlag = true;
+    public static boolean mapFlag = true;
 
-	@ObfuscatedName("at.v")
-	public static boolean field732 = false;
+    public static boolean field732 = false;
 
-	@ObfuscatedName("at.s")
-	public static int toggle = 0;
+    public static int toggle = 0;
 
-	@ObfuscatedName("at.y")
-	public static Sprite field734;
+    public static Sprite field734;
 
-	@ObfuscatedName("yp.q")
-	public static boolean[][] field8182;
+    public static boolean[][] field8182;
 
 	public MiniMap() throws Throwable {
 		throw new Error();
 	}
 
-	@ObfuscatedName("uo.e(B)V")
-	public static void method9233() {
+    public static void method9233() {
 		toggle = 0;
 		field722 = -1;
 		flagSceneTileX = -1;
 		flagSceneTileZ = -1;
 	}
 
-	@ObfuscatedName("gf.n(B)V")
-	public static void method3552() {
+    public static void method3552() {
 		toggle = 0;
 		flagSceneTileX = -1;
 		flagSceneTileZ = -1;
 	}
 
-	@ObfuscatedName("jg.m(S)V")
-	public static void rebuild() {
+    public static void rebuild() {
 		field734 = null;
 		field722 = -1;
 	}
 
-	@ObfuscatedName("ahm.k(B)V")
-	public static void method16601() {
+    public static void method16601() {
 		field722 = -1;
 	}
 
-	@ObfuscatedName("am.f(I)V")
-	public static void method829() {
+    public static void method829() {
 		int var0 = Client.world.getSizeX();
 		int var1 = Client.world.getSizeZ();
 		field8182 = new boolean[var0 >> 3][var1 >> 3];
 	}
 
-	@ObfuscatedName("aih.w(Ldh;B)V")
-	public static void method16903(Toolkit arg0) {
+    public static void method16903(Toolkit arg0) {
 		if (field722 != Client.localPlayerEntity.level && Client.world.getScene() != null) {
 			MonotonicTime.get();
 			if (method14493(arg0, Client.localPlayerEntity.level)) {
@@ -127,8 +104,7 @@ public class MiniMap {
 		}
 	}
 
-	@ObfuscatedName("aaz.l(Ldh;IB)Z")
-	public static boolean method14493(Toolkit arg0, int arg1) {
+    public static boolean method14493(Toolkit arg0, int arg1) {
 		arg0.flush();
 		MonotonicTime.get();
 		if (!arg0.method2215()) {
@@ -311,8 +287,7 @@ public class MiniMap {
 		return true;
 	}
 
-	@ObfuscatedName("agm.u(II)V")
-	public static void method16444(int arg0) {
+    public static void method16444(int arg0) {
 		field723 = 0;
 		int var1 = Client.world.getSizeX();
 		int var2 = Client.world.getSizeZ();
@@ -337,8 +312,7 @@ public class MiniMap {
 		}
 	}
 
-	@ObfuscatedName("l.z(Lst;Laop;III)Z")
-	public static boolean method250(Location arg0, LocTypeList arg1, int arg2, int arg3) {
+    public static boolean method250(Location arg0, LocTypeList arg1, int arg2, int arg3) {
 		if (arg0 == null) {
 			return false;
 		}
@@ -367,8 +341,7 @@ public class MiniMap {
 		return true;
 	}
 
-	@ObfuscatedName("af.p(IIII)Z")
-	public static boolean method1005(int arg0, int arg1, int arg2) {
+    public static boolean method1005(int arg0, int arg1, int arg2) {
 		Scene var3 = Client.world.getScene();
 		boolean var4 = true;
 		Location var5 = (Location) var3.getWall(arg0, arg1, arg2);
@@ -386,8 +359,7 @@ public class MiniMap {
 		return var4;
 	}
 
-	@ObfuscatedName("ajc.d(Lst;S)Z")
-	public static boolean method17469(Location arg0) {
+    public static boolean method17469(Location arg0) {
 		LocType var1 = (LocType) Client.world.getLocTypeList().list(arg0.getId());
 		if (var1.mapsceneicon == -1) {
 			return true;
@@ -397,8 +369,7 @@ public class MiniMap {
 		}
 	}
 
-	@ObfuscatedName("ix.c(Ldh;IIIIIIII)V")
-	public static void method4476(Toolkit arg0, int arg1, int arg2, int arg3, int arg4, int arg5, int arg6, int arg7) {
+    public static void method4476(Toolkit arg0, int arg1, int arg2, int arg3, int arg4, int arg5, int arg6, int arg7) {
 		Scene var8 = Client.world.getScene();
 		Location var9 = (Location) var8.getWall(arg1, arg2, arg3);
 		if (var9 != null) {
@@ -477,8 +448,7 @@ public class MiniMap {
 		}
 	}
 
-	@ObfuscatedName("dz.r(Ldh;Lvd;IIII)V")
-	public static void method1900(Toolkit arg0, LocType arg1, int arg2, int arg3, int arg4) {
+    public static void method1900(Toolkit arg0, LocType arg1, int arg2, int arg3, int arg4) {
 		MSIType var5 = (MSIType) Client.msiTypeList.list(arg1.mapsceneicon);
 		if (var5.field9151 == -1) {
 			return;
@@ -513,8 +483,7 @@ public class MiniMap {
 		}
 	}
 
-	@ObfuscatedName("v.v(Ldh;Lhf;IIB)V")
-	public static void drawMiniMap(Toolkit arg0, Component arg1, int arg2, int arg3) {
+    public static void drawMiniMap(Toolkit arg0, Component arg1, int arg2, int arg3) {
 		if (Client.localPlayerEntity == null) {
 			return;
 		}
@@ -616,8 +585,7 @@ public class MiniMap {
 		arg0.method2164(field721[0], field721[1], field721[2], field721[3]);
 	}
 
-	@ObfuscatedName("je.o(Ldh;IILhf;Lch;IIB)V")
-	public static void drawNpcsOnMinimap(Toolkit arg0, int arg1, int arg2, Component arg3, SpriteRelated arg4, int arg5, int arg6) {
+    public static void drawNpcsOnMinimap(Toolkit arg0, int arg1, int arg2, Component arg3, SpriteRelated arg4, int arg5, int arg6) {
 		for (int var7 = 0; var7 < Client.npcSlotCount; var7++) {
 			ObjectNode var8 = (ObjectNode) Client.npcs.get((long) Client.field11036[var7]);
 			if (var8 != null) {
@@ -642,8 +610,7 @@ public class MiniMap {
 		}
 	}
 
-	@ObfuscatedName("aff.s(IILhf;Lch;III)V")
-	public static void drawPlayersOnMinimap(int arg0, int arg1, Component arg2, SpriteRelated arg3, int arg4, int arg5) {
+    public static void drawPlayersOnMinimap(int arg0, int arg1, Component arg2, SpriteRelated arg3, int arg4, int arg5) {
 		int var6 = ReceivePlayerPositions.highResolutionsCount;
 		int[] var7 = ReceivePlayerPositions.highResolutionsIndices;
 		for (int var8 = 0; var8 < var6; var8++) {
@@ -692,8 +659,7 @@ public class MiniMap {
 		}
 	}
 
-	@ObfuscatedName("ia.y(IILhf;Lhx;IIS)V")
-	public static void drawHintArrowsOnMinimap(int arg0, int arg1, Component arg2, Graphic arg3, int arg4, int arg5) {
+    public static void drawHintArrowsOnMinimap(int arg0, int arg1, Component arg2, Graphic arg3, int arg4, int arg5) {
 		HintArrow[] var6 = Client.hintArrows;
 		for (int var7 = 0; var7 < var6.length; var7++) {
 			HintArrow var8 = var6[var7];
@@ -728,8 +694,7 @@ public class MiniMap {
 		}
 	}
 
-	@ObfuscatedName("ace.q(Ldh;Lch;Lhf;IIIIIB)V")
-	public static void method15085(Toolkit arg0, SpriteRelated arg1, Component arg2, int arg3, int arg4, int arg5, int arg6, int arg7) {
+    public static void method15085(Toolkit arg0, SpriteRelated arg1, Component arg2, int arg3, int arg4, int arg5, int arg6, int arg7) {
 		MapElementType var8 = (MapElementType) Client.mapElementTypeList.list(arg7);
 		if (var8 != null && var8.field2392 != null && var8.method4030(Client.localPlayerGameState, Client.localPlayerGameState)) {
 			var8 = var8.method4024(Client.localPlayerGameState, Client.localPlayerGameState);
@@ -846,8 +811,7 @@ public class MiniMap {
 		method3654(arg2, arg1, arg3, arg4, arg5, arg6, var34, var8.text, var35, var36, var8.field2366);
 	}
 
-	@ObfuscatedName("acp.x(Lhf;Lhx;IIIIIJ)V")
-	public static void method15035(Component arg0, Graphic arg1, int arg2, int arg3, int arg4, int arg5, int arg6, long arg7) {
+    public static void method15035(Component arg0, Graphic arg1, int arg2, int arg3, int arg4, int arg5, int arg6, long arg7) {
 		int var9 = arg4 * arg4 + arg5 * arg5;
 		if ((long) var9 > arg7) {
 			return;
@@ -906,13 +870,11 @@ public class MiniMap {
 		}
 	}
 
-	@ObfuscatedName("al.b(Lhf;Lch;IIIILcm;I)V")
-	public static void drawOnMinimap(Component arg0, SpriteRelated arg1, int arg2, int arg3, int arg4, int arg5, Sprite arg6) {
+    public static void drawOnMinimap(Component arg0, SpriteRelated arg1, int arg2, int arg3, int arg4, int arg5, Sprite arg6) {
 		drawOnMinimap(arg0, arg1, arg2, arg3, arg4, arg5, arg6, 100.0D, MapAlignmentX.field2417, MapAlignmentY.field2424);
 	}
 
-	@ObfuscatedName("ht.h(Lhf;Lch;IIIILcm;DLhp;Lhy;I)V")
-	public static void drawOnMinimap(Component arg0, SpriteRelated arg1, int arg2, int arg3, int arg4, int arg5, Sprite arg6, double arg7, MapAlignmentX arg8, MapAlignmentY arg9) {
+    public static void drawOnMinimap(Component arg0, SpriteRelated arg1, int arg2, int arg3, int arg4, int arg5, Sprite arg6, double arg7, MapAlignmentX arg8, MapAlignmentY arg9) {
 		if (arg6 == null) {
 			return;
 		}
@@ -970,8 +932,7 @@ public class MiniMap {
 		}
 	}
 
-	@ObfuscatedName("gd.a(Lhf;Lch;IIIIILjava/lang/String;Leu;Laac;II)V")
-	public static void method3654(Component arg0, SpriteRelated arg1, int arg2, int arg3, int arg4, int arg5, int arg6, String arg7, Font arg8, FontMetrics arg9, int arg10) {
+    public static void method3654(Component arg0, SpriteRelated arg1, int arg2, int arg3, int arg4, int arg5, int arg6, String arg7, Font arg8, FontMetrics arg9, int arg10) {
 		int var11;
 		if (Client.cameraState == 3) {
 			var11 = (int) ((double) Client.cam2.method4719() * 2607.5945876176133D) + Client.minimapAnticheatAngle & 0x3FFF;
@@ -1001,8 +962,7 @@ public class MiniMap {
 		}
 	}
 
-	@ObfuscatedName("abb.g(IIZB)V")
-	public static void method14707(int arg0, int arg1, boolean arg2) {
+    public static void method14707(int arg0, int arg1, boolean arg2) {
 		field8182[arg0][arg1] = arg2;
 	}
 }

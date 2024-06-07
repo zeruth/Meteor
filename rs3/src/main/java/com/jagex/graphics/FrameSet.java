@@ -6,26 +6,19 @@ import com.jagex.core.io.Packet;
 import com.jagex.js5.Js5;
 import deob.ObfuscatedName;
 
-@ObfuscatedName("arr")
 public class FrameSet extends SecondaryNode {
 
-	@ObfuscatedName("arr.l")
-	public static Js5 field12325;
+    public static Js5 field12325;
 
-	@ObfuscatedName("arr.u")
     public static Js5 field12326;
 
-	@ObfuscatedName("arr.z")
-	public int field12324;
+    public int field12324;
 
-	@ObfuscatedName("arr.p")
-	public byte[][] field12323;
+    public byte[][] field12323;
 
-	@ObfuscatedName("arr.d")
-	public AnimFrame[] field12327;
+    public AnimFrame[] field12327;
 
-	@ObfuscatedName("vw.e(Lpy;Lpy;II)V")
-	public static void method9393(Js5 arg0, Js5 arg1, int arg2) {
+    public static void method9393(Js5 arg0, Js5 arg1, int arg2) {
 		field12325 = arg0;
 		field12326 = arg1;
 	}
@@ -34,8 +27,7 @@ public class FrameSet extends SecondaryNode {
 		this.field12324 = arg0;
 	}
 
-	@ObfuscatedName("arr.n(I)Z")
-	public boolean method19410() {
+    public boolean method19410() {
 		if (this.field12327 != null) {
 			return true;
 		}
@@ -99,18 +91,15 @@ public class FrameSet extends SecondaryNode {
 		return true;
 	}
 
-	@ObfuscatedName("arr.m(II)Z")
-	public boolean method19411(int arg0) {
+    public boolean method19411(int arg0) {
 		return this.field12327[arg0].field1636;
 	}
 
-	@ObfuscatedName("arr.k(II)Z")
-	public boolean method19412(int arg0) {
+    public boolean method19412(int arg0) {
 		return this.field12327[arg0].field1637;
 	}
 
-	@ObfuscatedName("arr.f(II)Z")
-	public boolean method19409(int arg0) {
+    public boolean method19409(int arg0) {
 		return this.field12327[arg0].field1638;
 	}
 }

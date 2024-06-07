@@ -8,26 +8,19 @@ import com.jagex.game.config.vartype.VarTypeList;
 import com.jagex.game.config.vartype.constants.BaseVarType;
 import deob.ObfuscatedName;
 
-@ObfuscatedName("rk")
 public class StockmarketSlot {
 
-	@ObfuscatedName("rk.e")
-	public byte field4957;
+    public byte field4957;
 
-	@ObfuscatedName("rk.n")
-	public int obj;
+    public int obj;
 
-	@ObfuscatedName("rk.m")
-	public int price;
+    public int price;
 
-	@ObfuscatedName("rk.k")
-	public int count;
+    public int count;
 
-	@ObfuscatedName("rk.f")
-	public int completedCount;
+    public int completedCount;
 
-	@ObfuscatedName("rk.w")
-	public int completedGold;
+    public int completedGold;
 
 	public StockmarketSlot() {
 	}
@@ -44,8 +37,7 @@ public class StockmarketSlot {
 		}
 	}
 
-	@ObfuscatedName("aj.e(Lalw;Ladd;I)Labn;")
-	public static VarContainerSparse method972(Packet arg0, VarTypeList arg1) {
+    public static VarContainerSparse method972(Packet arg0, VarTypeList arg1) {
 		VarContainerSparse var2 = new VarContainerSparse(arg1);
 		while (true) {
 			int var3 = arg0.g1();
@@ -67,13 +59,11 @@ public class StockmarketSlot {
 		}
 	}
 
-	@ObfuscatedName("rk.n(I)I")
-	public int method7608() {
+    public int method7608() {
 		return this.field4957 & 0x7;
 	}
 
-	@ObfuscatedName("rk.m(B)I")
-	public int getOfferType() {
+    public int getOfferType() {
 		return (this.field4957 & 0x8) == 8 ? 1 : 0;
 	}
 }

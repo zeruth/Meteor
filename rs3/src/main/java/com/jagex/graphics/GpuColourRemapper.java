@@ -2,14 +2,11 @@ package com.jagex.graphics;
 
 import deob.ObfuscatedName;
 
-@ObfuscatedName("aeq")
 public class GpuColourRemapper extends ColourRemapper {
 
-	@ObfuscatedName("aeq.e")
-	public final GpuToolkit field9529;
+    public final GpuToolkit field9529;
 
-	@ObfuscatedName("aeq.n")
-	public BaseTexture field9530;
+    public BaseTexture field9530;
 
 	public GpuColourRemapper(GpuToolkit arg0, int[] arg1) {
 		this.field9529 = arg0;
@@ -21,13 +18,11 @@ public class GpuColourRemapper extends ColourRemapper {
 		}
 	}
 
-	@ObfuscatedName("aeq.e()Lmq;")
-	public BaseTexture method15431() {
+    public BaseTexture method15431() {
 		return this.field9530;
 	}
 
-	@ObfuscatedName("aeq.n([I)[B")
-	public byte[] method15433(int[] arg0) {
+    public byte[] method15433(int[] arg0) {
 		byte[] var2 = new byte[16384];
 		for (int var3 = 0; var3 < 16; var3++) {
 			for (int var4 = 0; var4 < 16; var4++) {

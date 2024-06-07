@@ -2,7 +2,6 @@ package com.jagex;
 
 import deob.ObfuscatedName;
 
-@ObfuscatedName("vm")
 public class Unused21 {
 
 	static {

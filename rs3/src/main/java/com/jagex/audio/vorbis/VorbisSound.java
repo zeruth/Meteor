@@ -12,218 +12,147 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicReference;
 
-@ObfuscatedName("hk")
 public class VorbisSound implements VorbisInterface {
 
-	@ObfuscatedName("hk.e")
-	public int field2076;
+    public int field2076;
 
-	@ObfuscatedName("hk.n")
-	public int field2045;
+    public int field2045;
 
-	@ObfuscatedName("hk.m")
-	public int field2046;
+    public int field2046;
 
-	@ObfuscatedName("hk.k")
-	public int field2055;
+    public int field2055;
 
-	@ObfuscatedName("hk.f")
-	public int field2048;
+    public int field2048;
 
-	@ObfuscatedName("hk.w")
-	public VorbisInterface2 field2049;
+    public VorbisInterface2 field2049;
 
-	@ObfuscatedName("hk.l")
-	public List field2050 = new ArrayList();
+    public List field2050 = new ArrayList();
 
-	@ObfuscatedName("hk.u")
-	public VorbisRelated field2106 = VorbisRelated.field3427;
+    public VorbisRelated field2106 = VorbisRelated.field3427;
 
-	@ObfuscatedName("hk.z")
-	public AudioFormat field2052;
+    public AudioFormat field2052;
 
-	@ObfuscatedName("hk.p")
-	public AudioEndianness field2053;
+    public AudioEndianness field2053;
 
-	@ObfuscatedName("hk.d")
-	public int field2081;
+    public int field2081;
 
-	@ObfuscatedName("hk.c")
-	public int field2110;
+    public int field2110;
 
-	@ObfuscatedName("hk.r")
-	public int field2056;
+    public int field2056;
 
-	@ObfuscatedName("hk.v")
-	public final float field2059;
+    public final float field2059;
 
-	@ObfuscatedName("hk.o")
-	public int blockSize0;
+    public int blockSize0;
 
-	@ObfuscatedName("hk.s")
-	public int blockSize1;
+    public int blockSize1;
 
-	@ObfuscatedName("hk.y")
-	public VorbisCodebook[] book_param;
+    public VorbisCodebook[] book_param;
 
-	@ObfuscatedName("hk.q")
-	public VorbisFloor[] floor_param;
+    public VorbisFloor[] floor_param;
 
-	@ObfuscatedName("hk.x")
-	public VorbisResidue[] residue_param;
+    public VorbisResidue[] residue_param;
 
-	@ObfuscatedName("hk.b")
-	public VorbisMapping[] map_param;
+    public VorbisMapping[] map_param;
 
-	@ObfuscatedName("hk.h")
-	public boolean[] blockflags;
+    public boolean[] blockflags;
 
-	@ObfuscatedName("hk.a")
-	public int[] mappings;
+    public int[] mappings;
 
-	@ObfuscatedName("hk.g")
-	public WindowFunction[] field2066;
+    public WindowFunction[] field2066;
 
-	@ObfuscatedName("hk.i")
-	public int field2054;
+    public int field2054;
 
-	@ObfuscatedName("hk.j")
-	public int field2068;
+    public int field2068;
 
-	@ObfuscatedName("hk.t")
-	public boolean[] field2089;
+    public boolean[] field2089;
 
-	@ObfuscatedName("hk.ae")
-	public WindowFunction[] field2070;
+    public WindowFunction[] field2070;
 
-	@ObfuscatedName("hk.ag")
-	public WindowFunction trigA0;
+    public WindowFunction trigA0;
 
-	@ObfuscatedName("hk.ah")
-	public WindowFunction trigB0;
+    public WindowFunction trigB0;
 
-	@ObfuscatedName("hk.al")
-	public WindowFunction trigC0;
+    public WindowFunction trigC0;
 
-	@ObfuscatedName("hk.ac")
-	public WindowFunction trigA1;
+    public WindowFunction trigA1;
 
-	@ObfuscatedName("hk.ai")
-	public WindowFunction trigB1;
+    public WindowFunction trigB1;
 
-	@ObfuscatedName("hk.aw")
-	public WindowFunction trigC1;
+    public WindowFunction trigC1;
 
-	@ObfuscatedName("hk.as")
-	public int[] bitReverse0;
+    public int[] bitReverse0;
 
-	@ObfuscatedName("hk.at")
-	public int[] bitReverse1;
+    public int[] bitReverse1;
 
-	@ObfuscatedName("hk.ad")
-	public boolean field2090;
+    public boolean field2090;
 
-	@ObfuscatedName("hk.am")
-	public List field2085 = new ArrayList();
+    public List field2085 = new ArrayList();
 
-	@ObfuscatedName("hk.au")
-	public Packet field2112 = null;
+    public Packet field2112 = null;
 
-	@ObfuscatedName("hk.ar")
-	public int field2082 = 0;
+    public int field2082 = 0;
 
-	@ObfuscatedName("hk.ap")
-	public int field2084 = 0;
+    public int field2084 = 0;
 
-	@ObfuscatedName("hk.aq")
-	public List field2078 = new ArrayList();
+    public List field2078 = new ArrayList();
 
-	@ObfuscatedName("hk.ax")
-	public boolean field2044;
+    public boolean field2044;
 
-	@ObfuscatedName("hk.av")
-	public boolean field2086;
+    public boolean field2086;
 
-	@ObfuscatedName("hk.ao")
-	public boolean field2087;
+    public boolean field2087;
 
-	@ObfuscatedName("hk.aj")
-	public int field2088;
+    public int field2088;
 
-	@ObfuscatedName("hk.ay")
-	public int field2079;
+    public int field2079;
 
-	@ObfuscatedName("hk.ab")
-	public int field2107;
+    public int field2107;
 
-	@ObfuscatedName("hk.az")
-	public int field2083;
+    public int field2083;
 
-	@ObfuscatedName("hk.aa")
-	public boolean field2092;
+    public boolean field2092;
 
-	@ObfuscatedName("hk.af")
-	public int field2093;
+    public int field2093;
 
-	@ObfuscatedName("hk.ak")
-	public int field2094;
+    public int field2094;
 
-	@ObfuscatedName("hk.an")
-	public int field2095;
+    public int field2095;
 
-	@ObfuscatedName("hk.bf")
-	public int field2096;
+    public int field2096;
 
-	@ObfuscatedName("hk.bl")
-	public int field2097;
+    public int field2097;
 
-	@ObfuscatedName("hk.bk")
-	public List field2098 = new ArrayList();
+    public List field2098 = new ArrayList();
 
-	@ObfuscatedName("hk.bh")
-	public List field2099 = new ArrayList();
+    public List field2099 = new ArrayList();
 
-	@ObfuscatedName("hk.bx")
-	public AtomicReference field2100 = new AtomicReference(null);
+    public AtomicReference field2100 = new AtomicReference(null);
 
-	@ObfuscatedName("hk.bd")
-	public int field2101;
+    public int field2101;
 
-	@ObfuscatedName("hk.bc")
-	public int field2102 = 0;
+    public int field2102 = 0;
 
-	@ObfuscatedName("hk.bi")
-	public WindowFunction[] field2103;
+    public WindowFunction[] field2103;
 
-	@ObfuscatedName("hk.bn")
-	public boolean field2104 = false;
+    public boolean field2104 = false;
 
-	@ObfuscatedName("hk.bt")
-	public int field2105 = 0;
+    public int field2105 = 0;
 
-	@ObfuscatedName("hk.bq")
-	public static List field2057 = new ArrayList();
+    public static List field2057 = new ArrayList();
 
-	@ObfuscatedName("hk.bm")
-	public static SoftLruHashTable field2067 = new SoftLruHashTable(524288, 1024);
+    public static SoftLruHashTable field2067 = new SoftLruHashTable(524288, 1024);
 
-	@ObfuscatedName("hk.bb")
-	public byte[] field2108;
+    public byte[] field2108;
 
-	@ObfuscatedName("hk.be")
-	public int field2109;
+    public int field2109;
 
-	@ObfuscatedName("hk.by")
-	public int field2113;
+    public int field2113;
 
-	@ObfuscatedName("hk.bu")
-	public boolean[] field2111 = null;
+    public boolean[] field2111 = null;
 
-	@ObfuscatedName("hk.bw")
-	public boolean[] field2047 = null;
+    public boolean[] field2047 = null;
 
-	@ObfuscatedName("hk.bo")
-	public boolean[] field2080 = null;
+    public boolean[] field2080 = null;
 
 	public VorbisSound(float arg0) {
 		this.field2059 = arg0;
@@ -232,8 +161,7 @@ public class VorbisSound implements VorbisInterface {
 		this.method3744(false);
 	}
 
-	@ObfuscatedName("hk.e(Z)V")
-	public void method3721(boolean arg0) {
+    public void method3721(boolean arg0) {
 		if (!arg0) {
 			this.method3738();
 		} else if (this.method3843() == VorbisRelated.field3426) {
@@ -242,8 +170,7 @@ public class VorbisSound implements VorbisInterface {
 		}
 	}
 
-	@ObfuscatedName("hk.n()V")
-	public void method3738() {
+    public void method3738() {
 		if (this.method3843() == VorbisRelated.field3423) {
 			this.method3744(false);
 			this.method3840(VorbisRelated.field3421);
@@ -253,23 +180,19 @@ public class VorbisSound implements VorbisInterface {
 		}
 	}
 
-	@ObfuscatedName("hk.m()Lmc;")
-	public VorbisRelated method3843() {
+    public VorbisRelated method3843() {
 		return this.field2106;
 	}
 
-	@ObfuscatedName("hk.k(Lmc;)V")
-	public void method3840(VorbisRelated arg0) {
+    public void method3840(VorbisRelated arg0) {
 		this.field2106 = arg0;
 	}
 
-	@ObfuscatedName("hk.f(Lmm;)V")
-	public void method3770(VorbisInterface2 arg0) {
+    public void method3770(VorbisInterface2 arg0) {
 		this.field2049 = arg0;
 	}
 
-	@ObfuscatedName("hk.w(Lalw;)V")
-	public void method3726(Packet arg0) {
+    public void method3726(Packet arg0) {
 		if (this.method3843() == VorbisRelated.field3425 || this.method3843() == VorbisRelated.field3426) {
 			if (arg0 != null) {
 				arg0.release();
@@ -293,54 +216,45 @@ public class VorbisSound implements VorbisInterface {
 		}
 	}
 
-	@ObfuscatedName("hk.l()V")
-	public void method3727() {
+    public void method3727() {
 		if (this.method3843() == VorbisRelated.field3421 || this.method3843() == VorbisRelated.field3427 || this.method3843() == VorbisRelated.field3422) {
 			this.method3840(VorbisRelated.field3423);
 			this.method3745();
 		}
 	}
 
-	@ObfuscatedName("hk.u(I)Lalw;")
-	public Packet method3728(int arg0) {
+    public Packet method3728(int arg0) {
 		return this.method3768(arg0);
 	}
 
-	@ObfuscatedName("hk.z()I")
-	public int method3729() {
+    public int method3729() {
 		return this.method3780();
 	}
 
-	@ObfuscatedName("hk.p(I)I")
-	public int method3730(int arg0) {
+    public int method3730(int arg0) {
 		return arg0 / (this.method3733().field3445 / 8);
 	}
 
-	@ObfuscatedName("hk.d(I)I")
-	public int method3731(int arg0) {
+    public int method3731(int arg0) {
 		return arg0 * (this.method3733().field3445 / 8);
 	}
 
-	@ObfuscatedName("hk.c()I")
-	public int method3732() {
+    public int method3732() {
 		if (!this.method3868()) {
 			throw new RuntimeException("");
 		}
 		return this.field2076;
 	}
 
-	@ObfuscatedName("hk.r()Lnd;")
-	public AudioFormat method3733() {
+    public AudioFormat method3733() {
 		return this.field2052;
 	}
 
-	@ObfuscatedName("hk.v()Lmw;")
-	public AudioEndianness method3734() {
+    public AudioEndianness method3734() {
 		return this.field2053;
 	}
 
-	@ObfuscatedName("hk.o(ILnd;Lmw;I)V")
-	public void method3774(int arg0, AudioFormat arg1, AudioEndianness arg2, int arg3) {
+    public void method3774(int arg0, AudioFormat arg1, AudioEndianness arg2, int arg3) {
 		this.field2081 = arg3;
 		if (!this.method3723(arg0, arg1, arg2)) {
 			throw new RuntimeException("");
@@ -349,8 +263,7 @@ public class VorbisSound implements VorbisInterface {
 		this.field2053 = arg2;
 	}
 
-	@ObfuscatedName("hk.s(ILnd;Lmw;)Z")
-	public boolean method3723(int arg0, AudioFormat arg1, AudioEndianness arg2) {
+    public boolean method3723(int arg0, AudioFormat arg1, AudioEndianness arg2) {
 		if (AudioFormat.field3441 == arg1) {
 			return true;
 		} else if (AudioFormat.field3442 == arg1) {
@@ -362,34 +275,29 @@ public class VorbisSound implements VorbisInterface {
 		}
 	}
 
-	@ObfuscatedName("hk.y()I")
-	public int method3849() {
+    public int method3849() {
 		if (!this.field2086) {
 			throw new RuntimeException("");
 		}
 		return this.field2045;
 	}
 
-	@ObfuscatedName("hk.q()I")
-	public int method3722() {
+    public int method3722() {
 		if (!this.field2086) {
 			throw new RuntimeException("");
 		}
 		return this.method3849() < this.field2081 ? this.field2081 : this.method3849();
 	}
 
-	@ObfuscatedName("hk.x()Z")
-	public synchronized boolean method3868() {
+    public synchronized boolean method3868() {
 		return this.field2087;
 	}
 
-	@ObfuscatedName("hk.b(Z)V")
-	public synchronized void method3740(boolean arg0) {
+    public synchronized void method3740(boolean arg0) {
 		this.field2087 = arg0;
 	}
 
-	@ObfuscatedName("hk.h(II)[Lhb;")
-	public WindowFunction[] method3753(int arg0, int arg1) {
+    public WindowFunction[] method3753(int arg0, int arg1) {
 		WindowFunction[] var3 = new WindowFunction[arg0];
 		for (int var4 = 0; var4 < var3.length; var4++) {
 			var3[var4] = this.method3836(arg1);
@@ -397,8 +305,7 @@ public class VorbisSound implements VorbisInterface {
 		return var3;
 	}
 
-	@ObfuscatedName("hk.a(I)Lhb;")
-	public WindowFunction method3836(int arg0) {
+    public WindowFunction method3836(int arg0) {
 		SoftLruHashTable var2 = field2067;
 		synchronized (field2067) {
 			Object var3 = null;
@@ -448,8 +355,7 @@ public class VorbisSound implements VorbisInterface {
 		}
 	}
 
-	@ObfuscatedName("hk.g(Lhb;)V")
-	public void method3742(WindowFunction arg0) {
+    public void method3742(WindowFunction arg0) {
 		if (arg0 != null) {
 			SoftLruHashTable var2 = field2067;
 			synchronized (field2067) {
@@ -458,8 +364,7 @@ public class VorbisSound implements VorbisInterface {
 		}
 	}
 
-	@ObfuscatedName("hk.i([Lhb;)V")
-	public void method3743(WindowFunction[] arg0) {
+    public void method3743(WindowFunction[] arg0) {
 		if (arg0 != null) {
 			for (int var2 = 0; var2 < arg0.length; var2++) {
 				this.method3742(arg0[var2]);
@@ -467,8 +372,7 @@ public class VorbisSound implements VorbisInterface {
 		}
 	}
 
-	@ObfuscatedName("hk.j(Z)V")
-	public synchronized void method3744(boolean arg0) {
+    public synchronized void method3744(boolean arg0) {
 		if (!arg0) {
 			this.blockSize0 = 0;
 			this.blockSize1 = 0;
@@ -565,8 +469,7 @@ public class VorbisSound implements VorbisInterface {
 		this.field2104 = false;
 	}
 
-	@ObfuscatedName("hk.t()V")
-	public void method3745() {
+    public void method3745() {
 		if (this.method3843() != VorbisRelated.field3425) {
 			this.method3761();
 			if (this.method3843() == VorbisRelated.field3423) {
@@ -575,23 +478,19 @@ public class VorbisSound implements VorbisInterface {
 		}
 	}
 
-	@ObfuscatedName("hk.ae(Lalw;)V")
-	public void method3871(Packet arg0) {
+    public void method3871(Packet arg0) {
 		this.field2085.add(arg0);
 	}
 
-	@ObfuscatedName("hk.ag()Z")
-	public boolean method3747() {
+    public boolean method3747() {
 		return this.field2090;
 	}
 
-	@ObfuscatedName("hk.ah(Lalw;)Z")
-	public boolean method3748(Packet arg0) {
+    public boolean method3748(Packet arg0) {
 		return arg0.g1() == 79 && arg0.g1() == 103 && arg0.g1() == 103 && arg0.g1() == 83;
 	}
 
-	@ObfuscatedName("hk.al([BII)Z")
-	public boolean method3749(byte[] arg0, int arg1, int arg2) {
+    public boolean method3749(byte[] arg0, int arg1, int arg2) {
 		if (arg0[arg1] == arg2) {
 			return arg0[arg1 + 1] == 118 && arg0[arg1 + 2] == 111 && arg0[arg1 + 3] == 114 && arg0[arg1 + 4] == 98 && arg0[arg1 + 5] == 105 && arg0[arg1 + 6] == 115;
 		} else {
@@ -599,8 +498,7 @@ public class VorbisSound implements VorbisInterface {
 		}
 	}
 
-	@ObfuscatedName("hk.ac(I)F")
-	public float float32Unpack(int x) {
+    public float float32Unpack(int x) {
 		int mantissa = x & 0x1FFFFF;
 		int sign = x & Integer.MIN_VALUE;
 		int exponent = x >> 21 & 0x3FF;
@@ -610,25 +508,21 @@ public class VorbisSound implements VorbisInterface {
 		return (float) ((double) mantissa * Math.pow(2.0D, exponent - 788));
 	}
 
-	@ObfuscatedName("hk.ai()I")
-	public int method3751() {
+    public int method3751() {
 		return this.field2109;
 	}
 
-	@ObfuscatedName("hk.aw()I")
-	public int method3752() {
+    public int method3752() {
 		return this.field2113;
 	}
 
-	@ObfuscatedName("hk.as([BI)V")
-	public void method3754(byte[] arg0, int arg1) {
+    public void method3754(byte[] arg0, int arg1) {
 		this.field2108 = arg0;
 		this.field2109 = arg1;
 		this.field2113 = 0;
 	}
 
-	@ObfuscatedName("hk.at()I")
-	public int readBit() {
+    public int readBit() {
 		int var1 = this.field2108[this.field2109] >> this.field2113 & 0x1;
 		this.field2113++;
 		this.field2109 += this.field2113 >> 3;
@@ -636,8 +530,7 @@ public class VorbisSound implements VorbisInterface {
 		return var1;
 	}
 
-	@ObfuscatedName("hk.ad(I)I")
-	public int read(int bits) {
+    public int read(int bits) {
 		int var2 = 0;
 		int var3 = 0;
 		while (bits >= 8 - this.field2113) {
@@ -657,13 +550,11 @@ public class VorbisSound implements VorbisInterface {
 		return var2;
 	}
 
-	@ObfuscatedName("hk.am()V")
-	public void method3756() {
+    public void method3756() {
 		this.field2108 = null;
 	}
 
-	@ObfuscatedName("hk.au()V")
-	public void unpackBooks() {
+    public void unpackBooks() {
 		int books = this.read(8) + 1;
 
 		Iterator var2 = field2057.iterator();
@@ -696,8 +587,7 @@ public class VorbisSound implements VorbisInterface {
 		}
 	}
 
-	@ObfuscatedName("hk.ar([BI)V")
-	public void unpack(byte[] arg0, int arg1) {
+    public void unpack(byte[] arg0, int arg1) {
 		this.field2101 = 0;
 
 		if (this.method3868()) {
@@ -854,8 +744,7 @@ public class VorbisSound implements VorbisInterface {
 		}
 	}
 
-	@ObfuscatedName("hk.ap(I)I")
-	public int method3759(int arg0) {
+    public int method3759(int arg0) {
 		int var2 = 0;
 		while (arg0 > 0) {
 			var2++;
@@ -864,8 +753,7 @@ public class VorbisSound implements VorbisInterface {
 		return var2;
 	}
 
-	@ObfuscatedName("hk.aq([BIILjava/util/concurrent/atomic/AtomicReference;)Z")
-	public boolean method3776(byte[] arg0, int arg1, int arg2, AtomicReference arg3) {
+    public boolean method3776(byte[] arg0, int arg1, int arg2, AtomicReference arg3) {
 		if (arg0 == null) {
 			throw new RuntimeException("");
 		} else if (arg1 + arg2 > arg0.length) {
@@ -1190,8 +1078,7 @@ public class VorbisSound implements VorbisInterface {
 		}
 	}
 
-	@ObfuscatedName("hk.ax()V")
-	public void method3761() {
+    public void method3761() {
 		if (this.method3843() == VorbisRelated.field3421 || (this.method3843() == VorbisRelated.field3424 || this.field2087 && (float) (this.field2105 / this.method3732()) > this.field2059)) {
 			return;
 		}
@@ -1213,14 +1100,12 @@ public class VorbisSound implements VorbisInterface {
 		this.method3842();
 	}
 
-	@ObfuscatedName("hk.av(Lalw;)V")
-	public synchronized void method3762(Packet arg0) {
+    public synchronized void method3762(Packet arg0) {
 		this.field2050.add(arg0);
 		this.method3840(VorbisRelated.field3422);
 	}
 
-	@ObfuscatedName("hk.ao()V")
-	public synchronized void method3842() {
+    public synchronized void method3842() {
 		int var1 = this.field2112 == null ? 0 : this.field2112.pos;
 		int var2 = 0;
 		Iterator var3 = this.field2085.iterator();
@@ -1457,8 +1342,7 @@ public class VorbisSound implements VorbisInterface {
 		}
 	}
 
-	@ObfuscatedName("hk.aj(F)I")
-	public int method3879(float arg0) {
+    public int method3879(float arg0) {
 		int var2 = (int) (arg0 * 32767.0F);
 		if (var2 > 32767) {
 			return 32767;
@@ -1469,8 +1353,7 @@ public class VorbisSound implements VorbisInterface {
 		}
 	}
 
-	@ObfuscatedName("hk.ay(F)I")
-	public int method3765(float arg0) {
+    public int method3765(float arg0) {
 		int var2 = (int) (arg0 * 32767.0F + 32768.0F);
 		if (var2 > 65535) {
 			return 65535;
@@ -1481,8 +1364,7 @@ public class VorbisSound implements VorbisInterface {
 		}
 	}
 
-	@ObfuscatedName("hk.ab(F)I")
-	public int method3872(float arg0) {
+    public int method3872(float arg0) {
 		int var2 = (int) (arg0 * 127.0F);
 		if (var2 > 127) {
 			return 127;
@@ -1493,8 +1375,7 @@ public class VorbisSound implements VorbisInterface {
 		}
 	}
 
-	@ObfuscatedName("hk.az(F)I")
-	public int method3767(float arg0) {
+    public int method3767(float arg0) {
 		int var2 = (int) (arg0 * 127.0F + 128.0F);
 		if (var2 > 255) {
 			return 255;
@@ -1505,8 +1386,7 @@ public class VorbisSound implements VorbisInterface {
 		}
 	}
 
-	@ObfuscatedName("hk.aa(I)Lalw;")
-	public Packet method3768(int arg0) {
+    public Packet method3768(int arg0) {
 		Packet var2 = this.method3796(this.method3731(arg0));
 		int var3 = arg0;
 		List var4 = this.field2078;
@@ -1538,42 +1418,34 @@ public class VorbisSound implements VorbisInterface {
 		}
 	}
 
-	@ObfuscatedName("hk.af(I)Lalw;")
-	public Packet method3796(int arg0) {
+    public Packet method3796(int arg0) {
 		return new Packet(arg0, true);
 	}
 
-	@ObfuscatedName("hk.ak()I")
-	public int method3780() {
+    public int method3780() {
 		return this.field2105;
 	}
 
 	// line 1316
-	@ObfuscatedName("hk.an(ZIII)V")
-	public void method3771(boolean arg0, int arg1, int arg2, int arg3) {
+    public void method3771(boolean arg0, int arg1, int arg2, int arg3) {
 		this.field2104 = arg0;
 		this.field2096 = arg1;
 		this.field2110 = arg2;
 		this.field2056 = arg3;
 	}
 
-	@ObfuscatedName("hb")
-	public static class WindowFunction {
+    public static class WindowFunction {
 
 		// $FF: synthetic field
 		public final VorbisSound this$0;
 
-		@ObfuscatedName("hb.e")
-		public float[] floor;
+        public float[] floor;
 
-		@ObfuscatedName("hb.n")
-		public int field2122;
+        public int field2122;
 
-		@ObfuscatedName("hb.m")
-		public boolean field2125;
+        public boolean field2125;
 
-		@ObfuscatedName("hb.k")
-		public int field2124;
+        public int field2124;
 
 		// line 1346
 		public WindowFunction(VorbisSound arg0) {

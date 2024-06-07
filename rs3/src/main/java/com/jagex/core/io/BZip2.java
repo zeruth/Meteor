@@ -2,18 +2,15 @@ package com.jagex.core.io;
 
 import deob.ObfuscatedName;
 
-@ObfuscatedName("aad")
 public final class BZip2 {
 
-	@ObfuscatedName("aad.u")
-	public static BZip2State state = new BZip2State();
+    public static BZip2State state = new BZip2State();
 
 	public BZip2() throws Throwable {
 		throw new Error();
 	}
 
-	@ObfuscatedName("aad.e([BI[BII)I")
-	public static int decompress(byte[] arg0, int arg1, byte[] arg2, int arg3, int arg4) {
+    public static int decompress(byte[] arg0, int arg1, byte[] arg2, int arg3, int arg4) {
 		BZip2State var5 = state;
 		synchronized (var5) {
 			state.strmNextIn = arg2;
@@ -33,8 +30,7 @@ public final class BZip2 {
 		}
 	}
 
-	@ObfuscatedName("aad.n(Laak;)V")
-	public static void unRleObufToOutputFast(BZip2State arg0) {
+    public static void unRleObufToOutputFast(BZip2State arg0) {
 		byte var1 = arg0.stateOutCh;
 		int var2 = arg0.stateOutLen;
 		int var3 = arg0.nblockused;
@@ -145,8 +141,7 @@ public final class BZip2 {
 		arg0.strmAvailOut = var9;
 	}
 
-	@ObfuscatedName("aad.m(Laak;)V")
-	public static void decompress(BZip2State state) {
+    public static void decompress(BZip2State state) {
 		boolean var1 = false;
 		boolean var2 = false;
 		boolean var3 = false;
@@ -458,18 +453,15 @@ public final class BZip2 {
 		}
 	}
 
-	@ObfuscatedName("aad.k(Laak;)B")
-	public static byte getUchar(BZip2State arg0) {
+    public static byte getUchar(BZip2State arg0) {
 		return (byte) getBits(8, arg0);
 	}
 
-	@ObfuscatedName("aad.f(Laak;)B")
-	public static byte getBit(BZip2State arg0) {
+    public static byte getBit(BZip2State arg0) {
 		return (byte) getBits(1, arg0);
 	}
 
-	@ObfuscatedName("aad.w(ILaak;)I")
-	public static int getBits(int arg0, BZip2State state) {
+    public static int getBits(int arg0, BZip2State state) {
 		while (state.bsLive < arg0) {
 			state.bsBuff = state.bsBuff << 8 | state.strmNextIn[state.strmNextInPtr] & 0xFF;
 			state.bsLive += 8;
@@ -483,8 +475,7 @@ public final class BZip2 {
 		return var2;
 	}
 
-	@ObfuscatedName("aad.l(Laak;)V")
-	public static void makeMapsD(BZip2State state) {
+    public static void makeMapsD(BZip2State state) {
 		state.nInUse = 0;
 		for (int var1 = 0; var1 < 256; var1++) {
 			if (state.inUse[var1]) {
@@ -494,8 +485,7 @@ public final class BZip2 {
 		}
 	}
 
-	@ObfuscatedName("aad.u([I[I[I[BIII)V")
-	public static void hbCreateDecodeTables(int[] arg0, int[] arg1, int[] arg2, byte[] arg3, int arg4, int arg5, int arg6) {
+    public static void hbCreateDecodeTables(int[] arg0, int[] arg1, int[] arg2, byte[] arg3, int arg4, int arg5, int arg6) {
 		int var7 = 0;
 		for (int var8 = arg4; var8 <= arg5; var8++) {
 			for (int var9 = 0; var9 < arg6; var9++) {
@@ -528,124 +518,84 @@ public final class BZip2 {
 		}
 	}
 
-	@ObfuscatedName("aak")
-	public static final class BZip2State {
+    public static final class BZip2State {
 
-		@ObfuscatedName("aak.e")
-		public final int field8452 = 4096;
+        public final int field8452 = 4096;
 
-		@ObfuscatedName("aak.n")
-		public final int field8461 = 16;
+        public final int field8461 = 16;
 
-		@ObfuscatedName("aak.m")
-		public final int field8427 = 258;
+        public final int field8427 = 258;
 
-		@ObfuscatedName("aak.k")
-		public final int field8450 = 6;
+        public final int field8450 = 6;
 
-		@ObfuscatedName("aak.f")
-		public final int field8429 = 50;
+        public final int field8429 = 50;
 
-		@ObfuscatedName("aak.w")
-		public final int field8430 = 18002;
+        public final int field8430 = 18002;
 
-		@ObfuscatedName("aak.l")
-		public byte[] strmNextIn;
+        public byte[] strmNextIn;
 
-		@ObfuscatedName("aak.u")
-		public int strmNextInPtr = 0;
+        public int strmNextInPtr = 0;
 
-		@ObfuscatedName("aak.z")
-		public int strmTotalInLo32;
+        public int strmTotalInLo32;
 
-		@ObfuscatedName("aak.p")
-		public byte[] strmNextOut;
+        public byte[] strmNextOut;
 
-		@ObfuscatedName("aak.d")
-		public int strmNextOutPtr = 0;
+        public int strmNextOutPtr = 0;
 
-		@ObfuscatedName("aak.c")
-		public int strmAvailOut;
+        public int strmAvailOut;
 
-		@ObfuscatedName("aak.r")
-		public int strmTotalOutLo32;
+        public int strmTotalOutLo32;
 
-		@ObfuscatedName("aak.v")
-		public byte stateOutCh;
+        public byte stateOutCh;
 
-		@ObfuscatedName("aak.o")
-		public int stateOutLen;
+        public int stateOutLen;
 
-		@ObfuscatedName("aak.s")
-		public int bsBuff;
+        public int bsBuff;
 
-		@ObfuscatedName("aak.y")
-		public int bsLive;
+        public int bsLive;
 
-		@ObfuscatedName("aak.q")
-		public int blockSize100k;
+        public int blockSize100k;
 
-		@ObfuscatedName("aak.x")
-		public int origPtr;
+        public int origPtr;
 
-		@ObfuscatedName("aak.b")
-		public int tPos;
+        public int tPos;
 
-		@ObfuscatedName("aak.h")
-		public int k0;
+        public int k0;
 
-		@ObfuscatedName("aak.a")
-		public int[] unzftab = new int[256];
+        public int[] unzftab = new int[256];
 
-		@ObfuscatedName("aak.g")
-		public int nblockused;
+        public int nblockused;
 
-		@ObfuscatedName("aak.i")
-		public int[] cftab = new int[257];
+        public int[] cftab = new int[257];
 
-		@ObfuscatedName("tb.j")
-		public static int[] tt;
+        public static int[] tt;
 
-		@ObfuscatedName("aak.t")
-		public int nInUse;
+        public int nInUse;
 
-		@ObfuscatedName("aak.ae")
-		public boolean[] inUse = new boolean[256];
+        public boolean[] inUse = new boolean[256];
 
-		@ObfuscatedName("aak.ag")
-		public boolean[] inUse16 = new boolean[16];
+        public boolean[] inUse16 = new boolean[16];
 
-		@ObfuscatedName("aak.ah")
-		public byte[] seqToUnseq = new byte[256];
+        public byte[] seqToUnseq = new byte[256];
 
-		@ObfuscatedName("aak.al")
-		public byte[] mtfa = new byte[4096];
+        public byte[] mtfa = new byte[4096];
 
-		@ObfuscatedName("aak.ac")
-		public int[] mtfbase = new int[16];
+        public int[] mtfbase = new int[16];
 
-		@ObfuscatedName("aak.ai")
-		public byte[] selector = new byte[18002];
+        public byte[] selector = new byte[18002];
 
-		@ObfuscatedName("aak.aw")
-		public byte[] selectorMtf = new byte[18002];
+        public byte[] selectorMtf = new byte[18002];
 
-		@ObfuscatedName("aak.as")
-		public byte[][] len = new byte[6][258];
+        public byte[][] len = new byte[6][258];
 
-		@ObfuscatedName("aak.at")
-		public int[][] limit = new int[6][258];
+        public int[][] limit = new int[6][258];
 
-		@ObfuscatedName("aak.ad")
-		public int[][] base = new int[6][258];
+        public int[][] base = new int[6][258];
 
-		@ObfuscatedName("aak.am")
-		public int[][] perm = new int[6][258];
+        public int[][] perm = new int[6][258];
 
-		@ObfuscatedName("aak.au")
-		public int[] minLens = new int[6];
+        public int[] minLens = new int[6];
 
-		@ObfuscatedName("aak.ar")
-		public int saveNblock;
+        public int saveNblock;
 	}
 }

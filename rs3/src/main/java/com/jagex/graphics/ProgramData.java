@@ -2,26 +2,19 @@ package com.jagex.graphics;
 
 import deob.ObfuscatedName;
 
-@ObfuscatedName("hn")
 public class ProgramData {
 
-	@ObfuscatedName("hn.e")
-	public String name;
+    public String name;
 
-	@ObfuscatedName("hn.n")
-	public String vertexShaderFile;
+    public String vertexShaderFile;
 
-	@ObfuscatedName("hn.m")
-	public String fragmentShaderFile;
+    public String fragmentShaderFile;
 
-	@ObfuscatedName("hn.k")
-	public ProgramDefineData[] vertexPrograms;
+    public ProgramDefineData[] vertexPrograms;
 
-	@ObfuscatedName("hn.f")
-	public ProgramDefineData[] fragmentPrograms;
+    public ProgramDefineData[] fragmentPrograms;
 
-	@ObfuscatedName("hn.e(Lhw;I)V")
-	public void decode(ShaderDataReader buf) {
+    public void decode(ShaderDataReader buf) {
 		this.name = buf.gstr();
 		this.vertexShaderFile = buf.gstr();
 		this.fragmentShaderFile = buf.gstr();

@@ -3,35 +3,25 @@ package com.jagex.game.load;
 import com.jagex.core.io.Packet;
 import deob.ObfuscatedName;
 
-@ObfuscatedName("kp")
 public class LoadingScreenProgressDisplayConfig implements LoadingScreenElementConfig {
 
-	@ObfuscatedName("kp.e")
-	public final LoadingScreenAlignmentX field3167;
+    public final LoadingScreenAlignmentX field3167;
 
-	@ObfuscatedName("kp.n")
-	public final LoadingScreenAlignmentY field3159;
+    public final LoadingScreenAlignmentY field3159;
 
-	@ObfuscatedName("kp.m")
-	public final int field3161;
+    public final int field3161;
 
-	@ObfuscatedName("kp.k")
-	public final int field3162;
+    public final int field3162;
 
-	@ObfuscatedName("kp.f")
-	public final int field3163;
+    public final int field3163;
 
-	@ObfuscatedName("kp.w")
-	public final int field3160;
+    public final int field3160;
 
-	@ObfuscatedName("kp.l")
-	public final int field3165;
+    public final int field3165;
 
-	@ObfuscatedName("kp.u")
-	public final int field3166;
+    public final int field3166;
 
-	@ObfuscatedName("kp.z")
-	public final int field3164;
+    public final int field3164;
 
 	public LoadingScreenProgressDisplayConfig(LoadingScreenAlignmentX arg0, LoadingScreenAlignmentY arg1, int arg2, int arg3, int arg4, int arg5, int arg6, int arg7, int arg8) {
 		this.field3167 = arg0;
@@ -45,8 +35,7 @@ public class LoadingScreenProgressDisplayConfig implements LoadingScreenElementC
 		this.field3164 = arg8;
 	}
 
-	@ObfuscatedName("aoe.e(Lalw;I)Lkp;")
-	public static LoadingScreenProgressDisplayConfig method18899(Packet arg0) {
+    public static LoadingScreenProgressDisplayConfig method18899(Packet arg0) {
 		LoadingScreenAlignmentX var1 = LoadingScreenAlignmentX.method13948()[arg0.g1()];
 		LoadingScreenAlignmentY var2 = LoadingScreenAlignmentY.method2774()[arg0.g1()];
 		int var3 = arg0.g2s();
@@ -59,13 +48,11 @@ public class LoadingScreenProgressDisplayConfig implements LoadingScreenElementC
 		return new LoadingScreenProgressDisplayConfig(var1, var2, var3, var4, var5, var6, var7, var8, var9);
 	}
 
-	@ObfuscatedName("kp.n(S)Lkt;")
-	public LoadingScreenElementType method5349() {
+    public LoadingScreenElementType method5349() {
 		return null;
 	}
 
-	@ObfuscatedName("xj.k(Lalw;B)Lkp;")
-	public static LoadingScreenProgressDisplayConfig method10312(Packet arg0) {
+    public static LoadingScreenProgressDisplayConfig method10312(Packet arg0) {
 		LoadingScreenProgressDisplayConfig var1 = method18899(arg0);
 		int var2 = arg0.gSmart2or4null();
 		int var3 = arg0.gSmart2or4null();

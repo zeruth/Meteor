@@ -11,72 +11,51 @@ import deob.ObfuscatedName;
 import rs2.client.Client;
 import rs2.client.clientscript.ScriptRunner;
 
-@ObfuscatedName("eq")
 public class CutsceneManager {
 
-	@ObfuscatedName("eq.e")
-	public static LinkList field1712 = new LinkList();
+    public static LinkList field1712 = new LinkList();
 
-	@ObfuscatedName("eq.n")
-	public static CutsceneSpline[] field1714;
+    public static CutsceneSpline[] field1714;
 
-	@ObfuscatedName("eq.m")
-	public static CutsceneEntity[] entities;
+    public static CutsceneEntity[] entities;
 
-	@ObfuscatedName("vl.k")
-	public static CutsceneLocation[] field7317;
+    public static CutsceneLocation[] field7317;
 
-	@ObfuscatedName("zs.f")
-	public static CutsceneRoute[] field8358;
+    public static CutsceneRoute[] field8358;
 
-	@ObfuscatedName("eq.w")
-	public static CutsceneAction[] actions;
+    public static CutsceneAction[] actions;
 
-	@ObfuscatedName("eq.l")
-	public static HashTable varPlayerOverrides = new HashTable(32);
+    public static HashTable varPlayerOverrides = new HashTable(32);
 
-	@ObfuscatedName("eq.u")
-	public static int field1715 = 1;
+    public static int field1715 = 1;
 
-	@ObfuscatedName("eq.z")
-	public static int field1716 = 0;
+    public static int field1716 = 0;
 
-	@ObfuscatedName("eq.p")
-	public static int field1710 = 0;
+    public static int field1710 = 0;
 
-	@ObfuscatedName("eq.d")
-	public static boolean field1711 = false;
+    public static boolean field1711 = false;
 
-	@ObfuscatedName("ahx.c")
-	public static short field10538;
+    public static short field10538;
 
-	@ObfuscatedName("ala.r")
-	public static short field11700;
+    public static short field11700;
 
-	@ObfuscatedName("eq.v")
-	public static short field1719;
+    public static short field1719;
 
-	@ObfuscatedName("eq.o")
-	public static short field1720;
+    public static short field1720;
 
-	@ObfuscatedName("eq.s")
-	public static int field1717 = -1;
+    public static int field1717 = -1;
 
-	@ObfuscatedName("eq.y")
-	public static int field1722 = -1;
+    public static int field1722 = -1;
 
-	@ObfuscatedName("ai.q")
-	public static CutsceneLoadingStage field694;
+    public static CutsceneLoadingStage field694;
 
-	@ObfuscatedName("eq.x")
-	public static final VarIntDomain field1723 = new CutsceneVarDomain();
+    public static final VarIntDomain field1723 = new CutsceneVarDomain();
 
 	public CutsceneManager() throws Throwable {
 		throw new Error();
 	}
 
-	@ObfuscatedName("xj.e(II)Z")
-	public static boolean load(int arg0) {
+    public static boolean load(int arg0) {
 		if (field1722 != arg0 || field694 == null) {
 			method3551();
 			field694 = CutsceneLoadingStage.field1724;
@@ -151,8 +130,7 @@ public class CutsceneManager {
 		return true;
 	}
 
-	@ObfuscatedName("nh.n(Lalw;I)V")
-	public static void method6121(Packet arg0) {
+    public static void method6121(Packet arg0) {
 		while (true) {
 			int var1 = arg0.g1();
 			switch(var1) {
@@ -166,8 +144,7 @@ public class CutsceneManager {
 		}
 	}
 
-	@ObfuscatedName("gf.m(I)V")
-	public static void method3551() {
+    public static void method3551() {
 		varPlayerOverrides.removeAll();
 		field1712.removeAll();
 		field1714 = null;
@@ -191,8 +168,7 @@ public class CutsceneManager {
 		field1711 = false;
 	}
 
-	@ObfuscatedName("cs.k(I)V")
-	public static void method1576() {
+    public static void method1576() {
 		field10538 = Client.field10900;
 		field1719 = Client.field10943;
 		field11700 = Client.field11070;
@@ -206,8 +182,7 @@ public class CutsceneManager {
 		}
 	}
 
-	@ObfuscatedName("qb.f(ZI)V")
-	public static void finish(boolean arg0) {
+    public static void finish(boolean arg0) {
 		if (Client.sceneState == 4 || Client.sceneState == 3) {
 			return;
 		}

@@ -4,17 +4,13 @@ import deob.ObfuscatedName;
 
 import java.io.*;
 
-@ObfuscatedName("abl")
 public final class FileOnDisk {
 
-	@ObfuscatedName("abl.e")
-	public RandomAccessFile file;
+    public RandomAccessFile file;
 
-	@ObfuscatedName("abl.n")
-	public final long maxLength;
+    public final long maxLength;
 
-	@ObfuscatedName("abl.m")
-	public long pos;
+    public long pos;
 
 	public FileOnDisk(File arg0, String arg1, long arg2) throws IOException {
 		if (arg2 == -1L) {
@@ -34,14 +30,12 @@ public final class FileOnDisk {
 		this.file.seek(0L);
 	}
 
-	@ObfuscatedName("abl.e(J)V")
-	public final void seek(long arg0) throws IOException {
+    public final void seek(long arg0) throws IOException {
 		this.file.seek(arg0);
 		this.pos = arg0;
 	}
 
-	@ObfuscatedName("abl.n([BIII)V")
-	public final void write(byte[] arg0, int arg1, int arg2) throws IOException {
+    public final void write(byte[] arg0, int arg1, int arg2) throws IOException {
 		if (this.pos + (long) arg2 > this.maxLength) {
 			this.file.seek(this.maxLength);
 			this.file.write(1);
@@ -52,13 +46,11 @@ public final class FileOnDisk {
 		}
 	}
 
-	@ObfuscatedName("abl.m(I)V")
-	public final void close() throws IOException {
+    public final void close() throws IOException {
 		this.close(false);
 	}
 
-	@ObfuscatedName("abl.k(ZI)V")
-	public final void close(boolean flush) throws IOException {
+    public final void close(boolean flush) throws IOException {
 		if (this.file == null) {
 			return;
 		}
@@ -72,13 +64,11 @@ public final class FileOnDisk {
 		this.file = null;
 	}
 
-	@ObfuscatedName("abl.f(I)J")
-	public final long length() throws IOException {
+    public final long length() throws IOException {
 		return this.file.length();
 	}
 
-	@ObfuscatedName("abl.w([BIIB)I")
-	public final int read(byte[] arg0, int arg1, int arg2) throws IOException {
+    public final int read(byte[] arg0, int arg1, int arg2) throws IOException {
 		int var4 = this.file.read(arg0, arg1, arg2);
 		if (var4 > 0) {
 			this.pos += var4;

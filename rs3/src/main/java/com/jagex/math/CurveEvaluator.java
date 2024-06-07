@@ -4,21 +4,17 @@ import com.jagex.graphics.KeyFrame;
 import com.jagex.graphics.TransformInfinityType;
 import deob.ObfuscatedName;
 
-@ObfuscatedName("da")
 public class CurveEvaluator {
 
-	@ObfuscatedName("da.k")
-	public static final float EPSILON = Math.ulp(1.0F);
+    public static final float EPSILON = Math.ulp(1.0F);
 
-	@ObfuscatedName("da.f")
-	public static final float field1288 = EPSILON * 2.0F;
+    public static final float field1288 = EPSILON * 2.0F;
 
 	public CurveEvaluator() throws Throwable {
 		throw new Error();
 	}
 
-	@ObfuscatedName("ub.e(Ldn;FI)F")
-	public static float method9083(Curve arg0, float arg1) {
+    public static float method9083(Curve arg0, float arg1) {
 		if (arg0 == null || arg0.method2015() == 0) {
 			return 0.0F;
 		} else if (arg1 < (float) arg0.field1439[0].field1663) {
@@ -70,8 +66,7 @@ public class CurveEvaluator {
 		}
 	}
 
-	@ObfuscatedName("zt.n(Ldn;FI)F")
-	public static float method13878(Curve arg0, float arg1) {
+    public static float method13878(Curve arg0, float arg1) {
 		if (arg0 == null) {
 			return 0.0F;
 		}
@@ -99,8 +94,7 @@ public class CurveEvaluator {
 		return ((arg0.field1442[3] * var3 + arg0.field1442[2]) * var3 + arg0.field1442[1]) * var3 + arg0.field1442[0];
 	}
 
-	@ObfuscatedName("km.m(Ldn;FI)F")
-	public static float method5372(Curve arg0, float arg1) {
+    public static float method5372(Curve arg0, float arg1) {
 		if (arg0 == null) {
 			return 0.0F;
 		} else {
@@ -109,8 +103,7 @@ public class CurveEvaluator {
 		}
 	}
 
-	@ObfuscatedName("qo.k(Ldn;FZI)F")
-	public static float method7313(Curve arg0, float arg1, boolean arg2) {
+    public static float method7313(Curve arg0, float arg1, boolean arg2) {
 		float var3 = 0.0F;
 		if (arg0 == null || arg0.method2015() == 0) {
 			return var3;
@@ -183,8 +176,7 @@ public class CurveEvaluator {
 		return var28;
 	}
 
-	@ObfuscatedName("abp.f(Ldn;[F[FB)V")
-	public static void method14845(Curve arg0, float[] arg1, float[] arg2) {
+    public static void method14845(Curve arg0, float[] arg1, float[] arg2) {
 		if (arg0 == null) {
 			return;
 		}
@@ -226,8 +218,7 @@ public class CurveEvaluator {
 		method10358(arg2[0], arg2[1], arg2[2], arg2[3], arg0.field1442);
 	}
 
-	@ObfuscatedName("ahr.w(Ldn;[F[FI)V")
-	public static void method16639(Curve arg0, float[] arg1, float[] arg2) {
+    public static void method16639(Curve arg0, float[] arg1, float[] arg2) {
 		if (arg0 == null) {
 			return;
 		}
@@ -253,8 +244,7 @@ public class CurveEvaluator {
 		arg0.field1449[3] = arg2[0];
 	}
 
-	@ObfuscatedName("eo.l(Ljava/lang/Float;Ljava/lang/Float;I)V")
-	public static void method2672(Float arg0, Float arg1) {
+    public static void method2672(Float arg0, Float arg1) {
 		if (arg0 + EPSILON >= 1.3333334F) {
 			Float var9 = 1.3333334F - EPSILON;
 			Float var10 = 0.33333334F - EPSILON;
@@ -274,8 +264,7 @@ public class CurveEvaluator {
 		}
 	}
 
-	@ObfuscatedName("im.u(Ljava/lang/Float;Ljava/lang/Float;B)V")
-	public static void method4627(Float arg0, Float arg1) {
+    public static void method4627(Float arg0, Float arg1) {
 		Float var2 = 1.0F - arg1;
 		if (arg0 < 0.0F) {
 			arg0 = 0.0F;
@@ -292,8 +281,7 @@ public class CurveEvaluator {
 		Float var4 = 1.0F - var2;
 	}
 
-	@ObfuscatedName("xt.z(FFFF[FI)V")
-	public static void method10358(float arg0, float arg1, float arg2, float arg3, float[] arg4) {
+    public static void method10358(float arg0, float arg1, float arg2, float arg3, float[] arg4) {
 		float var5 = arg1 - arg0;
 		float var6 = arg2 - arg1;
 		float var7 = arg3 - arg2;

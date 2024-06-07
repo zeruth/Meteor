@@ -2,7 +2,6 @@ package com.jagex.graphics;
 
 import deob.ObfuscatedName;
 
-@ObfuscatedName("atn")
 public class UniformNotFoundException extends ShaderException {
 
 	public UniformNotFoundException(String arg0) {

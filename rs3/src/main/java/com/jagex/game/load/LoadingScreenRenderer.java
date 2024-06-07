@@ -11,66 +11,49 @@ import com.jagex.graphics.Sprite;
 import deob.ObfuscatedName;
 import rs2.client.Client;
 
-@ObfuscatedName("jb")
 public class LoadingScreenRenderer implements Runnable {
 
-	@ObfuscatedName("jb.e")
-	public volatile boolean field2890;
+    public volatile boolean field2890;
 
-	@ObfuscatedName("jb.n")
-	public boolean field2887;
+    public boolean field2887;
 
-	@ObfuscatedName("jb.m")
-	public LoadingScreen field2883 = new PreLoadingScreen();
+    public LoadingScreen field2883 = new PreLoadingScreen();
 
-	@ObfuscatedName("jb.k")
-	public LoadingScreen field2880 = null;
+    public LoadingScreen field2880 = null;
 
-	@ObfuscatedName("jb.f")
-	public long field2884;
+    public long field2884;
 
-	@ObfuscatedName("jb.w")
-	public int field2885;
+    public int field2885;
 
-	@ObfuscatedName("jb.l")
-	public long field2886;
+    public long field2886;
 
-	@ObfuscatedName("jb.u")
-	public String field2882;
+    public String field2882;
 
-	@ObfuscatedName("jb.z")
-	public String field2888;
+    public String field2888;
 
-	@ObfuscatedName("jb.p")
-	public int field2881;
+    public int field2881;
 
-	@ObfuscatedName("jb.d")
-	public LoadingStage field2889;
+    public LoadingStage field2889;
 
-	@ObfuscatedName("jb.e(I)I")
-	public int method4846() {
+    public int method4846() {
 		return this.field2885;
 	}
 
-	@ObfuscatedName("jb.n(I)V")
-	public synchronized void method4845() {
+    public synchronized void method4845() {
 		this.field2887 = true;
 	}
 
-	@ObfuscatedName("jb.m(B)Z")
-	public synchronized boolean method4857() {
+    public synchronized boolean method4857() {
 		return this.field2883.method4894(this.field2884);
 	}
 
-	@ObfuscatedName("jb.k(Ljt;S)V")
-	public synchronized void method4879(LoadingScreen arg0) {
+    public synchronized void method4879(LoadingScreen arg0) {
 		this.field2880 = this.field2883;
 		this.field2883 = arg0;
 		this.field2884 = MonotonicTime.get();
 	}
 
-	@ObfuscatedName("jb.f(JLjava/lang/String;Ljava/lang/String;ILjw;S)V")
-	public synchronized void method4849(long arg0, String arg1, String arg2, int arg3, LoadingStage arg4) {
+    public synchronized void method4849(long arg0, String arg1, String arg2, int arg3, LoadingStage arg4) {
 		this.field2886 = arg0;
 		this.field2888 = arg1;
 		this.field2882 = arg2;
@@ -78,8 +61,7 @@ public class LoadingScreenRenderer implements Runnable {
 		this.field2889 = arg4;
 	}
 
-	@ObfuscatedName("jb.w(I)I")
-	public int method4874() {
+    public int method4874() {
 		if (this.field2889 == null) {
 			return 0;
 		}
@@ -93,33 +75,27 @@ public class LoadingScreenRenderer implements Runnable {
 		}
 	}
 
-	@ObfuscatedName("jb.l(I)I")
-	public int method4851() {
+    public int method4851() {
 		return this.field2881;
 	}
 
-	@ObfuscatedName("jb.u(B)Ljava/lang/String;")
-	public String method4852() {
+    public String method4852() {
 		return this.field2882;
 	}
 
-	@ObfuscatedName("jb.z(I)Ljava/lang/String;")
-	public String method4853() {
+    public String method4853() {
 		return this.field2888;
 	}
 
-	@ObfuscatedName("jb.p(I)J")
-	public long method4872() {
+    public long method4872() {
 		return this.field2886;
 	}
 
-	@ObfuscatedName("jb.d(I)Ljw;")
-	public LoadingStage method4855() {
+    public LoadingStage method4855() {
 		return this.field2889;
 	}
 
-	@ObfuscatedName("jb.s(B)V")
-	public void method4856() {
+    public void method4856() {
 		this.field2890 = true;
 	}
 

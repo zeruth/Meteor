@@ -6,56 +6,39 @@ import com.jagex.core.utils.MonotonicTime;
 import com.jagex.math.Vector3;
 import deob.ObfuscatedName;
 
-@ObfuscatedName("akf")
 public class Light extends Node {
 
-	@ObfuscatedName("akf.k")
-	public Vector3 field11331 = new Vector3();
+    public Vector3 field11331 = new Vector3();
 
-	@ObfuscatedName("akf.f")
-	public int field11321;
+    public int field11321;
 
-	@ObfuscatedName("akf.w")
-	public int field11322;
+    public int field11322;
 
-	@ObfuscatedName("akf.l")
-	public float field11323;
+    public float field11323;
 
-	@ObfuscatedName("akf.u")
-	public int field11332;
+    public int field11332;
 
-	@ObfuscatedName("akf.z")
-	public int field11334;
+    public int field11334;
 
-	@ObfuscatedName("akf.p")
-	public int field11326;
+    public int field11326;
 
-	@ObfuscatedName("akf.d")
-	public int field11327;
+    public int field11327;
 
-	@ObfuscatedName("akf.c")
-	public long field11328;
+    public long field11328;
 
-	@ObfuscatedName("akf.r")
-	public int field11335;
+    public int field11335;
 
-	@ObfuscatedName("akf.v")
-	public float field11330;
+    public float field11330;
 
-	@ObfuscatedName("akf.o")
-	public float field11325;
+    public float field11325;
 
-	@ObfuscatedName("akf.s")
-	public float field11329;
+    public float field11329;
 
-	@ObfuscatedName("akf.y")
-	public int field11333;
+    public int field11333;
 
-	@ObfuscatedName("akf.q")
-	public long field11324;
+    public long field11324;
 
-	@ObfuscatedName("akf.x")
-	public int field11320;
+    public int field11320;
 
 	public Light(int arg0, int arg1, int arg2, int arg3, int arg4, float arg5) {
 		this.field11331.setTo((float) arg0, (float) arg1, (float) arg2);
@@ -70,83 +53,67 @@ public class Light extends Node {
 		this.field11330 = 1.0F;
 	}
 
-	@ObfuscatedName("akf.e(I)I")
-	public final int method17605() {
+    public final int method17605() {
 		return (int) this.field11331.x;
 	}
 
-	@ObfuscatedName("akf.n(I)I")
-	public final int method17606() {
+    public final int method17606() {
 		return (int) this.field11331.y;
 	}
 
-	@ObfuscatedName("akf.m(I)I")
-	public final int method17607() {
+    public final int method17607() {
 		return (int) this.field11331.z;
 	}
 
-	@ObfuscatedName("akf.k(B)I")
-	public final int method17608() {
+    public final int method17608() {
 		return this.field11321;
 	}
 
-	@ObfuscatedName("akf.f(B)I")
-	public final int method17624() {
+    public final int method17624() {
 		return this.field11326;
 	}
 
-	@ObfuscatedName("akf.w(I)F")
-	public final float method17610() {
+    public final float method17610() {
 		return this.field11323;
 	}
 
-	@ObfuscatedName("akf.l(B)F")
-	public final float method17652() {
+    public final float method17652() {
 		return this.field11329;
 	}
 
-	@ObfuscatedName("akf.u(FB)V")
-	public void method17612(float arg0) {
+    public void method17612(float arg0) {
 		this.field11323 = arg0;
 	}
 
-	@ObfuscatedName("akf.z(IIII)V")
-	public void method17628(int arg0, int arg1, int arg2) {
+    public void method17628(int arg0, int arg1, int arg2) {
 		this.field11331.setTo((float) arg0, (float) arg1, (float) arg2);
 	}
 
-	@ObfuscatedName("akf.p(I)I")
-	public int method17656() {
+    public int method17656() {
 		return this.field11332;
 	}
 
-	@ObfuscatedName("akf.d(I)I")
-	public int method17615() {
+    public int method17615() {
 		return this.field11327;
 	}
 
-	@ObfuscatedName("akf.c(I)F")
-	public float method17629() {
+    public float method17629() {
 		return this.field11330;
 	}
 
-	@ObfuscatedName("akf.r(I)I")
-	public int method17617() {
+    public int method17617() {
 		return this.field11333;
 	}
 
-	@ObfuscatedName("akf.v(II)V")
-	public void method17618(int arg0) {
+    public void method17618(int arg0) {
 		this.field11326 = arg0;
 	}
 
-	@ObfuscatedName("akf.y(FS)V")
-	public void method17636(float arg0) {
+    public void method17636(float arg0) {
 		this.field11329 = arg0;
 	}
 
-	@ObfuscatedName("akf.x(III)V")
-	public void method17620(int arg0, int arg1) {
+    public void method17620(int arg0, int arg1) {
 		this.field11332 = arg0;
 		this.field11334 = this.field11326;
 		this.field11335 = arg1;
@@ -157,8 +124,7 @@ public class Light extends Node {
 		this.field11328 = MonotonicTime.get();
 	}
 
-	@ObfuscatedName("akf.h(FIB)V")
-	public void method17621(float arg0, int arg1) {
+    public void method17621(float arg0, int arg1) {
 		this.field11330 = arg0;
 		this.field11325 = this.field11329;
 		this.field11320 = arg1;
@@ -169,8 +135,7 @@ public class Light extends Node {
 		this.field11324 = MonotonicTime.get();
 	}
 
-	@ObfuscatedName("akf.a(I)V")
-	public void method17622() {
+    public void method17622() {
 		if (this.field11332 != this.field11326) {
 			long var1 = MonotonicTime.get();
 			long var3 = var1 - this.field11328;

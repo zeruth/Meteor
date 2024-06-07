@@ -4,25 +4,20 @@ import com.jagex.js5.Js5;
 import deob.ObfuscatedName;
 import rs2.client.login.*;
 
-@ObfuscatedName("kq")
 public class LoadingScreenElementFactory {
 
-	@ObfuscatedName("kq.e")
-	public final Js5 field3035;
+    public final Js5 field3035;
 
-	@ObfuscatedName("kq.n")
-	public final Js5 field3036;
+    public final Js5 field3036;
 
-	@ObfuscatedName("kq.m")
-	public LoadingScreenNewsManager field3037;
+    public LoadingScreenNewsManager field3037;
 
 	public LoadingScreenElementFactory(Js5 arg0, Js5 arg1) {
 		this.field3035 = arg0;
 		this.field3036 = arg1;
 	}
 
-	@ObfuscatedName("kq.e(Lkk;I)Lkx;")
-	public LoadingScreenElement method5137(LoadingScreenElementConfig arg0) {
+    public LoadingScreenElement method5137(LoadingScreenElementConfig arg0) {
 		if (arg0 == null) {
 			return null;
 		}
@@ -54,8 +49,7 @@ public class LoadingScreenElementFactory {
 		}
 	}
 
-	@ObfuscatedName("kq.n(I)Lkf;")
-	public LoadingScreenNewsManager method5138() {
+    public LoadingScreenNewsManager method5138() {
 		if (this.field3037 == null) {
 			this.field3037 = new LoadingScreenNewsManager();
 		}

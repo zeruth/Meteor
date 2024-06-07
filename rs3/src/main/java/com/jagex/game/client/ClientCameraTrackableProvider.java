@@ -7,11 +7,9 @@ import com.jagex.graphics.camera.CameraTrackableType;
 import deob.ObfuscatedName;
 import rs2.client.Client;
 
-@ObfuscatedName("z")
 public class ClientCameraTrackableProvider implements CameraTrackableProvider {
 
-	@ObfuscatedName("z.e(Ljl;IB)Ljn;")
-	public CameraTrackable getCameraTrackable(CameraTrackableType cameraTrackableType, int index) {
+    public CameraTrackable getCameraTrackable(CameraTrackableType cameraTrackableType, int index) {
 		if (CameraTrackableType.PLAYER == cameraTrackableType) {
 			return Client.players[index];
 		}

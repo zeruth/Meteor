@@ -4,17 +4,13 @@ import deob.ObfuscatedName;
 
 import java.util.Random;
 
-@ObfuscatedName("acl")
 public class IntMath {
 
-	@ObfuscatedName("acl.e")
-	public static Random field9158;
+    public static Random field9158;
 
-	@ObfuscatedName("acl.n")
-	public static final Object field9159 = new Object();
+    public static final Object field9159 = new Object();
 
-	@ObfuscatedName("acl.m")
-	public static int[] field9160 = new int[33];
+    public static int[] field9160 = new int[33];
 
 	static {
 		field9160[0] = 0;
@@ -29,13 +25,11 @@ public class IntMath {
 		throw new Error();
 	}
 
-	@ObfuscatedName("aaf.e(II)I")
-	public static int method14281(int arg0) {
+    public static int method14281(int arg0) {
 		return field9160[arg0];
 	}
 
-	@ObfuscatedName("aac.n(II)I")
-	public static int method14573(int arg0) {
+    public static int method14573(int arg0) {
 		int var1 = (arg0 >>> 1 & 0x55555555) + (arg0 & 0x55555555);
 		int var2 = (var1 >>> 2 & 0x33333333) + (var1 & 0x33333333);
 		int var3 = (var2 >>> 4) + var2 & 0xF0F0F0F;
@@ -44,22 +38,19 @@ public class IntMath {
 		return var5 & 0xFF;
 	}
 
-	@ObfuscatedName("gt.m(IIIB)I")
-	public static int method3588(int arg0, int arg1, int arg2) {
+    public static int method3588(int arg0, int arg1, int arg2) {
 		int var3 = method14281(arg2 - arg1 + 1);
 		int var4 = var3 << arg1;
 		return arg0 & ~var4;
 	}
 
-	@ObfuscatedName("fb.k(IIII)I")
-	public static int method3256(int arg0, int arg1, int arg2) {
+    public static int method3256(int arg0, int arg1, int arg2) {
 		int var3 = method14281(arg2 - arg1 + 1);
 		int var4 = var3 << arg1;
 		return arg0 | var4;
 	}
 
-	@ObfuscatedName("ahz.f(IB)I")
-	public static int bitceil(int arg0) {
+    public static int bitceil(int arg0) {
 		int var6 = arg0 - 1;
 		int var1 = var6 | var6 >>> 1;
 		int var2 = var1 | var1 >>> 2;
@@ -69,8 +60,7 @@ public class IntMath {
 		return var5 + 1;
 	}
 
-	@ObfuscatedName("fx.w(II)I")
-	public static int method3082(int arg0) {
+    public static int method3082(int arg0) {
 		int var1 = arg0 >>> 1;
 		int var2 = var1 | var1 >>> 1;
 		int var3 = var2 | var2 >>> 2;
@@ -80,13 +70,11 @@ public class IntMath {
 		return arg0 & ~var6;
 	}
 
-	@ObfuscatedName("jm.l(II)Z")
-	public static boolean method4918(int arg0) {
+    public static boolean method4918(int arg0) {
 		return (arg0 & -arg0) == arg0;
 	}
 
-	@ObfuscatedName("sf.u(II)I")
-	public static int ilog(int v) {
+    public static int ilog(int v) {
 		int var1 = 0;
 		if (v < 0 || v >= 65536) {
 			v >>>= 0x10;
@@ -111,8 +99,7 @@ public class IntMath {
 		return v + var1;
 	}
 
-	@ObfuscatedName("ni.z(III)I")
-	public static int bitReverse(int arg0, int arg1) {
+    public static int bitReverse(int arg0, int arg1) {
 		int var2 = 0;
 		while (arg1 > 0) {
 			var2 = var2 << 1 | arg0 & 0x1;
@@ -122,14 +109,12 @@ public class IntMath {
 		return var2;
 	}
 
-	@ObfuscatedName("ts.p(IIB)I")
-	public static int method8658(int arg0, int arg1) {
+    public static int method8658(int arg0, int arg1) {
 		int var2 = arg0 >> 31 & arg1 - 1;
 		return ((arg0 >>> 31) + arg0) % arg1 + var2;
 	}
 
-	@ObfuscatedName("ach.d(Ljava/util/Random;II)I")
-	public static int method14985(Random arg0, int arg1) {
+    public static int method14985(Random arg0, int arg1) {
 		if (arg0 == null) {
 			arg0 = field9158;
 			if (arg0 == null) {

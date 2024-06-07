@@ -3,17 +3,13 @@ package com.jagex.math;
 import com.jagex.core.io.Packet;
 import deob.ObfuscatedName;
 
-@ObfuscatedName("oe")
 public class ScaleRotTrans {
 
-	@ObfuscatedName("oe.p")
-	public Quaternion rot;
+    public Quaternion rot;
 
-	@ObfuscatedName("oe.d")
-	public Vector3 trans;
+    public Vector3 trans;
 
-	@ObfuscatedName("oe.c")
-	public Vector3 scale;
+    public Vector3 scale;
 
 	public ScaleRotTrans(Packet arg0, boolean arg1) {
 		this.decode(arg0, arg1);
@@ -30,8 +26,7 @@ public class ScaleRotTrans {
 		this.setTo(arg0);
 	}
 
-	@ObfuscatedName("oe.e(Lalw;Z)V")
-	public void decode(Packet arg0, boolean arg1) {
+    public void decode(Packet arg0, boolean arg1) {
 		if (arg1) {
 			this.decode(arg0);
 		} else {
@@ -41,8 +36,7 @@ public class ScaleRotTrans {
 		}
 	}
 
-	@ObfuscatedName("oe.n(Lalw;)V")
-	public void decode(Packet arg0) {
+    public void decode(Packet arg0) {
 		int var2 = arg0.g1();
 		float var3 = 0.0F;
 		float var4 = 0.0F;
@@ -90,15 +84,13 @@ public class ScaleRotTrans {
 		this.scale = new Vector3(var10, var11, var12);
 	}
 
-	@ObfuscatedName("oe.m(Loe;)V")
-	public void setTo(ScaleRotTrans arg0) {
+    public void setTo(ScaleRotTrans arg0) {
 		this.rot.setTo(arg0.rot);
 		this.trans.setTo(arg0.trans);
 		this.scale.setTo(arg0.scale);
 	}
 
-	@ObfuscatedName("oe.k()V")
-	public final void invert() {
+    public final void invert() {
 		this.rot.opposite();
 		this.trans.negate();
 		this.trans.rotate(this.rot);
@@ -107,8 +99,7 @@ public class ScaleRotTrans {
 		this.scale.z = 1.0F / this.scale.z;
 	}
 
-	@ObfuscatedName("oe.f(Loe;)V")
-	public final void multiply(ScaleRotTrans arg0) {
+    public final void multiply(ScaleRotTrans arg0) {
 		this.rot.multiply(arg0.rot);
 		this.trans.rotate(arg0.rot);
 		this.trans.add(arg0.trans);

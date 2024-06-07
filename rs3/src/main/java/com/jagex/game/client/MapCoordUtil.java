@@ -2,15 +2,13 @@ package com.jagex.game.client;
 
 import deob.ObfuscatedName;
 
-@ObfuscatedName("qt")
 public class MapCoordUtil {
 
 	public MapCoordUtil() throws Throwable {
 		throw new Error();
 	}
 
-	@ObfuscatedName("abx.e(IIII)I")
-	public static int method14888(int arg0, int arg1, int arg2) {
+    public static int method14888(int arg0, int arg1, int arg2) {
 		int var3 = arg2 & 0x3;
 		if (var3 == 0) {
 			return arg0;
@@ -23,8 +21,7 @@ public class MapCoordUtil {
 		}
 	}
 
-	@ObfuscatedName("abn.n(IIII)I")
-	public static int method14756(int arg0, int arg1, int arg2) {
+    public static int method14756(int arg0, int arg1, int arg2) {
 		int var3 = arg2 & 0x3;
 		if (var3 == 0) {
 			return arg1;
@@ -37,8 +34,7 @@ public class MapCoordUtil {
 		}
 	}
 
-	@ObfuscatedName("pc.m(IIIB)I")
-	public static int method7092(int arg0, int arg1, int arg2) {
+    public static int method7092(int arg0, int arg1, int arg2) {
 		int var3 = arg2 & 0x3;
 		if (var3 == 0) {
 			return arg0;
@@ -51,8 +47,7 @@ public class MapCoordUtil {
 		}
 	}
 
-	@ObfuscatedName("uc.k(IIII)I")
-	public static int method8977(int arg0, int arg1, int arg2) {
+    public static int method8977(int arg0, int arg1, int arg2) {
 		int var3 = arg2 & 0x3;
 		if (var3 == 0) {
 			return arg1;
@@ -65,8 +60,7 @@ public class MapCoordUtil {
 		}
 	}
 
-	@ObfuscatedName("wn.f(IIIIIIB)I")
-	public static int method9606(int arg0, int arg1, int arg2, int arg3, int arg4, int arg5) {
+    public static int method9606(int arg0, int arg1, int arg2, int arg3, int arg4, int arg5) {
 		if ((arg5 & 0x1) == 1) {
 			int var6 = arg3;
 			arg3 = arg4;
@@ -84,8 +78,7 @@ public class MapCoordUtil {
 		}
 	}
 
-	@ObfuscatedName("eu.w(IIIIIII)I")
-	public static int method2733(int arg0, int arg1, int arg2, int arg3, int arg4, int arg5) {
+    public static int method2733(int arg0, int arg1, int arg2, int arg3, int arg4, int arg5) {
 		if ((arg5 & 0x1) == 1) {
 			int var6 = arg3;
 			arg3 = arg4;

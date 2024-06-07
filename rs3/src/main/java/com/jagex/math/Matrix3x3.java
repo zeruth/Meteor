@@ -2,18 +2,15 @@ package com.jagex.math;
 
 import deob.ObfuscatedName;
 
-@ObfuscatedName("oc")
 public final class Matrix3x3 {
 
-	@ObfuscatedName("oc.e")
-	public float[] data = new float[9];
+    public float[] data = new float[9];
 
 	public Matrix3x3() {
 		this.setToIdentity();
 	}
 
-	@ObfuscatedName("oc.e()Lov;")
-	public Quaternion method6476() {
+    public Quaternion method6476() {
 		Quaternion var1 = new Quaternion();
 		double var2 = (double) (this.data[0] + 1.0F + this.data[4] + this.data[8]);
 		if (var2 > 1.0E-8D) {
@@ -44,8 +41,7 @@ public final class Matrix3x3 {
 		return var1;
 	}
 
-	@ObfuscatedName("oc.n()V")
-	public void setToIdentity() {
+    public void setToIdentity() {
 		this.data[0] = 1.0F;
 		this.data[1] = 0.0F;
 		this.data[2] = 0.0F;

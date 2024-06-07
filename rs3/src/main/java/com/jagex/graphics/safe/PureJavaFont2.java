@@ -7,17 +7,13 @@ import com.jagex.graphics.SpriteRelated;
 import com.jagex.graphics.PalettedSpriteData;
 import deob.ObfuscatedName;
 
-@ObfuscatedName("afd")
 public class PureJavaFont2 extends Font {
 
-	@ObfuscatedName("afd.o")
-	public PureJavaToolkit field10236;
+    public PureJavaToolkit field10236;
 
-	@ObfuscatedName("afd.s")
-	public byte[][] field10237;
+    public byte[][] field10237;
 
-	@ObfuscatedName("afd.y")
-	public int[] field10235;
+    public int[] field10235;
 
 	public PureJavaFont2(PureJavaToolkit arg0, FontMetrics arg1, PalettedSpriteData arg2) {
 		super(arg0, arg1);
@@ -40,8 +36,7 @@ public class PureJavaFont2 extends Font {
 		this.field10235 = arg2.palette;
 	}
 
-	@ObfuscatedName("afd.s(CIIIZ)V")
-	public void drawChar(char arg0, int arg1, int arg2, int arg3, boolean arg4) {
+    public void drawChar(char arg0, int arg1, int arg2, int arg3, boolean arg4) {
 		if (this.field10236.colour == null) {
 			return;
 		}
@@ -88,8 +83,7 @@ public class PureJavaFont2 extends Font {
 		}
 	}
 
-	@ObfuscatedName("afd.bl([B[I[IIIIIII)V")
-	public void method16383(byte[] arg0, int[] arg1, int[] arg2, int arg3, int arg4, int arg5, int arg6, int arg7, int arg8) {
+    public void method16383(byte[] arg0, int[] arg1, int[] arg2, int arg3, int arg4, int arg5, int arg6, int arg7, int arg8) {
 		int var10 = -(arg5 >> 2);
 		int var11 = -(arg5 & 0x3);
 		boolean var12 = false;
@@ -133,8 +127,7 @@ public class PureJavaFont2 extends Font {
 		}
 	}
 
-	@ObfuscatedName("afd.bk([B[IIIIIIII)V")
-	public void method16380(byte[] arg0, int[] arg1, int arg2, int arg3, int arg4, int arg5, int arg6, int arg7, int arg8) {
+    public void method16380(byte[] arg0, int[] arg1, int arg2, int arg3, int arg4, int arg5, int arg6, int arg7, int arg8) {
 		int var10 = -(arg5 >> 2);
 		int var11 = -(arg5 & 0x3);
 		for (int var12 = -arg6; var12 < 0; var12++) {
@@ -172,8 +165,7 @@ public class PureJavaFont2 extends Font {
 		}
 	}
 
-	@ObfuscatedName("afd.y(CIIIZLch;II)V")
-	public void drawChar2(char arg0, int arg1, int arg2, int arg3, boolean arg4, SpriteRelated arg5, int arg6, int arg7) {
+    public void drawChar2(char arg0, int arg1, int arg2, int arg3, boolean arg4, SpriteRelated arg5, int arg6, int arg7) {
 		if (this.field10236.colour == null) {
 			return;
 		}
@@ -224,8 +216,7 @@ public class PureJavaFont2 extends Font {
 		}
 	}
 
-	@ObfuscatedName("afd.bh([B[I[IIIIIIIIIIILch;II)V")
-	public void method16385(byte[] arg0, int[] arg1, int[] arg2, int arg3, int arg4, int arg5, int arg6, int arg7, int arg8, int arg9, int arg10, int arg11, int arg12, SpriteRelated arg13, int arg14, int arg15) {
+    public void method16385(byte[] arg0, int[] arg1, int[] arg2, int arg3, int arg4, int arg5, int arg6, int arg7, int arg8, int arg9, int arg10, int arg11, int arg12, SpriteRelated arg13, int arg14, int arg15) {
 		JavaGraphicsRelated3 var17 = (JavaGraphicsRelated3) arg13;
 		int[] var18 = var17.field9414;
 		int[] var19 = var17.field9415;
@@ -280,8 +271,7 @@ public class PureJavaFont2 extends Font {
 		}
 	}
 
-	@ObfuscatedName("afd.bx([B[IIIIIIIIIIILch;II)V")
-	public void method16379(byte[] arg0, int[] arg1, int arg2, int arg3, int arg4, int arg5, int arg6, int arg7, int arg8, int arg9, int arg10, int arg11, SpriteRelated arg12, int arg13, int arg14) {
+    public void method16379(byte[] arg0, int[] arg1, int arg2, int arg3, int arg4, int arg5, int arg6, int arg7, int arg8, int arg9, int arg10, int arg11, SpriteRelated arg12, int arg13, int arg14) {
 		JavaGraphicsRelated3 var16 = (JavaGraphicsRelated3) arg12;
 		int[] var17 = var16.field9414;
 		int[] var18 = var16.field9415;

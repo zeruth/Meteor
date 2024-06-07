@@ -5,24 +5,19 @@ import deob.ObfuscatedName;
 import java.io.File;
 import java.io.IOException;
 
-@ObfuscatedName("p")
 public class RuneScapeSetup {
 
-	@ObfuscatedName("p.e")
-	public static final String field519 = GameShell.method3068() + "\\RuneScape-Setup.exe";
+    public static final String field519 = GameShell.method3068() + "\\RuneScape-Setup.exe";
 
-	@ObfuscatedName("p.n")
-	public static Process field520;
+    public static Process field520;
 
-	@ObfuscatedName("p.m")
-	public static RuneScapeSetupStatus field521 = RuneScapeSetupStatus.field689;
+    public static RuneScapeSetupStatus field521 = RuneScapeSetupStatus.field689;
 
 	public RuneScapeSetup() throws Throwable {
 		throw new Error();
 	}
 
-	@ObfuscatedName("ih.e(I)V")
-	public static void method4589() throws RuntimeException {
+    public static void method4589() throws RuntimeException {
 		if (!NativeLibraryConfig.osName.startsWith("win")) {
 			return;
 		}
@@ -47,22 +42,19 @@ public class RuneScapeSetup {
 		}
 	}
 
-	@ObfuscatedName("d.n(I)I")
-	public static int method312() {
+    public static int method312() {
 		method18310();
 		return field521.field693;
 	}
 
-	@ObfuscatedName("alv.m(I)V")
-	public static void method18310() {
+    public static void method18310() {
 		if (method10283()) {
 			field521 = field520.exitValue() == 0 ? RuneScapeSetupStatus.field691 : RuneScapeSetupStatus.field692;
 			field520 = null;
 		}
 	}
 
-	@ObfuscatedName("xe.k(I)Z")
-	public static boolean method10283() {
+    public static boolean method10283() {
 		if (field520 == null) {
 			return false;
 		}

@@ -4,20 +4,15 @@ import deob.ObfuscatedName;
 
 import java.nio.ByteBuffer;
 
-@ObfuscatedName("afx")
 public class GpuFont extends Font {
 
-	@ObfuscatedName("afx.o")
-	public final GpuToolkit field10244;
+    public final GpuToolkit field10244;
 
-	@ObfuscatedName("afx.s")
-	public final GpuTexture field10247;
+    public final GpuTexture field10247;
 
-	@ObfuscatedName("afx.y")
-	public final VertexBuffer field10246;
+    public final VertexBuffer field10246;
 
-	@ObfuscatedName("afx.q")
-	public float[][] field10245;
+    public float[][] field10245;
 
 	public GpuFont(GpuToolkit arg0, FontMetrics arg1, SpriteData arg2, boolean arg3) {
 		super(arg0, arg1);
@@ -125,8 +120,7 @@ public class GpuFont extends Font {
 		this.field10246.upload(0, var29.position(), this.field10244.temporaryBufferAddress);
 	}
 
-	@ObfuscatedName("afx.s(CIIIZ)V")
-	public void drawChar(char arg0, int arg1, int arg2, int arg3, boolean arg4) {
+    public void drawChar(char arg0, int arg1, int arg2, int arg3, boolean arg4) {
 		if (this.field10244.method16337() != GpuImageRelated.field3236) {
 			int var6 = arg2 + this.fontMetrics.method14560(arg0);
 			float var7 = (float) this.fontMetrics.method14558(arg0);
@@ -152,7 +146,6 @@ public class GpuFont extends Font {
 		var9.method5051();
 	}
 
-	@ObfuscatedName("afx.y(CIIIZLch;II)V")
-	public void drawChar2(char arg0, int arg1, int arg2, int arg3, boolean arg4, SpriteRelated arg5, int arg6, int arg7) {
+    public void drawChar2(char arg0, int arg1, int arg2, int arg3, boolean arg4, SpriteRelated arg5, int arg6, int arg7) {
 	}
 }

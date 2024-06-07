@@ -10,161 +10,109 @@ import com.jagex.core.utils.ByteArrayPool;
 import com.jagex.core.utils.MonotonicTime;
 import deob.ObfuscatedName;
 
-@ObfuscatedName("rq")
 public class AudioProcessingUnit {
 
-	@ObfuscatedName("rq.e")
-	public byte[] field4901;
+    public byte[] field4901;
 
-	@ObfuscatedName("rq.n")
-	public int field4896;
+    public int field4896;
 
-	@ObfuscatedName("rq.m")
-	public float field4897;
+    public float field4897;
 
-	@ObfuscatedName("rq.k")
-	public float field4898;
+    public float field4898;
 
-	@ObfuscatedName("rq.f")
-	public float[] field4910;
+    public float[] field4910;
 
-	@ObfuscatedName("rq.w")
-	public boolean field4900;
+    public boolean field4900;
 
-	@ObfuscatedName("rq.l")
-	public int field4899;
+    public int field4899;
 
-	@ObfuscatedName("rq.u")
-	public float field4902;
+    public float field4902;
 
-	@ObfuscatedName("rq.z")
-	public SoundBaseInterface field4903;
+    public SoundBaseInterface field4903;
 
-	@ObfuscatedName("rq.p")
-	public int field4904;
+    public int field4904;
 
-	@ObfuscatedName("rq.d")
-	public int field4895;
+    public int field4895;
 
-	@ObfuscatedName("rq.c")
-	public int field4906;
+    public int field4906;
 
-	@ObfuscatedName("rq.r")
-	public int field4907;
+    public int field4907;
 
-	@ObfuscatedName("rq.v")
-	public SoundRelated3[] field4908;
+    public SoundRelated3[] field4908;
 
-	@ObfuscatedName("rq.o")
-	public int field4909;
+    public int field4909;
 
-	@ObfuscatedName("rq.s")
-	public Object field4918;
+    public Object field4918;
 
-	@ObfuscatedName("rq.y")
-	public int field4928;
+    public int field4928;
 
-	@ObfuscatedName("rq.q")
-	public int field4922;
+    public int field4922;
 
-	@ObfuscatedName("rq.x")
-	public int field4913;
+    public int field4913;
 
-	@ObfuscatedName("rq.b")
-	public int field4914;
+    public int field4914;
 
-	@ObfuscatedName("rq.h")
-	public int field4926;
+    public int field4926;
 
-	@ObfuscatedName("rq.a")
-	public int[] field4936;
+    public int[] field4936;
 
-	@ObfuscatedName("rq.g")
-	public int[] field4917;
+    public int[] field4917;
 
-	@ObfuscatedName("rq.i")
-	public int[] field4944;
+    public int[] field4944;
 
-	@ObfuscatedName("rq.j")
-	public int field4919;
+    public int field4919;
 
-	@ObfuscatedName("rq.t")
-	public boolean field4920;
+    public boolean field4920;
 
-	@ObfuscatedName("rq.ae")
-	public SoundRelatedType1 field4912;
+    public SoundRelatedType1 field4912;
 
-	@ObfuscatedName("rq.ag")
-	public VorbisInterface field4921;
+    public VorbisInterface field4921;
 
-	@ObfuscatedName("rq.ah")
-	public SoundBackend field4923;
+    public SoundBackend field4923;
 
-	@ObfuscatedName("rq.al")
-	public boolean field4924;
+    public boolean field4924;
 
-	@ObfuscatedName("rq.ac")
-	public SoundAdjuster field4933;
+    public SoundAdjuster field4933;
 
-	@ObfuscatedName("rq.ai")
-	public Object field4905;
+    public Object field4905;
 
-	@ObfuscatedName("rq.aw")
-	public int field4927 = 0;
+    public int field4927 = 0;
 
-	@ObfuscatedName("rq.as")
-	public int field4945 = 0;
+    public int field4945 = 0;
 
-	@ObfuscatedName("rq.at")
-	public int field4929 = 0;
+    public int field4929 = 0;
 
-	@ObfuscatedName("rq.ad")
-	public boolean field4930;
+    public boolean field4930;
 
-	@ObfuscatedName("rq.am")
-	public int field4931 = 0;
+    public int field4931 = 0;
 
-	@ObfuscatedName("rq.au")
-	public int field4932 = 0;
+    public int field4932 = 0;
 
-	@ObfuscatedName("rq.ar")
-	public boolean field4915;
+    public boolean field4915;
 
-	@ObfuscatedName("rq.ap")
-	public int field4934 = 0;
+    public int field4934 = 0;
 
-	@ObfuscatedName("rq.aq")
-	public float field4935;
+    public float field4935;
 
-	@ObfuscatedName("rq.ax")
-	public boolean field4916;
+    public boolean field4916;
 
-	@ObfuscatedName("rq.av")
-	public float field4937 = 0.0F;
+    public float field4937 = 0.0F;
 
-	@ObfuscatedName("rq.ao")
-	public long field4938 = 0L;
+    public long field4938 = 0L;
 
-	@ObfuscatedName("rq.aj")
-	public long field4939 = 0L;
+    public long field4939 = 0L;
 
-	@ObfuscatedName("rq.ay")
-	public float field4940 = 0.0F;
+    public float field4940 = 0.0F;
 
-	@ObfuscatedName("rq.ab")
-	public int field4941 = 0;
+    public int field4941 = 0;
 
-	@ObfuscatedName("rq.az")
-	public boolean field4942;
+    public boolean field4942;
 
-	@ObfuscatedName("rq.aa")
-	public boolean field4943;
+    public boolean field4943;
 
-	@ObfuscatedName("rq.af")
-	public int field4925 = 0;
+    public int field4925 = 0;
 
-	@ObfuscatedName("rq.ak")
-	public boolean field4911;
+    public boolean field4911;
 
 	// line 66
 	public AudioProcessingUnit(SoundRelatedType2 arg0, int arg1, int arg2, VorbisInterface arg3, SoundBackend arg4) {
@@ -179,8 +127,7 @@ public class AudioProcessingUnit {
 		this.method7517();
 	}
 
-	@ObfuscatedName("rp")
-	public static class VorbisInterfaceRelated implements VorbisInterface2 {
+    public static class VorbisInterfaceRelated implements VorbisInterface2 {
 
 		// $FF: synthetic field
 		public final AudioProcessingUnit this$0;
@@ -190,43 +137,36 @@ public class AudioProcessingUnit {
 			this.this$0 = arg0;
 		}
 
-		@ObfuscatedName("rp.e(I)V")
-		public void method5932() {
+        public void method5932() {
 			this.this$0.method7506(true);
 		}
 	}
 
 	// line 83
-	@ObfuscatedName("rq.e(I)Lqn;")
-	public SoundRelatedType1 method7550() {
+    public SoundRelatedType1 method7550() {
 		return this.field4912;
 	}
 
-	@ObfuscatedName("rq.n(Lqn;I)V")
-	public void method7480(SoundRelatedType1 arg0) {
+    public void method7480(SoundRelatedType1 arg0) {
 		this.field4912 = arg0;
 	}
 
-	@ObfuscatedName("rq.m(I)Z")
-	public boolean method7581() {
+    public boolean method7581() {
 		return SoundRelatedType1.field4858 == this.field4912;
 	}
 
-	@ObfuscatedName("rq.k(B)Z")
-	public boolean method7482() {
+    public boolean method7482() {
 		return SoundRelatedType1.field4865 == this.field4912;
 	}
 
-	@ObfuscatedName("rq.f(I)V")
-	public void method7592() {
+    public void method7592() {
 		if (this.method7550().field4867 >= SoundRelatedType1.field4860.field4867) {
 			throw new RuntimeException("");
 		}
 		this.method7480(SoundRelatedType1.field4860);
 	}
 
-	@ObfuscatedName("rq.w(B)V")
-	public void method7484() {
+    public void method7484() {
 		if (this.method7550().field4867 < SoundRelatedType1.field4860.field4867) {
 			throw new RuntimeException("");
 		}
@@ -234,8 +174,7 @@ public class AudioProcessingUnit {
 		this.method7480(SoundRelatedType1.field4866);
 	}
 
-	@ObfuscatedName("rq.l(FII)V")
-	public void method7485(float arg0, int arg1) {
+    public void method7485(float arg0, int arg1) {
 		if (arg1 <= 0) {
 			this.field4897 = arg0;
 			this.field4937 = this.field4897;
@@ -249,13 +188,11 @@ public class AudioProcessingUnit {
 		}
 	}
 
-	@ObfuscatedName("rq.u(I)F")
-	public float method7486() {
+    public float method7486() {
 		return this.field4897;
 	}
 
-	@ObfuscatedName("rq.z([BLrf;IFZZIFLjava/lang/Object;I)Z")
-	public boolean method7487(byte[] arg0, SoundBaseInterface arg1, int arg2, float arg3, boolean arg4, boolean arg5, int arg6, float arg7, Object arg8) {
+    public boolean method7487(byte[] arg0, SoundBaseInterface arg1, int arg2, float arg3, boolean arg4, boolean arg5, int arg6, float arg7, Object arg8) {
 		synchronized (this) {
 			if (arg1 == null) {
 				this.field4901 = arg0;
@@ -332,15 +269,13 @@ public class AudioProcessingUnit {
 		}
 	}
 
-	@ObfuscatedName("rq.p(I)V")
-	public void method7488() {
+    public void method7488() {
 		synchronized (this) {
 			this.method7573();
 		}
 	}
 
-	@ObfuscatedName("rq.d(I)V")
-	public void method7489() {
+    public void method7489() {
 		synchronized (this) {
 			if (this.method7550() != SoundRelatedType1.field4858 && this.method7550().field4867 >= SoundRelatedType1.field4860.field4867) {
 				this.method7480(SoundRelatedType1.field4858);
@@ -348,16 +283,14 @@ public class AudioProcessingUnit {
 		}
 	}
 
-	@ObfuscatedName("rq.c(Lro;I)V")
-	public void method7536(SoundAdjuster arg0) {
+    public void method7536(SoundAdjuster arg0) {
 		this.field4933 = arg0;
 		if (this.field4933 != null) {
 			this.field4933.method3053(this.field4905, this.field4910, null);
 		}
 	}
 
-	@ObfuscatedName("rq.r(I)Z")
-	public boolean method7491() {
+    public boolean method7491() {
 		if (this.field4910 == null) {
 			return false;
 		}
@@ -381,8 +314,7 @@ public class AudioProcessingUnit {
 		}
 	}
 
-	@ObfuscatedName("rq.v(B)V")
-	public void method7492() {
+    public void method7492() {
 		AudioBuss var1 = this.field4923.getBussManager().getBuss(this.field4896);
 		this.field4898 = var1 == null ? 1.0F : var1.getVolume();
 		float var2 = var1 == null ? 0.1F : var1.getPriority();
@@ -403,32 +335,27 @@ public class AudioProcessingUnit {
 		}
 	}
 
-	@ObfuscatedName("rq.o(I)F")
-	public float method7531() {
+    public float method7531() {
 		return this.field4935;
 	}
 
-	@ObfuscatedName("rq.s(FI)V")
-	public void method7494(float arg0) {
+    public void method7494(float arg0) {
 		synchronized (this) {
 			this.field4935 = arg0;
 		}
 	}
 
-	@ObfuscatedName("rq.y(B)Z")
-	public boolean method7588() {
+    public boolean method7588() {
 		return this.field4916;
 	}
 
-	@ObfuscatedName("rq.q(B)V")
-	public void method7601() {
+    public void method7601() {
 		synchronized (this) {
 			this.method7497();
 		}
 	}
 
-	@ObfuscatedName("rq.x(B)V")
-	public void method7497() {
+    public void method7497() {
 		if (this.method7550().field4867 < SoundRelatedType1.field4861.field4867) {
 			return;
 		}
@@ -455,8 +382,7 @@ public class AudioProcessingUnit {
 		}
 	}
 
-	@ObfuscatedName("rq.b(I)V")
-	public void method7563() {
+    public void method7563() {
 		synchronized (this) {
 			int var2 = this.method7561();
 			if (!this.field4942 || var2 <= this.field4941 || !this.field4921.method3868()) {
@@ -509,8 +435,7 @@ public class AudioProcessingUnit {
 		}
 	}
 
-	@ObfuscatedName("rq.h(I)V")
-	public void method7483() {
+    public void method7483() {
 		synchronized (this) {
 			if (this.field4921.method3843() == VorbisRelated.field3427) {
 				if (this.field4918 == null) {
@@ -528,8 +453,7 @@ public class AudioProcessingUnit {
 		this.method7517();
 	}
 
-	@ObfuscatedName("rq.a(B)V")
-	public void method7573() {
+    public void method7573() {
 		if (this.method7550() != SoundRelatedType1.field4858 && this.method7550().field4867 < SoundRelatedType1.field4861.field4867) {
 			this.method7480(SoundRelatedType1.field4861);
 			this.field4920 = true;
@@ -538,25 +462,21 @@ public class AudioProcessingUnit {
 		}
 	}
 
-	@ObfuscatedName("rq.g(B)V")
-	public void method7501() {
+    public void method7501() {
 		if (this.field4920 && this.method7550().field4867 >= SoundRelatedType1.field4861.field4867 && this.method7550().field4867 < SoundRelatedType1.field4865.field4867 && this.field4933 != null && this.field4937 == this.field4897) {
 			this.field4933.method3053(this.field4905, this.field4910, null);
 		}
 	}
 
-	@ObfuscatedName("rq.i(I)V")
-	public void method7502() {
+    public void method7502() {
 		this.field4911 = true;
 	}
 
-	@ObfuscatedName("rq.j(I)V")
-	public void method7584() {
+    public void method7584() {
 		this.field4911 = false;
 	}
 
-	@ObfuscatedName("rq.t(B)V")
-	public void method7504() {
+    public void method7504() {
 		if (this.method7550().field4867 < SoundRelatedType1.field4861.field4867 || this.method7550().field4867 >= SoundRelatedType1.field4858.field4867 || !this.method7491()) {
 			return;
 		}
@@ -567,8 +487,7 @@ public class AudioProcessingUnit {
 		Thread.yield();
 	}
 
-	@ObfuscatedName("rq.ae(S)V")
-	public void method7505() {
+    public void method7505() {
 		if (this.field4908 == null) {
 			return;
 		}
@@ -673,13 +592,11 @@ public class AudioProcessingUnit {
 		}
 	}
 
-	@ObfuscatedName("rq.ag(ZB)V")
-	public void method7506(boolean arg0) {
+    public void method7506(boolean arg0) {
 		this.field4924 = arg0;
 	}
 
-	@ObfuscatedName("rq.ah(B)V")
-	public void method7507() {
+    public void method7507() {
 		synchronized (this) {
 			if (!this.field4911 && this.field4918 != null) {
 				int var2 = this.field4923.method5864(this.field4918);
@@ -708,8 +625,7 @@ public class AudioProcessingUnit {
 		}
 	}
 
-	@ObfuscatedName("rq.al([BIII)V")
-	public void method7549(byte[] arg0, int arg1, int arg2) {
+    public void method7549(byte[] arg0, int arg1, int arg2) {
 		int var4 = arg1;
 		int var5 = 0;
 		int var6 = this.field4921.method3733().field3445;
@@ -732,13 +648,11 @@ public class AudioProcessingUnit {
 		}
 	}
 
-	@ObfuscatedName("rq.ac(IS)Lalw;")
-	public Packet method7515(int arg0) {
+    public Packet method7515(int arg0) {
 		return this.field4921.method3728(arg0);
 	}
 
-	@ObfuscatedName("rq.ai(Lalw;B)V")
-	public void method7510(Packet arg0) {
+    public void method7510(Packet arg0) {
 		if (this.field4905 == null || !(this.field4905 instanceof Sound)) {
 			return;
 		}
@@ -751,8 +665,7 @@ public class AudioProcessingUnit {
 		var3.method9681(var5);
 	}
 
-	@ObfuscatedName("rq.aw(II)Lalw;")
-	public Packet method7511(int arg0) {
+    public Packet method7511(int arg0) {
 		if (this.field4905 == null || !(this.field4905 instanceof Sound)) {
 			return null;
 		}
@@ -764,8 +677,7 @@ public class AudioProcessingUnit {
 		return var5;
 	}
 
-	@ObfuscatedName("rq.as(II)Z")
-	public boolean method7512(int arg0) {
+    public boolean method7512(int arg0) {
 		if (this.field4905 != null && this.field4905 instanceof Sound) {
 			Sound var2 = (Sound) this.field4905;
 			AudioProcessingInterface var3 = var2.method7386();
@@ -775,8 +687,7 @@ public class AudioProcessingUnit {
 		}
 	}
 
-	@ObfuscatedName("rq.at(I)I")
-	public int method7561() {
+    public int method7561() {
 		if (this.field4905 != null && this.field4905 instanceof Sound) {
 			Sound var1 = (Sound) this.field4905;
 			AudioProcessingInterface var2 = var1.method7386();
@@ -786,8 +697,7 @@ public class AudioProcessingUnit {
 		}
 	}
 
-	@ObfuscatedName("rq.ad(I)Z")
-	public boolean method7514() {
+    public boolean method7514() {
 		synchronized (this) {
 			if (this.field4905 != null && this.field4905 instanceof Sound) {
 				Sound var2 = (Sound) this.field4905;
@@ -800,8 +710,7 @@ public class AudioProcessingUnit {
 		}
 	}
 
-	@ObfuscatedName("rq.am(I)V")
-	public void method7496() {
+    public void method7496() {
 		synchronized (this) {
 			if (this.field4905 != null && this.field4905 instanceof Sound) {
 				Sound var2 = (Sound) this.field4905;
@@ -813,14 +722,12 @@ public class AudioProcessingUnit {
 		}
 	}
 
-	@ObfuscatedName("rq.au(I)Ljava/lang/Object;")
-	public Object method7516() {
+    public Object method7516() {
 		return this.field4905;
 	}
 
 	// line 686
-	@ObfuscatedName("rq.ar(I)V")
-	public void method7517() {
+    public void method7517() {
 		synchronized (this) {
 			this.field4901 = null;
 			this.field4896 = 0;
@@ -875,23 +782,18 @@ public class AudioProcessingUnit {
 		}
 	}
 
-	@ObfuscatedName("qb")
-	public static class SoundRelated3 {
+    public static class SoundRelated3 {
 
 		// $FF: synthetic field
 		public final AudioProcessingUnit this$0;
 
-		@ObfuscatedName("qb.e")
-		public Packet field4873;
+        public Packet field4873;
 
-		@ObfuscatedName("qb.n")
-		public boolean field4871;
+        public boolean field4871;
 
-		@ObfuscatedName("qb.m")
-		public int field4872;
+        public int field4872;
 
-		@ObfuscatedName("qb.k")
-		public int field4870;
+        public int field4870;
 
 		// line 750
 		public SoundRelated3(AudioProcessingUnit arg0, Packet arg1, boolean arg2) {
@@ -902,8 +804,7 @@ public class AudioProcessingUnit {
 			this.field4870 = -1;
 		}
 
-		@ObfuscatedName("qb.e(I)V")
-		public void method7369() {
+        public void method7369() {
 			if (this.field4873 != null && !this.field4871) {
 				this.field4873.release();
 			}

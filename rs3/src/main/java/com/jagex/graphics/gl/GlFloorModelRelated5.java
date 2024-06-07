@@ -9,65 +9,45 @@ import com.jagex.graphics.Light;
 import com.jagex.math.IntMath;
 import deob.ObfuscatedName;
 
-@ObfuscatedName("ajr")
 public class GlFloorModelRelated5 extends Node {
 
-	@ObfuscatedName("ajr.k")
-	public final GlToolkit field11279;
+    public final GlToolkit field11279;
 
-	@ObfuscatedName("ajr.f")
-	public final GlFloorModel field11273;
+    public final GlFloorModel field11273;
 
-	@ObfuscatedName("ajr.w")
-	public final Light field11274;
+    public final Light field11274;
 
-	@ObfuscatedName("ajr.l")
-	public int field11275;
+    public int field11275;
 
-	@ObfuscatedName("ajr.u")
-	public int field11272;
+    public int field11272;
 
-	@ObfuscatedName("ajr.z")
-	public int field11277;
+    public int field11277;
 
-	@ObfuscatedName("ajr.p")
-	public int field11278;
+    public int field11278;
 
-	@ObfuscatedName("ajr.d")
-	public int field11286;
+    public int field11286;
 
-	@ObfuscatedName("ajr.c")
-	public int field11280;
+    public int field11280;
 
-	@ObfuscatedName("ajr.r")
-	public final GlBinding field11281;
+    public final GlBinding field11281;
 
-	@ObfuscatedName("ajr.v")
-	public final GlInterfaceRelated field11282;
+    public final GlInterfaceRelated field11282;
 
-	@ObfuscatedName("ajr.o")
-	public final GlRelated3 field11283;
+    public final GlRelated3 field11283;
 
-	@ObfuscatedName("ajr.s")
-	public final GlRelated3 field11284;
+    public final GlRelated3 field11284;
 
-	@ObfuscatedName("ajr.y")
-	public float[][] field11285;
+    public float[][] field11285;
 
-	@ObfuscatedName("ajr.q")
-	public float[][] field11287;
+    public float[][] field11287;
 
-	@ObfuscatedName("ajr.x")
-	public float[][] field11276;
+    public float[][] field11276;
 
-	@ObfuscatedName("ajr.b")
-	public Packet field11288;
+    public Packet field11288;
 
-	@ObfuscatedName("ajr.h")
-	public GpuPacket field11289;
+    public GpuPacket field11289;
 
-	@ObfuscatedName("ajr.a")
-	public HashTable field11290;
+    public HashTable field11290;
 
 	public GlFloorModelRelated5(GlToolkit arg0, GlFloorModel arg1, Light arg2, int[] arg3) {
 		this.field11279 = arg0;
@@ -204,8 +184,7 @@ public class GlFloorModelRelated5 extends Node {
 		this.field11285 = null;
 	}
 
-	@ObfuscatedName("ajr.e(S)V")
-	public void method17571(short arg0) {
+    public void method17571(short arg0) {
 		if (this.field11279.field10017) {
 			this.field11288.p2(arg0);
 		} else {
@@ -213,8 +192,7 @@ public class GlFloorModelRelated5 extends Node {
 		}
 	}
 
-	@ObfuscatedName("ajr.n(IIIIII)V")
-	public void method17573(int arg0, int arg1, int arg2, int arg3, int arg4, int arg5) {
+    public void method17573(int arg0, int arg1, int arg2, int arg3, int arg4, int arg5) {
 		long var7 = -1L;
 		int var9 = (arg2 << this.field11273.field1236) + arg4;
 		int var10 = (arg3 << this.field11273.field1236) + arg5;
@@ -319,8 +297,7 @@ public class GlFloorModelRelated5 extends Node {
 		this.method17571(var13);
 	}
 
-	@ObfuscatedName("ajr.m(III[[Z)V")
-	public void method17572(int arg0, int arg1, int arg2, boolean[][] arg3) {
+    public void method17572(int arg0, int arg1, int arg2, boolean[][] arg3) {
 		if (this.field11281 == null || (this.field11275 > arg0 + arg2 || (this.field11272 < arg0 - arg2 || (this.field11277 > arg1 + arg2 || this.field11278 < arg1 - arg2)))) {
 			return;
 		}

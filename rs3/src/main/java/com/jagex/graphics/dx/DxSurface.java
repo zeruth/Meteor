@@ -6,38 +6,27 @@ import jagdx.*;
 
 import java.awt.*;
 
-@ObfuscatedName("aic")
 public class DxSurface extends GpuSurface implements DxInterface1 {
 
-	@ObfuscatedName("aic.e")
-	public final DxToolkit renderer;
+    public final DxToolkit renderer;
 
-	@ObfuscatedName("aic.n")
-	public final Canvas canvas;
+    public final Canvas canvas;
 
-	@ObfuscatedName("aic.m")
-	public long field10711;
+    public long field10711;
 
-	@ObfuscatedName("aic.k")
-	public long field10712;
+    public long field10712;
 
-	@ObfuscatedName("aic.f")
-	public long field10713;
+    public long field10713;
 
-	@ObfuscatedName("aic.w")
-	public int width;
+    public int width;
 
-	@ObfuscatedName("aic.l")
-	public int height;
+    public int height;
 
-	@ObfuscatedName("aic.u")
-	public boolean field10715 = false;
+    public boolean field10715 = false;
 
-	@ObfuscatedName("aic.z")
-	public boolean field10717 = false;
+    public boolean field10717 = false;
 
-	@ObfuscatedName("aic.p")
-	public D3DPRESENT_PARAMETERS field10709;
+    public D3DPRESENT_PARAMETERS field10709;
 
 	public DxSurface(DxToolkit arg0, Canvas arg1, int arg2, int arg3, boolean arg4) {
 		super(arg0);
@@ -49,8 +38,7 @@ public class DxSurface extends GpuSurface implements DxInterface1 {
 		this.method6220();
 	}
 
-	@ObfuscatedName("aic.x()V")
-	public void method6220() {
+    public void method6220() {
 		if (this.field10711 == 0L) {
 			this.field10709 = new D3DPRESENT_PARAMETERS(this.canvas);
 			this.field10709.Windowed = true;
@@ -77,18 +65,15 @@ public class DxSurface extends GpuSurface implements DxInterface1 {
 		}
 	}
 
-	@ObfuscatedName("aic.e()I")
-	public int getWidth() {
+    public int getWidth() {
 		return this.width;
 	}
 
-	@ObfuscatedName("aic.n()I")
-	public int getHeight() {
+    public int getHeight() {
 		return this.height;
 	}
 
-	@ObfuscatedName("aic.k()Z")
-	public boolean method1630() {
+    public boolean method1630() {
 		this.field10715 = true;
 		if (this.field10711 == 0L) {
 			if (this.renderer.field11960) {
@@ -105,24 +90,20 @@ public class DxSurface extends GpuSurface implements DxInterface1 {
 		}
 	}
 
-	@ObfuscatedName("aic.f()Z")
-	public boolean method1631() {
+    public boolean method1631() {
 		this.field10715 = false;
 		return HRESULT.SUCCEEDED(IDirect3DDevice.SetDepthStencilSurface(this.renderer.device, 0L));
 	}
 
-	@ObfuscatedName("aic.a()I")
-	public int method15451() {
+    public int method15451() {
 		return IDirect3DSwapChain.Present(this.field10711, 0);
 	}
 
-	@ObfuscatedName("aic.g(II)I")
-	public int method15450(int arg0, int arg1) {
+    public int method15450(int arg0, int arg1) {
 		return IDirect3DSwapChain.Present(this.field10711, 0);
 	}
 
-	@ObfuscatedName("aic.i(II)V")
-	public void onResize(int arg0, int arg1) {
+    public void onResize(int arg0, int arg1) {
 		this.method1629();
 		this.width = arg0;
 		this.height = arg1;
@@ -133,8 +114,7 @@ public class DxSurface extends GpuSurface implements DxInterface1 {
 		super.onResize(arg0, arg1);
 	}
 
-	@ObfuscatedName("aic.m()V")
-	public void method1629() {
+    public void method1629() {
 		if (this.field10713 != 0L) {
 			IUnknown.Release(this.field10713);
 			this.field10713 = 0L;
@@ -150,8 +130,7 @@ public class DxSurface extends GpuSurface implements DxInterface1 {
 		this.renderer.method19000(this);
 	}
 
-	@ObfuscatedName("aic.ah()V")
-	public void method16818() {
+    public void method16818() {
 		if (this.field10713 != 0L) {
 			IUnknown.Release(this.field10713);
 			this.field10713 = 0L;

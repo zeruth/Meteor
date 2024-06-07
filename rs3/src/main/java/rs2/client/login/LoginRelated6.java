@@ -7,47 +7,33 @@ import com.jagex.game.load.LoadingScreenElementConfig;
 import com.jagex.game.load.LoadingScreenElementType;
 import deob.ObfuscatedName;
 
-@ObfuscatedName("lv")
 public class LoginRelated6 implements LoadingScreenElementConfig {
 
-	@ObfuscatedName("lv.e")
-	public final String field3203;
+    public final String field3203;
 
-	@ObfuscatedName("lv.n")
-	public final LoadingScreenAlignmentX field3201;
+    public final LoadingScreenAlignmentX field3201;
 
-	@ObfuscatedName("lv.m")
-	public final LoadingScreenAlignmentY field3208;
+    public final LoadingScreenAlignmentY field3208;
 
-	@ObfuscatedName("lv.k")
-	public final int field3204;
+    public final int field3204;
 
-	@ObfuscatedName("lv.f")
-	public final int field3205;
+    public final int field3205;
 
-	@ObfuscatedName("lv.w")
-	public final int field3210;
+    public final int field3210;
 
-	@ObfuscatedName("lv.l")
-	public final int field3207;
+    public final int field3207;
 
-	@ObfuscatedName("lv.u")
-	public final int field3202;
+    public final int field3202;
 
-	@ObfuscatedName("lv.z")
-	public final int field3209;
+    public final int field3209;
 
-	@ObfuscatedName("lv.p")
-	public final int field3206;
+    public final int field3206;
 
-	@ObfuscatedName("lv.d")
-	public final int field3211;
+    public final int field3211;
 
-	@ObfuscatedName("lv.c")
-	public final int field3212;
+    public final int field3212;
 
-	@ObfuscatedName("lv.r")
-	public final int field3213;
+    public final int field3213;
 
 	public LoginRelated6(String arg0, LoadingScreenAlignmentX arg1, LoadingScreenAlignmentY arg2, int arg3, int arg4, int arg5, int arg6, int arg7, int arg8, int arg9, int arg10, int arg11, int arg12) {
 		this.field3203 = arg0;
@@ -65,8 +51,7 @@ public class LoginRelated6 implements LoadingScreenElementConfig {
 		this.field3213 = arg12;
 	}
 
-	@ObfuscatedName("eq.e(Lalw;B)Llv;")
-	public static LoginRelated6 method2836(Packet arg0) {
+    public static LoginRelated6 method2836(Packet arg0) {
 		String var1 = arg0.gjstr();
 		LoadingScreenAlignmentX var2 = LoadingScreenAlignmentX.method13948()[arg0.g1()];
 		LoadingScreenAlignmentY var3 = LoadingScreenAlignmentY.method2774()[arg0.g1()];
@@ -83,8 +68,7 @@ public class LoginRelated6 implements LoadingScreenElementConfig {
 		return new LoginRelated6(var1, var2, var3, var4, var5, var6, var7, var8, var9, var10, var11, var12, var13);
 	}
 
-	@ObfuscatedName("lv.n(S)Lkt;")
-	public LoadingScreenElementType method5349() {
+    public LoadingScreenElementType method5349() {
 		return LoadingScreenElementType.field3187;
 	}
 }

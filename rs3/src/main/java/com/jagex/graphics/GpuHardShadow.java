@@ -3,43 +3,34 @@ package com.jagex.graphics;
 import com.jagex.game.client.HardShadow;
 import deob.ObfuscatedName;
 
-@ObfuscatedName("ati")
 public class GpuHardShadow extends HardShadow {
 
-	@ObfuscatedName("ati.u")
-	public int field12543;
+    public int field12543;
 
-	@ObfuscatedName("ati.z")
-	public int field12545;
+    public int field12545;
 
-	@ObfuscatedName("ati.p")
-	public int field12546;
+    public int field12546;
 
-	@ObfuscatedName("ati.d")
-	public int field12544;
+    public int field12544;
 
-	@ObfuscatedName("ati.c")
-	public final byte[] field12548;
+    public final byte[] field12548;
 
 	public GpuHardShadow(GpuToolkit arg0, int arg1, int arg2) {
 		this.field12548 = new byte[arg1 * arg2];
 	}
 
-	@ObfuscatedName("ati.e(IIII)V")
-	public void method19698(int arg0, int arg1, int arg2, int arg3) {
+    public void method19698(int arg0, int arg1, int arg2, int arg3) {
 		this.field12546 = arg0;
 		this.field12544 = arg1;
 		this.field12543 = arg2 - arg0;
 		this.field12545 = arg3 - arg1;
 	}
 
-	@ObfuscatedName("ati.n(II)Z")
-	public boolean method19709(int arg0, int arg1) {
+    public boolean method19709(int arg0, int arg1) {
 		return this.field12548.length >= arg0 * arg1;
 	}
 
-	@ObfuscatedName("ati.m()V")
-	public void method19700() {
+    public void method19700() {
 		int var1 = -1;
 		int var2 = this.field12548.length - 8;
 		while (var1 < var2) {
@@ -66,8 +57,7 @@ public class GpuHardShadow extends HardShadow {
 		}
 	}
 
-	@ObfuscatedName("ati.k(IIIIII)V")
-	public void method19701(int arg0, int arg1, int arg2, int arg3, int arg4, int arg5) {
+    public void method19701(int arg0, int arg1, int arg2, int arg3, int arg4, int arg5) {
 		int var7 = 0;
 		if (arg0 != arg1) {
 			var7 = (arg4 - arg3 << 16) / (arg1 - arg0);
@@ -447,8 +437,7 @@ public class GpuHardShadow extends HardShadow {
 		}
 	}
 
-	@ObfuscatedName("ati.f([BIIII)V")
-	public static final void method19697(byte[] arg0, int arg1, int arg2, int arg3, int arg4) {
+    public static final void method19697(byte[] arg0, int arg1, int arg2, int arg3, int arg4) {
 		if (arg3 >= arg4) {
 			return;
 		}

@@ -16,84 +16,59 @@ import com.jagex.game.world.entity.PlayerStatProvider;
 import com.jagex.math.IntMath;
 import deob.ObfuscatedName;
 
-@ObfuscatedName("ir")
 public class QuestType implements ConfigType {
 
-	@ObfuscatedName("ir.e")
-	public ConfigTypeList configTypeList;
+    public ConfigTypeList configTypeList;
 
-	@ObfuscatedName("ir.n")
-	public String name;
+    public String name;
 
-	@ObfuscatedName("ir.m")
-	public String sortname;
+    public String sortname;
 
-	@ObfuscatedName("ir.k")
-	public int[][] field2632;
+    public int[][] field2632;
 
-	@ObfuscatedName("ir.f")
-	public int[][] field2630;
+    public int[][] field2630;
 
-	@ObfuscatedName("ir.w")
-	public int type = 0;
+    public int type = 0;
 
-	@ObfuscatedName("ir.l")
-	public int difficulty = 0;
+    public int difficulty = 0;
 
-	@ObfuscatedName("ir.u")
-	public boolean members = false;
+    public boolean members = false;
 
-	@ObfuscatedName("ir.z")
-	public int points;
+    public int points;
 
-	@ObfuscatedName("ir.p")
-	public int[] field2638;
+    public int[] field2638;
 
-	@ObfuscatedName("ir.d")
-	public int[] questrequirements;
+    public int[] questrequirements;
 
-	@ObfuscatedName("ir.c")
-	public int[][] statRequirements;
+    public int[][] statRequirements;
 
-	@ObfuscatedName("ir.r")
-	public int pointsrequirement;
+    public int pointsrequirement;
 
-	@ObfuscatedName("ir.v")
-	public int[] varpsRequirement;
+    public int[] varpsRequirement;
 
-	@ObfuscatedName("ir.o")
-	public int[] field2643;
+    public int[] field2643;
 
-	@ObfuscatedName("ir.s")
-	public int[] field2629;
+    public int[] field2629;
 
-	@ObfuscatedName("ir.y")
-	public String[] varpsDescriptions;
+    public String[] varpsDescriptions;
 
-	@ObfuscatedName("ir.q")
-	public int[] varbitsRequirement;
+    public int[] varbitsRequirement;
 
-	@ObfuscatedName("ir.x")
-	public int[] field2647;
+    public int[] field2647;
 
-	@ObfuscatedName("ir.b")
-	public int[] field2648;
+    public int[] field2648;
 
-	@ObfuscatedName("ir.h")
-	public String[] varbitsDescriptions;
+    public String[] varbitsDescriptions;
 
-	@ObfuscatedName("ir.a")
-	public HashTable params;
+    public HashTable params;
 
-	@ObfuscatedName("ir.g")
-	public int field2651 = -1;
+    public int field2651 = -1;
 
 	public QuestType(int arg0, ConfigTypeList configTypeList) {
 		this.configTypeList = configTypeList;
 	}
 
-	@ObfuscatedName("ir.e(Lalw;B)V")
-	public void decode(Packet buf) {
+    public void decode(Packet buf) {
 		while (true) {
 			int code = buf.g1();
 			if (code == 0) {
@@ -103,8 +78,7 @@ public class QuestType implements ConfigType {
 		}
 	}
 
-	@ObfuscatedName("ir.u(Lalw;II)V")
-	public void decode(Packet buf, int code) {
+    public void decode(Packet buf, int code) {
 		if (code == 1) {
 			this.name = buf.gjstr2();
 		} else if (code == 2) {
@@ -204,15 +178,13 @@ public class QuestType implements ConfigType {
 		}
 	}
 
-	@ObfuscatedName("ir.n(I)V")
-	public void postDecode() {
+    public void postDecode() {
 		if (this.sortname == null) {
 			this.sortname = this.name;
 		}
 	}
 
-	@ObfuscatedName("ir.z(IIB)I")
-	public int getParam(int arg0, int arg1) {
+    public int getParam(int arg0, int arg1) {
 		if (this.params == null) {
 			return arg1;
 		} else {
@@ -221,8 +193,7 @@ public class QuestType implements ConfigType {
 		}
 	}
 
-	@ObfuscatedName("ir.p(ILjava/lang/String;I)Ljava/lang/String;")
-	public String getParam(int arg0, String arg1) {
+    public String getParam(int arg0, String arg1) {
 		if (this.params == null) {
 			return arg1;
 		} else {
@@ -231,8 +202,7 @@ public class QuestType implements ConfigType {
 		}
 	}
 
-	@ObfuscatedName("ir.d(Lep;I)Z")
-	public boolean started(VarIntDomain arg0) {
+    public boolean started(VarIntDomain arg0) {
 		if (this.field2632 != null) {
 			for (int var2 = 0; var2 < this.field2632.length; var2++) {
 				VarType var3 = ((VariableTypeProvider) arg0).getVarType(VarDomainType.PLAYER, this.field2632[var2][0]);
@@ -252,8 +222,7 @@ public class QuestType implements ConfigType {
 		return false;
 	}
 
-	@ObfuscatedName("ir.c(Lep;I)Z")
-	public boolean finished(VarIntDomain arg0) {
+    public boolean finished(VarIntDomain arg0) {
 		if (this.field2632 != null) {
 			for (int var2 = 0; var2 < this.field2632.length; var2++) {
 				VarType var3 = ((VariableTypeProvider) arg0).getVarType(VarDomainType.PLAYER, this.field2632[var2][0]);
@@ -273,8 +242,7 @@ public class QuestType implements ConfigType {
 		return false;
 	}
 
-	@ObfuscatedName("ir.r(Lep;I)Z")
-	public boolean allRequirementsMet(VarIntDomain arg0) {
+    public boolean allRequirementsMet(VarIntDomain arg0) {
 		if (method5179(arg0, this.configTypeList) < this.pointsrequirement) {
 			return false;
 		}
@@ -313,13 +281,11 @@ public class QuestType implements ConfigType {
 		return true;
 	}
 
-	@ObfuscatedName("ir.v(Lep;I)Z")
-	public boolean pointsRequirementMet(VarIntDomain arg0) {
+    public boolean pointsRequirementMet(VarIntDomain arg0) {
 		return method5179(arg0, this.configTypeList) >= this.pointsrequirement;
 	}
 
-	@ObfuscatedName("ir.o(Lep;IB)Z")
-	public boolean statRequirementMet(VarIntDomain arg0, int arg1) {
+    public boolean statRequirementMet(VarIntDomain arg0, int arg1) {
 		if (this.statRequirements == null || arg1 < 0 || arg1 >= this.statRequirements.length) {
 			return false;
 		} else {
@@ -327,8 +293,7 @@ public class QuestType implements ConfigType {
 		}
 	}
 
-	@ObfuscatedName("ir.s(Lep;IB)Z")
-	public boolean questRequirementMet(VarIntDomain arg0, int arg1) {
+    public boolean questRequirementMet(VarIntDomain arg0, int arg1) {
 		if (this.questrequirements == null || arg1 < 0 || arg1 >= this.questrequirements.length) {
 			return false;
 		} else {
@@ -336,8 +301,7 @@ public class QuestType implements ConfigType {
 		}
 	}
 
-	@ObfuscatedName("ir.y(Lep;II)Z")
-	public boolean varpsRequirementMet(VarIntDomain arg0, int arg1) {
+    public boolean varpsRequirementMet(VarIntDomain arg0, int arg1) {
 		if (this.varpsRequirement == null || arg1 < 0 || arg1 >= this.varpsRequirement.length) {
 			return false;
 		} else {
@@ -347,8 +311,7 @@ public class QuestType implements ConfigType {
 		}
 	}
 
-	@ObfuscatedName("ir.q(Lep;II)Z")
-	public boolean varbitsRequirementMet(VarIntDomain arg0, int arg1) {
+    public boolean varbitsRequirementMet(VarIntDomain arg0, int arg1) {
 		if (this.varbitsRequirement == null || arg1 < 0 || arg1 >= this.varbitsRequirement.length) {
 			return false;
 		} else {
@@ -358,8 +321,7 @@ public class QuestType implements ConfigType {
 		}
 	}
 
-	@ObfuscatedName("ks.x(Lep;Lao;B)I")
-	public static int method5179(VarIntDomain arg0, ConfigTypeList arg1) {
+    public static int method5179(VarIntDomain arg0, ConfigTypeList arg1) {
 		int var2 = 0;
 		for (int var3 = 0; var3 < arg1.length(); var3++) {
 			QuestType var4 = (QuestType) arg1.list(var3);

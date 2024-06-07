@@ -8,38 +8,27 @@ import com.jagex.graphics.TextureFormat;
 import com.jagex.graphics.WaterRelated5;
 import deob.ObfuscatedName;
 
-@ObfuscatedName("bz")
 public class GlWaterRelated {
 
-	@ObfuscatedName("bz.f")
-	public boolean field1040;
+    public boolean field1040;
 
-	@ObfuscatedName("bz.w")
-	public GlTexture_Sub1[] field1041 = null;
+    public GlTexture_Sub1[] field1041 = null;
 
-	@ObfuscatedName("bz.l")
-	public GlTexture_Sub2 field1042 = null;
+    public GlTexture_Sub2 field1042 = null;
 
-	@ObfuscatedName("bz.u")
-	public GlTexture_Sub1[] field1043 = null;
+    public GlTexture_Sub1[] field1043 = null;
 
-	@ObfuscatedName("bz.z")
-	public GlTexture_Sub2 field1044 = null;
+    public GlTexture_Sub2 field1044 = null;
 
-	@ObfuscatedName("bz.p")
-	public GlTexture_Sub2 field1038 = null;
+    public GlTexture_Sub2 field1038 = null;
 
-	@ObfuscatedName("bz.d")
-	public static Object field1046;
+    public static Object field1046;
 
-	@ObfuscatedName("bz.c")
-	public static Object field1039;
+    public static Object field1039;
 
-	@ObfuscatedName("bz.r")
-	public static Object field1048;
+    public static Object field1048;
 
-	@ObfuscatedName("bz.e(Lafa;)V")
-	public static void method1283(GlToolkit arg0) {
+    public static void method1283(GlToolkit arg0) {
 		if (field1046 == null) {
 			NoiseGenerator3D_Sub2_Sub1 var1 = new NoiseGenerator3D_Sub2_Sub1();
 			byte[] var2 = var1.method19221(128, 128, 16);

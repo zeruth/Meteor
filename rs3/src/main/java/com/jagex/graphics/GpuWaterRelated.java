@@ -5,41 +5,29 @@ import com.jagex.game.client.DataType;
 import com.jagex.graphics.gl.GlAbstractEffect1;
 import deob.ObfuscatedName;
 
-@ObfuscatedName("lp")
 public class GpuWaterRelated {
 
-	@ObfuscatedName("lp.k")
-	public GpuToolkit field3223;
+    public GpuToolkit field3223;
 
-	@ObfuscatedName("lp.f")
-	public boolean field3229;
+    public boolean field3229;
 
-	@ObfuscatedName("lp.w")
-	public GpuTexture[] field3232 = null;
+    public GpuTexture[] field3232 = null;
 
-	@ObfuscatedName("lp.l")
-	public GpuVolumeTexture field3226 = null;
+    public GpuVolumeTexture field3226 = null;
 
-	@ObfuscatedName("lp.u")
-	public GpuTexture[] field3227 = null;
+    public GpuTexture[] field3227 = null;
 
-	@ObfuscatedName("lp.z")
-	public GpuVolumeTexture field3228 = null;
+    public GpuVolumeTexture field3228 = null;
 
-	@ObfuscatedName("lp.p")
-	public GpuVolumeTexture field3224 = null;
+    public GpuVolumeTexture field3224 = null;
 
-	@ObfuscatedName("lp.d")
-	public static Object field3230;
+    public static Object field3230;
 
-	@ObfuscatedName("lp.c")
-	public static Object field3231;
+    public static Object field3231;
 
-	@ObfuscatedName("lp.r")
-	public static Object field3225;
+    public static Object field3225;
 
-	@ObfuscatedName("lp.e()V")
-	public static void method5410() {
+    public static void method5410() {
 		if (field3230 == null) {
 			WaterUnknownGenerator var0 = new WaterUnknownGenerator();
 			byte[] var1 = var0.method19228(128, 128, 16);
@@ -83,13 +71,11 @@ public class GpuWaterRelated {
 		}
 	}
 
-	@ObfuscatedName("lp.n()Z")
-	public boolean method5407() {
+    public boolean method5407() {
 		return this.field3229 ? this.field3226 != null : this.field3232 != null;
 	}
 
-	@ObfuscatedName("lp.m()Z")
-	public boolean method5409() {
+    public boolean method5409() {
 		if (!this.field3223.field10125) {
 			return false;
 		}

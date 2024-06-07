@@ -11,26 +11,19 @@ import com.jagex.graphics.SkyBoxFillMode;
 import com.jagex.graphics.SkyboxRelated;
 import deob.ObfuscatedName;
 
-@ObfuscatedName("uv")
 public class SkyBoxType implements ConfigType, MutableConfig {
 
-	@ObfuscatedName("uv.e")
-	public int field7233 = 0;
+    public int field7233 = 0;
 
-	@ObfuscatedName("uv.n")
-	public int field7234 = 0;
+    public int field7234 = 0;
 
-	@ObfuscatedName("uv.m")
-	public int[] field7232;
+    public int[] field7232;
 
-	@ObfuscatedName("uv.k")
-	public SkyBoxFillMode field7235 = SkyBoxFillMode.field7239;
+    public SkyBoxFillMode field7235 = SkyBoxFillMode.field7239;
 
-	@ObfuscatedName("uv.f")
-	public int field7236 = 0;
+    public int field7236 = 0;
 
-	@ObfuscatedName("uv.e(Lalw;B)V")
-	public void decode(Packet buf) {
+    public void decode(Packet buf) {
 		while (true) {
 			int var2 = buf.g1();
 			if (var2 == 0) {
@@ -40,8 +33,7 @@ public class SkyBoxType implements ConfigType, MutableConfig {
 		}
 	}
 
-	@ObfuscatedName("uv.u(Lalw;IB)V")
-	public void method9176(Packet arg0, int arg1) {
+    public void method9176(Packet arg0, int arg1) {
 		if (arg1 == 1) {
 			this.field7233 = arg0.g2();
 		} else if (arg1 == 2) {
@@ -60,16 +52,13 @@ public class SkyBoxType implements ConfigType, MutableConfig {
 		}
 	}
 
-	@ObfuscatedName("uv.z(IB)V")
-	public void setId(int arg0) {
+    public void setId(int arg0) {
 	}
 
-	@ObfuscatedName("uv.n(I)V")
-	public void postDecode() {
+    public void postDecode() {
 	}
 
-	@ObfuscatedName("d.p(IIIILao;Lao;I)Lsv;")
-	public static SkyBox method305(int arg0, int arg1, int arg2, int arg3, ConfigTypeList arg4, ConfigTypeList arg5) {
+    public static SkyBox method305(int arg0, int arg1, int arg2, int arg3, ConfigTypeList arg4, ConfigTypeList arg5) {
 		SkyboxRelated[] var6 = null;
 		SkyBoxType var7 = (SkyBoxType) arg4.list(arg0);
 		if (var7.field7232 != null) {

@@ -2,11 +2,9 @@ package lzma.sdk.rangecoder;
 
 import deob.ObfuscatedName;
 
-@ObfuscatedName("jx")
 public class Encoder {
 
-	@ObfuscatedName("jx.f")
-	public static int[] field3010 = new int[512];
+    public static int[] field3010 = new int[512];
 
 	static {
 		byte var0 = 9;

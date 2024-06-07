@@ -7,17 +7,13 @@ import com.jagex.math.Matrix4x3;
 import com.jagex.math.Matrix4x4;
 import deob.ObfuscatedName;
 
-@ObfuscatedName("do")
 public abstract class Model {
 
-	@ObfuscatedName("do.m")
-	public boolean field1301 = false;
+    public boolean field1301 = false;
 
-	@ObfuscatedName("do.k")
-	public boolean field1298 = true;
+    public boolean field1298 = true;
 
-	@ObfuscatedName("do.e(IIIIII[FIF[F)V")
-	public static void method1753(int arg0, int arg1, int arg2, int arg3, int arg4, int arg5, float[] arg6, int arg7, float arg8, float[] arg9) {
+    public static void method1753(int arg0, int arg1, int arg2, int arg3, int arg4, int arg5, float[] arg6, int arg7, float arg8, float[] arg9) {
 		int var10 = arg0 - arg3;
 		int var11 = arg1 - arg4;
 		int var12 = arg2 - arg5;
@@ -43,8 +39,7 @@ public abstract class Model {
 		arg9[1] = var18;
 	}
 
-	@ObfuscatedName("do.n(IIIIII[FFIF[F)V")
-	public static void method1684(int arg0, int arg1, int arg2, int arg3, int arg4, int arg5, float[] arg6, float arg7, int arg8, float arg9, float[] arg10) {
+    public static void method1684(int arg0, int arg1, int arg2, int arg3, int arg4, int arg5, float[] arg6, float arg7, int arg8, float arg9, float[] arg10) {
 		int var11 = arg0 - arg3;
 		int var12 = arg1 - arg4;
 		int var13 = arg2 - arg5;
@@ -72,8 +67,7 @@ public abstract class Model {
 		arg10[1] = var18;
 	}
 
-	@ObfuscatedName("do.m(FFF)I")
-	public static int method1685(float arg0, float arg1, float arg2) {
+    public static int method1685(float arg0, float arg1, float arg2) {
 		float var3 = arg0 < 0.0F ? -arg0 : arg0;
 		float var4 = arg1 < 0.0F ? -arg1 : arg1;
 		float var5 = arg2 < 0.0F ? -arg2 : arg2;
@@ -88,8 +82,7 @@ public abstract class Model {
 		}
 	}
 
-	@ObfuscatedName("do.k(IIIIIII[FIFFF[F)V")
-	public static void method1708(int arg0, int arg1, int arg2, int arg3, int arg4, int arg5, int arg6, float[] arg7, int arg8, float arg9, float arg10, float arg11, float[] arg12) {
+    public static void method1708(int arg0, int arg1, int arg2, int arg3, int arg4, int arg5, int arg6, float[] arg7, int arg8, float arg9, float arg10, float arg11, float[] arg12) {
 		int var13 = arg0 - arg3;
 		int var14 = arg1 - arg4;
 		int var15 = arg2 - arg5;
@@ -133,8 +126,7 @@ public abstract class Model {
 		arg12[1] = var20;
 	}
 
-	@ObfuscatedName("do.f(Ldq;[II)Lee;")
-	public ModelRelated1 method1687(ModelUnlit arg0, int[] arg1, int arg2) {
+    public ModelRelated1 method1687(ModelUnlit arg0, int[] arg1, int arg2) {
 		int[] var4 = null;
 		int[] var5 = null;
 		int[] var6 = null;
@@ -234,8 +226,7 @@ public abstract class Model {
 		return new ModelRelated1(this, var4, var5, var6, var7);
 	}
 
-	@ObfuscatedName("do.w(IIIIFFF)[F")
-	public static float[] method1688(int arg0, int arg1, int arg2, int arg3, float arg4, float arg5, float arg6) {
+    public static float[] method1688(int arg0, int arg1, int arg2, int arg3, float arg4, float arg5, float arg6) {
 		float[] var7 = new float[9];
 		float[] var8 = new float[9];
 		float var9 = (float) Math.cos((double) ((float) arg3 * 0.024543693F));
@@ -295,8 +286,7 @@ public abstract class Model {
 		return var8;
 	}
 
-	@ObfuscatedName("do.x(Lcb;IIIIIII)V")
-	public void method1701(FloorModel arg0, int arg1, int arg2, int arg3, int arg4, int arg5, int arg6, int arg7) {
+    public void method1701(FloorModel arg0, int arg1, int arg2, int arg3, int arg4, int arg5, int arg6, int arg7) {
 		boolean var9 = false;
 		boolean var10 = false;
 		boolean var11 = false;
@@ -358,8 +348,7 @@ public abstract class Model {
 		}
 	}
 
-	@ObfuscatedName("do.a(Larr;ILarr;IIIIZ)V")
-	public final void method1704(FrameSet arg0, int arg1, FrameSet arg2, int arg3, int arg4, int arg5, int arg6, boolean arg7) {
+    public final void method1704(FrameSet arg0, int arg1, FrameSet arg2, int arg3, int arg4, int arg5, int arg6, boolean arg7) {
 		if (arg1 == -1) {
 			return;
 		}
@@ -382,8 +371,7 @@ public abstract class Model {
 		this.method1703();
 	}
 
-	@ObfuscatedName("do.g(Lard;IIZ)V")
-	public final void method1705(KeyFrameSet arg0, int arg1, int arg2, boolean arg3) {
+    public final void method1705(KeyFrameSet arg0, int arg1, int arg2, boolean arg3) {
 		this.method1702();
 		if (this.method1716()) {
 			AnimBase var5 = arg0.field12317;
@@ -395,8 +383,7 @@ public abstract class Model {
 		}
 	}
 
-	@ObfuscatedName("do.i(Larr;ILarr;IIIIIZ[I)V")
-	public final void method1706(FrameSet arg0, int arg1, FrameSet arg2, int arg3, int arg4, int arg5, int arg6, int arg7, boolean arg8, int[] arg9) {
+    public final void method1706(FrameSet arg0, int arg1, FrameSet arg2, int arg3, int arg4, int arg5, int arg6, int arg7, boolean arg8, int[] arg9) {
 		if (arg1 == -1) {
 			return;
 		}
@@ -419,8 +406,7 @@ public abstract class Model {
 		this.method1703();
 	}
 
-	@ObfuscatedName("do.j(Larr;ILarr;IIILarr;ILarr;III[ZZ)V")
-	public final void method1697(FrameSet arg0, int arg1, FrameSet arg2, int arg3, int arg4, int arg5, FrameSet arg6, int arg7, FrameSet arg8, int arg9, int arg10, int arg11, boolean[] arg12, boolean arg13) {
+    public final void method1697(FrameSet arg0, int arg1, FrameSet arg2, int arg3, int arg4, int arg5, FrameSet arg6, int arg7, FrameSet arg8, int arg9, int arg10, int arg11, boolean[] arg12, boolean arg13) {
 		if (arg1 == -1) {
 			return;
 		}
@@ -457,8 +443,7 @@ public abstract class Model {
 		this.method1703();
 	}
 
-	@ObfuscatedName("do.t(Lard;ILard;I[ZZ)V")
-	public final void method1682(KeyFrameSet arg0, int arg1, KeyFrameSet arg2, int arg3, boolean[] arg4, boolean arg5) {
+    public final void method1682(KeyFrameSet arg0, int arg1, KeyFrameSet arg2, int arg3, boolean[] arg4, boolean arg5) {
 		if (arg0 == null) {
 			return;
 		}
@@ -482,8 +467,7 @@ public abstract class Model {
 		this.method1703();
 	}
 
-	@ObfuscatedName("do.ae(Lard;ILarr;ILarr;III[ZZ)V")
-	public final void method1709(KeyFrameSet arg0, int arg1, FrameSet arg2, int arg3, FrameSet arg4, int arg5, int arg6, int arg7, boolean[] arg8, boolean arg9) {
+    public final void method1709(KeyFrameSet arg0, int arg1, FrameSet arg2, int arg3, FrameSet arg4, int arg5, int arg6, int arg7, boolean[] arg8, boolean arg9) {
 		if (arg0 == null) {
 			return;
 		}
@@ -513,8 +497,7 @@ public abstract class Model {
 		this.method1703();
 	}
 
-	@ObfuscatedName("do.ag(Larr;ILarr;IIILard;I[ZZ)V")
-	public final void method1710(FrameSet arg0, int arg1, FrameSet arg2, int arg3, int arg4, int arg5, KeyFrameSet arg6, int arg7, boolean[] arg8, boolean arg9) {
+    public final void method1710(FrameSet arg0, int arg1, FrameSet arg2, int arg3, int arg4, int arg5, KeyFrameSet arg6, int arg7, boolean[] arg8, boolean arg9) {
 		if (arg1 == -1) {
 			return;
 		}
@@ -545,8 +528,7 @@ public abstract class Model {
 		this.method1703();
 	}
 
-	@ObfuscatedName("do.ah(Larr;I)V")
-	public final void method1878(FrameSet arg0, int arg1) {
+    public final void method1878(FrameSet arg0, int arg1) {
 		if (arg1 == -1) {
 			return;
 		}
@@ -570,8 +552,7 @@ public abstract class Model {
 		this.method1703();
 	}
 
-	@ObfuscatedName("do.al(Lako;Ldx;Ldx;III[ZZZI[I)V")
-	public void method1712(AnimBase arg0, AnimFrame arg1, AnimFrame arg2, int arg3, int arg4, int arg5, boolean[] arg6, boolean arg7, boolean arg8, int arg9, int[] arg10) {
+    public void method1712(AnimBase arg0, AnimFrame arg1, AnimFrame arg2, int arg3, int arg4, int arg5, boolean[] arg6, boolean arg7, boolean arg8, int arg9, int[] arg10) {
 		if (arg2 == null || arg3 == 0) {
 			for (int var37 = 0; var37 < arg1.field1631; var37++) {
 				short var38 = arg1.field1630[var37];
@@ -703,8 +684,7 @@ public abstract class Model {
 		}
 	}
 
-	@ObfuscatedName("do.ac(Lako;Lard;IIZ[ZZI[I)V")
-	public void method1713(AnimBase arg0, KeyFrameSet arg1, int arg2, int arg3, boolean arg4, boolean[] arg5, boolean arg6, int arg7, int[] arg8) {
+    public void method1713(AnimBase arg0, KeyFrameSet arg1, int arg2, int arg3, boolean arg4, boolean[] arg5, boolean arg6, int arg7, int[] arg8) {
 		Joint var10 = null;
 		int var11 = 0;
 		for (int var12 = 0; var12 < arg0.field11313; var12++) {
@@ -780,8 +760,7 @@ public abstract class Model {
 		}
 	}
 
-	@ObfuscatedName("do.ai(I[IIIIIZI[I)V")
-	public void method1714(int arg0, int[] arg1, int arg2, int arg3, int arg4, int arg5, boolean arg6, int arg7, int[] arg8) {
+    public void method1714(int arg0, int[] arg1, int arg2, int arg3, int arg4, int arg5, boolean arg6, int arg7, int[] arg8) {
 		if (arg5 == 1) {
 			if (arg0 == 0 || arg0 == 1) {
 				int var12 = -arg2;
@@ -827,8 +806,7 @@ public abstract class Model {
 	}
 
 	// line 768
-	@ObfuscatedName("do.aw(ILcs;I[IFFFIZI[I)V")
-	public void method1756(int arg0, Joint arg1, int arg2, int[] arg3, float arg4, float arg5, float arg6, int arg7, boolean arg8, int arg9, int[] arg10) {
+    public void method1756(int arg0, Joint arg1, int arg2, int[] arg3, float arg4, float arg5, float arg6, int arg7, boolean arg8, int arg9, int[] arg10) {
 		int var12 = (int) arg4;
 		int var13 = (int) arg5;
 		int var14 = (int) arg6;
@@ -921,176 +899,120 @@ public abstract class Model {
 		}
 	}
 
-	@ObfuscatedName("do.bo(Ldo;IIIZ)V")
-	public abstract void method1686(Model arg0, int arg1, int arg2, int arg3, boolean arg4);
+    public abstract void method1686(Model arg0, int arg1, int arg2, int arg3, boolean arg4);
 
-	@ObfuscatedName("do.by(Lou;)V")
-	public abstract void method1689(Matrix4x3 arg0);
+    public abstract void method1689(Matrix4x3 arg0);
 
-	@ObfuscatedName("do.u(I)V")
-	public abstract void method1690(int arg0);
+    public abstract void method1690(int arg0);
 
-	@ObfuscatedName("do.z()I")
-	public abstract int method1691();
+    public abstract int method1691();
 
-	@ObfuscatedName("do.d(I)V")
-	public abstract void method1693(int arg0);
+    public abstract void method1693(int arg0);
 
-	@ObfuscatedName("do.c(I)V")
-	public abstract void method1694(int arg0);
+    public abstract void method1694(int arg0);
 
-	@ObfuscatedName("do.af()I")
-	public abstract int getMaxY();
+    public abstract int getMaxY();
 
-	@ObfuscatedName("do.v(I)V")
-	public abstract void rotateZ(int arg0);
+    public abstract void rotateZ(int arg0);
 
-	@ObfuscatedName("do.s()V")
-	public abstract void method1698();
+    public abstract void method1698();
 
-	@ObfuscatedName("do.y(III)V")
-	public abstract void scale(int arg0, int arg1, int arg2);
+    public abstract void scale(int arg0, int arg1, int arg2);
 
-	@ObfuscatedName("do.q(IILcb;Lcb;III)V")
-	public abstract void method1700(int arg0, int arg1, FloorModel arg2, FloorModel arg3, int arg4, int arg5, int arg6);
+    public abstract void method1700(int arg0, int arg1, FloorModel arg2, FloorModel arg3, int arg4, int arg5, int arg6);
 
-	@ObfuscatedName("do.b()V")
-	public abstract void method1702();
+    public abstract void method1702();
 
-	@ObfuscatedName("do.h()V")
-	public abstract void method1703();
+    public abstract void method1703();
 
-	@ObfuscatedName("do.bf()I")
-	public abstract int getHeight();
+    public abstract int getHeight();
 
-	@ObfuscatedName("do.ad(I[IIIIIZ)V")
-	public abstract void method1711(int arg0, int[] arg1, int arg2, int arg3, int arg4, int arg5, boolean arg6);
+    public abstract void method1711(int arg0, int[] arg1, int arg2, int arg3, int arg4, int arg5, boolean arg6);
 
-	@ObfuscatedName("do.as()Z")
-	public abstract boolean method1716();
+    public abstract boolean method1716();
 
-	@ObfuscatedName("do.at(I[IIIIIZ)V")
-	public abstract void applyTransform(int type, int[] labels, int arg2, int arg3, int arg4, int arg5, boolean arg6);
+    public abstract void applyTransform(int type, int[] labels, int arg2, int arg3, int arg4, int arg5, boolean arg6);
 
-	@ObfuscatedName("do.am(I[IIIIZI[I)V")
-	public abstract void method1719(int arg0, int[] arg1, int arg2, int arg3, int arg4, boolean arg5, int arg6, int[] arg7);
+    public abstract void method1719(int arg0, int[] arg1, int arg2, int arg3, int arg4, boolean arg5, int arg6, int[] arg7);
 
-	@ObfuscatedName("do.au(I[IIIIZI[I)V")
-	public abstract void method1720(int arg0, int[] arg1, int arg2, int arg3, int arg4, boolean arg5, int arg6, int[] arg7);
+    public abstract void method1720(int arg0, int[] arg1, int arg2, int arg3, int arg4, boolean arg5, int arg6, int[] arg7);
 
-	@ObfuscatedName("do.ar(IIII)V")
-	public abstract void method1721(int arg0, int arg1, int arg2, int arg3);
+    public abstract void method1721(int arg0, int arg1, int arg2, int arg3);
 
-	@ObfuscatedName("do.av(IILou;ZI)Z")
-	public abstract boolean method1725(int arg0, int arg1, Matrix4x3 arg2, boolean arg3, int arg4);
+    public abstract boolean method1725(int arg0, int arg1, Matrix4x3 arg2, boolean arg3, int arg4);
 
-	@ObfuscatedName("do.ao(Lara;)Lara;")
-	public abstract HardShadow method1726(HardShadow arg0);
+    public abstract HardShadow method1726(HardShadow arg0);
 
-	@ObfuscatedName("do.aj()I")
-	public abstract int getHorizontalRadius();
+    public abstract int getHorizontalRadius();
 
-	@ObfuscatedName("do.ay()I")
-	public abstract int getRadius();
+    public abstract int getRadius();
 
-	@ObfuscatedName("do.ab()I")
-	public abstract int getMinX();
+    public abstract int getMinX();
 
-	@ObfuscatedName("do.az()I")
-	public abstract int getMaxX();
+    public abstract int getMaxX();
 
-	@ObfuscatedName("do.bb()Z")
-	public abstract boolean method1731();
+    public abstract boolean method1731();
 
-	@ObfuscatedName("do.ak()I")
-	public abstract int getMinZ();
+    public abstract int getMinZ();
 
-	@ObfuscatedName("do.bl()V")
-	public abstract void method1736();
+    public abstract void method1736();
 
-	@ObfuscatedName("do.bh(I)V")
-	public abstract void method1738(int arg0);
+    public abstract void method1738(int arg0);
 
-	@ObfuscatedName("do.bd()I")
-	public abstract int method1740();
+    public abstract int method1740();
 
-	@ObfuscatedName("do.bc()[B")
-	public abstract byte[] method1741();
+    public abstract byte[] method1741();
 
-	@ObfuscatedName("do.bt(SS)V")
-	public abstract void retexture(short arg0, short arg1);
+    public abstract void retexture(short arg0, short arg1);
 
-	@ObfuscatedName("do.bq(IIII)V")
-	public abstract void method1745(int arg0, int arg1, int arg2, int arg3);
+    public abstract void method1745(int arg0, int arg1, int arg2, int arg3);
 
-	@ObfuscatedName("do.bm()Z")
-	public abstract boolean method1746();
+    public abstract boolean method1746();
 
-	@ObfuscatedName("do.bn(B[B)V")
-	public abstract void method1747(byte arg0, byte[] arg1);
+    public abstract void method1747(byte arg0, byte[] arg1);
 
-	@ObfuscatedName("do.aa()I")
-	public abstract int getMinY();
+    public abstract int getMinY();
 
-	@ObfuscatedName("do.bu()[Ldu;")
-	public abstract ModelParticleEmitter[] method1750();
+    public abstract ModelParticleEmitter[] method1750();
 
-	@ObfuscatedName("do.bw()[Lcq;")
-	public abstract ModelParticleEffector[] method1765();
+    public abstract ModelParticleEffector[] method1765();
 
-	@ObfuscatedName("do.aq(Lou;IZ)V")
-	public abstract void method1771(Matrix4x3 arg0, int arg1, boolean arg2);
+    public abstract void method1771(Matrix4x3 arg0, int arg1, boolean arg2);
 
-	@ObfuscatedName("do.l(BIZ)Ldo;")
-	public abstract Model method1773(byte arg0, int arg1, boolean arg2);
+    public abstract Model method1773(byte arg0, int arg1, boolean arg2);
 
-	@ObfuscatedName("do.ap()V")
-	public abstract void method1776();
+    public abstract void method1776();
 
-	@ObfuscatedName("do.an()I")
-	public abstract int getMaxZ();
+    public abstract int getMaxZ();
 
-	@ObfuscatedName("do.o(III)V")
-	public abstract void translate(int arg0, int arg1, int arg2);
+    public abstract void translate(int arg0, int arg1, int arg2);
 
-	@ObfuscatedName("do.be()Z")
-	public abstract boolean method1812();
+    public abstract boolean method1812();
 
-	@ObfuscatedName("do.ax(Lou;Led;I)V")
-	public abstract void draw(Matrix4x3 arg0, ScreenBoundingBox arg1, int arg2);
+    public abstract void draw(Matrix4x3 arg0, ScreenBoundingBox arg1, int arg2);
 
-	@ObfuscatedName("do.p()V")
-	public abstract void method1816();
+    public abstract void method1816();
 
-	@ObfuscatedName("do.r(I)V")
-	public abstract void rotateX(int arg0);
+    public abstract void rotateX(int arg0);
 
-	@ObfuscatedName("do.bi(SS)V")
-	public abstract void recolor(short arg0, short arg1);
+    public abstract void recolor(short arg0, short arg1);
 
-	@ObfuscatedName("do.bx()I")
-	public abstract int method1862();
+    public abstract int method1862();
 
-	@ObfuscatedName("do.bk(I)V")
-	public abstract void method1893(int arg0);
+    public abstract void method1893(int arg0);
 
-	@ObfuscatedName("ee")
-	public static class ModelRelated1 {
+    public static class ModelRelated1 {
 
 		// $FF: synthetic field
 		public final Model this$0;
 
-		@ObfuscatedName("ee.e")
-		public int[] field1688;
+        public int[] field1688;
 
-		@ObfuscatedName("ee.n")
-		public int[] field1690;
+        public int[] field1690;
 
-		@ObfuscatedName("ee.m")
-		public int[] field1689;
+        public int[] field1689;
 
-		@ObfuscatedName("ee.k")
-		public float[][] field1691;
+        public float[][] field1691;
 
 		// line 927
 		public ModelRelated1(Model arg0, int[] arg1, int[] arg2, int[] arg3, float[][] arg4) {

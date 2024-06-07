@@ -9,51 +9,37 @@ import com.jagex.graphics.SpriteDataProvider;
 import com.jagex.js5.Js5;
 import deob.ObfuscatedName;
 
-@ObfuscatedName("uk")
 public class HeadbarType implements ConfigType {
 
-	@ObfuscatedName("uk.e")
-	public final HeadbarTypeFactory factory;
+    public final HeadbarTypeFactory factory;
 
-	@ObfuscatedName("uk.m")
-	public int showpriority = 255;
+    public int showpriority = 255;
 
-	@ObfuscatedName("uk.k")
-	public int hidepriority = 255;
+    public int hidepriority = 255;
 
-	@ObfuscatedName("uk.f")
-	public int fadeout = -1;
+    public int fadeout = -1;
 
-	@ObfuscatedName("uk.w")
-	public int field7220 = 1;
+    public int field7220 = 1;
 
-	@ObfuscatedName("uk.l")
-	public int sticktime = 70;
+    public int sticktime = 70;
 
-	@ObfuscatedName("uk.u")
-	public int full = -1;
+    public int full = -1;
 
-	@ObfuscatedName("uk.z")
-	public int empty = -1;
+    public int empty = -1;
 
-	@ObfuscatedName("uk.p")
-	public int fulllocalpartner = -1;
+    public int fulllocalpartner = -1;
 
-	@ObfuscatedName("uk.d")
-	public int emptylocalpartner = -1;
+    public int emptylocalpartner = -1;
 
-	@ObfuscatedName("uk.c")
-	public int fullglobalpartner = -1;
+    public int fullglobalpartner = -1;
 
-	@ObfuscatedName("uk.r")
-	public int emptyglobalpartner = -1;
+    public int emptyglobalpartner = -1;
 
 	public HeadbarType(int arg0, HeadbarTypeFactory factory) {
 		this.factory = factory;
 	}
 
-	@ObfuscatedName("uk.e(Lalw;B)V")
-	public void decode(Packet buf) {
+    public void decode(Packet buf) {
 		while (true) {
 			int code = buf.g1();
 			if (code == 0) {
@@ -63,8 +49,7 @@ public class HeadbarType implements ConfigType {
 		}
 	}
 
-	@ObfuscatedName("uk.u(Lalw;II)V")
-	public void decode(Packet buf, int code) {
+    public void decode(Packet buf, int code) {
 		if (code == 1) {
 			buf.g2();
 		} else if (code == 2) {
@@ -94,8 +79,7 @@ public class HeadbarType implements ConfigType {
 		}
 	}
 
-	@ObfuscatedName("uk.z(Ldh;IB)Lcm;")
-	public Sprite getSprite(Toolkit toolkit, int id) {
+    public Sprite getSprite(Toolkit toolkit, int id) {
 		if (id < 0) {
 			return null;
 		}
@@ -107,8 +91,7 @@ public class HeadbarType implements ConfigType {
 		return var3;
 	}
 
-	@ObfuscatedName("uk.p(Ldh;II)V")
-	public void loadSprite(Toolkit toolkit, int id) {
+    public void loadSprite(Toolkit toolkit, int id) {
 		Js5 js5 = this.factory.configClient;
 		if (id >= 0 && this.factory.spriteCache.get((long) id) == null && js5.loadFile(id)) {
 			SpriteData var4 = SpriteDataProvider.get(js5, id);
@@ -116,8 +99,7 @@ public class HeadbarType implements ConfigType {
 		}
 	}
 
-	@ObfuscatedName("uk.d(Ldh;I)V")
-	public void loadSprites(Toolkit toolkit) {
+    public void loadSprites(Toolkit toolkit) {
 		this.loadSprite(toolkit, this.full);
 		this.loadSprite(toolkit, this.empty);
 		this.loadSprite(toolkit, this.fulllocalpartner);
@@ -126,7 +108,6 @@ public class HeadbarType implements ConfigType {
 		this.loadSprite(toolkit, this.emptyglobalpartner);
 	}
 
-	@ObfuscatedName("uk.n(I)V")
-	public void postDecode() {
+    public void postDecode() {
 	}
 }

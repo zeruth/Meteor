@@ -5,44 +5,33 @@ import com.jagex.core.utils.MonotonicTime;
 import deob.ObfuscatedName;
 import rs2.client.login.WorldSwitcher;
 
-@ObfuscatedName("wb")
 public class GWC {
 
-	@ObfuscatedName("wb.k")
-	public static boolean field7645 = false;
+    public static boolean field7645 = false;
 
-	@ObfuscatedName("wb.f")
-	public static GWCWorld[] field7644;
+    public static GWCWorld[] field7644;
 
-	@ObfuscatedName("va.w")
-	public static int field7414;
+    public static int field7414;
 
-	@ObfuscatedName("jh.l")
-	public static int field3011;
+    public static int field3011;
 
-	@ObfuscatedName("v.u")
-	public static int field533;
+    public static int field533;
 
-	@ObfuscatedName("wb.z")
-	public static GWCLocation[] field7647;
+    public static GWCLocation[] field7647;
 
-	@ObfuscatedName("wb.p")
-	public static int field7642;
+    public static int field7642;
 
-	@ObfuscatedName("va.d")
-	public static Packet field7415;
+    public static Packet field7415;
 
 	public GWC() throws Throwable {
 		throw new Error();
 	}
 
-	@ObfuscatedName("js.e(IB)Lalc;")
-	public static GWCWorld method4944(int arg0) {
+    public static GWCWorld method4944(int arg0) {
 		return field7645 && arg0 >= field7414 && arg0 <= field3011 ? field7644[arg0 - field7414] : null;
 	}
 
-	@ObfuscatedName("x.n([BI)Z")
-	public static boolean method570(byte[] arg0) {
+    public static boolean method570(byte[] arg0) {
 		Packet var1 = new Packet(arg0);
 		int var2 = var1.g1();
 		if (var2 != 2) {
@@ -56,8 +45,7 @@ public class GWC {
 		return true;
 	}
 
-	@ObfuscatedName("yz.m(Lalw;I)V")
-	public static void method10593(Packet arg0) {
+    public static void method10593(Packet arg0) {
 		int var1 = arg0.gSmart1or2();
 		field7647 = new GWCLocation[var1];
 		for (int var2 = 0; var2 < var1; var2++) {
@@ -86,8 +74,7 @@ public class GWC {
 		field7645 = true;
 	}
 
-	@ObfuscatedName("iw.k(Lalw;I)V")
-	public static void method4513(Packet arg0) {
+    public static void method4513(Packet arg0) {
 		for (int var1 = 0; var1 < field533; var1++) {
 			int var2 = arg0.gSmart1or2();
 			int var3 = arg0.g2();
@@ -100,8 +87,7 @@ public class GWC {
 		}
 	}
 
-	@ObfuscatedName("pr.f(Z[BI)V")
-	public static void method6876(boolean arg0, byte[] arg1) {
+    public static void method6876(boolean arg0, byte[] arg1) {
 		if (field7415 == null) {
 			field7415 = new Packet(20000);
 		}

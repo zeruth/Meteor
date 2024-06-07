@@ -6,11 +6,9 @@ import com.jagex.game.shared.framework.chat.QuickChatDynamicCommand;
 import deob.ObfuscatedName;
 import rs2.client.Client;
 
-@ObfuscatedName("ny")
 public class ClientDynamicProvider implements QuickChatDynamicProvider {
 
-	@ObfuscatedName("ny.e(Lxs;[IJ)Ljava/lang/String;")
-	public String method5945(QuickChatDynamicCommand arg0, int[] arg1, long arg2) {
+    public String method5945(QuickChatDynamicCommand arg0, int[] arg1, long arg2) {
 		if (QuickChatDynamicCommand.field7941 == arg0) {
 			EnumType var5 = (EnumType) Client.enumTypeList.list(arg1[0]);
 			return var5.getValueString((int) arg2);

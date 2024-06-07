@@ -8,73 +8,52 @@ import com.jagex.math.IntMath;
 import deob.ObfuscatedName;
 import jaggl.OpenGL;
 
-@ObfuscatedName("cu")
 public class GlToolkitRelated {
 
-	@ObfuscatedName("cu.e")
-	public float[] field1147 = new float[16];
+    public float[] field1147 = new float[16];
 
-	@ObfuscatedName("cu.n")
-	public GpuPacket field1145 = new GpuPacket(786336);
+    public GpuPacket field1145 = new GpuPacket(786336);
 
-	@ObfuscatedName("cu.m")
-	public GlInterfaceRelated field1134;
+    public GlInterfaceRelated field1134;
 
-	@ObfuscatedName("cu.k")
-	public GlRelated3 field1135;
+    public GlRelated3 field1135;
 
-	@ObfuscatedName("cu.f")
-	public GlRelated3 field1136;
+    public GlRelated3 field1136;
 
-	@ObfuscatedName("cu.w")
-	public GlRelated3 field1143;
+    public GlRelated3 field1143;
 
-	@ObfuscatedName("cu.l")
-	public final int field1138 = 64;
+    public final int field1138 = 64;
 
-	@ObfuscatedName("cu.u")
-	public final int field1139 = 768;
+    public final int field1139 = 768;
 
-	@ObfuscatedName("cu.z")
-	public final int field1140 = 1600;
+    public final int field1140 = 1600;
 
-	@ObfuscatedName("cu.p")
-	public final int field1149 = IntMath.ilog(1600);
+    public final int field1149 = IntMath.ilog(1600);
 
-	@ObfuscatedName("cu.d")
-	public final int field1141 = 64;
+    public final int field1141 = 64;
 
-	@ObfuscatedName("cu.c")
-	public int[] field1132 = new int[8191];
+    public int[] field1132 = new int[8191];
 
-	@ObfuscatedName("cu.r")
-	public int[] field1144 = new int[1600];
+    public int[] field1144 = new int[1600];
 
-	@ObfuscatedName("cu.v")
-	public int[] field1148 = new int[64];
+    public int[] field1148 = new int[64];
 
-	@ObfuscatedName("cu.o")
-	public Particle[][] field1146 = new Particle[1600][64];
+    public Particle[][] field1146 = new Particle[1600][64];
 
-	@ObfuscatedName("cu.s")
-	public Particle[][] field1142 = new Particle[64][768];
+    public Particle[][] field1142 = new Particle[64][768];
 
-	@ObfuscatedName("cu.y")
-	public int field1133 = 0;
+    public int field1133 = 0;
 
-	@ObfuscatedName("cu.q")
-	public static float field1137;
+    public static float field1137;
 
-	@ObfuscatedName("cu.e(Lafa;)V")
-	public void method1323(GlToolkit arg0) {
+    public void method1323(GlToolkit arg0) {
 		this.field1134 = arg0.method15767(24, null, 196584, true);
 		this.field1143 = new GlRelated3(this.field1134, 5126, 2, 0);
 		this.field1135 = new GlRelated3(this.field1134, 5126, 3, 8);
 		this.field1136 = new GlRelated3(this.field1134, 5121, 4, 20);
 	}
 
-	@ObfuscatedName("cu.n(Lafa;Ldm;)V")
-	public void method1324(GlToolkit arg0, ParticleList arg1) {
+    public void method1324(GlToolkit arg0, ParticleList arg1) {
 		if (arg0.field9903 == null) {
 			return;
 		}
@@ -167,8 +146,7 @@ public class GlToolkitRelated {
 		this.method1329(arg0);
 	}
 
-	@ObfuscatedName("cu.m(Lafa;I)V")
-	public void method1325(GlToolkit arg0, int arg1) {
+    public void method1325(GlToolkit arg0, int arg1) {
 		OpenGL.glGetFloatv(2982, this.field1147, 0);
 		float var3 = this.field1147[0];
 		float var4 = this.field1147[4];
@@ -579,8 +557,7 @@ public class GlToolkitRelated {
 		}
 	}
 
-	@ObfuscatedName("cu.k(Lafa;)V")
-	public void method1326(GlToolkit arg0) {
+    public void method1326(GlToolkit arg0) {
 		field1137 = arg0.field9946;
 		arg0.method15773();
 		OpenGL.glDisable(16384);
@@ -589,8 +566,7 @@ public class GlToolkitRelated {
 		OpenGL.glNormal3f(0.0F, -1.0F, 0.0F);
 	}
 
-	@ObfuscatedName("cu.f(Lafa;)V")
-	public void method1329(GlToolkit arg0) {
+    public void method1329(GlToolkit arg0) {
 		arg0.method15789(true);
 		OpenGL.glEnable(16384);
 		OpenGL.glEnable(16385);

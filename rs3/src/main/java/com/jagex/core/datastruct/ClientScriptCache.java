@@ -2,23 +2,17 @@ package com.jagex.core.datastruct;
 
 import deob.ObfuscatedName;
 
-@ObfuscatedName("ex")
 public final class ClientScriptCache {
 
-	@ObfuscatedName("ex.e")
-	public SecondaryNode node = new SecondaryNode();
+    public SecondaryNode node = new SecondaryNode();
 
-	@ObfuscatedName("ex.n")
-	public int capacity;
+    public int capacity;
 
-	@ObfuscatedName("ex.m")
-	public int available;
+    public int available;
 
-	@ObfuscatedName("ex.k")
-	public HashTable table;
+    public HashTable table;
 
-	@ObfuscatedName("ex.f")
-	public SecondaryLinkedList queue = new SecondaryLinkedList();
+    public SecondaryLinkedList queue = new SecondaryLinkedList();
 
 	public ClientScriptCache(int arg0) {
 		this.capacity = arg0;
@@ -31,8 +25,7 @@ public final class ClientScriptCache {
 		this.table = new HashTable(var2);
 	}
 
-	@ObfuscatedName("ex.e(J)Laky;")
-	public SecondaryNode get(long arg0) {
+    public SecondaryNode get(long arg0) {
 		SecondaryNode var3 = (SecondaryNode) this.table.get(arg0);
 		if (var3 != null) {
 			this.queue.pushBack(var3);
@@ -40,8 +33,7 @@ public final class ClientScriptCache {
 		return var3;
 	}
 
-	@ObfuscatedName("ex.n(Laky;J)V")
-	public void put(SecondaryNode arg0, long arg1) {
+    public void put(SecondaryNode arg0, long arg1) {
 		if (this.available == 0) {
 			SecondaryNode var4 = this.queue.pollFront();
 			var4.unlink();
@@ -58,8 +50,7 @@ public final class ClientScriptCache {
 		this.queue.pushBack(arg0);
 	}
 
-	@ObfuscatedName("ex.m(I)V")
-	public void removeAll() {
+    public void removeAll() {
 		this.queue.removeAll();
 		this.table.removeAll();
 		this.node = new SecondaryNode();

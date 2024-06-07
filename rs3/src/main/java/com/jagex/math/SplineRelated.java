@@ -2,17 +2,13 @@ package com.jagex.math;
 
 import deob.ObfuscatedName;
 
-@ObfuscatedName("ph")
 public class SplineRelated {
 
-	@ObfuscatedName("ph.e")
-	public final Vector3[] field4323 = new Vector3[4];
+    public final Vector3[] field4323 = new Vector3[4];
 
-	@ObfuscatedName("ph.n")
-	public float field4322;
+    public float field4322;
 
-	@ObfuscatedName("ph.m")
-	public float[] field4321;
+    public float[] field4321;
 
 	public SplineRelated() {
 		for (int var1 = 0; var1 < 4; var1++) {
@@ -21,25 +17,21 @@ public class SplineRelated {
 		this.method6739();
 	}
 
-	@ObfuscatedName("ph.e()V")
-	public void method6739() {
+    public void method6739() {
 		this.field4322 = -1.0F;
 		this.field4321 = null;
 	}
 
-	@ObfuscatedName("ph.n(ILox;)V")
-	public void method6740(int arg0, Vector3 arg1) {
+    public void method6740(int arg0, Vector3 arg1) {
 		this.field4323[arg0].setTo(arg1);
 		this.method6739();
 	}
 
-	@ObfuscatedName("ph.m(I)Lox;")
-	public Vector3 method6748(int arg0) {
+    public Vector3 method6748(int arg0) {
 		return this.field4323[arg0];
 	}
 
-	@ObfuscatedName("ph.k(F)[D")
-	public double[] method6755(float arg0) {
+    public double[] method6755(float arg0) {
 		double[] var2 = new double[3];
 		float var3 = arg0 * arg0;
 		float var4 = arg0 * var3;
@@ -58,16 +50,14 @@ public class SplineRelated {
 		return var2;
 	}
 
-	@ObfuscatedName("ph.f()F")
-	public float method6743() {
+    public float method6743() {
 		if (this.field4322 == -1.0F) {
 			this.method6745();
 		}
 		return this.field4322;
 	}
 
-	@ObfuscatedName("ph.w(F)F")
-	public float method6744(float arg0) {
+    public float method6744(float arg0) {
 		if (this.field4322 == -1.0F) {
 			this.method6745();
 		}
@@ -94,8 +84,7 @@ public class SplineRelated {
 		}
 	}
 
-	@ObfuscatedName("ph.l()V")
-	public void method6745() {
+    public void method6745() {
 		byte var1 = 20;
 		double[] var2 = this.method6755(0.0F);
 		float var3 = 0.0F;

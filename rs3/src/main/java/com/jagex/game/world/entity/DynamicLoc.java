@@ -13,68 +13,47 @@ import com.jagex.math.Vector3;
 import deob.ObfuscatedName;
 import rs2.client.Client;
 
-@ObfuscatedName("sp")
 public class DynamicLoc {
 
-	@ObfuscatedName("sp.e")
-	public LocTypeList locTypeList;
+    public LocTypeList locTypeList;
 
-	@ObfuscatedName("sp.n")
-	public byte occludeLevel;
+    public byte occludeLevel;
 
-	@ObfuscatedName("sp.m")
-	public GraphEntity entity;
+    public GraphEntity entity;
 
-	@ObfuscatedName("sp.k")
-	public int id;
+    public int id;
 
-	@ObfuscatedName("sp.f")
-	public int shape;
+    public int shape;
 
-	@ObfuscatedName("sp.w")
-	public int angle;
+    public int angle;
 
-	@ObfuscatedName("sp.l")
-	public boolean underwater = false;
+    public boolean underwater = false;
 
-	@ObfuscatedName("sp.u")
-	public Model field6669;
+    public Model field6669;
 
-	@ObfuscatedName("sp.z")
-	public AnimationNode field6664;
+    public AnimationNode field6664;
 
-	@ObfuscatedName("sp.p")
-	public AnimationNode field6671;
+    public AnimationNode field6671;
 
-	@ObfuscatedName("sp.d")
-	public int field6662;
+    public int field6662;
 
-	@ObfuscatedName("sp.c")
-	public int field6673 = -1;
+    public int field6673 = -1;
 
-	@ObfuscatedName("sp.r")
-	public int overlayHeight = 0;
+    public int overlayHeight = 0;
 
-	@ObfuscatedName("sp.v")
-	public boolean field6675 = false;
+    public boolean field6675 = false;
 
-	@ObfuscatedName("sp.o")
-	public boolean hasHardShadow;
+    public boolean hasHardShadow;
 
-	@ObfuscatedName("sp.s")
-	public HardShadow field6677;
+    public HardShadow field6677;
 
-	@ObfuscatedName("sp.y")
-	public boolean field6670 = false;
+    public boolean field6670 = false;
 
-	@ObfuscatedName("sp.q")
-	public boolean[] field6679;
+    public boolean[] field6679;
 
-	@ObfuscatedName("sp.x")
-	public ParticleSystem field6680;
+    public ParticleSystem field6680;
 
-	@ObfuscatedName("sp.b")
-	public LocTypeCustomisation field6678;
+    public LocTypeCustomisation field6678;
 
 	public DynamicLoc(Toolkit toolkit, LocTypeList locTypeList, LocType locType, int shape, int angle, int occludeLevel, GraphEntity entity, boolean underwater, int arg8, int arg9) {
 		this.locTypeList = locTypeList;
@@ -90,8 +69,7 @@ public class DynamicLoc {
 		this.method8244(false, arg8, 1, this.field6675 ? arg9 : 0);
 	}
 
-	@ObfuscatedName("sp.e(III)V")
-	public void method8260(int arg0, int arg1) {
+    public void method8260(int arg0, int arg1) {
 		this.field6671 = null;
 		if (arg1 > 0) {
 			this.field6671 = new EntityAnimationNode(this.entity, false);
@@ -102,29 +80,24 @@ public class DynamicLoc {
 		}
 	}
 
-	@ObfuscatedName("sp.n(I)I")
-	public int overlayHeight() {
+    public int overlayHeight() {
 		return this.overlayHeight;
 	}
 
-	@ObfuscatedName("sp.m(Lvp;I)V")
-	public void method8265(LocTypeCustomisation arg0) {
+    public void method8265(LocTypeCustomisation arg0) {
 		this.field6678 = arg0;
 		this.field6669 = null;
 	}
 
-	@ObfuscatedName("sp.k(I)I")
-	public int height() {
+    public int height() {
 		return -this.overlayHeight();
 	}
 
-	@ObfuscatedName("sp.f(S)Lvd;")
-	public LocType getLocType() {
+    public LocType getLocType() {
 		return (LocType) this.locTypeList.list(this.id);
 	}
 
-	@ObfuscatedName("sp.w(Ldh;IZZI)Ldo;")
-	public final Model getModel(Toolkit arg0, int arg1, boolean arg2, boolean arg3) {
+    public final Model getModel(Toolkit arg0, int arg1, boolean arg2, boolean arg3) {
 		LocType var5 = (LocType) this.locTypeList.list(this.id);
 		if (var5.multiloc != null) {
 			var5 = var5.getMultiLoc(Client.localPlayerGameState, Client.sceneState == 0 ? CutsceneManager.field1723 : Client.localPlayerGameState);
@@ -211,8 +184,7 @@ public class DynamicLoc {
 		return var10;
 	}
 
-	@ObfuscatedName("sp.l(Ldh;Ldo;Lou;IIIIZB)V")
-	public void method8239(Toolkit arg0, Model arg1, Matrix4x3 arg2, int arg3, int arg4, int arg5, int arg6, boolean arg7) {
+    public void method8239(Toolkit arg0, Model arg1, Matrix4x3 arg2, int arg3, int arg4, int arg5, int arg6, boolean arg7) {
 		ModelParticleEmitter[] var9 = arg1.method1750();
 		ModelParticleEffector[] var10 = arg1.method1765();
 		if ((this.field6680 == null || this.field6680.field7804) && (var9 != null || var10 != null)) {
@@ -236,18 +208,15 @@ public class DynamicLoc {
 		this.field6680.method9963(this.occludeLevel, arg3, arg4, arg5, arg6);
 	}
 
-	@ObfuscatedName("sp.u(B)Z")
-	public boolean hasShadow() {
+    public boolean hasShadow() {
 		return this.hasHardShadow;
 	}
 
-	@ObfuscatedName("sp.z(Ldh;I)V")
-	public void method8241(Toolkit arg0) {
+    public void method8241(Toolkit arg0) {
 		this.getModel(arg0, 262144, true, true);
 	}
 
-	@ObfuscatedName("sp.p(Ldh;B)V")
-	public void method8242(Toolkit arg0) {
+    public void method8242(Toolkit arg0) {
 		if (this.field6677 != null) {
 			Vector3 var2 = this.entity.getTransform().trans;
 			Client.world.getScene().method8814(this.field6677, this.occludeLevel, (int) var2.x, (int) var2.z, this.field6679);
@@ -256,8 +225,7 @@ public class DynamicLoc {
 		}
 	}
 
-	@ObfuscatedName("sp.d(Lalh;I)V")
-	public void method8243(GraphEntity arg0) {
+    public void method8243(GraphEntity arg0) {
 		if (this.field6671 != null && this.field6671.hasSeqType()) {
 			this.field6671.method14367(Client.loopCycle - this.field6662);
 			if (this.field6671.method14375()) {
@@ -285,8 +253,7 @@ public class DynamicLoc {
 		this.field6662 = Client.loopCycle;
 	}
 
-	@ObfuscatedName("sp.c(ZIIII)V")
-	public void method8244(boolean arg0, int arg1, int arg2, int arg3) {
+    public void method8244(boolean arg0, int arg1, int arg2, int arg3) {
 		int var5 = arg1;
 		boolean var6 = false;
 		if (arg1 == -1) {

@@ -15,77 +15,53 @@ import deob.ObfuscatedName;
 
 import java.util.zip.CRC32;
 
-@ObfuscatedName("aij")
 public class Js5NetResourceProvider extends Js5ResourceProvider {
 
-	@ObfuscatedName("aij.e")
-	public int archive;
+    public int archive;
 
-	@ObfuscatedName("aij.n")
-	public Js5TcpClient tcpClient;
+    public Js5TcpClient tcpClient;
 
-	@ObfuscatedName("aij.m")
-	public Js5HttpClient httpClient;
+    public Js5HttpClient httpClient;
 
-	@ObfuscatedName("aij.k")
-	public Js5DiskCache diskCache;
+    public Js5DiskCache diskCache;
 
-	@ObfuscatedName("aij.f")
-	public DiskStore datafs;
+    public DiskStore datafs;
 
-	@ObfuscatedName("aij.w")
-	public DiskStore masterfs;
+    public DiskStore masterfs;
 
-	@ObfuscatedName("aij.l")
-	public Js5Request currentRequest;
+    public Js5Request currentRequest;
 
-	@ObfuscatedName("aij.u")
-	public int crc;
+    public int crc;
 
-	@ObfuscatedName("aij.z")
-	public byte[] whirlpool;
+    public byte[] whirlpool;
 
-	@ObfuscatedName("aij.p")
-	public int indexversion;
+    public int indexversion;
 
-	@ObfuscatedName("aij.d")
-	public Js5Index index;
+    public Js5Index index;
 
-	@ObfuscatedName("aij.o")
-	public byte[] groupStatus;
+    public byte[] groupStatus;
 
-	@ObfuscatedName("aij.s")
-	public int verifiedGroups = 0;
+    public int verifiedGroups = 0;
 
-	@ObfuscatedName("aij.y")
-	public HashTable requests = new HashTable(16);
+    public HashTable requests = new HashTable(16);
 
-	@ObfuscatedName("aij.q")
-	public boolean prefetchAll;
+    public boolean prefetchAll;
 
-	@ObfuscatedName("aij.x")
-	public boolean field10737;
+    public boolean field10737;
 
-	@ObfuscatedName("aij.b")
-	public boolean verifyAll;
+    public boolean verifyAll;
 
-	@ObfuscatedName("aij.h")
-	public int group = 0;
+    public int group = 0;
 
-	@ObfuscatedName("aij.a")
-	public LinkList groupQueue;
+    public LinkList groupQueue;
 
-	@ObfuscatedName("aij.g")
-	public LinkList field10741 = new LinkList();
+    public LinkList field10741 = new LinkList();
 
-	@ObfuscatedName("aij.i")
-	public boolean discardOrphans;
+    public boolean discardOrphans;
 
-	@ObfuscatedName("aij.j")
-	public long orphanCheckTime = 0L;
+    public long orphanCheckTime = 0L;
 
-	@ObfuscatedName("aij.ag")
-	public static CRC32 crc32 = new CRC32();
+    public static CRC32 crc32 = new CRC32();
 
 	public Js5NetResourceProvider(int archive, DiskStore datafs, DiskStore masterfs, Js5TcpClient tcpClient, Js5HttpClient httpClient, Js5DiskCache diskCache, int crc, byte[] whirlpool, int indexversion, boolean arg9, int arg10) {
 		this.archive = archive;
@@ -109,8 +85,7 @@ public class Js5NetResourceProvider extends Js5ResourceProvider {
 		}
 	}
 
-	@ObfuscatedName("aij.o(I[BIII)V")
-	public void method16821(int crc, byte[] whirlpool, int indexversion, int arg3) {
+    public void method16821(int crc, byte[] whirlpool, int indexversion, int arg3) {
 		if (this.method16822(crc, whirlpool, indexversion, arg3)) {
 			return;
 		}
@@ -124,8 +99,7 @@ public class Js5NetResourceProvider extends Js5ResourceProvider {
 		}
 	}
 
-	@ObfuscatedName("aij.s(I[BIII)Z")
-	public boolean method16822(int crc, byte[] whirlpool, int indexversion, int arg3) {
+    public boolean method16822(int crc, byte[] whirlpool, int indexversion, int arg3) {
 		if (this.crc == crc && this.indexversion == indexversion) {
 			boolean var5 = true;
 			for (int var6 = 0; var6 < this.whirlpool.length; var6++) {
@@ -141,8 +115,7 @@ public class Js5NetResourceProvider extends Js5ResourceProvider {
 		return false;
 	}
 
-	@ObfuscatedName("aij.y(I)I")
-	public int getPercentageComplete() {
+    public int getPercentageComplete() {
 		if (this.fetchindex() == null) {
 			return this.currentRequest == null ? 0 : this.currentRequest.getPercentageComplete();
 		} else {
@@ -150,8 +123,7 @@ public class Js5NetResourceProvider extends Js5ResourceProvider {
 		}
 	}
 
-	@ObfuscatedName("aij.e(B)Lpl;")
-	public Js5Index fetchindex() {
+    public Js5Index fetchindex() {
 		if (this.index != null) {
 			return this.index;
 		}
@@ -211,8 +183,7 @@ public class Js5NetResourceProvider extends Js5ResourceProvider {
 		return this.index;
 	}
 
-	@ObfuscatedName("aij.n(II)[B")
-	public byte[] fetchgroup(int arg0) {
+    public byte[] fetchgroup(int arg0) {
 		Js5Request request = this.fetchgroup_inner(arg0, 0);
 		if (request == null) {
 			return null;
@@ -223,8 +194,7 @@ public class Js5NetResourceProvider extends Js5ResourceProvider {
 		}
 	}
 
-	@ObfuscatedName("aij.q(IIB)Lask;")
-	public Js5Request fetchgroup_inner(int group, int arg1) {
+    public Js5Request fetchgroup_inner(int group, int arg1) {
 		Js5Request request = (Js5Request) this.requests.get((long) group);
 		if (request != null && arg1 == 0 && !request.urgent && request.incomplete) {
 			request.unlink();
@@ -417,8 +387,7 @@ public class Js5NetResourceProvider extends Js5ResourceProvider {
 		}
 	}
 
-	@ObfuscatedName("aij.x(I)V")
-	public void processPrefetchQueue() {
+    public void processPrefetchQueue() {
 		if (this.groupQueue == null || this.fetchindex() == null) {
 			return;
 		}
@@ -440,8 +409,7 @@ public class Js5NetResourceProvider extends Js5ResourceProvider {
 		}
 	}
 
-	@ObfuscatedName("aij.b(B)V")
-	public void update() {
+    public void update() {
 		if (this.groupQueue != null) {
 			if (this.fetchindex() == null) {
 				return;
@@ -541,18 +509,15 @@ public class Js5NetResourceProvider extends Js5ResourceProvider {
         }
     }
 
-	@ObfuscatedName("aij.h(B)I")
-	public int method16826() {
+    public int method16826() {
 		return this.index == null ? 0 : this.index.size;
 	}
 
-	@ObfuscatedName("aij.a(B)I")
-	public int method16827() {
+    public int method16827() {
 		return this.verifiedGroups;
 	}
 
-	@ObfuscatedName("aij.g(I)I")
-	public int method16828() {
+    public int method16828() {
 		if (this.index == null) {
 			return 0;
 		} else if (this.verifyAll) {
@@ -563,8 +528,7 @@ public class Js5NetResourceProvider extends Js5ResourceProvider {
 		}
 	}
 
-	@ObfuscatedName("aij.i(I)V")
-	public void method16829() {
+    public void method16829() {
 		if (this.httpClient != null || this.datafs == null) {
 			return;
 		}
@@ -575,8 +539,7 @@ public class Js5NetResourceProvider extends Js5ResourceProvider {
 		}
 	}
 
-	@ObfuscatedName("aij.m(IB)V")
-	public void prefetchGroup(int arg0) {
+    public void prefetchGroup(int arg0) {
 		if (this.datafs == null) {
 			return;
 		}
@@ -590,24 +553,20 @@ public class Js5NetResourceProvider extends Js5ResourceProvider {
 		this.field10741.addTail(var3);
 	}
 
-	@ObfuscatedName("aij.k(II)I")
-	public int getPercentageComplete(int arg0) {
+    public int getPercentageComplete(int arg0) {
 		Js5Request var2 = (Js5Request) this.requests.get((long) arg0);
 		return var2 == null ? 0 : var2.getPercentageComplete();
 	}
 
-	@ObfuscatedName("aij.j(I)Z")
-	public boolean method16837() {
+    public boolean method16837() {
 		return this.field10737;
 	}
 
-	@ObfuscatedName("aij.t(ZS)V")
-	public void method16832(boolean arg0) {
+    public void method16832(boolean arg0) {
 		this.httpClient.method7053(arg0);
 	}
 
-	@ObfuscatedName("aij.ae(I)Z")
-	public boolean hasHttpClient() {
+    public boolean hasHttpClient() {
 		return this.httpClient != null;
 	}
 }

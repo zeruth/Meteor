@@ -6,47 +6,33 @@ import com.jagex.graphics.scenegraph.WallDecorLayerEntity;
 import com.jagex.graphics.scenegraph.WallLayerEntity;
 import deob.ObfuscatedName;
 
-@ObfuscatedName("tk")
 public class Tile {
 
-	@ObfuscatedName("tk.e")
-	public byte level;
+    public byte level;
 
-	@ObfuscatedName("tk.n")
-	public Tile bridge;
+    public Tile bridge;
 
-	@ObfuscatedName("tk.m")
-	public WallLayerEntity wall;
+    public WallLayerEntity wall;
 
-	@ObfuscatedName("tk.k")
-	public WallLayerEntity dynamicWall;
+    public WallLayerEntity dynamicWall;
 
-	@ObfuscatedName("tk.f")
-	public WallDecorLayerEntity wallDecoration;
+    public WallDecorLayerEntity wallDecoration;
 
-	@ObfuscatedName("tk.w")
-	public WallDecorLayerEntity dynamicWallDecoration;
+    public WallDecorLayerEntity dynamicWallDecoration;
 
-	@ObfuscatedName("tk.l")
-	public GroundDecorLayerEntity groundDecoration;
+    public GroundDecorLayerEntity groundDecoration;
 
-	@ObfuscatedName("tk.u")
-	public ObjLayerEntity objStack;
+    public ObjLayerEntity objStack;
 
-	@ObfuscatedName("tk.z")
-	public PrimaryLayerEntityList entities;
+    public PrimaryLayerEntityList entities;
 
-	@ObfuscatedName("tk.p")
-	public short field6973;
+    public short field6973;
 
-	@ObfuscatedName("tk.d")
-	public short field6969;
+    public short field6969;
 
-	@ObfuscatedName("tk.c")
-	public short field6975;
+    public short field6975;
 
-	@ObfuscatedName("tk.r")
-	public short field6972;
+    public short field6972;
 
 	public Tile(int level) {
 		this.level = (byte) level;

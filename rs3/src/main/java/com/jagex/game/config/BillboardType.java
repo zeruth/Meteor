@@ -3,32 +3,23 @@ package com.jagex.game.config;
 import com.jagex.core.io.Packet;
 import deob.ObfuscatedName;
 
-@ObfuscatedName("nm")
 public class BillboardType {
 
-	@ObfuscatedName("nm.n")
-	public int field3455 = -1;
+    public int field3455 = -1;
 
-	@ObfuscatedName("nm.m")
-	public int field3451 = 64;
+    public int field3451 = 64;
 
-	@ObfuscatedName("nm.k")
-	public int field3452 = 64;
+    public int field3452 = 64;
 
-	@ObfuscatedName("nm.f")
-	public int field3453 = 2;
+    public int field3453 = 2;
 
-	@ObfuscatedName("nm.w")
-	public int field3450 = 1;
+    public int field3450 = 1;
 
-	@ObfuscatedName("nm.l")
-	public boolean field3449 = false;
+    public boolean field3449 = false;
 
-	@ObfuscatedName("nm.u")
-	public boolean field3456 = false;
+    public boolean field3456 = false;
 
-	@ObfuscatedName("nm.e(Lalw;IB)V")
-	public void method5954(Packet arg0, int arg1) {
+    public void method5954(Packet arg0, int arg1) {
 		while (true) {
 			int var3 = arg0.g1();
 			if (var3 == 0) {
@@ -38,8 +29,7 @@ public class BillboardType {
 		}
 	}
 
-	@ObfuscatedName("nm.n(Lalw;IIB)V")
-	public void method5953(Packet arg0, int arg1, int arg2) {
+    public void method5953(Packet arg0, int arg1, int arg2) {
 		if (arg1 == 1) {
 			this.field3455 = arg0.g2();
 			if (this.field3455 == 65535) {

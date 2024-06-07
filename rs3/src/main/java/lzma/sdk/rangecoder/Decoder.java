@@ -5,30 +5,23 @@ import deob.ObfuscatedName;
 import java.io.IOException;
 import java.io.InputStream;
 
-@ObfuscatedName("jp")
 public class Decoder {
 
-	@ObfuscatedName("jp.f")
-	public int Range;
+    public int Range;
 
-	@ObfuscatedName("jp.w")
-	public int Code;
+    public int Code;
 
-	@ObfuscatedName("jp.l")
-	public InputStream Stream;
+    public InputStream Stream;
 
-	@ObfuscatedName("jp.e(Ljava/io/InputStream;B)V")
-	public final void setStream(InputStream stream) {
+    public final void setStream(InputStream stream) {
 		this.Stream = stream;
 	}
 
-	@ObfuscatedName("jp.n(B)V")
-	public final void releaseStream() {
+    public final void releaseStream() {
 		this.Stream = null;
 	}
 
-	@ObfuscatedName("jp.m(I)V")
-	public final void init() throws IOException {
+    public final void init() throws IOException {
 		this.Code = 0;
 		this.Range = -1;
 		for (int i = 0; i < 5; i++) {
@@ -36,8 +29,7 @@ public class Decoder {
 		}
 	}
 
-	@ObfuscatedName("jp.k(II)I")
-	public final int decodeDirectBits(int numTotalBits) throws IOException {
+    public final int decodeDirectBits(int numTotalBits) throws IOException {
 		int result = 0;
 		for (int i = numTotalBits; i != 0; i--) {
 			this.Range >>>= 0x1;
@@ -52,8 +44,7 @@ public class Decoder {
 		return result;
 	}
 
-	@ObfuscatedName("jp.f([SII)I")
-	public int decodeBit(short[] probs, int index) throws IOException {
+    public int decodeBit(short[] probs, int index) throws IOException {
 		short prob = probs[index];
 		int newBound = (this.Range >>> 11) * prob;
 		if ((this.Code ^ Integer.MIN_VALUE) < (newBound ^ Integer.MIN_VALUE)) {
@@ -75,8 +66,7 @@ public class Decoder {
 		return 1;
 	}
 
-	@ObfuscatedName("gn.w([SI)V")
-	public static void initBitModels(short[] probs) {
+    public static void initBitModels(short[] probs) {
 		for (int i = 0; i < probs.length; i++) {
 			probs[i] = 1024;
 		}

@@ -5,11 +5,9 @@ import deob.ObfuscatedName;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 
-@ObfuscatedName("si")
 public class CursorManager {
 
-	@ObfuscatedName("si.e")
-	public Robot field6625 = new Robot();
+    public Robot field6625 = new Robot();
 
 	public CursorManager() throws Exception {
 	}

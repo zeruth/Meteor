@@ -4,17 +4,13 @@ import deob.ObfuscatedName;
 
 import java.util.Iterator;
 
-@ObfuscatedName("aai")
 public class SecondaryLinkedListIterator implements Iterator {
 
-	@ObfuscatedName("aai.e")
-	public SecondaryLinkedList queue;
+    public SecondaryLinkedList queue;
 
-	@ObfuscatedName("aai.n")
-	public SecondaryNode next;
+    public SecondaryNode next;
 
-	@ObfuscatedName("aai.m")
-	public SecondaryNode prev = null;
+    public SecondaryNode prev = null;
 
 	public SecondaryLinkedListIterator(SecondaryLinkedList queue) {
 		this.queue = queue;
@@ -22,14 +18,12 @@ public class SecondaryLinkedListIterator implements Iterator {
 		this.prev = null;
 	}
 
-	@ObfuscatedName("aai.l(B)V")
-	public void advance() {
+    public void advance() {
 		this.next = this.queue.head.secondaryPrev;
 		this.prev = null;
 	}
 
-	@ObfuscatedName("aai.u(I)Laky;")
-	public SecondaryNode nextNode() {
+    public SecondaryNode nextNode() {
 		this.advance();
 		return (SecondaryNode) this.next();
 	}

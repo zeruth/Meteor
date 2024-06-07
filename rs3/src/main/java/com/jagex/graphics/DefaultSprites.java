@@ -5,113 +5,80 @@ import com.jagex.js5.Js5;
 import deob.ObfuscatedName;
 import rs2.client.Client;
 
-@ObfuscatedName("l")
 public class DefaultSprites {
 
-	@ObfuscatedName("l.e")
-	public static int p11_full;
+    public static int p11_full;
 
-	@ObfuscatedName("l.n")
-	public static int p12_full;
+    public static int p12_full;
 
-	@ObfuscatedName("l.m")
-	public static int b12_full;
+    public static int b12_full;
 
-	@ObfuscatedName("l.k")
-	public static int hintarrows;
+    public static int hintarrows;
 
-	@ObfuscatedName("l.f")
-	public static int field514;
+    public static int field514;
 
-	@ObfuscatedName("l.w")
-	public static int mapflag;
+    public static int mapflag;
 
-	@ObfuscatedName("adg.l")
-	public static int cross;
+    public static int cross;
 
-	@ObfuscatedName("l.u")
-	public static int mapdots;
+    public static int mapdots;
 
-	@ObfuscatedName("l.z")
-	public static int field511;
+    public static int field511;
 
-	@ObfuscatedName("vc.p")
-	public static int field7572;
+    public static int field7572;
 
-	@ObfuscatedName("l.d")
-	public static int field512;
+    public static int field512;
 
-	@ObfuscatedName("apy.c")
-	public static int compass;
+    public static int compass;
 
-	@ObfuscatedName("arc.r")
-	public static int field12241;
+    public static int field12241;
 
-	@ObfuscatedName("tw.v")
-	public static FontMetrics p11FullMetrics;
+    public static FontMetrics p11FullMetrics;
 
-	@ObfuscatedName("is.o")
-	public static FontMetrics p12FullMetrics;
+    public static FontMetrics p12FullMetrics;
 
-	@ObfuscatedName("afp.s")
-	public static FontMetrics b12FullMetrics;
+    public static FontMetrics b12FullMetrics;
 
-	@ObfuscatedName("zj.y")
-	public static Font p11FullFont;
+    public static Font p11FullFont;
 
-	@ObfuscatedName("adh.q")
-	public static Font p12FullFont;
+    public static Font p12FullFont;
 
-	@ObfuscatedName("agr.x")
-	public static Font b12FullFont;
+    public static Font b12FullFont;
 
-	@ObfuscatedName("zj.b")
-	public static Sprite[] hintarrowSprites;
+    public static Sprite[] hintarrowSprites;
 
-	@ObfuscatedName("l.h")
-	public static Sprite[] field513;
+    public static Sprite[] field513;
 
-	@ObfuscatedName("acj.a")
-	public static Sprite[] mapflagSprites;
+    public static Sprite[] mapflagSprites;
 
-	@ObfuscatedName("aoh.g")
-	public static int field11888;
+    public static int field11888;
 
-	@ObfuscatedName("afh.i")
-	public static int field10232;
+    public static int field10232;
 
-	@ObfuscatedName("ann.j")
-	public static Sprite[] crossSprites;
+    public static Sprite[] crossSprites;
 
-	@ObfuscatedName("l.t")
-	public static Sprite[] mapdotsSprites;
+    public static Sprite[] mapdotsSprites;
 
-	@ObfuscatedName("agk.ae")
-	public static Sprite[] field10302;
+    public static Sprite[] field10302;
 
-	@ObfuscatedName("uj.ag")
-	public static Sprite compassSprites;
+    public static Sprite compassSprites;
 
-	@ObfuscatedName("gc.ah")
-	public static Sprite field1940;
+    public static Sprite field1940;
 
-	@ObfuscatedName("sj.al")
-	public static Sprite[] field6719;
+    public static Sprite[] field6719;
 
 
 	public DefaultSprites() throws Throwable {
 		throw new Error();
 	}
 
-	@ObfuscatedName("gl.e(Lws;B)V")
-	public static void method3470(GraphicsDefaults graphics) {
+    public static void method3470(GraphicsDefaults graphics) {
 		p11_full = graphics.p11_full;
 		p12_full = graphics.p12_full;
 		b12_full = graphics.b12_full;
 	}
 
-	@ObfuscatedName("aft.n(Lws;I)V")
-	public static void method16430(GraphicsDefaults graphics) {
+    public static void method16430(GraphicsDefaults graphics) {
 		hintarrows = graphics.hintarrows;
 		field514 = graphics.field7715;
 		mapflag = graphics.mapflag;
@@ -126,13 +93,11 @@ public class DefaultSprites {
 		field12241 = graphics.field7741;
 	}
 
-	@ObfuscatedName("au.m(I)[I")
-	public static int[] fonts() {
+    public static int[] fonts() {
 		return new int[] {p11_full, p12_full, b12_full};
 	}
 
-	@ObfuscatedName("qx.k(Ldh;I)V")
-	public static void loadFonts(Toolkit arg0) {
+    public static void loadFonts(Toolkit arg0) {
 		p11FullFont = (Font) Client.fontProvider.getFont(Client.fontFactory, p11_full, true, true);
 		p11FullMetrics = Client.fontProvider.getFontMetrics(Client.fontFactory, p11_full);
 		p12FullFont = (Font) Client.fontProvider.getFont(Client.fontFactory, p12_full, true, true);
@@ -141,8 +106,7 @@ public class DefaultSprites {
 		b12FullMetrics = Client.fontProvider.getFontMetrics(Client.fontFactory, b12_full);
 	}
 
-	@ObfuscatedName("aej.f(Lpy;I)I")
-	public static int getLoadedSpritesCount(Js5 spritesJs5) {
+    public static int getLoadedSpritesCount(Js5 spritesJs5) {
 		int count = 0;
 		if (spritesJs5.loadFile(hintarrows)) {
 			count++;
@@ -177,13 +141,11 @@ public class DefaultSprites {
 		return count;
 	}
 
-	@ObfuscatedName("aam.w(I)I")
-	public static int getSpritesCount() {
+    public static int getSpritesCount() {
 		return 10;
 	}
 
-	@ObfuscatedName("kh.l(Ldh;Lpy;I)V")
-	public static void loadSprites(Toolkit toolkit, Js5 spritesJs5) {
+    public static void loadSprites(Toolkit toolkit, Js5 spritesJs5) {
 		SpriteData[] hintarrows = SpriteDataProvider.method1608(spritesJs5, DefaultSprites.hintarrows, 0);
 		DefaultSprites.hintarrowSprites = new Sprite[hintarrows.length];
 		for (int var3 = 0; var3 < hintarrows.length; var3++) {
@@ -229,8 +191,7 @@ public class DefaultSprites {
 		}
 	}
 
-	@ObfuscatedName("ge.u(I)V")
-	public static void clear() {
+    public static void clear() {
 		p11FullFont = null;
 		p12FullFont = null;
 		b12FullFont = null;

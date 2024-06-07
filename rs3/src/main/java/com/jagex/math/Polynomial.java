@@ -2,22 +2,18 @@ package com.jagex.math;
 
 import deob.ObfuscatedName;
 
-@ObfuscatedName("eo")
 public class Polynomial {
 
-	@ObfuscatedName("eo.e")
-	public float[] p;
+    public float[] p;
 
-	@ObfuscatedName("eo.n")
-	public int deg;
+    public int deg;
 
 	public Polynomial(float[] arg0, int arg1) {
 		this.p = arg0;
 		this.deg = arg1;
 	}
 
-	@ObfuscatedName("vi.e([FIFZFZ[FB)I")
-	public static int polyZeroes(float[] arg0, int arg1, float arg2, boolean arg3, float arg4, boolean arg5, float[] arg6) {
+    public static int polyZeroes(float[] arg0, int arg1, float arg2, boolean arg3, float arg4, boolean arg5, float[] arg6) {
 		float var7 = 0.0F;
 		for (int var8 = 0; var8 < arg1 + 1; var8++) {
 			var7 += Math.abs(arg0[var8]);
@@ -106,8 +102,7 @@ public class Polynomial {
 		}
 	}
 
-	@ObfuscatedName("ju.n([FIFS)F")
-	public static float horner1(float[] arg0, int arg1, float arg2) {
+    public static float horner1(float[] arg0, int arg1, float arg2) {
 		float var3 = arg0[arg1];
 		for (int var4 = arg1 - 1; var4 >= 0; var4--) {
 			var3 = arg2 * var3 + arg0[var4];
@@ -115,8 +110,7 @@ public class Polynomial {
 		return var3;
 	}
 
-	@ObfuscatedName("adg.m(Leo;FFFI)F")
-	public static float zeroin(Polynomial arg0, float arg1, float arg2, float arg3) {
+    public static float zeroin(Polynomial arg0, float arg1, float arg2, float arg3) {
 		float var4 = horner1(arg0.p, arg0.deg, arg1);
 		if (Math.abs(var4) < CurveEvaluator.EPSILON) {
 			return arg1;

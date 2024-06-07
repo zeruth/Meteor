@@ -11,47 +11,33 @@ import com.jagex.game.config.vartype.constants.VarDomainType;
 import com.jagex.math.IntMath;
 import deob.ObfuscatedName;
 
-@ObfuscatedName("asc")
 public class ClientScript extends SecondaryNode {
 
-	@ObfuscatedName("asc.l")
-	public ClientTriggerType field12373;
+    public ClientTriggerType field12373;
 
-	@ObfuscatedName("asc.u")
-	public String scriptName;
+    public String scriptName;
 
-	@ObfuscatedName("asc.z")
-	public ClientScriptCommand[] instructions;
+    public ClientScriptCommand[] instructions;
 
-	@ObfuscatedName("asc.p")
-	public int[] intOperands;
+    public int[] intOperands;
 
-	@ObfuscatedName("asc.d")
-	public Object[] objectOperands;
+    public Object[] objectOperands;
 
-	@ObfuscatedName("asc.c")
-	public int intLocalCount;
+    public int intLocalCount;
 
-	@ObfuscatedName("asc.r")
-	public int objectLocalCount;
+    public int objectLocalCount;
 
-	@ObfuscatedName("asc.v")
-	public int longLocalCount;
+    public int longLocalCount;
 
-	@ObfuscatedName("asc.o")
-	public int intArgCount;
+    public int intArgCount;
 
-	@ObfuscatedName("asc.s")
-	public int objectArgCount;
+    public int objectArgCount;
 
-	@ObfuscatedName("asc.y")
-	public int longArgCount;
+    public int longArgCount;
 
-	@ObfuscatedName("asc.q")
-	public HashTable[] switchTables;
+    public HashTable[] switchTables;
 
-	@ObfuscatedName("asc.x")
-	public final VariableTypeProvider varTypeProvider;
+    public final VariableTypeProvider varTypeProvider;
 
 	public ClientScript(Packet buf, VariableTypeProvider varTypeProvider) {
 		this.varTypeProvider = varTypeProvider;
@@ -65,8 +51,7 @@ public class ClientScript extends SecondaryNode {
 		}
 	}
 
-	@ObfuscatedName("asc.e(Lalw;[Lss;I)Lss;")
-	public ClientScriptCommand decodeAtPos(Packet buf, ClientScriptCommand[] commands) {
+    public ClientScriptCommand decodeAtPos(Packet buf, ClientScriptCommand[] commands) {
 		int pos = buf.g2();
 		if (pos < 0 || pos >= commands.length) {
 			throw new RuntimeException("");
@@ -74,8 +59,7 @@ public class ClientScript extends SecondaryNode {
 		return commands[pos];
 	}
 
-	@ObfuscatedName("asc.n(Lalw;I)I")
-	public int decodeScript(Packet buf) {
+    public int decodeScript(Packet buf) {
 		buf.pos = (buf.data.length - 2);
 		int trailerLen = buf.g2();
 		int trailerPos = buf.data.length - 2 - trailerLen - 16;
@@ -107,8 +91,7 @@ public class ClientScript extends SecondaryNode {
 		return trailerPos;
 	}
 
-	@ObfuscatedName("asc.m(Lalw;ILss;I)V")
-	public void decodeOperands(Packet buf, int instr, ClientScriptCommand command) {
+    public void decodeOperands(Packet buf, int instr, ClientScriptCommand command) {
 		int length = this.instructions.length;
 		if (ClientScriptCommand.PUSH_VAR == command || ClientScriptCommand.POP_VAR == command) {
 			VarDomainType varDomainType = (VarDomainType) SerializableEnums.decode(VarDomainType.values(), buf.g1());

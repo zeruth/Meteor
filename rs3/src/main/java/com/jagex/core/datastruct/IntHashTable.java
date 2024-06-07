@@ -2,11 +2,9 @@ package com.jagex.core.datastruct;
 
 import deob.ObfuscatedName;
 
-@ObfuscatedName("is")
 public class IntHashTable {
 
-	@ObfuscatedName("is.e")
-	public int[] tree;
+    public int[] tree;
 
 	public IntHashTable(int[] arg0) {
 		int var2;
@@ -26,8 +24,7 @@ public class IntHashTable {
 		}
 	}
 
-	@ObfuscatedName("is.e(IS)I")
-	public int get(int arg0) {
+    public int get(int arg0) {
 		int var2 = (this.tree.length >> 1) - 1;
 		int var3 = arg0 & var2;
 		while (true) {

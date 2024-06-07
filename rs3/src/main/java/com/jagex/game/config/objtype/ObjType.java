@@ -23,236 +23,159 @@ import deob.ObfuscatedName;
 
 import java.util.Arrays;
 
-@ObfuscatedName("abv")
 public class ObjType implements ConfigType {
 
-	@ObfuscatedName("abv.w")
-	public static short[] clientpalette = new short[256];
+    public static short[] clientpalette = new short[256];
 
-	@ObfuscatedName("abv.l")
-	public ConfigTypeList myList;
+    public ConfigTypeList myList;
 
-	@ObfuscatedName("abv.u")
-	public ObjTypeFactory factory;
+    public ObjTypeFactory factory;
 
-	@ObfuscatedName("abv.z")
-	public int id;
+    public int id;
 
-	@ObfuscatedName("abv.p")
-	public int category = -1;
+    public int category = -1;
 
-	@ObfuscatedName("abv.d")
-	public int mesh;
+    public int mesh;
 
-	@ObfuscatedName("abv.c")
-	public String name = "null";
+    public String name = "null";
 
-	@ObfuscatedName("abv.r")
-	public short[] recol_s;
+    public short[] recol_s;
 
-	@ObfuscatedName("abv.v")
-	public short[] recol_d;
+    public short[] recol_d;
 
-	@ObfuscatedName("abv.o")
-	public byte[] recol_d_palette;
+    public byte[] recol_d_palette;
 
-	@ObfuscatedName("abv.s")
-	public short[] retex_s;
+    public short[] retex_s;
 
-	@ObfuscatedName("abv.y")
-	public short[] retex_d;
+    public short[] retex_d;
 
-	@ObfuscatedName("abv.q")
-	public byte[] recolindices;
+    public byte[] recolindices;
 
-	@ObfuscatedName("abv.x")
-	public byte[] retexindices;
+    public byte[] retexindices;
 
-	@ObfuscatedName("abv.b")
-	public int zoom2d = 2000;
+    public int zoom2d = 2000;
 
-	@ObfuscatedName("abv.h")
-	public int xan2d = 0;
+    public int xan2d = 0;
 
-	@ObfuscatedName("abv.a")
-	public int yan2d = 0;
+    public int yan2d = 0;
 
-	@ObfuscatedName("abv.g")
-	public int zan2d = 0;
+    public int zan2d = 0;
 
-	@ObfuscatedName("abv.i")
-	public int xof2d = 0;
+    public int xof2d = 0;
 
-	@ObfuscatedName("abv.j")
-	public int yof2d = 0;
+    public int yof2d = 0;
 
-	@ObfuscatedName("abv.t")
-	public int stackable = 0;
+    public int stackable = 0;
 
-	@ObfuscatedName("abv.ae")
-	public int cost = 1;
+    public int cost = 1;
 
-	@ObfuscatedName("abv.ag")
-	public boolean members = false;
+    public boolean members = false;
 
-	@ObfuscatedName("abv.ah")
-	public String[] op;
+    public String[] op;
 
-	@ObfuscatedName("abv.al")
-	public String[] iop;
+    public String[] iop;
 
-	@ObfuscatedName("abv.ac")
-	public int[] cursor;
+    public int[] cursor;
 
-	@ObfuscatedName("abv.ai")
-	public int[] icursor;
+    public int[] icursor;
 
-	@ObfuscatedName("abv.aw")
-	public int wearpos = -1;
+    public int wearpos = -1;
 
-	@ObfuscatedName("abv.as")
-	public int wearpos2 = -1;
+    public int wearpos2 = -1;
 
-	@ObfuscatedName("abv.at")
-	public int wearpos3 = -1;
+    public int wearpos3 = -1;
 
-	@ObfuscatedName("abv.ad")
-	public int manwear = -1;
+    public int manwear = -1;
 
-	@ObfuscatedName("abv.am")
-	public int manwear2 = -1;
+    public int manwear2 = -1;
 
-	@ObfuscatedName("abv.au")
-	public int womanwear = -1;
+    public int womanwear = -1;
 
-	@ObfuscatedName("abv.ar")
-	public int womanwear2 = -1;
+    public int womanwear2 = -1;
 
-	@ObfuscatedName("abv.ap")
-	public int manwear3 = -1;
+    public int manwear3 = -1;
 
-	@ObfuscatedName("abv.aq")
-	public int womanwear3 = -1;
+    public int womanwear3 = -1;
 
-	@ObfuscatedName("abv.ax")
-	public int manwearxoff = 0;
+    public int manwearxoff = 0;
 
-	@ObfuscatedName("abv.av")
-	public int womanwearxoff = 0;
+    public int womanwearxoff = 0;
 
-	@ObfuscatedName("abv.ao")
-	public int manwearyoff = 0;
+    public int manwearyoff = 0;
 
-	@ObfuscatedName("abv.aj")
-	public int womanwearyoff = 0;
+    public int womanwearyoff = 0;
 
-	@ObfuscatedName("abv.ay")
-	public int manwearzoff = 0;
+    public int manwearzoff = 0;
 
-	@ObfuscatedName("abv.ab")
-	public int womanwearzoff = 0;
+    public int womanwearzoff = 0;
 
-	@ObfuscatedName("abv.az")
-	public int manhead = -1;
+    public int manhead = -1;
 
-	@ObfuscatedName("abv.aa")
-	public int manhead2 = -1;
+    public int manhead2 = -1;
 
-	@ObfuscatedName("abv.af")
-	public int womanhead = -1;
+    public int womanhead = -1;
 
-	@ObfuscatedName("abv.ak")
-	public int womanhead2 = -1;
+    public int womanhead2 = -1;
 
-	@ObfuscatedName("abv.an")
-	public int[] countobj;
+    public int[] countobj;
 
-	@ObfuscatedName("abv.bf")
-	public int[] countco;
+    public int[] countco;
 
-	@ObfuscatedName("abv.bl")
-	public int certtemplate = -1;
+    public int certtemplate = -1;
 
-	@ObfuscatedName("abv.bk")
-	public int certlink = -1;
+    public int certlink = -1;
 
-	@ObfuscatedName("abv.bh")
-	public int lentlink = -1;
+    public int lentlink = -1;
 
-	@ObfuscatedName("abv.bx")
-	public int lenttemplate = -1;
+    public int lenttemplate = -1;
 
-	@ObfuscatedName("abv.bd")
-	public int shardlink = -1;
+    public int shardlink = -1;
 
-	@ObfuscatedName("abv.bc")
-	public int shardtemplate = -1;
+    public int shardtemplate = -1;
 
-	@ObfuscatedName("abv.bi")
-	public String shardname = "null";
+    public String shardname = "null";
 
-	@ObfuscatedName("abv.bn")
-	public int shardcount = 0;
+    public int shardcount = 0;
 
-	@ObfuscatedName("abv.bt")
-	public int resizex = 128;
+    public int resizex = 128;
 
-	@ObfuscatedName("abv.bq")
-	public int resizey = 128;
+    public int resizey = 128;
 
-	@ObfuscatedName("abv.bm")
-	public int resizez = 128;
+    public int resizez = 128;
 
-	@ObfuscatedName("abv.bb")
-	public int ambient = 0;
+    public int ambient = 0;
 
-	@ObfuscatedName("abv.be")
-	public int contrast = 0;
+    public int contrast = 0;
 
-	@ObfuscatedName("abv.by")
-	public int team = 0;
+    public int team = 0;
 
-	@ObfuscatedName("abv.bu")
-	public boolean stockmarket = false;
+    public boolean stockmarket = false;
 
-	@ObfuscatedName("abv.bw")
-	public boolean tradeable = false;
+    public boolean tradeable = false;
 
-	@ObfuscatedName("abv.bo")
-	public boolean cert_not_tradeable = false;
+    public boolean cert_not_tradeable = false;
 
-	@ObfuscatedName("abv.bz")
-	public int dummyitem = 0;
+    public int dummyitem = 0;
 
-	@ObfuscatedName("abv.bv")
-	public HashTable params;
+    public HashTable params;
 
-	@ObfuscatedName("abv.br")
-	public int[] quests;
+    public int[] quests;
 
-	@ObfuscatedName("abv.bg")
-	public int picksizeshift = 0;
+    public int picksizeshift = 0;
 
-	@ObfuscatedName("abv.ba")
-	public int boughtlink = -1;
+    public int boughtlink = -1;
 
-	@ObfuscatedName("abv.bp")
-	public int boughttemplate = -1;
+    public int boughttemplate = -1;
 
-	@ObfuscatedName("abv.bj")
-	public boolean minimenu_colour_overridden = false;
+    public boolean minimenu_colour_overridden = false;
 
-	@ObfuscatedName("abv.bs")
-	public int minimenu_colour;
+    public int minimenu_colour;
 
-	@ObfuscatedName("abv.cl")
-	public boolean field8697 = false;
+    public boolean field8697 = false;
 
-	@ObfuscatedName("abv.cg")
-	public boolean placeholder = true;
+    public boolean placeholder = true;
 
-	@ObfuscatedName("abv.ce")
-	public static String COL_TAG_END = "</col>";
+    public static String COL_TAG_END = "</col>";
 
 	public ObjType(int id, ConfigTypeList objs, ObjTypeFactory factory) {
 		this.id = id;
@@ -262,8 +185,7 @@ public class ObjType implements ConfigType {
 		this.iop = (String[]) this.factory.defaultiops.clone();
 	}
 
-	@ObfuscatedName("abv.n(I)V")
-	public void postDecode() {
+    public void postDecode() {
 		if (this.certtemplate != -1) {
 			this.genCert((ObjType) this.myList.list(this.certtemplate), (ObjType) this.myList.list(this.certlink), this.factory.languageId);
 		} else if (this.lenttemplate != -1) {
@@ -302,8 +224,7 @@ public class ObjType implements ConfigType {
 		}
 	}
 
-	@ObfuscatedName("abv.e(Lalw;B)V")
-	public void decode(Packet buf) {
+    public void decode(Packet buf) {
 		this.tradeable = true;
 		while (true) {
 			int code = buf.g1();
@@ -314,8 +235,7 @@ public class ObjType implements ConfigType {
 		}
 	}
 
-	@ObfuscatedName("abv.u(Lalw;II)V")
-	public void decode(Packet buf, int code) {
+    public void decode(Packet buf, int code) {
 		if (code == 1) {
 			this.mesh = buf.gSmart2or4null();
 		} else if (code == 2) {
@@ -537,8 +457,7 @@ public class ObjType implements ConfigType {
 		}
 	}
 
-	@ObfuscatedName("abv.z(Labq;Labv;Labv;Lacz;Lzt;I)V")
-	public void gen(DerivedObjType derived, ObjType from, ObjType to, LocalisedText localisedText, Language language) {
+    public void gen(DerivedObjType derived, ObjType from, ObjType to, LocalisedText localisedText, Language language) {
 		this.mesh = from.mesh;
 		this.zoom2d = from.zoom2d;
 		this.xan2d = from.xan2d;
@@ -612,28 +531,23 @@ public class ObjType implements ConfigType {
 		}
 	}
 
-	@ObfuscatedName("abv.p(Labv;Labv;Lzt;S)V")
-	public void genCert(ObjType from, ObjType to, Language language) {
+    public void genCert(ObjType from, ObjType to, Language language) {
 		this.gen(DerivedObjType.CERT, from, to, null, language);
 	}
 
-	@ObfuscatedName("abv.d(Labv;Labv;Lzt;I)V")
-	public void genLent(ObjType from, ObjType to, Language language) {
+    public void genLent(ObjType from, ObjType to, Language language) {
 		this.gen(DerivedObjType.LENT, from, to, LocalisedText.LENT_ITEM_RETURN, language);
 	}
 
-	@ObfuscatedName("abv.c(Labv;Labv;Lzt;I)V")
-	public void genBought(ObjType from, ObjType to, Language language) {
+    public void genBought(ObjType from, ObjType to, Language language) {
 		this.gen(DerivedObjType.BOUGHT, from, to, LocalisedText.BOUGHT_ITEM_DISCARD, language);
 	}
 
-	@ObfuscatedName("abv.r(Labv;Labv;Lzt;I)V")
-	public void genShard(ObjType from, ObjType to, Language language) {
+    public void genShard(ObjType from, ObjType to, Language language) {
 		this.gen(DerivedObjType.SHARD, from, to, LocalisedText.DROP, language);
 	}
 
-	@ObfuscatedName("abv.v(Ldh;IILxg;Laaq;IIIII)Ldo;")
-	public final Model method14644(Toolkit arg0, int arg1, int arg2, PlayerModel arg3, AnimationNode arg4, int arg5, int arg6, int arg7, int arg8) {
+    public final Model method14644(Toolkit arg0, int arg1, int arg2, PlayerModel arg3, AnimationNode arg4, int arg5, int arg6, int arg7, int arg8) {
 		if (this.countobj != null && arg2 > 1) {
 			int var10 = -1;
 			for (int var11 = 0; var11 < 10; var11++) {
@@ -743,8 +657,7 @@ public class ObjType implements ConfigType {
 		return var14;
 	}
 
-	@ObfuscatedName("abv.o(II)Labv;")
-	public ObjType getMeshAddress(int n) {
+    public ObjType getMeshAddress(int n) {
 		if (this.countobj != null && n > 1) {
 			int id = -1;
 			for (int index = 0; index < 10; index++) {
@@ -759,8 +672,7 @@ public class ObjType implements ConfigType {
 		return this;
 	}
 
-	@ObfuscatedName("abv.s(Ldh;Ldh;IIIZILeu;Lxg;Lws;B)[I")
-	public int[] method14646(Toolkit arg0, Toolkit arg1, int arg2, int arg3, int arg4, boolean arg5, int arg6, Font arg7, PlayerModel arg8, GraphicsDefaults arg9) {
+    public int[] method14646(Toolkit arg0, Toolkit arg1, int arg2, int arg3, int arg4, boolean arg5, int arg6, Font arg7, PlayerModel arg8, GraphicsDefaults arg9) {
 		ModelUnlit var11 = ModelUnlit.get(this.factory.configClient, this.mesh, 0);
 		if (var11 == null) {
 			return null;
@@ -897,8 +809,7 @@ public class ObjType implements ConfigType {
 		return var28;
 	}
 
-	@ObfuscatedName("abv.y([III)[I")
-	public int[] method14636(int[] arg0, int arg1) {
+    public int[] method14636(int[] arg0, int arg1) {
 		int[] var3 = new int[1152];
 		int var4 = 0;
 		for (int var5 = 0; var5 < 32; var5++) {
@@ -921,8 +832,7 @@ public class ObjType implements ConfigType {
 		return var3;
 	}
 
-	@ObfuscatedName("abv.q([III)V")
-	public void method14648(int[] arg0, int arg1) {
+    public void method14648(int[] arg0, int arg1) {
 		for (int var3 = 31; var3 > 0; var3--) {
 			int var4 = var3 * 36;
 			for (int var5 = 35; var5 > 0; var5--) {
@@ -933,8 +843,7 @@ public class ObjType implements ConfigType {
 		}
 	}
 
-	@ObfuscatedName("jf.x(ILzt;Lws;I)Ljava/lang/String;")
-	public static String formatObjCount(int amount, Language language, GraphicsDefaults graphics) {
+    public static String formatObjCount(int amount, Language language, GraphicsDefaults graphics) {
 		if (amount < 100000) {
 			return formatObjCountTagged(graphics.invHundredColor) + amount + COL_TAG_END;
 		} else if (amount < 10000000) {
@@ -944,13 +853,11 @@ public class ObjType implements ConfigType {
 		}
 	}
 
-	@ObfuscatedName("ku.b(IB)Ljava/lang/String;")
-	public static String formatObjCountTagged(int rgb) {
+    public static String formatObjCountTagged(int rgb) {
 		return "<col=" + Integer.toHexString(rgb) + ">";
 	}
 
-	@ObfuscatedName("abv.h(ZLabw;I)Z")
-	public final boolean method14649(boolean arg0, ObjTypeCustomisation arg1) {
+    public final boolean method14649(boolean arg0, ObjTypeCustomisation arg1) {
 		int var3;
 		int var4;
 		int var5;
@@ -989,8 +896,7 @@ public class ObjType implements ConfigType {
 		return var6;
 	}
 
-	@ObfuscatedName("abv.a(ZLabw;I)Ldq;")
-	public final ModelUnlit method14650(boolean arg0, ObjTypeCustomisation arg1) {
+    public final ModelUnlit method14650(boolean arg0, ObjTypeCustomisation arg1) {
 		int var3;
 		int var4;
 		int var5;
@@ -1071,8 +977,7 @@ public class ObjType implements ConfigType {
 		return var6;
 	}
 
-	@ObfuscatedName("abv.g(ZLabw;I)Z")
-	public final boolean method14651(boolean arg0, ObjTypeCustomisation arg1) {
+    public final boolean method14651(boolean arg0, ObjTypeCustomisation arg1) {
 		int var3;
 		int var4;
 		if (arg0) {
@@ -1103,8 +1008,7 @@ public class ObjType implements ConfigType {
 		return var5;
 	}
 
-	@ObfuscatedName("abv.i(ZLabw;B)Ldq;")
-	public final ModelUnlit method14652(boolean arg0, ObjTypeCustomisation arg1) {
+    public final ModelUnlit method14652(boolean arg0, ObjTypeCustomisation arg1) {
 		int var3;
 		int var4;
 		if (arg0) {
@@ -1162,8 +1066,7 @@ public class ObjType implements ConfigType {
 		return var5;
 	}
 
-	@ObfuscatedName("abv.j(III)I")
-	public int getParam(int arg0, int arg1) {
+    public int getParam(int arg0, int arg1) {
 		if (this.params == null) {
 			return arg1;
 		} else {
@@ -1172,8 +1075,7 @@ public class ObjType implements ConfigType {
 		}
 	}
 
-	@ObfuscatedName("abv.t(ILjava/lang/String;B)Ljava/lang/String;")
-	public String getParam(int arg0, String arg1) {
+    public String getParam(int arg0, String arg1) {
 		if (this.params == null) {
 			return arg1;
 		} else {
@@ -1182,13 +1084,11 @@ public class ObjType implements ConfigType {
 		}
 	}
 
-	@ObfuscatedName("abv.ae(II)I")
-	public int getCursor(int op) {
+    public int getCursor(int op) {
 		return this.cursor == null ? -1 : this.cursor[op];
 	}
 
-	@ObfuscatedName("abv.ag(II)I")
-	public int getICursor(int op) {
+    public int getICursor(int op) {
 		return this.icursor == null ? -1 : this.icursor[op];
 	}
 }

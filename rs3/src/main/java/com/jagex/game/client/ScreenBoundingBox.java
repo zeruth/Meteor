@@ -4,29 +4,21 @@ import com.jagex.math.Cuboid;
 import com.jagex.math.Matrix4x4;
 import deob.ObfuscatedName;
 
-@ObfuscatedName("ed")
 public class ScreenBoundingBox {
 
-	@ObfuscatedName("ed.e")
-	public boolean field1686 = false;
+    public boolean field1686 = false;
 
-	@ObfuscatedName("ed.n")
-	public int field1683;
+    public int field1683;
 
-	@ObfuscatedName("ed.m")
-	public int field1684;
+    public int field1684;
 
-	@ObfuscatedName("ed.k")
-	public int field1682;
+    public int field1682;
 
-	@ObfuscatedName("ed.f")
-	public int field1685;
+    public int field1685;
 
-	@ObfuscatedName("ed.w")
-	public int field1687;
+    public int field1687;
 
-	@ObfuscatedName("ed.e(II)Z")
-	public boolean method2742(int arg0, int arg1) {
+    public boolean method2742(int arg0, int arg1) {
 		if (!this.field1686) {
 			return false;
 		}
@@ -54,8 +46,7 @@ public class ScreenBoundingBox {
 		}
 	}
 
-	@ObfuscatedName("ed.n(Loj;Lpq;Lpq;FFFF)V")
-	public void method2746(Cuboid arg0, Matrix4x4 arg1, Matrix4x4 arg2, float arg3, float arg4, float arg5, float arg6) {
+    public void method2746(Cuboid arg0, Matrix4x4 arg1, Matrix4x4 arg2, float arg3, float arg4, float arg5, float arg6) {
 		boolean var8 = false;
 		this.field1686 = true;
 		int var9 = (int) (arg0.minX + arg0.maxX) >> 1;

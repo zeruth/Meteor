@@ -6,23 +6,17 @@ import com.jagex.game.client.MutableConfig;
 import com.jagex.game.config.ConfigType;
 import deob.ObfuscatedName;
 
-@ObfuscatedName("ady")
 public class InvType extends SecondaryNode implements ConfigType, MutableConfig {
 
-	@ObfuscatedName("ady.k")
-	public int stockLength = 0;
+    public int stockLength = 0;
 
-	@ObfuscatedName("ady.f")
-	public int[] stockobj;
+    public int[] stockobj;
 
-	@ObfuscatedName("ady.w")
-	public int[] stockcount;
+    public int[] stockcount;
 
-	@ObfuscatedName("ady.l")
-	public int size = 0;
+    public int size = 0;
 
-	@ObfuscatedName("ady.e(Lalw;B)V")
-	public void decode(Packet buf) {
+    public void decode(Packet buf) {
 		while (true) {
 			int code = buf.g1();
 			if (code == 0) {
@@ -32,8 +26,7 @@ public class InvType extends SecondaryNode implements ConfigType, MutableConfig 
 		}
 	}
 
-	@ObfuscatedName("ady.u(Lalw;II)V")
-	public void decode(Packet buf, int code) {
+    public void decode(Packet buf, int code) {
 		if (code == 2) {
 			this.size = buf.g2();
 		} else if (code == 4) {
@@ -47,11 +40,9 @@ public class InvType extends SecondaryNode implements ConfigType, MutableConfig 
 		}
 	}
 
-	@ObfuscatedName("ady.n(I)V")
-	public void postDecode() {
+    public void postDecode() {
 	}
 
-	@ObfuscatedName("ady.z(IB)V")
-	public void setId(int arg0) {
+    public void setId(int arg0) {
 	}
 }

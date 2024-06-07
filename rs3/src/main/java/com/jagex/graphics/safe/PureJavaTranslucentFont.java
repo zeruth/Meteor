@@ -4,14 +4,11 @@ import com.jagex.game.client.JavaGraphicsRelated3;
 import com.jagex.graphics.*;
 import deob.ObfuscatedName;
 
-@ObfuscatedName("afw")
 public class PureJavaTranslucentFont extends Font {
 
-	@ObfuscatedName("afw.o")
-	public PureJavaToolkit field10234;
+    public PureJavaToolkit field10234;
 
-	@ObfuscatedName("afw.s")
-	public byte[][] field10233;
+    public byte[][] field10233;
 
 	public PureJavaTranslucentFont(PureJavaToolkit arg0, FontMetrics arg1, PalettedSpriteData arg2) {
 		super(arg0, arg1);
@@ -62,8 +59,7 @@ public class PureJavaTranslucentFont extends Font {
 		}
 	}
 
-	@ObfuscatedName("afw.s(CIIIZ)V")
-	public void drawChar(char arg0, int arg1, int arg2, int arg3, boolean arg4) {
+    public void drawChar(char arg0, int arg1, int arg2, int arg3, boolean arg4) {
 		if (this.field10234.colour == null) {
 			return;
 		}
@@ -105,8 +101,7 @@ public class PureJavaTranslucentFont extends Font {
 		}
 	}
 
-	@ObfuscatedName("afw.bl([B[IIIIIIII)V")
-	public void method16370(byte[] arg0, int[] arg1, int arg2, int arg3, int arg4, int arg5, int arg6, int arg7, int arg8) {
+    public void method16370(byte[] arg0, int[] arg1, int arg2, int arg3, int arg4, int arg5, int arg6, int arg7, int arg8) {
 		for (int var10 = -arg6; var10 < 0; var10++) {
 			for (int var11 = -arg5; var11 < 0; var11++) {
 				int var12 = arg0[arg3++] & 0xFF;
@@ -124,8 +119,7 @@ public class PureJavaTranslucentFont extends Font {
 		}
 	}
 
-	@ObfuscatedName("afw.y(CIIIZLch;II)V")
-	public void drawChar2(char arg0, int arg1, int arg2, int arg3, boolean arg4, SpriteRelated arg5, int arg6, int arg7) {
+    public void drawChar2(char arg0, int arg1, int arg2, int arg3, boolean arg4, SpriteRelated arg5, int arg6, int arg7) {
 		if (this.field10234.colour == null) {
 			return;
 		}
@@ -171,8 +165,7 @@ public class PureJavaTranslucentFont extends Font {
 		}
 	}
 
-	@ObfuscatedName("afw.bk([B[IIIIIIIIIIILch;II)V")
-	public void method16369(byte[] arg0, int[] arg1, int arg2, int arg3, int arg4, int arg5, int arg6, int arg7, int arg8, int arg9, int arg10, int arg11, SpriteRelated arg12, int arg13, int arg14) {
+    public void method16369(byte[] arg0, int[] arg1, int arg2, int arg3, int arg4, int arg5, int arg6, int arg7, int arg8, int arg9, int arg10, int arg11, SpriteRelated arg12, int arg13, int arg14) {
 		JavaGraphicsRelated3 var16 = (JavaGraphicsRelated3) arg12;
 		int[] var17 = var16.field9414;
 		int[] var18 = var16.field9415;

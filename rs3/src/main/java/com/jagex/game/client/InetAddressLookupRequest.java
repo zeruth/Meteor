@@ -8,25 +8,20 @@ import java.net.InetAddress;
 import java.util.LinkedList;
 import java.util.Queue;
 
-@ObfuscatedName("yz")
 public class InetAddressLookupRequest implements Runnable {
 
-	@ObfuscatedName("yz.e")
-	public final Object field8183 = new Object();
+    public final Object field8183 = new Object();
 
-	@ObfuscatedName("yz.n")
-	public Thread field8184 = new Thread(this);
+    public Thread field8184 = new Thread(this);
 
-	@ObfuscatedName("yz.m")
-	public final Queue field8185 = new LinkedList();
+    public final Queue field8185 = new LinkedList();
 
 	public InetAddressLookupRequest() {
 		this.field8184.setDaemon(true);
 		this.field8184.start();
 	}
 
-	@ObfuscatedName("yz.e(Ljava/lang/String;B)Lyb;")
-	public PingRequest method10589(String arg0) {
+    public PingRequest method10589(String arg0) {
 		if (this.field8184 == null) {
 			throw new IllegalStateException("");
 		} else if (arg0 == null) {
@@ -38,8 +33,7 @@ public class InetAddressLookupRequest implements Runnable {
 		}
 	}
 
-	@ObfuscatedName("yz.n(I)V")
-	public void method10572() {
+    public void method10572() {
 		if (this.field8184 == null) {
 			return;
 		}
@@ -51,8 +45,7 @@ public class InetAddressLookupRequest implements Runnable {
 		this.field8184 = null;
 	}
 
-	@ObfuscatedName("yz.m(Ljava/lang/Object;I)V")
-	public void method10575(Object arg0) {
+    public void method10575(Object arg0) {
 		Queue var2 = this.field8185;
 		synchronized (this.field8185) {
 			this.field8185.add(arg0);

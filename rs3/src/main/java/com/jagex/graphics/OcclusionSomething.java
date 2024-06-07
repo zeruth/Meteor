@@ -2,24 +2,19 @@ package com.jagex.graphics;
 
 import deob.ObfuscatedName;
 
-@ObfuscatedName("tq")
 public class OcclusionSomething {
 
-	@ObfuscatedName("tq.w")
-	public OcclusionManager field6894;
+    public OcclusionManager field6894;
 
-	@ObfuscatedName("tq.l")
-	public int field6895;
+    public int field6895;
 
-	@ObfuscatedName("tq.u")
-	public int field6896 = 0;
+    public int field6896 = 0;
 
 	public OcclusionSomething(OcclusionManager arg0) {
 		this.field6894 = arg0;
 	}
 
-	@ObfuscatedName("tq.e(IIIIIIIII)Z")
-	public final boolean method8697(int arg0, int arg1, int arg2, int arg3, int arg4, int arg5, int arg6, int arg7, int arg8) {
+    public final boolean method8697(int arg0, int arg1, int arg2, int arg3, int arg4, int arg5, int arg6, int arg7, int arg8) {
 		if (arg0 > 2003 || arg1 > 2003 || arg2 > 2003 || arg3 > 2003 || arg4 > 2003 || arg5 > 2003) {
 			return false;
 		} else if (arg0 >= -2003 && arg1 >= -2003 && arg2 >= -2003 && arg3 >= -2003 && arg4 >= -2003 && arg5 >= -2003) {
@@ -562,8 +557,7 @@ public class OcclusionSomething {
 		}
 	}
 
-	@ObfuscatedName("tq.n([IIIIIIII)Z")
-	public final boolean method8694(int[] arg0, int arg1, int arg2, int arg3, int arg4, int arg5, int arg6, int arg7) {
+    public final boolean method8694(int[] arg0, int arg1, int arg2, int arg3, int arg4, int arg5, int arg6, int arg7) {
 		if (arg4 > arg7) {
 			arg4 = arg7;
 		}

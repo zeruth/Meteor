@@ -19,62 +19,43 @@ import com.jagex.math.*;
 import deob.ObfuscatedName;
 import rs2.client.Client;
 
-@ObfuscatedName("aqc")
 public class NpcEntity extends PathingEntity {
 
-	@ObfuscatedName("aqc.cn")
-	public NPCType npcType;
+    public NPCType npcType;
 
-	@ObfuscatedName("aqc.cv")
-	public int field12074 = -1;
+    public int field12074 = -1;
 
-	@ObfuscatedName("aqc.cp")
-	public int field12075 = -1;
+    public int field12075 = -1;
 
-	@ObfuscatedName("aqc.ca")
-	public NPCTypeCustomisation field12076;
+    public NPCTypeCustomisation field12076;
 
-	@ObfuscatedName("aqc.cx")
-	public static int field12077 = 1;
+    public static int field12077 = 1;
 
-	@ObfuscatedName("aqc.cw")
-	public static int field12078 = 1;
+    public static int field12078 = 1;
 
-	@ObfuscatedName("aqc.ct")
-	public int field12079 = -1;
+    public int field12079 = -1;
 
-	@ObfuscatedName("aqc.cf")
-	public NPCHeadIconCustomisation field12080;
+    public NPCHeadIconCustomisation field12080;
 
-	@ObfuscatedName("aqc.co")
-	public int vislevel;
+    public int vislevel;
 
-	@ObfuscatedName("aqc.cr")
-	public String name;
+    public String name;
 
-	@ObfuscatedName("aqc.cm")
-	public int[] field12087 = new int[6];
+    public int[] field12087 = new int[6];
 
-	@ObfuscatedName("aqc.cq")
-	public int[] field12084 = new int[6];
+    public int[] field12084 = new int[6];
 
-	@ObfuscatedName("aqc.ch")
-	public int field12073;
+    public int field12073;
 
-	@ObfuscatedName("aqc.cb")
-	public int field12086;
+    public int field12086;
 
-	@ObfuscatedName("aqc.cs")
-	public int field12088;
+    public int field12088;
 
-	@ObfuscatedName("aqc.cy")
-	public int field12089;
+    public int field12089;
 
-	@ObfuscatedName("aqc.cc")
-	public int field12090;
+    public int field12090;
 
-	@ObfuscatedName("aqc.cz")
-	public boolean field12085;
+    public boolean field12085;
 
 	public NpcEntity(Scene arg0) {
 		super(arg0, Client.varNpcTypeList);
@@ -86,14 +67,12 @@ public class NpcEntity extends PathingEntity {
 		this.method19184();
 	}
 
-	@ObfuscatedName("aqc.hq(B)V")
-	public void method19155() {
+    public void method19155() {
 		this.field10433 = 255;
 		this.field10438 = Client.loopCycle;
 	}
 
-	@ObfuscatedName("aqc.hf(I)V")
-	public void method19184() {
+    public void method19184() {
 		this.field12073 = (int) (Math.random() * 4.0D) + 32;
 		this.field12086 = (int) (Math.random() * 2.0D) + 3;
 		this.field12088 = (int) (Math.random() * 3.0D) + 16;
@@ -104,13 +83,11 @@ public class NpcEntity extends PathingEntity {
 		}
 	}
 
-	@ObfuscatedName("aqc.hr(Lif;I)V")
-	public void method19156(NPCType arg0) {
+    public void method19156(NPCType arg0) {
 		this.method19157(arg0, true, true, true);
 	}
 
-	@ObfuscatedName("aqc.hs(Lif;ZZZS)V")
-	public void method19157(NPCType arg0, boolean arg1, boolean arg2, boolean arg3) {
+    public void method19157(NPCType arg0, boolean arg1, boolean arg2, boolean arg3) {
 		if (this.npcType != arg0 && MiniMenu.open && MiniMenu.method8494(this.localPlayerIndex)) {
 			MiniMenu.close();
 		}
@@ -131,13 +108,11 @@ public class NpcEntity extends PathingEntity {
 		}
 	}
 
-	@ObfuscatedName("aqc.fv(Ldh;B)Luq;")
-	public EntityBounds method17371(Toolkit toolkit) {
+    public EntityBounds method17371(Toolkit toolkit) {
 		return null;
 	}
 
-	@ObfuscatedName("aqc.fc(Ldh;I)Ltl;")
-	public PickableEntity draw(Toolkit toolkit) {
+    public PickableEntity draw(Toolkit toolkit) {
 		if (this.npcType == null || !this.isVisible(toolkit, 526336)) {
 			return null;
 		}
@@ -229,8 +204,7 @@ public class NpcEntity extends PathingEntity {
 		return var11;
 	}
 
-	@ObfuscatedName("aqc.hh(Ldh;II)Z")
-	public boolean isVisible(Toolkit arg0, int arg1) {
+    public boolean isVisible(Toolkit arg0, int arg1) {
 		int var3 = arg1;
 		BASType var4 = this.getBASType();
 		AnimationNode var5 = this.field10454.hasSeqType() && !this.field10454.method14355() ? this.field10454 : null;
@@ -290,8 +264,7 @@ public class NpcEntity extends PathingEntity {
 		return true;
 	}
 
-	@ObfuscatedName("aqc.fw(Ldh;I)V")
-	public void method17373(Toolkit toolkit) {
+    public void method17373(Toolkit toolkit) {
 		if (this.npcType == null || !this.field10449 && !this.isVisible(toolkit, 0)) {
 			return;
 		}
@@ -304,8 +277,7 @@ public class NpcEntity extends PathingEntity {
 		}
 	}
 
-	@ObfuscatedName("aqc.hp(Lzi;II)V")
-	public final void step(CompassPoint arg0, int arg1) {
+    public final void step(CompassPoint arg0, int arg1) {
 		int var3 = this.routeWaypointX[0];
 		int var4 = this.routeWaypointZ[0];
 		switch(arg0.index) {
@@ -363,8 +335,7 @@ public class NpcEntity extends PathingEntity {
 		this.routeSpeeds[0] = (byte) arg1;
 	}
 
-	@ObfuscatedName("aqc.hy(IIIZIB)V")
-	public void move(int arg0, int arg1, int arg2, boolean arg3, int arg4) {
+    public void move(int arg0, int arg1, int arg2, boolean arg3, int arg4) {
 		this.level = this.occludeLevel = (byte) arg0;
 		if (Client.world.getSceneLevelTileFlags().isLinkBelow(arg1, arg2)) {
 			this.occludeLevel++;
@@ -415,13 +386,11 @@ public class NpcEntity extends PathingEntity {
 		}
 	}
 
-	@ObfuscatedName("aqc.he(I)Z")
-	public final boolean exists() {
+    public final boolean exists() {
 		return this.npcType != null;
 	}
 
-	@ObfuscatedName("aqc.bj(S)I")
-	public int getBASId() {
+    public int getBASId() {
 		if (this.field12079 != -1) {
 			return this.field12079;
 		}
@@ -434,8 +403,7 @@ public class NpcEntity extends PathingEntity {
 		return this.npcType.bas;
 	}
 
-	@ObfuscatedName("aqc.bs(B)I")
-	public int getCoverMarker() {
+    public int getCoverMarker() {
 		if (this.npcType.multinpc != null) {
 			NPCType var1 = this.npcType.getMultiNPC(Client.localPlayerGameState, Client.localPlayerGameState);
 			if (var1 != null && var1.covermarker != -1) {
@@ -445,8 +413,7 @@ public class NpcEntity extends PathingEntity {
 		return this.npcType.covermarker;
 	}
 
-	@ObfuscatedName("aqc.bo(I)I")
-	public int height() {
+    public int height() {
 		if (this.npcType.multinpc != null) {
 			NPCType var1 = this.npcType.getMultiNPC(Client.localPlayerGameState, Client.localPlayerGameState);
 			if (var1 != null && var1.overlayheight != -1) {
@@ -456,18 +423,15 @@ public class NpcEntity extends PathingEntity {
 		return this.npcType.overlayheight == -1 ? super.height() : this.npcType.overlayheight;
 	}
 
-	@ObfuscatedName("aqc.hn(I)Z")
-	public boolean method19162() {
+    public boolean method19162() {
 		return this.field12085 || this.npcType.active;
 	}
 
-	@ObfuscatedName("aqc.gp(I)I")
-	public int getPickSizeShift() {
+    public int getPickSizeShift() {
 		return this.npcType == null ? 0 : this.npcType.picksizeshift;
 	}
 
-	@ObfuscatedName("aqc.fa(Ldh;IIB)Z")
-	public boolean method17375(Toolkit toolkit, int arg1, int arg2) {
+    public boolean method17375(Toolkit toolkit, int arg1, int arg2) {
 		if (this.npcType == null) {
 			return false;
 		} else if (this.npcType.clickbox != null) {
@@ -511,88 +475,72 @@ public class NpcEntity extends PathingEntity {
 		}
 	}
 
-	@ObfuscatedName("aqc.fp(I)Z")
-	public final boolean method17379() {
+    public final boolean method17379() {
 		return false;
 	}
 
-	@ObfuscatedName("aqc.fq(Ldh;Lalh;IIIZB)V")
-	public final void mergeNormals(Toolkit toolkit, GraphEntity entity, int arg2, int arg3, int arg4, boolean arg5) {
+    public final void mergeNormals(Toolkit toolkit, GraphEntity entity, int arg2, int arg3, int arg4, boolean arg5) {
 		throw new IllegalStateException();
 	}
 
-	@ObfuscatedName("aqc.ff(B)V")
-	public final void applyLighting() {
+    public final void applyLighting() {
 		throw new IllegalStateException();
 	}
 
-	@ObfuscatedName("aqc.hi(IB)I")
-	public int method19163(int arg0) {
+    public int method19163(int arg0) {
 		return this.field12087[arg0];
 	}
 
-	@ObfuscatedName("aqc.hw(IB)I")
-	public int method19164(int arg0) {
+    public int method19164(int arg0) {
 		return this.field12084[arg0];
 	}
 
-	@ObfuscatedName("aqc.ht(IIIB)V")
-	public void method19165(int arg0, int arg1, int arg2) {
+    public void method19165(int arg0, int arg1, int arg2) {
 		this.field12087[arg0] = arg1;
 		this.field12084[arg0] = arg2;
 	}
 
-	@ObfuscatedName("aqc.cg(I)Z")
-	public boolean showChat() {
+    public boolean showChat() {
 		return Client.graphicsDefaults.npcShouldDisplayChat;
 	}
 
-	@ObfuscatedName("aqc.ce(I)Lsu;")
-	public EntityChatLine getChatLine() {
+    public EntityChatLine getChatLine() {
 		return this.currentChatLine != null && this.currentChatLine.text == null ? null : this.currentChatLine;
 	}
 
-	@ObfuscatedName("aqc.hc(Ljava/lang/String;III)V")
-	public void method19166(String arg0, int arg1, int arg2) {
+    public void method19166(String arg0, int arg1, int arg2) {
 		int var4 = GameShell.getLogicRate() * Client.graphicsDefaults.npcChatTimeout;
 		this.setChatLine(arg0, arg1, arg2, var4);
 	}
 
-	@ObfuscatedName("aqc.cx(I)I")
-	public int targeted() {
+    public int targeted() {
 		return this.localPlayerIndex + 1;
 	}
 
-	@ObfuscatedName("aqc.e(I)Ljl;")
-	public CameraTrackableType getCameraTrackableType() {
+    public CameraTrackableType getCameraTrackableType() {
 		return CameraTrackableType.NPC;
 	}
 
-	@ObfuscatedName("aqc.n(I)I")
-	public int getIndex() {
+    public int getIndex() {
 		return this.localPlayerIndex;
 	}
 
-	@ObfuscatedName("aqc.m(B)Lakt;")
-	public CoordFine getTrackableCoord() {
+    public CoordFine getTrackableCoord() {
 		CoordGrid var1 = Client.world.getBase();
 		return CoordFine.method258(this.level, (int) this.getTransform().trans.x + var1.x * 512, -((int) this.getTransform().trans.y), (int) this.getTransform().trans.z + var1.z * 512);
 	}
 
-	@ObfuscatedName("aqc.k(I)Lov;")
-	public Quaternion method4668() {
+    public Quaternion method4668() {
 		Quaternion var1 = Quaternion.create();
 		var1.setToRotation(Trig1.radians(this.field10395.field528), 0.0F, 0.0F);
 		return var1;
 	}
 
-	@ObfuscatedName("aqc.f(B)Lox;")
-	public Vector3 createVector3() {
+    public Vector3 createVector3() {
 		return Vector3.create();
 	}
 
-	@ObfuscatedName("aqc.gc(I)Z")
-	public boolean method18359() {
+    public boolean method18359() {
 		return this.npcType.multinpc == null || this.npcType.getMultiNPC(Client.localPlayerGameState, Client.localPlayerGameState) != null;
 	}
 }

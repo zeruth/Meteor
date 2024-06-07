@@ -6,21 +6,17 @@ import com.jagex.graphics.TextureFormat;
 import deob.ObfuscatedName;
 import jaggl.OpenGL;
 
-@ObfuscatedName("cp")
 public class GlEffectRelated1 {
 
-	@ObfuscatedName("cp.n")
-	public final GlToolkit field1183;
+    public final GlToolkit field1183;
 
-	@ObfuscatedName("cp.m")
-	public GlProgram field1182;
+    public GlProgram field1182;
 
 	public GlEffectRelated1(GlToolkit arg0) {
 		this.field1183 = arg0;
 	}
 
-	@ObfuscatedName("cp.e()Z")
-	public boolean method1391() {
+    public boolean method1391() {
 		if (this.field1183.field9985 && this.field1183.field10002 && this.field1182 == null) {
 			GlShader var1 = GlShader.method1120(this.field1183, 35632, "uniform float rcpRelief;\nuniform vec2 sampleSize;\nuniform sampler3D heightMap;\nvoid main() {\nfloat dx = texture3D(heightMap, vec3(-sampleSize.x, 0.0, 0.0)+gl_TexCoord[0].xyz).r - texture3D(heightMap, vec3(sampleSize.x, 0.0, 0.0)+gl_TexCoord[0].xyz).r;\nfloat dy = texture3D(heightMap, vec3(0.0, -sampleSize.y, 0.0)+gl_TexCoord[0].xyz).r - texture3D(heightMap, vec3(0.0, sampleSize.y, 0.0)+gl_TexCoord[0].xyz).r;\ngl_FragColor = vec4(0.5+normalize(vec3(dx, dy, rcpRelief))*0.5, texture3D(heightMap, gl_TexCoord[0].xyz).r);\n}\n");
 			if (var1 != null) {
@@ -30,8 +26,7 @@ public class GlEffectRelated1 {
 		return this.field1182 != null;
 	}
 
-	@ObfuscatedName("cp.n(Ladu;Ladu;F)Z")
-	public boolean method1390(GlTexture_Sub2 arg0, GlTexture_Sub2 arg1, float arg2) {
+    public boolean method1390(GlTexture_Sub2 arg0, GlTexture_Sub2 arg1, float arg2) {
 		if (!this.method1391()) {
 			return false;
 		}

@@ -6,56 +6,39 @@ import com.jagex.game.client.MutableConfig;
 import com.jagex.game.config.ConfigType;
 import deob.ObfuscatedName;
 
-@ObfuscatedName("yn")
 public class FloorOverlayType implements ConfigType, MutableConfig {
 
-	@ObfuscatedName("yn.n")
-	public int id;
+    public int id;
 
-	@ObfuscatedName("yn.m")
-	public int rgb = 0;
+    public int rgb = 0;
 
-	@ObfuscatedName("yn.k")
-	public int material = -1;
+    public int material = -1;
 
-	@ObfuscatedName("yn.f")
-	public boolean occlude = true;
+    public boolean occlude = true;
 
-	@ObfuscatedName("yn.w")
-	public int averagecolour = -1;
+    public int averagecolour = -1;
 
-	@ObfuscatedName("yn.l")
-	public int materialscale = 512;
+    public int materialscale = 512;
 
-	@ObfuscatedName("yn.u")
-	public boolean hardshadow = true;
+    public boolean hardshadow = true;
 
-	@ObfuscatedName("yn.z")
-	public int priority = 0;
+    public int priority = 0;
 
-	@ObfuscatedName("yn.p")
-	public boolean blend = false;
+    public boolean blend = false;
 
-	@ObfuscatedName("yn.d")
-	public int waterfogcolour = 0x122b3d;
+    public int waterfogcolour = 0x122b3d;
 
-	@ObfuscatedName("yn.c")
-	public int waterfogscale = 512;
+    public int waterfogscale = 512;
 
-	@ObfuscatedName("yn.r")
-	public int waterfogoffset = 256;
+    public int waterfogoffset = 256;
 
-	@ObfuscatedName("yn.v")
-	public int field8165 = 64;
+    public int field8165 = 64;
 
-	@ObfuscatedName("yn.o")
-	public int field8166 = 0;
+    public int field8166 = 0;
 
-	@ObfuscatedName("yn.s")
-	public int field8167 = 64;
+    public int field8167 = 64;
 
-	@ObfuscatedName("yn.e(Lalw;B)V")
-	public void decode(Packet buf) {
+    public void decode(Packet buf) {
 		while (true) {
 			int code = buf.g1();
 			if (code == 0) {
@@ -66,8 +49,7 @@ public class FloorOverlayType implements ConfigType, MutableConfig {
 		}
 	}
 
-	@ObfuscatedName("yn.u(Lalw;II)V")
-	public void decode(Packet buf, int code) {
+    public void decode(Packet buf, int code) {
 		if (code == 1) {
 			this.rgb = convertColour(buf.g3());
 		} else if (code == 2) {
@@ -107,18 +89,15 @@ public class FloorOverlayType implements ConfigType, MutableConfig {
 		}
 	}
 
-	@ObfuscatedName("yn.n(I)V")
-	public void postDecode() {
+    public void postDecode() {
 		this.priority = this.priority << 8 | this.id;
 	}
 
-	@ObfuscatedName("uk.p(II)I")
-	public static int convertColour(int color) {
+    public static int convertColour(int color) {
 		return color == 0xFF00FF ? -1 : ColourUtils.hslToRgb(color);
 	}
 
-	@ObfuscatedName("yn.z(IB)V")
-	public void setId(int id) {
+    public void setId(int id) {
 		this.id = id;
 	}
 }

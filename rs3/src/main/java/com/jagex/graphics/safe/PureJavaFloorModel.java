@@ -6,83 +6,57 @@ import com.jagex.graphics.*;
 import com.jagex.math.Matrix4x4;
 import deob.ObfuscatedName;
 
-@ObfuscatedName("aee")
 public class PureJavaFloorModel extends FloorModel {
 
-	@ObfuscatedName("aee.d")
-	public final PureJavaToolkit field9423;
+    public final PureJavaToolkit field9423;
 
-	@ObfuscatedName("aee.c")
-	public final int field9427;
+    public final int field9427;
 
-	@ObfuscatedName("aee.r")
-	public UnblendedTileData1[][] field9425;
+    public UnblendedTileData1[][] field9425;
 
-	@ObfuscatedName("aee.v")
-	public UnblendedTileData2[][] field9443;
+    public UnblendedTileData2[][] field9443;
 
-	@ObfuscatedName("aee.o")
-	public BlendedUntexturedTileData1[][] field9438;
+    public BlendedUntexturedTileData1[][] field9438;
 
-	@ObfuscatedName("aee.s")
-	public BlendedUntexturedTileData2[][] field9428;
+    public BlendedUntexturedTileData2[][] field9428;
 
-	@ObfuscatedName("aee.y")
-	public BlendedTexturedTileData[][] field9429;
+    public BlendedTexturedTileData[][] field9429;
 
-	@ObfuscatedName("aee.q")
-	public float field9430;
+    public float field9430;
 
-	@ObfuscatedName("aee.x")
-	public float field9431;
+    public float field9431;
 
-	@ObfuscatedName("aee.b")
-	public float field9432;
+    public float field9432;
 
-	@ObfuscatedName("aee.h")
-	public float field9450;
+    public float field9450;
 
-	@ObfuscatedName("aee.a")
-	public float field9434;
+    public float field9434;
 
-	@ObfuscatedName("aee.g")
-	public float field9435;
+    public float field9435;
 
-	@ObfuscatedName("aee.i")
-	public float field9436;
+    public float field9436;
 
-	@ObfuscatedName("aee.j")
-	public float field9422;
+    public float field9422;
 
-	@ObfuscatedName("aee.t")
-	public float field9445;
+    public float field9445;
 
-	@ObfuscatedName("aee.ae")
-	public float field9439;
+    public float field9439;
 
-	@ObfuscatedName("aee.ag")
-	public float field9440;
+    public float field9440;
 
-	@ObfuscatedName("aee.ah")
-	public float field9441;
+    public float field9441;
 
-	@ObfuscatedName("aee.al")
-	public float field9442;
+    public float field9442;
 
-	@ObfuscatedName("aee.ac")
-	public float field9446;
+    public float field9446;
 
-	@ObfuscatedName("aee.ai")
-	public float field9424;
+    public float field9424;
 
-	@ObfuscatedName("aee.aw")
-	public float field9444;
+    public float field9444;
 
-	@ObfuscatedName("aee.as")
-	public byte[][] field9437;
+    public byte[][] field9437;
 
-	@ObfuscatedName("aee.at")
-	public byte[][] field9447;
+    public byte[][] field9447;
 
 	public PureJavaFloorModel(PureJavaToolkit arg0, int arg1, int arg2, int arg3, int arg4, int[][] arg5, int[][] arg6, int arg7) {
 		super(arg3, arg4, arg7, arg5);
@@ -111,8 +85,7 @@ public class PureJavaFloorModel extends FloorModel {
 		this.field9447 = new byte[arg3 + 1][arg4 + 1];
 	}
 
-	@ObfuscatedName("aee.e(III)V")
-	public void setLevelShadeMap(int arg0, int arg1, int arg2) {
+    public void setLevelShadeMap(int arg0, int arg1, int arg2) {
 		int var4 = Math.min(this.field9447.length - 1, Math.max(0, arg0));
 		int var5 = Math.min(this.field9447[var4].length - 1, Math.max(0, arg1));
 		if (this.field9447[var4][var5] < arg2) {
@@ -120,8 +93,7 @@ public class PureJavaFloorModel extends FloorModel {
 		}
 	}
 
-	@ObfuscatedName("aee.m(II[I[I[I[I[I[I[I[I[I[I[ILdy;Z)V")
-	public void addTileUnblended(int arg0, int arg1, int[] arg2, int[] arg3, int[] arg4, int[] arg5, int[] arg6, int[] arg7, int[] arg8, int[] arg9, int[] arg10, int[] arg11, int[] arg12, WaterFogData arg13, boolean arg14) {
+    public void addTileUnblended(int arg0, int arg1, int[] arg2, int[] arg3, int[] arg4, int[] arg5, int[] arg6, int[] arg7, int[] arg8, int[] arg9, int[] arg10, int[] arg11, int[] arg12, WaterFogData arg13, boolean arg14) {
 		if (this.field9425 == null) {
 			this.field9425 = new UnblendedTileData1[this.field1235][this.field1234];
 			this.field9443 = new UnblendedTileData2[this.field1235][this.field1234];
@@ -269,8 +241,7 @@ public class PureJavaFloorModel extends FloorModel {
 		}
 	}
 
-	@ObfuscatedName("aee.n(II[I[I[I[I[I[I[I[ILdy;Z)V")
-	public void method1557(int arg0, int arg1, int[] arg2, int[] arg3, int[] arg4, int[] arg5, int[] arg6, int[] arg7, int[] arg8, int[] arg9, WaterFogData arg10, boolean arg11) {
+    public void method1557(int arg0, int arg1, int[] arg2, int[] arg3, int[] arg4, int[] arg5, int[] arg6, int[] arg7, int[] arg8, int[] arg9, WaterFogData arg10, boolean arg11) {
 		boolean var13 = (this.field9427 & 0x20) == 0;
 		if (this.field9438 == null && !var13) {
 			this.field9438 = new BlendedUntexturedTileData1[this.field1235][this.field1234];
@@ -716,8 +687,7 @@ public class PureJavaFloorModel extends FloorModel {
 		this.field9438[arg0][arg1] = var40;
 	}
 
-	@ObfuscatedName("aee.av(II)I")
-	public static int method15391(int arg0, int arg1) {
+    public static int method15391(int arg0, int arg1) {
 		int var2 = (arg0 & 0xFF0000) * arg1 >> 23;
 		if (var2 < 2) {
 			var2 = 2;
@@ -739,14 +709,12 @@ public class PureJavaFloorModel extends FloorModel {
 		return var2 << 16 | var3 << 8 | var4;
 	}
 
-	@ObfuscatedName("aee.k()V")
-	public void method1555() {
+    public void method1555() {
 		this.field9437 = null;
 		this.field9447 = null;
 	}
 
-	@ObfuscatedName("aee.f(III[[ZZI)V")
-	public void method1548(int arg0, int arg1, int arg2, boolean[][] arg3, boolean arg4, int arg5) {
+    public void method1548(int arg0, int arg1, int arg2, boolean[][] arg3, boolean arg4, int arg5) {
 		if (this.field9423.colour == null || this.field9423.depth == null) {
 			throw new IllegalStateException("");
 		}
@@ -780,8 +748,7 @@ public class PureJavaFloorModel extends FloorModel {
 		}
 	}
 
-	@ObfuscatedName("aee.ao(III)V")
-	public void method15392(int arg0, int arg1, int arg2) {
+    public void method15392(int arg0, int arg1, int arg2) {
 		PureJavaToolkitContext var4 = this.field9423.getContext(Thread.currentThread());
 		var4.rasteriser.field935 = 0;
 		if (this.field9438 != null) {
@@ -793,8 +760,7 @@ public class PureJavaFloorModel extends FloorModel {
 		}
 	}
 
-	@ObfuscatedName("aee.aj(IILbd;[F[F[F[F[FI)V")
-	public void method15393(int arg0, int arg1, PureJavaRasteriser arg2, float[] arg3, float[] arg4, float[] arg5, float[] arg6, float[] arg7, int arg8) {
+    public void method15393(int arg0, int arg1, PureJavaRasteriser arg2, float[] arg3, float[] arg4, float[] arg5, float[] arg6, float[] arg7, int arg8) {
 		UnblendedTileData1 var10 = this.field9425[arg0][arg1];
 		if (var10 == null) {
 			UnblendedTileData2 var66 = this.field9443[arg0][arg1];
@@ -1019,8 +985,7 @@ public class PureJavaFloorModel extends FloorModel {
 		}
 	}
 
-	@ObfuscatedName("aee.ay(IIZLaz;Lbd;[F[F[F[F[FI)V")
-	public void method15405(int arg0, int arg1, boolean arg2, PureJavaToolkitContext arg3, PureJavaRasteriser arg4, float[] arg5, float[] arg6, float[] arg7, float[] arg8, float[] arg9, int arg10) {
+    public void method15405(int arg0, int arg1, boolean arg2, PureJavaToolkitContext arg3, PureJavaRasteriser arg4, float[] arg5, float[] arg6, float[] arg7, float[] arg8, float[] arg9, int arg10) {
 		BlendedUntexturedTileData1 var12 = this.field9438[arg0][arg1];
 		if (var12 == null) {
 			BlendedUntexturedTileData2 var99 = this.field9428[arg0][arg1];
@@ -1462,8 +1427,7 @@ public class PureJavaFloorModel extends FloorModel {
 		}
 	}
 
-	@ObfuscatedName("aee.ab(IIZLaz;Lbd;[F[F[F[F[FI)V")
-	public void method15394(int arg0, int arg1, boolean arg2, PureJavaToolkitContext arg3, PureJavaRasteriser arg4, float[] arg5, float[] arg6, float[] arg7, float[] arg8, float[] arg9, int arg10) {
+    public void method15394(int arg0, int arg1, boolean arg2, PureJavaToolkitContext arg3, PureJavaRasteriser arg4, float[] arg5, float[] arg6, float[] arg7, float[] arg8, float[] arg9, int arg10) {
 		BlendedTexturedTileData var12 = this.field9429[arg0][arg1];
 		if (arg10 != 0 && (arg10 & 0x2) != 0 || var12 == null) {
 			return;
@@ -1543,8 +1507,7 @@ public class PureJavaFloorModel extends FloorModel {
 		}
 	}
 
-	@ObfuscatedName("aee.az(I)Z")
-	public boolean method15396(int arg0) {
+    public boolean method15396(int arg0) {
 		if ((this.field9427 & 0x8) == 0) {
 			return false;
 		} else if (arg0 == 4) {
@@ -1556,8 +1519,7 @@ public class PureJavaFloorModel extends FloorModel {
 		}
 	}
 
-	@ObfuscatedName("aee.w(IIIIIII[[Z)V")
-	public void method1526(int arg0, int arg1, int arg2, int arg3, int arg4, int arg5, int arg6, boolean[][] arg7) {
+    public void method1526(int arg0, int arg1, int arg2, int arg3, int arg4, int arg5, int arg6, boolean[][] arg7) {
 		PureJavaToolkitContext var9 = this.field9423.getContext(Thread.currentThread());
 		PureJavaRasteriser var10 = var9.rasteriser;
 		var10.field935 = 0;
@@ -1570,8 +1532,7 @@ public class PureJavaFloorModel extends FloorModel {
 		}
 	}
 
-	@ObfuscatedName("aee.aa(IIIIIII[[ZLaz;Lbd;[F[F)V")
-	public void method15401(int arg0, int arg1, int arg2, int arg3, int arg4, int arg5, int arg6, boolean[][] arg7, PureJavaToolkitContext arg8, PureJavaRasteriser arg9, float[] arg10, float[] arg11) {
+    public void method15401(int arg0, int arg1, int arg2, int arg3, int arg4, int arg5, int arg6, boolean[][] arg7, PureJavaToolkitContext arg8, PureJavaRasteriser arg9, float[] arg10, float[] arg11) {
 		int var13 = (arg6 - arg4) * arg2 / 256;
 		int var14 = arg2 >> 8;
 		boolean var15 = arg8.field834;
@@ -1635,8 +1596,7 @@ public class PureJavaFloorModel extends FloorModel {
 		this.field9423.method2219(var15);
 	}
 
-	@ObfuscatedName("aee.af(IIIIIII[[ZLaz;Lbd;[F[F)V")
-	public void method15395(int arg0, int arg1, int arg2, int arg3, int arg4, int arg5, int arg6, boolean[][] arg7, PureJavaToolkitContext arg8, PureJavaRasteriser arg9, float[] arg10, float[] arg11) {
+    public void method15395(int arg0, int arg1, int arg2, int arg3, int arg4, int arg5, int arg6, boolean[][] arg7, PureJavaToolkitContext arg8, PureJavaRasteriser arg9, float[] arg10, float[] arg11) {
 		int var13 = (arg6 - arg4) * arg2 / 256;
 		int var14 = arg2 >> 8;
 		boolean var15 = arg8.field834;
@@ -1724,25 +1684,20 @@ public class PureJavaFloorModel extends FloorModel {
 		this.field9423.method2219(var15);
 	}
 
-	@ObfuscatedName("aee.d(IILara;)Lara;")
-	public HardShadow method1531(int arg0, int arg1, HardShadow arg2) {
+    public HardShadow method1531(int arg0, int arg1, HardShadow arg2) {
 		return null;
 	}
 
-	@ObfuscatedName("aee.c(Lara;IIIIZ)V")
-	public void method1532(HardShadow arg0, int arg1, int arg2, int arg3, int arg4, boolean arg5) {
+    public void method1532(HardShadow arg0, int arg1, int arg2, int arg3, int arg4, boolean arg5) {
 	}
 
-	@ObfuscatedName("aee.v(Lara;IIIIZ)Z")
-	public boolean method1535(HardShadow arg0, int arg1, int arg2, int arg3, int arg4, boolean arg5) {
+    public boolean method1535(HardShadow arg0, int arg1, int arg2, int arg3, int arg4, boolean arg5) {
 		return false;
 	}
 
-	@ObfuscatedName("aee.r(Lara;IIIIZ)V")
-	public void method1543(HardShadow arg0, int arg1, int arg2, int arg3, int arg4, boolean arg5) {
+    public void method1543(HardShadow arg0, int arg1, int arg2, int arg3, int arg4, boolean arg5) {
 	}
 
-	@ObfuscatedName("aee.o(Lakf;[I)V")
-	public void method1549(Light arg0, int[] arg1) {
+    public void method1549(Light arg0, int[] arg1) {
 	}
 }

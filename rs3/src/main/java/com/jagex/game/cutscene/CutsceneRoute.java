@@ -5,14 +5,11 @@ import com.jagex.game.client.MoveSpeed;
 import deob.ObfuscatedName;
 import rs2.client.scene.entities.PathingEntity;
 
-@ObfuscatedName("er")
 public class CutsceneRoute {
 
-	@ObfuscatedName("er.m")
-	public final int[] field1751;
+    public final int[] field1751;
 
-	@ObfuscatedName("er.k")
-	public final int[] field1754;
+    public final int[] field1754;
 
 	public CutsceneRoute(Packet arg0) {
 		int var2 = arg0.gSmart1or2();
@@ -27,8 +24,7 @@ public class CutsceneRoute {
 		}
 	}
 
-	@ObfuscatedName("er.e(Lea;II)V")
-	public void method2906(CutsceneEntity arg0, int arg1) {
+    public void method2906(CutsceneEntity arg0, int arg1) {
 		int var3 = this.field1754[0];
 		arg0.method2866(arg1, var3 >>> 16, var3 & 0xFFFF);
 		PathingEntity var4 = arg0.getEntity();

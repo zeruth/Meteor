@@ -5,47 +5,33 @@ import deob.ObfuscatedName;
 
 import java.nio.ByteBuffer;
 
-@ObfuscatedName("ly")
 public class FloorHardShadowsBlock {
 
-	@ObfuscatedName("ly.m")
-	public final GpuToolkit field3271;
+    public final GpuToolkit field3271;
 
-	@ObfuscatedName("ly.k")
-	public final FloorHardShadows field3273;
+    public final FloorHardShadows field3273;
 
-	@ObfuscatedName("ly.f")
-	public final int field3274;
+    public final int field3274;
 
-	@ObfuscatedName("ly.w")
-	public final int field3275;
+    public final int field3275;
 
-	@ObfuscatedName("ly.l")
-	public boolean field3276 = true;
+    public boolean field3276 = true;
 
-	@ObfuscatedName("ly.u")
-	public int field3277 = -1;
+    public int field3277 = -1;
 
-	@ObfuscatedName("ly.z")
-	public final int field3278;
+    public final int field3278;
 
-	@ObfuscatedName("ly.p")
-	public GpuIndexBuffer field3279;
+    public GpuIndexBuffer field3279;
 
-	@ObfuscatedName("ly.d")
-	public GpuTexture field3280;
+    public GpuTexture field3280;
 
-	@ObfuscatedName("ly.c")
-	public int field3284;
+    public int field3284;
 
-	@ObfuscatedName("ly.r")
-	public int field3282;
+    public int field3282;
 
-	@ObfuscatedName("ly.v")
-	public int[] field3283;
+    public int[] field3283;
 
-	@ObfuscatedName("ly.o")
-	public byte[] field3281;
+    public byte[] field3281;
 
 	public FloorHardShadowsBlock(GpuToolkit arg0, FloorHardShadows arg1, GpuFloorModel arg2, int arg3, int arg4, int arg5, int arg6, int arg7) {
 		this.field3271 = arg0;
@@ -98,13 +84,11 @@ public class FloorHardShadowsBlock {
 		}
 	}
 
-	@ObfuscatedName("ly.e(Ljj;)V")
-	public void method5657(ModelShader arg0) {
+    public void method5657(ModelShader arg0) {
 		this.method5656(arg0, this.field3279, 0, this.field3278);
 	}
 
-	@ObfuscatedName("ly.n(Ljj;Lml;II)V")
-	public void method5656(ModelShader arg0, GpuIndexBuffer arg1, int arg2, int arg3) {
+    public void method5656(ModelShader arg0, GpuIndexBuffer arg1, int arg2, int arg3) {
 		if (arg3 <= 0) {
 			return;
 		}
@@ -118,8 +102,7 @@ public class FloorHardShadowsBlock {
 		arg0.method5019(false);
 	}
 
-	@ObfuscatedName("ly.m()V")
-	public void method5658() {
+    public void method5658() {
 		if (!this.field3276) {
 			return;
 		}

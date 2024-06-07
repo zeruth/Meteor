@@ -16,47 +16,33 @@ import com.jagex.math.Vector3;
 import deob.ObfuscatedName;
 import rs2.client.Client;
 
-@ObfuscatedName("ajv")
 public class StaticSceneryEntity extends PrimaryLayerEntity implements Location {
 
-	@ObfuscatedName("ajv.c")
-	public LocTypeList locTypeList;
+    public LocTypeList locTypeList;
 
-	@ObfuscatedName("ajv.r")
-	public Model model;
+    public Model model;
 
-	@ObfuscatedName("ajv.v")
-	public HardShadow shadow;
+    public HardShadow shadow;
 
-	@ObfuscatedName("ajv.o")
-	public EntityBounds field11148;
+    public EntityBounds field11148;
 
-	@ObfuscatedName("ajv.s")
-	public final int id;
+    public final int id;
 
-	@ObfuscatedName("ajv.y")
-	public final byte shape;
+    public final byte shape;
 
-	@ObfuscatedName("ajv.q")
-	public final byte angle;
+    public final byte angle;
 
-	@ObfuscatedName("ajv.x")
-	public final boolean underwater;
+    public final boolean underwater;
 
-	@ObfuscatedName("ajv.b")
-	public boolean active;
+    public boolean active;
 
-	@ObfuscatedName("ajv.h")
-	public boolean field11139;
+    public boolean field11139;
 
-	@ObfuscatedName("ajv.a")
-	public boolean hasHardShadow;
+    public boolean hasHardShadow;
 
-	@ObfuscatedName("ajv.g")
-	public final boolean field12470;
+    public final boolean field12470;
 
-	@ObfuscatedName("ajv.i")
-	public int field11138;
+    public int field11138;
 
 	public StaticSceneryEntity(Scene scene, Toolkit toolkit, LocTypeList locTypeList, LocType locType, int level, int occludeLevel, int x, int y, int z, boolean underwater, int minSceneTileX, int maxSceneTileX, int minSceneTileZ, int maxSceneTileZ, int shape, int angle, boolean arg16, boolean arg17, ScaleRotTrans scaleRotTrans) {
 		super(scene, level, occludeLevel, x, y, z, minSceneTileX, maxSceneTileX, minSceneTileZ, maxSceneTileZ, locType.raiseobject == 1, method14062(shape, angle), scaleRotTrans);
@@ -93,8 +79,7 @@ public class StaticSceneryEntity extends PrimaryLayerEntity implements Location 
 		this.createEntityBounds(1);
 	}
 
-	@ObfuscatedName("zg.bz(III)B")
-	public static byte method14062(int arg0, int arg1) {
+    public static byte method14062(int arg0, int arg1) {
 		if (LocShape.WALL_DIAGONAL.id == arg0) {
 			return (byte) ((arg1 & 0x1) == 0 ? 1 : 2);
 		} else {
@@ -102,8 +87,7 @@ public class StaticSceneryEntity extends PrimaryLayerEntity implements Location 
 		}
 	}
 
-	@ObfuscatedName("ajv.bu(B)Z")
-	public boolean method16488() {
+    public boolean method16488() {
 		if (this.model == null) {
 			return true;
 		} else {
@@ -111,18 +95,15 @@ public class StaticSceneryEntity extends PrimaryLayerEntity implements Location 
 		}
 	}
 
-	@ObfuscatedName("ajv.bw(S)Z")
-	public boolean method16489() {
+    public boolean method16489() {
 		return this.model == null ? false : this.model.method1731();
 	}
 
-	@ObfuscatedName("ajv.by(B)I")
-	public int overlayHeight() {
+    public int overlayHeight() {
 		return this.model == null ? 0 : this.model.getMinY();
 	}
 
-	@ObfuscatedName("ajv.br(Ldh;II)Ldo;")
-	public Model method17399(Toolkit arg0, int arg1) {
+    public Model method17399(Toolkit arg0, int arg1) {
 		if (this.model != null && arg0.method2394(this.model.method1691(), arg1) == 0) {
 			return this.model;
 		} else {
@@ -131,8 +112,7 @@ public class StaticSceneryEntity extends PrimaryLayerEntity implements Location 
 		}
 	}
 
-	@ObfuscatedName("ajv.bg(Ldh;IZI)Labg;")
-	public Pair method17400(Toolkit arg0, int arg1, boolean arg2) {
+    public Pair method17400(Toolkit arg0, int arg1, boolean arg2) {
 		LocType var4 = (LocType) this.locTypeList.list(this.id);
 		FloorModel var5;
 		FloorModel var6;
@@ -151,8 +131,7 @@ public class StaticSceneryEntity extends PrimaryLayerEntity implements Location 
 		return var4.method9475(arg0, arg1, LocShape.CENTREPIECE_DIAGONAL.id == this.shape ? LocShape.CENTREPIECE_STRAIGHT.id : this.shape, LocShape.CENTREPIECE_DIAGONAL.id == this.shape ? this.angle + 4 : this.angle, var5, var6, (int) var7.x, this.field11138, (int) var7.z, arg2, null);
 	}
 
-	@ObfuscatedName("ajv.fv(Ldh;B)Luq;")
-	public EntityBounds method17371(Toolkit toolkit) {
+    public EntityBounds method17371(Toolkit toolkit) {
 		Vector3 var2 = this.getTransform().trans;
 		if (this.field11148 == null) {
 			this.field11148 = GraphEntity.method15111((int) var2.x, (int) var2.y, (int) var2.z, this.method17399(toolkit, 0));
@@ -160,8 +139,7 @@ public class StaticSceneryEntity extends PrimaryLayerEntity implements Location 
 		return this.field11148;
 	}
 
-	@ObfuscatedName("ajv.fc(Ldh;I)Ltl;")
-	public PickableEntity draw(Toolkit toolkit) {
+    public PickableEntity draw(Toolkit toolkit) {
 		if (this.model == null) {
 			return null;
 		}
@@ -177,12 +155,10 @@ public class StaticSceneryEntity extends PrimaryLayerEntity implements Location 
 		return var3;
 	}
 
-	@ObfuscatedName("ajv.fw(Ldh;I)V")
-	public void method17373(Toolkit toolkit) {
+    public void method17373(Toolkit toolkit) {
 	}
 
-	@ObfuscatedName("ajv.fa(Ldh;IIB)Z")
-	public boolean method17375(Toolkit toolkit, int arg1, int arg2) {
+    public boolean method17375(Toolkit toolkit, int arg1, int arg2) {
 		Cuboid var4 = ((LocType) this.locTypeList.list(this.id)).clickbox;
 		if (var4 != null) {
 			return toolkit.pick(arg1, arg2, this.method10533(), var4);
@@ -196,13 +172,11 @@ public class StaticSceneryEntity extends PrimaryLayerEntity implements Location 
 		}
 	}
 
-	@ObfuscatedName("ajv.fp(I)Z")
-	public boolean method17379() {
+    public boolean method17379() {
 		return this.field11139;
 	}
 
-	@ObfuscatedName("ajv.fq(Ldh;Lalh;IIIZB)V")
-	public void mergeNormals(Toolkit toolkit, GraphEntity entity, int arg2, int arg3, int arg4, boolean arg5) {
+    public void mergeNormals(Toolkit toolkit, GraphEntity entity, int arg2, int arg3, int arg4, boolean arg5) {
 		if (entity instanceof StaticWallEntity) {
 			StaticWallEntity var7 = (StaticWallEntity) entity;
 			if (this.model != null && var7.model != null) {
@@ -216,48 +190,40 @@ public class StaticSceneryEntity extends PrimaryLayerEntity implements Location 
 		}
 	}
 
-	@ObfuscatedName("ajv.ff(B)V")
-	public void applyLighting() {
+    public void applyLighting() {
 		this.field11139 = false;
 		if (this.model != null) {
 			this.model.method1690(this.model.method1691() & 0xFFFEFFFF);
 		}
 	}
 
-	@ObfuscatedName("ajv.e(I)I")
-	public int getId() {
+    public int getId() {
 		return this.id;
 	}
 
-	@ObfuscatedName("ajv.n(I)I")
-	public int getShape() {
+    public int getShape() {
 		return this.shape;
 	}
 
-	@ObfuscatedName("ajv.m(I)I")
-	public int getAngle() {
+    public int getAngle() {
 		return this.angle;
 	}
 
-	@ObfuscatedName("ajv.k(I)V")
-	public void method8205() {
+    public void method8205() {
 		if (this.model != null) {
 			this.model.method1816();
 		}
 	}
 
-	@ObfuscatedName("ajv.w(B)Z")
-	public boolean method8207() {
+    public boolean method8207() {
 		return this.field12470;
 	}
 
-	@ObfuscatedName("ajv.f(I)Z")
-	public boolean hasShadow() {
+    public boolean hasShadow() {
 		return this.hasHardShadow;
 	}
 
-	@ObfuscatedName("ajv.l(Ldh;B)V")
-	public void method8217(Toolkit arg0) {
+    public void method8217(Toolkit arg0) {
 		Object var2 = null;
 		HardShadow var4;
 		if (this.shadow == null && this.hasHardShadow) {
@@ -273,8 +239,7 @@ public class StaticSceneryEntity extends PrimaryLayerEntity implements Location 
 		}
 	}
 
-	@ObfuscatedName("ajv.u(Ldh;B)V")
-	public void method8209(Toolkit arg0) {
+    public void method8209(Toolkit arg0) {
 		Object var2 = null;
 		HardShadow var4;
 		if (this.shadow == null && this.hasHardShadow) {
@@ -290,8 +255,7 @@ public class StaticSceneryEntity extends PrimaryLayerEntity implements Location 
 		}
 	}
 
-	@ObfuscatedName("ajv.ba(I)I")
-	public int method17401() {
+    public int method17401() {
 		return this.model == null ? 15 : this.model.getHorizontalRadius() / 4;
 	}
 }

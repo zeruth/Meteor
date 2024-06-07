@@ -3,34 +3,26 @@ package com.jagex.encryption;
 import deob.ObfuscatedName;
 import rs2.client.Client;
 
-@ObfuscatedName("aav")
 public final class Isaac {
 
-	@ObfuscatedName("aav.k")
-	public int count;
+    public int count;
 
-	@ObfuscatedName("aav.f")
-	public int[] rsl = new int[256];
+    public int[] rsl = new int[256];
 
-	@ObfuscatedName("aav.w")
-	public int[] mem = new int[256];
+    public int[] mem = new int[256];
 
-	@ObfuscatedName("aav.l")
-	public int a;
+    public int a;
 
-	@ObfuscatedName("aav.u")
-	public int b;
+    public int b;
 
-	@ObfuscatedName("aav.z")
-	public int c;
+    public int c;
 
 	public Isaac(int[] arg0) {
         System.arraycopy(arg0, 0, this.rsl, 0, arg0.length);
 		this.init();
 	}
 
-	@ObfuscatedName("aav.e(I)I")
-	public final int nextInt() {
+    public final int nextInt() {
 		if (this.count == 0) {
 			this.isaac();
 			this.count = 256;
@@ -43,8 +35,7 @@ public final class Isaac {
 		}
 	}
 
-	@ObfuscatedName("aav.n(I)I")
-	public final int getInt() {
+    public final int getInt() {
 		if (this.count == 0) {
 			this.isaac();
 			this.count = 256;
@@ -57,8 +48,7 @@ public final class Isaac {
 		}
 	}
 
-	@ObfuscatedName("aav.m(I)V")
-	public final void isaac() {
+    public final void isaac() {
 		this.b += ++this.c;
 		for (int var1 = 0; var1 < 256; var1++) {
 			int var2 = this.mem[var1];
@@ -80,8 +70,7 @@ public final class Isaac {
 		}
 	}
 
-	@ObfuscatedName("aav.k(I)V")
-	public final void init() {
+    public final void init() {
 		int var1 = -1640531527;
 		int var2 = -1640531527;
 		int var3 = -1640531527;

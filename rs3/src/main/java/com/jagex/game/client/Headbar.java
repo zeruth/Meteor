@@ -6,21 +6,17 @@ import com.jagex.game.config.headbartype.HeadbarType;
 import deob.ObfuscatedName;
 import rs2.client.Client;
 
-@ObfuscatedName("aji")
 public class Headbar extends Link {
 
-	@ObfuscatedName("aji.m")
-	public HeadbarType field11215;
+    public HeadbarType field11215;
 
-	@ObfuscatedName("aji.k")
-	public LinkQueue field11214 = new LinkQueue();
+    public LinkQueue field11214 = new LinkQueue();
 
 	public Headbar(HeadbarType arg0) {
 		this.field11215 = arg0;
 	}
 
-	@ObfuscatedName("aji.n(IIIIB)V")
-	public void method17456(int arg0, int arg1, int arg2, int arg3) {
+    public void method17456(int arg0, int arg1, int arg2, int arg3) {
 		HeadbarUpdate var5 = null;
 		int var6 = 0;
 		for (HeadbarUpdate var7 = (HeadbarUpdate) this.field11214.peekFront(); var7 != null; var7 = (HeadbarUpdate) this.field11214.prev()) {
@@ -43,8 +39,7 @@ public class Headbar extends Link {
 		}
 	}
 
-	@ObfuscatedName("aji.m(II)Lajc;")
-	public HeadbarUpdate method17457(int arg0) {
+    public HeadbarUpdate method17457(int arg0) {
 		HeadbarUpdate var2 = (HeadbarUpdate) this.field11214.peekFront();
 		if (var2 == null || var2.field11219 > arg0) {
 			return null;
@@ -61,8 +56,7 @@ public class Headbar extends Link {
 		}
 	}
 
-	@ObfuscatedName("aji.k(I)Z")
-	public boolean method17461() {
+    public boolean method17461() {
 		return this.field11214.isEmpty();
 	}
 }

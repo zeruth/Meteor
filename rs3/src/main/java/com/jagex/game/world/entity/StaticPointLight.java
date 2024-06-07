@@ -8,47 +8,33 @@ import com.jagex.graphics.Toolkit;
 import com.jagex.math.Trig1;
 import deob.ObfuscatedName;
 
-@ObfuscatedName("ul")
 public class StaticPointLight {
 
-	@ObfuscatedName("ul.g")
-	public Light field7003;
+    public Light field7003;
 
-	@ObfuscatedName("ul.i")
-	public boolean field7004;
+    public boolean field7004;
 
-	@ObfuscatedName("ul.j")
-	public boolean field7005;
+    public boolean field7005;
 
-	@ObfuscatedName("ul.t")
-	public int field7006;
+    public int field7006;
 
-	@ObfuscatedName("ul.ae")
-	public short[] field6981;
+    public short[] field6981;
 
-	@ObfuscatedName("ul.ag")
-	public int field7014;
+    public int field7014;
 
-	@ObfuscatedName("ul.ah")
-	public int field7009;
+    public int field7009;
 
-	@ObfuscatedName("ul.al")
-	public int field7010;
+    public int field7010;
 
-	@ObfuscatedName("ul.ac")
-	public int field7011;
+    public int field7011;
 
-	@ObfuscatedName("ul.ai")
-	public int field6985;
+    public int field6985;
 
-	@ObfuscatedName("ul.aw")
-	public int field7013;
+    public int field7013;
 
-	@ObfuscatedName("gh.as")
-	public static int[] field1970;
+    public static int[] field1970;
 
-	@ObfuscatedName("ul.at")
-	public int field6990 = -1;
+    public int field6990 = -1;
 
 	public StaticPointLight(Toolkit arg0, int arg1, Packet arg2, int arg3) {
 		if (field1970 == null) {
@@ -88,21 +74,18 @@ public class StaticPointLight {
 		this.method8900(arg0, var5, var7, var6, var14, var15);
 	}
 
-	@ObfuscatedName("ul.e(Ldh;IIIIII)V")
-	public void method8900(Toolkit arg0, int arg1, int arg2, int arg3, int arg4, int arg5) {
+    public void method8900(Toolkit arg0, int arg1, int arg2, int arg3, int arg4, int arg5) {
 		this.field7003 = arg0.createLight(arg1, arg2, arg3, arg4, arg5, 1.0F);
 	}
 
-	@ObfuscatedName("ul.n(IIIII)V")
-	public void method8899(int arg0, int arg1, int arg2, int arg3) {
+    public void method8899(int arg0, int arg1, int arg2, int arg3) {
 		this.field7009 = arg0;
 		this.field7013 = arg3;
 		this.field6985 = arg2;
 		this.field7010 = arg1;
 	}
 
-	@ObfuscatedName("ul.m(I)V")
-	public void method8910() {
+    public void method8910() {
 		switch(this.field7014) {
 			case 2:
 				this.field7009 = 1;
@@ -202,8 +185,7 @@ public class StaticPointLight {
 		}
 	}
 
-	@ObfuscatedName("ul.k(IZI)V")
-	public void method8898(int arg0, boolean arg1) {
+    public void method8898(int arg0, boolean arg1) {
 		int var4;
 		if (arg1) {
 			var4 = 2048;
@@ -235,8 +217,7 @@ public class StaticPointLight {
 		this.field7003.method17622();
 	}
 
-	@ObfuscatedName("gj.f(I)V")
-	public static void method3615() {
+    public static void method3615() {
 		field1970 = NoiseGenerator.method16661(2048, 35, 8, 8, 4, 0.4F, true);
 	}
 }

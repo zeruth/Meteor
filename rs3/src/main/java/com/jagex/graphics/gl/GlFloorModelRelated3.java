@@ -5,35 +5,25 @@ import com.jagex.graphics.GpuPacket;
 import deob.ObfuscatedName;
 import jaggl.OpenGL;
 
-@ObfuscatedName("ci")
 public class GlFloorModelRelated3 {
 
-	@ObfuscatedName("ci.e")
-	public final GlToolkit field1155;
+    public final GlToolkit field1155;
 
-	@ObfuscatedName("ci.n")
-	public final GlFloorModel field1151;
+    public final GlFloorModel field1151;
 
-	@ObfuscatedName("ci.m")
-	public final int field1152;
+    public final int field1152;
 
-	@ObfuscatedName("ci.k")
-	public final int field1156;
+    public final int field1156;
 
-	@ObfuscatedName("ci.f")
-	public final byte[] field1154;
+    public final byte[] field1154;
 
-	@ObfuscatedName("ci.w")
-	public final int field1153;
+    public final int field1153;
 
-	@ObfuscatedName("ci.l")
-	public final int field1150;
+    public final int field1150;
 
-	@ObfuscatedName("ci.u")
-	public final int field1157;
+    public final int field1157;
 
-	@ObfuscatedName("ci.z")
-	public GlFloorModelRelated4[][] field1158;
+    public GlFloorModelRelated4[][] field1158;
 
 	public GlFloorModelRelated3(GlToolkit arg0, GlFloorModel arg1) {
 		this.field1155 = arg0;
@@ -46,8 +36,7 @@ public class GlFloorModelRelated3 {
 		this.field1150 = this.field1151.field1234 >> this.field1157;
 	}
 
-	@ObfuscatedName("ci.e()V")
-	public void method1337() {
+    public void method1337() {
 		this.field1158 = new GlFloorModelRelated4[this.field1153][this.field1150];
 		for (int var1 = 0; var1 < this.field1150; var1++) {
 			for (int var2 = 0; var2 < this.field1153; var2++) {
@@ -56,8 +45,7 @@ public class GlFloorModelRelated3 {
 		}
 	}
 
-	@ObfuscatedName("ci.n(III[[ZZ)V")
-	public void method1339(int arg0, int arg1, int arg2, boolean[][] arg3, boolean arg4) {
+    public void method1339(int arg0, int arg1, int arg2, boolean[][] arg3, boolean arg4) {
 		this.field1155.method15764(false);
 		this.field1155.method15789(false);
 		this.field1155.method15774(-2);
@@ -138,8 +126,7 @@ public class GlFloorModelRelated3 {
 		OpenGL.glMatrixMode(5888);
 	}
 
-	@ObfuscatedName("ci.m(Lara;II)V")
-	public void method1340(HardShadow arg0, int arg1, int arg2) {
+    public void method1340(HardShadow arg0, int arg1, int arg2) {
 		GlHardShadow var4 = (GlHardShadow) arg0;
 		int var5 = var4.field12540 + 1 + arg1;
 		int var6 = var4.field12537 + 1 + arg2;
@@ -181,8 +168,7 @@ public class GlFloorModelRelated3 {
 		}
 	}
 
-	@ObfuscatedName("ci.k(Lara;II)V")
-	public void method1341(HardShadow arg0, int arg1, int arg2) {
+    public void method1341(HardShadow arg0, int arg1, int arg2) {
 		GlHardShadow var4 = (GlHardShadow) arg0;
 		int var5 = var4.field12540 + 1 + arg1;
 		int var6 = var4.field12537 + 1 + arg2;
@@ -224,8 +210,7 @@ public class GlFloorModelRelated3 {
 		}
 	}
 
-	@ObfuscatedName("ci.f(Lara;II)Z")
-	public boolean method1349(HardShadow arg0, int arg1, int arg2) {
+    public boolean method1349(HardShadow arg0, int arg1, int arg2) {
 		GlHardShadow var4 = (GlHardShadow) arg0;
 		int var5 = var4.field12540 + 1 + arg1;
 		int var6 = var4.field12537 + 1 + arg2;
@@ -264,8 +249,7 @@ public class GlFloorModelRelated3 {
 		}
 	}
 
-	@ObfuscatedName("ci.w(IIII)V")
-	public void method1343(int arg0, int arg1, int arg2, int arg3) {
+    public void method1343(int arg0, int arg1, int arg2, int arg3) {
 		if (this.field1158 == null) {
 			return;
 		}
@@ -281,8 +265,7 @@ public class GlFloorModelRelated3 {
 		}
 	}
 
-	@ObfuscatedName("ci.l([B[BIIIIII)V")
-	public static final void method1344(byte[] arg0, byte[] arg1, int arg2, int arg3, int arg4, int arg5, int arg6, int arg7) {
+    public static final void method1344(byte[] arg0, byte[] arg1, int arg2, int arg3, int arg4, int arg5, int arg6, int arg7) {
 		int var8 = -(arg4 >> 2);
 		int var9 = -(arg4 & 0x3);
 		for (int var10 = -arg5; var10 < 0; var10++) {
@@ -306,8 +289,7 @@ public class GlFloorModelRelated3 {
 		}
 	}
 
-	@ObfuscatedName("ci.u([B[BIIIIII)V")
-	public static final void method1345(byte[] arg0, byte[] arg1, int arg2, int arg3, int arg4, int arg5, int arg6, int arg7) {
+    public static final void method1345(byte[] arg0, byte[] arg1, int arg2, int arg3, int arg4, int arg5, int arg6, int arg7) {
 		int var8 = -(arg4 >> 2);
 		int var9 = -(arg4 & 0x3);
 		for (int var10 = -arg5; var10 < 0; var10++) {
@@ -331,8 +313,7 @@ public class GlFloorModelRelated3 {
 		}
 	}
 
-	@ObfuscatedName("ci.z([BIIIII)Z")
-	public static final boolean method1346(byte[] arg0, int arg1, int arg2, int arg3, int arg4, int arg5) {
+    public static final boolean method1346(byte[] arg0, int arg1, int arg2, int arg3, int arg4, int arg5) {
 		int var6 = arg2 % arg5;
 		int var7;
 		if (var6 == 0) {

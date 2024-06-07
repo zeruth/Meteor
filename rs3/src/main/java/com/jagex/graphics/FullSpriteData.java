@@ -2,32 +2,23 @@ package com.jagex.graphics;
 
 import deob.ObfuscatedName;
 
-@ObfuscatedName("afb")
 public class FullSpriteData extends SpriteData {
 
-	@ObfuscatedName("afb.e")
-	public int field10213;
+    public int field10213;
 
-	@ObfuscatedName("afb.n")
-	public int field10218;
+    public int field10218;
 
-	@ObfuscatedName("afb.m")
-	public int field10214;
+    public int field10214;
 
-	@ObfuscatedName("afb.k")
-	public int field10215;
+    public int field10215;
 
-	@ObfuscatedName("afb.f")
-	public int field10212;
+    public int field10212;
 
-	@ObfuscatedName("afb.w")
-	public int field10217;
+    public int field10217;
 
-	@ObfuscatedName("afb.l")
-	public int[] field10216;
+    public int[] field10216;
 
-	@ObfuscatedName("afb.u")
-	public boolean field10219 = false;
+    public boolean field10219 = false;
 
 	public FullSpriteData(int arg0, int arg1, int[] arg2) {
 		this.field10213 = arg0;
@@ -41,66 +32,54 @@ public class FullSpriteData extends SpriteData {
 		}
 	}
 
-	@ObfuscatedName("afb.e()Z")
-	public boolean isPaletted() {
+    public boolean isPaletted() {
 		return false;
 	}
 
-	@ObfuscatedName("afb.n()Z")
-	public boolean isTranslucent() {
+    public boolean isTranslucent() {
 		return this.field10219;
 	}
 
-	@ObfuscatedName("afb.m()I")
-	public int getWidth() {
+    public int getWidth() {
 		return this.field10213;
 	}
 
-	@ObfuscatedName("afb.k()I")
-	public int getHeight() {
+    public int getHeight() {
 		return this.field10218;
 	}
 
-	@ObfuscatedName("afb.p()I")
-	public int method2596() {
+    public int method2596() {
 		return this.field10214 + this.field10213 + this.field10215;
 	}
 
-	@ObfuscatedName("afb.d()I")
-	public int method2597() {
+    public int method2597() {
 		return this.field10218 + this.field10212 + this.field10217;
 	}
 
-	@ObfuscatedName("afb.f()I")
-	public int getPaddingLeft() {
+    public int getPaddingLeft() {
 		return this.field10214;
 	}
 
-	@ObfuscatedName("afb.w()I")
-	public int getPaddingRight() {
+    public int getPaddingRight() {
 		return this.field10215;
 	}
 
-	@ObfuscatedName("afb.l()I")
-	public int getPaddingTop() {
+    public int getPaddingTop() {
 		return this.field10212;
 	}
 
-	@ObfuscatedName("afb.u()I")
-	public int getPaddingBottom() {
+    public int getPaddingBottom() {
 		return this.field10217;
 	}
 
-	@ObfuscatedName("afb.z()V")
-	public void method2595() {
+    public void method2595() {
 		this.field10217 = 0;
 		this.field10212 = 0;
 		this.field10215 = 0;
 		this.field10214 = 0;
 	}
 
-	@ObfuscatedName("afb.c(I)V")
-	public void method2646(int arg0) {
+    public void method2646(int arg0) {
 		int var2 = this.method2596();
 		int var3 = this.method2597();
 		if (this.field10213 == var2 && this.field10218 == var3) {
@@ -145,8 +124,7 @@ public class FullSpriteData extends SpriteData {
 		this.field10216 = var10;
 	}
 
-	@ObfuscatedName("afb.r(I)V")
-	public void method2599(int arg0) {
+    public void method2599(int arg0) {
 		int var2 = 0;
 		this.field10219 = false;
 		int[] var3 = new int[this.field10218 * this.field10213];
@@ -173,8 +151,7 @@ public class FullSpriteData extends SpriteData {
 		this.field10216 = var3;
 	}
 
-	@ObfuscatedName("afb.v(I)V")
-	public void method2600(int arg0) {
+    public void method2600(int arg0) {
 		for (int var2 = this.field10218 - 1; var2 > 0; var2--) {
 			int var3 = this.field10213 * var2;
 			for (int var4 = this.field10213 - 1; var4 > 0; var4--) {
@@ -185,8 +162,7 @@ public class FullSpriteData extends SpriteData {
 		}
 	}
 
-	@ObfuscatedName("afb.o()V")
-	public void flipHorizontally() {
+    public void flipHorizontally() {
 		int[] var1 = this.field10216;
 		for (int var2 = this.field10218 - 1; var2 >= 0; var2--) {
 			int var3 = this.field10213 * var2;
@@ -204,8 +180,7 @@ public class FullSpriteData extends SpriteData {
 		this.field10215 = var6;
 	}
 
-	@ObfuscatedName("afb.s()V")
-	public void flipVertically() {
+    public void flipVertically() {
 		int[] var1 = this.field10216;
 		for (int var2 = (this.field10218 >> 1) - 1; var2 >= 0; var2--) {
 			int var3 = this.field10213 * var2;
@@ -223,8 +198,7 @@ public class FullSpriteData extends SpriteData {
 		this.field10217 = var7;
 	}
 
-	@ObfuscatedName("afb.y()V")
-	public void rotate() {
+    public void rotate() {
 		int[] var1 = new int[this.field10218 * this.field10213];
 		int var2 = 0;
 		for (int var3 = 0; var3 < this.field10213; var3++) {
@@ -243,8 +217,7 @@ public class FullSpriteData extends SpriteData {
 		this.field10213 = var6;
 	}
 
-	@ObfuscatedName("afb.q(Z)[I")
-	public int[] method2604(boolean arg0) {
+    public int[] method2604(boolean arg0) {
 		if (!arg0 || this.method2596() == this.field10213 && this.method2597() == this.field10218) {
 			return this.field10216;
 		}
@@ -261,8 +234,7 @@ public class FullSpriteData extends SpriteData {
 		return var3;
 	}
 
-	@ObfuscatedName("afb.x(III)V")
-	public void method2605(int arg0, int arg1, int arg2) {
+    public void method2605(int arg0, int arg1, int arg2) {
 		for (int var4 = 1; var4 < this.field10216.length; var4++) {
 			int var5 = this.field10216[var4] >> 16 & 0xFF;
 			int var6 = arg0 + var5;
@@ -289,8 +261,7 @@ public class FullSpriteData extends SpriteData {
 		}
 	}
 
-	@ObfuscatedName("afb.b(II)I")
-	public int method2617(int arg0, int arg1) {
+    public int method2617(int arg0, int arg1) {
 		return this.field10216[this.field10213 * arg1 + arg0];
 	}
 }

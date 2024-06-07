@@ -5,17 +5,13 @@ import com.jagex.game.config.defaults.Binding;
 import com.jagex.game.shared.framework.input.Keyboard;
 import deob.ObfuscatedName;
 
-@ObfuscatedName("vu")
 public class MouseBinding implements Binding {
 
-	@ObfuscatedName("vu.e")
-	public final int field7408;
+    public final int field7408;
 
-	@ObfuscatedName("vu.n")
-	public final int field7407;
+    public final int field7407;
 
-	@ObfuscatedName("vu.m")
-	public final int[] field7409;
+    public final int[] field7409;
 
 	public MouseBinding(int arg0, int arg1, int[] arg2) {
 		this.field7408 = arg0;
@@ -23,8 +19,7 @@ public class MouseBinding implements Binding {
 		this.field7409 = arg2;
 	}
 
-	@ObfuscatedName("vu.e(Lakm;[Lut;ILub;I)Z")
-	public boolean test(MouseEvent arg0, KeyboardEvent[] arg1, int arg2, Keyboard arg3) {
+    public boolean test(MouseEvent arg0, KeyboardEvent[] arg1, int arg2, Keyboard arg3) {
 		if (arg0 != null) {
 			if (this.field7408 != arg0.getButtonAction()) {
 				return false;
@@ -45,8 +40,7 @@ public class MouseBinding implements Binding {
 		return true;
 	}
 
-	@ObfuscatedName("wb.k(Lalw;I)Lvu;")
-	public static MouseBinding method9770(Packet arg0) {
+    public static MouseBinding method9770(Packet arg0) {
 		int var1 = arg0.g1();
 		int var2 = arg0.g1();
 		int var3 = arg0.g1();

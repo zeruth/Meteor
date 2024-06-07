@@ -3,20 +3,15 @@ package com.jagex.game.world.entity;
 import deob.ObfuscatedName;
 import rs2.client.Client;
 
-@ObfuscatedName("re")
 public class LocTint {
 
-	@ObfuscatedName("re.e")
-	public final int field5015;
+    public final int field5015;
 
-	@ObfuscatedName("re.n")
-	public final int field5013;
+    public final int field5013;
 
-	@ObfuscatedName("re.m")
-	public final int field5014;
+    public final int field5014;
 
-	@ObfuscatedName("re.k")
-	public final int field5012;
+    public final int field5012;
 
 	public LocTint() {
 		this.field5015 = (int) (Math.random() * 4.0D) + 32;

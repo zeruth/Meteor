@@ -3,15 +3,13 @@ package com.jagex.graphics.camera;
 import com.jagex.math.Vector3;
 import deob.ObfuscatedName;
 
-@ObfuscatedName("vq")
 public class CameraMode1 {
 
 	public CameraMode1() throws Throwable {
 		throw new Error();
 	}
 
-	@ObfuscatedName("kh.e(FLox;Lox;Lox;Lox;Lox;FFFFI)V")
-	public static void method5205(float arg0, Vector3 arg1, Vector3 arg2, Vector3 arg3, Vector3 arg4, Vector3 arg5, float arg6, float arg7, float arg8, float arg9) {
+    public static void method5205(float arg0, Vector3 arg1, Vector3 arg2, Vector3 arg3, Vector3 arg4, Vector3 arg5, float arg6, float arg7, float arg8, float arg9) {
 		if (arg2.isEqualTo(arg1)) {
 			return;
 		}

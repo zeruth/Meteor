@@ -4,14 +4,11 @@ import com.jagex.core.io.Packet;
 import deob.ObfuscatedName;
 import rs2.client.Client;
 
-@ObfuscatedName("ags")
 public class FadeCutsceneAction extends CutsceneAction {
 
-	@ObfuscatedName("ags.n")
-	public final int field10329;
+    public final int field10329;
 
-	@ObfuscatedName("ags.m")
-	public final int field10328;
+    public final int field10328;
 
 	public FadeCutsceneAction(Packet arg0) {
 		super(arg0);
@@ -19,8 +16,7 @@ public class FadeCutsceneAction extends CutsceneAction {
 		this.field10328 = arg0.g4s();
 	}
 
-	@ObfuscatedName("ags.n(I)V")
-	public void method2890() {
+    public void method2890() {
 		Client.field10868 = Client.loopCycle;
 		Client.field10869 = this.field10329 + Client.loopCycle;
 		Client.field7950 = Client.field11002;

@@ -30,520 +30,349 @@ import sun.misc.Unsafe;
 import java.awt.*;
 import java.lang.reflect.Field;
 
-@ObfuscatedName("afa")
 public class GlToolkit extends Toolkit {
 
 	public static final boolean ALLOW_MICROSOFT = true; // microsoft support is better now!
 
-	@ObfuscatedName("afa.cl")
-	public OpenGL field10022;
+    public OpenGL field10022;
 
-	@ObfuscatedName("afa.cg")
-	public int field9967;
+    public int field9967;
 
-	@ObfuscatedName("afa.ce")
-	public final GlRelated2 field10026;
+    public final GlRelated2 field10026;
 
-	@ObfuscatedName("afa.cu")
-	public GlEffectList field10023;
+    public GlEffectList field10023;
 
-	@ObfuscatedName("afa.ci")
-	public GlPostProcessing field9986;
+    public GlPostProcessing field9986;
 
-	@ObfuscatedName("afa.cn")
-	public GlColourGradingBloomFilter field9864;
+    public GlColourGradingBloomFilter field9864;
 
-	@ObfuscatedName("afa.cv")
-	public GlLevelsFilter field9865;
+    public GlLevelsFilter field9865;
 
-	@ObfuscatedName("afa.cp")
-	public GlColourRemappingFilter field9853;
+    public GlColourRemappingFilter field9853;
 
-	@ObfuscatedName("afa.ca")
-	public GlToolkitRelated field9978 = new GlToolkitRelated();
+    public GlToolkitRelated field9978 = new GlToolkitRelated();
 
-	@ObfuscatedName("afa.cx")
-	public Matrix4x4 field9866 = new Matrix4x4();
+    public Matrix4x4 field9866 = new Matrix4x4();
 
-	@ObfuscatedName("afa.cw")
-	public Matrix4x4 field9842 = new Matrix4x4();
+    public Matrix4x4 field9842 = new Matrix4x4();
 
-	@ObfuscatedName("afa.ct")
-	public Matrix4x3 field9900 = new Matrix4x3();
+    public Matrix4x3 field9900 = new Matrix4x3();
 
-	@ObfuscatedName("afa.cf")
-	public GlEffectRelated1 field9871;
+    public GlEffectRelated1 field9871;
 
-	@ObfuscatedName("afa.co")
-	public int field9872;
+    public int field9872;
 
-	@ObfuscatedName("afa.cr")
-	public int field9873 = 8;
+    public int field9873 = 8;
 
-	@ObfuscatedName("afa.cm")
-	public int field9874 = 3;
+    public int field9874 = 3;
 
-	@ObfuscatedName("afa.cq")
-	public boolean field9875 = false;
+    public boolean field9875 = false;
 
-	@ObfuscatedName("afa.ch")
-	public NativeHeap field9876;
+    public NativeHeap field9876;
 
-	@ObfuscatedName("afa.cb")
-	public LinkList field9964 = new LinkList();
+    public LinkList field9964 = new LinkList();
 
-	@ObfuscatedName("afa.cs")
-	public Unsafe field9878 = null;
+    public Unsafe field9878 = null;
 
-	@ObfuscatedName("afa.cy")
-	public int field9879;
+    public int field9879;
 
-	@ObfuscatedName("afa.cc")
-	public int field9880;
+    public int field9880;
 
-	@ObfuscatedName("afa.cz")
-	public int field9881;
+    public int field9881;
 
-	@ObfuscatedName("afa.ck")
-	public LinkList field9938 = new LinkList();
+    public LinkList field9938 = new LinkList();
 
-	@ObfuscatedName("afa.cj")
-	public LinkList field9883 = new LinkList();
+    public LinkList field9883 = new LinkList();
 
-	@ObfuscatedName("afa.cd")
-	public LinkList field9884 = new LinkList();
+    public LinkList field9884 = new LinkList();
 
-	@ObfuscatedName("afa.dd")
-	public LinkList field9885 = new LinkList();
+    public LinkList field9885 = new LinkList();
 
-	@ObfuscatedName("afa.dr")
-	public LinkList field9886 = new LinkList();
+    public LinkList field9886 = new LinkList();
 
-	@ObfuscatedName("afa.da")
-	public LinkList field9838 = new LinkList();
+    public LinkList field9838 = new LinkList();
 
-	@ObfuscatedName("afa.dt")
-	public LinkList field9888 = new LinkList();
+    public LinkList field9888 = new LinkList();
 
-	@ObfuscatedName("afa.do")
-	public long field9823;
+    public long field9823;
 
-	@ObfuscatedName("afa.dz")
-	public static int[] field9890 = new int[1000];
+    public static int[] field9890 = new int[1000];
 
-	@ObfuscatedName("afa.dv")
-	public int field9908;
+    public int field9908;
 
-	@ObfuscatedName("afa.dm")
-	public int field9923;
+    public int field9923;
 
-	@ObfuscatedName("afa.dq")
-	public int field9893;
+    public int field9893;
 
-	@ObfuscatedName("afa.dc")
-	public boolean field9848;
+    public boolean field9848;
 
-	@ObfuscatedName("afa.di")
-	public boolean field9921;
+    public boolean field9921;
 
-	@ObfuscatedName("afa.dk")
-	public int field9896;
+    public int field9896;
 
-	@ObfuscatedName("afa.dn")
-	public boolean field9924;
+    public boolean field9924;
 
-	@ObfuscatedName("afa.df")
-	public byte field9943;
+    public byte field9943;
 
-	@ObfuscatedName("afa.dw")
-	public boolean field9899;
+    public boolean field9899;
 
-	@ObfuscatedName("afa.ds")
-	public boolean field9815;
+    public boolean field9815;
 
-	@ObfuscatedName("afa.du")
-	public int field9940 = 2;
+    public int field9940 = 2;
 
-	@ObfuscatedName("afa.dl")
-	public Matrix4x3 field9911 = new Matrix4x3();
+    public Matrix4x3 field9911 = new Matrix4x3();
 
-	@ObfuscatedName("afa.dp")
-	public Matrix4x4 field9903 = new Matrix4x4();
+    public Matrix4x4 field9903 = new Matrix4x4();
 
-	@ObfuscatedName("afa.dy")
-	public Matrix4x4 field9904 = new Matrix4x4();
+    public Matrix4x4 field9904 = new Matrix4x4();
 
-	@ObfuscatedName("afa.db")
-	public Matrix4x4 field9939 = new Matrix4x4();
+    public Matrix4x4 field9939 = new Matrix4x4();
 
-	@ObfuscatedName("afa.dh")
-	public Matrix4x4 field9906 = new Matrix4x4();
+    public Matrix4x4 field9906 = new Matrix4x4();
 
-	@ObfuscatedName("afa.dx")
-	public Matrix4x4 field10005 = new Matrix4x4();
+    public Matrix4x4 field10005 = new Matrix4x4();
 
-	@ObfuscatedName("afa.dg")
-	public float[][] field10015 = new float[6][4];
+    public float[][] field10015 = new float[6][4];
 
-	@ObfuscatedName("afa.de")
-	public float[] field9857 = new float[4];
+    public float[] field9857 = new float[4];
 
-	@ObfuscatedName("afa.dj")
-	public float field9910;
+    public float field9910;
 
-	@ObfuscatedName("afa.eo")
-	public float field9867;
+    public float field9867;
 
-	@ObfuscatedName("afa.ey")
-	public float field9912;
+    public float field9912;
 
-	@ObfuscatedName("afa.eu")
-	public float field9882;
+    public float field9882;
 
-	@ObfuscatedName("afa.ed")
-	public float field9914 = 0.0F;
+    public float field9914 = 0.0F;
 
-	@ObfuscatedName("afa.ee")
-	public float field9831 = 1.0F;
+    public float field9831 = 1.0F;
 
-	@ObfuscatedName("afa.es")
-	public float field9916 = 0.0F;
+    public float field9916 = 0.0F;
 
-	@ObfuscatedName("afa.ei")
-	public float field9917 = -1.0F;
+    public float field9917 = -1.0F;
 
-	@ObfuscatedName("afa.el")
-	public Matrix4x3 field9976 = new Matrix4x3();
+    public Matrix4x3 field9976 = new Matrix4x3();
 
-	@ObfuscatedName("afa.ej")
-	public Matrix4x4 field9919 = new Matrix4x4();
+    public Matrix4x4 field9919 = new Matrix4x4();
 
-	@ObfuscatedName("afa.ep")
-	public Matrix4x4 field9920 = new Matrix4x4();
+    public Matrix4x4 field9920 = new Matrix4x4();
 
-	@ObfuscatedName("afa.ev")
-	public float[] field9844 = new float[16];
+    public float[] field9844 = new float[16];
 
-	@ObfuscatedName("afa.ec")
-	public int field9922;
+    public int field9922;
 
-	@ObfuscatedName("afa.ek")
-	public boolean field9980 = true;
+    public boolean field9980 = true;
 
-	@ObfuscatedName("afa.em")
-	public boolean field9950 = true;
+    public boolean field9950 = true;
 
-	@ObfuscatedName("afa.eh")
-	public int field9925 = 0;
+    public int field9925 = 0;
 
-	@ObfuscatedName("afa.eq")
-	public int field9926 = 0;
+    public int field9926 = 0;
 
-	@ObfuscatedName("afa.eg")
-	public int field9927 = 0;
+    public int field9927 = 0;
 
-	@ObfuscatedName("afa.ez")
-	public int field9928 = 0;
+    public int field9928 = 0;
 
-	@ObfuscatedName("afa.ef")
-	public int field9869 = 0;
+    public int field9869 = 0;
 
-	@ObfuscatedName("afa.et")
-	public int field9930 = 0;
+    public int field9930 = 0;
 
-	@ObfuscatedName("afa.ea")
-	public int field9897;
+    public int field9897;
 
-	@ObfuscatedName("afa.ew")
-	public int field9932;
+    public int field9932;
 
-	@ObfuscatedName("afa.er")
-	public int field9931;
+    public int field9931;
 
-	@ObfuscatedName("afa.en")
-	public int field9934;
+    public int field9934;
 
-	@ObfuscatedName("afa.eb")
-	public static int field9935 = 4;
+    public static int field9935 = 4;
 
-	@ObfuscatedName("afa.ex")
-	public boolean field9936;
+    public boolean field9936;
 
-	@ObfuscatedName("afa.fg")
-	public boolean field9937;
+    public boolean field9937;
 
-	@ObfuscatedName("afa.fm")
-	public float[] field9951 = new float[4];
+    public float[] field9951 = new float[4];
 
-	@ObfuscatedName("afa.fu")
-	public float[] field9895 = new float[4];
+    public float[] field9895 = new float[4];
 
-	@ObfuscatedName("afa.fs")
-	public float[] field9870 = new float[4];
+    public float[] field9870 = new float[4];
 
-	@ObfuscatedName("afa.fz")
-	public float[] field9941 = new float[4];
+    public float[] field9941 = new float[4];
 
-	@ObfuscatedName("afa.fj")
-	public int field9942 = -1;
+    public int field9942 = -1;
 
-	@ObfuscatedName("afa.fd")
-	public float field9863 = 1.0F;
+    public float field9863 = 1.0F;
 
-	@ObfuscatedName("afa.fn")
-	public float field9944 = 1.0F;
+    public float field9944 = 1.0F;
 
-	@ObfuscatedName("afa.fi")
-	public float field9945 = 1.0F;
+    public float field9945 = 1.0F;
 
-	@ObfuscatedName("afa.ft")
-	public float field9946;
+    public float field9946;
 
-	@ObfuscatedName("afa.fx")
-	public float field9947 = -1.0F;
+    public float field9947 = -1.0F;
 
-	@ObfuscatedName("afa.fv")
-	public float field9948 = -1.0F;
+    public float field9948 = -1.0F;
 
-	@ObfuscatedName("afa.fc")
-	public Light[] field9949 = new Light[field9935];
+    public Light[] field9949 = new Light[field9935];
 
-	@ObfuscatedName("afa.fw")
-	public int field9909;
+    public int field9909;
 
-	@ObfuscatedName("afa.fa")
-	public int field9898;
+    public int field9898;
 
-	@ObfuscatedName("afa.fp")
-	public int field9915;
+    public int field9915;
 
-	@ObfuscatedName("afa.fq")
-	public int field9953;
+    public int field9953;
 
-	@ObfuscatedName("afa.ff")
-	public boolean field9954;
+    public boolean field9954;
 
-	@ObfuscatedName("afa.fl")
-	public int field9955 = -1;
+    public int field9955 = -1;
 
-	@ObfuscatedName("afa.fb")
-	public int field9956 = -1;
+    public int field9956 = -1;
 
-	@ObfuscatedName("afa.fo")
-	public int field9957 = 0;
+    public int field9957 = 0;
 
-	@ObfuscatedName("afa.fy")
-	public float field9830;
+    public float field9830;
 
-	@ObfuscatedName("afa.fe")
-	public float field9829;
+    public float field9829;
 
-	@ObfuscatedName("afa.fk")
-	public float field9960 = 1.0F;
+    public float field9960 = 1.0F;
 
-	@ObfuscatedName("afa.fh")
-	public float field9961 = 0.0F;
+    public float field9961 = 0.0F;
 
-	@ObfuscatedName("afa.fr")
-	public boolean field9840;
+    public boolean field9840;
 
-	@ObfuscatedName("afa.gu")
-	public boolean field9963 = false;
+    public boolean field9963 = false;
 
-	@ObfuscatedName("afa.gq")
-	public int field10028;
+    public int field10028;
 
-	@ObfuscatedName("afa.gl")
-	public WaterFogData field9892;
+    public WaterFogData field9892;
 
-	@ObfuscatedName("afa.go")
-	public GlBinding field9966;
+    public GlBinding field9966;
 
-	@ObfuscatedName("afa.gk")
-	public GlInterfaceRelated field9852;
+    public GlInterfaceRelated field9852;
 
-	@ObfuscatedName("afa.gp")
-	public int field9968;
+    public int field9968;
 
-	@ObfuscatedName("afa.gy")
-	public int field9969 = 8448;
+    public int field9969 = 8448;
 
-	@ObfuscatedName("afa.ga")
-	public int field9970 = 8448;
+    public int field9970 = 8448;
 
-	@ObfuscatedName("afa.gn")
-	public boolean field9958;
+    public boolean field9958;
 
-	@ObfuscatedName("afa.gc")
-	public int field10018;
+    public int field10018;
 
-	@ObfuscatedName("afa.gf")
-	public GlTexture[] field9973;
+    public GlTexture[] field9973;
 
-	@ObfuscatedName("afa.gx")
-	public GlTexture_Sub1 field9974;
+    public GlTexture_Sub1 field9974;
 
-	@ObfuscatedName("afa.ge")
-	public GlEnvironmentSampler field9887;
+    public GlEnvironmentSampler field9887;
 
-	@ObfuscatedName("afa.gg")
-	public String field9996;
+    public String field9996;
 
-	@ObfuscatedName("afa.gr")
-	public String field9977;
+    public String field9977;
 
-	@ObfuscatedName("afa.gs")
-	public boolean isAmd;
+    public boolean isAmd;
 
-	@ObfuscatedName("afa.gt")
-	public int field9979;
+    public int field9979;
 
-	@ObfuscatedName("afa.gh")
-	public boolean field10017;
+    public boolean field10017;
 
-	@ObfuscatedName("afa.gm")
-	public boolean field9981;
+    public boolean field9981;
 
-	@ObfuscatedName("afa.gv")
-	public int field9982;
+    public int field9982;
 
-	@ObfuscatedName("afa.gj")
-	public int field9929;
+    public int field9929;
 
-	@ObfuscatedName("afa.gw")
-	public int field9984;
+    public int field9984;
 
-	@ObfuscatedName("afa.gd")
-	public boolean field9985;
+    public boolean field9985;
 
-	@ObfuscatedName("afa.gz")
-	public boolean field9901;
+    public boolean field9901;
 
-	@ObfuscatedName("afa.gb")
-	public boolean field9987;
+    public boolean field9987;
 
-	@ObfuscatedName("afa.gi")
-	public boolean field9988;
+    public boolean field9988;
 
-	@ObfuscatedName("afa.hm")
-	public boolean field9989;
+    public boolean field9989;
 
-	@ObfuscatedName("afa.ha")
-	public boolean field9990;
+    public boolean field9990;
 
-	@ObfuscatedName("afa.hk")
-	public boolean field9991;
+    public boolean field9991;
 
-	@ObfuscatedName("afa.hu")
-	public boolean field9992;
+    public boolean field9992;
 
-	@ObfuscatedName("afa.hb")
-	public boolean field9889;
+    public boolean field9889;
 
-	@ObfuscatedName("afa.hl")
-	public boolean field9952;
+    public boolean field9952;
 
-	@ObfuscatedName("afa.hg")
-	public boolean field9995;
+    public boolean field9995;
 
-	@ObfuscatedName("afa.hd")
-	public boolean field9965;
+    public boolean field9965;
 
-	@ObfuscatedName("afa.hx")
-	public boolean field9997;
+    public boolean field9997;
 
-	@ObfuscatedName("afa.hq")
-	public boolean field9998;
+    public boolean field9998;
 
-	@ObfuscatedName("afa.hf")
-	public boolean field9999;
+    public boolean field9999;
 
-	@ObfuscatedName("afa.hr")
-	public boolean field10000;
+    public boolean field10000;
 
-	@ObfuscatedName("afa.hs")
-	public boolean field10001;
+    public boolean field10001;
 
-	@ObfuscatedName("afa.hh")
-	public boolean field10002;
+    public boolean field10002;
 
-	@ObfuscatedName("afa.hp")
-	public boolean field10003;
+    public boolean field10003;
 
-	@ObfuscatedName("afa.hy")
-	public boolean field10004;
+    public boolean field10004;
 
-	@ObfuscatedName("afa.he")
-	public final int field9862;
+    public final int field9862;
 
-	@ObfuscatedName("afa.hn")
-	public float field9983 = -1.0F;
+    public float field9983 = -1.0F;
 
-	@ObfuscatedName("afa.hi")
-	public float field10007 = -1.0F;
+    public float field10007 = -1.0F;
 
-	@ObfuscatedName("afa.hw")
-	public GlModel[] field10008 = new GlModel[8];
+    public GlModel[] field10008 = new GlModel[8];
 
-	@ObfuscatedName("afa.ht")
-	public GlModel[] field10009 = new GlModel[8];
+    public GlModel[] field10009 = new GlModel[8];
 
-	@ObfuscatedName("afa.hc")
-	public GlFrameBuffer field9877;
+    public GlFrameBuffer field9877;
 
-	@ObfuscatedName("afa.ho")
-	public GlRelated3 field9918;
+    public GlRelated3 field9918;
 
-	@ObfuscatedName("afa.hj")
-	public GlRelated3 field10012;
+    public GlRelated3 field10012;
 
-	@ObfuscatedName("afa.hv")
-	public GlInterfaceRelated field10013;
+    public GlInterfaceRelated field10013;
 
-	@ObfuscatedName("afa.hz")
-	public static final float[] field10014 = new float[4];
+    public static final float[] field10014 = new float[4];
 
-	@ObfuscatedName("afa.ij")
-	public static final float[] field9894 = new float[4];
+    public static final float[] field9894 = new float[4];
 
-	@ObfuscatedName("afa.io")
-	public GpuPacket field10016 = new GpuPacket(8192);
+    public GpuPacket field10016 = new GpuPacket(8192);
 
-	@ObfuscatedName("afa.iq")
-	public int[] field9993 = new int[1];
+    public int[] field9993 = new int[1];
 
-	@ObfuscatedName("afa.ig")
-	public int[] field9913 = new int[1];
+    public int[] field9913 = new int[1];
 
-	@ObfuscatedName("afa.iv")
-	public int[] field10019 = new int[1];
+    public int[] field10019 = new int[1];
 
-	@ObfuscatedName("afa.ie")
-	public final byte[] field10020 = new byte[16384];
+    public final byte[] field10020 = new byte[16384];
 
-	@ObfuscatedName("afa.in")
-	public Sprite field9854 = null;
+    public Sprite field9854 = null;
 
-	@ObfuscatedName("afa.ir")
-	public Sprite field9975 = null;
+    public Sprite field9975 = null;
 
-	@ObfuscatedName("afa.it")
-	public FrameBuffer field10024 = null;
+    public FrameBuffer field10024 = null;
 
-	@ObfuscatedName("afa.ix")
-	public int[] field10025 = new int[3];
+    public int[] field10025 = new int[3];
 
-	@ObfuscatedName("afa.is")
-	public long[] field9959 = new long[3];
+    public long[] field9959 = new long[3];
 
-	@ObfuscatedName("afa.ib")
-	public int[] field9902 = new int[3];
+    public int[] field9902 = new int[3];
 
-	@ObfuscatedName("afa.il")
-	public int field9891 = 0;
+    public int field9891 = 0;
 
-	@ObfuscatedName("afa.iw")
-	public int field10029 = 0;
+    public int field10029 = 0;
 
 	public GlToolkit(Canvas arg0, MaterialList arg1, TextureList arg2, BillboardTypeList arg3, ParticleEmitterTypeList arg4, ParticleEffectorTypeList arg5, int arg6) {
 		super(arg1, arg2, arg3, arg4, arg5);
@@ -727,8 +556,7 @@ public class GlToolkit extends Toolkit {
 		}
 	}
 
-	@ObfuscatedName("afa.rv()V")
-	public void method15727() {
+    public void method15727() {
 		int var1 = 0;
 		while (!this.field10022.method1()) {
 			if (var1++ > 5) {
@@ -738,8 +566,7 @@ public class GlToolkit extends Toolkit {
 		}
 	}
 
-	@ObfuscatedName("afa.rh()I")
-	public int method15861() {
+    public int method15861() {
 		int var1 = 0;
 		this.field9996 = OpenGL.glGetString(7936).toLowerCase();
 		this.field9977 = OpenGL.glGetString(7937).toLowerCase();
@@ -807,8 +634,7 @@ public class GlToolkit extends Toolkit {
 		return var1 == 0 ? 0 : var1;
 	}
 
-	@ObfuscatedName("afa.ra()V")
-	public void method15728() {
+    public void method15728() {
 		this.field9973 = new GlTexture[this.field9982];
 		this.field9974 = new GlTexture_Sub1(this, 3553, TextureFormat.RGBA, DataType.UNSIGNED_INT_8, 1, 1);
 		new GlTexture_Sub1(this, 3553, TextureFormat.RGBA, DataType.UNSIGNED_INT_8, 1, 1);
@@ -823,8 +649,7 @@ public class GlToolkit extends Toolkit {
 		}
 	}
 
-	@ObfuscatedName("afa.rx()V")
-	public void method15814() {
+    public void method15814() {
 		this.method15774(-2);
 		for (int var1 = this.field9982 - 1; var1 >= 0; var1--) {
 			this.method15776(var1);
@@ -895,8 +720,7 @@ public class GlToolkit extends Toolkit {
 		this.resetClip();
 	}
 
-	@ObfuscatedName("afa.f()Lcz;")
-	public RendererInfo getRendererInfo() {
+    public RendererInfo getRendererInfo() {
 		int var1 = -1;
 		if (this.field9996.indexOf("nvidia") != -1) {
 			var1 = 4318;
@@ -908,8 +732,7 @@ public class GlToolkit extends Toolkit {
 		return new RendererInfo(var1, "OpenGL", this.field9979, this.field9977, 0L, false);
 	}
 
-	@ObfuscatedName("afa.l(II)V")
-	public void method2116(int arg0, int arg1) throws RendererException {
+    public void method2116(int arg0, int arg1) throws RendererException {
 		try {
 			this.surface.method15451();
 		} catch (Exception var4) {
@@ -919,13 +742,11 @@ public class GlToolkit extends Toolkit {
 		}
 	}
 
-	@ObfuscatedName("afa.u()V")
-	public void method2117() {
+    public void method2117() {
 		OpenGL.glFinish();
 	}
 
-	@ObfuscatedName("afa.p()V")
-	public void method2369() {
+    public void method2369() {
 		for (Node var1 = this.field9964.head(); var1 != null; var1 = this.field9964.next()) {
 			((GlHeap) var1).method19237();
 		}
@@ -938,63 +759,51 @@ public class GlToolkit extends Toolkit {
 		}
 	}
 
-	@ObfuscatedName("afa.r()Z")
-	public boolean method2194() {
+    public boolean method2194() {
 		return true;
 	}
 
-	@ObfuscatedName("afa.v()Z")
-	public boolean method2123() {
+    public boolean method2123() {
 		return true;
 	}
 
-	@ObfuscatedName("afa.o()Z")
-	public boolean method2124() {
+    public boolean method2124() {
 		return true;
 	}
 
-	@ObfuscatedName("afa.y()Z")
-	public boolean isBloomSupported() {
+    public boolean isBloomSupported() {
 		return this.field9864 != null && (this.field9967 <= 1 || this.field9989);
 	}
 
-	@ObfuscatedName("afa.q()Z")
-	public boolean method2127() {
+    public boolean method2127() {
 		return true;
 	}
 
-	@ObfuscatedName("afa.s()Z")
-	public boolean supportsHardShadows() {
+    public boolean supportsHardShadows() {
 		return true;
 	}
 
-	@ObfuscatedName("afa.x()Z")
-	public boolean supportsAntiAliasing() {
+    public boolean supportsAntiAliasing() {
 		return this.field9988 && (!this.isBloomEnabled() || this.field9989);
 	}
 
-	@ObfuscatedName("afa.b()Z")
-	public boolean method2129() {
+    public boolean method2129() {
 		return true;
 	}
 
-	@ObfuscatedName("afa.ry()Z")
-	public boolean method15730() {
+    public boolean method15730() {
 		return this.field10023.method1277(3);
 	}
 
-	@ObfuscatedName("afa.h()Z")
-	public boolean hasExtraDrawDistance() {
+    public boolean hasExtraDrawDistance() {
 		return true;
 	}
 
-	@ObfuscatedName("afa.a()Z")
-	public boolean method2240() {
+    public boolean method2240() {
 		return false;
 	}
 
-	@ObfuscatedName("afa.g()Ljava/lang/String;")
-	public String hardwareInfo() {
+    public String hardwareInfo() {
 		String var1 = "Caps: 2:";
 		String var2 = ":";
 		String var3 = var1 + this.field9967 + var2;
@@ -1027,8 +836,7 @@ public class GlToolkit extends Toolkit {
 		return var29 + (this.field10004 ? 1 : 0);
 	}
 
-	@ObfuscatedName("afa.i()[I")
-	public int[] textureFormat() {
+    public int[] textureFormat() {
 		int[] var1 = new int[1];
 		OpenGL.glGetIntegerv(34466, var1, 0);
 		int var2 = var1[0];
@@ -1041,18 +849,15 @@ public class GlToolkit extends Toolkit {
 		}
 	}
 
-	@ObfuscatedName("afa.ad(Ljava/awt/Canvas;II)Lafy;")
-	public Surface createSurface(Canvas arg0, int arg1, int arg2) {
+    public Surface createSurface(Canvas arg0, int arg1, int arg2) {
 		return new GlSurface(this, arg0);
 	}
 
-	@ObfuscatedName("afa.rg()V")
-	public void method15883() {
+    public void method15883() {
 		this.method15757();
 	}
 
-	@ObfuscatedName("afa.rz()V")
-	public void method15757() {
+    public void method15757() {
 		int var1 = this.renderTarget.getWidth();
 		int var2 = this.renderTarget.getHeight();
 		this.field9906.method6617(0.0F, (float) var1, 0.0F, (float) var2, -1.0F, 1.0F);
@@ -1061,8 +866,7 @@ public class GlToolkit extends Toolkit {
 		this.resetClip();
 	}
 
-	@ObfuscatedName("afa.aq(IIII)[I")
-	public int[] method2149(int arg0, int arg1, int arg2, int arg3) {
+    public int[] method2149(int arg0, int arg1, int arg2, int arg3) {
 		if (this.renderTarget == null) {
 			return null;
 		}
@@ -1074,8 +878,7 @@ public class GlToolkit extends Toolkit {
 		return var5;
 	}
 
-	@ObfuscatedName("afa.ax()V")
-	public void method2150() {
+    public void method2150() {
 		if (!this.field10003 || this.renderTarget == null) {
 			return;
 		}
@@ -1114,28 +917,23 @@ public class GlToolkit extends Toolkit {
 		this.method2164(var5, var6, var7, var8);
 	}
 
-	@ObfuscatedName("afa.av()Z")
-	public boolean method2360() {
+    public boolean method2360() {
 		return this.field9992;
 	}
 
-	@ObfuscatedName("afa.ao()Z")
-	public boolean method2196() {
+    public boolean method2196() {
 		return !this.field9992 || this.field9959[this.field10029] == 0L;
 	}
 
-	@ObfuscatedName("afa.aj()Z")
-	public boolean method2153() {
+    public boolean method2153() {
 		return true;
 	}
 
-	@ObfuscatedName("afa.ay()Z")
-	public boolean method2304() {
+    public boolean method2304() {
 		return true;
 	}
 
-	@ObfuscatedName("afa.ab()I")
-	public int method2502() {
+    public int method2502() {
 		if (!this.field9992) {
 			return -1;
 		} else if (this.field9959[this.field9891] == 0L) {
@@ -1153,8 +951,7 @@ public class GlToolkit extends Toolkit {
 		}
 	}
 
-	@ObfuscatedName("afa.aa(III)V")
-	public void method2163(int arg0, int arg1, int arg2) {
+    public void method2163(int arg0, int arg1, int arg2) {
 		this.method2203();
 		if (this.field10024 == null) {
 			this.method15735(arg1, arg2);
@@ -1179,8 +976,7 @@ public class GlToolkit extends Toolkit {
 		this.method2204();
 	}
 
-	@ObfuscatedName("afa.az()V")
-	public void method2156() {
+    public void method2156() {
 		for (int var1 = 0; var1 < 3; var1++) {
 			if (this.field9959[var1] != 0L) {
 				OpenGL.glDeleteSync(this.field9959[var1]);
@@ -1191,18 +987,15 @@ public class GlToolkit extends Toolkit {
 		this.field9891 = 0;
 	}
 
-	@ObfuscatedName("afa.af(II)J")
-	public long method2158(int arg0, int arg1) {
+    public long method2158(int arg0, int arg1) {
 		return this.method15733(arg0, arg1, null, null);
 	}
 
-	@ObfuscatedName("afa.an(II[I[I)V")
-	public void method2160(int arg0, int arg1, int[] arg2, int[] arg3) {
+    public void method2160(int arg0, int arg1, int[] arg2, int[] arg3) {
 		this.method15733(arg0, arg1, arg2, arg3);
 	}
 
-	@ObfuscatedName("afa.re(II[I[I)J")
-	public long method15733(int arg0, int arg1, int[] arg2, int[] arg3) {
+    public long method15733(int arg0, int arg1, int[] arg2, int[] arg3) {
 		if (!this.field9992) {
 			if (this.field9975 == null) {
 				this.method15735(arg0, arg1);
@@ -1243,15 +1036,13 @@ public class GlToolkit extends Toolkit {
 		return var5;
 	}
 
-	@ObfuscatedName("afa.ak(J)V")
-	public void method2159(long arg0) {
+    public void method2159(long arg0) {
 		if (!OpenGL.glUnmapBufferARB(35051)) {
 		}
 		OpenGL.glBindBufferARB(35051, 0);
 	}
 
-	@ObfuscatedName("afa.bl()V")
-	public void method2126() {
+    public void method2126() {
 		if (!this.field9992) {
 			this.field10024 = null;
 			this.field9975 = null;
@@ -1273,8 +1064,7 @@ public class GlToolkit extends Toolkit {
 		}
 	}
 
-	@ObfuscatedName("afa.rt(II)V")
-	public void method15735(int arg0, int arg1) {
+    public void method15735(int arg0, int arg1) {
 		this.method2126();
 		this.method2419(arg0, arg1);
 		if (!this.field9992) {
@@ -1294,8 +1084,7 @@ public class GlToolkit extends Toolkit {
 		}
 	}
 
-	@ObfuscatedName("afa.bm(II)V")
-	public void method2475(int arg0, int arg1) {
+    public void method2475(int arg0, int arg1) {
 		int var3 = 0;
 		if ((arg0 & 0x1) != 0) {
 			OpenGL.glClearColor((float) (arg1 & 0xFF0000) / 1.671168E7F, (float) (arg1 & 0xFF00) / 65280.0F, (float) (arg1 & 0xFF) / 255.0F, (float) (arg1 >>> 24) / 255.0F);
@@ -1311,8 +1100,7 @@ public class GlToolkit extends Toolkit {
 		OpenGL.glClear(var3);
 	}
 
-	@ObfuscatedName("afa.bz(IIIIII)V")
-	public void drawRectangle(int x, int y, int width, int height, int rgb, int arg5) {
+    public void drawRectangle(int x, int y, int width, int height, int rgb, int arg5) {
 		float var7 = (float) x + 0.35F;
 		float var8 = (float) y + 0.35F;
 		float var9 = (float) width + var7 - 1.0F;
@@ -1334,8 +1122,7 @@ public class GlToolkit extends Toolkit {
 		}
 	}
 
-	@ObfuscatedName("afa.bv(IIIIII)V")
-	public void fillRectangle(int x, int y, int width, int height, int rgb, int arg5) {
+    public void fillRectangle(int x, int y, int width, int height, int rgb, int arg5) {
 		float var7 = (float) x + 0.35F;
 		float var8 = (float) y + 0.35F;
 		float var9 = (float) width + var7;
@@ -1357,8 +1144,7 @@ public class GlToolkit extends Toolkit {
 		}
 	}
 
-	@ObfuscatedName("afa.br(IIFIIFIIFIIII)V")
-	public void method2552(int arg0, int arg1, float arg2, int arg3, int arg4, float arg5, int arg6, int arg7, float arg8, int arg9, int arg10, int arg11, int arg12) {
+    public void method2552(int arg0, int arg1, float arg2, int arg3, int arg4, float arg5, int arg6, int arg7, float arg8, int arg9, int arg10, int arg11, int arg12) {
 		this.method15771();
 		this.method15791(arg12);
 		OpenGL.glBegin(4);
@@ -1371,8 +1157,7 @@ public class GlToolkit extends Toolkit {
 		OpenGL.glEnd();
 	}
 
-	@ObfuscatedName("afa.bg(IIIII)V")
-	public void method2182(int arg0, int arg1, int arg2, int arg3, int arg4) {
+    public void method2182(int arg0, int arg1, int arg2, int arg3, int arg4) {
 		if (arg2 < 0) {
 			arg2 = -arg2;
 		}
@@ -1418,8 +1203,7 @@ public class GlToolkit extends Toolkit {
 		}
 	}
 
-	@ObfuscatedName("afa.ba(IIIII)V")
-	public void drawHorizontalLine(int x, int y, int width, int rgb, int arg4) {
+    public void drawHorizontalLine(int x, int y, int width, int rgb, int arg4) {
 		this.method15771();
 		this.method15791(arg4);
 		float var6 = (float) x + 0.35F;
@@ -1431,8 +1215,7 @@ public class GlToolkit extends Toolkit {
 		OpenGL.glEnd();
 	}
 
-	@ObfuscatedName("afa.bp(IIIII)V")
-	public void drawVerticalLine(int x1, int y1, int x2, int y2, int arg4) {
+    public void drawVerticalLine(int x1, int y1, int x2, int y2, int arg4) {
 		this.method15771();
 		this.method15791(arg4);
 		float var6 = (float) x1 + 0.35F;
@@ -1444,8 +1227,7 @@ public class GlToolkit extends Toolkit {
 		OpenGL.glEnd();
 	}
 
-	@ObfuscatedName("afa.bj(IIIIII)V")
-	public void drawLine(int x1, int y1, int x2, int y2, int rgb, int arg5) {
+    public void drawLine(int x1, int y1, int x2, int y2, int rgb, int arg5) {
 		this.method15771();
 		this.method15791(arg5);
 		float var7 = (float) x2 - (float) x1;
@@ -1465,8 +1247,7 @@ public class GlToolkit extends Toolkit {
 		OpenGL.glEnd();
 	}
 
-	@ObfuscatedName("afa.cl(IIIIIIIII)V")
-	public void method2187(int arg0, int arg1, int arg2, int arg3, int arg4, int arg5, int arg6, int arg7, int arg8) {
+    public void method2187(int arg0, int arg1, int arg2, int arg3, int arg4, int arg5, int arg6, int arg7, int arg8) {
 		if (arg0 == arg2 && arg1 == arg3) {
 			return;
 		}
@@ -1538,8 +1319,7 @@ public class GlToolkit extends Toolkit {
 		}
 	}
 
-	@ObfuscatedName("afa.bs(IIIIIILch;II)V")
-	public void method2183(int arg0, int arg1, int arg2, int arg3, int arg4, int arg5, SpriteRelated arg6, int arg7, int arg8) {
+    public void method2183(int arg0, int arg1, int arg2, int arg3, int arg4, int arg5, SpriteRelated arg6, int arg7, int arg8) {
 		GlSpriteRelated var10 = (GlSpriteRelated) arg6;
 		GlTexture_Sub1_Sub1 var11 = var10.field9416;
 		this.method15772();
@@ -1564,8 +1344,7 @@ public class GlToolkit extends Toolkit {
 		this.method15780(0, 5890, 768);
 	}
 
-	@ObfuscatedName("afa.cg(IIIIIILch;IIIII)V")
-	public void method2537(int arg0, int arg1, int arg2, int arg3, int arg4, int arg5, SpriteRelated arg6, int arg7, int arg8, int arg9, int arg10, int arg11) {
+    public void method2537(int arg0, int arg1, int arg2, int arg3, int arg4, int arg5, SpriteRelated arg6, int arg7, int arg8, int arg9, int arg10, int arg11) {
 		if (arg0 == arg2 && arg1 == arg3) {
 			return;
 		}
@@ -1647,15 +1426,13 @@ public class GlToolkit extends Toolkit {
 		this.method15780(0, 5890, 768);
 	}
 
-	@ObfuscatedName("afa.ce(IIIIIII)V")
-	public void drawLine(int x1, int y1, int x2, int y2, int rgb, int arg5, int arg6) {
+    public void drawLine(int x1, int y1, int x2, int y2, int rgb, int arg5, int arg6) {
 		OpenGL.glLineWidth((float) arg5);
 		this.drawLine(x1, y1, x2, y2, rgb, arg6);
 		OpenGL.glLineWidth(1.0F);
 	}
 
-	@ObfuscatedName("afa.ev(FFF[F)V")
-	public void method2525(float arg0, float arg1, float arg2, float[] arg3) {
+    public void method2525(float arg0, float arg1, float arg2, float[] arg3) {
 		float var5 = this.field10005.entries[11] * arg2 + this.field10005.entries[7] * arg1 + this.field10005.entries[3] * arg0 + this.field10005.entries[15];
 		float var6 = this.field10005.entries[8] * arg2 + this.field10005.entries[4] * arg1 + this.field10005.entries[0] * arg0 + this.field10005.entries[12];
 		float var7 = this.field10005.entries[9] * arg2 + this.field10005.entries[5] * arg1 + this.field10005.entries[1] * arg0 + this.field10005.entries[13];
@@ -1665,8 +1442,7 @@ public class GlToolkit extends Toolkit {
 		arg3[2] = var8;
 	}
 
-	@ObfuscatedName("afa.ep(FFF[F)V")
-	public void method2507(float arg0, float arg1, float arg2, float[] arg3) {
+    public void method2507(float arg0, float arg1, float arg2, float[] arg3) {
 		float var5 = this.field10005.entries[10] * arg2 + this.field10005.entries[6] * arg1 + this.field10005.entries[2] * arg0 + this.field10005.entries[14];
 		float var6 = this.field10005.entries[11] * arg2 + this.field10005.entries[7] * arg1 + this.field10005.entries[3] * arg0 + this.field10005.entries[15];
 		if (var5 < -var6 || var5 > var6) {
@@ -1695,8 +1471,7 @@ public class GlToolkit extends Toolkit {
 		}
 	}
 
-	@ObfuscatedName("afa.cu(IIIIII)I")
-	public int method2348(int arg0, int arg1, int arg2, int arg3, int arg4, int arg5) {
+    public int method2348(int arg0, int arg1, int arg2, int arg3, int arg4, int arg5) {
 		int var7 = 0;
 		float var8 = this.field10005.entries[10] * (float) arg2 + this.field10005.entries[6] * (float) arg1 + this.field10005.entries[2] * (float) arg0 + this.field10005.entries[14];
 		float var9 = this.field10005.entries[10] * (float) arg5 + this.field10005.entries[6] * (float) arg4 + this.field10005.entries[2] * (float) arg3 + this.field10005.entries[14];
@@ -1726,31 +1501,27 @@ public class GlToolkit extends Toolkit {
 		return var7;
 	}
 
-	@ObfuscatedName("afa.cn(IIIILou;Loj;)Z")
-	public boolean pick(int arg0, int arg1, int arg2, int arg3, Matrix4x3 arg4, Cuboid arg5) {
+    public boolean pick(int arg0, int arg1, int arg2, int arg3, Matrix4x3 arg4, Cuboid arg5) {
 		Matrix4x4 var7 = this.field9919;
 		var7.setToMatrix4x3(arg4);
 		var7.multiply(this.field10005);
 		return arg5.pick(arg0, arg1, arg2, arg3, var7, this.field9910, this.field9912, this.field9867, this.field9882);
 	}
 
-	@ObfuscatedName("afa.cv(Lou;Led;Loj;)V")
-	public void method2193(Matrix4x3 arg0, ScreenBoundingBox arg1, Cuboid arg2) {
+    public void method2193(Matrix4x3 arg0, ScreenBoundingBox arg1, Cuboid arg2) {
 		Matrix4x4 var4 = this.field9919;
 		var4.setToMatrix4x3(arg0);
 		var4.multiply(this.field10005);
 		arg1.method2746(arg2, this.field9939, var4, this.field9910, this.field9912, this.field9867, this.field9882);
 	}
 
-	@ObfuscatedName("afa.cp(I)Lakz;")
-	public Heap createHeap(int arg0) {
+    public Heap createHeap(int arg0) {
 		GlHeap var2 = new GlHeap(arg0);
 		this.field9964.addTail(var2);
 		return var2;
 	}
 
-	@ObfuscatedName("afa.ca(Lakz;)V")
-	public void setBufferHeap(Heap arg0) {
+    public void setBufferHeap(Heap arg0) {
 		this.field9876 = ((GlHeap) arg0).field12207;
 		if (this.field10013 != null) {
 			return;
@@ -1805,36 +1576,30 @@ public class GlToolkit extends Toolkit {
 		this.field9978.method1323(this);
 	}
 
-	@ObfuscatedName("afa.cw(IIZZ)Lcm;")
-	public Sprite createSprite(int arg0, int arg1, boolean arg2, boolean arg3) {
+    public Sprite createSprite(int arg0, int arg1, boolean arg2, boolean arg3) {
 		return new GlSprite(this, arg0, arg1, arg2);
 	}
 
-	@ObfuscatedName("afa.co(Lde;Z)Lcm;")
-	public Sprite createSprite(SpriteData arg0, boolean arg1) {
+    public Sprite createSprite(SpriteData arg0, boolean arg1) {
 		int[] var3 = arg0.method2604(false);
 		Sprite var4 = this.createSprite(var3, 0, arg0.getWidth(), arg0.getWidth(), arg0.getHeight());
 		var4.setPadding(arg0.getPaddingLeft(), arg0.getPaddingTop(), arg0.getPaddingRight(), arg0.getPaddingBottom());
 		return var4;
 	}
 
-	@ObfuscatedName("afa.ct([IIIIIZ)Lcm;")
-	public Sprite createSprite(int[] arg0, int arg1, int arg2, int arg3, int arg4, boolean arg5) {
+    public Sprite createSprite(int[] arg0, int arg1, int arg2, int arg3, int arg4, boolean arg5) {
 		return new GlSprite(this, arg3, arg4, arg0, arg1, arg2);
 	}
 
-	@ObfuscatedName("afa.cr(IIIIZ)Lcm;")
-	public Sprite method2314(int arg0, int arg1, int arg2, int arg3, boolean arg4) {
+    public Sprite method2314(int arg0, int arg1, int arg2, int arg3, boolean arg4) {
 		return new GlSprite(this, arg0, arg1, arg2, arg3);
 	}
 
-	@ObfuscatedName("afa.cb(II[I[I)Lch;")
-	public SpriteRelated method2205(int arg0, int arg1, int[] arg2, int[] arg3) {
+    public SpriteRelated method2205(int arg0, int arg1, int[] arg2, int[] arg3) {
 		return GlSpriteRelated.method15384(this, arg0, arg1, arg2, arg3);
 	}
 
-	@ObfuscatedName("afa.cs(ILch;II)V")
-	public void method2206(int arg0, SpriteRelated arg1, int arg2, int arg3) {
+    public void method2206(int arg0, SpriteRelated arg1, int arg2, int arg3) {
 		GlSpriteRelated var5 = (GlSpriteRelated) arg1;
 		GlTexture_Sub1_Sub1 var6 = var5.field9416;
 		this.method15772();
@@ -1858,17 +1623,14 @@ public class GlToolkit extends Toolkit {
 		this.method15780(0, 5890, 768);
 	}
 
-	@ObfuscatedName("afa.cy(Laac;Lde;Z)Leu;")
-	public com.jagex.graphics.Font createFont(FontMetrics arg0, SpriteData arg1, boolean arg2) {
+    public com.jagex.graphics.Font createFont(FontMetrics arg0, SpriteData arg1, boolean arg2) {
 		return new GlFont(this, arg0, arg1, arg2);
 	}
 
-	@ObfuscatedName("afa.ck(I)V")
-	public void setVertexCapacity(int arg0) {
+    public void setVertexCapacity(int arg0) {
 	}
 
-	@ObfuscatedName("afa.cj(Ldq;IIII)Ldo;")
-	public Model createModel(ModelUnlit arg0, int arg1, int arg2, int arg3, int arg4) {
+    public Model createModel(ModelUnlit arg0, int arg1, int arg2, int arg3, int arg4) {
 		try {
 			return new GlModel(this, arg0, arg1, arg3, arg4, arg2);
 		} catch (Exception ex) {
@@ -1877,45 +1639,37 @@ public class GlToolkit extends Toolkit {
 		}
 	}
 
-	@ObfuscatedName("afa.cd(II)I")
-	public int method2394(int arg0, int arg1) {
+    public int method2394(int arg0, int arg1) {
 		return arg0 & arg1 ^ arg1;
 	}
 
-	@ObfuscatedName("afa.dd(II)I")
-	public int method2213(int arg0, int arg1) {
+    public int method2213(int arg0, int arg1) {
 		return arg0 | arg1;
 	}
 
-	@ObfuscatedName("afa.dr(II[[I[[IIII)Lcb;")
-	public FloorModel createFloor(int arg0, int arg1, int[][] arg2, int[][] arg3, int arg4, int arg5, int arg6) {
+    public FloorModel createFloor(int arg0, int arg1, int[][] arg2, int[][] arg3, int arg4, int arg5, int arg6) {
 		return new GlFloorModel(this, arg5, arg6, arg0, arg1, arg2, arg3, arg4);
 	}
 
-	@ObfuscatedName("afa.cc()Lpq;")
-	public Matrix4x4 method2208() {
+    public Matrix4x4 method2208() {
 		return this.field9866;
 	}
 
-	@ObfuscatedName("afa.cz()Lou;")
-	public Matrix4x3 method2209() {
+    public Matrix4x3 method2209() {
 		return this.field9900;
 	}
 
-	@ObfuscatedName("afa.dt(Ldm;)V")
-	public void drawParticles(ParticleList arg0) {
+    public void drawParticles(ParticleList arg0) {
 		this.field9978.method1324(this, arg0);
 	}
 
-	@ObfuscatedName("afa.ei(ILdy;)V")
-	public void method2245(int arg0, WaterFogData arg1) {
+    public void method2245(int arg0, WaterFogData arg1) {
 		this.field10028 = arg0;
 		this.field9892 = arg1;
 		this.field9840 = true;
 	}
 
-	@ObfuscatedName("afa.el(ILdy;)V")
-	public void setWaterFog(int arg0, WaterFogData arg1) {
+    public void setWaterFog(int arg0, WaterFogData arg1) {
 		if (!this.field9840) {
 			throw new RuntimeException("");
 		}
@@ -1927,13 +1681,11 @@ public class GlToolkit extends Toolkit {
 		}
 	}
 
-	@ObfuscatedName("afa.ej()V")
-	public void method2247() {
+    public void method2247() {
 		this.field9840 = false;
 	}
 
-	@ObfuscatedName("afa.bk()V")
-	public void method2263() {
+    public void method2263() {
 		this.field9897 = 0;
 		this.field9932 = 0;
 		this.field9931 = this.renderTarget.getWidth();
@@ -1941,8 +1693,7 @@ public class GlToolkit extends Toolkit {
 		this.method15937();
 	}
 
-	@ObfuscatedName("afa.bh(IIII)V")
-	public void method2164(int arg0, int arg1, int arg2, int arg3) {
+    public void method2164(int arg0, int arg1, int arg2, int arg3) {
 		this.field9897 = arg0;
 		this.field9932 = arg1;
 		this.field9931 = arg2;
@@ -1950,31 +1701,27 @@ public class GlToolkit extends Toolkit {
 		this.method15937();
 	}
 
-	@ObfuscatedName("afa.bx([I)V")
-	public void method2326(int[] arg0) {
+    public void method2326(int[] arg0) {
 		arg0[0] = this.field9897;
 		arg0[1] = this.field9932;
 		arg0[2] = this.field9931;
 		arg0[3] = this.field9934;
 	}
 
-	@ObfuscatedName("afa.bd(FF)V")
-	public void method2339(float arg0, float arg1) {
+    public void method2339(float arg0, float arg1) {
 		this.field9914 = arg0;
 		this.field9831 = arg1;
 		this.method15924();
 	}
 
-	@ObfuscatedName("afa.bq([I)V")
-	public final void method2171(int[] arg0) {
+    public final void method2171(int[] arg0) {
 		arg0[0] = this.field9927;
 		arg0[1] = this.field9925;
 		arg0[2] = this.field9928;
 		arg0[3] = this.field9926;
 	}
 
-	@ObfuscatedName("afa.bc()V")
-	public final void resetClip() {
+    public final void resetClip() {
 		if (this.renderTarget == null) {
 			return;
 		}
@@ -1985,8 +1732,7 @@ public class GlToolkit extends Toolkit {
 		OpenGL.glDisable(3089);
 	}
 
-	@ObfuscatedName("afa.bi(IIII)V")
-	public final void resetBounds(int left, int top, int right, int bottom) {
+    public final void resetBounds(int left, int top, int right, int bottom) {
 		if (this.renderTarget == null) {
 			return;
 		}
@@ -2010,8 +1756,7 @@ public class GlToolkit extends Toolkit {
 		this.method15743();
 	}
 
-	@ObfuscatedName("afa.bn(IIII)V")
-	public final void setBounds(int left, int top, int right, int bottom) {
+    public final void setBounds(int left, int top, int right, int bottom) {
 		if (this.field9927 < left) {
 			this.field9927 = left;
 		}
@@ -2028,16 +1773,14 @@ public class GlToolkit extends Toolkit {
 		this.method15743();
 	}
 
-	@ObfuscatedName("afa.rl(II)V")
-	public final void method15925(int arg0, int arg1) {
+    public final void method15925(int arg0, int arg1) {
 		this.field9869 = arg0;
 		this.field9930 = arg1;
 		this.method15937();
 		this.method15743();
 	}
 
-	@ObfuscatedName("afa.rc()V")
-	public final void method15937() {
+    public final void method15937() {
 		if (this.renderTarget == null) {
 			return;
 		}
@@ -2069,8 +1812,7 @@ public class GlToolkit extends Toolkit {
 		this.field9912 = (float) this.field9932 + this.field9882;
 	}
 
-	@ObfuscatedName("afa.rr()V")
-	public final void method15924() {
+    public final void method15924() {
 		if (this.field9922 == 2) {
 			OpenGL.glDepthRange(this.field9914, this.field9831);
 		} else {
@@ -2078,8 +1820,7 @@ public class GlToolkit extends Toolkit {
 		}
 	}
 
-	@ObfuscatedName("afa.rd()V")
-	public final void method15743() {
+    public final void method15743() {
 		if (this.renderTarget == null || this.field9927 >= this.field9928 || this.field9925 >= this.field9926) {
 			OpenGL.glScissor(0, 0, 0, 0);
 		} else {
@@ -2087,29 +1828,24 @@ public class GlToolkit extends Toolkit {
 		}
 	}
 
-	@ObfuscatedName("afa.rn()V")
-	public final void method15744() {
+    public final void method15744() {
 		OpenGL.glPushMatrix();
 	}
 
-	@ObfuscatedName("afa.rb(Lpq;)V")
-	public final void method15818(Matrix4x4 arg0) {
+    public final void method15818(Matrix4x4 arg0) {
 		OpenGL.glPushMatrix();
 		OpenGL.glMultMatrixf(arg0.entries, 0);
 	}
 
-	@ObfuscatedName("afa.ru(Lpq;)V")
-	public final void method15928(Matrix4x4 arg0) {
+    public final void method15928(Matrix4x4 arg0) {
 		OpenGL.glLoadMatrixf(arg0.entries, 0);
 	}
 
-	@ObfuscatedName("afa.sv()V")
-	public final void method15745() {
+    public final void method15745() {
 		OpenGL.glPopMatrix();
 	}
 
-	@ObfuscatedName("afa.do(Lou;)V")
-	public final void method2217(Matrix4x3 arg0) {
+    public final void method2217(Matrix4x3 arg0) {
 		this.field9911.setTo(arg0);
 		this.field9903.setToMatrix4x3(this.field9911);
 		this.field9976.setTo(arg0);
@@ -2121,13 +1857,11 @@ public class GlToolkit extends Toolkit {
 		}
 	}
 
-	@ObfuscatedName("afa.dz()Lou;")
-	public Matrix4x3 method2218() {
+    public Matrix4x3 method2218() {
 		return new Matrix4x3(this.field9911);
 	}
 
-	@ObfuscatedName("afa.sw()V")
-	public final void method15841() {
+    public final void method15841() {
 		OpenGL.glLoadIdentity();
 		OpenGL.glMultMatrixf(this.field9903.entries, 0);
 		if (this.field9963) {
@@ -2137,20 +1871,17 @@ public class GlToolkit extends Toolkit {
 		this.method15742();
 	}
 
-	@ObfuscatedName("afa.dm(Lpq;)V")
-	public final void method2220(Matrix4x4 arg0) {
+    public final void method2220(Matrix4x4 arg0) {
 		this.field9939.setTo(arg0);
 		this.method15752();
 		this.method15751();
 	}
 
-	@ObfuscatedName("afa.dq()Lpq;")
-	public final Matrix4x4 method2355() {
+    public final Matrix4x4 method2355() {
 		return new Matrix4x4(this.field9939);
 	}
 
-	@ObfuscatedName("afa.ss()V")
-	public final void method15748() {
+    public final void method15748() {
 		if (this.field9922 != 0) {
 			this.field9922 = 0;
 			this.method15937();
@@ -2159,8 +1890,7 @@ public class GlToolkit extends Toolkit {
 		}
 	}
 
-	@ObfuscatedName("afa.sx()V")
-	public final void method15749() {
+    public final void method15749() {
 		if (this.field9922 == 1) {
 			return;
 		}
@@ -2173,8 +1903,7 @@ public class GlToolkit extends Toolkit {
 		this.field9908 &= 0xFFFFFFE7;
 	}
 
-	@ObfuscatedName("afa.sm()V")
-	public final void method15763() {
+    public final void method15763() {
 		if (this.field9922 == 2) {
 			return;
 		}
@@ -2186,8 +1915,7 @@ public class GlToolkit extends Toolkit {
 		this.field9908 &= 0xFFFFFFF8;
 	}
 
-	@ObfuscatedName("afa.sk()V")
-	public final void method15751() {
+    public final void method15751() {
 		this.field9917 = this.field9939.method6632();
 		this.field9916 = this.field9939.method6654();
 		this.method15806();
@@ -2198,8 +1926,7 @@ public class GlToolkit extends Toolkit {
 		}
 	}
 
-	@ObfuscatedName("afa.si()V")
-	public final void method15752() {
+    public final void method15752() {
 		this.field10005.setTo(this.field9903);
 		this.field10005.multiply(this.field9939);
 		this.field10005.method6607(this.field10015[0]);
@@ -2210,8 +1937,7 @@ public class GlToolkit extends Toolkit {
 		this.field10005.method6628(this.field10015[5]);
 	}
 
-	@ObfuscatedName("afa.se([F)V")
-	public final void method15753(float[] arg0) {
+    public final void method15753(float[] arg0) {
 		float[] var2 = new float[16];
 		System.arraycopy(arg0, 0, var2, 0, 16);
 		var2[1] = -var2[1];
@@ -2223,19 +1949,16 @@ public class GlToolkit extends Toolkit {
 		OpenGL.glMatrixMode(5888);
 	}
 
-	@ObfuscatedName("afa.dv(Z)V")
-	public void method2219(boolean arg0) {
+    public void method2219(boolean arg0) {
 		this.field9980 = arg0;
 		this.method15826();
 	}
 
-	@ObfuscatedName("afa.df()I")
-	public int getMaxLights() {
+    public int getMaxLights() {
 		return 4;
 	}
 
-	@ObfuscatedName("afa.ds(I[Lakf;)V")
-	public void setActiveLights(int arg0, Light[] arg1) {
+    public void setActiveLights(int arg0, Light[] arg1) {
 		for (int var3 = 0; var3 < arg0; var3++) {
 			this.field9949[var3] = arg1[var3];
 		}
@@ -2245,8 +1968,7 @@ public class GlToolkit extends Toolkit {
 		}
 	}
 
-	@ObfuscatedName("afa.sn()V")
-	public void method15742() {
+    public void method15742() {
 		int var1;
 		for (var1 = 0; var1 < this.field9898; var1++) {
 			Light var2 = this.field9949[var1];
@@ -2272,16 +1994,14 @@ public class GlToolkit extends Toolkit {
 		this.field9909 = this.field9898;
 	}
 
-	@ObfuscatedName("afa.dc(F)V")
-	public final void setSunAmbientIntensity(float arg0) {
+    public final void setSunAmbientIntensity(float arg0) {
 		if (this.field9946 != arg0) {
 			this.field9946 = arg0;
 			this.method15756();
 		}
 	}
 
-	@ObfuscatedName("afa.di(IFFFFF)V")
-	public final void setSun(int arg0, float arg1, float arg2, float arg3, float arg4, float arg5) {
+    public final void setSun(int arg0, float arg1, float arg2, float arg3, float arg4, float arg5) {
 		boolean var7 = this.field9942 != arg0;
 		if (var7 || this.field9947 != arg1 || this.field9948 != arg2) {
 			this.field9942 = arg0;
@@ -2316,8 +2036,7 @@ public class GlToolkit extends Toolkit {
 		this.field9953 = (int) (arg5 * 256.0F / arg4);
 	}
 
-	@ObfuscatedName("afa.dk(I)V")
-	public final void method2224(int arg0) {
+    public final void method2224(int arg0) {
 		this.field9874 = 0;
 		while (arg0 > 1) {
 			this.field9874++;
@@ -2326,8 +2045,7 @@ public class GlToolkit extends Toolkit {
 		this.field9873 = 0x1 << this.field9874;
 	}
 
-	@ObfuscatedName("afa.dn(III)V")
-	public final void setFog(int arg0, int arg1, int arg2) {
+    public final void setFog(int arg0, int arg1, int arg2) {
 		if (this.field9955 == arg0 && this.field9956 == arg1 && this.field9957 == arg2) {
 			return;
 		}
@@ -2338,15 +2056,13 @@ public class GlToolkit extends Toolkit {
 		this.method15828();
 	}
 
-	@ObfuscatedName("afa.sr(FF)V")
-	public final void method15755(float arg0, float arg1) {
+    public final void method15755(float arg0, float arg1) {
 		this.field9960 = arg0;
 		this.field9961 = arg1;
 		this.method15806();
 	}
 
-	@ObfuscatedName("afa.sq()V")
-	public void method15756() {
+    public void method15756() {
 		field10014[0] = this.field9946 * this.field9863;
 		field10014[1] = this.field9946 * this.field9944;
 		field10014[2] = this.field9946 * this.field9945;
@@ -2354,8 +2070,7 @@ public class GlToolkit extends Toolkit {
 		OpenGL.glLightModelfv(2899, field10014, 0);
 	}
 
-	@ObfuscatedName("afa.sh()V")
-	public void method15819() {
+    public void method15819() {
 		field10014[0] = this.field9947 * this.field9863;
 		field10014[1] = this.field9947 * this.field9944;
 		field10014[2] = this.field9947 * this.field9945;
@@ -2368,14 +2083,12 @@ public class GlToolkit extends Toolkit {
 		OpenGL.glLightfv(16385, 4609, field10014, 0);
 	}
 
-	@ObfuscatedName("afa.st()V")
-	public void method15758() {
+    public void method15758() {
 		OpenGL.glLightfv(16384, 4611, this.field9870, 0);
 		OpenGL.glLightfv(16385, 4611, this.field9941, 0);
 	}
 
-	@ObfuscatedName("afa.sl()V")
-	public void method15828() {
+    public void method15828() {
 		if (this.field9954 && this.field9956 >= 0) {
 			OpenGL.glEnable(2912);
 		} else {
@@ -2383,8 +2096,7 @@ public class GlToolkit extends Toolkit {
 		}
 	}
 
-	@ObfuscatedName("afa.sp()V")
-	public void method15806() {
+    public void method15806() {
 		this.field9829 = this.field9917 - (float) this.field9957 - this.field9961;
 		this.field9830 = this.field9829 - (float) this.field9956 * this.field9960;
 		if (this.field9830 < this.field9916) {
@@ -2398,13 +2110,11 @@ public class GlToolkit extends Toolkit {
 		OpenGL.glFogfv(2918, field10014, 0);
 	}
 
-	@ObfuscatedName("afa.du(I)Ldz;")
-	public EnvironmentSampler createEnvironmentSampler(int arg0) {
+    public EnvironmentSampler createEnvironmentSampler(int arg0) {
 		return this.field9952 ? new GlEnvironmentSampler_Sub2(this, arg0) : null;
 	}
 
-	@ObfuscatedName("afa.dl(Ldz;Ldz;FLdz;)Ldz;")
-	public EnvironmentSampler method2435(EnvironmentSampler arg0, EnvironmentSampler arg1, float arg2, EnvironmentSampler arg3) {
+    public EnvironmentSampler method2435(EnvironmentSampler arg0, EnvironmentSampler arg1, float arg2, EnvironmentSampler arg3) {
 		if (arg0 != null && arg1 != null && this.field9952 && this.field9985) {
 			GlEnvironmentSampler_Sub1 var5 = null;
 			GlEnvironmentSampler var6 = (GlEnvironmentSampler) arg0;
@@ -2430,37 +2140,31 @@ public class GlToolkit extends Toolkit {
 		return arg2 < 0.5F ? arg0 : arg1;
 	}
 
-	@ObfuscatedName("afa.dp(Ldz;)V")
-	public final void setEnvironmentSampler(EnvironmentSampler arg0) {
+    public final void setEnvironmentSampler(EnvironmentSampler arg0) {
 		this.field9887 = (GlEnvironmentSampler) arg0;
 	}
 
-	@ObfuscatedName("afa.su()Ladq;")
-	public final GlCubeTexture method15760() {
+    public final GlCubeTexture method15760() {
 		return this.field9887 == null ? null : this.field9887.method15649();
 	}
 
-	@ObfuscatedName("afa.dy(IIII)V")
-	public final void method2172(int arg0, int arg1, int arg2, int arg3) {
+    public final void method2172(int arg0, int arg1, int arg2, int arg3) {
 		if (this.field9986 != null) {
 			this.field9986.method1367(arg0, arg1, arg2, arg3);
 		}
 	}
 
-	@ObfuscatedName("afa.db(II)V")
-	public final void method2233(int arg0, int arg1) {
+    public final void method2233(int arg0, int arg1) {
 		if (this.field9986 != null) {
 			this.field9986.method1368(arg0, arg1);
 		}
 	}
 
-	@ObfuscatedName("afa.dh()Z")
-	public final boolean method2234() {
+    public final boolean method2234() {
 		return this.field9986 == null ? false : this.field9986.method1378();
 	}
 
-	@ObfuscatedName("afa.sd()Z")
-	public boolean method15762() {
+    public boolean method15762() {
 		if (this.field9865 == null) {
 			return false;
 		}
@@ -2473,13 +2177,11 @@ public class GlToolkit extends Toolkit {
 		return true;
 	}
 
-	@ObfuscatedName("afa.dx()Z")
-	public boolean isLevelsEnabled() {
+    public boolean isLevelsEnabled() {
 		return this.field9865 != null && this.field9865.method17543();
 	}
 
-	@ObfuscatedName("afa.dg(FFFFF)V")
-	public void setLevels(float arg0, float arg1, float arg2, float arg3, float arg4) {
+    public void setLevels(float arg0, float arg1, float arg2, float arg3, float arg4) {
 		GlLevelsFilter.field12167 = arg0;
 		GlLevelsFilter.field12172 = arg1;
 		GlLevelsFilter.field12168 = arg2;
@@ -2487,13 +2189,11 @@ public class GlToolkit extends Toolkit {
 		GlLevelsFilter.field12170 = arg4;
 	}
 
-	@ObfuscatedName("afa.de([I)Lcj;")
-	public ColourRemapper createColourRemapper(int[] arg0) {
+    public ColourRemapper createColourRemapper(int[] arg0) {
 		return new GlColourRemapper(this, arg0);
 	}
 
-	@ObfuscatedName("afa.sz()Z")
-	public boolean method15803() {
+    public boolean method15803() {
 		if (this.field9853 == null) {
 			return false;
 		}
@@ -2506,13 +2206,11 @@ public class GlToolkit extends Toolkit {
 		return true;
 	}
 
-	@ObfuscatedName("afa.dj()Z")
-	public boolean method2238() {
+    public boolean method2238() {
 		return this.field9853 != null && this.field9853.method17543();
 	}
 
-	@ObfuscatedName("afa.eo(Lcj;FLcj;FLcj;F)V")
-	public void setColourRemapping(ColourRemapper arg0, float arg1, ColourRemapper arg2, float arg3, ColourRemapper arg4, float arg5) {
+    public void setColourRemapping(ColourRemapper arg0, float arg1, ColourRemapper arg2, float arg3, ColourRemapper arg4, float arg5) {
 		int var7 = 0;
 		if (arg4 == null && arg5 > 0.0F) {
 			arg5 = 0.0F;
@@ -2550,8 +2248,7 @@ public class GlToolkit extends Toolkit {
 		GlColourRemappingFilter.field12174 = 1.0F - (arg1 + arg3 + arg5);
 	}
 
-	@ObfuscatedName("afa.ey()Z")
-	public final boolean enableBloom() {
+    public final boolean enableBloom() {
 		if (this.field9864 == null) {
 			return false;
 		}
@@ -2564,63 +2261,52 @@ public class GlToolkit extends Toolkit {
 		return true;
 	}
 
-	@ObfuscatedName("afa.eu()V")
-	public final void disableBloom() {
+    public final void disableBloom() {
 		if (this.field9864 != null && this.field9864.method17543()) {
 			this.field9986.method1370(this.field9864);
 			this.field10026.method1399();
 		}
 	}
 
-	@ObfuscatedName("afa.ed()Z")
-	public final boolean isBloomEnabled() {
+    public final boolean isBloomEnabled() {
 		return this.field9864 != null && this.field9864.method17543();
 	}
 
-	@ObfuscatedName("afa.es(FFFFFF)V")
-	public final void setBloom(float arg0, float arg1, float arg2, float arg3, float arg4, float arg5) {
+    public final void setBloom(float arg0, float arg1, float arg2, float arg3, float arg4, float arg5) {
 		GlColourGradingBloomFilter.field12189 = arg0;
 		GlColourGradingBloomFilter.field12188 = arg1;
 		GlColourGradingBloomFilter.field12205 = arg2;
 	}
 
-	@ObfuscatedName("afa.am()Lafq;")
-	public FrameBuffer createFramebuffer() {
+    public FrameBuffer createFramebuffer() {
 		return new GlFrameBuffer(this);
 	}
 
-	@ObfuscatedName("afa.ar(II)Ldw;")
-	public EffectInterface method2121(int arg0, int arg1) {
+    public EffectInterface method2121(int arg0, int arg1) {
 		return new PostProcessingRelated(this, TextureFormat.DEPTH, DataType.UNSIGNED_INT_24, arg0, arg1);
 	}
 
-	@ObfuscatedName("afa.ap(III)Ldw;")
-	public EffectInterface method2356(int arg0, int arg1, int arg2) {
+    public EffectInterface method2356(int arg0, int arg1, int arg2) {
 		return new PostProcessingRelated(this, TextureFormat.DEPTH, DataType.UNSIGNED_INT_24, arg0, arg1, arg2);
 	}
 
-	@ObfuscatedName("afa.au(IILck;Ldg;I)Ldp;")
-	public GraphicsDeletable method2146(int arg0, int arg1, TextureFormat arg2, DataType arg3, int arg4) {
+    public GraphicsDeletable method2146(int arg0, int arg1, TextureFormat arg2, DataType arg3, int arg4) {
 		return new PostProcessingRelated(this, arg2, arg3, arg0, arg1, arg4);
 	}
 
-	@ObfuscatedName("afa.sf(I[BIZ)Lcf;")
-	public final GlBinding method15766(int arg0, byte[] arg1, int arg2, boolean arg3) {
+    public final GlBinding method15766(int arg0, byte[] arg1, int arg2, boolean arg3) {
 		return (GlBinding) (this.field9990 && (!arg3 || this.field9991) ? new GlBufferRelated_Sub1(this, arg0, arg1, arg2, arg3) : new GlFloorModelRelated2_Sub1(this, arg0, arg1, arg2));
 	}
 
-	@ObfuscatedName("afa.sy(I[BIZ)Lbv;")
-	public final GlInterfaceRelated method15767(int arg0, byte[] arg1, int arg2, boolean arg3) {
+    public final GlInterfaceRelated method15767(int arg0, byte[] arg1, int arg2, boolean arg3) {
 		return (GlInterfaceRelated) (this.field9990 && (!arg3 || this.field9991) ? new GlBufferRelated_Sub2(this, arg0, arg1, arg2, arg3) : new GlFloorModelRelated2_Sub2(this, arg0, arg1, arg2));
 	}
 
-	@ObfuscatedName("afa.sa(ILjaclib/memory/Buffer;IZ)Lbv;")
-	public final GlInterfaceRelated method15804(int arg0, Buffer arg1, int arg2, boolean arg3) {
+    public final GlInterfaceRelated method15804(int arg0, Buffer arg1, int arg2, boolean arg3) {
 		return (GlInterfaceRelated) (this.field9990 && (!arg3 || this.field9991) ? new GlBufferRelated_Sub2(this, arg0, arg1, arg2, arg3) : new GlFloorModelRelated2_Sub2(this, arg0, arg1));
 	}
 
-	@ObfuscatedName("afa.sb(Lbv;)V")
-	public final void method15842(GlInterfaceRelated arg0) {
+    public final void method15842(GlInterfaceRelated arg0) {
 		if (this.field9852 != arg0) {
 			if (this.field9990) {
 				OpenGL.glBindBufferARB(34962, arg0.method1294());
@@ -2629,8 +2315,7 @@ public class GlToolkit extends Toolkit {
 		}
 	}
 
-	@ObfuscatedName("afa.sj(Lcf;)V")
-	public final void method15769(GlBinding arg0) {
+    public final void method15769(GlBinding arg0) {
 		if (this.field9966 != arg0) {
 			if (this.field9990) {
 				OpenGL.glBindBufferARB(34963, arg0.method1416());
@@ -2639,8 +2324,7 @@ public class GlToolkit extends Toolkit {
 		}
 	}
 
-	@ObfuscatedName("afa.so(Lbp;Lbp;Lbp;Lbp;)V")
-	public final void method15809(GlRelated3 arg0, GlRelated3 arg1, GlRelated3 arg2, GlRelated3 arg3) {
+    public final void method15809(GlRelated3 arg0, GlRelated3 arg1, GlRelated3 arg2, GlRelated3 arg3) {
 		if (arg0 == null) {
 			OpenGL.glDisableClientState(32884);
 		} else {
@@ -2671,19 +2355,16 @@ public class GlToolkit extends Toolkit {
 		}
 	}
 
-	@ObfuscatedName("afa.sc(III)V")
-	public final void method15801(int arg0, int arg1, int arg2) {
+    public final void method15801(int arg0, int arg1, int arg2) {
 		OpenGL.glDrawArrays(arg0, arg1, arg2);
 	}
 
-	@ObfuscatedName("afa.sg(Lcf;III)V")
-	public final void method15921(GlBinding arg0, int arg1, int arg2, int arg3) {
+    public final void method15921(GlBinding arg0, int arg1, int arg2, int arg3) {
 		this.method15769(arg0);
 		OpenGL.glDrawElements(arg1, arg3, 5123, arg0.getAddress() + (long) (arg2 * 2));
 	}
 
-	@ObfuscatedName("afa.tu()V")
-	public final void method15771() {
+    public final void method15771() {
 		if (this.field9908 == 1) {
 			return;
 		}
@@ -2699,8 +2380,7 @@ public class GlToolkit extends Toolkit {
 		this.field9908 = 1;
 	}
 
-	@ObfuscatedName("afa.ta()V")
-	public final void method15772() {
+    public final void method15772() {
 		if (this.field9908 == 2) {
 			return;
 		}
@@ -2714,8 +2394,7 @@ public class GlToolkit extends Toolkit {
 		this.field9908 = 2;
 	}
 
-	@ObfuscatedName("afa.tr()V")
-	public final void method15731() {
+    public final void method15731() {
 		if (this.field9908 == 4) {
 			return;
 		}
@@ -2730,8 +2409,7 @@ public class GlToolkit extends Toolkit {
 		this.field9908 = 4;
 	}
 
-	@ObfuscatedName("afa.tc()V")
-	public final void method15773() {
+    public final void method15773() {
 		if (this.field9908 == 8) {
 			return;
 		}
@@ -2745,18 +2423,15 @@ public class GlToolkit extends Toolkit {
 		this.field9908 = 8;
 	}
 
-	@ObfuscatedName("afa.tj(I)V")
-	public final void method15774(int arg0) {
+    public final void method15774(int arg0) {
 		this.method15775(arg0, true);
 	}
 
-	@ObfuscatedName("afa.te(IZ)V")
-	public final void method15775(int arg0, boolean arg1) {
+    public final void method15775(int arg0, boolean arg1) {
 		this.method15795(arg0, arg1, true);
 	}
 
-	@ObfuscatedName("afa.ti(IZZ)V")
-	public final void method15795(int arg0, boolean arg1, boolean arg2) {
+    public final void method15795(int arg0, boolean arg1, boolean arg2) {
 		if (this.field9968 != arg0 || this.field9963 != this.field9840) {
 			GlTexture_Sub1 var4 = null;
 			byte var5 = 0;
@@ -2800,16 +2475,14 @@ public class GlToolkit extends Toolkit {
 		this.field9908 &= 0xFFFFFFF8;
 	}
 
-	@ObfuscatedName("afa.tm(I)V")
-	public final void method15776(int arg0) {
+    public final void method15776(int arg0) {
 		if (this.field10018 != arg0) {
 			OpenGL.glActiveTexture(arg0 + 33984);
 			this.field10018 = arg0;
 		}
 	}
 
-	@ObfuscatedName("afa.ty(Lbq;)V")
-	public final void method15777(GlTexture arg0) {
+    public final void method15777(GlTexture arg0) {
 		GlTexture var2 = this.field9973[this.field10018];
 		if (arg0 != var2) {
 			if (arg0 == null) {
@@ -2828,8 +2501,7 @@ public class GlToolkit extends Toolkit {
 		this.field9908 &= 0xFFFFFFEE;
 	}
 
-	@ObfuscatedName("afa.tb(I)V")
-	public final void method15778(int arg0) {
+    public final void method15778(int arg0) {
 		if (arg0 == 1) {
 			this.method15810(7681, 7681);
 		} else if (arg0 == 0) {
@@ -2843,8 +2515,7 @@ public class GlToolkit extends Toolkit {
 		}
 	}
 
-	@ObfuscatedName("afa.tn(I)I")
-	public final int method15779(int arg0) {
+    public final int method15779(int arg0) {
 		if (arg0 == 1) {
 			return 7681;
 		} else if (arg0 == 0) {
@@ -2860,8 +2531,7 @@ public class GlToolkit extends Toolkit {
 		}
 	}
 
-	@ObfuscatedName("afa.tw(II)V")
-	public final void method15810(int arg0, int arg1) {
+    public final void method15810(int arg0, int arg1) {
 		if (this.field10018 != 0) {
 			OpenGL.glTexEnvi(8960, 34161, arg0);
 			OpenGL.glTexEnvi(8960, 34162, arg1);
@@ -2883,20 +2553,17 @@ public class GlToolkit extends Toolkit {
 		}
 	}
 
-	@ObfuscatedName("afa.tz(III)V")
-	public final void method15780(int arg0, int arg1, int arg2) {
+    public final void method15780(int arg0, int arg1, int arg2) {
 		OpenGL.glTexEnvi(8960, arg0 + 34176, arg1);
 		OpenGL.glTexEnvi(8960, arg0 + 34192, arg2);
 	}
 
-	@ObfuscatedName("afa.tf(III)V")
-	public final void method15781(int arg0, int arg1, int arg2) {
+    public final void method15781(int arg0, int arg1, int arg2) {
 		OpenGL.glTexEnvi(8960, arg0 + 34184, arg1);
 		OpenGL.glTexEnvi(8960, arg0 + 34200, arg2);
 	}
 
-	@ObfuscatedName("afa.th(I)V")
-	public final void method15765(int arg0) {
+    public final void method15765(int arg0) {
 		field10014[0] = (float) (arg0 & 0xFF0000) / 1.671168E7F;
 		field10014[1] = (float) (arg0 & 0xFF00) / 65280.0F;
 		field10014[2] = (float) (arg0 & 0xFF) / 255.0F;
@@ -2904,8 +2571,7 @@ public class GlToolkit extends Toolkit {
 		OpenGL.glTexEnvfv(8960, 8705, field10014, 0);
 	}
 
-	@ObfuscatedName("afa.tt(FFFF)V")
-	public final void method15783(float arg0, float arg1, float arg2, float arg3) {
+    public final void method15783(float arg0, float arg1, float arg2, float arg3) {
 		field10014[0] = arg0;
 		field10014[1] = arg1;
 		field10014[2] = arg2;
@@ -2913,8 +2579,7 @@ public class GlToolkit extends Toolkit {
 		OpenGL.glTexEnvfv(8960, 8705, field10014, 0);
 	}
 
-	@ObfuscatedName("afa.ts(FFF)V")
-	public final void method15784(float arg0, float arg1, float arg2) {
+    public final void method15784(float arg0, float arg1, float arg2) {
 		OpenGL.glMatrixMode(5890);
 		if (this.field9958) {
 			OpenGL.glLoadIdentity();
@@ -2924,8 +2589,7 @@ public class GlToolkit extends Toolkit {
 		this.field9958 = true;
 	}
 
-	@ObfuscatedName("afa.tp()V")
-	public final void method15785() {
+    public final void method15785() {
 		if (this.field9958) {
 			OpenGL.glMatrixMode(5890);
 			OpenGL.glLoadIdentity();
@@ -2934,8 +2598,7 @@ public class GlToolkit extends Toolkit {
 		}
 	}
 
-	@ObfuscatedName("afa.tv(Z)V")
-	public final void method15738(boolean arg0) {
+    public final void method15738(boolean arg0) {
 		if (this.field9954 != arg0) {
 			this.field9954 = arg0;
 			this.method15828();
@@ -2943,8 +2606,7 @@ public class GlToolkit extends Toolkit {
 		}
 	}
 
-	@ObfuscatedName("afa.to(Z)V")
-	public final void method15764(boolean arg0) {
+    public final void method15764(boolean arg0) {
 		if (this.field9936 != arg0) {
 			this.field9936 = arg0;
 			this.method15831();
@@ -2952,16 +2614,14 @@ public class GlToolkit extends Toolkit {
 		}
 	}
 
-	@ObfuscatedName("afa.tg(Z)V")
-	public final void method15840(boolean arg0) {
+    public final void method15840(boolean arg0) {
 		if (this.field9937 != arg0) {
 			this.field9937 = arg0;
 			this.method15831();
 		}
 	}
 
-	@ObfuscatedName("afa.tq()V")
-	public void method15831() {
+    public void method15831() {
 		if (this.field9936 && !this.field9937) {
 			OpenGL.glEnable(2896);
 		} else {
@@ -2969,8 +2629,7 @@ public class GlToolkit extends Toolkit {
 		}
 	}
 
-	@ObfuscatedName("afa.tx(Z)V")
-	public final void method15788(boolean arg0) {
+    public final void method15788(boolean arg0) {
 		if (this.field9899 != arg0) {
 			this.field9899 = arg0;
 			this.method15790();
@@ -2978,8 +2637,7 @@ public class GlToolkit extends Toolkit {
 		}
 	}
 
-	@ObfuscatedName("afa.tk(Z)V")
-	public final void method15789(boolean arg0) {
+    public final void method15789(boolean arg0) {
 		if (this.field9815 != arg0) {
 			this.field9815 = arg0;
 			this.method15826();
@@ -2987,13 +2645,11 @@ public class GlToolkit extends Toolkit {
 		}
 	}
 
-	@ObfuscatedName("afa.tl()V")
-	public final void method15826() {
+    public final void method15826() {
 		OpenGL.glDepthMask(this.field9815 && this.field9980);
 	}
 
-	@ObfuscatedName("afa.td()V")
-	public final void method15790() {
+    public final void method15790() {
 		if (this.field9899 && this.field9950) {
 			OpenGL.glEnable(2929);
 		} else {
@@ -3001,8 +2657,7 @@ public class GlToolkit extends Toolkit {
 		}
 	}
 
-	@ObfuscatedName("afa.ul(I)V")
-	public final void method15791(int arg0) {
+    public final void method15791(int arg0) {
 		if (this.field9923 == arg0) {
 			return;
 		}
@@ -3056,8 +2711,7 @@ public class GlToolkit extends Toolkit {
 		this.field9908 &= 0xFFFFFFE3;
 	}
 
-	@ObfuscatedName("afa.um()V")
-	public final void method15792() {
+    public final void method15792() {
 		if (this.field9921) {
 			OpenGL.glEnable(3042);
 		} else {
@@ -3065,8 +2719,7 @@ public class GlToolkit extends Toolkit {
 		}
 	}
 
-	@ObfuscatedName("afa.uq()V")
-	public final void method15793() {
+    public final void method15793() {
 		if (this.field10004) {
 			byte var1 = 0;
 			byte var2 = 0;
@@ -3106,16 +2759,14 @@ public class GlToolkit extends Toolkit {
 		}
 	}
 
-	@ObfuscatedName("afa.uc(I)V")
-	public final void method15759(int arg0) {
+    public final void method15759(int arg0) {
 		if (this.field9896 != arg0) {
 			this.field9896 = arg0;
 			this.method15793();
 		}
 	}
 
-	@ObfuscatedName("afa.ui()V")
-	public final void method15839() {
+    public final void method15839() {
 		if (this.field9924) {
 			OpenGL.glEnable(3008);
 		} else {
@@ -3132,8 +2783,7 @@ public class GlToolkit extends Toolkit {
 		}
 	}
 
-	@ObfuscatedName("afa.ua(B)V")
-	public final void method15794(byte arg0) {
+    public final void method15794(byte arg0) {
 		if (this.field9943 == arg0) {
 			return;
 		}
@@ -3148,13 +2798,11 @@ public class GlToolkit extends Toolkit {
 		this.method15839();
 	}
 
-	@ObfuscatedName("afa.c()I")
-	public final int method2520() {
+    public final int method2520() {
 		return this.field9880 + this.field9879 + this.field9881;
 	}
 
-	@ObfuscatedName("afa.d(I)V")
-	public final synchronized void cycle(int arg0) {
+    public final synchronized void cycle(int arg0) {
 		int var2 = 0;
 		int var3 = arg0 & Integer.MAX_VALUE;
 		while (!this.field9883._isEmpty()) {
@@ -3232,49 +2880,42 @@ public class GlToolkit extends Toolkit {
 		this.field9872 = var3;
 	}
 
-	@ObfuscatedName("afa.uf(II)V")
-	public final synchronized void method15870(int arg0, int arg1) {
+    public final synchronized void method15870(int arg0, int arg1) {
 		IntNode var3 = new IntNode(arg1);
 		var3.nodeId = arg0;
 		this.field9883.addTail(var3);
 	}
 
-	@ObfuscatedName("afa.uz(II)V")
-	public final synchronized void method15822(int arg0, int arg1) {
+    public final synchronized void method15822(int arg0, int arg1) {
 		IntNode var3 = new IntNode(arg1);
 		var3.nodeId = arg0;
 		this.field9884.addTail(var3);
 	}
 
-	@ObfuscatedName("afa.ug(I)V")
-	public final synchronized void method15802(int arg0) {
+    public final synchronized void method15802(int arg0) {
 		IntNode var2 = new IntNode(arg0);
 		this.field9885.addTail(var2);
 	}
 
-	@ObfuscatedName("afa.ub(II)V")
-	public final synchronized void method15796(int arg0, int arg1) {
+    public final synchronized void method15796(int arg0, int arg1) {
 		IntNode var3 = new IntNode(arg1);
 		var3.nodeId = arg0;
 		this.field9886.addTail(var3);
 	}
 
-	@ObfuscatedName("afa.uj(J)V")
-	public final synchronized void method15816(long arg0) {
+    public final synchronized void method15816(long arg0) {
 		Node var3 = new Node();
 		var3.nodeId = arg0;
 		this.field9888.addTail(var3);
 	}
 
-	@ObfuscatedName("afa.ut(I)V")
-	public final synchronized void method15797(int arg0) {
+    public final synchronized void method15797(int arg0) {
 		Node var2 = new Node();
 		var2.nodeId = arg0;
 		this.field9838.addTail(var2);
 	}
 
-	@ObfuscatedName("afa.uk(I)V")
-	public void method15798(int arg0) {
+    public void method15798(int arg0) {
 		this.field9940 = arg0;
 		if (this.field9940 == 1) {
 			OpenGL.glDisable(2884);
@@ -3288,8 +2929,7 @@ public class GlToolkit extends Toolkit {
 		}
 	}
 
-	@ObfuscatedName("afa.uy(Lck;)I")
-	public static int method15899(TextureFormat arg0) {
+    public static int method15899(TextureFormat arg0) {
 		switch(arg0.index) {
 			case 0:
 				return 6402;
@@ -3310,8 +2950,7 @@ public class GlToolkit extends Toolkit {
 		}
 	}
 
-	@ObfuscatedName("afa.uv(Lck;Ldg;)I")
-	public static int method15799(TextureFormat arg0, DataType arg1) {
+    public static int method15799(TextureFormat arg0, DataType arg1) {
 		if (DataType.UNSIGNED_INT_8 == arg1) {
 			switch(arg0.index) {
 				case 2:
@@ -3391,7 +3030,6 @@ public class GlToolkit extends Toolkit {
 		}
 	}
 
-	@ObfuscatedName("afa.eh(Z)V")
-	public void method2253(boolean arg0) {
+    public void method2253(boolean arg0) {
 	}
 }

@@ -17,35 +17,25 @@ import com.jagex.math.ScaleRotTrans;
 import deob.ObfuscatedName;
 import rs2.client.Client;
 
-@ObfuscatedName("aih")
 public class ClientMapLoader extends MapLoader {
 
-	@ObfuscatedName("aih.cw")
-	public static boolean field10755 = false;
+    public static boolean field10755 = false;
 
-	@ObfuscatedName("aih.ct")
-	public static boolean field10754 = false;
+    public static boolean field10754 = false;
 
-	@ObfuscatedName("aih.cq")
-	public static final int[] WALL_DECORATION_ROTATION_FORWARD_X = new int[] { 1, 0, -1, 0 };
+    public static final int[] WALL_DECORATION_ROTATION_FORWARD_X = new int[] { 1, 0, -1, 0 };
 
-	@ObfuscatedName("aih.ch")
-	public static final int[] WALL_DECORATION_ROTATION_FORWARD_Z = new int[] { 0, -1, 0, 1 };
+    public static final int[] WALL_DECORATION_ROTATION_FORWARD_Z = new int[] { 0, -1, 0, 1 };
 
-	@ObfuscatedName("aih.cb")
-	public static final int[] field10753 = new int[] { 1, -1, -1, 1 };
+    public static final int[] field10753 = new int[] { 1, -1, -1, 1 };
 
-	@ObfuscatedName("aih.cs")
-	public static final int[] field10762 = new int[] { -1, -1, 1, 1 };
+    public static final int[] field10762 = new int[] { -1, -1, 1, 1 };
 
-	@ObfuscatedName("aih.cy")
-	public int field10756 = 99;
+    public int field10756 = 99;
 
-	@ObfuscatedName("aih.cc")
-	public EnvironmentManager field10764;
+    public EnvironmentManager field10764;
 
-	@ObfuscatedName("aih.cz")
-	public LocTypeList locs;
+    public LocTypeList locs;
 
 	public ClientMapLoader(Scene scene, LocTypeList locs, int levels, int maxTileX, int maxTileZ, boolean underwater, SceneLevelTileFlags arg6, EnvironmentManager arg7) {
 		super(scene, levels, maxTileX, maxTileZ, underwater, Client.overlayTypeList, Client.underlayTypeList, arg6);
@@ -53,8 +43,7 @@ public class ClientMapLoader extends MapLoader {
 		this.field10764 = arg7;
 	}
 
-	@ObfuscatedName("aih.ce(Ldh;Lalw;IIB)V")
-	public final void readNormalEnvironment(Toolkit arg0, Packet arg1, int arg2, int arg3) {
+    public final void readNormalEnvironment(Toolkit arg0, Packet arg1, int arg2, int arg3) {
 		if (this.underwater) {
 			return;
 		}
@@ -239,8 +228,7 @@ public class ClientMapLoader extends MapLoader {
 		}
 	}
 
-	@ObfuscatedName("aih.cu(Ldh;Lalw;IIIIIIIB)V")
-	public final void readRegionEnvironment(Toolkit arg0, Packet arg1, int arg2, int arg3, int arg4, int arg5, int arg6, int arg7, int arg8) {
+    public final void readRegionEnvironment(Toolkit arg0, Packet arg1, int arg2, int arg3, int arg4, int arg5, int arg6, int arg7, int arg8) {
 		if (this.underwater) {
 			return;
 		}
@@ -390,8 +378,7 @@ public class ClientMapLoader extends MapLoader {
 		}
 	}
 
-	@ObfuscatedName("id.ci(Laop;[BIIIILxe;Lxe;I)I")
-	public static final int testReadLocs(LocTypeList locs, byte[] bytes, int arg2, int arg3, int arg4, int arg5, IntegerBox arg6, IntegerBox arg7) {
+    public static final int testReadLocs(LocTypeList locs, byte[] bytes, int arg2, int arg3, int arg4, int arg5, IntegerBox arg6, IntegerBox arg7) {
 		int var8 = 0;
 		Packet buf = new Packet(bytes);
 		int locId = -1;
@@ -450,8 +437,7 @@ public class ClientMapLoader extends MapLoader {
 		}
 	}
 
-	@ObfuscatedName("abb.cn(Laop;III)Z")
-	public static final boolean method14705(LocTypeList arg0, int arg1, int arg2) {
+    public static final boolean method14705(LocTypeList arg0, int arg1, int arg2) {
 		LocType var3 = (LocType) arg0.list(arg1);
 		if (arg2 == 11) {
 			arg2 = 10;
@@ -462,8 +448,7 @@ public class ClientMapLoader extends MapLoader {
 		return var3.method9473(arg2);
 	}
 
-	@ObfuscatedName("aih.cv(Ldh;[BIII)V")
-	public final void readNormalLocs(Toolkit toolkit, byte[] locs, int arg2, int arg3) {
+    public final void readNormalLocs(Toolkit toolkit, byte[] locs, int arg2, int arg3) {
 		Packet buf = new Packet(locs);
 		int locId = -1;
 		label63: while (true) {
@@ -518,8 +503,7 @@ public class ClientMapLoader extends MapLoader {
 		}
 	}
 
-	@ObfuscatedName("aih.cp(Ldh;[BIIIIIIII)V")
-	public final void readRegionLocs(Toolkit toolkit, byte[] arg1, int occludeLevel, int arg3, int arg4, int arg5, int arg6, int arg7, int arg8) {
+    public final void readRegionLocs(Toolkit toolkit, byte[] arg1, int occludeLevel, int arg3, int arg4, int arg5, int arg6, int arg7, int arg8) {
 		Packet buf = new Packet(arg1);
 		int locId = -1;
 		label88: while (true) {
@@ -586,8 +570,7 @@ public class ClientMapLoader extends MapLoader {
 		}
 	}
 
-	@ObfuscatedName("aih.ca(Ldh;IIIIIIIIILoe;I)V")
-	public final void addGroundLoc(Toolkit toolkit, int occludeLevel, int level, int cx, int cz, int locId, int angle, int shape, int arg8, int arg9, ScaleRotTrans arg10) {
+    public final void addGroundLoc(Toolkit toolkit, int occludeLevel, int level, int cx, int cz, int locId, int angle, int shape, int arg8, int arg9, ScaleRotTrans arg10) {
 		if (level < this.field10756) {
 			this.field10756 = level;
 		}
@@ -701,8 +684,7 @@ public class ClientMapLoader extends MapLoader {
 		}
 	}
 
-	@ObfuscatedName("aih.cx(Ldh;IIZLvd;IIIIIIIIIZLcb;IILoe;I)Z")
-	public boolean addWallLoc(Toolkit toolkit, int shape, int angle, boolean isStatic, LocType locType, int arg5, int arg6, int level, int occludeLevel, int x, int y, int z, int cx, int cz, boolean arg14, FloorModel arg15, int arg16, int arg17, ScaleRotTrans scaleRotTrans) {
+    public boolean addWallLoc(Toolkit toolkit, int shape, int angle, boolean isStatic, LocType locType, int arg5, int arg6, int level, int occludeLevel, int x, int y, int z, int cx, int cz, boolean arg14, FloorModel arg15, int arg16, int arg17, ScaleRotTrans scaleRotTrans) {
 		if (LocShape.WALL_STRAIGHT.id == shape) {
 			int occlude = locType.occlude;
 			if (field10754 && locType.occlude == -1) {
@@ -873,8 +855,7 @@ public class ClientMapLoader extends MapLoader {
 		}
 	}
 
-	@ObfuscatedName("aih.cw(Ldh;IIZLvd;IIIIIIIIILoe;B)Z")
-	public boolean addWallDecorationLoc(Toolkit arg0, int locShapeId, int arg2, boolean isStatic, LocType arg4, int arg5, int arg6, int level, int arg8, int arg9, int arg10, int arg11, int x, int z, ScaleRotTrans arg14) {
+    public boolean addWallDecorationLoc(Toolkit arg0, int locShapeId, int arg2, boolean isStatic, LocType arg4, int arg5, int arg6, int level, int arg8, int arg9, int arg10, int arg11, int x, int z, ScaleRotTrans arg14) {
 		if (LocShape.WALLDECOR_STRAIGHT_NOOFFSET.id == locShapeId) {
 			WallDecorLayerEntity var17;
 			if (isStatic) {
@@ -971,8 +952,7 @@ public class ClientMapLoader extends MapLoader {
 		}
 	}
 
-	@ObfuscatedName("aih.ct(Ldh;IIIIB)V")
-	public void method16871(Toolkit arg0, int level, int layer, int x, int z) {
+    public void method16871(Toolkit arg0, int level, int layer, int x, int z) {
 		Location var6 = this.getLocation(level, layer, x, z);
 		if (var6 == null) {
 			return;
@@ -1017,8 +997,7 @@ public class ClientMapLoader extends MapLoader {
 		}
 	}
 
-	@ObfuscatedName("aih.cf(IIIII)Lst;")
-	public Location getLocation(int level, int layer, int x, int z) {
+    public Location getLocation(int level, int layer, int x, int z) {
 		Location var5 = null;
 		if (layer == 0) {
 			var5 = (Location) this.scene.getWall(level, x, z);
@@ -1035,8 +1014,7 @@ public class ClientMapLoader extends MapLoader {
 		return var5;
 	}
 
-	@ObfuscatedName("aih.co(Ldh;ZB)V")
-	public final void build(Toolkit arg0, boolean underwater) {
+    public final void build(Toolkit arg0, boolean underwater) {
 		this.scene.buildModels();
 		if (!underwater) {
 			if (this.levels > 1) {

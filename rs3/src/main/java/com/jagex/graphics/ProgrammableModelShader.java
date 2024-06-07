@@ -4,31 +4,24 @@ import com.jagex.game.client.PrimitiveType;
 import com.jagex.math.Matrix4x4;
 import deob.ObfuscatedName;
 
-@ObfuscatedName("ahv")
 public class ProgrammableModelShader extends ModelShader {
 
-	@ObfuscatedName("ahv.i")
-	public GpuShader shader;
+    public GpuShader shader;
 
-	@ObfuscatedName("ahv.ak")
-	public final Matrix4x4 field10499 = new Matrix4x4();
+    public final Matrix4x4 field10499 = new Matrix4x4();
 
-	@ObfuscatedName("ahv.an")
-	public final GpuProgram[] field10500 = new GpuProgram[19];
+    public final GpuProgram[] field10500 = new GpuProgram[19];
 
-	@ObfuscatedName("ahv.bf")
-	public final int[][] field10473 = new int[19][17];
+    public final int[][] field10473 = new int[19][17];
 
-	@ObfuscatedName("ahv.bl")
-	public int[] field10501;
+    public int[] field10501;
 
 	public ProgrammableModelShader(GpuToolkit arg0) throws ShaderException {
 		super(arg0);
 		this.method16619();
 	}
 
-	@ObfuscatedName("ahv.a(I)Z")
-	public boolean method16619() throws ShaderException {
+    public boolean method16619() throws ShaderException {
 		this.shader = this.field2963.createShader("Model");
 		ProgramUniform var1 = this.shader.getUniform("DiffuseSampler");
 		ProgramUniform var2 = this.shader.getUniform("EnvironmentSampler");
@@ -80,14 +73,12 @@ public class ProgrammableModelShader extends ModelShader {
 		return true;
 	}
 
-	@ObfuscatedName("ahv.n(Lpq;)V")
-	public void method5018(Matrix4x4 arg0) {
+    public void method5018(Matrix4x4 arg0) {
 		this.field10499.setTo(arg0);
 		this.field10499.multiply(this.field2963.field10081);
 	}
 
-	@ObfuscatedName("ahv.m(Z)V")
-	public void method5019(boolean arg0) {
+    public void method5019(boolean arg0) {
 		if (arg0) {
 			this.shader.setCurrentProgram(this.field10500[1]);
 		} else {
@@ -105,16 +96,14 @@ public class ProgrammableModelShader extends ModelShader {
 		this.field2963.drawIndexedPrimitive(PrimitiveType.TRIANGLELIST, this.field2981, this.field2983, this.field2972, this.field2962);
 	}
 
-	@ObfuscatedName("ahv.l()V")
-	public void method5023() {
+    public void method5023() {
 		this.shader.setCurrentProgram(this.field10500[17]);
 		this.field10501 = this.field10473[this.shader.getCurrentProgramIndex()];
 		this.shader.enable();
 		this.method16620(0);
 	}
 
-	@ObfuscatedName("ahv.u()V")
-	public void method5024() {
+    public void method5024() {
 		this.shader.setCurrentProgram(this.field10500[18]);
 		this.field10501 = this.field10473[this.shader.getCurrentProgramIndex()];
 		this.shader.enable();
@@ -123,8 +112,7 @@ public class ProgrammableModelShader extends ModelShader {
 		this.method16620(0);
 	}
 
-	@ObfuscatedName("ahv.g(IB)V")
-	public void method16620(int arg0) {
+    public void method16620(int arg0) {
 		this.shader.setUniform1i(this.field10501[2], 0, this.field2966);
 		this.shader.setUniform4fv(this.field10501[4], this.field10499);
 		this.shader.setUniform2fv(this.field10501[5], this.field2982);
@@ -143,16 +131,14 @@ public class ProgrammableModelShader extends ModelShader {
 		this.field2963.drawIndexedPrimitive(PrimitiveType.TRIANGLELIST, this.field2981, this.field2983, this.field2972, this.field2962);
 	}
 
-	@ObfuscatedName("ahv.k(I)V")
-	public void method5020(int arg0) {
+    public void method5020(int arg0) {
 		this.shader.setCurrentProgram(this.field10500[arg0 + 2]);
 		this.field10501 = this.field10473[this.shader.getCurrentProgramIndex()];
 		this.shader.enable();
 		this.method16620(arg0);
 	}
 
-	@ObfuscatedName("ahv.f(I)V")
-	public void method5031(int arg0) {
+    public void method5031(int arg0) {
 		this.shader.setCurrentProgram(this.field10500[arg0 + 7]);
 		this.field10501 = this.field10473[this.shader.getCurrentProgramIndex()];
 		this.shader.enable();
@@ -161,8 +147,7 @@ public class ProgrammableModelShader extends ModelShader {
 		this.method16620(arg0);
 	}
 
-	@ObfuscatedName("ahv.w(I)V")
-	public void method5026(int arg0) {
+    public void method5026(int arg0) {
 		this.shader.setCurrentProgram(this.field10500[arg0 + 12]);
 		this.field10501 = this.field10473[this.shader.getCurrentProgramIndex()];
 		this.shader.enable();

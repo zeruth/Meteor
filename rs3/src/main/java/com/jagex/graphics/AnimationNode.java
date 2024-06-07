@@ -4,53 +4,37 @@ import com.jagex.game.config.seqtype.SeqType;
 import com.jagex.game.config.seqtype.SeqTypeList;
 import deob.ObfuscatedName;
 
-@ObfuscatedName("aaq")
 public class AnimationNode {
 
-	@ObfuscatedName("aaq.k")
-	public SeqType seqType;
+    public SeqType seqType;
 
-	@ObfuscatedName("aaq.f")
-	public int field8502;
+    public int field8502;
 
-	@ObfuscatedName("aaq.w")
-	public int field8503;
+    public int field8503;
 
-	@ObfuscatedName("aaq.l")
-	public int field8504;
+    public int field8504;
 
-	@ObfuscatedName("aaq.u")
-	public int field8511;
+    public int field8511;
 
-	@ObfuscatedName("aaq.z")
-	public int field8506;
+    public int field8506;
 
-	@ObfuscatedName("aaq.p")
-	public boolean field8507 = false;
+    public boolean field8507 = false;
 
-	@ObfuscatedName("aaq.d")
-	public boolean field8500 = false;
+    public boolean field8500 = false;
 
-	@ObfuscatedName("aaq.c")
-	public int field8509 = 0;
+    public int field8509 = 0;
 
-	@ObfuscatedName("aaq.r")
-	public boolean field8505 = false;
+    public boolean field8505 = false;
 
-	@ObfuscatedName("atl.v")
-	public static SeqTypeList field12490;
+    public static SeqTypeList field12490;
 
-	@ObfuscatedName("aaq.o")
-	public final FrameSetLoader field8513;
+    public final FrameSetLoader field8513;
 
-	@ObfuscatedName("aaq.s")
-	public final FrameSetLoader field8512;
+    public final FrameSetLoader field8512;
 
-	@ObfuscatedName("aaq.y")
-	public final KeyFrameSetLoader field8498;
+    public final KeyFrameSetLoader field8498;
 
-	@ObfuscatedName("nv.e(Laos;I)V")
-	public static void method6114(SeqTypeList arg0) {
+    public static void method6114(SeqTypeList arg0) {
 		field12490 = arg0;
 	}
 
@@ -65,8 +49,7 @@ public class AnimationNode {
 		}
 	}
 
-	@ObfuscatedName("aaq.n(Laaq;I)V")
-	public final void method14370(AnimationNode arg0) {
+    public final void method14370(AnimationNode arg0) {
 		this.seqType = arg0.seqType;
 		this.field8507 = arg0.field8507;
 		this.field8500 = arg0.field8500;
@@ -78,48 +61,39 @@ public class AnimationNode {
 		this.method14373();
 	}
 
-	@ObfuscatedName("aaq.m(I)Z")
-	public final boolean hasSeqType() {
+    public final boolean hasSeqType() {
 		return this.seqType != null;
 	}
 
-	@ObfuscatedName("aaq.k(I)Lfg;")
-	public final SeqType getSeqType() {
+    public final SeqType getSeqType() {
 		return this.seqType;
 	}
 
-	@ObfuscatedName("aaq.f(B)I")
-	public final int getSeqTypeId() {
+    public final int getSeqTypeId() {
 		return this.seqType == null ? -1 : this.seqType.id;
 	}
 
-	@ObfuscatedName("aaq.w(II)V")
-	public final void method14362(int arg0) {
+    public final void method14362(int arg0) {
 		this.method14353(arg0, 0, 0, false);
 	}
 
-	@ObfuscatedName("aaq.l(III)V")
-	public final void method14350(int arg0, int arg1) {
+    public final void method14350(int arg0, int arg1) {
 		this.method14353(arg0, arg1, 0, false);
 	}
 
-	@ObfuscatedName("aaq.u(IZI)V")
-	public final void method14351(int arg0, boolean arg1) {
+    public final void method14351(int arg0, boolean arg1) {
 		this.method14353(arg0, 0, 0, arg1);
 	}
 
-	@ObfuscatedName("aaq.z(IZZB)V")
-	public final void method14352(int arg0, boolean arg1, boolean arg2) {
+    public final void method14352(int arg0, boolean arg1, boolean arg2) {
 		this.method14354(arg0, 0, 0, arg1, arg2);
 	}
 
-	@ObfuscatedName("aaq.p(IIIZS)V")
-	public final void method14353(int arg0, int arg1, int arg2, boolean arg3) {
+    public final void method14353(int arg0, int arg1, int arg2, boolean arg3) {
 		this.method14354(arg0, arg1, arg2, arg3, false);
 	}
 
-	@ObfuscatedName("aaq.d(IIIZZI)V")
-	public final void method14354(int arg0, int arg1, int arg2, boolean arg3, boolean arg4) {
+    public final void method14354(int arg0, int arg1, int arg2, boolean arg3, boolean arg4) {
 		if (arg0 == this.getSeqTypeId()) {
 			return;
 		}
@@ -167,23 +141,19 @@ public class AnimationNode {
 		this.method14373();
 	}
 
-	@ObfuscatedName("aaq.c(B)Z")
-	public final boolean method14355() {
+    public final boolean method14355() {
 		return this.field8503 != 0;
 	}
 
-	@ObfuscatedName("aaq.r(S)I")
-	public final int method14398() {
+    public final int method14398() {
 		return this.field8503;
 	}
 
-	@ObfuscatedName("aaq.v(IB)V")
-	public final void method14357(int arg0) {
+    public final void method14357(int arg0) {
 		this.field8503 = arg0;
 	}
 
-	@ObfuscatedName("aaq.o(I)I")
-	public final int method14358() {
+    public final int method14358() {
 		if (!this.method14372()) {
 			return 0;
 		}
@@ -201,8 +171,7 @@ public class AnimationNode {
 		return var1;
 	}
 
-	@ObfuscatedName("aaq.s(Ldo;II)V")
-	public final void method14359(Model arg0, int arg1) {
+    public final void method14359(Model arg0, int arg1) {
 		if (this.seqType == null) {
 			return;
 		}
@@ -218,8 +187,7 @@ public class AnimationNode {
 		}
 	}
 
-	@ObfuscatedName("aaq.y(Ldo;IIB)V")
-	public final void method14360(Model arg0, int arg1, int arg2) {
+    public final void method14360(Model arg0, int arg1, int arg2) {
 		if (this.seqType.field1770 != null && this.method14372()) {
 			arg0.method1706(this.field8513.field8520, this.field8513.field8516, this.field8513.field8519, this.field8513.field8517, this.field8502, this.seqType.frames[this.field8511], arg1, arg2, this.seqType.field1786, null);
 			if (this.field8500 && this.seqType.field1771 != null && this.field8512.field8518) {
@@ -228,8 +196,7 @@ public class AnimationNode {
 		}
 	}
 
-	@ObfuscatedName("aaq.q(Ldo;B)V")
-	public final void method14361(Model arg0) {
+    public final void method14361(Model arg0) {
 		if (this.seqType.field1770 != null && this.method14372()) {
 			arg0.method1878(this.field8513.field8520, this.field8513.field8516);
 			if (this.field8500 && this.seqType.field1771 != null && this.field8512.field8518) {
@@ -238,8 +205,7 @@ public class AnimationNode {
 		}
 	}
 
-	@ObfuscatedName("dy.x(Ldo;Laaq;Laaq;I)V")
-	public static final void method2099(Model arg0, AnimationNode arg1, AnimationNode arg2) {
+    public static final void method2099(Model arg0, AnimationNode arg1, AnimationNode arg2) {
 		if (!arg1.method14372() || !arg2.method14372()) {
 			return;
 		}
@@ -260,23 +226,19 @@ public class AnimationNode {
 		}
 	}
 
-	@ObfuscatedName("aaq.b(I)Z")
-	public final boolean method14375() {
+    public final boolean method14375() {
 		return this.field8507;
 	}
 
-	@ObfuscatedName("aaq.h(S)V")
-	public final void method14422() {
+    public final void method14422() {
 		this.field8504 = 0;
 	}
 
-	@ObfuscatedName("aaq.a(I)V")
-	public final void method14364() {
+    public final void method14364() {
 		this.method14389(0);
 	}
 
-	@ObfuscatedName("aaq.g(IB)V")
-	public final void method14389(int arg0) {
+    public final void method14389(int arg0) {
 		if (this.seqType.method2985()) {
 			this.method14366(arg0);
 			return;
@@ -293,8 +255,7 @@ public class AnimationNode {
 		}
 	}
 
-	@ObfuscatedName("aaq.i(II)V")
-	public final void method14366(int arg0) {
+    public final void method14366(int arg0) {
 		this.field8507 = false;
 		this.field8503 = arg0;
 		this.field8504 = 0;
@@ -304,8 +265,7 @@ public class AnimationNode {
 		}
 	}
 
-	@ObfuscatedName("aaq.j(II)Z")
-	public final boolean method14367(int arg0) {
+    public final boolean method14367(int arg0) {
 		if (this.seqType == null || arg0 == 0) {
 			return false;
 		} else if (this.seqType.method2985()) {
@@ -387,8 +347,7 @@ public class AnimationNode {
 		}
 	}
 
-	@ObfuscatedName("aaq.t(IB)Z")
-	public boolean method14356(int arg0) {
+    public boolean method14356(int arg0) {
 		boolean var2 = false;
 		KeyFrameSet var3 = this.field8498.field8523;
 		if (var3 == null) {
@@ -428,8 +387,7 @@ public class AnimationNode {
 		return var5;
 	}
 
-	@ObfuscatedName("aaq.ae(II)Z")
-	public final boolean method14369(int arg0) {
+    public final boolean method14369(int arg0) {
 		int var2;
 		if (this.seqType == null | (var2 = arg0 - this.field8503) <= 0) {
 			return false;
@@ -440,17 +398,14 @@ public class AnimationNode {
 		}
 	}
 
-	@ObfuscatedName("aaq.ag(Lfg;II)V")
-	public void method14407(SeqType arg0, int arg1) {
+    public void method14407(SeqType arg0, int arg1) {
 	}
 
-	@ObfuscatedName("aaq.ah(Lfg;II)V")
-	public void method14413(SeqType arg0, int arg1) {
+    public void method14413(SeqType arg0, int arg1) {
 		this.method14407(arg0, arg1);
 	}
 
-	@ObfuscatedName("aaq.al(B)Z")
-	public final boolean method14372() {
+    public final boolean method14372() {
 		if (this.seqType == null) {
 			return false;
 		}
@@ -467,8 +422,7 @@ public class AnimationNode {
 		return var2;
 	}
 
-	@ObfuscatedName("aaq.ac(I)V")
-	public final void method14373() {
+    public final void method14373() {
 		if (this.seqType == null || this.seqType.method2985()) {
 			this.field8498.method14442();
 		} else {

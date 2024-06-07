@@ -5,29 +5,21 @@ import com.jagex.graphics.TextureFormat;
 import com.jagex.math.IntMath;
 import deob.ObfuscatedName;
 
-@ObfuscatedName("apr")
 public class GlTexture_Sub1_Sub1 extends GlTexture_Sub1 {
 
-	@ObfuscatedName("apr.q")
-	public final int field11900;
+    public final int field11900;
 
-	@ObfuscatedName("apr.x")
-	public final int field11902;
+    public final int field11902;
 
-	@ObfuscatedName("apr.b")
-	public final float field11898;
+    public final float field11898;
 
-	@ObfuscatedName("apr.h")
-	public final float field11901;
+    public final float field11901;
 
-	@ObfuscatedName("apr.a")
-	public final boolean field11899;
+    public final boolean field11899;
 
-	@ObfuscatedName("apr.g")
-	public final boolean field11903;
+    public final boolean field11903;
 
-	@ObfuscatedName("apr.bi(Lafa;Lck;Ldg;II)Lapr;")
-	public static GlTexture_Sub1_Sub1 method18934(GlToolkit arg0, TextureFormat arg1, DataType arg2, int arg3, int arg4) {
+    public static GlTexture_Sub1_Sub1 method18934(GlToolkit arg0, TextureFormat arg1, DataType arg2, int arg3, int arg4) {
 		if (arg0.field9998 || IntMath.method4918(arg3) && IntMath.method4918(arg4)) {
 			return new GlTexture_Sub1_Sub1(arg0, 3553, arg1, arg2, arg3, arg4);
 		} else if (arg0.field9965) {
@@ -37,8 +29,7 @@ public class GlTexture_Sub1_Sub1 extends GlTexture_Sub1 {
 		}
 	}
 
-	@ObfuscatedName("apr.bn(Lafa;IIZ[III)Lapr;")
-	public static GlTexture_Sub1_Sub1 method18931(GlToolkit arg0, int arg1, int arg2, boolean arg3, int[] arg4, int arg5, int arg6) {
+    public static GlTexture_Sub1_Sub1 method18931(GlToolkit arg0, int arg1, int arg2, boolean arg3, int[] arg4, int arg5, int arg6) {
 		if (arg0.field9998 || IntMath.method4918(arg1) && IntMath.method4918(arg2)) {
 			return new GlTexture_Sub1_Sub1(arg0, 3553, arg1, arg2, arg3, arg4, arg5, arg6);
 		} else if (arg0.field9965) {
@@ -48,8 +39,7 @@ public class GlTexture_Sub1_Sub1 extends GlTexture_Sub1 {
 		}
 	}
 
-	@ObfuscatedName("apr.bt(Lafa;Lck;Ldg;IIZ[BLck;)Lapr;")
-	public static GlTexture_Sub1_Sub1 method18932(GlToolkit arg0, TextureFormat arg1, DataType arg2, int arg3, int arg4, boolean arg5, byte[] arg6, TextureFormat arg7) {
+    public static GlTexture_Sub1_Sub1 method18932(GlToolkit arg0, TextureFormat arg1, DataType arg2, int arg3, int arg4, boolean arg5, byte[] arg6, TextureFormat arg7) {
 		if (arg0.field9998 || IntMath.method4918(arg3) && IntMath.method4918(arg4)) {
 			return new GlTexture_Sub1_Sub1(arg0, 3553, arg1, arg2, arg3, arg4, arg5, arg6, arg7);
 		} else if (arg0.field9965) {
@@ -59,8 +49,7 @@ public class GlTexture_Sub1_Sub1 extends GlTexture_Sub1 {
 		}
 	}
 
-	@ObfuscatedName("apr.bq(Lafa;IIII)Lapr;")
-	public static GlTexture_Sub1_Sub1 method18930(GlToolkit arg0, int arg1, int arg2, int arg3, int arg4) {
+    public static GlTexture_Sub1_Sub1 method18930(GlToolkit arg0, int arg1, int arg2, int arg3, int arg4) {
 		if (arg0.field9998 || IntMath.method4918(arg3) && IntMath.method4918(arg4)) {
 			return new GlTexture_Sub1_Sub1(arg0, 3553, arg1, arg2, arg3, arg4, true);
 		} else if (arg0.field9965) {
@@ -180,8 +169,7 @@ public class GlTexture_Sub1_Sub1 extends GlTexture_Sub1 {
 		this.method15312(false, false);
 	}
 
-	@ObfuscatedName("apr.e(Z)V")
-	public void method1082(boolean arg0) {
+    public void method1082(boolean arg0) {
 		super.method1082(arg0 && !this.field11903);
 	}
 }

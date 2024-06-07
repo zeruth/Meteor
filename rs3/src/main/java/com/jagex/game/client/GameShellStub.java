@@ -5,7 +5,6 @@ import deob.ObfuscatedName;
 import java.applet.Applet;
 import java.awt.*;
 
-@ObfuscatedName("se")
 public interface GameShellStub {
 
 	void stop();

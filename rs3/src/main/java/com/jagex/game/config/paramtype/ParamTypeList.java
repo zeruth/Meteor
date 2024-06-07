@@ -8,7 +8,6 @@ import com.jagex.game.config.Js5ConfigGroup;
 import com.jagex.js5.Js5;
 import deob.ObfuscatedName;
 
-@ObfuscatedName("aoz")
 public class ParamTypeList extends CachingConfigTypeList {
 
 	public ParamTypeList(ModeGame modeGame, Language language, Js5 js5) {

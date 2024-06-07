@@ -13,25 +13,19 @@ import java.io.InputStreamReader;
 import java.net.URL;
 import java.util.ArrayList;
 
-@ObfuscatedName("kf")
 public class LoadingScreenNewsManager implements Runnable {
 
-	@ObfuscatedName("kf.e")
-	public LoadingScreenNewsEntry[] field3049;
+    public LoadingScreenNewsEntry[] field3049;
 
-	@ObfuscatedName("kf.n")
-	public Thread field3050;
+    public Thread field3050;
 
-	@ObfuscatedName("kf.m")
-	public volatile boolean field3051;
+    public volatile boolean field3051;
 
-	@ObfuscatedName("kf.e(II)Lke;")
-	public LoadingScreenNewsEntry method5160(int arg0) {
+    public LoadingScreenNewsEntry method5160(int arg0) {
 		return this.field3049 == null || arg0 < 0 || arg0 >= this.field3049.length ? null : this.field3049[arg0];
 	}
 
-	@ObfuscatedName("kf.n(B)Z")
-	public boolean method5164() {
+    public boolean method5164() {
 		if (this.field3051) {
 			return true;
 		}

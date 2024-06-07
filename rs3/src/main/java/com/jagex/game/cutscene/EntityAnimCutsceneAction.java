@@ -8,20 +8,15 @@ import rs2.client.scene.entities.PathingEntity;
 
 import java.util.Arrays;
 
-@ObfuscatedName("agk")
 public class EntityAnimCutsceneAction extends CutsceneAction {
 
-	@ObfuscatedName("agk.n")
-	public final int field10301;
+    public final int field10301;
 
-	@ObfuscatedName("agk.m")
-	public final int field10299;
+    public final int field10299;
 
-	@ObfuscatedName("agk.k")
-	public final int field10300;
+    public final int field10300;
 
-	@ObfuscatedName("agk.f")
-	public final int[] field10298;
+    public final int[] field10298;
 
 	public EntityAnimCutsceneAction(Packet arg0) {
 		super(arg0);
@@ -32,8 +27,7 @@ public class EntityAnimCutsceneAction extends CutsceneAction {
 		this.field10300 = arg0.g4s();
 	}
 
-	@ObfuscatedName("agk.n(I)V")
-	public void method2890() {
+    public void method2890() {
 		PathingEntity var1 = CutsceneManager.entities[this.field10301].getEntity();
 		if (this.field10300 == 0) {
 			Client.addSequences(var1, this.field10298, 0, false);
@@ -42,8 +36,7 @@ public class EntityAnimCutsceneAction extends CutsceneAction {
 		}
 	}
 
-	@ObfuscatedName("agk.k(I)Z")
-	public boolean method2891() {
+    public boolean method2891() {
 		SeqType var1 = (SeqType) Client.seqTypeList.list(this.field10299);
 		return var1.method2991();
 	}

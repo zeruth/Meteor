@@ -10,94 +10,66 @@ import com.jagex.game.world.entity.ObjectNode;
 import com.jagex.math.IntMath;
 import deob.ObfuscatedName;
 
-@ObfuscatedName("fg")
 public class SeqType implements ConfigType {
 
-	@ObfuscatedName("fg.e")
-	public static boolean field1775 = false;
+    public static boolean field1775 = false;
 
-	@ObfuscatedName("fg.n")
-	public SeqTypeFactory factory;
+    public SeqTypeFactory factory;
 
-	@ObfuscatedName("fg.m")
-	public int id;
+    public int id;
 
-	@ObfuscatedName("fg.k")
-	public int[] field1770;
+    public int[] field1770;
 
-	@ObfuscatedName("fg.f")
-	public int[] field1771;
+    public int[] field1771;
 
-	@ObfuscatedName("fg.w")
-	public int[] frames;
+    public int[] frames;
 
-	@ObfuscatedName("fg.l")
-	public int length = 0;
+    public int length = 0;
 
-	@ObfuscatedName("fg.u")
-	public int field1784 = -1;
+    public int field1784 = -1;
 
-	@ObfuscatedName("fg.z")
-	public SeqGroupType field1792;
+    public SeqGroupType field1792;
 
-	@ObfuscatedName("fg.p")
-	public int field1787 = -1;
+    public int field1787 = -1;
 
-	@ObfuscatedName("fg.d")
-	public int[][] sound;
+    public int[][] sound;
 
-	@ObfuscatedName("fg.c")
-	public int replayoff = -1;
+    public int replayoff = -1;
 
-	@ObfuscatedName("fg.r")
-	public int priority = 5;
+    public int priority = 5;
 
-	@ObfuscatedName("fg.v")
-	public int mainhand = -1;
+    public int mainhand = -1;
 
-	@ObfuscatedName("fg.o")
-	public int offhand = -1;
+    public int offhand = -1;
 
-	@ObfuscatedName("fg.s")
-	public int replaycount = 99;
+    public int replaycount = 99;
 
-	@ObfuscatedName("fg.y")
-	public int field1767 = -1;
+    public int field1767 = -1;
 
-	@ObfuscatedName("fg.q")
-	public int field1782 = -1;
+    public int field1782 = -1;
 
-	@ObfuscatedName("fg.x")
-	public int field1768 = 2;
+    public int field1768 = 2;
 
-	@ObfuscatedName("fg.b")
-	public boolean field1786 = false;
+    public boolean field1786 = false;
 
-	@ObfuscatedName("fg.h")
-	public boolean field1772 = false;
+    public boolean field1772 = false;
 
-	@ObfuscatedName("fg.a")
-	public int[] field1788;
+    public int[] field1788;
 
-	@ObfuscatedName("fg.g")
-	public int[] field1789;
+    public int[] field1789;
 
-	@ObfuscatedName("fg.i")
-	public int[] field1790;
+    public int[] field1790;
 
-	@ObfuscatedName("fg.j")
-	public HashTable params;
+    public HashTable params;
 
-	@ObfuscatedName("fg.t")
-	public int field1783 = -1;
+    public int field1783 = -1;
 
 	public SeqType(int id, SeqTypeFactory factory) {
 		this.id = id;
 		this.factory = factory;
 	}
 
-	@ObfuscatedName("fg.e(Lalw;B)V")
-	public void decode(Packet buf) {
+    public void decode(Packet buf) {
 		while (true) {
 			int code = buf.g1();
 			if (code == 0) {
@@ -107,8 +79,7 @@ public class SeqType implements ConfigType {
 		}
 	}
 
-	@ObfuscatedName("fg.u(Lalw;II)V")
-	public void decode(Packet buf, int code) {
+    public void decode(Packet buf, int code) {
 		if (code == 1) {
 			int frameCount = buf.g2();
 			this.frames = new int[frameCount];
@@ -233,8 +204,7 @@ public class SeqType implements ConfigType {
 		}
 	}
 
-	@ObfuscatedName("fg.n(I)V")
-	public void postDecode() {
+    public void postDecode() {
 		if (this.field1767 == -1) {
 			if (this.field1792 == null || this.field1792.field1793 == null) {
 				this.field1767 = 0;
@@ -257,8 +227,7 @@ public class SeqType implements ConfigType {
 		}
 	}
 
-	@ObfuscatedName("fg.z(B)Z")
-	public boolean method2991() {
+    public boolean method2991() {
 		if (this.field1770 == null && this.field1784 == -1) {
 			return true;
 		}
@@ -277,8 +246,7 @@ public class SeqType implements ConfigType {
 		return var1;
 	}
 
-	@ObfuscatedName("fg.p(IIB)I")
-	public int method2981(int arg0, int arg1) {
+    public int method2981(int arg0, int arg1) {
 		if (this.params == null) {
 			return arg1;
 		} else {
@@ -287,8 +255,7 @@ public class SeqType implements ConfigType {
 		}
 	}
 
-	@ObfuscatedName("fg.d(ILjava/lang/String;I)Ljava/lang/String;")
-	public String method2989(int arg0, String arg1) {
+    public String method2989(int arg0, String arg1) {
 		if (this.params == null) {
 			return arg1;
 		} else {
@@ -297,8 +264,7 @@ public class SeqType implements ConfigType {
 		}
 	}
 
-	@ObfuscatedName("fg.c(I)Z")
-	public boolean method2985() {
+    public boolean method2985() {
 		return this.field1784 != -1;
 	}
 }

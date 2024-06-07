@@ -19,35 +19,25 @@ import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.SourceDataLine;
 import java.util.*;
 
-@ObfuscatedName("aiz")
 public class JavaSoundBackend extends SoundBackend {
 
-	@ObfuscatedName("aiz.n")
-	public java.util.HashMap field10688 = new java.util.HashMap();
+    public java.util.HashMap field10688 = new java.util.HashMap();
 
-	@ObfuscatedName("aiz.m")
-	public BussManager field10694 = new BussManager(this);
+    public BussManager field10694 = new BussManager(this);
 
-	@ObfuscatedName("aiz.k")
-	public volatile boolean field10690 = false;
+    public volatile boolean field10690 = false;
 
-	@ObfuscatedName("aiz.f")
-	public Thread field10691;
+    public Thread field10691;
 
-	@ObfuscatedName("aiz.w")
-	public Thread field10692;
+    public Thread field10692;
 
-	@ObfuscatedName("aiz.l")
-	public List field10693 = new ArrayList();
+    public List field10693 = new ArrayList();
 
-	@ObfuscatedName("aiz.u")
-	public Runnable field10687 = new JavaSoundBackend_Task1(this);
+    public Runnable field10687 = new JavaSoundBackend_Task1(this);
 
-	@ObfuscatedName("aiz.z")
-	public Runnable field10695 = new JavaSoundBackend_Task2(this);
+    public Runnable field10695 = new JavaSoundBackend_Task2(this);
 
-	@ObfuscatedName("tp")
-	public static class JavaSoundBackend_Task1 implements Runnable {
+    public static class JavaSoundBackend_Task1 implements Runnable {
 
 		// $FF: synthetic field
 		public final JavaSoundBackend this$0;
@@ -97,8 +87,7 @@ public class JavaSoundBackend extends SoundBackend {
 		}
 	}
 
-	@ObfuscatedName("tv")
-	public static class JavaSoundBackend_Task2 implements Runnable {
+    public static class JavaSoundBackend_Task2 implements Runnable {
 
 		// $FF: synthetic field
 		public final JavaSoundBackend this$0;
@@ -139,8 +128,7 @@ public class JavaSoundBackend extends SoundBackend {
 	}
 
 	// line 99
-	@ObfuscatedName("aiz.aw(I)Ljava/util/HashMap;")
-	public java.util.HashMap method16804() {
+    public java.util.HashMap method16804() {
 		return this.field10688;
 	}
 
@@ -173,8 +161,7 @@ public class JavaSoundBackend extends SoundBackend {
 	}
 
 	// line 138
-	@ObfuscatedName("aiz.e(I)V")
-	public void method5874() {
+    public void method5874() {
 		if (this.field10694 != null) {
 			this.field10694.update();
 		}
@@ -226,8 +213,7 @@ public class JavaSoundBackend extends SoundBackend {
 		}
 	}
 
-	@ObfuscatedName("tt")
-	public static class JavaSoundBackendComparator implements Comparator {
+    public static class JavaSoundBackendComparator implements Comparator {
 
 		// $FF: synthetic field
 		public final JavaSoundBackend this$0;
@@ -237,8 +223,7 @@ public class JavaSoundBackend extends SoundBackend {
 			this.this$0 = arg0;
 		}
 
-		@ObfuscatedName("tt.e(Lrq;Lrq;I)I")
-		public int method8639(AudioProcessingUnit arg0, AudioProcessingUnit arg1) {
+        public int method8639(AudioProcessingUnit arg0, AudioProcessingUnit arg1) {
 			float var3 = arg0.method7531();
 			float var4 = arg1.method7531();
 			if (var4 > var3) {
@@ -260,8 +245,7 @@ public class JavaSoundBackend extends SoundBackend {
 	}
 
 	// line 198
-	@ObfuscatedName("aiz.f(Ljava/lang/Object;I)I")
-	public int method5864(Object arg0) {
+    public int method5864(Object arg0) {
 		if (arg0 == null || !(arg0 instanceof SoundSample)) {
 			return 0;
 		}
@@ -272,8 +256,7 @@ public class JavaSoundBackend extends SoundBackend {
 		}
 	}
 
-	@ObfuscatedName("aiz.as(FI)Lts;")
-	public PcmPlayer method16806(float arg0) {
+    public PcmPlayer method16806(float arg0) {
 		float var2 = -1.0F;
 		float var3 = Float.MAX_VALUE;
 		PcmPlayer var4 = null;
@@ -296,8 +279,7 @@ public class JavaSoundBackend extends SoundBackend {
 		}
 	}
 
-	@ObfuscatedName("aiz.n(IILnd;Lmw;IFB)Ljava/lang/Object;")
-	public Object playSample(int arg0, int arg1, AudioFormat format, AudioEndianness endianness, int arg4, float arg5) {
+    public Object playSample(int arg0, int arg1, AudioFormat format, AudioEndianness endianness, int arg4, float arg5) {
 		PcmPlayer var7 = this.method16806((float) arg1 * arg5);
 		SoundSample var8 = new SoundSample(this, var7, arg4, (float) arg1 * arg5, format.field3445, arg0 < 2 ? 2 : arg0, AudioFormat.field3441 == format || AudioFormat.field3442 == format, AudioEndianness.BIG == endianness);
 		PcmPlayer var9 = var8.field6863;
@@ -307,8 +289,7 @@ public class JavaSoundBackend extends SoundBackend {
 		}
 	}
 
-	@ObfuscatedName("aiz.m(Ljava/lang/Object;I)V")
-	public void method5863(Object arg0) {
+    public void method5863(Object arg0) {
 		if (arg0 == null || !(arg0 instanceof SoundSample)) {
 			return;
 		}
@@ -319,8 +300,7 @@ public class JavaSoundBackend extends SoundBackend {
 		}
 	}
 
-	@ObfuscatedName("aiz.k(Ljava/lang/Object;[BIII)V")
-	public void method5875(Object arg0, byte[] arg1, int arg2, int arg3) {
+    public void method5875(Object arg0, byte[] arg1, int arg2, int arg3) {
 		if (arg0 == null || !(arg0 instanceof SoundSample)) {
 			return;
 		}
@@ -331,8 +311,7 @@ public class JavaSoundBackend extends SoundBackend {
 		}
 	}
 
-	@ObfuscatedName("aiz.w(Lqk;B)Lrq;")
-	public AudioProcessingUnit method5865(SoundRelatedType2 arg0) {
+    public AudioProcessingUnit method5865(SoundRelatedType2 arg0) {
 		java.util.HashMap var2 = this.field10688;
 		synchronized (this.field10688) {
 			AudioProcessingUnit[] var3 = (AudioProcessingUnit[]) this.field10688.get(arg0);
@@ -351,19 +330,16 @@ public class JavaSoundBackend extends SoundBackend {
 		}
 	}
 
-	@ObfuscatedName("aiz.l(Lmj;I)Ljava/lang/Object;")
-	public Object method5866(AudioBuss arg0) {
+    public Object method5866(AudioBuss arg0) {
 		return null;
 	}
 
-	@ObfuscatedName("aiz.u(I)Lmb;")
-	public BussManager getBussManager() {
+    public BussManager getBussManager() {
 		return this.field10694;
 	}
 
 	// line 278
-	@ObfuscatedName("aiz.z(B)V")
-	public void method5868() {
+    public void method5868() {
 		java.util.HashMap var1 = this.method16804();
 		synchronized (var1) {
 			java.util.Iterator var3 = var1.keySet().iterator();
@@ -409,44 +385,32 @@ public class JavaSoundBackend extends SoundBackend {
 		}
 	}
 
-	@ObfuscatedName("ts")
-	public static class PcmPlayer {
+    public static class PcmPlayer {
 
 		// $FF: synthetic field
 		public final JavaSoundBackend this$0;
 
-		@ObfuscatedName("ts.e")
-		public boolean field6869;
+        public boolean field6869;
 
-		@ObfuscatedName("ts.n")
-		public SourceDataLine field6871;
+        public SourceDataLine field6871;
 
-		@ObfuscatedName("ts.m")
-		public byte[] field6876;
+        public byte[] field6876;
 
-		@ObfuscatedName("ts.k")
-		public byte[] field6870;
+        public byte[] field6870;
 
-		@ObfuscatedName("ts.f")
-		public int field6872;
+        public int field6872;
 
-		@ObfuscatedName("ts.w")
-		public int field6868;
+        public int field6868;
 
-		@ObfuscatedName("ts.l")
-		public int field6874;
+        public int field6874;
 
-		@ObfuscatedName("ts.u")
-		public float field6875;
+        public float field6875;
 
-		@ObfuscatedName("ts.z")
-		public int field6873;
+        public int field6873;
 
-		@ObfuscatedName("ts.p")
-		public int field6877;
+        public int field6877;
 
-		@ObfuscatedName("ts.d")
-		public List field6878;
+        public List field6878;
 
 		// line 340
 		public PcmPlayer(JavaSoundBackend arg0, float arg1, int arg2) {
@@ -479,15 +443,13 @@ public class JavaSoundBackend extends SoundBackend {
 			}
 		}
 
-		@ObfuscatedName("ts.e(I)V")
-		public void method8646() {
+        public void method8646() {
 			if (this.field6869 && this.field6871 != null) {
 				this.field6872 = this.field6871.available();
 			}
 		}
 
-		@ObfuscatedName("ts.n(I)V")
-		public void method8647() {
+        public void method8647() {
 			this.field6868 = 0;
 			this.method8648();
 			while (this.field6868 > 0) {
@@ -505,8 +467,7 @@ public class JavaSoundBackend extends SoundBackend {
 			}
 		}
 
-		@ObfuscatedName("ts.m(I)V")
-		public void method8648() {
+        public void method8648() {
 			synchronized (this) {
 				int var2 = Integer.MAX_VALUE;
 				double var3 = (double) (this.field6873 / 8 * this.field6877);
@@ -624,52 +585,39 @@ public class JavaSoundBackend extends SoundBackend {
 			}
 		}
 
-		@ObfuscatedName("ts.k(Lth;B)V")
-		public void method8649(SoundSample arg0) {
+        public void method8649(SoundSample arg0) {
 			this.field6878.add(arg0);
 		}
 
-		@ObfuscatedName("ts.f(Lth;I)V")
-		public void method8650(SoundSample arg0) {
+        public void method8650(SoundSample arg0) {
 			this.field6878.remove(arg0);
 		}
 	}
 
-	@ObfuscatedName("th")
-	public static class SoundSample {
+    public static class SoundSample {
 
 		// $FF: synthetic field
 		public final JavaSoundBackend this$0;
 
-		@ObfuscatedName("th.e")
-		public PcmPlayer field6863;
+        public PcmPlayer field6863;
 
-		@ObfuscatedName("th.n")
-		public byte[] field6857;
+        public byte[] field6857;
 
-		@ObfuscatedName("th.m")
-		public byte[] field6858;
+        public byte[] field6858;
 
-		@ObfuscatedName("th.k")
-		public int field6865;
+        public int field6865;
 
-		@ObfuscatedName("th.f")
-		public int field6856;
+        public int field6856;
 
-		@ObfuscatedName("th.w")
-		public int field6860;
+        public int field6860;
 
-		@ObfuscatedName("th.l")
-		public int field6861;
+        public int field6861;
 
-		@ObfuscatedName("th.u")
-		public final float field6862;
+        public final float field6862;
 
-		@ObfuscatedName("th.z")
-		public final int field6859;
+        public final int field6859;
 
-		@ObfuscatedName("th.p")
-		public final int field6864;
+        public final int field6864;
 
 		// line 524
 		public SoundSample(JavaSoundBackend arg0, PcmPlayer arg1, int arg2, float arg3, int arg4, int arg5, boolean arg6, boolean arg7) {
@@ -686,8 +634,7 @@ public class JavaSoundBackend extends SoundBackend {
 			this.field6861 = 0;
 		}
 
-		@ObfuscatedName("th.e([BIIB)V")
-		public void method8626(byte[] arg0, int arg1, int arg2) {
+        public void method8626(byte[] arg0, int arg1, int arg2) {
 			int var4 = arg1;
 			while (var4 < arg1 + arg2) {
 				this.field6857[this.field6856] = arg0[var4];
@@ -699,8 +646,7 @@ public class JavaSoundBackend extends SoundBackend {
 			}
 		}
 
-		@ObfuscatedName("th.n(I)I")
-		public int method8628() {
+        public int method8628() {
 			return this.field6860;
 		}
 	}

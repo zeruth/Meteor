@@ -9,47 +9,36 @@ import jagdx.IDirect3DDevice;
 import jagdx.IUnknown;
 import jagdx.HRESULT;
 
-@ObfuscatedName("ath")
 public class DxFrameBuffer extends GpuFrameBuffer {
 
-	@ObfuscatedName("ath.k")
-	public final DxToolkit field12499;
+    public final DxToolkit field12499;
 
-	@ObfuscatedName("ath.f")
-	public int width;
+    public int width;
 
-	@ObfuscatedName("ath.w")
-	public int height;
+    public int height;
 
-	@ObfuscatedName("ath.l")
-	public int field12502;
+    public int field12502;
 
-	@ObfuscatedName("ath.u")
-	public boolean field12504;
+    public boolean field12504;
 
-	@ObfuscatedName("ath.z")
-	public FrameBufferInterface field12498 = null;
+    public FrameBufferInterface field12498 = null;
 
-	@ObfuscatedName("ath.p")
-	public final DxGraphicsDeletable[] field12505 = new DxGraphicsDeletable[4];
+    public final DxGraphicsDeletable[] field12505 = new DxGraphicsDeletable[4];
 
 	public DxFrameBuffer(DxToolkit arg0) {
 		super(arg0);
 		this.field12499 = arg0;
 	}
 
-	@ObfuscatedName("ath.e()I")
-	public int getWidth() {
+    public int getWidth() {
 		return this.width;
 	}
 
-	@ObfuscatedName("ath.n()I")
-	public int getHeight() {
+    public int getHeight() {
 		return this.height;
 	}
 
-	@ObfuscatedName("ath.x(Ldw;)V")
-	public void method15441(EffectInterface arg0) {
+    public void method15441(EffectInterface arg0) {
 		FrameBufferInterface var2 = (FrameBufferInterface) arg0;
 		if (arg0 == null) {
 			this.field12502 &= 0xFFFFFFEF;
@@ -79,8 +68,7 @@ public class DxFrameBuffer extends GpuFrameBuffer {
 		}
 	}
 
-	@ObfuscatedName("ath.b(ILdp;)V")
-	public void method15439(int arg0, GraphicsDeletable arg1) {
+    public void method15439(int arg0, GraphicsDeletable arg1) {
 		int var3 = 0x1 << arg0;
 		DxGraphicsDeletable var4 = (DxGraphicsDeletable) arg1;
 		if (arg1 == null) {
@@ -111,23 +99,19 @@ public class DxFrameBuffer extends GpuFrameBuffer {
 		}
 	}
 
-	@ObfuscatedName("ath.as(IJ)Z")
-	public boolean method19644(int arg0, long arg1) {
+    public boolean method19644(int arg0, long arg1) {
 		return HRESULT.SUCCEEDED(IDirect3DDevice.SetRenderTarget(this.field12499.device, arg0, arg1));
 	}
 
-	@ObfuscatedName("ath.at(J)Z")
-	public boolean method19645(long arg0) {
+    public boolean method19645(long arg0) {
 		return HRESULT.SUCCEEDED(IDirect3DDevice.SetDepthStencilSurface(this.field12499.device, arg0));
 	}
 
-	@ObfuscatedName("ath.h()Z")
-	public boolean method15446() {
+    public boolean method15446() {
 		return this.field12505[0] != null;
 	}
 
-	@ObfuscatedName("ath.k()Z")
-	public boolean method1630() {
+    public boolean method1630() {
 		for (int var1 = 0; var1 < 4; var1++) {
 			DxGraphicsDeletable var2 = this.field12505[var1];
 			if (var2 != null) {
@@ -142,8 +126,7 @@ public class DxFrameBuffer extends GpuFrameBuffer {
 		return super.method1630();
 	}
 
-	@ObfuscatedName("ath.f()Z")
-	public boolean method1631() {
+    public boolean method1631() {
 		for (int var1 = 1; var1 < 4; var1++) {
 			DxGraphicsDeletable var2 = this.field12505[var1];
 			if (var2 != null) {
@@ -157,8 +140,7 @@ public class DxFrameBuffer extends GpuFrameBuffer {
 		return true;
 	}
 
-	@ObfuscatedName("ath.a(IIIIIIZZ)V")
-	public void method15440(int arg0, int arg1, int arg2, int arg3, int arg4, int arg5, boolean arg6, boolean arg7) {
+    public void method15440(int arg0, int arg1, int arg2, int arg3, int arg4, int arg5, boolean arg6, boolean arg7) {
 		if (arg6) {
 			long var9 = IDirect3DDevice.GetRenderTarget(this.field12499.device, 0);
 			IDirect3DDevice.StretchRect(this.field12499.device, this.field12505[0].method6216(), arg0, arg1, arg2, arg3, var9, arg4, arg5, arg2, arg3, 0);
@@ -166,8 +148,7 @@ public class DxFrameBuffer extends GpuFrameBuffer {
 		}
 	}
 
-	@ObfuscatedName("ath.m()V")
-	public void method1629() {
+    public void method1629() {
 		if (this.field12498 != null) {
 			this.field12498.delete();
 		}
@@ -178,8 +159,7 @@ public class DxFrameBuffer extends GpuFrameBuffer {
 		}
 	}
 
-	@ObfuscatedName("ath.ad()V")
-	public void method19646() {
+    public void method19646() {
 		if (this.field12498 != null) {
 			this.field12498.method6215();
 		}

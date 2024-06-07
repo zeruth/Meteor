@@ -6,23 +6,17 @@ import deob.ObfuscatedName;
 import java.io.EOFException;
 import java.io.IOException;
 
-@ObfuscatedName("uf")
 public final class DiskStore {
 
-	@ObfuscatedName("uf.e")
-	public static byte[] field7090 = new byte[520];
+    public static byte[] field7090 = new byte[520];
 
-	@ObfuscatedName("uf.n")
-	public BufferedFile field7087 = null;
+    public BufferedFile field7087 = null;
 
-	@ObfuscatedName("uf.m")
-	public BufferedFile field7088 = null;
+    public BufferedFile field7088 = null;
 
-	@ObfuscatedName("uf.k")
-	public int field7086;
+    public int field7086;
 
-	@ObfuscatedName("uf.f")
-	public int field7089 = 65000;
+    public int field7089 = 65000;
 
 	public DiskStore(int arg0, BufferedFile arg1, BufferedFile arg2, int arg3) {
 		this.field7086 = arg0;
@@ -31,8 +25,7 @@ public final class DiskStore {
 		this.field7089 = arg3;
 	}
 
-	@ObfuscatedName("uf.e(II)[B")
-	public byte[] read(int arg0) {
+    public byte[] read(int arg0) {
 		BufferedFile var2 = this.field7087;
 		synchronized (this.field7087) {
 			Object var10000;
@@ -113,8 +106,7 @@ public final class DiskStore {
 		}
 	}
 
-	@ObfuscatedName("uf.n(I[BII)Z")
-	public boolean method9011(int arg0, byte[] arg1, int arg2) {
+    public boolean method9011(int arg0, byte[] arg1, int arg2) {
 		BufferedFile var4 = this.field7087;
 		synchronized (this.field7087) {
 			if (arg2 < 0 || arg2 > this.field7089) {
@@ -128,8 +120,7 @@ public final class DiskStore {
 		}
 	}
 
-	@ObfuscatedName("uf.m(I[BIZB)Z")
-	public boolean method9012(int arg0, byte[] arg1, int arg2, boolean arg3) {
+    public boolean method9012(int arg0, byte[] arg1, int arg2, boolean arg3) {
 		BufferedFile var5 = this.field7087;
 		synchronized (this.field7087) {
 			try {

@@ -5,38 +5,27 @@ import com.jagex.game.client.MutableConfig;
 import com.jagex.game.config.ConfigType;
 import deob.ObfuscatedName;
 
-@ObfuscatedName("aaz")
 public class FloorUnderlayType implements ConfigType, MutableConfig {
 
-	@ObfuscatedName("aaz.e")
-	public int colour = 0;
+    public int colour = 0;
 
-	@ObfuscatedName("aaz.n")
-	public int material = 0;
+    public int material = 0;
 
-	@ObfuscatedName("aaz.m")
-	public int materialscale = 512;
+    public int materialscale = 512;
 
-	@ObfuscatedName("aaz.k")
-	public boolean hardshadow = true;
+    public boolean hardshadow = true;
 
-	@ObfuscatedName("aaz.f")
-	public boolean occlude = true;
+    public boolean occlude = true;
 
-	@ObfuscatedName("aaz.w")
-	public int hue;
+    public int hue;
 
-	@ObfuscatedName("aaz.l")
-	public int saturation;
+    public int saturation;
 
-	@ObfuscatedName("aaz.u")
-	public int lightness;
+    public int lightness;
 
-	@ObfuscatedName("aaz.z")
-	public int chroma;
+    public int chroma;
 
-	@ObfuscatedName("aaz.e(Lalw;B)V")
-	public void decode(Packet buf) {
+    public void decode(Packet buf) {
 		while (true) {
 			int var2 = buf.g1();
 			if (var2 == 0) {
@@ -47,8 +36,7 @@ public class FloorUnderlayType implements ConfigType, MutableConfig {
 		}
 	}
 
-	@ObfuscatedName("aaz.u(Lalw;IB)V")
-	public void decode(Packet buf, int code) {
+    public void decode(Packet buf, int code) {
 		if (code == 1) {
 			this.colour = buf.g3();
 			this.computeColour(this.colour);
@@ -67,8 +55,7 @@ public class FloorUnderlayType implements ConfigType, MutableConfig {
 		}
 	}
 
-	@ObfuscatedName("aaz.p(II)V")
-	public void computeColour(int arg0) {
+    public void computeColour(int arg0) {
 		double var2 = (double) (arg0 >> 16 & 0xFF) / 256.0D;
 		double var4 = (double) (arg0 >> 8 & 0xFF) / 256.0D;
 		double var6 = (double) (arg0 & 0xFF) / 256.0D;
@@ -128,11 +115,9 @@ public class FloorUnderlayType implements ConfigType, MutableConfig {
 		this.hue = (int) ((double) this.chroma * var18);
 	}
 
-	@ObfuscatedName("aaz.n(I)V")
-	public void postDecode() {
+    public void postDecode() {
 	}
 
-	@ObfuscatedName("aaz.z(IB)V")
-	public void setId(int arg0) {
+    public void setId(int arg0) {
 	}
 }

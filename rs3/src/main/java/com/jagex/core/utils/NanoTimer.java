@@ -2,48 +2,38 @@ package com.jagex.core.utils;
 
 import deob.ObfuscatedName;
 
-@ObfuscatedName("aja")
 public class NanoTimer extends Timer {
 
-	@ObfuscatedName("aja.e")
-	public long field11119 = 0L;
+    public long field11119 = 0L;
 
-	@ObfuscatedName("aja.n")
-	public long field11115 = 0L;
+    public long field11115 = 0L;
 
-	@ObfuscatedName("aja.m")
-	public long field11116 = 0L;
+    public long field11116 = 0L;
 
-	@ObfuscatedName("aja.k")
-	public long[] field11118 = new long[10];
+    public long[] field11118 = new long[10];
 
-	@ObfuscatedName("aja.f")
-	public int field11120 = 0;
+    public int field11120 = 0;
 
-	@ObfuscatedName("aja.w")
-	public int field11117 = 1;
+    public int field11117 = 1;
 
 	public NanoTimer() {
 		this.field11119 = System.nanoTime();
 		this.field11115 = System.nanoTime();
 	}
 
-	@ObfuscatedName("aja.m(B)V")
-	public void method8156() {
+    public void method8156() {
 		this.field11116 = 0L;
 		if (this.field11115 > this.field11119) {
 			this.field11119 += this.field11115 - this.field11119;
 		}
 	}
 
-	@ObfuscatedName("aja.k(I)J")
-	public long method8159() {
+    public long method8159() {
 		this.field11119 += this.method17363();
 		return this.field11115 > this.field11119 ? (this.field11115 - this.field11119) / 1000000L : 0L;
 	}
 
-	@ObfuscatedName("aja.f(J)I")
-	public int method8160(long arg0) {
+    public int method8160(long arg0) {
 		if (this.field11115 > this.field11119) {
 			this.field11116 += this.field11115 - this.field11119;
 			this.field11119 += this.field11115 - this.field11119;
@@ -61,13 +51,11 @@ public class NanoTimer extends Timer {
 		return var3;
 	}
 
-	@ObfuscatedName("aja.w(I)J")
-	public long method8173() {
+    public long method8173() {
 		return this.field11119;
 	}
 
-	@ObfuscatedName("aja.h(I)J")
-	public long method17363() {
+    public long method17363() {
 		long var1 = System.nanoTime();
 		long var3 = var1 - this.field11116;
 		this.field11116 = var1;

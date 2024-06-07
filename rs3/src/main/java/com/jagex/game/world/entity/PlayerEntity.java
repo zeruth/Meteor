@@ -28,83 +28,57 @@ import rs2.client.Client;
 import rs2.client.scene.entities.NpcEntity;
 import rs2.client.scene.entities.PathingEntity;
 
-@ObfuscatedName("aqk")
 public class PlayerEntity extends PathingEntity {
 
-	@ObfuscatedName("aqk.cn")
-	public String name;
+    public String name;
 
-	@ObfuscatedName("aqk.cv")
-	public String nameUnfiltered;
+    public String nameUnfiltered;
 
-	@ObfuscatedName("aqk.cp")
-	public int titleId;
+    public int titleId;
 
-	@ObfuscatedName("aqk.ca")
-	public String title;
+    public String title;
 
-	@ObfuscatedName("aqk.cx")
-	public byte gender = 0;
+    public byte gender = 0;
 
-	@ObfuscatedName("aqk.cw")
-	public PlayerModel model;
+    public PlayerModel model;
 
-	@ObfuscatedName("aqk.ct")
-	public int[] headIconsIds = new int[8];
+    public int[] headIconsIds = new int[8];
 
-	@ObfuscatedName("aqk.cf")
-	public int[] headIconsGroups = new int[8];
+    public int[] headIconsGroups = new int[8];
 
-	@ObfuscatedName("aqk.co")
-	public int combatLevel = 0;
+    public int combatLevel = 0;
 
-	@ObfuscatedName("aqk.cr")
-	public int field12072 = 0;
+    public int field12072 = 0;
 
-	@ObfuscatedName("aqk.cm")
-	public int field12058 = -1;
+    public int field12058 = -1;
 
-	@ObfuscatedName("aqk.cq")
-	public int field12059 = 0;
+    public int field12059 = 0;
 
-	@ObfuscatedName("aqk.ch")
-	public int field12056 = -1;
+    public int field12056 = -1;
 
-	@ObfuscatedName("aqk.cb")
-	public boolean field12053 = false;
+    public boolean field12053 = false;
 
-	@ObfuscatedName("aqk.cs")
-	public int field12060 = 0;
+    public int field12060 = 0;
 
-	@ObfuscatedName("aqk.cy")
-	public int bgsound_player = -1;
+    public int bgsound_player = -1;
 
-	@ObfuscatedName("aqk.cc")
-	public int bgsound_crawl_player = -1;
+    public int bgsound_crawl_player = -1;
 
-	@ObfuscatedName("aqk.cz")
-	public int bgsound_walk_player = -1;
+    public int bgsound_walk_player = -1;
 
-	@ObfuscatedName("aqk.ck")
-	public int bgsound_run_player = -1;
+    public int bgsound_run_player = -1;
 
-	@ObfuscatedName("aqk.cj")
-	public int bgsound_range = 0;
+    public int bgsound_range = 0;
 
-	@ObfuscatedName("aqk.cd")
-	public int bgsound_volume = 255;
+    public int bgsound_volume = 255;
 
-	@ObfuscatedName("aqk.dd")
-	public int bas;
+    public int bas;
 
-	@ObfuscatedName("aqk.dr")
-	public CommunityPartnerType field12070 = CommunityPartnerType.field1950;
+    public CommunityPartnerType field12070 = CommunityPartnerType.field1950;
 
-	@ObfuscatedName("aqk.da")
-	public PlayerVisibility visibility = PlayerVisibility.VISIBLE;
+    public PlayerVisibility visibility = PlayerVisibility.VISIBLE;
 
-	@ObfuscatedName("aqk.dt")
-	public boolean field12048 = false;
+    public boolean field12048 = false;
 
 	public PlayerEntity(Scene arg0) {
 		super(arg0, Client.varPlayerTypeList);
@@ -116,8 +90,7 @@ public class PlayerEntity extends PathingEntity {
 		this.method19112();
 	}
 
-	@ObfuscatedName("aqk.hq(Lalw;BI)V")
-	public void setIdentityKit(Packet buf, byte gender) {
+    public void setIdentityKit(Packet buf, byte gender) {
 		this.gender = gender;
 		int var3 = -1;
 		this.field12060 = 0;
@@ -214,8 +187,7 @@ public class PlayerEntity extends PathingEntity {
 		}
 	}
 
-	@ObfuscatedName("aqk.hf(Lalw;I)V")
-	public final void getAppearance(Packet buf) {
+    public final void getAppearance(Packet buf) {
 		buf.pos = 0;
 		int info = buf.g1();
 		byte gender = (byte) (info & 0x1);
@@ -283,8 +255,7 @@ public class PlayerEntity extends PathingEntity {
 		}
 	}
 
-	@ObfuscatedName("aqk.hr(Lalw;I)V")
-	public void getHeadIcons(Packet buf) {
+    public void getHeadIcons(Packet buf) {
 		buf.pos = 0;
 		int slots = buf.g1();
 		for (int index = 0; index < this.headIconsIds.length; index++) {
@@ -300,8 +271,7 @@ public class PlayerEntity extends PathingEntity {
 		}
 	}
 
-	@ObfuscatedName("aqk.hs(B)V")
-	public void method19112() {
+    public void method19112() {
 		for (int var1 = 0; var1 < this.headIconsIds.length; var1++) {
 			this.headIconsIds[var1] = -1;
 		}
@@ -310,13 +280,11 @@ public class PlayerEntity extends PathingEntity {
 		}
 	}
 
-	@ObfuscatedName("aqk.fv(Ldh;B)Luq;")
-	public EntityBounds method17371(Toolkit toolkit) {
+    public EntityBounds method17371(Toolkit toolkit) {
 		return null;
 	}
 
-	@ObfuscatedName("aqk.fc(Ldh;I)Ltl;")
-	public PickableEntity draw(Toolkit toolkit) {
+    public PickableEntity draw(Toolkit toolkit) {
 		if (this.model == null || !this.method19114(toolkit, 2048)) {
 			return null;
 		}
@@ -429,8 +397,7 @@ public class PlayerEntity extends PathingEntity {
 		return var8;
 	}
 
-	@ObfuscatedName("aqk.fw(Ldh;I)V")
-	public void method17373(Toolkit toolkit) {
+    public void method17373(Toolkit toolkit) {
 		if (this.model == null || !this.field10449 && !this.method19114(toolkit, 0)) {
 			return;
 		}
@@ -443,8 +410,7 @@ public class PlayerEntity extends PathingEntity {
 		}
 	}
 
-	@ObfuscatedName("aqk.hh(Ldh;Lou;Ldo;JJIJ)V")
-	public void method19113(Toolkit arg0, Matrix4x3 arg1, Model arg2, long arg3, long arg4, int arg5, long arg6) {
+    public void method19113(Toolkit arg0, Matrix4x3 arg1, Model arg2, long arg3, long arg4, int arg5, long arg6) {
 		long var11 = arg3 * arg3 + arg4 * arg4;
 		if (var11 < 262144L || var11 > arg6) {
 			return;
@@ -458,8 +424,7 @@ public class PlayerEntity extends PathingEntity {
 		}
 	}
 
-	@ObfuscatedName("aqk.hp(Ldh;IB)Z")
-	public boolean method19114(Toolkit arg0, int arg1) {
+    public boolean method19114(Toolkit arg0, int arg1) {
 		int var3 = arg1;
 		BASType var4 = this.getBASType();
 		AnimationNode var5 = this.field10454.hasSeqType() && !this.field10454.method14355() ? this.field10454 : null;
@@ -523,19 +488,16 @@ public class PlayerEntity extends PathingEntity {
 		return true;
 	}
 
-	@ObfuscatedName("aqk.hy(ZB)Ljava/lang/String;")
-	public String getNameWithExtras(boolean arg0) {
+    public String getNameWithExtras(boolean arg0) {
 		String var2 = arg0 ? this.name : this.nameUnfiltered;
 		return this.title == null ? var2 : this.title.replaceAll(TextUtil.NAME, var2);
 	}
 
-	@ObfuscatedName("aqk.he(ZI)Ljava/lang/String;")
-	public String getName(boolean isFiltered) {
+    public String getName(boolean isFiltered) {
 		return isFiltered ? this.name : this.nameUnfiltered;
 	}
 
-	@ObfuscatedName("aqk.hn(IIBB)V")
-	public final void movePlayer(int x, int z, byte speed) {
+    public final void movePlayer(int x, int z, byte speed) {
 		if (this.field10454.hasSeqType() && this.field10454.getSeqType().field1782 == 1) {
 			this.field10427 = null;
 			this.field10454.method14362(-1);
@@ -559,8 +521,7 @@ public class PlayerEntity extends PathingEntity {
 		}
 	}
 
-	@ObfuscatedName("aqk.hi(IIB)V")
-	public void tele(int x, int z) {
+    public void tele(int x, int z) {
 		this.routeLength = 0;
 		this.field10396 = 0;
 		this.seqTrigger = 0;
@@ -580,8 +541,7 @@ public class PlayerEntity extends PathingEntity {
 		}
 	}
 
-	@ObfuscatedName("aqk.hw(IIBI)V")
-	public final void move(int nextX, int nextZ, byte speed) {
+    public final void move(int nextX, int nextZ, byte speed) {
 		if (this.routeLength < this.routeWaypointX.length - 1) {
 			this.routeLength++;
 		}
@@ -595,28 +555,23 @@ public class PlayerEntity extends PathingEntity {
 		this.routeSpeeds[0] = speed;
 	}
 
-	@ObfuscatedName("aqk.ht(I)Z")
-	public final boolean method19119() {
+    public final boolean method19119() {
 		return this.model != null;
 	}
 
-	@ObfuscatedName("aqk.bz(I)I")
-	public int size() {
+    public int size() {
 		return this.model == null || this.model.field7892 == -1 ? super.size() : ((NPCType) Client.npcTypeList.list(this.model.field7892)).size;
 	}
 
-	@ObfuscatedName("aqk.bj(S)I")
-	public int getBASId() {
+    public int getBASId() {
 		return this.bas;
 	}
 
-	@ObfuscatedName("aqk.bs(B)I")
-	public int getCoverMarker() {
+    public int getCoverMarker() {
 		return -1;
 	}
 
-	@ObfuscatedName("aqk.fa(Ldh;IIB)Z")
-	public boolean method17375(Toolkit toolkit, int arg1, int arg2) {
+    public boolean method17375(Toolkit toolkit, int arg1, int arg2) {
 		if (this.model == null || !this.method19114(toolkit, 131072)) {
 			return false;
 		}
@@ -634,28 +589,23 @@ public class PlayerEntity extends PathingEntity {
 		return var5;
 	}
 
-	@ObfuscatedName("aqk.fp(I)Z")
-	public final boolean method17379() {
+    public final boolean method17379() {
 		return false;
 	}
 
-	@ObfuscatedName("aqk.fq(Ldh;Lalh;IIIZB)V")
-	public final void mergeNormals(Toolkit toolkit, GraphEntity entity, int arg2, int arg3, int arg4, boolean arg5) {
+    public final void mergeNormals(Toolkit toolkit, GraphEntity entity, int arg2, int arg3, int arg4, boolean arg5) {
 		throw new IllegalStateException();
 	}
 
-	@ObfuscatedName("aqk.ff(B)V")
-	public final void applyLighting() {
+    public final void applyLighting() {
 		throw new IllegalStateException();
 	}
 
-	@ObfuscatedName("aqk.cg(I)Z")
-	public boolean showChat() {
+    public boolean showChat() {
 		return Client.graphicsDefaults.playerShouldDisplayChat;
 	}
 
-	@ObfuscatedName("aqk.ce(I)Lsu;")
-	public EntityChatLine getChatLine() {
+    public EntityChatLine getChatLine() {
 		if (this.currentChatLine != null) {
 			if (this.currentChatLine.text == null) {
 				return null;
@@ -667,41 +617,34 @@ public class PlayerEntity extends PathingEntity {
 		return null;
 	}
 
-	@ObfuscatedName("aqk.hc(Ljava/lang/String;III)V")
-	public void addMessage(String arg0, int arg1, int arg2) {
+    public void addMessage(String arg0, int arg1, int arg2) {
 		this.setChatLine(arg0, arg1, arg2, GameShell.getLogicRate() * Client.graphicsDefaults.playerChatTimeout);
 	}
 
-	@ObfuscatedName("aqk.e(I)Ljl;")
-	public CameraTrackableType getCameraTrackableType() {
+    public CameraTrackableType getCameraTrackableType() {
 		return CameraTrackableType.PLAYER;
 	}
 
-	@ObfuscatedName("aqk.n(I)I")
-	public int getIndex() {
+    public int getIndex() {
 		return this.localPlayerIndex;
 	}
 
-	@ObfuscatedName("aqk.m(B)Lakt;")
-	public CoordFine getTrackableCoord() {
+    public CoordFine getTrackableCoord() {
 		CoordGrid var1 = Client.world.getBase();
 		return CoordFine.method258(this.level, (int) this.getTransform().trans.x + var1.x * 512, -((int) this.getTransform().trans.y), (int) this.getTransform().trans.z + var1.z * 512);
 	}
 
-	@ObfuscatedName("aqk.k(I)Lov;")
-	public Quaternion method4668() {
+    public Quaternion method4668() {
 		Quaternion var1 = Quaternion.create();
 		var1.setToRotation(Trig1.radians(this.field10395.field528), 0.0F, 0.0F);
 		return var1;
 	}
 
-	@ObfuscatedName("aqk.f(B)Lox;")
-	public Vector3 createVector3() {
+    public Vector3 createVector3() {
 		return Vector3.create();
 	}
 
-	@ObfuscatedName("aqk.cx(I)I")
-	public int targeted() {
+    public int targeted() {
 		return -this.localPlayerIndex - 1;
 	}
 }

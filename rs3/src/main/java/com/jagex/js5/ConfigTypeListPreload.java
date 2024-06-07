@@ -13,26 +13,19 @@ import deob.ObfuscatedName;
 import java.lang.reflect.Array;
 import java.util.Iterator;
 
-@ObfuscatedName("acd")
 public class ConfigTypeListPreload implements ConfigTypeList {
 
-	@ObfuscatedName("acd.e")
-	public final ConfigTypeFactory factory;
+    public final ConfigTypeFactory factory;
 
-	@ObfuscatedName("acd.n")
-	public final Js5ConfigGroup configGroup;
+    public final Js5ConfigGroup configGroup;
 
-	@ObfuscatedName("acd.m")
-	public final Js5 configClient;
+    public final Js5 configClient;
 
-	@ObfuscatedName("acd.k")
-	public int num;
+    public int num;
 
-	@ObfuscatedName("acd.f")
-	public ConfigType field8844;
+    public ConfigType field8844;
 
-	@ObfuscatedName("acd.w")
-	public ConfigType[] preloaded;
+    public ConfigType[] preloaded;
 
 	public ConfigTypeListPreload(ModeGame arg0, Language arg1, Js5ConfigGroup configGroup, Js5 configClient, ConfigTypeFactory factory, boolean preload) {
 		this.factory = factory;
@@ -47,8 +40,7 @@ public class ConfigTypeListPreload implements ConfigTypeList {
 		}
 	}
 
-	@ObfuscatedName("acd.e(II)Lay;")
-	public ConfigType list(int id) {
+    public ConfigType list(int id) {
 		if (id < 0) {
 			if (this.field8844 == null) {
 				this.field8844 = this.factory.create(-1, this);
@@ -62,8 +54,7 @@ public class ConfigTypeListPreload implements ConfigTypeList {
 		}
 	}
 
-	@ObfuscatedName("acd.u(II)V")
-	public void list_uncached(int id) {
+    public void list_uncached(int id) {
 		if (this.preloaded[id] != null) {
 			return;
 		}
@@ -82,8 +73,7 @@ public class ConfigTypeListPreload implements ConfigTypeList {
 	}
 
 	// line 59
-	@ObfuscatedName("acd.n(I)I")
-	public int length() {
+    public int length() {
 		return this.preloaded.length;
 	}
 
@@ -92,14 +82,12 @@ public class ConfigTypeListPreload implements ConfigTypeList {
 		return new ConfigTypeListPreloadIterator(this);
 	}
 
-	@ObfuscatedName("ack")
-	public static class ConfigTypeListPreloadIterator implements Iterator {
+    public static class ConfigTypeListPreloadIterator implements Iterator {
 
 		// $FF: synthetic field
 		public final ConfigTypeListPreload this$0;
 
-		@ObfuscatedName("ack.e")
-		public int field8850;
+        public int field8850;
 
 		// line 63
 		public ConfigTypeListPreloadIterator(ConfigTypeListPreload arg0) {

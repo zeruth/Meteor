@@ -8,17 +8,13 @@ import com.jagex.game.config.db.DBUtils;
 import com.jagex.game.config.vartype.constants.ScriptVarType;
 import deob.ObfuscatedName;
 
-@ObfuscatedName("adb")
 public class DBTableType implements ConfigType, MutableConfig {
 
-	@ObfuscatedName("adb.e")
-	public ScriptVarType[][] types;
+    public ScriptVarType[][] types;
 
-	@ObfuscatedName("adb.n")
-	public Object[][] defaultValues;
+    public Object[][] defaultValues;
 
-	@ObfuscatedName("adb.e(Lalw;B)V")
-	public void decode(Packet buf) {
+    public void decode(Packet buf) {
 		while (true) {
 			int code = buf.g1();
 			if (code == 0) {
@@ -28,8 +24,7 @@ public class DBTableType implements ConfigType, MutableConfig {
 		}
 	}
 
-	@ObfuscatedName("adb.u(Lalw;IS)V")
-	public void decode(Packet buf, int code) {
+    public void decode(Packet buf, int code) {
 		if (code != 1) {
 			return;
 		}
@@ -54,11 +49,9 @@ public class DBTableType implements ConfigType, MutableConfig {
 		}
 	}
 
-	@ObfuscatedName("adb.n(I)V")
-	public void postDecode() {
+    public void postDecode() {
 	}
 
-	@ObfuscatedName("adb.z(IB)V")
-	public void setId(int arg0) {
+    public void setId(int arg0) {
 	}
 }

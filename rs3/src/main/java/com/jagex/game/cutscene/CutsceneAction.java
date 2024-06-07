@@ -3,18 +3,15 @@ package com.jagex.game.cutscene;
 import com.jagex.core.io.Packet;
 import deob.ObfuscatedName;
 
-@ObfuscatedName("ew")
 public abstract class CutsceneAction {
 
-	@ObfuscatedName("ew.e")
-	public final int field1750;
+    public final int field1750;
 
 	public CutsceneAction(Packet arg0) {
 		this.field1750 = arg0.g2();
 	}
 
-	@ObfuscatedName("aap.e(Lalw;I)Lew;")
-	public static CutsceneAction method14342(Packet arg0) {
+    public static CutsceneAction method14342(Packet arg0) {
 		int var1 = arg0.g1();
 		CutsceneCommand var2 = CutsceneCommand.method3108(var1);
 		CutsceneAction var3 = null;
@@ -112,15 +109,12 @@ public abstract class CutsceneAction {
 		return var3;
 	}
 
-	@ObfuscatedName("ew.m(I)V")
-	public void method2896() {
+    public void method2896() {
 	}
 
-	@ObfuscatedName("ew.k(I)Z")
-	public boolean method2891() {
+    public boolean method2891() {
 		return true;
 	}
 
-	@ObfuscatedName("ew.n(I)V")
-	public abstract void method2890();
+    public abstract void method2890();
 }

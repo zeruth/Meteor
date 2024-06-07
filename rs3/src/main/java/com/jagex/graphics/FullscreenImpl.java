@@ -5,14 +5,11 @@ import deob.ObfuscatedName;
 import java.awt.*;
 import java.lang.reflect.Field;
 
-@ObfuscatedName("aae")
 public class FullscreenImpl {
 
-	@ObfuscatedName("aae.e")
-	public GraphicsDevice field8534;
+    public GraphicsDevice field8534;
 
-	@ObfuscatedName("aae.n")
-	public DisplayMode field8533;
+    public DisplayMode field8533;
 
 	public FullscreenImpl() throws Exception {
 		GraphicsEnvironment var1 = GraphicsEnvironment.getLocalGraphicsEnvironment();
@@ -31,8 +28,7 @@ public class FullscreenImpl {
 		}
 	}
 
-	@ObfuscatedName("aae.e(I)[I")
-	public int[] method14465() {
+    public int[] method14465() {
 		DisplayMode[] var1 = this.field8534.getDisplayModes();
 		int[] var2 = new int[var1.length << 2];
 		for (int var3 = 0; var3 < var1.length; var3++) {
@@ -44,8 +40,7 @@ public class FullscreenImpl {
 		return var2;
 	}
 
-	@ObfuscatedName("aae.n(Ljava/awt/Frame;IIIII)V")
-	public void method14474(Frame arg0, int arg1, int arg2, int arg3, int arg4) {
+    public void method14474(Frame arg0, int arg1, int arg2, int arg3, int arg4) {
 		this.field8533 = this.field8534.getDisplayMode();
 		if (this.field8533 == null) {
 			throw new NullPointerException();
@@ -73,8 +68,7 @@ public class FullscreenImpl {
 		this.field8534.setDisplayMode(new DisplayMode(arg1, arg2, arg3, arg4));
 	}
 
-	@ObfuscatedName("aae.m(I)V")
-	public void method14467() {
+    public void method14467() {
 		if (this.field8533 != null) {
 			DisplayMode[] var1 = this.field8534.getDisplayModes();
 			boolean var2 = false;
@@ -100,8 +94,7 @@ public class FullscreenImpl {
 		this.method14468(null);
 	}
 
-	@ObfuscatedName("aae.k(Ljava/awt/Frame;I)V")
-	public void method14468(Frame arg0) {
+    public void method14468(Frame arg0) {
 		boolean var2 = false;
 		try {
 			Field var3 = Class.forName("sun.awt.Win32GraphicsDevice").getDeclaredField("valid");

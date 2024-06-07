@@ -3,17 +3,13 @@ package lzma.sdk.lzma;
 import lzma.sdk.rangecoder.BitTreeEncoder;
 import deob.ObfuscatedName;
 
-@ObfuscatedName("sb")
 public class Encoder {
 
-	@ObfuscatedName("sb.e")
-	public static byte[] g_FastPos = new byte[2048];
+    public static byte[] g_FastPos = new byte[2048];
 
-	@ObfuscatedName("sb.m")
-	public Optimal[] _optimum;
+    public Optimal[] _optimum;
 
-	@ObfuscatedName("sb.k")
-	public BitTreeEncoder[] _posSlotEncoder;
+    public BitTreeEncoder[] _posSlotEncoder;
 
 	static {
 		byte kFastSlots = 22;
@@ -49,8 +45,7 @@ public class Encoder {
 		}
 	}
 
-	@ObfuscatedName("so")
-	public static class LiteralEncoder {
+    public static class LiteralEncoder {
 
 		// $FF: synthetic field
 		public final Encoder this$0;
@@ -61,17 +56,14 @@ public class Encoder {
 		}
 	}
 
-	@ObfuscatedName("sy")
-	public static class LenEncoder {
+    public static class LenEncoder {
 
 		// $FF: synthetic field
 		public final Encoder this$0;
 
-		@ObfuscatedName("sy.e")
-		public BitTreeEncoder[] _lowCoder;
+        public BitTreeEncoder[] _lowCoder;
 
-		@ObfuscatedName("sy.n")
-		public BitTreeEncoder[] _midCoder;
+        public BitTreeEncoder[] _midCoder;
 
 		// line 65
 		public LenEncoder(Encoder arg0) {
@@ -87,8 +79,7 @@ public class Encoder {
 		}
 	}
 
-	@ObfuscatedName("ajb")
-	public static class LenPriceTableEncoder extends LenEncoder {
+    public static class LenPriceTableEncoder extends LenEncoder {
 
 		// $FF: synthetic field
 		public final Encoder this$0;
@@ -100,8 +91,7 @@ public class Encoder {
 		}
 	}
 
-	@ObfuscatedName("sf")
-	public static class Optimal {
+    public static class Optimal {
 
 		// $FF: synthetic field
 		public final Encoder this$0;

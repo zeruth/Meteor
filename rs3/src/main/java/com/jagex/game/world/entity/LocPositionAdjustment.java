@@ -4,17 +4,13 @@ import com.jagex.core.io.Packet;
 import com.jagex.math.ScaleRotTrans;
 import deob.ObfuscatedName;
 
-@ObfuscatedName("vz")
 public class LocPositionAdjustment {
 
-	@ObfuscatedName("vz.e")
-	public int angle;
+    public int angle;
 
-	@ObfuscatedName("vz.n")
-	public int shape;
+    public int shape;
 
-	@ObfuscatedName("vz.m")
-	public ScaleRotTrans field7539;
+    public ScaleRotTrans field7539;
 
 	public LocPositionAdjustment(Packet buf) {
 		this(buf, false);

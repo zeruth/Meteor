@@ -4,32 +4,23 @@ import com.jagex.core.datastruct.CacheKey;
 import com.jagex.core.io.Packet;
 import deob.ObfuscatedName;
 
-@ObfuscatedName("abo")
 public class IconCacheKey implements CacheKey {
 
-	@ObfuscatedName("abo.e")
-	public int field8607;
+    public int field8607;
 
-	@ObfuscatedName("abo.n")
-	public int field8602;
+    public int field8602;
 
-	@ObfuscatedName("abo.m")
-	public int field8604;
+    public int field8604;
 
-	@ObfuscatedName("abo.k")
-	public int field8605;
+    public int field8605;
 
-	@ObfuscatedName("abo.f")
-	public int field8606;
+    public int field8606;
 
-	@ObfuscatedName("abo.w")
-	public int field8603;
+    public int field8603;
 
-	@ObfuscatedName("abo.l")
-	public boolean field8608;
+    public boolean field8608;
 
-	@ObfuscatedName("abo.e()J")
-	public long hash() {
+    public long hash() {
 		long[] var1 = Packet.crc64table;
 		long var2 = -1L;
 		long var4 = var2 >>> 8 ^ var1[(int) ((var2 ^ (long) this.field8607) & 0xFFL)];
@@ -48,8 +39,7 @@ public class IconCacheKey implements CacheKey {
 		return var28 >>> 8 ^ var1[(int) ((var28 ^ (long) (this.field8608 ? 1 : 0)) & 0xFFL)];
 	}
 
-	@ObfuscatedName("abo.n(Lwk;)Z")
-	public boolean equal(CacheKey arg0) {
+    public boolean equal(CacheKey arg0) {
 		if (!(arg0 instanceof IconCacheKey)) {
 			return false;
 		}

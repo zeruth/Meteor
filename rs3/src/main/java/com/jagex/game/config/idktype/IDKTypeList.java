@@ -7,7 +7,6 @@ import com.jagex.game.config.Js5ConfigGroup;
 import com.jagex.js5.Js5;
 import deob.ObfuscatedName;
 
-@ObfuscatedName("aov")
 public class IDKTypeList extends CachingConfigTypeList {
 
 	public IDKTypeList(ModeGame modeGame, Language language, Js5 js5, Js5 factoryJs5) {

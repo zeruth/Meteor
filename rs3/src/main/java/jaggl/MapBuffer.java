@@ -5,10 +5,8 @@ import jaclib.memory.NativeBuffer;
 
 public class MapBuffer extends NativeBuffer {
 
-	@ObfuscatedName("jaggl/MapBuffer.m")
 	public int field213;
 
-	@ObfuscatedName("jaggl/MapBuffer.m([BIII)V")
 	@Override
 	public void method8(byte[] arg0, int arg1, int arg2, int arg3) {
 		if (this.field213 == 0) {

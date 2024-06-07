@@ -6,32 +6,23 @@ import com.jagex.graphics.GraphicsDeletable;
 import deob.ObfuscatedName;
 import jaggl.OpenGL;
 
-@ObfuscatedName("ata")
 public class GlxFrameBuffer extends GpuFrameBuffer {
 
-	@ObfuscatedName("ata.k")
-	public final GlxToolkit renderer;
+    public final GlxToolkit renderer;
 
-	@ObfuscatedName("ata.f")
-	public int framebuffer;
+    public int framebuffer;
 
-	@ObfuscatedName("ata.w")
-	public int width;
+    public int width;
 
-	@ObfuscatedName("ata.l")
-	public int height;
+    public int height;
 
-	@ObfuscatedName("ata.u")
-	public int field12511;
+    public int field12511;
 
-	@ObfuscatedName("ata.z")
-	public int field12512;
+    public int field12512;
 
-	@ObfuscatedName("ata.p")
-	public GlxRelated2 field12513;
+    public GlxRelated2 field12513;
 
-	@ObfuscatedName("ata.d")
-	public final GlxRelated2[] field12514 = new GlxRelated2[4];
+    public final GlxRelated2[] field12514 = new GlxRelated2[4];
 
 	public GlxFrameBuffer(GlxToolkit arg0) {
 		super(arg0);
@@ -44,18 +35,15 @@ public class GlxFrameBuffer extends GpuFrameBuffer {
 		this.framebuffer = var2[0];
 	}
 
-	@ObfuscatedName("ata.e()I")
-	public int getWidth() {
+    public int getWidth() {
 		return this.width;
 	}
 
-	@ObfuscatedName("ata.n()I")
-	public int getHeight() {
+    public int getHeight() {
 		return this.height;
 	}
 
-	@ObfuscatedName("ata.b(ILdp;)V")
-	public void method15439(int arg0, GraphicsDeletable arg1) {
+    public void method15439(int arg0, GraphicsDeletable arg1) {
 		int var3 = 0x1 << arg0;
 		GlxRelated2 var4 = (GlxRelated2) arg1;
 		if (arg1 == null) {
@@ -83,8 +71,7 @@ public class GlxFrameBuffer extends GpuFrameBuffer {
 		}
 	}
 
-	@ObfuscatedName("ata.x(Ldw;)V")
-	public void method15441(EffectInterface arg0) {
+    public void method15441(EffectInterface arg0) {
 		GlxRelated2 var2 = (GlxRelated2) arg0;
 		if (arg0 == null) {
 			this.field12511 &= 0xFFFFFFEF;
@@ -111,8 +98,7 @@ public class GlxFrameBuffer extends GpuFrameBuffer {
 		}
 	}
 
-	@ObfuscatedName("ata.as(I)V")
-	public void attachColor(int arg0) {
+    public void attachColor(int arg0) {
 		GlxRelated2 var2 = this.field12514[arg0];
 		if (var2 == null) {
 			OpenGL.glFramebufferRenderbufferEXT(36160, arg0 + 36064, 36161, 0);
@@ -121,8 +107,7 @@ public class GlxFrameBuffer extends GpuFrameBuffer {
 		}
 	}
 
-	@ObfuscatedName("ata.at()V")
-	public void attachDepth() {
+    public void attachDepth() {
 		if (this.field12513 == null) {
 			OpenGL.glFramebufferRenderbufferEXT(36160, 36096, 36161, 0);
 		} else {
@@ -130,14 +115,12 @@ public class GlxFrameBuffer extends GpuFrameBuffer {
 		}
 	}
 
-	@ObfuscatedName("ata.h()Z")
-	public boolean method15446() {
+    public boolean method15446() {
 		int var1 = OpenGL.glCheckFramebufferStatusEXT(36160);
 		return var1 == 36053;
 	}
 
-	@ObfuscatedName("ata.k()Z")
-	public boolean method1630() {
+    public boolean method1630() {
 		OpenGL.glBindFramebufferEXT(36160, this.framebuffer);
 		for (int var1 = 0; var1 < 4; var1++) {
 			if ((this.field12512 & 0x1 << var1) != 0) {
@@ -151,14 +134,12 @@ public class GlxFrameBuffer extends GpuFrameBuffer {
 		return super.method1630();
 	}
 
-	@ObfuscatedName("ata.f()Z")
-	public boolean method1631() {
+    public boolean method1631() {
 		OpenGL.glBindFramebufferEXT(36160, 0);
 		return true;
 	}
 
-	@ObfuscatedName("ata.a(IIIIIIZZ)V")
-	public void method15440(int arg0, int arg1, int arg2, int arg3, int arg4, int arg5, boolean arg6, boolean arg7) {
+    public void method15440(int arg0, int arg1, int arg2, int arg3, int arg4, int arg5, boolean arg6, boolean arg7) {
 		if (!(arg6 | arg7)) {
 			return;
 		}
@@ -176,8 +157,7 @@ public class GlxFrameBuffer extends GpuFrameBuffer {
 		OpenGL.glBindFramebufferEXT(36008, 0);
 	}
 
-	@ObfuscatedName("ata.m()V")
-	public void method1629() {
+    public void method1629() {
 		if (this.framebuffer != 0) {
 			this.renderer.method19074(this.framebuffer);
 			this.framebuffer = 0;

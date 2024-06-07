@@ -8,59 +8,41 @@ import sun.misc.Unsafe;
 
 import java.nio.ByteBuffer;
 
-@ObfuscatedName("akx")
 public class GpuFloorModelRelated extends Node {
 
-	@ObfuscatedName("akx.k")
-	public final GpuToolkit field11416;
+    public final GpuToolkit field11416;
 
-	@ObfuscatedName("akx.f")
-	public final GpuFloorModel field11414;
+    public final GpuFloorModel field11414;
 
-	@ObfuscatedName("akx.w")
-	public final Light field11415;
+    public final Light field11415;
 
-	@ObfuscatedName("akx.l")
-	public int field11419;
+    public int field11419;
 
-	@ObfuscatedName("akx.u")
-	public int field11418;
+    public int field11418;
 
-	@ObfuscatedName("akx.z")
-	public int field11427;
+    public int field11427;
 
-	@ObfuscatedName("akx.p")
-	public int field11417;
+    public int field11417;
 
-	@ObfuscatedName("akx.d")
-	public int field11420 = 0;
+    public int field11420 = 0;
 
-	@ObfuscatedName("akx.c")
-	public int field11421 = 0;
+    public int field11421 = 0;
 
-	@ObfuscatedName("akx.r")
-	public int field11413 = 0;
+    public int field11413 = 0;
 
-	@ObfuscatedName("akx.v")
-	public GpuIndexBuffer field11423;
+    public GpuIndexBuffer field11423;
 
-	@ObfuscatedName("akx.o")
-	public VertexBuffer field11424;
+    public VertexBuffer field11424;
 
-	@ObfuscatedName("akx.s")
-	public float[][] field11425;
+    public float[][] field11425;
 
-	@ObfuscatedName("akx.y")
-	public float[][] field11426;
+    public float[][] field11426;
 
-	@ObfuscatedName("akx.q")
-	public float[][] field11422;
+    public float[][] field11422;
 
-	@ObfuscatedName("akx.x")
-	public HashTable field11428;
+    public HashTable field11428;
 
-	@ObfuscatedName("akx.b")
-	public ByteBuffer field11429;
+    public ByteBuffer field11429;
 
 	public GpuFloorModelRelated(GpuToolkit arg0, GpuFloorModel arg1, Light arg2, int[] arg3) {
 		this.field11416 = arg0;
@@ -194,8 +176,7 @@ public class GpuFloorModelRelated extends Node {
 		this.field11425 = null;
 	}
 
-	@ObfuscatedName("akx.e()V")
-	public void method17780() {
+    public void method17780() {
 		this.field11423 = this.field11416.createIndexBuffer(false);
 		this.field11423.method5831(this.field11413);
 		this.field11424 = this.field11416.createVertexBuffer(false);
@@ -204,8 +185,7 @@ public class GpuFloorModelRelated extends Node {
 		this.field11423.upload(0, this.field11413 * 2, (long) (this.field11416.field10048 >> 1) + this.field11416.temporaryBufferAddress);
 	}
 
-	@ObfuscatedName("akx.n(IIIIII)V")
-	public void method17781(int arg0, int arg1, int arg2, int arg3, int arg4, int arg5) {
+    public void method17781(int arg0, int arg1, int arg2, int arg3, int arg4, int arg5) {
 		long var7 = -1L;
 		int var9 = (arg2 << this.field11414.field1236) + arg4;
 		int var10 = (arg3 << this.field11414.field1236) + arg5;
@@ -315,8 +295,7 @@ public class GpuFloorModelRelated extends Node {
 		this.field11413++;
 	}
 
-	@ObfuscatedName("akx.m(Ljj;III[[ZZ)V")
-	public void method17783(ModelShader arg0, int arg1, int arg2, int arg3, boolean[][] arg4, boolean arg5) {
+    public void method17783(ModelShader arg0, int arg1, int arg2, int arg3, boolean[][] arg4, boolean arg5) {
 		if (this.field11423 == null || (this.field11419 > arg1 + arg3 || (this.field11418 < arg1 - arg3 || (this.field11427 > arg2 + arg3 || this.field11417 < arg2 - arg3)))) {
 			return;
 		}
@@ -367,8 +346,7 @@ public class GpuFloorModelRelated extends Node {
 		}
 	}
 
-	@ObfuscatedName("akx.k(Ljj;Lml;I)V")
-	public void method17784(ModelShader arg0, GpuIndexBuffer arg1, int arg2) {
+    public void method17784(ModelShader arg0, GpuIndexBuffer arg1, int arg2) {
 		arg0.field2981 = 0;
 		arg0.field2983 = this.field11420;
 		arg0.field2972 = 0;

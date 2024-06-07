@@ -7,73 +7,53 @@ import com.jagex.math.IntMath;
 import deob.ObfuscatedName;
 import jaggl.OpenGL;
 
-@ObfuscatedName("aqf")
 public class GlColourGradingBloomFilter extends PostProcessingFilter {
 
-	@ObfuscatedName("aqf.l")
-	public static float field12205 = 0.25F;
+    public static float field12205 = 0.25F;
 
-	@ObfuscatedName("aqf.u")
-	public static float field12188 = 1.0F;
+    public static float field12188 = 1.0F;
 
-	@ObfuscatedName("aqf.z")
-	public static float field12189 = 1.0F;
+    public static float field12189 = 1.0F;
 
-	@ObfuscatedName("aqf.v")
-	public GlFrameBuffer field12194;
+    public GlFrameBuffer field12194;
 
-	@ObfuscatedName("aqf.o")
-	public GlFrameBuffer field12195;
+    public GlFrameBuffer field12195;
 
-	@ObfuscatedName("aqf.s")
-	public GlTexture_Sub1 field12196;
+    public GlTexture_Sub1 field12196;
 
-	@ObfuscatedName("aqf.y")
-	public GlTexture_Sub1 field12197;
+    public GlTexture_Sub1 field12197;
 
-	@ObfuscatedName("aqf.q")
-	public GlTexture_Sub1[] field12193;
+    public GlTexture_Sub1[] field12193;
 
-	@ObfuscatedName("aqf.x")
-	public int field12190;
+    public int field12190;
 
-	@ObfuscatedName("aqf.b")
-	public int field12200;
+    public int field12200;
 
-	@ObfuscatedName("aqf.h")
-	public int field12201;
+    public int field12201;
 
-	@ObfuscatedName("aqf.a")
-	public int field12202;
+    public int field12202;
 
-	@ObfuscatedName("aqf.g")
-	public GlProgram field12203;
+    public GlProgram field12203;
 
-	@ObfuscatedName("aqf.i")
-	public GlProgram field12204;
+    public GlProgram field12204;
 
-	@ObfuscatedName("aqf.j")
-	public GlProgram field12192;
+    public GlProgram field12192;
 
-	@ObfuscatedName("aqf.t")
-	public GlProgram field12206;
+    public GlProgram field12206;
 
 	public GlColourGradingBloomFilter(GlToolkit arg0) {
 		super(arg0);
 	}
 
-	@ObfuscatedName("aqf.ao()Z")
-	public boolean method19235() {
+    public boolean method19235() {
 		return this.field11270.field9985 && this.field11270.field10002 && this.field11270.field9997;
 	}
 
-	@ObfuscatedName("aqf.e()Z")
-	public boolean method17539() {
+    public boolean method17539() {
 		return this.field12194 != null;
 	}
 
-	@ObfuscatedName("aqf.n()Z")
-	public boolean method17534() {
+    public boolean method17534() {
 		if (!this.field11270.field9985 || !this.field11270.field10002 || !this.field11270.field9997) {
 			return false;
 		}
@@ -98,8 +78,7 @@ public class GlColourGradingBloomFilter extends PostProcessingFilter {
 		return this.field12192 != null && this.field12206 != null && this.field12204 != null && this.field12203 != null;
 	}
 
-	@ObfuscatedName("aqf.k(II)V")
-	public void method17540(int arg0, int arg1) {
+    public void method17540(int arg0, int arg1) {
 		this.field12190 = arg0;
 		this.field12200 = arg1;
 		int var3 = IntMath.method3082(this.field12190);
@@ -154,8 +133,7 @@ public class GlColourGradingBloomFilter extends PostProcessingFilter {
 		this.field12202 = var4;
 	}
 
-	@ObfuscatedName("aqf.m()V")
-	public void method17570() {
+    public void method17570() {
 		this.field12202 = -1;
 		this.field12201 = -1;
 		this.field12195 = null;
@@ -169,8 +147,7 @@ public class GlColourGradingBloomFilter extends PostProcessingFilter {
 		this.field12203 = null;
 	}
 
-	@ObfuscatedName("aqf.f(ILadt;Ladt;II)V")
-	public void method17537(int arg0, GlTexture_Sub1 arg1, GlTexture_Sub1 arg2, int arg3, int arg4) {
+    public void method17537(int arg0, GlTexture_Sub1 arg1, GlTexture_Sub1 arg2, int arg3, int arg4) {
 		OpenGL.glPushAttrib(2048);
 		OpenGL.glMatrixMode(5889);
 		OpenGL.glPushMatrix();
@@ -300,26 +277,22 @@ public class GlColourGradingBloomFilter extends PostProcessingFilter {
 		this.field11270.method15777(arg1);
 	}
 
-	@ObfuscatedName("aqf.w(I)V")
-	public void method17538(int arg0) {
+    public void method17538(int arg0) {
 		OpenGL.glUseProgram(0);
 		this.field11270.method15776(1);
 		this.field11270.method15777(null);
 		this.field11270.method15776(0);
 	}
 
-	@ObfuscatedName("aqf.p()Ldg;")
-	public DataType method17542() {
+    public DataType method17542() {
 		return DataType.FLOAT_16;
 	}
 
-	@ObfuscatedName("aqf.u()I")
-	public int method17546() {
+    public int method17546() {
 		return 0;
 	}
 
-	@ObfuscatedName("aqf.c()Z")
-	public boolean method17551() {
+    public boolean method17551() {
 		return false;
 	}
 }

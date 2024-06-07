@@ -15,52 +15,39 @@ import rs2.client.logic.DelayedStateChange;
 
 import java.io.IOException;
 
-@ObfuscatedName("y")
 public class AccountCreationManager {
 
-	@ObfuscatedName("y.n")
-	public static int[] field581;
+    public static int[] field581;
 
-	@ObfuscatedName("y.m")
-	public static int field583 = 0;
+    public static int field583 = 0;
 
-	@ObfuscatedName("y.k")
-	public static int field580 = 0;
+    public static int field580 = 0;
 
-	@ObfuscatedName("u.f")
-	public static CreateConnectStage createStage;
+    public static CreateConnectStage createStage;
 
-	@ObfuscatedName("y.w")
-	public static ConnectReply field584;
+    public static ConnectReply field584;
 
-	@ObfuscatedName("pr.l")
-	public static CreateAccountReply field4406;
+    public static CreateAccountReply field4406;
 
-	@ObfuscatedName("af.u")
-	public static CheckEmailReply field872;
+    public static CheckEmailReply field872;
 
-	@ObfuscatedName("hv.z")
-	public static CheckNameReply field2589;
+    public static CheckNameReply field2589;
 
-	@ObfuscatedName("y.p")
-	public static SuggestNameReply field585;
+    public static SuggestNameReply field585;
 
-	@ObfuscatedName("j.d")
-	public static String field618;
+    public static String field618;
 
 	public AccountCreationManager() throws Throwable {
 		throw new Error();
 	}
 
-	@ObfuscatedName("dk.e(I)V")
-	public static void method2009() {
+    public static void method2009() {
 		if (Client.state == 4 && (!LoginManager.isInProgress() && !isInProgress())) {
 			Client.setState(12);
 		}
 	}
 
-	@ObfuscatedName("amf.n(B)V")
-	public static void method18476() {
+    public static void method18476() {
 		createStage = CreateConnectStage.field515;
 		field584 = ConnectReply.field8368;
 		field4406 = CreateAccountReply.field8390;
@@ -70,13 +57,11 @@ public class AccountCreationManager {
 		field618 = null;
 	}
 
-	@ObfuscatedName("wa.m(I)Z")
-	public static boolean isInProgress() {
+    public static boolean isInProgress() {
 		return createStage != null;
 	}
 
-	@ObfuscatedName("w.k(Ljava/lang/String;B)V")
-	public static void requestEmailAvailableCheck(String arg0) {
+    public static void requestEmailAvailableCheck(String arg0) {
 		if (Client.state != 0) {
 			return;
 		}
@@ -91,8 +76,7 @@ public class AccountCreationManager {
 		field872 = CheckEmailReply.field8400;
 	}
 
-	@ObfuscatedName("alb.f(Ljava/lang/String;I)V")
-	public static void requestDisplayNameAvailableCheck(String arg0) {
+    public static void requestDisplayNameAvailableCheck(String arg0) {
 		if (Client.state != 0) {
 			return;
 		}
@@ -107,8 +91,7 @@ public class AccountCreationManager {
 		field2589 = CheckNameReply.field8405;
 	}
 
-	@ObfuscatedName("ae.w(I)V")
-	public static void requestDisplayNameSuggestion() {
+    public static void requestDisplayNameSuggestion() {
 		if (Client.state == 0) {
 			ClientMessage var0 = ClientMessage.createMessage(ClientProt.CREATE_SUGGEST_NAMES, Client.lobbyConnection.randomOut);
 			Client.lobbyConnection.queue(var0);
@@ -117,8 +100,7 @@ public class AccountCreationManager {
 		}
 	}
 
-	@ObfuscatedName("arv.l(Ljava/lang/String;Ljava/lang/String;IZLjava/lang/String;I)V")
-	public static void requestAccountCreation(String arg0, String arg1, int arg2, boolean arg3, String arg4) {
+    public static void requestAccountCreation(String arg0, String arg1, int arg2, boolean arg3, String arg4) {
 		if (Client.state != 0) {
 			return;
 		}
@@ -141,8 +123,7 @@ public class AccountCreationManager {
 		field4406 = CreateAccountReply.field8388;
 	}
 
-	@ObfuscatedName("afu.u(II)V")
-	public static void requestStatsLogging(int arg0) {
+    public static void requestStatsLogging(int arg0) {
 		if (Client.state == 0) {
 			ClientMessage var1 = ClientMessage.createMessage(ClientProt.CREATE_LOG_PROGRESS, Client.lobbyConnection.randomOut);
 			var1.buf.p1(arg0);
@@ -150,65 +131,53 @@ public class AccountCreationManager {
 		}
 	}
 
-	@ObfuscatedName("et.z(I)Lzl;")
-	public static ConnectReply getConnectReply() {
+    public static ConnectReply getConnectReply() {
 		return field584 == null ? ConnectReply.field8361 : field584;
 	}
 
-	@ObfuscatedName("amf.p(I)Lzb;")
-	public static CreateAccountReply getReply() {
+    public static CreateAccountReply getReply() {
 		return field4406 == null ? CreateAccountReply.field8390 : field4406;
 	}
 
-	@ObfuscatedName("vn.d(B)Lzx;")
-	public static CheckEmailReply getEmailValidateReply() {
+    public static CheckEmailReply getEmailValidateReply() {
 		return field872 == null ? CheckEmailReply.field8397 : field872;
 	}
 
-	@ObfuscatedName("ahj.c(B)Lzr;")
-	public static CheckNameReply getNameValidateReply() {
+    public static CheckNameReply getNameValidateReply() {
 		return field2589 == null ? CheckNameReply.field8407 : field2589;
 	}
 
-	@ObfuscatedName("ahn.r(B)Lzg;")
-	public static SuggestNameReply getSuggestNameReply() {
+    public static SuggestNameReply getSuggestNameReply() {
 		return field585 == null ? SuggestNameReply.field8394 : field585;
 	}
 
-	@ObfuscatedName("xh.v(B)Ljava/lang/String;")
-	public static String method10209() {
+    public static String method10209() {
 		return field618;
 	}
 
-	@ObfuscatedName("pl.o(Lzb;I)V")
-	public static void method6851(CreateAccountReply arg0) {
+    public static void method6851(CreateAccountReply arg0) {
 		field4406 = arg0;
 	}
 
-	@ObfuscatedName("gs.s(Lzx;I)V")
-	public static void method3581(CheckEmailReply arg0) {
+    public static void method3581(CheckEmailReply arg0) {
 		field872 = arg0;
 	}
 
-	@ObfuscatedName("ac.y(Lzr;B)V")
-	public static void method717(CheckNameReply arg0) {
+    public static void method717(CheckNameReply arg0) {
 		field2589 = arg0;
 	}
 
-	@ObfuscatedName("jl.q(Lzg;I)V")
-	public static void method4664(SuggestNameReply arg0) {
+    public static void method4664(SuggestNameReply arg0) {
 		field585 = arg0;
 		field618 = null;
 	}
 
-	@ObfuscatedName("cc.x(Ljava/lang/String;I)V")
-	public static void method1587(String arg0) {
+    public static void method1587(String arg0) {
 		field585 = SuggestNameReply.field8391;
 		field618 = arg0;
 	}
 
-	@ObfuscatedName("ack.b(I)V")
-	public static void update() {
+    public static void update() {
 		if (createStage == null) {
 			return;
 		}
@@ -294,8 +263,7 @@ public class AccountCreationManager {
 		}
 	}
 
-	@ObfuscatedName("js.h(Lakl;B)[I")
-	public static int[] method4942(ClientMessage arg0) {
+    public static int[] method4942(ClientMessage arg0) {
 		Packet var1 = new Packet(518);
 		int[] var2 = new int[4];
 		for (int var3 = 0; var3 < 4; var3++) {
@@ -315,8 +283,7 @@ public class AccountCreationManager {
 		return var2;
 	}
 
-	@ObfuscatedName("ajh.a(I)V")
-	public static void method17428() {
+    public static void method17428() {
 		Client.lobbyConnection.closeGracefully();
 		if (field580 < 2) {
 			WorldSwitcher.currentLobby.configureSocketType();

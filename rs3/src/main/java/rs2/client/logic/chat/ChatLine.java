@@ -5,41 +5,29 @@ import com.jagex.core.utils.MonotonicTime;
 import com.jagex.game.shared.framework.chat.ChatCrownType;
 import deob.ObfuscatedName;
 
-@ObfuscatedName("asg")
 public class ChatLine extends SecondaryNode {
 
-	@ObfuscatedName("asg.l")
-	public int uid = ChatHistory.method8480();
+    public int uid = ChatHistory.method8480();
 
-	@ObfuscatedName("asg.u")
-	public long time = MonotonicTime.get();
+    public long time = MonotonicTime.get();
 
-	@ObfuscatedName("asg.z")
-	public int type;
+    public int type;
 
-	@ObfuscatedName("asg.p")
-	public int flags;
+    public int flags;
 
-	@ObfuscatedName("asg.d")
-	public String name;
+    public String name;
 
-	@ObfuscatedName("asg.c")
-	public String nameUnfiltered;
+    public String nameUnfiltered;
 
-	@ObfuscatedName("asg.r")
-	public String nameSimple;
+    public String nameSimple;
 
-	@ObfuscatedName("asg.v")
-	public String clan;
+    public String clan;
 
-	@ObfuscatedName("asg.o")
-	public int phrase;
+    public int phrase;
 
-	@ObfuscatedName("asg.s")
-	public String message;
+    public String message;
 
-	@ObfuscatedName("asg.y")
-	public ChatCrownType crown;
+    public ChatCrownType crown;
 
 	public ChatLine(int arg0, int arg1, String arg2, String arg3, String arg4, String arg5, int arg6, String arg7, ChatCrownType arg8) {
 		this.type = arg0;
@@ -53,8 +41,7 @@ public class ChatLine extends SecondaryNode {
 		this.crown = arg8;
 	}
 
-	@ObfuscatedName("asg.e(IILjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ILjava/lang/String;Lnn;I)V")
-	public void method19429(int arg0, int arg1, String arg2, String arg3, String arg4, String arg5, int arg6, String arg7, ChatCrownType arg8) {
+    public void method19429(int arg0, int arg1, String arg2, String arg3, String arg4, String arg5, int arg6, String arg7, ChatCrownType arg8) {
 		this.uid = ChatHistory.method8480();
 		this.time = MonotonicTime.get();
 		this.type = arg0;

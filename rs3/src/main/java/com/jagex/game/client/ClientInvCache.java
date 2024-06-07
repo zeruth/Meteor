@@ -19,29 +19,21 @@ import com.jagex.graphics.Toolkit;
 import deob.ObfuscatedName;
 import rs2.client.Client;
 
-@ObfuscatedName("ajo")
 public class ClientInvCache extends Node {
 
-	@ObfuscatedName("ajo.k")
-	public static final HashTable recentUse = new HashTable(32);
+    public static final HashTable recentUse = new HashTable(32);
 
-	@ObfuscatedName("ajo.f")
-	public static final SoftLruHashTable modelCache = new SoftLruHashTable(10);
+    public static final SoftLruHashTable modelCache = new SoftLruHashTable(10);
 
-	@ObfuscatedName("ajo.w")
-	public static int field11222;
+    public static int field11222;
 
-	@ObfuscatedName("ajo.l")
-	public int[] invSlotObjId = new int[] { -1 };
+    public int[] invSlotObjId = new int[] { -1 };
 
-	@ObfuscatedName("ajo.u")
-	public int[] invSlotObjCount = new int[] { 0 };
+    public int[] invSlotObjCount = new int[] { 0 };
 
-	@ObfuscatedName("ajo.z")
-	public VarContainerSparse[] vars = null;
+    public VarContainerSparse[] vars = null;
 
-	@ObfuscatedName("aau.e(IIZI)I")
-	public static int getObj(int invId, int slot, boolean arg2) {
+    public static int getObj(int invId, int slot, boolean arg2) {
 		ClientInvCache inv = getCachedInvs(invId, arg2);
 		if (inv == null) {
 			return -1;
@@ -52,8 +44,7 @@ public class ClientInvCache extends Node {
 		}
 	}
 
-	@ObfuscatedName("aal.n(IIZI)I")
-	public static int getNum(int invId, int slot, boolean arg2) {
+    public static int getNum(int invId, int slot, boolean arg2) {
 		ClientInvCache inv = getCachedInvs(invId, arg2);
 		if (inv == null) {
 			return 0;
@@ -64,8 +55,7 @@ public class ClientInvCache extends Node {
 		}
 	}
 
-	@ObfuscatedName("adr.m(IIIZB)I")
-	public static int getVar(int invId, int slot, int varbitId, boolean arg3) {
+    public static int getVar(int invId, int slot, int varbitId, boolean arg3) {
 		VarBitType varbit = (VarBitType) Client.varBitTypeList.list(varbitId);
 		VarType baseVar = varbit.baseVar;
 		ClientInvCache inv = getCachedInvs(invId, arg3);
@@ -78,8 +68,7 @@ public class ClientInvCache extends Node {
 		return varbit.getVarbitValue(var7);
 	}
 
-	@ObfuscatedName("na.k(IIZB)I")
-	public static int total(int invId, int slot, boolean arg2) {
+    public static int total(int invId, int slot, boolean arg2) {
 		ClientInvCache inv = getCachedInvs(invId, arg2);
 		if (inv == null) {
 			return 0;
@@ -96,8 +85,7 @@ public class ClientInvCache extends Node {
 		}
 	}
 
-	@ObfuscatedName("abe.f(IIZI)I")
-	public static int totalCat(int invId, int categoryId, boolean arg2) {
+    public static int totalCat(int invId, int categoryId, boolean arg2) {
 		int total = 0;
 		ClientInvCache inv = getCachedInvs(invId, arg2);
 		if (inv == null) {
@@ -111,8 +99,7 @@ public class ClientInvCache extends Node {
 		return total;
 	}
 
-	@ObfuscatedName("pu.w(IIZZI)I")
-	public static int totalParam(int invId, int paramId, boolean stack, boolean arg3) {
+    public static int totalParam(int invId, int paramId, boolean stack, boolean arg3) {
 		ClientInvCache var4 = getCachedInvs(invId, arg3);
 		if (var4 == null) {
 			return 0;
@@ -132,8 +119,7 @@ public class ClientInvCache extends Node {
 		return total;
 	}
 
-	@ObfuscatedName("pf.l(IZS)I")
-	public static int freespace(int invId, boolean arg1) {
+    public static int freespace(int invId, boolean arg1) {
 		if (arg1) {
 			return 0;
 		}
@@ -150,14 +136,12 @@ public class ClientInvCache extends Node {
 		return total + (((InvType) Client.invTypeList.list(invId)).size - inv.invSlotObjId.length);
 	}
 
-	@ObfuscatedName("so.u(IZS)Lajo;")
-	public static ClientInvCache getCachedInvs(int arg0, boolean arg1) {
+    public static ClientInvCache getCachedInvs(int arg0, boolean arg1) {
 		long var2 = (long) (arg0 | (arg1 ? Integer.MIN_VALUE : 0));
 		return (ClientInvCache) recentUse.get(var2);
 	}
 
-	@ObfuscatedName("hg.z(IIIILabn;ZI)V")
-	public static void update(int arg0, int arg1, int arg2, int arg3, VarContainerSparse arg4, boolean arg5) {
+    public static void update(int arg0, int arg1, int arg2, int arg3, VarContainerSparse arg4, boolean arg5) {
 		long var6 = (long) (arg0 | (arg5 ? Integer.MIN_VALUE : 0));
 		ClientInvCache var8 = (ClientInvCache) recentUse.get(var6);
 		if (var8 == null) {
@@ -198,8 +182,7 @@ public class ClientInvCache extends Node {
 		}
 	}
 
-	@ObfuscatedName("qe.p(IZB)V")
-	public static void clear(int arg0, boolean arg1) {
+    public static void clear(int arg0, boolean arg1) {
 		ClientInvCache inv = getCachedInvs(arg0, arg1);
 		if (inv == null) {
 			return;
@@ -211,21 +194,18 @@ public class ClientInvCache extends Node {
 		inv.vars = null;
 	}
 
-	@ObfuscatedName("xj.d(IZB)V")
-	public static void remove(int arg0, boolean arg1) {
+    public static void remove(int arg0, boolean arg1) {
 		ClientInvCache var2 = getCachedInvs(arg0, arg1);
 		if (var2 != null) {
 			var2.unlink();
 		}
 	}
 
-	@ObfuscatedName("ei.c(B)V")
-	public static void removeAll() {
+    public static void removeAll() {
 		recentUse.removeAll();
 	}
 
-	@ObfuscatedName("ajo.r([II[IZI)J")
-	public long method17471(int[] arg0, int arg1, int[] arg2, boolean arg3) {
+    public long method17471(int[] arg0, int arg1, int[] arg2, boolean arg3) {
 		long[] var5 = Packet.crc64table;
 		long var6 = -1L;
 		long var8 = var6 >>> 8 ^ var5[(int) ((var6 ^ (long) (arg1 >> 8)) & 0xFFL)];
@@ -244,8 +224,7 @@ public class ClientInvCache extends Node {
 		return var10 >>> 8 ^ var5[(int) ((var10 ^ (long) (arg3 ? 1 : 0)) & 0xFFL)];
 	}
 
-	@ObfuscatedName("ajo.v(Ldh;ILaaq;IZLxg;I)Ldo;")
-	public final Model method17475(Toolkit arg0, int arg1, AnimationNode arg2, int arg3, boolean arg4, PlayerModel arg5) {
+    public final Model method17475(Toolkit arg0, int arg1, AnimationNode arg2, int arg3, boolean arg4, PlayerModel arg5) {
 		Model var7 = null;
 		int var8 = arg1;
 		BASType var9 = null;
@@ -353,14 +332,12 @@ public class ClientInvCache extends Node {
 		}
 	}
 
-	@ObfuscatedName("ku.y(IB)V")
-	public static void resetModelCache(int arg0) {
+    public static void resetModelCache(int arg0) {
 		field11222 = arg0;
 		modelCache.reset();
 	}
 
-	@ObfuscatedName("acd.x(I)V")
-	public static void cacheReset() {
+    public static void cacheReset() {
 		modelCache.reset();
 	}
 }

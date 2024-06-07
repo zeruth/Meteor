@@ -3,20 +3,15 @@ package com.jagex.core.datastruct;
 import com.jagex.game.client.HardCacheEntry;
 import deob.ObfuscatedName;
 
-@ObfuscatedName("wz")
 public class IconCache {
 
-	@ObfuscatedName("wz.e")
-	public int field7612;
+    public int field7612;
 
-	@ObfuscatedName("wz.n")
-	public int field7611;
+    public int field7611;
 
-	@ObfuscatedName("wz.m")
-	public HashTable hashTable;
+    public HashTable hashTable;
 
-	@ObfuscatedName("wz.k")
-	public SecondaryLinkedList queue = new SecondaryLinkedList();
+    public SecondaryLinkedList queue = new SecondaryLinkedList();
 
 	public IconCache(int arg0) {
 		this.field7612 = arg0;
@@ -27,8 +22,7 @@ public class IconCache {
 		this.hashTable = new HashTable(var2);
 	}
 
-	@ObfuscatedName("wz.e(Lwk;)Ljava/lang/Object;")
-	public final Object get(CacheKey arg0) {
+    public final Object get(CacheKey arg0) {
 		long var2 = arg0.hash();
 		for (CacheEntry var4 = (CacheEntry) this.hashTable.get(var2); var4 != null; var4 = (CacheEntry) this.hashTable.nextWithKey()) {
 			if (var4.cacheKey.equal(arg0)) {
@@ -55,8 +49,7 @@ public class IconCache {
 		return null;
 	}
 
-	@ObfuscatedName("wz.n(Lwk;)V")
-	public final void method9650(CacheKey arg0) {
+    public final void method9650(CacheKey arg0) {
 		long var2 = arg0.hash();
 		for (CacheEntry var4 = (CacheEntry) this.hashTable.get(var2); var4 != null; var4 = (CacheEntry) this.hashTable.nextWithKey()) {
 			if (var4.cacheKey.equal(arg0)) {
@@ -66,8 +59,7 @@ public class IconCache {
 		}
 	}
 
-	@ObfuscatedName("wz.m(Lasr;)V")
-	public final void method9648(CacheEntry arg0) {
+    public final void method9648(CacheEntry arg0) {
 		if (arg0 != null) {
 			arg0.unlink();
 			arg0.secondaryRemove();
@@ -75,13 +67,11 @@ public class IconCache {
 		}
 	}
 
-	@ObfuscatedName("wz.k(Ljava/lang/Object;Lwk;)V")
-	public final void put(Object arg0, CacheKey arg1) {
+    public final void put(Object arg0, CacheKey arg1) {
 		this.put(arg0, arg1, 1);
 	}
 
-	@ObfuscatedName("wz.f(Ljava/lang/Object;Lwk;I)V")
-	public final void put(Object arg0, CacheKey arg1, int arg2) {
+    public final void put(Object arg0, CacheKey arg1, int arg2) {
 		if (arg2 > this.field7612) {
 			throw new IllegalStateException();
 		}
@@ -97,8 +87,7 @@ public class IconCache {
 		var5.secondaryNodeId = 0L;
 	}
 
-	@ObfuscatedName("wz.w(I)V")
-	public final void clean(int arg0) {
+    public final void clean(int arg0) {
 		for (CacheEntry var2 = (CacheEntry) this.queue.peekFront(); var2 != null; var2 = (CacheEntry) this.queue.prev()) {
 			if (var2.isSoft()) {
 				if (var2.getValue() == null) {
@@ -116,15 +105,13 @@ public class IconCache {
 		}
 	}
 
-	@ObfuscatedName("wz.l()V")
-	public final void reset() {
+    public final void reset() {
 		this.queue.removeAll();
 		this.hashTable.removeAll();
 		this.field7611 = this.field7612;
 	}
 
-	@ObfuscatedName("wz.u()V")
-	public final void clear() {
+    public final void clear() {
 		for (CacheEntry var1 = (CacheEntry) this.queue.peekFront(); var1 != null; var1 = (CacheEntry) this.queue.prev()) {
 			if (var1.isSoft()) {
 				var1.unlink();

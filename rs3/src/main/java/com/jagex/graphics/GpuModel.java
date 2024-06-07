@@ -17,233 +17,157 @@ import sun.misc.Unsafe;
 
 import java.nio.ByteBuffer;
 
-@ObfuscatedName("afo")
 public class GpuModel extends Model {
 
-	@ObfuscatedName("afo.l")
-	public final GpuToolkit field9730;
+    public final GpuToolkit field9730;
 
-	@ObfuscatedName("afo.u")
-	public int field9725;
+    public int field9725;
 
-	@ObfuscatedName("afo.z")
-	public int field9700;
+    public int field9700;
 
-	@ObfuscatedName("afo.p")
-	public short field9701;
+    public short field9701;
 
-	@ObfuscatedName("afo.d")
-	public short field9749;
+    public short field9749;
 
-	@ObfuscatedName("afo.c")
-	public int field9703;
+    public int field9703;
 
-	@ObfuscatedName("afo.r")
-	public int field9704;
+    public int field9704;
 
-	@ObfuscatedName("afo.v")
-	public int[] field9705;
+    public int[] field9705;
 
-	@ObfuscatedName("afo.o")
-	public int[] field9767;
+    public int[] field9767;
 
-	@ObfuscatedName("afo.s")
-	public int[] field9712;
+    public int[] field9712;
 
-	@ObfuscatedName("afo.y")
-	public int[][] field9702;
+    public int[][] field9702;
 
-	@ObfuscatedName("afo.q")
-	public short[] field9709;
+    public short[] field9709;
 
-	@ObfuscatedName("afo.x")
-	public int field9710;
+    public int field9710;
 
-	@ObfuscatedName("afo.b")
-	public short[] field9711;
+    public short[] field9711;
 
-	@ObfuscatedName("afo.h")
-	public short[] field9698;
+    public short[] field9698;
 
-	@ObfuscatedName("afo.a")
-	public short[] field9723;
+    public short[] field9723;
 
-	@ObfuscatedName("afo.g")
-	public short[] field9714;
+    public short[] field9714;
 
-	@ObfuscatedName("afo.i")
-	public short[] field9715;
+    public short[] field9715;
 
-	@ObfuscatedName("afo.j")
-	public byte[] field9747;
+    public byte[] field9747;
 
-	@ObfuscatedName("afo.t")
-	public float[] field9707;
+    public float[] field9707;
 
-	@ObfuscatedName("afo.ae")
-	public float[] field9724;
+    public float[] field9724;
 
-	@ObfuscatedName("afo.ag")
-	public GpuModelRelated3 field9771;
+    public GpuModelRelated3 field9771;
 
-	@ObfuscatedName("afo.ah")
-	public int field9716;
+    public int field9716;
 
-	@ObfuscatedName("afo.al")
-	public int field9721;
+    public int field9721;
 
-	@ObfuscatedName("afo.ac")
-	public short[] field9722;
+    public short[] field9722;
 
-	@ObfuscatedName("afo.ai")
-	public byte[] field9745;
+    public byte[] field9745;
 
-	@ObfuscatedName("afo.aw")
-	public short[] field9713;
+    public short[] field9713;
 
-	@ObfuscatedName("afo.as")
-	public short[] field9762;
+    public short[] field9762;
 
-	@ObfuscatedName("afo.at")
-	public short[] field9726;
+    public short[] field9726;
 
-	@ObfuscatedName("afo.ad")
-	public short[] field9717;
+    public short[] field9717;
 
-	@ObfuscatedName("afo.am")
-	public int[][] field9728;
+    public int[][] field9728;
 
-	@ObfuscatedName("afo.au")
-	public short[] field9759;
+    public short[] field9759;
 
-	@ObfuscatedName("afo.ar")
-	public GpuModelRelated field9756;
+    public GpuModelRelated field9756;
 
-	@ObfuscatedName("afo.ap")
-	public GpuModelRelated4 field9731;
+    public GpuModelRelated4 field9731;
 
-	@ObfuscatedName("afo.aq")
-	public GpuModelRelated4 field9732;
+    public GpuModelRelated4 field9732;
 
-	@ObfuscatedName("afo.ax")
-	public GpuModelRelated4 field9733;
+    public GpuModelRelated4 field9733;
 
-	@ObfuscatedName("afo.av")
-	public GpuModelRelated4 field9734;
+    public GpuModelRelated4 field9734;
 
-	@ObfuscatedName("afo.ao")
-	public boolean field9735;
+    public boolean field9735;
 
-	@ObfuscatedName("afo.aj")
-	public boolean field9736;
+    public boolean field9736;
 
-	@ObfuscatedName("afo.ay")
-	public boolean field9737;
+    public boolean field9737;
 
-	@ObfuscatedName("afo.ab")
-	public boolean field9699;
+    public boolean field9699;
 
-	@ObfuscatedName("afo.az")
-	public int field9729;
+    public int field9729;
 
-	@ObfuscatedName("afo.aa")
-	public int field9740;
+    public int field9740;
 
-	@ObfuscatedName("afo.af")
-	public boolean field9718;
+    public boolean field9718;
 
-	@ObfuscatedName("afo.ak")
-	public int field9742;
+    public int field9742;
 
-	@ObfuscatedName("afo.an")
-	public int field9743;
+    public int field9743;
 
-	@ObfuscatedName("afo.bf")
-	public int field9744;
+    public int field9744;
 
-	@ObfuscatedName("afo.bl")
-	public int field9719;
+    public int field9719;
 
-	@ObfuscatedName("afo.bk")
-	public int field9708;
+    public int field9708;
 
-	@ObfuscatedName("afo.bh")
-	public int field9696;
+    public int field9696;
 
-	@ObfuscatedName("afo.bx")
-	public boolean field9748;
+    public boolean field9748;
 
-	@ObfuscatedName("afo.bd")
-	public int field9760;
+    public int field9760;
 
-	@ObfuscatedName("afo.bc")
-	public int[] field9750;
+    public int[] field9750;
 
-	@ObfuscatedName("afo.bi")
-	public int[] field9741;
+    public int[] field9741;
 
-	@ObfuscatedName("afo.bn")
-	public int[] field9752;
+    public int[] field9752;
 
-	@ObfuscatedName("afo.bt")
-	public int[] field9753;
+    public int[] field9753;
 
-	@ObfuscatedName("afo.bq")
-	public short[] field9754;
+    public short[] field9754;
 
-	@ObfuscatedName("afo.bm")
-	public ModelParticleEmitter[] field9755;
+    public ModelParticleEmitter[] field9755;
 
-	@ObfuscatedName("afo.bb")
-	public ModelParticleEffector[] field9738;
+    public ModelParticleEffector[] field9738;
 
-	@ObfuscatedName("afo.be")
-	public int field9746;
+    public int field9746;
 
-	@ObfuscatedName("afo.by")
-	public GpuModelRelated2[] field9758;
+    public GpuModelRelated2[] field9758;
 
-	@ObfuscatedName("afo.bu")
-	public GpuModelRelated5[] field9757;
+    public GpuModelRelated5[] field9757;
 
-	@ObfuscatedName("afo.bw")
-	public int[][] field9751;
+    public int[][] field9751;
 
-	@ObfuscatedName("afo.bo")
-	public long[] field9761;
+    public long[] field9761;
 
-	@ObfuscatedName("afo.bz")
-	public float[] field9720;
+    public float[] field9720;
 
-	@ObfuscatedName("afo.bv")
-	public int[] field9763;
+    public int[] field9763;
 
-	@ObfuscatedName("afo.br")
-	public int[] field9764;
+    public int[] field9764;
 
-	@ObfuscatedName("afo.bg")
-	public final int[] field9765;
+    public final int[] field9765;
 
-	@ObfuscatedName("afo.ba")
-	public final int[] field9766;
+    public final int[] field9766;
 
-	@ObfuscatedName("afo.bp")
-	public final int[] field9739;
+    public final int[] field9739;
 
-	@ObfuscatedName("afo.bj")
-	public int field9768;
+    public int field9768;
 
-	@ObfuscatedName("afo.bs")
-	public int field9769;
+    public int field9769;
 
-	@ObfuscatedName("afo.cl")
-	public int field9770;
+    public int field9770;
 
-	@ObfuscatedName("afo.cg")
-	public boolean field9706;
+    public boolean field9706;
 
-	@ObfuscatedName("afo.ce")
-	public static GpuModelUnknown field9772;
+    public static GpuModelUnknown field9772;
 
 	public GpuModel(GpuToolkit arg0, int arg1, int arg2, boolean arg3, boolean arg4) {
 		this.field9703 = 0;
@@ -856,8 +780,7 @@ public class GpuModel extends Model {
 		}
 	}
 
-	@ObfuscatedName("afo.hb(Ldq;IIJIIIIFF)S")
-	public short method15592(ModelUnlit arg0, int arg1, int arg2, long arg3, int arg4, int arg5, int arg6, int arg7, float arg8, float arg9) {
+    public short method15592(ModelUnlit arg0, int arg1, int arg2, long arg3, int arg4, int arg5, int arg6, int arg7, float arg8, float arg9) {
 		int var12 = this.field9753[arg1];
 		int var13 = this.field9753[arg1 + 1];
 		int var14 = 0;
@@ -884,34 +807,29 @@ public class GpuModel extends Model {
 		return (short) this.field9710++;
 	}
 
-	@ObfuscatedName("afo.hg([BI)[B")
-	public static byte[] method15591(byte[] arg0, int arg1) {
+    public static byte[] method15591(byte[] arg0, int arg1) {
 		byte[] var2 = new byte[arg1];
 		System.arraycopy(arg0, 0, var2, 0, arg1);
 		return var2;
 	}
 
-	@ObfuscatedName("afo.hd([SI)[S")
-	public static short[] method15610(short[] arg0, int arg1) {
+    public static short[] method15610(short[] arg0, int arg1) {
 		short[] var2 = new short[arg1];
 		System.arraycopy(arg0, 0, var2, 0, arg1);
 		return var2;
 	}
 
-	@ObfuscatedName("afo.hx([FI)[F")
-	public static float[] method15633(float[] arg0, int arg1) {
+    public static float[] method15633(float[] arg0, int arg1) {
 		float[] var2 = new float[arg1];
 		System.arraycopy(arg0, 0, var2, 0, arg1);
 		return var2;
 	}
 
-	@ObfuscatedName("afo.z()I")
-	public int method1691() {
+    public int method1691() {
 		return this.field9725;
 	}
 
-	@ObfuscatedName("afo.u(I)V")
-	public void method1690(int arg0) {
+    public void method1690(int arg0) {
 		if (this.field9731 != null) {
 			this.field9731.field3357 = GpuModelFlags.method5452(arg0, this.field9700);
 		}
@@ -936,8 +854,7 @@ public class GpuModel extends Model {
 		this.method15630();
 	}
 
-	@ObfuscatedName("afo.p()V")
-	public void method1816() {
+    public void method1816() {
 		if (this.field9710 > 0 && this.field9721 > 0) {
 			this.method15614();
 			this.method15607();
@@ -945,8 +862,7 @@ public class GpuModel extends Model {
 		}
 	}
 
-	@ObfuscatedName("afo.l(BIZ)Ldo;")
-	public Model method1773(byte arg0, int arg1, boolean arg2) {
+    public Model method1773(byte arg0, int arg1, boolean arg2) {
 		boolean var4 = false;
 		GpuModel var5;
 		GpuModel var6;
@@ -960,8 +876,7 @@ public class GpuModel extends Model {
 		return this.method15593(var6, var5, arg1, var4, arg2);
 	}
 
-	@ObfuscatedName("afo.hq(Lafo;Lafo;IZZ)Ldo;")
-	public Model method15593(GpuModel arg0, GpuModel arg1, int arg2, boolean arg3, boolean arg4) {
+    public Model method15593(GpuModel arg0, GpuModel arg1, int arg2, boolean arg3, boolean arg4) {
 		arg0.field9725 = arg2;
 		arg0.field9700 = this.field9700;
 		arg0.field9701 = this.field9701;
@@ -1244,8 +1159,7 @@ public class GpuModel extends Model {
 		return arg0;
 	}
 
-	@ObfuscatedName("afo.hf()V")
-	public void method15630() {
+    public void method15630() {
 		if (!this.field9736) {
 			return;
 		}
@@ -1387,22 +1301,19 @@ public class GpuModel extends Model {
 		}
 	}
 
-	@ObfuscatedName("afo.hr()V")
-	public void method15598() {
+    public void method15598() {
 		if (this.field9731 != null) {
 			this.field9731.field3358 = false;
 		}
 	}
 
-	@ObfuscatedName("afo.hs()V")
-	public void method15596() {
+    public void method15596() {
 		if (this.field9732 != null) {
 			this.field9732.field3358 = false;
 		}
 	}
 
-	@ObfuscatedName("afo.hh()V")
-	public void method15599() {
+    public void method15599() {
 		if ((this.field9700 & 0x37) == 0) {
 			if (this.field9732 != null) {
 				this.field9732.field3358 = false;
@@ -1412,15 +1323,13 @@ public class GpuModel extends Model {
 		}
 	}
 
-	@ObfuscatedName("afo.hp()V")
-	public void method15615() {
+    public void method15615() {
 		if (this.field9756 != null) {
 			this.field9756.field3238 = false;
 		}
 	}
 
-	@ObfuscatedName("afo.d(I)V")
-	public void method1693(int arg0) {
+    public void method1693(int arg0) {
 		int var2 = Trig1.sin[arg0];
 		int var3 = Trig1.cos[arg0];
 		for (int var4 = 0; var4 < this.field9704; var4++) {
@@ -1432,8 +1341,7 @@ public class GpuModel extends Model {
 		this.field9718 = false;
 	}
 
-	@ObfuscatedName("afo.c(I)V")
-	public void method1694(int arg0) {
+    public void method1694(int arg0) {
 		int var2 = Trig1.sin[arg0];
 		int var3 = Trig1.cos[arg0];
 		for (int var4 = 0; var4 < this.field9704; var4++) {
@@ -1451,8 +1359,7 @@ public class GpuModel extends Model {
 		this.field9718 = false;
 	}
 
-	@ObfuscatedName("afo.r(I)V")
-	public void rotateX(int arg0) {
+    public void rotateX(int arg0) {
 		int var2 = Trig1.sin[arg0];
 		int var3 = Trig1.cos[arg0];
 		for (int var4 = 0; var4 < this.field9704; var4++) {
@@ -1464,8 +1371,7 @@ public class GpuModel extends Model {
 		this.field9718 = false;
 	}
 
-	@ObfuscatedName("afo.v(I)V")
-	public void rotateZ(int arg0) {
+    public void rotateZ(int arg0) {
 		int var2 = Trig1.sin[arg0];
 		int var3 = Trig1.cos[arg0];
 		for (int var4 = 0; var4 < this.field9704; var4++) {
@@ -1477,8 +1383,7 @@ public class GpuModel extends Model {
 		this.field9718 = false;
 	}
 
-	@ObfuscatedName("afo.o(III)V")
-	public void translate(int arg0, int arg1, int arg2) {
+    public void translate(int arg0, int arg1, int arg2) {
 		for (int var4 = 0; var4 < this.field9704; var4++) {
 			if (arg0 != 0) {
 				this.field9705[var4] += arg0;
@@ -1494,8 +1399,7 @@ public class GpuModel extends Model {
 		this.field9718 = false;
 	}
 
-	@ObfuscatedName("afo.s()V")
-	public void method1698() {
+    public void method1698() {
 		for (int var1 = 0; var1 < this.field9704; var1++) {
 			this.field9712[var1] = -this.field9712[var1];
 		}
@@ -1513,8 +1417,7 @@ public class GpuModel extends Model {
 		this.field9718 = false;
 	}
 
-	@ObfuscatedName("afo.y(III)V")
-	public void scale(int arg0, int arg1, int arg2) {
+    public void scale(int arg0, int arg1, int arg2) {
 		for (int var4 = 0; var4 < this.field9704; var4++) {
 			if (arg0 != 128) {
 				this.field9705[var4] = this.field9705[var4] * arg0 >> 7;
@@ -1530,8 +1433,7 @@ public class GpuModel extends Model {
 		this.field9718 = false;
 	}
 
-	@ObfuscatedName("afo.q(IILcb;Lcb;III)V")
-	public void method1700(int arg0, int arg1, FloorModel arg2, FloorModel arg3, int arg4, int arg5, int arg6) {
+    public void method1700(int arg0, int arg1, FloorModel arg2, FloorModel arg3, int arg4, int arg5, int arg6) {
 		if (!this.field9718) {
 			this.method15613();
 		}
@@ -1602,8 +1504,7 @@ public class GpuModel extends Model {
 		this.field9718 = false;
 	}
 
-	@ObfuscatedName("afo.hy()V")
-	public void method15613() {
+    public void method15613() {
 		int var1 = 32767;
 		int var2 = 32767;
 		int var3 = 32767;
@@ -1654,8 +1555,7 @@ public class GpuModel extends Model {
 		this.field9718 = true;
 	}
 
-	@ObfuscatedName("afo.bl()V")
-	public void method1736() {
+    public void method1736() {
 		if (this.field9748) {
 			return;
 		}
@@ -1666,80 +1566,70 @@ public class GpuModel extends Model {
 		this.field9748 = true;
 	}
 
-	@ObfuscatedName("afo.aj()I")
-	public int getHorizontalRadius() {
+    public int getHorizontalRadius() {
 		if (!this.field9718) {
 			this.method15613();
 		}
 		return this.field9740;
 	}
 
-	@ObfuscatedName("afo.ay()I")
-	public int getRadius() {
+    public int getRadius() {
 		if (!this.field9718) {
 			this.method15613();
 		}
 		return this.field9729;
 	}
 
-	@ObfuscatedName("afo.ab()I")
-	public int getMinX() {
+    public int getMinX() {
 		if (!this.field9718) {
 			this.method15613();
 		}
 		return this.field9744;
 	}
 
-	@ObfuscatedName("afo.az()I")
-	public int getMaxX() {
+    public int getMaxX() {
 		if (!this.field9718) {
 			this.method15613();
 		}
 		return this.field9719;
 	}
 
-	@ObfuscatedName("afo.aa()I")
-	public int getMinY() {
+    public int getMinY() {
 		if (!this.field9718) {
 			this.method15613();
 		}
 		return this.field9742;
 	}
 
-	@ObfuscatedName("afo.af()I")
-	public int getMaxY() {
+    public int getMaxY() {
 		if (!this.field9718) {
 			this.method15613();
 		}
 		return this.field9743;
 	}
 
-	@ObfuscatedName("afo.ak()I")
-	public int getMinZ() {
+    public int getMinZ() {
 		if (!this.field9718) {
 			this.method15613();
 		}
 		return this.field9708;
 	}
 
-	@ObfuscatedName("afo.an()I")
-	public int getMaxZ() {
+    public int getMaxZ() {
 		if (!this.field9718) {
 			this.method15613();
 		}
 		return this.field9696;
 	}
 
-	@ObfuscatedName("afo.bf()I")
-	public int getHeight() {
+    public int getHeight() {
 		if (!this.field9748) {
 			this.method1736();
 		}
 		return this.field9760;
 	}
 
-	@ObfuscatedName("afo.bo(Ldo;IIIZ)V")
-	public void method1686(Model arg0, int arg1, int arg2, int arg3, boolean arg4) {
+    public void method1686(Model arg0, int arg1, int arg2, int arg3, boolean arg4) {
 		GpuModel var6 = (GpuModel) arg0;
 		if (this.field9716 == 0 || var6.field9716 == 0) {
 			return;
@@ -1881,36 +1771,30 @@ public class GpuModel extends Model {
 		}
 	}
 
-	@ObfuscatedName("afo.bk(I)V")
-	public void method1893(int arg0) {
+    public void method1893(int arg0) {
 		this.field9701 = (short) arg0;
 		this.method15596();
 	}
 
-	@ObfuscatedName("afo.bh(I)V")
-	public void method1738(int arg0) {
+    public void method1738(int arg0) {
 		this.field9749 = (short) arg0;
 		this.method15598();
 		this.method15599();
 	}
 
-	@ObfuscatedName("afo.bx()I")
-	public int method1862() {
+    public int method1862() {
 		return this.field9701;
 	}
 
-	@ObfuscatedName("afo.bd()I")
-	public int method1740() {
+    public int method1740() {
 		return this.field9749;
 	}
 
-	@ObfuscatedName("afo.bc()[B")
-	public byte[] method1741() {
+    public byte[] method1741() {
 		return this.field9745;
 	}
 
-	@ObfuscatedName("afo.bi(SS)V")
-	public void recolor(short arg0, short arg1) {
+    public void recolor(short arg0, short arg1) {
 		for (int var3 = 0; var3 < this.field9716; var3++) {
 			if (this.field9722[var3] == arg0) {
 				this.field9722[var3] = arg1;
@@ -1926,8 +1810,7 @@ public class GpuModel extends Model {
 		this.method15596();
 	}
 
-	@ObfuscatedName("afo.bn(B[B)V")
-	public void method1747(byte arg0, byte[] arg1) {
+    public void method1747(byte arg0, byte[] arg1) {
 		if (arg1 == null) {
 			for (int var3 = 0; var3 < this.field9716; var3++) {
 				this.field9745[var3] = arg0;
@@ -1941,8 +1824,7 @@ public class GpuModel extends Model {
 		this.method15596();
 	}
 
-	@ObfuscatedName("afo.bt(SS)V")
-	public void retexture(short arg0, short arg1) {
+    public void retexture(short arg0, short arg1) {
 		MaterialList var3 = this.field9730.materialList;
 		for (int var4 = 0; var4 < this.field9716; var4++) {
 			if (this.field9717[var4] == arg0) {
@@ -1979,8 +1861,7 @@ public class GpuModel extends Model {
 		this.method15596();
 	}
 
-	@ObfuscatedName("afo.bq(IIII)V")
-	public void method1745(int arg0, int arg1, int arg2, int arg3) {
+    public void method1745(int arg0, int arg1, int arg2, int arg3) {
 		for (int var5 = 0; var5 < this.field9716; var5++) {
 			int var6 = this.field9722[var5] & 0xFFFF;
 			int var7 = var6 >> 10 & 0x3F;
@@ -2007,8 +1888,7 @@ public class GpuModel extends Model {
 		this.method15596();
 	}
 
-	@ObfuscatedName("afo.bm()Z")
-	public boolean method1746() {
+    public boolean method1746() {
 		if (this.field9717 == null) {
 			return true;
 		}
@@ -2020,26 +1900,21 @@ public class GpuModel extends Model {
 		return true;
 	}
 
-	@ObfuscatedName("afo.bb()Z")
-	public boolean method1731() {
+    public boolean method1731() {
 		return this.field9737;
 	}
 
-	@ObfuscatedName("afo.be()Z")
-	public boolean method1812() {
+    public boolean method1812() {
 		return this.field9699;
 	}
 
-	@ObfuscatedName("afo.b()V")
-	public void method1702() {
+    public void method1702() {
 	}
 
-	@ObfuscatedName("afo.h()V")
-	public void method1703() {
+    public void method1703() {
 	}
 
-	@ObfuscatedName("afo.as()Z")
-	public boolean method1716() {
+    public boolean method1716() {
 		if (this.field9702 == null) {
 			return false;
 		}
@@ -2054,8 +1929,7 @@ public class GpuModel extends Model {
 		return true;
 	}
 
-	@ObfuscatedName("afo.am(I[IIIIZI[I)V")
-	public void method1719(int arg0, int[] arg1, int arg2, int arg3, int arg4, boolean arg5, int arg6, int[] arg7) {
+    public void method1719(int arg0, int[] arg1, int arg2, int arg3, int arg4, boolean arg5, int arg6, int[] arg7) {
 		int var9 = arg1.length;
 		if (arg0 == 0) {
 			int var10 = arg2 << 4;
@@ -2505,8 +2379,7 @@ public class GpuModel extends Model {
 		}
 	}
 
-	@ObfuscatedName("afo.ar(IIII)V")
-	public void method1721(int arg0, int arg1, int arg2, int arg3) {
+    public void method1721(int arg0, int arg1, int arg2, int arg3) {
 		if (arg0 == 0) {
 			int var5 = 0;
 			this.field9768 = 0;
@@ -2642,8 +2515,7 @@ public class GpuModel extends Model {
 		}
 	}
 
-	@ObfuscatedName("afo.at(I[IIIIIZ)V")
-	public void applyTransform(int type, int[] labels, int arg2, int arg3, int arg4, int arg5, boolean arg6) {
+    public void applyTransform(int type, int[] labels, int arg2, int arg3, int arg4, int arg5, boolean arg6) {
 		int var8 = labels.length;
 		if (type == 0) {
 			int var9 = arg2 << 4;
@@ -2933,8 +2805,7 @@ public class GpuModel extends Model {
 		}
 	}
 
-	@ObfuscatedName("afo.ad(I[IIIIIZ)V")
-	public void method1711(int arg0, int[] arg1, int arg2, int arg3, int arg4, int arg5, boolean arg6) {
+    public void method1711(int arg0, int[] arg1, int arg2, int arg3, int arg4, int arg5, boolean arg6) {
 		if (arg0 != 0) {
 			this.applyTransform(arg0, arg1, arg2, arg3, arg4, arg5, arg6);
 			return;
@@ -2947,8 +2818,7 @@ public class GpuModel extends Model {
 		this.field9770 = var10;
 	}
 
-	@ObfuscatedName("afo.au(I[IIIIZI[I)V")
-	public void method1720(int arg0, int[] arg1, int arg2, int arg3, int arg4, boolean arg5, int arg6, int[] arg7) {
+    public void method1720(int arg0, int[] arg1, int arg2, int arg3, int arg4, boolean arg5, int arg6, int[] arg7) {
 		if (arg0 != 0) {
 			this.method1719(arg0, arg1, arg2, arg3, arg4, arg5, arg6, arg7);
 			return;
@@ -2961,8 +2831,7 @@ public class GpuModel extends Model {
 		this.field9770 = var11;
 	}
 
-	@ObfuscatedName("afo.ap()V")
-	public void method1776() {
+    public void method1776() {
 		for (int var1 = 0; var1 < this.field9703; var1++) {
 			this.field9705[var1] = this.field9705[var1] + 7 >> 4;
 			this.field9767[var1] = this.field9767[var1] + 7 >> 4;
@@ -2972,8 +2841,7 @@ public class GpuModel extends Model {
 		this.field9718 = false;
 	}
 
-	@ObfuscatedName("afo.aq(Lou;IZ)V")
-	public void method1771(Matrix4x3 arg0, int arg1, boolean arg2) {
+    public void method1771(Matrix4x3 arg0, int arg1, boolean arg2) {
 		if (this.field9709 == null) {
 			return;
 		}
@@ -2993,18 +2861,15 @@ public class GpuModel extends Model {
 		}
 	}
 
-	@ObfuscatedName("afo.bw()[Lcq;")
-	public ModelParticleEffector[] method1765() {
+    public ModelParticleEffector[] method1765() {
 		return this.field9738;
 	}
 
-	@ObfuscatedName("afo.bu()[Ldu;")
-	public ModelParticleEmitter[] method1750() {
+    public ModelParticleEmitter[] method1750() {
 		return this.field9755;
 	}
 
-	@ObfuscatedName("afo.by(Lou;)V")
-	public void method1689(Matrix4x3 arg0) {
+    public void method1689(Matrix4x3 arg0) {
 		Matrix4x4 var2 = this.field9730.field10066;
 		var2.setToMatrix4x3(arg0);
 		if (this.field9755 != null) {
@@ -3045,13 +2910,11 @@ public class GpuModel extends Model {
 		}
 	}
 
-	@ObfuscatedName("afo.av(IILou;ZI)Z")
-	public boolean method1725(int arg0, int arg1, Matrix4x3 arg2, boolean arg3, int arg4) {
+    public boolean method1725(int arg0, int arg1, Matrix4x3 arg2, boolean arg3, int arg4) {
 		return this.method15590(arg0, arg1, 0, 0, arg2, arg3, arg4);
 	}
 
-	@ObfuscatedName("afo.he(IIIILou;ZI)Z")
-	public boolean method15590(int arg0, int arg1, int arg2, int arg3, Matrix4x3 arg4, boolean arg5, int arg6) {
+    public boolean method15590(int arg0, int arg1, int arg2, int arg3, Matrix4x3 arg4, boolean arg5, int arg6) {
 		Matrix4x4 var8 = this.field9730.field10066;
 		var8.setToMatrix4x3(arg4);
 		var8.multiply(this.field9730.field10145);
@@ -3169,8 +3032,7 @@ public class GpuModel extends Model {
 		return false;
 	}
 
-	@ObfuscatedName("afo.hn(IIIIIIIIII)Z")
-	public boolean method15602(int arg0, int arg1, int arg2, int arg3, int arg4, int arg5, int arg6, int arg7, int arg8, int arg9) {
+    public boolean method15602(int arg0, int arg1, int arg2, int arg3, int arg4, int arg5, int arg6, int arg7, int arg8, int arg9) {
 		if (arg3 < arg4 && arg3 < arg5 && arg3 < arg6) {
 			return false;
 		} else if (arg1 > arg4 && arg1 > arg5 && arg1 > arg6) {
@@ -3182,8 +3044,7 @@ public class GpuModel extends Model {
 		}
 	}
 
-	@ObfuscatedName("afo.ao(Lara;)Lara;")
-	public HardShadow method1726(HardShadow arg0) {
+    public HardShadow method1726(HardShadow arg0) {
 		if (this.field9710 == 0) {
 			return null;
 		}
@@ -3223,8 +3084,7 @@ public class GpuModel extends Model {
 		return var9;
 	}
 
-	@ObfuscatedName("afo.hi(Lati;)V")
-	public void method15603(GpuHardShadow arg0) {
+    public void method15603(GpuHardShadow arg0) {
 		if (this.field9763.length < this.field9710) {
 			this.field9763 = new int[this.field9710];
 			this.field9764 = new int[this.field9710];
@@ -3258,8 +3118,7 @@ public class GpuModel extends Model {
 		}
 	}
 
-	@ObfuscatedName("afo.ax(Lou;Led;I)V")
-	public void draw(Matrix4x3 arg0, ScreenBoundingBox arg1, int arg2) {
+    public void draw(Matrix4x3 arg0, ScreenBoundingBox arg1, int arg2) {
 		if (field9772 != null) {
 			field9772.method5554();
 		}
@@ -3362,8 +3221,7 @@ public class GpuModel extends Model {
 		this.method15604(var5);
 	}
 
-	@ObfuscatedName("afo.hw(Lou;)V")
-	public void method15601(Matrix4x3 arg0) {
+    public void method15601(Matrix4x3 arg0) {
 		if (this.field9721 == 0 || (!this.method15614() || !this.method15607())) {
 			return;
 		}
@@ -3542,8 +3400,7 @@ public class GpuModel extends Model {
 		this.method15630();
 	}
 
-	@ObfuscatedName("afo.ht(Lpq;)V")
-	public void method15604(Matrix4x4 arg0) {
+    public void method15604(Matrix4x4 arg0) {
 		if (this.field9758 == null) {
 			return;
 		}
@@ -3586,8 +3443,7 @@ public class GpuModel extends Model {
 		this.field9730.method2219(true);
 	}
 
-	@ObfuscatedName("afo.hc()Z")
-	public boolean method15607() {
+    public boolean method15607() {
 		if (this.field9756.field3238) {
 			return true;
 		}
@@ -3634,8 +3490,7 @@ public class GpuModel extends Model {
 		}
 	}
 
-	@ObfuscatedName("afo.ho()Z")
-	public boolean method15614() {
+    public boolean method15614() {
 		boolean var1 = !this.field9732.field3358;
 		boolean var2 = (this.field9700 & 0x37) != 0 && !this.field9733.field3358;
 		boolean var3 = !this.field9731.field3358;
@@ -3909,8 +3764,7 @@ public class GpuModel extends Model {
 		return var5;
 	}
 
-	@ObfuscatedName("afo.hj()V")
-	public void method15612() {
+    public void method15612() {
 		if (this.field9731 != null) {
 			this.field9731.method5788();
 		}
@@ -3928,8 +3782,7 @@ public class GpuModel extends Model {
 		}
 	}
 
-	@ObfuscatedName("afo.hv(II)I")
-	public int method15606(int arg0, int arg1) {
+    public int method15606(int arg0, int arg1) {
 		int var3 = (arg0 & 0x7F) * arg1 >> 7;
 		if (var3 < 2) {
 			var3 = 2;
@@ -3939,8 +3792,7 @@ public class GpuModel extends Model {
 		return (arg0 & 0xFF80) + var3;
 	}
 
-	@ObfuscatedName("afo.hz(ISI)I")
-	public int method15609(int arg0, short arg1, int arg2) {
+    public int method15609(int arg0, short arg1, int arg2) {
 		int var4 = this.field9730.field10043[this.method15606(arg0, arg2)];
 		if (arg1 != -1) {
 			Material var5 = this.field9730.materialList.get(arg1 & 0xFFFF);

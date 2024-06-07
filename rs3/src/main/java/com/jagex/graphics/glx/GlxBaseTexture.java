@@ -8,35 +8,25 @@ import com.jagex.math.IntMath;
 import deob.ObfuscatedName;
 import jaggl.OpenGL;
 
-@ObfuscatedName("rj")
 public abstract class GlxBaseTexture implements BaseTexture {
 
-	@ObfuscatedName("rj.f")
-	public final GlxToolkit field4980;
+    public final GlxToolkit field4980;
 
-	@ObfuscatedName("rj.w")
-	public int field4974;
+    public int field4974;
 
-	@ObfuscatedName("rj.l")
-	public final int field4979;
+    public final int field4979;
 
-	@ObfuscatedName("rj.u")
-	public final TextureFormat field4973;
+    public final TextureFormat field4973;
 
-	@ObfuscatedName("rj.z")
-	public final DataType field4977;
+    public final DataType field4977;
 
-	@ObfuscatedName("rj.p")
-	public boolean field4982;
+    public boolean field4982;
 
-	@ObfuscatedName("rj.d")
-	public GpuTextureRelated field4983 = GpuTextureRelated.field3323;
+    public GpuTextureRelated field4983 = GpuTextureRelated.field3323;
 
-	@ObfuscatedName("rj.c")
-	public final int field4984;
+    public final int field4984;
 
-	@ObfuscatedName("rj.r")
-	public static final int[] field4985 = new int[1];
+    public static final int[] field4985 = new int[1];
 
 	public GlxBaseTexture(GlxToolkit arg0, int arg1, TextureFormat arg2, DataType arg3, int arg4, boolean arg5) {
 		this.field4980 = arg0;
@@ -51,8 +41,7 @@ public abstract class GlxBaseTexture implements BaseTexture {
 		this.method7648(0);
 	}
 
-	@ObfuscatedName("rj.aj()V")
-	public void method5823() {
+    public void method5823() {
 		if (this.field4974 == 0) {
 			throw new IllegalStateException("");
 		}
@@ -69,16 +58,14 @@ public abstract class GlxBaseTexture implements BaseTexture {
 		OpenGL.glBindTexture(this.field4979, this.field4974);
 	}
 
-	@ObfuscatedName("rj.ay(Llt;)V")
-	public void method5824(GpuTextureRelated arg0) {
+    public void method5824(GpuTextureRelated arg0) {
 		if (this.field4983 != arg0) {
 			this.field4983 = arg0;
 			this.method7633();
 		}
 	}
 
-	@ObfuscatedName("rj.bl()V")
-	public void method7633() {
+    public void method7633() {
 		if (this.field4974 == 0) {
 			throw new IllegalStateException("");
 		}
@@ -92,8 +79,7 @@ public abstract class GlxBaseTexture implements BaseTexture {
 		}
 	}
 
-	@ObfuscatedName("rj.s()Z")
-	public boolean method5708() {
+    public boolean method5708() {
 		if (this.field4974 == 0) {
 			throw new IllegalStateException("");
 		}
@@ -112,8 +98,7 @@ public abstract class GlxBaseTexture implements BaseTexture {
 		return true;
 	}
 
-	@ObfuscatedName("rj.bk(III[I)V")
-	public void method7638(int arg0, int arg1, int arg2, int[] arg3) {
+    public void method7638(int arg0, int arg1, int arg2, int[] arg3) {
 		if (this.field4974 == 0) {
 			throw new IllegalStateException("");
 		} else if (arg1 > 0 && !IntMath.method4918(arg1)) {
@@ -177,8 +162,7 @@ public abstract class GlxBaseTexture implements BaseTexture {
 		}
 	}
 
-	@ObfuscatedName("rj.bh(III[B)V")
-	public void method7634(int arg0, int arg1, int arg2, byte[] arg3) {
+    public void method7634(int arg0, int arg1, int arg2, byte[] arg3) {
 		if (this.field4974 == 0) {
 			throw new IllegalStateException("");
 		} else if (arg1 > 0 && !IntMath.method4918(arg1)) {
@@ -233,8 +217,7 @@ public abstract class GlxBaseTexture implements BaseTexture {
 		}
 	}
 
-	@ObfuscatedName("rj.bx(III[F)V")
-	public void method7635(int arg0, int arg1, int arg2, float[] arg3) {
+    public void method7635(int arg0, int arg1, int arg2, float[] arg3) {
 		if (this.field4974 == 0) {
 			throw new IllegalStateException("");
 		} else if (arg1 > 0 && !IntMath.method4918(arg1)) {
@@ -289,20 +272,17 @@ public abstract class GlxBaseTexture implements BaseTexture {
 		}
 	}
 
-	@ObfuscatedName("rj.bd(I)V")
-	public void method7648(int arg0) {
+    public void method7648(int arg0) {
 		this.field4980.field10052 -= arg0;
 		this.field4980.field10052 += this.method7637();
 	}
 
-	@ObfuscatedName("rj.bc()I")
-	public int method7637() {
+    public int method7637() {
 		int var1 = this.field4977.field1652 * this.field4973.id * this.field4984;
 		return this.field4982 ? var1 * 4 / 3 : var1;
 	}
 
-	@ObfuscatedName("rj.m()V")
-	public void delete() {
+    public void delete() {
 		if (this.field4974 != 0) {
 			this.field4980.field10052 -= this.method7637();
 			int[] var1 = new int[] { this.field4974 };
@@ -311,8 +291,7 @@ public abstract class GlxBaseTexture implements BaseTexture {
 		}
 	}
 
-	@ObfuscatedName("rj.bi()V")
-	public void method7641() {
+    public void method7641() {
 		if (this.field4974 != 0) {
 			this.field4980.method19073(this.field4974, this.method7637());
 			this.field4974 = 0;

@@ -4,26 +4,19 @@ import com.jagex.core.io.Packet;
 import com.jagex.game.config.objtype.ObjType;
 import deob.ObfuscatedName;
 
-@ObfuscatedName("abw")
 public class ObjTypeCustomisation {
 
-	@ObfuscatedName("abw.w")
-	public int[] field8710 = new int[3];
+    public int[] field8710 = new int[3];
 
-	@ObfuscatedName("abw.l")
-	public int[] field8708 = new int[3];
+    public int[] field8708 = new int[3];
 
-	@ObfuscatedName("abw.u")
-	public int[] field8709 = new int[2];
+    public int[] field8709 = new int[2];
 
-	@ObfuscatedName("abw.z")
-	public int[] field8713 = new int[2];
+    public int[] field8713 = new int[2];
 
-	@ObfuscatedName("abw.p")
-	public short[] field8714;
+    public short[] field8714;
 
-	@ObfuscatedName("abw.d")
-	public short[] field8715;
+    public short[] field8715;
 
 	public ObjTypeCustomisation(ObjType arg0) {
 		this.field8710[0] = arg0.manwear;
@@ -46,13 +39,11 @@ public class ObjTypeCustomisation {
 		}
 	}
 
-	@ObfuscatedName("bc.e(Labv;Lalw;I)Labw;")
-	public static ObjTypeCustomisation method1061(ObjType arg0, Packet arg1) {
+    public static ObjTypeCustomisation method1061(ObjType arg0, Packet arg1) {
 		return method4273(arg0, arg1, 2);
 	}
 
-	@ObfuscatedName("ho.n(Labv;Lalw;II)Labw;")
-	public static ObjTypeCustomisation method4273(ObjType arg0, Packet arg1, int arg2) {
+    public static ObjTypeCustomisation method4273(ObjType arg0, Packet arg1, int arg2) {
 		ObjTypeCustomisation var3 = new ObjTypeCustomisation(arg0);
 		int var4 = arg1.g1();
 		boolean var5 = (var4 & 0x1) != 0;

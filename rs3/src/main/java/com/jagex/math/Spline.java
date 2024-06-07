@@ -3,17 +3,13 @@ package com.jagex.math;
 import com.jagex.core.io.Packet;
 import deob.ObfuscatedName;
 
-@ObfuscatedName("pe")
 public class Spline {
 
-	@ObfuscatedName("pe.e")
-	public SplineRelated[] field4324 = new SplineRelated[1];
+    public SplineRelated[] field4324 = new SplineRelated[1];
 
-	@ObfuscatedName("pe.n")
-	public float[] field4325 = new float[2];
+    public float[] field4325 = new float[2];
 
-	@ObfuscatedName("pe.e(Lox;Lox;F)V")
-	public void method6774(Vector3 arg0, Vector3 arg1, float arg2) {
+    public void method6774(Vector3 arg0, Vector3 arg1, float arg2) {
 		SplineRelated[] var4 = new SplineRelated[this.field4324.length + 1];
 		System.arraycopy(this.field4324, 0, var4, 0, this.field4324.length);
 		SplineRelated var5 = new SplineRelated();
@@ -31,13 +27,11 @@ public class Spline {
 		this.field4325 = var8;
 	}
 
-	@ObfuscatedName("pe.n()I")
-	public int method6763() {
+    public int method6763() {
 		return this.field4324.length;
 	}
 
-	@ObfuscatedName("pe.m()F")
-	public float method6764() {
+    public float method6764() {
 		float var1 = 0.0F;
 		for (int var2 = 0; var2 < this.field4324.length; var2++) {
 			var1 += this.field4324[var2].method6743();
@@ -45,8 +39,7 @@ public class Spline {
 		return var1;
 	}
 
-	@ObfuscatedName("pe.k(F)[D")
-	public double[] method6765(float arg0) {
+    public double[] method6765(float arg0) {
 		float var2 = 0.0F;
 		float var3 = 0.0F;
 		for (int var4 = 0; var4 < this.field4324.length; var4++) {
@@ -60,8 +53,7 @@ public class Spline {
 		return this.field4324[this.field4324.length - 1].method6755(1.0F);
 	}
 
-	@ObfuscatedName("pe.f(F)F")
-	public float method6771(float arg0) {
+    public float method6771(float arg0) {
 		float var2 = 0.0F;
 		float var3 = 0.0F;
 		for (int var4 = 0; var4 < this.field4324.length; var4++) {
@@ -74,19 +66,16 @@ public class Spline {
 		return (float) this.field4324.length;
 	}
 
-	@ObfuscatedName("pe.w(F)[D")
-	public double[] method6767(float arg0) {
+    public double[] method6767(float arg0) {
 		int var2 = (int) arg0;
 		return var2 < this.field4324.length ? this.field4324[var2].method6755(arg0 - (float) var2) : this.field4324[this.field4324.length - 1].method6755(1.0F);
 	}
 
-	@ObfuscatedName("pe.l(F)F")
-	public float method6762(float arg0) {
+    public float method6762(float arg0) {
 		return this.method6769(this.method6771(arg0));
 	}
 
-	@ObfuscatedName("pe.u(F)F")
-	public float method6769(float arg0) {
+    public float method6769(float arg0) {
 		int var2 = (int) arg0;
 		if (var2 + 1 < this.field4325.length) {
 			float var3 = this.field4325[var2];

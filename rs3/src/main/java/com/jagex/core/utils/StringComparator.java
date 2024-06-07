@@ -3,15 +3,13 @@ package com.jagex.core.utils;
 import com.jagex.core.constants.Language;
 import deob.ObfuscatedName;
 
-@ObfuscatedName("zw")
 public class StringComparator {
 
 	public StringComparator() throws Throwable {
 		throw new Error();
 	}
 
-	@ObfuscatedName("pn.e(Ljava/lang/CharSequence;Ljava/lang/CharSequence;Lzt;I)I")
-	public static int method6827(CharSequence arg0, CharSequence arg1, Language arg2) {
+    public static int method6827(CharSequence arg0, CharSequence arg1, Language arg2) {
 		int var3 = arg0.length();
 		int var4 = arg1.length();
 		int var5 = 0;
@@ -86,8 +84,7 @@ public class StringComparator {
 		return 0;
 	}
 
-	@ObfuscatedName("aak.n(CLzt;I)C")
-	public static char method14099(char arg0, Language arg1) {
+    public static char method14099(char arg0, Language arg1) {
 		if (arg0 >= 192 && arg0 <= 255) {
 			if (arg0 >= 192 && arg0 <= 198) {
 				return 'A';
@@ -152,8 +149,7 @@ public class StringComparator {
 		}
 	}
 
-	@ObfuscatedName("kh.m(CI)C")
-	public static char method5199(char arg0) {
+    public static char method5199(char arg0) {
 		if (arg0 == 198) {
 			return 'E';
 		} else if (arg0 == 230) {
@@ -167,8 +163,7 @@ public class StringComparator {
 		}
 	}
 
-	@ObfuscatedName("ad.k(CLzt;I)I")
-	public static int method817(char arg0, Language arg1) {
+    public static int method817(char arg0, Language arg1) {
 		int var2 = arg0 << 4;
 		if (Character.isUpperCase(arg0) || Character.isTitleCase(arg0)) {
 			arg0 = Character.toLowerCase(arg0);
@@ -180,8 +175,7 @@ public class StringComparator {
 		return var2;
 	}
 
-	@ObfuscatedName("cy.f(JIZLzt;I)Ljava/lang/String;")
-	public static String localised(long arg0, int arg1, boolean arg2, Language arg3) {
+    public static String localised(long arg0, int arg1, boolean arg2, Language arg3) {
 		char var5 = ',';
 		char var6 = '.';
 		if (Language.EN == arg3) {

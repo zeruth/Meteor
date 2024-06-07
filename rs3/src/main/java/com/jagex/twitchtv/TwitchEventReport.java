@@ -12,14 +12,12 @@ public class TwitchEventReport extends TwitchEvent {
 		this.message = arg1;
 	}
 
-	@ObfuscatedName("com/jagex/twitchtv/TwitchEventReport.e([I[J[Ljava/lang/Object;)V")
-	public void method12(int[] arg0, long[] arg1, Object[] arg2) {
+    public void method12(int[] arg0, long[] arg1, Object[] arg2) {
 		arg0[0] = this.eventType;
 		arg2[0] = this.message;
 	}
 
-	@ObfuscatedName("com/jagex/twitchtv/TwitchEventReport.n()Lud;")
-	public TwitchEventSubject method11() {
+    public TwitchEventSubject method11() {
 		return TwitchEventSubject.REPORT;
 	}
 }

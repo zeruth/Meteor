@@ -5,40 +5,31 @@ import com.jagex.graphics.PostProcessingFilter;
 import deob.ObfuscatedName;
 import jaggl.OpenGL;
 
-@ObfuscatedName("aqi")
 public class GlColourRemappingFilter extends PostProcessingFilter {
 
-	@ObfuscatedName("aqi.w")
-	public static float[] field12183 = new float[] { 0.0F, 0.0F, 0.0F };
+    public static float[] field12183 = new float[] { 0.0F, 0.0F, 0.0F };
 
-	@ObfuscatedName("aqi.l")
-	public static float field12174 = 1.0F;
+    public static float field12174 = 1.0F;
 
-	@ObfuscatedName("aqi.u")
-	public static int field12175 = 1;
+    public static int field12175 = 1;
 
-	@ObfuscatedName("aqi.z")
-	public static GlColourRemapper[] field12179 = new GlColourRemapper[] { null, null, null };
+    public static GlColourRemapper[] field12179 = new GlColourRemapper[] { null, null, null };
 
-	@ObfuscatedName("aqi.q")
-	public GlProgram[] field12185 = null;
+    public GlProgram[] field12185 = null;
 
 	public GlColourRemappingFilter(GlToolkit arg0) {
 		super(arg0);
 	}
 
-	@ObfuscatedName("aqi.ao()Z")
-	public boolean method19234() {
+    public boolean method19234() {
 		return this.field11270.field10002;
 	}
 
-	@ObfuscatedName("aqi.e()Z")
-	public boolean method17539() {
+    public boolean method17539() {
 		return this.field12185 != null;
 	}
 
-	@ObfuscatedName("aqi.n()Z")
-	public boolean method17534() {
+    public boolean method17534() {
 		if (!this.field11270.field10002) {
 			return false;
 		}
@@ -65,12 +56,10 @@ public class GlColourRemappingFilter extends PostProcessingFilter {
 		return this.field12185 != null;
 	}
 
-	@ObfuscatedName("aqi.k(II)V")
-	public void method17540(int arg0, int arg1) {
+    public void method17540(int arg0, int arg1) {
 	}
 
-	@ObfuscatedName("aqi.m()V")
-	public void method17570() {
+    public void method17570() {
 		if (this.field12185 != null) {
 			for (int var1 = 0; var1 < this.field12185.length; var1++) {
 				this.field12185[var1] = null;
@@ -79,8 +68,7 @@ public class GlColourRemappingFilter extends PostProcessingFilter {
 		}
 	}
 
-	@ObfuscatedName("aqi.f(ILadt;Ladt;II)V")
-	public void method17537(int arg0, GlTexture_Sub1 arg1, GlTexture_Sub1 arg2, int arg3, int arg4) {
+    public void method17537(int arg0, GlTexture_Sub1 arg1, GlTexture_Sub1 arg2, int arg3, int arg4) {
 		if (field12175 < 1 || field12175 > 3) {
 			return;
 		}
@@ -110,8 +98,7 @@ public class GlColourRemappingFilter extends PostProcessingFilter {
 		}
 	}
 
-	@ObfuscatedName("aqi.w(I)V")
-	public void method17538(int arg0) {
+    public void method17538(int arg0) {
 		OpenGL.glUseProgram(0);
 		for (int var2 = field12175; var2 >= 0; var2--) {
 			this.field11270.method15776(var2);
@@ -119,18 +106,15 @@ public class GlColourRemappingFilter extends PostProcessingFilter {
 		}
 	}
 
-	@ObfuscatedName("aqi.p()Ldg;")
-	public DataType method17542() {
+    public DataType method17542() {
 		return DataType.UNSIGNED_INT_8;
 	}
 
-	@ObfuscatedName("aqi.u()I")
-	public int method17546() {
+    public int method17546() {
 		return 2;
 	}
 
-	@ObfuscatedName("aqi.c()Z")
-	public boolean method17551() {
+    public boolean method17551() {
 		return field12174 == 1.0F || field12183[0] + field12183[1] + field12183[2] == 0.0F || field12179[0] == null && field12179[1] == null && field12179[2] == null;
 	}
 }

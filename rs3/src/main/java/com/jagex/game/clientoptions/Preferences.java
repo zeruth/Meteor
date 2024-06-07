@@ -13,27 +13,21 @@ import rs2.client.Client;
 
 import java.io.IOException;
 
-@ObfuscatedName("aq")
 public class Preferences {
 
-	@ObfuscatedName("aq.p")
-	public static boolean field786 = false;
+    public static boolean field786 = false;
 
-	@ObfuscatedName("aq.d")
-	public static boolean field788 = false;
+    public static boolean field788 = false;
 
-	@ObfuscatedName("aq.c")
-	public static boolean field777 = false;
+    public static boolean field777 = false;
 
-	@ObfuscatedName("aml.r")
-	public static int field11775;
+    public static int field11775;
 
 	public Preferences() throws Throwable {
 		throw new Error();
 	}
 
-	@ObfuscatedName("pd.e(I)Lali;")
-	public static ClientOptions method6822() {
+    public static ClientOptions method6822() {
 		FileOnDisk var0 = null;
 		ClientOptions var1 = new ClientOptions(Client.modegame, 0);
 		try {
@@ -58,8 +52,7 @@ public class Preferences {
 		return var1;
 	}
 
-	@ObfuscatedName("afd.n(I)V")
-	public static void save() {
+    public static void save() {
 		FileOnDisk var0 = null;
 		try {
 			var0 = GameShell.openPrefs("", Client.modegame.titleURL, true);
@@ -75,15 +68,13 @@ public class Preferences {
 		}
 	}
 
-	@ObfuscatedName("hj.m(I)I")
-	public static int getAutoSetupResult() {
+    public static int getAutoSetupResult() {
 		ClientAutoSetupResult var0 = autosetup();
 		GraphicsPacketQueue.method4995(var0);
 		return var0.getResult();
 	}
 
-	@ObfuscatedName("hp.k(B)Lalq;")
-	public static ClientAutoSetupResult autosetup() {
+    public static ClientAutoSetupResult autosetup() {
 		ClientAutoSetupResult var0 = new ClientAutoSetupResult();
 		boolean var1 = false;
 		boolean var2 = false;
@@ -187,8 +178,7 @@ public class Preferences {
 		return var0;
 	}
 
-	@ObfuscatedName("alz.f(Lalq;I)V")
-	public static void setAutosetup(ClientAutoSetupResult autoSetupResult) {
+    public static void setAutosetup(ClientAutoSetupResult autoSetupResult) {
 		autoSetupResult.method18314(0);
 		byte resultId;
 		if (GameShell.maxmemory >= 96) {
@@ -222,8 +212,7 @@ public class Preferences {
 		autoSetupResult.setResultId(resultId);
 	}
 
-	@ObfuscatedName("et.w(Lalq;IIB)V")
-	public static void method2859(ClientAutoSetupResult arg0, int arg1, int arg2) {
+    public static void method2859(ClientAutoSetupResult arg0, int arg1, int arg2) {
 		arg0.method18314(arg1);
 		byte var3;
 		if (arg2 > 100000) {
@@ -249,8 +238,7 @@ public class Preferences {
 		arg0.setResultId(var3);
 	}
 
-	@ObfuscatedName("wo.l(B)V")
-	public static void setHigh() {
+    public static void setHigh() {
 		Client.preferences.setPreference(Client.preferences.removeRoofs, 2);
 		Client.preferences.setPreference(Client.preferences.removeRoofs2, 2);
 		Client.preferences.setPreference(Client.preferences.groundDecoration, 1);
@@ -281,8 +269,7 @@ public class Preferences {
 		Client.field10836 = true;
 	}
 
-	@ObfuscatedName("ty.u(B)V")
-	public static void setMedium() {
+    public static void setMedium() {
 		Client.preferences.setPreference(Client.preferences.removeRoofs, 2);
 		Client.preferences.setPreference(Client.preferences.removeRoofs2, 2);
 		Client.preferences.setPreference(Client.preferences.groundDecoration, 1);
@@ -313,8 +300,7 @@ public class Preferences {
 		Client.field10836 = true;
 	}
 
-	@ObfuscatedName("fd.z(I)V")
-	public static void setLow() {
+    public static void setLow() {
 		Client.preferences.setPreference(Client.preferences.removeRoofs, 1);
 		Client.preferences.setPreference(Client.preferences.removeRoofs2, 1);
 		Client.preferences.setPreference(Client.preferences.groundDecoration, 1);
@@ -345,8 +331,7 @@ public class Preferences {
 		Client.field10836 = true;
 	}
 
-	@ObfuscatedName("e.p(ZI)V")
-	public static void setMin(boolean arg0) {
+    public static void setMin(boolean arg0) {
 		Client.preferences.setPreference(Client.preferences.removeRoofs, 1);
 		Client.preferences.setPreference(Client.preferences.removeRoofs2, 1);
 		Client.preferences.setPreference(Client.preferences.groundDecoration, 0);
@@ -377,8 +362,7 @@ public class Preferences {
 		Client.field10836 = true;
 	}
 
-	@ObfuscatedName("kr.d(B)V")
-	public static void setCpuUsagePreference() {
+    public static void setCpuUsagePreference() {
 		if (GameShell.cpucount > 1) {
 			Client.preferences.setPreference(Client.preferences.cpuUsage, 4);
 		} else {

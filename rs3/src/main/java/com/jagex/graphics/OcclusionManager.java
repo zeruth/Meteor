@@ -6,92 +6,63 @@ import com.jagex.game.world.entity.Tile;
 import com.jagex.graphics.scenegraph.WallLayerEntity;
 import deob.ObfuscatedName;
 
-@ObfuscatedName("um")
 public class OcclusionManager {
 
-	@ObfuscatedName("um.e")
-	public boolean field7031 = true;
+    public boolean field7031 = true;
 
-	@ObfuscatedName("um.n")
-	public boolean field7017 = true;
+    public boolean field7017 = true;
 
-	@ObfuscatedName("um.w")
-	public Scene scene;
+    public Scene scene;
 
-	@ObfuscatedName("um.l")
-	public OcclusionSomething field7024;
+    public OcclusionSomething field7024;
 
-	@ObfuscatedName("um.u")
-	public boolean field7040 = false;
+    public boolean field7040 = false;
 
-	@ObfuscatedName("um.z")
-	public int field7016;
+    public int field7016;
 
-	@ObfuscatedName("um.p")
-	public int field7025;
+    public int field7025;
 
-	@ObfuscatedName("um.d")
-	public int[][][] levelTileOcclusionCycles;
+    public int[][][] levelTileOcclusionCycles;
 
-	@ObfuscatedName("um.c")
-	public int levelOccluderCount;
+    public int levelOccluderCount;
 
-	@ObfuscatedName("um.r")
-	public Occluder[] levelOccluders;
+    public Occluder[] levelOccluders;
 
-	@ObfuscatedName("um.v")
-	public int field7029;
+    public int field7029;
 
-	@ObfuscatedName("um.o")
-	public Occluder[] field7030;
+    public Occluder[] field7030;
 
-	@ObfuscatedName("um.s")
-	public int field7023;
+    public int field7023;
 
-	@ObfuscatedName("um.y")
-	public Occluder[] field7021;
+    public Occluder[] field7021;
 
-	@ObfuscatedName("um.q")
-	public int activeOccluderCount = 0;
+    public int activeOccluderCount = 0;
 
-	@ObfuscatedName("um.x")
-	public Occluder[] activeOccluders;
+    public Occluder[] activeOccluders;
 
-	@ObfuscatedName("um.b")
-	public int[] field7035;
+    public int[] field7035;
 
-	@ObfuscatedName("um.h")
-	public int[] field7036;
+    public int[] field7036;
 
-	@ObfuscatedName("um.a")
-	public int[] field7027;
+    public int[] field7027;
 
-	@ObfuscatedName("um.g")
-	public int[] field7042;
+    public int[] field7042;
 
-	@ObfuscatedName("um.i")
-	public int[] field7039;
+    public int[] field7039;
 
-	@ObfuscatedName("um.j")
-	public int[] field7032;
+    public int[] field7032;
 
-	@ObfuscatedName("um.t")
-	public static Toolkit toolkit;
+    public static Toolkit toolkit;
 
-	@ObfuscatedName("um.ae")
-	public final float[] field7037 = new float[3];
+    public final float[] field7037 = new float[3];
 
-	@ObfuscatedName("um.ag")
-	public final int[] field7043 = new int[2];
+    public final int[] field7043 = new int[2];
 
-	@ObfuscatedName("um.ah")
-	public int field7044 = -1;
+    public int field7044 = -1;
 
-	@ObfuscatedName("um.al")
-	public int field7045 = -1;
+    public int field7045 = -1;
 
-	@ObfuscatedName("um.ac")
-	public boolean debugging = true;
+    public boolean debugging = true;
 
 	public OcclusionManager(Scene scene) {
 		this.field7016 = scene.field6901;
@@ -113,8 +84,7 @@ public class OcclusionManager {
 		}
 	}
 
-	@ObfuscatedName("um.e(IIIIII)V")
-	public void setLevelOccludeMap(int type, int level, int x, int z, int arg4, int arg5) {
+    public void setLevelOccludeMap(int type, int level, int x, int z, int arg4, int arg5) {
 		if (type != 8 && type != 16) {
 			Tile var7 = this.scene.levelTiles[level][x][z];
 			if (var7 == null) {
@@ -149,8 +119,7 @@ public class OcclusionManager {
 		}
 	}
 
-	@ObfuscatedName("um.n(IIII)V")
-	public void method8919(int arg0, int arg1, int arg2, int arg3) {
+    public void method8919(int arg0, int arg1, int arg2, int arg3) {
 		if (arg0 != 8 && arg0 != 16) {
 			Tile var5 = this.scene.levelTiles[arg1][arg2][arg3];
 			if (var5 != null) {
@@ -175,13 +144,11 @@ public class OcclusionManager {
 		}
 	}
 
-	@ObfuscatedName("um.m()V")
-	public void method8931() {
+    public void method8931() {
 		this.method8917();
 	}
 
-	@ObfuscatedName("um.k()V")
-	public void method8917() {
+    public void method8917() {
 		for (int var1 = 0; var1 < this.field7029; var1++) {
 			this.field7030[var1] = null;
 		}
@@ -270,13 +237,11 @@ public class OcclusionManager {
 		this.field7040 = true;
 	}
 
-	@ObfuscatedName("um.f(IIIIIIII)V")
-	public void addOccluder(int type, int level, int minX, int maxX, int minZ, int maxZ, int minY, int maxY) {
+    public void addOccluder(int type, int level, int minX, int maxX, int minZ, int maxZ, int minY, int maxY) {
 		this.levelOccluders[this.levelOccluderCount++] = new Occluder(this.scene, type, level, minX, maxX, maxX, minX, minY, maxY, maxY, minY, minZ, minZ, maxZ, maxZ);
 	}
 
-	@ObfuscatedName("um.w(Ldh;I)V")
-	public void method8923(Toolkit toolkit, int topLevel) {
+    public void method8923(Toolkit toolkit, int topLevel) {
 		OcclusionManager.toolkit = toolkit;
 		if (!this.field7031 || !this.field7017) {
 			this.activeOccluderCount = 0;
@@ -332,8 +297,7 @@ public class OcclusionManager {
 		}
 	}
 
-	@ObfuscatedName("um.l(Ldh;Lui;I)V")
-	public void updateActiveOccluder(Toolkit toolkit, Occluder occluder, int arg2) {
+    public void updateActiveOccluder(Toolkit toolkit, Occluder occluder, int arg2) {
 		OcclusionManager.toolkit = toolkit;
 		if (this.field7035 != null && occluder.level >= arg2) {
 			for (int var4 = 0; var4 < this.field7035.length; var4++) {
@@ -467,8 +431,7 @@ public class OcclusionManager {
 		}
 	}
 
-	@ObfuscatedName("um.u(Lui;I)Z")
-	public boolean method8925(Occluder arg0, int arg1) {
+    public boolean method8925(Occluder arg0, int arg1) {
 		if (this.method8926(arg0.x[arg1], arg0.y[arg1], arg0.z[arg1])) {
 			arg0.field7063[arg1] = (short) this.field7037[0];
 			arg0.field7076[arg1] = (short) this.field7037[1];
@@ -479,8 +442,7 @@ public class OcclusionManager {
 		}
 	}
 
-	@ObfuscatedName("um.z(III)Z")
-	public final boolean method8926(int arg0, int arg1, int arg2) {
+    public final boolean method8926(int arg0, int arg1, int arg2) {
 		toolkit.method2525((float) arg0, (float) arg1, (float) arg2, this.field7037);
 		if (this.field7037[2] < 50.0F) {
 			return false;
@@ -491,8 +453,7 @@ public class OcclusionManager {
 		}
 	}
 
-	@ObfuscatedName("um.p(III)Z")
-	public boolean tileVisible(int level, int x, int z) {
+    public boolean tileVisible(int level, int x, int z) {
 		if (!this.field7031 || !this.field7017) {
 			return false;
 		} else if (this.field7024.field6896 < 101) {
@@ -519,8 +480,7 @@ public class OcclusionManager {
 		}
 	}
 
-	@ObfuscatedName("um.d(Lasw;III)Z")
-	public boolean wallVisible(WallLayerEntity wall, int arg1, int arg2, int arg3) {
+    public boolean wallVisible(WallLayerEntity wall, int arg1, int arg2, int arg3) {
 		if (!this.field7031 || !this.field7017) {
 			return false;
 		} else if (this.field7024.field6896 < 101) {
@@ -570,8 +530,7 @@ public class OcclusionManager {
 		}
 	}
 
-	@ObfuscatedName("um.c(IIII)Z")
-	public boolean visible(int level, int tileX, int tileZ, int y) {
+    public boolean visible(int level, int tileX, int tileZ, int y) {
 		if (!this.field7031 || !this.field7017) {
 			return false;
 		} else if (this.field7024.field6896 < 101) {
@@ -585,8 +544,7 @@ public class OcclusionManager {
 		}
 	}
 
-	@ObfuscatedName("um.r(IIIIILuq;)Z")
-	public boolean locVisible(int level, int minX, int maxX, int minZ, int maxZ, EntityBounds entityBounds) {
+    public boolean locVisible(int level, int minX, int maxX, int minZ, int maxZ, EntityBounds entityBounds) {
 		if (!this.field7031 || !this.field7017) {
 			return false;
 		} else if (this.field7024.field6896 < 101) {
@@ -613,13 +571,11 @@ public class OcclusionManager {
 		}
 	}
 
-	@ObfuscatedName("um.v(Luq;)Z")
-	public final boolean occluded(EntityBounds arg0) {
+    public final boolean occluded(EntityBounds arg0) {
 		return arg0 == null ? false : this.occluded(arg0.field7049, arg0.field7053, arg0.field7055, arg0.field7052 - arg0.field7049, arg0.field7047 - arg0.field7053, arg0.field7056 - arg0.field7055);
 	}
 
-	@ObfuscatedName("um.o(IIIIII)Z")
-	public final boolean occluded(int arg0, int arg1, int arg2, int arg3, int arg4, int arg5) {
+    public final boolean occluded(int arg0, int arg1, int arg2, int arg3, int arg4, int arg5) {
 		int var7 = arg0 + arg3;
 		int var8 = arg1 + arg4;
 		int var9 = arg2 + arg5;
@@ -656,8 +612,7 @@ public class OcclusionManager {
 		}
 	}
 
-	@ObfuscatedName("um.s(IIIIIIIII)Z")
-	public final boolean occluded(int arg0, int arg1, int arg2, int arg3, int arg4, int arg5, int arg6, int arg7, int arg8) {
+    public final boolean occluded(int arg0, int arg1, int arg2, int arg3, int arg4, int arg5, int arg6, int arg7, int arg8) {
 		if (!this.method8926(arg0, arg1, arg2)) {
 			return false;
 		}

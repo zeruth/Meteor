@@ -4,17 +4,13 @@ import com.jagex.core.io.Packet;
 import com.jagex.js5.Js5;
 import deob.ObfuscatedName;
 
-@ObfuscatedName("tw")
 public class WorldMapRelated {
 
-	@ObfuscatedName("tw.e")
-	public int field6777;
+    public int field6777;
 
-	@ObfuscatedName("tw.n")
-	public int[] field6776;
+    public int[] field6776;
 
-	@ObfuscatedName("tw.m")
-	public int[] field6775;
+    public int[] field6775;
 
 	public WorldMapRelated(int arg0) {
 		this.field6777 = arg0;
@@ -22,8 +18,7 @@ public class WorldMapRelated {
 		this.field6775 = new int[this.field6777];
 	}
 
-	@ObfuscatedName("nn.e(Lpy;Ljava/lang/String;ZB)Ltw;")
-	public static WorldMapRelated method6046(Js5 arg0, String arg1, boolean arg2) {
+    public static WorldMapRelated method6046(Js5 arg0, String arg1, boolean arg2) {
 		int var3 = arg0.getgroupid(arg1);
 		if (var3 == -1) {
 			return new WorldMapRelated(0);

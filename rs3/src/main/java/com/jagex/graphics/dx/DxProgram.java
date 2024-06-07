@@ -8,38 +8,27 @@ import deob.ObfuscatedName;
 import jagdx.IDirect3DDevice;
 import jagdx.IUnknown;
 
-@ObfuscatedName("agt")
 public final class DxProgram extends GpuProgram {
 
-	@ObfuscatedName("agt.k")
-	public DxProgramManager programManager;
+    public DxProgramManager programManager;
 
-	@ObfuscatedName("agt.f")
-	public boolean field10357;
+    public boolean field10357;
 
-	@ObfuscatedName("agt.w")
-	public DxToolkit renderer;
+    public DxToolkit renderer;
 
-	@ObfuscatedName("agt.l")
-	public long vertexShader3d;
+    public long vertexShader3d;
 
-	@ObfuscatedName("agt.u")
-	public long pixelShader3d;
+    public long pixelShader3d;
 
-	@ObfuscatedName("agt.z")
-	public static final float[] field10361 = new float[16];
+    public static final float[] field10361 = new float[16];
 
-	@ObfuscatedName("agt.p")
-	public byte[] vertexShader;
+    public byte[] vertexShader;
 
-	@ObfuscatedName("agt.d")
-	public byte[] fragmentShader;
+    public byte[] fragmentShader;
 
-	@ObfuscatedName("agt.v")
-	public final float[][] field10366;
+    public final float[][] field10366;
 
-	@ObfuscatedName("agt.o")
-	public final boolean[] field10359;
+    public final boolean[] field10359;
 
 	public DxProgram(DxToolkit renderer, DxProgramManager programManager, ProgramData programData) {
 		this(renderer, programData);
@@ -63,8 +52,7 @@ public final class DxProgram extends GpuProgram {
 		renderer.method15985(this);
 	}
 
-	@ObfuscatedName("agt.n()Z")
-	public boolean compile() {
+    public boolean compile() {
 		if (this.field10357) {
 			return true;
 		}
@@ -147,8 +135,7 @@ public final class DxProgram extends GpuProgram {
 		return true;
 	}
 
-	@ObfuscatedName("agt.k(Laql;F)V")
-	public void setUniform1f(ProgramUniform arg0, float arg1) {
+    public void setUniform1f(ProgramUniform arg0, float arg1) {
 		int var3 = ((DxProgramUniform) arg0).method19676();
 		int var4 = ((DxProgramUniform) arg0).method19677();
 		if (arg0.getType() != UniformType.FLOAT_1 && arg0.getType() != UniformType.field2509) {
@@ -166,8 +153,7 @@ public final class DxProgram extends GpuProgram {
 		}
 	}
 
-	@ObfuscatedName("agt.f(Laql;FF)V")
-	public void setUniform2f(ProgramUniform arg0, float arg1, float arg2) {
+    public void setUniform2f(ProgramUniform arg0, float arg1, float arg2) {
 		int var4 = ((DxProgramUniform) arg0).method19676();
 		int var5 = ((DxProgramUniform) arg0).method19677();
 		if (arg0.getType() != UniformType.FLOAT_2) {
@@ -187,8 +173,7 @@ public final class DxProgram extends GpuProgram {
 		}
 	}
 
-	@ObfuscatedName("agt.w(Laql;FFF)V")
-	public void setUniform3f(ProgramUniform arg0, float arg1, float arg2, float arg3) {
+    public void setUniform3f(ProgramUniform arg0, float arg1, float arg2, float arg3) {
 		int var5 = ((DxProgramUniform) arg0).method19676();
 		int var6 = ((DxProgramUniform) arg0).method19677();
 		if (arg0.getType() != UniformType.FLOAT_3) {
@@ -211,8 +196,7 @@ public final class DxProgram extends GpuProgram {
 		this.field10359[1] = true;
 	}
 
-	@ObfuscatedName("agt.l(Laql;FFFF)V")
-	public void setUniform4f(ProgramUniform arg0, float arg1, float arg2, float arg3, float arg4) {
+    public void setUniform4f(ProgramUniform arg0, float arg1, float arg2, float arg3, float arg4) {
 		int var6 = ((DxProgramUniform) arg0).method19676();
 		int var7 = ((DxProgramUniform) arg0).method19677();
 		if (arg0.getType() != UniformType.FLOAT_4) {
@@ -237,8 +221,7 @@ public final class DxProgram extends GpuProgram {
 		this.field10359[1] = true;
 	}
 
-	@ObfuscatedName("agt.p(Laql;Lpq;)V")
-	public void setUniform2fv(ProgramUniform arg0, Matrix4x4 arg1) {
+    public void setUniform2fv(ProgramUniform arg0, Matrix4x4 arg1) {
 		int var3 = ((DxProgramUniform) arg0).method19676();
 		int var4 = ((DxProgramUniform) arg0).method19677();
 		if (arg0.getType() != UniformType.MATRIX_4X2) {
@@ -252,8 +235,7 @@ public final class DxProgram extends GpuProgram {
 		}
 	}
 
-	@ObfuscatedName("agt.d(Laql;Lpq;)V")
-	public void setUniform4fv(ProgramUniform arg0, Matrix4x4 arg1) {
+    public void setUniform4fv(ProgramUniform arg0, Matrix4x4 arg1) {
 		int var3 = ((DxProgramUniform) arg0).method19676();
 		int var4 = ((DxProgramUniform) arg0).method19677();
 		if (arg0.getType() != UniformType.MATRIX_4X4) {
@@ -267,8 +249,7 @@ public final class DxProgram extends GpuProgram {
 		}
 	}
 
-	@ObfuscatedName("agt.z(Laql;[FI)V")
-	public void setUniformFloatv(ProgramUniform arg0, float[] arg1, int arg2) {
+    public void setUniformFloatv(ProgramUniform arg0, float[] arg1, int arg2) {
 		int var4 = ((DxProgramUniform) arg0).method19676();
 		int var5 = ((DxProgramUniform) arg0).method19677();
 		if (arg0.getType() != UniformType.ARRAY) {
@@ -282,14 +263,12 @@ public final class DxProgram extends GpuProgram {
 		}
 	}
 
-	@ObfuscatedName("agt.c(Laql;ILmq;)V")
-	public void setUniform1i(ProgramUniform arg0, int arg1, BaseTexture arg2) {
+    public void setUniform1i(ProgramUniform arg0, int arg1, BaseTexture arg2) {
 		this.renderer.setActiveTexture(arg1);
 		this.renderer.setTexture(arg2);
 	}
 
-	@ObfuscatedName("agt.r(IFFF)V")
-	public void setUniform3f(int arg0, float arg1, float arg2, float arg3) {
+    public void setUniform3f(int arg0, float arg1, float arg2, float arg3) {
 		int var5 = arg0 >> 16;
 		int var6 = (arg0 & 0xFFFF) * 4;
 		this.field10366[var5][var6] = arg1;
@@ -298,8 +277,7 @@ public final class DxProgram extends GpuProgram {
 		this.field10359[var5] = true;
 	}
 
-	@ObfuscatedName("agt.v(IFFFF)V")
-	public void setUniform4f(int arg0, float arg1, float arg2, float arg3, float arg4) {
+    public void setUniform4f(int arg0, float arg1, float arg2, float arg3, float arg4) {
 		int var6 = arg0 >> 16;
 		int var7 = (arg0 & 0xFFFF) * 4;
 		this.field10366[var6][var7] = arg1;
@@ -309,58 +287,50 @@ public final class DxProgram extends GpuProgram {
 		this.field10359[var6] = true;
 	}
 
-	@ObfuscatedName("agt.s(ILpq;)V")
-	public void setUniform3fv(int arg0, Matrix4x4 arg1) {
+    public void setUniform3fv(int arg0, Matrix4x4 arg1) {
 		int var3 = arg0 >> 16;
 		int var4 = (arg0 & 0xFFFF) * 4;
 		System.arraycopy(arg1.method6620(field10361), 0, this.field10366[var3], var4, 12);
 		this.field10359[var3] = true;
 	}
 
-	@ObfuscatedName("agt.y(ILpq;)V")
-	public void setUniform2fv(int arg0, Matrix4x4 arg1) {
+    public void setUniform2fv(int arg0, Matrix4x4 arg1) {
 		int var3 = arg0 >> 16;
 		int var4 = (arg0 & 0xFFFF) * 4;
 		System.arraycopy(arg1.method6637(field10361), 0, this.field10366[var3], var4, 8);
 		this.field10359[var3] = true;
 	}
 
-	@ObfuscatedName("agt.q(ILpq;)V")
-	public void setUniform4fv(int arg0, Matrix4x4 arg1) {
+    public void setUniform4fv(int arg0, Matrix4x4 arg1) {
 		int var3 = arg0 >> 16;
 		int var4 = (arg0 & 0xFFFF) * 4;
 		System.arraycopy(arg1.method6620(field10361), 0, this.field10366[var3], var4, 16);
 		this.field10359[var3] = true;
 	}
 
-	@ObfuscatedName("agt.o(I[FI)V")
-	public void setUniformFloatv(int arg0, float[] arg1, int arg2) {
+    public void setUniformFloatv(int arg0, float[] arg1, int arg2) {
 		int var4 = arg0 >> 16;
 		int var5 = (arg0 & 0xFFFF) * 4;
 		System.arraycopy(arg1, 0, this.field10366[var4], var5, arg2);
 		this.field10359[var4] = true;
 	}
 
-	@ObfuscatedName("agt.af(I[FI)V")
-	public final void method16468(int arg0, float[] arg1, int arg2) {
+    public final void method16468(int arg0, float[] arg1, int arg2) {
 		ArrayUtil.method14023(arg1, 0, this.field10366[0], arg0 * 4, arg2);
 		this.field10359[0] = true;
 	}
 
-	@ObfuscatedName("agt.ak(I[FI)V")
-	public final void method16469(int arg0, float[] arg1, int arg2) {
+    public final void method16469(int arg0, float[] arg1, int arg2) {
 		ArrayUtil.method14023(arg1, 0, this.field10366[1], arg0 * 4, arg2);
 		this.field10359[1] = true;
 	}
 
-	@ObfuscatedName("agt.x(IILmq;)V")
-	public void setUniform1i(int arg0, int arg1, BaseTexture arg2) {
+    public void setUniform1i(int arg0, int arg1, BaseTexture arg2) {
 		this.renderer.setActiveTexture(arg1);
 		this.renderer.setTexture(arg2);
 	}
 
-	@ObfuscatedName("agt.an()V")
-	public void method16476() {
+    public void method16476() {
 		if (this.field10359[0]) {
 			this.renderer.temporaryBuffer.clear();
 			this.renderer.temporaryBuffer.asFloatBuffer().put(this.field10366[0]);
@@ -375,8 +345,7 @@ public final class DxProgram extends GpuProgram {
 		}
 	}
 
-	@ObfuscatedName("agt.m()V")
-	public void delete() {
+    public void delete() {
 		if (this.vertexShader3d != 0L) {
 			IUnknown.Release(this.vertexShader3d);
 			this.vertexShader3d = 0L;
@@ -388,8 +357,7 @@ public final class DxProgram extends GpuProgram {
 		this.renderer.method16198(this);
 	}
 
-	@ObfuscatedName("agt.bf()V")
-	public void method16466() {
+    public void method16466() {
 		if (this.vertexShader3d != 0L) {
 			this.renderer.method19023(this.vertexShader3d);
 			this.vertexShader3d = 0L;

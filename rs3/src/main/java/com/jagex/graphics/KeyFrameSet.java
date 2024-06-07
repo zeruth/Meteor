@@ -6,47 +6,33 @@ import com.jagex.js5.Js5;
 import com.jagex.math.Curve;
 import deob.ObfuscatedName;
 
-@ObfuscatedName("ard")
 public class KeyFrameSet extends SecondaryNode {
 
-	@ObfuscatedName("vi.l")
-	public static Js5 field7411;
+    public static Js5 field7411;
 
-	@ObfuscatedName("zy.u")
-	public static Js5 field8302;
+    public static Js5 field8302;
 
-	@ObfuscatedName("ard.z")
-	public int field12315;
+    public int field12315;
 
-	@ObfuscatedName("ard.p")
-	public byte[] field12314;
+    public byte[] field12314;
 
-	@ObfuscatedName("ard.d")
-	public Curve[][] field12322 = (Curve[][]) null;
+    public Curve[][] field12322 = (Curve[][]) null;
 
-	@ObfuscatedName("ard.c")
-	public int field12316;
+    public int field12316;
 
-	@ObfuscatedName("ard.r")
-	public int field12313;
+    public int field12313;
 
-	@ObfuscatedName("ard.v")
-	public AnimBase field12317;
+    public AnimBase field12317;
 
-	@ObfuscatedName("ard.o")
-	public int field12319 = 0;
+    public int field12319 = 0;
 
-	@ObfuscatedName("ard.s")
-	public boolean field12320;
+    public boolean field12320;
 
-	@ObfuscatedName("ard.y")
-	public boolean field12321;
+    public boolean field12321;
 
-	@ObfuscatedName("ard.q")
-	public boolean field12318;
+    public boolean field12318;
 
-	@ObfuscatedName("vz.e(Lpy;Lpy;B)V")
-	public static void method9558(Js5 arg0, Js5 arg1) {
+    public static void method9558(Js5 arg0, Js5 arg1) {
 		field7411 = arg0;
 		field8302 = arg1;
 	}
@@ -55,8 +41,7 @@ public class KeyFrameSet extends SecondaryNode {
 		this.field12315 = arg0;
 	}
 
-	@ObfuscatedName("ard.n(I)Z")
-	public boolean method19395() {
+    public boolean method19395() {
 		if (this.field12322 != null) {
 			return true;
 		}
@@ -90,8 +75,7 @@ public class KeyFrameSet extends SecondaryNode {
 		}
 	}
 
-	@ObfuscatedName("ard.m(Lalw;IB)V")
-	public void method19379(Packet arg0, int arg1) {
+    public void method19379(Packet arg0, int arg1) {
 		this.field12316 = arg0.g2();
 		this.field12313 = arg0.g2();
 		this.field12319 = arg0.g1();
@@ -118,38 +102,31 @@ public class KeyFrameSet extends SecondaryNode {
 		}
 	}
 
-	@ObfuscatedName("ard.k(S)I")
-	public int method19382() {
+    public int method19382() {
 		return this.field12316;
 	}
 
-	@ObfuscatedName("ard.f(B)I")
-	public int method19383() {
+    public int method19383() {
 		return this.field12313;
 	}
 
-	@ObfuscatedName("ard.w(I)I")
-	public int method19381() {
+    public int method19381() {
 		return this.field12319;
 	}
 
-	@ObfuscatedName("ard.l(I)I")
-	public int method19384() {
+    public int method19384() {
 		return this.method19383() - this.method19382();
 	}
 
-	@ObfuscatedName("ard.u(I)Z")
-	public boolean method19406() {
+    public boolean method19406() {
 		return this.field12320;
 	}
 
-	@ObfuscatedName("ard.z(I)Z")
-	public boolean method19387() {
+    public boolean method19387() {
 		return this.field12321;
 	}
 
-	@ObfuscatedName("ard.p(I)Z")
-	public boolean method19407() {
+    public boolean method19407() {
 		return this.field12318;
 	}
 }

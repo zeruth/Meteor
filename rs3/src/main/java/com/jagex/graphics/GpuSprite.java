@@ -4,50 +4,35 @@ import com.jagex.game.client.DataType;
 import com.jagex.math.Matrix4x4;
 import deob.ObfuscatedName;
 
-@ObfuscatedName("aef")
 public class GpuSprite extends Sprite {
 
-	@ObfuscatedName("aef.e")
-	public final GpuToolkit field9403;
+    public final GpuToolkit field9403;
 
-	@ObfuscatedName("aef.n")
-	public final GpuTexture field9401;
+    public final GpuTexture field9401;
 
-	@ObfuscatedName("aef.m")
-	public final GraphicsDeletable field9402;
+    public final GraphicsDeletable field9402;
 
-	@ObfuscatedName("aef.k")
-	public final int field9407;
+    public final int field9407;
 
-	@ObfuscatedName("aef.f")
-	public final int field9404;
+    public final int field9404;
 
-	@ObfuscatedName("aef.w")
-	public boolean field9405;
+    public boolean field9405;
 
-	@ObfuscatedName("aef.l")
-	public int field9410;
+    public int field9410;
 
-	@ObfuscatedName("aef.u")
-	public int field9408;
+    public int field9408;
 
-	@ObfuscatedName("aef.z")
-	public int field9412;
+    public int field9412;
 
-	@ObfuscatedName("aef.p")
-	public int field9409;
+    public int field9409;
 
-	@ObfuscatedName("aef.d")
-	public final boolean field9400;
+    public final boolean field9400;
 
-	@ObfuscatedName("aef.c")
-	public final boolean field9406;
+    public final boolean field9406;
 
-	@ObfuscatedName("aef.r")
-	public final boolean field9411;
+    public final boolean field9411;
 
-	@ObfuscatedName("aef.v")
-	public final boolean field9413;
+    public final boolean field9413;
 
 	public GpuSprite(GpuToolkit arg0, int arg1, int arg2, boolean arg3, boolean arg4) {
 		this.field9405 = false;
@@ -112,13 +97,11 @@ public class GpuSprite extends Sprite {
 		this.field9413 = !this.field9406 && this.field9401.method5732();
 	}
 
-	@ObfuscatedName("aef.p(IIIIII)V")
-	public void draw(int arg0, int arg1, int arg2, int arg3, int arg4, int arg5) {
+    public void draw(int arg0, int arg1, int arg2, int arg3, int arg4, int arg5) {
 		this.field9401.upload(arg0, arg1, arg2, arg3, arg4, arg5);
 	}
 
-	@ObfuscatedName("aef.d(III)V")
-	public void method1441(int arg0, int arg1, int arg2) {
+    public void method1441(int arg0, int arg1, int arg2) {
 		int[] var4 = this.field9403.method2149(arg0, arg1, this.field9407, this.field9404);
 		int[] var5 = new int[this.field9407 * this.field9404];
 		this.field9401.download(0, 0, this.field9407, this.field9404, var5, 0);
@@ -154,8 +137,7 @@ public class GpuSprite extends Sprite {
 		this.method1469(0, 0, this.field9407, this.field9404, var5, 0, this.field9407);
 	}
 
-	@ObfuscatedName("aef.e(IIII)V")
-	public void setPadding(int arg0, int arg1, int arg2, int arg3) {
+    public void setPadding(int arg0, int arg1, int arg2, int arg3) {
 		this.field9408 = arg0;
 		this.field9410 = arg1;
 		this.field9409 = arg2;
@@ -163,51 +145,42 @@ public class GpuSprite extends Sprite {
 		this.field9405 = this.field9408 != 0 || this.field9410 != 0 || this.field9409 != 0 || this.field9412 != 0;
 	}
 
-	@ObfuscatedName("aef.n([I)V")
-	public void method1432(int[] arg0) {
+    public void method1432(int[] arg0) {
 		arg0[0] = this.field9408;
 		arg0[1] = this.field9410;
 		arg0[2] = this.field9409;
 		arg0[3] = this.field9412;
 	}
 
-	@ObfuscatedName("aef.m()I")
-	public int getWidth() {
+    public int getWidth() {
 		return this.field9407;
 	}
 
-	@ObfuscatedName("aef.k()I")
-	public int getX() {
+    public int getX() {
 		return this.field9408 + this.field9407 + this.field9409;
 	}
 
-	@ObfuscatedName("aef.f()I")
-	public int getHeight() {
+    public int getHeight() {
 		return this.field9404;
 	}
 
-	@ObfuscatedName("aef.w()I")
-	public int getY() {
+    public int getY() {
 		return this.field9410 + this.field9404 + this.field9412;
 	}
 
-	@ObfuscatedName("aef.l()Ldp;")
-	public GraphicsDeletable method1437() {
+    public GraphicsDeletable method1437() {
 		return this.field9402;
 	}
 
-	@ObfuscatedName("aef.u(IIII[III)V")
-	public void method1469(int arg0, int arg1, int arg2, int arg3, int[] arg4, int arg5, int arg6) {
+    public void method1469(int arg0, int arg1, int arg2, int arg3, int[] arg4, int arg5, int arg6) {
 		this.field9401.upload(arg0, arg1, arg2, arg3, arg4, arg5, arg6);
 	}
 
-	@ObfuscatedName("aef.z(IIII[I[III)V")
-	public void download(int arg0, int arg1, int arg2, int arg3, int[] arg4, int[] arg5, int arg6, int arg7) {
+    public void download(int arg0, int arg1, int arg2, int arg3, int[] arg4, int[] arg5, int arg6, int arg7) {
 		this.field9401.download(arg0, arg1, arg2, arg3, arg4, arg5, arg6);
 	}
 
-	@ObfuscatedName("aef.r(IIIII)V")
-	public void drawSprite(int x, int y, int arg2, int rgb, int arg4) {
+    public void drawSprite(int x, int y, int arg2, int rgb, int arg4) {
 		if (this.field9403.method16337() != GpuImageRelated.field3236) {
 			int var6 = this.field9408 + x;
 			int var7 = this.field9410 + y;
@@ -234,8 +207,7 @@ public class GpuSprite extends Sprite {
 		var8.method5051();
 	}
 
-	@ObfuscatedName("aef.v(IILch;II)V")
-	public void method1444(int arg0, int arg1, SpriteRelated arg2, int arg3, int arg4) {
+    public void method1444(int arg0, int arg1, SpriteRelated arg2, int arg3, int arg4) {
 		this.field9403.method15981();
 		SpriteShader var6 = this.field9403.spriteShader;
 		var6.field2997 = this.field9401;
@@ -260,8 +232,7 @@ public class GpuSprite extends Sprite {
 		var6.method5054();
 	}
 
-	@ObfuscatedName("aef.y(IIIIIIII)V")
-	public void drawTintedScaled(int arg0, int arg1, int arg2, int arg3, int arg4, int arg5, int arg6, int arg7) {
+    public void drawTintedScaled(int arg0, int arg1, int arg2, int arg3, int arg4, int arg5, int arg6, int arg7) {
 		if (this.field9403.method16337() != GpuImageRelated.field3236) {
 			if (this.field9405) {
 				arg2 = this.field9407 * arg2 / this.getX();
@@ -296,8 +267,7 @@ public class GpuSprite extends Sprite {
 		var9.method5051();
 	}
 
-	@ObfuscatedName("aef.x(IIIIIII)V")
-	public void drawTiledTinted(int arg0, int arg1, int arg2, int arg3, int arg4, int arg5, int arg6) {
+    public void drawTiledTinted(int arg0, int arg1, int arg2, int arg3, int arg4, int arg5, int arg6) {
 		if (this.field9403.method16337() != GpuImageRelated.field3236) {
 			int var8 = arg1 + arg3;
 			int var9 = arg0 + arg2;
@@ -447,8 +417,7 @@ public class GpuSprite extends Sprite {
 		}
 	}
 
-	@ObfuscatedName("aef.ag(FFFFFFIIII)V")
-	public void method1433(float arg0, float arg1, float arg2, float arg3, float arg4, float arg5, int arg6, int arg7, int arg8, int arg9) {
+    public void method1433(float arg0, float arg1, float arg2, float arg3, float arg4, float arg5, int arg6, int arg7, int arg8, int arg9) {
 		if (this.field9403.method16337() != GpuImageRelated.field3236) {
 			this.field9403.field10146.method5806(arg0, arg1, arg2, arg3, arg4, arg5, arg2 + arg4 - arg0, arg3 + arg5 - arg1, 0.0F, 0.0F, this.field9401.method5734(), 0.0F, 0.0F, this.field9401.method5707(), this.field9401.method5734(), this.field9401.method5707(), this.field9401, arg7);
 			return;
@@ -497,8 +466,7 @@ public class GpuSprite extends Sprite {
 		var25.method5051();
 	}
 
-	@ObfuscatedName("aef.al(FFFFFFILch;II)V")
-	public void method1454(float arg0, float arg1, float arg2, float arg3, float arg4, float arg5, int arg6, SpriteRelated arg7, int arg8, int arg9) {
+    public void method1454(float arg0, float arg1, float arg2, float arg3, float arg4, float arg5, int arg6, SpriteRelated arg7, int arg8, int arg9) {
 		this.field9403.method15981();
 		SpriteShader var11 = this.field9403.spriteShader;
 		var11.field2997 = this.field9401;

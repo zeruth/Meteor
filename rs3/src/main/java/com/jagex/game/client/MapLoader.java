@@ -15,227 +15,153 @@ import com.jagex.graphics.WaterFogData;
 import com.jagex.math.Trig1;
 import deob.ObfuscatedName;
 
-@ObfuscatedName("qg")
 public class MapLoader {
 
-	@ObfuscatedName("qg.e")
-	public FloorOverlayTypeList overlays;
+    public FloorOverlayTypeList overlays;
 
-	@ObfuscatedName("qg.n")
-	public FloorUnderlayTypeList underlays;
+    public FloorUnderlayTypeList underlays;
 
-	@ObfuscatedName("qg.m")
-	public SceneLevelTileFlags sceneLevelTileFlags;
+    public SceneLevelTileFlags sceneLevelTileFlags;
 
-	@ObfuscatedName("qg.k")
-	public Scene scene;
+    public Scene scene;
 
-	@ObfuscatedName("qg.w")
-	public int sceneryShadows = 0;
+    public int sceneryShadows = 0;
 
-	@ObfuscatedName("qg.l")
-	public boolean isWaterDetail = false;
+    public boolean isWaterDetail = false;
 
-	@ObfuscatedName("qg.u")
-	public boolean isLightingDetail = false;
+    public boolean isLightingDetail = false;
 
-	@ObfuscatedName("qg.z")
-	public boolean isGroundBlending = false;
+    public boolean isGroundBlending = false;
 
-	@ObfuscatedName("qg.p")
-	public boolean isTexturing = false;
+    public boolean isTexturing = false;
 
-	@ObfuscatedName("qg.d")
-	public final int levels;
+    public final int levels;
 
-	@ObfuscatedName("qg.c")
-	public final int maxTileX;
+    public final int maxTileX;
 
-	@ObfuscatedName("qg.r")
-	public int field4575 = 0;
+    public int field4575 = 0;
 
-	@ObfuscatedName("qg.v")
-	public final int maxTileZ;
+    public final int maxTileZ;
 
-	@ObfuscatedName("qg.o")
-	public final boolean underwater;
+    public final boolean underwater;
 
-	@ObfuscatedName("qg.s")
-	public int angle;
+    public int angle;
 
-	@ObfuscatedName("qg.y")
-	public int[][][] levelHeightmap;
+    public int[][][] levelHeightmap;
 
-	@ObfuscatedName("qg.q")
-	public byte[][][] field4517;
+    public byte[][][] field4517;
 
-	@ObfuscatedName("qg.x")
-	public boolean field4512;
+    public boolean field4512;
 
-	@ObfuscatedName("qg.b")
-	public byte[][][] levelTileOverlayShape;
+    public byte[][][] levelTileOverlayShape;
 
-	@ObfuscatedName("qg.h")
-	public byte[][][] levelTileOverlayRotation;
+    public byte[][][] levelTileOverlayRotation;
 
-	@ObfuscatedName("qg.a")
-	public short[][][] levelTileUnderlayIds;
+    public short[][][] levelTileUnderlayIds;
 
-	@ObfuscatedName("qg.g")
-	public short[][][] levelTileOverlayIds;
+    public short[][][] levelTileOverlayIds;
 
-	@ObfuscatedName("qg.i")
-	public byte[][][] levelOccludemap;
+    public byte[][][] levelOccludemap;
 
-	@ObfuscatedName("qg.j")
-	public int[] blendHue;
+    public int[] blendHue;
 
-	@ObfuscatedName("qg.t")
-	public int[] blendSaturation;
+    public int[] blendSaturation;
 
-	@ObfuscatedName("qg.ae")
-	public int[] blendLightness;
+    public int[] blendLightness;
 
-	@ObfuscatedName("qg.ag")
-	public int[] blendChroma;
+    public int[] blendChroma;
 
-	@ObfuscatedName("qg.ah")
-	public int[] blendMagnitude;
+    public int[] blendMagnitude;
 
-	@ObfuscatedName("qg.ao")
-	public static final int[] field4524 = new int[] { 2, 1, 1, 1, 2, 2, 2, 1, 3, 3, 3, 2, 0, 4, 0 };
+    public static final int[] field4524 = new int[] { 2, 1, 1, 1, 2, 2, 2, 1, 3, 3, 3, 2, 0, 4, 0 };
 
-	@ObfuscatedName("qg.aj")
-	public static final int[] field4568 = new int[] { 0, 1, 2, 2, 1, 1, 2, 3, 1, 3, 3, 4, 2, 0, 4 };
+    public static final int[] field4568 = new int[] { 0, 1, 2, 2, 1, 1, 2, 3, 1, 3, 3, 4, 2, 0, 4 };
 
-	@ObfuscatedName("qg.ay")
-	public static final int[] field4545 = new int[] { 4, 2, 1, 1, 2, 2, 3, 1, 3, 3, 3, 2, 0 };
+    public static final int[] field4545 = new int[] { 4, 2, 1, 1, 2, 2, 3, 1, 3, 3, 3, 2, 0 };
 
-	@ObfuscatedName("qg.ab")
-	public static final int[] field4546 = new int[] { 0, 2, 2, 2, 1, 1, 3, 3, 1, 3, 3, 4, 4 };
+    public static final int[] field4546 = new int[] { 0, 2, 2, 2, 1, 1, 3, 3, 1, 3, 3, 4, 4 };
 
-	@ObfuscatedName("qg.az")
-	public static final int[] field4547 = new int[] { 4, 2, 1, 1, 2, 2, 3, 1, 3, 3, 3, 2, 0 };
+    public static final int[] field4547 = new int[] { 4, 2, 1, 1, 2, 2, 3, 1, 3, 3, 3, 2, 0 };
 
-	@ObfuscatedName("qg.aa")
-	public static final int[] field4566 = new int[] { 0, 4, 3, 3, 1, 1, 3, 5, 1, 5, 3, 6, 4 };
+    public static final int[] field4566 = new int[] { 0, 4, 3, 3, 1, 1, 3, 5, 1, 5, 3, 6, 4 };
 
-	@ObfuscatedName("qg.af")
-	public static final int[] TILE_POINT_X = new int[] { 0, 256, 512, 512, 512, 256, 0, 0, 128, 256, 128, 384, 256 };
+    public static final int[] TILE_POINT_X = new int[] { 0, 256, 512, 512, 512, 256, 0, 0, 128, 256, 128, 384, 256 };
 
-	@ObfuscatedName("qg.ak")
-	public static final int[] TILE_POINT_Z = new int[] { 0, 0, 0, 256, 512, 512, 512, 256, 256, 384, 128, 128, 256 };
+    public static final int[] TILE_POINT_Z = new int[] { 0, 0, 0, 256, 512, 512, 512, 256, 256, 384, 128, 128, 256 };
 
-	@ObfuscatedName("qg.an")
-	public static final boolean[][] field4521 = new boolean[][] { { true, true, true, true, true, true, true, true, true, true, true, true, true }, { true, true, true, false, false, false, true, true, false, false, false, false, true }, { true, false, false, false, false, true, true, true, false, false, false, false, false }, { false, false, true, true, true, true, false, false, false, false, false, false, false }, { true, true, true, true, true, true, false, false, false, false, false, false, false }, { true, true, true, false, false, true, true, true, false, false, false, false, false }, { true, true, false, false, false, true, true, true, false, false, false, false, true }, { true, true, false, false, false, false, false, true, false, false, false, false, false }, { false, true, true, true, true, true, true, true, false, false, false, false, false }, { true, false, false, false, true, true, true, true, true, true, false, false, false }, { true, true, true, true, true, false, false, false, true, true, false, false, false }, { true, true, true, false, false, false, false, false, false, false, true, true, false }, { false, false, false, false, false, false, false, false, false, false, false, false, false }, { true, true, true, true, true, true, true, true, true, true, true, true, true }, { false, false, false, false, false, false, false, false, false, false, false, false, false } };
+    public static final boolean[][] field4521 = new boolean[][] { { true, true, true, true, true, true, true, true, true, true, true, true, true }, { true, true, true, false, false, false, true, true, false, false, false, false, true }, { true, false, false, false, false, true, true, true, false, false, false, false, false }, { false, false, true, true, true, true, false, false, false, false, false, false, false }, { true, true, true, true, true, true, false, false, false, false, false, false, false }, { true, true, true, false, false, true, true, true, false, false, false, false, false }, { true, true, false, false, false, true, true, true, false, false, false, false, true }, { true, true, false, false, false, false, false, true, false, false, false, false, false }, { false, true, true, true, true, true, true, true, false, false, false, false, false }, { true, false, false, false, true, true, true, true, true, true, false, false, false }, { true, true, true, true, true, false, false, false, true, true, false, false, false }, { true, true, true, false, false, false, false, false, false, false, true, true, false }, { false, false, false, false, false, false, false, false, false, false, false, false, false }, { true, true, true, true, true, true, true, true, true, true, true, true, true }, { false, false, false, false, false, false, false, false, false, false, false, false, false } };
 
-	@ObfuscatedName("qg.bf")
-	public static final boolean[][] field4552 = new boolean[][] { { false, false, false, false, false, false, false, false, false, false, false, false, false }, { false, false, true, true, true, true, true, false, false, false, false, false, true }, { true, true, true, true, true, true, false, false, false, false, false, false, false }, { true, true, true, false, false, true, true, true, false, false, false, false, false }, { true, false, false, false, false, true, true, true, false, false, false, false, false }, { false, false, true, true, true, true, false, false, false, false, false, false, false }, { false, true, true, true, true, true, false, false, false, false, false, false, true }, { false, true, true, true, true, true, true, true, false, false, false, false, true }, { true, true, false, false, false, false, false, true, false, false, false, false, false }, { true, true, true, true, true, false, false, false, true, true, false, false, false }, { true, false, false, false, true, true, true, true, true, true, false, false, false }, { true, false, true, true, true, true, true, true, false, false, true, true, false }, { true, true, true, true, true, true, true, true, true, true, true, true, true }, { false, false, false, false, false, false, false, false, false, false, false, false, false }, { true, true, true, true, true, true, true, true, true, true, true, true, true } };
+    public static final boolean[][] field4552 = new boolean[][] { { false, false, false, false, false, false, false, false, false, false, false, false, false }, { false, false, true, true, true, true, true, false, false, false, false, false, true }, { true, true, true, true, true, true, false, false, false, false, false, false, false }, { true, true, true, false, false, true, true, true, false, false, false, false, false }, { true, false, false, false, false, true, true, true, false, false, false, false, false }, { false, false, true, true, true, true, false, false, false, false, false, false, false }, { false, true, true, true, true, true, false, false, false, false, false, false, true }, { false, true, true, true, true, true, true, true, false, false, false, false, true }, { true, true, false, false, false, false, false, true, false, false, false, false, false }, { true, true, true, true, true, false, false, false, true, true, false, false, false }, { true, false, false, false, true, true, true, true, true, true, false, false, false }, { true, false, true, true, true, true, true, true, false, false, true, true, false }, { true, true, true, true, true, true, true, true, true, true, true, true, true }, { false, false, false, false, false, false, false, false, false, false, false, false, false }, { true, true, true, true, true, true, true, true, true, true, true, true, true } };
 
-	@ObfuscatedName("qg.bl")
-	public static final int[][] TILE_SHAPE_TRIANGLES_A1 = new int[][] { { 0, 2 }, { 0, 2 }, { 0, 0, 2 }, { 2, 0, 0 }, { 0, 2, 0 }, { 0, 0, 2 }, { 0, 5, 1, 4 }, { 0, 4, 4, 4 }, { 4, 4, 4, 0 }, { 6, 6, 6, 2, 2, 2 }, { 2, 2, 2, 6, 6, 6 }, { 0, 11, 6, 6, 6, 4 }, { 0, 2 }, { 0, 4, 4, 4 }, { 0, 4, 4, 4 } };
+    public static final int[][] TILE_SHAPE_TRIANGLES_A1 = new int[][] { { 0, 2 }, { 0, 2 }, { 0, 0, 2 }, { 2, 0, 0 }, { 0, 2, 0 }, { 0, 0, 2 }, { 0, 5, 1, 4 }, { 0, 4, 4, 4 }, { 4, 4, 4, 0 }, { 6, 6, 6, 2, 2, 2 }, { 2, 2, 2, 6, 6, 6 }, { 0, 11, 6, 6, 6, 4 }, { 0, 2 }, { 0, 4, 4, 4 }, { 0, 4, 4, 4 } };
 
-	@ObfuscatedName("qg.bk")
-	public static final int[][] TILE_SHAPE_TRIANGLES_A2 = new int[][] { { 2, 4 }, { 2, 4 }, { 5, 2, 4 }, { 4, 5, 2 }, { 2, 4, 5 }, { 5, 2, 4 }, { 1, 6, 2, 5 }, { 1, 6, 7, 1 }, { 6, 7, 1, 1 }, { 0, 8, 9, 8, 9, 4 }, { 8, 9, 4, 0, 8, 9 }, { 2, 10, 0, 10, 11, 11 }, { 2, 4 }, { 1, 6, 7, 1 }, { 1, 6, 7, 1 } };
+    public static final int[][] TILE_SHAPE_TRIANGLES_A2 = new int[][] { { 2, 4 }, { 2, 4 }, { 5, 2, 4 }, { 4, 5, 2 }, { 2, 4, 5 }, { 5, 2, 4 }, { 1, 6, 2, 5 }, { 1, 6, 7, 1 }, { 6, 7, 1, 1 }, { 0, 8, 9, 8, 9, 4 }, { 8, 9, 4, 0, 8, 9 }, { 2, 10, 0, 10, 11, 11 }, { 2, 4 }, { 1, 6, 7, 1 }, { 1, 6, 7, 1 } };
 
-	@ObfuscatedName("qg.bh")
-	public static final int[][] TILE_SHAPE_TRIANGLES_A3 = new int[][] { { 6, 6 }, { 6, 6 }, { 6, 5, 5 }, { 5, 6, 5 }, { 5, 5, 6 }, { 6, 5, 5 }, { 5, 0, 4, 1 }, { 7, 7, 1, 2 }, { 7, 1, 2, 7 }, { 8, 9, 4, 0, 8, 9 }, { 0, 8, 9, 8, 9, 4 }, { 11, 0, 10, 11, 4, 2 }, { 6, 6 }, { 7, 7, 1, 2 }, { 7, 7, 1, 2 } };
+    public static final int[][] TILE_SHAPE_TRIANGLES_A3 = new int[][] { { 6, 6 }, { 6, 6 }, { 6, 5, 5 }, { 5, 6, 5 }, { 5, 5, 6 }, { 6, 5, 5 }, { 5, 0, 4, 1 }, { 7, 7, 1, 2 }, { 7, 1, 2, 7 }, { 8, 9, 4, 0, 8, 9 }, { 0, 8, 9, 8, 9, 4 }, { 11, 0, 10, 11, 4, 2 }, { 6, 6 }, { 7, 7, 1, 2 }, { 7, 7, 1, 2 } };
 
-	@ObfuscatedName("qg.bx")
-	public static final boolean[][] field4556 = new boolean[][] { { false, false, false, false }, { false, false, false, false }, { false, false, true, false }, { false, false, true, false }, { false, false, true, false }, { false, false, true, false }, { true, false, true, false }, { true, false, false, true }, { true, false, false, true }, { false, false, false, false }, { false, false, false, false }, { false, false, false, false }, { false, false, false, false } };
+    public static final boolean[][] field4556 = new boolean[][] { { false, false, false, false }, { false, false, false, false }, { false, false, true, false }, { false, false, true, false }, { false, false, true, false }, { false, false, true, false }, { true, false, true, false }, { true, false, false, true }, { true, false, false, true }, { false, false, false, false }, { false, false, false, false }, { false, false, false, false }, { false, false, false, false } };
 
-	@ObfuscatedName("qg.bd")
-	public static final int[][] field4557 = new int[][] { { 0, 1, 2, 3 }, { 1, 2, 3, 0 }, { 1, 2, -1, 0 }, { 2, 0, -1, 1 }, { 0, 1, -1, 2 }, { 1, 2, -1, 0 }, { -1, 4, -1, 1 }, { -1, 1, 3, -1 }, { -1, 0, 2, -1 }, { 3, 5, 2, 0 }, { 0, 2, 5, 3 }, { 0, 2, 3, 5 }, { 0, 1, 2, 3 } };
+    public static final int[][] field4557 = new int[][] { { 0, 1, 2, 3 }, { 1, 2, 3, 0 }, { 1, 2, -1, 0 }, { 2, 0, -1, 1 }, { 0, 1, -1, 2 }, { 1, 2, -1, 0 }, { -1, 4, -1, 1 }, { -1, 1, 3, -1 }, { -1, 0, 2, -1 }, { 3, 5, 2, 0 }, { 0, 2, 5, 3 }, { 0, 2, 3, 5 }, { 0, 1, 2, 3 } };
 
-	@ObfuscatedName("qg.bc")
-	public static final int[][] field4558 = new int[][] { { 0, 2, 4, 6 }, { 6, 0, 2, 4 }, { 6, 0, 2 }, { 2, 6, 0 }, { 0, 2, 6 }, { 6, 0, 2 }, { 5, 6, 0, 1, 2, 4 }, { 7, 2, 4, 4 }, { 2, 4, 4, 7 }, { 6, 6, 4, 0, 2, 2 }, { 0, 2, 2, 6, 6, 4 }, { 0, 2, 2, 4, 6, 6 }, { 0, 2, 4, 6 } };
+    public static final int[][] field4558 = new int[][] { { 0, 2, 4, 6 }, { 6, 0, 2, 4 }, { 6, 0, 2 }, { 2, 6, 0 }, { 0, 2, 6 }, { 6, 0, 2 }, { 5, 6, 0, 1, 2, 4 }, { 7, 2, 4, 4 }, { 2, 4, 4, 7 }, { 6, 6, 4, 0, 2, 2 }, { 0, 2, 2, 6, 6, 4 }, { 0, 2, 2, 4, 6, 6 }, { 0, 2, 4, 6 } };
 
-	@ObfuscatedName("qg.bi")
-	public static final int[][] field4559 = new int[][] { { 2, 4, 6, 0 }, { 0, 2, 4, 6 }, { 0, 2, 4 }, { 4, 0, 2 }, { 2, 4, 0 }, { 0, 2, 4 }, { 6, 0, 1, 2, 4, 5 }, { 0, 4, 7, 6 }, { 4, 7, 6, 0 }, { 0, 8, 6, 2, 9, 4 }, { 2, 9, 4, 0, 8, 6 }, { 2, 11, 4, 6, 10, 0 }, { 2, 4, 6, 0 } };
+    public static final int[][] field4559 = new int[][] { { 2, 4, 6, 0 }, { 0, 2, 4, 6 }, { 0, 2, 4 }, { 4, 0, 2 }, { 2, 4, 0 }, { 0, 2, 4 }, { 6, 0, 1, 2, 4, 5 }, { 0, 4, 7, 6 }, { 4, 7, 6, 0 }, { 0, 8, 6, 2, 9, 4 }, { 2, 9, 4, 0, 8, 6 }, { 2, 11, 4, 6, 10, 0 }, { 2, 4, 6, 0 } };
 
-	@ObfuscatedName("qg.bn")
-	public static final int[][] field4560 = new int[][] { { 12, 12, 12, 12 }, { 12, 12, 12, 12 }, { 5, 5, 5 }, { 5, 5, 5 }, { 5, 5, 5 }, { 5, 5, 5 }, { 12, 12, 12, 12, 12, 12 }, { 1, 1, 1, 7 }, { 1, 1, 7, 1 }, { 8, 9, 9, 8, 8, 9 }, { 8, 8, 9, 8, 9, 9 }, { 10, 10, 11, 11, 11, 10 }, { 12, 12, 12, 12 } };
+    public static final int[][] field4560 = new int[][] { { 12, 12, 12, 12 }, { 12, 12, 12, 12 }, { 5, 5, 5 }, { 5, 5, 5 }, { 5, 5, 5 }, { 5, 5, 5 }, { 12, 12, 12, 12, 12, 12 }, { 1, 1, 1, 7 }, { 1, 1, 7, 1 }, { 8, 9, 9, 8, 8, 9 }, { 8, 8, 9, 8, 9, 9 }, { 10, 10, 11, 11, 11, 10 }, { 12, 12, 12, 12 } };
 
-	@ObfuscatedName("qg.bt")
-	public static final boolean[][] field4527 = new boolean[][] { { false, false, false, false }, { false, true, true, false }, { true, false, true, false }, { true, false, true, false }, { false, false, true, false }, { false, false, true, false }, { true, false, true, false }, { true, false, false, true }, { true, false, false, true }, { true, true, false, false }, { false, false, false, false }, { false, true, false, true }, { false, false, false, false } };
+    public static final boolean[][] field4527 = new boolean[][] { { false, false, false, false }, { false, true, true, false }, { true, false, true, false }, { true, false, true, false }, { false, false, true, false }, { false, false, true, false }, { true, false, true, false }, { true, false, false, true }, { true, false, false, true }, { true, true, false, false }, { false, false, false, false }, { false, true, false, true }, { false, false, false, false } };
 
-	@ObfuscatedName("qg.bq")
-	public static final int[][] field4579 = new int[][] { { 0, 1, 2, 3 }, { 1, -1, -1, 0 }, { -1, 2, -1, 0 }, { -1, 0, -1, 2 }, { 0, 1, -1, 2 }, { 1, 2, -1, 0 }, { -1, 4, -1, 1 }, { -1, 3, 4, -1 }, { -1, 0, 2, -1 }, { -1, -1, 2, 0 }, { 0, 2, 5, 3 }, { 0, -1, 6, -1 }, { 0, 1, 2, 3 } };
+    public static final int[][] field4579 = new int[][] { { 0, 1, 2, 3 }, { 1, -1, -1, 0 }, { -1, 2, -1, 0 }, { -1, 0, -1, 2 }, { 0, 1, -1, 2 }, { 1, 2, -1, 0 }, { -1, 4, -1, 1 }, { -1, 3, 4, -1 }, { -1, 0, 2, -1 }, { -1, -1, 2, 0 }, { 0, 2, 5, 3 }, { 0, -1, 6, -1 }, { 0, 1, 2, 3 } };
 
-	@ObfuscatedName("qg.bm")
-	public static final int[][] field4563 = new int[][] { { 0, 2, 4, 6 }, { 6, 0, 2, 3, 5, 3 }, { 6, 0, 2, 4 }, { 2, 5, 6, 1 }, { 0, 2, 6 }, { 6, 0, 2 }, { 5, 6, 0, 1, 2, 4 }, { 7, 7, 1, 2, 4, 6 }, { 2, 4, 4, 7 }, { 6, 6, 4, 0, 1, 1, 3, 3 }, { 0, 2, 2, 6, 6, 4 }, { 0, 2, 2, 3, 7, 0, 4, 3 }, { 0, 2, 4, 6 } };
+    public static final int[][] field4563 = new int[][] { { 0, 2, 4, 6 }, { 6, 0, 2, 3, 5, 3 }, { 6, 0, 2, 4 }, { 2, 5, 6, 1 }, { 0, 2, 6 }, { 6, 0, 2 }, { 5, 6, 0, 1, 2, 4 }, { 7, 7, 1, 2, 4, 6 }, { 2, 4, 4, 7 }, { 6, 6, 4, 0, 1, 1, 3, 3 }, { 0, 2, 2, 6, 6, 4 }, { 0, 2, 2, 3, 7, 0, 4, 3 }, { 0, 2, 4, 6 } };
 
-	@ObfuscatedName("qg.bb")
-	public static final int[][] field4569 = new int[][] { { 2, 4, 6, 0 }, { 0, 2, 3, 5, 6, 4 }, { 0, 1, 4, 5 }, { 4, 6, 0, 2 }, { 2, 4, 0 }, { 0, 2, 4 }, { 6, 0, 1, 2, 4, 5 }, { 0, 1, 2, 4, 6, 7 }, { 4, 7, 6, 0 }, { 0, 8, 6, 1, 9, 2, 9, 4 }, { 2, 9, 4, 0, 8, 6 }, { 2, 11, 3, 7, 10, 10, 6, 6 }, { 2, 4, 6, 0 } };
+    public static final int[][] field4569 = new int[][] { { 2, 4, 6, 0 }, { 0, 2, 3, 5, 6, 4 }, { 0, 1, 4, 5 }, { 4, 6, 0, 2 }, { 2, 4, 0 }, { 0, 2, 4 }, { 6, 0, 1, 2, 4, 5 }, { 0, 1, 2, 4, 6, 7 }, { 4, 7, 6, 0 }, { 0, 8, 6, 1, 9, 2, 9, 4 }, { 2, 9, 4, 0, 8, 6 }, { 2, 11, 3, 7, 10, 10, 6, 6 }, { 2, 4, 6, 0 } };
 
-	@ObfuscatedName("qg.be")
-	public static final int[][] field4565 = new int[][] { { 12, 12, 12, 12 }, { 12, 12, 12, 12, 12, 5 }, { 5, 5, 1, 1 }, { 5, 1, 1, 5 }, { 5, 5, 5 }, { 5, 5, 5 }, { 12, 12, 12, 12, 12, 12 }, { 1, 12, 12, 12, 12, 12 }, { 1, 1, 7, 1 }, { 8, 9, 9, 8, 8, 3, 1, 9 }, { 8, 8, 9, 8, 9, 9 }, { 10, 10, 11, 11, 11, 7, 3, 7 }, { 12, 12, 12, 12 } };
+    public static final int[][] field4565 = new int[][] { { 12, 12, 12, 12 }, { 12, 12, 12, 12, 12, 5 }, { 5, 5, 1, 1 }, { 5, 1, 1, 5 }, { 5, 5, 5 }, { 5, 5, 5 }, { 12, 12, 12, 12, 12, 12 }, { 1, 12, 12, 12, 12, 12 }, { 1, 1, 7, 1 }, { 8, 9, 9, 8, 8, 3, 1, 9 }, { 8, 8, 9, 8, 9, 9 }, { 10, 10, 11, 11, 11, 7, 3, 7 }, { 12, 12, 12, 12 } };
 
-	@ObfuscatedName("qg.by")
-	public final int[] field4541 = new int[6];
+    public final int[] field4541 = new int[6];
 
-	@ObfuscatedName("qg.bu")
-	public final int[] field4567 = new int[13];
+    public final int[] field4567 = new int[13];
 
-	@ObfuscatedName("qg.bw")
-	public final int[] field4581 = new int[13];
+    public final int[] field4581 = new int[13];
 
-	@ObfuscatedName("qg.bo")
-	public final int[] field4543 = new int[13];
+    public final int[] field4543 = new int[13];
 
-	@ObfuscatedName("qg.bz")
-	public final int[] field4570 = new int[13];
+    public final int[] field4570 = new int[13];
 
-	@ObfuscatedName("qg.bv")
-	public final int[] field4551 = new int[13];
+    public final int[] field4551 = new int[13];
 
-	@ObfuscatedName("qg.br")
-	public final int[] field4572 = new int[13];
+    public final int[] field4572 = new int[13];
 
-	@ObfuscatedName("qg.bg")
-	public int field4573;
+    public int field4573;
 
-	@ObfuscatedName("qg.ba")
-	public int field4576 = 0;
+    public int field4576 = 0;
 
-	@ObfuscatedName("qg.bp")
-	public int tileMaterial;
+    public int tileMaterial;
 
-	@ObfuscatedName("qg.bj")
-	public int field4578;
+    public int field4578;
 
-	@ObfuscatedName("qg.bs")
-	public int field4502;
+    public int field4502;
 
-	@ObfuscatedName("qg.cl")
-	public boolean field4507;
+    public boolean field4507;
 
-	@ObfuscatedName("qg.cg")
-	public boolean field4519;
+    public boolean field4519;
 
-	@ObfuscatedName("qg.ce")
-	public boolean field4582;
+    public boolean field4582;
 
-	@ObfuscatedName("qg.cu")
-	public boolean field4583;
+    public boolean field4583;
 
-	@ObfuscatedName("qg.ci")
-	public int field4584;
+    public int field4584;
 
-	@ObfuscatedName("qg.cn")
-	public int field4585;
+    public int field4585;
 
-	@ObfuscatedName("qg.cv")
-	public int[] field4586;
+    public int[] field4586;
 
-	@ObfuscatedName("qg.cp")
-	public int[] field4587;
+    public int[] field4587;
 
-	@ObfuscatedName("qg.ca")
-	public int[] field4588;
+    public int[] field4588;
 
-	@ObfuscatedName("qg.cx")
-	public int[] field4589 = null;
+    public int[] field4589 = null;
 
 	public MapLoader(Scene scene, int levels, int maxTileX, int maxTileZ, boolean underwater, FloorOverlayTypeList overlays, FloorUnderlayTypeList underlays, SceneLevelTileFlags arg7) {
 		this.scene = scene;
@@ -254,13 +180,11 @@ public class MapLoader {
 		this.levelOccludemap = new byte[this.levels][this.maxTileX + 1][this.maxTileZ + 1];
 	}
 
-	@ObfuscatedName("qg.e(I)V")
-	public void method7136() {
+    public void method7136() {
 		this.field4512 = true;
 	}
 
-	@ObfuscatedName("qg.n(B)V")
-	public void method7137() {
+    public void method7137() {
 		this.blendHue = null;
 		this.blendSaturation = null;
 		this.blendLightness = null;
@@ -269,15 +193,13 @@ public class MapLoader {
 		this.field4512 = false;
 	}
 
-	@ObfuscatedName("qg.m(IIIII)V")
-	public final void method7167(int arg0, int arg1, int arg2, int arg3) {
+    public final void method7167(int arg0, int arg1, int arg2, int arg3) {
 		for (int var5 = 0; var5 < this.levels; var5++) {
 			this.method7139(var5, arg0, arg1, arg2, arg3);
 		}
 	}
 
-	@ObfuscatedName("qg.k(IIIIII)V")
-	public final void method7139(int arg0, int arg1, int arg2, int arg3, int arg4) {
+    public final void method7139(int arg0, int arg1, int arg2, int arg3, int arg4) {
 		for (int var6 = arg2; var6 < arg2 + arg4; var6++) {
 			for (int var7 = arg1; var7 < arg1 + arg3; var7++) {
 				if (var7 >= 0 && var7 < this.maxTileX && var6 >= 0 && var6 < this.maxTileZ) {
@@ -319,8 +241,7 @@ public class MapLoader {
 		}
 	}
 
-	@ObfuscatedName("qg.f(Lalw;IIIIB)V")
-	public final void readNormalLandscape(Packet buf, int arg1, int arg2, int arg3, int arg4) {
+    public final void readNormalLandscape(Packet buf, int arg1, int arg2, int arg3, int arg4) {
 		int var6 = arg1 + arg3;
 		int var7 = arg2 + arg4;
 		for (int l = 0; l < this.levels; l++) {
@@ -332,8 +253,7 @@ public class MapLoader {
 		}
 	}
 
-	@ObfuscatedName("qg.w(Lalw;IIIIIIII)V")
-	public final void readRegionLandscape(Packet buf, int level, int arg2, int arg3, int arg4, int arg5, int arg6, int arg7) {
+    public final void readRegionLandscape(Packet buf, int level, int arg2, int arg3, int arg4, int arg5, int arg6, int arg7) {
 		int var9 = (arg5 & 0x7) * 8;
 		int var10 = (arg6 & 0x7) * 8;
 		int var11 = (arg5 & 0xFFFFFFF8) << 3;
@@ -418,8 +338,7 @@ public class MapLoader {
 		}
 	}
 
-	@ObfuscatedName("qg.l(Lalw;IIIIIIIIZB)V")
-	public final void readLandscape(Packet buf, int level, int originX, int originZ, int xOffset, int zOffset, int arg6, int arg7, int arg8, boolean arg9) {
+    public final void readLandscape(Packet buf, int level, int originX, int originZ, int xOffset, int zOffset, int arg6, int arg7, int arg8, boolean arg9) {
 		if (arg8 == 1) {
 			zOffset = 1;
 		} else if (arg8 == 2) {
@@ -497,8 +416,7 @@ public class MapLoader {
 		}
 	}
 
-	@ObfuscatedName("qg.u(I[[II)V")
-	public final void method7143(int arg0, int[][] arg1) {
+    public final void method7143(int arg0, int[][] arg1) {
 		int[][] var3 = this.levelHeightmap[arg0];
 		for (int var4 = 0; var4 < this.maxTileX + 1; var4++) {
 			for (int var5 = 0; var5 < this.maxTileZ + 1; var5++) {
@@ -507,8 +425,7 @@ public class MapLoader {
 		}
 	}
 
-	@ObfuscatedName("qg.z(Ldh;[[[II)V")
-	public void method7144(Toolkit arg0, int[][][] arg1) {
+    public void method7144(Toolkit arg0, int[][][] arg1) {
 		for (int level = 0; level < this.levels; level++) {
 			int var4 = 0;
 			int var5 = 0;
@@ -535,8 +452,7 @@ public class MapLoader {
 		}
 	}
 
-	@ObfuscatedName("qg.p(Ldh;Lcb;Lcb;B)V")
-	public final void method7200(Toolkit arg0, FloorModel arg1, FloorModel arg2) {
+    public final void method7200(Toolkit arg0, FloorModel arg1, FloorModel arg2) {
 		int[][] var4 = new int[this.maxTileX][this.maxTileZ];
 		if (this.blendHue == null || this.maxTileZ != this.blendHue.length) {
 			this.blendHue = new int[this.maxTileZ];
@@ -633,8 +549,7 @@ public class MapLoader {
 		}
 	}
 
-	@ObfuscatedName("qg.d(Ldh;Lcb;I[[ILcb;Lcb;I)V")
-	public void method7199(Toolkit arg0, FloorModel arg1, int arg2, int[][] arg3, FloorModel arg4, FloorModel arg5) {
+    public void method7199(Toolkit arg0, FloorModel arg1, int arg2, int[][] arg3, FloorModel arg4, FloorModel arg5) {
 		for (int var7 = 0; var7 < this.maxTileX; var7++) {
 			for (int var8 = 0; var8 < this.maxTileZ; var8++) {
 				byte var9 = this.levelTileOverlayShape[arg2][var7][var8];
@@ -773,8 +688,7 @@ public class MapLoader {
 		}
 	}
 
-	@ObfuscatedName("qg.c(Ldh;Lcb;I[[ILcb;Lcb;I)V")
-	public void method7147(Toolkit arg0, FloorModel arg1, int arg2, int[][] arg3, FloorModel arg4, FloorModel arg5) {
+    public void method7147(Toolkit arg0, FloorModel arg1, int arg2, int[][] arg3, FloorModel arg4, FloorModel arg5) {
 		byte[][] var7 = this.levelTileOverlayShape[arg2];
 		byte[][] var8 = this.levelTileOverlayRotation[arg2];
 		short[][] var9 = this.levelTileUnderlayIds[arg2];
@@ -870,8 +784,7 @@ public class MapLoader {
 		}
 	}
 
-	@ObfuscatedName("qg.r(IIIIILcb;[[SB)I")
-	public int method7145(int arg0, int arg1, int arg2, int arg3, int arg4, FloorModel arg5, short[][] arg6) {
+    public int method7145(int arg0, int arg1, int arg2, int arg3, int arg4, FloorModel arg5, short[][] arg6) {
 		if (this.field4573 != 0 && this.field4573 != 12 || arg1 <= 0 || arg2 <= 0 || arg1 >= this.maxTileX || arg2 >= this.maxTileZ) {
 			return this.angle;
 		}
@@ -932,8 +845,7 @@ public class MapLoader {
 		return var16 < var17 ? 1 : 0;
 	}
 
-	@ObfuscatedName("qg.v(Ldh;Lyn;Laaz;II[[B[[B[[S[ZI)V")
-	public void method7149(Toolkit arg0, FloorOverlayType arg1, FloorUnderlayType arg2, int arg3, int arg4, byte[][] arg5, byte[][] arg6, short[][] arg7, boolean[] arg8) {
+    public void method7149(Toolkit arg0, FloorOverlayType arg1, FloorUnderlayType arg2, int arg3, int arg4, byte[][] arg5, byte[][] arg6, short[][] arg7, boolean[] arg8) {
 		boolean[] var10 = arg1 != null && arg1.blend ? field4527[this.field4573] : field4556[this.field4573];
 		this.method7154(arg0, arg1, arg2, arg3, arg4, this.maxTileX, this.maxTileZ, arg7, arg5, arg6, arg8);
 		this.field4583 = arg1 != null && arg1.averagecolour != arg1.rgb;
@@ -983,8 +895,7 @@ public class MapLoader {
 		}
 	}
 
-	@ObfuscatedName("qg.o(Lyn;Laaz;B)V")
-	public void method7150(FloorOverlayType arg0, FloorUnderlayType arg1) {
+    public void method7150(FloorOverlayType arg0, FloorUnderlayType arg1) {
 		if (this.field4582) {
 			this.field4586 = TILE_SHAPE_TRIANGLES_A1[this.field4573];
 			this.field4587 = TILE_SHAPE_TRIANGLES_A2[this.field4573];
@@ -1008,8 +919,7 @@ public class MapLoader {
 		}
 	}
 
-	@ObfuscatedName("qg.s(Ldh;IIILyn;[Z[I[I[I[I[I[I[I[ILcb;Lcb;Lcb;I)V")
-	public void method7151(Toolkit arg0, int arg1, int arg2, int arg3, FloorOverlayType arg4, boolean[] arg5, int[] arg6, int[] arg7, int[] arg8, int[] arg9, int[] arg10, int[] arg11, int[] arg12, int[] arg13, FloorModel arg14, FloorModel arg15, FloorModel arg16) {
+    public void method7151(Toolkit arg0, int arg1, int arg2, int arg3, FloorOverlayType arg4, boolean[] arg5, int[] arg6, int[] arg7, int[] arg8, int[] arg9, int[] arg10, int[] arg11, int[] arg12, int[] arg13, FloorModel arg14, FloorModel arg15, FloorModel arg16) {
 		this.field4502 = -1;
 		this.tileMaterial = -1;
 		this.field4578 = 256;
@@ -1131,8 +1041,7 @@ public class MapLoader {
 		}
 	}
 
-	@ObfuscatedName("qg.y(Ldh;IIIIILaaz;IIII[Z[I[I[I[I[I[I[I[I[[ILcb;Lcb;Lcb;B)V")
-	public void method7152(Toolkit arg0, int arg1, int arg2, int arg3, int arg4, int arg5, FloorUnderlayType arg6, int arg7, int arg8, int arg9, int arg10, boolean[] arg11, int[] arg12, int[] arg13, int[] arg14, int[] arg15, int[] arg16, int[] arg17, int[] arg18, int[] arg19, int[][] arg20, FloorModel arg21, FloorModel arg22, FloorModel arg23) {
+    public void method7152(Toolkit arg0, int arg1, int arg2, int arg3, int arg4, int arg5, FloorUnderlayType arg6, int arg7, int arg8, int arg9, int arg10, boolean[] arg11, int[] arg12, int[] arg13, int[] arg14, int[] arg15, int[] arg16, int[] arg17, int[] arg18, int[] arg19, int[][] arg20, FloorModel arg21, FloorModel arg22, FloorModel arg23) {
 		if (arg6 == null) {
 			return;
 		}
@@ -1289,8 +1198,7 @@ public class MapLoader {
 		}
 	}
 
-	@ObfuscatedName("qg.q(Lcb;Laaz;Lyn;IIIIIIII)V")
-	public void method7153(FloorModel arg0, FloorUnderlayType arg1, FloorOverlayType arg2, int arg3, int arg4, int arg5, int arg6, int arg7, int arg8, int arg9) {
+    public void method7153(FloorModel arg0, FloorUnderlayType arg1, FloorOverlayType arg2, int arg3, int arg4, int arg5, int arg6, int arg7, int arg8, int arg9) {
 		int var11 = arg0.getTileHeight(arg4, arg5);
 		int var12 = arg0.getTileHeight(arg6, arg5);
 		int var13 = arg0.getTileHeight(arg6, arg7);
@@ -1312,8 +1220,7 @@ public class MapLoader {
 		}
 	}
 
-	@ObfuscatedName("qg.x(Ldh;Lyn;Laaz;IIII[[S[[B[[B[ZI)V")
-	public final void method7154(Toolkit arg0, FloorOverlayType arg1, FloorUnderlayType arg2, int arg3, int arg4, int arg5, int arg6, short[][] arg7, byte[][] arg8, byte[][] arg9, boolean[] arg10) {
+    public final void method7154(Toolkit arg0, FloorOverlayType arg1, FloorUnderlayType arg2, int arg3, int arg4, int arg5, int arg6, short[][] arg7, byte[][] arg8, byte[][] arg9, boolean[] arg10) {
 		boolean[] var12 = arg1 != null && arg1.blend ? field4527[this.field4573] : field4556[this.field4573];
 		if (arg4 > 0) {
 			if (arg3 > 0) {
@@ -1568,8 +1475,7 @@ public class MapLoader {
 		}
 	}
 
-	@ObfuscatedName("pd.b(Ldh;Lyn;I)I")
-	public static final int method6823(Toolkit toolkit, FloorOverlayType floType) {
+    public static final int method6823(Toolkit toolkit, FloorOverlayType floType) {
 		if (floType.averagecolour != -1) {
 			return floType.averagecolour;
 		}
@@ -1582,8 +1488,7 @@ public class MapLoader {
 		return floType.rgb;
 	}
 
-	@ObfuscatedName("vp.h(IIII)I")
-	public static final int method9469(int arg0, int arg1, int arg2) {
+    public static final int method9469(int arg0, int arg1, int arg2) {
 		if (arg0 == arg1) {
 			return arg0;
 		}
@@ -1594,8 +1499,7 @@ public class MapLoader {
 		return var6 & 0xFC00 | var5 & 0x380 | var4 & 0x7F;
 	}
 
-	@ObfuscatedName("l.a(III)I")
-	public static final int perlin(int x, int z) {
+    public static final int perlin(int x, int z) {
 		int p = perlinScale(x + 45365, z + 91923, 4) - 128 + (perlinScale(x + 10294, z + 37821, 2) - 128 >> 1) + (perlinScale(x, z, 1) - 128 >> 2);
 		int value = (int) ((double) p * 0.3D) + 35;
 		if (value < 10) {
@@ -1606,8 +1510,7 @@ public class MapLoader {
 		return value;
 	}
 
-	@ObfuscatedName("dd.g(IIIS)I")
-	public static final int perlinScale(int x, int z, int scale) {
+    public static final int perlinScale(int x, int z, int scale) {
 		int intX = x / scale;
 		int fracX = x & scale - 1;
 		int intZ = z / scale;
@@ -1621,22 +1524,19 @@ public class MapLoader {
 		return interpolate(i1, i2, fracZ, scale);
 	}
 
-	@ObfuscatedName("ki.i(IIIII)I")
-	public static final int interpolate(int a, int b, int c, int scale) {
+    public static final int interpolate(int a, int b, int c, int scale) {
 		int f = 65536 - Trig1.cos[c * 8192 / scale] >> 1;
 		return ((65536 - f) * a >> 16) + (b * f >> 16);
 	}
 
-	@ObfuscatedName("zu.j(III)I")
-	public static final int smoothNoise(int x, int z) {
+    public static final int smoothNoise(int x, int z) {
 		int corners = noise(x - 1, z - 1) + noise(x + 1, z - 1) + noise(x - 1, z + 1) + noise(x + 1, z + 1);
 		int sides = noise(x - 1, z) + noise(x + 1, z) + noise(x, z - 1) + noise(x, z + 1);
 		int center = noise(x, z);
 		return center / 4 + corners / 16 + sides / 8;
 	}
 
-	@ObfuscatedName("at.t(III)I")
-	public static final int noise(int x, int z) {
+    public static final int noise(int x, int z) {
 		int n = z * 57 + x;
 		int n1 = n << 13 ^ n;
 		int n2 = (n1 * n1 * 15731 + 789221) * n1 + 1376312589 & Integer.MAX_VALUE;

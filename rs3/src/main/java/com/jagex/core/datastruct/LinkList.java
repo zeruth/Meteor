@@ -5,29 +5,24 @@ import deob.ObfuscatedName;
 import java.util.Collection;
 import java.util.Iterator;
 
-@ObfuscatedName("aat")
 public class LinkList implements Iterable, Collection {
 
-	@ObfuscatedName("aat.e")
-	public Node sentinel = new Node();
+    public Node sentinel = new Node();
 
-	@ObfuscatedName("aat.n")
-	public Node cursor;
+    public Node cursor;
 
 	public LinkList() {
 		this.sentinel.next = this.sentinel;
 		this.sentinel.prev = this.sentinel;
 	}
 
-	@ObfuscatedName("aat.e(I)V")
-	public void removeAll() {
+    public void removeAll() {
 		while (this.sentinel.next != this.sentinel) {
 			this.sentinel.next.unlink();
 		}
 	}
 
-	@ObfuscatedName("aat.n(Ltj;I)V")
-	public void addTail(Node node) {
+    public void addTail(Node node) {
 		if (node.prev != null) {
 			node.unlink();
 		}
@@ -37,8 +32,7 @@ public class LinkList implements Iterable, Collection {
 		node.next.prev = node;
 	}
 
-	@ObfuscatedName("aq.m(Ltj;Ltj;B)V")
-	public static void addTail(Node node, Node head) {
+    public static void addTail(Node node, Node head) {
 		if (node.prev != null) {
 			node.unlink();
 		}
@@ -48,8 +42,7 @@ public class LinkList implements Iterable, Collection {
 		node.next.prev = node;
 	}
 
-	@ObfuscatedName("aat.k(I)Ltj;")
-	public Node removeHead() {
+    public Node removeHead() {
 		Node node = this.sentinel.next;
 		if (this.sentinel == node) {
 			return null;
@@ -59,8 +52,7 @@ public class LinkList implements Iterable, Collection {
 		}
 	}
 
-	@ObfuscatedName("aat.f(Laat;Ltj;I)V")
-	public void moveToFront(LinkList queue, Node nextNode) {
+    public void moveToFront(LinkList queue, Node nextNode) {
 		Node node = this.sentinel.prev;
 		this.sentinel.prev = nextNode.prev;
 		nextNode.prev.next = this.sentinel;
@@ -72,20 +64,17 @@ public class LinkList implements Iterable, Collection {
 		}
 	}
 
-	@ObfuscatedName("aat.w(Laat;I)V")
-	public void merge(LinkList other) {
+    public void merge(LinkList other) {
 		if (this.sentinel.next != this.sentinel) {
 			this.moveToFront(other, this.sentinel.next);
 		}
 	}
 
-	@ObfuscatedName("aat.l(B)Ltj;")
-	public Node head() {
+    public Node head() {
 		return this.head(null);
 	}
 
-	@ObfuscatedName("aat.u(Ltj;B)Ltj;")
-	public Node head(Node node) {
+    public Node head(Node node) {
 		Node it;
 		if (node == null) {
 			it = this.sentinel.next;
@@ -101,13 +90,11 @@ public class LinkList implements Iterable, Collection {
 		}
 	}
 
-	@ObfuscatedName("aat.z(I)Ltj;")
-	public Node tail() {
+    public Node tail() {
 		return this.tail(null);
 	}
 
-	@ObfuscatedName("aat.r(Ltj;I)Ltj;")
-	public Node tail(Node node) {
+    public Node tail(Node node) {
 		Node it;
 		if (node == null) {
 			it = this.sentinel.prev;
@@ -123,8 +110,7 @@ public class LinkList implements Iterable, Collection {
 		}
 	}
 
-	@ObfuscatedName("aat.v(I)Ltj;")
-	public Node next() {
+    public Node next() {
 		Node node = this.cursor;
 		if (this.sentinel == node) {
 			this.cursor = null;
@@ -135,8 +121,7 @@ public class LinkList implements Iterable, Collection {
 		}
 	}
 
-	@ObfuscatedName("aat.o(I)Ltj;")
-	public Node prev() {
+    public Node prev() {
 		Node node = this.cursor;
 		if (this.sentinel == node) {
 			this.cursor = null;
@@ -147,8 +132,7 @@ public class LinkList implements Iterable, Collection {
 		}
 	}
 
-	@ObfuscatedName("aat.s(I)I")
-	public int _size() {
+    public int _size() {
 		int size = 0;
 		for (Node node = this.sentinel.next; node != this.sentinel; node = node.next) {
 			size++;
@@ -156,13 +140,11 @@ public class LinkList implements Iterable, Collection {
 		return size;
 	}
 
-	@ObfuscatedName("aat.y(I)Z")
-	public boolean _isEmpty() {
+    public boolean _isEmpty() {
 		return this.sentinel.next == this.sentinel;
 	}
 
-	@ObfuscatedName("aat.q(I)[Ltj;")
-	public Node[] getNodes() {
+    public Node[] getNodes() {
 		Node[] list = new Node[this._size()];
 		int size = 0;
 		for (Node node = this.sentinel.next; node != this.sentinel; node = node.next) {
@@ -199,8 +181,7 @@ public class LinkList implements Iterable, Collection {
 		return dest;
 	}
 
-	@ObfuscatedName("aat.x(Ltj;I)Z")
-	public boolean _add(Node node) {
+    public boolean _add(Node node) {
 		this.addTail(node);
 		return true;
 	}

@@ -7,38 +7,27 @@ import com.jagex.math.Matrix4x4;
 import deob.ObfuscatedName;
 import jaggl.OpenGL;
 
-@ObfuscatedName("aes")
 public class GlEffect_Sub1 extends GlEffect {
 
-	@ObfuscatedName("aes.w")
-	public final boolean field9323;
+    public final boolean field9323;
 
-	@ObfuscatedName("aes.l")
-	public boolean field9319;
+    public boolean field9319;
 
-	@ObfuscatedName("aes.u")
-	public boolean field9317;
+    public boolean field9317;
 
-	@ObfuscatedName("aes.z")
-	public boolean field9312 = false;
+    public boolean field9312 = false;
 
-	@ObfuscatedName("aes.p")
-	public GlTexture_Sub1 field9320;
+    public GlTexture_Sub1 field9320;
 
-	@ObfuscatedName("aes.d")
-	public GlShaderCompiler field9321;
+    public GlShaderCompiler field9321;
 
-	@ObfuscatedName("aes.c")
-	public GlShaderCompiler field9322;
+    public GlShaderCompiler field9322;
 
-	@ObfuscatedName("aes.r")
-	public GlShaderCompiler field9315;
+    public GlShaderCompiler field9315;
 
-	@ObfuscatedName("aes.v")
-	public GlShaderCompiler field9324;
+    public GlShaderCompiler field9324;
 
-	@ObfuscatedName("aes.o")
-	public static final float[] field9325 = new float[] { 0.0F, -1.0F, 0.0F, 0.0F };
+    public static final float[] field9325 = new float[] { 0.0F, -1.0F, 0.0F, 0.0F };
 
 	public GlEffect_Sub1(GlToolkit arg0) {
 		super(arg0);
@@ -59,13 +48,11 @@ public class GlEffect_Sub1 extends GlEffect {
 		}
 	}
 
-	@ObfuscatedName("aes.e()Z")
-	public boolean method1252() {
+    public boolean method1252() {
 		return this.field9323;
 	}
 
-	@ObfuscatedName("aes.n(Z)V")
-	public void method1263(boolean arg0) {
+    public void method1263(boolean arg0) {
 		this.field9317 = arg0;
 		this.field1021.method15776(1);
 		this.field1021.method15777(this.field9320);
@@ -77,12 +64,10 @@ public class GlEffect_Sub1 extends GlEffect {
 		this.method15343();
 	}
 
-	@ObfuscatedName("aes.m(Z)V")
-	public void method1254(boolean arg0) {
+    public void method1254(boolean arg0) {
 	}
 
-	@ObfuscatedName("aes.k()V")
-	public void method1255() {
+    public void method1255() {
 		if (this.field9319) {
 			OpenGL.glBindProgramARB(34336, 0);
 			OpenGL.glDisable(34820);
@@ -103,8 +88,7 @@ public class GlEffect_Sub1 extends GlEffect {
 		}
 	}
 
-	@ObfuscatedName("aes.b()V")
-	public void method15343() {
+    public void method15343() {
 		Matrix4x4 var1 = this.field1021.field9903;
 		if (this.field9317) {
 			OpenGL.glBindProgramARB(34336, this.field1021.field10028 == Integer.MAX_VALUE ? this.field9315.field1024 : this.field9321.field1024);
@@ -125,8 +109,7 @@ public class GlEffect_Sub1 extends GlEffect {
 		this.method15344();
 	}
 
-	@ObfuscatedName("aes.h()V")
-	public void method15344() {
+    public void method15344() {
 		if (!this.field9319) {
 			return;
 		}
@@ -140,8 +123,7 @@ public class GlEffect_Sub1 extends GlEffect {
 		this.field1021.method15776(0);
 	}
 
-	@ObfuscatedName("aes.w(Lbq;I)V")
-	public void method1251(GlTexture arg0, int arg1) {
+    public void method1251(GlTexture arg0, int arg1) {
 		if (arg0 != null) {
 			if (this.field9312) {
 				this.field1021.method15780(0, 5890, 768);
@@ -159,7 +141,6 @@ public class GlEffect_Sub1 extends GlEffect {
 		}
 	}
 
-	@ObfuscatedName("aes.f(II)V")
-	public void method1256(int arg0, int arg1) {
+    public void method1256(int arg0, int arg1) {
 	}
 }

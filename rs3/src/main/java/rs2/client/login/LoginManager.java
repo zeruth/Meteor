@@ -33,138 +33,99 @@ import rs2.client.scene.entities.PathingEntity;
 import java.io.IOException;
 import java.net.URL;
 
-@ObfuscatedName("m")
 public class LoginManager {
 
-	@ObfuscatedName("m.m")
-	public static int requestState;
+    public static int requestState;
 
-	@ObfuscatedName("m.k")
-	public static ServerConnection connection;
+    public static ServerConnection connection;
 
-	@ObfuscatedName("m.f")
-	public static boolean ssoEnabled = false;
+    public static boolean ssoEnabled = false;
 
-	@ObfuscatedName("m.w")
-	public static long field434;
+    public static long field434;
 
-	@ObfuscatedName("m.l")
-	public static int[] outKey;
+    public static int[] outKey;
 
-	@ObfuscatedName("m.u")
-	public static int[] outKey2;
+    public static int[] outKey2;
 
-	@ObfuscatedName("m.z")
-	public static boolean isSocialLogin = false;
+    public static boolean isSocialLogin = false;
 
-	@ObfuscatedName("m.p")
-	public static int ssoKey = -1;
+    public static int ssoKey = -1;
 
-	@ObfuscatedName("m.d")
-	public static long socialKey = -1L;
+    public static long socialKey = -1L;
 
-	@ObfuscatedName("m.ap")
-	public static int loginStep = 7;
+    public static int loginStep = 7;
 
-	@ObfuscatedName("m.aq")
-	public static long socialname = 0L;
+    public static long socialname = 0L;
 
-	@ObfuscatedName("m.ax")
-	public static String username = "";
+    public static String username = "";
 
-	@ObfuscatedName("m.av")
-	public static String password = "";
+    public static String password = "";
 
-	@ObfuscatedName("m.ao")
-	public static String newAuthPreference = "";
+    public static String newAuthPreference = "";
 
-	@ObfuscatedName("m.aj")
-	public static boolean authDontTrust = true;
+    public static boolean authDontTrust = true;
 
-	@ObfuscatedName("mc.ay")
-	public static long authKey;
+    public static long authKey;
 
-	@ObfuscatedName("m.ab")
-	public static int loginwait = 0;
+    public static int loginwait = 0;
 
-	@ObfuscatedName("m.az")
-	public static int loginAttempts = 0;
+    public static int loginAttempts = 0;
 
-	@ObfuscatedName("t.aa")
-	public static int replyPacketSize;
+    public static int replyPacketSize;
 
-	@ObfuscatedName("vz.af")
-	public static int field7542;
+    public static int field7542;
 
-	@ObfuscatedName("anh.ak")
-	public static int loginReply;
+    public static int loginReply;
 
-	@ObfuscatedName("m.an")
-	public static int enterLobbyReply = -2;
+    public static int enterLobbyReply = -2;
 
-	@ObfuscatedName("m.bf")
-	public static int enterGameReply = -2;
+    public static int enterGameReply = -2;
 
-	@ObfuscatedName("m.bl")
-	public static int lastTransferReply = -2;
+    public static int lastTransferReply = -2;
 
-	@ObfuscatedName("m.bk")
-	public static int lastTransferDisallowTrigger = -1;
+    public static int lastTransferDisallowTrigger = -1;
 
-	@ObfuscatedName("m.bh")
-	public static int lastTransferDisallowResult = -1;
+    public static int lastTransferDisallowResult = -1;
 
-	@ObfuscatedName("m.bx")
-	public static int hoptime = 0;
+    public static int hoptime = 0;
 
-	@ObfuscatedName("m.bd")
-	public static int disallowTrigger = -1;
+    public static int disallowTrigger = -1;
 
-	@ObfuscatedName("m.bc")
-	public static int disallowResult = -1;
+    public static int disallowResult = -1;
 
-	@ObfuscatedName("m.bi")
-	public static int queuePosition = 0;
+    public static int queuePosition = 0;
 
-	@ObfuscatedName("m.bn")
-	public static boolean field485 = false;
+    public static boolean field485 = false;
 
-	@ObfuscatedName("m.bt")
-	public static int banDuration = 0;
+    public static int banDuration = 0;
 
-	@ObfuscatedName("m.bq")
-	public static boolean unused = false;
+    public static boolean unused = false;
 
 	public LoginManager() throws Throwable {
 		throw new Error();
 	}
 
-	@ObfuscatedName("kg.e(I)Z")
-	public static boolean requestGameLogin() {
+    public static boolean requestGameLogin() {
 		return ssoKey == -1 ? requestGameLoginWithUsername(username, password) : requestGameLoginWithSSO();
 	}
 
-	@ObfuscatedName("iu.n(S)Z")
-	public static boolean requestLobbyLogin() {
+    public static boolean requestLobbyLogin() {
 		return ssoKey == -1 ? requestLobbyLoginWithUsername(username, password) : requestLobbyLoginWithSSO();
 	}
 
-	@ObfuscatedName("ug.m(I)V")
-	public static final void resetLoginState() {
+    public static final void resetLoginState() {
 		loginStep = 7;
 		enterGameReply = -2;
 		enterLobbyReply = -2;
 	}
 
-	@ObfuscatedName("jd.k(B)V")
-	public static final void resetSocialKeys() {
+    public static final void resetSocialKeys() {
 		socialKey = -1L;
 		socialname = 0L;
 		ssoKey = -1;
 	}
 
-	@ObfuscatedName("aaa.f(B)V")
-	public static final void cancelLogin() {
+    public static final void cancelLogin() {
 		if (loginStep != 7) {
 			connection.closeGracefully();
 			resetLoginState();
@@ -172,20 +133,17 @@ public class LoginManager {
 		}
 	}
 
-	@ObfuscatedName("et.w(I)Z")
-	public static final boolean isInProgress() {
+    public static final boolean isInProgress() {
 		return loginStep != 7;
 	}
 
-	@ObfuscatedName("vn.l(B)V")
-	public static void continueLogin() {
+    public static void continueLogin() {
 		if (loginStep == 103) {
 			loginStep = 110;
 		}
 	}
 
-	@ObfuscatedName("ag.u(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ZB)V")
-	public static void requestLogin(String arg0, String arg1, String arg2, boolean arg3) {
+    public static void requestLogin(String arg0, String arg1, String arg2, boolean arg3) {
 		if (arg0.length() > 320 || !isLoginReady()) {
 			return;
 		}
@@ -197,8 +155,7 @@ public class LoginManager {
 		Client.setState(7);
 	}
 
-	@ObfuscatedName("df.z(ILjava/lang/String;ZI)V")
-	public static void requestSocialNetworkLogin(int ssoKey, String newAuthPreference, boolean authDontTrust) {
+    public static void requestSocialNetworkLogin(int ssoKey, String newAuthPreference, boolean authDontTrust) {
 		if (!isLoginReady()) {
 			return;
 		}
@@ -211,8 +168,7 @@ public class LoginManager {
 		Client.setState(7);
 	}
 
-	@ObfuscatedName("amr.p(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ZI)V")
-	public static void enterLobby(String username, String password, String newAuthPreference, boolean authDontTrust) {
+    public static void enterLobby(String username, String password, String newAuthPreference, boolean authDontTrust) {
 		if (username.length() > 320 || !isLoginReady()) {
 			return;
 		}
@@ -225,8 +181,7 @@ public class LoginManager {
 		Client.setState(17);
 	}
 
-	@ObfuscatedName("aji.d(ILjava/lang/String;ZS)V")
-	public static void enterLobbySocialNetwork(int ssoKey, String newAuthPreference, boolean authDontTrust) {
+    public static void enterLobbySocialNetwork(int ssoKey, String newAuthPreference, boolean authDontTrust) {
 		if (!isLoginReady()) {
 			return;
 		}
@@ -240,8 +195,7 @@ public class LoginManager {
 		Client.setState(17);
 	}
 
-	@ObfuscatedName("dt.c(Ljava/lang/String;ZI)V")
-	public static void enterGame(String newAuthPreference, boolean authDontTrust) {
+    public static void enterGame(String newAuthPreference, boolean authDontTrust) {
 		if (Client.state == 13 && (!isInProgress() && !AccountCreationManager.isInProgress())) {
 			LoginManager.newAuthPreference = newAuthPreference;
 			LoginManager.authDontTrust = authDontTrust;
@@ -249,44 +203,38 @@ public class LoginManager {
 		}
 	}
 
-	@ObfuscatedName("ys.r(B)V")
-	public static void resetCredentials() {
+    public static void resetCredentials() {
 		newAuthPreference = "";
 		password = "";
 		username = "";
 		authDontTrust = true;
 	}
 
-	@ObfuscatedName("ajf.v(Ljava/lang/String;Ljava/lang/String;B)Z")
-	public static boolean requestLobbyLoginWithUsername(String arg0, String arg1) {
+    public static boolean requestLobbyLoginWithUsername(String arg0, String arg1) {
 		requestState = 132;
 		connection = Client.lobbyConnection;
 		return requestLogin(false, false, arg0, arg1, -1L);
 	}
 
-	@ObfuscatedName("xo.o(Ljava/lang/String;Ljava/lang/String;I)Z")
-	public static boolean requestGameLoginWithUsername(String arg0, String arg1) {
+    public static boolean requestGameLoginWithUsername(String arg0, String arg1) {
 		requestState = 211;
 		connection = Client.gameConnection;
 		return requestLogin(false, false, arg0, arg1, -1L);
 	}
 
-	@ObfuscatedName("rg.s(I)Z")
-	public static boolean requestGameLoginWithSSO() {
+    public static boolean requestGameLoginWithSSO() {
 		requestState = 211;
 		connection = Client.gameConnection;
 		return requestLogin(socialKey == -1L, true, "", "", socialKey);
 	}
 
-	@ObfuscatedName("cz.y(I)Z")
-	public static boolean requestLobbyLoginWithSSO() {
+    public static boolean requestLobbyLoginWithSSO() {
 		requestState = 132;
 		connection = Client.lobbyConnection;
 		return requestLogin(socialKey == -1L, true, "", "", socialKey);
 	}
 
-	@ObfuscatedName("qj.q(ZZLjava/lang/String;Ljava/lang/String;J)Z")
-	public static boolean requestLogin(boolean isSocialLogin, boolean ssoEnabled, String username, String password, long socialKey) {
+    public static boolean requestLogin(boolean isSocialLogin, boolean ssoEnabled, String username, String password, long socialKey) {
 		LoginManager.isSocialLogin = isSocialLogin;
 		if (!ssoEnabled) {
 			ssoKey = -1;
@@ -313,8 +261,7 @@ public class LoginManager {
 		return true;
 	}
 
-	@ObfuscatedName("fj.x(B)V")
-	public static final void update() {
+    public static final void update() {
 		if (loginStep == 7 || loginStep == 103) {
 			return;
 		}
@@ -1002,8 +949,7 @@ public class LoginManager {
 		}
 	}
 
-	@ObfuscatedName("kl.b(Lase;I)V")
-	public static void getAuthPreferences(PacketBit buf) {
+    public static void getAuthPreferences(PacketBit buf) {
 		boolean var1 = buf.g1() == 1;
 		if (!var1) {
 			return;
@@ -1016,12 +962,10 @@ public class LoginManager {
 		Client.authPreferences.method590(authKey, var6);
 	}
 
-	@ObfuscatedName("s.h(IB)V")
-	public static void nothing(int arg0) {
+    public static void nothing(int arg0) {
 	}
 
-	@ObfuscatedName("iq.a(B)Lalw;")
-	public static Packet startRSAPAcket() {
+    public static Packet startRSAPAcket() {
 		Packet buf = new Packet(518);
 		outKey = new int[4];
 		outKey[0] = Client.secureRandom.nextInt();
@@ -1044,8 +988,7 @@ public class LoginManager {
 		return buf;
 	}
 
-	@ObfuscatedName("zl.g(Lalw;J)V")
-	public static void packLoginTOTPDetails(Packet buf, long key) {
+    public static void packLoginTOTPDetails(Packet buf, long key) {
 		TotpType totpType;
 		if (newAuthPreference != null && newAuthPreference.length() == 6) {
 			if (authDontTrust) {
@@ -1073,8 +1016,7 @@ public class LoginManager {
 		}
 	}
 
-	@ObfuscatedName("ap.i(B)Lalw;")
-	public static Packet createLoginRSAPacket() {
+    public static Packet createLoginRSAPacket() {
 		Packet buf = startRSAPAcket();
 		if (Client.state != 14) {
 			long authKey;
@@ -1096,8 +1038,7 @@ public class LoginManager {
 		return buf;
 	}
 
-	@ObfuscatedName("ag.j(II)V")
-	public static void setReply(int reply) {
+    public static void setReply(int reply) {
 		if (requestState == 132) {
 			enterLobbyReply = reply;
 		} else if (requestState == 211) {
@@ -1105,8 +1046,7 @@ public class LoginManager {
 		}
 	}
 
-	@ObfuscatedName("ye.t(I)V")
-	public static void updateLoginState() {
+    public static void updateLoginState() {
 		if (Client.method14437(Client.state)) {
 			if (Client.lobbyConnection.getStream() == null) {
 				Client.setState(17);
@@ -1120,8 +1060,7 @@ public class LoginManager {
 		}
 	}
 
-	@ObfuscatedName("aab.ae(Lase;I)V")
-	public static void pushJS5CRCs(PacketBit buf) {
+    public static void pushJS5CRCs(PacketBit buf) {
 		Js5Archive[] archives = Js5Archive.values();
 		for (int index = 0; index < archives.length; index++) {
 			Js5Archive archive = archives[index];
@@ -1136,8 +1075,7 @@ public class LoginManager {
 		}
 	}
 
-	@ObfuscatedName("acm.ag(B)V")
-	public static void method14959() {
+    public static void method14959() {
 		connection.clearWriteQueue();
 		connection.in.pos = 0;
 		connection.lastPacketType0 = null;
@@ -1166,13 +1104,11 @@ public class LoginManager {
 		Client.notifyWindowStatus(connection);
 	}
 
-	@ObfuscatedName("xb.ah(I)V")
-	public static void method10282() {
+    public static void method10282() {
 		method14959();
 	}
 
-	@ObfuscatedName("hz.al(I)V")
-	public static void prepareForMap() {
+    public static void prepareForMap() {
 		if (Client.state == 19) {
 			Client.method9872();
 		}
@@ -1256,8 +1192,7 @@ public class LoginManager {
 		Client.field3457 = 0L;
 	}
 
-	@ObfuscatedName("pr.ac(B)V")
-	public static void prepareForPlayers() {
+    public static void prepareForPlayers() {
 		connection.clearWriteQueue();
 		connection.in.pos = 0;
 		connection.packetType = null;
@@ -1292,8 +1227,7 @@ public class LoginManager {
 		Client.clientVarDomain.method16421();
 	}
 
-	@ObfuscatedName("aiz.ai(I)Z")
-	public static boolean isLoginReady() {
+    public static boolean isLoginReady() {
 		if (Client.state == 4) {
 			return !isInProgress() && !AccountCreationManager.isInProgress();
 		} else {

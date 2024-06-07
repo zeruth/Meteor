@@ -8,14 +8,11 @@ import com.jagex.graphics.TextureFormat;
 import deob.ObfuscatedName;
 import jaggl.OpenGL;
 
-@ObfuscatedName("adt")
 public class GlTexture_Sub1 extends GlTexture {
 
-	@ObfuscatedName("adt.s")
-	public final int field9272;
+    public final int field9272;
 
-	@ObfuscatedName("adt.y")
-	public final int field9271;
+    public final int field9271;
 
 	public GlTexture_Sub1(GlToolkit arg0, int arg1, TextureFormat arg2, DataType arg3, int arg4, int arg5) {
 		super(arg0, arg1, arg2, arg3, arg4 * arg5, false);
@@ -111,8 +108,7 @@ public class GlTexture_Sub1 extends GlTexture {
 		this.method1082(true);
 	}
 
-	@ObfuscatedName("adt.ar(ZZ)V")
-	public void method15312(boolean arg0, boolean arg1) {
+    public void method15312(boolean arg0, boolean arg1) {
 		if (this.field1009 == 3553) {
 			this.field1006.method15777(this);
 			OpenGL.glTexParameteri(this.field1009, 10242, arg0 ? 10497 : 33071);
@@ -120,8 +116,7 @@ public class GlTexture_Sub1 extends GlTexture {
 		}
 	}
 
-	@ObfuscatedName("adt.ap(IIII[BLck;IIZ)V")
-	public void method15331(int arg0, int arg1, int arg2, int arg3, byte[] arg4, TextureFormat arg5, int arg6, int arg7, boolean arg8) {
+    public void method15331(int arg0, int arg1, int arg2, int arg3, byte[] arg4, TextureFormat arg5, int arg6, int arg7, boolean arg8) {
 		if (arg7 == 0) {
 			arg7 = arg2;
 		}
@@ -151,8 +146,7 @@ public class GlTexture_Sub1 extends GlTexture {
 		OpenGL.glPixelStorei(3317, 4);
 	}
 
-	@ObfuscatedName("adt.aq(IIII[IIIZ)V")
-	public void method15313(int arg0, int arg1, int arg2, int arg3, int[] arg4, int arg5, int arg6, boolean arg7) {
+    public void method15313(int arg0, int arg1, int arg2, int arg3, int[] arg4, int arg5, int arg6, boolean arg7) {
 		if (arg6 == 0) {
 			arg6 = arg2;
 		}
@@ -177,8 +171,7 @@ public class GlTexture_Sub1 extends GlTexture {
 		}
 	}
 
-	@ObfuscatedName("adt.ax(IIII[I[II)V")
-	public void method15314(int arg0, int arg1, int arg2, int arg3, int[] arg4, int[] arg5, int arg6) {
+    public void method15314(int arg0, int arg1, int arg2, int arg3, int[] arg4, int[] arg5, int arg6) {
 		int[] var8 = arg5 == null ? new int[this.field9272 * this.field9271] : arg5;
 		this.field1006.method15777(this);
 		OpenGL.glGetTexImagei(this.field1009, 0, 32993, 5121, var8, 0);
@@ -187,8 +180,7 @@ public class GlTexture_Sub1 extends GlTexture {
 		}
 	}
 
-	@ObfuscatedName("adt.av(IIIIII)V")
-	public void method15315(int arg0, int arg1, int arg2, int arg3, int arg4, int arg5) {
+    public void method15315(int arg0, int arg1, int arg2, int arg3, int arg4, int arg5) {
 		RenderTarget var7 = this.field1006.getRenderTarget();
 		if (var7 != null) {
 			int var8 = var7.getHeight() - (arg3 + arg5);
@@ -198,13 +190,11 @@ public class GlTexture_Sub1 extends GlTexture {
 		}
 	}
 
-	@ObfuscatedName("adt.ao(I)Ldw;")
-	public EffectInterface method15320(int arg0) {
+    public EffectInterface method15320(int arg0) {
 		return new GlRelated4(this, arg0);
 	}
 
-	@ObfuscatedName("adt.aj(I)Ldp;")
-	public GraphicsDeletable method15317(int arg0) {
+    public GraphicsDeletable method15317(int arg0) {
 		return new GlRelated4(this, arg0);
 	}
 }

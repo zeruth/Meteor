@@ -11,18 +11,15 @@ import com.jagex.core.datastruct.SoftLruHashTable;
 import com.jagex.js5.Js5;
 import deob.ObfuscatedName;
 
-@ObfuscatedName("xt")
 public class AudioMixer {
 
-	@ObfuscatedName("xt.e")
-	public static SoundBackend field8056 = null;
+    public static SoundBackend field8056 = null;
 
 	public AudioMixer() throws Throwable {
 		throw new Error();
 	}
 
-	@ObfuscatedName("sh.e(Lxf;I)V")
-	public static void createBackend(SoundBackendConfig arg0) {
+    public static void createBackend(SoundBackendConfig arg0) {
 		if (SoundBackendType.DUMMY == arg0.field8052) {
 			field8056 = new JavaSoundBackend(arg0);
 		} else if (SoundBackendType.JAVA == arg0.field8052) {
@@ -32,23 +29,20 @@ public class AudioMixer {
 		}
 	}
 
-	@ObfuscatedName("rs.n(I)V")
-	public static void method7606() {
+    public static void method7606() {
 		if (field8056 != null) {
 			field8056.method5868();
 			field8056 = null;
 		}
 	}
 
-	@ObfuscatedName("d.m(B)V")
-	public static void method306() {
+    public static void method306() {
 		if (field8056 != null) {
 			field8056.method5874();
 		}
 	}
 
-	@ObfuscatedName("nq.k(Lpy;ILwj;ZLeb;I)Lwr;")
-	public static AudioProcessingInterface method6064(Js5 arg0, int arg1, AudioMixerRelated arg2, boolean arg3, SoftLruHashTable arg4) {
+    public static AudioProcessingInterface method6064(Js5 arg0, int arg1, AudioMixerRelated arg2, boolean arg3, SoftLruHashTable arg4) {
 		if (field8056 == null) {
 			return null;
 		} else {
@@ -56,20 +50,17 @@ public class AudioMixer {
 		}
 	}
 
-	@ObfuscatedName("afj.f(IIFLma;I)V")
-	public static void addBuss(int arg0, int arg1, float arg2, VolumeProvider arg3) {
+    public static void addBuss(int arg0, int arg1, float arg2, VolumeProvider arg3) {
 		if (field8056 != null) {
 			field8056.getBussManager().addBuss(arg0, arg1, arg2, arg3);
 		}
 	}
 
-	@ObfuscatedName("lv.w(II)Lmj;")
-	public static AudioBuss method5401(int arg0) {
+    public static AudioBuss method5401(int arg0) {
 		return field8056 == null ? null : field8056.getBussManager().getBuss(arg0);
 	}
 
-	@ObfuscatedName("xq.l(III)Z")
-	public static boolean commonParentExists(int arg0, int arg1) {
+    public static boolean commonParentExists(int arg0, int arg1) {
 		if (field8056 == null || field8056.getBussManager() == null) {
 			return false;
 		} else if (arg0 == arg1) {

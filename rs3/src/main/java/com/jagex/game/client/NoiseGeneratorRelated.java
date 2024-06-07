@@ -7,33 +7,25 @@ import deob.ObfuscatedName;
 
 import java.util.Random;
 
-@ObfuscatedName("acp")
 public class NoiseGeneratorRelated {
 
-	@ObfuscatedName("acp.n")
-	public static int field9125;
+    public static int field9125;
 
-	@ObfuscatedName("acp.m")
-	public static int field9126;
+    public static int field9126;
 
-	@ObfuscatedName("acp.k")
-	public static int[] field9124;
+    public static int[] field9124;
 
-	@ObfuscatedName("acp.f")
-	public static int[] field9128;
+    public static int[] field9128;
 
-	@ObfuscatedName("acp.w")
-	public static PrioritizedCache field9129 = new PrioritizedCache(16, PrioritizedCacheMode.field4619);
+    public static PrioritizedCache field9129 = new PrioritizedCache(16, PrioritizedCacheMode.field4619);
 
-	@ObfuscatedName("acp.c")
-	public static int field9130;
+    public static int field9130;
 
 	public NoiseGeneratorRelated() throws Throwable {
 		throw new Error();
 	}
 
-	@ObfuscatedName("acp.e(III)V")
-	public static void method15026(int arg0, int arg1) {
+    public static void method15026(int arg0, int arg1) {
 		if (field9125 != arg0) {
 			field9124 = new int[arg0];
 			for (int var2 = 0; var2 < arg0; var2++) {
@@ -55,8 +47,7 @@ public class NoiseGeneratorRelated {
 		field9126 = arg1;
 	}
 
-	@ObfuscatedName("acp.n(II)[B")
-	public static byte[] method15027(int arg0) {
+    public static byte[] method15027(int arg0) {
 		byte[] var1 = (byte[]) field9129.method7278(arg0);
 		if (var1 == null) {
 			var1 = new byte[512];

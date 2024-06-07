@@ -4,36 +4,28 @@ import com.jagex.core.constants.ModeAccountType;
 import com.jagex.game.client.PlayerSkill;
 import deob.ObfuscatedName;
 
-@ObfuscatedName("xz")
 public class PlayerStat {
 
-	@ObfuscatedName("xz.n")
-	public final PlayerSkill skill;
+    public final PlayerSkill skill;
 
-	@ObfuscatedName("xz.m")
-	public final boolean raw;
+    public final boolean raw;
 
-	@ObfuscatedName("xz.k")
-	public int xp = 0;
+    public int xp = 0;
 
-	@ObfuscatedName("xz.f")
-	public int xpLevel = 1;
+    public int xpLevel = 1;
 
-	@ObfuscatedName("xz.w")
-	public int level = 1;
+    public int level = 1;
 
 	public PlayerStat(PlayerSkill arg0, boolean arg1) {
 		this.skill = arg0;
 		this.raw = arg1;
 	}
 
-	@ObfuscatedName("xz.e(I)I")
-	public int getXP() {
+    public int getXP() {
 		return this.xp;
 	}
 
-	@ObfuscatedName("xz.n(Lzu;B)I")
-	public int getCappedXP(ModeAccountType arg0) {
+    public int getCappedXP(ModeAccountType arg0) {
 		if (ModeAccountType.FREE == arg0 && this.skill.isMembers() && this.skill.isCapped()) {
 			int var2 = this.skill.getCappedXP();
 			if (!this.raw) {
@@ -46,8 +38,7 @@ public class PlayerStat {
 		return this.xp;
 	}
 
-	@ObfuscatedName("xz.m(II)V")
-	public void setXP(int arg0) {
+    public void setXP(int arg0) {
 		this.xp = arg0;
 		if (this.xp < 0) {
 			this.xp = 0;
@@ -59,13 +50,11 @@ public class PlayerStat {
 		this.recalculateXPLevel();
 	}
 
-	@ObfuscatedName("xz.k(I)I")
-	public int getXPLevel() {
+    public int getXPLevel() {
 		return this.xpLevel;
 	}
 
-	@ObfuscatedName("xz.f(Lzu;B)I")
-	public int getCappedXPLevel(ModeAccountType arg0) {
+    public int getCappedXPLevel(ModeAccountType arg0) {
 		if (ModeAccountType.FREE == arg0 && this.skill.isMembers() && this.skill.isCapped()) {
 			int var2 = this.skill.getCappedLevel();
 			if (this.xpLevel > var2) {
@@ -75,18 +64,15 @@ public class PlayerStat {
 		return this.xpLevel;
 	}
 
-	@ObfuscatedName("xz.w(B)I")
-	public int getLevel() {
+    public int getLevel() {
 		return this.level;
 	}
 
-	@ObfuscatedName("xz.l(II)V")
-	public void setLevel(int arg0) {
+    public void setLevel(int arg0) {
 		this.level = arg0;
 	}
 
-	@ObfuscatedName("xz.u(I)V")
-	public void recalculateXPLevel() {
+    public void recalculateXPLevel() {
 		if (this.raw) {
 			this.xpLevel = this.skill.getLevelRaw(this.xp);
 		} else {

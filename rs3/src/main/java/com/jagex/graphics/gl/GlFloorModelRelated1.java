@@ -9,38 +9,27 @@ import jaclib.memory.Stream;
 import jaclib.memory.heap.NativeHeapBuffer;
 import jaggl.OpenGL;
 
-@ObfuscatedName("akn")
 public class GlFloorModelRelated1 extends Node {
 
-	@ObfuscatedName("akn.k")
-	public final GlToolkit field11291;
+    public final GlToolkit field11291;
 
-	@ObfuscatedName("akn.f")
-	public final GlFloorModel field11300;
+    public final GlFloorModel field11300;
 
-	@ObfuscatedName("akn.w")
-	public final int field11296;
+    public final int field11296;
 
-	@ObfuscatedName("akn.l")
-	public final float field11294;
+    public final float field11294;
 
-	@ObfuscatedName("akn.u")
-	public final WaterFogData field11295;
+    public final WaterFogData field11295;
 
-	@ObfuscatedName("akn.z")
-	public GlRelated3 field11298;
+    public GlRelated3 field11298;
 
-	@ObfuscatedName("akn.p")
-	public GlFloorModelRelated2_Sub1 field11297;
+    public GlFloorModelRelated2_Sub1 field11297;
 
-	@ObfuscatedName("akn.d")
-	public int[] field11292;
+    public int[] field11292;
 
-	@ObfuscatedName("akn.c")
-	public NativeHeapBuffer field11299;
+    public NativeHeapBuffer field11299;
 
-	@ObfuscatedName("akn.r")
-	public Stream field11293;
+    public Stream field11293;
 
 	public GlFloorModelRelated1(GlFloorModel arg0, int arg1, int arg2, WaterFogData arg3) {
 		this.field11300 = arg0;
@@ -52,25 +41,21 @@ public class GlFloorModelRelated1 extends Node {
 		this.field11297 = new GlFloorModelRelated2_Sub1(this.field11291, 5123, null, 1);
 	}
 
-	@ObfuscatedName("akn.e(I)V")
-	public void method17578(int arg0) {
+    public void method17578(int arg0) {
 		this.field11299 = this.field11291.field9876.method92(arg0 * 4, true);
 		this.field11293 = new Stream(this.field11299);
 	}
 
-	@ObfuscatedName("akn.n(I)V")
-	public void method17581(int arg0) {
+    public void method17581(int arg0) {
 		this.field11293.method56(arg0 * 4 + 3);
 		this.field11293.method57(-1);
 	}
 
-	@ObfuscatedName("akn.m(III)V")
-	public void method17580(int arg0, int arg1, int arg2) {
+    public void method17580(int arg0, int arg1, int arg2) {
 		this.field11292[this.field11300.field1235 * arg1 + arg0] |= 0x1 << arg2;
 	}
 
-	@ObfuscatedName("akn.k(IIIF)V")
-	public void method17582(int arg0, int arg1, int arg2, float arg3) {
+    public void method17582(int arg0, int arg1, int arg2, float arg3) {
 		if (this.field11296 != -1) {
 			Material var5 = this.field11291.materialList.get(this.field11296);
 			int var6 = var5.field1364 & 0xFF;
@@ -138,8 +123,7 @@ public class GlFloorModelRelated1 extends Node {
 		this.field11293.method57((byte) arg1);
 	}
 
-	@ObfuscatedName("akn.f(I)V")
-	public void method17597(int arg0) {
+    public void method17597(int arg0) {
 		this.field11293.method60();
 		GlInterfaceRelated var2 = this.field11291.method15804(4, this.field11299, arg0 * 4, false);
 		if (var2 instanceof GlBufferRelated_Sub2) {
@@ -150,8 +134,7 @@ public class GlFloorModelRelated1 extends Node {
 		this.field11293 = null;
 	}
 
-	@ObfuscatedName("akn.w([II)V")
-	public void method17583(int[] arg0, int arg1) {
+    public void method17583(int[] arg0, int arg1) {
 		int var3 = 0;
 		GpuPacket var4 = this.field11291.field10016;
 		var4.pos = 0;

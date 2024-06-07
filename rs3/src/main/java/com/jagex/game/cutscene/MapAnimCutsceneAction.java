@@ -6,17 +6,13 @@ import deob.ObfuscatedName;
 import rs2.client.Client;
 import rs2.client.scene.entities.SpotAnimation;
 
-@ObfuscatedName("aqn")
 public class MapAnimCutsceneAction extends CutsceneAction_Sub1 {
 
-	@ObfuscatedName("aqn.f")
-	public final int field12043;
+    public final int field12043;
 
-	@ObfuscatedName("aqn.w")
-	public final int field12042;
+    public final int field12042;
 
-	@ObfuscatedName("aqn.l")
-	public final int field12044;
+    public final int field12044;
 
 	public MapAnimCutsceneAction(Packet arg0) {
 		super(arg0);
@@ -26,8 +22,7 @@ public class MapAnimCutsceneAction extends CutsceneAction_Sub1 {
 		this.field12044 = arg0.g1();
 	}
 
-	@ObfuscatedName("aqn.n(I)V")
-	public void method2890() {
+    public void method2890() {
 		int var1 = this.field12043 * 512 + 256;
 		int var2 = this.field12042 * 512 + 256;
 		int var3 = this.field12044;

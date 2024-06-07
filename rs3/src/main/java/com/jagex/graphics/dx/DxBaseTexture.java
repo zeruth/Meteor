@@ -7,23 +7,17 @@ import com.jagex.graphics.TextureFormat;
 import deob.ObfuscatedName;
 import jagdx.IUnknown;
 
-@ObfuscatedName("op")
 public abstract class DxBaseTexture implements DeletableResource {
 
-	@ObfuscatedName("op.e")
-	public final DxToolkit renderer;
+    public final DxToolkit renderer;
 
-	@ObfuscatedName("op.n")
-	public final TextureFormat format;
+    public final TextureFormat format;
 
-	@ObfuscatedName("op.m")
-	public final DataType field4218;
+    public final DataType field4218;
 
-	@ObfuscatedName("op.k")
-	public boolean field4220;
+    public boolean field4220;
 
-	@ObfuscatedName("op.f")
-	public long field4217 = 0L;
+    public long field4217 = 0L;
 
 	public DxBaseTexture(DxToolkit arg0, TextureFormat arg1, DataType arg2, boolean arg3, int arg4) {
 		this.renderer = arg0;
@@ -33,17 +27,14 @@ public abstract class DxBaseTexture implements DeletableResource {
 		this.renderer.method15985(this);
 	}
 
-	@ObfuscatedName("op.bl()J")
-	public long method6225() {
+    public long method6225() {
 		return this.field4217;
 	}
 
-	@ObfuscatedName("op.ay(Llt;)V")
-	public void method5824(GpuTextureRelated arg0) {
+    public void method5824(GpuTextureRelated arg0) {
 	}
 
-	@ObfuscatedName("op.m()V")
-	public void delete() {
+    public void delete() {
 		if (this.field4217 != 0L) {
 			IUnknown.Release(this.field4217);
 			this.field4217 = 0L;
@@ -51,8 +42,7 @@ public abstract class DxBaseTexture implements DeletableResource {
 		this.renderer.method16198(this);
 	}
 
-	@ObfuscatedName("op.bk()V")
-	public void method6226() {
+    public void method6226() {
 		if (this.field4217 != 0L) {
 			this.renderer.method19023(this.field4217);
 			this.field4217 = 0L;

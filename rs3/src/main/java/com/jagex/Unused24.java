@@ -3,7 +3,6 @@ package com.jagex;
 import com.jagex.math.Vector3;
 import deob.ObfuscatedName;
 
-@ObfuscatedName("yo")
 public class Unused24 {
 
 	static {

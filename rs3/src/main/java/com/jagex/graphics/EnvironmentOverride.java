@@ -4,72 +4,51 @@ import com.jagex.core.io.Packet;
 import com.jagex.math.Vector3;
 import deob.ObfuscatedName;
 
-@ObfuscatedName("yj")
 public class EnvironmentOverride {
 
-	@ObfuscatedName("yj.e")
-	public int field8133;
+    public int field8133;
 
-	@ObfuscatedName("yj.n")
-	public float field8124;
+    public float field8124;
 
-	@ObfuscatedName("yj.m")
-	public float field8118;
+    public float field8118;
 
-	@ObfuscatedName("yj.k")
-	public float field8117;
+    public float field8117;
 
-	@ObfuscatedName("yj.f")
-	public Vector3 field8120;
+    public Vector3 field8120;
 
-	@ObfuscatedName("yj.w")
-	public int field8121;
+    public int field8121;
 
-	@ObfuscatedName("yj.l")
-	public int field8119;
+    public int field8119;
 
-	@ObfuscatedName("yj.u")
-	public float field8123;
+    public float field8123;
 
-	@ObfuscatedName("yj.z")
-	public float field8125;
+    public float field8125;
 
-	@ObfuscatedName("yj.p")
-	public float field8134;
+    public float field8134;
 
-	@ObfuscatedName("yj.d")
-	public int field8126;
+    public int field8126;
 
-	@ObfuscatedName("yj.c")
-	public int field8127;
+    public int field8127;
 
-	@ObfuscatedName("yj.r")
-	public int field8128;
+    public int field8128;
 
-	@ObfuscatedName("yj.v")
-	public int field8129;
+    public int field8129;
 
-	@ObfuscatedName("yj.o")
-	public int field8130;
+    public int field8130;
 
-	@ObfuscatedName("yj.s")
-	public int field8131;
+    public int field8131;
 
-	@ObfuscatedName("yj.y")
-	public int[] field8132 = new int[3];
+    public int[] field8132 = new int[3];
 
-	@ObfuscatedName("yj.q")
-	public float[] field8116 = new float[3];
+    public float[] field8116 = new float[3];
 
-	@ObfuscatedName("yj.x")
-	public int field8122;
+    public int field8122;
 
 	public EnvironmentOverride() {
 		this.method10434();
 	}
 
-	@ObfuscatedName("yj.e(S)V")
-	public void method10434() {
+    public void method10434() {
 		this.field8133 = -1;
 		this.field8124 = -1.0F;
 		this.field8118 = -1.0F;
@@ -93,8 +72,7 @@ public class EnvironmentOverride {
 		this.field8122 = 5000;
 	}
 
-	@ObfuscatedName("yj.n(Lalw;I)Z")
-	public boolean method10382(Packet arg0) {
+    public boolean method10382(Packet arg0) {
 		long var2 = arg0.g8();
 		if (var2 == 0L) {
 			this.field8122 = arg0.g2();
@@ -246,98 +224,79 @@ public class EnvironmentOverride {
 		return true;
 	}
 
-	@ObfuscatedName("yj.m(I)I")
-	public int getSunColour() {
+    public int getSunColour() {
 		return this.field8133;
 	}
 
-	@ObfuscatedName("yj.k(I)F")
-	public float getSunAmbientIntensity() {
+    public float getSunAmbientIntensity() {
 		return this.field8124;
 	}
 
-	@ObfuscatedName("yj.f(I)F")
-	public float getSunDiffiseIntensity() {
+    public float getSunDiffiseIntensity() {
 		return this.field8118;
 	}
 
-	@ObfuscatedName("yj.w(I)F")
-	public float getSunShadowIntensity() {
+    public float getSunShadowIntensity() {
 		return this.field8117;
 	}
 
-	@ObfuscatedName("yj.l(I)Lox;")
-	public Vector3 getSunDirection() {
+    public Vector3 getSunDirection() {
 		return this.field8120;
 	}
 
-	@ObfuscatedName("yj.u(I)I")
-	public int getFogColour() {
+    public int getFogColour() {
 		return this.field8121;
 	}
 
-	@ObfuscatedName("yj.z(I)I")
-	public int getFogDepth() {
+    public int getFogDepth() {
 		return this.field8119;
 	}
 
-	@ObfuscatedName("yj.p(I)F")
-	public float getBloomItensity() {
+    public float getBloomItensity() {
 		return this.field8123;
 	}
 
-	@ObfuscatedName("yj.d(I)F")
-	public float getBloomThreshold() {
+    public float getBloomThreshold() {
 		return this.field8125;
 	}
 
-	@ObfuscatedName("yj.c(I)F")
-	public float getBloomWhitePointSq() {
+    public float getBloomWhitePointSq() {
 		return this.field8134;
 	}
 
-	@ObfuscatedName("yj.r(B)I")
-	public int getSampler() {
+    public int getSampler() {
 		return this.field8126;
 	}
 
-	@ObfuscatedName("yj.v(B)I")
-	public int method10390() {
+    public int method10390() {
 		return this.field8127;
 	}
 
-	@ObfuscatedName("yj.o(I)I")
-	public int method10391() {
+    public int method10391() {
 		return this.field8128;
 	}
 
-	@ObfuscatedName("yj.s(I)I")
-	public int method10430() {
+    public int method10430() {
 		return this.field8129;
 	}
 
-	@ObfuscatedName("yj.y(I)I")
-	public int method10393() {
+    public int method10393() {
 		return this.field8130;
 	}
 
-	@ObfuscatedName("yj.q(I)I")
-	public int method10394() {
+    public int method10394() {
 		return this.field8131;
 	}
 
-	@ObfuscatedName("yj.x(II)I")
-	public int getColourRemappingMap(int arg0) {
+    public int getColourRemappingMap(int arg0) {
 		return this.field8132[arg0];
 	}
 
-	@ObfuscatedName("yj.b(II)F")
-	public float method10378(int arg0) {
+    public float method10378(int arg0) {
 		return this.field8116[arg0];
 	}
 
-	@ObfuscatedName("yj.h(I)I")
-	public int getFadeDuration() {
+    public int getFadeDuration() {
 		return this.field8122;
 	}
 }

@@ -10,29 +10,24 @@ import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
-@ObfuscatedName("acj")
 public class ReflectionCheck {
 
-	@ObfuscatedName("acj.e")
-	public static LinkList field9148 = new LinkList();
+    public static LinkList field9148 = new LinkList();
 
 	public ReflectionCheck() throws Throwable {
 		throw new Error();
 	}
 
-	@ObfuscatedName("hh.e(I)V")
-	public static void method4052() {
+    public static void method4052() {
 		field9148 = new LinkList();
 	}
 
-	@ObfuscatedName("abf.n(I)Z")
-	public static boolean hasNext() {
+    public static boolean hasNext() {
 		ReflectionCheckNode var0 = (ReflectionCheckNode) field9148.head();
 		return var0 != null;
 	}
 
-	@ObfuscatedName("jf.m(Lase;I)V")
-	public static void createReflectionCheck(PacketBit arg0) {
+    public static void createReflectionCheck(PacketBit arg0) {
 		ReflectionCheckNode var1 = (ReflectionCheckNode) field9148.head();
 		if (var1 == null) {
 			return;
@@ -117,8 +112,7 @@ public class ReflectionCheck {
 		var1.unlink();
 	}
 
-	@ObfuscatedName("yl.k(Lalw;IB)V")
-	public static void method10680(Packet arg0, int arg1) {
+    public static void method10680(Packet arg0, int arg1) {
 		ReflectionCheckNode var2 = new ReflectionCheckNode();
 		var2.field11635 = arg0.g1();
 		var2.field11634 = arg0.g4s();
@@ -207,8 +201,7 @@ public class ReflectionCheck {
 		field9148.addTail(var2);
 	}
 
-	@ObfuscatedName("abm.f(Ljava/lang/String;I)Ljava/lang/Class;")
-	public static Class method14869(String arg0) throws ClassNotFoundException {
+    public static Class method14869(String arg0) throws ClassNotFoundException {
 		if (arg0.equals("B")) {
 			return Byte.TYPE;
 		} else if (arg0.equals("I")) {

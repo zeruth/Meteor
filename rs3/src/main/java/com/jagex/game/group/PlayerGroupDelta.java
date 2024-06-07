@@ -11,20 +11,15 @@ import deob.ObfuscatedName;
 import java.util.Iterator;
 import java.util.LinkedList;
 
-@ObfuscatedName("gx")
 public class PlayerGroupDelta {
 
-	@ObfuscatedName("gx.e")
-	public final long field1945;
+    public final long field1945;
 
-	@ObfuscatedName("gx.n")
-	public final PlayerGroupResourceProvider groupResourceProvider;
+    public final PlayerGroupResourceProvider groupResourceProvider;
 
-	@ObfuscatedName("gx.m")
-	public int field1944 = -1;
+    public int field1944 = -1;
 
-	@ObfuscatedName("gx.k")
-	public LinkedList entries = new LinkedList();
+    public LinkedList entries = new LinkedList();
 
 	public PlayerGroupDelta(Packet arg0, PlayerGroupResourceProvider arg1) {
 		this.groupResourceProvider = arg1;
@@ -84,8 +79,7 @@ public class PlayerGroupDelta {
 	}
 
 	// line 76
-	@ObfuscatedName("gx.e(Lgq;I)V")
-	public void method3555(PlayerGroup arg0) {
+    public void method3555(PlayerGroup arg0) {
 		if (this.field1945 != arg0.hashcode || arg0.method3384() != this.field1944) {
 			throw new IllegalStateException("");
 		}
@@ -97,14 +91,12 @@ public class PlayerGroupDelta {
 		arg0.method3413();
 	}
 
-	@ObfuscatedName("gt")
-	public static class AddMember implements PlayerGroupDeltaEntry2 {
+    public static class AddMember implements PlayerGroupDeltaEntry2 {
 
 		// $FF: synthetic field
 		public final PlayerGroupDelta this$0;
 
-		@ObfuscatedName("gt.e")
-		public final PlayerGroupMember member;
+        public final PlayerGroupMember member;
 
 		// line 131
 		public AddMember(PlayerGroupDelta delta, Packet buf) {
@@ -116,20 +108,17 @@ public class PlayerGroupDelta {
 			this.member = new PlayerGroupMember(buf, hasUid, true, delta.groupResourceProvider);
 		}
 
-		@ObfuscatedName("gt.e(Lgq;B)V")
-		public void apply(PlayerGroup group) {
+        public void apply(PlayerGroup group) {
 			group.doAddMember(this.member);
 		}
 	}
 
-	@ObfuscatedName("fk")
-	public static class DeleteMember implements PlayerGroupDeltaEntry {
+    public static class DeleteMember implements PlayerGroupDeltaEntry {
 
 		// $FF: synthetic field
 		public final PlayerGroupDelta this$0;
 
-		@ObfuscatedName("fk.e")
-		public final int index;
+        public final int index;
 
 		// line 145
 		public DeleteMember(PlayerGroupDelta delta, Packet buf) {
@@ -137,8 +126,7 @@ public class PlayerGroupDelta {
 			this.index = buf.g2();
 		}
 
-		@ObfuscatedName("fk.e(Lgq;B)V")
-		public void apply(PlayerGroup group) {
+        public void apply(PlayerGroup group) {
 			PlayerGroupMember member = group.doGetMember(this.index);
 			member.uid();
 			member.getDisplayName();
@@ -146,14 +134,12 @@ public class PlayerGroupDelta {
 		}
 	}
 
-	@ObfuscatedName("go")
-	public static class AddBanned implements PlayerGroupDeltaEntry2 {
+    public static class AddBanned implements PlayerGroupDeltaEntry2 {
 
 		// $FF: synthetic field
 		public final PlayerGroupDelta this$0;
 
-		@ObfuscatedName("go.e")
-		public final PlayerGroupBanned banned;
+        public final PlayerGroupBanned banned;
 
 		// line 160
 		public AddBanned(PlayerGroupDelta delta, Packet buf) {
@@ -165,20 +151,17 @@ public class PlayerGroupDelta {
 			this.banned = new PlayerGroupBanned(buf, hasUid, true);
 		}
 
-		@ObfuscatedName("go.e(Lgq;B)V")
-		public void apply(PlayerGroup group) {
+        public void apply(PlayerGroup group) {
 			group.doAddBanned(this.banned);
 		}
 	}
 
-	@ObfuscatedName("fr")
-	public static class DeleteBanned implements PlayerGroupDeltaEntry {
+    public static class DeleteBanned implements PlayerGroupDeltaEntry {
 
 		// $FF: synthetic field
 		public final PlayerGroupDelta this$0;
 
-		@ObfuscatedName("fr.e")
-		public final int index;
+        public final int index;
 
 		// line 174
 		public DeleteBanned(PlayerGroupDelta delta, Packet buf) {
@@ -186,25 +169,21 @@ public class PlayerGroupDelta {
 			this.index = buf.g2();
 		}
 
-		@ObfuscatedName("fr.e(Lgq;B)V")
-		public void apply(PlayerGroup group) {
+        public void apply(PlayerGroup group) {
 			PlayerGroupBanned banned = (PlayerGroupBanned) group.getBanned().get(this.index);
 			group.doDeleteBanned(this.index);
 			banned.getDisplayName();
 		}
 	}
 
-	@ObfuscatedName("gn")
-	public static class SetMemberRank implements PlayerGroupDeltaEntry {
+    public static class SetMemberRank implements PlayerGroupDeltaEntry {
 
 		// $FF: synthetic field
 		public final PlayerGroupDelta this$0;
 
-		@ObfuscatedName("gn.e")
-		public final int index;
+        public final int index;
 
-		@ObfuscatedName("gn.n")
-		public final int rank;
+        public final int rank;
 
 		// line 189
 		public SetMemberRank(PlayerGroupDelta delta, Packet buf) {
@@ -213,24 +192,20 @@ public class PlayerGroupDelta {
 			this.rank = buf.g1();
 		}
 
-		@ObfuscatedName("gn.e(Lgq;B)V")
-		public void apply(PlayerGroup group) {
+        public void apply(PlayerGroup group) {
 			group.doSetMemberRank(this.index, this.rank);
 			group.doGetMember(this.index).uid();
 		}
 	}
 
-	@ObfuscatedName("gh")
-	public static class SetMemberOnline implements PlayerGroupDeltaEntry {
+    public static class SetMemberOnline implements PlayerGroupDeltaEntry {
 
 		// $FF: synthetic field
 		public final PlayerGroupDelta this$0;
 
-		@ObfuscatedName("gh.e")
-		public final int index;
+        public final int index;
 
-		@ObfuscatedName("gh.n")
-		public final int nodeId;
+        public final int nodeId;
 
 		// line 204
 		public SetMemberOnline(PlayerGroupDelta delta, Packet buf) {
@@ -239,21 +214,18 @@ public class PlayerGroupDelta {
 			this.nodeId = buf.g2();
 		}
 
-		@ObfuscatedName("gh.e(Lgq;B)V")
-		public void apply(PlayerGroup group) {
+        public void apply(PlayerGroup group) {
 			group.doSetMemberOnline(this.index, this.nodeId);
 			group.doGetMember(this.index).uid();
 		}
 	}
 
-	@ObfuscatedName("gf")
-	public static class SetMemberOffline implements PlayerGroupDeltaEntry {
+    public static class SetMemberOffline implements PlayerGroupDeltaEntry {
 
 		// $FF: synthetic field
 		public final PlayerGroupDelta this$0;
 
-		@ObfuscatedName("gf.e")
-		public final int index;
+        public final int index;
 
 		// line 218
 		public SetMemberOffline(PlayerGroupDelta delta, Packet buf) {
@@ -261,24 +233,20 @@ public class PlayerGroupDelta {
 			this.index = buf.g2();
 		}
 
-		@ObfuscatedName("gf.e(Lgq;B)V")
-		public void apply(PlayerGroup group) {
+        public void apply(PlayerGroup group) {
 			group.doSetMemberOffline(this.index);
 			group.doGetMember(this.index);
 		}
 	}
 
-	@ObfuscatedName("fe")
-	public static class SetMemberReady implements PlayerGroupDeltaEntry {
+    public static class SetMemberReady implements PlayerGroupDeltaEntry {
 
 		// $FF: synthetic field
 		public final PlayerGroupDelta this$0;
 
-		@ObfuscatedName("fe.e")
-		public final int index;
+        public final int index;
 
-		@ObfuscatedName("fe.n")
-		public final boolean loading;
+        public final boolean loading;
 
 		// line 232
 		public SetMemberReady(PlayerGroupDelta delta, Packet buf) {
@@ -287,24 +255,20 @@ public class PlayerGroupDelta {
 			this.loading = buf.g1() == 1;
 		}
 
-		@ObfuscatedName("fe.e(Lgq;B)V")
-		public void apply(PlayerGroup group) {
+        public void apply(PlayerGroup group) {
 			group.doSetMemberReady(this.index, this.loading);
 			group.doGetMember(this.index).uid();
 		}
 	}
 
-	@ObfuscatedName("gm")
-	public static class SetMemberTeam implements PlayerGroupDeltaEntry {
+    public static class SetMemberTeam implements PlayerGroupDeltaEntry {
 
 		// $FF: synthetic field
 		public final PlayerGroupDelta this$0;
 
-		@ObfuscatedName("gm.e")
-		public final int index;
+        public final int index;
 
-		@ObfuscatedName("gm.n")
-		public final int team;
+        public final int team;
 
 		// line 247
 		public SetMemberTeam(PlayerGroupDelta delta, Packet buf) {
@@ -313,15 +277,13 @@ public class PlayerGroupDelta {
 			this.team = buf.g1();
 		}
 
-		@ObfuscatedName("gm.e(Lgq;B)V")
-		public void apply(PlayerGroup group) {
+        public void apply(PlayerGroup group) {
 			group.doSetMemberTeam(this.index, this.team);
 			group.doGetMember(this.index).uid();
 		}
 	}
 
-	@ObfuscatedName("gr")
-	public static class SetGameLoading implements PlayerGroupDeltaEntry {
+    public static class SetGameLoading implements PlayerGroupDeltaEntry {
 
 		// $FF: synthetic field
 		public final PlayerGroupDelta this$0;
@@ -331,14 +293,12 @@ public class PlayerGroupDelta {
 			this.this$0 = delta;
 		}
 
-		@ObfuscatedName("gr.e(Lgq;B)V")
-		public void apply(PlayerGroup group) {
+        public void apply(PlayerGroup group) {
 			group.setMembersGameLoading();
 		}
 	}
 
-	@ObfuscatedName("gk")
-	public static class StartGame implements PlayerGroupDeltaEntry {
+    public static class StartGame implements PlayerGroupDeltaEntry {
 
 		// $FF: synthetic field
 		public final PlayerGroupDelta this$0;
@@ -348,23 +308,19 @@ public class PlayerGroupDelta {
 			this.this$0 = delta;
 		}
 
-		@ObfuscatedName("gk.e(Lgq;B)V")
-		public void apply(PlayerGroup group) {
+        public void apply(PlayerGroup group) {
 			group.doSetMembersReady();
 		}
 	}
 
-	@ObfuscatedName("gp")
-	public static class UpdateMemberBase implements PlayerGroupDeltaEntry {
+    public static class UpdateMemberBase implements PlayerGroupDeltaEntry {
 
 		// $FF: synthetic field
 		public final PlayerGroupDelta this$0;
 
-		@ObfuscatedName("gp.e")
-		public final int index;
+        public final int index;
 
-		@ObfuscatedName("gp.n")
-		public final PlayerGroupMember member;
+        public final PlayerGroupMember member;
 
 		// line 278
 		public UpdateMemberBase(PlayerGroupDelta delta, Packet buf) {
@@ -373,20 +329,17 @@ public class PlayerGroupDelta {
 			this.member = new PlayerGroupMember(buf, false, false, delta.groupResourceProvider);
 		}
 
-		@ObfuscatedName("gp.e(Lgq;B)V")
-		public void apply(PlayerGroup group) {
+        public void apply(PlayerGroup group) {
 			group.updateMember(this.index, this.member);
 		}
 	}
 
-	@ObfuscatedName("gc")
-	public static class SetVarValue implements PlayerGroupDeltaEntry {
+    public static class SetVarValue implements PlayerGroupDeltaEntry {
 
 		// $FF: synthetic field
 		public final PlayerGroupDelta this$0;
 
-		@ObfuscatedName("gc.e")
-		public final VarValue varValue;
+        public final VarValue varValue;
 
 		// line 291
 		public SetVarValue(PlayerGroupDelta delta, Packet buf) {
@@ -399,25 +352,21 @@ public class PlayerGroupDelta {
 			}
 		}
 
-		@ObfuscatedName("gc.e(Lgq;B)V")
-		public void apply(PlayerGroup group) {
+        public void apply(PlayerGroup group) {
 			if (this.varValue != null) {
 				group.getVarDomain().setVarValue((VarType) this.this$0.groupResourceProvider.getVarPlayerGroupTypeList().list(this.varValue.var), this.varValue.value);
 			}
 		}
 	}
 
-	@ObfuscatedName("gl")
-	public static class SetVarbitValue implements PlayerGroupDeltaEntry {
+    public static class SetVarbitValue implements PlayerGroupDeltaEntry {
 
 		// $FF: synthetic field
 		public final PlayerGroupDelta this$0;
 
-		@ObfuscatedName("gl.e")
-		public final int varbitId;
+        public final int varbitId;
 
-		@ObfuscatedName("gl.n")
-		public final int varbitValue;
+        public final int varbitValue;
 
 		// line 309
 		public SetVarbitValue(PlayerGroupDelta delta, Packet buf) {
@@ -432,8 +381,7 @@ public class PlayerGroupDelta {
 			}
 		}
 
-		@ObfuscatedName("gl.e(Lgq;B)V")
-		public void apply(PlayerGroup group) {
+        public void apply(PlayerGroup group) {
 			if (this.varbitId != -1) {
 				try {
 					group.getVarDomain().setVarbitValue((VarBitType) this.this$0.groupResourceProvider.getVarBitTypeList().list(this.varbitId), this.varbitValue);

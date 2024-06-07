@@ -3,64 +3,47 @@ package com.jagex.graphics.postprocess.effects;
 import com.jagex.graphics.*;
 import deob.ObfuscatedName;
 
-@ObfuscatedName("aia")
 public class LevelsFilterEffect extends GpuPostProcessEffect {
 
-	@ObfuscatedName("aia.m")
-	public GpuShader shader;
+    public GpuShader shader;
 
-	@ObfuscatedName("aia.k")
-	public GpuProgram techAdjustUniform;
+    public GpuProgram techAdjustUniform;
 
-	@ObfuscatedName("aia.f")
-	public ProgramUniform sceneTexUniform;
+    public ProgramUniform sceneTexUniform;
 
-	@ObfuscatedName("aia.w")
-	public ProgramUniform paramsGammaUniform;
+    public ProgramUniform paramsGammaUniform;
 
-	@ObfuscatedName("aia.l")
-	public ProgramUniform paramsRangesUniform;
+    public ProgramUniform paramsRangesUniform;
 
-	@ObfuscatedName("aia.u")
-	public ProgramUniform pixelOffsetUniform;
+    public ProgramUniform pixelOffsetUniform;
 
-	@ObfuscatedName("aia.z")
-	public ProgramUniform posAndTexCoordsUniform;
+    public ProgramUniform posAndTexCoordsUniform;
 
-	@ObfuscatedName("aia.p")
-	public static float paramsGamma = 1.0F;
+    public static float paramsGamma = 1.0F;
 
-	@ObfuscatedName("aia.d")
-	public static float field10642 = 0.0F;
+    public static float field10642 = 0.0F;
 
-	@ObfuscatedName("aia.c")
-	public static float field10643 = 1.0F;
+    public static float field10643 = 1.0F;
 
-	@ObfuscatedName("aia.r")
-	public static float field10650 = 0.0F;
+    public static float field10650 = 0.0F;
 
-	@ObfuscatedName("aia.v")
-	public static float field10651 = 1.0F;
+    public static float field10651 = 1.0F;
 
-	@ObfuscatedName("aia.o")
-	public boolean field10640;
+    public boolean field10640;
 
 	public LevelsFilterEffect(GpuToolkit arg0) {
 		super(arg0);
 	}
 
-	@ObfuscatedName("aia.e()Z")
-	public boolean method5558() {
+    public boolean method5558() {
 		return this.gpuRenderer.hasFramebufferObject && this.gpuRenderer.hasFragmentShader();
 	}
 
-	@ObfuscatedName("aia.n()Z")
-	public boolean method5559() {
+    public boolean method5559() {
 		return this.field10640;
 	}
 
-	@ObfuscatedName("aia.m()Z")
-	public boolean method5572() {
+    public boolean method5572() {
 		if (!this.method5558()) {
 			return false;
 		}
@@ -88,21 +71,17 @@ public class LevelsFilterEffect extends GpuPostProcessEffect {
 		}
 	}
 
-	@ObfuscatedName("aia.w(II)V")
-	public void method5574(int arg0, int arg1) {
+    public void method5574(int arg0, int arg1) {
 	}
 
-	@ObfuscatedName("aia.f()V")
-	public void method5562() {
+    public void method5562() {
 	}
 
-	@ObfuscatedName("aia.z()I")
-	public int method5566() {
+    public int method5566() {
 		return 1;
 	}
 
-	@ObfuscatedName("aia.l(ILafq;Llz;Ldw;Llz;Z)V")
-	public void method5564(int arg0, FrameBuffer arg1, GpuTexture arg2, EffectInterface arg3, GpuTexture arg4, boolean arg5) {
+    public void method5564(int arg0, FrameBuffer arg1, GpuTexture arg2, EffectInterface arg3, GpuTexture arg4, boolean arg5) {
 		float var7 = this.gpuRenderer.method15954();
 		float var8 = (float) arg1.getWidth();
 		float var9 = (float) arg1.getHeight();
@@ -131,23 +110,19 @@ public class LevelsFilterEffect extends GpuPostProcessEffect {
 		this.gpuRenderer.method2164(0, 0, var13, var14);
 	}
 
-	@ObfuscatedName("aia.u(I)V")
-	public void method5565(int arg0) {
+    public void method5565(int arg0) {
 		this.shader.method4214();
 	}
 
-	@ObfuscatedName("aia.d()I")
-	public int method5568() {
+    public int method5568() {
 		return 0;
 	}
 
-	@ObfuscatedName("aia.p()I")
-	public int method5567() {
+    public int method5567() {
 		return 1;
 	}
 
-	@ObfuscatedName("aia.v()Z")
-	public boolean method5571() {
+    public boolean method5571() {
 		return paramsGamma == 1.0F && field10642 == 0.0F && field10643 == 1.0F && field10650 == 0.0F && field10651 == 1.0F;
 	}
 }

@@ -6,15 +6,13 @@ import deob.ObfuscatedName;
 
 import java.awt.*;
 
-@ObfuscatedName("t")
 public class CpuProfiling {
 
 	public CpuProfiling() throws Throwable {
 		throw new Error();
 	}
 
-	@ObfuscatedName("z.n(I)I")
-	public static int profile() {
+    public static int profile() {
 		Canvas canvas = new Canvas();
 		canvas.setSize(100, 100);
 		Toolkit toolkit = Toolkit.create(0, canvas, null, null, null, null, null, null, 0);

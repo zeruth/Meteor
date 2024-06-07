@@ -6,35 +6,25 @@ import com.jagex.math.IntMath;
 import deob.ObfuscatedName;
 import jaggl.OpenGL;
 
-@ObfuscatedName("bq")
 public abstract class GlTexture {
 
-	@ObfuscatedName("bq.l")
-	public final GlToolkit field1006;
+    public final GlToolkit field1006;
 
-	@ObfuscatedName("bq.u")
-	public int field1007;
+    public int field1007;
 
-	@ObfuscatedName("bq.z")
-	public final int field1009;
+    public final int field1009;
 
-	@ObfuscatedName("bq.p")
-	public final TextureFormat field1002;
+    public final TextureFormat field1002;
 
-	@ObfuscatedName("bq.d")
-	public final DataType field1010;
+    public final DataType field1010;
 
-	@ObfuscatedName("bq.c")
-	public boolean field1011;
+    public boolean field1011;
 
-	@ObfuscatedName("bq.r")
-	public boolean field1012 = false;
+    public boolean field1012 = false;
 
-	@ObfuscatedName("bq.v")
-	public final int field1008;
+    public final int field1008;
 
-	@ObfuscatedName("bq.o")
-	public static final int[] field1014 = new int[1];
+    public static final int[] field1014 = new int[1];
 
 	public GlTexture(GlToolkit arg0, int arg1, TextureFormat arg2, DataType arg3, int arg4, boolean arg5) {
 		this.field1006 = arg0;
@@ -48,16 +38,14 @@ public abstract class GlTexture {
 		this.method1088(0);
 	}
 
-	@ObfuscatedName("bq.e(Z)V")
-	public void method1082(boolean arg0) {
+    public void method1082(boolean arg0) {
 		if (this.field1012 != arg0) {
 			this.field1012 = arg0;
 			this.method1083();
 		}
 	}
 
-	@ObfuscatedName("bq.n()V")
-	public void method1083() {
+    public void method1083() {
 		this.field1006.method15777(this);
 		if (this.field1012) {
 			OpenGL.glTexParameteri(this.field1009, 10241, this.field1011 ? 9987 : 9729);
@@ -68,8 +56,7 @@ public abstract class GlTexture {
 		}
 	}
 
-	@ObfuscatedName("bq.m()Z")
-	public boolean method1084() {
+    public boolean method1084() {
 		if (!this.field1006.field9985) {
 			return false;
 		}
@@ -82,8 +69,7 @@ public abstract class GlTexture {
 		return true;
 	}
 
-	@ObfuscatedName("bq.k(Z)V")
-	public void method1118(boolean arg0) {
+    public void method1118(boolean arg0) {
 		if (this.field1011 != arg0) {
 			int var2 = this.method1099();
 			this.field1011 = true;
@@ -92,8 +78,7 @@ public abstract class GlTexture {
 		}
 	}
 
-	@ObfuscatedName("bq.f()V")
-	public void method1089() {
+    public void method1089() {
 		if (this.field1007 != 0) {
 			this.field1006.field9879 -= this.method1099();
 			int[] var1 = new int[] { this.field1007 };
@@ -102,8 +87,7 @@ public abstract class GlTexture {
 		}
 	}
 
-	@ObfuscatedName("bq.w()V")
-	public void method1087() {
+    public void method1087() {
 		if (this.field1007 != 0) {
 			this.field1006.method15822(this.field1007, this.method1099());
 			this.field1007 = 0;
@@ -115,20 +99,17 @@ public abstract class GlTexture {
 		super.finalize();
 	}
 
-	@ObfuscatedName("bq.l(I)V")
-	public void method1088(int arg0) {
+    public void method1088(int arg0) {
 		this.field1006.field9879 -= arg0;
 		this.field1006.field9879 += this.method1099();
 	}
 
-	@ObfuscatedName("bq.u()I")
-	public int method1099() {
+    public int method1099() {
 		int var1 = this.field1010.field1652 * this.field1002.id * this.field1008;
 		return this.field1011 ? var1 * 4 / 3 : var1;
 	}
 
-	@ObfuscatedName("bq.z(IIIIII[I)V")
-	public static void method1109(int arg0, int arg1, int arg2, int arg3, int arg4, int arg5, int[] arg6) {
+    public static void method1109(int arg0, int arg1, int arg2, int arg3, int arg4, int arg5, int[] arg6) {
 		if (arg2 > 0 && !IntMath.method4918(arg2)) {
 			throw new IllegalArgumentException("");
 		} else if (arg3 > 0 && !IntMath.method4918(arg3)) {
@@ -190,8 +171,7 @@ public abstract class GlTexture {
 		}
 	}
 
-	@ObfuscatedName("bq.p(IIIILck;[B)V")
-	public static void method1107(int arg0, int arg1, int arg2, int arg3, TextureFormat arg4, byte[] arg5) {
+    public static void method1107(int arg0, int arg1, int arg2, int arg3, TextureFormat arg4, byte[] arg5) {
 		if (arg2 > 0 && !IntMath.method4918(arg2)) {
 			throw new IllegalArgumentException("");
 		} else if (arg3 <= 0 || IntMath.method4918(arg3)) {
@@ -244,8 +224,7 @@ public abstract class GlTexture {
 		}
 	}
 
-	@ObfuscatedName("bq.d(IIIILck;[F)V")
-	public static void method1091(int arg0, int arg1, int arg2, int arg3, TextureFormat arg4, float[] arg5) {
+    public static void method1091(int arg0, int arg1, int arg2, int arg3, TextureFormat arg4, float[] arg5) {
 		if (arg2 > 0 && !IntMath.method4918(arg2)) {
 			throw new IllegalArgumentException("");
 		} else if (arg3 <= 0 || IntMath.method4918(arg3)) {

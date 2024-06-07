@@ -9,26 +9,21 @@ import deob.ObfuscatedName;
 import java.util.Iterator;
 import java.util.LinkedList;
 
-@ObfuscatedName("wq")
 public class SkillDefaults implements Iterable {
 
-	@ObfuscatedName("wq.e")
-	public PlayerSkill[] skills;
+    public PlayerSkill[] skills;
 
-	@ObfuscatedName("wq.n")
-	public PlayerSkillXPTable[] tables;
+    public PlayerSkillXPTable[] tables;
 
 	public SkillDefaults(Js5 arg0) {
 		this.decode(arg0.fetchFile(DefaultsGroup.SKILL.js5GroupId));
 	}
 
-	@ObfuscatedName("wq.e(S)V")
-	public void method9774() {
+    public void method9774() {
 		this.skills = null;
 	}
 
-	@ObfuscatedName("wq.n([BB)V")
-	public void decode(byte[] arg0) {
+    public void decode(byte[] arg0) {
 		this.method9774();
 		if (arg0 == null) {
 			this.skills = new PlayerSkill[0];
@@ -37,8 +32,7 @@ public class SkillDefaults implements Iterable {
 		}
 	}
 
-	@ObfuscatedName("wq.m(Lalw;I)V")
-	public void decode(Packet arg0) {
+    public void decode(Packet arg0) {
 		while (true) {
 			int var2 = arg0.g1();
 			if (var2 == 0) {
@@ -90,13 +84,11 @@ public class SkillDefaults implements Iterable {
 		}
 	}
 
-	@ObfuscatedName("wq.k(I)I")
-	public int getSkillCount() {
+    public int getSkillCount() {
 		return this.skills.length;
 	}
 
-	@ObfuscatedName("wq.f(IB)Lwm;")
-	public PlayerSkill getSkill(int arg0) {
+    public PlayerSkill getSkill(int arg0) {
 		return this.skills[arg0];
 	}
 

@@ -59,65 +59,46 @@ import deob.ObfuscatedName;
 import rs2.client.Client;
 import rs2.client.login.LoginManager;
 
-@ObfuscatedName("ji")
 public class Loading {
-	@ObfuscatedName("ji.e")
-	public static LoadingStage[] field2938;
+    public static LoadingStage[] field2938;
 
-	@ObfuscatedName("ji.n")
-	public static LoadingScreen[] field2939;
+    public static LoadingScreen[] field2939;
 
-	@ObfuscatedName("ji.m")
-	public static int field2946 = -1;
+    public static int field2946 = -1;
 
-	@ObfuscatedName("jl.k")
-	public static LoadingRelated3 field2841;
+    public static LoadingRelated3 field2841;
 
-	@ObfuscatedName("aao.f")
-	public static Js5 loadingSpritesJs5;
+    public static Js5 loadingSpritesJs5;
 
-	@ObfuscatedName("aae.w")
-	public static Js5 loadingScreensJs5;
+    public static Js5 loadingScreensJs5;
 
-	@ObfuscatedName("x.l")
-	public static LoadingScreenRenderer field593;
+    public static LoadingScreenRenderer field593;
 
-	@ObfuscatedName("ji.u")
-	public static Thread field2940;
+    public static Thread field2940;
 
-	@ObfuscatedName("xj.z")
-	public static long field7966;
+    public static long field7966;
 
-	@ObfuscatedName("rk.p")
-	public static String field4964;
+    public static String field4964;
 
-	@ObfuscatedName("ji.d")
-	public static String field2942;
+    public static String field2942;
 
-	@ObfuscatedName("mt.r")
-	public static LoadingStage field3419;
+    public static LoadingStage field3419;
 
-	@ObfuscatedName("ji.o")
-	public static boolean field2944 = false;
+    public static boolean field2944 = false;
 
-	@ObfuscatedName("aae.s")
-	public static String field8535;
+    public static String field8535;
 
-	@ObfuscatedName("pr.y")
-	public static String field4407;
+    public static String field4407;
 
-	@ObfuscatedName("ji.q")
-	public static int field2945 = -1;
+    public static int field2945 = -1;
 
-	@ObfuscatedName("ji.x")
-	public static boolean field2941;
+    public static boolean field2941;
 
 	public Loading() throws Throwable {
 		throw new Error();
 	}
 
-	@ObfuscatedName("jb.e(I)V")
-	public static void reload() {
+    public static void reload() {
 		field2944 = true;
 		field8535 = LoginManager.username;
 		field4407 = LoginManager.password;
@@ -128,13 +109,11 @@ public class Loading {
 		Client.setState(5);
 	}
 
-	@ObfuscatedName("nt.n(B)Z")
-	public static boolean method6040() {
+    public static boolean method6040() {
 		return field2944;
 	}
 
-	@ObfuscatedName("adf.m(I)V")
-	public static void update() {
+    public static void update() {
 		if (field2938 == null) {
 			field2938 = LoadingStage.method4920();
 			field3419 = field2938[0];
@@ -196,8 +175,7 @@ public class Loading {
 		}
 	}
 
-	@ObfuscatedName("l.k(B)V")
-	public static void method254() {
+    public static void method254() {
 		if (field3419 != null) {
 			field593 = new LoadingScreenRenderer();
 			field593.method4849(field7966, field3419.field2908.forLang(Client.language), field3419.field2908.forLang(Client.language), field3419.field2923, field3419);
@@ -206,8 +184,7 @@ public class Loading {
 		}
 	}
 
-	@ObfuscatedName("dk.f(ZI)V")
-	public static void draw(boolean arg0) {
+    public static void draw(boolean arg0) {
 		if (field593 == null) {
 			method254();
 		}
@@ -216,13 +193,11 @@ public class Loading {
 		}
 	}
 
-	@ObfuscatedName("gt.w(I)I")
-	public static int method3583() {
+    public static int method3583() {
 		return field593.method4846();
 	}
 
-	@ObfuscatedName("apb.l(I)V")
-	public static void method18929() {
+    public static void method18929() {
 		if (field2939 == null) {
 			return;
 		}
@@ -233,8 +208,7 @@ public class Loading {
 		}
 	}
 
-	@ObfuscatedName("gt.u(I)I")
-	public static int method3584() {
+    public static int method3584() {
 		int var0 = field3419.field2920;
 		if (var0 < field2938.length - 1) {
 			field3419 = field2938[var0 + 1];
@@ -242,8 +216,7 @@ public class Loading {
 		return 100;
 	}
 
-	@ObfuscatedName("rm.z(I)I")
-	public static int method7622() {
+    public static int method7622() {
 		if (Client.preferences.safeMode.getValue() == 0) {
 			for (int var0 = 0; var0 < Client.allKeyboardEventCount; var0++) {
 				if (Client.allKeyboardEvents[var0].method9131() == 's' || Client.allKeyboardEvents[var0].method9131() == 'S') {
@@ -548,8 +521,7 @@ public class Loading {
 		return method3584();
 	}
 
-	@ObfuscatedName("ab.p([BB)V")
-	public static void method987(byte[] arg0) {
+    public static void method987(byte[] arg0) {
 		Packet var1 = new Packet(arg0);
 		while (true) {
 			int var2 = var1.g1();
@@ -564,8 +536,7 @@ public class Loading {
 		}
 	}
 
-	@ObfuscatedName("al.d([BB)V")
-	public static void method714(byte[] arg0) {
+    public static void method714(byte[] arg0) {
 		Packet var1 = new Packet(arg0);
 		while (true) {
 			int var2 = var1.g1();
@@ -579,14 +550,12 @@ public class Loading {
 		}
 	}
 
-	@ObfuscatedName("ux.c(I)V")
-	public static void method9212() {
+    public static void method9212() {
 		FileOnDisk var0 = GameShell.openPrefs("2", Client.modegame.titleURL, false);
 		Client.clientVarDomain.method16420(var0);
 	}
 
-	@ObfuscatedName("ss.r(B)V")
-	public static void stopRendererThread() {
+    public static void stopRendererThread() {
 		if (field593 != null) {
 			field593.method4856();
 		}

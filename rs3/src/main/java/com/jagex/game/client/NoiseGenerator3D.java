@@ -5,32 +5,23 @@ import deob.ObfuscatedName;
 
 import java.util.Random;
 
-@ObfuscatedName("ol")
 public abstract class NoiseGenerator3D {
 
-	@ObfuscatedName("ol.k")
-	public short[] field4189;
+    public short[] field4189;
 
-	@ObfuscatedName("ol.f")
-	public short[] field4193 = new short[512];
+    public short[] field4193 = new short[512];
 
-	@ObfuscatedName("ol.w")
-	public int field4194 = 0;
+    public int field4194 = 0;
 
-	@ObfuscatedName("ol.l")
-	public int field4195 = 4;
+    public int field4195 = 4;
 
-	@ObfuscatedName("ol.u")
-	public int field4196 = 4;
+    public int field4196 = 4;
 
-	@ObfuscatedName("ol.z")
-	public int field4191 = 4;
+    public int field4191 = 4;
 
-	@ObfuscatedName("ol.p")
-	public int field4198 = 4;
+    public int field4198 = 4;
 
-	@ObfuscatedName("ol.d")
-	public static final int[] field4199 = new int[4096];
+    public static final int[] field4199 = new int[4096];
 
 	static {
 		for (int var0 = 0; var0 < 4096; var0++) {
@@ -48,8 +39,7 @@ public abstract class NoiseGenerator3D {
 		this.method6136();
 	}
 
-	@ObfuscatedName("ol.e(III)V")
-	public void method6134(int arg0, int arg1, int arg2) {
+    public void method6134(int arg0, int arg1, int arg2) {
 		int[] var4 = new int[arg0];
 		int[] var5 = new int[arg1];
 		int[] var6 = new int[arg2];
@@ -141,24 +131,21 @@ public abstract class NoiseGenerator3D {
 		}
 	}
 
-	@ObfuscatedName("ol.f()V")
-	public void method6137() {
+    public void method6137() {
 		this.field4189 = new short[this.field4198];
 		for (int var1 = 0; var1 < this.field4198; var1++) {
 			this.field4189[var1] = (short) Math.pow(2.0D, (double) var1);
 		}
 	}
 
-	@ObfuscatedName("ol.w(IIII)I")
-	public static int method6135(int arg0, int arg1, int arg2, int arg3) {
+    public static int method6135(int arg0, int arg1, int arg2, int arg3) {
 		int var4 = arg0 & 0xF;
 		int var5 = var4 < 8 ? arg1 : arg2;
 		int var6 = var4 < 4 ? arg2 : var4 == 12 || var4 == 14 ? arg1 : arg3;
 		return ((var4 & 0x1) == 0 ? var5 : -var5) + ((var4 & 0x2) == 0 ? var6 : -var6);
 	}
 
-	@ObfuscatedName("ol.l()V")
-	public void method6136() {
+    public void method6136() {
 		Random var1 = new Random((long) this.field4194);
 		for (int var2 = 0; var2 < 255; var2++) {
 			this.field4193[var2] = (short) var2;
@@ -172,20 +159,16 @@ public abstract class NoiseGenerator3D {
 		}
 	}
 
-	@ObfuscatedName("ol.u(I)I")
-	public static final int method6155(int arg0) {
+    public static final int method6155(int arg0) {
 		int var1 = (arg0 * arg0 >> 12) * arg0 >> 12;
 		int var2 = arg0 * 6 - 61440;
 		int var3 = (arg0 * var2 >> 12) + 40960;
 		return var1 * var3 >> 12;
 	}
 
-	@ObfuscatedName("ol.k(II)V")
-	public abstract void method6138(int arg0, int arg1);
+    public abstract void method6138(int arg0, int arg1);
 
-	@ObfuscatedName("ol.m()V")
-	public abstract void method6143();
+    public abstract void method6143();
 
-	@ObfuscatedName("ol.n()V")
-	public abstract void method6147();
+    public abstract void method6147();
 }

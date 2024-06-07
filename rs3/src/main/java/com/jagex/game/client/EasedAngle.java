@@ -2,17 +2,13 @@ package com.jagex.game.client;
 
 import deob.ObfuscatedName;
 
-@ObfuscatedName("r")
 public class EasedAngle {
 
-	@ObfuscatedName("r.e")
-	public int field528;
+    public int field528;
 
-	@ObfuscatedName("r.n")
-	public int field529;
+    public int field529;
 
-	@ObfuscatedName("r.e(IIIB)Z")
-	public boolean method315(int arg0, int arg1, int arg2) {
+    public boolean method315(int arg0, int arg1, int arg2) {
 		int var4 = this.field529;
 		if (this.field528 == arg0 && this.field529 == 0) {
 			return false;
@@ -80,19 +76,16 @@ public class EasedAngle {
 		return var5;
 	}
 
-	@ObfuscatedName("r.n(IB)V")
-	public void method314(int arg0) {
+    public void method314(int arg0) {
 		this.field528 = arg0;
 		this.field529 = 0;
 	}
 
-	@ObfuscatedName("r.m(I)I")
-	public int method316() {
+    public int method316() {
 		return this.field528 & 0x3FFF;
 	}
 
-	@ObfuscatedName("r.k(I)V")
-	public void method317() {
+    public void method317() {
 		this.field528 &= 0x3FFF;
 	}
 }

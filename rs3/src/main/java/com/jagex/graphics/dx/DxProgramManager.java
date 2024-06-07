@@ -3,17 +3,13 @@ package com.jagex.graphics.dx;
 import com.jagex.graphics.*;
 import deob.ObfuscatedName;
 
-@ObfuscatedName("agc")
 public final class DxProgramManager extends GpuShader {
 
-	@ObfuscatedName("agc.z")
-	public final DxToolkit field10388;
+    public final DxToolkit field10388;
 
-	@ObfuscatedName("agc.p")
-	public DxProgram field10389;
+    public DxProgram field10389;
 
-	@ObfuscatedName("agc.d")
-	public boolean field10387;
+    public boolean field10387;
 
 	public DxProgramManager(DxToolkit arg0, ShaderData arg1) {
 		super(arg0, arg1);
@@ -21,13 +17,11 @@ public final class DxProgramManager extends GpuShader {
 		this.field10387 = false;
 	}
 
-	@ObfuscatedName("agc.f(Lafc;Lhn;)Lhi;")
-	public GpuProgram createProgram(GpuToolkit arg0, ProgramData arg1) {
+    public GpuProgram createProgram(GpuToolkit arg0, ProgramData arg1) {
 		return new DxProgram((DxToolkit) arg0, this, arg1);
 	}
 
-	@ObfuscatedName("agc.d(Lhi;)Z")
-	public boolean setCurrentProgram(GpuProgram arg0) {
+    public boolean setCurrentProgram(GpuProgram arg0) {
 		if (this.field10389 == arg0) {
 			return true;
 		} else if (arg0.compile()) {
@@ -47,13 +41,11 @@ public final class DxProgramManager extends GpuShader {
 		}
 	}
 
-	@ObfuscatedName("agc.v(Lhv;)Laql;")
-	public ProgramUniform method4165(ProgramUniformData arg0) {
+    public ProgramUniform method4165(ProgramUniformData arg0) {
 		return new DxProgramUniform(this, arg0);
 	}
 
-	@ObfuscatedName("agc.e()V")
-	public void enable() {
+    public void enable() {
 		if (this.field10389 == null) {
 			throw new ProgramManagerException();
 		}
@@ -63,8 +55,7 @@ public final class DxProgramManager extends GpuShader {
 		this.field10387 = true;
 	}
 
-	@ObfuscatedName("agc.n()V")
-	public void method4214() {
+    public void method4214() {
 		this.field10388.setVertexShader(0L);
 		this.field10388.setPixelShader(0L);
 		this.field10387 = false;
@@ -75,8 +66,7 @@ public final class DxProgramManager extends GpuShader {
 		this.field10388.setTexture(null);
 	}
 
-	@ObfuscatedName("agc.m()Z")
-	public boolean method4184() {
+    public boolean method4184() {
 		return this.field10388.program == this.field10389;
 	}
 }

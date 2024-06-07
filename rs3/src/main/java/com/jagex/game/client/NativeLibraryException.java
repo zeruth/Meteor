@@ -2,14 +2,11 @@ package com.jagex.game.client;
 
 import deob.ObfuscatedName;
 
-@ObfuscatedName("apb")
 public class NativeLibraryException extends Exception {
 
-	@ObfuscatedName("apb.e")
-	public final String field11894;
+    public final String field11894;
 
-	@ObfuscatedName("apb.n")
-	public final int field11895;
+    public final int field11895;
 
 	public NativeLibraryException(int arg0, String arg1) {
 		this(arg0, arg1, (Throwable) null);

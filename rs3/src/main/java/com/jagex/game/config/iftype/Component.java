@@ -29,638 +29,427 @@ import com.jagex.js5.Js5;
 import com.jagex.math.Matrix4x3;
 import deob.ObfuscatedName;
 
-@ObfuscatedName("hf")
 public class Component {
 
-	@ObfuscatedName("hf.e")
-	public static int field2234 = 0;
+    public static int field2234 = 0;
 
-	@ObfuscatedName("hf.n")
-	public static int field2301 = 1;
+    public static int field2301 = 1;
 
-	@ObfuscatedName("hf.m")
-	public static int field2157 = 2;
+    public static int field2157 = 2;
 
-	@ObfuscatedName("hf.k")
-	public static int field2266 = 3;
+    public static int field2266 = 3;
 
-	@ObfuscatedName("hf.f")
-	public static int field2159 = 328;
+    public static int field2159 = 328;
 
-	@ObfuscatedName("hf.w")
-	public static int field2341 = 1337;
+    public static int field2341 = 1337;
 
-	@ObfuscatedName("hf.l")
-	public static int field2161 = 1403;
+    public static int field2161 = 1403;
 
-	@ObfuscatedName("hf.u")
-	public static int field2171 = 1338;
+    public static int field2171 = 1338;
 
-	@ObfuscatedName("hf.z")
-	public static int COMPASS = 1339;
+    public static int COMPASS = 1339;
 
-	@ObfuscatedName("hf.p")
-	public static int WORLD_MAP = 1400;
+    public static int WORLD_MAP = 1400;
 
-	@ObfuscatedName("hf.d")
-	public static int WORLD_MAP_OVERVIEW = 1401;
+    public static int WORLD_MAP_OVERVIEW = 1401;
 
-	@ObfuscatedName("hf.c")
-	public static int DEBUG = 1405;
+    public static int DEBUG = 1405;
 
-	@ObfuscatedName("hf.r")
-	public static int field2167 = 1406;
+    public static int field2167 = 1406;
 
-	@ObfuscatedName("hf.v")
-	public static int field2168 = 1407;
+    public static int field2168 = 1407;
 
-	@ObfuscatedName("hf.o")
-	public static int field2169 = 1408;
+    public static int field2169 = 1408;
 
-	@ObfuscatedName("hf.s")
-	public static int field2340 = 1409;
+    public static int field2340 = 1409;
 
-	@ObfuscatedName("hf.y")
-	public static int field2163 = 1410;
+    public static int field2163 = 1410;
 
-	@ObfuscatedName("hf.q")
-	public static int field2172 = 1411;
+    public static int field2172 = 1411;
 
-	@ObfuscatedName("ama.h")
-	public static Interface[] interfaces;
+    public static Interface[] interfaces;
 
-	@ObfuscatedName("aag.a")
-	public static boolean[] field8424;
+    public static boolean[] field8424;
 
-	@ObfuscatedName("ua.g")
-	public static Js5 interfacesJs5;
+    public static Js5 interfacesJs5;
 
-	@ObfuscatedName("ec.i")
-	public static Js5 modelsJs5;
+    public static Js5 modelsJs5;
 
-	@ObfuscatedName("zl.j")
-	public static Js5 spritesJs5;
+    public static Js5 spritesJs5;
 
-	@ObfuscatedName("hf.t")
-	public static SoftLruHashTable spriteCache = new SoftLruHashTable(6000000, 200);
+    public static SoftLruHashTable spriteCache = new SoftLruHashTable(6000000, 200);
 
-	@ObfuscatedName("hf.ae")
-	public static SoftLruHashTable graphicCache = new SoftLruHashTable(8);
+    public static SoftLruHashTable graphicCache = new SoftLruHashTable(8);
 
-	@ObfuscatedName("hf.ag")
-	public static SoftLruHashTable skyBoxCache = new SoftLruHashTable(4);
+    public static SoftLruHashTable skyBoxCache = new SoftLruHashTable(4);
 
-	@ObfuscatedName("hf.ah")
-	public static SoftLruHashTable modelCache = new SoftLruHashTable(50);
+    public static SoftLruHashTable modelCache = new SoftLruHashTable(50);
 
-	@ObfuscatedName("anq.al")
-	public static int field11802;
+    public static int field11802;
 
-	@ObfuscatedName("hf.ac")
-	public static boolean field2338 = false;
+    public static boolean field2338 = false;
 
-	@ObfuscatedName("hf.ai")
-	public String name;
+    public String name;
 
-	@ObfuscatedName("hf.aw")
-	public int field2181;
+    public int field2181;
 
-	@ObfuscatedName("hf.as")
-	public int parentlayer = -1;
+    public int parentlayer = -1;
 
-	@ObfuscatedName("hf.at")
-	public int id = -1;
+    public int id = -1;
 
-	@ObfuscatedName("hf.ad")
-	public int type;
+    public int type;
 
-	@ObfuscatedName("hf.am")
-	public int clientcode = 0;
+    public int clientcode = 0;
 
-	@ObfuscatedName("hf.au")
-	public byte xmode = 0;
+    public byte xmode = 0;
 
-	@ObfuscatedName("hf.ar")
-	public byte ymode = 0;
+    public byte ymode = 0;
 
-	@ObfuscatedName("hf.ap")
-	public byte field2356 = 0;
+    public byte field2356 = 0;
 
-	@ObfuscatedName("hf.aq")
-	public byte field2174 = 0;
+    public byte field2174 = 0;
 
-	@ObfuscatedName("hf.ax")
-	public int xpos = 0;
+    public int xpos = 0;
 
-	@ObfuscatedName("hf.av")
-	public int ypos = 0;
+    public int ypos = 0;
 
-	@ObfuscatedName("hf.ao")
-	public int wsize = 0;
+    public int wsize = 0;
 
-	@ObfuscatedName("hf.aj")
-	public int hsize = 0;
+    public int hsize = 0;
 
-	@ObfuscatedName("hf.ay")
-	public int x = 0;
+    public int x = 0;
 
-	@ObfuscatedName("hf.ab")
-	public int y = 0;
+    public int y = 0;
 
-	@ObfuscatedName("hf.az")
-	public int width = 0;
+    public int width = 0;
 
-	@ObfuscatedName("hf.aa")
-	public int height = 0;
+    public int height = 0;
 
-	@ObfuscatedName("hf.af")
-	public int aspectwidth = 1;
+    public int aspectwidth = 1;
 
-	@ObfuscatedName("hf.ak")
-	public int aspectheight = 1;
+    public int aspectheight = 1;
 
-	@ObfuscatedName("hf.an")
-	public int layer = -1;
+    public int layer = -1;
 
-	@ObfuscatedName("hf.bf")
-	public boolean hide = false;
+    public boolean hide = false;
 
-	@ObfuscatedName("hf.bl")
-	public int field2202 = -1;
+    public int field2202 = -1;
 
-	@ObfuscatedName("hf.bk")
-	public int field2269 = -1;
+    public int field2269 = -1;
 
-	@ObfuscatedName("hf.bh")
-	public int mouseovercursor = -1;
+    public int mouseovercursor = -1;
 
-	@ObfuscatedName("hf.bx")
-	public boolean noclickthrough = false;
+    public boolean noclickthrough = false;
 
-	@ObfuscatedName("hf.bd")
-	public int scrollx = 0;
+    public int scrollx = 0;
 
-	@ObfuscatedName("hf.bc")
-	public int scrolly = 0;
+    public int scrolly = 0;
 
-	@ObfuscatedName("hf.bi")
-	public int scrollwidth = 0;
+    public int scrollwidth = 0;
 
-	@ObfuscatedName("hf.bn")
-	public int scrollheight = 0;
+    public int scrollheight = 0;
 
-	@ObfuscatedName("hf.bt")
-	public int colour = 0;
+    public int colour = 0;
 
-	@ObfuscatedName("hf.bq")
-	public boolean fill = false;
+    public boolean fill = false;
 
-	@ObfuscatedName("hf.bm")
-	public int trans = 0;
+    public int trans = 0;
 
-	@ObfuscatedName("hf.bb")
-	public int linewid = 1;
+    public int linewid = 1;
 
-	@ObfuscatedName("hf.be")
-	public boolean linedirection = false;
+    public boolean linedirection = false;
 
-	@ObfuscatedName("hf.by")
-	public int graphic = -1;
+    public int graphic = -1;
 
-	@ObfuscatedName("hf.bu")
-	public int angle2d = 0;
+    public int angle2d = 0;
 
-	@ObfuscatedName("hf.bw")
-	public boolean tiling = false;
+    public boolean tiling = false;
 
-	@ObfuscatedName("hf.bo")
-	public int outline = 0;
+    public int outline = 0;
 
-	@ObfuscatedName("hf.bz")
-	public int graphicshadow = 0;
+    public int graphicshadow = 0;
 
-	@ObfuscatedName("hf.bv")
-	public boolean vflip;
+    public boolean vflip;
 
-	@ObfuscatedName("hf.br")
-	public boolean hflip;
+    public boolean hflip;
 
-	@ObfuscatedName("hf.bg")
-	public boolean alpha = false;
+    public boolean alpha = false;
 
-	@ObfuscatedName("hf.ba")
-	public boolean clickmask = true;
+    public boolean clickmask = true;
 
-	@ObfuscatedName("hf.bp")
-	public int modelkind = 1;
+    public int modelkind = 1;
 
-	@ObfuscatedName("hf.bj")
-	public int model;
+    public int model;
 
-	@ObfuscatedName("hf.bs")
-	public int field2298 = -1;
+    public int field2298 = -1;
 
-	@ObfuscatedName("hf.cl")
-	public boolean field2274;
+    public boolean field2274;
 
-	@ObfuscatedName("hf.cg")
-	public int modelxof = 0;
+    public int modelxof = 0;
 
-	@ObfuscatedName("hf.ce")
-	public int modelyof = 0;
+    public int modelyof = 0;
 
-	@ObfuscatedName("hf.cu")
-	public int modelangle_x = 0;
+    public int modelangle_x = 0;
 
-	@ObfuscatedName("hf.ci")
-	public int modelangle_y = 0;
+    public int modelangle_y = 0;
 
-	@ObfuscatedName("hf.cn")
-	public int modelangle_z = 0;
+    public int modelangle_z = 0;
 
-	@ObfuscatedName("hf.cv")
-	public int modelorigin_x = 0;
+    public int modelorigin_x = 0;
 
-	@ObfuscatedName("hf.cp")
-	public int modelorigin_y = 0;
+    public int modelorigin_y = 0;
 
-	@ObfuscatedName("hf.ca")
-	public int modelorigin_z = 0;
+    public int modelorigin_z = 0;
 
-	@ObfuscatedName("hf.cx")
-	public int modelzoom = 100;
+    public int modelzoom = 100;
 
-	@ObfuscatedName("hf.cw")
-	public int modelobjwidth = 0;
+    public int modelobjwidth = 0;
 
-	@ObfuscatedName("hf.ct")
-	public int field2238 = 0;
+    public int field2238 = 0;
 
-	@ObfuscatedName("hf.cf")
-	public boolean modelorthog = false;
+    public boolean modelorthog = false;
 
-	@ObfuscatedName("hf.co")
-	public boolean field2260 = false;
+    public boolean field2260 = false;
 
-	@ObfuscatedName("hf.cr")
-	public int field2241 = 2;
+    public int field2241 = 2;
 
-	@ObfuscatedName("hf.cm")
-	public short[] recol_s;
+    public short[] recol_s;
 
-	@ObfuscatedName("hf.cq")
-	public short[] recol_d;
+    public short[] recol_d;
 
-	@ObfuscatedName("hf.ch")
-	public short[] retex_s;
+    public short[] retex_s;
 
-	@ObfuscatedName("hf.cb")
-	public short[] retex_d;
+    public short[] retex_d;
 
-	@ObfuscatedName("hf.cs")
-	public int tint_hue;
+    public int tint_hue;
 
-	@ObfuscatedName("hf.cy")
-	public int tint_saturation;
+    public int tint_saturation;
 
-	@ObfuscatedName("hf.cc")
-	public int tint_luminence;
+    public int tint_luminence;
 
-	@ObfuscatedName("hf.cz")
-	public int tint_weight;
+    public int tint_weight;
 
-	@ObfuscatedName("hf.ck")
-	public boolean customlighting = false;
+    public boolean customlighting = false;
 
-	@ObfuscatedName("hf.cj")
-	public int field2345;
+    public int field2345;
 
-	@ObfuscatedName("hf.cd")
-	public int field2252;
+    public int field2252;
 
-	@ObfuscatedName("hf.dd")
-	public int field2302;
+    public int field2302;
 
-	@ObfuscatedName("hf.dr")
-	public int field2251;
+    public int field2251;
 
-	@ObfuscatedName("hf.da")
-	public int field2255;
+    public int field2255;
 
-	@ObfuscatedName("hf.dt")
-	public int field2248;
+    public int field2248;
 
-	@ObfuscatedName("hf.do")
-	public int field2257;
+    public int field2257;
 
-	@ObfuscatedName("hf.dz")
-	public int field2258;
+    public int field2258;
 
-	@ObfuscatedName("hf.dv")
-	public int textfont = -1;
+    public int textfont = -1;
 
-	@ObfuscatedName("hf.dm")
-	public boolean fontmono = true;
+    public boolean fontmono = true;
 
-	@ObfuscatedName("hf.dq")
-	public String text = "";
+    public String text = "";
 
-	@ObfuscatedName("hf.dc")
-	public int field2229 = 0;
+    public int field2229 = 0;
 
-	@ObfuscatedName("hf.di")
-	public int field2223 = 0;
+    public int field2223 = 0;
 
-	@ObfuscatedName("hf.dk")
-	public int field2264 = 0;
+    public int field2264 = 0;
 
-	@ObfuscatedName("hf.dn")
-	public boolean textshadow = false;
+    public boolean textshadow = false;
 
-	@ObfuscatedName("hf.df")
-	public int maxlines = 0;
+    public int maxlines = 0;
 
-	@ObfuscatedName("hf.dw")
-	public boolean textantimacro = false;
+    public boolean textantimacro = false;
 
-	@ObfuscatedName("hf.ds")
-	public ServerKeyProperties field2268 = ServerKeyProperties.field11386;
+    public ServerKeyProperties field2268 = ServerKeyProperties.field11386;
 
-	@ObfuscatedName("hf.du")
-	public boolean field2324 = false;
+    public boolean field2324 = false;
 
-	@ObfuscatedName("hf.dl")
-	public byte[][] field2270;
+    public byte[][] field2270;
 
-	@ObfuscatedName("hf.dp")
-	public byte[][] field2281;
+    public byte[][] field2281;
 
-	@ObfuscatedName("hf.dy")
-	public int[] field2211;
+    public int[] field2211;
 
-	@ObfuscatedName("hf.db")
-	public int[] field2273;
+    public int[] field2273;
 
-	@ObfuscatedName("hf.dh")
-	public int[] field2300;
+    public int[] field2300;
 
-	@ObfuscatedName("hf.eo")
-	public String opbase = "";
+    public String opbase = "";
 
-	@ObfuscatedName("hf.ey")
-	public String[] op;
+    public String[] op;
 
-	@ObfuscatedName("hf.eu")
-	public String pausetext;
+    public String pausetext;
 
-	@ObfuscatedName("hf.ed")
-	public int[] opcursor;
+    public int[] opcursor;
 
-	@ObfuscatedName("hf.ee")
-	public int targetopcursor = -1;
+    public int targetopcursor = -1;
 
-	@ObfuscatedName("hf.es")
-	public Component draggable = null;
+    public Component draggable = null;
 
-	@ObfuscatedName("hf.ei")
-	public int dragdeadzone = 0;
+    public int dragdeadzone = 0;
 
-	@ObfuscatedName("hf.el")
-	public int dragdeadtime = 0;
+    public int dragdeadtime = 0;
 
-	@ObfuscatedName("hf.ej")
-	public int dragrenderbehaviour = field2234;
+    public int dragrenderbehaviour = field2234;
 
-	@ObfuscatedName("hf.ep")
-	public String targetverb = "";
+    public String targetverb = "";
 
-	@ObfuscatedName("hf.ev")
-	public boolean hashook = false;
+    public boolean hashook = false;
 
-	@ObfuscatedName("hf.ec")
-	public Object[] onload;
+    public Object[] onload;
 
-	@ObfuscatedName("hf.ek")
-	public Object[] onclick;
+    public Object[] onclick;
 
-	@ObfuscatedName("hf.em")
-	public Object[] onclickrepeat;
+    public Object[] onclickrepeat;
 
-	@ObfuscatedName("hf.eh")
-	public Object[] onrelease;
+    public Object[] onrelease;
 
-	@ObfuscatedName("hf.eq")
-	public Object[] onhold;
+    public Object[] onhold;
 
-	@ObfuscatedName("hf.eg")
-	public Object[] onmouseover;
+    public Object[] onmouseover;
 
-	@ObfuscatedName("hf.ez")
-	public Object[] onmouserepeat;
+    public Object[] onmouserepeat;
 
-	@ObfuscatedName("hf.ef")
-	public Object[] onmouseleave;
+    public Object[] onmouseleave;
 
-	@ObfuscatedName("hf.et")
-	public Object[] ondrag;
+    public Object[] ondrag;
 
-	@ObfuscatedName("hf.ea")
-	public Object[] ondragcomplete;
+    public Object[] ondragcomplete;
 
-	@ObfuscatedName("hf.ew")
-	public Object[] ontargetenter;
+    public Object[] ontargetenter;
 
-	@ObfuscatedName("hf.er")
-	public Object[] ontargetleave;
+    public Object[] ontargetleave;
 
-	@ObfuscatedName("hf.en")
-	public Object[] onvartransmit;
+    public Object[] onvartransmit;
 
-	@ObfuscatedName("hf.eb")
-	public int[] onvartransmitlist;
+    public int[] onvartransmitlist;
 
-	@ObfuscatedName("hf.ex")
-	public Object[] oninvtransmit;
+    public Object[] oninvtransmit;
 
-	@ObfuscatedName("hf.fg")
-	public int[] oninvtransmitlist;
+    public int[] oninvtransmitlist;
 
-	@ObfuscatedName("hf.fm")
-	public Object[] onstattransmit;
+    public Object[] onstattransmit;
 
-	@ObfuscatedName("hf.fu")
-	public int[] onstattransmitlist;
+    public int[] onstattransmitlist;
 
-	@ObfuscatedName("hf.fs")
-	public Object[] onvarctransmit;
+    public Object[] onvarctransmit;
 
-	@ObfuscatedName("hf.fz")
-	public int[] onvarctransmitlist;
+    public int[] onvarctransmitlist;
 
-	@ObfuscatedName("hf.fj")
-	public Object[] onvarcstrtransmit;
+    public Object[] onvarcstrtransmit;
 
-	@ObfuscatedName("hf.fd")
-	public int[] onvarcstrtransmitlist;
+    public int[] onvarcstrtransmitlist;
 
-	@ObfuscatedName("hf.fn")
-	public Object[] onvarclantransmit;
+    public Object[] onvarclantransmit;
 
-	@ObfuscatedName("hf.fi")
-	public int[] field2313;
+    public int[] field2313;
 
-	@ObfuscatedName("hf.ft")
-	public Object[] ontimer;
+    public Object[] ontimer;
 
-	@ObfuscatedName("hf.fx")
-	public Object[] onop;
+    public Object[] onop;
 
-	@ObfuscatedName("hf.fv")
-	public Object[] onopt;
+    public Object[] onopt;
 
-	@ObfuscatedName("hf.fc")
-	public Object[] onscrollwheel;
+    public Object[] onscrollwheel;
 
-	@ObfuscatedName("hf.fw")
-	public Object[] onchattransmit;
+    public Object[] onchattransmit;
 
-	@ObfuscatedName("hf.fa")
-	public Object[] onkey;
+    public Object[] onkey;
 
-	@ObfuscatedName("hf.fp")
-	public Object[] onfriendtransmit;
+    public Object[] onfriendtransmit;
 
-	@ObfuscatedName("hf.fq")
-	public Object[] onclantransmit;
+    public Object[] onclantransmit;
 
-	@ObfuscatedName("hf.ff")
-	public Object[] onclansettingstransmit;
+    public Object[] onclansettingstransmit;
 
-	@ObfuscatedName("hf.fl")
-	public Object[] onclanchanneltransmit;
+    public Object[] onclanchanneltransmit;
 
-	@ObfuscatedName("hf.fb")
-	public Object[] onmisctransmit;
+    public Object[] onmisctransmit;
 
-	@ObfuscatedName("hf.fo")
-	public Object[] onstocktransmit;
+    public Object[] onstocktransmit;
 
-	@ObfuscatedName("hf.fy")
-	public Object[] ondialogabort;
+    public Object[] ondialogabort;
 
-	@ObfuscatedName("hf.fe")
-	public Object[] onsubchange;
+    public Object[] onsubchange;
 
-	@ObfuscatedName("hf.fk")
-	public Object[] oncamfinished;
+    public Object[] oncamfinished;
 
-	@ObfuscatedName("hf.fh")
-	public Object[] onresize;
+    public Object[] onresize;
 
-	@ObfuscatedName("hf.fr")
-	public Object[] onplayergrouptransmit;
+    public Object[] onplayergrouptransmit;
 
-	@ObfuscatedName("hf.gu")
-	public Object[] onplayergroupvarptransmit;
+    public Object[] onplayergroupvarptransmit;
 
-	@ObfuscatedName("hf.gq")
-	public Object[] oncameraupdatetransmit;
+    public Object[] oncameraupdatetransmit;
 
-	@ObfuscatedName("hf.gl")
-	public HashTable params;
+    public HashTable params;
 
-	@ObfuscatedName("hf.go")
-	public int invobject = -1;
+    public int invobject = -1;
 
-	@ObfuscatedName("hf.gk")
-	public int invcount = 0;
+    public int invcount = 0;
 
-	@ObfuscatedName("hf.gp")
-	public String link = null;
+    public String link = null;
 
-	@ObfuscatedName("hf.gy")
-	public GroupUserKind groupKind;
+    public GroupUserKind groupKind;
 
-	@ObfuscatedName("hf.ga")
-	public boolean field2246 = false;
+    public boolean field2246 = false;
 
-	@ObfuscatedName("hf.gn")
-	public int field2339 = -1;
+    public int field2339 = -1;
 
-	@ObfuscatedName("hf.gc")
-	public int field2348;
+    public int field2348;
 
-	@ObfuscatedName("hf.gf")
-	public int field2162;
+    public int field2162;
 
-	@ObfuscatedName("hf.gx")
-	public int field2342;
+    public int field2342;
 
-	@ObfuscatedName("hf.ge")
-	public int field2343;
+    public int field2343;
 
-	@ObfuscatedName("hf.gg")
-	public int field2344;
+    public int field2344;
 
-	@ObfuscatedName("hf.gr")
-	public int field2188 = -1;
+    public int field2188 = -1;
 
-	@ObfuscatedName("hf.gs")
-	public int modelanim = -1;
+    public int modelanim = -1;
 
-	@ObfuscatedName("hf.gt")
-	public AnimationNode modelAnimator;
+    public AnimationNode modelAnimator;
 
-	@ObfuscatedName("hf.gh")
-	public Component[] subcomponents;
+    public Component[] subcomponents;
 
-	@ObfuscatedName("hf.gm")
-	public Component[] sortedsubcomponents;
+    public Component[] sortedsubcomponents;
 
-	@ObfuscatedName("hf.gv")
-	public boolean field2350 = false;
+    public boolean field2350 = false;
 
-	@ObfuscatedName("hf.gj")
-	public boolean held = false;
+    public boolean held = false;
 
-	@ObfuscatedName("hf.gw")
-	public int lastRedrawCycle = -1;
+    public int lastRedrawCycle = -1;
 
-	@ObfuscatedName("hf.gd")
-	public int field2353 = 0;
+    public int field2353 = 0;
 
-	@ObfuscatedName("hf.gz")
-	public int field2354 = 0;
+    public int field2354 = 0;
 
-	@ObfuscatedName("hf.gb")
-	public int field2160 = 0;
+    public int field2160 = 0;
 
-	@ObfuscatedName("hf.gi")
-	public int field2289 = 0;
+    public int field2289 = 0;
 
-	@ObfuscatedName("hf.hm")
-	public int field2357 = 0;
+    public int field2357 = 0;
 
-	@ObfuscatedName("hf.ha")
-	public int field2358 = 0;
+    public int field2358 = 0;
 
-	@ObfuscatedName("hf.hk")
-	public int field2182 = -1;
+    public int field2182 = -1;
 
-	@ObfuscatedName("hf.hu")
-	public int field2237 = -1;
+    public int field2237 = -1;
 
-	@ObfuscatedName("hf.hb")
-	public int[] field2361;
+    public int[] field2361;
 
-	@ObfuscatedName("hf.hl")
-	public ParticleSystem field2254;
+    public ParticleSystem field2254;
 
-	@ObfuscatedName("hf.hg")
-	public NPCTypeCustomisation customisation;
+    public NPCTypeCustomisation customisation;
 
-	@ObfuscatedName("gb.e(Lpy;Lpy;Lpy;Lpy;I)V")
-	public static void method3669(Js5 arg0, Js5 arg1, Js5 arg2, Js5 arg3) {
+    public static void method3669(Js5 arg0, Js5 arg1, Js5 arg2, Js5 arg3) {
 		interfacesJs5 = arg0;
 		modelsJs5 = arg1;
 		spritesJs5 = arg2;
@@ -668,8 +457,7 @@ public class Component {
 		field8424 = new boolean[interfacesJs5.capacity()];
 	}
 
-	@ObfuscatedName("xh.n(II)Lhf;")
-	public static Component get(int arg0) {
+    public static Component get(int arg0) {
 		int var1 = arg0 >> 16;
 		if (interfaces[var1] == null || interfaces[var1].getComponent(arg0) == null) {
 			boolean var2 = openInterface(var1, null);
@@ -680,13 +468,11 @@ public class Component {
 		return interfaces[var1].getComponent(arg0);
 	}
 
-	@ObfuscatedName("kp.m(II)Lhq;")
-	public static Interface method5367(int arg0) {
+    public static Interface method5367(int arg0) {
 		return interfaces[arg0 >> 16];
 	}
 
-	@ObfuscatedName("ahh.k(IIB)Lhf;")
-	public static Component method16682(int arg0, int arg1) {
+    public static Component method16682(int arg0, int arg1) {
 		Component var2 = get(arg0);
 		if (arg1 == -1) {
 			return var2;
@@ -697,8 +483,7 @@ public class Component {
 		}
 	}
 
-	@ObfuscatedName("kn.f(I[II)Z")
-	public static boolean openInterface(int arg0, int[] arg1) {
+    public static boolean openInterface(int arg0, int[] arg1) {
 		if (field8424[arg0]) {
 			return true;
 		}
@@ -711,8 +496,7 @@ public class Component {
 		}
 	}
 
-	@ObfuscatedName("la.w(I[ILhq;ZI)Lhq;")
-	public static Interface method5405(int arg0, int[] arg1, Interface arg2, boolean arg3) {
+    public static Interface method5405(int arg0, int[] arg1, Interface arg2, boolean arg3) {
 		if (!interfacesJs5.isGroupReady(arg0)) {
 			return null;
 		}
@@ -744,22 +528,19 @@ public class Component {
 		return arg2;
 	}
 
-	@ObfuscatedName("ahr.l(II)V")
-	public static void method16640(int arg0) {
+    public static void method16640(int arg0) {
 		if (arg0 != -1 && !field8424[arg0]) {
 			interfacesJs5.discardUnpacked(arg0);
 			interfaces[arg0] = null;
 		}
 	}
 
-	@ObfuscatedName("rq.u(II)V")
-	public static void method7602(int arg0) {
+    public static void method7602(int arg0) {
 		field8424[arg0] = false;
 		method16640(arg0);
 	}
 
-	@ObfuscatedName("hf.z(Lalw;I)V")
-	public void decode(Packet buf) {
+    public void decode(Packet buf) {
 		int var2 = buf.g1();
 		if (var2 == 255) {
 			var2 = -1;
@@ -995,8 +776,7 @@ public class Component {
 		this.onvarcstrtransmitlist = this.decodeTransmitList(buf);
 	}
 
-	@ObfuscatedName("hf.p(Lalw;I)[Ljava/lang/Object;")
-	public Object[] decodeHook(Packet buf) {
+    public Object[] decodeHook(Packet buf) {
 		int length = buf.g1();
 		if (length == 0) {
 			return null;
@@ -1014,8 +794,7 @@ public class Component {
 		return var3;
 	}
 
-	@ObfuscatedName("hf.d(Lalw;B)[I")
-	public int[] decodeTransmitList(Packet buf) {
+    public int[] decodeTransmitList(Packet buf) {
 		int length = buf.g1();
 		if (length == 0) {
 			return null;
@@ -1027,8 +806,7 @@ public class Component {
 		return var3;
 	}
 
-	@ObfuscatedName("hf.c(Ldh;B)Lcm;")
-	public Sprite method3941(Toolkit arg0) {
+    public Sprite method3941(Toolkit arg0) {
 		field2338 = false;
 		long var2 = ((long) this.graphicshadow << 40) + ((long) this.outline << 36) + (long) this.graphic + ((this.alpha ? 1L : 0L) << 35) + ((this.vflip ? 1L : 0L) << 38) + ((this.hflip ? 1L : 0L) << 39);
 		Sprite var4 = (Sprite) spriteCache.get(var2);
@@ -1065,22 +843,19 @@ public class Component {
 		return var6;
 	}
 
-	@ObfuscatedName("hf.r(Loi;Loq;S)Leu;")
-	public Font method3942(FontProvider arg0, FontFactory arg1) {
+    public Font method3942(FontProvider arg0, FontFactory arg1) {
 		Font var3 = (Font) arg0.getFont(arg1, this.textfont, false, this.fontmono);
 		field2338 = var3 == null;
 		return var3;
 	}
 
-	@ObfuscatedName("hf.v(Loi;Loq;I)Laac;")
-	public FontMetrics method3943(FontProvider arg0, FontFactory arg1) {
+    public FontMetrics method3943(FontProvider arg0, FontFactory arg1) {
 		FontMetrics var3 = arg0.getFontMetrics(arg1, this.textfont);
 		field2338 = var3 == null;
 		return var3;
 	}
 
-	@ObfuscatedName("hf.o(Ldh;ILaof;Laov;Laod;Laon;Laos;Lem;Lep;Laaq;Lxg;I)Ldo;")
-	public Model method3944(Toolkit arg0, int arg1, BASTypeList arg2, IDKTypeList arg3, NPCTypeList arg4, ObjTypeList arg5, SeqTypeList arg6, VariableTypeProvider arg7, VarIntDomain arg8, AnimationNode arg9, PlayerModel arg10) {
+    public Model method3944(Toolkit arg0, int arg1, BASTypeList arg2, IDKTypeList arg3, NPCTypeList arg4, ObjTypeList arg5, SeqTypeList arg6, VariableTypeProvider arg7, VarIntDomain arg8, AnimationNode arg9, PlayerModel arg10) {
 		field2338 = false;
 		if (this.modelkind == 0) {
 			return null;
@@ -1201,8 +976,7 @@ public class Component {
 		}
 	}
 
-	@ObfuscatedName("hf.s(Ldh;Ldo;Lou;IB)V")
-	public void method3951(Toolkit arg0, Model arg1, Matrix4x3 arg2, int arg3) {
+    public void method3951(Toolkit arg0, Model arg1, Matrix4x3 arg2, int arg3) {
 		arg1.method1689(arg2);
 		ModelParticleEmitter[] var5 = arg1.method1750();
 		ModelParticleEffector[] var6 = arg1.method1765();
@@ -1214,8 +988,7 @@ public class Component {
 		}
 	}
 
-	@ObfuscatedName("hf.y(Laom;Laok;I)Lsv;")
-	public SkyBox method4012(SkyBoxTypeList arg0, SkyDecorTypeList arg1) {
+    public SkyBox method4012(SkyBoxTypeList arg0, SkyDecorTypeList arg1) {
 		if (this.field2339 == -1) {
 			return null;
 		}
@@ -1228,44 +1001,38 @@ public class Component {
 		return var5;
 	}
 
-	@ObfuscatedName("ack.q(IB)V")
-	public static void resetModelCache(int arg0) {
+    public static void resetModelCache(int arg0) {
 		field11802 = arg0;
 		modelCache.reset();
 	}
 
-	@ObfuscatedName("lv.x(I)V")
-	public static void cacheReset() {
+    public static void cacheReset() {
 		spriteCache.reset();
 		modelCache.reset();
 		graphicCache.reset();
 		skyBoxCache.reset();
 	}
 
-	@ObfuscatedName("sp.b(II)V")
-	public static void cacheClean(int arg0) {
+    public static void cacheClean(int arg0) {
 		spriteCache.clean(arg0);
 		modelCache.clean(arg0);
 		graphicCache.clean(arg0);
 		skyBoxCache.clean(arg0);
 	}
 
-	@ObfuscatedName("kh.h(I)V")
-	public static void cacheRemoveSoftReferences() {
+    public static void cacheRemoveSoftReferences() {
 		spriteCache.clear();
 		modelCache.clear();
 		graphicCache.clear();
 		skyBoxCache.clear();
 	}
 
-	@ObfuscatedName("jh.a(B)V")
-	public static void method5075() {
+    public static void method5075() {
 		interfaces = new Interface[interfacesJs5.capacity()];
 		field8424 = new boolean[interfacesJs5.capacity()];
 	}
 
-	@ObfuscatedName("hf.g(I)V")
-	public void clearscripthooks() {
+    public void clearscripthooks() {
 		this.onload = null;
 		this.onclick = null;
 		this.onclickrepeat = null;
@@ -1318,8 +1085,7 @@ public class Component {
 		this.lastRedrawCycle = -1;
 	}
 
-	@ObfuscatedName("hf.i(ILjava/lang/String;B)V")
-	public void setop(int arg0, String arg1) {
+    public void setop(int arg0, String arg1) {
 		if (this.op == null || this.op.length <= arg0) {
 			String[] var3 = new String[arg0 + 1];
 			if (this.op != null) {
@@ -1332,8 +1098,7 @@ public class Component {
 		this.op[arg0] = arg1;
 	}
 
-	@ObfuscatedName("hf.j(III)V")
-	public void setopcursor(int arg0, int arg1) {
+    public void setopcursor(int arg0, int arg1) {
 		if (this.opcursor == null || this.opcursor.length <= arg0) {
 			int[] var3 = new int[arg0 + 1];
 			if (this.opcursor != null) {
@@ -1349,8 +1114,7 @@ public class Component {
 		this.opcursor[arg0] = arg1;
 	}
 
-	@ObfuscatedName("hf.t(Ldh;B)Lhx;")
-	public Graphic method3970(Toolkit arg0) {
+    public Graphic method3970(Toolkit arg0) {
 		long var2 = (long) this.parentlayer << 32 | (long) this.id & 0xFFFFFFFFL;
 		Graphic var4 = (Graphic) graphicCache.get(var2);
 		if (var4 != null) {
@@ -1398,8 +1162,7 @@ public class Component {
 		}
 	}
 
-	@ObfuscatedName("hf.ae(III)I")
-	public int getParam(int arg0, int arg1) {
+    public int getParam(int arg0, int arg1) {
 		if (this.params == null) {
 			return arg1;
 		} else {
@@ -1408,8 +1171,7 @@ public class Component {
 		}
 	}
 
-	@ObfuscatedName("hf.ag(ILjava/lang/String;I)Ljava/lang/String;")
-	public String getParam(int arg0, String arg1) {
+    public String getParam(int arg0, String arg1) {
 		if (this.params == null) {
 			return arg1;
 		} else {
@@ -1418,8 +1180,7 @@ public class Component {
 		}
 	}
 
-	@ObfuscatedName("hf.ah(III)V")
-	public void method3952(int arg0, int arg1) {
+    public void method3952(int arg0, int arg1) {
 		if (this.params == null) {
 			this.params = new HashTable(16);
 			this.params.put(new IntNode(arg1), (long) arg0);
@@ -1433,8 +1194,7 @@ public class Component {
 		}
 	}
 
-	@ObfuscatedName("hf.al(ILjava/lang/String;I)V")
-	public void method4003(int arg0, String arg1) {
+    public void method4003(int arg0, String arg1) {
 		if (this.params == null) {
 			this.params = new HashTable(16);
 			this.params.put(new ObjectNode(arg1), (long) arg0);
@@ -1447,8 +1207,7 @@ public class Component {
 		this.params.put(new ObjectNode(arg1), (long) arg0);
 	}
 
-	@ObfuscatedName("hf.ac(II)V")
-	public void method3954(int arg0) {
+    public void method3954(int arg0) {
 		if (this.params != null) {
 			Node var2 = this.params.get((long) arg0);
 			if (var2 != null) {
@@ -1457,8 +1216,7 @@ public class Component {
 		}
 	}
 
-	@ObfuscatedName("hf.ai(ISSI)V")
-	public void setrecol(int arg0, short arg1, short arg2) {
+    public void setrecol(int arg0, short arg1, short arg2) {
 		if (arg0 >= 5) {
 			return;
 		}
@@ -1470,8 +1228,7 @@ public class Component {
 		this.recol_d[arg0] = arg2;
 	}
 
-	@ObfuscatedName("hf.aw(ISSI)V")
-	public void setretex(int arg0, short arg1, short arg2) {
+    public void setretex(int arg0, short arg1, short arg2) {
 		if (arg0 >= 5) {
 			return;
 		}

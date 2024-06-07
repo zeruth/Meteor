@@ -2,29 +2,21 @@ package com.jagex.game.config.npctype;
 
 import deob.ObfuscatedName;
 
-@ObfuscatedName("ia")
 public class NPCTypeCustomisation {
 
-	@ObfuscatedName("ia.e")
-	public long field2688;
+    public long field2688;
 
-	@ObfuscatedName("ia.n")
-	public int[] field2689;
+    public int[] field2689;
 
-	@ObfuscatedName("ia.m")
-	public float[] field2683;
+    public float[] field2683;
 
-	@ObfuscatedName("ia.k")
-	public int[][] field2686;
+    public int[][] field2686;
 
-	@ObfuscatedName("ia.f")
-	public int[][] field2687;
+    public int[][] field2687;
 
-	@ObfuscatedName("ia.w")
-	public short[] field2684;
+    public short[] field2684;
 
-	@ObfuscatedName("ia.l")
-	public short[] field2685;
+    public short[] field2685;
 
 	public NPCTypeCustomisation(long arg0, int[] arg1, float[] arg2, int[][] arg3, int[][] arg4, short[] arg5, short[] arg6) {
 		this.field2688 = arg0;
@@ -60,8 +52,7 @@ public class NPCTypeCustomisation {
 		}
 	}
 
-	@ObfuscatedName("ia.e(IIFIIIIIIB)V")
-	public void method4528(int arg0, int arg1, float arg2, int arg3, int arg4, int arg5, int arg6, int arg7, int arg8) {
+    public void method4528(int arg0, int arg1, float arg2, int arg3, int arg4, int arg5, int arg6, int arg7, int arg8) {
 		this.method4530(arg0);
 		this.field2689[arg0] = arg1;
 		this.field2683[arg0] = arg2;
@@ -73,14 +64,12 @@ public class NPCTypeCustomisation {
 		this.field2687[arg0][2] = arg8;
 	}
 
-	@ObfuscatedName("ia.n(III)V")
-	public void method4529(int arg0, int arg1) {
+    public void method4529(int arg0, int arg1) {
 		this.method4530(arg0);
 		this.field2689[arg0] = arg1;
 	}
 
-	@ObfuscatedName("ia.m(II)V")
-	public void method4530(int arg0) {
+    public void method4530(int arg0) {
 		if (arg0 < this.field2689.length) {
 			return;
 		}

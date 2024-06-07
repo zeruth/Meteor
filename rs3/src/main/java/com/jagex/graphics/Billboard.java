@@ -2,32 +2,23 @@ package com.jagex.graphics;
 
 import deob.ObfuscatedName;
 
-@ObfuscatedName("bl")
 public class Billboard {
 
-	@ObfuscatedName("bl.e")
-	public final int field901;
+    public final int field901;
 
-	@ObfuscatedName("bl.n")
-	public final short field896;
+    public final short field896;
 
-	@ObfuscatedName("bl.m")
-	public final short field902;
+    public final short field902;
 
-	@ObfuscatedName("bl.k")
-	public final short field895;
+    public final short field895;
 
-	@ObfuscatedName("bl.f")
-	public final byte field899;
+    public final byte field899;
 
-	@ObfuscatedName("bl.w")
-	public final byte field900;
+    public final byte field900;
 
-	@ObfuscatedName("bl.l")
-	public final boolean field898;
+    public final boolean field898;
 
-	@ObfuscatedName("bl.u")
-	public final int field897;
+    public final int field897;
 
 	public Billboard(int arg0, int arg1, int arg2, int arg3, int arg4, int arg5, int arg6, int arg7, int arg8, boolean arg9, int arg10) {
 		this.field901 = arg0;

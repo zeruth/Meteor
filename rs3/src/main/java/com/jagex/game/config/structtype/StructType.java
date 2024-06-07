@@ -11,14 +11,11 @@ import com.jagex.game.world.entity.ObjectNode;
 import com.jagex.math.IntMath;
 import deob.ObfuscatedName;
 
-@ObfuscatedName("adx")
 public class StructType extends SecondaryNode implements ConfigType, MutableConfig {
 
-	@ObfuscatedName("adx.k")
-	public HashTable params;
+    public HashTable params;
 
-	@ObfuscatedName("adx.e(Lalw;B)V")
-	public void decode(Packet buf) {
+    public void decode(Packet buf) {
 		while (true) {
 			int code = buf.g1();
 			if (code == 0) {
@@ -28,8 +25,7 @@ public class StructType extends SecondaryNode implements ConfigType, MutableConf
 		}
 	}
 
-	@ObfuscatedName("adx.u(Lalw;IS)V")
-	public void decode(Packet buf, int code) {
+    public void decode(Packet buf, int code) {
 		if (code != 249) {
 			return;
 		}
@@ -51,8 +47,7 @@ public class StructType extends SecondaryNode implements ConfigType, MutableConf
 		}
 	}
 
-	@ObfuscatedName("adx.p(IIB)I")
-	public int getParam(int arg0, int arg1) {
+    public int getParam(int arg0, int arg1) {
 		if (this.params == null) {
 			return arg1;
 		} else {
@@ -61,8 +56,7 @@ public class StructType extends SecondaryNode implements ConfigType, MutableConf
 		}
 	}
 
-	@ObfuscatedName("adx.d(ILjava/lang/String;I)Ljava/lang/String;")
-	public String getParam(int arg0, String arg1) {
+    public String getParam(int arg0, String arg1) {
 		if (this.params == null) {
 			return arg1;
 		} else {
@@ -71,11 +65,9 @@ public class StructType extends SecondaryNode implements ConfigType, MutableConf
 		}
 	}
 
-	@ObfuscatedName("adx.z(IB)V")
-	public void setId(int arg0) {
+    public void setId(int arg0) {
 	}
 
-	@ObfuscatedName("adx.n(I)V")
-	public void postDecode() {
+    public void postDecode() {
 	}
 }

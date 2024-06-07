@@ -9,21 +9,17 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 
-@ObfuscatedName("mb")
 public class BussManager {
 
-	@ObfuscatedName("mb.e")
-	public Map busses = new HashMap();
+    public Map busses = new HashMap();
 
-	@ObfuscatedName("mb.n")
-	public SoundBackend backend;
+    public SoundBackend backend;
 
 	public BussManager(SoundBackend arg0) {
 		this.backend = arg0;
 	}
 
-	@ObfuscatedName("mb.e(I)V")
-	public void update() {
+    public void update() {
 		Iterator busses = this.busses.values().iterator();
 		while (busses.hasNext()) {
 			AudioBuss buss = (AudioBuss) busses.next();
@@ -31,8 +27,7 @@ public class BussManager {
 		}
 	}
 
-	@ObfuscatedName("mb.n(IIFLma;I)Lmj;")
-	public AudioBuss addBuss(int id, int arg1, float arg2, VolumeProvider arg3) {
+    public AudioBuss addBuss(int id, int arg1, float arg2, VolumeProvider arg3) {
 		if (this.getBuss(id) != null) {
 			return null;
 		}
@@ -46,8 +41,7 @@ public class BussManager {
 		return var7;
 	}
 
-	@ObfuscatedName("mb.m(IB)Lmj;")
-	public AudioBuss getBuss(int id) {
+    public AudioBuss getBuss(int id) {
 		return (AudioBuss) this.busses.get(id);
 	}
 }

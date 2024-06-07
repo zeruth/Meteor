@@ -7,16 +7,12 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-@ObfuscatedName("alr")
 public class NativeMouse extends IcmpService {
 
-	@ObfuscatedName("alr.e")
 	public static volatile NativeMouse field11719;
 
-	@ObfuscatedName("alr.n")
 	public final List field11718 = new ArrayList();
 
-	@ObfuscatedName("ajh.f(Lyh;S)V")
 	public static void method17426(NativeMouseListener arg0) {
 		if (field11719 == null) {
 			throw new IllegalStateException("");
@@ -24,7 +20,6 @@ public class NativeMouse extends IcmpService {
 		field11719.field11718.add(arg0);
 	}
 
-	@ObfuscatedName("ka.w(I)Z")
 	public static boolean method5216() {
 		try {
 			if (!available()) {
@@ -43,7 +38,6 @@ public class NativeMouse extends IcmpService {
 		return true;
 	}
 
-	@ObfuscatedName("yu.l(I)V")
 	public static void method13850() {
 		if (field11719 == null) {
 			return;

@@ -10,47 +10,33 @@ import rs2.client.Client;
 import rs2.client.scene.entities.PathingEntity;
 import rs2.client.scene.entities.ProjectileAnimation;
 
-@ObfuscatedName("agh")
 public class ProjAnimCutsceneAction extends CutsceneAction {
 
-	@ObfuscatedName("agh.k")
-	public final int field10340;
+    public final int field10340;
 
-	@ObfuscatedName("agh.f")
-	public final int field10341;
+    public final int field10341;
 
-	@ObfuscatedName("agh.w")
-	public final int field10342;
+    public final int field10342;
 
-	@ObfuscatedName("agh.l")
-	public final int field10343;
+    public final int field10343;
 
-	@ObfuscatedName("agh.u")
-	public final int field10344;
+    public final int field10344;
 
-	@ObfuscatedName("agh.z")
-	public final int field10345;
+    public final int field10345;
 
-	@ObfuscatedName("agh.p")
-	public final int field10346;
+    public final int field10346;
 
-	@ObfuscatedName("agh.d")
-	public final int field10338;
+    public final int field10338;
 
-	@ObfuscatedName("agh.c")
-	public final int field10348;
+    public final int field10348;
 
-	@ObfuscatedName("agh.r")
-	public final int field10347;
+    public final int field10347;
 
-	@ObfuscatedName("agh.v")
-	public final int field10350;
+    public final int field10350;
 
-	@ObfuscatedName("agh.o")
-	public final int field10351;
+    public final int field10351;
 
-	@ObfuscatedName("agh.s")
-	public final int field10352;
+    public final int field10352;
 
 	public ProjAnimCutsceneAction(Packet arg0, int arg1, int arg2) {
 		super(arg0);
@@ -87,8 +73,7 @@ public class ProjAnimCutsceneAction extends CutsceneAction {
 		this.field10352 = arg0.g1();
 	}
 
-	@ObfuscatedName("agh.n(I)V")
-	public void method2890() {
+    public void method2890() {
 		int var1;
 		int var2;
 		int var3;
@@ -123,8 +108,7 @@ public class ProjAnimCutsceneAction extends CutsceneAction {
 		Client.projectiles.addTail(new ProjectileEntityNode(var11));
 	}
 
-	@ObfuscatedName("agh.k(I)Z")
-	public boolean method2891() {
+    public boolean method2891() {
 		EffectAnimType var1 = (EffectAnimType) Client.effectAnimTypeList.list(this.field10347);
 		boolean var2 = var1.hasReadyModel();
 		SeqType var3 = (SeqType) Client.seqTypeList.list(var1.anim);

@@ -11,11 +11,9 @@ import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.Map.Entry;
 
-@ObfuscatedName("h")
 public class TotpPreferences {
 
-	@ObfuscatedName("h.m")
-	public LinkedHashMap field600;
+    public LinkedHashMap field600;
 
 	public TotpPreferences() {
 		this((Packet) null);
@@ -36,8 +34,7 @@ public class TotpPreferences {
 		}
 	}
 
-	@ObfuscatedName("h.e(Lalw;B)V")
-	public void method580(Packet arg0) {
+    public void method580(Packet arg0) {
 		arg0.p1(1);
 		arg0.p1(this.field600.size());
 		Iterator var2 = this.field600.entrySet().iterator();
@@ -48,8 +45,7 @@ public class TotpPreferences {
 		}
 	}
 
-	@ObfuscatedName("h.n(JII)V")
-	public void method590(long arg0, int arg1) {
+    public void method590(long arg0, int arg1) {
 		if (this.field600.size() >= 10 && !this.field600.containsKey(arg0)) {
 			Iterator var4 = this.field600.entrySet().iterator();
 			var4.next();
@@ -59,18 +55,15 @@ public class TotpPreferences {
 		this.method578();
 	}
 
-	@ObfuscatedName("h.m(J)Z")
-	public boolean containsKey(long arg0) {
+    public boolean containsKey(long arg0) {
 		return this.field600.containsKey(arg0);
 	}
 
-	@ObfuscatedName("h.k(J)I")
-	public int getValue(long key) {
+    public int getValue(long key) {
 		return (Integer) this.field600.get(key);
 	}
 
-	@ObfuscatedName("ane.f(I)Lh;")
-	public static TotpPreferences method18618() {
+    public static TotpPreferences method18618() {
 		FileOnDisk var0 = null;
 		TotpPreferences var7;
 		try {
@@ -98,8 +91,7 @@ public class TotpPreferences {
 		return var7;
 	}
 
-	@ObfuscatedName("h.w(B)V")
-	public void method578() {
+    public void method578() {
 		FileOnDisk var1 = null;
 		try {
 			var1 = GameShell.openPrefs("3", Client.modegame.titleURL, true);

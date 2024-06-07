@@ -3,76 +3,55 @@ package com.jagex.graphics.postprocess.effects;
 import com.jagex.graphics.*;
 import deob.ObfuscatedName;
 
-@ObfuscatedName("aii")
 public class ColourGradingBloomEffect extends GpuPostProcessEffect {
 
-	@ObfuscatedName("aii.k")
-	public static float field10623 = 0.25F;
+    public static float field10623 = 0.25F;
 
-	@ObfuscatedName("aii.f")
-	public static float field10624 = 1.0F;
+    public static float field10624 = 1.0F;
 
-	@ObfuscatedName("aii.w")
-	public static float field10625 = 1.0F;
+    public static float field10625 = 1.0F;
 
-	@ObfuscatedName("aii.l")
-	public static float field10626 = 1.0F;
+    public static float field10626 = 1.0F;
 
-	@ObfuscatedName("aii.u")
-	public GpuShader shader;
+    public GpuShader shader;
 
-	@ObfuscatedName("aii.z")
-	public GpuProgram techFullscreenTriProgram;
+    public GpuProgram techFullscreenTriProgram;
 
-	@ObfuscatedName("aii.p")
-	public GpuProgram brightpassProgram;
+    public GpuProgram brightpassProgram;
 
-	@ObfuscatedName("aii.d")
-	public GpuProgram blurProgram;
+    public GpuProgram blurProgram;
 
-	@ObfuscatedName("aii.c")
-	public GpuProgram compositeProgram;
+    public GpuProgram compositeProgram;
 
-	@ObfuscatedName("aii.r")
-	public GpuProgram techDefaultProgram;
+    public GpuProgram techDefaultProgram;
 
-	@ObfuscatedName("aii.v")
-	public ProgramUniform sceneTexUniform;
+    public ProgramUniform sceneTexUniform;
 
-	@ObfuscatedName("aii.o")
-	public ProgramUniform bloomTex1Uniform;
+    public ProgramUniform bloomTex1Uniform;
 
-	@ObfuscatedName("aii.s")
-	public ProgramUniform paramsUniform;
+    public ProgramUniform paramsUniform;
 
-	@ObfuscatedName("aii.y")
-	public ProgramUniform sampleSizeUniform;
+    public ProgramUniform sampleSizeUniform;
 
-	@ObfuscatedName("aii.q")
-	public ProgramUniform pixelOffsetAndBloomScaleUniform;
+    public ProgramUniform pixelOffsetAndBloomScaleUniform;
 
-	@ObfuscatedName("aii.x")
-	public ProgramUniform posAndTexCoordsUniform;
+    public ProgramUniform posAndTexCoordsUniform;
 
-	@ObfuscatedName("aii.b")
-	public boolean field10639;
+    public boolean field10639;
 
 	public ColourGradingBloomEffect(GpuToolkit arg0) {
 		super(arg0);
 	}
 
-	@ObfuscatedName("aii.e()Z")
-	public boolean method5558() {
+    public boolean method5558() {
 		return this.gpuRenderer.hasFramebufferObject && this.gpuRenderer.hasFragmentShader() && this.gpuRenderer.method15959(true);
 	}
 
-	@ObfuscatedName("aii.n()Z")
-	public boolean method5559() {
+    public boolean method5559() {
 		return this.field10639;
 	}
 
-	@ObfuscatedName("aii.m()Z")
-	public boolean method5572() {
+    public boolean method5572() {
 		if (!this.method5558()) {
 			return false;
 		}
@@ -114,21 +93,17 @@ public class ColourGradingBloomEffect extends GpuPostProcessEffect {
 		}
 	}
 
-	@ObfuscatedName("aii.w(II)V")
-	public void method5574(int arg0, int arg1) {
+    public void method5574(int arg0, int arg1) {
 	}
 
-	@ObfuscatedName("aii.f()V")
-	public void method5562() {
+    public void method5562() {
 	}
 
-	@ObfuscatedName("aii.z()I")
-	public int method5566() {
+    public int method5566() {
 		return 4;
 	}
 
-	@ObfuscatedName("aii.l(ILafq;Llz;Ldw;Llz;Z)V")
-	public void method5564(int arg0, FrameBuffer arg1, GpuTexture arg2, EffectInterface arg3, GpuTexture arg4, boolean arg5) {
+    public void method5564(int arg0, FrameBuffer arg1, GpuTexture arg2, EffectInterface arg3, GpuTexture arg4, boolean arg5) {
 		float var7 = this.gpuRenderer.method15954();
 		float var8 = (float) arg1.getWidth();
 		float var9 = (float) arg1.getHeight();
@@ -182,23 +157,19 @@ public class ColourGradingBloomEffect extends GpuPostProcessEffect {
 		this.gpuRenderer.method2164(0, 0, var14, var15);
 	}
 
-	@ObfuscatedName("aii.u(I)V")
-	public void method5565(int arg0) {
+    public void method5565(int arg0) {
 		this.shader.method4214();
 	}
 
-	@ObfuscatedName("aii.d()I")
-	public int method5568() {
+    public int method5568() {
 		return 1;
 	}
 
-	@ObfuscatedName("aii.p()I")
-	public int method5567() {
+    public int method5567() {
 		return 0;
 	}
 
-	@ObfuscatedName("aii.v()Z")
-	public boolean method5571() {
+    public boolean method5571() {
 		return false;
 	}
 }

@@ -19,35 +19,25 @@ import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Iterator;
 
-@ObfuscatedName("aiw")
 public class DummySoundBackend extends SoundBackend {
 
-	@ObfuscatedName("aiw.n")
-	public HashMap field10679 = new HashMap();
+    public HashMap field10679 = new HashMap();
 
-	@ObfuscatedName("aiw.m")
-	public BussManager field10680 = new BussManager(this);
+    public BussManager field10680 = new BussManager(this);
 
-	@ObfuscatedName("aiw.k")
-	public volatile boolean field10681 = false;
+    public volatile boolean field10681 = false;
 
-	@ObfuscatedName("aiw.f")
-	public Thread field10678;
+    public Thread field10678;
 
-	@ObfuscatedName("aiw.w")
-	public Thread field10683;
+    public Thread field10683;
 
-	@ObfuscatedName("aiw.l")
-	public long field10684 = MonotonicTime.get();
+    public long field10684 = MonotonicTime.get();
 
-	@ObfuscatedName("aiw.u")
-	public Runnable field10685 = new DummySoundBackend_Task1(this);
+    public Runnable field10685 = new DummySoundBackend_Task1(this);
 
-	@ObfuscatedName("aiw.z")
-	public Runnable field10686 = new DummySoundBackend_Task2(this);
+    public Runnable field10686 = new DummySoundBackend_Task2(this);
 
-	@ObfuscatedName("ej")
-	public static class DummySoundBackend_Task1 implements Runnable {
+    public static class DummySoundBackend_Task1 implements Runnable {
 
 		// $FF: synthetic field
 		public final DummySoundBackend this$0;
@@ -86,8 +76,7 @@ public class DummySoundBackend extends SoundBackend {
 		}
 	}
 
-	@ObfuscatedName("ei")
-	public static class DummySoundBackend_Task2 implements Runnable {
+    public static class DummySoundBackend_Task2 implements Runnable {
 
 		// $FF: synthetic field
 		public final DummySoundBackend this$0;
@@ -127,8 +116,7 @@ public class DummySoundBackend extends SoundBackend {
 	}
 
 	// line 78
-	@ObfuscatedName("aiw.aw(I)Ljava/util/HashMap;")
-	public HashMap method16802() {
+    public HashMap method16802() {
 		return this.field10679;
 	}
 
@@ -157,8 +145,7 @@ public class DummySoundBackend extends SoundBackend {
 	}
 
 	// line 112
-	@ObfuscatedName("aiw.e(I)V")
-	public void method5874() {
+    public void method5874() {
 		if (this.field10680 != null) {
 			this.field10680.update();
 		}
@@ -210,8 +197,7 @@ public class DummySoundBackend extends SoundBackend {
 		}
 	}
 
-	@ObfuscatedName("el")
-	public static class DummySoundComparator implements Comparator {
+    public static class DummySoundComparator implements Comparator {
 
 		// $FF: synthetic field
 		public final DummySoundBackend this$0;
@@ -221,8 +207,7 @@ public class DummySoundBackend extends SoundBackend {
 			this.this$0 = arg0;
 		}
 
-		@ObfuscatedName("el.e(Lrq;Lrq;I)I")
-		public int method2754(AudioProcessingUnit arg0, AudioProcessingUnit arg1) {
+        public int method2754(AudioProcessingUnit arg0, AudioProcessingUnit arg1) {
 			float var3 = arg0.method7531();
 			float var4 = arg1.method7531();
 			if (var4 > var3) {
@@ -244,29 +229,24 @@ public class DummySoundBackend extends SoundBackend {
 	}
 
 	// line 172
-	@ObfuscatedName("aiw.f(Ljava/lang/Object;I)I")
-	public int method5864(Object arg0) {
+    public int method5864(Object arg0) {
 		long var2 = MonotonicTime.get();
 		int var4 = (int) (180000.0F / ((float) (var2 - this.field10684) / 1000.0F));
 		this.field10684 = var2;
 		return var4;
 	}
 
-	@ObfuscatedName("aiw.n(IILnd;Lmw;IFB)Ljava/lang/Object;")
-	public Object playSample(int arg0, int arg1, AudioFormat format, AudioEndianness endianness, int arg4, float arg5) {
+    public Object playSample(int arg0, int arg1, AudioFormat format, AudioEndianness endianness, int arg4, float arg5) {
 		return new Object();
 	}
 
-	@ObfuscatedName("aiw.m(Ljava/lang/Object;I)V")
-	public void method5863(Object arg0) {
+    public void method5863(Object arg0) {
 	}
 
-	@ObfuscatedName("aiw.k(Ljava/lang/Object;[BIII)V")
-	public void method5875(Object arg0, byte[] arg1, int arg2, int arg3) {
+    public void method5875(Object arg0, byte[] arg1, int arg2, int arg3) {
 	}
 
-	@ObfuscatedName("aiw.w(Lqk;B)Lrq;")
-	public AudioProcessingUnit method5865(SoundRelatedType2 arg0) {
+    public AudioProcessingUnit method5865(SoundRelatedType2 arg0) {
 		HashMap var2 = this.field10679;
 		synchronized (this.field10679) {
 			AudioProcessingUnit[] var3 = (AudioProcessingUnit[]) this.field10679.get(arg0);
@@ -285,19 +265,16 @@ public class DummySoundBackend extends SoundBackend {
 		}
 	}
 
-	@ObfuscatedName("aiw.l(Lmj;I)Ljava/lang/Object;")
-	public Object method5866(AudioBuss arg0) {
+    public Object method5866(AudioBuss arg0) {
 		return null;
 	}
 
-	@ObfuscatedName("aiw.u(I)Lmb;")
-	public BussManager getBussManager() {
+    public BussManager getBussManager() {
 		return this.field10680;
 	}
 
 	// line 210
-	@ObfuscatedName("aiw.z(B)V")
-	public void method5868() {
+    public void method5868() {
 		HashMap var1 = this.method16802();
 		synchronized (var1) {
 			Iterator var3 = var1.keySet().iterator();

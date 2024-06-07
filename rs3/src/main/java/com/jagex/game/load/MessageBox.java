@@ -4,66 +4,47 @@ import com.jagex.graphics.*;
 import deob.ObfuscatedName;
 import rs2.client.Client;
 
-@ObfuscatedName("as")
 public class MessageBox {
 
-	@ObfuscatedName("as.e")
-	public static LoadingScreenAlignmentX halign;
+    public static LoadingScreenAlignmentX halign;
 
-	@ObfuscatedName("as.n")
-	public static LoadingScreenAlignmentY valign;
+    public static LoadingScreenAlignmentY valign;
 
-	@ObfuscatedName("as.m")
-	public static int boxX;
+    public static int boxX;
 
-	@ObfuscatedName("j.k")
-	public static int boxY;
+    public static int boxY;
 
-	@ObfuscatedName("as.f")
-	public static int minWidth;
+    public static int minWidth;
 
-	@ObfuscatedName("x.w")
-	public static int minHeight;
+    public static int minHeight;
 
-	@ObfuscatedName("uz.l")
-	public static int borderCornerId;
+    public static int borderCornerId;
 
-	@ObfuscatedName("gp.u")
-	public static int borderLineId;
+    public static int borderLineId;
 
-	@ObfuscatedName("vy.z")
-	public static int backgroundId;
+    public static int backgroundId;
 
-	@ObfuscatedName("as.p")
-	public static int fontId;
+    public static int fontId;
 
-	@ObfuscatedName("as.d")
-	public static SpriteData borderCorner;
+    public static SpriteData borderCorner;
 
-	@ObfuscatedName("as.c")
-	public static SpriteData borderLine;
+    public static SpriteData borderLine;
 
-	@ObfuscatedName("rk.r")
-	public static SpriteData background;
+    public static SpriteData background;
 
-	@ObfuscatedName("acm.v")
-	public static FontMetrics font1;
+    public static FontMetrics font1;
 
-	@ObfuscatedName("as.o")
-	public static PalettedSpriteData font2;
+    public static PalettedSpriteData font2;
 
-	@ObfuscatedName("ae.s")
-	public static int color;
+    public static int color;
 
-	@ObfuscatedName("adx.y")
-	public static boolean setup;
+    public static boolean setup;
 
 	public MessageBox() throws Throwable {
 		throw new Error();
 	}
 
-	@ObfuscatedName("fm.e(Lkv;Lky;IIIIIIIIII)V")
-	public static void setup(LoadingScreenAlignmentX halign, LoadingScreenAlignmentY valign, int boxX, int boxY, int minWidth, int minHeight, int borderCornerId, int borderLineId, int backgroundId, int color, int fontId) {
+    public static void setup(LoadingScreenAlignmentX halign, LoadingScreenAlignmentY valign, int boxX, int boxY, int minWidth, int minHeight, int borderCornerId, int borderLineId, int backgroundId, int color, int fontId) {
 		MessageBox.halign = halign;
 		MessageBox.valign = valign;
 		MessageBox.boxX = boxX;
@@ -82,8 +63,7 @@ public class MessageBox {
 		MessageBox.setup = true;
 	}
 
-	@ObfuscatedName("agz.n(I)Z")
-	public static boolean downloadSprites() {
+    public static boolean downloadSprites() {
 		boolean loaded = true;
 
 		if (borderCorner == null) {
@@ -129,8 +109,7 @@ public class MessageBox {
 		return loaded;
 	}
 
-	@ObfuscatedName("ae.m(Ljava/lang/String;ZLdh;Leu;Laac;B)V")
-	public static void draw(String text, boolean arg1, Toolkit toolkit, Font font, FontMetrics fontMetrics) {
+    public static void draw(String text, boolean arg1, Toolkit toolkit, Font font, FontMetrics fontMetrics) {
 		boolean loaded = !setup || downloadSprites();
 		if (!loaded) {
 			return;

@@ -6,48 +6,35 @@ import com.jagex.graphics.ModelUnlit;
 import com.jagex.js5.Js5;
 import deob.ObfuscatedName;
 
-@ObfuscatedName("jv")
 public class IDKType implements ConfigType {
 
-	@ObfuscatedName("jv.e")
-	public final Js5 configClient;
+    public final Js5 configClient;
 
-	@ObfuscatedName("jv.n")
-	public int[] models;
+    public int[] models;
 
-	@ObfuscatedName("jv.m")
-	public short[] recol_s;
+    public short[] recol_s;
 
-	@ObfuscatedName("jv.k")
-	public short[] recol_d;
+    public short[] recol_d;
 
-	@ObfuscatedName("jv.f")
-	public short[] retex_s;
+    public short[] retex_s;
 
-	@ObfuscatedName("jv.w")
-	public short[] retex_d;
+    public short[] retex_d;
 
-	@ObfuscatedName("jv.l")
-	public byte[] recolindices;
+    public byte[] recolindices;
 
-	@ObfuscatedName("jv.u")
-	public byte[] retexindices;
+    public byte[] retexindices;
 
-	@ObfuscatedName("jv.z")
-	public int[] heads = new int[] { -1, -1, -1, -1, -1 };
+    public int[] heads = new int[] { -1, -1, -1, -1, -1 };
 
-	@ObfuscatedName("jv.p")
-	public static final int[] field2951 = new int[] { 0, 1, 2, 3, 4, 5, 6, 14 };
+    public static final int[] field2951 = new int[] { 0, 1, 2, 3, 4, 5, 6, 14 };
 
-	@ObfuscatedName("jv.d")
-	public static final int[] field2959 = new int[] { 7, 8, 9, 10, 11, 12, 13, 15 };
+    public static final int[] field2959 = new int[] { 7, 8, 9, 10, 11, 12, 13, 15 };
 
 	public IDKType(int id, Js5 configClient) {
 		this.configClient = configClient;
 	}
 
-	@ObfuscatedName("jv.e(Lalw;B)V")
-	public void decode(Packet buf) {
+    public void decode(Packet buf) {
 		while (true) {
 			int code = buf.g1();
 			if (code == 0) {
@@ -57,8 +44,7 @@ public class IDKType implements ConfigType {
 		}
 	}
 
-	@ObfuscatedName("jv.u(Lalw;II)V")
-	public void decode(Packet buf, int code) {
+    public void decode(Packet buf, int code) {
 		if (code == 1) {
 			buf.g1();
 		} else if (code == 2) {
@@ -120,12 +106,10 @@ public class IDKType implements ConfigType {
 		}
 	}
 
-	@ObfuscatedName("jv.n(I)V")
-	public void postDecode() {
+    public void postDecode() {
 	}
 
-	@ObfuscatedName("jv.z(B)Z")
-	public boolean hasReadyModels() {
+    public boolean hasReadyModels() {
 		if (this.models == null) {
 			return true;
 		}
@@ -141,8 +125,7 @@ public class IDKType implements ConfigType {
 		}
 	}
 
-	@ObfuscatedName("jv.p(I)Ldq;")
-	public ModelUnlit getModel() {
+    public ModelUnlit getModel() {
 		if (this.models == null) {
 			return null;
 		}
@@ -185,8 +168,7 @@ public class IDKType implements ConfigType {
 		return var6;
 	}
 
-	@ObfuscatedName("jv.d(I)Z")
-	public boolean hasReadyHeads() {
+    public boolean hasReadyHeads() {
 		boolean var1 = true;
 		Js5 var2 = this.configClient;
 		synchronized (this.configClient) {
@@ -199,8 +181,7 @@ public class IDKType implements ConfigType {
 		}
 	}
 
-	@ObfuscatedName("jv.c(I)Ldq;")
-	public ModelUnlit getHeadModel() {
+    public ModelUnlit getHeadModel() {
 		ModelUnlit[] var1 = new ModelUnlit[5];
 		int var2 = 0;
 		Js5 var3 = this.configClient;

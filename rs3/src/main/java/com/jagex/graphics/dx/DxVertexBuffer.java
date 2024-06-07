@@ -7,26 +7,19 @@ import jagdx.IDirect3DVertexBuffer;
 import jagdx.IUnknown;
 import jagdx.HRESULT;
 
-@ObfuscatedName("om")
 public class DxVertexBuffer implements VertexBuffer {
 
-	@ObfuscatedName("om.e")
-	public final DxToolkit renderer;
+    public final DxToolkit renderer;
 
-	@ObfuscatedName("om.n")
-	public int field4223;
+    public int field4223;
 
-	@ObfuscatedName("om.m")
-	public int field4224;
+    public int field4224;
 
-	@ObfuscatedName("om.k")
-	public byte field4222;
+    public byte field4222;
 
-	@ObfuscatedName("om.f")
-	public final boolean field4226;
+    public final boolean field4226;
 
-	@ObfuscatedName("om.w")
-	public long field4227 = 0L;
+    public long field4227 = 0L;
 
 	public DxVertexBuffer(DxToolkit arg0, boolean arg1) {
 		this.renderer = arg0;
@@ -34,18 +27,15 @@ public class DxVertexBuffer implements VertexBuffer {
 		this.renderer.method15985(this);
 	}
 
-	@ObfuscatedName("om.k()I")
-	public int method5743() {
+    public int method5743() {
 		return this.field4224;
 	}
 
-	@ObfuscatedName("om.a()I")
-	public int method6229() {
+    public int method6229() {
 		return this.field4222;
 	}
 
-	@ObfuscatedName("om.e(II)Z")
-	public boolean allocate(int arg0, int arg1) {
+    public boolean allocate(int arg0, int arg1) {
 		this.field4224 = arg0;
 		this.field4222 = (byte) arg1;
 		if (this.field4224 > this.field4223) {
@@ -66,23 +56,19 @@ public class DxVertexBuffer implements VertexBuffer {
 		return this.field4227 != 0L;
 	}
 
-	@ObfuscatedName("om.w(II)J")
-	public long lock(int arg0, int arg1) {
+    public long lock(int arg0, int arg1) {
 		return IDirect3DVertexBuffer.Lock(this.field4227, arg0, arg1, this.field4226 ? 8192 : 0);
 	}
 
-	@ObfuscatedName("om.l()V")
-	public void unlock() {
+    public void unlock() {
 		IDirect3DVertexBuffer.Unlock(this.field4227);
 	}
 
-	@ObfuscatedName("om.f(IIJ)Z")
-	public boolean upload(int arg0, int arg1, long arg2) {
+    public boolean upload(int arg0, int arg1, long arg2) {
 		return HRESULT.SUCCEEDED(IDirect3DVertexBuffer.Upload(this.field4227, arg0, arg1, this.field4226 ? 8192 : 0, arg2));
 	}
 
-	@ObfuscatedName("om.m()V")
-	public void delete() {
+    public void delete() {
 		if (this.field4227 != 0L) {
 			IUnknown.Release(this.field4227);
 			this.field4227 = 0L;
@@ -92,8 +78,7 @@ public class DxVertexBuffer implements VertexBuffer {
 		this.renderer.method16198(this);
 	}
 
-	@ObfuscatedName("om.g()V")
-	public void method6230() {
+    public void method6230() {
 		if (this.field4227 != 0L) {
 			this.renderer.method19023(this.field4227);
 			this.field4227 = 0L;

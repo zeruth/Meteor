@@ -4,20 +4,15 @@ import deob.ObfuscatedName;
 
 import java.io.File;
 
-@ObfuscatedName("rd")
 public class NativeLibraryConfig {
 
-	@ObfuscatedName("rd.e")
-	public static final String field5075;
+    public static final String field5075;
 
-	@ObfuscatedName("rd.n")
-	public static final String osName;
+    public static final String osName;
 
-	@ObfuscatedName("rd.m")
-	public static final String field5076;
+    public static final String field5076;
 
-	@ObfuscatedName("rd.k")
-	public static final String field5073;
+    public static final String field5073;
 
 	static {
 		String var0 = "Unknown";

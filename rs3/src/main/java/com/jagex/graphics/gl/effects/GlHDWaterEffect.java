@@ -4,20 +4,15 @@ import com.jagex.graphics.gl.*;
 import deob.ObfuscatedName;
 import jaggl.OpenGL;
 
-@ObfuscatedName("aev")
 public class GlHDWaterEffect extends GlEffect {
 
-	@ObfuscatedName("aev.k")
-	public GlProgram field9341;
+    public GlProgram field9341;
 
-	@ObfuscatedName("aev.f")
-	public boolean field9342 = false;
+    public boolean field9342 = false;
 
-	@ObfuscatedName("aev.w")
-	public boolean field9343 = false;
+    public boolean field9343 = false;
 
-	@ObfuscatedName("aev.l")
-	public GlWaterRelated field9344;
+    public GlWaterRelated field9344;
 
 	public GlHDWaterEffect(GlToolkit arg0, GlWaterRelated arg1) {
 		super(arg0);
@@ -30,13 +25,11 @@ public class GlHDWaterEffect extends GlEffect {
 		}
 	}
 
-	@ObfuscatedName("aev.e()Z")
-	public boolean method1252() {
+    public boolean method1252() {
 		return this.field9343;
 	}
 
-	@ObfuscatedName("aev.n(Z)V")
-	public void method1263(boolean arg0) {
+    public void method1263(boolean arg0) {
 		GlCubeTexture var2 = this.field1021.method15760();
 		if (!this.field9343 || var2 == null) {
 			return;
@@ -55,12 +48,10 @@ public class GlHDWaterEffect extends GlEffect {
 		this.field9342 = true;
 	}
 
-	@ObfuscatedName("aev.m(Z)V")
-	public void method1254(boolean arg0) {
+    public void method1254(boolean arg0) {
 	}
 
-	@ObfuscatedName("aev.k()V")
-	public void method1255() {
+    public void method1255() {
 		if (!this.field9342) {
 			return;
 		}
@@ -72,8 +63,7 @@ public class GlHDWaterEffect extends GlEffect {
 		this.field9342 = false;
 	}
 
-	@ObfuscatedName("aev.f(II)V")
-	public void method1256(int arg0, int arg1) {
+    public void method1256(int arg0, int arg1) {
 		if (!this.field9342) {
 			return;
 		}
@@ -88,8 +78,7 @@ public class GlHDWaterEffect extends GlEffect {
 		OpenGL.glUniform1f(OpenGL.glGetUniformLocation(var7, "breakWaterOffset"), var6);
 	}
 
-	@ObfuscatedName("aev.w(Lbq;I)V")
-	public void method1251(GlTexture arg0, int arg1) {
+    public void method1251(GlTexture arg0, int arg1) {
 		if (!this.field9342) {
 			this.field1021.method15777(arg0);
 			this.field1021.method15778(arg1);

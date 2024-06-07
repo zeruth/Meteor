@@ -6,34 +6,25 @@ import com.jagex.encryption.Isaac;
 import com.jagex.game.network.protocol.ClientProt;
 import deob.ObfuscatedName;
 
-@ObfuscatedName("akl")
 public class ClientMessage extends Node {
 
-	@ObfuscatedName("akl.k")
-	public ClientProt prot;
+    public ClientProt prot;
 
-	@ObfuscatedName("akl.f")
-	public int size;
+    public int size;
 
-	@ObfuscatedName("akl.w")
-	public PacketBit buf;
+    public PacketBit buf;
 
-	@ObfuscatedName("akl.l")
-	public int pos;
+    public int pos;
 
-	@ObfuscatedName("akl.u")
-	public static ClientMessage[] messages = new ClientMessage[300];
+    public static ClientMessage[] messages = new ClientMessage[300];
 
-	@ObfuscatedName("akl.z")
-	public static int messageIndex = 0;
+    public static int messageIndex = 0;
 
-	@ObfuscatedName("rd.e(I)Lakl;")
-	public static ClientMessage popMessage() {
+    public static ClientMessage popMessage() {
 		return messageIndex == 0 ? new ClientMessage() : messages[--messageIndex];
 	}
 
-	@ObfuscatedName("cj.n(Lnr;Laav;B)Lakl;")
-	public static ClientMessage createMessage(ClientProt prot, Isaac isaac) {
+    public static ClientMessage createMessage(ClientProt prot, Isaac isaac) {
 		ClientMessage message = popMessage();
 		message.prot = prot;
 		message.size = prot.size;
@@ -54,8 +45,7 @@ public class ClientMessage extends Node {
 		return message;
 	}
 
-	@ObfuscatedName("zw.m(B)Lakl;")
-	public static ClientMessage createMessage() {
+    public static ClientMessage createMessage() {
 		ClientMessage message = popMessage();
 		message.prot = null;
 		message.size = 0;
@@ -63,8 +53,7 @@ public class ClientMessage extends Node {
 		return message;
 	}
 
-	@ObfuscatedName("akl.k(I)V")
-	public void pushMessage() {
+    public void pushMessage() {
 		if (messageIndex < messages.length) {
 			messages[++messageIndex - 1] = this;
 		}

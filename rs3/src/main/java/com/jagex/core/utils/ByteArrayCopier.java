@@ -5,15 +5,13 @@ import deob.ObfuscatedName;
 import java.nio.ByteBuffer;
 import java.util.Arrays;
 
-@ObfuscatedName("zs")
 public abstract class ByteArrayCopier {
 
 	public ByteArrayCopier() throws Throwable {
 		throw new Error();
 	}
 
-	@ObfuscatedName("ek.e([BZI)Ljava/lang/Object;")
-	public static Object wrap(byte[] arg0, boolean arg1) {
+    public static Object wrap(byte[] arg0, boolean arg1) {
 		if (arg0 == null) {
 			return null;
 		} else if (arg0.length > 136) {
@@ -28,8 +26,7 @@ public abstract class ByteArrayCopier {
 		}
 	}
 
-	@ObfuscatedName("ia.n(Ljava/lang/Object;ZI)[B")
-	public static byte[] method4540(Object arg0, boolean arg1) {
+    public static byte[] method4540(Object arg0, boolean arg1) {
 		if (arg0 == null) {
 			return null;
 		} else if (arg0 instanceof byte[]) {
@@ -46,8 +43,7 @@ public abstract class ByteArrayCopier {
 		}
 	}
 
-	@ObfuscatedName("nl.m(Ljava/lang/Object;III)[B")
-	public static byte[] method6024(Object arg0, int arg1, int arg2) {
+    public static byte[] method6024(Object arg0, int arg1, int arg2) {
 		if (arg0 == null) {
 			return null;
 		} else if (arg0 instanceof byte[]) {

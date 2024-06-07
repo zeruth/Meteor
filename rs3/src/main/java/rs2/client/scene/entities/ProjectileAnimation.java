@@ -13,74 +13,51 @@ import com.jagex.math.*;
 import deob.ObfuscatedName;
 import rs2.client.Client;
 
-@ObfuscatedName("aue")
 public class ProjectileAnimation extends PrimaryLayerEntity {
 
-	@ObfuscatedName("aue.ae")
-	public final int effectAnim;
+    public final int effectAnim;
 
-	@ObfuscatedName("aue.ag")
-	public final int field12599;
+    public final int field12599;
 
-	@ObfuscatedName("aue.ah")
-	public final int offsetY;
+    public final int offsetY;
 
-	@ObfuscatedName("aue.al")
-	public final int startCycle;
+    public final int startCycle;
 
-	@ObfuscatedName("aue.ac")
-	public final int lastCycle;
+    public final int lastCycle;
 
-	@ObfuscatedName("aue.ai")
-	public final int peakPitch;
+    public final int peakPitch;
 
-	@ObfuscatedName("aue.aw")
-	public final int arc;
+    public final int arc;
 
-	@ObfuscatedName("aue.as")
-	public final int target2;
+    public final int target2;
 
-	@ObfuscatedName("aue.at")
-	public final int target;
+    public final int target;
 
-	@ObfuscatedName("aue.ad")
-	public final int field12594;
+    public final int field12594;
 
-	@ObfuscatedName("aue.am")
-	public final boolean field12595;
+    public final boolean field12595;
 
-	@ObfuscatedName("aue.au")
-	public boolean mobile = false;
+    public boolean mobile = false;
 
-	@ObfuscatedName("aue.ar")
-	public double velocityX;
+    public double velocityX;
 
-	@ObfuscatedName("aue.ap")
-	public double velocityZ;
+    public double velocityZ;
 
-	@ObfuscatedName("aue.aq")
-	public double velocity;
+    public double velocity;
 
-	@ObfuscatedName("aue.ax")
-	public double velocityY;
+    public double velocityY;
 
-	@ObfuscatedName("aue.av")
-	public double accelerationY;
+    public double accelerationY;
 
-	@ObfuscatedName("aue.ao")
-	public final AnimationNode field12602;
+    public final AnimationNode field12602;
 
-	@ObfuscatedName("aue.aj")
-	public int overlayHeight = 0;
+    public int overlayHeight = 0;
 
-	@ObfuscatedName("aue.ay")
-	public boolean field12604 = false;
+    public boolean field12604 = false;
 
-	@ObfuscatedName("aue.ab")
-	public ParticleSystem field12585;
+    public ParticleSystem field12585;
 
-	@ObfuscatedName("aue.az")
-	public int targeted = 0;
+    public int targeted = 0;
 
 	public ProjectileAnimation(Scene scene, int effectAnim, int level, int arg3, int x, int z, int arg6, int startCycle, int lastCycle, int peakPitch, int arc, int target2, int target, int offsetY, boolean arg14, int arg15, int targeted) {
 		super(scene, level, arg3, x, Client.getHeightmapY(x, z, level) - arg6, z, x >> 9, x >> 9, z >> 9, z >> 9, false, (byte) 0);
@@ -103,33 +80,27 @@ public class ProjectileAnimation extends PrimaryLayerEntity {
 		this.createEntityBounds(1);
 	}
 
-	@ObfuscatedName("aue.bu(B)Z")
-	public boolean method16488() {
+    public boolean method16488() {
 		return false;
 	}
 
-	@ObfuscatedName("aue.bw(S)Z")
-	public boolean method16489() {
+    public boolean method16489() {
 		return this.field12604;
 	}
 
-	@ObfuscatedName("aue.by(B)I")
-	public int overlayHeight() {
+    public int overlayHeight() {
 		return this.overlayHeight;
 	}
 
-	@ObfuscatedName("aue.e(I)I")
-	public int targeted() {
+    public int targeted() {
 		return this.targeted;
 	}
 
-	@ObfuscatedName("aue.fv(Ldh;B)Luq;")
-	public EntityBounds method17371(Toolkit toolkit) {
+    public EntityBounds method17371(Toolkit toolkit) {
 		return null;
 	}
 
-	@ObfuscatedName("aue.n(IIIII)V")
-	public final void updateVelocity(int dstX, int dstY, int dstZ, int cycle) {
+    public final void updateVelocity(int dstX, int dstY, int dstZ, int cycle) {
 		Vector3 var5 = Vector3.create(this.getTransform().trans);
 		if (!this.mobile) {
 			float dx = (float) dstX - var5.x;
@@ -159,8 +130,7 @@ public class ProjectileAnimation extends PrimaryLayerEntity {
 		var5.release();
 	}
 
-	@ObfuscatedName("aue.m(I)V")
-	public void method19729() {
+    public void method19729() {
 		if (this.mobile || this.target2 == 0) {
 			return;
 		}
@@ -220,8 +190,7 @@ public class ProjectileAnimation extends PrimaryLayerEntity {
 		var17.release();
 	}
 
-	@ObfuscatedName("aue.k(II)V")
-	public final void update(int arg0) {
+    public final void update(int arg0) {
 		this.mobile = true;
 		ScaleRotTrans var2 = new ScaleRotTrans(this.getTransform());
 		var2.trans.x = (float) ((double) var2.trans.x + (double) arg0 * this.velocityX);
@@ -245,14 +214,12 @@ public class ProjectileAnimation extends PrimaryLayerEntity {
 		}
 	}
 
-	@ObfuscatedName("aue.f(Ldh;II)Ldo;")
-	public Model getModel(Toolkit toolkit, int arg1) {
+    public Model getModel(Toolkit toolkit, int arg1) {
 		EffectAnimType var3 = (EffectAnimType) Client.effectAnimTypeList.list(this.effectAnim);
 		return var3.getModel(toolkit, arg1, this.field12602, (byte) 2);
 	}
 
-	@ObfuscatedName("aue.fc(Ldh;I)Ltl;")
-	public PickableEntity draw(Toolkit toolkit) {
+    public PickableEntity draw(Toolkit toolkit) {
 		Model var2 = this.getModel(toolkit, 2048);
 		if (var2 == null) {
 			return null;
@@ -271,8 +238,7 @@ public class ProjectileAnimation extends PrimaryLayerEntity {
 		return var4;
 	}
 
-	@ObfuscatedName("aue.fw(Ldh;I)V")
-	public void method17373(Toolkit toolkit) {
+    public void method17373(Toolkit toolkit) {
 		Model var2 = this.getModel(toolkit, 0);
 		if (var2 != null) {
 			Matrix4x3 var3 = this.method10533();
@@ -282,15 +248,13 @@ public class ProjectileAnimation extends PrimaryLayerEntity {
 		}
 	}
 
-	@ObfuscatedName("aue.bv(I)V")
-	public void method16529() {
+    public void method16529() {
 		Vector3 var1 = this.getTransform().trans;
 		this.minSceneTileX = this.maxSceneTileX = (short) (var1.x / 512.0F);
 		this.minSceneTileZ = this.maxSceneTileZ = (short) (var1.z / 512.0F);
 	}
 
-	@ObfuscatedName("aue.w(Ldh;Ldo;Lou;B)V")
-	public void method19743(Toolkit arg0, Model arg1, Matrix4x3 arg2) {
+    public void method19743(Toolkit arg0, Model arg1, Matrix4x3 arg2) {
 		arg1.method1689(arg2);
 		ModelParticleEmitter[] var4 = arg1.method1750();
 		ModelParticleEffector[] var5 = arg1.method1765();
@@ -303,30 +267,25 @@ public class ProjectileAnimation extends PrimaryLayerEntity {
 		}
 	}
 
-	@ObfuscatedName("aue.l(I)V")
-	public void method19728() {
+    public void method19728() {
 		if (this.field12585 != null) {
 			this.field12585.method9932();
 		}
 	}
 
-	@ObfuscatedName("aue.fa(Ldh;IIB)Z")
-	public boolean method17375(Toolkit toolkit, int arg1, int arg2) {
+    public boolean method17375(Toolkit toolkit, int arg1, int arg2) {
 		return false;
 	}
 
-	@ObfuscatedName("aue.fp(I)Z")
-	public final boolean method17379() {
+    public final boolean method17379() {
 		return false;
 	}
 
-	@ObfuscatedName("aue.fq(Ldh;Lalh;IIIZB)V")
-	public final void mergeNormals(Toolkit toolkit, GraphEntity entity, int arg2, int arg3, int arg4, boolean arg5) {
+    public final void mergeNormals(Toolkit toolkit, GraphEntity entity, int arg2, int arg3, int arg4, boolean arg5) {
 		throw new IllegalStateException();
 	}
 
-	@ObfuscatedName("aue.ff(B)V")
-	public final void applyLighting() {
+    public final void applyLighting() {
 		throw new IllegalStateException();
 	}
 }

@@ -12,140 +12,95 @@ import deob.ObfuscatedName;
 import java.util.Arrays;
 import java.util.Iterator;
 
-@ObfuscatedName("vr")
 public class BASType implements MutableConfig, ConfigType {
 
-	@ObfuscatedName("vr.e")
-	public int readyanim;
+    public int readyanim;
 
-	@ObfuscatedName("vr.n")
-	public int[] field7335;
+    public int[] field7335;
 
-	@ObfuscatedName("vr.m")
-	public int[] field7324;
+    public int[] field7324;
 
-	@ObfuscatedName("vr.k")
-	public int field7327;
+    public int field7327;
 
-	@ObfuscatedName("vr.f")
-	public int readyanim_l;
+    public int readyanim_l;
 
-	@ObfuscatedName("vr.w")
-	public int readyanim_r;
+    public int readyanim_r;
 
-	@ObfuscatedName("vr.l")
-	public int walkanim;
+    public int walkanim;
 
-	@ObfuscatedName("vr.u")
-	public int walkanim_b;
+    public int walkanim_b;
 
-	@ObfuscatedName("vr.z")
-	public int walkanim_l;
+    public int walkanim_l;
 
-	@ObfuscatedName("vr.p")
-	public int walkanim_r;
+    public int walkanim_r;
 
-	@ObfuscatedName("vr.d")
-	public int runanim;
+    public int runanim;
 
-	@ObfuscatedName("vr.c")
-	public int runanim_b;
+    public int runanim_b;
 
-	@ObfuscatedName("vr.r")
-	public int runanim_l;
+    public int runanim_l;
 
-	@ObfuscatedName("vr.v")
-	public int runanim_r;
+    public int runanim_r;
 
-	@ObfuscatedName("vr.o")
-	public int crawlanim;
+    public int crawlanim;
 
-	@ObfuscatedName("vr.s")
-	public int crawlanim_b;
+    public int crawlanim_b;
 
-	@ObfuscatedName("vr.y")
-	public int crawlanim_l;
+    public int crawlanim_l;
 
-	@ObfuscatedName("vr.q")
-	public int crawlanim_r;
+    public int crawlanim_r;
 
-	@ObfuscatedName("vr.x")
-	public int field7352;
+    public int field7352;
 
-	@ObfuscatedName("vr.b")
-	public int field7337;
+    public int field7337;
 
-	@ObfuscatedName("vr.h")
-	public int field7338;
+    public int field7338;
 
-	@ObfuscatedName("vr.a")
-	public int field7339;
+    public int field7339;
 
-	@ObfuscatedName("vr.g")
-	public int field7320;
+    public int field7320;
 
-	@ObfuscatedName("vr.i")
-	public int field7341;
+    public int field7341;
 
-	@ObfuscatedName("vr.j")
-	public int field7342;
+    public int field7342;
 
-	@ObfuscatedName("vr.t")
-	public int field7343;
+    public int field7343;
 
-	@ObfuscatedName("vr.ae")
-	public int field7344;
+    public int field7344;
 
-	@ObfuscatedName("vr.ag")
-	public int field7323;
+    public int field7323;
 
-	@ObfuscatedName("vr.ah")
-	public int[][] field7357;
+    public int[][] field7357;
 
-	@ObfuscatedName("vr.al")
-	public int[][] field7347;
+    public int[][] field7347;
 
-	@ObfuscatedName("vr.ac")
-	public Matrix4x3[] field7348;
+    public Matrix4x3[] field7348;
 
-	@ObfuscatedName("vr.ai")
-	public int[] field7349;
+    public int[] field7349;
 
-	@ObfuscatedName("vr.aw")
-	public int[] field7318;
+    public int[] field7318;
 
-	@ObfuscatedName("vr.as")
-	public int field7321;
+    public int field7321;
 
-	@ObfuscatedName("vr.at")
-	public int field7340;
+    public int field7340;
 
-	@ObfuscatedName("vr.ad")
-	public int field7353;
+    public int field7353;
 
-	@ObfuscatedName("vr.am")
-	public int field7336;
+    public int field7336;
 
-	@ObfuscatedName("vr.au")
-	public int field7355;
+    public int field7355;
 
-	@ObfuscatedName("vr.ar")
-	public int field7356;
+    public int field7356;
 
-	@ObfuscatedName("vr.ap")
-	public int field7334;
+    public int field7334;
 
-	@ObfuscatedName("vr.aq")
-	public int field7358;
+    public int field7358;
 
-	@ObfuscatedName("vr.ax")
-	public int walkspeed;
+    public int walkspeed;
 
-	@ObfuscatedName("vr.av")
-	public int field7360;
+    public int field7360;
 
-	@ObfuscatedName("vr.ao")
-	public boolean field7346;
+    public boolean field7346;
 
 	public BASType() {
 		this.readyanim = -1;
@@ -231,8 +186,7 @@ public class BASType implements MutableConfig, ConfigType {
 		this.field7346 = true;
 	}
 
-	@ObfuscatedName("vr.e(Lalw;B)V")
-	public void decode(Packet buf) {
+    public void decode(Packet buf) {
 		while (true) {
 			int var2 = buf.g1();
 			if (var2 == 0) {
@@ -242,8 +196,7 @@ public class BASType implements MutableConfig, ConfigType {
 		}
 	}
 
-	@ObfuscatedName("vr.u(Lalw;II)V")
-	public void method9298(Packet arg0, int arg1) {
+    public void method9298(Packet arg0, int arg1) {
 		if (arg1 == 1) {
 			this.readyanim = arg0.gSmart2or4null();
 			this.walkanim = arg0.gSmart2or4null();
@@ -369,12 +322,10 @@ public class BASType implements MutableConfig, ConfigType {
 		}
 	}
 
-	@ObfuscatedName("vr.n(I)V")
-	public void postDecode() {
+    public void postDecode() {
 	}
 
-	@ObfuscatedName("vr.p(I)I")
-	public int method9295() {
+    public int method9295() {
 		if (this.readyanim != -1) {
 			return this.readyanim;
 		} else if (this.field7335 == null) {
@@ -389,8 +340,7 @@ public class BASType implements MutableConfig, ConfigType {
 		}
 	}
 
-	@ObfuscatedName("vr.d(II)Z")
-	public boolean method9290(int arg0) {
+    public boolean method9290(int arg0) {
 		if (arg0 == -1) {
 			return false;
 		} else if (this.readyanim == arg0) {
@@ -407,8 +357,7 @@ public class BASType implements MutableConfig, ConfigType {
 		}
 	}
 
-	@ObfuscatedName("vr.c(B)[Lou;")
-	public Matrix4x3[] method9291() {
+    public Matrix4x3[] method9291() {
 		if (this.field7348 != null) {
 			return this.field7348;
 		} else if (this.field7357 == null) {
@@ -448,8 +397,7 @@ public class BASType implements MutableConfig, ConfigType {
 		}
 	}
 
-	@ObfuscatedName("vr.o(I)[I")
-	public int[] method9293() {
+    public int[] method9293() {
 		HashTable var1 = new HashTable(16);
 		method6205(this.readyanim, var1);
 		if (this.field7335 != null) {
@@ -489,14 +437,12 @@ public class BASType implements MutableConfig, ConfigType {
 		return var5;
 	}
 
-	@ObfuscatedName("oi.s(ILaan;I)V")
-	public static final void method6205(int arg0, HashTable arg1) {
+    public static final void method6205(int arg0, HashTable arg1) {
 		if (arg0 != -1 && arg1.get((long) arg0) == null) {
 			arg1.put(new Node(), (long) arg0);
 		}
 	}
 
-	@ObfuscatedName("vr.z(IB)V")
-	public void setId(int arg0) {
+    public void setId(int arg0) {
 	}
 }

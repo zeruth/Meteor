@@ -4,20 +4,15 @@ import com.jagex.game.client.DiskStore;
 import com.jagex.js5.Js5Request;
 import deob.ObfuscatedName;
 
-@ObfuscatedName("atf")
 public class Js5WorkerRequest extends Js5Request {
 
-	@ObfuscatedName("atf.r")
-	public int type;
+    public int type;
 
-	@ObfuscatedName("atf.v")
-	public DiskStore diskStore;
+    public DiskStore diskStore;
 
-	@ObfuscatedName("atf.o")
-	public byte[] bytes;
+    public byte[] bytes;
 
-	@ObfuscatedName("atf.e(I)[B")
-	public byte[] getBytes() {
+    public byte[] getBytes() {
 		if (this.incomplete) {
 			throw new RuntimeException("Not ready!");
 		}
@@ -25,8 +20,7 @@ public class Js5WorkerRequest extends Js5Request {
 		return this.bytes;
 	}
 
-	@ObfuscatedName("atf.n(I)I")
-	public int getPercentageComplete() {
+    public int getPercentageComplete() {
 		return this.incomplete ? 0 : 100;
 	}
 }

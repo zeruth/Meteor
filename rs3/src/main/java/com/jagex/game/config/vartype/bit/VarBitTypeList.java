@@ -9,7 +9,6 @@ import deob.ObfuscatedName;
 
 import java.util.Map;
 
-@ObfuscatedName("aor")
 public class VarBitTypeList extends CachingConfigTypeList {
 
 	public VarBitTypeList(ModeGame arg0, Language arg1, Js5 arg2, Map arg3) {

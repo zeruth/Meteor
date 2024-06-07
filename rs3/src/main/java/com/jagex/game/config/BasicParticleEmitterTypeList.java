@@ -5,21 +5,17 @@ import com.jagex.core.io.Packet;
 import com.jagex.js5.Js5;
 import deob.ObfuscatedName;
 
-@ObfuscatedName("ni")
 public class BasicParticleEmitterTypeList implements ParticleEmitterTypeList {
 
-	@ObfuscatedName("ni.e")
-	public Js5 field3563;
+    public Js5 field3563;
 
-	@ObfuscatedName("ni.n")
-	public SoftLruHashTable field3562 = new SoftLruHashTable(64);
+    public SoftLruHashTable field3562 = new SoftLruHashTable(64);
 
 	public BasicParticleEmitterTypeList(Js5 arg0) {
 		this.field3563 = arg0;
 	}
 
-	@ObfuscatedName("ni.e(II)Lnj;")
-	public synchronized ParticleEmitterType get(int arg0) {
+    public synchronized ParticleEmitterType get(int arg0) {
 		ParticleEmitterType var2 = (ParticleEmitterType) this.field3562.get((long) arg0);
 		if (var2 != null) {
 			return var2;
@@ -34,8 +30,7 @@ public class BasicParticleEmitterTypeList implements ParticleEmitterTypeList {
 		return var4;
 	}
 
-	@ObfuscatedName("ni.n(I)V")
-	public void cacheReset() {
+    public void cacheReset() {
 		this.field3562.reset();
 	}
 }
