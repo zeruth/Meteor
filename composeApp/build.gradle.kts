@@ -1,6 +1,6 @@
+
 import nulled.InjectTask
 import org.jetbrains.compose.desktop.application.dsl.TargetFormat
-import java.util.jar.JarFile
 
 plugins {
     alias(libs.plugins.jetbrainsCompose)
@@ -45,7 +45,7 @@ dependencies {
     ))
 }
 
-tasks.register<InjectTask>("inject") {
+tasks.withType<InjectTask> {
     dependsOn(":api-rs:build")
     dependsOn(":mixins:build")
     dependsOn(":rs2:build")
