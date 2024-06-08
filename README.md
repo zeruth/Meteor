@@ -1,8 +1,8 @@
 # Meteor-225
 
-A Kotlin/Compose client built around Lost-City/Client1  
+A Kotlin/Compose client built around [Lost-City/Client](https://github.com/2004Scape/Client)
 
-Enhancements are nice, but I intend to respect the experience, and the developers of the project.  
+Enhancements are nice, but I intend to respect the experience, and the developers of the Lost-City.  
     
 It currently offers:  
 RuneLite injection  
