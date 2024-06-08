@@ -1,14 +1,12 @@
-# Meteor
+# Meteor-225
 
-A Kotlin/Compose client built around Client1
+A Kotlin/Compose client built around Lost-City/Client1  
 
-The goal is to eventually offer a truly cross-platform client with a modern touch.  
 Enhancements are nice, but I intend to respect the experience, and the developers of the project.  
     
 It currently offers:  
 RuneLite injection  
-OpenCV GPU upscaling  
-Kotlin/Compose framework
+Kotlin/Compose framework  
 
 Depends on the following sub-projects:  
 [Annotations](https://www.github.com/zeruth/annotations)  
@@ -22,10 +20,13 @@ Depends on the following sub-projects:
 * `/injector` packs `api`/`api-rs`/`mixins` into `rs2`
 * `/mixins` code to be packed/modified in `rs2`
 * `/rs2` aka deob aka 2004Scape Client aka Client1 aka vanilla
-  
-Other platforms are not yet started  
-  
-Learn more about [Kotlin Multiplatform](https://www.jetbrains.com/help/kotlin-multiplatform-dev/get-started.html)…
+
+The injector has a handful of improvements over RuneLite'/OpenOSRSs old releases.
+-targets rs2 instead of mapping against vanilla jar 
+(changes made in rs2 are injected on build, rs2 is debuggable with breakpoints etc after injection in Meteor)
+-can handle targets with packages
+-various bytecode fixes
+-virtually annotate members (no need to annotate anything in deob)
 
 # 2004Scape Client
 
