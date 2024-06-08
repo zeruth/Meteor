@@ -20,13 +20,15 @@ Depends on the following sub-projects:
 * `/injector` packs `api`/`api-rs`/`mixins` into `rs2`
 * `/mixins` code to be packed/modified in `rs2`
 * `/rs2` aka deob aka 2004Scape Client aka Client1 aka vanilla
-  
-The injector has a handful of improvements over RuneLite'/OpenOSRSs old releases.  
+
+The injector has a handful of improvements over RuneLite'/OpenOSRSs old releases.
+```
 -targets rs2 instead of mapping against vanilla jar  
 (changes made in rs2 are injected on build, rs2 is debuggable with breakpoints etc after injection in Meteor)  
 -can handle targets with packages  
 -various bytecode fixes  
 -virtually annotate members (no need to annotate anything in deob)  
+```
   
 # 2004Scape Client
 
