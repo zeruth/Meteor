@@ -9,19 +9,18 @@ RuneLite injection
 Kotlin/Compose framework  
 
 Depends on the following sub-projects:  
-[Annotations](https://www.github.com/zeruth/annotations)  
-[Eventbus](https://www.github.com/zeruth/eventbus)  
-[Injector](https://www.github.com/zeruth/injector)  
-[Logger](https://www.github.com/zeruth/logger)  
+[Annotations](https://www.github.com/zeruth/annotations)  runelite deobfuscation/mixin annotations
+[Eventbus](https://www.github.com/zeruth/eventbus)  kotlin coroutines based eventbus
+[Injector](https://www.github.com/zeruth/injector)  packs `api`/`api-rs`/`mixins` into `rs2`
+[Logger](https://www.github.com/zeruth/logger)  pretty logger
   
 * `/api` restricted-level interfaces to client members
 * `/api-rs` unrestricted-level interfaces to client members
 * `/client` pure kotlin / compose 3pc
-* `/injector` packs `api`/`api-rs`/`mixins` into `rs2`
 * `/mixins` code to be packed/modified in `rs2`
 * `/rs2` aka deob aka 2004Scape Client aka Client1 aka vanilla
 
-The injector has a handful of improvements over RuneLite'/OpenOSRSs old releases.
+The injector has a handful of improvements over RuneLite/OpenOSRSs releases.
 ```
 -targets rs2 instead of mapping against vanilla jar  
   (changes made in rs2 are injected on build)
