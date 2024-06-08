@@ -11,7 +11,7 @@ import com.openosrs.injector.injection.InjectData;
 import com.openosrs.injector.injection.InjectTaskHandler;
 import com.openosrs.injector.injectors.*;
 import com.openosrs.injector.rsapi.RSApi;
-import com.openosrs.injector.transformers.EnumInvokeVirtualFixer;
+import nulled.transformers.EnumInvokeVirtualFixer;
 import com.openosrs.injector.transformers.InjectTransformer;
 import com.openosrs.injector.transformers.SourceChanger;
 import java.io.File;
@@ -21,14 +21,13 @@ import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.Objects;
-import joptsimple.ArgumentAcceptingOptionSpec;
-import joptsimple.OptionParser;
-import joptsimple.OptionSet;
-import joptsimple.util.EnumConverter;
+
 import meteor.Logger;
 import net.runelite.asm.ClassFile;
 import net.runelite.asm.ClassGroup;
 import net.runelite.asm.util.JarUtil;
+import nulled.injectors.CreateAnnotations;
+
 import static net.runelite.asm.util.JarUtil.load;
 
 public class Injector extends InjectData implements InjectTaskHandler
@@ -38,22 +37,21 @@ public class Injector extends InjectData implements InjectTaskHandler
 
 	public static ArrayList<String> report = new ArrayList<>();
 
+	public static String target;
+	public static String api;
+	public static String mixinsFile;
+	public static String output;
+
 	public static void main(String[] args) {
-		String version = "1.0.0";
+		injector.vanilla = load(new File(target));
+		injector.deobfuscated = load(new File(target));
+		injector.rsApi = new RSApi(Objects.requireNonNull(new File(api).listFiles()));
+		injector.mixins = load(new File(mixinsFile));
 
-		injector.vanilla = load(
-				new File("./rs2/build/libs/rs2.jar"));
-		injector.deobfuscated = load(
-				new File("./rs2/build/libs/rs2.jar"));
-		injector.rsApi = new RSApi(Objects.requireNonNull(
-				new File("./api-rs/build/classes/java/main/net/runelite/rs/api/")
-						.listFiles()));
-		injector.mixins = load(
-				new File("./mixins/build/libs/mixins-" + version + ".jar"));
+		File outputFile = new File(output);
 
-		File injected = new File("./composeApp/src/main/resources/injected-client.jar");
-		if (injected.exists()) {
-			injected.delete();
+		if (outputFile.exists()) {
+			outputFile.delete();
 		}
 
 		injector.initToVanilla();
@@ -62,7 +60,7 @@ public class Injector extends InjectData implements InjectTaskHandler
 		for (String s : report) {
 			log.warn(s);
 		}
-		save(injector.getVanilla(), injected, OutputMode.JAR);
+		save(injector.getVanilla(), outputFile, OutputMode.JAR);
 	}
 
 	public void injectVanilla() {

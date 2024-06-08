@@ -321,7 +321,7 @@ public interface InjectUtil
 
 	static ClassFile deobFromApiMethod(InjectData data, RSApiMethod apiMethod)
 	{
-		return data.toDeob(apiMethod.getClazz().getName());
+		return data.deobfuscated.findClass(apiMethod.getClazz().getName().replace(API_BASE, ""));
 	}
 
 	static ClassFile vanillaFromApiMethod(InjectData data, RSApiMethod apiMethod)
@@ -545,7 +545,7 @@ public interface InjectUtil
 	{
 		Object v = annotation.getValue();
 		String str = ((org.objectweb.asm.Type) v).getInternalName();
-		return data.toVanilla(data.toDeob(str));
+		return data.vanilla.findClass(str.replace(API_BASE, ""));
 	}
 
 	private static List<Type> findArgs(final String str, final List<Type> ret, final int from, final int to)

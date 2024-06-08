@@ -26,3 +26,11 @@ tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile>().all {
         jvmTarget = "17"
     }
 }
+
+publishing {
+    publications {
+        create<MavenPublication>("java") {
+            from(components["java"])
+        }
+    }
+}

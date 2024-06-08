@@ -23,7 +23,7 @@ public class SourceChanger extends InjectTransformer
 	}
 
 	@Override
-	void transformImpl()
+	public void transformImpl()
 	{
 		inject.forEachPair(this::rename);
 		//log.info("[INFO] Changed source file debug information for {} classes", n);

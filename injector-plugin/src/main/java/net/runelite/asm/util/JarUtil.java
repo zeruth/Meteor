@@ -55,7 +55,7 @@ public class JarUtil
 	{
 		ClassGroup group = new ClassGroup();
 
-		try (JarFile jar = new JarFile(jarfile))
+		try (JarFile jar = new JarFile(jarfile.getAbsoluteFile()))
 		{
 			for (Enumeration<JarEntry> it = jar.entries(); it.hasMoreElements();)
 			{

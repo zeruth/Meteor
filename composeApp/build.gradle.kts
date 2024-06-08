@@ -1,17 +1,29 @@
+import nulled.InjectTask
 import org.jetbrains.compose.desktop.application.dsl.TargetFormat
+import java.util.jar.JarFile
 
 plugins {
     alias(libs.plugins.jetbrainsCompose)
     alias(libs.plugins.compose.compiler)
     kotlin("jvm")
+    id("meteor.injector") version "1.0"
+}
+
+repositories {
+    mavenLocal()
+    mavenCentral()
+    google()
+    maven("https://maven.pkg.jetbrains.space/public/p/compose/dev")
+    maven { url = uri("https://raw.githubusercontent.com/MeteorLite/hosting/main/repo/") }
 }
 
 dependencies {
+    implementation(libs.fernflower)
     implementation(compose.runtime)
     implementation(compose.ui)
-    implementation(projects.eventbus)
     implementation(projects.api)
     implementation(projects.apiRs)
+    implementation(projects.eventbus)
     implementation(compose.desktop.currentOs)
     runtimeOnly(files("./src/main/resources/injected-client.jar"))
 
@@ -31,6 +43,20 @@ dependencies {
         "../libs/openblas-0.3.26-1.5.10-windows-x86_64.jar",
         "../libs/opencv-4.9.0-1.5.10-windows-x86_64.jar",
     ))
+}
+
+tasks.register<InjectTask>("inject") {
+    dependsOn(":api-rs:build")
+    dependsOn(":mixins:build")
+    dependsOn(":rs2:build")
+    api = "${project.layout.projectDirectory}/../api-rs/build/classes/java/main/net/runelite/rs/api/"
+    mixins = "${project.layout.projectDirectory}/../mixins/build/libs/mixins-1.0.0.jar"
+    target = "${project.layout.projectDirectory}/../rs2/build/libs/rs2.jar"
+    output = "${project.layout.projectDirectory}/src/main/resources/injected-client.jar"
+}
+
+tasks.named("processResources") {
+    dependsOn("inject")
 }
 
 compose.desktop {

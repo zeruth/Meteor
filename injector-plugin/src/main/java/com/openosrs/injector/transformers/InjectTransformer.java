@@ -26,7 +26,7 @@ public abstract class InjectTransformer implements Named
 		transformImpl();
 	}
 
-	abstract void transformImpl();
+	protected abstract void transformImpl();
 
 	public final String getCompletionMsg()
 	{

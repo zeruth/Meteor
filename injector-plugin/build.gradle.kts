@@ -1,21 +1,32 @@
 plugins {
-    kotlin("jvm")
+    `java-gradle-plugin`
     `maven-publish`
+    kotlin("jvm")
 }
 
 group = "meteor"
-version = "1.0.0"
+version = "1.0"
 
 repositories{
     mavenCentral()
+    mavenLocal()
     maven { url = uri("https://raw.githubusercontent.com/MeteorLite/hosting/main/repo/") }
 }
 
+gradlePlugin {
+    plugins {
+        create("injector") {
+            id = "meteor.injector"
+            implementationClass = "nulled.InjectorPlugin"
+        }
+    }
+}
 dependencies{
+    implementation(gradleApi())
+    implementation(localGroovy())
+
     with(projects){
         implementation(annotations)
-        implementation(api)
-        implementation(apiRs)
         implementation(logger)
     }
 
@@ -37,15 +48,10 @@ tasks.test {
     useJUnitPlatform()
 }
 
-tasks.compileJava {
-    sourceCompatibility = JavaVersion.VERSION_17.toString()
-    targetCompatibility = JavaVersion.VERSION_17.toString()
-}
-
-tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile>().all {
-    kotlinOptions {
-        apiVersion = "1.8"
-        languageVersion = "1.8"
-        jvmTarget = "17"
+publishing {
+    publications {
+        create<MavenPublication>("java") {
+            from(components["java"])
+        }
     }
 }

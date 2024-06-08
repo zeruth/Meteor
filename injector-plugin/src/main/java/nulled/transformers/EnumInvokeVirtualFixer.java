@@ -5,10 +5,11 @@
  * This code is licensed under GPL3, see the complete license in
  * the LICENSE file in the root directory of this submodule.
  */
-package com.openosrs.injector.transformers;
+package nulled.transformers;
 
 import com.openosrs.injector.injection.InjectData;
 
+import com.openosrs.injector.transformers.InjectTransformer;
 import net.runelite.asm.ClassFile;
 import net.runelite.asm.Method;
 import net.runelite.asm.attributes.code.Instruction;
@@ -23,7 +24,7 @@ public class EnumInvokeVirtualFixer extends InjectTransformer
 	}
 
 	@Override
-	void transformImpl()
+	public void transformImpl()
 	{
 		inject.forEachPair(this::fixEnumInvokeVirtuals);
 	}

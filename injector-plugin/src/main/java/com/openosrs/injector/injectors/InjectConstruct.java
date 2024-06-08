@@ -52,6 +52,7 @@ import net.runelite.asm.pool.Method;
 import net.runelite.asm.signature.Signature;
 
 import static com.openosrs.injector.Injector.report;
+import static com.openosrs.injector.rsapi.RSApi.API_BASE;
 import static com.openosrs.injector.rsapi.RSApi.CONSTRUCT;
 import static org.objectweb.asm.Opcodes.ACC_PUBLIC;
 
@@ -77,8 +78,7 @@ public class InjectConstruct extends AbstractInjector
 
 			final Method method = apiMethod.getMethod();
 			final Class clazz = method.getClazz();
-			final ClassFile deobClass = inject.toDeob(clazz.getName());
-			final ClassFile vanillaClass = inject.toVanilla(deobClass);
+			final ClassFile vanillaClass = inject.vanilla.findClass(inject.classMap.get(clazz.getName().replace(API_BASE, "")));
 
 			injectConstruct(vanillaClass, method);
 			apiMethod.setInjected(true);
@@ -93,10 +93,10 @@ public class InjectConstruct extends AbstractInjector
 		//log.error("[DEBUG] Injecting constructor for {} into {}", apiMethod, targetClass.getPoolClass());
 
 		final Type returnval = apiMethod.getType().getReturnValue();
-		//System.out.println(returnval.getInternalName());
-		final ClassFile deobClass = inject.toDeob(returnval.getInternalName());
+		//System.out.println(returnval.getInternalName().replace(API_BASE, ""));
+		final ClassFile deobClass = inject.deobfuscated.findClass(returnval.getInternalName().replace(API_BASE, ""));
 		//System.out.println(deobClass.getClassName());
-		final ClassFile classToConstruct = inject.toVanilla(deobClass);
+		final ClassFile classToConstruct = inject.vanilla.findClass(inject.classMap.get(deobClass.getName().replace(API_BASE, "")));
 
 		Signature constr = new Signature.Builder()
 			.addArguments(apiMethod.getType().getArguments().stream()

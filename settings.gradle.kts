@@ -7,6 +7,8 @@ pluginManagement {
         google()
         gradlePluginPortal()
         mavenCentral()
+        mavenLocal()
+        maven { url = uri("https://raw.githubusercontent.com/MeteorLite/hosting/main/repo/") }
     }
 }
 
@@ -27,8 +29,7 @@ include(":api")
 include(":api-rs")
 include(":composeApp")
 include(":eventbus")
-include(":injector")
 include(":logger")
 include(":mixins")
 include(":rs2")
-
+include("injector-plugin")

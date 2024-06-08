@@ -23,6 +23,8 @@ import net.runelite.asm.Method;
 import net.runelite.asm.Type;
 import net.runelite.asm.signature.Signature;
 
+import static com.openosrs.injector.rsapi.RSApi.API_BASE;
+
 /**
  * Abstract class meant as the interface of {@link com.openosrs.injector.Injector injection} for injectors
  */
@@ -69,8 +71,7 @@ public abstract class InjectData
 	 */
 	public ClassFile toVanilla(ClassFile deobClass)
 	{
-
-		return toVanilla.get(deobClass);
+		return vanilla.findClass(deobClass.getName().replace(API_BASE, ""));
 	}
 
 	/**
@@ -114,7 +115,7 @@ public abstract class InjectData
 	 */
 	public ClassFile toDeob(String str)
 	{
-		return this.toDeob.get(str);
+		return this.deobfuscated.findClass(str);
 	}
 
 	/**
