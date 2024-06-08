@@ -24,10 +24,12 @@ Depends on the following sub-projects:
 The injector has a handful of improvements over RuneLite'/OpenOSRSs old releases.
 ```
 -targets rs2 instead of mapping against vanilla jar  
-(changes made in rs2 are injected on build, rs2 is debuggable with breakpoints etc after injection in Meteor)  
+  (changes made in rs2 are injected on build)
+  (rs2 is debuggable with breakpoints etc after injection)  
 -can handle targets with packages  
 -various bytecode fixes  
--virtually annotate members (no need to annotate anything in deob)  
+-virtually annotate members 
+  (no need to annotate anything in rs2)  
 ```
   
 # 2004Scape Client
