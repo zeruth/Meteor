@@ -6,19 +6,9 @@ plugins {
 group = "meteor"
 version = "1.0.0"
 
-repositories {
-    mavenCentral()
-}
-
 dependencies {
-    with(projects) {
-        implementation(annotations)
-        implementation(logger)
-    }
-
-    with(libs) {
-
-    }
+    implementation("nulled:logger:1.0")
+    implementation("nulled:annotations:1.0")
 
     compileOnly(files(
         "../libs/javacpp-1.5.10.jar",
@@ -32,15 +22,10 @@ tasks.test {
     useJUnitPlatform()
 }
 
-tasks.compileJava {
-    sourceCompatibility = JavaVersion.VERSION_17.toString()
-    targetCompatibility = JavaVersion.VERSION_17.toString()
-}
-
 tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile>().all {
     kotlinOptions {
         apiVersion = "1.8"
         languageVersion = "1.8"
-        jvmTarget = "17"
+        jvmTarget = "21"
     }
 }

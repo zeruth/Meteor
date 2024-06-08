@@ -13,7 +13,7 @@ java{
 }
 
 dependencies {
-    implementation(projects.eventbus)
+    implementation("nulled:eventbus:1.0")
 }
 
 application {

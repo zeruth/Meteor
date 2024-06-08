@@ -9,14 +9,19 @@ version = "1.0.0"
 repositories {
     mavenCentral()
     maven { url = uri("https://raw.githubusercontent.com/MeteorLite/hosting/main/repo/") }
+    maven {
+        url = uri("https://maven.pkg.github.com/zeruth/annotations")
+        credentials {
+            username = project.findProperty("gpr.user")?.toString() ?: System.getenv("USERNAME")
+            password = project.findProperty("gpr.key")?.toString() ?: System.getenv("TOKEN")
+        }
+    }
 }
 
 dependencies {
     with(projects) {
-        implementation(annotations)
         implementation(api)
         implementation(apiRs)
-        implementation(logger)
     }
 
     with(libs) {
@@ -29,6 +34,8 @@ dependencies {
         implementation(guava)
         compileOnly(lombok)
     }
+    implementation("nulled:logger:1.0")
+    implementation("nulled:annotations:1.0")
 
     compileOnly(files(
         "../libs/javacpp-1.5.10.jar",

@@ -10,6 +10,7 @@
       </option>
       <option name="taskNames">
         <list>
+          <option value="inject" />
           <option value="run" />
         </list>
       </option>
@@ -19,8 +20,6 @@
     <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
     <DebugAllEnabled>false</DebugAllEnabled>
     <RunAsTest>false</RunAsTest>
-    <method v="2">
-      <option name="RunConfigurationTask" enabled="true" run_configuration_name="Inject" run_configuration_type="Application" />
-    </method>
+    <method v="2" />
   </configuration>
 </component>

@@ -7,8 +7,14 @@ pluginManagement {
         google()
         gradlePluginPortal()
         mavenCentral()
-        mavenLocal()
         maven { url = uri("https://raw.githubusercontent.com/MeteorLite/hosting/main/repo/") }
+        maven {
+            url = uri("https://maven.pkg.github.com/zeruth/injector")
+            credentials {
+                username = System.getenv("USERNAME")
+                password = System.getenv("TOKEN")
+            }
+        }
     }
 }
 
@@ -24,12 +30,8 @@ dependencyResolutionManagement {
     }
 }
 
-include(":annotations")
 include(":api")
 include(":api-rs")
-include(":composeApp")
-include(":eventbus")
-include(":logger")
+include(":client")
 include(":mixins")
 include(":rs2")
-include("injector-plugin")
