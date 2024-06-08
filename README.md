@@ -9,10 +9,10 @@ RuneLite injection
 Kotlin/Compose framework  
 
 Depends on the following sub-projects:  
-[Annotations](https://www.github.com/zeruth/annotations)  runelite deobfuscation/mixin annotations
-[Eventbus](https://www.github.com/zeruth/eventbus)  kotlin coroutines based eventbus
-[Injector](https://www.github.com/zeruth/injector)  packs `api`/`api-rs`/`mixins` into `rs2`
-[Logger](https://www.github.com/zeruth/logger)  pretty logger
+[Annotations](https://www.github.com/zeruth/annotations)  runelite deobfuscation/mixin annotations  
+[Eventbus](https://www.github.com/zeruth/eventbus)  kotlin coroutines based eventbus  
+[Injector](https://www.github.com/zeruth/injector)  packs `api`/`api-rs`/`mixins` into `rs2`  
+[Logger](https://www.github.com/zeruth/logger)  pretty logger  
   
 * `/api` restricted-level interfaces to client members
 * `/api-rs` unrestricted-level interfaces to client members
