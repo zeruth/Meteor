@@ -103,13 +103,6 @@ object Main {
                     else -> CPUFilter.NONE
                 }
             }
-            "gpu" -> {
-                client.renderMode = when (client.renderMode) {
-                    RenderMode.CPU -> RenderMode.GPU
-                    RenderMode.GPU -> RenderMode.CPU
-                    else -> RenderMode.CPU
-                }
-            }
             "overlay" -> {
                 GamePanel.debugOverlay.value = !GamePanel.debugOverlay.value
             }
