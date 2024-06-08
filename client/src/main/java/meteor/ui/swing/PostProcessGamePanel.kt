@@ -27,13 +27,13 @@ class PostProcessGamePanel : JPanel() {
     private var loading = true
     init {
         //Loading
-        Thread(kotlinx.coroutines.Runnable {
+        Thread {
             while (loading) {
                 //Must sleep 1ms to draw correctly on fast cpus
                 Thread.sleep(1)
                 RS2GamePanel.image?.let { draw() }
             }
-        }).start()
+        }.start()
 
         //Login/In-game
         KEVENT.subscribe<DrawFinished> {
@@ -50,7 +50,6 @@ class PostProcessGamePanel : JPanel() {
             var finalImage = RS2GamePanel.image!!
             updateSizeAndScale()
             when (Main.client.renderMode) {
-                RenderMode.GPU -> finalImage = upscaleGPU(finalImage)?: return
                 RenderMode.CPU -> setCPURenderingHints(it)
                 else -> {}
             }
@@ -97,20 +96,6 @@ class PostProcessGamePanel : JPanel() {
         if (Main.client.cpuFilter == CPUFilter.BILINEAR) {
             graphics2D.setRenderingHints(hints)
         }
-    }
-
-    private fun upscaleGPU(inputImage: BufferedImage) : BufferedImage? {
-        try {
-            if (stretchedWidth.value > 0 && stretchedHeight.value > 0) {
-                return Main.client.gpuResizeAndFilter(
-                    inputImage, stretchedWidth.value, stretchedHeight.value, Main.client.gpuFilter.filter)
-            }
-        } catch (e: Exception) {
-            e.printStackTrace()
-            println("Error occurred during GPU upscaling, disabling...")
-            Main.client.renderMode = RenderMode.CPU
-        }
-        return null
     }
 
     private fun getScale(): Float {
