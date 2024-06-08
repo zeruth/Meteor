@@ -10,17 +10,18 @@ RuneLite injection
 OpenCV GPU upscaling  
 Kotlin/Compose framework
 
-* `/annotations` various annotations related to RuneLite's lifecycle
+Depends on the following sub-projects:  
+[Annotations](https://www.github.com/zeruth/annotations)  
+[Eventbus](https://www.github.com/zeruth/eventbus)  
+[Injector](https://www.github.com/zeruth/injector)  
+[Logger](https://www.github.com/zeruth/logger)  
+  
 * `/api` restricted-level interfaces to client members
 * `/api-rs` unrestricted-level interfaces to client members
-* `/composeApp` 
-  - `commonMain` where most ui code / non-jvm code should go eventually  
-    `desktopMain` where all code currently resides. aka jvmMain
-* `/eventbus` custom KEvent eventbus
+* `/client` pure kotlin / compose 3pc
 * `/injector` packs `api`/`api-rs`/`mixins` into `rs2`
-* `/logger` simple logger implementation with support for ANSI color coding
 * `/mixins` code to be packed/modified in `rs2`
-* `/rs2` aka deob aka 2004Scape Client aka Client1
+* `/rs2` aka deob aka 2004Scape Client aka Client1 aka vanilla
   
 Other platforms are not yet started  
   
