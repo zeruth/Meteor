@@ -71,7 +71,7 @@ object Main {
 
     private fun initRS2() {
         //Common init
-        client = ClassLoader.getSystemClassLoader().loadClass("Client").newInstance() as Client
+        client = ClassLoader.getSystemClassLoader().load<Client>()
         client.callbacks = hooks
         client.preGameInit()
         loaded = true
@@ -119,5 +119,9 @@ object Main {
             client.localPlayer?.let {
                 text.value += " - ${it.name}"
             }
+    }
+
+    private inline fun<reified T : Any> ClassLoader.load(): T {
+        return loadClass(T::class.simpleName).getDeclaredConstructor().newInstance() as T
     }
 }
