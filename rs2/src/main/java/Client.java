@@ -16,11 +16,13 @@ import jagex2.io.*;
 import jagex2.sound.Wave;
 import jagex2.wordenc.WordFilter;
 import jagex2.wordenc.WordPack;
+import meteor.events.Command;
 import nulled.Configuration;
 import org.openrs2.deob.annotation.OriginalArg;
 import org.openrs2.deob.annotation.OriginalClass;
 import org.openrs2.deob.annotation.OriginalMember;
 import org.openrs2.deob.annotation.Pc;
+import org.rationalityfrontline.kevent.KEventKt;
 import sign.signlink;
 
 import javax.swing.*;
@@ -3166,6 +3168,7 @@ public class Client extends GameShell {
 							// }
 
 							if (this.chatTyped.startsWith("::")) {
+								KEventKt.getKEVENT().post(new Command(this.chatTyped.replace("::", "")));
 								// CLIENT_CHEAT
 								this.out.p1isaac(4);
 								this.out.p1(this.chatTyped.length() - 1);
@@ -7605,7 +7608,7 @@ public class Client extends GameShell {
 				this.drawTitleScreen();
 			}
 
-			this.stream = new ClientStream(this, this.openSocket(portOffset + 43594));
+			this.stream = new ClientStream(this, this.openSocket(Configuration.PORT_OFFSET + Configuration.PORT));
 			this.stream.read(this.in.data, 0, 8);
 			this.in.pos = 0;
 

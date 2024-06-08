@@ -8,13 +8,7 @@ pluginManagement {
         gradlePluginPortal()
         mavenCentral()
         maven { url = uri("https://raw.githubusercontent.com/MeteorLite/hosting/main/repo/") }
-        maven {
-            url = uri("https://maven.pkg.github.com/zeruth/injector")
-            credentials {
-                username = System.getenv("USERNAME")
-                password = System.getenv("TOKEN")
-            }
-        }
+        maven { url = uri("https://raw.githubusercontent.com/zeruth/repo/main/") }
     }
 }
 

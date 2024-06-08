@@ -6,7 +6,7 @@ plugins {
     alias(libs.plugins.jetbrainsCompose)
     alias(libs.plugins.compose.compiler)
     kotlin("jvm")
-    id("meteor.injector") version "1.0"
+    id("nulled.injector") version "1.0"
 }
 
 dependencies {
@@ -20,23 +20,6 @@ dependencies {
     implementation("nulled:logger:1.0")
     implementation("nulled:eventbus:1.0")
     runtimeOnly(files("./src/main/resources/injected-client.jar"))
-
-    //GPU Upscaling
-    //Very heavy deps, so only one runtime configuration should be used at once
-
-    //Common
-    implementation(files(
-        "../libs/javacpp-1.5.10.jar",
-        "../libs/javacv-1.5.10.jar",
-        "../libs/openblas-0.3.26-1.5.10.jar",
-        "../libs/opencv-4.9.0-1.5.10.jar",
-    ))
-    //Windows
-    runtimeOnly(files(
-        "../libs/javacpp-1.5.10-windows-x86_64.jar",
-        "../libs/openblas-0.3.26-1.5.10-windows-x86_64.jar",
-        "../libs/opencv-4.9.0-1.5.10-windows-x86_64.jar",
-    ))
 }
 
 tasks.withType<InjectTask> {

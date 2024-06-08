@@ -19,7 +19,6 @@ import meteor.ui.compose.GamePanel
 import meteor.ui.compose.Window.MeteorWindow
 import meteor.ui.config.AspectMode
 import meteor.ui.config.CPUFilter
-import meteor.ui.config.GPUFilter
 import meteor.ui.config.RenderMode
 import meteor.ui.swing.PostProcessGamePanel
 import meteor.ui.swing.RS2GamePanel
@@ -110,18 +109,6 @@ object Main {
                     RenderMode.GPU -> RenderMode.CPU
                     else -> RenderMode.CPU
                 }
-            }
-            "area" -> {
-                client.gpuFilter = GPUFilter.AREA
-            }
-            "linear_gpu" -> {
-                client.gpuFilter = GPUFilter.LINEAR
-            }
-            "cubic" -> {
-                client.gpuFilter = GPUFilter.CUBIC
-            }
-            "lanc" -> {
-                client.gpuFilter = GPUFilter.LANCZOS4
             }
             "overlay" -> {
                 GamePanel.debugOverlay.value = !GamePanel.debugOverlay.value

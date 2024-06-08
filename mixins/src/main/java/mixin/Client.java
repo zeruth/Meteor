@@ -3,16 +3,11 @@ package mixin;
 import meteor.events.*;
 import meteor.ui.config.AspectMode;
 import meteor.ui.config.CPUFilter;
-import meteor.ui.config.GPUFilter;
 import meteor.ui.config.RenderMode;
 import net.runelite.api.Callbacks;
 import net.runelite.api.mixins.*;
 import net.runelite.rs.api.RSClient;
 import net.runelite.rs.api.RSPathingEntity;
-import org.bytedeco.javacv.Java2DFrameUtils;
-import org.bytedeco.opencv.global.opencv_imgproc;
-import org.bytedeco.opencv.opencv_core.Mat;
-import org.bytedeco.opencv.opencv_core.Size;
 
 import javax.swing.*;
 import java.awt.*;
@@ -129,23 +124,6 @@ abstract class Client implements RSClient {
     }
 
     @Inject
-    private GPUFilter gpuFilter = GPUFilter.CUBIC;
-
-    @Inject
-    @Override
-    public GPUFilter getGPUFilter() {
-        if (gpuFilter == null)
-            gpuFilter = GPUFilter.CUBIC;
-        return gpuFilter;
-    }
-
-    @Inject
-    @Override
-    public void setGPUFilter(GPUFilter gpuFilter) {
-        this.gpuFilter = gpuFilter;
-    }
-
-    @Inject
     private float stretchedWidth = -1f;
 
     @Inject
@@ -173,18 +151,6 @@ abstract class Client implements RSClient {
     @Override
     public void setStretchedHeight(float stretchedHeight) {
         this.stretchedHeight = stretchedHeight;
-    }
-
-    /**
-     * @param filter see GamePanel.
-     */
-    @Inject
-    @Override
-    public BufferedImage gpuResizeAndFilter(BufferedImage gameImage, int width, int height, int filter) {
-        Mat inputMat = Java2DFrameUtils.toMat(gameImage);
-        Mat outputMat = new Mat();
-        opencv_imgproc.resize(inputMat, outputMat, new Size(width, height), 0d, 0d, filter);
-        return Java2DFrameUtils.toBufferedImage(outputMat);
     }
 
     @Inject
