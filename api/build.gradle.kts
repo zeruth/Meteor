@@ -7,7 +7,7 @@ group = "meteor"
 version = "1.0.0"
 
 dependencies {
-    implementation("nulled:logger:1.0")
+    implementation("nulled:logger:1.2")
     implementation("nulled:annotations:1.0")
 
     compileOnly(files(
