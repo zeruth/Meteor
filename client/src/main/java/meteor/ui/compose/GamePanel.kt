@@ -24,7 +24,7 @@ object GamePanel {
     var lastWidthScale = -1f
 
     @Composable
-    fun RS2GameView() {
+    fun GameView() {
         SwingPanel(factory = { Main.gamePanel }, modifier = Modifier.fillMaxSize())
         GameOverlay.render()
     }

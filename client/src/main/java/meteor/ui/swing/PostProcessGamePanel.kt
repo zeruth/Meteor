@@ -1,11 +1,13 @@
 package meteor.ui.swing
 
+import androidx.compose.ui.unit.dp
 import meteor.Constants.RS_DIMENSIONS
 import meteor.Main
 import meteor.events.DrawFinished
 import meteor.ui.compose.GamePanel
 import meteor.ui.compose.GamePanel.stretchedHeight
 import meteor.ui.compose.GamePanel.stretchedWidth
+import meteor.ui.compose.Window.gameWidth
 import meteor.ui.config.AspectMode
 import meteor.ui.config.CPUFilter
 import meteor.ui.config.RenderMode
@@ -41,6 +43,7 @@ class PostProcessGamePanel : JPanel() {
             loading = false
             checkFocus()
             draw()
+            gameWidth.value = Main.gamePanel.width.dp
         }
     }
 

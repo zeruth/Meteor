@@ -84,7 +84,6 @@ object Main {
         gamePanel.addKeyListener(KeyListener)
         gamePanel.addMouseListener(TranslateMouseListener)
         gamePanel.addMouseMotionListener(TranslateMouseListener)
-
     }
 
     fun processClientCommand(command: String) {

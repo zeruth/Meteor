@@ -19,6 +19,7 @@ dependencies {
     implementation("nulled:injector:1.3")
     implementation("nulled:logger:1.2")
     implementation("nulled:eventbus:1.0")
+    implementation("br.com.devsrsouza.compose.icons:line-awesome:1.1.0")
     runtimeOnly(files("./src/main/resources/injected-client.jar"))
 }
 
