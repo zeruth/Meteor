@@ -1,14 +1,10 @@
 package meteor.ui.swing
 
-import meteor.Constants.RS_DIMENSIONS
 import meteor.Main
 import meteor.events.DrawFinished
 import meteor.ui.compose.GamePanel
 import meteor.ui.compose.GamePanel.stretchedHeight
 import meteor.ui.compose.GamePanel.stretchedWidth
-import meteor.ui.config.AspectMode
-import meteor.ui.config.CPUFilter
-import meteor.ui.config.RenderMode
 import org.rationalityfrontline.kevent.KEVENT
 import java.awt.Graphics
 import java.awt.Graphics2D
@@ -49,10 +45,10 @@ class PostProcessGamePanel : JPanel() {
             graphics2D = it as Graphics2D
             var finalImage = RS2GamePanel.image!!
             updateSizeAndScale()
-            when (Main.client.renderMode) {
+/*            when (Main.client.renderMode) {
                 RenderMode.CPU -> setCPURenderingHints(it)
                 else -> {}
-            }
+            }*/
             Main.updateStatusText()
             drawToSurface(it, finalImage)
         }
@@ -62,31 +58,24 @@ class PostProcessGamePanel : JPanel() {
         val scale = getScale()
         var stretchedWidth = width
         var stretchedHeight = height
-        if (Main.client.aspectMode == AspectMode.FIT) {
+/*        if (Main.client.aspectMode == AspectMode.FIT) {
             stretchedWidth = (RS_DIMENSIONS.width * scale).toInt()
             stretchedHeight = (RS_DIMENSIONS.height * scale).toInt()
-        }
+        }*/
 
         GamePanel.stretchedWidth.value = stretchedWidth
         GamePanel.stretchedHeight.value = stretchedHeight
 
-        if (Main.client.aspectMode == AspectMode.FIT)
+/*        if (Main.client.aspectMode == AspectMode.FIT)
             updatePadding((width - stretchedWidth.toFloat()) / 2)
-        else
-            updatePadding(0f)
+        else*/
+           // updatePadding(0f)
     }
 
     private fun drawToSurface(graphics: Graphics, finalImage: BufferedImage) {
-        when (Main.client.aspectMode) {
-            AspectMode.FIT -> {
-                graphics.drawImage(finalImage, Main.client.padding.toInt(), 0,
-                    stretchedWidth.value, stretchedHeight.value,this)
-            }
-            AspectMode.FILL -> graphics.drawImage(finalImage, 0, 0, width, height,this)
-            else -> {}
-        }
+        graphics.drawImage(finalImage, 0, 0, width, height,this)
     }
-
+/*
     private fun updatePadding(padding: Float) {
         Main.client.padding = padding.coerceAtLeast(0f)
         GamePanel.xPadding.value = Main.client.padding
@@ -96,7 +85,7 @@ class PostProcessGamePanel : JPanel() {
         if (Main.client.cpuFilter == CPUFilter.BILINEAR) {
             graphics2D.setRenderingHints(hints)
         }
-    }
+    }*/
 
     private fun getScale(): Float {
         val windowSize: Int = height

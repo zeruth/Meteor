@@ -16,7 +16,6 @@ import androidx.compose.ui.unit.sp
 import meteor.Main
 import meteor.ui.compose.GamePanel
 import meteor.ui.compose.Util
-import meteor.ui.config.AspectMode
 import java.awt.Dimension
 import java.awt.Point
 
@@ -28,7 +27,7 @@ object ViewportOverlay {
      * This overlay layer is restricted to the viewport area
      */
     @Composable
-    fun render() {
+    fun render() {/*
         val yScale = GamePanel.getHeightScale()
         val xScale = if (Main.client.aspectMode == AspectMode.FIT)
             yScale
@@ -69,6 +68,6 @@ object ViewportOverlay {
                     }
                 }
             }
-        }
+        }*/
     }
 }

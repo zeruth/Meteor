@@ -1,12 +1,18 @@
 package meteor.ui.compose
 
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.awt.SwingPanel
 import meteor.Main
 import meteor.ui.compose.overlay.GameOverlay
+import net.runelite.rs.api.RSGameShell
+import java.applet.Applet
+import java.awt.Canvas
+import java.awt.KeyboardFocusManager
+import javax.swing.JPanel
+
 
 /**
  * This panel will contain the game view & compose overlays eventually
@@ -22,9 +28,21 @@ object GamePanel {
     var lastWidth = -1
     var lastWidthScale = -1f
 
+    val gamePanel = JPanel()
+    val canvas = Canvas()
+
     @Composable
     fun RS2GameView() {
-        SwingPanel(factory = { Main.gamePanel }, modifier = Modifier.fillMaxSize())
+        SwingPanel(factory = { gamePanel.apply {
+            Main.client.canvas = canvas
+            add(canvas)
+
+            gamePanel.addKeyListener(Main.client as RSGameShell)
+
+            gamePanel.addMouseListener(Main.client as RSGameShell)
+            gamePanel.addMouseMotionListener(Main.client as RSGameShell)
+            gamePanel.addMouseWheelListener(Main.client as RSGameShell)
+        } }, modifier = Modifier.fillMaxSize())
         GameOverlay.render()
     }
 

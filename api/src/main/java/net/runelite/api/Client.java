@@ -1,55 +1,216 @@
+/*
+ * Copyright (c) 2016-2017, Adam <Adam@sigterm.info>
+ * All rights reserved.
+ *
+ * Redistribution and use in source and binary forms, with or without
+ * modification, are permitted provided that the following conditions are met:
+ *
+ * 1. Redistributions of source code must retain the above copyright notice, this
+ *    list of conditions and the following disclaimer.
+ * 2. Redistributions in binary form must reproduce the above copyright notice,
+ *    this list of conditions and the following disclaimer in the documentation
+ *    and/or other materials provided with the distribution.
+ *
+ * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
+ * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+ * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+ * DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR
+ * ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
+ * (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
+ * LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND
+ * ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+ * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
+ * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ */
 package net.runelite.api;
 
-import meteor.ui.config.AspectMode;
-import meteor.ui.config.CPUFilter;
-import meteor.ui.config.RenderMode;
+import net.runelite.api.hooks.Callbacks;
+import rscplus.ItemNamePatchLevel;
 
 import javax.swing.*;
-import java.awt.image.BufferedImage;
+import java.awt.*;
+import java.util.ArrayList;
+import java.util.HashMap;
 
-public interface Client extends GameShell{
-    void setGamePanel(JPanel gamePanel);
+public interface Client
+{
+	Callbacks getCallbacks();
 
-    JPanel getGamePanel();
+	void setCallbacks(Callbacks callbacks);
 
-    Callbacks getCallbacks();
+	void initWindow$api();
 
-    void setCallbacks(Callbacks callbacks);
+	void initClient$api(String[] args);
 
-    void preGameInit();
+	ArrayList<InventoryItem> getInventoryItems();
 
-    RenderMode getRenderMode();
+	void setInventoryItems(ArrayList<InventoryItem> inventoryItems);
 
-    void setRenderMode(RenderMode renderMode);
+	int getInventorySize();
 
-    AspectMode getAspectMode();
+	int[] getInventoryItemsIDs();
 
-    void setAspectMode(AspectMode aspectMode);
+	int[] getInventoryItemsEquipped();
 
-    CPUFilter getCPUFilter();
+	int[] getInventoryItemsStackable();
 
-    void setCPUFilter(CPUFilter cpuFilter);
+	int[] getInventoryItemsQuantities();
 
-    float getStretchedWidth();
+	boolean isStretchedEnabled();
 
-    void setStretchedWidth(float stretcheWidth);
+	Dimension getStretchedDimensions();
 
-    float getStretchedHeight();
+	boolean isStretchedFast();
 
-    void setStretchedHeight(float stretcheHeight);
+	Canvas getCanvas();
 
-    BufferedImage gpuResizeAndFilter(BufferedImage gameImage, int width, int height, int filter);
+	void setCanvas(Canvas canvas);
 
-    float getPadding();
+	JPanel getGamePanel();
 
-    void setPadding(float xPadding);
-    void projectFromGround$api(PathingEntity entity, int height);
-    int getProjectX();
-    int getProjectY();
-    PlayerEntity[] getPlayers();
-    PlayerEntity getLocalPlayer();
-    NpcEntity[] getNpcs();
-    boolean loggedIn();
-    int getWaveVol();
-    String getMidi();
+	void setGamePanel(JPanel gamePanel);
+
+	void setMaxCanvasWidth(int width);
+
+	void setMaxCanvasHeight(int height);
+
+	Dimension getRealDimensions();
+
+	double getScalingFactor();
+
+	void setScalingFactor(int factor);
+
+	void setStretchedKeepAspectRatio(boolean state);
+
+	void setStretchedIntegerScaling(boolean state);
+
+	void setStretchedFast(boolean state);
+
+	void setStretchedEnabled(boolean state);
+
+	void invalidateStretching(boolean resize);
+
+	boolean isResized();
+
+	void setResized(boolean resized);
+
+	boolean isResizeCanvasNextFrame();
+
+	void setResizeCanvasNextFrame(boolean resizeCanvasNextFrame);
+
+	void resizeCanvas();
+
+	boolean isLoggedIn();
+
+	boolean isClientThread();
+
+	Character getLocalPlayer();
+
+	String[] getSkillNamesShort();
+
+	int getRealLevel(Skill skill);
+
+	int getBoostedLevel(Skill skill);
+
+	int getFatigue();
+
+	int getFatiguePercentage();
+
+	int getNextLevelXP(Skill skill);
+
+	int getCurrentLevelXP(Skill skill);
+
+	int getXP(Skill skill);
+
+	int getXPUntilLevel(Skill skill);
+
+	int[] getSkillXPs();
+
+	boolean showingInventory();
+
+	int getMenuOptionsSize();
+
+	void chooseOption$api(int optionIdx);
+
+	ItemNamePatchLevel getItemPatchLevel();
+
+	void setItemPatchLevel(ItemNamePatchLevel itemPatchLevel);
+
+	void setItemNames(String[] itemNames);
+
+	String[] getItemNames();
+
+	boolean isCorrectHitsplats();
+
+	void setCorrectHitsplats(boolean correctHitsplats);
+
+	void setHitsplatsAboveScene(boolean hitsplatsAboveScene);
+
+	boolean isHitsplatsAboveScene();
+
+	int getCameraX();
+	int getCameraY();
+	int getCameraZ();
+	int getCameraPitch();
+	int getCameraYaw();
+	int getScale();
+	void setScale(int scale);
+
+	int getBaseX();
+
+	int getBaseY();
+
+	int getPlane();
+
+	boolean isGPU();
+
+	byte[][] getTileHeights();
+
+	String getUsername();
+
+	void setShowUITab(int tab);
+
+	int getCameraRotation();
+
+	void setCameraRotation(int cameraAngle);
+
+	Character[] getNPCs();
+
+	Character[] getPlayers();
+
+	void resetScreenData();
+
+	boolean getShowOptionsMenu();
+
+	void clearItems();
+
+	ArrayList<TileItem> getTileItems();
+
+	HashMap<Point, HashMap<TileItem, Integer>> getTileItemQuantities();
+
+	int getItemBasePrice(int itemID);
+
+	Scene getScene();
+
+	boolean mimicMobileUI();
+
+	void setMimicMobileUI(boolean mimicMobileUI);
+
+	int getGameWidth();
+
+	void setGameWidth(int gameWidth);
+
+	int getGameHeight();
+
+	void setGameHeight(int gameHeight);
+
+	void updateBounds$api(int width, int height);
+
+	boolean isSleeping();
+
+	void createMessageTabPanel$api();
+
+	boolean isHideRoofs();
+
+	void setHideRoofs(boolean hideRoofs);
 }

@@ -1,6 +1,6 @@
 package meteor.ui.swing
 
-import meteor.Constants.RS_DIMENSIONS
+import net.runelite.api.Constants
 import java.awt.Dimension
 import java.awt.Graphics
 import java.awt.image.BufferedImage
@@ -16,7 +16,7 @@ class RS2GamePanel(w: Int, h: Int) : JPanel() {
     private var graphics: Graphics? = null
 
     init {
-        size = Dimension(RS_DIMENSIONS.width, RS_DIMENSIONS.height)
+        size = Dimension(Constants.GAME_FIXED_WIDTH, Constants.GAME_FIXED_HEIGHT)
         image = BufferedImage(w, h, BufferedImage.TYPE_4BYTE_ABGR)
         graphics = image!!.createGraphics()
     }

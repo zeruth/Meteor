@@ -12,7 +12,7 @@ object MidiPlayer {
     var synthesizer: Synthesizer? = null
     private var currentSong: String? = null
 
-    fun playSong(forced: Boolean) {
+/*    fun playSong(forced: Boolean) {
         val midi = Main.client.midi
         if (midi == null) {
             sequencer!!.stop()
@@ -69,7 +69,7 @@ object MidiPlayer {
         } catch (e: Exception) {
             e.printStackTrace()
         }
-    }
+    }*/
 
     fun stop() {
         if (sequencer!!.isRunning) sequencer!!.stop()

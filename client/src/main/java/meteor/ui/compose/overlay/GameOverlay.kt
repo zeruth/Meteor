@@ -31,7 +31,7 @@ object GameOverlay {
         var mod = Modifier.absoluteOffset(x = GamePanel.xPadding.value.dp)
             .size(DpSize(GamePanel.stretchedWidth.value.dp, GamePanel.stretchedHeight.value.dp))
             .clipToBounds()
-        if (Main.client.loggedIn() && GamePanel.debugOverlay.value)
+        if (/*Main.client.loggedIn() && */GamePanel.debugOverlay.value)
             mod = mod.background(Color.Cyan.copy(alpha = .2f))
         Box(mod) {
             ViewportOverlay.render()

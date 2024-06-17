@@ -25,64 +25,59 @@
  */
 package meteor.input
 
-import meteor.Constants.RS_DIMENSIONS
 import meteor.Main
-import meteor.ui.config.AspectMode
-import net.runelite.rs.api.RSGameShell
-import java.applet.Applet
-import java.awt.Dimension
 import java.awt.event.MouseEvent
-import java.awt.event.MouseListener
-import java.awt.event.MouseMotionListener
 
-object TranslateMouseListener : MouseListener, MouseMotionListener {
-    val client = (Main.client as RSGameShell)
-    override fun mouseClicked(mouseEvent: MouseEvent) {
-        client.mouseClicked(translateEvent(mouseEvent))
+object TranslateMouseListener : MouseListener {
+    override fun mouseClicked(mouseEvent: MouseEvent): MouseEvent {
+        return translateEvent(mouseEvent)
     }
 
-    override fun mousePressed(mouseEvent: MouseEvent) {
-        client.mousePressed(translateEvent(mouseEvent))
+    override fun mousePressed(mouseEvent: MouseEvent): MouseEvent {
+        return translateEvent(mouseEvent)
     }
 
-    override fun mouseReleased(mouseEvent: MouseEvent) {
-        client.mouseReleased(translateEvent(mouseEvent))
+    override fun mouseReleased(mouseEvent: MouseEvent): MouseEvent {
+        return translateEvent(mouseEvent)
     }
 
-    override fun mouseEntered(mouseEvent: MouseEvent) {
-        client.mouseEntered(translateEvent(mouseEvent))
+    override fun mouseEntered(mouseEvent: MouseEvent): MouseEvent {
+        return translateEvent(mouseEvent)
     }
 
-    override fun mouseExited(mouseEvent: MouseEvent) {
-        client.mouseExited(translateEvent(mouseEvent))
+    override fun mouseExited(mouseEvent: MouseEvent): MouseEvent {
+        return translateEvent(mouseEvent)
     }
 
-    override fun mouseDragged(mouseEvent: MouseEvent) {
-        client.mouseDragged(translateEvent(mouseEvent))
+    override fun mouseDragged(mouseEvent: MouseEvent): MouseEvent {
+        return translateEvent(mouseEvent)
     }
 
-    override fun mouseMoved(mouseEvent: MouseEvent) {
-        client.mouseMoved(translateEvent(mouseEvent))
+    override fun mouseMoved(mouseEvent: MouseEvent): MouseEvent {
+        return translateEvent(mouseEvent)
     }
 
     private fun translateEvent(e: MouseEvent): MouseEvent {
-        val x = e.x - Main.client.padding
-        val modY: Float = (Main.gamePanel.height.toFloat() / RS_DIMENSIONS.height)
-        val modX = when (Main.client.aspectMode) {
-            AspectMode.FIT -> modY
-            AspectMode.FILL -> (Main.gamePanel.width.toFloat() / Main.client.gamePanel.width)
-            else -> 1f
+        if (!Main.client.isStretchedEnabled) {
+            return e
         }
-        val newX = x / modX
-        val newY = (e.y.toFloat() / modY);
-        val mouseEvent = MouseEvent(
-            client as Applet, e.id, e.getWhen(),
-            e.modifiersEx,
-            newX.toInt(), newY.toInt(), e.clickCount, e.isPopupTrigger, e.button
-        )
-        if (e.isConsumed) {
-            mouseEvent.consume()
+        val stretchedDimensions = Main.client.stretchedDimensions
+        val realDimensions = Main.client.realDimensions
+        realDimensions?.let {
+            val newX = (e.x / (stretchedDimensions.width / realDimensions.getWidth())).toInt()
+            val newY = (e.y / (stretchedDimensions.height / realDimensions.getHeight())).toInt()
+
+            val mouseEvent = MouseEvent(
+                Main.client.canvas, e.id, e.getWhen(),
+                    e.modifiersEx,
+                    newX, newY, e.clickCount, e.isPopupTrigger, e.button
+            )
+            if (e.isConsumed) {
+                mouseEvent.consume()
+            }
+            return mouseEvent
         }
-        return mouseEvent
+
+        return e
     }
 }

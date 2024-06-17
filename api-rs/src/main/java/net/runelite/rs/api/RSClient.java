@@ -1,68 +1,181 @@
+/*
+ * Copyright (c) 2016-2017, Adam <Adam@sigterm.info>
+ * All rights reserved.
+ *
+ * Redistribution and use in source and binary forms, with or without
+ * modification, are permitted provided that the following conditions are met:
+ *
+ * 1. Redistributions of source code must retain the above copyright notice, this
+ *    list of conditions and the following disclaimer.
+ * 2. Redistributions in binary form must reproduce the above copyright notice,
+ *    this list of conditions and the following disclaimer in the documentation
+ *    and/or other materials provided with the distribution.
+ *
+ * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+ * AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+ * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+ * DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE
+ * FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+ * DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+ * SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
+ * CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
+ * OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+ * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ */
 package net.runelite.rs.api;
 
-import net.runelite.api.Client;
-import net.runelite.api.PathingEntity;
-import net.runelite.mapping.Construct;
+import net.runelite.api.*;
 import net.runelite.mapping.Import;
 
-import javax.swing.*;
 import java.awt.*;
-import java.net.InetAddress;
 
-public interface RSClient extends Client, RSGameShell {
+public interface RSClient extends Client
+{
+	//inits the applet for us
+	@Import("initWindow")
+	void initWindow$api();
 
-    @Construct
-    RSViewBox createViewBox(RSGameShell shell, int width, int height);
+	@Import("initClient")
+	void initClient$api(String[] args);
 
-    @Construct
-    RSPixMap createPixMap(Component component, int width, int height);
+	@Import("injected")
+	boolean isInjected();
 
-    @Import("gamePanel")
-    @Override
-    void setGamePanel(JPanel gamePanel);
+	@Import("injected")
+	void setInjected(boolean isInjected);
 
-    @Import("gamePanel")
-    @Override
-    JPanel getGamePanel();
+	@Import("isMembers")
+	void setIsMembers(boolean isMembers);
 
-    @Import("nodeId")
-    void setNodeID(int nodeID);
+	@Import("inventorySize")
+	int getInventorySize();
 
-    @Import("portOffset")
-    void setPortOffset(int portOffset);
+	@Import("inventoryItemsIDs")
+	int[] getInventoryItemsIDs();
 
-    @Import("setHighMemory")
-    void setHighMemory$api();
+	@Import("inventoryItemsEquipped")
+	int[] getInventoryItemsEquipped();
 
-    @Import("members")
-    void setMembers(boolean isMembers);
+	@Import("inventoryItemsStackable")
+	int[] getInventoryItemsStackable();
 
-    @Override
-    @Import("projectFromGround")
-    void projectFromGround$api(PathingEntity entity, int height);
+	@Import("inventoryItemsQuantities")
+	int[] getInventoryItemsQuantities();
 
-    @Import("projectX")
-    int getProjectX();
+	@Import("loggedIn")
+	int getRSCLoggedIn();
 
-    @Import("projectY")
-    int getProjectY();
+	@Import("fogOfWar")
+	void setFogOfWar(boolean fogOfWar);
 
-    @Import("playerCount")
-    int getPlayerCount();
+	@Import("localPlayer")
+	@Override
+	RSCharacter getLocalPlayer();
 
-    @Import("npcCount")
-    int getNPCCount();
+	@Import("skillNamesShort")
+	String[] getSkillNamesShort();
 
-    @Import("players")
-    RSPlayerEntity[] getPlayers();
+	@Import("boostedSkillLevels")
+	int[] getBoostedSkillLevels();
 
-    @Import("localPlayer")
-    RSPlayerEntity getLocalPlayer();
+	@Import("realSkillLevels")
+	int[] getRealSkillLevels();
 
-    @Import("npcs")
-    RSNpcEntity[] getNpcs();
+	@Import("statFatigue")
+	int getFatigue();
 
-    @Override
-    @Import("ingame")
-    boolean loggedIn();
+	@Import("levelXPs")
+	int[] getLevelXPs();
+
+	@Import("skillXPs")
+	int[] getSkillXPs();
+
+	@Import("graphics")
+	Graphics getGraphics$api();
+
+	@Import("surface")
+	RSSpriteSurface getSurface();
+
+	@Import("showUiTab")
+	int getShowUITab();
+
+	@Import("showUiTab")
+	void setShowUITab(int tab);
+
+	@Import("optionMenuCount")
+	int getMenuOptionsSize();
+
+	@Import("chooseOption")
+	void chooseOption$api(int optionIdx);
+
+	@Import("selectedItemSlot")
+	int getSelectedItemSlot();
+
+	@Import("combatStyle")
+	int getCombatStyle();
+
+	@Import("combatStyle")
+	void setCombatStyle(int idx);
+
+	@Import("npcs")
+	RSCharacter[] getNPCs();
+
+	@Import("players")
+	RSCharacter[] getPlayers();
+
+	@Import("drawHitsplatsAboveScene")
+	@Override
+	void setHitsplatsAboveScene(boolean hitsplatsAboveScene);
+
+	@Import("drawHitsplatsAboveScene")
+	@Override
+	boolean isHitsplatsAboveScene();
+
+	@Import("baseX")
+	int getBaseX();
+
+	@Import("baseY")
+	int getBaseY();
+
+	@Import("plane")
+	int getPlane();
+
+	@Import("scene")
+	RSScene getScene();
+
+	@Import("cameraZoom")
+	int getScale();
+
+	@Import("cameraZoom")
+	void setScale(int scale);
+
+	@Import("cameraRotation")
+	int getCameraRotation();
+
+	@Import("cameraRotation")
+	void setCameraRotation(int cameraAngle);
+
+	@Import("showOptionMenu")
+	boolean getShowOptionsMenu();
+
+	@Import("gameWidth")
+	int getGameWidth();
+
+	@Import("gameWidth")
+	void setGameWidth(int gameWidth);
+
+	@Import("gameHeight")
+	int getGameHeight();
+
+	@Import("gameHeight")
+	void setGameHeight(int gameHeight);
+
+	@Import("updateBounds")
+	void updateBounds$api(int width, int height);
+
+	@Import("isSleeping")
+	boolean isSleeping();
+
+	@Import("createMessageTabPanel")
+	void createMessageTabPanel$api();
 }

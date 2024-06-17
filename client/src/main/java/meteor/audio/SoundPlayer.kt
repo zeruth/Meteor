@@ -1,7 +1,6 @@
 package meteor.audio
 
 import meteor.Main
-import meteor.events.PlaySound
 import org.rationalityfrontline.kevent.KEVENT
 import java.io.ByteArrayInputStream
 import java.io.InputStream
@@ -18,10 +17,10 @@ class SoundPlayer(stream: AudioInputStream, delay: Int) {
     init {
         this.soundStream = stream
         this.delay = delay
-        run()
+        //run()
     }
 
-    fun run() {
+/*    fun run() {
         try {
             stream = soundStream as AudioInputStream
             info = DataLine.Info(Clip::class.java, stream!!.format)
@@ -38,7 +37,7 @@ class SoundPlayer(stream: AudioInputStream, delay: Int) {
         } catch (e: Exception) {
             e.printStackTrace()
         }
-    }
+    }*/
 
     fun getDecibels(volumeControl: FloatControl, level: Int): Float {
         val range = volumeControl.maximum - volumeControl.minimum

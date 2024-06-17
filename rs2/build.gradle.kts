@@ -13,6 +13,8 @@ java{
 }
 
 dependencies {
+    implementation(project(":api"))
+    implementation("nulled:annotations:1.0")
     implementation("nulled:eventbus:1.0")
 }
 
