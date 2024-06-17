@@ -2,12 +2,10 @@ package meteor.ui.compose.overlay
 
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.background
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.absoluteOffset
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.onClick
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -31,7 +29,7 @@ object GameOverlay {
         var mod = Modifier.absoluteOffset(x = GamePanel.xPadding.value.dp)
             .size(DpSize(GamePanel.stretchedWidth.value.dp, GamePanel.stretchedHeight.value.dp))
             .clipToBounds()
-        if (Main.client.loggedIn() && GamePanel.debugOverlay.value)
+        if (Main.client.loggedIn() && GamePanel.debugOverlays.value)
             mod = mod.background(Color.Cyan.copy(alpha = .2f))
         Box(mod) {
             ViewportOverlay.render()

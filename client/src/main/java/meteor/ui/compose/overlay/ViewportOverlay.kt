@@ -1,7 +1,6 @@
 package meteor.ui.compose.overlay
 
 import androidx.compose.foundation.background
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.absoluteOffset
 import androidx.compose.foundation.layout.size
@@ -45,11 +44,12 @@ object ViewportOverlay {
             .absoluteOffset(x = offsetX, y = offsetY)
             .size(DpSize(width, height))
             .clipToBounds()
-        if (Main.client.loggedIn() && GamePanel.debugOverlay.value)
+
+        if (Main.client.loggedIn() && GamePanel.debugOverlays.value)
             mod = mod.background(Color.Red.copy(alpha = .2f))
 
         Box(mod) {
-            if (Main.client.loggedIn() && GamePanel.debugOverlay.value) {
+            if (Main.client.loggedIn() && GamePanel.debugNpcs.value) {
                 for (npc in Main.client.npcs.filterNotNull()) {
                     npc.type?.let {
                         Main.client.`projectFromGround$api`(npc, npc.height + 30)
@@ -59,6 +59,8 @@ object ViewportOverlay {
                                 y = (Main.client.projectY * yScale).dp))
                     }
                 }
+            }
+            if (Main.client.loggedIn() && GamePanel.debugPlayers.value) {
                 for (player in Main.client.players.filterNotNull()) {
                     Main.client.`projectFromGround$api`(player, player.height + 30)
                     player.name?.let {

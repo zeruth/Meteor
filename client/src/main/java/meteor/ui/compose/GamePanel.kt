@@ -15,8 +15,9 @@ object GamePanel {
     var xPadding = mutableStateOf(0f)
     var stretchedWidth = mutableStateOf(0)
     var stretchedHeight = mutableStateOf(0)
-    var debugOverlay = mutableStateOf(false)
-
+    var debugOverlays = mutableStateOf(false)
+    var debugNpcs = mutableStateOf(false)
+    var debugPlayers = mutableStateOf(false)
     var lastHeight = -1
     var lastHeightScale = -1f
     var lastWidth = -1

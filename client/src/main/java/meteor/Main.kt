@@ -6,6 +6,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Window
 import androidx.compose.ui.window.WindowState
 import androidx.compose.ui.window.application
+import ext.kotlin.MutableStateExt.toggle
 import meteor.Constants.RS_DIMENSIONS
 import meteor.audio.MidiPlayer
 import meteor.audio.SoundPlayer
@@ -103,8 +104,14 @@ object Main {
                     else -> CPUFilter.NONE
                 }
             }
-            "overlay" -> {
-                GamePanel.debugOverlay.value = !GamePanel.debugOverlay.value
+            "overlays" -> {
+                GamePanel.debugOverlays.toggle()
+            }
+            "npcs" -> {
+                GamePanel.debugNpcs.toggle()
+            }
+            "players" -> {
+                GamePanel.debugPlayers.toggle()
             }
         }
     }
