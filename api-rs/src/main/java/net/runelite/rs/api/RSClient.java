@@ -1,13 +1,13 @@
 package net.runelite.rs.api;
 
 import net.runelite.api.Client;
+import net.runelite.api.LinkList;
 import net.runelite.api.PathingEntity;
 import net.runelite.mapping.Construct;
 import net.runelite.mapping.Import;
 
 import javax.swing.*;
 import java.awt.*;
-import java.net.InetAddress;
 
 public interface RSClient extends Client, RSGameShell {
 
@@ -38,8 +38,16 @@ public interface RSClient extends Client, RSGameShell {
     void setMembers(boolean isMembers);
 
     @Override
+    @Import("project")
+    void project$api(int x, int y, int z);
+
+    @Override
     @Import("projectFromGround")
     void projectFromGround$api(PathingEntity entity, int height);
+
+    @Override
+    @Import("projectFromGround")
+    void projectFromGround$api(int x, int y, int z);
 
     @Import("projectX")
     int getProjectX();
@@ -65,4 +73,28 @@ public interface RSClient extends Client, RSGameShell {
     @Override
     @Import("ingame")
     boolean loggedIn();
+
+    @Import("loopCycle")
+    int getLoopCycle();
+
+    @Import("currentLevel")
+    int getCurrentLevel();
+
+    @Import("getHeightmapY")
+    int getHeightmapY$api(int level, int x, int z);
+
+    @Import("locList")
+    LinkList getLocLinkList();
+
+    @Import("sceneBaseTileX")
+    int getBaseX();
+
+    @Import("sceneBaseTileZ")
+    int getBaseZ();
+
+    @Import("scene")
+    RSWorld3D getScene();
+
+    @Import("viewportInterfaceId")
+    int getViewportInterfaceID();
 }

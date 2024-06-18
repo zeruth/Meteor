@@ -10,14 +10,17 @@ import ext.kotlin.MutableStateExt.toggle
 import meteor.Constants.RS_DIMENSIONS
 import meteor.audio.MidiPlayer
 import meteor.audio.SoundPlayer
+import meteor.config.ConfigManager
+import meteor.config.MeteorConfig
 import meteor.events.Command
 import meteor.events.PlaySong
 import meteor.events.PlaySound
 import meteor.events.StopMusic
 import meteor.input.KeyListener
 import meteor.input.TranslateMouseListener
+import meteor.plugin.PluginManager
 import meteor.ui.compose.GamePanel
-import meteor.ui.compose.Window.MeteorWindow
+import meteor.ui.compose.Window.Window
 import meteor.ui.config.AspectMode
 import meteor.ui.config.CPUFilter
 import meteor.ui.config.RenderMode
@@ -27,6 +30,7 @@ import net.runelite.api.Client
 import org.rationalityfrontline.kevent.KEVENT
 import java.awt.Dimension
 import java.awt.Window
+import java.io.File
 import javax.sound.sampled.AudioSystem
 
 
@@ -38,9 +42,15 @@ object Main {
     var initialSize = Dimension(RS_DIMENSIONS.width, RS_DIMENSIONS.height + 28)
     var loaded = false
     var text = mutableStateOf("")
+    val config = MeteorConfig()
+    var forceRecomposition = mutableStateOf(false)
+    var swingTime = mutableStateOf(1L)
+    var composeTime = mutableStateOf(1L)
 
     init {
         System.setProperty("compose.interop.blending", "true")
+        Logger.logFile = File(Configuration.dataDir, "log.txt")
+        ConfigManager
         gamePanel.background = java.awt.Color.BLACK
         KEVENT.subscribe<Command> { processClientCommand(it.data.command) }
         KEVENT.subscribe<PlaySound> {
@@ -66,7 +76,7 @@ object Main {
                 //This Window be reloaded on events where it may be destroyed such as windows scaling changes
                 if (!loaded)
                     initRS2()
-                MeteorWindow()
+                Window()
             }
     }
 
@@ -76,6 +86,8 @@ object Main {
         client.callbacks = hooks
         client.preGameInit()
         loaded = true
+
+        PluginManager.startPlugins()
 
         //Desktop init
         //We provide a custom JPanel impl that hooks the drawing process
@@ -106,25 +118,22 @@ object Main {
             "overlays" -> {
                 GamePanel.debugOverlays.toggle()
             }
-            "npcs" -> {
-                GamePanel.debugNpcs.toggle()
-            }
-            "players" -> {
-                GamePanel.debugPlayers.toggle()
-            }
         }
     }
 
     fun updateStatusText() {
+        var t = ""
         when (client.renderMode) {
-            RenderMode.CPU -> text.value = "Meteor 2.0.5-SNAPSHOT"
-            RenderMode.GPU -> text.value = "Meteor 2.0.5-SNAPSHOT (GPU)"
+            RenderMode.CPU -> t = "Meteor 2.0.5-SNAPSHOT"
+            RenderMode.GPU -> t = "Meteor 2.0.5-SNAPSHOT (GPU)"
             else -> {}
         }
+        ConfigManager.set("version", t)
         if (client.loggedIn())
             client.localPlayer?.let {
-                text.value += " - ${it.name}"
+                t += " - ${it.name}"
             }
+        text.value = t
     }
 
     private inline fun<reified T : Any> ClassLoader.load(): T {

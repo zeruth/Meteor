@@ -5,22 +5,28 @@ import meteor.ui.config.AspectMode;
 import meteor.ui.config.CPUFilter;
 import meteor.ui.config.RenderMode;
 import net.runelite.api.Callbacks;
+import net.runelite.api.Component;
+import net.runelite.api.Linkable;
+import net.runelite.api.LocEntity;
 import net.runelite.api.mixins.*;
 import net.runelite.rs.api.RSClient;
+import net.runelite.rs.api.RSComponent;
 import net.runelite.rs.api.RSPathingEntity;
 
 import javax.swing.*;
-import java.awt.*;
-import java.awt.image.BufferedImage;
 import java.io.ByteArrayInputStream;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
+import java.util.ArrayList;
 
 @SuppressWarnings("ALL")
 @Mixin(RSClient.class)
 abstract class Client implements RSClient {
     @Shadow("client")
     public static RSClient client;
+
+    @Shadow("instances")
+    public static RSComponent[] components;
 
     @Shadow("gamePanel")
     public static JPanel gamePanel;
@@ -47,7 +53,7 @@ abstract class Client implements RSClient {
     }
 
     @Replace("getBaseComponent")
-    public Component getBaseComponent$mixin() {
+    public java.awt.Component getBaseComponent$mixin() {
         return gamePanel;
     }
 
@@ -239,5 +245,47 @@ abstract class Client implements RSClient {
                 getCallbacks().post(new ChangeMusicVolume(25));
                 break;
         }
+    }
+
+    @Inject
+    @Override
+    public LocEntity[] getLocs() {
+        ArrayList<LocEntity> locs = new ArrayList<LocEntity>();
+        Linkable head = getLocLinkList().getSentinel();
+        if (head instanceof LocEntity) {
+            for (LocEntity loc = (LocEntity) head; loc != null; loc = checkNextLoc(head, loc)) {
+                if (loc != null)
+                    locs.add(loc);
+            }
+            return locs.toArray(new LocEntity[locs.size()]);
+        }
+        return new LocEntity[0];
+    }
+
+    @Inject
+    public LocEntity checkNextLoc(Linkable sentinel, Linkable current) {
+        Linkable next = current.getNext();
+        if (current == null || next == sentinel)
+            return null;
+        return (LocEntity) next;
+    }
+
+    @Inject
+    @Override
+    public void projectFromLocal(int x, int y, int z) {
+        projectFromGround$api(x * 128 + 64, y, z  * 128 + 64);
+    }
+
+    @Inject
+    @Override
+    public boolean isBankOpen() {
+        return getViewportInterfaceID() == 5292;
+    }
+
+
+    @Inject
+    @Override
+    public Component[] getComponents() {
+        return components;
     }
 }

@@ -5,9 +5,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import meteor.ui.compose.GamePanel.GameView
-import meteor.ui.compose.config.ConfigPanelComposables
-import meteor.ui.compose.config.ConfigPanelComposables.ConfigPanel
+import meteor.ui.compose.GamePanel.Game
+import meteor.ui.compose.config.ConfigPanelComposables.Panel
 import meteor.ui.compose.sidebar.SidebarComposables.Sidebar
 import meteor.ui.compose.sidebar.UISide
 
@@ -17,21 +16,21 @@ import meteor.ui.compose.sidebar.UISide
 object Window {
     val sidebarWidth = mutableStateOf(40.dp)
     val configWidth = mutableStateOf(300.dp)
-    var configOpen = mutableStateOf(false)
+    var panelOpen = mutableStateOf(false)
     val uiSide = mutableStateOf(UISide.RIGHT)
     var gameWidth = mutableStateOf((-1).dp)
     @Composable
-    fun MeteorWindow() {
+    fun Window() {
         Box(Modifier.fillMaxSize()) {
             Row(Modifier.fillMaxSize()) {
                 when (uiSide.value) {
                     UISide.RIGHT -> {
                         Box(Modifier.fillMaxHeight().weight(1f)) {
-                            GameView()
+                            Game()
                         }
-                        if (configOpen.value) {
+                        if (panelOpen.value) {
                             Box(Modifier.fillMaxHeight().width(configWidth.value)) {
-                                ConfigPanel()
+                                Panel()
                             }
                         }
                         Box(Modifier.fillMaxHeight().width(sidebarWidth.value)) {
@@ -42,13 +41,13 @@ object Window {
                         Box(Modifier.fillMaxHeight().width(sidebarWidth.value)) {
                             Sidebar()
                         }
-                        if (configOpen.value) {
+                        if (panelOpen.value) {
                             Box(Modifier.fillMaxHeight().width(configWidth.value)) {
-                                ConfigPanel()
+                                Panel()
                             }
                         }
                         Box(Modifier.fillMaxHeight().weight(1f)) {
-                            GameView()
+                            Game()
                         }
                     }
                 }

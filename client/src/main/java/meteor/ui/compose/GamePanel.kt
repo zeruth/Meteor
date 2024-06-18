@@ -6,7 +6,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.awt.SwingPanel
 import meteor.Main
-import meteor.ui.compose.overlay.GameOverlay
+import meteor.ui.compose.overlay.GameOverlayRoot
 
 /**
  * This panel will contain the game view & compose overlays eventually
@@ -18,15 +18,16 @@ object GamePanel {
     var debugOverlays = mutableStateOf(false)
     var debugNpcs = mutableStateOf(false)
     var debugPlayers = mutableStateOf(false)
+    var debugLocs = mutableStateOf(false)
     var lastHeight = -1
     var lastHeightScale = -1f
     var lastWidth = -1
     var lastWidthScale = -1f
 
     @Composable
-    fun GameView() {
+    fun Game() {
         SwingPanel(factory = { Main.gamePanel }, modifier = Modifier.fillMaxSize())
-        GameOverlay.render()
+        GameOverlayRoot.render()
     }
 
     fun getHeightScale(): Float {

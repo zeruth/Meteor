@@ -11,21 +11,19 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import compose.icons.LineAwesomeIcons
 import compose.icons.lineawesomeicons.InfoCircleSolid
-import compose.icons.lineawesomeicons.InfoSolid
-import compose.icons.lineawesomeicons.PlugSolid
+import meteor.Main
 import meteor.ui.compose.Colors.surface
 import meteor.ui.compose.config.ConfigPanelComposables
-import meteor.ui.compose.sidebar.SidebarComposables.padding
+import meteor.ui.compose.overlay.ViewportOverlayRoot
 
 class InfoButton : SidebarButton(icon = LineAwesomeIcons.InfoCircleSolid) {
     override fun onClick() {
         ConfigPanelComposables.content.value = InfoPanel()
     }
-    fun InfoPanel() = @Composable{
+    fun InfoPanel() = @Composable {
         Column(Modifier.fillMaxSize()) {
             BubbleBoxColumn {
                 Image(painterResource("brand/badge.png"), null, modifier = Modifier.size(150.dp).align(Alignment.CenterHorizontally))
@@ -52,7 +50,7 @@ class InfoButton : SidebarButton(icon = LineAwesomeIcons.InfoCircleSolid) {
             BubbleBoxCentered {
                 Text("Eventbus", color = Color.Cyan, modifier = Modifier.align(Alignment.CenterHorizontally))
                 Spacer(Modifier.width(10.dp))
-                Text("1.0", color = Color.Cyan, modifier = Modifier.align(Alignment.CenterHorizontally))
+                Text("1.1", color = Color.Cyan, modifier = Modifier.align(Alignment.CenterHorizontally))
             }
 
             Spacer(Modifier.height(16.dp))
@@ -68,6 +66,24 @@ class InfoButton : SidebarButton(icon = LineAwesomeIcons.InfoCircleSolid) {
                 Text(System.getProperty("java.version"), color = Color.Cyan, modifier = Modifier.align(Alignment.CenterHorizontally))
             }
 
+            Spacer(Modifier.height(16.dp))
+            BubbleBoxCentered {
+                Text("Swing", color = Color.Cyan, modifier = Modifier.align(Alignment.CenterHorizontally))
+                Spacer(Modifier.width(10.dp))
+                Text("${Main.swingTime.value}ms", color = Color.Cyan, modifier = Modifier.align(Alignment.CenterHorizontally))
+            }
+            Spacer(Modifier.height(4.dp))
+            BubbleBoxCentered {
+                Text("Compose-UI", color = Color.Cyan, modifier = Modifier.align(Alignment.CenterHorizontally))
+                Spacer(Modifier.width(10.dp))
+                Text("${Main.composeTime.value}ms", color = Color.Cyan, modifier = Modifier.align(Alignment.CenterHorizontally))
+            }
+            Spacer(Modifier.height(4.dp))
+            BubbleBoxCentered {
+                Text("Compose-Canvas", color = Color.Cyan, modifier = Modifier.align(Alignment.CenterHorizontally))
+                Spacer(Modifier.width(10.dp))
+                Text("${ViewportOverlayRoot.canvasRenderTime.value}ms", color = Color.Cyan, modifier = Modifier.align(Alignment.CenterHorizontally))
+            }
         }
     }
 

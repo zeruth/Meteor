@@ -2510,6 +2510,8 @@ public class Client extends GameShell {
 			return;
 		}
 
+		//System.out.println(this.viewportInterfaceId);
+
 		@Pc(34) int children = com.childId.length;
 		for (@Pc(44) int i = 0; i < children; i++) {
 			@Pc(53) int childX = com.childX[i] + x;
@@ -7286,7 +7288,7 @@ public class Client extends GameShell {
 	}
 
 	@OriginalMember(owner = "client!client", name = "b", descriptor = "(IIII)V")
-	private void projectFromGround(@OriginalArg(1) int x, @OriginalArg(3) int height, @OriginalArg(0) int z) {
+	public void projectFromGround(@OriginalArg(1) int x, @OriginalArg(3) int height, @OriginalArg(0) int z) {
 		if (x < 128 || z < 128 || x > 13056 || z > 13056) {
 			this.projectX = -1;
 			this.projectY = -1;
@@ -9565,9 +9567,9 @@ public class Client extends GameShell {
 			// NO_TIMEOUT
 			this.out.p1isaac(108);
 			for (@Pc(301) LocEntity loc = (LocEntity) this.locList.head(); loc != null; loc = (LocEntity) this.locList.next()) {
-				if ((this.levelTileFlags[1][loc.heightmapNE][loc.heightmapNW] & 0x2) == 2) {
-					loc.heightmapSW--;
-					if (loc.heightmapSW < 0) {
+				if ((this.levelTileFlags[1][loc.x][loc.z] & 0x2) == 2) {
+					loc.level--;
+					if (loc.level < 0) {
 						loc.unlink();
 					}
 				}
@@ -9890,24 +9892,24 @@ public class Client extends GameShell {
 			}
 
 			if (append) {
-				@Pc(96) int level = loc.heightmapSW;
-				@Pc(99) int x = loc.heightmapNE;
-				@Pc(102) int z = loc.heightmapNW;
+				@Pc(96) int level = loc.level;
+				@Pc(99) int x = loc.x;
+				@Pc(102) int z = loc.z;
 
 				@Pc(104) int bitset = 0;
-				if (loc.heightmapSE == 0) {
+				if (loc.type == 0) {
 					bitset = this.scene.getWallBitset(level, x, z);
 				}
 
-				if (loc.heightmapSE == 1) {
+				if (loc.type == 1) {
 					bitset = this.scene.getWallDecorationBitset(level, z, x);
 				}
 
-				if (loc.heightmapSE == 2) {
+				if (loc.type == 2) {
 					bitset = this.scene.getLocBitset(level, x, z);
 				}
 
-				if (loc.heightmapSE == 3) {
+				if (loc.type == 3) {
 					bitset = this.scene.getGroundDecorationBitset(level, x, z);
 				}
 
@@ -9923,7 +9925,7 @@ public class Client extends GameShell {
 						seqId = loc.seq.frames[loc.seqFrame];
 					}
 
-					if (loc.heightmapSE == 2) {
+					if (loc.type == 2) {
 						int info = this.scene.getInfo(level, x, z, bitset);
 						int shape = info & 0x1F;
 						int rotation = info >> 6;
@@ -9934,10 +9936,10 @@ public class Client extends GameShell {
 
 						Model model = type.getModel(shape, rotation, heightmapSW, heightmapSE, heightmapNE, heightmapNW, seqId);
 						this.scene.setLocModel(level, x, z, model);
-					} else if (loc.heightmapSE == 1) {
+					} else if (loc.type == 1) {
 						@Pc(282) Model model = type.getModel(LocType.WALLDECOR_STRAIGHT_NOOFFSET, 0, heightmapSW, heightmapSE, heightmapNE, heightmapNW, seqId);
 						this.scene.setWallDecorationModel(level, x, z, model);
-					} else if (loc.heightmapSE == 0) {
+					} else if (loc.type == 0) {
 						int info = this.scene.getInfo(level, x, z, bitset);
 						int shape = info & 0x1F;
 						int rotation = info >> 6;
@@ -9951,7 +9953,7 @@ public class Client extends GameShell {
 							Model model = type.getModel(shape, rotation, heightmapSW, heightmapSE, heightmapNE, heightmapNW, seqId);
 							this.scene.setWallModel(level, x, z, model);
 						}
-					} else if (loc.heightmapSE == 3) {
+					} else if (loc.type == 3) {
 						int info = this.scene.getInfo(level, x, z, bitset);
 						int rotation = info >> 6;
 						@Pc(400) Model model = type.getModel(LocType.GROUNDDECOR, rotation, heightmapSW, heightmapSE, heightmapNE, heightmapNW, seqId);
@@ -11642,7 +11644,7 @@ public class Client extends GameShell {
 				if (!ignored && this.overrideChat == 0) {
 					try {
 						@Pc(244) String uncompressed = WordPack.unpack(buf, length);
-						@Pc(248) String filtered = WordFilter.filter(uncompressed);
+						@Pc(248) String filtered = uncompressed; //WordFilter.filter(uncompressed);
 						player.chat = filtered;
 						player.chatColor = colorEffect >> 8;
 						player.chatStyle = colorEffect & 0xFF;

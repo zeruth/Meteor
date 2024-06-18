@@ -52,4 +52,19 @@ public interface Client extends GameShell{
     boolean loggedIn();
     int getWaveVol();
     String getMidi();
+
+    int getLoopCycle();
+    int getCurrentLevel();
+    int getHeightmapY$api(int level, int x, int z);
+    void project$api(int x, int y, int z);
+    LocEntity[] getLocs();
+    void projectFromLocal(int x, int y, int z);
+    void projectFromGround$api(int x, int y, int z);
+    int getBaseX();
+    int getBaseZ();
+    World3D getScene();
+    boolean isClientThread();
+    int getViewportInterfaceID();
+    boolean isBankOpen();
+    Component[] getComponents();
 }

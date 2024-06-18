@@ -5,24 +5,17 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.Button
-import androidx.compose.material.Icon
-import androidx.compose.material.IconButton
-import androidx.compose.material.icons.Icons
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
-import compose.icons.LineAwesomeIcons
-import compose.icons.lineawesomeicons.PlugSolid
 import ext.kotlin.MutableStateExt.toggle
-import meteor.ui.compose.Colors
 import meteor.ui.compose.Colors.secondary
 import meteor.ui.compose.Colors.surface
-import meteor.ui.compose.Window.configOpen
+import meteor.ui.compose.Window.panelOpen
 import meteor.ui.compose.Window.sidebarWidth
+import meteor.ui.compose.config.ConfigPanelComposables.secondaryContent
 
 object SidebarComposables {
     val sidebarButtons = arrayListOf(PluginsButton(), InfoButton())
@@ -50,12 +43,22 @@ object SidebarComposables {
     }
 
     fun buttonClick(button: SidebarButton) {
-        if (lastButtonClicked.value == null || lastButtonClicked.value == button) {
-            configOpen.toggle()
-        } else {
-            configOpen.value = true
+        if (lastButtonClicked.value == button) {
+            if (secondaryContent.value != null) {
+                secondaryContent.value = null
+            } else {
+                panelOpen.toggle()
+            }
         }
-        if (configOpen.value)
+        if (lastButtonClicked.value == null) {
+            panelOpen.value = true
+        } else {
+            if (lastButtonClicked.value != button) {
+                secondaryContent.value = null
+                panelOpen.value = true
+            }
+        }
+        if (panelOpen.value)
             button.onClick()
         lastButtonClicked.value = button
     }

@@ -3,6 +3,7 @@ package meteor.ui.swing
 import androidx.compose.ui.unit.dp
 import meteor.Constants.RS_DIMENSIONS
 import meteor.Main
+import meteor.Main.forceRecomposition
 import meteor.events.DrawFinished
 import meteor.ui.compose.GamePanel
 import meteor.ui.compose.GamePanel.stretchedHeight
@@ -27,6 +28,7 @@ class PostProcessGamePanel : JPanel() {
     private var graphics2D: Graphics2D? = null
     private val hints = RenderingHints(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BILINEAR)
     private var loading = true
+
     init {
         //Loading
         Thread {
@@ -39,6 +41,8 @@ class PostProcessGamePanel : JPanel() {
 
         //Login/In-game
         KEVENT.subscribe<DrawFinished> {
+            //Forces compose overlays to update every frame
+            forceRecomposition.value = !forceRecomposition.value
             //Kill the loading drawing thread
             loading = false
             checkFocus()
@@ -48,6 +52,7 @@ class PostProcessGamePanel : JPanel() {
     }
 
     fun draw() {
+        val timer = System.currentTimeMillis()
         super.getGraphics()?.let {
             graphics2D = it as Graphics2D
             var finalImage = RS2GamePanel.image!!
@@ -59,6 +64,7 @@ class PostProcessGamePanel : JPanel() {
             Main.updateStatusText()
             drawToSurface(it, finalImage)
         }
+        Main.swingTime.value = System.currentTimeMillis() - timer
     }
 
     private fun updateSizeAndScale() {
