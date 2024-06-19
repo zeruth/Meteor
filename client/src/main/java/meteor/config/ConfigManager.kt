@@ -2,9 +2,7 @@ package meteor.config
 
 import com.google.gson.GsonBuilder
 import meteor.Configuration
-import meteor.events.ConfigChanged
-import meteor.plugin.Plugin
-import meteor.plugin.PluginManager
+import meteor.events.client.ConfigChanged
 import org.rationalityfrontline.kevent.KEVENT
 import java.io.File
 
@@ -12,12 +10,21 @@ object ConfigManager {
     val configFile = File(Configuration.dataDir, "properties")
     val gson = GsonBuilder().setPrettyPrinting().create()
     var properties = Properties()
+    val configItems = ArrayList<ConfigItem<*>>()
 
     init {
         if (configFile.exists()) {
             properties = gson.fromJson(configFile.reader(), Properties::class.java)
             println("Loaded ${properties.properties.size} properties")
         }
+    }
+
+    fun <T> get(key: String) : ConfigItem<T>? {
+        return configItems.firstOrNull { it.key == key } as ConfigItem<T>?
+    }
+
+    fun get(key: String) : ConfigItem<*>? {
+        return configItems.firstOrNull { it.key == key }
     }
 
     inline fun <reified T> get(key: String, defaultValue: Any): T {
@@ -67,17 +74,12 @@ object ConfigManager {
 
     fun set(key: String, value: Any) {
         if (updateValue(key, value)) {
-            KEVENT.post(ConfigChanged(key))
+            KEVENT.post(ConfigChanged(key, get(key)))
             save()
         }
-
     }
 
     fun save() {
         configFile.writeText(gson.toJson(properties))
-    }
-
-    inline fun <reified P : Plugin, C : Config> getConfig(): C {
-        return PluginManager.get<P>().configuration as C
     }
 }

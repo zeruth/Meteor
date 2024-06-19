@@ -3,7 +3,7 @@ package meteor.plugin.debug
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.geometry.Rect
 import meteor.Main
-import meteor.events.ConfigChanged
+import meteor.events.client.ConfigChanged
 import meteor.plugin.Plugin
 import meteor.ui.compose.GamePanel
 import meteor.ui.compose.events.PreRender
@@ -31,10 +31,10 @@ class DebugPlugin : Plugin("Debug", true) {
     }
 
     override fun onConfigChanged(it: ConfigChanged) {
-        when (it.key) {
-            config.isDebugNPCs().key,
-            config.isDebugPlayers().key,
-            config.isDebugLocs().key -> updateConfig()
+        when (it.item) {
+            config.isDebugNPCs(),
+            config.isDebugPlayers(),
+            config.isDebugLocs() -> updateConfig()
         }
     }
 

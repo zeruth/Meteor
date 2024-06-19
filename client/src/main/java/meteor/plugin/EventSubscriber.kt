@@ -3,7 +3,7 @@ package meteor.plugin
 
 import kotlinx.coroutines.DelicateCoroutinesApi
 import meteor.events.Command
-import meteor.events.ConfigChanged
+import meteor.events.client.ConfigChanged
 import meteor.ui.compose.events.PreRender
 import org.rationalityfrontline.kevent.KEventSubscriber
 import org.rationalityfrontline.kevent.SubscriberThreadMode
