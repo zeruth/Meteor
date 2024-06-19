@@ -23,10 +23,15 @@ class InfoButton : SidebarButton(icon = LineAwesomeIcons.InfoCircleSolid) {
     override fun onClick() {
         ConfigPanelComposables.content.value = InfoPanel()
     }
+
     fun InfoPanel() = @Composable {
         Column(Modifier.fillMaxSize()) {
             BubbleBoxColumn {
-                Image(painterResource("brand/badge.png"), null, modifier = Modifier.size(150.dp).align(Alignment.CenterHorizontally))
+                Image(
+                    painterResource("brand/badge.png"),
+                    null,
+                    modifier = Modifier.size(150.dp).align(Alignment.CenterHorizontally)
+                )
             }
             Spacer(Modifier.height(4.dp))
             BubbleBoxCentered {
@@ -57,42 +62,64 @@ class InfoButton : SidebarButton(icon = LineAwesomeIcons.InfoCircleSolid) {
             BubbleBoxCentered {
                 Text("OS", color = Color.Cyan, modifier = Modifier.align(Alignment.CenterHorizontally))
                 Spacer(Modifier.width(10.dp))
-                Text(System.getProperty("os.name").replace("Windows ", "Win") + "_" + System.getProperty("os.arch"), color = Color.Cyan, modifier = Modifier.align(Alignment.CenterHorizontally))
+                Text(
+                    System.getProperty("os.name").replace("Windows ", "Win") + "_" + System.getProperty("os.arch"),
+                    color = Color.Cyan,
+                    modifier = Modifier.align(Alignment.CenterHorizontally)
+                )
             }
             Spacer(Modifier.height(4.dp))
             BubbleBoxCentered {
                 Text("  JVM", color = Color.Cyan, modifier = Modifier.align(Alignment.CenterHorizontally))
                 Spacer(Modifier.width(10.dp))
-                Text(System.getProperty("java.version"), color = Color.Cyan, modifier = Modifier.align(Alignment.CenterHorizontally))
+                Text(
+                    System.getProperty("java.version"),
+                    color = Color.Cyan,
+                    modifier = Modifier.align(Alignment.CenterHorizontally)
+                )
             }
 
             Spacer(Modifier.height(16.dp))
             BubbleBoxCentered {
                 Text("Swing", color = Color.Cyan, modifier = Modifier.align(Alignment.CenterHorizontally))
                 Spacer(Modifier.width(10.dp))
-                Text("${Main.swingTime.value}ms", color = Color.Cyan, modifier = Modifier.align(Alignment.CenterHorizontally))
+                Text(
+                    "${Main.swingTime.value}ms",
+                    color = Color.Cyan,
+                    modifier = Modifier.align(Alignment.CenterHorizontally)
+                )
             }
             Spacer(Modifier.height(4.dp))
             BubbleBoxCentered {
                 Text("Compose-UI", color = Color.Cyan, modifier = Modifier.align(Alignment.CenterHorizontally))
                 Spacer(Modifier.width(10.dp))
-                Text("${Main.composeTime.value}ms", color = Color.Cyan, modifier = Modifier.align(Alignment.CenterHorizontally))
+                Text(
+                    "${Main.composeTime.value}ms",
+                    color = Color.Cyan,
+                    modifier = Modifier.align(Alignment.CenterHorizontally)
+                )
             }
             Spacer(Modifier.height(4.dp))
             BubbleBoxCentered {
                 Text("Compose-Canvas", color = Color.Cyan, modifier = Modifier.align(Alignment.CenterHorizontally))
                 Spacer(Modifier.width(10.dp))
-                Text("${ViewportOverlayRoot.canvasRenderTime.value}ms", color = Color.Cyan, modifier = Modifier.align(Alignment.CenterHorizontally))
+                Text(
+                    "${ViewportOverlayRoot.canvasRenderTime.value}ms",
+                    color = Color.Cyan,
+                    modifier = Modifier.align(Alignment.CenterHorizontally)
+                )
             }
         }
     }
 
     @Composable
     private fun ColumnScope.BubbleBoxColumn(content: @Composable () -> Unit) {
-        Box(Modifier
-            .clip(RoundedCornerShape(10.dp))
-            .background(surface.value)
-            .align(Alignment.CenterHorizontally)) {
+        Box(
+            Modifier
+                .clip(RoundedCornerShape(10.dp))
+                .background(surface.value)
+                .align(Alignment.CenterHorizontally)
+        ) {
             Column {
                 content.invoke()
             }
@@ -101,10 +128,12 @@ class InfoButton : SidebarButton(icon = LineAwesomeIcons.InfoCircleSolid) {
 
     @Composable
     private fun ColumnScope.BubbleBoxRow(content: @Composable () -> Unit) {
-        Box(Modifier
-            .clip(RoundedCornerShape(10.dp))
-            .background(surface.value)
-            .align(Alignment.CenterHorizontally)) {
+        Box(
+            Modifier
+                .clip(RoundedCornerShape(10.dp))
+                .background(surface.value)
+                .align(Alignment.CenterHorizontally)
+        ) {
             Row {
                 content.invoke()
             }

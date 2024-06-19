@@ -13,6 +13,7 @@ class RS2GamePanel(w: Int, h: Int) : JPanel() {
     companion object {
         var image: BufferedImage? = null
     }
+
     private var graphics: Graphics? = null
 
     init {
@@ -20,7 +21,6 @@ class RS2GamePanel(w: Int, h: Int) : JPanel() {
         image = BufferedImage(w, h, BufferedImage.TYPE_4BYTE_ABGR)
         graphics = image!!.createGraphics()
     }
-
 
 
     //Force rs2 to use our BufferedImage graphics (no need to draw before manipulation)

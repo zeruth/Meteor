@@ -22,6 +22,7 @@ object SidebarComposables {
     val padding = mutableStateOf(5.dp)
     val buttonSize = mutableStateOf(sidebarWidth.value - padding.value)
     var lastButtonClicked = mutableStateOf<SidebarButton?>(null)
+
     @Composable
     fun Sidebar() {
         //Sidebar
@@ -30,10 +31,12 @@ object SidebarComposables {
             Column(Modifier.fillMaxSize().padding(all = padding.value)) {
                 for (sidebarButton in sidebarButtons) {
                     Row(Modifier.fillMaxWidth().height(buttonSize.value - padding.value)) {
-                            Box(Modifier.clip(RoundedCornerShape(5.dp)).fillMaxSize().background(secondary.value).clickable {
-                                buttonClick(sidebarButton)
-                            }) {
-                                sidebarButton.icon.value?.let { Image(it, contentDescription = null) }
+                        Box(
+                            Modifier.clip(RoundedCornerShape(5.dp)).fillMaxSize().background(secondary.value)
+                                .clickable {
+                                    buttonClick(sidebarButton)
+                                }) {
+                            sidebarButton.icon.value?.let { Image(it, contentDescription = null) }
                         }
                     }
                     Spacer(Modifier.height(padding.value))

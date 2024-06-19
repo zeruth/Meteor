@@ -12,6 +12,7 @@ class DebugConfig(plugin: Plugin) : Config(plugin) {
             add(ConfigItem("Debug Locs", "isDebugLocs".key(), false))
         }
     }
+
     fun isDebugNPCs() = get<Boolean>("isDebugNPCs".key())
     fun isDebugPlayers() = get<Boolean>("isDebugPlayers".key())
     fun isDebugLocs() = get<Boolean>("isDebugLocs".key())

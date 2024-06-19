@@ -55,10 +55,10 @@ object MidiPlayer {
             synthesizer!!.open()
             synthesizer!!.loadAllInstruments(soundfont)
 
-            sequencer!!.getTransmitter().receiver = synthesizer!!.getReceiver()
+            sequencer!!.transmitter.receiver = synthesizer!!.receiver
             try {
                 val sequence = MidiSystem.getSequence(songFile)
-                sequencer!!.setSequence(sequence)
+                sequencer!!.sequence = sequence
             } catch (e: InvalidMidiDataException) {
                 e.printStackTrace()
             } catch (e: IOException) {

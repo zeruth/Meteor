@@ -27,26 +27,32 @@ object ConfigManager {
                 value ?: return defaultValue as T
                 return value as T
             }
+
             Int::class -> {
                 value ?: return defaultValue as T
                 return value.toInt() as T
             }
+
             Double::class -> {
                 value ?: return defaultValue as T
                 return value.toDouble() as T
             }
+
             Long::class -> {
                 value ?: return defaultValue as T
                 return value.toLong() as T
             }
+
             Boolean::class -> {
                 value ?: return defaultValue as T
                 return value.toBoolean() as T
             }
+
             Float::class -> {
                 value ?: return defaultValue as T
                 return value.toFloat() as T
             }
+
             else -> throw RuntimeException("Invalid value type ${T::class}")
         }
     }
@@ -71,7 +77,7 @@ object ConfigManager {
         configFile.writeText(gson.toJson(properties))
     }
 
-    inline fun <reified P : Plugin, C : Config> getConfig() : C {
+    inline fun <reified P : Plugin, C : Config> getConfig(): C {
         return PluginManager.get<P>().configuration as C
     }
 }

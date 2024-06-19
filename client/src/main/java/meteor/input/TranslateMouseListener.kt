@@ -30,7 +30,6 @@ import meteor.Main
 import meteor.ui.config.AspectMode
 import net.runelite.rs.api.RSGameShell
 import java.applet.Applet
-import java.awt.Dimension
 import java.awt.event.MouseEvent
 import java.awt.event.MouseListener
 import java.awt.event.MouseMotionListener
@@ -74,7 +73,7 @@ object TranslateMouseListener : MouseListener, MouseMotionListener {
             else -> 1f
         }
         val newX = x / modX
-        val newY = (e.y.toFloat() / modY);
+        val newY = (e.y.toFloat() / modY)
         val mouseEvent = MouseEvent(
             client as Applet, e.id, e.getWhen(),
             e.modifiersEx,

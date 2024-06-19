@@ -2,9 +2,7 @@ package meteor.plugin.debug
 
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.geometry.Rect
-import ext.kotlin.MutableStateExt.toggle
 import meteor.Main
-import meteor.events.Command
 import meteor.events.ConfigChanged
 import meteor.plugin.Plugin
 import meteor.ui.compose.GamePanel

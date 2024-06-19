@@ -18,7 +18,6 @@ import meteor.Main
 import meteor.ui.compose.GamePanel
 import meteor.ui.compose.events.PreRender
 import org.rationalityfrontline.kevent.KEVENT
-import org.rationalityfrontline.kevent.KEvent
 
 object GameOverlayRoot {
     /**

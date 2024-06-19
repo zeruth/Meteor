@@ -12,6 +12,7 @@ import meteor.ui.compose.Colors
 object ConfigPanelComposables {
     val content: MutableState<(@Composable () -> Unit)?> = mutableStateOf(null)
     val secondaryContent: MutableState<(@Composable () -> Unit)?> = mutableStateOf(null)
+
     @Composable
     fun Panel() {
         Box(modifier = Modifier.fillMaxSize().background(Colors.secondarySurface.value)) {

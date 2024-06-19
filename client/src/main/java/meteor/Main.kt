@@ -65,19 +65,21 @@ object Main {
      */
     @JvmStatic
     fun main(args: Array<String>) = application {
-            Window(onCloseRequest = ::exitApplication,
-                title = "Meteor",
-                state = WindowState(
-                    size = DpSize(initialSize.width.dp, initialSize.height.dp),
-                )) {
-                this@Main.window = window
-                window.isResizable = true
-                window.background = java.awt.Color.BLACK
-                //This Window be reloaded on events where it may be destroyed such as windows scaling changes
-                if (!loaded)
-                    initRS2()
-                Window()
-            }
+        Window(
+            onCloseRequest = ::exitApplication,
+            title = "Meteor",
+            state = WindowState(
+                size = DpSize(initialSize.width.dp, initialSize.height.dp),
+            )
+        ) {
+            this@Main.window = window
+            window.isResizable = true
+            window.background = java.awt.Color.BLACK
+            //This Window be reloaded on events where it may be destroyed such as windows scaling changes
+            if (!loaded)
+                initRS2()
+            Window()
+        }
     }
 
     private fun initRS2() {
@@ -105,9 +107,11 @@ object Main {
                 client.aspectMode = AspectMode.FIT
                 window.repaint()
             }
+
             "reset_window" -> {
                 window.size = initialSize
             }
+
             "filter" -> {
                 client.cpuFilter = when (client.cpuFilter) {
                     CPUFilter.BILINEAR -> CPUFilter.NONE
@@ -115,6 +119,7 @@ object Main {
                     else -> CPUFilter.NONE
                 }
             }
+
             "overlays" -> {
                 GamePanel.debugOverlays.toggle()
             }
@@ -136,7 +141,7 @@ object Main {
         text.value = t
     }
 
-    private inline fun<reified T : Any> ClassLoader.load(): T {
+    private inline fun <reified T : Any> ClassLoader.load(): T {
         return loadClass(T::class.simpleName).getDeclaredConstructor().newInstance() as T
     }
 }

@@ -19,6 +19,7 @@ object Window {
     var panelOpen = mutableStateOf(false)
     val uiSide = mutableStateOf(UISide.RIGHT)
     var gameWidth = mutableStateOf((-1).dp)
+
     @Composable
     fun Window() {
         Box(Modifier.fillMaxSize()) {
@@ -37,6 +38,7 @@ object Window {
                             Sidebar()
                         }
                     }
+
                     UISide.LEFT -> {
                         Box(Modifier.fillMaxHeight().width(sidebarWidth.value)) {
                             Sidebar()

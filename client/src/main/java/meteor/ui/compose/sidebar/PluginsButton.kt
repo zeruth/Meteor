@@ -28,10 +28,6 @@ import meteor.plugin.Plugin
 import meteor.plugin.PluginManager.plugins
 import meteor.ui.compose.Colors
 import meteor.ui.compose.config.ConfigPanelComposables
-import java.lang.reflect.Method
-import kotlin.reflect.full.declaredMemberProperties
-import kotlin.reflect.full.declaredMembers
-import kotlin.reflect.jvm.jvmName
 
 class PluginsButton : SidebarButton(icon = LineAwesomeIcons.PlugSolid) {
     companion object {
@@ -39,9 +35,11 @@ class PluginsButton : SidebarButton(icon = LineAwesomeIcons.PlugSolid) {
         val favoritesMap = mutableStateMapOf<Plugin, Boolean>()
         val switchStateMap = mutableStateMapOf<String, Boolean>()
     }
+
     override fun onClick() {
         ConfigPanelComposables.content.value = PluginList()
     }
+
     fun PluginList() = @Composable {
         Column(Modifier.fillMaxSize()) {
             for (plugin in plugins.sortedByDescending { favoritesMap[it] }) {
@@ -56,7 +54,10 @@ class PluginsButton : SidebarButton(icon = LineAwesomeIcons.PlugSolid) {
         Box(Modifier.clip(RoundedCornerShape(8.dp)).background(Colors.surface.value).fillMaxWidth().height(30.dp)) {
             Row(Modifier.fillMaxSize()) {
                 Box(Modifier.padding(all = 2.dp).size(30.dp)) {
-                    favoritesMap.putIfAbsent(plugin, ConfigManager.get<Boolean>("plugin.${plugin.name}.isFavorite", false))
+                    favoritesMap.putIfAbsent(
+                        plugin,
+                        ConfigManager.get<Boolean>("plugin.${plugin.name}.isFavorite", false)
+                    )
                     val isFavorite = favoritesMap[plugin]!!
                     if (isFavorite)
                         Image(LineAwesomeIcons.StarSolid,
@@ -75,7 +76,8 @@ class PluginsButton : SidebarButton(icon = LineAwesomeIcons.PlugSolid) {
                                 ConfigManager.set("plugin.${plugin.name}.isFavorite", favoritesMap[plugin]!!)
                             })
                 }
-                Text(plugin.name, Modifier.align(Alignment.CenterVertically),
+                Text(
+                    plugin.name, Modifier.align(Alignment.CenterVertically),
                     style = TextStyle(color = Colors.secondary.value, fontSize = 18.sp)
                 )
                 Spacer(modifier = Modifier.weight(1f))
@@ -90,18 +92,20 @@ class PluginsButton : SidebarButton(icon = LineAwesomeIcons.PlugSolid) {
                     }
                 }
                 runningMap.putIfAbsent(plugin, plugin.running)
-                Switch(runningMap[plugin]!!,
+                Switch(
+                    runningMap[plugin]!!,
                     modifier = Modifier.align(Alignment.CenterVertically),
                     onCheckedChange = {
                         ConfigManager.set("plugin.${plugin.name}.enabled", !runningMap[plugin]!!)
                         if (plugin.running) {
                             plugin.stop()
-                        }
-                        else
-                            plugin.start()},
+                        } else
+                            plugin.start()
+                    },
                     colors = SwitchDefaults.colors(
                         uncheckedThumbColor = Colors.surfaceDark.value,
-                        checkedThumbColor = Colors.secondary.value)
+                        checkedThumbColor = Colors.secondary.value
+                    )
                 )
             }
         }
@@ -126,11 +130,13 @@ class PluginsButton : SidebarButton(icon = LineAwesomeIcons.PlugSolid) {
         Box(Modifier.clip(RoundedCornerShape(8.dp)).background(Colors.surface.value).fillMaxWidth().height(30.dp)) {
             Row(Modifier.height(30.dp)) {
                 Spacer(Modifier.width(5.dp))
-                Text(config.name, Modifier.align(Alignment.CenterVertically),
+                Text(
+                    config.name, Modifier.align(Alignment.CenterVertically),
                     style = TextStyle(color = Colors.secondary.value, fontSize = 18.sp)
                 )
                 Spacer(modifier = Modifier.weight(1f))
-                Switch(switchStateMap[config.key]!!,
+                Switch(
+                    switchStateMap[config.key]!!,
                     modifier = Modifier.align(Alignment.CenterVertically),
                     onCheckedChange = {
                         config.toggle()
@@ -138,7 +144,8 @@ class PluginsButton : SidebarButton(icon = LineAwesomeIcons.PlugSolid) {
                     },
                     colors = SwitchDefaults.colors(
                         uncheckedThumbColor = Colors.surfaceDark.value,
-                        checkedThumbColor = Colors.secondary.value)
+                        checkedThumbColor = Colors.secondary.value
+                    )
                 )
             }
         }

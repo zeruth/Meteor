@@ -1,5 +1,3 @@
 package meteor.config
 
-class MeteorConfig : Config() {
-
-}
+class MeteorConfig : Config()

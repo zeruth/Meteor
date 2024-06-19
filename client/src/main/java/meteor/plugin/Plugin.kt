@@ -4,13 +4,14 @@ import meteor.config.Config
 import meteor.config.ConfigManager
 import meteor.ui.compose.sidebar.PluginsButton.Companion.runningMap
 
-open class Plugin(val name: String, var enabledByDefault: Boolean = false) : EventSubscriber(){
+open class Plugin(val name: String, var enabledByDefault: Boolean = false) : EventSubscriber() {
     var configuration: Config? = null
     var running = false
 
     open fun onStart() {
 
     }
+
     open fun onStop() {
 
     }

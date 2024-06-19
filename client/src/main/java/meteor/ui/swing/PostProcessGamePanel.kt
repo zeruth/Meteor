@@ -88,10 +88,13 @@ class PostProcessGamePanel : JPanel() {
     private fun drawToSurface(graphics: Graphics, finalImage: BufferedImage) {
         when (Main.client.aspectMode) {
             AspectMode.FIT -> {
-                graphics.drawImage(finalImage, Main.client.padding.toInt(), 0,
-                    stretchedWidth.value, stretchedHeight.value,this)
+                graphics.drawImage(
+                    finalImage, Main.client.padding.toInt(), 0,
+                    stretchedWidth.value, stretchedHeight.value, this
+                )
             }
-            AspectMode.FILL -> graphics.drawImage(finalImage, 0, 0, width, height,this)
+
+            AspectMode.FILL -> graphics.drawImage(finalImage, 0, 0, width, height, this)
             else -> {}
         }
     }
