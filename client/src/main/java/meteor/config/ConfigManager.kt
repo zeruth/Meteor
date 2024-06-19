@@ -23,7 +23,7 @@ object ConfigManager {
         return configItems.firstOrNull { it.key == key } as ConfigItem<T>?
     }
 
-    fun get(key: String) : ConfigItem<*>? {
+    fun getGeneric(key: String) : ConfigItem<*>? {
         return configItems.firstOrNull { it.key == key }
     }
 
@@ -72,9 +72,12 @@ object ConfigManager {
         return false
     }
 
+    /**
+     * Only post/save if the new value != the old value
+     */
     fun set(key: String, value: Any) {
         if (updateValue(key, value)) {
-            KEVENT.post(ConfigChanged(key, get(key)))
+            KEVENT.post(ConfigChanged(key, getGeneric(key)))
             save()
         }
     }
