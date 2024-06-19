@@ -110,14 +110,10 @@ class PluginsButton : SidebarButton(icon = LineAwesomeIcons.PlugSolid) {
     fun ConfigPanel(config: Config) = @Composable {
         Box(Modifier.fillMaxSize()) {
             Column(Modifier.fillMaxSize()) {
-                val configItems = ArrayList<ConfigItem<*>>()
-                for (method in config::class.declaredMembers) {
-                    configItems.add(method.call(config) as ConfigItem<*>)
-                }
-                for (configItem in configItems.sortedBy { it.position }) {
-                    when (configItem.defaultValue!!::class.qualifiedName) {
+                for (item in config.items) {
+                    when (item.defaultValue!!::class.qualifiedName) {
                         "kotlin.Boolean" -> {
-                            BooleanPanelNode(configItem as ConfigItem<Boolean>)
+                            BooleanPanelNode(item as ConfigItem<Boolean>)
                         }
                     }
                     Spacer(Modifier.height(2.dp))

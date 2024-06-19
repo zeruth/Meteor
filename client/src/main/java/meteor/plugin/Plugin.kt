@@ -4,8 +4,7 @@ import meteor.config.Config
 import meteor.config.ConfigManager
 import meteor.ui.compose.sidebar.PluginsButton.Companion.runningMap
 
-open class Plugin : EventSubscriber(){
-    lateinit var name: String
+open class Plugin(val name: String) : EventSubscriber(){
     var enabledByDefault = false
     var configuration: Config? = null
     var running = false
@@ -35,8 +34,7 @@ open class Plugin : EventSubscriber(){
     }
 
     inline fun <reified T> configuration(): T {
-        configuration = T::class.java.getDeclaredConstructor().newInstance() as Config
-        configuration!!.plugin = this
+        configuration = T::class.constructors.first().call(this) as Config
         return configuration as T
     }
 }

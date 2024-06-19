@@ -11,9 +11,8 @@ import meteor.ui.compose.events.PreRender
 import meteor.ui.compose.overlay.ViewportOverlayRoot.blockedViewportAreas
 import meteor.ui.compose.overlay.ViewportOverlayRoot.viewportOverlays
 
-class DebugTwoPlugin : Plugin() {
+class DebugTwoPlugin : Plugin("Debug_Two") {
     init {
-        name = "Debug_Two"
         enabledByDefault = false
     }
 }
