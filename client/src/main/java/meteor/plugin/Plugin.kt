@@ -4,8 +4,7 @@ import meteor.config.Config
 import meteor.config.ConfigManager
 import meteor.ui.compose.sidebar.PluginsButton.Companion.runningMap
 
-open class Plugin(val name: String) : EventSubscriber(){
-    var enabledByDefault = false
+open class Plugin(val name: String, var enabledByDefault: Boolean = false) : EventSubscriber(){
     var configuration: Config? = null
     var running = false
 

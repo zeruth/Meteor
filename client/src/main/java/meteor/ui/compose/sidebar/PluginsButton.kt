@@ -111,10 +111,8 @@ class PluginsButton : SidebarButton(icon = LineAwesomeIcons.PlugSolid) {
         Box(Modifier.fillMaxSize()) {
             Column(Modifier.fillMaxSize()) {
                 for (item in config.items) {
-                    when (item.defaultValue!!::class.qualifiedName) {
-                        "kotlin.Boolean" -> {
-                            BooleanPanelNode(item as ConfigItem<Boolean>)
-                        }
+                    when (item.defaultValue) {
+                        is Boolean -> BooleanPanelNode(item as ConfigItem<Boolean>)
                     }
                     Spacer(Modifier.height(2.dp))
                 }

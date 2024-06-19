@@ -12,13 +12,10 @@ import meteor.ui.compose.events.PreRender
 import meteor.ui.compose.overlay.ViewportOverlayRoot.blockedViewportAreas
 import meteor.ui.compose.overlay.ViewportOverlayRoot.viewportOverlays
 
-class DebugPlugin : Plugin("Debug") {
+class DebugPlugin : Plugin("Debug", true) {
     val config = configuration<DebugConfig>()
     val viewportOverlay = DebugViewportOverlay
     val bankRect = Rect(Offset(12f, 20f), Offset(500f, 326f))
-    init {
-        enabledByDefault = true
-    }
 
     override fun onStart() {
         updateConfig()
