@@ -15,12 +15,13 @@ import androidx.compose.ui.unit.DpSize
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import meteor.Main
-import meteor.plugin.debug.DebugPlugin.Companion.debugOverlays
 import meteor.ui.compose.components.GamePanel
 import meteor.ui.compose.events.PreRender
+import meteor.ui.compose.overlay.Overlay.Companion.debugOverlays
 import org.rationalityfrontline.kevent.KEVENT
 
 object GameOverlayRoot {
+    val gameOverlays = ArrayList<GameOverlay>()
     /**
      * This overlay layer covers the entire game area
      * stretchedWidth/Height is updated every frame, so this composable will be too.
