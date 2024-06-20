@@ -61,7 +61,6 @@ class PostProcessGamePanel : JPanel() {
                 RenderMode.CPU -> setCPURenderingHints(it)
                 else -> {}
             }
-            Main.updateStatusText()
             drawToSurface(it, finalImage)
         }
         Main.swingTime.value = System.currentTimeMillis() - timer

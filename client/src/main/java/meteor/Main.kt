@@ -1,6 +1,7 @@
 package meteor
 
 import androidx.compose.runtime.mutableStateOf
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.DpSize
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Window
@@ -73,8 +74,8 @@ object Main {
             onCloseRequest = ::exitApplication,
             title = "Meteor 2.0.5-SNAPSHOT",
             state = WindowState(
-                size = DpSize(initialSize.width.dp, initialSize.height.dp),
-            )
+                size = DpSize(initialSize.width.dp, initialSize.height.dp)
+            ), icon = painterResource("Meteor.ico")
         ) {
             this@Main.window = window
             window.isResizable = true
