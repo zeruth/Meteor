@@ -29,7 +29,7 @@ jobs:
         run: ./gradlew.bat client:createDistributable
 
       - name: Create Artifact
-        run: powershell Compress-Archive -Path client/compose/binaries/main/app/meteor -DestinationPath nightly-win64.zip
+        run: powershell Compress-Archive -Path client/build/compose/binaries/main/app/meteor -DestinationPath nightly-win64.zip
 
       - name: Upload artifact
         uses: actions/upload-artifact@v4
