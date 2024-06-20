@@ -1,17 +1,14 @@
 package meteor.ui.compose.components.plugins
 
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Switch
 import androidx.compose.material.SwitchDefaults
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.dp
@@ -23,6 +20,7 @@ import meteor.config.ConfigManager
 import meteor.plugin.Plugin
 import meteor.plugin.PluginManager.plugins
 import meteor.ui.compose.Colors
+import meteor.ui.compose.components.GeneralComposables.SidedNode
 import meteor.ui.compose.components.config.ConfigComposables.ConfigPanel
 import meteor.ui.compose.components.panel.PanelComposables
 import meteor.ui.compose.components.plugins.PluginsButton.Companion.favoritesMap
@@ -32,7 +30,18 @@ object PluginsComposables {
 
     fun PluginList() = @Composable {
         Column(Modifier.fillMaxSize()) {
-            for (plugin in plugins.sortedByDescending { favoritesMap[it] }) {
+            val favorites : List<Plugin> = plugins.filter {
+                if (!favoritesMap.containsKey(it)) {
+                    favoritesMap[it] = ConfigManager.get<Boolean>("plugin.${it.name}.isFavorite", false)
+                }
+                favoritesMap[it] == true
+            }.sortedBy { it.name }
+            val nonFavorites : List<Plugin> = plugins.filter { favoritesMap[it] == false }.sortedBy { it.name }
+            for (plugin in favorites) {
+                PluginNode(plugin)
+                Spacer(Modifier.height(2.dp))
+            }
+            for (plugin in nonFavorites) {
                 PluginNode(plugin)
                 Spacer(Modifier.height(2.dp))
             }
@@ -41,8 +50,8 @@ object PluginsComposables {
 
     @Composable
     fun PluginNode(plugin: Plugin) {
-        Box(Modifier.clip(RoundedCornerShape(8.dp)).background(Colors.surface.value).fillMaxWidth().height(30.dp)) {
-            Row(Modifier.fillMaxSize()) {
+        SidedNode(30,
+            left = @Composable {
                 Box(Modifier.padding(all = 2.dp).size(30.dp)) {
                     favoritesMap.putIfAbsent(
                         plugin,
@@ -72,7 +81,8 @@ object PluginsComposables {
                     plugin.name, Modifier.align(Alignment.CenterVertically),
                     style = TextStyle(color = Colors.secondary.value, fontSize = 18.sp)
                 )
-                Spacer(modifier = Modifier.weight(1f))
+            },
+            right = @Composable {
                 Box(Modifier.padding(all = 2.dp).size(30.dp)) {
                     if (plugin.configuration != null) {
                         Image(
@@ -80,7 +90,7 @@ object PluginsComposables {
                             contentDescription = null,
                             colorFilter = ColorFilter.tint(Colors.secondary.value),
                             modifier = Modifier.align(Alignment.Center).clickable {
-                                PanelComposables.secondaryContent.value = ConfigPanel(plugin.configuration!!)
+                                PanelComposables.secondaryContent.value = { ConfigPanel(plugin.configuration!!) }
                             })
                     }
                 }
@@ -100,7 +110,6 @@ object PluginsComposables {
                         checkedThumbColor = Colors.secondary.value
                     )
                 )
-            }
-        }
+            })
     }
 }

@@ -1,13 +1,13 @@
 package meteor.plugin
 
 import meteor.plugin.debug.DebugPlugin
-import meteor.plugin.debug.PlaceholderPlugin
+import meteor.plugin.rendering.RenderingPlugin
 
 object PluginManager {
     val plugins = mutableListOf<Plugin>()
 
     init {
-        plugins.add(PlaceholderPlugin())
+        plugins.add(RenderingPlugin())
         plugins.add(DebugPlugin())
     }
 

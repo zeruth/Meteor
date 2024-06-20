@@ -16,6 +16,7 @@ import compose.icons.LineAwesomeIcons
 import compose.icons.lineawesomeicons.InfoCircleSolid
 import meteor.Main
 import meteor.ui.compose.Colors.surface
+import meteor.ui.compose.components.GeneralComposables.SidedNode
 import meteor.ui.compose.components.panel.PanelComposables
 import meteor.ui.compose.overlay.ViewportOverlayRoot
 import meteor.ui.compose.components.sidebar.SidebarButton
@@ -34,82 +35,116 @@ class InfoButton : SidebarButton(icon = LineAwesomeIcons.InfoCircleSolid) {
                     modifier = Modifier.size(150.dp).align(Alignment.CenterHorizontally)
                 )
             }
-            Spacer(Modifier.height(4.dp))
-            BubbleBoxCentered {
-                Text("Meteor", color = Color.Cyan, modifier = Modifier.align(Alignment.CenterHorizontally))
-                Spacer(Modifier.width(10.dp))
-                Text("225-2.0.5-SNAPSHOT", color = Color.Cyan, modifier = Modifier.align(Alignment.CenterHorizontally))
-            }
-            Spacer(Modifier.height(4.dp))
-            BubbleBoxCentered {
-                Text("Injector", color = Color.Cyan, modifier = Modifier.align(Alignment.CenterHorizontally))
-                Spacer(Modifier.width(10.dp))
-                Text("1.3", color = Color.Cyan, modifier = Modifier.align(Alignment.CenterHorizontally))
-            }
-            Spacer(Modifier.height(4.dp))
-            BubbleBoxCentered {
-                Text("Logger", color = Color.Cyan, modifier = Modifier.align(Alignment.CenterHorizontally))
-                Spacer(Modifier.width(10.dp))
-                Text("1.2", color = Color.Cyan, modifier = Modifier.align(Alignment.CenterHorizontally))
-            }
-            Spacer(Modifier.height(4.dp))
-            BubbleBoxCentered {
-                Text("Eventbus", color = Color.Cyan, modifier = Modifier.align(Alignment.CenterHorizontally))
-                Spacer(Modifier.width(10.dp))
-                Text("1.1", color = Color.Cyan, modifier = Modifier.align(Alignment.CenterHorizontally))
-            }
-
+            Spacer(Modifier.height(2.dp))
+            SidedNode(30,
+                left = @Composable {
+                    Spacer(Modifier.width(4.dp))
+                    Text("Meteor", color = Color.Cyan, modifier = Modifier.align(Alignment.CenterVertically))
+                },
+                right = @Composable {
+                    Text("225-2.0.5-SNAPSHOT", color = Color.Cyan, modifier = Modifier.align(Alignment.CenterVertically))
+                    Spacer(Modifier.width(4.dp))
+                })
+            Spacer(Modifier.height(2.dp))
+            SidedNode(30,
+                left = @Composable {
+                    Spacer(Modifier.width(4.dp))
+                    Text("Injector", color = Color.Cyan, modifier = Modifier.align(Alignment.CenterVertically))
+                },
+                right = @Composable {
+                    Text("1.4", color = Color.Cyan, modifier = Modifier.align(Alignment.CenterVertically))
+                    Spacer(Modifier.width(4.dp))
+                })
+            Spacer(Modifier.height(2.dp))
+            SidedNode(30,
+                left = @Composable {
+                    Spacer(Modifier.width(4.dp))
+                    Text("Logger", color = Color.Cyan, modifier = Modifier.align(Alignment.CenterVertically))
+                },
+                right = @Composable {
+                    Text("1.2", color = Color.Cyan, modifier = Modifier.align(Alignment.CenterVertically))
+                    Spacer(Modifier.width(4.dp))
+                })
+            Spacer(Modifier.height(2.dp))
+            SidedNode(30,
+                left = @Composable {
+                    Spacer(Modifier.width(4.dp))
+                    Text("Eventbus", color = Color.Cyan, modifier = Modifier.align(Alignment.CenterVertically))
+                },
+                right = @Composable {
+                    Text("1.1", color = Color.Cyan, modifier = Modifier.align(Alignment.CenterVertically))
+                    Spacer(Modifier.width(4.dp))
+                })
             Spacer(Modifier.height(16.dp))
-            BubbleBoxCentered {
-                Text("OS", color = Color.Cyan, modifier = Modifier.align(Alignment.CenterHorizontally))
-                Spacer(Modifier.width(10.dp))
-                Text(
-                    System.getProperty("os.name").replace("Windows ", "Win") + "_" + System.getProperty("os.arch"),
-                    color = Color.Cyan,
-                    modifier = Modifier.align(Alignment.CenterHorizontally)
-                )
-            }
-            Spacer(Modifier.height(4.dp))
-            BubbleBoxCentered {
-                Text("  JVM", color = Color.Cyan, modifier = Modifier.align(Alignment.CenterHorizontally))
-                Spacer(Modifier.width(10.dp))
-                Text(
-                    System.getProperty("java.version"),
-                    color = Color.Cyan,
-                    modifier = Modifier.align(Alignment.CenterHorizontally)
-                )
-            }
-
+            SidedNode(30,
+                left = @Composable {
+                    Spacer(Modifier.width(4.dp))
+                    Text("OS", color = Color.Cyan, modifier = Modifier.align(Alignment.CenterVertically))
+                },
+                right = @Composable {
+                    Text(
+                        System.getProperty("os.name").replace("Windows ", "Win") + "_" + System.getProperty("os.arch"),
+                        color = Color.Cyan,
+                        modifier = Modifier.align(Alignment.CenterVertically)
+                    )
+                    Spacer(Modifier.width(4.dp))
+                })
+            Spacer(Modifier.height(2.dp))
+            SidedNode(30,
+                left = @Composable {
+                    Spacer(Modifier.width(4.dp))
+                    Text("JVM", color = Color.Cyan, modifier = Modifier.align(Alignment.CenterVertically))
+                },
+                right = @Composable {
+                    Text(
+                        System.getProperty("java.version"),
+                        color = Color.Cyan,
+                        modifier = Modifier.align(Alignment.CenterVertically)
+                    )
+                    Spacer(Modifier.width(4.dp))
+                })
             Spacer(Modifier.height(16.dp))
-            BubbleBoxCentered {
-                Text("Swing", color = Color.Cyan, modifier = Modifier.align(Alignment.CenterHorizontally))
-                Spacer(Modifier.width(10.dp))
-                Text(
-                    "${Main.swingTime.value}ms",
-                    color = Color.Cyan,
-                    modifier = Modifier.align(Alignment.CenterHorizontally)
-                )
-            }
-            Spacer(Modifier.height(4.dp))
-            BubbleBoxCentered {
-                Text("Compose-UI", color = Color.Cyan, modifier = Modifier.align(Alignment.CenterHorizontally))
-                Spacer(Modifier.width(10.dp))
-                Text(
-                    "${Main.composeTime.value}ms",
-                    color = Color.Cyan,
-                    modifier = Modifier.align(Alignment.CenterHorizontally)
-                )
-            }
-            Spacer(Modifier.height(4.dp))
-            BubbleBoxCentered {
-                Text("Compose-Canvas", color = Color.Cyan, modifier = Modifier.align(Alignment.CenterHorizontally))
-                Spacer(Modifier.width(10.dp))
-                Text(
-                    "${ViewportOverlayRoot.canvasRenderTime.value}ms",
-                    color = Color.Cyan,
-                    modifier = Modifier.align(Alignment.CenterHorizontally)
-                )
-            }
+            SidedNode(30,
+                left = @Composable {
+                    Spacer(Modifier.width(4.dp))
+                    Text("Swing", color = Color.Cyan, modifier = Modifier.align(Alignment.CenterVertically))
+                },
+                right = @Composable {
+                    Text(
+                        "${Main.swingTime.value}ms",
+                        color = Color.Cyan,
+                        modifier = Modifier.align(Alignment.CenterVertically)
+                    )
+                    Spacer(Modifier.width(4.dp))
+                })
+            Spacer(Modifier.height(2.dp))
+            SidedNode(30,
+                left = @Composable {
+                    Spacer(Modifier.width(4.dp))
+                    Text("Compose-UI", color = Color.Cyan, modifier = Modifier.align(Alignment.CenterVertically))
+                },
+                right = @Composable {
+                    Text(
+                        "${Main.composeTime.value}ms",
+                        color = Color.Cyan,
+                        modifier = Modifier.align(Alignment.CenterVertically)
+                    )
+                    Spacer(Modifier.width(4.dp))
+                })
+            Spacer(Modifier.height(2.dp))
+            SidedNode(30,
+                left = @Composable {
+                    Spacer(Modifier.width(4.dp))
+                    Text("Compose-Canvas", color = Color.Cyan, modifier = Modifier.align(Alignment.CenterVertically))
+                },
+                right = @Composable {
+                    Text(
+                        "${ViewportOverlayRoot.canvasRenderTime.value}ms",
+                        color = Color.Cyan,
+                        modifier = Modifier.align(Alignment.CenterVertically)
+                    )
+                    Spacer(Modifier.width(4.dp))
+                })
         }
     }
 

@@ -19,8 +19,8 @@ object ConfigManager {
         }
     }
 
-    fun <T> get(key: String) : ConfigItem<T>? {
-        return configItems.firstOrNull { it.key == key } as ConfigItem<T>?
+    fun <T> getItem(key: String) : ConfigItem<T>? {
+        return getGeneric(key) as ConfigItem<T>?
     }
 
     fun getGeneric(key: String) : ConfigItem<*>? {

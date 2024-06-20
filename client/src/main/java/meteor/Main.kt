@@ -102,26 +102,8 @@ object Main {
 
     fun processClientCommand(command: String) {
         when (command) {
-            "fill" -> client.aspectMode = AspectMode.FILL
-            "fit" -> {
-                client.aspectMode = AspectMode.FIT
-                window.repaint()
-            }
-
             "reset_window" -> {
                 window.size = initialSize
-            }
-
-            "filter" -> {
-                client.cpuFilter = when (client.cpuFilter) {
-                    CPUFilter.BILINEAR -> CPUFilter.NONE
-                    CPUFilter.NONE -> CPUFilter.BILINEAR
-                    else -> CPUFilter.NONE
-                }
-            }
-
-            "overlays" -> {
-                GamePanel.debugOverlays.toggle()
             }
         }
     }

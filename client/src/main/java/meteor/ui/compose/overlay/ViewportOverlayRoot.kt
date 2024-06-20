@@ -54,14 +54,14 @@ object ViewportOverlayRoot {
         width.value = (VIEWPORT_DIMENSIONS.width * xScale!!).dp
         height.value = (VIEWPORT_DIMENSIONS.height * yScale!!).dp
 
-        val mod = Modifier
+        var mod = Modifier
             .absoluteOffset(x = offsetX, y = offsetY)
             .size(DpSize(width.value, height.value))
             .clipToBounds()
             .background(Color.Transparent)
-
+        if (Main.client.loggedIn() && GamePanel.debugOverlays.value)
+            mod = mod.background(Color.Red.copy(alpha = .2f))
         Box(mod) {
-
             DrawPolygons(mod)
         }
     }

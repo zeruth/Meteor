@@ -123,11 +123,15 @@ class PostProcessGamePanel : JPanel() {
      * This fixes a compose bug where focus would be lost every click causing subsequent keystrokes to be ignored.
      */
     private fun checkFocus() {
-        KeyboardFocusManager.getCurrentKeyboardFocusManager().focusOwner?.let {
+        val focusOwner = KeyboardFocusManager.getCurrentKeyboardFocusManager().focusOwner
+        focusOwner?.let {
             if (it::class.java.toString().contains("org.jetbrains.skiko.SkiaLayer")) {
                 it.isFocusable = false
                 Main.gamePanel.grabFocus()
             }
+        }
+        if (focusOwner == null) {
+            Main.gamePanel.grabFocus()
         }
     }
 }

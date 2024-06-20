@@ -19,12 +19,13 @@ import meteor.ui.compose.Colors
 import meteor.ui.compose.components.plugins.PluginsButton.Companion.switchStateMap
 
 object ConfigComposables {
-    fun ConfigPanel(config: Config) = @Composable {
+    @Composable
+    fun ConfigPanel(config: Config) {
         Box(Modifier.fillMaxSize()) {
             Column(Modifier.fillMaxSize()) {
                 for (item in config.items) {
                     when (item.defaultValue) {
-                        is Boolean -> ConfigNode { BooleanPanelNode(item as ConfigItem<Boolean>).invoke(this) }
+                        is Boolean -> ConfigNode { BooleanConfigNode(item as ConfigItem<Boolean>).invoke(this) }
                     }
                     Spacer(Modifier.height(2.dp))
                 }
@@ -41,9 +42,8 @@ object ConfigComposables {
         }
     }
 
-    fun BooleanPanelNode(config: ConfigItem<Boolean>) : @Composable RowScope.() -> Unit = @Composable {
+    fun BooleanConfigNode(config: ConfigItem<Boolean>) : @Composable RowScope.() -> Unit = @Composable {
         switchStateMap.putIfAbsent(config.key, config.get())
-
         Spacer(Modifier.width(5.dp))
         Text(
             config.name, Modifier.align(Alignment.CenterVertically),

@@ -30,7 +30,6 @@ object GameOverlayRoot {
         KEVENT.post(PreRender)
         Main.forceRecomposition.value
         val compositionStart = System.currentTimeMillis()
-        //val scale = GamePanel.getHeightScale()
         var mod = Modifier.absoluteOffset(x = GamePanel.xPadding.value.dp)
             .size(DpSize(GamePanel.stretchedWidth.value.dp, GamePanel.stretchedHeight.value.dp))
             .clipToBounds()
@@ -38,8 +37,6 @@ object GameOverlayRoot {
             mod = mod.background(Color.Cyan.copy(alpha = .2f))
         Box(mod) {
             ViewportOverlayRoot.render()
-            //TODO: Remove this as it's just to verify compose / swing interop isn't broken
-            Text(Main.text.value, color = Color.Cyan, fontSize = 8.sp, modifier = Modifier.fillMaxSize())
         }
         Main.composeTime.value = System.currentTimeMillis() - compositionStart
     }

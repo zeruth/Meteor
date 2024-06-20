@@ -31,16 +31,14 @@ class DebugPlugin : Plugin("Debug", true) {
     }
 
     override fun onConfigChanged(it: ConfigChanged) {
-        when (it.item) {
-            config.isDebugNPCs(),
-            config.isDebugPlayers(),
-            config.isDebugLocs() -> updateConfig()
-        }
+        if (it.affects(config))
+            updateConfig()
     }
 
     fun updateConfig() {
         GamePanel.debugNpcs.value = config.isDebugNPCs().get()
         GamePanel.debugPlayers.value = config.isDebugPlayers().get()
         GamePanel.debugLocs.value = config.isDebugLocs().get()
+        GamePanel.debugOverlays.value = config.isDebugOverlays().get()
     }
 }
