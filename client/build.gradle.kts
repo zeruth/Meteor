@@ -43,11 +43,11 @@ tasks.named("processResources") {
 compose.desktop {
     application {
         mainClass = "meteor.Main"
-        version = "2.0.5"
+        version = "2.0.7"
         nativeDistributions {
             targetFormats(TargetFormat.Dmg, TargetFormat.Exe, TargetFormat.Deb)
             packageName = "meteor"
-            packageVersion = "2.0.5"
+            packageVersion = "2.0.7"
             windows {
                 console = true
                 upgradeUuid = "9df19035-e962-4bb4-90c0-74330a07082b"

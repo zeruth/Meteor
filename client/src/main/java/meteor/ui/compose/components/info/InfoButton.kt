@@ -15,6 +15,7 @@ import androidx.compose.ui.unit.dp
 import compose.icons.LineAwesomeIcons
 import compose.icons.lineawesomeicons.InfoCircleSolid
 import meteor.Main
+import meteor.Main.version
 import meteor.ui.compose.Colors.surface
 import meteor.ui.compose.components.GeneralComposables.SidedNode
 import meteor.ui.compose.components.panel.PanelComposables
@@ -42,7 +43,7 @@ class InfoButton : SidebarButton(icon = LineAwesomeIcons.InfoCircleSolid) {
                     Text("Meteor", color = Color.Cyan, modifier = Modifier.align(Alignment.CenterVertically))
                 },
                 right = @Composable {
-                    Text("225-2.0.5-SNAPSHOT", color = Color.Cyan, modifier = Modifier.align(Alignment.CenterVertically))
+                    Text("225-$version", color = Color.Cyan, modifier = Modifier.align(Alignment.CenterVertically))
                     Spacer(Modifier.width(4.dp))
                 })
             Spacer(Modifier.height(2.dp))
