@@ -2,6 +2,8 @@
 
 A Kotlin/Compose client built around [Lost-City/Client](https://github.com/2004Scape/Client)
 
+![image](https://github.com/zeruth/Meteor/assets/2943260/c0bfa14f-25c8-4c77-9177-b3d543098548)
+
 Enhancements are nice, but I intend to respect the experience, and the developers of the Lost-City.  
     
 It currently offers:  
