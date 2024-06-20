@@ -1,4 +1,4 @@
-package meteor.ui.compose.config
+package meteor.ui.compose.components.panel
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
@@ -9,7 +9,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.ui.Modifier
 import meteor.ui.compose.Colors
 
-object ConfigPanelComposables {
+object PanelComposables {
     val content: MutableState<(@Composable () -> Unit)?> = mutableStateOf(null)
     val secondaryContent: MutableState<(@Composable () -> Unit)?> = mutableStateOf(null)
 

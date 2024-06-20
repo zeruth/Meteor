@@ -1,4 +1,4 @@
-package meteor.ui.compose.sidebar
+package meteor.ui.compose.components.plugins
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -9,7 +9,6 @@ import androidx.compose.material.Switch
 import androidx.compose.material.SwitchDefaults
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.mutableStateMapOf
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -19,26 +18,17 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import compose.icons.LineAwesomeIcons
 import compose.icons.lineawesomeicons.CogSolid
-import compose.icons.lineawesomeicons.PlugSolid
 import compose.icons.lineawesomeicons.StarSolid
-import meteor.config.Config
-import meteor.config.ConfigItem
 import meteor.config.ConfigManager
 import meteor.plugin.Plugin
 import meteor.plugin.PluginManager.plugins
 import meteor.ui.compose.Colors
-import meteor.ui.compose.config.ConfigPanelComposables
+import meteor.ui.compose.components.config.ConfigComposables.ConfigPanel
+import meteor.ui.compose.components.panel.PanelComposables
+import meteor.ui.compose.components.plugins.PluginsButton.Companion.favoritesMap
+import meteor.ui.compose.components.plugins.PluginsButton.Companion.runningMap
 
-class PluginsButton : SidebarButton(icon = LineAwesomeIcons.PlugSolid) {
-    companion object {
-        val runningMap = mutableStateMapOf<Plugin, Boolean>()
-        val favoritesMap = mutableStateMapOf<Plugin, Boolean>()
-        val switchStateMap = mutableStateMapOf<String, Boolean>()
-    }
-
-    override fun onClick() {
-        ConfigPanelComposables.content.value = PluginList()
-    }
+object PluginsComposables {
 
     fun PluginList() = @Composable {
         Column(Modifier.fillMaxSize()) {
@@ -60,7 +50,8 @@ class PluginsButton : SidebarButton(icon = LineAwesomeIcons.PlugSolid) {
                     )
                     val isFavorite = favoritesMap[plugin]!!
                     if (isFavorite)
-                        Image(LineAwesomeIcons.StarSolid,
+                        Image(
+                            LineAwesomeIcons.StarSolid,
                             contentDescription = null,
                             colorFilter = ColorFilter.tint(Colors.secondary.value),
                             modifier = Modifier.align(Alignment.Center).clickable {
@@ -68,7 +59,8 @@ class PluginsButton : SidebarButton(icon = LineAwesomeIcons.PlugSolid) {
                                 ConfigManager.set("plugin.${plugin.name}.isFavorite", favoritesMap[plugin]!!)
                             })
                     else
-                        Image(LineAwesomeIcons.StarSolid,
+                        Image(
+                            LineAwesomeIcons.StarSolid,
                             contentDescription = null,
                             colorFilter = ColorFilter.tint(Colors.surfaceDark.value),
                             modifier = Modifier.align(Alignment.Center).clickable {
@@ -83,11 +75,12 @@ class PluginsButton : SidebarButton(icon = LineAwesomeIcons.PlugSolid) {
                 Spacer(modifier = Modifier.weight(1f))
                 Box(Modifier.padding(all = 2.dp).size(30.dp)) {
                     if (plugin.configuration != null) {
-                        Image(LineAwesomeIcons.CogSolid,
+                        Image(
+                            LineAwesomeIcons.CogSolid,
                             contentDescription = null,
                             colorFilter = ColorFilter.tint(Colors.secondary.value),
                             modifier = Modifier.align(Alignment.Center).clickable {
-                                ConfigPanelComposables.secondaryContent.value = ConfigPanel(plugin.configuration!!)
+                                PanelComposables.secondaryContent.value = ConfigPanel(plugin.configuration!!)
                             })
                     }
                 }
@@ -101,46 +94,6 @@ class PluginsButton : SidebarButton(icon = LineAwesomeIcons.PlugSolid) {
                             plugin.stop()
                         } else
                             plugin.start()
-                    },
-                    colors = SwitchDefaults.colors(
-                        uncheckedThumbColor = Colors.surfaceDark.value,
-                        checkedThumbColor = Colors.secondary.value
-                    )
-                )
-            }
-        }
-    }
-
-    fun ConfigPanel(config: Config) = @Composable {
-        Box(Modifier.fillMaxSize()) {
-            Column(Modifier.fillMaxSize()) {
-                for (item in config.items) {
-                    when (item.defaultValue) {
-                        is Boolean -> BooleanPanelNode(item as ConfigItem<Boolean>)
-                    }
-                    Spacer(Modifier.height(2.dp))
-                }
-            }
-        }
-    }
-
-    @Composable
-    fun BooleanPanelNode(config: ConfigItem<Boolean>) {
-        switchStateMap.putIfAbsent(config.key, config.get())
-        Box(Modifier.clip(RoundedCornerShape(8.dp)).background(Colors.surface.value).fillMaxWidth().height(30.dp)) {
-            Row(Modifier.height(30.dp)) {
-                Spacer(Modifier.width(5.dp))
-                Text(
-                    config.name, Modifier.align(Alignment.CenterVertically),
-                    style = TextStyle(color = Colors.secondary.value, fontSize = 18.sp)
-                )
-                Spacer(modifier = Modifier.weight(1f))
-                Switch(
-                    switchStateMap[config.key]!!,
-                    modifier = Modifier.align(Alignment.CenterVertically),
-                    onCheckedChange = {
-                        config.toggle()
-                        switchStateMap[config.key] = config.get()
                     },
                     colors = SwitchDefaults.colors(
                         uncheckedThumbColor = Colors.surfaceDark.value,

@@ -1,4 +1,4 @@
-package meteor.ui.compose.sidebar
+package meteor.ui.compose.components.sidebar
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -13,9 +13,11 @@ import androidx.compose.ui.unit.dp
 import ext.kotlin.MutableStateExt.toggle
 import meteor.ui.compose.Colors.secondary
 import meteor.ui.compose.Colors.surface
-import meteor.ui.compose.Window.panelOpen
-import meteor.ui.compose.Window.sidebarWidth
-import meteor.ui.compose.config.ConfigPanelComposables.secondaryContent
+import meteor.ui.compose.components.Window.panelOpen
+import meteor.ui.compose.components.Window.sidebarWidth
+import meteor.ui.compose.components.info.InfoButton
+import meteor.ui.compose.components.panel.PanelComposables.secondaryContent
+import meteor.ui.compose.components.plugins.PluginsButton
 
 object SidebarComposables {
     val sidebarButtons = arrayListOf(PluginsButton(), InfoButton())

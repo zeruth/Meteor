@@ -19,8 +19,8 @@ import meteor.events.StopMusic
 import meteor.input.KeyListener
 import meteor.input.TranslateMouseListener
 import meteor.plugin.PluginManager
-import meteor.ui.compose.GamePanel
-import meteor.ui.compose.Window.Window
+import meteor.ui.compose.components.GamePanel
+import meteor.ui.compose.components.Window.Window
 import meteor.ui.config.AspectMode
 import meteor.ui.config.CPUFilter
 import meteor.ui.config.RenderMode

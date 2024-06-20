@@ -1,4 +1,4 @@
-package meteor.ui.compose.sidebar
+package meteor.ui.compose.components.info
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -16,12 +16,13 @@ import compose.icons.LineAwesomeIcons
 import compose.icons.lineawesomeicons.InfoCircleSolid
 import meteor.Main
 import meteor.ui.compose.Colors.surface
-import meteor.ui.compose.config.ConfigPanelComposables
+import meteor.ui.compose.components.panel.PanelComposables
 import meteor.ui.compose.overlay.ViewportOverlayRoot
+import meteor.ui.compose.components.sidebar.SidebarButton
 
 class InfoButton : SidebarButton(icon = LineAwesomeIcons.InfoCircleSolid) {
     override fun onClick() {
-        ConfigPanelComposables.content.value = InfoPanel()
+        PanelComposables.content.value = InfoPanel()
     }
 
     fun InfoPanel() = @Composable {

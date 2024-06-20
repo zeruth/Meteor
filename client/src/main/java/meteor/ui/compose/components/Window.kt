@@ -1,14 +1,14 @@
-package meteor.ui.compose
+package meteor.ui.compose.components
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import meteor.ui.compose.GamePanel.Game
-import meteor.ui.compose.config.ConfigPanelComposables.Panel
-import meteor.ui.compose.sidebar.SidebarComposables.Sidebar
-import meteor.ui.compose.sidebar.UISide
+import meteor.ui.compose.components.GamePanel.Game
+import meteor.ui.compose.components.panel.PanelComposables.Panel
+import meteor.ui.compose.components.sidebar.SidebarComposables.Sidebar
+import meteor.ui.compose.components.sidebar.UISide
 
 /**
  * The main entry point to the Compose UI

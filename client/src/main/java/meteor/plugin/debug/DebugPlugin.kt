@@ -5,7 +5,7 @@ import androidx.compose.ui.geometry.Rect
 import meteor.Main
 import meteor.events.client.ConfigChanged
 import meteor.plugin.Plugin
-import meteor.ui.compose.GamePanel
+import meteor.ui.compose.components.GamePanel
 import meteor.ui.compose.events.PreRender
 import meteor.ui.compose.overlay.ViewportOverlayRoot.blockedViewportAreas
 import meteor.ui.compose.overlay.ViewportOverlayRoot.viewportOverlays

@@ -23,7 +23,7 @@ import androidx.compose.ui.unit.DpSize
 import androidx.compose.ui.unit.dp
 import ext.compose.DrawScopeExt.dpToPx
 import meteor.Main
-import meteor.ui.compose.GamePanel
+import meteor.ui.compose.components.GamePanel
 import meteor.ui.config.AspectMode
 import net.runelite.api.Component
 import java.awt.Dimension

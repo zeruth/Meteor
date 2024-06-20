@@ -1,4 +1,4 @@
-package meteor.ui.compose
+package meteor.ui.compose.components
 
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.Composable

@@ -1,9 +1,9 @@
-package meteor.ui.compose.sidebar
+package meteor.ui.compose.components.sidebar
 
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
-import meteor.ui.compose.config.ConfigPanelComposables
+import meteor.ui.compose.components.panel.PanelComposables
 
 open class SidebarButton(
     icon: ImageVector? = null,
@@ -16,7 +16,7 @@ open class SidebarButton(
     var tint = mutableStateOf(tint)
     var imageResource = mutableStateOf(imageResource)
     open fun onClick() {
-        ConfigPanelComposables.content.value = null
+        PanelComposables.content.value = null
         println("${javaClass.name} button click")
     }
 }

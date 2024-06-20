@@ -5,10 +5,10 @@ import meteor.Constants.RS_DIMENSIONS
 import meteor.Main
 import meteor.Main.forceRecomposition
 import meteor.events.DrawFinished
-import meteor.ui.compose.GamePanel
-import meteor.ui.compose.GamePanel.stretchedHeight
-import meteor.ui.compose.GamePanel.stretchedWidth
-import meteor.ui.compose.Window.gameWidth
+import meteor.ui.compose.components.GamePanel
+import meteor.ui.compose.components.GamePanel.stretchedHeight
+import meteor.ui.compose.components.GamePanel.stretchedWidth
+import meteor.ui.compose.components.Window.gameWidth
 import meteor.ui.config.AspectMode
 import meteor.ui.config.CPUFilter
 import meteor.ui.config.RenderMode
