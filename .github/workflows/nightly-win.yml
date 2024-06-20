@@ -1,12 +1,8 @@
 name: Nightly Windows
 
 on:
-  push:
-    branches:
-      - rs2-225
-  pull_request:
-    branches:
-      - rs2-225
+  schedule:
+    - cron: "0 0 * * *"
 
 jobs:
   build:
@@ -15,6 +11,8 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
+        with:
+          ref: rs2-225
 
       - name: Set up JDK
         uses: actions/setup-java@v3
