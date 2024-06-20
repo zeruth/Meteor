@@ -6,12 +6,11 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Window
 import androidx.compose.ui.window.WindowState
 import androidx.compose.ui.window.application
-import ext.kotlin.MutableStateExt.toggle
+import ext.java.ClassLoaderExt.createInstance
 import meteor.Constants.RS_DIMENSIONS
 import meteor.audio.MidiPlayer
 import meteor.audio.SoundPlayer
 import meteor.config.ConfigManager
-import meteor.config.ConfigManager.properties
 import meteor.config.MeteorConfig
 import meteor.events.Command
 import meteor.events.PlaySong
@@ -20,11 +19,7 @@ import meteor.events.StopMusic
 import meteor.input.KeyListener
 import meteor.input.TranslateMouseListener
 import meteor.plugin.PluginManager
-import meteor.ui.compose.components.GamePanel
 import meteor.ui.compose.components.Window.Window
-import meteor.ui.config.AspectMode
-import meteor.ui.config.CPUFilter
-import meteor.ui.config.RenderMode
 import meteor.ui.swing.PostProcessGamePanel
 import meteor.ui.swing.RS2GamePanel
 import net.runelite.api.Client
@@ -34,8 +29,8 @@ import java.awt.Window
 import java.io.File
 import javax.sound.sampled.AudioSystem
 
-
 object Main {
+    val version  = "2.0.5-SNAPSHOT"
     lateinit var client: Client
     lateinit var window: Window
     val hooks = Hooks
@@ -55,6 +50,7 @@ object Main {
         Logger.logFile = File(Configuration.dataDir, "log.txt")
         logger.info("Logging to " + Logger.logFile.absolutePath)
         ConfigManager
+        ConfigManager.set("version", version)
         gamePanel.background = java.awt.Color.BLACK
         KEVENT.subscribe<Command> { processClientCommand(it.data.command) }
         KEVENT.subscribe<PlaySound> {
@@ -69,9 +65,13 @@ object Main {
      */
     @JvmStatic
     fun main(args: Array<String>) = application {
+        /**
+         * This Window be reloaded on events where it may be destroyed such as windows scaling changes
+         * So we check if it has already been loaded where needed
+         */
         Window(
             onCloseRequest = ::exitApplication,
-            title = "Meteor",
+            title = "Meteor 2.0.5-SNAPSHOT",
             state = WindowState(
                 size = DpSize(initialSize.width.dp, initialSize.height.dp),
             )
@@ -79,20 +79,20 @@ object Main {
             this@Main.window = window
             window.isResizable = true
             window.background = java.awt.Color.BLACK
-            //This Window be reloaded on events where it may be destroyed such as windows scaling changes
             if (!loaded)
                 initRS2()
             Window()
-            logger.info("Meteor-225 started in ${System.currentTimeMillis() - startupTime}ms")
+            if (!loaded)
+                logger.info("Meteor-225 started in ${System.currentTimeMillis() - startupTime}ms")
+            loaded = true
         }
     }
 
     private fun initRS2() {
         //Common init
-        client = ClassLoader.getSystemClassLoader().load<Client>()
+        client = ClassLoader.getSystemClassLoader().createInstance<Client>()
         client.callbacks = hooks
         client.preGameInit()
-        loaded = true
 
         PluginManager.startPlugins()
 
@@ -111,24 +111,5 @@ object Main {
                 window.size = initialSize
             }
         }
-    }
-
-    fun updateStatusText() {
-        var t = ""
-        when (client.renderMode) {
-            RenderMode.CPU -> t = "Meteor 2.0.5-SNAPSHOT"
-            RenderMode.GPU -> t = "Meteor 2.0.5-SNAPSHOT (GPU)"
-            else -> {}
-        }
-        ConfigManager.set("version", t)
-        if (client.loggedIn())
-            client.localPlayer?.let {
-                t += " - ${it.name}"
-            }
-        text.value = t
-    }
-
-    private inline fun <reified T : Any> ClassLoader.load(): T {
-        return loadClass(T::class.simpleName).getDeclaredConstructor().newInstance() as T
     }
 }
