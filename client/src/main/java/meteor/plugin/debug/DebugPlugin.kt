@@ -23,9 +23,9 @@ class DebugPlugin : Plugin("Debug", true) {
     }
 
     fun updateConfig() {
-        debugNpcs.value = config.isDebugNPCs().get()
-        debugPlayers.value = config.isDebugPlayers().get()
-        debugLocs.value = config.isDebugLocs().get()
-        debugOverlays.value = config.isDebugOverlays().get()
+        debugNpcs.value = config.isDebugNPCs.get()
+        debugPlayers.value = config.isDebugPlayers.get()
+        debugLocs.value = config.isDebugLocs.get()
+        debugOverlays.value = config.isDebugOverlays.get()
     }
 }

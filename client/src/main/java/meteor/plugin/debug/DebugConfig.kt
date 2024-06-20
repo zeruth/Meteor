@@ -5,15 +5,8 @@ import meteor.config.ConfigItem
 import meteor.plugin.Plugin
 
 class DebugConfig(plugin: Plugin) : Config(plugin) {
-    init {
-        add(ConfigItem("Debug NPCs", "isDebugNPCs".key(), false))
-        add(ConfigItem("Debug Players", "isDebugPlayers".key(), false))
-        add(ConfigItem("Debug Locs", "isDebugLocs".key(), false))
-        add(ConfigItem("Debug Overlays", "isDebugOverlays".key(), false))
-    }
-
-    fun isDebugNPCs() = get<Boolean>("isDebugNPCs".key())
-    fun isDebugPlayers() = get<Boolean>("isDebugPlayers".key())
-    fun isDebugLocs() = get<Boolean>("isDebugLocs".key())
-    fun isDebugOverlays() = get<Boolean>("isDebugOverlays".key())
+    val isDebugNPCs = ConfigItem(this, "Debug NPCs", "isDebugNPCs".key(), false)
+    val isDebugPlayers = ConfigItem(this, "Debug Players", "isDebugPlayers".key(), false)
+    val isDebugLocs = ConfigItem(this, "Debug Locs", "isDebugLocs".key(), false)
+    val isDebugOverlays = ConfigItem(this, "Debug Overlays", "isDebugOverlays".key(), false)
 }

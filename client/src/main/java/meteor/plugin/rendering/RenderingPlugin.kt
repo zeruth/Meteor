@@ -23,17 +23,17 @@ class RenderingPlugin : Plugin("Rendering", true) {
         if (it.affects(config))
             updateConfig()
 
-        if (it.item == config.stretchToFill()) {
+        if (it.item == config.stretchToFill) {
             window.repaint()
         }
     }
 
     fun updateConfig() {
-        when (config.useBilinearFilter().get<Boolean>()) {
+        when (config.useBilinearFilter.get<Boolean>()) {
             true -> client.cpuFilter = CPUFilter.BILINEAR
             false -> client.cpuFilter = CPUFilter.NONE
         }
-        when (config.stretchToFill().get<Boolean>()) {
+        when (config.stretchToFill.get<Boolean>()) {
             true -> client.aspectMode = AspectMode.FILL
             false -> client.aspectMode = AspectMode.FIT
         }
