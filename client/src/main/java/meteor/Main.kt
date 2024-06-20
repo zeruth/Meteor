@@ -11,6 +11,7 @@ import meteor.Constants.RS_DIMENSIONS
 import meteor.audio.MidiPlayer
 import meteor.audio.SoundPlayer
 import meteor.config.ConfigManager
+import meteor.config.ConfigManager.properties
 import meteor.config.MeteorConfig
 import meteor.events.Command
 import meteor.events.PlaySong
@@ -38,6 +39,7 @@ object Main {
     lateinit var client: Client
     lateinit var window: Window
     val hooks = Hooks
+    val logger = Logger("Main")
     val gamePanel = PostProcessGamePanel()
     var initialSize = Dimension(RS_DIMENSIONS.width, RS_DIMENSIONS.height + 28)
     var loaded = false
@@ -46,10 +48,12 @@ object Main {
     var forceRecomposition = mutableStateOf(false)
     var swingTime = mutableStateOf(1L)
     var composeTime = mutableStateOf(1L)
+    val startupTime = System.currentTimeMillis()
 
     init {
         System.setProperty("compose.interop.blending", "true")
         Logger.logFile = File(Configuration.dataDir, "log.txt")
+        logger.info("Logging to " + Logger.logFile.absolutePath)
         ConfigManager
         gamePanel.background = java.awt.Color.BLACK
         KEVENT.subscribe<Command> { processClientCommand(it.data.command) }
@@ -79,6 +83,7 @@ object Main {
             if (!loaded)
                 initRS2()
             Window()
+            logger.info("Meteor-225 started in ${System.currentTimeMillis() - startupTime}ms")
         }
     }
 

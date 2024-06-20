@@ -2,11 +2,13 @@ package meteor.config
 
 import com.google.gson.GsonBuilder
 import meteor.Configuration
+import meteor.Logger
 import meteor.events.client.ConfigChanged
 import org.rationalityfrontline.kevent.KEVENT
 import java.io.File
 
 object ConfigManager {
+    val logger = Logger("ConfigManager")
     val configFile = File(Configuration.dataDir, "properties")
     val gson = GsonBuilder().setPrettyPrinting().create()
     var properties = Properties()
@@ -14,8 +16,9 @@ object ConfigManager {
 
     init {
         if (configFile.exists()) {
+            val startTime = System.currentTimeMillis()
             properties = gson.fromJson(configFile.reader(), Properties::class.java)
-            println("Loaded ${properties.properties.size} properties")
+            logger.info("Loaded ${properties.properties.size} config properties (${System.currentTimeMillis() - startTime}ms)")
         }
     }
 
