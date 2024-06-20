@@ -23,6 +23,7 @@ import androidx.compose.ui.unit.DpSize
 import androidx.compose.ui.unit.dp
 import ext.compose.DrawScopeExt.dpToPx
 import meteor.Main
+import meteor.plugin.debug.DebugPlugin.Companion.debugOverlays
 import meteor.ui.compose.components.GamePanel
 import meteor.ui.config.AspectMode
 import net.runelite.api.Component
@@ -59,7 +60,7 @@ object ViewportOverlayRoot {
             .size(DpSize(width.value, height.value))
             .clipToBounds()
             .background(Color.Transparent)
-        if (Main.client.loggedIn() && GamePanel.debugOverlays.value)
+        if (Main.client.isLoggedIn() && debugOverlays.value)
             mod = mod.background(Color.Red.copy(alpha = .2f))
         Box(mod) {
             DrawPolygons(mod)
@@ -87,7 +88,7 @@ object ViewportOverlayRoot {
 
             clipPath(blockPath, clipOp = ClipOp.Difference) {
                 for (overlay in viewportOverlays) {
-                    overlay.render(this, textMeasurer)
+                    overlay.render(textMeasurer).invoke(this)
                 }
                 for (points in polygons.keys) {
                     drawPolygon(points, polygons[points]!!)

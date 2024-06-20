@@ -4,7 +4,5 @@ import androidx.compose.ui.graphics.drawscope.DrawScope
 import androidx.compose.ui.text.TextMeasurer
 
 open class ViewportOverlay {
-    open fun render(drawScope: DrawScope, textMeasurer: TextMeasurer) {
-
-    }
+    open fun render(textMeasurer: TextMeasurer): DrawScope.() -> Unit = {}
 }

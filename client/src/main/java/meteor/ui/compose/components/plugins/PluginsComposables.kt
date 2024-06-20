@@ -30,13 +30,14 @@ object PluginsComposables {
 
     fun PluginList() = @Composable {
         Column(Modifier.fillMaxSize()) {
-            val favorites : List<Plugin> = plugins.filter {
+            val nonHiddenPlugins = plugins.filter { !it.hidden }
+            val favorites : List<Plugin> = nonHiddenPlugins.filter {
                 if (!favoritesMap.containsKey(it)) {
                     favoritesMap[it] = ConfigManager.get<Boolean>("plugin.${it.name}.isFavorite", false)
                 }
                 favoritesMap[it] == true
             }.sortedBy { it.name }
-            val nonFavorites : List<Plugin> = plugins.filter { favoritesMap[it] == false }.sortedBy { it.name }
+            val nonFavorites : List<Plugin> = nonHiddenPlugins.filter { favoritesMap[it] == false }.sortedBy { it.name }
             for (plugin in favorites) {
                 PluginNode(plugin)
                 Spacer(Modifier.height(2.dp))

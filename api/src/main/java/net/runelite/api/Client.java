@@ -49,7 +49,6 @@ public interface Client extends GameShell{
     PlayerEntity[] getPlayers();
     PlayerEntity getLocalPlayer();
     NpcEntity[] getNpcs();
-    boolean loggedIn();
     int getWaveVol();
     String getMidi();
 
@@ -65,6 +64,8 @@ public interface Client extends GameShell{
     World3D getScene();
     boolean isClientThread();
     int getViewportInterfaceID();
-    boolean isBankOpen();
+    boolean isBankVisible();
     Component[] getComponents();
+    boolean isWelcomeScreenVisible();
+    boolean isLoggedIn();
 }

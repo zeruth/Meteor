@@ -4,9 +4,15 @@ import meteor.config.Config
 import meteor.config.ConfigManager
 import meteor.ui.compose.components.plugins.PluginsButton.Companion.runningMap
 
-open class Plugin(val name: String, var enabledByDefault: Boolean = false) : EventSubscriber() {
+open class Plugin(val name: String, var enabledByDefault: Boolean = false, var hidden: Boolean = false) : EventSubscriber() {
     var configuration: Config? = null
     var running = false
+
+    init {
+        if (hidden) {
+            enabledByDefault = true
+        }
+    }
 
     open fun onStart() {
 
@@ -18,7 +24,7 @@ open class Plugin(val name: String, var enabledByDefault: Boolean = false) : Eve
 
     fun start() {
         val enable = ConfigManager.get<Boolean>("plugin.$name.enabled", enabledByDefault)
-        if (!enable)
+        if (!enable && !hidden)
             return
         onStart()
         subscribeEvents(true)

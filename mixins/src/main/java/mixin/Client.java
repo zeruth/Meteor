@@ -278,7 +278,7 @@ abstract class Client implements RSClient {
 
     @Inject
     @Override
-    public boolean isBankOpen() {
+    public boolean isBankVisible() {
         return getViewportInterfaceID() == 5292;
     }
 
@@ -287,5 +287,18 @@ abstract class Client implements RSClient {
     @Override
     public Component[] getComponents() {
         return components;
+    }
+
+    @Inject
+    @Override
+    public boolean isWelcomeScreenVisible() {
+        return getViewportInterfaceID() == 5993;
+    }
+
+    @Inject
+    @FieldHook("ingame")
+    public void onInGameChanged(int idx) {
+        if (getCallbacks() != null)
+            getCallbacks().post(new LoggedInChanged(isLoggedIn()));
     }
 }

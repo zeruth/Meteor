@@ -2,6 +2,7 @@ package meteor.plugin
 
 import meteor.Logger
 import meteor.plugin.debug.DebugPlugin
+import meteor.plugin.overlayhelper.OverlayHelperPlugin
 import meteor.plugin.rendering.RenderingPlugin
 
 object PluginManager {
@@ -9,8 +10,9 @@ object PluginManager {
     val logger = Logger("PluginManager")
 
     init {
-        plugins.add(RenderingPlugin())
         plugins.add(DebugPlugin())
+        plugins.add(OverlayHelperPlugin())
+        plugins.add(RenderingPlugin())
     }
 
     fun startPlugins() {

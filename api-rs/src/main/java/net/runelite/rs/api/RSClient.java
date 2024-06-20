@@ -72,7 +72,7 @@ public interface RSClient extends Client, RSGameShell {
 
     @Override
     @Import("ingame")
-    boolean loggedIn();
+    boolean isLoggedIn();
 
     @Import("loopCycle")
     int getLoopCycle();

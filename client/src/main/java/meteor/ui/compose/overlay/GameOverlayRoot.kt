@@ -15,6 +15,7 @@ import androidx.compose.ui.unit.DpSize
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import meteor.Main
+import meteor.plugin.debug.DebugPlugin.Companion.debugOverlays
 import meteor.ui.compose.components.GamePanel
 import meteor.ui.compose.events.PreRender
 import org.rationalityfrontline.kevent.KEVENT
@@ -33,7 +34,7 @@ object GameOverlayRoot {
         var mod = Modifier.absoluteOffset(x = GamePanel.xPadding.value.dp)
             .size(DpSize(GamePanel.stretchedWidth.value.dp, GamePanel.stretchedHeight.value.dp))
             .clipToBounds()
-        if (Main.client.loggedIn() && GamePanel.debugOverlays.value)
+        if (Main.client.isLoggedIn() && debugOverlays.value)
             mod = mod.background(Color.Cyan.copy(alpha = .2f))
         Box(mod) {
             ViewportOverlayRoot.render()
