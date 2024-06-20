@@ -13,6 +13,7 @@ import androidx.compose.ui.unit.dp
 import ext.kotlin.MutableStateExt.toggle
 import meteor.ui.compose.Colors.secondary
 import meteor.ui.compose.Colors.surface
+import meteor.ui.compose.Colors.surfaceDark
 import meteor.ui.compose.components.Window.panelOpen
 import meteor.ui.compose.components.Window.sidebarWidth
 import meteor.ui.compose.components.info.InfoButton
@@ -28,7 +29,7 @@ object SidebarComposables {
     @Composable
     fun Sidebar() {
         //Sidebar
-        Box(Modifier.fillMaxSize().background(surface.value)) {
+        Box(Modifier.fillMaxSize().background(surfaceDark.value)) {
             //Buttons
             Column(Modifier.fillMaxSize().padding(all = padding.value)) {
                 for (sidebarButton in sidebarButtons) {
