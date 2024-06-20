@@ -1,8 +1,12 @@
 name: Nightly Windows
 
 on:
-  schedule:
-    - cron: "0 0 * * *"
+  push:
+    branches:
+      - rs2-225
+  pull_request:
+    branches:
+      - rs2-225
 
 jobs:
   build:
