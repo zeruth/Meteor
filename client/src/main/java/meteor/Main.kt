@@ -72,10 +72,11 @@ object Main {
          */
         Window(
             onCloseRequest = ::exitApplication,
-            title = "Meteor 2.0.5-SNAPSHOT",
+            title = "Meteor $version",
             state = WindowState(
                 size = DpSize(initialSize.width.dp, initialSize.height.dp)
-            ), icon = painterResource("Meteor.ico")
+            ),
+            icon = painterResource("Meteor.ico")
         ) {
             this@Main.window = window
             window.isResizable = true
