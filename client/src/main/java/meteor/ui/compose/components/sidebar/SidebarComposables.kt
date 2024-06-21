@@ -23,7 +23,7 @@ import meteor.ui.compose.components.panel.PanelComposables.secondaryContent
 import meteor.ui.compose.components.plugins.PluginsButton
 
 object SidebarComposables {
-    val sidebarButtons = arrayListOf(PluginsButton(), InfoButton(), FullscreenToggleButton())
+    val sidebarButtons = arrayListOf(PluginsButton(), FullscreenToggleButton(), InfoButton())
     val padding = mutableStateOf(5.dp)
     val buttonSize = mutableStateOf(sidebarWidth.value - padding.value)
     var lastButtonClicked = mutableStateOf<SidebarButton?>(null)

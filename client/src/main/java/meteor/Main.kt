@@ -107,7 +107,7 @@ object Main {
 
     val fullscreenState = WindowState(
         size = DpSize(getWidth().dp, getHeight().dp),
-        placement = WindowPlacement.Fullscreen)
+        placement = WindowPlacement.Maximized)
 
     val fullscreen = ConfigManager.get<Boolean>("meteor.fullscreen", false)
 

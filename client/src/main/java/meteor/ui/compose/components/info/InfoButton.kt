@@ -22,7 +22,7 @@ import meteor.ui.compose.components.panel.PanelComposables
 import meteor.ui.compose.overlay.ViewportOverlayRoot
 import meteor.ui.compose.components.sidebar.SidebarButton
 
-class InfoButton : SidebarButton(icon = LineAwesomeIcons.InfoCircleSolid) {
+class InfoButton : SidebarButton(icon = LineAwesomeIcons.InfoCircleSolid, bottom = true) {
     override fun onClick() {
         PanelComposables.content.value = InfoPanel()
     }
