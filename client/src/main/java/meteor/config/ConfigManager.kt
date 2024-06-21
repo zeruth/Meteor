@@ -32,44 +32,19 @@ object ConfigManager {
 
     inline fun <reified T> get(key: String, defaultValue: Any): T {
         val value = properties.properties[key]
-        when (T::class) {
-            String::class -> {
-                value ?: return defaultValue as T
-                return value as T
-            }
-
-            Int::class -> {
-                value ?: return defaultValue as T
-                return value.toInt() as T
-            }
-
-            Double::class -> {
-                value ?: return defaultValue as T
-                return value.toDouble() as T
-            }
-
-            Long::class -> {
-                value ?: return defaultValue as T
-                return value.toLong() as T
-            }
-
-            Boolean::class -> {
-                value ?: return defaultValue as T
-                return value.toBoolean() as T
-            }
-
-            Float::class -> {
-                value ?: return defaultValue as T
-                return value.toFloat() as T
-            }
-
-            else -> throw RuntimeException("Invalid value type ${T::class}")
+        try {
+            return gson.fromJson(value, T::class.java)?: return defaultValue as T
+        } catch (e: Exception) {
+            logger.error("Error parsing config value $value for key $key")
+            logger.error(e)
+            return defaultValue as T
         }
     }
 
     fun updateValue(key: String, value: Any): Boolean {
-        if (properties.properties[key] != value.toString()) {
-            properties.properties[key] = value.toString()
+        val json = gson.toJson(value)
+        if (properties.properties[key] != json) {
+            properties.properties[key] = json
             return true
         }
         return false
