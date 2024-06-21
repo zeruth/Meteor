@@ -7,8 +7,15 @@ A Kotlin/Compose client built around [Lost-City/Client](https://github.com/2004S
 Enhancements are nice, but I intend to respect the experience, and the developers of the Lost-City.  
     
 It currently offers:  
-RuneLite injection  
-Kotlin/Compose framework  
+Improved RuneLite Injector  
+ (Inject to deob instead of vanilla, great for debugging)
+Kotlin/Compose framework:
+ (Entire client is now kotlin only)
+ (Many systems improved / modernized to benefit from Kotlin)
+Compose only UI/Overlays:  
+ (Game image is drawn to the compose backed swing panel but that is it for swing)
+ (Overlays are native resolution regardless of rs stretching)
+ (Overlays are rendered on compose UI thread, client thread won't starve because of drawing)
 
 Depends on the following sub-projects:  
 [Annotations](https://www.github.com/zeruth/annotations)  runelite deobfuscation/mixin annotations  
