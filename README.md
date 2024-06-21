@@ -15,7 +15,8 @@ Forbidden features (unless otherwise permitted by Lost-City):
     overlays alerting when to move / pray etc
 
     Per Pazaz:
-    "in general: don’t give yourself an advantage that forces a new meta on the community. The original experience should be a viable option for people to play with"
+    "in general: don’t give yourself an advantage that forces a new meta on the community.
+        The original experience should be a viable option for people to play with"
 ```
 
 ```
