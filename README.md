@@ -4,19 +4,32 @@ A Kotlin/Compose client built around [Lost-City/Client](https://github.com/2004S
 
 ![image](https://github.com/zeruth/Meteor/assets/2943260/c0bfa14f-25c8-4c77-9177-b3d543098548)
 
-Enhancements are nice, but I intend to respect the experience, and the developers of the Lost-City.  
+Enhancements are nice, but I intend to respect the experience, and the developers of Lost-City.  
     
-It currently offers:  
-Improved RuneLite Injector  
- (Inject to deob instead of vanilla, great for debugging)  
-Kotlin/Compose framework:  
- (Entire client is now kotlin only)  
- (Many systems improved / modernized to benefit from Kotlin)  
-Compose only UI/Overlays:  
- (Game image is drawn to the compose backed swing panel but that is it for swing)  
- (Overlays are native resolution regardless of rs stretching)  
- (Overlays are rendered on compose UI thread, client thread won't starve because of drawing)  
+```
+Forbidden features (unless otherwise permitted by Lost-City):  
+    artificial input of any kind  
+    pvp context-aware content (ie. effect timers, hiding friends, etc)
+    camera zoom / middle mouse rotate  
+    menu entry swapping (including changing menu entry text)
+    overlays alerting when to move / pray etc
 
+    Per Pazaz:
+    "in general: don’t give yourself an advantage that forces a new meta on the community. The original experience should be a viable option for people to play with"
+```
+
+```
+Improved RuneLite Injector  
+    Inject to deob instead of vanilla, great for debugging
+Kotlin/Compose framework:
+    Entire client is now kotlin only
+    Many systems improved / modernized to benefit from Kotlin
+Compose only UI/Overlays:
+    Game image is drawn to the compose backed swing panel but that is it for swing
+    Overlays are native resolution regardless of rs stretching
+    Overlays are rendered on compose UI thread, client thread won't starve because of drawing 
+```
+  
 Depends on the following sub-projects:  
 [Annotations](https://www.github.com/zeruth/annotations)  runelite deobfuscation/mixin annotations  
 [Eventbus](https://www.github.com/zeruth/eventbus)  kotlin coroutines based eventbus  
