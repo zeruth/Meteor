@@ -9,7 +9,9 @@ open class SidebarButton(
     icon: ImageVector? = null,
     description: String? = null,
     tint: Color? = null,
-    imageResource: String? = null
+    imageResource: String? = null,
+    val actionButton: Boolean = false,
+    val bottom: Boolean = false
 ) {
     var icon = mutableStateOf(icon)
     var description = mutableStateOf(description)

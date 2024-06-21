@@ -2,13 +2,18 @@ package meteor.ui.compose.components
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.window.FrameWindowScope
+import meteor.Constants
 import meteor.ui.compose.components.GamePanel.Game
 import meteor.ui.compose.components.panel.PanelComposables.Panel
 import meteor.ui.compose.components.sidebar.SidebarComposables.Sidebar
 import meteor.ui.compose.components.sidebar.UISide
+import java.awt.Dimension
 
 /**
  * The main entry point to the Compose UI
@@ -21,7 +26,7 @@ object Window {
     var gameWidth = mutableStateOf((-1).dp)
 
     @Composable
-    fun Window() {
+    fun FrameWindowScope.Window() {
         Box(Modifier.fillMaxSize()) {
             Row(Modifier.fillMaxSize()) {
                 when (uiSide.value) {

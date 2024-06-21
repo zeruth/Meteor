@@ -3,6 +3,7 @@ package meteor.config
 import com.google.gson.GsonBuilder
 import meteor.Configuration
 import meteor.Logger
+import meteor.Util.gson
 import meteor.events.client.ConfigChanged
 import org.rationalityfrontline.kevent.KEVENT
 import java.io.File
@@ -10,7 +11,6 @@ import java.io.File
 object ConfigManager {
     val logger = Logger("ConfigManager")
     val configFile = File(Configuration.dataDir, "properties")
-    val gson = GsonBuilder().setPrettyPrinting().create()
     var properties = Properties()
     val configItems = ArrayList<ConfigItem<*>>()
 
