@@ -11,19 +11,22 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.window.WindowState
 import ext.kotlin.MutableStateExt.toggle
+import meteor.Main
 import meteor.Main.windowState
 import meteor.ui.compose.Colors.secondary
 import meteor.ui.compose.Colors.surfaceDark
 import meteor.ui.compose.components.Window.panelOpen
 import meteor.ui.compose.components.Window.sidebarWidth
+import meteor.ui.compose.components.buttons.CloseMeteorButton
 import meteor.ui.compose.components.buttons.FullscreenToggleButton
 import meteor.ui.compose.components.info.InfoButton
 import meteor.ui.compose.components.panel.PanelComposables.secondaryContent
 import meteor.ui.compose.components.plugins.PluginsButton
 
 object SidebarComposables {
-    val sidebarButtons = arrayListOf(PluginsButton(), FullscreenToggleButton(), InfoButton())
+    val sidebarButtons = arrayListOf(PluginsButton(), InfoButton(), FullscreenToggleButton())
     val padding = mutableStateOf(5.dp)
     val buttonSize = mutableStateOf(sidebarWidth.value - padding.value)
     var lastButtonClicked = mutableStateOf<SidebarButton?>(null)
@@ -42,6 +45,9 @@ object SidebarComposables {
                     for (sidebarButton in sidebarButtons.filter { it.bottom }) {
                         SidebarButtonNode(sidebarButton)
                     }
+                    if (windowState.value == Main.fullscreenState) {
+                        SidebarButtonNode(CloseMeteorButton())
+                    }
                 }
             }
         }
@@ -51,7 +57,7 @@ object SidebarComposables {
     fun SidebarButtonNode(sidebarButton: SidebarButton) {
         Row(Modifier.fillMaxWidth().height(buttonSize.value - padding.value)) {
             Box(
-                Modifier.clip(RoundedCornerShape(5.dp)).fillMaxSize().background(secondary.value)
+                Modifier.clip(RoundedCornerShape(5.dp)).fillMaxSize().background(sidebarButton.tint.value)
                     .clickable {
                         buttonClick(sidebarButton)
                     }) {
