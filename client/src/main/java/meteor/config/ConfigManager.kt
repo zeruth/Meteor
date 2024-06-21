@@ -41,7 +41,7 @@ object ConfigManager {
         }
     }
 
-    fun updateValue(key: String, value: Any): Boolean {
+    fun <T> updateValue(key: String, value: T): Boolean {
         val json = gson.toJson(value)
         if (properties.properties[key] != json) {
             properties.properties[key] = json
@@ -53,9 +53,9 @@ object ConfigManager {
     /**
      * Only post/save if the new value != the old value
      */
-    fun set(key: String, value: Any) {
+    fun <T> set(key: String, value: T) {
         if (updateValue(key, value)) {
-            KEVENT.post(ConfigChanged(key, getGeneric(key)))
+            KEVENT.post(ConfigChanged(getItem<T>(key)))
             save()
         }
     }

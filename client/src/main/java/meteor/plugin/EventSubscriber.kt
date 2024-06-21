@@ -18,7 +18,6 @@ open class EventSubscriber : KEventSubscriber {
     open fun onPreRender(it: PreRender) {}
     open fun onLoggedInChanged(it: LoggedInChanged) {}
 
-    @OptIn(DelicateCoroutinesApi::class)
     open fun executeIfListening(unit: () -> (Unit)) {
         if (listening)
             unit()
