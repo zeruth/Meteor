@@ -1,28 +1,64 @@
-<div align="center">
+# Meteor-225
 
-<h1>2004Scape Client - May 18, 2004</h1>
+A Kotlin/Compose client built around [Lost-City/Client](https://github.com/2004Scape/Client)
 
-[Website](https://2004scape.org) | [Discord](https://discord.2004scape.org) | [Rune-Server](https://www.rune-server.ee/runescape-development/rs2-server/projects/701698-lost-city-225-emulation.html)
+![image](https://github.com/zeruth/Meteor/assets/2943260/c0bfa14f-25c8-4c77-9177-b3d543098548)
 
-**status: completely refactored**
+Enhancements are nice, but I intend to respect the experience, and the developers of Lost-City.  
+    
+```
+Forbidden features (unless otherwise permitted by Lost-City):  
+    artificial input of any kind  
+    pvp context-aware content (ie. effect timers, hiding friends, etc)
+    camera zoom / middle mouse rotate  
+    menu entry swapping (including changing menu entry text)
+    overlays alerting when to move / pray etc
 
-**The client code was decompiled, deobfuscated, and refactored by us.**  
-**Jagex has never had any source code leaks.**
-</div>
+    Per Pazaz:
+    "in general: don’t give yourself an advantage that forces a new meta on the community.
+        The original experience should be a viable option for people to play with"
+```
 
-## Project Structure
+```
+Improved RuneLite Injector  
+    Inject to deob instead of vanilla, great for debugging
+Kotlin/Compose framework:
+    Entire client is now kotlin only
+    Many systems improved / modernized to benefit from Kotlin
+Compose only UI/Overlays:
+    Game image is drawn to the compose backed swing panel but that is it for swing
+    Overlays are native resolution regardless of rs stretching
+    Overlays are rendered on compose UI thread, client thread won't starve because of drawing 
+```
+  
+Depends on the following sub-projects:  
+[Annotations](https://www.github.com/zeruth/annotations)  runelite deobfuscation/mixin annotations  
+[Eventbus](https://www.github.com/zeruth/eventbus)  kotlin coroutines based eventbus  
+[Injector](https://www.github.com/zeruth/injector)  packs `api`/`api-rs`/`mixins` into `rs2`  
+[Logger](https://www.github.com/zeruth/logger)  pretty logger  
+  
+* `/api` restricted-level interfaces to client members
+* `/api-rs` unrestricted-level interfaces to client members
+* `/client` pure kotlin / compose 3pc
+* `/mixins` code to be packed/modified in `rs2`
+* `/rs2` aka deob aka 2004Scape Client aka Client1 aka vanilla
 
-`client` - Decompiled client source code.
+The injector has a handful of improvements over RuneLite/OpenOSRSs releases.
+```
+-targets rs2 instead of mapping against vanilla jar  
+  (changes made in rs2 are injected on build)
+  (rs2 is debuggable with breakpoints etc after injection)  
+-can handle targets with packages  
+-various bytecode fixes  
+-virtually annotate members 
+  (no need to annotate anything in rs2)  
+```
+  
+# 2004Scape Client
 
-`runetek3` - Decompiled client engine source code. Some class names are original.
+Status: **Completely renamed!** There's no obfuscation or unnamed classes/methods/fields/variables left.
 
-`deob-annotations` - OpenRS2 dedobfuscator annotations library. Useful for making the namings of everything reusable if starting again from scratch or comparing to the original bytecode.
-
-`loader` - Decompiled loader source code. Class names are all original.
-
-`mapview` - Decompiled mapview source code.
-
-`tools` - Tooling specific to the client or loader.
+The TeaVM webclient is in the `webclient` branch until it can be made compatible with this new branch: see https://github.com/2004scape/Client/tree/webclient
 
 ## Sources
 
@@ -31,7 +67,3 @@ Thanks to these individuals' projects for shedding light on some things - this w
 * [Dane's 317 refactor](https://github.com/thedaneeffect/RuneScape-317)
 * [Dane's 186 refactor](https://github.com/thedaneeffect/RuneScape-Beta-Public)
 * [James Monger's 317 refactor](https://github.com/Jameskmonger/317refactor)
-
-## Running
-
-Because there are multiple entry points, instead of `gradle run` you have to execute `gradle client:run` or `gradle mapview:run` else it will launch both sequentially.

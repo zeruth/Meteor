@@ -1,0 +1,35 @@
+name: Build
+
+on:
+  push:
+    branches:
+      - rsc-203
+      - rs2-225
+      - rs2-377
+      - rs3-910
+  pull_request:
+    branches:
+      - rsc-203
+      - rs2-225
+      - rs2-377
+      - rs3-910
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up JDK 21
+        uses: actions/setup-java@v3
+        with:
+          java-version: '21'
+          distribution: 'adopt'
+
+      - name: Grant execute permission for gradlew
+        run: chmod +x gradlew
+
+      - name: Build with Gradle
+        run: ./gradlew build

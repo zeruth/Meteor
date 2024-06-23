@@ -1,0 +1,36 @@
+name: Nightly Windows
+
+on:
+  schedule:
+    - cron: "0 0 * * *"
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        with:
+          ref: rs2-225
+
+      - name: Set up JDK
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'adopt'
+          java-version: '21'
+
+      - name: Build
+        run: ./gradlew.bat build
+
+      - name: Create Compose distributable
+        run: ./gradlew.bat client:createDistributable
+
+      - name: Create Artifact
+        run: powershell Compress-Archive -Path client/build/compose/binaries/main/app/meteor -DestinationPath nightly-win64.zip
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: nightly-win64
+          path: nightly-win64.zip

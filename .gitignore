@@ -1,8 +1,20 @@
-/.gradle/
-/.idea/
+*.iml
+.gradle
+**/build/
+xcuserdata
+!src/**/build/
+local.properties
+.idea
+.DS_Store
+captures
+.externalNativeBuild
+.cxx
+*.xcodeproj/*
+!*.xcodeproj/project.pbxproj
+!*.xcodeproj/xcshareddata/
+!*.xcodeproj/project.xcworkspace/
+!*.xcworkspace/contents.xcworkspacedata
+**/xcshareddata/WorkspaceSettings.xcsettings
 
-build/
-*.class
-
-loader/src/main/java/sig.java
-loader/src/main/java/sign/signlink.java
+composeApp/src/desktopMain/resources/injected-client.jar
+/.kotlin/
