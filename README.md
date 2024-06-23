@@ -23,10 +23,9 @@ Forbidden features (unless otherwise permitted by Lost-City):
 Improved RuneLite Injector  
     Inject to deob instead of vanilla, great for debugging
 Kotlin/Compose framework:
-    Entire client is now kotlin only
-    Many systems improved / modernized to benefit from Kotlin
+    client module is entirely Kotlin, and entirely Compose - No Java / Swing in the frontend
+    Many systems improved / modernized to benefit from this
 Compose only UI/Overlays:
-    Game image is drawn to the compose backed swing panel but that is it for swing
     Overlays are native resolution regardless of rs stretching
     Overlays are rendered on compose UI thread, client thread won't starve because of drawing 
 ```
