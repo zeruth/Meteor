@@ -2,7 +2,7 @@
 
 A Kotlin/Compose client built around [Lost-City/Client](https://github.com/2004Scape/Client)
 
-![image](https://github.com/zeruth/Meteor/assets/2943260/c0bfa14f-25c8-4c77-9177-b3d543098548)
+![image](https://github.com/zeruth/Meteor/assets/2943260/ceb94f91-15bd-4234-a16c-c9eddea55da3)
 
 Enhancements are nice, but I intend to respect the experience, and the developers of Lost-City.  
     
@@ -27,7 +27,7 @@ Kotlin/Compose framework:
     Many systems improved / modernized to benefit from this
 Compose only UI/Overlays:
     Overlays are native resolution regardless of rs stretching
-    Overlays are rendered on compose UI thread, client thread won't starve because of drawing 
+    Overlays are rendered on compose UI thread, client thread won't starve because of drawing
 ```
   
 Depends on the following sub-projects:  
