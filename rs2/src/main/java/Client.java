@@ -3062,7 +3062,7 @@ public class Client extends GameShell {
 								WordPack.pack(this.out, this.socialInput);
 								this.out.psize1(this.out.pos - start);
 								this.socialInput = JString.toSentenceCase(this.socialInput);
-								this.socialInput = WordFilter.filter(this.socialInput);
+								this.socialInput = this.socialInput; //WordFilter.filter(this.socialInput);
 								this.addMessage(6, this.socialInput, JString.formatName(JString.fromBase37(this.socialName37)));
 								if (this.privateChatSetting == 2) {
 									this.privateChatSetting = 1;
@@ -11168,7 +11168,7 @@ public class Client extends GameShell {
 						this.messageIds[this.privateMessageCount] = messageId;
 						this.privateMessageCount = (this.privateMessageCount + 1) % 100;
 						@Pc(2721) String uncompressed = WordPack.unpack(this.in, this.packetSize - 13);
-						@Pc(2725) String filtered = WordFilter.filter(uncompressed);
+						@Pc(2725) String filtered = uncompressed; //WordFilter.filter(uncompressed);
 						if (staffModLevel > 1) {
 							this.addMessage(7, filtered, JString.formatName(JString.fromBase37(from)));
 						} else {
