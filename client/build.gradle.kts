@@ -40,14 +40,16 @@ tasks.named("processResources") {
     dependsOn("inject")
 }
 
+val installerVersion = "2.0.7"
+
 compose.desktop {
     application {
         mainClass = "meteor.Main"
-        version = "2.0.7"
+        version = installerVersion
         nativeDistributions {
             targetFormats(TargetFormat.Dmg, TargetFormat.Exe, TargetFormat.Deb)
             packageName = "meteor"
-            packageVersion = "2.0.7"
+            packageVersion = installerVersion
             windows {
                 console = true
                 upgradeUuid = "9df19035-e962-4bb4-90c0-74330a07082b"
