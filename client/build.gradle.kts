@@ -40,6 +40,11 @@ tasks.named("processResources") {
     dependsOn("inject")
 }
 
+java {
+    sourceCompatibility = JavaVersion.VERSION_21
+    targetCompatibility = JavaVersion.VERSION_21
+}
+
 val installerVersion = "2.0.7"
 
 compose.desktop {
