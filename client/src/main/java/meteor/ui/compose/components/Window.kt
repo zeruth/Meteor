@@ -9,6 +9,7 @@ import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.FrameWindowScope
 import meteor.Constants
+import meteor.Main.forceRecomposition
 import meteor.ui.compose.components.GamePanel.Game
 import meteor.ui.compose.components.panel.PanelComposables.Panel
 import meteor.ui.compose.components.sidebar.SidebarComposables.Sidebar

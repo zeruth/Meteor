@@ -4,6 +4,7 @@ import meteor.Logger
 import meteor.plugin.debug.DebugPlugin
 import meteor.plugin.overlayhelper.OverlayHelperPlugin
 import meteor.plugin.rendering.RenderingPlugin
+import meteor.plugin.stretchedmode.StretchedModePlugin
 
 object PluginManager {
     val plugins = mutableListOf<Plugin>()
@@ -13,6 +14,7 @@ object PluginManager {
         plugins.add(DebugPlugin())
         plugins.add(OverlayHelperPlugin())
         plugins.add(RenderingPlugin())
+        plugins.add(StretchedModePlugin())
     }
 
     fun startPlugins() {

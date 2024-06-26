@@ -15,6 +15,7 @@ class FullscreenToggleButton : SidebarButton(
         if (icon.value == LineAwesomeIcons.ExpandArrowsAltSolid) {
             icon.value = LineAwesomeIcons.CompressArrowsAltSolid
             Main.windowState.value = Main.fullscreenState
+            ConfigManager.set("plugin.Stretched Mode.enabled", true)
             ConfigManager.set("meteor.fullscreen", true)
         } else {
             icon.value = LineAwesomeIcons.ExpandArrowsAltSolid
