@@ -129,11 +129,11 @@ object Main {
         }
 
     fun getMinimumWidth() : Int {
-        return 15 + RS_DIMENSIONS.width + sidebarWidth.value.value.toInt()
+        return 16 + RS_DIMENSIONS.width + sidebarWidth.value.value.toInt()
     }
 
     fun getMinimumHeight() : Int {
-        return 40 + RS_DIMENSIONS.height
+        return 41 + RS_DIMENSIONS.height
     }
 
     /**
