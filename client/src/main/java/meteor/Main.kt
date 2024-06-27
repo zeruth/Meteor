@@ -109,9 +109,32 @@ object Main {
         size = DpSize(getWidth().dp, getHeight().dp),
         placement = WindowPlacement.Maximized)
 
-    val fullscreen = ConfigManager.get<Boolean>("meteor.fullscreen", false)
+    val fixedState = WindowState(
+        size = DpSize(getMinimumWidth().dp, getMinimumHeight().dp),
+        position = WindowPosition(Alignment.Center),
+        placement = WindowPlacement.Floating)
 
-    val windowState = if (fullscreen) mutableStateOf(fullscreenState) else mutableStateOf(windowedState)
+    val fullscreen = ConfigManager.get<Boolean>("meteor.fullscreen", false)
+    val stretched = ConfigManager.get<Boolean>("plugin.Stretched Mode.enabled", false)
+
+    val windowState =
+        if (fullscreen) {
+            mutableStateOf(fullscreenState)
+        }
+        else if (stretched) {
+            mutableStateOf(windowedState)
+        }
+        else {
+            mutableStateOf(fixedState)
+        }
+
+    fun getMinimumWidth() : Int {
+        return 15 + RS_DIMENSIONS.width + sidebarWidth.value.value.toInt()
+    }
+
+    fun getMinimumHeight() : Int {
+        return 40 + RS_DIMENSIONS.height
+    }
 
     /**
      * Hello World!
@@ -124,12 +147,10 @@ object Main {
                 title = "Meteor $version",
                 state = windowState.value,
                 undecorated = windowState.value == fullscreenState,
+                resizable = windowState.value != fixedState,
                 icon = painterResource("Meteor.ico")
             ) {
                 this@Main.window = window
-                window.isResizable = true
-                window.background = java.awt.Color.BLACK
-                //window.rootPane.parent.minimumSize = Dimension(getWidth().toInt(), getHeight())
                 if (!loaded)
                     initRS2()
                 Window()

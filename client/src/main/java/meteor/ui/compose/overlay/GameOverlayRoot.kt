@@ -14,7 +14,9 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.DpSize
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import meteor.Constants
 import meteor.Main
+import meteor.Main.forceRecomposition
 import meteor.ui.compose.components.GamePanel
 import meteor.ui.compose.events.PreRender
 import meteor.ui.compose.overlay.Overlay.Companion.debugOverlays
@@ -24,17 +26,20 @@ object GameOverlayRoot {
     val gameOverlays = ArrayList<GameOverlay>()
     /**
      * This overlay layer covers the entire game area
-     * stretchedWidth/Height is updated every frame, so this composable will be too.
      */
-    @OptIn(ExperimentalFoundationApi::class)
     @Composable
     fun render() {
+        forceRecomposition.value
         KEVENT.post(PreRender)
-        Main.forceRecomposition.value
         val compositionStart = System.currentTimeMillis()
-        var mod = Modifier.absoluteOffset(x = GamePanel.xPadding.value.dp)
-            .size(DpSize(GamePanel.stretchedWidth.value.dp, GamePanel.stretchedHeight.value.dp))
-            .clipToBounds()
+        var mod = if (Main.windowState.value == Main.fixedState) {
+            Modifier.size(DpSize(Constants.RS_DIMENSIONS.width.dp, Constants.RS_DIMENSIONS.height.dp))
+                .clipToBounds()
+        } else {
+            Modifier.absoluteOffset(x = GamePanel.xPadding.value.dp)
+                .size(DpSize(GamePanel.stretchedWidth.value.dp, GamePanel.stretchedHeight.value.dp))
+                .clipToBounds()
+        }
         if (Main.client.isLoggedIn() && debugOverlays.value)
             mod = mod.background(Color.Cyan.copy(alpha = .2f))
         Box(mod) {

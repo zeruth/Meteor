@@ -5,7 +5,9 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.awt.SwingPanel
+import meteor.Constants
 import meteor.Main
+import meteor.Main.forceRecomposition
 import meteor.ui.compose.overlay.GameOverlayRoot
 
 /**
@@ -27,10 +29,12 @@ object GamePanel {
     }
 
     fun getHeightScale(): Float {
+        if (Main.windowState.value == Main.fixedState)
+            return 1f
         if (Main.gamePanel.height == lastHeight)
             return lastHeightScale
         val windowSize: Int = Main.gamePanel.height
-        val canvasSize: Int = Main.client.gamePanel?.height ?: Main.initialSize.height
+        val canvasSize: Int = Constants.RS_DIMENSIONS.height
         val scale = windowSize.toFloat() / canvasSize
 
         val s = (scale)
@@ -40,10 +44,12 @@ object GamePanel {
     }
 
     fun getWidthScale(): Float {
+        if (Main.windowState.value == Main.fixedState)
+            return 1f
         if (Main.gamePanel.width == lastWidth)
             return lastWidthScale
         val windowSize: Int = Main.gamePanel.width
-        val canvasSize: Int = Main.client.gamePanel?.width ?: Main.initialSize.width
+        val canvasSize: Int = Constants.RS_DIMENSIONS.width
         val scale = windowSize.toFloat() / canvasSize
 
         val s = (scale)

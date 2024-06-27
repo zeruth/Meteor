@@ -55,8 +55,8 @@ class PostProcessGamePanel : JPanel() {
         val timer = System.currentTimeMillis()
         super.getGraphics()?.let {
             graphics2D = it as Graphics2D
-            var finalImage = RS2GamePanel.image!!
-            updateSizeAndScale()
+            val finalImage = RS2GamePanel.image!!
+            updateSizeAndScale(finalImage)
             when (Main.client.renderMode) {
                 RenderMode.CPU -> setCPURenderingHints(it)
                 else -> {}
@@ -66,8 +66,8 @@ class PostProcessGamePanel : JPanel() {
         Main.swingTime.value = System.currentTimeMillis() - timer
     }
 
-    private fun updateSizeAndScale() {
-        val scale = getScale()
+    private fun updateSizeAndScale(finalImage: BufferedImage) {
+        val scale = getScale(finalImage)
         var stretchedWidth = width
         var stretchedHeight = height
         if (Main.client.aspectMode == AspectMode.FIT) {
@@ -85,6 +85,11 @@ class PostProcessGamePanel : JPanel() {
     }
 
     private fun drawToSurface(graphics: Graphics, finalImage: BufferedImage) {
+        if (Main.windowState.value == Main.fixedState) {
+            graphics.drawImage(finalImage, 0, 0, finalImage.width, finalImage.height, this)
+            return
+        }
+
         when (Main.client.aspectMode) {
             AspectMode.FIT -> {
                 graphics.drawImage(
@@ -109,9 +114,9 @@ class PostProcessGamePanel : JPanel() {
         }
     }
 
-    private fun getScale(): Float {
+    private fun getScale(finalImage: BufferedImage): Float {
         val windowSize: Int = height
-        val canvasSize: Int = Main.client.gamePanel?.height ?: Main.initialSize.height
+        val canvasSize: Int = finalImage.height
         val scale = windowSize.toFloat() / canvasSize
 
         val s = (scale)

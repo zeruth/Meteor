@@ -16,16 +16,11 @@ class RenderingPlugin : Plugin("Rendering", true) {
 
     override fun onStop() {
         client.cpuFilter = CPUFilter.NONE
-        client.aspectMode = AspectMode.FIT
     }
 
     override fun onConfigChanged(it: ConfigChanged) {
         if (it.affects(config))
             updateConfig()
-
-        if (it.item == config.stretchToFill) {
-            window.repaint()
-        }
     }
 
     fun updateConfig() {
@@ -33,10 +28,5 @@ class RenderingPlugin : Plugin("Rendering", true) {
             true -> client.cpuFilter = CPUFilter.BILINEAR
             false -> client.cpuFilter = CPUFilter.NONE
         }
-        when (config.stretchToFill.get<Boolean>()) {
-            true -> client.aspectMode = AspectMode.FILL
-            false -> client.aspectMode = AspectMode.FIT
-        }
     }
-
 }
