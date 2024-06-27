@@ -44,6 +44,8 @@ abstract class PathingEntity implements RSPathingEntity {
     public Point[] getTrueTilePoints() {
         if (getPathLength() > 0 || getForceMoveEndCycle() >= client.getLoopCycle() || getForceMoveStartCycle() > client.getLoopCycle()) {
             int halfUnit = 64 * getSize();
+            if (getPathTileX().length == 0 || getPathTileZ().length == 0)
+                return null;
             int x = getPathTileX()[0] * 128 + halfUnit;
             int z = getPathTileZ()[0] * 128 + halfUnit;
             int y = client.getCurrentLevel();
@@ -82,6 +84,8 @@ abstract class PathingEntity implements RSPathingEntity {
         int x = getX();
         int z = getZ();
         int y = client.getCurrentLevel();
+        if (x < 0 || z < 0)
+            return null;
         int height = client.getHeightmapY$api(y, x, z);
         int x0, y0;
         int x1, y1;
