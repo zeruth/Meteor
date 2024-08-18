@@ -1,10 +1,13 @@
 package meteor.plugin
 
 import meteor.Logger
+import meteor.plugin.account.AccountPlugin
 import meteor.plugin.debug.DebugPlugin
 import meteor.plugin.overlayhelper.OverlayHelperPlugin
 import meteor.plugin.rendering.RenderingPlugin
 import meteor.plugin.stretchedmode.StretchedModePlugin
+import meteor.plugin.world.ServerPlugin
+import meteor.plugin.xptracker.XPTrackerPlugin
 
 object PluginManager {
     val plugins = mutableListOf<Plugin>()
@@ -15,6 +18,9 @@ object PluginManager {
         plugins.add(OverlayHelperPlugin())
         plugins.add(RenderingPlugin())
         plugins.add(StretchedModePlugin())
+        plugins.add(ServerPlugin())
+        plugins.add(XPTrackerPlugin())
+        plugins.add(AccountPlugin())
     }
 
     fun startPlugins() {

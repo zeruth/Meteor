@@ -37,6 +37,9 @@ public interface RSClient extends Client, RSGameShell {
     @Import("members")
     void setMembers(boolean isMembers);
 
+    @Import("members")
+    boolean getMembers();
+
     @Override
     @Import("project")
     void project$api(int x, int y, int z);
@@ -97,4 +100,34 @@ public interface RSClient extends Client, RSGameShell {
 
     @Import("viewportInterfaceId")
     int getViewportInterfaceID();
+
+    @Import("updateServerConnection")
+    void updateServerConnection$api(String URL, int PORT_OFFSET);
+
+    @Import("skillBaseLevel")
+    int[] getLevels();
+
+    @Import("skillLevel")
+    int[] getBoostedLevels();
+
+    @Import("skillExperience")
+    int[] getExperience();
+
+    @Import("packetType")
+    int getPacketType();
+
+    @Import("levelExperience")
+    int[] getLevelExperience();
+
+    @Import("keepUsername")
+    void setKeepUsername(boolean keepUsername);
+
+    @Import("keepPassword")
+    void setKeepPassword(boolean keepPassword);
+
+    @Import("autoUsername")
+    void setAutoUsername(String autoUsername);
+
+    @Import("autoPassword")
+    void setAutoPassword(String autoPassword);
 }

@@ -9,14 +9,12 @@ import meteor.ui.compose.components.GamePanel
 import meteor.ui.compose.components.GamePanel.stretchedHeight
 import meteor.ui.compose.components.GamePanel.stretchedWidth
 import meteor.ui.compose.components.Window.gameWidth
+import meteor.ui.compose.components.Window.panelOpen
 import meteor.ui.config.AspectMode
 import meteor.ui.config.CPUFilter
 import meteor.ui.config.RenderMode
 import org.rationalityfrontline.kevent.KEVENT
-import java.awt.Graphics
-import java.awt.Graphics2D
-import java.awt.KeyboardFocusManager
-import java.awt.RenderingHints
+import java.awt.*
 import java.awt.image.BufferedImage
 import javax.swing.JPanel
 
@@ -129,14 +127,15 @@ class PostProcessGamePanel : JPanel() {
     private fun checkFocus() {
         if (Main.window.isFocused) {
             val focusOwner = KeyboardFocusManager.getCurrentKeyboardFocusManager().focusOwner
-            focusOwner?.let {
-                if (it::class.java.toString().contains("org.jetbrains.skiko.SkiaLayer")) {
-                    it.isFocusable = false
+            if (!panelOpen.value) {
+                focusOwner?.let {
+                    if (it::class.java.toString().contains("org.jetbrains.skiko.SkiaLayer")) {
+                        Main.gamePanel.grabFocus()
+                    }
+                }
+                if (focusOwner == null) {
                     Main.gamePanel.grabFocus()
                 }
-            }
-            if (focusOwner == null) {
-                Main.gamePanel.grabFocus()
             }
         }
     }

@@ -1,5 +1,6 @@
 package meteor.plugin.debug
 
+import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.geometry.Size
@@ -26,7 +27,7 @@ var debugLocs = mutableStateOf(false)
  * TODO: Very unoptimized atm.
  */
 object DebugViewportOverlay : ViewportOverlay() {
-    override fun render(textMeasurer: TextMeasurer): DrawScope.() -> Unit = {
+    override fun draw(textMeasurer: TextMeasurer): DrawScope.() -> Unit = {
         if (Main.client.isLoggedIn() && debugNpcs.value) {
             for (npc in Main.client.npcs.filterNotNull()) {
                 npc.type?.let {

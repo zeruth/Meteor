@@ -3,6 +3,7 @@ package net.runelite.api;
 import meteor.ui.config.AspectMode;
 import meteor.ui.config.CPUFilter;
 import meteor.ui.config.RenderMode;
+import net.runelite.mapping.Import;
 
 import javax.swing.*;
 import java.awt.image.BufferedImage;
@@ -68,4 +69,15 @@ public interface Client extends GameShell{
     Component[] getComponents();
     boolean isWelcomeScreenVisible();
     boolean isLoggedIn();
+    void setMembers(boolean isMembers);
+    void updateServerConnection$api(String URL, int PORT_OFFSET);
+    int[] getLevels();
+    int[] getBoostedLevels();
+    int[] getExperience();
+    int getPacketType();
+    int[] getLevelExperience();
+    void setAutoUsername(String lastUsername);
+    void setAutoPassword(String lastPassword);
+    void setKeepUsername(boolean keepUsername);
+    void setKeepPassword(boolean keepPassword);
 }

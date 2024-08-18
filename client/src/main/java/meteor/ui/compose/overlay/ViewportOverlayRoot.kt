@@ -2,10 +2,7 @@ package meteor.ui.compose.overlay
 
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.absoluteOffset
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.ui.Modifier
@@ -23,6 +20,7 @@ import androidx.compose.ui.unit.DpSize
 import androidx.compose.ui.unit.dp
 import ext.compose.DrawScopeExt.dpToPx
 import meteor.Main
+import meteor.Main.forceRecomposition
 import meteor.ui.compose.components.GamePanel
 import meteor.ui.compose.overlay.Overlay.Companion.debugOverlays
 import meteor.ui.config.AspectMode
@@ -47,6 +45,7 @@ object ViewportOverlayRoot {
 
     @Composable
     fun render() {
+        forceRecomposition.value
         updateScale()
 
         val offsetX = (VIEWPORT_OFFSETS.x * xScale!!).dp
@@ -68,10 +67,13 @@ object ViewportOverlayRoot {
                 .clipToBounds()
                 .background(Color.Transparent)
         }
-        if (Main.client.isLoggedIn() && debugOverlays.value)
+        if (/*Main.client.isLoggedIn() && */debugOverlays.value)
             mod = mod.background(Color.Red.copy(alpha = .2f))
         Box(mod) {
             DrawPolygons(mod)
+            for (overlay in viewportOverlays) {
+                overlay.render().invoke(this)
+            }
         }
     }
 
@@ -93,10 +95,9 @@ object ViewportOverlayRoot {
                 }
             }
             blockedViewportAreas.clear()
-
             clipPath(blockPath, clipOp = ClipOp.Difference) {
                 for (overlay in viewportOverlays) {
-                    overlay.render(textMeasurer).invoke(this)
+                    overlay.draw(textMeasurer).invoke(this)
                 }
                 for (points in polygons.keys) {
                     drawPolygon(points, polygons[points]!!)
@@ -105,6 +106,13 @@ object ViewportOverlayRoot {
 
             polygons.clear()
             canvasRenderTime.value = System.currentTimeMillis() - canvasRenderStart
+        }
+    }
+
+    @Composable
+    fun testBox() {
+        Box(modifier = Modifier.width(250.dp).height(75.dp).background(Color.Green)) {
+
         }
     }
 

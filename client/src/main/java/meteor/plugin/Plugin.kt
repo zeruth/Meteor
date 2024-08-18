@@ -11,7 +11,7 @@ import meteor.ui.compose.overlay.ViewportOverlay
 import meteor.ui.compose.overlay.ViewportOverlayRoot
 import meteor.ui.compose.overlay.ViewportOverlayRoot.viewportOverlays
 
-open class Plugin(val name: String, var enabledByDefault: Boolean = false, var hidden: Boolean = false) : EventSubscriber() {
+open class Plugin(val name: String, var enabledByDefault: Boolean = false, var hidden: Boolean = false, var cantDisable: Boolean = false) : EventSubscriber() {
     var configuration: Config? = null
     var running = false
     var overlays = ArrayList<Overlay>()

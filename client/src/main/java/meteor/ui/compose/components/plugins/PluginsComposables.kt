@@ -96,21 +96,25 @@ object PluginsComposables {
                     }
                 }
                 runningMap.putIfAbsent(plugin, plugin.running)
-                Switch(
-                    runningMap[plugin]!!,
-                    modifier = Modifier.align(Alignment.CenterVertically),
-                    onCheckedChange = {
-                        ConfigManager.set("plugin.${plugin.name}.enabled", !runningMap[plugin]!!)
-                        if (plugin.running) {
-                            plugin.stop()
-                        } else
-                            plugin.start()
-                    },
-                    colors = SwitchDefaults.colors(
-                        uncheckedThumbColor = Colors.surfaceDark.value,
-                        checkedThumbColor = Colors.secondary.value
+                if (!plugin.cantDisable) {
+                    Switch(
+                        runningMap[plugin]!!,
+                        modifier = Modifier.align(Alignment.CenterVertically),
+                        onCheckedChange = {
+                            ConfigManager.set("plugin.${plugin.name}.enabled", !runningMap[plugin]!!)
+                            if (plugin.running) {
+                                plugin.stop()
+                            } else
+                                plugin.start()
+                        },
+                        colors = SwitchDefaults.colors(
+                            uncheckedThumbColor = Colors.surfaceDark.value,
+                            checkedThumbColor = Colors.secondary.value
+                        )
                     )
-                )
+                } else {
+                    Spacer(modifier = Modifier.width(48.dp))
+                }
             })
     }
 }

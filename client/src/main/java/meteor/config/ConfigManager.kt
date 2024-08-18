@@ -30,9 +30,17 @@ object ConfigManager {
         return configItems.firstOrNull { it.key == key }
     }
 
+    fun getString(key: String, defaultValue: Any): String {
+        val currentValue = properties.properties[key] ?: return defaultValue.toString()
+        return currentValue
+    }
+
     inline fun <reified T> get(key: String, defaultValue: Any): T {
         val value = properties.properties[key]
         try {
+            if (T::class == String::class) {
+                return value as T
+            }
             return gson.fromJson(value, T::class.java)?: return defaultValue as T
         } catch (e: Exception) {
             logger.error("Error parsing config value $value for key $key")
@@ -42,6 +50,14 @@ object ConfigManager {
     }
 
     fun <T> updateValue(key: String, value: T): Boolean {
+        //No serialization required
+        if (value is String) {
+            if (properties.properties[key] != value) {
+                properties.properties[key] = value
+                return true
+            }
+        }
+        //serialize
         val json = gson.toJson(value)
         if (properties.properties[key] != json) {
             properties.properties[key] = json

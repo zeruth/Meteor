@@ -20,15 +20,9 @@ androidx-espresso-core = "3.5.1"
 androidx-material = "1.11.0"
 androidx-test-junit = "1.1.5"
 compose = "1.6.20"
-compose-plugin = "1.6.20-dev1673"
-##          ⬆ = "1.7.0-dev1686"
-##          ⬆ = "1.7.0-dev1688"
-##          ⬆ = "1.7.0-dev1689"
-##          ⬆ = "1.7.0-dev1690"
-##          ⬆ = "1.7.0-dev1692"
+compose-plugin = "1.7.0-alpha02"
 junit = "4.13.2"
-kotlin = "2.0.0"
-##  ⬆ = "2.0.20-Beta1"
+kotlin = "2.0.20-RC2"
 coroutines = "1.8.1-Beta"
 
 [libraries]
@@ -48,6 +42,7 @@ androidx-activity-compose = { module = "androidx.activity:activity-compose", ver
 compose-ui-tooling = { module = "androidx.compose.ui:ui-tooling", version.ref = "compose" }
 compose-ui-tooling-preview = { module = "androidx.compose.ui:ui-tooling-preview", version.ref = "compose" }
 lombok = {group = "org.projectlombok", name = "lombok", version = "1.18.32"}
+##                                                           ⬆ = "1.18.34" }
 annotations = {group = "org.jetbrains", name = "annotations", version = "24.1.0"}
 asm = {group = "org.ow2.asm", name = "asm", version = "9.7"}
 asm-util = {group = "org.ow2.asm", name = "asm-util", version = "9.7"}
@@ -59,5 +54,7 @@ guava = {group = "com.google.guava", name = "guava", version = "33.1.0-jre"}
 ##                                                        ⬆ = "33.2.0-jre" }
 ##                                                        ⬆ = "33.2.1-android" }
 ##                                                        ⬆ = "33.2.1-jre" }
+##                                                        ⬆ = "33.3.0-android" }
+##                                                        ⬆ = "33.3.0-jre" }
 java-inject = {group = "javax.inject", name = "javax.inject", version = "1"}
 jopt-simple = {group = "net.sf.jopt-simple", name = "jopt-simple", version = "6.0-alpha-3"}

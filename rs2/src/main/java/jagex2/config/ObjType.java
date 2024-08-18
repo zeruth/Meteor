@@ -26,7 +26,7 @@ public class ObjType {
 	private static Packet dat;
 
 	@OriginalMember(owner = "client!cc", name = "h", descriptor = "[Lclient!cc;")
-	private static ObjType[] cache;
+	public static ObjType[] cache;
 
 	@OriginalMember(owner = "client!cc", name = "i", descriptor = "I")
 	private static int cachePos;

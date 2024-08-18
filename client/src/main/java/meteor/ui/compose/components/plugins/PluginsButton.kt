@@ -1,5 +1,6 @@
 package meteor.ui.compose.components.plugins
 
+import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateMapOf
 import compose.icons.LineAwesomeIcons
 import compose.icons.lineawesomeicons.PlugSolid
@@ -13,6 +14,7 @@ class PluginsButton : SidebarButton(icon = LineAwesomeIcons.PlugSolid) {
         val runningMap = mutableStateMapOf<Plugin, Boolean>()
         val favoritesMap = mutableStateMapOf<Plugin, Boolean>()
         val switchStateMap = mutableStateMapOf<String, Boolean>()
+        val textStateMap = mutableStateMapOf<String, String>()
     }
 
     override fun onClick() {

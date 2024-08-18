@@ -4,9 +4,7 @@ import meteor.events.*;
 import meteor.ui.config.AspectMode;
 import meteor.ui.config.CPUFilter;
 import meteor.ui.config.RenderMode;
-import net.runelite.api.Callbacks;
-import net.runelite.api.Component;
-import net.runelite.api.Linkable;
+import net.runelite.api.*;
 import net.runelite.api.LocEntity;
 import net.runelite.api.mixins.*;
 import net.runelite.rs.api.RSClient;
@@ -68,9 +66,8 @@ abstract class Client implements RSClient {
     public void preGameInit() {
         client = this;
         setNodeID(10);
-        setPortOffset(0);
         setHighMemory$api();
-        setMembers(true);
+        //setMembers(true);
         try {
             startPriv(InetAddress.getLocalHost());
         } catch (UnknownHostException e) {
@@ -300,5 +297,29 @@ abstract class Client implements RSClient {
     public void onInGameChanged(int idx) {
         if (getCallbacks() != null)
             getCallbacks().post(new LoggedInChanged(isLoggedIn()));
+    }
+
+    @Inject
+    public int lastPacketTypeServer = -1;
+
+    @Inject
+    @FieldHook(value = "packetType")
+    public void packetType$tail(int idx) {
+        int nextPacketType = getPacketType();
+
+        // done processing last packet
+        if (nextPacketType == -1) {
+           if (lastPacketTypeServer == PacketTypeServer.UPDATE_STAT.id) {
+               client.getCallbacks().post(new SkillUpdate(getLevels(), getBoostedLevels(), getExperience()));
+           }
+        }
+
+        lastPacketTypeServer = nextPacketType;
+    }
+
+    @Inject
+    @MethodHook("logout")
+    public void logout$tail() {
+        client.getCallbacks().post(Logout.INSTANCE);
     }
 }

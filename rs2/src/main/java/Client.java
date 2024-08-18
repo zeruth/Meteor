@@ -14,10 +14,8 @@ import jagex2.datastruct.LinkList;
 import jagex2.graphics.*;
 import jagex2.io.*;
 import jagex2.sound.Wave;
-import jagex2.wordenc.WordFilter;
 import jagex2.wordenc.WordPack;
 import meteor.events.Command;
-import nulled.Configuration;
 import org.openrs2.deob.annotation.OriginalArg;
 import org.openrs2.deob.annotation.OriginalClass;
 import org.openrs2.deob.annotation.OriginalMember;
@@ -38,6 +36,11 @@ import java.util.zip.CRC32;
 
 @OriginalClass("client!client")
 public class Client extends GameShell {
+	boolean keepUsername = false;
+	boolean keepPassword = false;
+	String autoUsername = "";
+	String autoPassword = "";
+
 	public static Client client;
 	public static JPanel gamePanel;
 	public boolean showDebug = false;
@@ -475,7 +478,7 @@ public class Client extends GameShell {
 	public static int portOffset;
 
 	@OriginalMember(owner = "client!client", name = "Md", descriptor = "Z")
-	public static boolean members = true;
+	public static boolean members = false;
 
 	@OriginalMember(owner = "client!client", name = "Nd", descriptor = "Z")
 	public static boolean lowMemory;
@@ -3296,6 +3299,10 @@ public class Client extends GameShell {
 
 			x = super.screenWidth / 2 + 80;
 			if (super.mouseClickButton == 1 && super.mouseClickX >= x - 75 && super.mouseClickX <= x + 75 && super.mouseClickY >= y - 20 && super.mouseClickY <= y + 20) {
+				if (!autoUsername.isEmpty())
+					this.username = autoUsername;
+				if (!autoPassword.isEmpty())
+					this.password = autoPassword;
 				this.loginMessage0 = "";
 				this.loginMessage1 = "Enter your username & password.";
 				this.titleScreenState = 2;
@@ -3327,8 +3334,14 @@ public class Client extends GameShell {
 			buttonX = super.screenWidth / 2 + 80;
 			if (super.mouseClickButton == 1 && super.mouseClickX >= buttonX - 75 && super.mouseClickX <= buttonX + 75 && super.mouseClickY >= buttonY - 20 && super.mouseClickY <= buttonY + 20) {
 				this.titleScreenState = 0;
-				this.username = "";
-				this.password = "";
+				if (!keepUsername)
+					this.username = "";
+				if (!autoUsername.isEmpty())
+					this.username = autoUsername;
+				if (!keepPassword)
+					this.password = "";
+				if (!autoPassword.isEmpty())
+					this.password = autoPassword;
 			}
 
 			while (true) {
@@ -3368,6 +3381,8 @@ public class Client extends GameShell {
 						}
 
 						if (key == 9 || key == 10 || key == 13) {
+							if (!this.password.isEmpty())
+								this.login(this.username, this.password, false);
 							this.titleLoginField = 0;
 						}
 
@@ -4369,8 +4384,15 @@ public class Client extends GameShell {
 		this.stream = null;
 		this.ingame = false;
 		this.titleScreenState = 0;
-		this.username = "";
-		this.password = "";
+
+		if (!keepUsername)
+			this.username = "";
+		if (!autoUsername.isEmpty())
+			this.username = autoUsername;
+		if (!keepPassword)
+			this.password = "";
+		if (!autoPassword.isEmpty())
+			this.password = autoPassword;
 
 		InputTracking.setDisabled();
 		this.clearCaches();
@@ -4384,6 +4406,13 @@ public class Client extends GameShell {
 		this.stopMidi();
 		this.currentMidi = null;
 		this.nextMusicDelay = 0;
+
+		//Clear cache and update membersWorld on logout for world hopping
+		ObjType.cache = new ObjType[10];
+		for (@Pc(51) int id = 0; id < 10; id++) {
+			ObjType.cache[id] = new ObjType();
+		}
+		ObjType.membersWorld = members;
 	}
 
 	@OriginalMember(owner = "client!client", name = "a", descriptor = "(IIILclient!hc;I)V")
@@ -11722,5 +11751,10 @@ public class Client extends GameShell {
 				this.imageTitle8.draw(super.graphics, 574, 186);
 			}
 		}
+	}
+
+	void updateServerConnection(String URL, int PORT_OFFSET) {
+		Configuration.URL = URL;
+		Configuration.PORT_OFFSET = PORT_OFFSET;
 	}
 }
