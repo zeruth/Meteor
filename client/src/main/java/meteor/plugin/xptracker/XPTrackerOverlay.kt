@@ -8,6 +8,7 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.LinearProgressIndicator
 import androidx.compose.material.Text
 import androidx.compose.runtime.*
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.composed
 import androidx.compose.ui.draw.clip
@@ -29,8 +30,8 @@ import kotlin.collections.HashMap
 /**
  * TODO: Very unoptimized atm.
  */
-object XPTrackerOverlay : ViewportOverlay() {
-    var height = mutableStateOf(25)
+class XPTrackerOverlay(val plugin: XPTrackerPlugin) : ViewportOverlay() {
+    var height = mutableStateOf(20)
     var width = mutableStateOf(120)
     var skillUpdates = Collections.synchronizedMap(HashMap<Skill, Long>())
 /*    var skillIcons = HashMap<Skill, Image>()
@@ -56,7 +57,7 @@ object XPTrackerOverlay : ViewportOverlay() {
                     for (skill in skillUpdates.keys) {
                         val lastUpdate = skillUpdates[skill]!!
                         val duration = System.currentTimeMillis() - lastUpdate
-                        if (duration > (30 * 1000)) {
+                        if (duration > (plugin.config.skillTimeout.get<Int>() * (60 * 1000))) {
                             println("Dropping skill update for " + skill.name)
                             pendingRemovals.add(skill)
                         }
@@ -79,16 +80,15 @@ object XPTrackerOverlay : ViewportOverlay() {
         Box(modifier = Modifier.width(width.value.dp).height(height.value.dp).clip(RoundedCornerShape(4.dp)).background(meteor.ui.compose.Colors.surfaceDarkColor)) {
             Row {
                 Image(painterResource(skill.smallIconResource()), "${skill.name}-icon", modifier = Modifier.size(height.value.dp))
-                Column {
-                    Text(skill.name, color = meteor.ui.compose.Colors.secondaryColor, fontSize = 16.sp)
-                    Spacer(Modifier.height(0.dp).weight(1f))
-                    LinearProgressIndicator(
-                        modifier = Modifier.fillMaxWidth().height((height.value / 3) .dp),
-                        backgroundColor = meteor.ui.compose.Colors.surfaceDarkerColor,
-                        progress = getLevelProgress(skill),
-                        color = meteor.ui.compose.Colors.secondaryColor
-                    )
+                Column(modifier = Modifier.size(height.value.dp)) {
+                    Text("${client.levels[skill.id]}", color = meteor.ui.compose.Colors.secondaryColor, fontSize = 14.sp, modifier = Modifier.align(Alignment.CenterHorizontally))
                 }
+                LinearProgressIndicator(
+                    modifier = Modifier.fillMaxWidth().height((height.value.dp / 4) * 3).clip(RoundedCornerShape(4.dp)).align(Alignment.CenterVertically),
+                    backgroundColor = meteor.ui.compose.Colors.surfaceDarkerColor,
+                    progress = getLevelProgress(skill),
+                    color = meteor.ui.compose.Colors.secondaryColor
+                )
             }
         }
     }

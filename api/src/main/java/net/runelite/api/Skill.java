@@ -2,7 +2,7 @@ package net.runelite.api;
 
 public enum Skill {
     ATTACK(0),
-
+    DEFENCE(1),
     STRENGTH(2),
     HITPOINTS(3),
     RANGED(4),

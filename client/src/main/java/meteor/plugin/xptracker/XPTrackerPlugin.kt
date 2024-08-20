@@ -5,13 +5,14 @@ import meteor.events.Logout
 import meteor.events.SkillUpdate
 import meteor.events.client.ConfigChanged
 import meteor.plugin.Plugin
+import meteor.plugin.account.AccountConfig
 import meteor.plugin.debug.DebugConfig
 import meteor.plugin.debug.DebugViewportOverlay
-import meteor.plugin.xptracker.XPTrackerOverlay.skillUpdates
 import net.runelite.api.Skill
 
 class XPTrackerPlugin : Plugin("XP Tracker", true) {
-    val viewportOverlay = overlay(XPTrackerOverlay)
+    val config = configuration<XPTrackerConfig>()
+    val viewportOverlay = overlay(XPTrackerOverlay(this))
     var experience: IntArray? = null
     var levels: IntArray? = null
     var boostedLevels: IntArray? = null
@@ -35,9 +36,14 @@ class XPTrackerPlugin : Plugin("XP Tracker", true) {
         experience?.let {
             for ((i, currentSkillXp) in experience!!.withIndex()) {
                 val lastSkillXP = lastExperience[i]
+                var skipUpdate = false
                 if (currentSkillXp > lastSkillXP) {
-                    println("skill update")
-                    skillUpdates[Skill.from(i)] = System.currentTimeMillis()
+                    if (lastSkillXP == 0) {
+                        if (config.ignoreFirstUpdate.get<Boolean>())
+                            skipUpdate = true
+                    }
+                    if (!skipUpdate)
+                        viewportOverlay.skillUpdates[Skill.from(i)] = System.currentTimeMillis()
                 }
                 lastExperience[i] = currentSkillXp
             }

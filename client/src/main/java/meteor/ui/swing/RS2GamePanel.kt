@@ -18,7 +18,8 @@ class RS2GamePanel(w: Int, h: Int) : JPanel() {
 
     init {
         size = Dimension(RS_DIMENSIONS.width, RS_DIMENSIONS.height)
-        image = BufferedImage(w, h, BufferedImage.TYPE_4BYTE_ABGR)
+        //Be careful changing the image type here, TYPE_INT_RGB is 4-5x more performant than TYPE_INT_ARGB for example.
+        image = BufferedImage(w, h, BufferedImage.TYPE_INT_RGB)
         graphics = image!!.createGraphics()
     }
 

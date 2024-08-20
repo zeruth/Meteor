@@ -21,12 +21,16 @@ class StretchedModePlugin : Plugin("Stretched Mode") {
     }
 
     override fun onStart() {
+        updateConfig()
+
         if (Main.windowState.value != Main.fullscreenState) {
             Main.windowState.value = Main.windowedState
         }
     }
 
     override fun onStop() {
+        client.aspectMode = AspectMode.FIT
+
         if (Main.windowState.value != Main.fullscreenState) {
             Main.windowState.value = Main.fixedState
         }
