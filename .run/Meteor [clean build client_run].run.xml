@@ -1,5 +1,5 @@
 <component name="ProjectRunConfigurationManager">
-  <configuration default="false" name="Meteor [client:packageExe]" type="GradleRunConfiguration" factoryName="Gradle" nameIsGenerated="true">
+  <configuration default="false" name="Meteor [clean build client:run]" type="GradleRunConfiguration" factoryName="Gradle" nameIsGenerated="true">
     <ExternalSystemSettings>
       <option name="executionName" />
       <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -10,7 +10,9 @@
       </option>
       <option name="taskNames">
         <list>
-          <option value="client:packageExe" />
+          <option value="clean" />
+          <option value="build" />
+          <option value="client:run" />
         </list>
       </option>
       <option name="vmOptions" />
