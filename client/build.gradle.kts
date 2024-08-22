@@ -45,7 +45,7 @@ java {
     targetCompatibility = JavaVersion.VERSION_21
 }
 
-val installerVersion = "2.0.7"
+val installerVersion = "2.0.8"
 
 compose.desktop {
     application {

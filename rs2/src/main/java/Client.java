@@ -2513,8 +2513,6 @@ public class Client extends GameShell {
 			return;
 		}
 
-		//System.out.println(this.viewportInterfaceId);
-
 		@Pc(34) int children = com.childId.length;
 		for (@Pc(44) int i = 0; i < children; i++) {
 			@Pc(53) int childX = com.childX[i] + x;
@@ -8484,6 +8482,7 @@ public class Client extends GameShell {
 			} catch (@Pc(1001) IOException ignored) {
 				this.tryReconnect();
 			} catch (@Pc(1006) Exception ignored) {
+				ignored.printStackTrace();
 				this.logout();
 			}
 		}
@@ -9396,6 +9395,7 @@ public class Client extends GameShell {
 	@OriginalMember(owner = "client!client", name = "l", descriptor = "(Z)V")
 	private void tryReconnect() {
 		if (this.idleTimeout > 0) {
+			System.out.println("idleTimeout logout");
 			this.logout();
 		} else {
 			this.areaViewport.bind();
@@ -9410,6 +9410,7 @@ public class Client extends GameShell {
 
 			this.login(this.username, this.password, true);
 			if (!this.ingame) {
+				System.out.println("!ingame logout");
 				this.logout();
 			}
 
@@ -10778,6 +10779,7 @@ public class Client extends GameShell {
 			}
 			if (this.packetType == 142) {
 				// LOGOUT
+				System.out.println("server packet logout");
 				this.logout();
 				this.packetType = -1;
 				return false;

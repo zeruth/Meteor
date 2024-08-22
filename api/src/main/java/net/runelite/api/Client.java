@@ -80,4 +80,9 @@ public interface Client extends GameShell{
     void setAutoPassword(String lastPassword);
     void setKeepUsername(boolean keepUsername);
     void setKeepPassword(boolean keepPassword);
+    int getMenuX();
+    int getMenuY();
+    int getMenuWidth();
+    int getMenuHeight();
+    boolean getMenuVisible();
 }

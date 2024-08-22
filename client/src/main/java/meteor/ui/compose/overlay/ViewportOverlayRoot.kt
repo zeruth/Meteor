@@ -37,11 +37,11 @@ object ViewportOverlayRoot {
     var yScale: Float? = null
     var xScale: Float? = null
     val polygons = HashMap<List<Point>, Color>()
-    val blockedViewportAreas = ArrayList<Rect>()
     var width = mutableStateOf(Dp.Unspecified)
     var height = mutableStateOf(Dp.Unspecified)
     val canvasRenderTime = mutableStateOf(-1L)
     val viewportOverlays = ArrayList<ViewportOverlay>()
+    var blockedViewportArea: Rect? = null
 
     @Composable
     fun render() {
@@ -81,20 +81,21 @@ object ViewportOverlayRoot {
     fun DrawPolygons(mod: Modifier) {
         val textMeasurer = rememberTextMeasurer()
         Canvas(modifier = Modifier.fillMaxSize().background(Color.Transparent)) {
-            Main.forceRecomposition.value
+            forceRecomposition.value
             val canvasRenderStart = System.currentTimeMillis()
 
             val blockPath = Path().apply {
-                for (rect in blockedViewportAreas) {
-                    addRect(
-                        Rect(
-                            Offset(dpToPx(rect.topLeft.x * xScale!!), dpToPx(rect.topLeft.y * yScale!!)),
-                            Offset(dpToPx(rect.bottomRight.x * xScale!!), dpToPx(rect.bottomRight.y * yScale!!))
-                        )
-                    )
+                if (Main.client.viewportInterfaceID != -1) {
+                    Main.client.components[Main.client.viewportInterfaceID]?.let {
+                        addRect(calculateComponentArea(it))
+                    }
+                } else {
+                    blockedViewportArea = null
+                }
+                if (Main.client.menuVisible) {
+                    addRect(getScaledRect(Main.client.menuX.toFloat(), Main.client.menuY.toFloat(), Main.client.menuWidth.toFloat(), Main.client.menuHeight.toFloat()))
                 }
             }
-            blockedViewportAreas.clear()
             clipPath(blockPath, clipOp = ClipOp.Difference) {
                 for (overlay in viewportOverlays) {
                     overlay.draw(textMeasurer).invoke(this)
@@ -116,12 +117,19 @@ object ViewportOverlayRoot {
         }
     }
 
-    fun blockComponentArea(component: Component) {
+    fun DrawScope.calculateComponentArea(component: Component): Rect {
         val x = component.x.toFloat()
         val y = component.y.toFloat()
         val w = component.width.toFloat()
         val h = component.height.toFloat()
-        blockedViewportAreas.add(Rect(Offset(x, y), Offset(x + w, y + h)))
+        return getScaledRect(x, y, w, h)
+    }
+
+    fun DrawScope.getScaledRect(x: Float, y: Float, w: Float, h: Float): Rect {
+        return Rect(
+            Offset(dpToPx(x * xScale!!), dpToPx(y * yScale!!)),
+            Offset(dpToPx((x + w) * xScale!!), dpToPx((y + h) * yScale!!))
+        )
     }
 
     fun DrawScope.drawPolygon(points: List<Point>, color: Color) {

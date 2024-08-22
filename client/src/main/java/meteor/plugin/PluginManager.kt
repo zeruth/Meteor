@@ -3,7 +3,6 @@ package meteor.plugin
 import meteor.Logger
 import meteor.plugin.account.AccountPlugin
 import meteor.plugin.debug.DebugPlugin
-import meteor.plugin.overlayhelper.OverlayHelperPlugin
 import meteor.plugin.rendering.RenderingPlugin
 import meteor.plugin.stretchedmode.StretchedModePlugin
 import meteor.plugin.world.ServerPlugin
@@ -15,7 +14,6 @@ object PluginManager {
 
     init {
         plugins.add(DebugPlugin())
-        plugins.add(OverlayHelperPlugin())
         plugins.add(RenderingPlugin())
         plugins.add(StretchedModePlugin())
         plugins.add(ServerPlugin())

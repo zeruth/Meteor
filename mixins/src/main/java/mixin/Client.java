@@ -322,4 +322,16 @@ abstract class Client implements RSClient {
     public void logout$tail() {
         client.getCallbacks().post(Logout.INSTANCE);
     }
+
+    @Inject
+    public int lastViewportInterfaceID = -1;
+
+    @Inject
+    @FieldHook("viewportInterfaceId")
+    public void onViewportInterfaceIDChanged(int idx) {
+        if (lastViewportInterfaceID != getViewportInterfaceID()) {
+            System.out.println("Viewport interface changed: " + getViewportInterfaceID());
+            lastViewportInterfaceID = getViewportInterfaceID();
+        }
+    }
 }

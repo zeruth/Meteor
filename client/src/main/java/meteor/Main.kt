@@ -35,7 +35,7 @@ import java.io.File
 import javax.sound.sampled.AudioSystem
 
 object Main {
-    val version  = "2.0.7-SNAPSHOT"
+    val version  = "2.0.8-SNAPSHOT"
     lateinit var client: Client
     lateinit var window: Window
     val hooks = Hooks

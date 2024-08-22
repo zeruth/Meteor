@@ -130,4 +130,19 @@ public interface RSClient extends Client, RSGameShell {
 
     @Import("autoPassword")
     void setAutoPassword(String autoPassword);
+
+    @Import("menuX")
+    int getMenuX();
+
+    @Import("menuY")
+    int getMenuY();
+
+    @Import("menuWidth")
+    int getMenuWidth();
+
+    @Import("menuHeight")
+    int getMenuHeight();
+
+    @Import("menuVisible")
+    boolean getMenuVisible();
 }
