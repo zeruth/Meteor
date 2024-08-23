@@ -54,6 +54,10 @@ object ViewportOverlayRoot {
         width.value = (VIEWPORT_DIMENSIONS.width * xScale!!).dp
         height.value = (VIEWPORT_DIMENSIONS.height * yScale!!).dp
 
+        if (width.value == 0.0.dp || height.value == 0.0.dp) {
+            return
+        }
+
         var mod = if (Main.windowState.value == Main.fixedState) {
             Modifier
                 .absoluteOffset(x = VIEWPORT_OFFSETS.x.dp, y = VIEWPORT_OFFSETS.y.dp)
@@ -70,6 +74,7 @@ object ViewportOverlayRoot {
         if (/*Main.client.isLoggedIn() && */debugOverlays.value)
             mod = mod.background(Color.Red.copy(alpha = .2f))
         Box(mod) {
+            forceRecomposition.value
             DrawPolygons(mod)
             for (overlay in viewportOverlays) {
                 overlay.render().invoke(this)

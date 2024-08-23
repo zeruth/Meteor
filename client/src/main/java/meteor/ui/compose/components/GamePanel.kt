@@ -15,8 +15,8 @@ import meteor.ui.compose.overlay.GameOverlayRoot
  */
 object GamePanel {
     var xPadding = mutableStateOf(0f)
-    var stretchedWidth = mutableStateOf(0)
-    var stretchedHeight = mutableStateOf(0)
+    var stretchedWidth = mutableStateOf(Constants.RS_DIMENSIONS.width)
+    var stretchedHeight = mutableStateOf(Constants.RS_DIMENSIONS.height)
     var lastHeight = -1
     var lastHeightScale = -1f
     var lastWidth = -1
@@ -24,6 +24,7 @@ object GamePanel {
 
     @Composable
     fun Game() {
+        forceRecomposition.value
         SwingPanel(factory = { Main.gamePanel }, modifier = Modifier.fillMaxSize())
         GameOverlayRoot.render()
     }

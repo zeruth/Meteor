@@ -6,7 +6,7 @@ import meteor.plugin.debug.DebugPlugin
 import meteor.plugin.rendering.RenderingPlugin
 import meteor.plugin.stretchedmode.StretchedModePlugin
 import meteor.plugin.world.ServerPlugin
-import meteor.plugin.xptracker.XPTrackerPlugin
+import meteor.plugin.infobars.InfoBarsPlugin
 
 object PluginManager {
     val plugins = mutableListOf<Plugin>()
@@ -17,7 +17,7 @@ object PluginManager {
         plugins.add(RenderingPlugin())
         plugins.add(StretchedModePlugin())
         plugins.add(ServerPlugin())
-        plugins.add(XPTrackerPlugin())
+        plugins.add(InfoBarsPlugin())
         plugins.add(AccountPlugin())
     }
 

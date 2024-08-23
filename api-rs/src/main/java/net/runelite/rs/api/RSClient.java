@@ -145,4 +145,7 @@ public interface RSClient extends Client, RSGameShell {
 
     @Import("menuVisible")
     boolean getMenuVisible();
+
+    @Import("energy")
+    int getEnergy();
 }

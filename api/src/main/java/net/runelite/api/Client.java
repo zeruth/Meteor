@@ -85,4 +85,5 @@ public interface Client extends GameShell{
     int getMenuWidth();
     int getMenuHeight();
     boolean getMenuVisible();
+    int getEnergy();
 }

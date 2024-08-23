@@ -20,6 +20,8 @@ import meteor.Main.forceRecomposition
 import meteor.ui.compose.components.GamePanel
 import meteor.ui.compose.events.PreRender
 import meteor.ui.compose.overlay.Overlay.Companion.debugOverlays
+import meteor.ui.compose.overlay.ViewportOverlayRoot.height
+import meteor.ui.compose.overlay.ViewportOverlayRoot.width
 import org.rationalityfrontline.kevent.KEVENT
 
 object GameOverlayRoot {

@@ -1,18 +1,13 @@
-package meteor.plugin.xptracker
+package meteor.plugin.infobars
 
-import meteor.Main
 import meteor.events.Logout
 import meteor.events.SkillUpdate
-import meteor.events.client.ConfigChanged
 import meteor.plugin.Plugin
-import meteor.plugin.account.AccountConfig
-import meteor.plugin.debug.DebugConfig
-import meteor.plugin.debug.DebugViewportOverlay
 import net.runelite.api.Skill
 
-class XPTrackerPlugin : Plugin("XP Tracker", true) {
-    val config = configuration<XPTrackerConfig>()
-    val viewportOverlay = overlay(XPTrackerOverlay(this))
+class InfoBarsPlugin : Plugin("XP Tracker", true) {
+    val config = configuration<InfoBarsConfig>()
+    val viewportOverlay = overlay(InfoBarsOverlay(this))
     var experience: IntArray? = null
     var levels: IntArray? = null
     var boostedLevels: IntArray? = null
