@@ -21,8 +21,12 @@ import meteor.ui.compose.components.GeneralComposables.SidedNode
 import meteor.ui.compose.components.panel.PanelComposables
 import meteor.ui.compose.overlay.ViewportOverlayRoot
 import meteor.ui.compose.components.sidebar.SidebarButton
+import java.time.Instant
+import java.util.concurrent.ConcurrentLinkedQueue
 
 class InfoButton : SidebarButton(icon = LineAwesomeIcons.InfoCircleSolid, bottom = true) {
+    private val renderTimes = ConcurrentLinkedQueue<Pair<Instant, Long>>()
+
     override fun onClick() {
         PanelComposables.content.value = InfoPanel()
     }
@@ -146,6 +150,39 @@ class InfoButton : SidebarButton(icon = LineAwesomeIcons.InfoCircleSolid, bottom
                     )
                     Spacer(Modifier.width(4.dp))
                 })
+
+            val renderTime = (ViewportOverlayRoot.canvasRenderTime.value + Main.composeTime.value + Main.swingTime.value).coerceAtLeast(1)
+            val now = Instant.now()
+            renderTimes.add(now to renderTime)
+            removeOldEntries()
+
+            Spacer(Modifier.height(2.dp))
+            SidedNode(30,
+                left = @Composable {
+                    Spacer(Modifier.width(4.dp))
+                    Text("FPS (5sec Avg)", color = Color.Cyan, modifier = Modifier.align(Alignment.CenterVertically))
+                },
+                right = @Composable {
+                    Text(
+                        "${1000 / getAverageRenderTime()} fps",
+                        color = Color.Cyan,
+                        modifier = Modifier.align(Alignment.CenterVertically)
+                    )
+                    Spacer(Modifier.width(4.dp))
+                })
+        }
+    }
+
+    fun getAverageRenderTime(): Int {
+        removeOldEntries()
+        val times = renderTimes.map { it.second }
+        return if (times.isNotEmpty()) times.average().toInt() else 1
+    }
+
+    private fun removeOldEntries() {
+        val cutoff = Instant.now().minusSeconds(5)
+        while (renderTimes.peek()?.first?.isBefore(cutoff) == true) {
+            renderTimes.poll()
         }
     }
 
