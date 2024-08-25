@@ -41,9 +41,12 @@ public interface Client extends GameShell{
 
     BufferedImage gpuResizeAndFilter(BufferedImage gameImage, int width, int height, int filter);
 
-    float getPadding();
+    float getXPadding();
 
-    void setPadding(float xPadding);
+    void setXPadding(float xPadding);
+    float getYPadding();
+
+    void setYPadding(float xPadding);
     void projectFromGround$api(PathingEntity entity, int height);
     int getProjectX();
     int getProjectY();

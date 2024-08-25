@@ -15,6 +15,7 @@ import meteor.ui.compose.overlay.GameOverlayRoot
  */
 object GamePanel {
     var xPadding = mutableStateOf(0f)
+    var yPadding = mutableStateOf(0f)
     var stretchedWidth = mutableStateOf(Constants.RS_DIMENSIONS.width)
     var stretchedHeight = mutableStateOf(Constants.RS_DIMENSIONS.height)
     var lastHeight = -1

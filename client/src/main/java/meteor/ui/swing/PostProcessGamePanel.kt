@@ -24,7 +24,7 @@ import javax.swing.JPanel
  */
 class PostProcessGamePanel : JPanel() {
     private var graphics2D: Graphics2D? = null
-    private val hints = RenderingHints(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BILINEAR)
+    private val hints = RenderingHints(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_NEAREST_NEIGHBOR)
     private var loading = true
 
     init {
@@ -77,9 +77,9 @@ class PostProcessGamePanel : JPanel() {
         GamePanel.stretchedHeight.value = stretchedHeight
 
         if (Main.client.aspectMode == AspectMode.FIT)
-            updatePadding((width - stretchedWidth.toFloat()) / 2)
+            updatePadding(true, finalImage)
         else
-            updatePadding(0f)
+            updatePadding(false, finalImage)
     }
 
     private fun drawToSurface(graphics: Graphics, finalImage: BufferedImage) {
@@ -91,7 +91,7 @@ class PostProcessGamePanel : JPanel() {
         when (Main.client.aspectMode) {
             AspectMode.FIT -> {
                 graphics.drawImage(
-                    finalImage, Main.client.padding.toInt(), 0,
+                    finalImage, Main.client.xPadding.toInt(), Main.client.yPadding.toInt(),
                     stretchedWidth.value, stretchedHeight.value, this
                 )
             }
@@ -101,9 +101,18 @@ class PostProcessGamePanel : JPanel() {
         }
     }
 
-    private fun updatePadding(padding: Float) {
-        Main.client.padding = padding.coerceAtLeast(0f)
-        GamePanel.xPadding.value = Main.client.padding
+    private fun updatePadding(fit: Boolean, finalImage: BufferedImage) {
+        if (!fit) {
+            Main.client.xPadding = 0f
+            GamePanel.xPadding.value = 0f
+            Main.client.yPadding = 0f
+            GamePanel.yPadding.value = 0f
+            return
+        }
+        Main.client.yPadding = ((height - stretchedHeight.value.toFloat()) / 2).coerceAtLeast(0f)
+        GamePanel.yPadding.value = Main.client.yPadding
+        Main.client.xPadding = ((width - stretchedWidth.value.toFloat()) / 2).coerceAtLeast(0f)
+        GamePanel.xPadding.value = Main.client.xPadding
     }
 
     private fun setCPURenderingHints(graphics2D: Graphics2D) {
@@ -113,12 +122,15 @@ class PostProcessGamePanel : JPanel() {
     }
 
     private fun getScale(finalImage: BufferedImage): Float {
-        val windowSize: Int = height
-        val canvasSize: Int = finalImage.height
-        val scale = windowSize.toFloat() / canvasSize
+        val heightScale = height.toFloat() / finalImage.height
+        val widthScale = width.toFloat() / finalImage.width
+        return if (widthScale < heightScale) widthScale else heightScale
+    }
 
-        val s = (scale)
-        return s
+    fun isHeightScaling(finalImage: BufferedImage) : Boolean {
+        val heightScale = height.toFloat() / finalImage.height
+        val widthScale = width.toFloat() / finalImage.width
+        return if (widthScale < heightScale) false else true
     }
 
     /**

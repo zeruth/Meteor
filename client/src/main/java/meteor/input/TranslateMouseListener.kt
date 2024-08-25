@@ -65,19 +65,39 @@ object TranslateMouseListener : MouseListener, MouseMotionListener {
     }
 
     private fun translateEvent(e: MouseEvent): MouseEvent {
-        val x = e.x - Main.client.padding
-        val modY: Float = (Main.gamePanel.height.toFloat() / RS_DIMENSIONS.height)
+        val xPadding = Main.client.xPadding
+        val yPadding = Main.client.yPadding
+        val x = e.x - xPadding
+        val y = e.y - yPadding
+        val fitScaling = if (xPadding > yPadding) (Main.gamePanel.height.toFloat() / RS_DIMENSIONS.height) else (Main.gamePanel.width.toFloat() / RS_DIMENSIONS.width)
+
+        val modY = if (Main.windowState.value == Main.fixedState) {
+            1f
+        } else {
+            when (Main.client.aspectMode) {
+                AspectMode.FIT -> fitScaling
+                AspectMode.FILL -> (Main.gamePanel.height.toFloat() / Main.client.gamePanel.height)
+                else -> 1f
+            }
+        }
         val modX = if (Main.windowState.value == Main.fixedState) {
             1f
         } else {
             when (Main.client.aspectMode) {
-                AspectMode.FIT -> modY
+                AspectMode.FIT -> fitScaling
                 AspectMode.FILL -> (Main.gamePanel.width.toFloat() / Main.client.gamePanel.width)
                 else -> 1f
             }
         }
-        val newX = x / modX
-        val newY = (e.y.toFloat() / modY)
+        var newX = x / modX
+        var newY = y / modY
+        if (Main.client.aspectMode == AspectMode.FIT) {
+            if (xPadding > yPadding)
+                newY = y / modX
+            else
+                newX = x / modY
+        }
+
         val mouseEvent = MouseEvent(
             client as Applet, e.id, e.getWhen(),
             e.modifiersEx,

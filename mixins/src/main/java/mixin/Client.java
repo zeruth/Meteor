@@ -157,20 +157,37 @@ abstract class Client implements RSClient {
     }
 
     @Inject
-    private float padding = 0;
+    private float xPadding = 0;
 
     @Inject
     @Override
-    public float getPadding() {
-        if (padding == -1)
-            padding = 0;
-        return padding;
+    public float getXPadding() {
+        if (xPadding == -1)
+            xPadding = 0;
+        return xPadding;
     }
 
     @Inject
     @Override
-    public void setPadding(float padding) {
-        this.padding = padding;
+    public void setXPadding(float padding) {
+        this.xPadding = padding;
+    }
+
+    @Inject
+    private float yPadding = 0;
+
+    @Inject
+    @Override
+    public float getYPadding() {
+        if (yPadding == -1)
+            yPadding = 0;
+        return yPadding;
+    }
+
+    @Inject
+    @Override
+    public void setYPadding(float padding) {
+        this.yPadding = padding;
     }
 
     @Inject

@@ -48,11 +48,20 @@ object ViewportOverlayRoot {
         forceRecomposition.value
         updateScale()
 
+        var xScale = xScale;
+        var yScale = yScale;
+        if (Main.client.aspectMode == AspectMode.FIT) {
+            if (yScale!! > xScale!!)
+                xScale = yScale
+            else
+                yScale = xScale
+        }
+
         val offsetX = (VIEWPORT_OFFSETS.x * xScale!!).dp
         val offsetY = (VIEWPORT_OFFSETS.y * yScale!!).dp
 
-        width.value = (VIEWPORT_DIMENSIONS.width * xScale!!).dp
-        height.value = (VIEWPORT_DIMENSIONS.height * yScale!!).dp
+        width.value = (VIEWPORT_DIMENSIONS.width * xScale).dp
+        height.value = (VIEWPORT_DIMENSIONS.height * yScale).dp
 
         if (width.value == 0.0.dp || height.value == 0.0.dp) {
             return
@@ -158,10 +167,13 @@ object ViewportOverlayRoot {
 
 
     fun updateScale() {
-        yScale = GamePanel.getHeightScale()
-        xScale = if (Main.client.aspectMode == AspectMode.FIT)
-            yScale
-        else
-            GamePanel.getWidthScale()
+        val scale = if (GamePanel.getWidthScale() < GamePanel.getHeightScale()) GamePanel.getWidthScale() else GamePanel.getHeightScale()
+        if (Main.client.aspectMode == AspectMode.FIT) {
+            yScale = scale
+            xScale = scale
+        } else {
+            yScale = GamePanel.getHeightScale()
+            xScale = GamePanel.getWidthScale()
+        }
     }
 }

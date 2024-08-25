@@ -38,7 +38,7 @@ object GameOverlayRoot {
             Modifier.size(DpSize(Constants.RS_DIMENSIONS.width.dp, Constants.RS_DIMENSIONS.height.dp))
                 .clipToBounds()
         } else {
-            Modifier.absoluteOffset(x = GamePanel.xPadding.value.dp)
+            Modifier.absoluteOffset(x = GamePanel.xPadding.value.dp, y = GamePanel.yPadding.value.dp)
                 .size(DpSize(GamePanel.stretchedWidth.value.dp, GamePanel.stretchedHeight.value.dp))
                 .clipToBounds()
         }
