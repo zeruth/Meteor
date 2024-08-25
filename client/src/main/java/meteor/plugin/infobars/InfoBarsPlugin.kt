@@ -5,7 +5,7 @@ import meteor.events.SkillUpdate
 import meteor.plugin.Plugin
 import net.runelite.api.Skill
 
-class InfoBarsPlugin : Plugin("XP Tracker", true) {
+class InfoBarsPlugin : Plugin("Info Bars", true) {
     val config = configuration<InfoBarsConfig>()
     val viewportOverlay = overlay(InfoBarsOverlay(this))
     var experience: IntArray? = null
