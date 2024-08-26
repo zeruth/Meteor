@@ -57,7 +57,7 @@ object SidebarComposables {
     fun SidebarButtonNode(sidebarButton: SidebarButton) {
         Row(Modifier.fillMaxWidth().height(buttonSize.value - padding.value)) {
             Box(
-                Modifier.clip(RoundedCornerShape(5.dp)).fillMaxSize().background(sidebarButton.tint.value)
+                Modifier.clip(RoundedCornerShape(5.dp)).fillMaxSize().background(sidebarButton.tint.value?: secondary.value )
                     .clickable {
                         buttonClick(sidebarButton)
                     }) {

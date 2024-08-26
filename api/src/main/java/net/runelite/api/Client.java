@@ -89,4 +89,6 @@ public interface Client extends GameShell{
     int getMenuHeight();
     boolean getMenuVisible();
     int getEnergy();
+    void setMidi$api(String name, int crc, int len);
+    void stopMidi$api();
 }

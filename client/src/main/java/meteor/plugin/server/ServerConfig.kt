@@ -1,4 +1,4 @@
-package meteor.plugin.world
+package meteor.plugin.server
 
 import meteor.config.Config
 import meteor.config.ConfigItem

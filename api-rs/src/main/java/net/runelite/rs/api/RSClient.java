@@ -148,4 +148,10 @@ public interface RSClient extends Client, RSGameShell {
 
     @Import("energy")
     int getEnergy();
+
+    @Import("setMidi")
+    void setMidi$api(String name, int crc, int len);
+
+    @Import("stopMidi")
+    void stopMidi$api();
 }

@@ -9,7 +9,7 @@ import meteor.ui.compose.components.panel.PanelComposables
 open class SidebarButton(
     icon: ImageVector? = null,
     description: String? = null,
-    tint: Color = secondary.value,
+    tint: Color? = null,
     imageResource: String? = null,
     val actionButton: Boolean = false,
     val bottom: Boolean = false

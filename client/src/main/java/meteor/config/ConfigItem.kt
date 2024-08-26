@@ -16,7 +16,7 @@ class ConfigItem<T>(val config: Config, val name: String, val key: String, val d
         return ConfigManager.get(key, defaultValue as Any) as T
     }
 
-    fun set(value: Any) {
+    fun<T> set(value: T) {
         ConfigManager.set(key, value)
     }
 

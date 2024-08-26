@@ -1,9 +1,8 @@
-package meteor.plugin.world
+package meteor.plugin.server
 
 import meteor.Main
 import meteor.events.client.ConfigChanged
 import meteor.plugin.Plugin
-import meteor.plugin.debug.DebugConfig
 
 class ServerPlugin : Plugin("Server", true, cantDisable = true) {
     val config = configuration<ServerConfig>()

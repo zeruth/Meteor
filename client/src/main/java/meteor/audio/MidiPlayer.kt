@@ -11,9 +11,14 @@ object MidiPlayer {
     var sequencer: Sequencer? = null
     var synthesizer: Synthesizer? = null
     private var currentSong: String? = null
+    var preventLoginMusic = false
 
     fun playSong(forced: Boolean) {
         val midi = Main.client.midi
+
+        if (!Main.client.isLoggedIn && preventLoginMusic)
+            return
+
         if (midi == null) {
             sequencer!!.stop()
         } else {
@@ -72,6 +77,6 @@ object MidiPlayer {
     }
 
     fun stop() {
-        if (sequencer!!.isRunning) sequencer!!.stop()
+        if (sequencer?.isRunning == true) sequencer?.stop()
     }
 }

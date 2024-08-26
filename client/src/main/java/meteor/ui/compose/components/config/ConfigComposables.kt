@@ -4,10 +4,10 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.*
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
@@ -16,6 +16,9 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import meteor.config.Config
 import meteor.config.ConfigItem
+import meteor.plugin.PluginManager
+import meteor.plugin.meteor.MeteorPlugin
+import meteor.plugin.meteor.UIColor
 import meteor.ui.compose.Colors
 import meteor.ui.compose.components.plugins.PluginsButton.Companion.switchStateMap
 import meteor.ui.compose.components.plugins.PluginsButton.Companion.textStateMap
@@ -30,7 +33,7 @@ object ConfigComposables {
                         is Boolean -> ConfigNode { BooleanConfigNode(item as ConfigItem<Boolean>).invoke(this) }
                         is String -> ConfigNode(height = 60) { StringConfigNode(item as ConfigItem<String>).invoke(this) }
                         is Int -> ConfigNode(height = 60) { IntConfigNode(item as ConfigItem<Int>).invoke(this) }
-
+                        is Enum<*> -> ConfigNode(height = 35) { EnumConfigNode(item as ConfigItem<Enum<*>>).invoke(this) }
                     }
                     Spacer(Modifier.height(2.dp))
                 }
@@ -96,6 +99,45 @@ object ConfigComposables {
             ),
             colors = TextFieldDefaults.outlinedTextFieldColors(focusedBorderColor = Colors.secondary.value)
         )
+    }
+
+    fun<T : Enum<*>> EnumConfigNode(config: ConfigItem<T>): @Composable RowScope.() -> Unit = @Composable {
+        val state = textStateMap[config.key]
+        val value = config.defaultValue.name
+        if (state == null) {
+            textStateMap[config.key] = value
+        }
+        var expanded by remember { mutableStateOf(false) }
+        var selectedOption by remember { mutableStateOf(config.get<UIColor>()) }
+
+        Spacer(Modifier.width(5.dp))
+        Text(
+            text = config.name,
+            modifier = Modifier.align(Alignment.CenterVertically),
+            style = TextStyle(color = Colors.secondary.value, fontSize = 18.sp)
+        )
+        Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
+            Button(onClick = { expanded = true }, colors = ButtonDefaults.buttonColors(backgroundColor = Colors.surfaceDark.value)) {
+                Text(text = selectedOption.name, style = TextStyle(color = Colors.secondary.value))
+            }
+            DropdownMenu(
+                expanded = expanded,
+                onDismissRequest = { expanded = false },
+                modifier = Modifier
+                    .background(Colors.surfaceDark.value)
+            ) {
+                UIColor.entries.forEach { option ->
+                    DropdownMenuItem(onClick = {
+                        expanded = false
+                        selectedOption = option
+                        Colors.secondary.value = selectedOption.color
+                        PluginManager.plugins.filterIsInstance<MeteorPlugin>().first().config.uiColor.set(selectedOption)
+                    }, modifier = Modifier.background(Colors.surfaceDark.value)) {
+                        Text(text = option.name, color = option.color)
+                    }
+                }
+            }
+        }
     }
 
     fun IntConfigNode(config: ConfigItem<Int>) : @Composable RowScope.() -> Unit = @Composable {

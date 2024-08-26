@@ -5,8 +5,10 @@ import meteor.plugin.account.AccountPlugin
 import meteor.plugin.debug.DebugPlugin
 import meteor.plugin.rendering.RenderingPlugin
 import meteor.plugin.stretchedmode.StretchedModePlugin
-import meteor.plugin.world.ServerPlugin
+import meteor.plugin.server.ServerPlugin
 import meteor.plugin.infobars.InfoBarsPlugin
+import meteor.plugin.loginscreen.LoginScreenPlugin
+import meteor.plugin.meteor.MeteorPlugin
 
 object PluginManager {
     val plugins = mutableListOf<Plugin>()
@@ -16,9 +18,11 @@ object PluginManager {
         plugins.add(DebugPlugin())
         plugins.add(RenderingPlugin())
         plugins.add(StretchedModePlugin())
-        plugins.add(ServerPlugin())
+        //plugins.add(ServerPlugin())
         plugins.add(InfoBarsPlugin())
         plugins.add(AccountPlugin())
+        plugins.add(LoginScreenPlugin())
+        plugins.add(MeteorPlugin())
     }
 
     fun startPlugins() {

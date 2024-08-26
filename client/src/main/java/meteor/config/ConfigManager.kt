@@ -39,7 +39,9 @@ object ConfigManager {
         val value = properties.properties[key]
         try {
             if (T::class == String::class) {
-                return value as T
+                if (value as T == null)
+                    return defaultValue as T
+                return value
             }
             return gson.fromJson(value, T::class.java)?: return defaultValue as T
         } catch (e: Exception) {

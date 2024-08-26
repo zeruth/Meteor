@@ -45,6 +45,9 @@ object GameOverlayRoot {
         if (Main.client.isLoggedIn() && debugOverlays.value)
             mod = mod.background(Color.Cyan.copy(alpha = .2f))
         Box(mod) {
+            for (gameOverlay in gameOverlays) {
+                gameOverlay.render().invoke(this)
+            }
             ViewportOverlayRoot.render()
         }
         Main.composeTime.value = System.currentTimeMillis() - compositionStart
