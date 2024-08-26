@@ -51,7 +51,7 @@ class InfoBarsOverlay(val plugin: InfoBarsPlugin) : ViewportOverlay() {
             var offsetX by remember { mutableStateOf(0f) }
             var offsetY by remember { mutableStateOf(0f) }
 
-            Box(modifier = Modifier.offset { IntOffset(offsetX.toInt(), offsetY.toInt()) }.clip(RoundedCornerShape(4.dp)).background(meteor.ui.compose.Colors.surfaceColor).align(Alignment.TopCenter).draggableComponent { change, dragAmount ->
+            Box(modifier = Modifier.offset { IntOffset(offsetX.toInt(), offsetY.toInt()) }.clip(RoundedCornerShape(4.dp)).background(meteor.ui.compose.Colors.surface.value).align(Alignment.TopCenter).draggableComponent { change, dragAmount ->
                 offsetX += dragAmount.x
                 offsetY += dragAmount.y
             }) {
@@ -93,7 +93,7 @@ class InfoBarsOverlay(val plugin: InfoBarsPlugin) : ViewportOverlay() {
         var offsetX by remember { mutableStateOf(0f) }
         var offsetY by remember { mutableStateOf(0f) }
 
-        Box(modifier = Modifier.width(width.value.dp).height(height.value.dp).clip(RoundedCornerShape(4.dp)).background(meteor.ui.compose.Colors.surfaceDarkColor)) {
+        Box(modifier = Modifier.width(width.value.dp).height(height.value.dp).clip(RoundedCornerShape(4.dp)).background(meteor.ui.compose.Colors.surfaceDark.value)) {
             Row {
                 Image(painterResource(skill.smallIconResource()), "${skill.name}-icon", modifier = Modifier.size(height.value.dp))
                 Column(modifier = Modifier.size(textColumnWidth)) {
@@ -101,9 +101,9 @@ class InfoBarsOverlay(val plugin: InfoBarsPlugin) : ViewportOverlay() {
                 }
                 LinearProgressIndicator(
                     modifier = Modifier.fillMaxWidth().height((height.value.dp / 4) * 3).clip(RoundedCornerShape(4.dp)).align(Alignment.CenterVertically),
-                    backgroundColor = meteor.ui.compose.Colors.surfaceDarkerColor,
+                    backgroundColor = meteor.ui.compose.Colors.surfaceDarker.value,
                     progress = getLevelProgress(skill),
-                    color = meteor.ui.compose.Colors.secondaryColor
+                    color = meteor.ui.compose.Colors.secondary.value
                 )
             }
         }
