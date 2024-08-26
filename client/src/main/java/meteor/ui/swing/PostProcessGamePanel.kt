@@ -24,7 +24,7 @@ import javax.swing.JPanel
  */
 class PostProcessGamePanel : JPanel() {
     private var graphics2D: Graphics2D? = null
-    private val hints = RenderingHints(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_NEAREST_NEIGHBOR)
+    private val hints = RenderingHints(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BILINEAR)
     private var loading = true
 
     init {
@@ -55,10 +55,6 @@ class PostProcessGamePanel : JPanel() {
             graphics2D = it as Graphics2D
             val finalImage = RS2GamePanel.image!!
             updateSizeAndScale(finalImage)
-            when (Main.client.renderMode) {
-                RenderMode.CPU -> setCPURenderingHints(it)
-                else -> {}
-            }
             drawToSurface(it, finalImage)
         }
         Main.swingTime.value = System.currentTimeMillis() - timer
@@ -82,7 +78,10 @@ class PostProcessGamePanel : JPanel() {
             updatePadding(false, finalImage)
     }
 
-    private fun drawToSurface(graphics: Graphics, finalImage: BufferedImage) {
+    private fun drawToSurface(graphics: Graphics2D, finalImage: BufferedImage) {
+        if (Main.client.cpuFilter == CPUFilter.BILINEAR) {
+            graphics.setRenderingHints(hints)
+        }
         if (Main.windowState.value == Main.fixedState) {
             graphics.drawImage(finalImage, 0, 0, finalImage.width, finalImage.height, this)
             return
@@ -117,6 +116,7 @@ class PostProcessGamePanel : JPanel() {
 
     private fun setCPURenderingHints(graphics2D: Graphics2D) {
         if (Main.client.cpuFilter == CPUFilter.BILINEAR) {
+            println("using bilinear")
             graphics2D.setRenderingHints(hints)
         }
     }
