@@ -6,7 +6,7 @@ plugins {
     alias(libs.plugins.jetbrainsCompose)
     alias(libs.plugins.compose.compiler)
     kotlin("jvm")
-    id("nulled.injector") version "1.3"
+    id("nulled.injector") version "1.4"
 }
 
 dependencies {
@@ -16,7 +16,7 @@ dependencies {
     implementation(projects.api)
     implementation(projects.apiRs)
     implementation(compose.desktop.currentOs)
-    implementation("nulled:injector:1.3")
+    implementation("nulled:injector:1.4")
     implementation("nulled:logger:1.2")
     implementation("nulled:eventbus:1.0")
     runtimeOnly(files("./src/main/resources/injected-client.jar"))

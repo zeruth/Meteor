@@ -367,6 +367,9 @@ public abstract class RSClientMixin implements RSClient {
 		//TODO: This should be initialized in a better place
 		if (meteorDir == null)
 			meteorDir = new File(System.getProperty("user.home"), ".meteor-rsc");
+		if (!meteorDir.exists())
+			meteorDir.mkdir();
+
 		if (lastCombatStyleFile == null)
 			lastCombatStyleFile = new File(meteorDir, "lastCombatStyle.txt");
 
