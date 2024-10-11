@@ -38,54 +38,54 @@ class InfoBarsOverlay(val plugin: InfoBarsPlugin) : ViewportOverlay() {
     var skillUpdates = Collections.synchronizedMap(HashMap<Skill, Long>())
     var textColumnWidth = 28.dp
 
-/*    var skillIcons = HashMap<Skill, Image>()
+    /*    var skillIcons = HashMap<Skill, Image>()
 
-    init {
-        for (skill in Skill.values()) {
-            skillIcons[skill] = ImageUtil.resizeCanvas(ImageUtil.resizeImage(SkillIconManager.getSkillImage(skill, true), IMAGE_SIZE, IMAGE_SIZE), ICON_DIMENSIONS.width, ICON_DIMENSIONS.height)
-            skillXPBars[skill] = getSkilXOBar(skill)
-        }
-    }*/
+        init {
+            for (skill in Skill.values()) {
+                skillIcons[skill] = ImageUtil.resizeCanvas(ImageUtil.resizeImage(SkillIconManager.getSkillImage(skill, true), IMAGE_SIZE, IMAGE_SIZE), ICON_DIMENSIONS.width, ICON_DIMENSIONS.height)
+                skillXPBars[skill] = getSkilXOBar(skill)
+            }
+        }*/
     override fun render(): @Composable BoxScope.() -> Unit = {
         if (client.isLoggedIn) {
             var offsetX by remember { mutableStateOf(0f) }
             var offsetY by remember { mutableStateOf(0f) }
-
-            Box(modifier = Modifier.offset { IntOffset(offsetX.toInt(), offsetY.toInt()) }.clip(RoundedCornerShape(4.dp)).background(meteor.ui.compose.Colors.surface.value).align(Alignment.TopCenter).draggableComponent { change, dragAmount ->
-                offsetX += dragAmount.x
-                offsetY += dragAmount.y
-            }) {
-                Column {
-                    forceRecomposition.value
-                    val pendingRemovals = ArrayList<Skill>()
-                    synchronized(skillUpdates) {
-                        for (skill in skillUpdates.keys) {
-                            val lastUpdate = skillUpdates[skill]!!
-                            val duration = System.currentTimeMillis() - lastUpdate
-                            if (duration > (plugin.config.skillTimeout.get<Int>() * (60 * 1000))) {
-                                println("Dropping skill update for " + skill.name)
-                                pendingRemovals.add(skill)
-                            }
-                        }
-                        for (skill in pendingRemovals) {
-                            skillUpdates.remove(skill)
-                        }
-
-                        renderHitpointsBox().invoke(this@Box)
-                        renderPrayerBox().invoke(this@Box)
-                        renderEnergyBox().invoke(this@Box)
-
-                        if (skillUpdates.isNotEmpty()) {
-                            Spacer(modifier = Modifier.height(5.dp))
-                            Divider(thickness = 1.dp, color = Color.Black, modifier = Modifier.width(width.value.dp))
-                            Spacer(modifier = Modifier.height(5.dp))
+            if (client.viewportInterfaceID == -1 || (client.viewportInterfaceID != -1 && !plugin.config.hideWhenInterfaceOpen.get<Boolean>()))
+                Box(modifier = Modifier.offset { IntOffset(offsetX.toInt(), offsetY.toInt()) }.clip(RoundedCornerShape(4.dp)).background(meteor.ui.compose.Colors.surface.value).align(Alignment.TopEnd).draggableComponent { change, dragAmount ->
+                    offsetX += dragAmount.x
+                    offsetY += dragAmount.y
+                }) {
+                    Column {
+                        forceRecomposition.value
+                        val pendingRemovals = ArrayList<Skill>()
+                        synchronized(skillUpdates) {
                             for (skill in skillUpdates.keys) {
-                                renderSkillBox(skill).invoke(this@Box)
+                                val lastUpdate = skillUpdates[skill]!!
+                                val duration = System.currentTimeMillis() - lastUpdate
+                                if (duration > (plugin.config.skillTimeout.get<Int>() * (60 * 1000))) {
+                                    println("Dropping skill update for " + skill.name)
+                                    pendingRemovals.add(skill)
+                                }
+                            }
+                            for (skill in pendingRemovals) {
+                                skillUpdates.remove(skill)
+                            }
+
+                            renderHitpointsBox().invoke(this@Box)
+                            renderPrayerBox().invoke(this@Box)
+                            renderEnergyBox().invoke(this@Box)
+
+                            if (skillUpdates.isNotEmpty()) {
+                                Spacer(modifier = Modifier.height(5.dp))
+                                Divider(thickness = 1.dp, color = Color.Black, modifier = Modifier.width(width.value.dp))
+                                Spacer(modifier = Modifier.height(5.dp))
+                                for (skill in skillUpdates.keys) {
+                                    renderSkillBox(skill).invoke(this@Box)
+                                }
                             }
                         }
                     }
                 }
-            }
         }
     }
 
