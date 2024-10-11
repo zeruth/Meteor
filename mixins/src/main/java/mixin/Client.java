@@ -16,6 +16,7 @@ import java.io.ByteArrayInputStream;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
 import java.util.ArrayList;
+import java.util.zip.CRC32;
 
 @SuppressWarnings("ALL")
 @Mixin(RSClient.class)
@@ -242,25 +243,6 @@ abstract class Client implements RSClient {
         return midi;
     }
 
-    @Copy("setMidiVolume")
-    @Replace("setMidiVolume")
-    public void setMidiVolume(int vol) {
-        switch (vol) {
-            case 0:
-                getCallbacks().post(new ChangeMusicVolume(100));
-                break;
-            case -400:
-                getCallbacks().post(new ChangeMusicVolume(75));
-                break;
-            case -800:
-                getCallbacks().post(new ChangeMusicVolume(50));
-                break;
-            case -1200:
-                getCallbacks().post(new ChangeMusicVolume(25));
-                break;
-        }
-    }
-
     @Inject
     @Override
     public LocEntity[] getLocs() {
@@ -350,5 +332,87 @@ abstract class Client implements RSClient {
             System.out.println("Viewport interface changed: " + getViewportInterfaceID());
             lastViewportInterfaceID = getViewportInterfaceID();
         }
+    }
+
+    @Inject
+    @MethodHook(value = "setWaveVolume", end = true)
+    public void setWaveVolume$tail(int val) {
+        client.getCallbacks().post(new ChangeSoundVolume(VolumeSetting.Companion.of(val)));
+    }
+
+    @Inject
+    @MethodHook(value = "setMidiVolume", end = true)
+    public void setMidiVolume$tail(int val) {
+        client.getCallbacks().post(new ChangeMusicVolume(VolumeSetting.Companion.of(val)));
+    }
+
+    @Inject
+    @FieldHook("midiActive")
+    public void onMidiActiveChanged$tail(int idx) {
+        if (client != null)
+            if (client.getCallbacks() != null)
+                if (!client.getMidiActive())
+                    client.getCallbacks().post(new ChangeMusicVolume(VolumeSetting.OFF));
+    }
+
+    @Inject
+    @FieldHook("waveEnabled")
+    public void onWaveEnabledChanged$tail(int idx) {
+        if (client != null)
+            if (client.getCallbacks() != null)
+                if (!client.getWaveEnabled())
+                    client.getCallbacks().post(new ChangeSoundVolume(VolumeSetting.OFF));
+    }
+
+    @Inject
+    public boolean onlyPlayJingles = false;
+
+    @Inject
+    @Override
+    public boolean onlyPlayJingles() {
+        return onlyPlayJingles;
+    }
+
+    @Inject
+    @Override
+    public void setOnlyPlayJingles(boolean onlyPlayJingles) {
+        System.out.println("set only " + onlyPlayJingles);
+        this.onlyPlayJingles = onlyPlayJingles;
+    }
+
+    @Inject
+    public boolean pendingJingle = false;
+
+    @Inject
+    @Override
+    public boolean isPendingJingle() {
+        return pendingJingle;
+    }
+
+    @Inject
+    @Override
+    public void setIsPendingJingle(boolean pendingJingle) {
+        this.pendingJingle = pendingJingle;
+    }
+
+    @Inject
+    @MethodHook(value = "alertJingle")
+    void alertJingle$tail() {
+        client.setIsPendingJingle(true);
+    }
+
+    @Inject
+    @MethodHook(value = "alertSong")
+    void alertSong$tail() {
+        client.setIsPendingJingle(false);
+    }
+
+    @Inject
+    public static long calculateCRC(byte[] data) {
+        CRC32 crc = new CRC32();
+        crc.update(data);
+        long crcValue = crc.getValue();
+
+        return crc.getValue();
     }
 }

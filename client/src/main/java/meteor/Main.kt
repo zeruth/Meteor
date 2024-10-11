@@ -14,10 +14,7 @@ import meteor.audio.MidiPlayer
 import meteor.audio.SoundPlayer
 import meteor.config.ConfigManager
 import meteor.config.MeteorConfig
-import meteor.events.Command
-import meteor.events.PlaySong
-import meteor.events.PlaySound
-import meteor.events.StopMusic
+import meteor.events.*
 import meteor.input.KeyListener
 import meteor.input.TranslateMouseListener
 import meteor.plugin.PluginManager
@@ -49,6 +46,7 @@ object Main {
     var swingTime = mutableStateOf(1L)
     var composeTime = mutableStateOf(1L)
     val startupTime = System.currentTimeMillis()
+    var lastSong: String? = null
 
     init {
         System.setProperty("compose.interop.blending", "true")
@@ -60,7 +58,30 @@ object Main {
         KEVENT.subscribe<PlaySound> {
             SoundPlayer(AudioSystem.getAudioInputStream(it.data.sound), 0)
         }
-        KEVENT.subscribe<PlaySong> { MidiPlayer.playSong(false) }
+        KEVENT.subscribe<LoggedInChanged> {
+            if (it.data.loggedIn)
+                if (client.onlyPlayJingles())
+                    client.callbacks.post(StopMusic)
+        }
+        KEVENT.subscribe<PlaySong> {
+            if (!client.isPendingJingle)
+                lastSong = it.data.song
+            if (client.onlyPlayJingles()) {
+                if (client.isLoggedIn) {
+                    if (client.isPendingJingle) {
+                        MidiPlayer.playSong(false)
+                        client.setIsPendingJingle(false)
+                    }
+                    else {
+                        client.callbacks.post(StopMusic)
+                    }
+                } else
+                    MidiPlayer.playSong(false)
+            } else {
+                if (!client.isLoggedIn)
+                    MidiPlayer.playSong(false)
+            }
+        }
         KEVENT.subscribe<StopMusic> { MidiPlayer.stop() }
     }
 

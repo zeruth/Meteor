@@ -154,4 +154,10 @@ public interface RSClient extends Client, RSGameShell {
 
     @Import("stopMidi")
     void stopMidi$api();
+
+    @Import("midiActive")
+    boolean getMidiActive();
+
+    @Import("waveEnabled")
+    boolean getWaveEnabled();
 }

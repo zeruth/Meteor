@@ -91,4 +91,8 @@ public interface Client extends GameShell{
     int getEnergy();
     void setMidi$api(String name, int crc, int len);
     void stopMidi$api();
+    boolean onlyPlayJingles();
+    void setOnlyPlayJingles(boolean onlyPlayJingles);
+    boolean isPendingJingle();
+    void setIsPendingJingle(boolean isPendingJingle);
 }
