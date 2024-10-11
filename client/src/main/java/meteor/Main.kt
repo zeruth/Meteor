@@ -56,7 +56,6 @@ object Main {
         logger.info("Logging to " + Logger.logFile.absolutePath)
         ConfigManager
         ConfigManager.set("version", version)
-        gamePanel.background = java.awt.Color.BLACK
         KEVENT.subscribe<Command> { processClientCommand(it.data.command) }
         KEVENT.subscribe<PlaySound> {
             SoundPlayer(AudioSystem.getAudioInputStream(it.data.sound), 0)

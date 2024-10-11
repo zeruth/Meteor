@@ -8,6 +8,8 @@ import meteor.events.DrawFinished
 import meteor.ui.compose.components.GamePanel
 import meteor.ui.compose.components.GamePanel.stretchedHeight
 import meteor.ui.compose.components.GamePanel.stretchedWidth
+import meteor.ui.compose.components.GamePanel.xPadding
+import meteor.ui.compose.components.GamePanel.yPadding
 import meteor.ui.compose.components.Window.gameWidth
 import meteor.ui.compose.components.Window.panelOpen
 import meteor.ui.config.AspectMode
@@ -79,6 +81,21 @@ class PostProcessGamePanel : JPanel() {
     }
 
     private fun drawToSurface(graphics: Graphics2D, finalImage: BufferedImage) {
+        graphics.color = Color.BLACK
+        when (Main.client.aspectMode) {
+            AspectMode.FIT -> {
+                if (xPadding.value > 0) {
+                    graphics.fillRect(0, 0, xPadding.value.toInt(), height)
+                    graphics.fillRect(stretchedWidth.value + xPadding.value.toInt(), 0, xPadding.value.toInt(), height)
+                    graphics.fillRect(0, stretchedHeight.value, width, 5)
+                }
+                if (yPadding.value > 0) {
+                    graphics.fillRect(0, 0, width, yPadding.value.toInt())
+                    graphics.fillRect(0, stretchedHeight.value + yPadding.value.toInt(), width, yPadding.value.toInt())
+                }
+            }
+            else -> {}
+        }
         if (Main.client.cpuFilter == CPUFilter.BILINEAR) {
             graphics.setRenderingHints(hints)
         }
