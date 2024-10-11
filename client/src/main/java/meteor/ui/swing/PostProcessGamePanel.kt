@@ -91,7 +91,7 @@ class PostProcessGamePanel : JPanel() {
                 }
                 if (yPadding.value > 0) {
                     graphics.fillRect(0, 0, width, yPadding.value.toInt())
-                    graphics.fillRect(0, stretchedHeight.value + yPadding.value.toInt(), width, yPadding.value.toInt())
+                    graphics.fillRect(0, stretchedHeight.value + yPadding.value.toInt(), width, yPadding.value.toInt() + 5)
                 }
             }
             else -> {}
