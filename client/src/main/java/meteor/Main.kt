@@ -78,8 +78,7 @@ object Main {
                 } else
                     MidiPlayer.playSong(false)
             } else {
-                if (!client.isLoggedIn)
-                    MidiPlayer.playSong(false)
+                MidiPlayer.playSong(false)
             }
         }
         KEVENT.subscribe<StopMusic> { MidiPlayer.stop() }
