@@ -402,12 +402,6 @@ abstract class Client implements RSClient {
     }
 
     @Inject
-    @MethodHook(value = "alertSong")
-    void alertSong$tail() {
-        client.setIsPendingJingle(false);
-    }
-
-    @Inject
     public static long calculateCRC(byte[] data) {
         CRC32 crc = new CRC32();
         crc.update(data);

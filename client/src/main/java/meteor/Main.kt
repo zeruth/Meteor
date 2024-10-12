@@ -84,8 +84,6 @@ object Main {
         KEVENT.subscribe<StopMusic> { MidiPlayer.stop() }
     }
 
-    var setupSize = false
-
     @Composable
     fun getWidthDensity(): Float {
         val density = LocalDensity.current

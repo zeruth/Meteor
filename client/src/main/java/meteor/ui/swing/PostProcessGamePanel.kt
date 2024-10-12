@@ -110,6 +110,8 @@ class PostProcessGamePanel : JPanel() {
                     finalImage, Main.client.xPadding.toInt(), Main.client.yPadding.toInt(),
                     stretchedWidth.value, stretchedHeight.value, this
                 )
+                graphics.color = Color.BLACK
+                graphics.fillRect((Main.client.xPadding.toInt() * 2 ) + stretchedWidth.value, 0, 5, stretchedHeight.value + 5)
             }
 
             AspectMode.FILL -> graphics.drawImage(finalImage, 0, 0, width, height, this)
