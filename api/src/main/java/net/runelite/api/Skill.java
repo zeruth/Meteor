@@ -10,16 +10,16 @@ public enum Skill {
     MAGIC(6),
     COOKING(7),
     WOODCUTTING(8),
-
+    FLETCHING(9),
     FISHING(10),
     FIREMAKING(11),
-
+    CRAFTING(12),
     SMITHING(13),
     MINING(14),
-
-
-    THIEVING(17);
-
+    HERBLAW(15),
+    AGILITY(16),
+    THIEVING(17),
+    RUNECRAFT(20);
 
     public int id;
     public String name;

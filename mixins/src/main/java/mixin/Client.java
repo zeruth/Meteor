@@ -415,4 +415,18 @@ abstract class Client implements RSClient {
 
         return crc.getValue();
     }
+
+    @Inject
+    boolean reachedLoginScreen = false;
+
+    @Inject
+    @MethodHook(value = "drawTitleScreen")
+    void drawTitleScreen$tail() {
+        if (reachedLoginScreen == true)
+            return;
+
+        client.getCallbacks().post(ReachedLoginScreen.INSTANCE);
+        reachedLoginScreen = true;
+    }
+
 }

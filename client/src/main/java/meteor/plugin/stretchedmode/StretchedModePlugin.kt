@@ -3,12 +3,23 @@ package meteor.plugin.stretchedmode
 import meteor.Main
 import meteor.Main.client
 import meteor.Main.window
+import meteor.events.LoggedInChanged
+import meteor.events.ReachedLoginScreen
 import meteor.events.client.ConfigChanged
 import meteor.plugin.Plugin
 import meteor.ui.config.AspectMode
+import org.rationalityfrontline.kevent.KEVENT
 
 class StretchedModePlugin : Plugin("Stretched Mode") {
     val config = configuration<StretchedModeConfig>()
+    var allowFill = false
+
+    init {
+        KEVENT.subscribe<ReachedLoginScreen> {
+            allowFill = true
+            updateConfig()
+        }
+    }
 
     override fun onConfigChanged(it: ConfigChanged) {
         if (it.affects(config)) {
@@ -37,9 +48,9 @@ class StretchedModePlugin : Plugin("Stretched Mode") {
     }
 
     fun updateConfig() {
-        when (config.stretchToFill.get<Boolean>()) {
-            true -> client.aspectMode = AspectMode.FILL
-            false -> client.aspectMode = AspectMode.FIT
+        client.aspectMode = when (config.stretchToFill.get<Boolean>()) {
+            true -> if (allowFill) AspectMode.FILL else AspectMode.FIT
+            false -> AspectMode.FIT
         }
     }
 }
