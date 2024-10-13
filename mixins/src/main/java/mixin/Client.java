@@ -234,7 +234,6 @@ abstract class Client implements RSClient {
             if (client.onlyPlayJingles() && client.isLoggedIn()) {
                 if (client.isPendingJingle()) {
                     client.getCallbacks().post(new PlaySong(midi));
-                    client.setIsPendingJingle(false);
                 }
             } else
                 client.getCallbacks().post(new PlaySong(midi));
@@ -394,7 +393,6 @@ abstract class Client implements RSClient {
     @Inject
     @Override
     public void setOnlyPlayJingles(boolean onlyPlayJingles) {
-        System.out.println("set only " + onlyPlayJingles);
         this.onlyPlayJingles = onlyPlayJingles;
     }
 
@@ -435,4 +433,15 @@ abstract class Client implements RSClient {
         reachedLoginScreen = true;
     }
 
+
+    @Copy("setMidi")
+    @Replace("setMidi")
+    private void setMidi(String name, int crc, int len) {
+        if (!client.onlyPlayJingles()) {
+            setMidi(name, crc, len);
+        } else {
+            if (!client.isPendingJingle())
+                setMidi(name, crc, len);
+        }
+    }
 }

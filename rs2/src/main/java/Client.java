@@ -9395,7 +9395,6 @@ public class Client extends GameShell {
 	@OriginalMember(owner = "client!client", name = "l", descriptor = "(Z)V")
 	private void tryReconnect() {
 		if (this.idleTimeout > 0) {
-			System.out.println("idleTimeout logout");
 			this.logout();
 		} else {
 			this.areaViewport.bind();
@@ -9410,7 +9409,6 @@ public class Client extends GameShell {
 
 			this.login(this.username, this.password, true);
 			if (!this.ingame) {
-				System.out.println("!ingame logout");
 				this.logout();
 			}
 
@@ -10787,7 +10785,6 @@ public class Client extends GameShell {
 			}
 			if (this.packetType == 142) {
 				// LOGOUT
-				System.out.println("server packet logout");
 				this.logout();
 				this.packetType = -1;
 				return false;

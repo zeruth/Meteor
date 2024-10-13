@@ -63,7 +63,6 @@ class InfoBarsOverlay(val plugin: InfoBarsPlugin) : ViewportOverlay() {
                                 val lastUpdate = skillUpdates[skill]!!
                                 val duration = System.currentTimeMillis() - lastUpdate
                                 if (duration > (plugin.config.skillTimeout.get<Int>() * (60 * 1000))) {
-                                    println("Dropping skill update for " + skill.name)
                                     pendingRemovals.add(skill)
                                 }
                             }
