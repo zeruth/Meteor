@@ -66,19 +66,7 @@ object Main {
         KEVENT.subscribe<PlaySong> {
             if (!client.isPendingJingle)
                 lastSong = it.data.song
-            if (client.onlyPlayJingles()) {
-                if (client.isLoggedIn) {
-                    if (client.isPendingJingle) {
-                        MidiPlayer.playSong(false)
-                    }
-                    else {
-                        client.callbacks.post(StopMusic)
-                    }
-                } else
-                    MidiPlayer.playSong(false)
-            } else {
-                MidiPlayer.playSong(false)
-            }
+            MidiPlayer.playSong(false)
         }
         KEVENT.subscribe<StopMusic> { MidiPlayer.stop() }
     }
