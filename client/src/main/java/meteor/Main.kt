@@ -70,7 +70,6 @@ object Main {
                 if (client.isLoggedIn) {
                     if (client.isPendingJingle) {
                         MidiPlayer.playSong(false)
-                        client.setIsPendingJingle(false)
                     }
                     else {
                         client.callbacks.post(StopMusic)

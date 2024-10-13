@@ -41,12 +41,6 @@ public class Client extends GameShell {
 	String autoUsername = "";
 	String autoPassword = "";
 
-	public void alertJingle() {
-	}
-
-	public void alertSong() {
-	}
-
 	public static Client client;
 	public static JPanel gamePanel;
 	public boolean showDebug = false;
@@ -10422,6 +10416,10 @@ public class Client extends GameShell {
 		Draw3D.lineOffset = this.areaViewportOffsets;
 	}
 
+	public void reportPacketType(int packetType) {
+
+	}
+
 	@OriginalMember(owner = "client!client", name = "p", descriptor = "(Z)Z")
 	private boolean read() {
 		if (this.stream == null) {
@@ -10442,6 +10440,10 @@ public class Client extends GameShell {
 				}
 				this.packetSize = Protocol.SERVERPROT_SIZES[this.packetType];
 				available--;
+			}
+
+			if (packetType != -1) {
+				reportPacketType(packetType);
 			}
 
 			if (this.packetSize == -1) {
@@ -10770,7 +10772,6 @@ public class Client extends GameShell {
 			}
 			if (this.packetType == 54) {
 				// MIDI_SONG
-				alertSong();
 				String name = this.in.gjstr();
 				int crc = this.in.g4();
 				int length = this.in.g4();
@@ -11006,7 +11007,6 @@ public class Client extends GameShell {
 			if (this.packetType == 212) {
 				// MIDI_JINGLE
 				if (this.midiActive && !lowMemory) {
-					alertJingle();
 					int delay = this.in.g2();
 					int length = this.in.g4();
 					int remaining = this.packetSize - 6;

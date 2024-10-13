@@ -231,7 +231,13 @@ abstract class Client implements RSClient {
     @FieldHook("midi")
     public static void onMidiChanged(int idx) {
         if (!midi.equals("stop") && !midi.equals("voladjust")) {
-            client.getCallbacks().post(new PlaySong(midi));
+            if (client.onlyPlayJingles() && client.isLoggedIn()) {
+                if (client.isPendingJingle()) {
+                    client.getCallbacks().post(new PlaySong(midi));
+                    client.setIsPendingJingle(false);
+                }
+            } else
+                client.getCallbacks().post(new PlaySong(midi));
         } else if (midi.equals("stop")) {
             client.getCallbacks().post(StopMusic.INSTANCE);
         }
@@ -301,6 +307,7 @@ abstract class Client implements RSClient {
     @Inject
     public int lastPacketTypeServer = -1;
 
+    //This operates after packet is processed
     @Inject
     @FieldHook(value = "packetType")
     public void packetType$tail(int idx) {
@@ -314,6 +321,17 @@ abstract class Client implements RSClient {
         }
 
         lastPacketTypeServer = nextPacketType;
+    }
+
+    //This operates after packet type is identified but before the packet is processed.
+    @Inject
+    @MethodHook("reportPacketType")
+    public void reportPacketType$tail(int packetType){
+        if (packetType == PacketTypeServer.MIDI_JINGLE.id)
+            client.setIsPendingJingle(true);
+        else if (packetType == PacketTypeServer.MIDI_SONG.id) {
+            client.setIsPendingJingle(false);
+        }
     }
 
     @Inject
@@ -393,12 +411,6 @@ abstract class Client implements RSClient {
     @Override
     public void setIsPendingJingle(boolean pendingJingle) {
         this.pendingJingle = pendingJingle;
-    }
-
-    @Inject
-    @MethodHook(value = "alertJingle")
-    void alertJingle$tail() {
-        client.setIsPendingJingle(true);
     }
 
     @Inject
