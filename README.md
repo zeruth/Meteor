@@ -1,6 +1,7 @@
 # Meteor-225
 
-A Kotlin/Compose client built around [Lost-City/Client](https://github.com/2004Scape/Client)
+A Kotlin/Compose client built around [Lost-City/Client](https://github.com/2004Scape/Client)  
+[Android port](https://github.com/zeruth/meteor-android)  
 
 ![image](https://github.com/zeruth/Meteor/assets/2943260/ceb94f91-15bd-4234-a16c-c9eddea55da3)
 
