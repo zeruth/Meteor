@@ -13,9 +13,10 @@ dependencies {
     implementation(libs.fernflower)
     implementation(compose.runtime)
     implementation(compose.ui)
+    implementation(compose.desktop.currentOs)
     implementation(projects.api)
     implementation(projects.apiRs)
-    implementation(compose.desktop.currentOs)
+
     implementation("org.jetbrains.kotlin:kotlin-reflect:2.0.0")
 
     implementation("nulled:injector:1.4")
@@ -23,6 +24,8 @@ dependencies {
     implementation("nulled:eventbus:1.1")
     implementation("br.com.devsrsouza.compose.icons:line-awesome:1.1.0")
     implementation("com.google.code.gson:gson:2.11.0")
+    implementation("io.github.vyfor:kpresence:0.6.4")
+
     runtimeOnly(files("./src/main/resources/injected-client.jar"))
 }
 

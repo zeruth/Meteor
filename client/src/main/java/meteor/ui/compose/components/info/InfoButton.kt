@@ -6,17 +6,17 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.key
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.graphics.BlendMode
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import compose.icons.LineAwesomeIcons
 import compose.icons.lineawesomeicons.InfoCircleSolid
 import meteor.Main
+import meteor.Main.forceRecomposition
 import meteor.Main.version
 import meteor.ui.compose.Colors
 import meteor.ui.compose.Colors.surface
@@ -24,11 +24,14 @@ import meteor.ui.compose.components.GeneralComposables.SidedNode
 import meteor.ui.compose.components.panel.PanelComposables
 import meteor.ui.compose.overlay.ViewportOverlayRoot
 import meteor.ui.compose.components.sidebar.SidebarButton
+import meteor.ui.swing.PostProcessGamePanel
+import meteor.ui.swing.PostProcessGamePanel.Companion.swingFPS
 import java.time.Instant
 import java.util.concurrent.ConcurrentLinkedQueue
 
-class InfoButton : SidebarButton(icon = LineAwesomeIcons.InfoCircleSolid, bottom = true) {
-    private val renderTimes = ConcurrentLinkedQueue<Pair<Instant, Long>>()
+class InfoButton : SidebarButton(icon = LineAwesomeIcons.InfoCircleSolid) {
+    private val composeRenderTimes = ConcurrentLinkedQueue<Pair<Instant, Long>>()
+    val composeFPS = mutableStateOf(0)
 
     override fun onClick() {
         PanelComposables.content.value = InfoPanel()
@@ -115,7 +118,7 @@ class InfoButton : SidebarButton(icon = LineAwesomeIcons.InfoCircleSolid, bottom
             SidedNode(30,
                 left = @Composable {
                     Spacer(Modifier.width(4.dp))
-                    Text("Swing", color = Colors.secondary.value, modifier = Modifier.align(Alignment.CenterVertically))
+                    Text("Swing-UI", color = Colors.secondary.value, modifier = Modifier.align(Alignment.CenterVertically))
                 },
                 right = @Composable {
                     Text(
@@ -154,20 +157,37 @@ class InfoButton : SidebarButton(icon = LineAwesomeIcons.InfoCircleSolid, bottom
                     Spacer(Modifier.width(4.dp))
                 })
 
-            val renderTime = (ViewportOverlayRoot.canvasRenderTime.value + Main.composeTime.value + Main.swingTime.value).coerceAtLeast(1)
+            val renderTime = (ViewportOverlayRoot.canvasRenderTime.value + Main.composeTime.value).coerceAtLeast(1)
             val now = Instant.now()
-            renderTimes.add(now to renderTime)
+            composeRenderTimes.add(now to renderTime)
             removeOldEntries()
+            key(forceRecomposition.value) {
+                composeFPS.value = 1000 / getAverageComposeRenderTime()
+            }
 
             Spacer(Modifier.height(2.dp))
             SidedNode(30,
                 left = @Composable {
                     Spacer(Modifier.width(4.dp))
-                    Text("FPS (5sec Avg)", color = Colors.secondary.value, modifier = Modifier.align(Alignment.CenterVertically))
+                    Text("Compose(Game) FPS (1sec Avg)", color = Colors.secondary.value, modifier = Modifier.align(Alignment.CenterVertically))
                 },
                 right = @Composable {
                     Text(
-                        "${1000 / getAverageRenderTime()} fps",
+                        "${composeFPS.value} fps",
+                        color = Colors.secondary.value,
+                        modifier = Modifier.align(Alignment.CenterVertically)
+                    )
+                    Spacer(Modifier.width(4.dp))
+                })
+            Spacer(Modifier.height(2.dp))
+            SidedNode(30,
+                left = @Composable {
+                    Spacer(Modifier.width(4.dp))
+                    Text("Swing(Game) FPS (1sec Avg)", color = Colors.secondary.value, modifier = Modifier.align(Alignment.CenterVertically))
+                },
+                right = @Composable {
+                    Text(
+                        "${swingFPS.value} fps",
                         color = Colors.secondary.value,
                         modifier = Modifier.align(Alignment.CenterVertically)
                     )
@@ -176,16 +196,16 @@ class InfoButton : SidebarButton(icon = LineAwesomeIcons.InfoCircleSolid, bottom
         }
     }
 
-    fun getAverageRenderTime(): Int {
+    fun getAverageComposeRenderTime(): Int {
         removeOldEntries()
-        val times = renderTimes.map { it.second }
+        val times = composeRenderTimes.map { it.second }
         return if (times.isNotEmpty()) times.average().toInt() else 1
     }
 
     private fun removeOldEntries() {
-        val cutoff = Instant.now().minusSeconds(5)
-        while (renderTimes.peek()?.first?.isBefore(cutoff) == true) {
-            renderTimes.poll()
+        val cutoff = Instant.now().minusSeconds(1)
+        while (composeRenderTimes.peek()?.first?.isBefore(cutoff) == true) {
+            composeRenderTimes.poll()
         }
     }
 

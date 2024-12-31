@@ -9,6 +9,9 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.*
 import com.google.gson.GsonBuilder
 import ext.java.ClassLoaderExt.createInstance
+import io.github.vyfor.kpresence.ConnectionState
+import io.github.vyfor.kpresence.RichClient
+import io.github.vyfor.kpresence.rpc.ActivityType
 import meteor.Constants.RS_DIMENSIONS
 import meteor.audio.MidiPlayer
 import meteor.audio.SoundPlayer
@@ -22,6 +25,8 @@ import meteor.ui.compose.components.Window.Window
 import meteor.ui.compose.components.Window.configWidth
 import meteor.ui.compose.components.Window.panelOpen
 import meteor.ui.compose.components.Window.sidebarWidth
+import meteor.ui.compose.components.buttons.DiscordStatusButton.Companion.showDiscordStatusWindow
+import meteor.ui.compose.components.buttons.DiscordStatusButton.Companion.state
 import meteor.ui.swing.PostProcessGamePanel
 import meteor.ui.swing.RS2GamePanel
 import net.runelite.api.Client
@@ -47,6 +52,8 @@ object Main {
     var composeTime = mutableStateOf(1L)
     val startupTime = System.currentTimeMillis()
     var lastSong: String? = null
+    var updatingDiscordState = mutableStateOf(false)
+    var lastPresence : String
 
     init {
         System.setProperty("compose.interop.blending", "true")
@@ -54,6 +61,7 @@ object Main {
         logger.info("Logging to " + Logger.logFile.absolutePath)
         ConfigManager
         ConfigManager.set("version", version)
+        lastPresence = ConfigManager.get<String>("DiscordRPCStatus", "")
         KEVENT.subscribe<Command> { processClientCommand(it.data.command) }
         KEVENT.subscribe<PlaySound> {
             SoundPlayer(AudioSystem.getAudioInputStream(it.data.sound), 0)
@@ -62,6 +70,8 @@ object Main {
             if (it.data.loggedIn)
                 if (client.onlyPlayJingles())
                     client.callbacks.post(StopMusic)
+
+            DiscordPresence.update(lastPresence)
         }
         KEVENT.subscribe<PlaySong> {
             if (!client.isPendingJingle)
@@ -163,6 +173,10 @@ object Main {
                 loaded = true
             }
         }
+        key(updatingDiscordState.value) {
+            if (updatingDiscordState.value)
+                showDiscordStatusWindow()
+        }
     }
 
     private fun initRS2() {
@@ -170,6 +184,8 @@ object Main {
         client = ClassLoader.getSystemClassLoader().createInstance<Client>()
         client.callbacks = hooks
         client.preGameInit()
+
+        DiscordPresence.update(lastPresence)
 
         PluginManager.startPlugins()
 

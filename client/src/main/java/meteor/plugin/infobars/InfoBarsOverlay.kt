@@ -34,7 +34,7 @@ import kotlin.collections.HashMap
  */
 class InfoBarsOverlay(val plugin: InfoBarsPlugin) : ViewportOverlay() {
     var height = mutableStateOf(20)
-    var width = mutableStateOf(150)
+    var width = mutableStateOf(200)
     var skillUpdates = Collections.synchronizedMap(HashMap<Skill, Long>())
     var textColumnWidth = 28.dp
 
@@ -99,11 +99,20 @@ class InfoBarsOverlay(val plugin: InfoBarsPlugin) : ViewportOverlay() {
                     Text("${client.levels[skill.id]}", color = Color.White, fontSize = 14.sp, modifier = Modifier.align(Alignment.CenterHorizontally))
                 }
                 LinearProgressIndicator(
-                    modifier = Modifier.fillMaxWidth().height((height.value.dp / 4) * 3).clip(RoundedCornerShape(4.dp)).align(Alignment.CenterVertically),
+                    modifier = Modifier.width(115.dp).height((height.value.dp / 4) * 3).clip(RoundedCornerShape(4.dp)).align(Alignment.CenterVertically),
                     backgroundColor = meteor.ui.compose.Colors.surfaceDarker.value,
                     progress = getLevelProgress(skill),
                     color = meteor.ui.compose.Colors.secondary.value
                 )
+                Spacer(modifier = Modifier.width(2.dp))
+                Divider(color = Color.DarkGray, modifier = Modifier.width(1.dp).fillMaxHeight())
+                Spacer(modifier = Modifier.width(2.dp))
+                Column(modifier = Modifier.size(40.dp)) {
+                    Box(modifier = Modifier.fillMaxSize()) {
+                        Text(String.format("%.2f", getLevelProgress(skill) * 100), color = Color.White, fontSize = 12.sp, modifier = Modifier.align(Alignment.Center))
+
+                    }
+                }
             }
         }
     }

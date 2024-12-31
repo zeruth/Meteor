@@ -1,5 +1,6 @@
 package meteor.ui.swing
 
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.ui.unit.dp
 import meteor.Constants.RS_DIMENSIONS
 import meteor.Main
@@ -12,12 +13,14 @@ import meteor.ui.compose.components.GamePanel.xPadding
 import meteor.ui.compose.components.GamePanel.yPadding
 import meteor.ui.compose.components.Window.gameWidth
 import meteor.ui.compose.components.Window.panelOpen
+import meteor.ui.compose.overlay.ViewportOverlayRoot
 import meteor.ui.config.AspectMode
 import meteor.ui.config.CPUFilter
-import meteor.ui.config.RenderMode
 import org.rationalityfrontline.kevent.KEVENT
 import java.awt.*
 import java.awt.image.BufferedImage
+import java.time.Instant
+import java.util.concurrent.ConcurrentLinkedQueue
 import javax.swing.JPanel
 
 
@@ -28,6 +31,23 @@ class PostProcessGamePanel : JPanel() {
     private var graphics2D: Graphics2D? = null
     private val hints = RenderingHints(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BILINEAR)
     private var loading = true
+    companion object {
+        private val swingRenderTimes = ConcurrentLinkedQueue<Pair<Instant, Long>>()
+        val swingFPS = mutableStateOf(0)
+
+        fun getAverageRenderTime(): Int {
+            removeOldEntries()
+            val times = swingRenderTimes.map { it.second }
+            return if (times.isNotEmpty()) times.average().toInt() else 1
+        }
+
+        private fun removeOldEntries() {
+            val cutoff = Instant.now().minusSeconds(1)
+            while (swingRenderTimes.peek()?.first?.isBefore(cutoff) == true) {
+                swingRenderTimes.poll()
+            }
+        }
+    }
 
     init {
         //Loading
@@ -60,6 +80,11 @@ class PostProcessGamePanel : JPanel() {
             drawToSurface(it, finalImage)
         }
         Main.swingTime.value = System.currentTimeMillis() - timer
+        val renderTime = (Main.swingTime.value).coerceAtLeast(1)
+        val now = Instant.now()
+        swingRenderTimes.add(now to renderTime)
+        removeOldEntries()
+        swingFPS.value = swingRenderTimes.size
     }
 
     private fun updateSizeAndScale(finalImage: BufferedImage) {

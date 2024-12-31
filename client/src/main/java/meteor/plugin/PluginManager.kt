@@ -3,6 +3,7 @@ package meteor.plugin
 import meteor.Logger
 import meteor.plugin.account.AccountPlugin
 import meteor.plugin.debug.DebugPlugin
+import meteor.plugin.discord.DiscordPlugin
 import meteor.plugin.rendering.RenderingPlugin
 import meteor.plugin.stretchedmode.StretchedModePlugin
 import meteor.plugin.server.ServerPlugin
@@ -18,6 +19,7 @@ object PluginManager {
     init {
         plugins.add(AccountPlugin())
         plugins.add(DebugPlugin())
+        plugins.add(DiscordPlugin())
         //plugins.add(ServerPlugin())
         plugins.add(InfoBarsPlugin())
         plugins.add(LoginScreenPlugin())
@@ -35,7 +37,7 @@ object PluginManager {
         logger.info("Loaded ${plugins.size} plugins (${System.currentTimeMillis() - startTime}ms)")
     }
 
-    inline fun <reified P : Plugin> get(): P {
-        return plugins.filterIsInstance<P>().first()
+    inline fun <reified P : Plugin> get(): P? {
+        return plugins.filterIsInstance<P>().firstOrNull()
     }
 }

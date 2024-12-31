@@ -1,8 +1,6 @@
 package meteor.ui.compose.components.sidebar
 
-import androidx.compose.foundation.Image
-import androidx.compose.foundation.background
-import androidx.compose.foundation.clickable
+import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.runtime.Composable
@@ -20,13 +18,14 @@ import meteor.ui.compose.Colors.surfaceDark
 import meteor.ui.compose.components.Window.panelOpen
 import meteor.ui.compose.components.Window.sidebarWidth
 import meteor.ui.compose.components.buttons.CloseMeteorButton
+import meteor.ui.compose.components.buttons.DiscordStatusButton
 import meteor.ui.compose.components.buttons.FullscreenToggleButton
 import meteor.ui.compose.components.info.InfoButton
 import meteor.ui.compose.components.panel.PanelComposables.secondaryContent
 import meteor.ui.compose.components.plugins.PluginsButton
 
 object SidebarComposables {
-    val sidebarButtons = arrayListOf(PluginsButton(), InfoButton(), FullscreenToggleButton())
+    val sidebarButtons = arrayListOf(PluginsButton(), DiscordStatusButton(), InfoButton(), FullscreenToggleButton())
     val padding = mutableStateOf(5.dp)
     val buttonSize = mutableStateOf(sidebarWidth.value - padding.value)
     var lastButtonClicked = mutableStateOf<SidebarButton?>(null)
