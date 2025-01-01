@@ -6,7 +6,6 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.key
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -16,15 +15,12 @@ import androidx.compose.ui.unit.dp
 import compose.icons.LineAwesomeIcons
 import compose.icons.lineawesomeicons.InfoCircleSolid
 import meteor.Main
-import meteor.Main.forceRecomposition
 import meteor.Main.version
 import meteor.ui.compose.Colors
 import meteor.ui.compose.Colors.surface
 import meteor.ui.compose.components.GeneralComposables.SidedNode
 import meteor.ui.compose.components.panel.PanelComposables
-import meteor.ui.compose.overlay.ViewportOverlayRoot
 import meteor.ui.compose.components.sidebar.SidebarButton
-import meteor.ui.swing.PostProcessGamePanel
 import meteor.ui.swing.PostProcessGamePanel.Companion.swingFPS
 import java.time.Instant
 import java.util.concurrent.ConcurrentLinkedQueue
@@ -118,7 +114,7 @@ class InfoButton : SidebarButton(icon = LineAwesomeIcons.InfoCircleSolid) {
             SidedNode(30,
                 left = @Composable {
                     Spacer(Modifier.width(4.dp))
-                    Text("Swing-UI", color = Colors.secondary.value, modifier = Modifier.align(Alignment.CenterVertically))
+                    Text("Swing-Draw", color = Colors.secondary.value, modifier = Modifier.align(Alignment.CenterVertically))
                 },
                 right = @Composable {
                     Text(
@@ -132,7 +128,7 @@ class InfoButton : SidebarButton(icon = LineAwesomeIcons.InfoCircleSolid) {
             SidedNode(30,
                 left = @Composable {
                     Spacer(Modifier.width(4.dp))
-                    Text("Compose-UI", color = Colors.secondary.value, modifier = Modifier.align(Alignment.CenterVertically))
+                    Text("Compose-Draw", color = Colors.secondary.value, modifier = Modifier.align(Alignment.CenterVertically))
                 },
                 right = @Composable {
                     Text(
@@ -146,44 +142,7 @@ class InfoButton : SidebarButton(icon = LineAwesomeIcons.InfoCircleSolid) {
             SidedNode(30,
                 left = @Composable {
                     Spacer(Modifier.width(4.dp))
-                    Text("Compose-Canvas", color = Colors.secondary.value, modifier = Modifier.align(Alignment.CenterVertically))
-                },
-                right = @Composable {
-                    Text(
-                        "${ViewportOverlayRoot.canvasRenderTime.value}ms",
-                        color = Colors.secondary.value,
-                        modifier = Modifier.align(Alignment.CenterVertically)
-                    )
-                    Spacer(Modifier.width(4.dp))
-                })
-
-            val renderTime = (ViewportOverlayRoot.canvasRenderTime.value + Main.composeTime.value).coerceAtLeast(1)
-            val now = Instant.now()
-            composeRenderTimes.add(now to renderTime)
-            removeOldEntries()
-            key(forceRecomposition.value) {
-                composeFPS.value = 1000 / getAverageComposeRenderTime()
-            }
-
-            Spacer(Modifier.height(2.dp))
-            SidedNode(30,
-                left = @Composable {
-                    Spacer(Modifier.width(4.dp))
-                    Text("Compose(Game) FPS (1sec Avg)", color = Colors.secondary.value, modifier = Modifier.align(Alignment.CenterVertically))
-                },
-                right = @Composable {
-                    Text(
-                        "${composeFPS.value} fps",
-                        color = Colors.secondary.value,
-                        modifier = Modifier.align(Alignment.CenterVertically)
-                    )
-                    Spacer(Modifier.width(4.dp))
-                })
-            Spacer(Modifier.height(2.dp))
-            SidedNode(30,
-                left = @Composable {
-                    Spacer(Modifier.width(4.dp))
-                    Text("Swing(Game) FPS (1sec Avg)", color = Colors.secondary.value, modifier = Modifier.align(Alignment.CenterVertically))
+                    Text("Swing-GameDraw FPS (1sec Avg)", color = Colors.secondary.value, modifier = Modifier.align(Alignment.CenterVertically))
                 },
                 right = @Composable {
                     Text(
@@ -194,12 +153,6 @@ class InfoButton : SidebarButton(icon = LineAwesomeIcons.InfoCircleSolid) {
                     Spacer(Modifier.width(4.dp))
                 })
         }
-    }
-
-    fun getAverageComposeRenderTime(): Int {
-        removeOldEntries()
-        val times = composeRenderTimes.map { it.second }
-        return if (times.isNotEmpty()) times.average().toInt() else 1
     }
 
     private fun removeOldEntries() {
@@ -218,29 +171,6 @@ class InfoButton : SidebarButton(icon = LineAwesomeIcons.InfoCircleSolid) {
                 .align(Alignment.CenterHorizontally)
         ) {
             Column {
-                content.invoke()
-            }
-        }
-    }
-
-    @Composable
-    private fun ColumnScope.BubbleBoxRow(content: @Composable () -> Unit) {
-        Box(
-            Modifier
-                .clip(RoundedCornerShape(10.dp))
-                .background(surface.value)
-                .align(Alignment.CenterHorizontally)
-        ) {
-            Row {
-                content.invoke()
-            }
-        }
-    }
-
-    @Composable
-    private fun ColumnScope.BubbleBoxCentered(content: @Composable () -> Unit) {
-        BubbleBoxColumn {
-            BubbleBoxRow {
                 content.invoke()
             }
         }

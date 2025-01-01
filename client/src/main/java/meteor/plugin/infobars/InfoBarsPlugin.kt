@@ -8,7 +8,6 @@ import net.runelite.api.Skill
 
 class InfoBarsPlugin : Plugin("Info Bars", true) {
     val config = configuration<InfoBarsConfig>()
-    val viewportOverlay = overlay(InfoBarsOverlay(this))
     var experience: IntArray? = null
     var levels: IntArray? = null
     var boostedLevels: IntArray? = null
@@ -39,8 +38,8 @@ class InfoBarsPlugin : Plugin("Info Bars", true) {
                         if (config.ignoreFirstUpdate.get<Boolean>())
                             skipUpdate = true
                     }
-                    if (!skipUpdate)
-                        viewportOverlay.skillUpdates[Skill.from(i)] = System.currentTimeMillis()
+/*                    if (!skipUpdate)
+                        viewportOverlay.skillUpdates[Skill.from(i)] = System.currentTimeMillis()*/
                 }
                 lastExperience[i] = currentSkillXp
             }

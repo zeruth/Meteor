@@ -2,13 +2,9 @@ package meteor.plugin
 
 import meteor.Logger
 import meteor.plugin.account.AccountPlugin
-import meteor.plugin.debug.DebugPlugin
 import meteor.plugin.discord.DiscordPlugin
 import meteor.plugin.rendering.RenderingPlugin
 import meteor.plugin.stretchedmode.StretchedModePlugin
-import meteor.plugin.server.ServerPlugin
-import meteor.plugin.infobars.InfoBarsPlugin
-import meteor.plugin.loginscreen.LoginScreenPlugin
 import meteor.plugin.meteor.MeteorPlugin
 import meteor.plugin.sound.SoundPlugin
 
@@ -18,11 +14,7 @@ object PluginManager {
 
     init {
         plugins.add(AccountPlugin())
-        plugins.add(DebugPlugin())
         plugins.add(DiscordPlugin())
-        //plugins.add(ServerPlugin())
-        plugins.add(InfoBarsPlugin())
-        plugins.add(LoginScreenPlugin())
         plugins.add(MeteorPlugin())
         plugins.add(RenderingPlugin())
         plugins.add(SoundPlugin())

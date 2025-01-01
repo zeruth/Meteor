@@ -11,7 +11,7 @@ object DiscordPresence {
     private val discordClient = RichClient(969159977463848960)
 
     init {
-        discordClient.logger = ILogger.default(level = LogLevel.TRACE)
+        discordClient.logger = ILogger.default(level = LogLevel.INFO)
         discordClient.connect(shouldBlock = true)
     }
 

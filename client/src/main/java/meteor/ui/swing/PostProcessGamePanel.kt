@@ -13,7 +13,6 @@ import meteor.ui.compose.components.GamePanel.xPadding
 import meteor.ui.compose.components.GamePanel.yPadding
 import meteor.ui.compose.components.Window.gameWidth
 import meteor.ui.compose.components.Window.panelOpen
-import meteor.ui.compose.overlay.ViewportOverlayRoot
 import meteor.ui.config.AspectMode
 import meteor.ui.config.CPUFilter
 import org.rationalityfrontline.kevent.KEVENT
