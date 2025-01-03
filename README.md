@@ -3,21 +3,25 @@
 A Kotlin/Compose client built around [Lost-City/Client](https://github.com/2004Scape/Client)  
 [Android port](https://github.com/zeruth/meteor-android)  
 
-![image](https://github.com/zeruth/Meteor/assets/2943260/ceb94f91-15bd-4234-a16c-c9eddea55da3)
+![image](https://github.com/user-attachments/assets/0300fa0d-4194-49ca-87d7-086ed3347661)
 
 Enhancements are nice, but I intend to respect the experience, and the developers of Lost-City.  
     
 ```
 Forbidden features (unless otherwise permitted by Lost-City):  
     artificial input of any kind  
-    pvp context-aware content (ie. effect timers, hiding friends, etc)
     camera zoom / middle mouse rotate  
     menu entry swapping (including changing menu entry text)
-    overlays alerting when to move / pray etc
+    overlays of any kind over the game
+    visual game state tracking in UI form be it swing or compose
 
     Per Pazaz:
     "in general: don’t give yourself an advantage that forces a new meta on the community.
         The original experience should be a viable option for people to play with"
+
+    Per Zeruth:
+        We will absolutely be respecting the project here, if things change regarding content
+        that is forbidden or not, it will be reflected here.
 ```
 
 ```
