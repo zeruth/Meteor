@@ -1,26 +1,28 @@
 package meteor.ui.compose.components
 
+import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.key
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.awt.SwingPanel
-import meteor.Constants
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.FilterQuality
+import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.zIndex
 import meteor.Main
-import meteor.Main.forceRecomposition
+import meteor.ui.swing.PostProcessGamePanel
 
-/**
- * This panel will contain the game view & compose overlays eventually
- */
 object GamePanel {
-    var xPadding = mutableStateOf(0f)
-    var yPadding = mutableStateOf(0f)
-    var stretchedWidth = mutableStateOf(Constants.RS_DIMENSIONS.width)
-    var stretchedHeight = mutableStateOf(Constants.RS_DIMENSIONS.height)
-
     @Composable
     fun Game() {
-        forceRecomposition.value
-        SwingPanel(factory = { Main.gamePanel }, modifier = Modifier.fillMaxSize())
+        //Swing panel isn't actually shown, it provides the client dimensions to work with
+        SwingPanel(factory = { Main.gamePanel }, modifier = Modifier.fillMaxSize().background(Color.Transparent).zIndex(-1f))
+
+        PostProcessGamePanel.imageBitmap.value?.let {
+            Image(it, "", filterQuality = FilterQuality.High, contentScale = ContentScale.FillBounds, modifier = Modifier.fillMaxSize().zIndex(1f))
+        }
     }
 }

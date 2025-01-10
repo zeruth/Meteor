@@ -27,7 +27,6 @@ import java.util.concurrent.ConcurrentLinkedQueue
 
 class InfoButton : SidebarButton(icon = LineAwesomeIcons.InfoCircleSolid) {
     private val composeRenderTimes = ConcurrentLinkedQueue<Pair<Instant, Long>>()
-    val composeFPS = mutableStateOf(0)
 
     override fun onClick() {
         PanelComposables.content.value = InfoPanel()
@@ -152,13 +151,6 @@ class InfoButton : SidebarButton(icon = LineAwesomeIcons.InfoCircleSolid) {
                     )
                     Spacer(Modifier.width(4.dp))
                 })
-        }
-    }
-
-    private fun removeOldEntries() {
-        val cutoff = Instant.now().minusSeconds(1)
-        while (composeRenderTimes.peek()?.first?.isBefore(cutoff) == true) {
-            composeRenderTimes.poll()
         }
     }
 

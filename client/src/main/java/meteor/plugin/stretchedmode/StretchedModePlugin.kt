@@ -10,7 +10,7 @@ import meteor.plugin.Plugin
 import meteor.ui.config.AspectMode
 import org.rationalityfrontline.kevent.KEVENT
 
-class StretchedModePlugin : Plugin("Stretched Mode") {
+class StretchedModePlugin : Plugin("Stretched Mode", cantDisable = true) {
     val config = configuration<StretchedModeConfig>()
     var allowFill = false
 
