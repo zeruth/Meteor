@@ -2,6 +2,7 @@ package meteor.plugin
 
 import meteor.Logger
 import meteor.plugin.discord.DiscordPlugin
+import meteor.plugin.meteor.MeteorPlugin
 
 object PluginManager {
     val plugins = mutableListOf<Plugin>()
@@ -9,6 +10,7 @@ object PluginManager {
 
     init {
         plugins.add(DiscordPlugin())
+        plugins.add(MeteorPlugin())
     }
 
     fun startPlugins() {

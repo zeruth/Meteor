@@ -74,7 +74,8 @@ object SidebarComposables {
                 secondaryContent.value = null
             } else {
                 panelOpen.toggle()
-                MeteorWindow.resetWindowSize()
+                if (windowState.value != MeteorWindow.fullscreenState)
+                    MeteorWindow.resetWindowSize()
             }
         }
         if (lastButtonClicked.value == null) {

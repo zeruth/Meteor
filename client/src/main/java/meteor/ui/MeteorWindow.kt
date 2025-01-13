@@ -16,6 +16,8 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.*
 import meteor.Game.gameImage
 import meteor.Game.loadingImage
+import meteor.plugin.PluginManager
+import meteor.plugin.meteor.MeteorPlugin
 import meteor.ui.GameView.GameViewContainer
 import meteor.ui.GameView.stretchedMode
 import meteor.ui.components.panel.PanelComposables.Panel
@@ -37,13 +39,27 @@ object MeteorWindow {
     val windowState = mutableStateOf(floatingState)
     lateinit var windowInstance: ComposeWindow
 
-    fun resetWindowSize() {
-        var width = 789 + 16 + sidebarWidth.value.value.toInt()
-        if (panelOpen.value)
-            width += configWidth.value.value.toInt()
-        fixedWindowSize = Dimension(width, 532 + 39)
+    var panelWasOpen = false
 
-        windowInstance.size = fixedWindowSize
+    fun resetWindowSize() {
+        val resetBounds = !stretchedMode.value
+        val height = if (resetBounds) fixedWindowSize.height else windowInstance.height
+        var width = if (resetBounds) fixedWindowSize.width else windowInstance.width
+        val meteorPlugin = PluginManager.get<MeteorPlugin>()!!
+
+        if (!meteorPlugin.config.keepWindowSize.get<Boolean>()) {
+            if (panelWasOpen != panelOpen.value) {
+                if (panelOpen.value) {
+                    width += configWidth.value.value.toInt()
+                } else {
+                    width -= configWidth.value.value.toInt()
+                }
+                panelWasOpen = panelOpen.value
+            }
+        }
+
+
+        windowInstance.size = Dimension(width, height)
     }
 
     var panelOpen = mutableStateOf(false)
