@@ -8,31 +8,31 @@ import org.openrs2.deob.annotation.OriginalMember;
 import org.openrs2.deob.annotation.Pc;
 
 // name taken from rsc
-@OriginalClass("client!mc")
+@OriginalClass("client.client!mc")
 public class WordFilter {
 
-	@OriginalMember(owner = "client!mc", name = "j", descriptor = "[I")
+	@OriginalMember(owner = "client.client!mc", name = "j", descriptor = "[I")
 	private static int[] fragments;
 
-	@OriginalMember(owner = "client!mc", name = "k", descriptor = "[[C")
+	@OriginalMember(owner = "client.client!mc", name = "k", descriptor = "[[C")
 	private static char[][] badWords;
 
-	@OriginalMember(owner = "client!mc", name = "l", descriptor = "[[[B")
+	@OriginalMember(owner = "client.client!mc", name = "l", descriptor = "[[[B")
 	private static byte[][][] badCombinations;
 
-	@OriginalMember(owner = "client!mc", name = "m", descriptor = "[[C")
+	@OriginalMember(owner = "client.client!mc", name = "m", descriptor = "[[C")
 	private static char[][] domains;
 
-	@OriginalMember(owner = "client!mc", name = "n", descriptor = "[[C")
+	@OriginalMember(owner = "client.client!mc", name = "n", descriptor = "[[C")
 	private static char[][] tlds;
 
-	@OriginalMember(owner = "client!mc", name = "o", descriptor = "[I")
+	@OriginalMember(owner = "client.client!mc", name = "o", descriptor = "[I")
 	private static int[] tldType;
 
-	@OriginalMember(owner = "client!mc", name = "p", descriptor = "[Ljava/lang/String;")
+	@OriginalMember(owner = "client.client!mc", name = "p", descriptor = "[Ljava/lang/String;")
 	private static final String[] ALLOWLIST = new String[] { "cook", "cook's", "cooks", "seeks", "sheet" };
 
-	@OriginalMember(owner = "client!mc", name = "a", descriptor = "(Lclient!ub;)V")
+	@OriginalMember(owner = "client.client!mc", name = "a", descriptor = "(Lclient!ub;)V")
 	public static void unpack(@OriginalArg(0) Jagfile jag) {
 		@Pc(11) Packet fragments = new Packet(jag.read("fragmentsenc.txt", null));
 		@Pc(21) Packet bad = new Packet(jag.read("badenc.txt", null));
@@ -41,7 +41,7 @@ public class WordFilter {
 		read(bad, domain, fragments, tld);
 	}
 
-	@OriginalMember(owner = "client!mc", name = "a", descriptor = "(Lclient!kb;Lclient!kb;Lclient!kb;Lclient!kb;)V")
+	@OriginalMember(owner = "client.client!mc", name = "a", descriptor = "(Lclient!kb;Lclient!kb;Lclient!kb;Lclient!kb;)V")
 	private static void read(@OriginalArg(1) Packet bad, @OriginalArg(2) Packet domain, @OriginalArg(0) Packet fragments, @OriginalArg(3) Packet tld) {
 		readBadWords(bad);
 		readDomains(domain);
@@ -49,7 +49,7 @@ public class WordFilter {
 		readTld(tld);
 	}
 
-	@OriginalMember(owner = "client!mc", name = "a", descriptor = "(ZLclient!kb;)V")
+	@OriginalMember(owner = "client.client!mc", name = "a", descriptor = "(ZLclient!kb;)V")
 	private static void readTld(@OriginalArg(1) Packet buf) {
 		@Pc(4) int count = buf.g4();
 		tlds = new char[count][];
@@ -64,7 +64,7 @@ public class WordFilter {
 		}
 	}
 
-	@OriginalMember(owner = "client!mc", name = "a", descriptor = "(ILclient!kb;)V")
+	@OriginalMember(owner = "client.client!mc", name = "a", descriptor = "(ILclient!kb;)V")
 	private static void readBadWords(@OriginalArg(1) Packet buf) {
 		@Pc(2) int count = buf.g4();
 		badWords = new char[count][];
@@ -72,14 +72,14 @@ public class WordFilter {
 		readBadCombinations(buf, badWords, badCombinations);
 	}
 
-	@OriginalMember(owner = "client!mc", name = "a", descriptor = "(Lclient!kb;I)V")
+	@OriginalMember(owner = "client.client!mc", name = "a", descriptor = "(Lclient!kb;I)V")
 	private static void readDomains(@OriginalArg(0) Packet buf) {
 		@Pc(2) int count = buf.g4();
 		domains = new char[count][];
 		readDomain(buf, domains);
 	}
 
-	@OriginalMember(owner = "client!mc", name = "b", descriptor = "(ILclient!kb;)V")
+	@OriginalMember(owner = "client.client!mc", name = "b", descriptor = "(ILclient!kb;)V")
 	private static void readFragments(@OriginalArg(1) Packet buf) {
 		fragments = new int[buf.g4()];
 		for (@Pc(5) int i = 0; i < fragments.length; i++) {
@@ -87,7 +87,7 @@ public class WordFilter {
 		}
 	}
 
-	@OriginalMember(owner = "client!mc", name = "a", descriptor = "([[[B[[CLclient!kb;B)V")
+	@OriginalMember(owner = "client.client!mc", name = "a", descriptor = "([[[B[[CLclient!kb;B)V")
 	private static void readBadCombinations(@OriginalArg(2) Packet buf, @OriginalArg(1) char[][] badwords, @OriginalArg(0) byte[][][] badCombinations) {
 		for (@Pc(10) int i = 0; i < badwords.length; i++) {
 			@Pc(17) char[] badword = new char[buf.g1()];
@@ -106,7 +106,7 @@ public class WordFilter {
 		}
 	}
 
-	@OriginalMember(owner = "client!mc", name = "a", descriptor = "(ILclient!kb;[[C)V")
+	@OriginalMember(owner = "client.client!mc", name = "a", descriptor = "(ILclient!kb;[[C)V")
 	private static void readDomain(@OriginalArg(1) Packet buf, @OriginalArg(2) char[][] domains) {
 		for (@Pc(5) int i = 0; i < domains.length; i++) {
 			@Pc(20) char[] domain = new char[buf.g1()];
@@ -117,7 +117,7 @@ public class WordFilter {
 		}
 	}
 
-	@OriginalMember(owner = "client!mc", name = "a", descriptor = "([CI)V")
+	@OriginalMember(owner = "client.client!mc", name = "a", descriptor = "([CI)V")
 	private static void filterCharacters(@OriginalArg(0) char[] in) {
 		@Pc(3) int pos = 0;
 		for (@Pc(5) int i = 0; i < in.length; i++) {
@@ -135,12 +135,12 @@ public class WordFilter {
 		}
 	}
 
-	@OriginalMember(owner = "client!mc", name = "a", descriptor = "(IC)Z")
+	@OriginalMember(owner = "client.client!mc", name = "a", descriptor = "(IC)Z")
 	private static boolean allowCharacter(@OriginalArg(1) char c) {
 		return c >= ' ' && c <= '\u007f' || c == ' ' || c == '\n' || c == '\t' || c == '£' || c == '€';
 	}
 
-	@OriginalMember(owner = "client!mc", name = "a", descriptor = "(Ljava/lang/String;I)Ljava/lang/String;")
+	@OriginalMember(owner = "client.client!mc", name = "a", descriptor = "(Ljava/lang/String;I)Ljava/lang/String;")
 	public static String filter(@OriginalArg(0) String input) {
 		@Pc(3) long start = System.currentTimeMillis();
 		@Pc(6) char[] outputPre = input.toCharArray();
@@ -166,7 +166,7 @@ public class WordFilter {
 		return (new String(output)).trim();
 	}
 
-	@OriginalMember(owner = "client!mc", name = "a", descriptor = "([CI[C)V")
+	@OriginalMember(owner = "client.client!mc", name = "a", descriptor = "([CI[C)V")
 	private static void replaceUpperCases(@OriginalArg(0) char[] in, @OriginalArg(2) char[] unfiltered) {
 		for (@Pc(1) int i = 0; i < unfiltered.length; i++) {
 			if (in[i] != '*' && isUpperCase(unfiltered[i])) {
@@ -175,7 +175,7 @@ public class WordFilter {
 		}
 	}
 
-	@OriginalMember(owner = "client!mc", name = "a", descriptor = "(B[C)V")
+	@OriginalMember(owner = "client.client!mc", name = "a", descriptor = "(B[C)V")
 	private static void formatUpperCases(@OriginalArg(1) char[] in) {
 		@Pc(3) boolean upper = true;
 		for (@Pc(12) int i = 0; i < in.length; i++) {
@@ -192,7 +192,7 @@ public class WordFilter {
 		}
 	}
 
-	@OriginalMember(owner = "client!mc", name = "a", descriptor = "(Z[C)V")
+	@OriginalMember(owner = "client.client!mc", name = "a", descriptor = "(Z[C)V")
 	private static void filterBad(@OriginalArg(1) char[] in) {
 		for (@Pc(3) int passes = 0; passes < 2; passes++) {
 			for (@Pc(10) int i = badWords.length - 1; i >= 0; i--) {
@@ -201,7 +201,7 @@ public class WordFilter {
 		}
 	}
 
-	@OriginalMember(owner = "client!mc", name = "b", descriptor = "(B[C)V")
+	@OriginalMember(owner = "client.client!mc", name = "b", descriptor = "(B[C)V")
 	private static void filterDomains(@OriginalArg(1) char[] in) {
 		@Pc(3) char[] filteredAt = (char[]) in.clone();
 		@Pc(18) char[] at = new char[] { '(', 'a', ')' };
@@ -214,7 +214,7 @@ public class WordFilter {
 		}
 	}
 
-	@OriginalMember(owner = "client!mc", name = "a", descriptor = "([CI[C[C[C)V")
+	@OriginalMember(owner = "client.client!mc", name = "a", descriptor = "([CI[C[C[C)V")
 	private static void filterDomain(@OriginalArg(0) char[] filteredDot, @OriginalArg(2) char[] filteredAt, @OriginalArg(3) char[] domain, @OriginalArg(4) char[] in) {
 		if (domain.length <= in.length) {
 			@Pc(23) int stride;
@@ -275,7 +275,7 @@ public class WordFilter {
 		}
 	}
 
-	@OriginalMember(owner = "client!mc", name = "a", descriptor = "(I[CB[C)I")
+	@OriginalMember(owner = "client.client!mc", name = "a", descriptor = "(I[CB[C)I")
 	private static int getDomainAtFilterStatus(@OriginalArg(0) int end, @OriginalArg(1) char[] a, @OriginalArg(3) char[] b) {
 		if (end == 0) {
 			return 2;
@@ -300,7 +300,7 @@ public class WordFilter {
 		}
 	}
 
-	@OriginalMember(owner = "client!mc", name = "a", descriptor = "([C[CII)I")
+	@OriginalMember(owner = "client.client!mc", name = "a", descriptor = "([C[CII)I")
 	private static int getDomainDotFilterStatus(@OriginalArg(1) char[] a, @OriginalArg(0) char[] b, @OriginalArg(2) int start) {
 		if (start + 1 == a.length) {
 			return 2;
@@ -331,7 +331,7 @@ public class WordFilter {
 		}
 	}
 
-	@OriginalMember(owner = "client!mc", name = "b", descriptor = "([CI)V")
+	@OriginalMember(owner = "client.client!mc", name = "b", descriptor = "([CI)V")
 	private static void filterTld(@OriginalArg(0) char[] in) {
 		@Pc(3) char[] filteredDot = (char[]) in.clone();
 		@Pc(18) char[] dot = new char[] { 'd', 'o', 't' };
@@ -344,7 +344,7 @@ public class WordFilter {
 		}
 	}
 
-	@OriginalMember(owner = "client!mc", name = "a", descriptor = "([CIZ[C[C[C)V")
+	@OriginalMember(owner = "client.client!mc", name = "a", descriptor = "([CIZ[C[C[C)V")
 	private static void filterTld(@OriginalArg(0) char[] filteredSlash, @OriginalArg(1) int type, @OriginalArg(3) char[] chars, @OriginalArg(4) char[] tld, @OriginalArg(5) char[] filteredDot) {
 		@Pc(5) int stride;
 		if (tld.length <= chars.length) {
@@ -473,7 +473,7 @@ public class WordFilter {
 		}
 	}
 
-	@OriginalMember(owner = "client!mc", name = "a", descriptor = "([CZ[CI)I")
+	@OriginalMember(owner = "client.client!mc", name = "a", descriptor = "([CZ[CI)I")
 	private static int getTldDotFilterStatus(@OriginalArg(0) char[] a, @OriginalArg(2) char[] b, @OriginalArg(3) int start) {
 		if (start == 0) {
 			return 2;
@@ -504,7 +504,7 @@ public class WordFilter {
 		}
 	}
 
-	@OriginalMember(owner = "client!mc", name = "a", descriptor = "([CII[C)I")
+	@OriginalMember(owner = "client.client!mc", name = "a", descriptor = "([CII[C)I")
 	private static int getTldSlashFilterStatus(@OriginalArg(0) char[] b, @OriginalArg(2) int end, @OriginalArg(3) char[] a) {
 		if (end + 1 == a.length) {
 			return 2;
@@ -534,7 +534,7 @@ public class WordFilter {
 		}
 	}
 
-	@OriginalMember(owner = "client!mc", name = "a", descriptor = "(B[[B[C[C)V")
+	@OriginalMember(owner = "client.client!mc", name = "a", descriptor = "(B[[B[C[C)V")
 	private static void filter(@OriginalArg(1) byte[][] badCombinations, @OriginalArg(2) char[] chars, @OriginalArg(3) char[] fragment) {
 		if (fragment.length <= chars.length) {
 			@Pc(9) boolean compare = true;
@@ -676,7 +676,7 @@ public class WordFilter {
 		}
 	}
 
-	@OriginalMember(owner = "client!mc", name = "a", descriptor = "(IB[[BB)Z")
+	@OriginalMember(owner = "client.client!mc", name = "a", descriptor = "(IB[[BB)Z")
 	private static boolean comboMatches(@OriginalArg(1) byte a, @OriginalArg(2) byte[][] combos, @OriginalArg(3) byte b) {
 		@Pc(9) int first = 0;
 		if (combos[first][0] == a && combos[first][1] == b) {
@@ -700,7 +700,7 @@ public class WordFilter {
 		return false;
 	}
 
-	@OriginalMember(owner = "client!mc", name = "a", descriptor = "(ICCC)I")
+	@OriginalMember(owner = "client.client!mc", name = "a", descriptor = "(ICCC)I")
 	private static int getEmulatedDomainCharSize(@OriginalArg(1) char c, @OriginalArg(2) char a, @OriginalArg(3) char b) {
 		if (a == b) {
 			return 1;
@@ -721,7 +721,7 @@ public class WordFilter {
 		}
 	}
 
-	@OriginalMember(owner = "client!mc", name = "a", descriptor = "(CCCI)I")
+	@OriginalMember(owner = "client.client!mc", name = "a", descriptor = "(CCCI)I")
 	private static int getEmulatedSize(@OriginalArg(0) char c, @OriginalArg(1) char a, @OriginalArg(2) char b) {
 		if (a == b) {
 			return 1;
@@ -899,7 +899,7 @@ public class WordFilter {
 		}
 	}
 
-	@OriginalMember(owner = "client!mc", name = "b", descriptor = "(IC)B")
+	@OriginalMember(owner = "client.client!mc", name = "b", descriptor = "(IC)B")
 	private static byte getIndex(@OriginalArg(1) char c) {
 		if (c >= 'a' && c <= 'z') {
 			return (byte) (c + 1 - 'a');
@@ -912,7 +912,7 @@ public class WordFilter {
 		}
 	}
 
-	@OriginalMember(owner = "client!mc", name = "a", descriptor = "(I[C)V")
+	@OriginalMember(owner = "client.client!mc", name = "a", descriptor = "(I[C)V")
 	private static void filterFragments(@OriginalArg(1) char[] chars) {
 		@Pc(3) boolean compare = false;
 		@Pc(5) int end = 0;
@@ -954,7 +954,7 @@ public class WordFilter {
 		}
 	}
 
-	@OriginalMember(owner = "client!mc", name = "a", descriptor = "(I[CI)I")
+	@OriginalMember(owner = "client.client!mc", name = "a", descriptor = "(I[CI)I")
 	private static int indexOfNumber(@OriginalArg(1) char[] input, @OriginalArg(2) int off) {
 		for (@Pc(5) int i = off; i < input.length && i >= 0; i++) {
 			if (input[i] >= '0' && input[i] <= '9') {
@@ -964,7 +964,7 @@ public class WordFilter {
 		return -1;
 	}
 
-	@OriginalMember(owner = "client!mc", name = "a", descriptor = "(II[C)I")
+	@OriginalMember(owner = "client.client!mc", name = "a", descriptor = "(II[C)I")
 	private static int indexOfNonNumber(@OriginalArg(1) int off, @OriginalArg(2) char[] input) {
 		@Pc(6) int i = off;
 		while (true) {
@@ -979,12 +979,12 @@ public class WordFilter {
 		}
 	}
 
-	@OriginalMember(owner = "client!mc", name = "a", descriptor = "(CI)Z")
+	@OriginalMember(owner = "client.client!mc", name = "a", descriptor = "(CI)Z")
 	private static boolean isSymbol(@OriginalArg(0) char c) {
 		return !isAlpha(c) && !isNumber(c);
 	}
 
-	@OriginalMember(owner = "client!mc", name = "a", descriptor = "(CB)Z")
+	@OriginalMember(owner = "client.client!mc", name = "a", descriptor = "(CB)Z")
 	private static boolean isLowerCaseAlpha(@OriginalArg(0) char c) {
 		if (c >= 'a' && c <= 'z') {
 			return c == 'v' || c == 'x' || c == 'j' || c == 'q' || c == 'z';
@@ -993,27 +993,27 @@ public class WordFilter {
 		}
 	}
 
-	@OriginalMember(owner = "client!mc", name = "c", descriptor = "(IC)Z")
+	@OriginalMember(owner = "client.client!mc", name = "c", descriptor = "(IC)Z")
 	private static boolean isAlpha(@OriginalArg(1) char c) {
 		return c >= 'a' && c <= 'z' || c >= 'A' && c <= 'Z';
 	}
 
-	@OriginalMember(owner = "client!mc", name = "b", descriptor = "(CI)Z")
+	@OriginalMember(owner = "client.client!mc", name = "b", descriptor = "(CI)Z")
 	private static boolean isNumber(@OriginalArg(0) char c) {
 		return c >= '0' && c <= '9';
 	}
 
-	@OriginalMember(owner = "client!mc", name = "a", descriptor = "(BC)Z")
+	@OriginalMember(owner = "client.client!mc", name = "a", descriptor = "(BC)Z")
 	private static boolean isLowerCase(@OriginalArg(1) char c) {
 		return c >= 'a' && c <= 'z';
 	}
 
-	@OriginalMember(owner = "client!mc", name = "d", descriptor = "(IC)Z")
+	@OriginalMember(owner = "client.client!mc", name = "d", descriptor = "(IC)Z")
 	private static boolean isUpperCase(@OriginalArg(1) char c) {
 		return c >= 'A' && c <= 'Z';
 	}
 
-	@OriginalMember(owner = "client!mc", name = "c", descriptor = "([CI)Z")
+	@OriginalMember(owner = "client.client!mc", name = "c", descriptor = "([CI)Z")
 	private static boolean isBadFragment(@OriginalArg(0) char[] input) {
 		@Pc(3) boolean skip = true;
 		for (@Pc(5) int i = 0; i < input.length; i++) {
@@ -1046,7 +1046,7 @@ public class WordFilter {
 		return false;
 	}
 
-	@OriginalMember(owner = "client!mc", name = "b", descriptor = "(I[C)I")
+	@OriginalMember(owner = "client.client!mc", name = "b", descriptor = "(I[C)I")
 	private static int firstFragmentId(@OriginalArg(1) char[] chars) {
 		if (chars.length > 6) {
 			return 0;

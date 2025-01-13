@@ -1,10 +1,10 @@
 package jagex2.config;
 
 import jagex2.datastruct.LruCache;
-import jagex2.graphics.Draw2D;
-import jagex2.graphics.Draw3D;
+import jagex2.graphics.Pix2D;
+import jagex2.graphics.Pix3D;
 import jagex2.graphics.Model;
-import jagex2.graphics.Pix24;
+import jagex2.graphics.Pix32;
 import jagex2.io.Jagfile;
 import jagex2.io.Packet;
 import org.openrs2.deob.annotation.OriginalArg;
@@ -13,139 +13,139 @@ import org.openrs2.deob.annotation.OriginalMember;
 import org.openrs2.deob.annotation.Pc;
 
 // name taken from rs3
-@OriginalClass("client!cc")
+@OriginalClass("client.client!cc")
 public class ObjType {
 
-	@OriginalMember(owner = "client!cc", name = "e", descriptor = "I")
+	@OriginalMember(owner = "client.client!cc", name = "e", descriptor = "I")
 	private static int count;
 
-	@OriginalMember(owner = "client!cc", name = "f", descriptor = "[I")
+	@OriginalMember(owner = "client.client!cc", name = "f", descriptor = "[I")
 	private static int[] offsets;
 
-	@OriginalMember(owner = "client!cc", name = "g", descriptor = "Lclient!kb;")
+	@OriginalMember(owner = "client.client!cc", name = "g", descriptor = "Lclient!kb;")
 	private static Packet dat;
 
-	@OriginalMember(owner = "client!cc", name = "h", descriptor = "[Lclient!cc;")
-	public static ObjType[] cache;
+	@OriginalMember(owner = "client.client!cc", name = "h", descriptor = "[Lclient!cc;")
+	private static ObjType[] cache;
 
-	@OriginalMember(owner = "client!cc", name = "i", descriptor = "I")
+	@OriginalMember(owner = "client.client!cc", name = "i", descriptor = "I")
 	private static int cachePos;
 
-	@OriginalMember(owner = "client!cc", name = "j", descriptor = "Z")
+	@OriginalMember(owner = "client.client!cc", name = "j", descriptor = "Z")
 	public static boolean membersWorld = true;
 
-	@OriginalMember(owner = "client!cc", name = "k", descriptor = "I")
+	@OriginalMember(owner = "client.client!cc", name = "k", descriptor = "I")
 	public int index = -1;
 
-	@OriginalMember(owner = "client!cc", name = "l", descriptor = "I")
+	@OriginalMember(owner = "client.client!cc", name = "l", descriptor = "I")
 	private int model;
 
-	@OriginalMember(owner = "client!cc", name = "m", descriptor = "Ljava/lang/String;")
+	@OriginalMember(owner = "client.client!cc", name = "m", descriptor = "Ljava/lang/String;")
 	public String name;
 
-	@OriginalMember(owner = "client!cc", name = "n", descriptor = "[B")
+	@OriginalMember(owner = "client.client!cc", name = "n", descriptor = "[B")
 	public String desc;
 
-	@OriginalMember(owner = "client!cc", name = "o", descriptor = "[I")
+	@OriginalMember(owner = "client.client!cc", name = "o", descriptor = "[I")
 	private int[] recol_s;
 
-	@OriginalMember(owner = "client!cc", name = "p", descriptor = "[I")
+	@OriginalMember(owner = "client.client!cc", name = "p", descriptor = "[I")
 	private int[] recol_d;
 
-	@OriginalMember(owner = "client!cc", name = "q", descriptor = "I")
+	@OriginalMember(owner = "client.client!cc", name = "q", descriptor = "I")
 	public int zoom2d;
 
-	@OriginalMember(owner = "client!cc", name = "r", descriptor = "I")
+	@OriginalMember(owner = "client.client!cc", name = "r", descriptor = "I")
 	public int xan2d;
 
-	@OriginalMember(owner = "client!cc", name = "s", descriptor = "I")
+	@OriginalMember(owner = "client.client!cc", name = "s", descriptor = "I")
 	public int yan2d;
 
-	@OriginalMember(owner = "client!cc", name = "t", descriptor = "I")
+	@OriginalMember(owner = "client.client!cc", name = "t", descriptor = "I")
 	public int zan2d;
 
-	@OriginalMember(owner = "client!cc", name = "u", descriptor = "I")
+	@OriginalMember(owner = "client.client!cc", name = "u", descriptor = "I")
 	public int xof2d;
 
-	@OriginalMember(owner = "client!cc", name = "v", descriptor = "I")
+	@OriginalMember(owner = "client.client!cc", name = "v", descriptor = "I")
 	public int yof2d;
 
-	@OriginalMember(owner = "client!cc", name = "w", descriptor = "Z")
+	@OriginalMember(owner = "client.client!cc", name = "w", descriptor = "Z")
 	private boolean code9;
 
-	@OriginalMember(owner = "client!cc", name = "x", descriptor = "I")
+	@OriginalMember(owner = "client.client!cc", name = "x", descriptor = "I")
 	private int code10;
 
-	@OriginalMember(owner = "client!cc", name = "y", descriptor = "Z")
+	@OriginalMember(owner = "client.client!cc", name = "y", descriptor = "Z")
 	public boolean stackable;
 
-	@OriginalMember(owner = "client!cc", name = "z", descriptor = "I")
+	@OriginalMember(owner = "client.client!cc", name = "z", descriptor = "I")
 	public int cost;
 
-	@OriginalMember(owner = "client!cc", name = "A", descriptor = "Z")
+	@OriginalMember(owner = "client.client!cc", name = "A", descriptor = "Z")
 	public boolean members;
 
-	@OriginalMember(owner = "client!cc", name = "B", descriptor = "[Ljava/lang/String;")
+	@OriginalMember(owner = "client.client!cc", name = "B", descriptor = "[Ljava/lang/String;")
 	public String[] op;
 
-	@OriginalMember(owner = "client!cc", name = "C", descriptor = "[Ljava/lang/String;")
+	@OriginalMember(owner = "client.client!cc", name = "C", descriptor = "[Ljava/lang/String;")
 	public String[] iop;
 
-	@OriginalMember(owner = "client!cc", name = "D", descriptor = "I")
+	@OriginalMember(owner = "client.client!cc", name = "D", descriptor = "I")
 	private int manwear;
 
-	@OriginalMember(owner = "client!cc", name = "E", descriptor = "I")
+	@OriginalMember(owner = "client.client!cc", name = "E", descriptor = "I")
 	private int manwear2;
 
-	@OriginalMember(owner = "client!cc", name = "F", descriptor = "B")
+	@OriginalMember(owner = "client.client!cc", name = "F", descriptor = "B")
 	private byte manwearOffsetY;
 
-	@OriginalMember(owner = "client!cc", name = "G", descriptor = "I")
+	@OriginalMember(owner = "client.client!cc", name = "G", descriptor = "I")
 	private int womanwear;
 
-	@OriginalMember(owner = "client!cc", name = "H", descriptor = "I")
+	@OriginalMember(owner = "client.client!cc", name = "H", descriptor = "I")
 	private int womanwear2;
 
-	@OriginalMember(owner = "client!cc", name = "I", descriptor = "B")
+	@OriginalMember(owner = "client.client!cc", name = "I", descriptor = "B")
 	private byte womanwearOffsetY;
 
-	@OriginalMember(owner = "client!cc", name = "J", descriptor = "I")
+	@OriginalMember(owner = "client.client!cc", name = "J", descriptor = "I")
 	private int manwear3;
 
-	@OriginalMember(owner = "client!cc", name = "K", descriptor = "I")
+	@OriginalMember(owner = "client.client!cc", name = "K", descriptor = "I")
 	private int womanwear3;
 
-	@OriginalMember(owner = "client!cc", name = "L", descriptor = "I")
+	@OriginalMember(owner = "client.client!cc", name = "L", descriptor = "I")
 	private int manhead;
 
-	@OriginalMember(owner = "client!cc", name = "M", descriptor = "I")
+	@OriginalMember(owner = "client.client!cc", name = "M", descriptor = "I")
 	private int manhead2;
 
-	@OriginalMember(owner = "client!cc", name = "N", descriptor = "I")
+	@OriginalMember(owner = "client.client!cc", name = "N", descriptor = "I")
 	private int womanhead;
 
-	@OriginalMember(owner = "client!cc", name = "O", descriptor = "I")
+	@OriginalMember(owner = "client.client!cc", name = "O", descriptor = "I")
 	private int womanhead2;
 
-	@OriginalMember(owner = "client!cc", name = "P", descriptor = "[I")
+	@OriginalMember(owner = "client.client!cc", name = "P", descriptor = "[I")
 	public int[] countobj;
 
-	@OriginalMember(owner = "client!cc", name = "Q", descriptor = "[I")
+	@OriginalMember(owner = "client.client!cc", name = "Q", descriptor = "[I")
 	public int[] countco;
 
-	@OriginalMember(owner = "client!cc", name = "R", descriptor = "I")
+	@OriginalMember(owner = "client.client!cc", name = "R", descriptor = "I")
 	public int certlink;
 
-	@OriginalMember(owner = "client!cc", name = "S", descriptor = "I")
+	@OriginalMember(owner = "client.client!cc", name = "S", descriptor = "I")
 	public int certtemplate;
 
-	@OriginalMember(owner = "client!cc", name = "T", descriptor = "Lclient!s;")
+	@OriginalMember(owner = "client.client!cc", name = "T", descriptor = "Lclient!s;")
 	public static LruCache modelCache = new LruCache(50);
 
-	@OriginalMember(owner = "client!cc", name = "U", descriptor = "Lclient!s;")
+	@OriginalMember(owner = "client.client!cc", name = "U", descriptor = "Lclient!s;")
 	public static LruCache iconCache = new LruCache(200);
 
-	@OriginalMember(owner = "client!cc", name = "a", descriptor = "(Lclient!ub;)V")
+	@OriginalMember(owner = "client.client!cc", name = "a", descriptor = "(Lclient!ub;)V")
 	public static void unpack(@OriginalArg(0) Jagfile config) {
 		dat = new Packet(config.read("obj.dat", null));
 		@Pc(21) Packet idx = new Packet(config.read("obj.idx", null));
@@ -165,7 +165,7 @@ public class ObjType {
 		}
 	}
 
-	@OriginalMember(owner = "client!cc", name = "a", descriptor = "(Z)V")
+	@OriginalMember(owner = "client.client!cc", name = "a", descriptor = "(Z)V")
 	public static void unload() {
 		modelCache = null;
 		iconCache = null;
@@ -174,7 +174,7 @@ public class ObjType {
 		dat = null;
 	}
 
-	@OriginalMember(owner = "client!cc", name = "a", descriptor = "(I)Lclient!cc;")
+	@OriginalMember(owner = "client.client!cc", name = "a", descriptor = "(I)Lclient!cc;")
 	public static ObjType get(@OriginalArg(0) int id) {
 		for (@Pc(1) int i = 0; i < 10; i++) {
 			if (cache[i].index == id) {
@@ -203,9 +203,9 @@ public class ObjType {
 		return obj;
 	}
 
-	@OriginalMember(owner = "client!cc", name = "a", descriptor = "(III)Lclient!hb;")
-	public static Pix24 getIcon(@OriginalArg(0) int id, @OriginalArg(2) int count) {
-		@Pc(7) Pix24 icon = (Pix24) iconCache.get(id);
+	@OriginalMember(owner = "client.client!cc", name = "a", descriptor = "(III)Lclient!hb;")
+	public static Pix32 getIcon(@OriginalArg(0) int id, @OriginalArg(2) int count) {
+		@Pc(7) Pix32 icon = (Pix32) iconCache.get(id);
 		if (icon != null && icon.cropH != count && icon.cropH != -1) {
 			icon.unlink();
 			icon = null;
@@ -233,27 +233,27 @@ public class ObjType {
 			}
 		}
 
-		icon = new Pix24(32, 32);
+		icon = new Pix32(32, 32);
 
-		int _cx = Draw3D.centerX;
-		int _cy = Draw3D.centerY;
-		@Pc(80) int[] _loff = Draw3D.lineOffset;
-		@Pc(82) int[] _data = Draw2D.data;
-		@Pc(84) int _w = Draw2D.width2d;
-		@Pc(86) int _h = Draw2D.height2d;
-		@Pc(88) int _l = Draw2D.left;
-		@Pc(90) int _r = Draw2D.right;
-		@Pc(92) int _t = Draw2D.top;
-		@Pc(94) int _b = Draw2D.bottom;
+		int _cx = Pix3D.centerW3D;
+		int _cy = Pix3D.centerH3D;
+		@Pc(80) int[] _loff = Pix3D.lineOffset;
+		@Pc(82) int[] _data = Pix2D.data;
+		@Pc(84) int _w = Pix2D.width2d;
+		@Pc(86) int _h = Pix2D.height2d;
+		@Pc(88) int _l = Pix2D.boundLeft;
+		@Pc(90) int _r = Pix2D.boundRight;
+		@Pc(92) int _t = Pix2D.boundTop;
+		@Pc(94) int _b = Pix2D.boundBottom;
 
-		Draw3D.jagged = false;
-		Draw2D.bind(32, 32, icon.pixels);
-		Draw2D.fillRect(0, 0, 0, 32, 32);
-		Draw3D.init2D();
+		Pix3D.jagged = false;
+		Pix2D.bind(32, 32, icon.pixels);
+		Pix2D.fillRect(0, 0, 0, 32, 32);
+		Pix3D.init2D();
 
 		@Pc(115) Model iModel = obj.getInterfaceModel(1);
-		@Pc(125) int sinPitch = Draw3D.sin[obj.xan2d] * obj.zoom2d >> 16;
-		@Pc(135) int cosPitch = Draw3D.cos[obj.xan2d] * obj.zoom2d >> 16;
+		@Pc(125) int sinPitch = Pix3D.sinTable[obj.xan2d] * obj.zoom2d >> 16;
+		@Pc(135) int cosPitch = Pix3D.cosTable[obj.xan2d] * obj.zoom2d >> 16;
 		iModel.drawSimple(0, obj.yan2d, obj.zan2d, obj.xan2d, obj.xof2d, sinPitch + iModel.maxY / 2 + obj.yof2d, cosPitch + obj.yof2d);
 
 		for (@Pc(168) int x = 31; x >= 0; x--) {
@@ -283,7 +283,7 @@ public class ObjType {
 		}
 
 		if (obj.certtemplate != -1) {
-			@Pc(348) Pix24 linkedIcon = getIcon(obj.certlink, 10);
+			@Pc(348) Pix32 linkedIcon = getIcon(obj.certlink, 10);
 			@Pc(351) int w = linkedIcon.cropW;
 			@Pc(354) int h = linkedIcon.cropH;
 			linkedIcon.cropW = 32;
@@ -294,12 +294,12 @@ public class ObjType {
 		}
 
 		iconCache.put(id, icon);
-		Draw2D.bind(_w, _h, _data);
-		Draw2D.setBounds(_b, _r, _t, _l);
-		Draw3D.centerX = _cx;
-		Draw3D.centerY = _cy;
-		Draw3D.lineOffset = _loff;
-		Draw3D.jagged = true;
+		Pix2D.bind(_w, _h, _data);
+		Pix2D.setClipping(_b, _r, _t, _l);
+		Pix3D.centerW3D = _cx;
+		Pix3D.centerH3D = _cy;
+		Pix3D.lineOffset = _loff;
+		Pix3D.jagged = true;
 		if (obj.stackable) {
 			icon.cropW = 33;
 		} else {
@@ -309,7 +309,7 @@ public class ObjType {
 		return icon;
 	}
 
-	@OriginalMember(owner = "client!cc", name = "a", descriptor = "()V")
+	@OriginalMember(owner = "client.client!cc", name = "a", descriptor = "()V")
 	public void reset() {
 		this.model = 0;
 		this.name = null;
@@ -347,7 +347,7 @@ public class ObjType {
 		this.certtemplate = -1;
 	}
 
-	@OriginalMember(owner = "client!cc", name = "a", descriptor = "(ZLclient!kb;)V")
+	@OriginalMember(owner = "client.client!cc", name = "a", descriptor = "(ZLclient!kb;)V")
 	public void decode(@OriginalArg(1) Packet dat) {
 		while (true) {
 			@Pc(10) int code = dat.g1();
@@ -378,8 +378,10 @@ public class ObjType {
 					this.yof2d -= 65536;
 				}
 			} else if (code == 9) {
+				// animHasAlpha from code10?
 				this.code9 = true;
 			} else if (code == 10) {
+				// seq?
 				this.code10 = dat.g2();
 			} else if (code == 11) {
 				this.stackable = true;
@@ -447,11 +449,13 @@ public class ObjType {
 
 				this.countobj[code - 100] = dat.g2();
 				this.countco[code - 100] = dat.g2();
+			} else {
+				System.out.println("Error unrecognised obj config code: " + code);
 			}
 		}
 	}
 
-	@OriginalMember(owner = "client!cc", name = "b", descriptor = "(I)V")
+	@OriginalMember(owner = "client.client!cc", name = "b", descriptor = "(I)V")
 	public void toCertificate() {
 		@Pc(3) ObjType template = get(this.certtemplate);
 		this.model = template.model;
@@ -479,7 +483,7 @@ public class ObjType {
 		this.stackable = true;
 	}
 
-	@OriginalMember(owner = "client!cc", name = "c", descriptor = "(I)Lclient!eb;")
+	@OriginalMember(owner = "client.client!cc", name = "c", descriptor = "(I)Lclient!eb;")
 	public Model getInterfaceModel(@OriginalArg(0) int count) {
 		if (this.countobj != null && count > 1) {
 			@Pc(9) int id = -1;
@@ -512,7 +516,7 @@ public class ObjType {
 		return model;
 	}
 
-	@OriginalMember(owner = "client!cc", name = "a", descriptor = "(BI)Lclient!eb;")
+	@OriginalMember(owner = "client.client!cc", name = "a", descriptor = "(BI)Lclient!eb;")
 	public Model getWornModel(@OriginalArg(1) int gender) {
 		@Pc(4) int id1 = this.manwear;
 		if (gender == 1) {
@@ -562,7 +566,7 @@ public class ObjType {
 		return model;
 	}
 
-	@OriginalMember(owner = "client!cc", name = "a", descriptor = "(II)Lclient!eb;")
+	@OriginalMember(owner = "client.client!cc", name = "a", descriptor = "(II)Lclient!eb;")
 	public Model getHeadModel(@OriginalArg(1) int gender) {
 		@Pc(2) int head1 = this.manhead;
 		if (gender == 1) {

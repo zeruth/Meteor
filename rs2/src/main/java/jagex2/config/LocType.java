@@ -10,7 +10,7 @@ import org.openrs2.deob.annotation.OriginalMember;
 import org.openrs2.deob.annotation.Pc;
 
 // name taken from rs3
-@OriginalClass("client!ac")
+@OriginalClass("client.client!ac")
 public class LocType {
 
 	// shapes
@@ -38,130 +38,130 @@ public class LocType {
 	public static final int ROOFEDGE_L = 20;
 	public static final int ROOFEDGE_SQUARECORNER = 21;
 
-	@OriginalMember(owner = "client!ac", name = "c", descriptor = "Z")
+	@OriginalMember(owner = "client.client!ac", name = "c", descriptor = "Z")
 	public static boolean reset;
 
-	@OriginalMember(owner = "client!ac", name = "d", descriptor = "I")
+	@OriginalMember(owner = "client.client!ac", name = "d", descriptor = "I")
 	private static int count;
 
-	@OriginalMember(owner = "client!ac", name = "e", descriptor = "[I")
+	@OriginalMember(owner = "client.client!ac", name = "e", descriptor = "[I")
 	private static int[] offsets;
 
-	@OriginalMember(owner = "client!ac", name = "f", descriptor = "Lclient!kb;")
+	@OriginalMember(owner = "client.client!ac", name = "f", descriptor = "Lclient!kb;")
 	private static Packet dat;
 
-	@OriginalMember(owner = "client!ac", name = "g", descriptor = "[Lclient!ac;")
+	@OriginalMember(owner = "client.client!ac", name = "g", descriptor = "[Lclient!ac;")
 	private static LocType[] cache;
 
-	@OriginalMember(owner = "client!ac", name = "h", descriptor = "I")
+	@OriginalMember(owner = "client.client!ac", name = "h", descriptor = "I")
 	private static int cachePos;
 
-	@OriginalMember(owner = "client!ac", name = "i", descriptor = "I")
+	@OriginalMember(owner = "client.client!ac", name = "i", descriptor = "I")
 	public int index = -1;
 
-	@OriginalMember(owner = "client!ac", name = "j", descriptor = "[I")
+	@OriginalMember(owner = "client.client!ac", name = "j", descriptor = "[I")
 	private int[] models;
 
-	@OriginalMember(owner = "client!ac", name = "k", descriptor = "[I")
+	@OriginalMember(owner = "client.client!ac", name = "k", descriptor = "[I")
 	private int[] shapes;
 
-	@OriginalMember(owner = "client!ac", name = "l", descriptor = "Ljava/lang/String;")
+	@OriginalMember(owner = "client.client!ac", name = "l", descriptor = "Ljava/lang/String;")
 	public String name;
 
-	@OriginalMember(owner = "client!ac", name = "m", descriptor = "[B")
+	@OriginalMember(owner = "client.client!ac", name = "m", descriptor = "[B")
 	public String desc;
 
-	@OriginalMember(owner = "client!ac", name = "n", descriptor = "[I")
+	@OriginalMember(owner = "client.client!ac", name = "n", descriptor = "[I")
 	private int[] recol_s;
 
-	@OriginalMember(owner = "client!ac", name = "o", descriptor = "[I")
+	@OriginalMember(owner = "client.client!ac", name = "o", descriptor = "[I")
 	private int[] recol_d;
 
-	@OriginalMember(owner = "client!ac", name = "p", descriptor = "I")
+	@OriginalMember(owner = "client.client!ac", name = "p", descriptor = "I")
 	public int width;
 
-	@OriginalMember(owner = "client!ac", name = "q", descriptor = "I")
+	@OriginalMember(owner = "client.client!ac", name = "q", descriptor = "I")
 	public int length;
 
-	@OriginalMember(owner = "client!ac", name = "r", descriptor = "Z")
+	@OriginalMember(owner = "client.client!ac", name = "r", descriptor = "Z")
 	public boolean blockwalk;
 
-	@OriginalMember(owner = "client!ac", name = "s", descriptor = "Z")
+	@OriginalMember(owner = "client.client!ac", name = "s", descriptor = "Z")
 	public boolean blockrange;
 
-	@OriginalMember(owner = "client!ac", name = "t", descriptor = "Z")
+	@OriginalMember(owner = "client.client!ac", name = "t", descriptor = "Z")
 	public boolean active;
 
-	@OriginalMember(owner = "client!ac", name = "u", descriptor = "Z")
+	@OriginalMember(owner = "client.client!ac", name = "u", descriptor = "Z")
 	private boolean hillskew;
 
-	@OriginalMember(owner = "client!ac", name = "v", descriptor = "Z")
+	@OriginalMember(owner = "client.client!ac", name = "v", descriptor = "Z")
 	private boolean sharelight;
 
-	@OriginalMember(owner = "client!ac", name = "w", descriptor = "Z")
+	@OriginalMember(owner = "client.client!ac", name = "w", descriptor = "Z")
 	public boolean occlude;
 
-	@OriginalMember(owner = "client!ac", name = "x", descriptor = "I")
+	@OriginalMember(owner = "client.client!ac", name = "x", descriptor = "I")
 	public int anim;
 
-	@OriginalMember(owner = "client!ac", name = "y", descriptor = "I")
+	@OriginalMember(owner = "client.client!ac", name = "y", descriptor = "I")
 	public int wallwidth;
 
-	@OriginalMember(owner = "client!ac", name = "z", descriptor = "B")
+	@OriginalMember(owner = "client.client!ac", name = "z", descriptor = "B")
 	private byte ambient;
 
-	@OriginalMember(owner = "client!ac", name = "A", descriptor = "B")
+	@OriginalMember(owner = "client.client!ac", name = "A", descriptor = "B")
 	private byte contrast;
 
-	@OriginalMember(owner = "client!ac", name = "B", descriptor = "[Ljava/lang/String;")
+	@OriginalMember(owner = "client.client!ac", name = "B", descriptor = "[Ljava/lang/String;")
 	public String[] op;
 
-	@OriginalMember(owner = "client!ac", name = "C", descriptor = "Z")
-	private boolean disposeAlpha;
+	@OriginalMember(owner = "client.client!ac", name = "C", descriptor = "Z")
+	private boolean animHasAlpha;
 
-	@OriginalMember(owner = "client!ac", name = "D", descriptor = "I")
+	@OriginalMember(owner = "client.client!ac", name = "D", descriptor = "I")
 	public int mapfunction;
 
-	@OriginalMember(owner = "client!ac", name = "E", descriptor = "I")
+	@OriginalMember(owner = "client.client!ac", name = "E", descriptor = "I")
 	public int mapscene;
 
-	@OriginalMember(owner = "client!ac", name = "F", descriptor = "Z")
+	@OriginalMember(owner = "client.client!ac", name = "F", descriptor = "Z")
 	private boolean mirror;
 
-	@OriginalMember(owner = "client!ac", name = "G", descriptor = "Z")
+	@OriginalMember(owner = "client.client!ac", name = "G", descriptor = "Z")
 	public boolean shadow;
 
-	@OriginalMember(owner = "client!ac", name = "H", descriptor = "I")
+	@OriginalMember(owner = "client.client!ac", name = "H", descriptor = "I")
 	private int resizex;
 
-	@OriginalMember(owner = "client!ac", name = "I", descriptor = "I")
+	@OriginalMember(owner = "client.client!ac", name = "I", descriptor = "I")
 	private int resizey;
 
-	@OriginalMember(owner = "client!ac", name = "J", descriptor = "I")
+	@OriginalMember(owner = "client.client!ac", name = "J", descriptor = "I")
 	private int resizez;
 
-	@OriginalMember(owner = "client!ac", name = "K", descriptor = "I")
+	@OriginalMember(owner = "client.client!ac", name = "K", descriptor = "I")
 	private int offsetx;
 
-	@OriginalMember(owner = "client!ac", name = "L", descriptor = "I")
+	@OriginalMember(owner = "client.client!ac", name = "L", descriptor = "I")
 	private int offsety;
 
-	@OriginalMember(owner = "client!ac", name = "M", descriptor = "I")
+	@OriginalMember(owner = "client.client!ac", name = "M", descriptor = "I")
 	private int offsetz;
 
-	@OriginalMember(owner = "client!ac", name = "N", descriptor = "I")
+	@OriginalMember(owner = "client.client!ac", name = "N", descriptor = "I")
 	public int forceapproach;
 
-	@OriginalMember(owner = "client!ac", name = "O", descriptor = "Z")
+	@OriginalMember(owner = "client.client!ac", name = "O", descriptor = "Z")
 	public boolean forcedecor;
 
-	@OriginalMember(owner = "client!ac", name = "P", descriptor = "Lclient!s;")
+	@OriginalMember(owner = "client.client!ac", name = "P", descriptor = "Lclient!s;")
 	public static LruCache modelCacheStatic = new LruCache(500);
 
-	@OriginalMember(owner = "client!ac", name = "Q", descriptor = "Lclient!s;")
+	@OriginalMember(owner = "client.client!ac", name = "Q", descriptor = "Lclient!s;")
 	public static LruCache modelCacheDynamic = new LruCache(30);
 
-	@OriginalMember(owner = "client!ac", name = "a", descriptor = "(Lclient!ub;)V")
+	@OriginalMember(owner = "client.client!ac", name = "a", descriptor = "(Lclient!ub;)V")
 	public static void unpack(@OriginalArg(0) Jagfile config) {
 		dat = new Packet(config.read("loc.dat", null));
 		@Pc(21) Packet idx = new Packet(config.read("loc.idx", null));
@@ -181,7 +181,7 @@ public class LocType {
 		}
 	}
 
-	@OriginalMember(owner = "client!ac", name = "a", descriptor = "(Z)V")
+	@OriginalMember(owner = "client.client!ac", name = "a", descriptor = "(Z)V")
 	public static void unload() {
 		modelCacheStatic = null;
 		modelCacheDynamic = null;
@@ -190,7 +190,7 @@ public class LocType {
 		dat = null;
 	}
 
-	@OriginalMember(owner = "client!ac", name = "a", descriptor = "(I)Lclient!ac;")
+	@OriginalMember(owner = "client.client!ac", name = "a", descriptor = "(I)Lclient!ac;")
 	public static LocType get(@OriginalArg(0) int id) {
 		for (@Pc(1) int i = 0; i < 10; i++) {
 			if (cache[i].index == id) {
@@ -207,7 +207,7 @@ public class LocType {
 		return loc;
 	}
 
-	@OriginalMember(owner = "client!ac", name = "a", descriptor = "()V")
+	@OriginalMember(owner = "client.client!ac", name = "a", descriptor = "()V")
 	public void reset() {
 		this.models = null;
 		this.shapes = null;
@@ -228,7 +228,7 @@ public class LocType {
 		this.ambient = 0;
 		this.contrast = 0;
 		this.op = null;
-		this.disposeAlpha = false;
+		this.animHasAlpha = false;
 		this.mapfunction = -1;
 		this.mapscene = -1;
 		this.mirror = false;
@@ -243,7 +243,7 @@ public class LocType {
 		this.forcedecor = false;
 	}
 
-	@OriginalMember(owner = "client!ac", name = "a", descriptor = "(ZLclient!kb;)V")
+	@OriginalMember(owner = "client.client!ac", name = "a", descriptor = "(ZLclient!kb;)V")
 	public void decode(@OriginalArg(1) Packet dat) {
 		@Pc(5) int active = -1;
 
@@ -292,7 +292,7 @@ public class LocType {
 					this.anim = -1;
 				}
 			} else if (code == 25) {
-				this.disposeAlpha = true;
+				this.animHasAlpha = true;
 			} else if (code == 28) {
 				this.wallwidth = dat.g1();
 			} else if (code == 29) {
@@ -341,6 +341,8 @@ public class LocType {
 				this.offsetz = dat.g2b();
 			} else if (code == 73) {
 				this.forcedecor = true;
+			} else {
+				System.out.println("Error unrecognised loc config code: " + code);
 			}
 		}
 
@@ -357,7 +359,7 @@ public class LocType {
 		}
 	}
 
-	@OriginalMember(owner = "client!ac", name = "a", descriptor = "(IIIIIII)Lclient!eb;")
+	@OriginalMember(owner = "client.client!ac", name = "a", descriptor = "(IIIIIII)Lclient!eb;")
 	public Model getModel(@OriginalArg(0) int shape, @OriginalArg(1) int rotation, @OriginalArg(2) int heightmapSW, @OriginalArg(3) int heightmapSE, @OriginalArg(4) int heightmapNE, @OriginalArg(5) int heightmapNW, @OriginalArg(6) int transformId) {
 		@Pc(3) int shapeIndex = -1;
 		for (@Pc(5) int i = 0; i < this.shapes.length; i++) {
@@ -390,14 +392,14 @@ public class LocType {
 				int groundY = (heightmapSW + heightmapSE + heightmapNE + heightmapNW) / 4;
 
 				for (@Pc(93) int i = 0; i < cached.vertexCount; i++) {
-					@Pc(100) int x = cached.vertexX[i];
-					@Pc(105) int z = cached.vertexZ[i];
+					@Pc(100) int x = cached.verticesX[i];
+					@Pc(105) int z = cached.verticesZ[i];
 
 					@Pc(117) int heightS = heightmapSW + (heightmapSE - heightmapSW) * (x + 64) / 128;
 					@Pc(129) int heightN = heightmapNW + (heightmapNE - heightmapNW) * (x + 64) / 128;
 					int y = heightS + (heightN - heightS) * (z + 64) / 128;
 
-					cached.vertexY[i] += y - groundY;
+					cached.verticesY[i] += y - groundY;
 				}
 
 				cached.calculateBoundsY();
@@ -432,7 +434,7 @@ public class LocType {
 		@Pc(235) boolean scaled = this.resizex != 128 || this.resizey != 128 || this.resizez != 128;
 		@Pc(250) boolean translated = this.offsetx != 0 || this.offsety != 0 || this.offsetz != 0;
 
-		@Pc(284) Model modified = new Model(model, this.recol_s == null, !this.disposeAlpha, rotation == 0 && transformId == -1 && !scaled && !translated);
+		@Pc(284) Model modified = new Model(model, this.recol_s == null, !this.animHasAlpha, rotation == 0 && transformId == -1 && !scaled && !translated);
 		if (transformId != -1) {
 			modified.createLabelReferences();
 			modified.applyTransform(transformId);
@@ -474,14 +476,14 @@ public class LocType {
 			int groundY = (heightmapSW + heightmapSE + heightmapNE + heightmapNW) / 4;
 
 			for (@Pc(417) int i = 0; i < modified.vertexCount; i++) {
-				@Pc(424) int x = modified.vertexX[i];
-				@Pc(429) int z = modified.vertexZ[i];
+				@Pc(424) int x = modified.verticesX[i];
+				@Pc(429) int z = modified.verticesZ[i];
 
 				@Pc(441) int heightS = heightmapSW + (heightmapSE - heightmapSW) * (x + 64) / 128;
 				@Pc(453) int heightN = heightmapNW + (heightmapNE - heightmapNW) * (x + 64) / 128;
 				@Pc(465) int y = heightS + (heightN - heightS) * (z + 64) / 128;
 
-				modified.vertexY[i] += y - groundY;
+				modified.verticesY[i] += y - groundY;
 			}
 
 			modified.calculateBoundsY();

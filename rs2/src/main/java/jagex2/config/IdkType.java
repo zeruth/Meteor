@@ -9,34 +9,34 @@ import org.openrs2.deob.annotation.OriginalMember;
 import org.openrs2.deob.annotation.Pc;
 
 // name taken from rs3
-@OriginalClass("client!gc")
+@OriginalClass("client.client!gc")
 public class IdkType {
 
-	@OriginalMember(owner = "client!gc", name = "d", descriptor = "I")
+	@OriginalMember(owner = "client.client!gc", name = "d", descriptor = "I")
 	public static int count;
 
-	@OriginalMember(owner = "client!gc", name = "e", descriptor = "[Lclient!gc;")
+	@OriginalMember(owner = "client.client!gc", name = "e", descriptor = "[Lclient!gc;")
 	public static IdkType[] instances;
 
-	@OriginalMember(owner = "client!gc", name = "f", descriptor = "I")
+	@OriginalMember(owner = "client.client!gc", name = "f", descriptor = "I")
 	public int type = -1;
 
-	@OriginalMember(owner = "client!gc", name = "g", descriptor = "[I")
+	@OriginalMember(owner = "client.client!gc", name = "g", descriptor = "[I")
 	private int[] models;
 
-	@OriginalMember(owner = "client!gc", name = "h", descriptor = "[I")
+	@OriginalMember(owner = "client.client!gc", name = "h", descriptor = "[I")
 	private final int[] recol_s = new int[6];
 
-	@OriginalMember(owner = "client!gc", name = "i", descriptor = "[I")
+	@OriginalMember(owner = "client.client!gc", name = "i", descriptor = "[I")
 	private final int[] recol_d = new int[6];
 
-	@OriginalMember(owner = "client!gc", name = "j", descriptor = "[I")
+	@OriginalMember(owner = "client.client!gc", name = "j", descriptor = "[I")
 	private final int[] heads = new int[] { -1, -1, -1, -1, -1 };
 
-	@OriginalMember(owner = "client!gc", name = "k", descriptor = "Z")
+	@OriginalMember(owner = "client.client!gc", name = "k", descriptor = "Z")
 	public boolean disable = false;
 
-	@OriginalMember(owner = "client!gc", name = "a", descriptor = "(Lclient!ub;I)V")
+	@OriginalMember(owner = "client.client!gc", name = "a", descriptor = "(Lclient!ub;I)V")
 	public static void unpack(@OriginalArg(0) Jagfile config) {
 		@Pc(9) Packet dat = new Packet(config.read("idk.dat", null));
 		count = dat.g2();
@@ -54,7 +54,7 @@ public class IdkType {
 		}
 	}
 
-	@OriginalMember(owner = "client!gc", name = "a", descriptor = "(ZLclient!kb;)V")
+	@OriginalMember(owner = "client.client!gc", name = "a", descriptor = "(ZLclient!kb;)V")
 	public void decode(@OriginalArg(1) Packet dat) {
 		while (true) {
 			@Pc(8) int code = dat.g1();
@@ -80,12 +80,12 @@ public class IdkType {
 			} else if (code >= 60 && code < 70) {
 				this.heads[code - 60] = dat.g2();
 			} else {
-				System.out.println("Error unrecognised config code: " + code);
+				System.out.println("Error unrecognised idk config code: " + code);
 			}
 		}
 	}
 
-	@OriginalMember(owner = "client!gc", name = "a", descriptor = "()Lclient!eb;")
+	@OriginalMember(owner = "client.client!gc", name = "a", descriptor = "()Lclient!eb;")
 	public Model getModel() {
 		if (this.models == null) {
 			return null;
@@ -110,7 +110,7 @@ public class IdkType {
 		return model;
 	}
 
-	@OriginalMember(owner = "client!gc", name = "a", descriptor = "(Z)Lclient!eb;")
+	@OriginalMember(owner = "client.client!gc", name = "a", descriptor = "(Z)Lclient!eb;")
 	public Model getHeadModel() {
 		@Pc(4) Model[] models = new Model[5];
 

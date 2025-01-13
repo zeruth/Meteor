@@ -3,8 +3,8 @@ package jagex2.dash3d;
 import jagex2.dash3d.entity.Entity;
 import jagex2.dash3d.type.*;
 import jagex2.datastruct.LinkList;
-import jagex2.graphics.Draw2D;
-import jagex2.graphics.Draw3D;
+import jagex2.graphics.Pix2D;
+import jagex2.graphics.Pix3D;
 import jagex2.graphics.Model;
 import org.openrs2.deob.annotation.OriginalArg;
 import org.openrs2.deob.annotation.OriginalClass;
@@ -12,169 +12,169 @@ import org.openrs2.deob.annotation.OriginalMember;
 import org.openrs2.deob.annotation.Pc;
 
 // name taken from rsc
-@OriginalClass("client!r")
+@OriginalClass("client.client!r")
 public class World3D {
 
-	@OriginalMember(owner = "client!r", name = "h", descriptor = "Z")
+	@OriginalMember(owner = "client.client!r", name = "h", descriptor = "Z")
 	public static boolean lowMemory = true;
 
-	@OriginalMember(owner = "client!r", name = "i", descriptor = "I")
+	@OriginalMember(owner = "client.client!r", name = "i", descriptor = "I")
 	private final int maxLevel;
 
-	@OriginalMember(owner = "client!r", name = "j", descriptor = "I")
+	@OriginalMember(owner = "client.client!r", name = "j", descriptor = "I")
 	private final int maxTileX;
 
-	@OriginalMember(owner = "client!r", name = "k", descriptor = "I")
+	@OriginalMember(owner = "client.client!r", name = "k", descriptor = "I")
 	private final int maxTileZ;
 
-	@OriginalMember(owner = "client!r", name = "l", descriptor = "[[[I")
+	@OriginalMember(owner = "client.client!r", name = "l", descriptor = "[[[I")
 	private final int[][][] levelHeightmaps;
 
-	@OriginalMember(owner = "client!r", name = "m", descriptor = "[[[Lclient!cb;")
-	private final Tile[][][] levelTiles;
+	@OriginalMember(owner = "client.client!r", name = "m", descriptor = "[[[Lclient!cb;")
+	private final Ground[][][] levelTiles;
 
-	@OriginalMember(owner = "client!r", name = "n", descriptor = "I")
+	@OriginalMember(owner = "client.client!r", name = "n", descriptor = "I")
 	private int minLevel;
 
-	@OriginalMember(owner = "client!r", name = "o", descriptor = "I")
+	@OriginalMember(owner = "client.client!r", name = "o", descriptor = "I")
 	private int temporaryLocCount;
 
-	@OriginalMember(owner = "client!r", name = "p", descriptor = "[Lclient!p;")
-	private final Loc[] temporaryLocs = new Loc[5000];
+	@OriginalMember(owner = "client.client!r", name = "p", descriptor = "[Lclient!p;")
+	private final Location[] temporaryLocs = new Location[5000];
 
-	@OriginalMember(owner = "client!r", name = "q", descriptor = "[[[I")
+	@OriginalMember(owner = "client.client!r", name = "q", descriptor = "[[[I")
 	private final int[][][] levelTileOcclusionCycles;
 
-	@OriginalMember(owner = "client!r", name = "r", descriptor = "I")
+	@OriginalMember(owner = "client.client!r", name = "r", descriptor = "I")
 	public static int tilesRemaining;
 
-	@OriginalMember(owner = "client!r", name = "s", descriptor = "I")
+	@OriginalMember(owner = "client.client!r", name = "s", descriptor = "I")
 	public static int topLevel;
 
-	@OriginalMember(owner = "client!r", name = "t", descriptor = "I")
+	@OriginalMember(owner = "client.client!r", name = "t", descriptor = "I")
 	public static int cycle;
 
-	@OriginalMember(owner = "client!r", name = "u", descriptor = "I")
+	@OriginalMember(owner = "client.client!r", name = "u", descriptor = "I")
 	public static int minDrawTileX;
 
-	@OriginalMember(owner = "client!r", name = "v", descriptor = "I")
+	@OriginalMember(owner = "client.client!r", name = "v", descriptor = "I")
 	public static int maxDrawTileX;
 
-	@OriginalMember(owner = "client!r", name = "w", descriptor = "I")
+	@OriginalMember(owner = "client.client!r", name = "w", descriptor = "I")
 	public static int minDrawTileZ;
 
-	@OriginalMember(owner = "client!r", name = "x", descriptor = "I")
+	@OriginalMember(owner = "client.client!r", name = "x", descriptor = "I")
 	public static int maxDrawTileZ;
 
-	@OriginalMember(owner = "client!r", name = "y", descriptor = "I")
+	@OriginalMember(owner = "client.client!r", name = "y", descriptor = "I")
 	public static int eyeTileX;
 
-	@OriginalMember(owner = "client!r", name = "z", descriptor = "I")
+	@OriginalMember(owner = "client.client!r", name = "z", descriptor = "I")
 	public static int eyeTileZ;
 
-	@OriginalMember(owner = "client!r", name = "A", descriptor = "I")
+	@OriginalMember(owner = "client.client!r", name = "A", descriptor = "I")
 	public static int eyeX;
 
-	@OriginalMember(owner = "client!r", name = "B", descriptor = "I")
+	@OriginalMember(owner = "client.client!r", name = "B", descriptor = "I")
 	public static int eyeY;
 
-	@OriginalMember(owner = "client!r", name = "C", descriptor = "I")
+	@OriginalMember(owner = "client.client!r", name = "C", descriptor = "I")
 	public static int eyeZ;
 
-	@OriginalMember(owner = "client!r", name = "D", descriptor = "I")
+	@OriginalMember(owner = "client.client!r", name = "D", descriptor = "I")
 	public static int sinEyePitch;
 
-	@OriginalMember(owner = "client!r", name = "E", descriptor = "I")
+	@OriginalMember(owner = "client.client!r", name = "E", descriptor = "I")
 	public static int cosEyePitch;
 
-	@OriginalMember(owner = "client!r", name = "F", descriptor = "I")
+	@OriginalMember(owner = "client.client!r", name = "F", descriptor = "I")
 	public static int sinEyeYaw;
 
-	@OriginalMember(owner = "client!r", name = "G", descriptor = "I")
+	@OriginalMember(owner = "client.client!r", name = "G", descriptor = "I")
 	public static int cosEyeYaw;
 
-	@OriginalMember(owner = "client!r", name = "H", descriptor = "[Lclient!p;")
-	public static Loc[] locBuffer = new Loc[100];
+	@OriginalMember(owner = "client.client!r", name = "H", descriptor = "[Lclient!p;")
+	public static Location[] locBuffer = new Location[100];
 
-	@OriginalMember(owner = "client!r", name = "I", descriptor = "[I")
+	@OriginalMember(owner = "client.client!r", name = "I", descriptor = "[I")
 	public static final int[] WALL_DECORATION_INSET_X = new int[] { 53, -53, -53, 53 };
 
-	@OriginalMember(owner = "client!r", name = "J", descriptor = "[I")
+	@OriginalMember(owner = "client.client!r", name = "J", descriptor = "[I")
 	public static final int[] WALL_DECORATION_INSET_Z = new int[] { -53, -53, 53, 53 };
 
-	@OriginalMember(owner = "client!r", name = "K", descriptor = "[I")
+	@OriginalMember(owner = "client.client!r", name = "K", descriptor = "[I")
 	public static final int[] WALL_DECORATION_OUTSET_X = new int[] { -45, 45, 45, -45 };
 
-	@OriginalMember(owner = "client!r", name = "L", descriptor = "[I")
+	@OriginalMember(owner = "client.client!r", name = "L", descriptor = "[I")
 	public static final int[] WALL_DECORATION_OUTSET_Z = new int[] { 45, 45, -45, -45 };
 
-	@OriginalMember(owner = "client!r", name = "M", descriptor = "Z")
+	@OriginalMember(owner = "client.client!r", name = "M", descriptor = "Z")
 	public static boolean takingInput;
 
-	@OriginalMember(owner = "client!r", name = "N", descriptor = "I")
+	@OriginalMember(owner = "client.client!r", name = "N", descriptor = "I")
 	public static int mouseX;
 
-	@OriginalMember(owner = "client!r", name = "O", descriptor = "I")
+	@OriginalMember(owner = "client.client!r", name = "O", descriptor = "I")
 	public static int mouseY;
 
-	@OriginalMember(owner = "client!r", name = "P", descriptor = "I")
+	@OriginalMember(owner = "client.client!r", name = "P", descriptor = "I")
 	public static int clickTileX = -1;
 
-	@OriginalMember(owner = "client!r", name = "Q", descriptor = "I")
+	@OriginalMember(owner = "client.client!r", name = "Q", descriptor = "I")
 	public static int clickTileZ = -1;
 
-	@OriginalMember(owner = "client!r", name = "R", descriptor = "I")
+	@OriginalMember(owner = "client.client!r", name = "R", descriptor = "I")
 	public static final int LEVEL_COUNT = 4;
 
-	@OriginalMember(owner = "client!r", name = "S", descriptor = "[I")
+	@OriginalMember(owner = "client.client!r", name = "S", descriptor = "[I")
 	public static int[] levelOccluderCount = new int[LEVEL_COUNT];
 
-	@OriginalMember(owner = "client!r", name = "T", descriptor = "[[Lclient!m;")
-	public static Occluder[][] levelOccluders = new Occluder[LEVEL_COUNT][500];
+	@OriginalMember(owner = "client.client!r", name = "T", descriptor = "[[Lclient!m;")
+	public static Occlude[][] levelOccluders = new Occlude[LEVEL_COUNT][500];
 
-	@OriginalMember(owner = "client!r", name = "U", descriptor = "I")
+	@OriginalMember(owner = "client.client!r", name = "U", descriptor = "I")
 	public static int activeOccluderCount;
 
-	@OriginalMember(owner = "client!r", name = "V", descriptor = "[Lclient!m;")
-	public static final Occluder[] activeOccluders = new Occluder[500];
+	@OriginalMember(owner = "client.client!r", name = "V", descriptor = "[Lclient!m;")
+	public static final Occlude[] activeOccluders = new Occlude[500];
 
-	@OriginalMember(owner = "client!r", name = "W", descriptor = "Lclient!ob;")
+	@OriginalMember(owner = "client.client!r", name = "W", descriptor = "Lclient!ob;")
 	public static LinkList drawTileQueue = new LinkList();
 
-	@OriginalMember(owner = "client!r", name = "X", descriptor = "[I")
+	@OriginalMember(owner = "client.client!r", name = "X", descriptor = "[I")
 	public static final int[] FRONT_WALL_TYPES = new int[] { 19, 55, 38, 155, 255, 110, 137, 205, 76 };
 
-	@OriginalMember(owner = "client!r", name = "Y", descriptor = "[I")
+	@OriginalMember(owner = "client.client!r", name = "Y", descriptor = "[I")
 	public static final int[] DIRECTION_ALLOW_WALL_CORNER_TYPE = new int[] { 160, 192, 80, 96, 0, 144, 80, 48, 160 };
 
-	@OriginalMember(owner = "client!r", name = "Z", descriptor = "[I")
+	@OriginalMember(owner = "client.client!r", name = "Z", descriptor = "[I")
 	public static final int[] BACK_WALL_TYPES = new int[] { 76, 8, 137, 4, 0, 1, 38, 2, 19 };
 
-	@OriginalMember(owner = "client!r", name = "ab", descriptor = "[I")
+	@OriginalMember(owner = "client.client!r", name = "ab", descriptor = "[I")
 	public static final int[] WALL_CORNER_TYPE_16_BLOCK_LOC_SPANS = new int[] { 0, 0, 2, 0, 0, 2, 1, 1, 0 };
 
-	@OriginalMember(owner = "client!r", name = "bb", descriptor = "[I")
+	@OriginalMember(owner = "client.client!r", name = "bb", descriptor = "[I")
 	public static final int[] WALL_CORNER_TYPE_32_BLOCK_LOC_SPANS = new int[] { 2, 0, 0, 2, 0, 0, 0, 4, 4 };
 
-	@OriginalMember(owner = "client!r", name = "cb", descriptor = "[I")
+	@OriginalMember(owner = "client.client!r", name = "cb", descriptor = "[I")
 	public static final int[] WALL_CORNER_TYPE_64_BLOCK_LOC_SPANS = new int[] { 0, 4, 4, 8, 0, 0, 8, 0, 0 };
 
-	@OriginalMember(owner = "client!r", name = "db", descriptor = "[I")
+	@OriginalMember(owner = "client.client!r", name = "db", descriptor = "[I")
 	public static final int[] WALL_CORNER_TYPE_128_BLOCK_LOC_SPANS = new int[] { 1, 1, 0, 0, 0, 8, 0, 0, 8 };
 
-	@OriginalMember(owner = "client!r", name = "eb", descriptor = "[I")
+	@OriginalMember(owner = "client.client!r", name = "eb", descriptor = "[I")
 	public static final int[] TEXTURE_HSL = new int[] { 41, 39248, 41, 4643, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 43086, 41, 41, 41, 41, 41, 41, 41, 8602, 41, 28992, 41, 41, 41, 41, 41, 5056, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 41, 3131, 41, 41, 41 };
 
-	@OriginalMember(owner = "client!r", name = "fb", descriptor = "[I")
+	@OriginalMember(owner = "client.client!r", name = "fb", descriptor = "[I")
 	private final int[] mergeIndexA = new int[10000];
 
-	@OriginalMember(owner = "client!r", name = "gb", descriptor = "[I")
+	@OriginalMember(owner = "client.client!r", name = "gb", descriptor = "[I")
 	private final int[] mergeIndexB = new int[10000];
 
-	@OriginalMember(owner = "client!r", name = "hb", descriptor = "I")
+	@OriginalMember(owner = "client.client!r", name = "hb", descriptor = "I")
 	private int tmpMergeIndex;
 
-	@OriginalMember(owner = "client!r", name = "ib", descriptor = "[[I")
+	@OriginalMember(owner = "client.client!r", name = "ib", descriptor = "[[I")
 	private final int[][] MINIMAP_OVERLAY_SHAPE = new int[][] {
 		{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
 		{ 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 }, // PLAIN_SHAPE
@@ -191,7 +191,7 @@ public class World3D {
 		{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 1, 1, 1, 1 }  // TRAPEZIUM_SHAPE
 	};
 
-	@OriginalMember(owner = "client!r", name = "jb", descriptor = "[[I")
+	@OriginalMember(owner = "client.client!r", name = "jb", descriptor = "[[I")
 	private final int[][] MINIMAP_OVERLAY_ROTATION = new int[][] {
 		{ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15 },
 		{ 12, 8, 4, 0, 13, 9, 5, 1, 14, 10, 6, 2, 15, 11, 7, 3 },
@@ -199,42 +199,42 @@ public class World3D {
 		{ 3, 7, 11, 15, 2, 6, 10, 14, 1, 5, 9, 13, 0, 4, 8, 12 }
 	};
 
-	@OriginalMember(owner = "client!r", name = "kb", descriptor = "[[[[Z")
+	@OriginalMember(owner = "client.client!r", name = "kb", descriptor = "[[[[Z")
 	public static boolean[][][][] visibilityMatrix = new boolean[8][32][51][51];
 
-	@OriginalMember(owner = "client!r", name = "lb", descriptor = "[[Z")
+	@OriginalMember(owner = "client.client!r", name = "lb", descriptor = "[[Z")
 	public static boolean[][] visibilityMap;
 
-	@OriginalMember(owner = "client!r", name = "mb", descriptor = "I")
+	@OriginalMember(owner = "client.client!r", name = "mb", descriptor = "I")
 	private static int viewportCenterX;
 
-	@OriginalMember(owner = "client!r", name = "nb", descriptor = "I")
+	@OriginalMember(owner = "client.client!r", name = "nb", descriptor = "I")
 	private static int viewportCenterY;
 
-	@OriginalMember(owner = "client!r", name = "ob", descriptor = "I")
+	@OriginalMember(owner = "client.client!r", name = "ob", descriptor = "I")
 	private static int viewportLeft;
 
-	@OriginalMember(owner = "client!r", name = "pb", descriptor = "I")
+	@OriginalMember(owner = "client.client!r", name = "pb", descriptor = "I")
 	private static int viewportTop;
 
-	@OriginalMember(owner = "client!r", name = "qb", descriptor = "I")
+	@OriginalMember(owner = "client.client!r", name = "qb", descriptor = "I")
 	private static int viewportRight;
 
-	@OriginalMember(owner = "client!r", name = "rb", descriptor = "I")
+	@OriginalMember(owner = "client.client!r", name = "rb", descriptor = "I")
 	private static int viewportBottom;
 
-	@OriginalMember(owner = "client!r", name = "<init>", descriptor = "(I[[[IIII)V")
+	@OriginalMember(owner = "client.client!r", name = "<init>", descriptor = "(I[[[IIII)V")
 	public World3D(@OriginalArg(1) int[][][] levelHeightmaps, @OriginalArg(2) int maxTileZ, @OriginalArg(3) int maxLevel, @OriginalArg(4) int maxTileX) {
 		this.maxLevel = maxLevel;
 		this.maxTileX = maxTileX;
 		this.maxTileZ = maxTileZ;
-		this.levelTiles = new Tile[maxLevel][maxTileX][maxTileZ];
+		this.levelTiles = new Ground[maxLevel][maxTileX][maxTileZ];
 		this.levelTileOcclusionCycles = new int[maxLevel][maxTileX + 1][maxTileZ + 1];
 		this.levelHeightmaps = levelHeightmaps;
 		this.reset();
 	}
 
-	@OriginalMember(owner = "client!r", name = "a", descriptor = "(Z)V")
+	@OriginalMember(owner = "client.client!r", name = "a", descriptor = "(Z)V")
 	public static void unload() {
 		locBuffer = null;
 		levelOccluderCount = null;
@@ -244,9 +244,9 @@ public class World3D {
 		visibilityMap = null;
 	}
 
-	@OriginalMember(owner = "client!r", name = "a", descriptor = "(IIIIIIIII)V")
+	@OriginalMember(owner = "client.client!r", name = "a", descriptor = "(IIIIIIIII)V")
 	public static void addOccluder(@OriginalArg(6) int level, @OriginalArg(4) int type, @OriginalArg(1) int minX, @OriginalArg(7) int minY, @OriginalArg(8) int minZ, @OriginalArg(5) int maxX, @OriginalArg(3) int maxY, @OriginalArg(0) int maxZ) {
-		@Pc(3) Occluder occluder = new Occluder();
+		@Pc(3) Occlude occluder = new Occlude();
 		occluder.minTileX = minX / 128;
 		occluder.maxTileX = maxX / 128;
 		occluder.minTileZ = minZ / 128;
@@ -261,7 +261,7 @@ public class World3D {
 		levelOccluders[level][levelOccluderCount[level]++] = occluder;
 	}
 
-	@OriginalMember(owner = "client!r", name = "a", descriptor = "([IIIBII)V")
+	@OriginalMember(owner = "client.client!r", name = "a", descriptor = "([IIIBII)V")
 	public static void init(@OriginalArg(2) int viewportWidth, @OriginalArg(4) int viewportHeight, @OriginalArg(5) int frustumStart, @OriginalArg(1) int frustumEnd, @OriginalArg(0) int[] pitchDistance) {
 		viewportLeft = 0;
 		viewportTop = 0;
@@ -273,10 +273,10 @@ public class World3D {
 		@Pc(28) boolean[][][][] matrix = new boolean[9][32][53][53];
 		for (@Pc(30) int pitch = 128; pitch <= 384; pitch += 32) {
 			for (int yaw = 0; yaw < 2048; yaw += 64) {
-				sinEyePitch = Model.sin[pitch];
-				cosEyePitch = Model.cos[pitch];
-				sinEyeYaw = Model.sin[yaw];
-				cosEyeYaw = Model.cos[yaw];
+				sinEyePitch = Model.sinTable[pitch];
+				cosEyePitch = Model.cosTable[pitch];
+				sinEyeYaw = Model.sinTable[yaw];
+				cosEyeYaw = Model.cosTable[yaw];
 
 				int pitchLevel = (pitch - 128) / 32;
 				int yawLevel = yaw / 64;
@@ -336,7 +336,7 @@ public class World3D {
 		}
 	}
 
-	@OriginalMember(owner = "client!r", name = "h", descriptor = "(IIII)Z")
+	@OriginalMember(owner = "client.client!r", name = "h", descriptor = "(IIII)Z")
 	private static boolean testPoint(@OriginalArg(0) int x, @OriginalArg(1) int z, @OriginalArg(2) int y) {
 		@Pc(11) int px = z * sinEyeYaw + x * cosEyeYaw >> 16;
 		@Pc(21) int tmp = z * cosEyeYaw - x * sinEyeYaw >> 16;
@@ -351,7 +351,7 @@ public class World3D {
 		return viewportX >= viewportLeft && viewportX <= viewportRight && viewportY >= viewportTop && viewportY <= viewportBottom;
 	}
 
-	@OriginalMember(owner = "client!r", name = "a", descriptor = "(I)V")
+	@OriginalMember(owner = "client.client!r", name = "a", descriptor = "(I)V")
 	public void reset() {
 		for (@Pc(3) int level = 0; level < this.maxLevel; level++) {
 			for (int x = 0; x < this.maxTileX; x++) {
@@ -380,20 +380,20 @@ public class World3D {
 		}
 	}
 
-	@OriginalMember(owner = "client!r", name = "a", descriptor = "(II)V")
+	@OriginalMember(owner = "client.client!r", name = "a", descriptor = "(II)V")
 	public void setMinLevel(@OriginalArg(1) int level) {
 		this.minLevel = level;
 
 		for (@Pc(6) int stx = 0; stx < this.maxTileX; stx++) {
 			for (@Pc(10) int stz = 0; stz < this.maxTileZ; stz++) {
-				this.levelTiles[level][stx][stz] = new Tile(level, stx, stz);
+				this.levelTiles[level][stx][stz] = new Ground(level, stx, stz);
 			}
 		}
 	}
 
-	@OriginalMember(owner = "client!r", name = "a", descriptor = "(IIB)V")
+	@OriginalMember(owner = "client.client!r", name = "a", descriptor = "(IIB)V")
 	public void setBridge(@OriginalArg(1) int stx, @OriginalArg(0) int stz) {
-		@Pc(10) Tile ground = this.levelTiles[0][stx][stz];
+		@Pc(10) Ground ground = this.levelTiles[0][stx][stz];
 		for (@Pc(12) int level = 0; level < 3; level++) {
 			this.levelTiles[level][stx][stz] = this.levelTiles[level + 1][stx][stz];
 			if (this.levelTiles[level][stx][stz] != null) {
@@ -402,16 +402,16 @@ public class World3D {
 		}
 
 		if (this.levelTiles[0][stx][stz] == null) {
-			this.levelTiles[0][stx][stz] = new Tile(0, stx, stz);
+			this.levelTiles[0][stx][stz] = new Ground(0, stx, stz);
 		}
 
 		this.levelTiles[0][stx][stz].bridge = ground;
 		this.levelTiles[3][stx][stz] = null;
 	}
 
-	@OriginalMember(owner = "client!r", name = "a", descriptor = "(IIII)V")
+	@OriginalMember(owner = "client.client!r", name = "a", descriptor = "(IIII)V")
 	public void setDrawLevel(@OriginalArg(0) int level, @OriginalArg(1) int stx, @OriginalArg(2) int stz, @OriginalArg(3) int drawLevel) {
-		@Pc(8) Tile tile = this.levelTiles[level][stx][stz];
+		@Pc(8) Ground tile = this.levelTiles[level][stx][stz];
 		if (tile == null) {
 			return;
 		}
@@ -419,7 +419,7 @@ public class World3D {
 		this.levelTiles[level][stx][stz].drawLevel = drawLevel;
 	}
 
-	@OriginalMember(owner = "client!r", name = "a", descriptor = "(IIIIIIIIIIIIIIIIIIII)V")
+	@OriginalMember(owner = "client.client!r", name = "a", descriptor = "(IIIIIIIIIIIIIIIIIIII)V")
 	public void setTile(@OriginalArg(0) int level, @OriginalArg(1) int x, @OriginalArg(2) int z, @OriginalArg(3) int shape, @OriginalArg(4) int angle, @OriginalArg(5) int textureId, @OriginalArg(6) int southwestY, @OriginalArg(7) int southeastY, @OriginalArg(8) int northeastY, @OriginalArg(9) int northwestY, @OriginalArg(10) int southwestColor, @OriginalArg(11) int southeastColor, @OriginalArg(12) int northeastColor, @OriginalArg(13) int northwestColor, @OriginalArg(14) int southwestColor2, @OriginalArg(15) int southeastColor2, @OriginalArg(16) int northeastColor2, @OriginalArg(17) int northwestColor2, @OriginalArg(18) int backgroundRgb, @OriginalArg(19) int foregroundRgb) {
 		@Pc(14) TileUnderlay underlay;
 		@Pc(16) int l;
@@ -427,7 +427,7 @@ public class World3D {
 			underlay = new TileUnderlay(southwestColor, southeastColor, northeastColor, northwestColor, -1, backgroundRgb, false);
 			for (l = level; l >= 0; l--) {
 				if (this.levelTiles[l][x][z] == null) {
-					this.levelTiles[l][x][z] = new Tile(l, x, z);
+					this.levelTiles[l][x][z] = new Ground(l, x, z);
 				}
 			}
 			this.levelTiles[level][x][z].underlay = underlay;
@@ -435,7 +435,7 @@ public class World3D {
 			underlay = new TileUnderlay(southwestColor2, southeastColor2, northeastColor2, northwestColor2, textureId, foregroundRgb, southwestY == southeastY && southwestY == northeastY && southwestY == northwestY);
 			for (l = level; l >= 0; l--) {
 				if (this.levelTiles[l][x][z] == null) {
-					this.levelTiles[l][x][z] = new Tile(l, x, z);
+					this.levelTiles[l][x][z] = new Ground(l, x, z);
 				}
 			}
 			this.levelTiles[level][x][z].underlay = underlay;
@@ -443,16 +443,16 @@ public class World3D {
 			@Pc(145) TileOverlay overlay = new TileOverlay(x, shape, southeastColor2, southeastY, northeastColor, angle, southwestColor, northwestY, foregroundRgb, southwestColor2, textureId, northwestColor2, backgroundRgb, northeastY, northeastColor2, northwestColor, southwestY, z, southeastColor);
 			for (l = level; l >= 0; l--) {
 				if (this.levelTiles[l][x][z] == null) {
-					this.levelTiles[l][x][z] = new Tile(l, x, z);
+					this.levelTiles[l][x][z] = new Ground(l, x, z);
 				}
 			}
 			this.levelTiles[level][x][z].overlay = overlay;
 		}
 	}
 
-	@OriginalMember(owner = "client!r", name = "a", descriptor = "(Lclient!eb;BIIIIBI)V")
+	@OriginalMember(owner = "client.client!r", name = "a", descriptor = "(Lclient!eb;BIIIIBI)V")
 	public void addGroundDecoration(@OriginalArg(0) Model model, @OriginalArg(5) int tileLevel, @OriginalArg(2) int tileX, @OriginalArg(4) int tileZ, @OriginalArg(7) int y, @OriginalArg(3) int bitset, @OriginalArg(6) byte info) {
-		@Pc(3) GroundDecoration decor = new GroundDecoration();
+		@Pc(3) GroundDecor decor = new GroundDecor();
 		decor.model = model;
 		decor.x = tileX * 128 + 64;
 		decor.z = tileZ * 128 + 64;
@@ -460,14 +460,14 @@ public class World3D {
 		decor.bitset = bitset;
 		decor.info = info;
 		if (this.levelTiles[tileLevel][tileX][tileZ] == null) {
-			this.levelTiles[tileLevel][tileX][tileZ] = new Tile(tileLevel, tileX, tileZ);
+			this.levelTiles[tileLevel][tileX][tileZ] = new Ground(tileLevel, tileX, tileZ);
 		}
-		this.levelTiles[tileLevel][tileX][tileZ].groundDecoration = decor;
+		this.levelTiles[tileLevel][tileX][tileZ].groundDecor = decor;
 	}
 
-	@OriginalMember(owner = "client!r", name = "a", descriptor = "(Lclient!eb;Lclient!eb;IIIIILclient!eb;I)V")
+	@OriginalMember(owner = "client.client!r", name = "a", descriptor = "(Lclient!eb;Lclient!eb;IIIIILclient!eb;I)V")
 	public void addObjStack(@OriginalArg(6) int stx, @OriginalArg(5) int stz, @OriginalArg(2) int y, @OriginalArg(3) int level, @OriginalArg(4) int bitset, @OriginalArg(0) Model topObj, @OriginalArg(7) Model middleObj, @OriginalArg(1) Model bottomObj) {
-		@Pc(3) ObjStack stack = new ObjStack();
+		@Pc(3) GroundObject stack = new GroundObject();
 		stack.topObj = topObj;
 		stack.x = stx * 128 + 64;
 		stack.z = stz * 128 + 64;
@@ -476,7 +476,7 @@ public class World3D {
 		stack.bottomObj = bottomObj;
 		stack.middleObj = middleObj;
 		@Pc(38) int stackOffset = 0;
-		@Pc(47) Tile tile = this.levelTiles[level][stx][stz];
+		@Pc(47) Ground tile = this.levelTiles[level][stx][stz];
 		if (tile != null) {
 			for (@Pc(51) int l = 0; l < tile.locCount; l++) {
 				@Pc(60) int height = tile.locs[l].model.objRaise;
@@ -487,12 +487,12 @@ public class World3D {
 		}
 		stack.offset = stackOffset;
 		if (this.levelTiles[level][stx][stz] == null) {
-			this.levelTiles[level][stx][stz] = new Tile(level, stx, stz);
+			this.levelTiles[level][stx][stz] = new Ground(level, stx, stz);
 		}
-		this.levelTiles[level][stx][stz].objStack = stack;
+		this.levelTiles[level][stx][stz].groundObj = stack;
 	}
 
-	@OriginalMember(owner = "client!r", name = "a", descriptor = "(IIIIILclient!eb;Lclient!eb;IIIB)V")
+	@OriginalMember(owner = "client.client!r", name = "a", descriptor = "(IIIIILclient!eb;Lclient!eb;IIIB)V")
 	public void addWall(@OriginalArg(2) int level, @OriginalArg(7) int tileX, @OriginalArg(9) int tileZ, @OriginalArg(1) int y, @OriginalArg(3) int typeA, @OriginalArg(0) int typeB, @OriginalArg(5) Model modelA, @OriginalArg(6) Model modelB, @OriginalArg(8) int bitset, @OriginalArg(10) byte info) {
 		if (modelA == null && modelB == null) {
 			return;
@@ -510,19 +510,19 @@ public class World3D {
 		wall.typeB = typeB;
 		for (@Pc(54) int l = level; l >= 0; l--) {
 			if (this.levelTiles[l][tileX][tileZ] == null) {
-				this.levelTiles[l][tileX][tileZ] = new Tile(l, tileX, tileZ);
+				this.levelTiles[l][tileX][tileZ] = new Ground(l, tileX, tileZ);
 			}
 		}
 		this.levelTiles[level][tileX][tileZ].wall = wall;
 	}
 
-	@OriginalMember(owner = "client!r", name = "a", descriptor = "(IIIIIIIIILclient!eb;BI)V")
+	@OriginalMember(owner = "client.client!r", name = "a", descriptor = "(IIIIIIIIILclient!eb;BI)V")
 	public void setWallDecoration(@OriginalArg(11) int level, @OriginalArg(8) int tileX, @OriginalArg(1) int tileZ, @OriginalArg(0) int y, @OriginalArg(7) int offsetX, @OriginalArg(2) int offsetZ, @OriginalArg(3) int bitset, @OriginalArg(9) Model model, @OriginalArg(10) byte info, @OriginalArg(4) int angle, @OriginalArg(5) int type) {
 		if (model == null) {
 			return;
 		}
 
-		@Pc(10) WallDecoration decor = new WallDecoration();
+		@Pc(10) Decor decor = new Decor();
 		decor.bitset = bitset;
 		decor.info = info;
 		decor.x = tileX * 128 + offsetX + 64;
@@ -533,13 +533,13 @@ public class World3D {
 		decor.angle = angle;
 		for (@Pc(48) int l = level; l >= 0; l--) {
 			if (this.levelTiles[l][tileX][tileZ] == null) {
-				this.levelTiles[l][tileX][tileZ] = new Tile(l, tileX, tileZ);
+				this.levelTiles[l][tileX][tileZ] = new Ground(l, tileX, tileZ);
 			}
 		}
-		this.levelTiles[level][tileX][tileZ].wallDecoration = decor;
+		this.levelTiles[level][tileX][tileZ].decor = decor;
 	}
 
-	@OriginalMember(owner = "client!r", name = "a", descriptor = "(IIILclient!w;IIIIBLclient!eb;II)Z")
+	@OriginalMember(owner = "client.client!r", name = "a", descriptor = "(IIILclient!w;IIIIBLclient!eb;II)Z")
 	public boolean addLoc(@OriginalArg(2) int level, @OriginalArg(6) int tileX, @OriginalArg(5) int tileZ, @OriginalArg(0) int y, @OriginalArg(9) Model model, @OriginalArg(3) Entity entity, @OriginalArg(4) int bitset, @OriginalArg(8) byte info, @OriginalArg(7) int width, @OriginalArg(11) int length, @OriginalArg(10) int yaw) {
 		if (model == null && entity == null) {
 			return true;
@@ -550,7 +550,7 @@ public class World3D {
 		}
 	}
 
-	@OriginalMember(owner = "client!r", name = "a", descriptor = "(IIIIIIZLclient!eb;Lclient!w;II)Z")
+	@OriginalMember(owner = "client.client!r", name = "a", descriptor = "(IIIIIIZLclient!eb;Lclient!w;II)Z")
 	public boolean addTemporary(@OriginalArg(10) int level, @OriginalArg(4) int x, @OriginalArg(9) int y, @OriginalArg(1) int z, @OriginalArg(7) Model model, @OriginalArg(8) Entity entity, @OriginalArg(5) int bitset, @OriginalArg(3) int yaw, @OriginalArg(2) int padding, @OriginalArg(6) boolean forwardPadding) {
 		if (model == null && entity == null) {
 			return true;
@@ -580,12 +580,12 @@ public class World3D {
 		return this.addLoc(x, z, y, level, x0, z0, x1 + 1 - x0, z1 - z0 + 1, model, entity, bitset, (byte) 0, yaw, true);
 	}
 
-	@OriginalMember(owner = "client!r", name = "a", descriptor = "(IILclient!eb;IIIIIILclient!w;ZIII)Z")
+	@OriginalMember(owner = "client.client!r", name = "a", descriptor = "(IILclient!eb;IIIIIILclient!w;ZIII)Z")
 	public boolean addTemporary(@OriginalArg(11) int level, @OriginalArg(13) int x, @OriginalArg(4) int y, @OriginalArg(3) int z, @OriginalArg(8) int minTileX, @OriginalArg(7) int minTileZ, @OriginalArg(0) int maxTileX, @OriginalArg(12) int maxTileZ, @OriginalArg(2) Model model, @OriginalArg(9) Entity entity, @OriginalArg(5) int bitset, @OriginalArg(6) int yaw) {
 		return model == null && entity == null || this.addLoc(x, z, y, level, minTileX, minTileZ, maxTileX + 1 - minTileX, maxTileZ - minTileZ + 1, model, entity, bitset, (byte) 0, yaw, true);
 	}
 
-	@OriginalMember(owner = "client!r", name = "a", descriptor = "(IIIIIIIILclient!eb;Lclient!w;IZIB)Z")
+	@OriginalMember(owner = "client.client!r", name = "a", descriptor = "(IIIIIIIILclient!eb;Lclient!w;IZIB)Z")
 	private boolean addLoc(@OriginalArg(5) int x, @OriginalArg(6) int z, @OriginalArg(7) int y, @OriginalArg(0) int level, @OriginalArg(1) int tileX, @OriginalArg(2) int tileZ, @OriginalArg(3) int tileSizeX, @OriginalArg(4) int tileSizeZ, @OriginalArg(8) Model model, @OriginalArg(9) Entity entity, @OriginalArg(12) int bitset, @OriginalArg(13) byte info, @OriginalArg(10) int yaw, @OriginalArg(11) boolean temporary) {
 		if (model == null && entity == null) {
 			return false;
@@ -595,13 +595,13 @@ public class World3D {
 				if (tx < 0 || tz < 0 || tx >= this.maxTileX || tz >= this.maxTileZ) {
 					return false;
 				}
-				@Pc(38) Tile tile = this.levelTiles[level][tx][tz];
+				@Pc(38) Ground tile = this.levelTiles[level][tx][tz];
 				if (tile != null && tile.locCount >= 5) {
 					return false;
 				}
 			}
 		}
-		@Pc(62) Loc loc = new Loc();
+		@Pc(62) Location loc = new Location();
 		loc.bitset = bitset;
 		loc.info = info;
 		loc.level = level;
@@ -632,10 +632,10 @@ public class World3D {
 				}
 				for (@Pc(145) int l = level; l >= 0; l--) {
 					if (this.levelTiles[l][tx][tz] == null) {
-						this.levelTiles[l][tx][tz] = new Tile(l, tx, tz);
+						this.levelTiles[l][tx][tz] = new Ground(l, tx, tz);
 					}
 				}
-				@Pc(182) Tile tile = this.levelTiles[level][tx][tz];
+				@Pc(182) Ground tile = this.levelTiles[level][tx][tz];
 				tile.locs[tile.locCount] = loc;
 				tile.locSpan[tile.locCount] = spans;
 				tile.locSpans |= spans;
@@ -650,10 +650,10 @@ public class World3D {
 		return true;
 	}
 
-	@OriginalMember(owner = "client!r", name = "b", descriptor = "(I)V")
+	@OriginalMember(owner = "client.client!r", name = "b", descriptor = "(I)V")
 	public void clearTemporaryLocs() {
 		for (@Pc(1) int i = 0; i < this.temporaryLocCount; i++) {
-			@Pc(8) Loc loc = this.temporaryLocs[i];
+			@Pc(8) Location loc = this.temporaryLocs[i];
 			this.removeLoc(loc);
 			this.temporaryLocs[i] = null;
 		}
@@ -661,11 +661,11 @@ public class World3D {
 		this.temporaryLocCount = 0;
 	}
 
-	@OriginalMember(owner = "client!r", name = "a", descriptor = "(Lclient!p;B)V")
-	private void removeLoc(@OriginalArg(0) Loc loc) {
+	@OriginalMember(owner = "client.client!r", name = "a", descriptor = "(Lclient!p;B)V")
+	private void removeLoc(@OriginalArg(0) Location loc) {
 		for (@Pc(4) int tx = loc.minSceneTileX; tx <= loc.maxSceneTileX; tx++) {
 			for (@Pc(9) int tz = loc.minSceneTileZ; tz <= loc.maxSceneTileZ; tz++) {
-				@Pc(21) Tile tile = this.levelTiles[loc.level][tx][tz];
+				@Pc(21) Ground tile = this.levelTiles[loc.level][tx][tz];
 				if (tile == null) {
 					continue;
 				}
@@ -691,19 +691,19 @@ public class World3D {
 		}
 	}
 
-	@OriginalMember(owner = "client!r", name = "a", descriptor = "(ILclient!eb;III)V")
+	@OriginalMember(owner = "client.client!r", name = "a", descriptor = "(ILclient!eb;III)V")
 	public void setLocModel(@OriginalArg(3) int level, @OriginalArg(0) int x, @OriginalArg(4) int z, @OriginalArg(1) Model model) {
 		if (model == null) {
 			return;
 		}
 
-		@Pc(13) Tile tile = this.levelTiles[level][x][z];
+		@Pc(13) Ground tile = this.levelTiles[level][x][z];
 		if (tile == null) {
 			return;
 		}
 
 		for (int i = 0; i < tile.locCount; i++) {
-			@Pc(38) Loc loc = tile.locs[i];
+			@Pc(38) Location loc = tile.locs[i];
 			if ((loc.bitset >> 29 & 0x3) == 2) {
 				loc.model = model;
 				return;
@@ -711,14 +711,14 @@ public class World3D {
 		}
 	}
 
-	@OriginalMember(owner = "client!r", name = "a", descriptor = "(IIIIB)V")
+	@OriginalMember(owner = "client.client!r", name = "a", descriptor = "(IIIIB)V")
 	public void setWallDecorationOffset(@OriginalArg(0) int level, @OriginalArg(2) int x, @OriginalArg(1) int z, @OriginalArg(3) int offset) {
-		@Pc(8) Tile tile = this.levelTiles[level][x][z];
+		@Pc(8) Ground tile = this.levelTiles[level][x][z];
 		if (tile == null) {
 			return;
 		}
 
-		@Pc(24) WallDecoration decor = tile.wallDecoration;
+		@Pc(24) Decor decor = tile.decor;
 		if (decor == null) {
 			return;
 		}
@@ -729,18 +729,18 @@ public class World3D {
 		decor.z = sz + (decor.z - sz) * offset / 16;
 	}
 
-	@OriginalMember(owner = "client!r", name = "a", descriptor = "(IIILclient!eb;I)V")
+	@OriginalMember(owner = "client.client!r", name = "a", descriptor = "(IIILclient!eb;I)V")
 	public void setWallDecorationModel(@OriginalArg(4) int level, @OriginalArg(2) int x, @OriginalArg(1) int z, @OriginalArg(3) Model model) {
 		if (model == null) {
 			return;
 		}
 
-		@Pc(15) Tile tile = this.levelTiles[level][x][z];
+		@Pc(15) Ground tile = this.levelTiles[level][x][z];
 		if (tile == null) {
 			return;
 		}
 
-		@Pc(21) WallDecoration decor = tile.wallDecoration;
+		@Pc(21) Decor decor = tile.decor;
 		if (decor == null) {
 			return;
 		}
@@ -748,18 +748,18 @@ public class World3D {
 		decor.model = model;
 	}
 
-	@OriginalMember(owner = "client!r", name = "a", descriptor = "(Lclient!eb;IIII)V")
+	@OriginalMember(owner = "client.client!r", name = "a", descriptor = "(Lclient!eb;IIII)V")
 	public void setGroundDecorationModel(@OriginalArg(4) int level, @OriginalArg(3) int x, @OriginalArg(1) int z, @OriginalArg(0) Model model) {
 		if (model == null) {
 			return;
 		}
 
-		@Pc(15) Tile tile = this.levelTiles[level][x][z];
+		@Pc(15) Ground tile = this.levelTiles[level][x][z];
 		if (tile == null) {
 			return;
 		}
 
-		@Pc(21) GroundDecoration decor = tile.groundDecoration;
+		@Pc(21) GroundDecor decor = tile.groundDecor;
 		if (decor == null) {
 			return;
 		}
@@ -767,13 +767,13 @@ public class World3D {
 		decor.model = model;
 	}
 
-	@OriginalMember(owner = "client!r", name = "b", descriptor = "(ILclient!eb;III)V")
+	@OriginalMember(owner = "client.client!r", name = "b", descriptor = "(ILclient!eb;III)V")
 	public void setWallModel(@OriginalArg(4) int level, @OriginalArg(3) int x, @OriginalArg(2) int z, @OriginalArg(1) Model model) {
 		if (model == null) {
 			return;
 		}
 
-		@Pc(21) Tile tile = this.levelTiles[level][x][z];
+		@Pc(21) Ground tile = this.levelTiles[level][x][z];
 		if (tile == null) {
 			return;
 		}
@@ -786,13 +786,13 @@ public class World3D {
 		wall.modelA = model;
 	}
 
-	@OriginalMember(owner = "client!r", name = "a", descriptor = "(Lclient!eb;Lclient!eb;IZII)V")
+	@OriginalMember(owner = "client.client!r", name = "a", descriptor = "(Lclient!eb;Lclient!eb;IZII)V")
 	public void setWallModels(@OriginalArg(4) int x, @OriginalArg(2) int z, @OriginalArg(5) int level, @OriginalArg(0) Model modelA, @OriginalArg(1) Model modelB) {
 		if (modelA == null) {
 			return;
 		}
 
-		@Pc(11) Tile tile = this.levelTiles[level][x][z];
+		@Pc(11) Ground tile = this.levelTiles[level][x][z];
 		if (tile == null) {
 			return;
 		}
@@ -806,33 +806,33 @@ public class World3D {
 		wall.modelB = modelB;
 	}
 
-	@OriginalMember(owner = "client!r", name = "b", descriptor = "(IIII)V")
+	@OriginalMember(owner = "client.client!r", name = "b", descriptor = "(IIII)V")
 	public void removeWall(@OriginalArg(1) int level, @OriginalArg(0) int x, @OriginalArg(2) int z, @OriginalArg(3) int force) {
-		@Pc(8) Tile tile = this.levelTiles[level][x][z];
+		@Pc(8) Ground tile = this.levelTiles[level][x][z];
 		if (force == 1 && tile != null) {
 			tile.wall = null;
 		}
 	}
 
-	@OriginalMember(owner = "client!r", name = "c", descriptor = "(IIII)V")
+	@OriginalMember(owner = "client.client!r", name = "c", descriptor = "(IIII)V")
 	public void removeWallDecoration(@OriginalArg(0) int level, @OriginalArg(3) int x, @OriginalArg(1) int z) {
-		@Pc(8) Tile tile = this.levelTiles[level][x][z];
+		@Pc(8) Ground tile = this.levelTiles[level][x][z];
 		if (tile == null) {
 			return;
 		}
 
-		tile.wallDecoration = null;
+		tile.decor = null;
 	}
 
-	@OriginalMember(owner = "client!r", name = "d", descriptor = "(IIII)V")
+	@OriginalMember(owner = "client.client!r", name = "d", descriptor = "(IIII)V")
 	public void removeLoc(@OriginalArg(3) int level, @OriginalArg(0) int x, @OriginalArg(1) int z) {
-		@Pc(10) Tile tile = this.levelTiles[level][x][z];
+		@Pc(10) Ground tile = this.levelTiles[level][x][z];
 		if (tile == null) {
 			return;
 		}
 
 		for (@Pc(15) int l = 0; l < tile.locCount; l++) {
-			@Pc(22) Loc loc = tile.locs[l];
+			@Pc(22) Location loc = tile.locs[l];
 			if ((loc.bitset >> 29 & 0x3) == 2 && loc.minSceneTileX == x && loc.minSceneTileZ == z) {
 				this.removeLoc(loc);
 				return;
@@ -840,47 +840,47 @@ public class World3D {
 		}
 	}
 
-	@OriginalMember(owner = "client!r", name = "e", descriptor = "(IIII)V")
+	@OriginalMember(owner = "client.client!r", name = "e", descriptor = "(IIII)V")
 	public void removeGroundDecoration(@OriginalArg(0) int level, @OriginalArg(2) int x, @OriginalArg(3) int z) {
-		@Pc(16) Tile tile = this.levelTiles[level][x][z];
+		@Pc(16) Ground tile = this.levelTiles[level][x][z];
 		if (tile == null) {
 			return;
 		}
 
-		tile.groundDecoration = null;
+		tile.groundDecor = null;
 	}
 
-	@OriginalMember(owner = "client!r", name = "a", descriptor = "(III)V")
+	@OriginalMember(owner = "client.client!r", name = "a", descriptor = "(III)V")
 	public void removeObjStack(@OriginalArg(0) int level, @OriginalArg(1) int x, @OriginalArg(2) int z) {
-		@Pc(8) Tile tile = this.levelTiles[level][x][z];
+		@Pc(8) Ground tile = this.levelTiles[level][x][z];
 		if (tile == null) {
 			return;
 		}
 
-		tile.objStack = null;
+		tile.groundObj = null;
 	}
 
-	@OriginalMember(owner = "client!r", name = "b", descriptor = "(III)I")
+	@OriginalMember(owner = "client.client!r", name = "b", descriptor = "(III)I")
 	public int getWallBitset(@OriginalArg(0) int level, @OriginalArg(1) int x, @OriginalArg(2) int z) {
-		@Pc(8) Tile tile = this.levelTiles[level][x][z];
+		@Pc(8) Ground tile = this.levelTiles[level][x][z];
 		return tile == null || tile.wall == null ? 0 : tile.wall.bitset;
 	}
 
-	@OriginalMember(owner = "client!r", name = "f", descriptor = "(IIII)I")
+	@OriginalMember(owner = "client.client!r", name = "f", descriptor = "(IIII)I")
 	public int getWallDecorationBitset(@OriginalArg(0) int level, @OriginalArg(1) int z, @OriginalArg(3) int x) {
-		@Pc(19) Tile tile = this.levelTiles[level][x][z];
-		return tile == null || tile.wallDecoration == null ? 0 : tile.wallDecoration.bitset;
+		@Pc(19) Ground tile = this.levelTiles[level][x][z];
+		return tile == null || tile.decor == null ? 0 : tile.decor.bitset;
 	}
 
-	@OriginalMember(owner = "client!r", name = "c", descriptor = "(III)I")
+	@OriginalMember(owner = "client.client!r", name = "c", descriptor = "(III)I")
 	public int getLocBitset(@OriginalArg(0) int level, @OriginalArg(1) int x, @OriginalArg(2) int z) {
-		@Pc(8) Tile tile = this.levelTiles[level][x][z];
+		@Pc(8) Ground tile = this.levelTiles[level][x][z];
 		if (tile == null) {
 			return 0;
 		}
 
 		for (@Pc(14) int l = 0; l < tile.locCount; l++) {
-			@Pc(21) Loc loc = tile.locs[l];
+			@Pc(21) Location loc = tile.locs[l];
 			if ((loc.bitset >> 29 & 0x3) == 2 && loc.minSceneTileX == x && loc.minSceneTileZ == z) {
 				return loc.bitset;
 			}
@@ -889,23 +889,23 @@ public class World3D {
 		return 0;
 	}
 
-	@OriginalMember(owner = "client!r", name = "d", descriptor = "(III)I")
+	@OriginalMember(owner = "client.client!r", name = "d", descriptor = "(III)I")
 	public int getGroundDecorationBitset(@OriginalArg(0) int level, @OriginalArg(1) int x, @OriginalArg(2) int z) {
-		@Pc(8) Tile tile = this.levelTiles[level][x][z];
-		return tile == null || tile.groundDecoration == null ? 0 : tile.groundDecoration.bitset;
+		@Pc(8) Ground tile = this.levelTiles[level][x][z];
+		return tile == null || tile.groundDecor == null ? 0 : tile.groundDecor.bitset;
 	}
 
-	@OriginalMember(owner = "client!r", name = "g", descriptor = "(IIII)I")
+	@OriginalMember(owner = "client.client!r", name = "g", descriptor = "(IIII)I")
 	public int getInfo(@OriginalArg(0) int level, @OriginalArg(1) int x, @OriginalArg(2) int z, @OriginalArg(3) int bitset) {
-		@Pc(8) Tile tile = this.levelTiles[level][x][z];
+		@Pc(8) Ground tile = this.levelTiles[level][x][z];
 		if (tile == null) {
 			return -1;
 		} else if (tile.wall != null && tile.wall.bitset == bitset) {
 			return tile.wall.info & 0xFF;
-		} else if (tile.wallDecoration != null && tile.wallDecoration.bitset == bitset) {
-			return tile.wallDecoration.info & 0xFF;
-		} else if (tile.groundDecoration != null && tile.groundDecoration.bitset == bitset) {
-			return tile.groundDecoration.info & 0xFF;
+		} else if (tile.decor != null && tile.decor.bitset == bitset) {
+			return tile.decor.info & 0xFF;
+		} else if (tile.groundDecor != null && tile.groundDecor.bitset == bitset) {
+			return tile.groundDecor.info & 0xFF;
 		} else {
 			for (@Pc(56) int i = 0; i < tile.locCount; i++) {
 				if (tile.locs[i].bitset == bitset) {
@@ -917,7 +917,7 @@ public class World3D {
 		}
 	}
 
-	@OriginalMember(owner = "client!r", name = "a", descriptor = "(IIIIIZ)V")
+	@OriginalMember(owner = "client.client!r", name = "a", descriptor = "(IIIIIZ)V")
 	public void buildModels(@OriginalArg(1) int lightAmbient, @OriginalArg(3) int lightAttenuation, @OriginalArg(2) int lightSrcX, @OriginalArg(0) int lightSrcY, @OriginalArg(4) int lightSrcZ) {
 		@Pc(16) int lightMagnitude = (int) Math.sqrt(lightSrcX * lightSrcX + lightSrcY * lightSrcY + lightSrcZ * lightSrcZ);
 		@Pc(26) int attenuation = lightAttenuation * lightMagnitude >> 8;
@@ -925,7 +925,7 @@ public class World3D {
 		for (@Pc(28) int level = 0; level < this.maxLevel; level++) {
 			for (@Pc(32) int tileX = 0; tileX < this.maxTileX; tileX++) {
 				for (@Pc(36) int tileZ = 0; tileZ < this.maxTileZ; tileZ++) {
-					@Pc(47) Tile tile = this.levelTiles[level][tileX][tileZ];
+					@Pc(47) Ground tile = this.levelTiles[level][tileX][tileZ];
 					if (tile == null) {
 						continue;
 					}
@@ -942,14 +942,14 @@ public class World3D {
 					}
 
 					for (@Pc(116) int i = 0; i < tile.locCount; i++) {
-						@Pc(123) Loc loc = tile.locs[i];
+						@Pc(123) Location loc = tile.locs[i];
 						if (loc != null && loc.model != null && loc.model.vertexNormal != null) {
 							this.mergeLocNormals(level, tileX, tileZ, loc.maxSceneTileX + 1 - loc.minSceneTileX, loc.maxSceneTileZ - loc.minSceneTileZ + 1, loc.model);
 							loc.model.applyLighting(lightAmbient, attenuation, lightSrcX, lightSrcY, lightSrcZ);
 						}
 					}
 
-					@Pc(170) GroundDecoration decor = tile.groundDecoration;
+					@Pc(170) GroundDecor decor = tile.groundDecor;
 					if (decor != null && decor.model.vertexNormal != null) {
 						this.mergeGroundDecorationNormals(level, tileX, tileZ, decor.model);
 						decor.model.applyLighting(lightAmbient, attenuation, lightSrcX, lightSrcY, lightSrcZ);
@@ -959,39 +959,39 @@ public class World3D {
 		}
 	}
 
-	@OriginalMember(owner = "client!r", name = "a", descriptor = "(BIILclient!eb;I)V")
+	@OriginalMember(owner = "client.client!r", name = "a", descriptor = "(BIILclient!eb;I)V")
 	private void mergeGroundDecorationNormals(@OriginalArg(1) int level, @OriginalArg(4) int tileX, @OriginalArg(2) int tileZ, @OriginalArg(3) Model model) {
-		@Pc(19) Tile tile;
+		@Pc(19) Ground tile;
 		if (tileX < this.maxTileX) {
 			tile = this.levelTiles[level][tileX + 1][tileZ];
-			if (tile != null && tile.groundDecoration != null && tile.groundDecoration.model.vertexNormal != null) {
-				this.mergeNormals(model, tile.groundDecoration.model, 128, 0, 0, true);
+			if (tile != null && tile.groundDecor != null && tile.groundDecor.model.vertexNormal != null) {
+				this.mergeNormals(model, tile.groundDecor.model, 128, 0, 0, true);
 			}
 		}
 
 		if (tileZ < this.maxTileX) {
 			tile = this.levelTiles[level][tileX][tileZ + 1];
-			if (tile != null && tile.groundDecoration != null && tile.groundDecoration.model.vertexNormal != null) {
-				this.mergeNormals(model, tile.groundDecoration.model, 0, 0, 128, true);
+			if (tile != null && tile.groundDecor != null && tile.groundDecor.model.vertexNormal != null) {
+				this.mergeNormals(model, tile.groundDecor.model, 0, 0, 128, true);
 			}
 		}
 
 		if (tileX < this.maxTileX && tileZ < this.maxTileZ) {
 			tile = this.levelTiles[level][tileX + 1][tileZ + 1];
-			if (tile != null && tile.groundDecoration != null && tile.groundDecoration.model.vertexNormal != null) {
-				this.mergeNormals(model, tile.groundDecoration.model, 128, 0, 128, true);
+			if (tile != null && tile.groundDecor != null && tile.groundDecor.model.vertexNormal != null) {
+				this.mergeNormals(model, tile.groundDecor.model, 128, 0, 128, true);
 			}
 		}
 
 		if (tileX < this.maxTileX && tileZ > 0) {
 			tile = this.levelTiles[level][tileX + 1][tileZ - 1];
-			if (tile != null && tile.groundDecoration != null && tile.groundDecoration.model.vertexNormal != null) {
-				this.mergeNormals(model, tile.groundDecoration.model, 128, 0, -128, true);
+			if (tile != null && tile.groundDecor != null && tile.groundDecor.model.vertexNormal != null) {
+				this.mergeNormals(model, tile.groundDecor.model, 128, 0, -128, true);
 			}
 		}
 	}
 
-	@OriginalMember(owner = "client!r", name = "a", descriptor = "(IIIIILclient!eb;I)V")
+	@OriginalMember(owner = "client.client!r", name = "a", descriptor = "(IIIIILclient!eb;I)V")
 	private void mergeLocNormals(@OriginalArg(3) int level, @OriginalArg(0) int tileX, @OriginalArg(6) int tileZ, @OriginalArg(1) int tileSizeX, @OriginalArg(2) int tileSizeZ, @OriginalArg(5) Model model) {
 		@Pc(7) boolean allowFaceRemoval = true;
 
@@ -1015,7 +1015,7 @@ public class World3D {
 						continue;
 					}
 
-					@Pc(75) Tile tile = this.levelTiles[l][x][z];
+					@Pc(75) Ground tile = this.levelTiles[l][x][z];
 					if (tile == null) {
 						continue;
 					}
@@ -1032,7 +1032,7 @@ public class World3D {
 					}
 
 					for (@Pc(250) int i = 0; i < tile.locCount; i++) {
-						@Pc(257) Loc loc = tile.locs[i];
+						@Pc(257) Location loc = tile.locs[i];
 						if (loc == null || loc.model == null || loc.model.vertexNormal == null) {
 							continue;
 						}
@@ -1049,29 +1049,29 @@ public class World3D {
 		}
 	}
 
-	@OriginalMember(owner = "client!r", name = "a", descriptor = "(Lclient!eb;Lclient!eb;IIIZ)V")
+	@OriginalMember(owner = "client.client!r", name = "a", descriptor = "(Lclient!eb;Lclient!eb;IIIZ)V")
 	private void mergeNormals(@OriginalArg(0) Model modelA, @OriginalArg(1) Model modelB, @OriginalArg(2) int offsetX, @OriginalArg(3) int offsetY, @OriginalArg(4) int offsetZ, @OriginalArg(5) boolean allowFaceRemoval) {
 		this.tmpMergeIndex++;
 
 		@Pc(9) int merged = 0;
-		@Pc(12) int[] vertexX = modelB.vertexX;
+		@Pc(12) int[] vertexX = modelB.verticesX;
 		@Pc(15) int vertexCountB = modelB.vertexCount;
 
 		for (@Pc(17) int vertexA = 0; vertexA < modelA.vertexCount; vertexA++) {
 			@Pc(24) Model.VertexNormal normalA = modelA.vertexNormal[vertexA];
 			@Pc(29) Model.VertexNormal originalNormalA = modelA.vertexNormalOriginal[vertexA];
 			if (originalNormalA.w != 0) {
-				@Pc(39) int y = modelA.vertexY[vertexA] - offsetY;
+				@Pc(39) int y = modelA.verticesY[vertexA] - offsetY;
 				if (y > modelB.minY) {
 					continue;
 				}
 
-				@Pc(50) int x = modelA.vertexX[vertexA] - offsetX;
+				@Pc(50) int x = modelA.verticesX[vertexA] - offsetX;
 				if (x < modelB.minX || x > modelB.maxX) {
 					continue;
 				}
 
-				@Pc(66) int z = modelA.vertexZ[vertexA] - offsetZ;
+				@Pc(66) int z = modelA.verticesZ[vertexA] - offsetZ;
 				if (z < modelB.minZ || z > modelB.maxZ) {
 					continue;
 				}
@@ -1079,7 +1079,7 @@ public class World3D {
 				for (@Pc(77) int vertexB = 0; vertexB < vertexCountB; vertexB++) {
 					@Pc(84) Model.VertexNormal normalB = modelB.vertexNormal[vertexB];
 					@Pc(89) Model.VertexNormal originalNormalB = modelB.vertexNormalOriginal[vertexB];
-					if (x != vertexX[vertexB] || z != modelB.vertexZ[vertexB] || y != modelB.vertexY[vertexB] || originalNormalB.w == 0) {
+					if (x != vertexX[vertexB] || z != modelB.verticesZ[vertexB] || y != modelB.verticesY[vertexB] || originalNormalB.w == 0) {
 						continue;
 					}
 
@@ -1103,21 +1103,21 @@ public class World3D {
 		}
 
 		for (@Pc(195) int i = 0; i < modelA.faceCount; i++) {
-			if (this.mergeIndexA[modelA.faceVertexA[i]] == this.tmpMergeIndex && this.mergeIndexA[modelA.faceVertexB[i]] == this.tmpMergeIndex && this.mergeIndexA[modelA.faceVertexC[i]] == this.tmpMergeIndex) {
-				modelA.faceInfo[i] = -1;
+			if (this.mergeIndexA[modelA.faceIndicesA[i]] == this.tmpMergeIndex && this.mergeIndexA[modelA.faceIndicesB[i]] == this.tmpMergeIndex && this.mergeIndexA[modelA.faceIndicesC[i]] == this.tmpMergeIndex) {
+				modelA.faceInfos[i] = -1;
 			}
 		}
 
 		for (@Pc(239) int i = 0; i < modelB.faceCount; i++) {
-			if (this.mergeIndexB[modelB.faceVertexA[i]] == this.tmpMergeIndex && this.mergeIndexB[modelB.faceVertexB[i]] == this.tmpMergeIndex && this.mergeIndexB[modelB.faceVertexC[i]] == this.tmpMergeIndex) {
-				modelB.faceInfo[i] = -1;
+			if (this.mergeIndexB[modelB.faceIndicesA[i]] == this.tmpMergeIndex && this.mergeIndexB[modelB.faceIndicesB[i]] == this.tmpMergeIndex && this.mergeIndexB[modelB.faceIndicesC[i]] == this.tmpMergeIndex) {
+				modelB.faceInfos[i] = -1;
 			}
 		}
 	}
 
-	@OriginalMember(owner = "client!r", name = "a", descriptor = "([IIIIII)V")
+	@OriginalMember(owner = "client.client!r", name = "a", descriptor = "([IIIIII)V")
 	public void drawMinimapTile(@OriginalArg(3) int level, @OriginalArg(4) int x, @OriginalArg(5) int z, @OriginalArg(0) int[] dst, @OriginalArg(1) int offset, @OriginalArg(2) int step) {
-		@Pc(10) Tile tile = this.levelTiles[level][x][z];
+		@Pc(10) Ground tile = this.levelTiles[level][x][z];
 		if (tile == null) {
 			return;
 		}
@@ -1186,7 +1186,7 @@ public class World3D {
 		}
 	}
 
-	@OriginalMember(owner = "client!r", name = "e", descriptor = "(III)V")
+	@OriginalMember(owner = "client.client!r", name = "e", descriptor = "(III)V")
 	public void click(@OriginalArg(2) int mouseX, @OriginalArg(1) int mouseY) {
 		takingInput = true;
 		World3D.mouseX = mouseX;
@@ -1195,7 +1195,7 @@ public class World3D {
 		clickTileZ = -1;
 	}
 
-	@OriginalMember(owner = "client!r", name = "a", descriptor = "(IIIIIII)V")
+	@OriginalMember(owner = "client.client!r", name = "a", descriptor = "(IIIIIII)V")
 	public void draw(@OriginalArg(1) int eyeX, @OriginalArg(4) int eyeY, @OriginalArg(5) int eyeZ, @OriginalArg(2) int topLevel, @OriginalArg(0) int eyeYaw, @OriginalArg(3) int eyePitch, int loopCycle) {
 		if (eyeX < 0) {
 			eyeX = 0;
@@ -1210,10 +1210,10 @@ public class World3D {
 		}
 
 		cycle++;
-		sinEyePitch = Model.sin[eyePitch];
-		cosEyePitch = Model.cos[eyePitch];
-		sinEyeYaw = Model.sin[eyeYaw];
-		cosEyeYaw = Model.cos[eyeYaw];
+		sinEyePitch = Model.sinTable[eyePitch];
+		cosEyePitch = Model.cosTable[eyePitch];
+		sinEyeYaw = Model.sinTable[eyeYaw];
+		cosEyeYaw = Model.cosTable[eyeYaw];
 
 		visibilityMap = visibilityMatrix[(eyePitch - 128) / 32][eyeYaw / 64];
 		World3D.eyeX = eyeX;
@@ -1247,10 +1247,10 @@ public class World3D {
 		tilesRemaining = 0;
 
 		for (@Pc(138) int level = this.minLevel; level < this.maxLevel; level++) {
-			@Pc(145) Tile[][] tiles = this.levelTiles[level];
+			@Pc(145) Ground[][] tiles = this.levelTiles[level];
 			for (int x = minDrawTileX; x < maxDrawTileX; x++) {
 				for (int z = minDrawTileZ; z < maxDrawTileZ; z++) {
-					@Pc(159) Tile tile = tiles[x][z];
+					@Pc(159) Ground tile = tiles[x][z];
 					if (tile == null) {
 						continue;
 					}
@@ -1270,7 +1270,7 @@ public class World3D {
 		}
 
 		for (@Pc(239) int level = this.minLevel; level < this.maxLevel; level++) {
-			@Pc(246) Tile[][] tiles = this.levelTiles[level];
+			@Pc(246) Ground[][] tiles = this.levelTiles[level];
 			for (int dx = -25; dx <= 0; dx++) {
 				int rightTileX = eyeTileX + dx;
 				int leftTileX = eyeTileX - dx;
@@ -1282,7 +1282,7 @@ public class World3D {
 				for (int dz = -25; dz <= 0; dz++) {
 					int forwardTileZ = eyeTileZ + dz;
 					int backwardTileZ = eyeTileZ - dz;
-					@Pc(288) Tile tile;
+					@Pc(288) Ground tile;
 					if (rightTileX >= minDrawTileX) {
 						if (forwardTileZ >= minDrawTileZ) {
 							tile = tiles[rightTileX][forwardTileZ];
@@ -1324,7 +1324,7 @@ public class World3D {
 		}
 
 		for (int level = this.minLevel; level < this.maxLevel; level++) {
-			@Pc(380) Tile[][] tiles = this.levelTiles[level];
+			@Pc(380) Ground[][] tiles = this.levelTiles[level];
 			for (int dx = -25; dx <= 0; dx++) {
 				int rightTileX = eyeTileX + dx;
 				int leftTileX = eyeTileX - dx;
@@ -1335,7 +1335,7 @@ public class World3D {
 				for (int dz = -25; dz <= 0; dz++) {
 					int forwardTileZ = eyeTileZ + dz;
 					@Pc(410) int backgroundTileZ = eyeTileZ - dz;
-					@Pc(422) Tile tile;
+					@Pc(422) Ground tile;
 					if (rightTileX >= minDrawTileX) {
 						if (forwardTileZ >= minDrawTileZ) {
 							tile = tiles[rightTileX][forwardTileZ];
@@ -1377,15 +1377,15 @@ public class World3D {
 		}
 	}
 
-	@OriginalMember(owner = "client!r", name = "a", descriptor = "(Lclient!cb;Z)V")
-	private void drawTile(@OriginalArg(0) Tile next, @OriginalArg(1) boolean checkAdjacent, int loopCycle) {
+	@OriginalMember(owner = "client.client!r", name = "a", descriptor = "(Lclient!cb;Z)V")
+	private void drawTile(@OriginalArg(0) Ground next, @OriginalArg(1) boolean checkAdjacent, int loopCycle) {
 		drawTileQueue.addTail(next);
 
 		while (true) {
-			Tile tile;
+			Ground tile;
 
 			do {
-				tile = (Tile) drawTileQueue.removeHead();
+				tile = (Ground) drawTileQueue.removeHead();
 
 				if (tile == null) {
 					return;
@@ -1396,12 +1396,12 @@ public class World3D {
 			int tileZ = tile.z;
 			int level = tile.level;
 			int occludeLevel = tile.occludeLevel;
-			Tile[][] tiles = this.levelTiles[level];
+			Ground[][] tiles = this.levelTiles[level];
 
 			if (tile.visible) {
 				if (checkAdjacent) {
 					if (level > 0) {
-						Tile above = this.levelTiles[level - 1][tileX][tileZ];
+						Ground above = this.levelTiles[level - 1][tileX][tileZ];
 
 						if (above != null && above.update) {
 							continue;
@@ -1409,7 +1409,7 @@ public class World3D {
 					}
 
 					if (tileX <= eyeTileX && tileX > minDrawTileX) {
-						Tile adjacent = tiles[tileX - 1][tileZ];
+						Ground adjacent = tiles[tileX - 1][tileZ];
 
 						if (adjacent != null && adjacent.update && (adjacent.visible || (tile.locSpans & 0x1) == 0)) {
 							continue;
@@ -1417,7 +1417,7 @@ public class World3D {
 					}
 
 					if (tileX >= eyeTileX && tileX < maxDrawTileX - 1) {
-						Tile adjacent = tiles[tileX + 1][tileZ];
+						Ground adjacent = tiles[tileX + 1][tileZ];
 
 						if (adjacent != null && adjacent.update && (adjacent.visible || (tile.locSpans & 0x4) == 0)) {
 							continue;
@@ -1425,7 +1425,7 @@ public class World3D {
 					}
 
 					if (tileZ <= eyeTileZ && tileZ > minDrawTileZ) {
-						Tile adjacent = tiles[tileX][tileZ - 1];
+						Ground adjacent = tiles[tileX][tileZ - 1];
 
 						if (adjacent != null && adjacent.update && (adjacent.visible || (tile.locSpans & 0x8) == 0)) {
 							continue;
@@ -1433,7 +1433,7 @@ public class World3D {
 					}
 
 					if (tileZ >= eyeTileZ && tileZ < maxDrawTileZ - 1) {
-						Tile adjacent = tiles[tileX][tileZ + 1];
+						Ground adjacent = tiles[tileX][tileZ + 1];
 
 						if (adjacent != null && adjacent.update && (adjacent.visible || (tile.locSpans & 0x2) == 0)) {
 							continue;
@@ -1446,7 +1446,7 @@ public class World3D {
 				tile.visible = false;
 
 				if (tile.bridge != null) {
-					Tile bridge = tile.bridge;
+					Ground bridge = tile.bridge;
 
 					if (bridge.underlay == null) {
 						if (bridge.overlay != null && !this.tileVisible(0, tileX, tileZ)) {
@@ -1462,7 +1462,7 @@ public class World3D {
 					}
 
 					for (int i = 0; i < bridge.locCount; i++) {
-						Loc loc = bridge.locs[i];
+						Location loc = bridge.locs[i];
 
 						if (loc != null) {
 							@Pc(265) Model model = loc.model;
@@ -1489,7 +1489,7 @@ public class World3D {
 				int frontWallTypes = 0;
 
 				@Pc(354) Wall wall = tile.wall;
-				@Pc(357) WallDecoration decor = tile.wallDecoration;
+				@Pc(357) Decor decor = tile.decor;
 
 				if (wall != null || decor != null) {
 					if (eyeTileX == tileX) {
@@ -1576,12 +1576,12 @@ public class World3D {
 				}
 
 				if (tileDrawn) {
-					@Pc(719) GroundDecoration groundDecor = tile.groundDecoration;
+					@Pc(719) GroundDecor groundDecor = tile.groundDecor;
 					if (groundDecor != null) {
 						groundDecor.model.draw(0, sinEyePitch, cosEyePitch, sinEyeYaw, cosEyeYaw, groundDecor.x - eyeX, groundDecor.y - eyeY, groundDecor.z - eyeZ, groundDecor.bitset);
 					}
 
-					@Pc(746) ObjStack objs = tile.objStack;
+					@Pc(746) GroundObject objs = tile.groundObj;
 					if (objs != null && objs.offset == 0) {
 						if (objs.bottomObj != null) {
 							objs.bottomObj.draw(0, sinEyePitch, cosEyePitch, sinEyeYaw, cosEyeYaw, objs.x - eyeX, objs.y - eyeY, objs.z - eyeZ, objs.bitset);
@@ -1601,28 +1601,28 @@ public class World3D {
 
 				if (spans != 0) {
 					if (tileX < eyeTileX && (spans & 0x4) != 0) {
-						Tile adjacent = tiles[tileX + 1][tileZ];
+						Ground adjacent = tiles[tileX + 1][tileZ];
 						if (adjacent != null && adjacent.update) {
 							drawTileQueue.addTail(adjacent);
 						}
 					}
 
 					if (tileZ < eyeTileZ && (spans & 0x2) != 0) {
-						Tile adjacent = tiles[tileX][tileZ + 1];
+						Ground adjacent = tiles[tileX][tileZ + 1];
 						if (adjacent != null && adjacent.update) {
 							drawTileQueue.addTail(adjacent);
 						}
 					}
 
 					if (tileX > eyeTileX && (spans & 0x1) != 0) {
-						Tile adjacent = tiles[tileX - 1][tileZ];
+						Ground adjacent = tiles[tileX - 1][tileZ];
 						if (adjacent != null && adjacent.update) {
 							drawTileQueue.addTail(adjacent);
 						}
 					}
 
 					if (tileZ > eyeTileZ && (spans & 0x8) != 0) {
-						Tile adjacent = tiles[tileX][tileZ - 1];
+						Ground adjacent = tiles[tileX][tileZ - 1];
 						if (adjacent != null && adjacent.update) {
 							drawTileQueue.addTail(adjacent);
 						}
@@ -1657,7 +1657,7 @@ public class World3D {
 
 				iterate_locs:
 				for (int i = 0; i < locCount; i++) {
-					Loc loc = tile.locs[i];
+					Location loc = tile.locs[i];
 
 					if (loc.cycle == cycle) {
 						continue;
@@ -1665,7 +1665,7 @@ public class World3D {
 
 					for (int x = loc.minSceneTileX; x <= loc.maxSceneTileX; x++) {
 						for (int z = loc.minSceneTileZ; z <= loc.maxSceneTileZ; z++) {
-							Tile other = tiles[x][z];
+							Ground other = tiles[x][z];
 
 							if (!other.visible) {
 								if (other.checkLocSpans == 0) {
@@ -1724,7 +1724,7 @@ public class World3D {
 					int farthestIndex = -1;
 
 					for (int index = 0; index < locBufferSize; index++) {
-						Loc loc = locBuffer[index];
+						Location loc = locBuffer[index];
 
 						if (loc.cycle != cycle) {
 							if (loc.distance > farthestDistance) {
@@ -1738,7 +1738,7 @@ public class World3D {
 						break;
 					}
 
-					Loc farthest = locBuffer[farthestIndex];
+					Location farthest = locBuffer[farthestIndex];
 					farthest.cycle = cycle;
 
 					@Pc(1184) Model model = farthest.model;
@@ -1752,7 +1752,7 @@ public class World3D {
 
 					for (int x = farthest.minSceneTileX; x <= farthest.maxSceneTileX; x++) {
 						for (int z = farthest.minSceneTileZ; z <= farthest.maxSceneTileZ; z++) {
-							@Pc(1243) Tile occupied = tiles[x][z];
+							@Pc(1243) Ground occupied = tiles[x][z];
 
 							if (occupied.checkLocSpans != 0) {
 								drawTileQueue.addTail(occupied);
@@ -1773,28 +1773,28 @@ public class World3D {
 			}
 
 			if (tileX <= eyeTileX && tileX > minDrawTileX) {
-				Tile adjacent = tiles[tileX - 1][tileZ];
+				Ground adjacent = tiles[tileX - 1][tileZ];
 				if (adjacent != null && adjacent.update) {
 					continue;
 				}
 			}
 
 			if (tileX >= eyeTileX && tileX < maxDrawTileX - 1) {
-				Tile adjacent = tiles[tileX + 1][tileZ];
+				Ground adjacent = tiles[tileX + 1][tileZ];
 				if (adjacent != null && adjacent.update) {
 					continue;
 				}
 			}
 
 			if (tileZ <= eyeTileZ && tileZ > minDrawTileZ) {
-				Tile adjacent = tiles[tileX][tileZ - 1];
+				Ground adjacent = tiles[tileX][tileZ - 1];
 				if (adjacent != null && adjacent.update) {
 					continue;
 				}
 			}
 
 			if (tileZ >= eyeTileZ && tileZ < maxDrawTileZ - 1) {
-				Tile adjacent = tiles[tileX][tileZ + 1];
+				Ground adjacent = tiles[tileX][tileZ + 1];
 				if (adjacent != null && adjacent.update) {
 					continue;
 				}
@@ -1803,7 +1803,7 @@ public class World3D {
 			tile.update = false;
 			tilesRemaining--;
 
-			@Pc(1379) ObjStack objs = tile.objStack;
+			@Pc(1379) GroundObject objs = tile.groundObj;
 			if (objs != null && objs.offset != 0) {
 				if (objs.bottomObj != null) {
 					objs.bottomObj.draw(0, sinEyePitch, cosEyePitch, sinEyeYaw, cosEyeYaw, objs.x - eyeX, objs.y - eyeY - objs.offset, objs.z - eyeZ, objs.bitset);
@@ -1819,7 +1819,7 @@ public class World3D {
 			}
 
 			if (tile.backWallTypes != 0) {
-				@Pc(1474) WallDecoration decor = tile.wallDecoration;
+				@Pc(1474) Decor decor = tile.decor;
 
 				if (decor != null && !this.visible(occludeLevel, tileX, tileZ, decor.model.maxY)) {
 					if ((decor.type & tile.backWallTypes) != 0) {
@@ -1871,35 +1871,35 @@ public class World3D {
 			}
 
 			if (level < this.maxLevel - 1) {
-				Tile above = this.levelTiles[level + 1][tileX][tileZ];
+				Ground above = this.levelTiles[level + 1][tileX][tileZ];
 				if (above != null && above.update) {
 					drawTileQueue.addTail(above);
 				}
 			}
 
 			if (tileX < eyeTileX) {
-				Tile adjacent = tiles[tileX + 1][tileZ];
+				Ground adjacent = tiles[tileX + 1][tileZ];
 				if (adjacent != null && adjacent.update) {
 					drawTileQueue.addTail(adjacent);
 				}
 			}
 
 			if (tileZ < eyeTileZ) {
-				Tile adjacent = tiles[tileX][tileZ + 1];
+				Ground adjacent = tiles[tileX][tileZ + 1];
 				if (adjacent != null && adjacent.update) {
 					drawTileQueue.addTail(adjacent);
 				}
 			}
 
 			if (tileX > eyeTileX) {
-				Tile adjacent = tiles[tileX - 1][tileZ];
+				Ground adjacent = tiles[tileX - 1][tileZ];
 				if (adjacent != null && adjacent.update) {
 					drawTileQueue.addTail(adjacent);
 				}
 			}
 
 			if (tileZ > eyeTileZ) {
-				Tile adjacent = tiles[tileX][tileZ - 1];
+				Ground adjacent = tiles[tileX][tileZ - 1];
 				if (adjacent != null && adjacent.update) {
 					drawTileQueue.addTail(adjacent);
 				}
@@ -1907,7 +1907,7 @@ public class World3D {
 		}
 	}
 
-	@OriginalMember(owner = "client!r", name = "a", descriptor = "(Lclient!o;IIIIIII)V")
+	@OriginalMember(owner = "client.client!r", name = "a", descriptor = "(Lclient!o;IIIIIII)V")
 	private void drawTileUnderlay(@OriginalArg(0) TileUnderlay underlay, @OriginalArg(1) int level, @OriginalArg(6) int tileX, @OriginalArg(7) int tileZ, @OriginalArg(2) int sinEyePitch, @OriginalArg(3) int cosEyePitch, @OriginalArg(4) int sinEyeYaw, @OriginalArg(5) int cosEyeYaw) {
 		@Pc(8) int x3;
 		@Pc(9) int x0 = x3 = (tileX << 7) - eyeX;
@@ -1971,57 +1971,57 @@ public class World3D {
 			return;
 		}
 
-		@Pc(281) int px0 = Draw3D.centerX + (x0 << 9) / z0;
-		@Pc(289) int py0 = Draw3D.centerY + (y0 << 9) / z0;
-		@Pc(297) int pz0 = Draw3D.centerX + (x1 << 9) / z1;
-		@Pc(305) int px1 = Draw3D.centerY + (y1 << 9) / z1;
-		@Pc(313) int py1 = Draw3D.centerX + (x2 << 9) / z2;
-		@Pc(321) int pz1 = Draw3D.centerY + (y2 << 9) / z2;
-		@Pc(329) int px3 = Draw3D.centerX + (x3 << 9) / z3;
-		@Pc(337) int py3 = Draw3D.centerY + (y3 << 9) / z3;
+		@Pc(281) int px0 = Pix3D.centerW3D + (x0 << 9) / z0;
+		@Pc(289) int py0 = Pix3D.centerH3D + (y0 << 9) / z0;
+		@Pc(297) int pz0 = Pix3D.centerW3D + (x1 << 9) / z1;
+		@Pc(305) int px1 = Pix3D.centerH3D + (y1 << 9) / z1;
+		@Pc(313) int py1 = Pix3D.centerW3D + (x2 << 9) / z2;
+		@Pc(321) int pz1 = Pix3D.centerH3D + (y2 << 9) / z2;
+		@Pc(329) int px3 = Pix3D.centerW3D + (x3 << 9) / z3;
+		@Pc(337) int py3 = Pix3D.centerH3D + (y3 << 9) / z3;
 
-		Draw3D.alpha = 0;
+		Pix3D.trans = 0;
 
 		if ((py1 - px3) * (px1 - py3) - (pz1 - py3) * (pz0 - px3) > 0) {
-			Draw3D.clipX = py1 < 0 || px3 < 0 || pz0 < 0 || py1 > Draw2D.boundX || px3 > Draw2D.boundX || pz0 > Draw2D.boundX;
+			Pix3D.hclip = py1 < 0 || px3 < 0 || pz0 < 0 || py1 > Pix2D.safeWidth || px3 > Pix2D.safeWidth || pz0 > Pix2D.safeWidth;
 			if (takingInput && this.pointInsideTriangle(mouseX, mouseY, pz1, py3, px1, py1, px3, pz0)) {
 				clickTileX = tileX;
 				clickTileZ = tileZ;
 			}
 			if (underlay.textureId == -1) {
 				if (underlay.northeastColor != 12345678) {
-					Draw3D.fillGouraudTriangle(py1, px3, pz0, pz1, py3, px1, underlay.northeastColor, underlay.northwestColor, underlay.southeastColor);
+					Pix3D.gouraudTriangle(py1, px3, pz0, pz1, py3, px1, underlay.northeastColor, underlay.northwestColor, underlay.southeastColor);
 				}
 			} else if (lowMemory) {
 				int averageColor = TEXTURE_HSL[underlay.textureId];
-				Draw3D.fillGouraudTriangle(py1, px3, pz0, pz1, py3, px1, this.mulLightness(averageColor, underlay.northeastColor), this.mulLightness(averageColor, underlay.northwestColor), this.mulLightness(averageColor, underlay.southeastColor));
+				Pix3D.gouraudTriangle(py1, px3, pz0, pz1, py3, px1, this.mulLightness(averageColor, underlay.northeastColor), this.mulLightness(averageColor, underlay.northwestColor), this.mulLightness(averageColor, underlay.southeastColor));
 			} else if (underlay.flat) {
-				Draw3D.fillTexturedTriangle(py1, px3, pz0, pz1, py3, px1, underlay.northeastColor, underlay.northwestColor, underlay.southeastColor, x0, y0, z0, x1, x3, y1, y3, z1, z3, underlay.textureId);
+				Pix3D.textureTriangle(py1, px3, pz0, pz1, py3, px1, underlay.northeastColor, underlay.northwestColor, underlay.southeastColor, x0, y0, z0, x1, x3, y1, y3, z1, z3, underlay.textureId);
 			} else {
-				Draw3D.fillTexturedTriangle(py1, px3, pz0, pz1, py3, px1, underlay.northeastColor, underlay.northwestColor, underlay.southeastColor, x2, y2, z2, x3, x1, y3, y1, z3, z1, underlay.textureId);
+				Pix3D.textureTriangle(py1, px3, pz0, pz1, py3, px1, underlay.northeastColor, underlay.northwestColor, underlay.southeastColor, x2, y2, z2, x3, x1, y3, y1, z3, z1, underlay.textureId);
 			}
 		}
 		if ((px0 - pz0) * (py3 - px1) - (py0 - px1) * (px3 - pz0) <= 0) {
 			return;
 		}
-		Draw3D.clipX = px0 < 0 || pz0 < 0 || px3 < 0 || px0 > Draw2D.boundX || pz0 > Draw2D.boundX || px3 > Draw2D.boundX;
+		Pix3D.hclip = px0 < 0 || pz0 < 0 || px3 < 0 || px0 > Pix2D.safeWidth || pz0 > Pix2D.safeWidth || px3 > Pix2D.safeWidth;
 		if (takingInput && this.pointInsideTriangle(mouseX, mouseY, py0, px1, py3, px0, pz0, px3)) {
 			clickTileX = tileX;
 			clickTileZ = tileZ;
 		}
 		if (underlay.textureId != -1) {
 			if (!lowMemory) {
-				Draw3D.fillTexturedTriangle(px0, pz0, px3, py0, px1, py3, underlay.southwestColor, underlay.southeastColor, underlay.northwestColor, x0, y0, z0, x1, x3, y1, y3, z1, z3, underlay.textureId);
+				Pix3D.textureTriangle(px0, pz0, px3, py0, px1, py3, underlay.southwestColor, underlay.southeastColor, underlay.northwestColor, x0, y0, z0, x1, x3, y1, y3, z1, z3, underlay.textureId);
 				return;
 			}
 			int averageColor = TEXTURE_HSL[underlay.textureId];
-			Draw3D.fillGouraudTriangle(px0, pz0, px3, py0, px1, py3, this.mulLightness(averageColor, underlay.southwestColor), this.mulLightness(averageColor, underlay.southeastColor), this.mulLightness(averageColor, underlay.northwestColor));
+			Pix3D.gouraudTriangle(px0, pz0, px3, py0, px1, py3, this.mulLightness(averageColor, underlay.southwestColor), this.mulLightness(averageColor, underlay.southeastColor), this.mulLightness(averageColor, underlay.northwestColor));
 		} else if (underlay.southwestColor != 12345678) {
-			Draw3D.fillGouraudTriangle(px0, pz0, px3, py0, px1, py3, underlay.southwestColor, underlay.southeastColor, underlay.northwestColor);
+			Pix3D.gouraudTriangle(px0, pz0, px3, py0, px1, py3, underlay.southwestColor, underlay.southeastColor, underlay.northwestColor);
 		}
 	}
 
-	@OriginalMember(owner = "client!r", name = "a", descriptor = "(IILclient!i;IIIIZ)V")
+	@OriginalMember(owner = "client.client!r", name = "a", descriptor = "(IILclient!i;IIIIZ)V")
 	private void drawTileOverlay(@OriginalArg(3) int tileX, @OriginalArg(1) int tileZ, @OriginalArg(2) TileOverlay overlay, @OriginalArg(5) int sinEyePitch, @OriginalArg(4) int cosEyePitch, @OriginalArg(0) int sinEyeYaw, @OriginalArg(6) int cosEyeYaw) {
 		@Pc(5) int vertexCount = overlay.vertexX.length;
 
@@ -2047,11 +2047,11 @@ public class World3D {
 				TileOverlay.tmpViewspaceY[i] = y;
 				TileOverlay.tmpViewspaceZ[i] = z;
 			}
-			TileOverlay.tmpScreenX[i] = Draw3D.centerX + (x << 9) / z;
-			TileOverlay.tmpScreenY[i] = Draw3D.centerY + (y << 9) / z;
+			TileOverlay.tmpScreenX[i] = Pix3D.centerW3D + (x << 9) / z;
+			TileOverlay.tmpScreenY[i] = Pix3D.centerH3D + (y << 9) / z;
 		}
 
-		Draw3D.alpha = 0;
+		Pix3D.trans = 0;
 
 		vertexCount = overlay.triangleVertexA.length;
 		for (int v = 0; v < vertexCount; v++) {
@@ -2067,28 +2067,28 @@ public class World3D {
 			@Pc(169) int y2 = TileOverlay.tmpScreenY[c];
 
 			if ((x0 - x1) * (y2 - y1) - (y0 - y1) * (x2 - x1) > 0) {
-				Draw3D.clipX = x0 < 0 || x1 < 0 || x2 < 0 || x0 > Draw2D.boundX || x1 > Draw2D.boundX || x2 > Draw2D.boundX;
+				Pix3D.hclip = x0 < 0 || x1 < 0 || x2 < 0 || x0 > Pix2D.safeWidth || x1 > Pix2D.safeWidth || x2 > Pix2D.safeWidth;
 				if (takingInput && this.pointInsideTriangle(mouseX, mouseY, y0, y1, y2, x0, x1, x2)) {
 					clickTileX = tileX;
 					clickTileZ = tileZ;
 				}
 				if (overlay.triangleTextureIds == null || overlay.triangleTextureIds[v] == -1) {
 					if (overlay.triangleColorA[v] != 12345678) {
-						Draw3D.fillGouraudTriangle(x0, x1, x2, y0, y1, y2, overlay.triangleColorA[v], overlay.triangleColorB[v], overlay.triangleColorC[v]);
+						Pix3D.gouraudTriangle(x0, x1, x2, y0, y1, y2, overlay.triangleColorA[v], overlay.triangleColorB[v], overlay.triangleColorC[v]);
 					}
 				} else if (lowMemory) {
 					@Pc(373) int textureColor = TEXTURE_HSL[overlay.triangleTextureIds[v]];
-					Draw3D.fillGouraudTriangle(x0, x1, x2, y0, y1, y2, this.mulLightness(textureColor, overlay.triangleColorA[v]), this.mulLightness(textureColor, overlay.triangleColorB[v]), this.mulLightness(textureColor, overlay.triangleColorC[v]));
+					Pix3D.gouraudTriangle(x0, x1, x2, y0, y1, y2, this.mulLightness(textureColor, overlay.triangleColorA[v]), this.mulLightness(textureColor, overlay.triangleColorB[v]), this.mulLightness(textureColor, overlay.triangleColorC[v]));
 				} else if (overlay.flat) {
-					Draw3D.fillTexturedTriangle(x0, x1, x2, y0, y1, y2, overlay.triangleColorA[v], overlay.triangleColorB[v], overlay.triangleColorC[v], TileOverlay.tmpViewspaceX[0], TileOverlay.tmpViewspaceY[0], TileOverlay.tmpViewspaceZ[0], TileOverlay.tmpViewspaceX[1], TileOverlay.tmpViewspaceX[3], TileOverlay.tmpViewspaceY[1], TileOverlay.tmpViewspaceY[3], TileOverlay.tmpViewspaceZ[1], TileOverlay.tmpViewspaceZ[3], overlay.triangleTextureIds[v]);
+					Pix3D.textureTriangle(x0, x1, x2, y0, y1, y2, overlay.triangleColorA[v], overlay.triangleColorB[v], overlay.triangleColorC[v], TileOverlay.tmpViewspaceX[0], TileOverlay.tmpViewspaceY[0], TileOverlay.tmpViewspaceZ[0], TileOverlay.tmpViewspaceX[1], TileOverlay.tmpViewspaceX[3], TileOverlay.tmpViewspaceY[1], TileOverlay.tmpViewspaceY[3], TileOverlay.tmpViewspaceZ[1], TileOverlay.tmpViewspaceZ[3], overlay.triangleTextureIds[v]);
 				} else {
-					Draw3D.fillTexturedTriangle(x0, x1, x2, y0, y1, y2, overlay.triangleColorA[v], overlay.triangleColorB[v], overlay.triangleColorC[v], TileOverlay.tmpViewspaceX[a], TileOverlay.tmpViewspaceY[a], TileOverlay.tmpViewspaceZ[a], TileOverlay.tmpViewspaceX[b], TileOverlay.tmpViewspaceX[c], TileOverlay.tmpViewspaceY[b], TileOverlay.tmpViewspaceY[c], TileOverlay.tmpViewspaceZ[b], TileOverlay.tmpViewspaceZ[c], overlay.triangleTextureIds[v]);
+					Pix3D.textureTriangle(x0, x1, x2, y0, y1, y2, overlay.triangleColorA[v], overlay.triangleColorB[v], overlay.triangleColorC[v], TileOverlay.tmpViewspaceX[a], TileOverlay.tmpViewspaceY[a], TileOverlay.tmpViewspaceZ[a], TileOverlay.tmpViewspaceX[b], TileOverlay.tmpViewspaceX[c], TileOverlay.tmpViewspaceY[b], TileOverlay.tmpViewspaceY[c], TileOverlay.tmpViewspaceZ[b], TileOverlay.tmpViewspaceZ[c], overlay.triangleTextureIds[v]);
 				}
 			}
 		}
 	}
 
-	@OriginalMember(owner = "client!r", name = "f", descriptor = "(III)I")
+	@OriginalMember(owner = "client.client!r", name = "f", descriptor = "(III)I")
 	private int mulLightness(@OriginalArg(1) int hsl, @OriginalArg(0) int lightness) {
 		@Pc(3) int invLightness = 127 - lightness;
 		lightness = invLightness * (hsl & 0x7F) / 160;
@@ -2100,7 +2100,7 @@ public class World3D {
 		return (hsl & 0xFF80) + lightness;
 	}
 
-	@OriginalMember(owner = "client!r", name = "a", descriptor = "(IIIIIIII)Z")
+	@OriginalMember(owner = "client.client!r", name = "a", descriptor = "(IIIIIIII)Z")
 	private boolean pointInsideTriangle(@OriginalArg(0) int x, @OriginalArg(1) int y, @OriginalArg(2) int y0, @OriginalArg(3) int y1, @OriginalArg(4) int y2, @OriginalArg(5) int x0, @OriginalArg(6) int x1, @OriginalArg(7) int x2) {
 		if (y < y0 && y < y1 && y < y2) {
 			return false;
@@ -2118,13 +2118,13 @@ public class World3D {
 		}
 	}
 
-	@OriginalMember(owner = "client!r", name = "b", descriptor = "(Z)V")
+	@OriginalMember(owner = "client.client!r", name = "b", descriptor = "(Z)V")
 	private void updateActiveOccluders() {
 		@Pc(5) int count = levelOccluderCount[topLevel];
-		@Pc(9) Occluder[] occluders = levelOccluders[topLevel];
+		@Pc(9) Occlude[] occluders = levelOccluders[topLevel];
 		activeOccluderCount = 0;
 		for (@Pc(13) int i = 0; i < count; i++) {
-			@Pc(19) Occluder occluder = occluders[i];
+			@Pc(19) Occlude occluder = occluders[i];
 			@Pc(30) int deltaMaxY;
 			@Pc(43) int deltaMinTileZ;
 			@Pc(54) int deltaMaxTileZ;
@@ -2245,7 +2245,7 @@ public class World3D {
 		}
 	}
 
-	@OriginalMember(owner = "client!r", name = "g", descriptor = "(III)Z")
+	@OriginalMember(owner = "client.client!r", name = "g", descriptor = "(III)Z")
 	private boolean tileVisible(@OriginalArg(0) int level, @OriginalArg(1) int x, @OriginalArg(2) int z) {
 		@Pc(8) int cycle = this.levelTileOcclusionCycles[level][x][z];
 		if (cycle == -World3D.cycle) {
@@ -2265,7 +2265,7 @@ public class World3D {
 		}
 	}
 
-	@OriginalMember(owner = "client!r", name = "i", descriptor = "(IIII)Z")
+	@OriginalMember(owner = "client.client!r", name = "i", descriptor = "(IIII)Z")
 	private boolean wallVisible(@OriginalArg(0) int level, @OriginalArg(1) int x, @OriginalArg(2) int z, @OriginalArg(3) int type) {
 		if (!this.tileVisible(level, x, z)) {
 			return false;
@@ -2382,7 +2382,7 @@ public class World3D {
 		}
 	}
 
-	@OriginalMember(owner = "client!r", name = "j", descriptor = "(IIII)Z")
+	@OriginalMember(owner = "client.client!r", name = "j", descriptor = "(IIII)Z")
 	private boolean visible(@OriginalArg(0) int level, @OriginalArg(1) int tileX, @OriginalArg(2) int tileZ, @OriginalArg(3) int y) {
 		if (this.tileVisible(level, tileX, tileZ)) {
 			@Pc(11) int x = tileX << 7;
@@ -2393,7 +2393,7 @@ public class World3D {
 		}
 	}
 
-	@OriginalMember(owner = "client!r", name = "a", descriptor = "(IIIIII)Z")
+	@OriginalMember(owner = "client.client!r", name = "a", descriptor = "(IIIIII)Z")
 	private boolean locVisible(@OriginalArg(0) int level, @OriginalArg(1) int minX, @OriginalArg(2) int maxX, @OriginalArg(3) int minZ, @OriginalArg(4) int maxZ, @OriginalArg(5) int y) {
 		@Pc(19) int x;
 		@Pc(23) int z;
@@ -2428,10 +2428,10 @@ public class World3D {
 		}
 	}
 
-	@OriginalMember(owner = "client!r", name = "h", descriptor = "(III)Z")
+	@OriginalMember(owner = "client.client!r", name = "h", descriptor = "(III)Z")
 	private boolean occluded(@OriginalArg(0) int x, @OriginalArg(1) int y, @OriginalArg(2) int z) {
 		for (@Pc(1) int i = 0; i < activeOccluderCount; i++) {
-			@Pc(7) Occluder occluder = activeOccluders[i];
+			@Pc(7) Occlude occluder = activeOccluders[i];
 
 			if (occluder.mode == 1) {
 				int dx = occluder.minX - x;

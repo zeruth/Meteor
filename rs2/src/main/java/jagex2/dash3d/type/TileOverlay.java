@@ -5,70 +5,70 @@ import org.openrs2.deob.annotation.OriginalClass;
 import org.openrs2.deob.annotation.OriginalMember;
 import org.openrs2.deob.annotation.Pc;
 
-@OriginalClass("client!i")
+@OriginalClass("client.client!i")
 public class TileOverlay {
 
-	@OriginalMember(owner = "client!i", name = "a", descriptor = "[I")
+	@OriginalMember(owner = "client.client!i", name = "a", descriptor = "[I")
 	public final int[] vertexX;
 
-	@OriginalMember(owner = "client!i", name = "b", descriptor = "[I")
+	@OriginalMember(owner = "client.client!i", name = "b", descriptor = "[I")
 	public final int[] vertexY;
 
-	@OriginalMember(owner = "client!i", name = "c", descriptor = "[I")
+	@OriginalMember(owner = "client.client!i", name = "c", descriptor = "[I")
 	public final int[] vertexZ;
 
-	@OriginalMember(owner = "client!i", name = "d", descriptor = "[I")
+	@OriginalMember(owner = "client.client!i", name = "d", descriptor = "[I")
 	public final int[] triangleColorA;
 
-	@OriginalMember(owner = "client!i", name = "e", descriptor = "[I")
+	@OriginalMember(owner = "client.client!i", name = "e", descriptor = "[I")
 	public final int[] triangleColorB;
 
-	@OriginalMember(owner = "client!i", name = "f", descriptor = "[I")
+	@OriginalMember(owner = "client.client!i", name = "f", descriptor = "[I")
 	public final int[] triangleColorC;
 
-	@OriginalMember(owner = "client!i", name = "g", descriptor = "[I")
+	@OriginalMember(owner = "client.client!i", name = "g", descriptor = "[I")
 	public final int[] triangleVertexA;
 
-	@OriginalMember(owner = "client!i", name = "h", descriptor = "[I")
+	@OriginalMember(owner = "client.client!i", name = "h", descriptor = "[I")
 	public final int[] triangleVertexB;
 
-	@OriginalMember(owner = "client!i", name = "i", descriptor = "[I")
+	@OriginalMember(owner = "client.client!i", name = "i", descriptor = "[I")
 	public final int[] triangleVertexC;
 
-	@OriginalMember(owner = "client!i", name = "j", descriptor = "[I")
+	@OriginalMember(owner = "client.client!i", name = "j", descriptor = "[I")
 	public int[] triangleTextureIds;
 
-	@OriginalMember(owner = "client!i", name = "k", descriptor = "Z")
+	@OriginalMember(owner = "client.client!i", name = "k", descriptor = "Z")
 	public boolean flat = true;
 
-	@OriginalMember(owner = "client!i", name = "l", descriptor = "I")
+	@OriginalMember(owner = "client.client!i", name = "l", descriptor = "I")
 	public final int shape;
 
-	@OriginalMember(owner = "client!i", name = "m", descriptor = "I")
+	@OriginalMember(owner = "client.client!i", name = "m", descriptor = "I")
 	public final int rotation;
 
-	@OriginalMember(owner = "client!i", name = "n", descriptor = "I")
+	@OriginalMember(owner = "client.client!i", name = "n", descriptor = "I")
 	public final int backgroundRgb;
 
-	@OriginalMember(owner = "client!i", name = "o", descriptor = "I")
+	@OriginalMember(owner = "client.client!i", name = "o", descriptor = "I")
 	public final int foregroundRgb;
 
-	@OriginalMember(owner = "client!i", name = "p", descriptor = "[I")
+	@OriginalMember(owner = "client.client!i", name = "p", descriptor = "[I")
 	public static final int[] tmpScreenX = new int[6];
 
-	@OriginalMember(owner = "client!i", name = "q", descriptor = "[I")
+	@OriginalMember(owner = "client.client!i", name = "q", descriptor = "[I")
 	public static final int[] tmpScreenY = new int[6];
 
-	@OriginalMember(owner = "client!i", name = "r", descriptor = "[I")
+	@OriginalMember(owner = "client.client!i", name = "r", descriptor = "[I")
 	public static final int[] tmpViewspaceX = new int[6];
 
-	@OriginalMember(owner = "client!i", name = "s", descriptor = "[I")
+	@OriginalMember(owner = "client.client!i", name = "s", descriptor = "[I")
 	public static final int[] tmpViewspaceY = new int[6];
 
-	@OriginalMember(owner = "client!i", name = "t", descriptor = "[I")
+	@OriginalMember(owner = "client.client!i", name = "t", descriptor = "[I")
 	public static final int[] tmpViewspaceZ = new int[6];
 
-	@OriginalMember(owner = "client!i", name = "x", descriptor = "[[I")
+	@OriginalMember(owner = "client.client!i", name = "x", descriptor = "[[I")
 	public static final int[][] SHAPE_POINTS = new int[][] {
 		{ 1, 3, 5, 7 },
 		{ 1, 3, 5, 7 }, // PLAIN_SHAPE
@@ -85,7 +85,7 @@ public class TileOverlay {
 		{ 1, 3, 5, 7, 13, 14 } // TRAPEZIUM_SHAPE
 	};
 
-	@OriginalMember(owner = "client!i", name = "y", descriptor = "[[I")
+	@OriginalMember(owner = "client.client!i", name = "y", descriptor = "[[I")
 	public static final int[][] SHAPE_PATHS = new int[][] {
 		{ 0, 1, 2, 3, 0, 0, 1, 3 },
 		{ 1, 1, 2, 3, 1, 0, 1, 3 }, // PLAIN_SHAPE
@@ -102,7 +102,7 @@ public class TileOverlay {
 		{ 1, 0, 5, 4, 1, 0, 1, 5, 0, 0, 4, 3, 0, 4, 5, 3, 0, 5, 2, 3, 0, 1, 2, 5 } // TRAPEZIUM_SHAPE
 	};
 
-	@OriginalMember(owner = "client!i", name = "<init>", descriptor = "(IIIIIIIIIIIIIIIIIIII)V")
+	@OriginalMember(owner = "client.client!i", name = "<init>", descriptor = "(IIIIIIIIIIIIIIIIIIII)V")
 	public TileOverlay(@OriginalArg(0) int tileX, @OriginalArg(1) int shape, @OriginalArg(2) int southeastColor2, @OriginalArg(3) int southeastY, @OriginalArg(4) int northeastColor1, @OriginalArg(5) int rotation, @OriginalArg(6) int southwestColor1, @OriginalArg(7) int northwestY, @OriginalArg(8) int foregroundRgb, @OriginalArg(9) int southwestColor2, @OriginalArg(10) int textureId, @OriginalArg(11) int northwestColor2, @OriginalArg(12) int backgroundRgb, @OriginalArg(13) int northeastY, @OriginalArg(14) int northeastColor2, @OriginalArg(15) int northwestColor1, @OriginalArg(17) int southwestY, @OriginalArg(18) int tileZ, @OriginalArg(19) int southeastColor1) {
 		if (southwestY != southeastY || southwestY != northeastY || southwestY != northwestY) {
 			this.flat = false;

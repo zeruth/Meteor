@@ -6,22 +6,22 @@ import org.openrs2.deob.annotation.OriginalMember;
 import org.openrs2.deob.annotation.Pc;
 
 // name taken from jaclib
-@OriginalClass("client!ob")
+@OriginalClass("client.client!ob")
 public class LinkList {
 
-	@OriginalMember(owner = "client!ob", name = "e", descriptor = "Lclient!u;")
+	@OriginalMember(owner = "client.client!ob", name = "e", descriptor = "Lclient!u;")
 	private final Linkable sentinel = new Linkable();
 
-	@OriginalMember(owner = "client!ob", name = "f", descriptor = "Lclient!u;")
+	@OriginalMember(owner = "client.client!ob", name = "f", descriptor = "Lclient!u;")
 	private Linkable cursor;
 
-	@OriginalMember(owner = "client!ob", name = "<init>", descriptor = "(I)V")
+	@OriginalMember(owner = "client.client!ob", name = "<init>", descriptor = "(I)V")
 	public LinkList() {
 		this.sentinel.next = this.sentinel;
 		this.sentinel.prev = this.sentinel;
 	}
 
-	@OriginalMember(owner = "client!ob", name = "a", descriptor = "(Lclient!u;)V")
+	@OriginalMember(owner = "client.client!ob", name = "a", descriptor = "(Lclient!u;)V")
 	public void addTail(@OriginalArg(0) Linkable node) {
 		if (node.prev != null) {
 			node.unlink();
@@ -33,7 +33,7 @@ public class LinkList {
 		node.next.prev = node;
 	}
 
-	@OriginalMember(owner = "client!ob", name = "a", descriptor = "(Lclient!u;I)V")
+	@OriginalMember(owner = "client.client!ob", name = "a", descriptor = "(Lclient!u;I)V")
 	public void addHead(@OriginalArg(0) Linkable node) {
 		if (node.prev != null) {
 			node.unlink();
@@ -45,7 +45,7 @@ public class LinkList {
 		node.next.prev = node;
 	}
 
-	@OriginalMember(owner = "client!ob", name = "a", descriptor = "()Lclient!u;")
+	@OriginalMember(owner = "client.client!ob", name = "a", descriptor = "()Lclient!u;")
 	public Linkable removeHead() {
 		@Pc(3) Linkable node = this.sentinel.next;
 		if (node == this.sentinel) {
@@ -55,7 +55,7 @@ public class LinkList {
 		return node;
 	}
 
-	@OriginalMember(owner = "client!ob", name = "b", descriptor = "()Lclient!u;")
+	@OriginalMember(owner = "client.client!ob", name = "b", descriptor = "()Lclient!u;")
 	public Linkable head() {
 		@Pc(3) Linkable node = this.sentinel.next;
 		if (node == this.sentinel) {
@@ -66,7 +66,7 @@ public class LinkList {
 		return node;
 	}
 
-	@OriginalMember(owner = "client!ob", name = "a", descriptor = "(B)Lclient!u;")
+	@OriginalMember(owner = "client.client!ob", name = "a", descriptor = "(B)Lclient!u;")
 	public Linkable tail() {
 		@Pc(3) Linkable node = this.sentinel.prev;
 		if (node == this.sentinel) {
@@ -77,7 +77,7 @@ public class LinkList {
 		return node;
 	}
 
-	@OriginalMember(owner = "client!ob", name = "a", descriptor = "(I)Lclient!u;")
+	@OriginalMember(owner = "client.client!ob", name = "a", descriptor = "(I)Lclient!u;")
 	public Linkable next() {
 		@Pc(8) Linkable node = this.cursor;
 		if (node == this.sentinel) {
@@ -88,7 +88,7 @@ public class LinkList {
 		return node;
 	}
 
-	@OriginalMember(owner = "client!ob", name = "a", descriptor = "(Z)Lclient!u;")
+	@OriginalMember(owner = "client.client!ob", name = "a", descriptor = "(Z)Lclient!u;")
 	public Linkable prev() {
 		@Pc(2) Linkable node = this.cursor;
 		if (node == this.sentinel) {
@@ -99,7 +99,7 @@ public class LinkList {
 		return node;
 	}
 
-	@OriginalMember(owner = "client!ob", name = "c", descriptor = "()V")
+	@OriginalMember(owner = "client.client!ob", name = "c", descriptor = "()V")
 	public void clear() {
 		while (true) {
 			@Pc(3) Linkable node = this.sentinel.next;

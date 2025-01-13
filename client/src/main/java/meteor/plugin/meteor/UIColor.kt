@@ -1,7 +1,7 @@
 package meteor.plugin.meteor
 
 import androidx.compose.ui.graphics.Color
-import meteor.ui.compose.Colors
+import meteor.ui.Colors
 
 enum class UIColor(val color: Color) {
     WHITE(Color.White),

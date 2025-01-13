@@ -7,37 +7,37 @@ import org.openrs2.deob.annotation.OriginalClass;
 import org.openrs2.deob.annotation.OriginalMember;
 import org.openrs2.deob.annotation.Pc;
 
-@OriginalClass("client!bb")
+@OriginalClass("client.client!bb")
 public class SpotAnimEntity extends Entity {
 
-	@OriginalMember(owner = "client!bb", name = "g", descriptor = "Lclient!kc;")
+	@OriginalMember(owner = "client.client!bb", name = "g", descriptor = "Lclient!kc;")
 	private final SpotAnimType type;
 
-	@OriginalMember(owner = "client!bb", name = "h", descriptor = "I")
+	@OriginalMember(owner = "client.client!bb", name = "h", descriptor = "I")
 	public final int startCycle;
 
-	@OriginalMember(owner = "client!bb", name = "i", descriptor = "I")
+	@OriginalMember(owner = "client.client!bb", name = "i", descriptor = "I")
 	public final int level;
 
-	@OriginalMember(owner = "client!bb", name = "j", descriptor = "I")
+	@OriginalMember(owner = "client.client!bb", name = "j", descriptor = "I")
 	public final int x;
 
-	@OriginalMember(owner = "client!bb", name = "k", descriptor = "I")
+	@OriginalMember(owner = "client.client!bb", name = "k", descriptor = "I")
 	public final int z;
 
-	@OriginalMember(owner = "client!bb", name = "l", descriptor = "I")
+	@OriginalMember(owner = "client.client!bb", name = "l", descriptor = "I")
 	public final int y;
 
-	@OriginalMember(owner = "client!bb", name = "m", descriptor = "I")
+	@OriginalMember(owner = "client.client!bb", name = "m", descriptor = "I")
 	private int seqFrame;
 
-	@OriginalMember(owner = "client!bb", name = "n", descriptor = "I")
+	@OriginalMember(owner = "client.client!bb", name = "n", descriptor = "I")
 	private int seqCycle;
 
-	@OriginalMember(owner = "client!bb", name = "o", descriptor = "Z")
+	@OriginalMember(owner = "client.client!bb", name = "o", descriptor = "Z")
 	public boolean seqComplete = false;
 
-	@OriginalMember(owner = "client!bb", name = "<init>", descriptor = "(IIZIIIII)V")
+	@OriginalMember(owner = "client.client!bb", name = "<init>", descriptor = "(IIZIIIII)V")
 	public SpotAnimEntity(@OriginalArg(1) int id, @OriginalArg(6) int level, @OriginalArg(0) int x, @OriginalArg(3) int z, @OriginalArg(5) int y, @OriginalArg(7) int cycle, @OriginalArg(4) int delay) {
 		this.type = SpotAnimType.instances[id];
 		this.level = level;
@@ -48,7 +48,7 @@ public class SpotAnimEntity extends Entity {
 		this.seqComplete = false;
 	}
 
-	@OriginalMember(owner = "client!bb", name = "a", descriptor = "(II)V")
+	@OriginalMember(owner = "client.client!bb", name = "a", descriptor = "(II)V")
 	public void update(@OriginalArg(0) int delta) {
 		for (this.seqCycle += delta; this.seqCycle > this.type.seq.delay[this.seqFrame]; ) {
 			this.seqCycle -= this.type.seq.delay[this.seqFrame] + 1;
@@ -61,11 +61,11 @@ public class SpotAnimEntity extends Entity {
 		}
 	}
 
-	@OriginalMember(owner = "client!bb", name = "a", descriptor = "(Z)Lclient!eb;")
+	@OriginalMember(owner = "client.client!bb", name = "a", descriptor = "(Z)Lclient!eb;")
 	@Override
 	public Model draw(int loopCycle) {
 		@Pc(3) Model tmp = this.type.getModel();
-		@Pc(19) Model model = new Model(tmp, true, !this.type.disposeAlpha, false);
+		@Pc(19) Model model = new Model(tmp, true, !this.type.animHasAlpha, false);
 
 		if (!this.seqComplete) {
 			model.createLabelReferences();

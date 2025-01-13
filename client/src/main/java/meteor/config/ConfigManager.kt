@@ -1,10 +1,9 @@
 package meteor.config
 
-import com.google.gson.GsonBuilder
 import meteor.Configuration
 import meteor.Logger
-import meteor.Util.gson
-import meteor.events.client.ConfigChanged
+import meteor.Main.gson
+import meteor.events.ConfigChanged
 import org.rationalityfrontline.kevent.KEVENT
 import java.io.File
 
@@ -39,9 +38,9 @@ object ConfigManager {
         val value = properties.properties[key]
         try {
             if (T::class == String::class) {
-                if (value as T == null)
+                if (value == null)
                     return defaultValue as T
-                return value
+                return value as T
             }
             return gson.fromJson(value, T::class.java)?: return defaultValue as T
         } catch (e: Exception) {

@@ -10,55 +10,55 @@ import org.openrs2.deob.annotation.OriginalMember;
 import org.openrs2.deob.annotation.Pc;
 
 // name derived from other types + spotanim.dat (it's been renamed in NXT)
-@OriginalClass("client!kc")
+@OriginalClass("client.client!kc")
 public class SpotAnimType {
 
-	@OriginalMember(owner = "client!kc", name = "b", descriptor = "I")
+	@OriginalMember(owner = "client.client!kc", name = "b", descriptor = "I")
 	private static int count;
 
-	@OriginalMember(owner = "client!kc", name = "c", descriptor = "[Lclient!kc;")
+	@OriginalMember(owner = "client.client!kc", name = "c", descriptor = "[Lclient!kc;")
 	public static SpotAnimType[] instances;
 
-	@OriginalMember(owner = "client!kc", name = "d", descriptor = "I")
+	@OriginalMember(owner = "client.client!kc", name = "d", descriptor = "I")
 	public int index;
 
-	@OriginalMember(owner = "client!kc", name = "e", descriptor = "I")
+	@OriginalMember(owner = "client.client!kc", name = "e", descriptor = "I")
 	private int model;
 
-	@OriginalMember(owner = "client!kc", name = "f", descriptor = "I")
+	@OriginalMember(owner = "client.client!kc", name = "f", descriptor = "I")
 	private int anim = -1;
 
-	@OriginalMember(owner = "client!kc", name = "g", descriptor = "Lclient!jc;")
+	@OriginalMember(owner = "client.client!kc", name = "g", descriptor = "Lclient!jc;")
 	public SeqType seq;
 
-	@OriginalMember(owner = "client!kc", name = "h", descriptor = "Z")
-	public boolean disposeAlpha = false;
+	@OriginalMember(owner = "client.client!kc", name = "h", descriptor = "Z")
+	public boolean animHasAlpha = false;
 
-	@OriginalMember(owner = "client!kc", name = "i", descriptor = "[I")
+	@OriginalMember(owner = "client.client!kc", name = "i", descriptor = "[I")
 	private final int[] recol_s = new int[6];
 
-	@OriginalMember(owner = "client!kc", name = "j", descriptor = "[I")
+	@OriginalMember(owner = "client.client!kc", name = "j", descriptor = "[I")
 	private final int[] recol_d = new int[6];
 
-	@OriginalMember(owner = "client!kc", name = "k", descriptor = "I")
+	@OriginalMember(owner = "client.client!kc", name = "k", descriptor = "I")
 	public int resizeh = 128;
 
-	@OriginalMember(owner = "client!kc", name = "l", descriptor = "I")
+	@OriginalMember(owner = "client.client!kc", name = "l", descriptor = "I")
 	public int resizev = 128;
 
-	@OriginalMember(owner = "client!kc", name = "m", descriptor = "I")
+	@OriginalMember(owner = "client.client!kc", name = "m", descriptor = "I")
 	public int orientation;
 
-	@OriginalMember(owner = "client!kc", name = "n", descriptor = "I")
+	@OriginalMember(owner = "client.client!kc", name = "n", descriptor = "I")
 	public int ambient;
 
-	@OriginalMember(owner = "client!kc", name = "o", descriptor = "I")
+	@OriginalMember(owner = "client.client!kc", name = "o", descriptor = "I")
 	public int contrast;
 
-	@OriginalMember(owner = "client!kc", name = "p", descriptor = "Lclient!s;")
+	@OriginalMember(owner = "client.client!kc", name = "p", descriptor = "Lclient!s;")
 	public static LruCache modelCache = new LruCache(30);
 
-	@OriginalMember(owner = "client!kc", name = "a", descriptor = "(Lclient!ub;I)V")
+	@OriginalMember(owner = "client.client!kc", name = "a", descriptor = "(Lclient!ub;I)V")
 	public static void unpack(@OriginalArg(0) Jagfile config) {
 		@Pc(13) Packet dat = new Packet(config.read("spotanim.dat", null));
 		count = dat.g2();
@@ -77,7 +77,7 @@ public class SpotAnimType {
 		}
 	}
 
-	@OriginalMember(owner = "client!kc", name = "a", descriptor = "(ZLclient!kb;)V")
+	@OriginalMember(owner = "client.client!kc", name = "a", descriptor = "(ZLclient!kb;)V")
 	public void decode(@OriginalArg(1) Packet dat) {
 		while (true) {
 			@Pc(5) int code = dat.g1();
@@ -94,7 +94,7 @@ public class SpotAnimType {
 					this.seq = SeqType.instances[this.anim];
 				}
 			} else if (code == 3) {
-				this.disposeAlpha = true;
+				this.animHasAlpha = true;
 			} else if (code == 4) {
 				this.resizeh = dat.g2();
 			} else if (code == 5) {
@@ -115,7 +115,7 @@ public class SpotAnimType {
 		}
 	}
 
-	@OriginalMember(owner = "client!kc", name = "a", descriptor = "()Lclient!eb;")
+	@OriginalMember(owner = "client.client!kc", name = "a", descriptor = "()Lclient!eb;")
 	public Model getModel() {
 		@Pc(6) Model model = (Model) modelCache.get(this.index);
 		if (model != null) {

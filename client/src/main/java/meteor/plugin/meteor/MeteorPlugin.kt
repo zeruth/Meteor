@@ -1,7 +1,7 @@
 package meteor.plugin.meteor
 
 import meteor.plugin.Plugin
-import meteor.ui.compose.Colors
+import meteor.ui.Colors
 
 class MeteorPlugin : Plugin("Meteor", cantDisable = true, enabledByDefault = true) {
     val config = configuration<MeteorConfig>()

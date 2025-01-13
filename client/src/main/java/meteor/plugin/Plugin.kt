@@ -2,7 +2,7 @@ package meteor.plugin
 
 import meteor.config.Config
 import meteor.config.ConfigManager
-import meteor.ui.compose.components.plugins.PluginsButton.Companion.runningMap
+import meteor.ui.components.sidebar.buttons.PluginsButton.Companion.runningMap
 
 open class Plugin(val name: String, var enabledByDefault: Boolean = false, var hidden: Boolean = false, var cantDisable: Boolean = false) : EventSubscriber() {
     var configuration: Config? = null

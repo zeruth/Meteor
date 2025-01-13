@@ -7,35 +7,35 @@ import org.openrs2.deob.annotation.OriginalMember;
 import org.openrs2.deob.annotation.Pc;
 
 // name and packaging confirmed 100% in rs2/mapview applet strings
-@OriginalClass("client!yb")
+@OriginalClass("client.client!yb")
 public class Wave {
 
-	@OriginalMember(owner = "client!yb", name = "c", descriptor = "[Lclient!yb;")
+	@OriginalMember(owner = "client.client!yb", name = "c", descriptor = "[Lclient!yb;")
 	private static final Wave[] tracks = new Wave[1000];
 
-	@OriginalMember(owner = "client!yb", name = "d", descriptor = "[I")
+	@OriginalMember(owner = "client.client!yb", name = "d", descriptor = "[I")
 	public static final int[] delays = new int[1000];
 
-	@OriginalMember(owner = "client!yb", name = "e", descriptor = "[B")
+	@OriginalMember(owner = "client.client!yb", name = "e", descriptor = "[B")
 	public static byte[] waveBytes;
 
-	@OriginalMember(owner = "client!yb", name = "f", descriptor = "Lclient!kb;")
+	@OriginalMember(owner = "client.client!yb", name = "f", descriptor = "Lclient!kb;")
 	public static Packet waveBuffer;
 
-	@OriginalMember(owner = "client!yb", name = "g", descriptor = "[Lclient!zb;")
-	private final SoundTone[] tones = new SoundTone[10];
+	@OriginalMember(owner = "client.client!yb", name = "g", descriptor = "[Lclient!zb;")
+	private final Tone[] tones = new Tone[10];
 
-	@OriginalMember(owner = "client!yb", name = "h", descriptor = "I")
+	@OriginalMember(owner = "client.client!yb", name = "h", descriptor = "I")
 	private int loopBegin;
 
-	@OriginalMember(owner = "client!yb", name = "i", descriptor = "I")
+	@OriginalMember(owner = "client.client!yb", name = "i", descriptor = "I")
 	private int loopEnd;
 
-	@OriginalMember(owner = "client!yb", name = "a", descriptor = "(Lclient!kb;I)V")
+	@OriginalMember(owner = "client.client!yb", name = "a", descriptor = "(Lclient!kb;I)V")
 	public static void unpack(@OriginalArg(0) Packet dat) {
 		waveBytes = new byte[441000];
 		waveBuffer = new Packet(waveBytes);
-		SoundTone.init();
+		Tone.init();
 
 		while (true) {
 			@Pc(16) int id = dat.g2();
@@ -49,7 +49,7 @@ public class Wave {
 		}
 	}
 
-	@OriginalMember(owner = "client!yb", name = "a", descriptor = "(BII)Lclient!kb;")
+	@OriginalMember(owner = "client.client!yb", name = "a", descriptor = "(BII)Lclient!kb;")
 	public static Packet generate(@OriginalArg(2) int id, @OriginalArg(1) int loopCount) {
 		if (tracks[id] == null) {
 			return null;
@@ -59,12 +59,12 @@ public class Wave {
 		return track.getWave(loopCount);
 	}
 
-	@OriginalMember(owner = "client!yb", name = "a", descriptor = "(ZLclient!kb;)V")
+	@OriginalMember(owner = "client.client!yb", name = "a", descriptor = "(ZLclient!kb;)V")
 	public void read(@OriginalArg(1) Packet dat) {
 		for (@Pc(1) int tone = 0; tone < 10; tone++) {
 			if (dat.g1() != 0) {
 				dat.pos--;
-				this.tones[tone] = new SoundTone();
+				this.tones[tone] = new Tone();
 				this.tones[tone].read(dat);
 			}
 		}
@@ -73,7 +73,7 @@ public class Wave {
 		this.loopEnd = dat.g2();
 	}
 
-	@OriginalMember(owner = "client!yb", name = "a", descriptor = "(B)I")
+	@OriginalMember(owner = "client.client!yb", name = "a", descriptor = "(B)I")
 	public int trim() {
 		@Pc(3) int start = 9999999;
 		for (@Pc(5) int tone = 0; tone < 10; tone++) {
@@ -104,7 +104,7 @@ public class Wave {
 		return start;
 	}
 
-	@OriginalMember(owner = "client!yb", name = "a", descriptor = "(ZI)Lclient!kb;")
+	@OriginalMember(owner = "client.client!yb", name = "a", descriptor = "(ZI)Lclient!kb;")
 	public Packet getWave(@OriginalArg(1) int loopCount) {
 		@Pc(3) int length = this.generate(loopCount);
 		waveBuffer.pos = 0;
@@ -125,7 +125,7 @@ public class Wave {
 		return waveBuffer;
 	}
 
-	@OriginalMember(owner = "client!yb", name = "a", descriptor = "(I)I")
+	@OriginalMember(owner = "client.client!yb", name = "a", descriptor = "(I)I")
 	private int generate(@OriginalArg(0) int loopCount) {
 		@Pc(3) int duration = 0;
 		for (@Pc(5) int tone = 0; tone < 10; tone++) {
@@ -187,79 +187,79 @@ public class Wave {
 		return totalSampleCount;
 	}
 
-	@OriginalClass("client!zb")
-	public static final class SoundTone {
+	@OriginalClass("client.client!zb")
+	public static final class Tone {
 
-		@OriginalMember(owner = "client!zb", name = "c", descriptor = "Lclient!xb;")
-		private SoundEnvelope frequencyBase;
+		@OriginalMember(owner = "client.client!zb", name = "c", descriptor = "Lclient!xb;")
+		private Envelope frequencyBase;
 
-		@OriginalMember(owner = "client!zb", name = "d", descriptor = "Lclient!xb;")
-		private SoundEnvelope amplitudeBase;
+		@OriginalMember(owner = "client.client!zb", name = "d", descriptor = "Lclient!xb;")
+		private Envelope amplitudeBase;
 
-		@OriginalMember(owner = "client!zb", name = "e", descriptor = "Lclient!xb;")
-		private SoundEnvelope frequencyModRate;
+		@OriginalMember(owner = "client.client!zb", name = "e", descriptor = "Lclient!xb;")
+		private Envelope frequencyModRate;
 
-		@OriginalMember(owner = "client!zb", name = "f", descriptor = "Lclient!xb;")
-		private SoundEnvelope frequencyModRange;
+		@OriginalMember(owner = "client.client!zb", name = "f", descriptor = "Lclient!xb;")
+		private Envelope frequencyModRange;
 
-		@OriginalMember(owner = "client!zb", name = "g", descriptor = "Lclient!xb;")
-		private SoundEnvelope amplitudeModRate;
+		@OriginalMember(owner = "client.client!zb", name = "g", descriptor = "Lclient!xb;")
+		private Envelope amplitudeModRate;
 
-		@OriginalMember(owner = "client!zb", name = "h", descriptor = "Lclient!xb;")
-		private SoundEnvelope amplitudeModRange;
+		@OriginalMember(owner = "client.client!zb", name = "h", descriptor = "Lclient!xb;")
+		private Envelope amplitudeModRange;
 
-		@OriginalMember(owner = "client!zb", name = "i", descriptor = "Lclient!xb;")
-		private SoundEnvelope release;
+		@OriginalMember(owner = "client.client!zb", name = "i", descriptor = "Lclient!xb;")
+		private Envelope release;
 
-		@OriginalMember(owner = "client!zb", name = "j", descriptor = "Lclient!xb;")
-		private SoundEnvelope attack;
+		@OriginalMember(owner = "client.client!zb", name = "j", descriptor = "Lclient!xb;")
+		private Envelope attack;
 
-		@OriginalMember(owner = "client!zb", name = "k", descriptor = "[I")
+		@OriginalMember(owner = "client.client!zb", name = "k", descriptor = "[I")
 		private final int[] harmonicVolume = new int[5];
 
-		@OriginalMember(owner = "client!zb", name = "l", descriptor = "[I")
+		@OriginalMember(owner = "client.client!zb", name = "l", descriptor = "[I")
 		private final int[] harmonicSemitone = new int[5];
 
-		@OriginalMember(owner = "client!zb", name = "m", descriptor = "[I")
+		@OriginalMember(owner = "client.client!zb", name = "m", descriptor = "[I")
 		private final int[] harmonicDelay = new int[5];
 
-		@OriginalMember(owner = "client!zb", name = "n", descriptor = "I")
+		@OriginalMember(owner = "client.client!zb", name = "n", descriptor = "I")
 		private int reverbDelay;
 
-		@OriginalMember(owner = "client!zb", name = "o", descriptor = "I")
+		@OriginalMember(owner = "client.client!zb", name = "o", descriptor = "I")
 		private int reverbVolume = 100;
 
-		@OriginalMember(owner = "client!zb", name = "p", descriptor = "I")
+		@OriginalMember(owner = "client.client!zb", name = "p", descriptor = "I")
 		public int length = 500;
 
-		@OriginalMember(owner = "client!zb", name = "q", descriptor = "I")
+		@OriginalMember(owner = "client.client!zb", name = "q", descriptor = "I")
 		public int start;
 
-		@OriginalMember(owner = "client!zb", name = "r", descriptor = "[I")
+		@OriginalMember(owner = "client.client!zb", name = "r", descriptor = "[I")
 		public static int[] buffer;
 
-		@OriginalMember(owner = "client!zb", name = "s", descriptor = "[I")
+		@OriginalMember(owner = "client.client!zb", name = "s", descriptor = "[I")
 		public static int[] noise;
 
-		@OriginalMember(owner = "client!zb", name = "t", descriptor = "[I")
+		@OriginalMember(owner = "client.client!zb", name = "t", descriptor = "[I")
 		public static int[] sin;
 
-		@OriginalMember(owner = "client!zb", name = "u", descriptor = "[I")
+		@OriginalMember(owner = "client.client!zb", name = "u", descriptor = "[I")
 		public static final int[] tmpPhases = new int[5];
 
-		@OriginalMember(owner = "client!zb", name = "v", descriptor = "[I")
+		@OriginalMember(owner = "client.client!zb", name = "v", descriptor = "[I")
 		public static final int[] tmpDelays = new int[5];
 
-		@OriginalMember(owner = "client!zb", name = "w", descriptor = "[I")
+		@OriginalMember(owner = "client.client!zb", name = "w", descriptor = "[I")
 		public static final int[] tmpVolumes = new int[5];
 
-		@OriginalMember(owner = "client!zb", name = "x", descriptor = "[I")
+		@OriginalMember(owner = "client.client!zb", name = "x", descriptor = "[I")
 		public static final int[] tmpSemitones = new int[5];
 
-		@OriginalMember(owner = "client!zb", name = "y", descriptor = "[I")
+		@OriginalMember(owner = "client.client!zb", name = "y", descriptor = "[I")
 		public static final int[] tmpStarts = new int[5];
 
-		@OriginalMember(owner = "client!zb", name = "a", descriptor = "()V")
+		@OriginalMember(owner = "client.client!zb", name = "a", descriptor = "()V")
 		public static void init() {
 			noise = new int[32768];
 			for (@Pc(6) int i = 0; i < 32768; i++) {
@@ -278,7 +278,7 @@ public class Wave {
 			buffer = new int[220500]; // 10s * 22050 KHz
 		}
 
-		@OriginalMember(owner = "client!zb", name = "a", descriptor = "(II)[I")
+		@OriginalMember(owner = "client.client!zb", name = "a", descriptor = "(II)[I")
 		public int[] generate(@OriginalArg(0) int sampleCount, @OriginalArg(1) int length) {
 			for (@Pc(3) int sample = 0; sample < sampleCount; sample++) {
 				buffer[sample] = 0;
@@ -405,7 +405,7 @@ public class Wave {
 			return buffer;
 		}
 
-		@OriginalMember(owner = "client!zb", name = "a", descriptor = "(IIII)I")
+		@OriginalMember(owner = "client.client!zb", name = "a", descriptor = "(IIII)I")
 		private int generate(@OriginalArg(1) int amplitude, @OriginalArg(2) int phase, @OriginalArg(3) int form) {
 			if (form == 1) {
 				return (phase & 0x7FFF) < 16384 ? amplitude : -amplitude;
@@ -420,41 +420,41 @@ public class Wave {
 			}
 		}
 
-		@OriginalMember(owner = "client!zb", name = "a", descriptor = "(ZLclient!kb;)V")
+		@OriginalMember(owner = "client.client!zb", name = "a", descriptor = "(ZLclient!kb;)V")
 		public void read(@OriginalArg(1) Packet dat) {
-			this.frequencyBase = new SoundEnvelope();
+			this.frequencyBase = new Envelope();
 			this.frequencyBase.read(dat);
 
-			this.amplitudeBase = new SoundEnvelope();
+			this.amplitudeBase = new Envelope();
 			this.amplitudeBase.read(dat);
 
 			if (dat.g1() != 0) {
 				dat.pos--;
 
-				this.frequencyModRate = new SoundEnvelope();
+				this.frequencyModRate = new Envelope();
 				this.frequencyModRate.read(dat);
 
-				this.frequencyModRange = new SoundEnvelope();
+				this.frequencyModRange = new Envelope();
 				this.frequencyModRange.read(dat);
 			}
 
 			if (dat.g1() != 0) {
 				dat.pos--;
 
-				this.amplitudeModRate = new SoundEnvelope();
+				this.amplitudeModRate = new Envelope();
 				this.amplitudeModRate.read(dat);
 
-				this.amplitudeModRange = new SoundEnvelope();
+				this.amplitudeModRange = new Envelope();
 				this.amplitudeModRange.read(dat);
 			}
 
 			if (dat.g1() != 0) {
 				dat.pos--;
 
-				this.release = new SoundEnvelope();
+				this.release = new Envelope();
 				this.release.read(dat);
 
-				this.attack = new SoundEnvelope();
+				this.attack = new Envelope();
 				this.attack.read(dat);
 			}
 
@@ -476,43 +476,43 @@ public class Wave {
 		}
 	}
 
-	@OriginalClass("client!xb")
-	public static final class SoundEnvelope {
+	@OriginalClass("client.client!xb")
+	public static final class Envelope {
 
-		@OriginalMember(owner = "client!xb", name = "a", descriptor = "I")
+		@OriginalMember(owner = "client.client!xb", name = "a", descriptor = "I")
 		private int length;
 
-		@OriginalMember(owner = "client!xb", name = "b", descriptor = "[I")
+		@OriginalMember(owner = "client.client!xb", name = "b", descriptor = "[I")
 		private int[] shapeDelta;
 
-		@OriginalMember(owner = "client!xb", name = "c", descriptor = "[I")
+		@OriginalMember(owner = "client.client!xb", name = "c", descriptor = "[I")
 		private int[] shapePeak;
 
-		@OriginalMember(owner = "client!xb", name = "d", descriptor = "I")
+		@OriginalMember(owner = "client.client!xb", name = "d", descriptor = "I")
 		public int start;
 
-		@OriginalMember(owner = "client!xb", name = "e", descriptor = "I")
+		@OriginalMember(owner = "client.client!xb", name = "e", descriptor = "I")
 		public int end;
 
-		@OriginalMember(owner = "client!xb", name = "f", descriptor = "I")
+		@OriginalMember(owner = "client.client!xb", name = "f", descriptor = "I")
 		public int form;
 
-		@OriginalMember(owner = "client!xb", name = "g", descriptor = "I")
+		@OriginalMember(owner = "client.client!xb", name = "g", descriptor = "I")
 		private int threshold;
 
-		@OriginalMember(owner = "client!xb", name = "h", descriptor = "I")
+		@OriginalMember(owner = "client.client!xb", name = "h", descriptor = "I")
 		private int position;
 
-		@OriginalMember(owner = "client!xb", name = "i", descriptor = "I")
+		@OriginalMember(owner = "client.client!xb", name = "i", descriptor = "I")
 		private int delta;
 
-		@OriginalMember(owner = "client!xb", name = "j", descriptor = "I")
+		@OriginalMember(owner = "client.client!xb", name = "j", descriptor = "I")
 		private int amplitude;
 
-		@OriginalMember(owner = "client!xb", name = "k", descriptor = "I")
+		@OriginalMember(owner = "client.client!xb", name = "k", descriptor = "I")
 		private int ticks;
 
-		@OriginalMember(owner = "client!xb", name = "a", descriptor = "(ZLclient!kb;)V")
+		@OriginalMember(owner = "client.client!xb", name = "a", descriptor = "(ZLclient!kb;)V")
 		public void read(@OriginalArg(1) Packet dat) {
 			this.form = dat.g1();
 			this.start = dat.g4();
@@ -527,7 +527,7 @@ public class Wave {
 			}
 		}
 
-		@OriginalMember(owner = "client!xb", name = "a", descriptor = "(I)V")
+		@OriginalMember(owner = "client.client!xb", name = "a", descriptor = "(I)V")
 		public void reset() {
 			this.threshold = 0;
 			this.position = 0;
@@ -536,7 +536,7 @@ public class Wave {
 			this.ticks = 0;
 		}
 
-		@OriginalMember(owner = "client!xb", name = "a", descriptor = "(ZI)I")
+		@OriginalMember(owner = "client.client!xb", name = "a", descriptor = "(ZI)I")
 		public int evaluate(@OriginalArg(1) int delta) {
 			if (this.ticks >= this.threshold) {
 				this.amplitude = this.shapePeak[this.position++] << 15;

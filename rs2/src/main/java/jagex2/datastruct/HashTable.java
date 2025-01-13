@@ -6,16 +6,16 @@ import org.openrs2.deob.annotation.OriginalMember;
 import org.openrs2.deob.annotation.Pc;
 
 // name taken from jaclib
-@OriginalClass("client!t")
+@OriginalClass("client.client!t")
 public class HashTable {
 
-	@OriginalMember(owner = "client!t", name = "c", descriptor = "I")
+	@OriginalMember(owner = "client.client!t", name = "c", descriptor = "I")
 	private final int bucketCount;
 
-	@OriginalMember(owner = "client!t", name = "d", descriptor = "[Lclient!u;")
+	@OriginalMember(owner = "client.client!t", name = "d", descriptor = "[Lclient!u;")
 	private final Linkable[] buckets;
 
-	@OriginalMember(owner = "client!t", name = "<init>", descriptor = "(II)V")
+	@OriginalMember(owner = "client.client!t", name = "<init>", descriptor = "(II)V")
 	public HashTable(@OriginalArg(1) int size) {
 		this.buckets = new Linkable[size];
 		this.bucketCount = size;
@@ -27,7 +27,7 @@ public class HashTable {
 		}
 	}
 
-	@OriginalMember(owner = "client!t", name = "a", descriptor = "(J)Lclient!u;")
+	@OriginalMember(owner = "client.client!t", name = "a", descriptor = "(J)Lclient!u;")
 	public Linkable get(@OriginalArg(0) long key) {
 		@Pc(11) Linkable sentinel = this.buckets[(int) (key & (long) (this.bucketCount - 1))];
 
@@ -40,7 +40,7 @@ public class HashTable {
 		return null;
 	}
 
-	@OriginalMember(owner = "client!t", name = "a", descriptor = "(JILclient!u;)V")
+	@OriginalMember(owner = "client.client!t", name = "a", descriptor = "(JILclient!u;)V")
 	public void put(@OriginalArg(0) long key, @OriginalArg(2) Linkable value) {
 		if (value.prev != null) {
 			value.unlink();

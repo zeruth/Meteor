@@ -7,13 +7,13 @@ import org.openrs2.deob.annotation.OriginalMember;
 import org.openrs2.deob.annotation.Pc;
 
 // name taken from rsc
-@OriginalClass("client!wb")
+@OriginalClass("client.client!wb")
 public class WordPack {
 
-	@OriginalMember(owner = "client!wb", name = "a", descriptor = "[C")
+	@OriginalMember(owner = "client.client!wb", name = "a", descriptor = "[C")
 	private static final char[] charBuffer = new char[100];
 
-	@OriginalMember(owner = "client!wb", name = "b", descriptor = "[C")
+	@OriginalMember(owner = "client.client!wb", name = "b", descriptor = "[C")
 	private static final char[] TABLE = new char[] {
 		// combined to save space:
 		' ', 'e', 't', 'a', 'o', 'i', 'h', 'n', 's', 'r', 'd', 'l', 'u',
@@ -23,7 +23,7 @@ public class WordPack {
 		' ', '!', '?', '.', ',', ':', ';', '(', ')', '-', '&', '*', '\\', '\'', '@', '#', '+', '=', '£', '$', '%', '"', '[', ']'
 	};
 
-	@OriginalMember(owner = "client!wb", name = "a", descriptor = "(Lclient!kb;II)Ljava/lang/String;")
+	@OriginalMember(owner = "client.client!wb", name = "a", descriptor = "(Lclient!kb;II)Ljava/lang/String;")
 	public static String unpack(@OriginalArg(0) Packet word, @OriginalArg(2) int length) {
 		@Pc(3) int pos = 0;
 		@Pc(5) int carry = -1;
@@ -68,7 +68,7 @@ public class WordPack {
 		return new String(charBuffer, 0, pos);
 	}
 
-	@OriginalMember(owner = "client!wb", name = "a", descriptor = "(Lclient!kb;ZLjava/lang/String;)V")
+	@OriginalMember(owner = "client.client!wb", name = "a", descriptor = "(Lclient!kb;ZLjava/lang/String;)V")
 	public static void pack(@OriginalArg(0) Packet word, @OriginalArg(2) String str) {
 		if (str.length() > 80) {
 			str = str.substring(0, 80);

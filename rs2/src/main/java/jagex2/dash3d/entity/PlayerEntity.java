@@ -13,15 +13,15 @@ import org.openrs2.deob.annotation.OriginalClass;
 import org.openrs2.deob.annotation.OriginalMember;
 import org.openrs2.deob.annotation.Pc;
 
-@OriginalClass("client!z")
+@OriginalClass("client.client!z")
 public class PlayerEntity extends PathingEntity {
 
-	@OriginalMember(owner = "client!client", name = "qh", descriptor = "[I")
+	@OriginalMember(owner = "client.client!client.client", name = "qh", descriptor = "[I")
 	public static final int[] DESIGN_HAIR_COLOR = new int[] {
 		9104, 10275, 7595, 3610, 7975, 8526, 918, 38802, 24466, 10145, 58654, 5027, 1457, 16565, 34991, 25486
 	};
 
-	@OriginalMember(owner = "client!client", name = "Oe", descriptor = "[[I")
+	@OriginalMember(owner = "client.client!client.client", name = "Oe", descriptor = "[[I")
 	public static final int[][] DESIGN_BODY_COLOR = new int[][] {
 		{ 6798, 107, 10283, 16, 4797, 7744, 5799, 4634, 33697, 22433, 2983, 54193 },
 		{ 8741, 12, 64030, 43162, 7735, 8404, 1701, 38430, 24094, 10153, 56621, 4783, 1341, 16578, 35003, 25239 },
@@ -30,70 +30,70 @@ public class PlayerEntity extends PathingEntity {
 		{ 4550, 4537, 5681, 5673, 5790, 6806, 8076, 4574 }
 	};
 
-	@OriginalMember(owner = "client!z", name = "ib", descriptor = "Ljava/lang/String;")
+	@OriginalMember(owner = "client.client!z", name = "ib", descriptor = "Ljava/lang/String;")
 	public String name;
 
-	@OriginalMember(owner = "client!z", name = "jb", descriptor = "Z")
+	@OriginalMember(owner = "client.client!z", name = "jb", descriptor = "Z")
 	private boolean visible = false;
 
-	@OriginalMember(owner = "client!z", name = "kb", descriptor = "I")
+	@OriginalMember(owner = "client.client!z", name = "kb", descriptor = "I")
 	private int gender;
 
-	@OriginalMember(owner = "client!z", name = "lb", descriptor = "I")
+	@OriginalMember(owner = "client.client!z", name = "lb", descriptor = "I")
 	public int headicons;
 
-	@OriginalMember(owner = "client!z", name = "mb", descriptor = "[I")
+	@OriginalMember(owner = "client.client!z", name = "mb", descriptor = "[I")
 	private final int[] appearances = new int[12];
 
-	@OriginalMember(owner = "client!z", name = "nb", descriptor = "[I")
+	@OriginalMember(owner = "client.client!z", name = "nb", descriptor = "[I")
 	private final int[] colors = new int[5];
 
-	@OriginalMember(owner = "client!z", name = "ob", descriptor = "I")
+	@OriginalMember(owner = "client.client!z", name = "ob", descriptor = "I")
 	public int combatLevel;
 
-	@OriginalMember(owner = "client!z", name = "pb", descriptor = "J")
+	@OriginalMember(owner = "client.client!z", name = "pb", descriptor = "J")
 	private long appearanceHashcode;
 
-	@OriginalMember(owner = "client!z", name = "qb", descriptor = "I")
+	@OriginalMember(owner = "client.client!z", name = "qb", descriptor = "I")
 	public int y;
 
-	@OriginalMember(owner = "client!z", name = "rb", descriptor = "I")
+	@OriginalMember(owner = "client.client!z", name = "rb", descriptor = "I")
 	public int locStartCycle;
 
-	@OriginalMember(owner = "client!z", name = "sb", descriptor = "I")
+	@OriginalMember(owner = "client.client!z", name = "sb", descriptor = "I")
 	public int locStopCycle;
 
-	@OriginalMember(owner = "client!z", name = "tb", descriptor = "I")
+	@OriginalMember(owner = "client.client!z", name = "tb", descriptor = "I")
 	public int locOffsetX;
 
-	@OriginalMember(owner = "client!z", name = "ub", descriptor = "I")
+	@OriginalMember(owner = "client.client!z", name = "ub", descriptor = "I")
 	public int locOffsetY;
 
-	@OriginalMember(owner = "client!z", name = "vb", descriptor = "I")
+	@OriginalMember(owner = "client.client!z", name = "vb", descriptor = "I")
 	public int locOffsetZ;
 
-	@OriginalMember(owner = "client!z", name = "wb", descriptor = "Lclient!eb;")
+	@OriginalMember(owner = "client.client!z", name = "wb", descriptor = "Lclient!eb;")
 	public Model locModel;
 
-	@OriginalMember(owner = "client!z", name = "xb", descriptor = "I")
+	@OriginalMember(owner = "client.client!z", name = "xb", descriptor = "I")
 	public int minTileX;
 
-	@OriginalMember(owner = "client!z", name = "yb", descriptor = "I")
+	@OriginalMember(owner = "client.client!z", name = "yb", descriptor = "I")
 	public int minTileZ;
 
-	@OriginalMember(owner = "client!z", name = "zb", descriptor = "I")
+	@OriginalMember(owner = "client.client!z", name = "zb", descriptor = "I")
 	public int maxTileX;
 
-	@OriginalMember(owner = "client!z", name = "Ab", descriptor = "I")
+	@OriginalMember(owner = "client.client!z", name = "Ab", descriptor = "I")
 	public int maxTileZ;
 
-	@OriginalMember(owner = "client!z", name = "Bb", descriptor = "Z")
+	@OriginalMember(owner = "client.client!z", name = "Bb", descriptor = "Z")
 	public boolean lowMemory = false;
 
-	@OriginalMember(owner = "client!z", name = "Cb", descriptor = "Lclient!s;")
+	@OriginalMember(owner = "client.client!z", name = "Cb", descriptor = "Lclient!s;")
 	public static LruCache modelCache = new LruCache(200);
 
-	@OriginalMember(owner = "client!z", name = "a", descriptor = "(ZLclient!kb;)V")
+	@OriginalMember(owner = "client.client!z", name = "a", descriptor = "(ZLclient!kb;)V")
 	public void read(@OriginalArg(1) Packet buf) {
 		buf.pos = 0;
 
@@ -184,7 +184,7 @@ public class PlayerEntity extends PathingEntity {
 		this.appearanceHashcode += this.gender;
 	}
 
-	@OriginalMember(owner = "client!z", name = "a", descriptor = "(Z)Lclient!eb;")
+	@OriginalMember(owner = "client.client!z", name = "a", descriptor = "(Z)Lclient!eb;")
 	@Override
 	public Model draw(int loopCycle) {
 		if (!this.visible) {
@@ -201,7 +201,7 @@ public class PlayerEntity extends PathingEntity {
 
 		if (super.spotanimId != -1 && super.spotanimFrame != -1) {
 			@Pc(35) SpotAnimType spotanim = SpotAnimType.instances[super.spotanimId];
-			@Pc(51) Model model2 = new Model(spotanim.getModel(), true, !spotanim.disposeAlpha, false);
+			@Pc(51) Model model2 = new Model(spotanim.getModel(), true, !spotanim.animHasAlpha, false);
 
 			model2.translate(-super.spotanimOffset, 0, 0);
 			model2.createLabelReferences();
@@ -257,7 +257,7 @@ public class PlayerEntity extends PathingEntity {
 		return model;
 	}
 
-	@OriginalMember(owner = "client!z", name = "c", descriptor = "(Z)Lclient!eb;")
+	@OriginalMember(owner = "client.client!z", name = "c", descriptor = "(Z)Lclient!eb;")
 	private Model getSequencedModel() {
 		@Pc(4) long hashCode = this.appearanceHashcode;
 		@Pc(6) int primaryTransformId = -1;
@@ -349,7 +349,7 @@ public class PlayerEntity extends PathingEntity {
 		return tmp;
 	}
 
-	@OriginalMember(owner = "client!z", name = "a", descriptor = "(I)Lclient!eb;")
+	@OriginalMember(owner = "client.client!z", name = "a", descriptor = "(I)Lclient!eb;")
 	public Model getHeadModel() {
 		if (!this.visible) {
 			return null;
@@ -387,7 +387,7 @@ public class PlayerEntity extends PathingEntity {
 		return tmp;
 	}
 
-	@OriginalMember(owner = "client!z", name = "b", descriptor = "(Z)Z")
+	@OriginalMember(owner = "client.client!z", name = "b", descriptor = "(Z)Z")
 	@Override
 	public boolean isVisible() {
 		return this.visible;

@@ -3,7 +3,7 @@ package jagex2.config;
 import jagex2.datastruct.JString;
 import jagex2.datastruct.LruCache;
 import jagex2.graphics.Model;
-import jagex2.graphics.Pix24;
+import jagex2.graphics.Pix32;
 import jagex2.graphics.PixFont;
 import jagex2.io.Jagfile;
 import jagex2.io.Packet;
@@ -13,7 +13,7 @@ import org.openrs2.deob.annotation.OriginalMember;
 import org.openrs2.deob.annotation.Pc;
 
 // rs3 has this as config.iftype.Component
-@OriginalClass("client!hc")
+@OriginalClass("client.client!hc")
 public class Component {
 
 	public static final int TYPE_LAYER = 0;
@@ -32,34 +32,34 @@ public class Component {
 	public static final int BUTTON_SELECT = 5;
 	public static final int BUTTON_CONTINUE = 6;
 
-	@OriginalMember(owner = "client!hc", name = "c", descriptor = "[Lclient!hc;")
+	@OriginalMember(owner = "client.client!hc", name = "c", descriptor = "[Lclient!hc;")
 	public static Component[] instances;
 
-	@OriginalMember(owner = "client!hc", name = "d", descriptor = "[I")
+	@OriginalMember(owner = "client.client!hc", name = "d", descriptor = "[I")
 	public int[] invSlotObjId;
 
-	@OriginalMember(owner = "client!hc", name = "e", descriptor = "[I")
+	@OriginalMember(owner = "client.client!hc", name = "e", descriptor = "[I")
 	public int[] invSlotObjCount;
 
-	@OriginalMember(owner = "client!hc", name = "f", descriptor = "I")
+	@OriginalMember(owner = "client.client!hc", name = "f", descriptor = "I")
 	public int seqFrame;
 
-	@OriginalMember(owner = "client!hc", name = "g", descriptor = "I")
+	@OriginalMember(owner = "client.client!hc", name = "g", descriptor = "I")
 	public int seqCycle;
 
-	@OriginalMember(owner = "client!hc", name = "h", descriptor = "I")
+	@OriginalMember(owner = "client.client!hc", name = "h", descriptor = "I")
 	public int id;
 
-	@OriginalMember(owner = "client!hc", name = "i", descriptor = "I")
+	@OriginalMember(owner = "client.client!hc", name = "i", descriptor = "I")
 	public int layer;
 
-	@OriginalMember(owner = "client!hc", name = "j", descriptor = "I")
+	@OriginalMember(owner = "client.client!hc", name = "j", descriptor = "I")
 	public int type;
 
-	@OriginalMember(owner = "client!hc", name = "k", descriptor = "I")
+	@OriginalMember(owner = "client.client!hc", name = "k", descriptor = "I")
 	public int buttonType;
 
-	@OriginalMember(owner = "client!hc", name = "l", descriptor = "I")
+	@OriginalMember(owner = "client.client!hc", name = "l", descriptor = "I")
 	public int clientCode;
 
 	/* Client codes:
@@ -124,154 +124,154 @@ public class Component {
 	 * 655: last login info (no recovery questions set)
 	 */
 
-	@OriginalMember(owner = "client!hc", name = "m", descriptor = "I")
+	@OriginalMember(owner = "client.client!hc", name = "m", descriptor = "I")
 	public int width;
 
-	@OriginalMember(owner = "client!hc", name = "n", descriptor = "I")
+	@OriginalMember(owner = "client.client!hc", name = "n", descriptor = "I")
 	public int height;
 
-	@OriginalMember(owner = "client!hc", name = "o", descriptor = "I")
+	@OriginalMember(owner = "client.client!hc", name = "o", descriptor = "I")
 	public int x;
 
-	@OriginalMember(owner = "client!hc", name = "p", descriptor = "I")
+	@OriginalMember(owner = "client.client!hc", name = "p", descriptor = "I")
 	public int y;
 
-	@OriginalMember(owner = "client!hc", name = "q", descriptor = "[[I")
+	@OriginalMember(owner = "client.client!hc", name = "q", descriptor = "[[I")
 	public int[][] scripts;
 
-	@OriginalMember(owner = "client!hc", name = "r", descriptor = "[I")
+	@OriginalMember(owner = "client.client!hc", name = "r", descriptor = "[I")
 	public int[] scriptComparator;
 
-	@OriginalMember(owner = "client!hc", name = "s", descriptor = "[I")
+	@OriginalMember(owner = "client.client!hc", name = "s", descriptor = "[I")
 	public int[] scriptOperand;
 
-	@OriginalMember(owner = "client!hc", name = "t", descriptor = "I")
+	@OriginalMember(owner = "client.client!hc", name = "t", descriptor = "I")
 	public int overLayer;
 
-	@OriginalMember(owner = "client!hc", name = "u", descriptor = "I")
+	@OriginalMember(owner = "client.client!hc", name = "u", descriptor = "I")
 	public int scroll;
 
-	@OriginalMember(owner = "client!hc", name = "v", descriptor = "I")
+	@OriginalMember(owner = "client.client!hc", name = "v", descriptor = "I")
 	public int scrollPosition;
 
-	@OriginalMember(owner = "client!hc", name = "w", descriptor = "Z")
+	@OriginalMember(owner = "client.client!hc", name = "w", descriptor = "Z")
 	public boolean hide;
 
-	@OriginalMember(owner = "client!hc", name = "x", descriptor = "[I")
+	@OriginalMember(owner = "client.client!hc", name = "x", descriptor = "[I")
 	public int[] childId;
 
-	@OriginalMember(owner = "client!hc", name = "y", descriptor = "[I")
+	@OriginalMember(owner = "client.client!hc", name = "y", descriptor = "[I")
 	public int[] childX;
 
-	@OriginalMember(owner = "client!hc", name = "z", descriptor = "[I")
+	@OriginalMember(owner = "client.client!hc", name = "z", descriptor = "[I")
 	public int[] childY;
 
-	@OriginalMember(owner = "client!hc", name = "A", descriptor = "I")
+	@OriginalMember(owner = "client.client!hc", name = "A", descriptor = "I")
 	public int unusedShort1;
 
-	@OriginalMember(owner = "client!hc", name = "B", descriptor = "Z")
+	@OriginalMember(owner = "client.client!hc", name = "B", descriptor = "Z")
 	public boolean unusedBoolean1;
 
-	@OriginalMember(owner = "client!hc", name = "C", descriptor = "Z")
+	@OriginalMember(owner = "client.client!hc", name = "C", descriptor = "Z")
 	public boolean draggable;
 
-	@OriginalMember(owner = "client!hc", name = "D", descriptor = "Z")
+	@OriginalMember(owner = "client.client!hc", name = "D", descriptor = "Z")
 	public boolean interactable;
 
-	@OriginalMember(owner = "client!hc", name = "E", descriptor = "Z")
+	@OriginalMember(owner = "client.client!hc", name = "E", descriptor = "Z")
 	public boolean usable;
 
-	@OriginalMember(owner = "client!hc", name = "F", descriptor = "I")
+	@OriginalMember(owner = "client.client!hc", name = "F", descriptor = "I")
 	public int marginX;
 
-	@OriginalMember(owner = "client!hc", name = "G", descriptor = "I")
+	@OriginalMember(owner = "client.client!hc", name = "G", descriptor = "I")
 	public int marginY;
 
-	@OriginalMember(owner = "client!hc", name = "H", descriptor = "[Lclient!hb;")
-	public Pix24[] invSlotSprite;
+	@OriginalMember(owner = "client.client!hc", name = "H", descriptor = "[Lclient!hb;")
+	public Pix32[] invSlotSprite;
 
-	@OriginalMember(owner = "client!hc", name = "I", descriptor = "[I")
+	@OriginalMember(owner = "client.client!hc", name = "I", descriptor = "[I")
 	public int[] invSlotOffsetX;
 
-	@OriginalMember(owner = "client!hc", name = "J", descriptor = "[I")
+	@OriginalMember(owner = "client.client!hc", name = "J", descriptor = "[I")
 	public int[] invSlotOffsetY;
 
-	@OriginalMember(owner = "client!hc", name = "K", descriptor = "[Ljava/lang/String;")
+	@OriginalMember(owner = "client.client!hc", name = "K", descriptor = "[Ljava/lang/String;")
 	public String[] iops;
 
-	@OriginalMember(owner = "client!hc", name = "L", descriptor = "Z")
+	@OriginalMember(owner = "client.client!hc", name = "L", descriptor = "Z")
 	public boolean fill;
 
-	@OriginalMember(owner = "client!hc", name = "M", descriptor = "Z")
+	@OriginalMember(owner = "client.client!hc", name = "M", descriptor = "Z")
 	public boolean center;
 
-	@OriginalMember(owner = "client!hc", name = "N", descriptor = "Z")
+	@OriginalMember(owner = "client.client!hc", name = "N", descriptor = "Z")
 	public boolean shadowed;
 
-	@OriginalMember(owner = "client!hc", name = "O", descriptor = "Lclient!jb;")
+	@OriginalMember(owner = "client.client!hc", name = "O", descriptor = "Lclient!jb;")
 	public PixFont font;
 
-	@OriginalMember(owner = "client!hc", name = "P", descriptor = "Ljava/lang/String;")
+	@OriginalMember(owner = "client.client!hc", name = "P", descriptor = "Ljava/lang/String;")
 	public String text;
 
-	@OriginalMember(owner = "client!hc", name = "Q", descriptor = "Ljava/lang/String;")
+	@OriginalMember(owner = "client.client!hc", name = "Q", descriptor = "Ljava/lang/String;")
 	public String activeText;
 
-	@OriginalMember(owner = "client!hc", name = "R", descriptor = "I")
+	@OriginalMember(owner = "client.client!hc", name = "R", descriptor = "I")
 	public int colour;
 
-	@OriginalMember(owner = "client!hc", name = "S", descriptor = "I")
+	@OriginalMember(owner = "client.client!hc", name = "S", descriptor = "I")
 	public int activeColour;
 
-	@OriginalMember(owner = "client!hc", name = "T", descriptor = "I")
+	@OriginalMember(owner = "client.client!hc", name = "T", descriptor = "I")
 	public int overColour;
 
-	@OriginalMember(owner = "client!hc", name = "U", descriptor = "Lclient!hb;")
-	public Pix24 graphic;
+	@OriginalMember(owner = "client.client!hc", name = "U", descriptor = "Lclient!hb;")
+	public Pix32 graphic;
 
-	@OriginalMember(owner = "client!hc", name = "V", descriptor = "Lclient!hb;")
-	public Pix24 activeGraphic;
+	@OriginalMember(owner = "client.client!hc", name = "V", descriptor = "Lclient!hb;")
+	public Pix32 activeGraphic;
 
-	@OriginalMember(owner = "client!hc", name = "W", descriptor = "Lclient!eb;")
+	@OriginalMember(owner = "client.client!hc", name = "W", descriptor = "Lclient!eb;")
 	public Model model;
 
-	@OriginalMember(owner = "client!hc", name = "X", descriptor = "Lclient!eb;")
+	@OriginalMember(owner = "client.client!hc", name = "X", descriptor = "Lclient!eb;")
 	public Model activeModel;
 
-	@OriginalMember(owner = "client!hc", name = "Y", descriptor = "I")
+	@OriginalMember(owner = "client.client!hc", name = "Y", descriptor = "I")
 	public int anim;
 
-	@OriginalMember(owner = "client!hc", name = "Z", descriptor = "I")
+	@OriginalMember(owner = "client.client!hc", name = "Z", descriptor = "I")
 	public int activeAnim;
 
-	@OriginalMember(owner = "client!hc", name = "ab", descriptor = "I")
+	@OriginalMember(owner = "client.client!hc", name = "ab", descriptor = "I")
 	public int zoom;
 
-	@OriginalMember(owner = "client!hc", name = "bb", descriptor = "I")
+	@OriginalMember(owner = "client.client!hc", name = "bb", descriptor = "I")
 	public int xan;
 
-	@OriginalMember(owner = "client!hc", name = "cb", descriptor = "I")
+	@OriginalMember(owner = "client.client!hc", name = "cb", descriptor = "I")
 	public int yan;
 
-	@OriginalMember(owner = "client!hc", name = "db", descriptor = "Ljava/lang/String;")
+	@OriginalMember(owner = "client.client!hc", name = "db", descriptor = "Ljava/lang/String;")
 	public String actionVerb;
 
-	@OriginalMember(owner = "client!hc", name = "eb", descriptor = "Ljava/lang/String;")
+	@OriginalMember(owner = "client.client!hc", name = "eb", descriptor = "Ljava/lang/String;")
 	public String action;
 
-	@OriginalMember(owner = "client!hc", name = "fb", descriptor = "I")
+	@OriginalMember(owner = "client.client!hc", name = "fb", descriptor = "I")
 	public int actionTarget;
 
-	@OriginalMember(owner = "client!hc", name = "gb", descriptor = "Ljava/lang/String;")
+	@OriginalMember(owner = "client.client!hc", name = "gb", descriptor = "Ljava/lang/String;")
 	public String option;
 
-	@OriginalMember(owner = "client!hc", name = "hb", descriptor = "Lclient!s;")
+	@OriginalMember(owner = "client.client!hc", name = "hb", descriptor = "Lclient!s;")
 	private static LruCache imageCache;
 
-	@OriginalMember(owner = "client!hc", name = "ib", descriptor = "Lclient!s;")
+	@OriginalMember(owner = "client.client!hc", name = "ib", descriptor = "Lclient!s;")
 	private static LruCache modelCache;
 
-	@OriginalMember(owner = "client!hc", name = "a", descriptor = "(Lclient!ub;[Lclient!jb;ILclient!ub;)V")
+	@OriginalMember(owner = "client.client!hc", name = "a", descriptor = "(Lclient!ub;[Lclient!jb;ILclient!ub;)V")
 	public static void unpack(@OriginalArg(3) Jagfile jag, @OriginalArg(0) Jagfile media, @OriginalArg(1) PixFont[] fonts) {
 		imageCache = new LruCache(50000);
 		modelCache = new LruCache(50000);
@@ -362,7 +362,7 @@ public class Component {
 
 				com.invSlotOffsetX = new int[20];
 				com.invSlotOffsetY = new int[20];
-				com.invSlotSprite = new Pix24[20];
+				com.invSlotSprite = new Pix32[20];
 
 				for (int i = 0; i < 20; i++) {
 					if (dat.g1() == 1) {
@@ -510,17 +510,17 @@ public class Component {
 		modelCache = null;
 	}
 
-	@OriginalMember(owner = "client!hc", name = "a", descriptor = "(Lclient!ub;ILjava/lang/String;I)Lclient!hb;")
-	private static Pix24 getImage(@OriginalArg(0) Jagfile media, @OriginalArg(2) String sprite, @OriginalArg(1) int spriteId) {
+	@OriginalMember(owner = "client.client!hc", name = "a", descriptor = "(Lclient!ub;ILjava/lang/String;I)Lclient!hb;")
+	private static Pix32 getImage(@OriginalArg(0) Jagfile media, @OriginalArg(2) String sprite, @OriginalArg(1) int spriteId) {
 		@Pc(8) long uid = (JString.hashCode(sprite) << 8) + (long) spriteId;
-		@Pc(13) Pix24 image = (Pix24) imageCache.get(uid);
+		@Pc(13) Pix32 image = (Pix32) imageCache.get(uid);
 
 		if (image != null) {
 			return image;
 		}
 
 		try {
-			image = new Pix24(media, sprite, spriteId);
+			image = new Pix32(media, sprite, spriteId);
 			imageCache.put(uid, image);
 		} catch (@Pc(38) Exception ignored) {
 			return null;
@@ -529,7 +529,7 @@ public class Component {
 		return image;
 	}
 
-	@OriginalMember(owner = "client!hc", name = "a", descriptor = "(II)Lclient!eb;")
+	@OriginalMember(owner = "client.client!hc", name = "a", descriptor = "(II)Lclient!eb;")
 	private static Model getModel(@OriginalArg(1) int id) {
 		@Pc(5) Model m = (Model) modelCache.get(id);
 		if (m != null) {
@@ -541,7 +541,7 @@ public class Component {
 		return m;
 	}
 
-	@OriginalMember(owner = "client!hc", name = "a", descriptor = "(IIZ)Lclient!eb;")
+	@OriginalMember(owner = "client.client!hc", name = "a", descriptor = "(IIZ)Lclient!eb;")
 	public Model getModel(@OriginalArg(0) int primaryFrame, @OriginalArg(1) int secondaryFrame, @OriginalArg(2) boolean active) {
 		@Pc(2) Model m = this.model;
 		if (active) {
@@ -552,7 +552,7 @@ public class Component {
 			return null;
 		}
 
-		if (primaryFrame == -1 && secondaryFrame == -1 && m.faceColor == null) {
+		if (primaryFrame == -1 && secondaryFrame == -1 && m.faceColors == null) {
 			return m;
 		}
 

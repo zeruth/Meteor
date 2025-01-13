@@ -11,40 +11,40 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.Socket;
 
-@OriginalClass("client!d")
+@OriginalClass("client.client!d")
 public class ClientStream implements Runnable {
 
-	@OriginalMember(owner = "client!d", name = "b", descriptor = "Ljava/io/InputStream;")
+	@OriginalMember(owner = "client.client!d", name = "b", descriptor = "Ljava/io/InputStream;")
 	private final InputStream in;
 
-	@OriginalMember(owner = "client!d", name = "c", descriptor = "Ljava/io/OutputStream;")
+	@OriginalMember(owner = "client.client!d", name = "c", descriptor = "Ljava/io/OutputStream;")
 	private final OutputStream out;
 
-	@OriginalMember(owner = "client!d", name = "d", descriptor = "Ljava/net/Socket;")
+	@OriginalMember(owner = "client.client!d", name = "d", descriptor = "Ljava/net/Socket;")
 	private final Socket socket;
 
-	@OriginalMember(owner = "client!d", name = "e", descriptor = "Z")
+	@OriginalMember(owner = "client.client!d", name = "e", descriptor = "Z")
 	private boolean closed = false;
 
-	@OriginalMember(owner = "client!d", name = "f", descriptor = "Lclient!a;")
+	@OriginalMember(owner = "client.client!d", name = "f", descriptor = "Lclient!a;")
 	private final GameShell shell;
 
-	@OriginalMember(owner = "client!d", name = "g", descriptor = "[B")
+	@OriginalMember(owner = "client.client!d", name = "g", descriptor = "[B")
 	private byte[] buf;
 
-	@OriginalMember(owner = "client!d", name = "h", descriptor = "I")
+	@OriginalMember(owner = "client.client!d", name = "h", descriptor = "I")
 	private int bufLen;
 
-	@OriginalMember(owner = "client!d", name = "i", descriptor = "I")
+	@OriginalMember(owner = "client.client!d", name = "i", descriptor = "I")
 	private int bufPos;
 
-	@OriginalMember(owner = "client!d", name = "j", descriptor = "Z")
+	@OriginalMember(owner = "client.client!d", name = "j", descriptor = "Z")
 	private boolean writer = false;
 
-	@OriginalMember(owner = "client!d", name = "k", descriptor = "Z")
+	@OriginalMember(owner = "client.client!d", name = "k", descriptor = "Z")
 	private boolean ioerror = false;
 
-	@OriginalMember(owner = "client!d", name = "<init>", descriptor = "(Lclient!a;BLjava/net/Socket;)V")
+	@OriginalMember(owner = "client.client!d", name = "<init>", descriptor = "(Lclient!a;BLjava/net/Socket;)V")
 	public ClientStream(@OriginalArg(0) GameShell shell, @OriginalArg(2) Socket socket) throws IOException {
 		this.shell = shell;
 		this.socket = socket;
@@ -54,7 +54,7 @@ public class ClientStream implements Runnable {
 		this.out = this.socket.getOutputStream();
 	}
 
-	@OriginalMember(owner = "client!d", name = "a", descriptor = "()V")
+	@OriginalMember(owner = "client.client!d", name = "a", descriptor = "()V")
 	public void close() {
 		this.closed = true;
 
@@ -81,17 +81,17 @@ public class ClientStream implements Runnable {
 		this.buf = null;
 	}
 
-	@OriginalMember(owner = "client!d", name = "b", descriptor = "()I")
+	@OriginalMember(owner = "client.client!d", name = "b", descriptor = "()I")
 	public int read() throws IOException {
 		return this.closed ? 0 : this.in.read();
 	}
 
-	@OriginalMember(owner = "client!d", name = "c", descriptor = "()I")
+	@OriginalMember(owner = "client.client!d", name = "c", descriptor = "()I")
 	public int available() throws IOException {
 		return this.closed ? 0 : this.in.available();
 	}
 
-	@OriginalMember(owner = "client!d", name = "a", descriptor = "([BII)V")
+	@OriginalMember(owner = "client.client!d", name = "a", descriptor = "([BII)V")
 	public void read(@OriginalArg(0) byte[] dst, @OriginalArg(1) int off, @OriginalArg(2) int len) throws IOException {
 		if (this.closed) {
 			return;
@@ -108,7 +108,7 @@ public class ClientStream implements Runnable {
 		}
 	}
 
-	@OriginalMember(owner = "client!d", name = "a", descriptor = "([BIZI)V")
+	@OriginalMember(owner = "client.client!d", name = "a", descriptor = "([BIZI)V")
 	public void write(@OriginalArg(0) byte[] src, @OriginalArg(1) int len, @OriginalArg(3) int off) throws IOException {
 		if (!this.closed) {
 			if (this.ioerror) {
@@ -140,7 +140,7 @@ public class ClientStream implements Runnable {
 		}
 	}
 
-	@OriginalMember(owner = "client!d", name = "run", descriptor = "()V")
+	@OriginalMember(owner = "client.client!d", name = "run", descriptor = "()V")
 	public void run() {
 		while (this.writer) {
 			@Pc(38) int len;

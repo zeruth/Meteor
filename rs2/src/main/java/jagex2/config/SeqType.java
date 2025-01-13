@@ -9,49 +9,49 @@ import org.openrs2.deob.annotation.OriginalMember;
 import org.openrs2.deob.annotation.Pc;
 
 // name taken from rs3
-@OriginalClass("client!jc")
+@OriginalClass("client.client!jc")
 public class SeqType {
 
-	@OriginalMember(owner = "client!jc", name = "c", descriptor = "I")
+	@OriginalMember(owner = "client.client!jc", name = "c", descriptor = "I")
 	private static int count;
 
-	@OriginalMember(owner = "client!jc", name = "d", descriptor = "[Lclient!jc;")
+	@OriginalMember(owner = "client.client!jc", name = "d", descriptor = "[Lclient!jc;")
 	public static SeqType[] instances;
 
-	@OriginalMember(owner = "client!jc", name = "e", descriptor = "I")
+	@OriginalMember(owner = "client.client!jc", name = "e", descriptor = "I")
 	public int frameCount;
 
-	@OriginalMember(owner = "client!jc", name = "f", descriptor = "[I")
+	@OriginalMember(owner = "client.client!jc", name = "f", descriptor = "[I")
 	public int[] frames;
 
-	@OriginalMember(owner = "client!jc", name = "g", descriptor = "[I")
+	@OriginalMember(owner = "client.client!jc", name = "g", descriptor = "[I")
 	public int[] iframes;
 
-	@OriginalMember(owner = "client!jc", name = "h", descriptor = "[I")
+	@OriginalMember(owner = "client.client!jc", name = "h", descriptor = "[I")
 	public int[] delay;
 
-	@OriginalMember(owner = "client!jc", name = "i", descriptor = "I")
+	@OriginalMember(owner = "client.client!jc", name = "i", descriptor = "I")
 	public int replayoff = -1;
 
-	@OriginalMember(owner = "client!jc", name = "j", descriptor = "[I")
+	@OriginalMember(owner = "client.client!jc", name = "j", descriptor = "[I")
 	public int[] walkmerge;
 
-	@OriginalMember(owner = "client!jc", name = "k", descriptor = "Z")
+	@OriginalMember(owner = "client.client!jc", name = "k", descriptor = "Z")
 	public boolean stretches = false;
 
-	@OriginalMember(owner = "client!jc", name = "l", descriptor = "I")
+	@OriginalMember(owner = "client.client!jc", name = "l", descriptor = "I")
 	public int priority = 5;
 
-	@OriginalMember(owner = "client!jc", name = "m", descriptor = "I")
+	@OriginalMember(owner = "client.client!jc", name = "m", descriptor = "I")
 	public int righthand = -1;
 
-	@OriginalMember(owner = "client!jc", name = "n", descriptor = "I")
+	@OriginalMember(owner = "client.client!jc", name = "n", descriptor = "I")
 	public int lefthand = -1;
 
-	@OriginalMember(owner = "client!jc", name = "o", descriptor = "I")
+	@OriginalMember(owner = "client.client!jc", name = "o", descriptor = "I")
 	public int replaycount = 99;
 
-	@OriginalMember(owner = "client!jc", name = "a", descriptor = "(Lclient!ub;I)V")
+	@OriginalMember(owner = "client.client!jc", name = "a", descriptor = "(Lclient!ub;I)V")
 	public static void unpack(@OriginalArg(0) Jagfile config) {
 		@Pc(9) Packet dat = new Packet(config.read("seq.dat", null));
 		count = dat.g2();
@@ -69,7 +69,7 @@ public class SeqType {
 		}
 	}
 
-	@OriginalMember(owner = "client!jc", name = "a", descriptor = "(ZLclient!kb;)V")
+	@OriginalMember(owner = "client.client!jc", name = "a", descriptor = "(ZLclient!kb;)V")
 	public void decode(@OriginalArg(1) Packet dat) {
 		while (true) {
 			@Pc(5) int code = dat.g1();

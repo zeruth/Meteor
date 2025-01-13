@@ -10,94 +10,94 @@ import org.openrs2.deob.annotation.OriginalMember;
 import org.openrs2.deob.annotation.Pc;
 
 // name taken from rs3
-@OriginalClass("client!bc")
+@OriginalClass("client.client!bc")
 public class NpcType {
 
-	@OriginalMember(owner = "client!bc", name = "b", descriptor = "I")
+	@OriginalMember(owner = "client.client!bc", name = "b", descriptor = "I")
 	private static int count;
 
-	@OriginalMember(owner = "client!bc", name = "c", descriptor = "[I")
+	@OriginalMember(owner = "client.client!bc", name = "c", descriptor = "[I")
 	private static int[] offsets;
 
-	@OriginalMember(owner = "client!bc", name = "d", descriptor = "Lclient!kb;")
+	@OriginalMember(owner = "client.client!bc", name = "d", descriptor = "Lclient!kb;")
 	private static Packet dat;
 
-	@OriginalMember(owner = "client!bc", name = "e", descriptor = "[Lclient!bc;")
+	@OriginalMember(owner = "client.client!bc", name = "e", descriptor = "[Lclient!bc;")
 	private static NpcType[] cache;
 
-	@OriginalMember(owner = "client!bc", name = "f", descriptor = "I")
+	@OriginalMember(owner = "client.client!bc", name = "f", descriptor = "I")
 	private static int cachePos;
 
-	@OriginalMember(owner = "client!bc", name = "g", descriptor = "J")
+	@OriginalMember(owner = "client.client!bc", name = "g", descriptor = "J")
 	public long index = -1L;
 
-	@OriginalMember(owner = "client!bc", name = "h", descriptor = "Ljava/lang/String;")
+	@OriginalMember(owner = "client.client!bc", name = "h", descriptor = "Ljava/lang/String;")
 	public String name;
 
-	@OriginalMember(owner = "client!bc", name = "i", descriptor = "[B")
+	@OriginalMember(owner = "client.client!bc", name = "i", descriptor = "[B")
 	public String desc;
 
-	@OriginalMember(owner = "client!bc", name = "j", descriptor = "B")
+	@OriginalMember(owner = "client.client!bc", name = "j", descriptor = "B")
 	public byte size = 1;
 
-	@OriginalMember(owner = "client!bc", name = "k", descriptor = "[I")
+	@OriginalMember(owner = "client.client!bc", name = "k", descriptor = "[I")
 	private int[] models;
 
-	@OriginalMember(owner = "client!bc", name = "l", descriptor = "[I")
+	@OriginalMember(owner = "client.client!bc", name = "l", descriptor = "[I")
 	private int[] heads;
 
-	@OriginalMember(owner = "client!bc", name = "m", descriptor = "I")
+	@OriginalMember(owner = "client.client!bc", name = "m", descriptor = "I")
 	public int readyanim = -1;
 
-	@OriginalMember(owner = "client!bc", name = "n", descriptor = "I")
+	@OriginalMember(owner = "client.client!bc", name = "n", descriptor = "I")
 	public int walkanim = -1;
 
-	@OriginalMember(owner = "client!bc", name = "o", descriptor = "I")
+	@OriginalMember(owner = "client.client!bc", name = "o", descriptor = "I")
 	public int walkanim_b = -1;
 
-	@OriginalMember(owner = "client!bc", name = "p", descriptor = "I")
+	@OriginalMember(owner = "client.client!bc", name = "p", descriptor = "I")
 	public int walkanim_r = -1;
 
-	@OriginalMember(owner = "client!bc", name = "q", descriptor = "I")
+	@OriginalMember(owner = "client.client!bc", name = "q", descriptor = "I")
 	public int walkanim_l = -1;
 
-	@OriginalMember(owner = "client!bc", name = "r", descriptor = "Z")
-	private boolean disposeAlpha = false;
+	@OriginalMember(owner = "client.client!bc", name = "r", descriptor = "Z")
+	private boolean animHasAlpha = false;
 
-	@OriginalMember(owner = "client!bc", name = "s", descriptor = "[I")
+	@OriginalMember(owner = "client.client!bc", name = "s", descriptor = "[I")
 	private int[] recol_s;
 
-	@OriginalMember(owner = "client!bc", name = "t", descriptor = "[I")
+	@OriginalMember(owner = "client.client!bc", name = "t", descriptor = "[I")
 	private int[] recol_d;
 
-	@OriginalMember(owner = "client!bc", name = "u", descriptor = "[Ljava/lang/String;")
+	@OriginalMember(owner = "client.client!bc", name = "u", descriptor = "[Ljava/lang/String;")
 	public String[] op;
 
-	@OriginalMember(owner = "client!bc", name = "v", descriptor = "I")
+	@OriginalMember(owner = "client.client!bc", name = "v", descriptor = "I")
 	private int resizex = -1;
 
-	@OriginalMember(owner = "client!bc", name = "w", descriptor = "I")
+	@OriginalMember(owner = "client.client!bc", name = "w", descriptor = "I")
 	private int resizey = -1;
 
-	@OriginalMember(owner = "client!bc", name = "x", descriptor = "I")
+	@OriginalMember(owner = "client.client!bc", name = "x", descriptor = "I")
 	private int resizez = -1;
 
-	@OriginalMember(owner = "client!bc", name = "y", descriptor = "Z")
+	@OriginalMember(owner = "client.client!bc", name = "y", descriptor = "Z")
 	public boolean minimap = true;
 
-	@OriginalMember(owner = "client!bc", name = "z", descriptor = "I")
+	@OriginalMember(owner = "client.client!bc", name = "z", descriptor = "I")
 	public int vislevel = -1;
 
-	@OriginalMember(owner = "client!bc", name = "A", descriptor = "I")
+	@OriginalMember(owner = "client.client!bc", name = "A", descriptor = "I")
 	private int resizeh = 128;
 
-	@OriginalMember(owner = "client!bc", name = "B", descriptor = "I")
+	@OriginalMember(owner = "client.client!bc", name = "B", descriptor = "I")
 	private int resizev = 128;
 
-	@OriginalMember(owner = "client!bc", name = "C", descriptor = "Lclient!s;")
+	@OriginalMember(owner = "client.client!bc", name = "C", descriptor = "Lclient!s;")
 	public static LruCache modelCache = new LruCache(30);
 
-	@OriginalMember(owner = "client!bc", name = "a", descriptor = "(Lclient!ub;)V")
+	@OriginalMember(owner = "client.client!bc", name = "a", descriptor = "(Lclient!ub;)V")
 	public static void unpack(@OriginalArg(0) Jagfile config) {
 		dat = new Packet(config.read("npc.dat", null));
 		@Pc(21) Packet idx = new Packet(config.read("npc.idx", null));
@@ -117,7 +117,7 @@ public class NpcType {
 		}
 	}
 
-	@OriginalMember(owner = "client!bc", name = "a", descriptor = "(Z)V")
+	@OriginalMember(owner = "client.client!bc", name = "a", descriptor = "(Z)V")
 	public static void unload() {
 		modelCache = null;
 		offsets = null;
@@ -125,7 +125,7 @@ public class NpcType {
 		dat = null;
 	}
 
-	@OriginalMember(owner = "client!bc", name = "a", descriptor = "(I)Lclient!bc;")
+	@OriginalMember(owner = "client.client!bc", name = "a", descriptor = "(I)Lclient!bc;")
 	public static NpcType get(@OriginalArg(0) int id) {
 		for (@Pc(1) int i = 0; i < 20; i++) {
 			if (cache[i].index == (long) id) {
@@ -141,7 +141,7 @@ public class NpcType {
 		return npc;
 	}
 
-	@OriginalMember(owner = "client!bc", name = "a", descriptor = "(ZLclient!kb;)V")
+	@OriginalMember(owner = "client.client!bc", name = "a", descriptor = "(ZLclient!kb;)V")
 	public void decode(@OriginalArg(1) Packet dat) {
 		while (true) {
 			@Pc(10) int code = dat.g1();
@@ -167,7 +167,7 @@ public class NpcType {
 			} else if (code == 14) {
 				this.walkanim = dat.g2();
 			} else if (code == 16) {
-				this.disposeAlpha = true;
+				this.animHasAlpha = true;
 			} else if (code == 17) {
 				this.walkanim = dat.g2();
 				this.walkanim_b = dat.g2();
@@ -215,11 +215,13 @@ public class NpcType {
 				this.resizeh = dat.g2();
 			} else if (code == 98) {
 				this.resizev = dat.g2();
+			} else {
+				System.out.println("Error unrecognised npc config code: " + code);
 			}
 		}
 	}
 
-	@OriginalMember(owner = "client!bc", name = "a", descriptor = "(II[I)Lclient!eb;")
+	@OriginalMember(owner = "client.client!bc", name = "a", descriptor = "(II[I)Lclient!eb;")
 	public Model getSequencedModel(@OriginalArg(0) int primaryTransformId, @OriginalArg(1) int secondaryTransformId, @OriginalArg(2) int[] seqMask) {
 		@Pc(3) Model tmp = null;
 		@Pc(9) Model model = (Model) modelCache.get(this.index);
@@ -247,7 +249,7 @@ public class NpcType {
 			modelCache.put(this.index, model);
 		}
 
-		tmp = new Model(model, !this.disposeAlpha);
+		tmp = new Model(model, !this.animHasAlpha);
 
 		if (primaryTransformId != -1 && secondaryTransformId != -1) {
 			tmp.applyTransforms(primaryTransformId, secondaryTransformId, seqMask);
@@ -270,7 +272,7 @@ public class NpcType {
 		return tmp;
 	}
 
-	@OriginalMember(owner = "client!bc", name = "b", descriptor = "(Z)Lclient!eb;")
+	@OriginalMember(owner = "client.client!bc", name = "b", descriptor = "(Z)Lclient!eb;")
 	public Model getHeadModel() {
 		if (this.heads == null) {
 			return null;

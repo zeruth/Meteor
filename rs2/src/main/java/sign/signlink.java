@@ -11,106 +11,106 @@ import java.net.InetAddress;
 import java.net.Socket;
 import java.net.URL;
 
-@OriginalClass("client!sign/signlink")
+@OriginalClass("client.client!sign/signlink")
 public class signlink implements Runnable {
 
-	@OriginalMember(owner = "client!sign/signlink", name = "clientversion", descriptor = "I")
+	@OriginalMember(owner = "client.client!sign/signlink", name = "clientversion", descriptor = "I")
 	public static final int clientversion = 225;
 
-	@OriginalMember(owner = "client!sign/signlink", name = "uid", descriptor = "I")
+	@OriginalMember(owner = "client.client!sign/signlink", name = "uid", descriptor = "I")
 	public static int uid;
 
-	@OriginalMember(owner = "client!sign/signlink", name = "mainapp", descriptor = "Ljava/applet/Applet;")
+	@OriginalMember(owner = "client.client!sign/signlink", name = "mainapp", descriptor = "Ljava/applet/Applet;")
 	public static Applet mainapp;
 
-	@OriginalMember(owner = "client!sign/signlink", name = "sunjava", descriptor = "Z")
+	@OriginalMember(owner = "client.client!sign/signlink", name = "sunjava", descriptor = "Z")
 	public static boolean sunjava;
 
-	@OriginalMember(owner = "client!sign/signlink", name = "active", descriptor = "Z")
-	public static boolean active;
+	@OriginalMember(owner = "client.client!sign/signlink", name = "active", descriptor = "Z")
+	private static boolean active;
 
-	@OriginalMember(owner = "client!sign/signlink", name = "threadliveid", descriptor = "I")
-	public static int threadliveid;
+	@OriginalMember(owner = "client.client!sign/signlink", name = "threadliveid", descriptor = "I")
+	private static int threadliveid;
 
-	@OriginalMember(owner = "client!sign/signlink", name = "socketip", descriptor = "Ljava/net/InetAddress;")
-	public static InetAddress socketip;
+	@OriginalMember(owner = "client.client!sign/signlink", name = "socketip", descriptor = "Ljava/net/InetAddress;")
+	private static InetAddress socketip;
 
-	@OriginalMember(owner = "client!sign/signlink", name = "socketreq", descriptor = "I")
-	public static int socketreq;
+	@OriginalMember(owner = "client.client!sign/signlink", name = "socketreq", descriptor = "I")
+	private static int socketreq;
 
-	@OriginalMember(owner = "client!sign/signlink", name = "savelen", descriptor = "I")
-	public static int savelen;
+	@OriginalMember(owner = "client.client!sign/signlink", name = "savelen", descriptor = "I")
+	private static int savelen;
 
-	@OriginalMember(owner = "client!sign/signlink", name = "midiplay", descriptor = "Z")
-	public static boolean midiplay;
+	@OriginalMember(owner = "client.client!sign/signlink", name = "midiplay", descriptor = "Z")
+	private static boolean midiplay;
 
-	@OriginalMember(owner = "client!sign/signlink", name = "midipos", descriptor = "I")
-	public static int midipos;
+	@OriginalMember(owner = "client.client!sign/signlink", name = "midipos", descriptor = "I")
+	private static int midipos;
 
-	@OriginalMember(owner = "client!sign/signlink", name = "midivol", descriptor = "I")
+	@OriginalMember(owner = "client.client!sign/signlink", name = "midivol", descriptor = "I")
 	public static int midivol;
 
-	@OriginalMember(owner = "client!sign/signlink", name = "midifade", descriptor = "I")
+	@OriginalMember(owner = "client.client!sign/signlink", name = "midifade", descriptor = "I")
 	public static int midifade;
 
-	@OriginalMember(owner = "client!sign/signlink", name = "waveplay", descriptor = "Z")
-	public static boolean waveplay;
+	@OriginalMember(owner = "client.client!sign/signlink", name = "waveplay", descriptor = "Z")
+	private static boolean waveplay;
 
-	@OriginalMember(owner = "client!sign/signlink", name = "wavepos", descriptor = "I")
-	public static int wavepos;
+	@OriginalMember(owner = "client.client!sign/signlink", name = "wavepos", descriptor = "I")
+	private static int wavepos;
 
-	@OriginalMember(owner = "client!sign/signlink", name = "wavevol", descriptor = "I")
+	@OriginalMember(owner = "client.client!sign/signlink", name = "wavevol", descriptor = "I")
 	public static int wavevol;
 
-	@OriginalMember(owner = "client!sign/signlink", name = "socket", descriptor = "Ljava/net/Socket;")
-	public static Socket socket = null;
+	@OriginalMember(owner = "client.client!sign/signlink", name = "socket", descriptor = "Ljava/net/Socket;")
+	private static Socket socket = null;
 
-	@OriginalMember(owner = "client!sign/signlink", name = "threadreqpri", descriptor = "I")
-	public static int threadreqpri = 1;
+	@OriginalMember(owner = "client.client!sign/signlink", name = "threadreqpri", descriptor = "I")
+	private static int threadreqpri = 1;
 
-	@OriginalMember(owner = "client!sign/signlink", name = "threadreq", descriptor = "Ljava/lang/Runnable;")
-	public static Runnable threadreq = null;
+	@OriginalMember(owner = "client.client!sign/signlink", name = "threadreq", descriptor = "Ljava/lang/Runnable;")
+	private static Runnable threadreq = null;
 
-	@OriginalMember(owner = "client!sign/signlink", name = "dnsreq", descriptor = "Ljava/lang/String;")
-	public static String dnsreq = null;
+	@OriginalMember(owner = "client.client!sign/signlink", name = "dnsreq", descriptor = "Ljava/lang/String;")
+	private static String dnsreq = null;
 
-	@OriginalMember(owner = "client!sign/signlink", name = "dns", descriptor = "Ljava/lang/String;")
+	@OriginalMember(owner = "client.client!sign/signlink", name = "dns", descriptor = "Ljava/lang/String;")
 	public static String dns = null;
 
-	@OriginalMember(owner = "client!sign/signlink", name = "loadreq", descriptor = "Ljava/lang/String;")
-	public static String loadreq = null;
+	@OriginalMember(owner = "client.client!sign/signlink", name = "loadreq", descriptor = "Ljava/lang/String;")
+	private static String loadreq = null;
 
-	@OriginalMember(owner = "client!sign/signlink", name = "loadbuf", descriptor = "[B")
-	public static byte[] loadbuf = null;
+	@OriginalMember(owner = "client.client!sign/signlink", name = "loadbuf", descriptor = "[B")
+	private static byte[] loadbuf = null;
 
-	@OriginalMember(owner = "client!sign/signlink", name = "savereq", descriptor = "Ljava/lang/String;")
-	public static String savereq = null;
+	@OriginalMember(owner = "client.client!sign/signlink", name = "savereq", descriptor = "Ljava/lang/String;")
+	private static String savereq = null;
 
-	@OriginalMember(owner = "client!sign/signlink", name = "savebuf", descriptor = "[B")
-	public static byte[] savebuf = null;
+	@OriginalMember(owner = "client.client!sign/signlink", name = "savebuf", descriptor = "[B")
+	private static byte[] savebuf = null;
 
-	@OriginalMember(owner = "client!sign/signlink", name = "urlreq", descriptor = "Ljava/lang/String;")
-	public static String urlreq = null;
+	@OriginalMember(owner = "client.client!sign/signlink", name = "urlreq", descriptor = "Ljava/lang/String;")
+	private static String urlreq = null;
 
-	@OriginalMember(owner = "client!sign/signlink", name = "urlstream", descriptor = "Ljava/io/DataInputStream;")
-	public static DataInputStream urlstream = null;
+	@OriginalMember(owner = "client.client!sign/signlink", name = "urlstream", descriptor = "Ljava/io/DataInputStream;")
+	private static DataInputStream urlstream = null;
 
-	@OriginalMember(owner = "client!sign/signlink", name = "looprate", descriptor = "I")
-	public static int looprate = 50;
+	@OriginalMember(owner = "client.client!sign/signlink", name = "looprate", descriptor = "I")
+	private static int looprate = 50;
 
-	@OriginalMember(owner = "client!sign/signlink", name = "midi", descriptor = "Ljava/lang/String;")
+	@OriginalMember(owner = "client.client!sign/signlink", name = "midi", descriptor = "Ljava/lang/String;")
 	public static String midi = null;
 
-	@OriginalMember(owner = "client!sign/signlink", name = "wave", descriptor = "Ljava/lang/String;")
+	@OriginalMember(owner = "client.client!sign/signlink", name = "wave", descriptor = "Ljava/lang/String;")
 	public static String wave = null;
 
-	@OriginalMember(owner = "client!sign/signlink", name = "reporterror", descriptor = "Z")
+	@OriginalMember(owner = "client.client!sign/signlink", name = "reporterror", descriptor = "Z")
 	public static boolean reporterror = true;
 
-	@OriginalMember(owner = "client!sign/signlink", name = "errorname", descriptor = "Ljava/lang/String;")
+	@OriginalMember(owner = "client.client!sign/signlink", name = "errorname", descriptor = "Ljava/lang/String;")
 	public static String errorname = "";
 
-	@OriginalMember(owner = "client!sign/signlink", name = "startpriv", descriptor = "(Ljava/net/InetAddress;)V")
+	@OriginalMember(owner = "client.client!sign/signlink", name = "startpriv", descriptor = "(Ljava/net/InetAddress;)V")
 	public static void startpriv(@OriginalArg(0) InetAddress address) {
 		threadliveid = (int) (Math.random() * 9.9999999E7D);
 
@@ -142,7 +142,7 @@ public class signlink implements Runnable {
 		}
 	}
 
-	@OriginalMember(owner = "client!sign/signlink", name = "findcachedir", descriptor = "()Ljava/lang/String;")
+	@OriginalMember(owner = "client.client!sign/signlink", name = "findcachedir", descriptor = "()Ljava/lang/String;")
 	public static String findcachedir() {
 		@Pc(50) String[] paths = new String[] {
 			"c:/windows/", "c:/winnt/", "d:/windows/", "d:/winnt/", "e:/windows/", "e:/winnt/", "f:/windows/", "f:/winnt/", "c:/",
@@ -178,7 +178,7 @@ public class signlink implements Runnable {
 		return null;
 	}
 
-	@OriginalMember(owner = "client!sign/signlink", name = "getuid", descriptor = "(Ljava/lang/String;)I")
+	@OriginalMember(owner = "client.client!sign/signlink", name = "getuid", descriptor = "(Ljava/lang/String;)I")
 	public static int getuid(@OriginalArg(0) String cacheDir) {
 		if (cacheDir == null) {
 			return 0;
@@ -204,7 +204,7 @@ public class signlink implements Runnable {
 		}
 	}
 
-	@OriginalMember(owner = "client!sign/signlink", name = "gethash", descriptor = "(Ljava/lang/String;)J")
+	@OriginalMember(owner = "client.client!sign/signlink", name = "gethash", descriptor = "(Ljava/lang/String;)J")
 	public static long gethash(@OriginalArg(0) String str) {
 		@Pc(2) String trimmed = str.trim();
 		@Pc(4) long hash = 0L;
@@ -225,12 +225,12 @@ public class signlink implements Runnable {
 		return hash;
 	}
 
-	@OriginalMember(owner = "client!sign/signlink", name = "looprate", descriptor = "(I)V")
+	@OriginalMember(owner = "client.client!sign/signlink", name = "looprate", descriptor = "(I)V")
 	public static void looprate(@OriginalArg(0) int rate) {
 		looprate = rate;
 	}
 
-	@OriginalMember(owner = "client!sign/signlink", name = "cacheload", descriptor = "(Ljava/lang/String;)[B")
+	@OriginalMember(owner = "client.client!sign/signlink", name = "cacheload", descriptor = "(Ljava/lang/String;)[B")
 	public static synchronized byte[] cacheload(@OriginalArg(0) String name) {
 		if (!active) {
 			return null;
@@ -247,7 +247,7 @@ public class signlink implements Runnable {
 		return loadbuf;
 	}
 
-	@OriginalMember(owner = "client!sign/signlink", name = "cachesave", descriptor = "(Ljava/lang/String;[B)V")
+	@OriginalMember(owner = "client.client!sign/signlink", name = "cachesave", descriptor = "(Ljava/lang/String;[B)V")
 	public static synchronized void cachesave(@OriginalArg(0) String name, @OriginalArg(1) byte[] src) {
 		if (!active || src.length > 2000000) {
 			return;
@@ -272,7 +272,7 @@ public class signlink implements Runnable {
 		}
 	}
 
-	@OriginalMember(owner = "client!sign/signlink", name = "opensocket", descriptor = "(I)Ljava/net/Socket;")
+	@OriginalMember(owner = "client.client!sign/signlink", name = "opensocket", descriptor = "(I)Ljava/net/Socket;")
 	public static synchronized Socket opensocket(@OriginalArg(0) int port) throws IOException {
 		socketreq = port;
 
@@ -290,7 +290,7 @@ public class signlink implements Runnable {
 		return socket;
 	}
 
-	@OriginalMember(owner = "client!sign/signlink", name = "openurl", descriptor = "(Ljava/lang/String;)Ljava/io/DataInputStream;")
+	@OriginalMember(owner = "client.client!sign/signlink", name = "openurl", descriptor = "(Ljava/lang/String;)Ljava/io/DataInputStream;")
 	public static synchronized DataInputStream openurl(@OriginalArg(0) String url) throws IOException {
 		urlreq = url;
 
@@ -308,19 +308,19 @@ public class signlink implements Runnable {
 		return urlstream;
 	}
 
-	@OriginalMember(owner = "client!sign/signlink", name = "dnslookup", descriptor = "(Ljava/lang/String;)V")
+	@OriginalMember(owner = "client.client!sign/signlink", name = "dnslookup", descriptor = "(Ljava/lang/String;)V")
 	public static synchronized void dnslookup(@OriginalArg(0) String hostname) {
 		dns = hostname;
 		dnsreq = hostname;
 	}
 
-	@OriginalMember(owner = "client!sign/signlink", name = "startthread", descriptor = "(Ljava/lang/Runnable;I)V")
+	@OriginalMember(owner = "client.client!sign/signlink", name = "startthread", descriptor = "(Ljava/lang/Runnable;I)V")
 	public static synchronized void startthread(@OriginalArg(0) Runnable runnable, @OriginalArg(1) int priority) {
 		threadreqpri = priority;
 		threadreq = runnable;
 	}
 
-	@OriginalMember(owner = "client!sign/signlink", name = "wavesave", descriptor = "([BI)Z")
+	@OriginalMember(owner = "client.client!sign/signlink", name = "wavesave", descriptor = "([BI)Z")
 	public static synchronized boolean wavesave(@OriginalArg(0) byte[] src, @OriginalArg(1) int length) {
 		if (length > 2000000 || savereq != null) {
 			return false;
@@ -334,7 +334,7 @@ public class signlink implements Runnable {
 		return true;
 	}
 
-	@OriginalMember(owner = "client!sign/signlink", name = "wavereplay", descriptor = "()Z")
+	@OriginalMember(owner = "client.client!sign/signlink", name = "wavereplay", descriptor = "()Z")
 	public static synchronized boolean wavereplay() {
 		if (savereq != null) {
 			return false;
@@ -346,7 +346,7 @@ public class signlink implements Runnable {
 		return true;
 	}
 
-	@OriginalMember(owner = "client!sign/signlink", name = "midisave", descriptor = "([BI)V")
+	@OriginalMember(owner = "client.client!sign/signlink", name = "midisave", descriptor = "([BI)V")
 	public static synchronized void midisave(@OriginalArg(0) byte[] src, @OriginalArg(1) int length) {
 		if (length > 2000000 || savereq != null) {
 			return;
@@ -359,7 +359,7 @@ public class signlink implements Runnable {
 		savereq = "jingle" + midipos + ".mid";
 	}
 
-	@OriginalMember(owner = "client!sign/signlink", name = "reporterror", descriptor = "(Ljava/lang/String;)V")
+	@OriginalMember(owner = "client.client!sign/signlink", name = "reporterror", descriptor = "(Ljava/lang/String;)V")
 	public static void reporterror(@OriginalArg(0) String message) {
 		if (!reporterror || !active) {
 			return;
@@ -379,7 +379,7 @@ public class signlink implements Runnable {
 		}
 	}
 
-	@OriginalMember(owner = "client!sign/signlink", name = "run", descriptor = "()V")
+	@OriginalMember(owner = "client.client!sign/signlink", name = "run", descriptor = "()V")
 	public void run() {
 		active = true;
 

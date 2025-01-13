@@ -9,37 +9,37 @@ import org.openrs2.deob.annotation.Pc;
 
 import java.util.Random;
 
-@OriginalClass("client!jb")
-public class PixFont extends Draw2D {
+@OriginalClass("client.client!jb")
+public class PixFont extends Pix2D {
 
-	@OriginalMember(owner = "client!jb", name = "B", descriptor = "[[B")
+	@OriginalMember(owner = "client.client!jb", name = "B", descriptor = "[[B")
 	private final byte[][] charMask = new byte[94][];
 
-	@OriginalMember(owner = "client!jb", name = "C", descriptor = "[I")
+	@OriginalMember(owner = "client.client!jb", name = "C", descriptor = "[I")
 	private final int[] charMaskWidth = new int[94];
 
-	@OriginalMember(owner = "client!jb", name = "D", descriptor = "[I")
+	@OriginalMember(owner = "client.client!jb", name = "D", descriptor = "[I")
 	private final int[] charMaskHeight = new int[94];
 
-	@OriginalMember(owner = "client!jb", name = "E", descriptor = "[I")
+	@OriginalMember(owner = "client.client!jb", name = "E", descriptor = "[I")
 	private final int[] charOffsetX = new int[94];
 
-	@OriginalMember(owner = "client!jb", name = "F", descriptor = "[I")
+	@OriginalMember(owner = "client.client!jb", name = "F", descriptor = "[I")
 	private final int[] charOffsetY = new int[94];
 
-	@OriginalMember(owner = "client!jb", name = "G", descriptor = "[I")
+	@OriginalMember(owner = "client.client!jb", name = "G", descriptor = "[I")
 	private final int[] charAdvance = new int[95];
 
-	@OriginalMember(owner = "client!jb", name = "H", descriptor = "[I")
+	@OriginalMember(owner = "client.client!jb", name = "H", descriptor = "[I")
 	private final int[] drawWidth = new int[256];
 
-	@OriginalMember(owner = "client!jb", name = "I", descriptor = "I")
+	@OriginalMember(owner = "client.client!jb", name = "I", descriptor = "I")
 	public int height;
 
-	@OriginalMember(owner = "client!jb", name = "J", descriptor = "Ljava/util/Random;")
+	@OriginalMember(owner = "client.client!jb", name = "J", descriptor = "Ljava/util/Random;")
 	private final Random random = new Random();
 
-	@OriginalMember(owner = "client!jb", name = "K", descriptor = "[I")
+	@OriginalMember(owner = "client.client!jb", name = "K", descriptor = "[I")
 	private static final int[] CHAR_LOOKUP = new int[256];
 
 	static {
@@ -55,7 +55,7 @@ public class PixFont extends Draw2D {
 		}
 	}
 
-	@OriginalMember(owner = "client!jb", name = "<init>", descriptor = "(Lclient!ub;Ljava/lang/String;I)V")
+	@OriginalMember(owner = "client.client!jb", name = "<init>", descriptor = "(Lclient!ub;Ljava/lang/String;I)V")
 	public PixFont(@OriginalArg(0) Jagfile title, @OriginalArg(1) String font) {
 		@Pc(71) Packet dat = new Packet(title.read(font + ".dat", null));
 		@Pc(81) Packet idx = new Packet(title.read("index.dat", null));
@@ -123,17 +123,17 @@ public class PixFont extends Draw2D {
 		}
 	}
 
-	@OriginalMember(owner = "client!jb", name = "a", descriptor = "(IBILjava/lang/String;I)V")
+	@OriginalMember(owner = "client.client!jb", name = "a", descriptor = "(IBILjava/lang/String;I)V")
 	public void drawStringCenter(@OriginalArg(4) int x, @OriginalArg(0) int y, @OriginalArg(3) String str, @OriginalArg(2) int rgb) {
 		this.drawString(x - this.stringWidth(str) / 2, y, str, rgb);
 	}
 
-	@OriginalMember(owner = "client!jb", name = "a", descriptor = "(IIZILjava/lang/String;I)V")
+	@OriginalMember(owner = "client.client!jb", name = "a", descriptor = "(IIZILjava/lang/String;I)V")
 	public void drawStringTaggableCenter(@OriginalArg(4) String str, @OriginalArg(0) int x, @OriginalArg(3) int y, @OriginalArg(1) int color, @OriginalArg(2) boolean shadowed) {
 		this.drawStringTaggable(x - this.stringWidth(str) / 2, y, str, color, shadowed);
 	}
 
-	@OriginalMember(owner = "client!jb", name = "a", descriptor = "(ZLjava/lang/String;)I")
+	@OriginalMember(owner = "client.client!jb", name = "a", descriptor = "(ZLjava/lang/String;)I")
 	public int stringWidth(@OriginalArg(1) String str) {
 		if (str == null) {
 			return 0;
@@ -151,7 +151,7 @@ public class PixFont extends Draw2D {
 		return size;
 	}
 
-	@OriginalMember(owner = "client!jb", name = "a", descriptor = "(IIZILjava/lang/String;)V")
+	@OriginalMember(owner = "client.client!jb", name = "a", descriptor = "(IIZILjava/lang/String;)V")
 	public void drawString(@OriginalArg(0) int x, @OriginalArg(1) int y, @OriginalArg(4) String str, @OriginalArg(3) int rgb) {
 		if (str == null) {
 			return;
@@ -177,7 +177,7 @@ public class PixFont extends Draw2D {
 		this.drawString(x - this.stringWidth(str), y, str, rgb);
 	}
 
-	@OriginalMember(owner = "client!jb", name = "a", descriptor = "(IBIIILjava/lang/String;)V")
+	@OriginalMember(owner = "client.client!jb", name = "a", descriptor = "(IBIIILjava/lang/String;)V")
 	public void drawCenteredWave(@OriginalArg(2) int x, @OriginalArg(3) int y, @OriginalArg(5) String str, @OriginalArg(4) int rgb, @OriginalArg(0) int phase) {
 		if (str == null) {
 			return;
@@ -197,7 +197,7 @@ public class PixFont extends Draw2D {
 		}
 	}
 
-	@OriginalMember(owner = "client!jb", name = "a", descriptor = "(IIILjava/lang/String;ZI)V")
+	@OriginalMember(owner = "client.client!jb", name = "a", descriptor = "(IIILjava/lang/String;ZI)V")
 	public void drawStringTaggable(@OriginalArg(0) int x, @OriginalArg(2) int y, @OriginalArg(3) String str, @OriginalArg(5) int rgb, @OriginalArg(4) boolean shadowed) {
 		if (str == null) {
 			return;
@@ -224,7 +224,7 @@ public class PixFont extends Draw2D {
 		}
 	}
 
-	@OriginalMember(owner = "client!jb", name = "a", descriptor = "(IZBIILjava/lang/String;I)V")
+	@OriginalMember(owner = "client.client!jb", name = "a", descriptor = "(IZBIILjava/lang/String;I)V")
 	public void drawStringTooltip(@OriginalArg(6) int x, @OriginalArg(3) int y, @OriginalArg(5) String str, @OriginalArg(4) int color, @OriginalArg(1) boolean shadowed, @OriginalArg(0) int seed) {
 		if (str == null) {
 			return;
@@ -256,7 +256,7 @@ public class PixFont extends Draw2D {
 		}
 	}
 
-	@OriginalMember(owner = "client!jb", name = "a", descriptor = "(ILjava/lang/String;)I")
+	@OriginalMember(owner = "client.client!jb", name = "a", descriptor = "(ILjava/lang/String;)I")
 	private int evaluateTag(@OriginalArg(1) String tag) {
 		if (tag.equals("red")) {
 			return 0xff0000;
@@ -297,49 +297,49 @@ public class PixFont extends Draw2D {
 		}
 	}
 
-	@OriginalMember(owner = "client!jb", name = "a", descriptor = "([BIIIII)V")
+	@OriginalMember(owner = "client.client!jb", name = "a", descriptor = "([BIIIII)V")
 	private void drawChar(@OriginalArg(0) byte[] data, @OriginalArg(1) int x, @OriginalArg(2) int y, @OriginalArg(3) int w, @OriginalArg(4) int h, @OriginalArg(5) int rgb) {
-		@Pc(5) int dstOff = x + y * Draw2D.width2d;
-		@Pc(9) int dstStep = Draw2D.width2d - w;
+		@Pc(5) int dstOff = x + y * Pix2D.width2d;
+		@Pc(9) int dstStep = Pix2D.width2d - w;
 
 		@Pc(11) int srcStep = 0;
 		@Pc(13) int srcOff = 0;
 
-		if (y < Draw2D.top) {
-			int cutoff = Draw2D.top - y;
+		if (y < Pix2D.boundTop) {
+			int cutoff = Pix2D.boundTop - y;
 			h -= cutoff;
-			y = Draw2D.top;
+			y = Pix2D.boundTop;
 			srcOff += cutoff * w;
-			dstOff += cutoff * Draw2D.width2d;
+			dstOff += cutoff * Pix2D.width2d;
 		}
 
-		if (y + h >= Draw2D.bottom) {
-			h -= y + h + 1 - Draw2D.bottom;
+		if (y + h >= Pix2D.boundBottom) {
+			h -= y + h + 1 - Pix2D.boundBottom;
 		}
 
-		if (x < Draw2D.left) {
-			int cutoff = Draw2D.left - x;
+		if (x < Pix2D.boundLeft) {
+			int cutoff = Pix2D.boundLeft - x;
 			w -= cutoff;
-			x = Draw2D.left;
+			x = Pix2D.boundLeft;
 			srcOff += cutoff;
 			dstOff += cutoff;
 			srcStep += cutoff;
 			dstStep += cutoff;
 		}
 
-		if (x + w >= Draw2D.right) {
-			int cutoff = x + w + 1 - Draw2D.right;
+		if (x + w >= Pix2D.boundRight) {
+			int cutoff = x + w + 1 - Pix2D.boundRight;
 			w -= cutoff;
 			srcStep += cutoff;
 			dstStep += cutoff;
 		}
 
 		if (w > 0 && h > 0) {
-			this.drawMask(w, h, data, srcOff, srcStep, Draw2D.data, dstOff, dstStep, rgb);
+			this.drawMask(w, h, data, srcOff, srcStep, Pix2D.data, dstOff, dstStep, rgb);
 		}
 	}
 
-	@OriginalMember(owner = "client!jb", name = "a", descriptor = "([I[BIIIIIII)V")
+	@OriginalMember(owner = "client.client!jb", name = "a", descriptor = "([I[BIIIIIII)V")
 	private void drawMask(@OriginalArg(5) int w, @OriginalArg(6) int h, @OriginalArg(1) byte[] src, @OriginalArg(3) int srcOff, @OriginalArg(8) int srcStep, @OriginalArg(0) int[] dst, @OriginalArg(4) int dstOff, @OriginalArg(7) int dstStep, @OriginalArg(2) int rgb) {
 		@Pc(6) int hw = -(w >> 2);
 		w = -(w & 0x3);
@@ -384,49 +384,49 @@ public class PixFont extends Draw2D {
 		}
 	}
 
-	@OriginalMember(owner = "client!jb", name = "a", descriptor = "([BBIIIIII)V")
+	@OriginalMember(owner = "client.client!jb", name = "a", descriptor = "([BBIIIIII)V")
 	private void drawCharAlpha(@OriginalArg(2) int x, @OriginalArg(5) int y, @OriginalArg(7) int w, @OriginalArg(3) int h, @OriginalArg(4) int rgb, @OriginalArg(6) int alpha, @OriginalArg(0) byte[] mask) {
-		@Pc(10) int dstOff = x + y * Draw2D.width2d;
-		@Pc(14) int dstStep = Draw2D.width2d - w;
+		@Pc(10) int dstOff = x + y * Pix2D.width2d;
+		@Pc(14) int dstStep = Pix2D.width2d - w;
 
 		@Pc(16) int srcStep = 0;
 		@Pc(18) int srcOff = 0;
 
-		if (y < Draw2D.top) {
-			int cutoff = Draw2D.top - y;
+		if (y < Pix2D.boundTop) {
+			int cutoff = Pix2D.boundTop - y;
 			h -= cutoff;
-			y = Draw2D.top;
+			y = Pix2D.boundTop;
 			srcOff += cutoff * w;
-			dstOff += cutoff * Draw2D.width2d;
+			dstOff += cutoff * Pix2D.width2d;
 		}
 
-		if (y + h >= Draw2D.bottom) {
-			h -= y + h + 1 - Draw2D.bottom;
+		if (y + h >= Pix2D.boundBottom) {
+			h -= y + h + 1 - Pix2D.boundBottom;
 		}
 
-		if (x < Draw2D.left) {
-			int cutoff = Draw2D.left - x;
+		if (x < Pix2D.boundLeft) {
+			int cutoff = Pix2D.boundLeft - x;
 			w -= cutoff;
-			x = Draw2D.left;
+			x = Pix2D.boundLeft;
 			srcOff += cutoff;
 			dstOff += cutoff;
 			srcStep += cutoff;
 			dstStep += cutoff;
 		}
 
-		if (x + w >= Draw2D.right) {
-			int cutoff = x + w + 1 - Draw2D.right;
+		if (x + w >= Pix2D.boundRight) {
+			int cutoff = x + w + 1 - Pix2D.boundRight;
 			w -= cutoff;
 			srcStep += cutoff;
 			dstStep += cutoff;
 		}
 
 		if (w > 0 && h > 0) {
-			this.drawMaskAlpha(w, h, Draw2D.data, dstOff, dstStep, mask, srcOff, srcStep, rgb, alpha);
+			this.drawMaskAlpha(w, h, Pix2D.data, dstOff, dstStep, mask, srcOff, srcStep, rgb, alpha);
 		}
 	}
 
-	@OriginalMember(owner = "client!jb", name = "a", descriptor = "(III[I[BIIIIBI)V")
+	@OriginalMember(owner = "client.client!jb", name = "a", descriptor = "(III[I[BIIIIBI)V")
 	private void drawMaskAlpha(@OriginalArg(2) int w, @OriginalArg(0) int h, @OriginalArg(3) int[] dst, @OriginalArg(1) int dstOff, @OriginalArg(7) int dstStep, @OriginalArg(4) byte[] mask, @OriginalArg(6) int maskOff, @OriginalArg(8) int maskStep, @OriginalArg(10) int color, @OriginalArg(5) int alpha) {
 		@Pc(19) int rgb = ((color & 0xFF00FF) * alpha & 0xFF00FF00) + ((color & 0xFF00) * alpha & 0xFF0000) >> 8;
 		@Pc(38) int invAlpha = 256 - alpha;

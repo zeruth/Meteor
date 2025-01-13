@@ -6,28 +6,28 @@ import org.openrs2.deob.annotation.OriginalMember;
 import org.openrs2.deob.annotation.Pc;
 
 // name and packaging confirmed 100% in rs2/mapview applet strings
-@OriginalClass("client!tb")
+@OriginalClass("client.client!tb")
 public class Isaac {
 
-	@OriginalMember(owner = "client!tb", name = "a", descriptor = "I")
+	@OriginalMember(owner = "client.client!tb", name = "a", descriptor = "I")
 	private int count;
 
-	@OriginalMember(owner = "client!tb", name = "b", descriptor = "[I")
+	@OriginalMember(owner = "client.client!tb", name = "b", descriptor = "[I")
 	private final int[] rsl;
 
-	@OriginalMember(owner = "client!tb", name = "c", descriptor = "[I")
+	@OriginalMember(owner = "client.client!tb", name = "c", descriptor = "[I")
 	private final int[] mem;
 
-	@OriginalMember(owner = "client!tb", name = "d", descriptor = "I")
+	@OriginalMember(owner = "client.client!tb", name = "d", descriptor = "I")
 	private int a;
 
-	@OriginalMember(owner = "client!tb", name = "e", descriptor = "I")
+	@OriginalMember(owner = "client.client!tb", name = "e", descriptor = "I")
 	private int b;
 
-	@OriginalMember(owner = "client!tb", name = "f", descriptor = "I")
+	@OriginalMember(owner = "client.client!tb", name = "f", descriptor = "I")
 	private int c;
 
-	@OriginalMember(owner = "client!tb", name = "<init>", descriptor = "(B[I)V")
+	@OriginalMember(owner = "client.client!tb", name = "<init>", descriptor = "(B[I)V")
 	public Isaac(@OriginalArg(1) int[] seed) {
 		this.mem = new int[256];
 		this.rsl = new int[256];
@@ -35,17 +35,17 @@ public class Isaac {
 		this.init();
 	}
 
-	@OriginalMember(owner = "client!tb", name = "a", descriptor = "()I")
-	public int nextInt() {
+	@OriginalMember(owner = "client.client!tb", name = "a", descriptor = "()I")
+	public int takeNextValue() {
 		if (this.count-- == 0) {
-			this.isaac();
+			this.generate();
 			this.count = 255;
 		}
 		return this.rsl[this.count];
 	}
 
-	@OriginalMember(owner = "client!tb", name = "b", descriptor = "()V")
-	private void isaac() {
+	@OriginalMember(owner = "client.client!tb", name = "b", descriptor = "()V")
+	private void generate() {
 		this.b += ++this.c;
 
 		for (@Pc(15) int i = 0; i < 256; i++) {
@@ -71,7 +71,7 @@ public class Isaac {
 		}
 	}
 
-	@OriginalMember(owner = "client!tb", name = "c", descriptor = "()V")
+	@OriginalMember(owner = "client.client!tb", name = "c", descriptor = "()V")
 	private void init() {
 		@Pc(4) int h = 0x9e3779b9;
 		@Pc(6) int g = 0x9e3779b9;
@@ -151,7 +151,7 @@ public class Isaac {
 			this.mem[i + 7] = h;
 		}
 
-		this.isaac();
+		this.generate();
 		this.count = 256;
 	}
 }

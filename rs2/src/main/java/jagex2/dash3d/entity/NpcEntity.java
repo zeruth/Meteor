@@ -8,13 +8,13 @@ import org.openrs2.deob.annotation.OriginalClass;
 import org.openrs2.deob.annotation.OriginalMember;
 import org.openrs2.deob.annotation.Pc;
 
-@OriginalClass("client!y")
+@OriginalClass("client.client!y")
 public class NpcEntity extends PathingEntity {
 
-	@OriginalMember(owner = "client!y", name = "ib", descriptor = "Lclient!bc;")
+	@OriginalMember(owner = "client.client!y", name = "ib", descriptor = "Lclient!bc;")
 	public NpcType type;
 
-	@OriginalMember(owner = "client!y", name = "a", descriptor = "(Z)Lclient!eb;")
+	@OriginalMember(owner = "client.client!y", name = "a", descriptor = "(Z)Lclient!eb;")
 	@Override
 	public Model draw(int loopCycle) {
 		if (this.type == null) {
@@ -28,7 +28,7 @@ public class NpcEntity extends PathingEntity {
 		@Pc(20) Model model = this.getSequencedModel();
 		@Pc(25) SpotAnimType spotanim = SpotAnimType.instances[super.spotanimId];
 
-		@Pc(41) Model model1 = new Model(spotanim.getModel(), true, !spotanim.disposeAlpha, false);
+		@Pc(41) Model model1 = new Model(spotanim.getModel(), true, !spotanim.animHasAlpha, false);
 		model1.translate(-super.spotanimOffset, 0, 0);
 		model1.createLabelReferences();
 		model1.applyTransform(spotanim.seq.frames[super.spotanimFrame]);
@@ -50,7 +50,7 @@ public class NpcEntity extends PathingEntity {
 		return tmp;
 	}
 
-	@OriginalMember(owner = "client!y", name = "c", descriptor = "(Z)Lclient!eb;")
+	@OriginalMember(owner = "client.client!y", name = "c", descriptor = "(Z)Lclient!eb;")
 	private Model getSequencedModel() {
 		if (super.primarySeqId >= 0 && super.primarySeqDelay == 0) {
 			@Pc(14) int primaryTransformId = SeqType.instances[super.primarySeqId].frames[super.primarySeqFrame];
@@ -71,7 +71,7 @@ public class NpcEntity extends PathingEntity {
 		return model;
 	}
 
-	@OriginalMember(owner = "client!y", name = "b", descriptor = "(Z)Z")
+	@OriginalMember(owner = "client.client!y", name = "b", descriptor = "(Z)Z")
 	@Override
 	public boolean isVisible() {
 		return this.type != null;

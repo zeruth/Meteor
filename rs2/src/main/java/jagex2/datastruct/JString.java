@@ -7,13 +7,13 @@ import org.openrs2.deob.annotation.Pc;
 
 // name and packaging confirmed 100% in rs2/mapview applet strings
 // later repackaged under jagex2/jstring
-@OriginalClass("client!vb")
+@OriginalClass("client.client!vb")
 public class JString {
 
-	@OriginalMember(owner = "client!vb", name = "f", descriptor = "[C")
+	@OriginalMember(owner = "client.client!vb", name = "f", descriptor = "[C")
 	private static final char[] builder = new char[12];
 
-	@OriginalMember(owner = "client!vb", name = "g", descriptor = "[C")
+	@OriginalMember(owner = "client.client!vb", name = "g", descriptor = "[C")
 	private static final char[] BASE37_LOOKUP = new char[] {
 		'_', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i',
 		'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's',
@@ -21,7 +21,7 @@ public class JString {
 		'0', '1', '2', '3', '4', '5', '6', '7', '8', '9'
 	};
 
-	@OriginalMember(owner = "client!vb", name = "a", descriptor = "(Ljava/lang/String;)J")
+	@OriginalMember(owner = "client.client!vb", name = "a", descriptor = "(Ljava/lang/String;)J")
 	public static long toBase37(@OriginalArg(0) String str) {
 		@Pc(3) long hash = 0L;
 
@@ -45,7 +45,7 @@ public class JString {
 		return hash;
 	}
 
-	@OriginalMember(owner = "client!vb", name = "a", descriptor = "(JZ)Ljava/lang/String;")
+	@OriginalMember(owner = "client.client!vb", name = "a", descriptor = "(JZ)Ljava/lang/String;")
 	public static String fromBase37(@OriginalArg(0) long username) {
 		// >= 37 to the 12th power
 		if (username <= 0L || username >= 6582952005840035281L) {
@@ -66,7 +66,7 @@ public class JString {
 		return new String(builder, 12 - len, len);
 	}
 
-	@OriginalMember(owner = "client!vb", name = "a", descriptor = "(ILjava/lang/String;)J")
+	@OriginalMember(owner = "client.client!vb", name = "a", descriptor = "(ILjava/lang/String;)J")
 	public static long hashCode(@OriginalArg(1) String str) {
 		@Pc(8) String upper = str.toUpperCase();
 		@Pc(10) long hash = 0L;
@@ -79,12 +79,12 @@ public class JString {
 		return hash;
 	}
 
-	@OriginalMember(owner = "client!vb", name = "a", descriptor = "(II)Ljava/lang/String;")
+	@OriginalMember(owner = "client.client!vb", name = "a", descriptor = "(II)Ljava/lang/String;")
 	public static String formatIPv4(@OriginalArg(1) int ip) {
 		return (ip >> 24 & 0xFF) + "." + (ip >> 16 & 0xFF) + "." + (ip >> 8 & 0xFF) + "." + (ip & 0xFF);
 	}
 
-	@OriginalMember(owner = "client!vb", name = "b", descriptor = "(ILjava/lang/String;)Ljava/lang/String;")
+	@OriginalMember(owner = "client.client!vb", name = "b", descriptor = "(ILjava/lang/String;)Ljava/lang/String;")
 	public static String formatName(@OriginalArg(1) String str) {
 		if (str.length() == 0) {
 			return str;
@@ -108,7 +108,7 @@ public class JString {
 		return new String(chars);
 	}
 
-	@OriginalMember(owner = "client!vb", name = "a", descriptor = "(Ljava/lang/String;I)Ljava/lang/String;")
+	@OriginalMember(owner = "client.client!vb", name = "a", descriptor = "(Ljava/lang/String;I)Ljava/lang/String;")
 	public static String toSentenceCase(@OriginalArg(0) String str) {
 		@Pc(2) String lower = str.toLowerCase();
 		@Pc(9) char[] chars = lower.toCharArray();
@@ -131,7 +131,7 @@ public class JString {
 		return new String(chars);
 	}
 
-	@OriginalMember(owner = "client!vb", name = "c", descriptor = "(ILjava/lang/String;)Ljava/lang/String;")
+	@OriginalMember(owner = "client.client!vb", name = "c", descriptor = "(ILjava/lang/String;)Ljava/lang/String;")
 	public static String toAsterisks(@OriginalArg(1) String str) {
 		@Pc(1) String temp = "";
 		for (@Pc(10) int i = 0; i < str.length(); i++) {

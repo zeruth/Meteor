@@ -6,25 +6,25 @@ import org.openrs2.deob.annotation.OriginalClass;
 import org.openrs2.deob.annotation.OriginalMember;
 import org.openrs2.deob.annotation.Pc;
 
-@OriginalClass("client!ec")
+@OriginalClass("client.client!ec")
 public class CollisionMap {
 
-	@OriginalMember(owner = "client!ec", name = "f", descriptor = "I")
+	@OriginalMember(owner = "client.client!ec", name = "f", descriptor = "I")
 	private final int offsetX;
 
-	@OriginalMember(owner = "client!ec", name = "g", descriptor = "I")
+	@OriginalMember(owner = "client.client!ec", name = "g", descriptor = "I")
 	private final int offsetZ;
 
-	@OriginalMember(owner = "client!ec", name = "h", descriptor = "I")
+	@OriginalMember(owner = "client.client!ec", name = "h", descriptor = "I")
 	private final int sizeX;
 
-	@OriginalMember(owner = "client!ec", name = "i", descriptor = "I")
+	@OriginalMember(owner = "client.client!ec", name = "i", descriptor = "I")
 	private final int sizeZ;
 
-	@OriginalMember(owner = "client!ec", name = "j", descriptor = "[[I")
+	@OriginalMember(owner = "client.client!ec", name = "j", descriptor = "[[I")
 	public final int[][] flags;
 
-	@OriginalMember(owner = "client!ec", name = "<init>", descriptor = "(III)V")
+	@OriginalMember(owner = "client.client!ec", name = "<init>", descriptor = "(III)V")
 	public CollisionMap(@OriginalArg(0) int sizeX, @OriginalArg(2) int sizeZ) {
 		this.offsetX = 0;
 		this.offsetZ = 0;
@@ -34,7 +34,7 @@ public class CollisionMap {
 		this.reset();
 	}
 
-	@OriginalMember(owner = "client!ec", name = "a", descriptor = "(B)V")
+	@OriginalMember(owner = "client.client!ec", name = "a", descriptor = "(B)V")
 	public void reset() {
 		for (@Pc(3) int x = 0; x < this.sizeX; x++) {
 			for (@Pc(7) int z = 0; z < this.sizeZ; z++) {
@@ -47,111 +47,111 @@ public class CollisionMap {
 		}
 	}
 
-	@OriginalMember(owner = "client!ec", name = "a", descriptor = "(ZIIIZI)V")
+	@OriginalMember(owner = "client.client!ec", name = "a", descriptor = "(ZIIIZI)V")
 	public void addWall(@OriginalArg(3) int tileX, @OriginalArg(2) int tileZ, @OriginalArg(5) int shape, @OriginalArg(1) int rotation, @OriginalArg(4) boolean blockrange) {
 		@Pc(4) int x = tileX - this.offsetX;
 		@Pc(19) int z = tileZ - this.offsetZ;
 
 		if (shape == LocType.WALL_STRAIGHT) {
 			if (rotation == 0) {
-				this.add(x, z, 0x80);
-				this.add(x - 1, z, 0x8);
+				this.addCMap(x, z, 0x80);
+				this.addCMap(x - 1, z, 0x8);
 			} else if (rotation == 1) {
-				this.add(x, z, 0x2);
-				this.add(x, z + 1, 0x20);
+				this.addCMap(x, z, 0x2);
+				this.addCMap(x, z + 1, 0x20);
 			} else if (rotation == 2) {
-				this.add(x, z, 0x8);
-				this.add(x + 1, z, 0x80);
+				this.addCMap(x, z, 0x8);
+				this.addCMap(x + 1, z, 0x80);
 			} else if (rotation == 3) {
-				this.add(x, z, 32);
-				this.add(x, z - 1, 0x2);
+				this.addCMap(x, z, 32);
+				this.addCMap(x, z - 1, 0x2);
 			}
 		} else if (shape == LocType.WALL_DIAGONALCORNER || shape == LocType.WALL_SQUARECORNER) {
 			if (rotation == 0) {
-				this.add(x, z, 0x1);
-				this.add(x - 1, z + 1, 0x10);
+				this.addCMap(x, z, 0x1);
+				this.addCMap(x - 1, z + 1, 0x10);
 			} else if (rotation == 1) {
-				this.add(x, z, 0x4);
-				this.add(x + 1, z + 1, 0x40);
+				this.addCMap(x, z, 0x4);
+				this.addCMap(x + 1, z + 1, 0x40);
 			} else if (rotation == 2) {
-				this.add(x, z, 0x10);
-				this.add(x + 1, z - 1, 0x1);
+				this.addCMap(x, z, 0x10);
+				this.addCMap(x + 1, z - 1, 0x1);
 			} else if (rotation == 3) {
-				this.add(x, z, 64);
-				this.add(x - 1, z - 1, 0x4);
+				this.addCMap(x, z, 64);
+				this.addCMap(x - 1, z - 1, 0x4);
 			}
 		} else if (shape == LocType.WALL_L) {
 			if (rotation == 0) {
-				this.add(x, z, 0x82);
-				this.add(x - 1, z, 0x8);
-				this.add(x, z + 1, 0x20);
+				this.addCMap(x, z, 0x82);
+				this.addCMap(x - 1, z, 0x8);
+				this.addCMap(x, z + 1, 0x20);
 			} else if (rotation == 1) {
-				this.add(x, z, 0xA);
-				this.add(x, z + 1, 0x20);
-				this.add(x + 1, z, 0x80);
+				this.addCMap(x, z, 0xA);
+				this.addCMap(x, z + 1, 0x20);
+				this.addCMap(x + 1, z, 0x80);
 			} else if (rotation == 2) {
-				this.add(x, z, 0x28);
-				this.add(x + 1, z, 0x80);
-				this.add(x, z - 1, 0x2);
+				this.addCMap(x, z, 0x28);
+				this.addCMap(x + 1, z, 0x80);
+				this.addCMap(x, z - 1, 0x2);
 			} else if (rotation == 3) {
-				this.add(x, z, 0xA0);
-				this.add(x, z - 1, 0x2);
-				this.add(x - 1, z, 0x8);
+				this.addCMap(x, z, 0xA0);
+				this.addCMap(x, z - 1, 0x2);
+				this.addCMap(x - 1, z, 0x8);
 			}
 		}
 
 		if (blockrange) {
 			if (shape == LocType.WALL_STRAIGHT) {
 				if (rotation == 0) {
-					this.add(x, z, 0x10000);
-					this.add(x - 1, z, 0x1000);
+					this.addCMap(x, z, 0x10000);
+					this.addCMap(x - 1, z, 0x1000);
 				} else if (rotation == 1) {
-					this.add(x, z, 0x400);
-					this.add(x, z + 1, 0x4000);
+					this.addCMap(x, z, 0x400);
+					this.addCMap(x, z + 1, 0x4000);
 				} else if (rotation == 2) {
-					this.add(x, z, 0x1000);
-					this.add(x + 1, z, 0x10000);
+					this.addCMap(x, z, 0x1000);
+					this.addCMap(x + 1, z, 0x10000);
 				} else if (rotation == 3) {
-					this.add(x, z, 0x4000);
-					this.add(x, z - 1, 0x400);
+					this.addCMap(x, z, 0x4000);
+					this.addCMap(x, z - 1, 0x400);
 				}
 			} else if (shape == LocType.WALL_DIAGONAL || shape == LocType.WALL_SQUARECORNER) {
 				if (rotation == 0) {
-					this.add(x, z, 0x200);
-					this.add(x - 1, z + 1, 0x2000);
+					this.addCMap(x, z, 0x200);
+					this.addCMap(x - 1, z + 1, 0x2000);
 				} else if (rotation == 1) {
-					this.add(x, z, 0x800);
-					this.add(x + 1, z + 1, 0x8000);
+					this.addCMap(x, z, 0x800);
+					this.addCMap(x + 1, z + 1, 0x8000);
 				} else if (rotation == 2) {
-					this.add(x, z, 0x2000);
-					this.add(x + 1, z - 1, 0x200);
+					this.addCMap(x, z, 0x2000);
+					this.addCMap(x + 1, z - 1, 0x200);
 				} else if (rotation == 3) {
-					this.add(x, z, 0x8000);
-					this.add(x - 1, z - 1, 0x800);
+					this.addCMap(x, z, 0x8000);
+					this.addCMap(x - 1, z - 1, 0x800);
 				}
 			} else if (shape == LocType.WALL_L) {
 				if (rotation == 0) {
-					this.add(x, z, 0x10400);
-					this.add(x - 1, z, 0x1000);
-					this.add(x, z + 1, 0x4000);
+					this.addCMap(x, z, 0x10400);
+					this.addCMap(x - 1, z, 0x1000);
+					this.addCMap(x, z + 1, 0x4000);
 				} else if (rotation == 1) {
-					this.add(x, z, 0x1400);
-					this.add(x, z + 1, 0x4000);
-					this.add(x + 1, z, 0x10000);
+					this.addCMap(x, z, 0x1400);
+					this.addCMap(x, z + 1, 0x4000);
+					this.addCMap(x + 1, z, 0x10000);
 				} else if (rotation == 2) {
-					this.add(x, z, 0x5000);
-					this.add(x + 1, z, 0x10000);
-					this.add(x, z - 1, 0x400);
+					this.addCMap(x, z, 0x5000);
+					this.addCMap(x + 1, z, 0x10000);
+					this.addCMap(x, z - 1, 0x400);
 				} else if (rotation == 3) {
-					this.add(x, z, 0x14000);
-					this.add(x, z - 1, 0x400);
-					this.add(x - 1, z, 0x1000);
+					this.addCMap(x, z, 0x14000);
+					this.addCMap(x, z - 1, 0x400);
+					this.addCMap(x - 1, z, 0x1000);
 				}
 			}
 		}
 	}
 
-	@OriginalMember(owner = "client!ec", name = "a", descriptor = "(IIIIIIZ)V")
+	@OriginalMember(owner = "client.client!ec", name = "a", descriptor = "(IIIIIIZ)V")
 	public void addLoc(@OriginalArg(3) int tileX, @OriginalArg(5) int tileZ, @OriginalArg(2) int sizeX, @OriginalArg(1) int sizeZ, @OriginalArg(0) int rotation, @OriginalArg(6) boolean blockrange) {
 		@Pc(3) int flags = 0x100;
 		if (blockrange) {
@@ -177,129 +177,129 @@ public class CollisionMap {
 					continue;
 				}
 
-				this.add(tx, tz, flags);
+				this.addCMap(tx, tz, flags);
 			}
 		}
 	}
 
-	@OriginalMember(owner = "client!ec", name = "a", descriptor = "(BII)V")
+	@OriginalMember(owner = "client.client!ec", name = "a", descriptor = "(BII)V")
 	public void setBlocked(@OriginalArg(2) int tileX, @OriginalArg(1) int tileZ) {
 		@Pc(9) int x = tileX - this.offsetX;
 		@Pc(14) int z = tileZ - this.offsetZ;
 		this.flags[x][z] |= 0x200000;
 	}
 
-	@OriginalMember(owner = "client!ec", name = "a", descriptor = "(III)V")
-	private void add(@OriginalArg(0) int x, @OriginalArg(1) int z, @OriginalArg(2) int flags) {
+	@OriginalMember(owner = "client.client!ec", name = "a", descriptor = "(III)V")
+	private void addCMap(@OriginalArg(0) int x, @OriginalArg(1) int z, @OriginalArg(2) int flags) {
 		this.flags[x][z] |= flags;
 	}
 
-	@OriginalMember(owner = "client!ec", name = "a", descriptor = "(ZIIIII)V")
-	public void removeWall(@OriginalArg(2) int tileX, @OriginalArg(3) int tileZ, @OriginalArg(5) int shape, @OriginalArg(1) int rotation, @OriginalArg(0) boolean blockrange) {
+	@OriginalMember(owner = "client.client!ec", name = "a", descriptor = "(ZIIIII)V")
+	public void delWall(@OriginalArg(2) int tileX, @OriginalArg(3) int tileZ, @OriginalArg(5) int shape, @OriginalArg(1) int rotation, @OriginalArg(0) boolean blockrange) {
 		@Pc(8) int x = tileX - this.offsetX;
 		@Pc(13) int z = tileZ - this.offsetZ;
 
 		if (shape == LocType.WALL_STRAIGHT) {
 			if (rotation == 0) {
-				this.remove(x, z, 0x80);
-				this.remove(x - 1, z, 0x8);
+				this.remCMap(x, z, 0x80);
+				this.remCMap(x - 1, z, 0x8);
 			} else if (rotation == 1) {
-				this.remove(x, z, 0x2);
-				this.remove(x, z + 1, 0x20);
+				this.remCMap(x, z, 0x2);
+				this.remCMap(x, z + 1, 0x20);
 			} else if (rotation == 2) {
-				this.remove(x, z, 0x8);
-				this.remove(x + 1, z, 0x80);
+				this.remCMap(x, z, 0x8);
+				this.remCMap(x + 1, z, 0x80);
 			} else if (rotation == 3) {
-				this.remove(x, z, 0x20);
-				this.remove(x, z - 1, 0x2);
+				this.remCMap(x, z, 0x20);
+				this.remCMap(x, z - 1, 0x2);
 			}
 		} else if (shape == LocType.WALL_DIAGONALCORNER || shape == LocType.WALL_SQUARECORNER) {
 			if (rotation == 0) {
-				this.remove(x, z, 0x1);
-				this.remove(x - 1, z + 1, 0x10);
+				this.remCMap(x, z, 0x1);
+				this.remCMap(x - 1, z + 1, 0x10);
 			} else if (rotation == 1) {
-				this.remove(x, z, 0x4);
-				this.remove(x + 1, z + 1, 0x40);
+				this.remCMap(x, z, 0x4);
+				this.remCMap(x + 1, z + 1, 0x40);
 			} else if (rotation == 2) {
-				this.remove(x, z, 0x10);
-				this.remove(x + 1, z - 1, 0x1);
+				this.remCMap(x, z, 0x10);
+				this.remCMap(x + 1, z - 1, 0x1);
 			} else if (rotation == 3) {
-				this.remove(x, z, 0x40);
-				this.remove(x - 1, z - 1, 0x4);
+				this.remCMap(x, z, 0x40);
+				this.remCMap(x - 1, z - 1, 0x4);
 			}
 		} else if (shape == LocType.WALL_L) {
 			if (rotation == 0) {
-				this.remove(x, z, 0x82);
-				this.remove(x - 1, z, 0x8);
-				this.remove(x, z + 1, 0x20);
+				this.remCMap(x, z, 0x82);
+				this.remCMap(x - 1, z, 0x8);
+				this.remCMap(x, z + 1, 0x20);
 			} else if (rotation == 1) {
-				this.remove(x, z, 0xA);
-				this.remove(x, z + 1, 0x20);
-				this.remove(x + 1, z, 0x80);
+				this.remCMap(x, z, 0xA);
+				this.remCMap(x, z + 1, 0x20);
+				this.remCMap(x + 1, z, 0x80);
 			} else if (rotation == 2) {
-				this.remove(x, z, 0x28);
-				this.remove(x + 1, z, 0x80);
-				this.remove(x, z - 1, 0x2);
+				this.remCMap(x, z, 0x28);
+				this.remCMap(x + 1, z, 0x80);
+				this.remCMap(x, z - 1, 0x2);
 			} else if (rotation == 3) {
-				this.remove(x, z, 0xA0);
-				this.remove(x, z - 1, 0x2);
-				this.remove(x - 1, z, 0x8);
+				this.remCMap(x, z, 0xA0);
+				this.remCMap(x, z - 1, 0x2);
+				this.remCMap(x - 1, z, 0x8);
 			}
 		}
 
 		if (blockrange) {
 			if (shape == LocType.WALL_STRAIGHT) {
 				if (rotation == 0) {
-					this.remove(x, z, 0x10000);
-					this.remove(x - 1, z, 0x1000);
+					this.remCMap(x, z, 0x10000);
+					this.remCMap(x - 1, z, 0x1000);
 				} else if (rotation == 1) {
-					this.remove(x, z, 0x400);
-					this.remove(x, z + 1, 0x4000);
+					this.remCMap(x, z, 0x400);
+					this.remCMap(x, z + 1, 0x4000);
 				} else if (rotation == 2) {
-					this.remove(x, z, 0x1000);
-					this.remove(x + 1, z, 0x10000);
+					this.remCMap(x, z, 0x1000);
+					this.remCMap(x + 1, z, 0x10000);
 				} else if (rotation == 3) {
-					this.remove(x, z, 0x4000);
-					this.remove(x, z - 1, 0x400);
+					this.remCMap(x, z, 0x4000);
+					this.remCMap(x, z - 1, 0x400);
 				}
 			} else if (shape == LocType.WALL_DIAGONALCORNER || shape == LocType.WALL_SQUARECORNER) {
 				if (rotation == 0) {
-					this.remove(x, z, 0x200);
-					this.remove(x - 1, z + 1, 0x2000);
+					this.remCMap(x, z, 0x200);
+					this.remCMap(x - 1, z + 1, 0x2000);
 				} else if (rotation == 1) {
-					this.remove(x, z, 0x800);
-					this.remove(x + 1, z + 1, 0x8000);
+					this.remCMap(x, z, 0x800);
+					this.remCMap(x + 1, z + 1, 0x8000);
 				} else if (rotation == 2) {
-					this.remove(x, z, 0x2000);
-					this.remove(x + 1, z - 1, 0x200);
+					this.remCMap(x, z, 0x2000);
+					this.remCMap(x + 1, z - 1, 0x200);
 				} else if (rotation == 3) {
-					this.remove(x, z, 0x8000);
-					this.remove(x - 1, z - 1, 0x800);
+					this.remCMap(x, z, 0x8000);
+					this.remCMap(x - 1, z - 1, 0x800);
 				}
 			} else if (shape == LocType.WALL_L) {
 				if (rotation == 0) {
-					this.remove(x, z, 0x10400);
-					this.remove(x - 1, z, 0x1000);
-					this.remove(x, z + 1, 0x4000);
+					this.remCMap(x, z, 0x10400);
+					this.remCMap(x - 1, z, 0x1000);
+					this.remCMap(x, z + 1, 0x4000);
 				} else if (rotation == 1) {
-					this.remove(x, z, 0x1400);
-					this.remove(x, z + 1, 0x4000);
-					this.remove(x + 1, z, 0x10000);
+					this.remCMap(x, z, 0x1400);
+					this.remCMap(x, z + 1, 0x4000);
+					this.remCMap(x + 1, z, 0x10000);
 				} else if (rotation == 2) {
-					this.remove(x, z, 0x5000);
-					this.remove(x + 1, z, 0x10000);
-					this.remove(x, z - 1, 0x400);
+					this.remCMap(x, z, 0x5000);
+					this.remCMap(x + 1, z, 0x10000);
+					this.remCMap(x, z - 1, 0x400);
 				} else if (rotation == 3) {
-					this.remove(x, z, 0x14000);
-					this.remove(x, z - 1, 0x400);
-					this.remove(x - 1, z, 0x1000);
+					this.remCMap(x, z, 0x14000);
+					this.remCMap(x, z - 1, 0x400);
+					this.remCMap(x - 1, z, 0x1000);
 				}
 			}
 		}
 	}
 
-	@OriginalMember(owner = "client!ec", name = "a", descriptor = "(IIIIZZI)V")
-	public void removeLoc(@OriginalArg(1) int tileX, @OriginalArg(0) int tileZ, @OriginalArg(3) int sizeX, @OriginalArg(6) int sizeZ, @OriginalArg(2) int rotation, @OriginalArg(5) boolean blockrange) {
+	@OriginalMember(owner = "client.client!ec", name = "a", descriptor = "(IIIIZZI)V")
+	public void delLoc(@OriginalArg(1) int tileX, @OriginalArg(0) int tileZ, @OriginalArg(3) int sizeX, @OriginalArg(6) int sizeZ, @OriginalArg(2) int rotation, @OriginalArg(5) boolean blockrange) {
 		@Pc(3) int flags = 0x100;
 		if (blockrange) {
 			flags += 0x20000;
@@ -324,25 +324,25 @@ public class CollisionMap {
 					continue;
 				}
 
-				this.remove(tx, tz, flags);
+				this.remCMap(tx, tz, flags);
 			}
 		}
 	}
 
-	@OriginalMember(owner = "client!ec", name = "a", descriptor = "(IBII)V")
-	private void remove(@OriginalArg(2) int x, @OriginalArg(0) int z, @OriginalArg(3) int flags) {
+	@OriginalMember(owner = "client.client!ec", name = "a", descriptor = "(IBII)V")
+	private void remCMap(@OriginalArg(2) int x, @OriginalArg(0) int z, @OriginalArg(3) int flags) {
 		this.flags[x][z] &= 0xFFFFFF - flags;
 	}
 
-	@OriginalMember(owner = "client!ec", name = "b", descriptor = "(III)V")
+	@OriginalMember(owner = "client.client!ec", name = "b", descriptor = "(III)V")
 	public void removeBlocked(@OriginalArg(1) int tileX, @OriginalArg(0) int tileZ) {
 		@Pc(7) int x = tileX - this.offsetX;
 		@Pc(12) int z = tileZ - this.offsetZ;
-		this.flags[x][z] &= 0xDFFFFF;
+		this.flags[x][z] &= 0xDFFFFF; // 0xFFFFFF - 0x200000
 	}
 
-	@OriginalMember(owner = "client!ec", name = "a", descriptor = "(IIIIIII)Z")
-	public boolean reachedWall(@OriginalArg(6) int sourceX, @OriginalArg(4) int sourceZ, @OriginalArg(5) int destX, @OriginalArg(2) int destZ, @OriginalArg(3) int shape, @OriginalArg(1) int rotation) {
+	@OriginalMember(owner = "client.client!ec", name = "a", descriptor = "(IIIIIII)Z")
+	public boolean testWall(@OriginalArg(6) int sourceX, @OriginalArg(4) int sourceZ, @OriginalArg(5) int destX, @OriginalArg(2) int destZ, @OriginalArg(3) int shape, @OriginalArg(1) int rotation) {
 		if (sourceX == destX && sourceZ == destZ) {
 			return true;
 		}
@@ -443,8 +443,8 @@ public class CollisionMap {
 		return false;
 	}
 
-	@OriginalMember(owner = "client!ec", name = "b", descriptor = "(IIIIIII)Z")
-	public boolean reachedWallDecoration(@OriginalArg(3) int sourceX, @OriginalArg(5) int sourceZ, @OriginalArg(4) int destX, @OriginalArg(6) int destZ, @OriginalArg(1) int shape, @OriginalArg(0) int rotation) {
+	@OriginalMember(owner = "client.client!ec", name = "b", descriptor = "(IIIIIII)Z")
+	public boolean testWDecor(@OriginalArg(3) int sourceX, @OriginalArg(5) int sourceZ, @OriginalArg(4) int destX, @OriginalArg(6) int destZ, @OriginalArg(1) int shape, @OriginalArg(0) int rotation) {
 		if (sourceX == destX && sourceZ == destZ) {
 			return true;
 		}
@@ -499,8 +499,8 @@ public class CollisionMap {
 		return false;
 	}
 
-	@OriginalMember(owner = "client!ec", name = "a", descriptor = "(IIIIIIII)Z")
-	public boolean reachedLoc(@OriginalArg(2) int srcX, @OriginalArg(0) int srcZ, @OriginalArg(3) int dstX, @OriginalArg(5) int dstZ, @OriginalArg(6) int dstSizeX, @OriginalArg(1) int dstSizeZ, @OriginalArg(4) int forceapproach) {
+	@OriginalMember(owner = "client.client!ec", name = "a", descriptor = "(IIIIIIII)Z")
+	public boolean testLoc(@OriginalArg(2) int srcX, @OriginalArg(0) int srcZ, @OriginalArg(3) int dstX, @OriginalArg(5) int dstZ, @OriginalArg(6) int dstSizeX, @OriginalArg(1) int dstSizeZ, @OriginalArg(4) int forceapproach) {
 		@Pc(5) int maxX = dstX + dstSizeX - 1;
 		@Pc(11) int maxZ = dstZ + dstSizeZ - 1;
 

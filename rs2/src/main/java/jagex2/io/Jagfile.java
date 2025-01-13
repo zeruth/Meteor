@@ -7,36 +7,36 @@ import org.openrs2.deob.annotation.Pc;
 
 // name and packaging confirmed 100% in rs2/mapview applet strings
 // it was also observed in an exception handler string during rev 234
-@OriginalClass("client!ub")
+@OriginalClass("client.client!ub")
 public class Jagfile {
 
-	@OriginalMember(owner = "client!ub", name = "e", descriptor = "[B")
+	@OriginalMember(owner = "client.client!ub", name = "e", descriptor = "[B")
 	private byte[] buffer;
 
-	@OriginalMember(owner = "client!ub", name = "f", descriptor = "I")
+	@OriginalMember(owner = "client.client!ub", name = "f", descriptor = "I")
 	private int fileCount;
 
-	@OriginalMember(owner = "client!ub", name = "g", descriptor = "[I")
+	@OriginalMember(owner = "client.client!ub", name = "g", descriptor = "[I")
 	private int[] fileHash;
 
-	@OriginalMember(owner = "client!ub", name = "h", descriptor = "[I")
+	@OriginalMember(owner = "client.client!ub", name = "h", descriptor = "[I")
 	private int[] fileUnpackedSize;
 
-	@OriginalMember(owner = "client!ub", name = "i", descriptor = "[I")
+	@OriginalMember(owner = "client.client!ub", name = "i", descriptor = "[I")
 	private int[] filePackedSize;
 
-	@OriginalMember(owner = "client!ub", name = "j", descriptor = "[I")
+	@OriginalMember(owner = "client.client!ub", name = "j", descriptor = "[I")
 	private int[] fileOffset;
 
-	@OriginalMember(owner = "client!ub", name = "k", descriptor = "Z")
+	@OriginalMember(owner = "client.client!ub", name = "k", descriptor = "Z")
 	private boolean unpacked;
 
-	@OriginalMember(owner = "client!ub", name = "<init>", descriptor = "([BZ)V")
+	@OriginalMember(owner = "client.client!ub", name = "<init>", descriptor = "([BZ)V")
 	public Jagfile(@OriginalArg(0) byte[] src) {
 		this.load(src);
 	}
 
-	@OriginalMember(owner = "client!ub", name = "a", descriptor = "(Z[B)V")
+	@OriginalMember(owner = "client.client!ub", name = "a", descriptor = "(Z[B)V")
 	private void load(@OriginalArg(1) byte[] src) {
 		@Pc(7) Packet data = new Packet(src);
 		@Pc(10) int unpackedSize = data.g3();
@@ -70,7 +70,7 @@ public class Jagfile {
 		}
 	}
 
-	@OriginalMember(owner = "client!ub", name = "a", descriptor = "(Ljava/lang/String;[BB)[B")
+	@OriginalMember(owner = "client.client!ub", name = "a", descriptor = "(Ljava/lang/String;[BB)[B")
 	public byte[] read(@OriginalArg(0) String name, @OriginalArg(1) byte[] dst) {
 		@Pc(3) int hash = 0;
 		@Pc(6) String upper = name.toUpperCase();

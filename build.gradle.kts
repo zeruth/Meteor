@@ -1,10 +1,11 @@
 plugins {
-    // this is necessary to avoid the plugins to be loaded multiple times
-    // in each subproject's classloader
     alias(libs.plugins.jetbrainsCompose) apply false
     alias(libs.plugins.compose.compiler) apply false
-    kotlin("jvm") version "2.0.0" apply false
+    kotlin("jvm") version "2.0.21" apply false
 }
+
+group = "meteor"
+version = "2.1.0-SNAPSHOT"
 
 allprojects {
     repositories {

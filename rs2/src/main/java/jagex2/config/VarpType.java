@@ -8,49 +8,49 @@ import org.openrs2.deob.annotation.OriginalMember;
 import org.openrs2.deob.annotation.Pc;
 
 // name derived from other types + varp.dat (rs3 has this as VarPlayerType)
-@OriginalClass("client!lc")
+@OriginalClass("client.client!lc")
 public class VarpType {
 
-	@OriginalMember(owner = "client!lc", name = "c", descriptor = "I")
+	@OriginalMember(owner = "client.client!lc", name = "c", descriptor = "I")
 	private static int count;
 
-	@OriginalMember(owner = "client!lc", name = "d", descriptor = "[Lclient!lc;")
+	@OriginalMember(owner = "client.client!lc", name = "d", descriptor = "[Lclient!lc;")
 	public static VarpType[] instances;
 
-	@OriginalMember(owner = "client!lc", name = "e", descriptor = "I")
+	@OriginalMember(owner = "client.client!lc", name = "e", descriptor = "I")
 	public static int code3Count;
 
-	@OriginalMember(owner = "client!lc", name = "f", descriptor = "[I")
+	@OriginalMember(owner = "client.client!lc", name = "f", descriptor = "[I")
 	public static int[] code3;
 
-	@OriginalMember(owner = "client!lc", name = "g", descriptor = "Ljava/lang/String;")
+	@OriginalMember(owner = "client.client!lc", name = "g", descriptor = "Ljava/lang/String;")
 	private String code10;
 
-	@OriginalMember(owner = "client!lc", name = "h", descriptor = "I")
+	@OriginalMember(owner = "client.client!lc", name = "h", descriptor = "I")
 	private int code1;
 
-	@OriginalMember(owner = "client!lc", name = "i", descriptor = "I")
+	@OriginalMember(owner = "client.client!lc", name = "i", descriptor = "I")
 	private int code2;
 
-	@OriginalMember(owner = "client!lc", name = "j", descriptor = "Z")
+	@OriginalMember(owner = "client.client!lc", name = "j", descriptor = "Z")
 	private boolean hasCode3 = false;
 
-	@OriginalMember(owner = "client!lc", name = "k", descriptor = "Z")
+	@OriginalMember(owner = "client.client!lc", name = "k", descriptor = "Z")
 	private boolean code4 = true;
 
-	@OriginalMember(owner = "client!lc", name = "l", descriptor = "I")
+	@OriginalMember(owner = "client.client!lc", name = "l", descriptor = "I")
 	public int clientcode;
 
-	@OriginalMember(owner = "client!lc", name = "n", descriptor = "I")
+	@OriginalMember(owner = "client.client!lc", name = "n", descriptor = "I")
 	private int code7;
 
-	@OriginalMember(owner = "client!lc", name = "m", descriptor = "Z")
+	@OriginalMember(owner = "client.client!lc", name = "m", descriptor = "Z")
 	private boolean code6 = false;
 
-	@OriginalMember(owner = "client!lc", name = "o", descriptor = "Z")
+	@OriginalMember(owner = "client.client!lc", name = "o", descriptor = "Z")
 	private boolean code8 = false;
 
-	@OriginalMember(owner = "client!lc", name = "a", descriptor = "(Lclient!ub;I)V")
+	@OriginalMember(owner = "client.client!lc", name = "a", descriptor = "(Lclient!ub;I)V")
 	public static void unpack(@OriginalArg(0) Jagfile config) {
 		@Pc(9) Packet dat = new Packet(config.read("varp.dat", null));
 		code3Count = 0;
@@ -73,7 +73,7 @@ public class VarpType {
 		}
 	}
 
-	@OriginalMember(owner = "client!lc", name = "a", descriptor = "(IILclient!kb;)V")
+	@OriginalMember(owner = "client.client!lc", name = "a", descriptor = "(IILclient!kb;)V")
 	public void decode(@OriginalArg(1) int id, @OriginalArg(2) Packet dat) {
 		while (true) {
 			@Pc(8) int code = dat.g1();
@@ -101,7 +101,7 @@ public class VarpType {
 			} else if (code == 10) {
 				this.code10 = dat.gjstr();
 			} else {
-				System.out.println("Error unrecognised config code: " + code);
+				System.out.println("Error unrecognised varp config code: " + code);
 			}
 		}
 	}

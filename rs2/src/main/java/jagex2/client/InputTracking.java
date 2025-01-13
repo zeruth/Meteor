@@ -6,34 +6,34 @@ import org.openrs2.deob.annotation.OriginalClass;
 import org.openrs2.deob.annotation.OriginalMember;
 import org.openrs2.deob.annotation.Pc;
 
-@OriginalClass("client!e")
+@OriginalClass("client.client!e")
 public class InputTracking {
 
-	@OriginalMember(owner = "client!e", name = "e", descriptor = "Z")
+	@OriginalMember(owner = "client.client!e", name = "e", descriptor = "Z")
 	public static boolean enabled;
 
-	@OriginalMember(owner = "client!e", name = "f", descriptor = "Lclient!kb;")
+	@OriginalMember(owner = "client.client!e", name = "f", descriptor = "Lclient!kb;")
 	private static Packet outBuffer = null;
 
-	@OriginalMember(owner = "client!e", name = "g", descriptor = "Lclient!kb;")
+	@OriginalMember(owner = "client.client!e", name = "g", descriptor = "Lclient!kb;")
 	private static Packet oldBuffer = null;
 
-	@OriginalMember(owner = "client!e", name = "h", descriptor = "J")
+	@OriginalMember(owner = "client.client!e", name = "h", descriptor = "J")
 	private static long lastTime;
 
-	@OriginalMember(owner = "client!e", name = "i", descriptor = "I")
+	@OriginalMember(owner = "client.client!e", name = "i", descriptor = "I")
 	private static int trackedCount;
 
-	@OriginalMember(owner = "client!e", name = "j", descriptor = "J")
+	@OriginalMember(owner = "client.client!e", name = "j", descriptor = "J")
 	private static long lastMoveTime;
 
-	@OriginalMember(owner = "client!e", name = "k", descriptor = "I")
+	@OriginalMember(owner = "client.client!e", name = "k", descriptor = "I")
 	private static int lastX;
 
-	@OriginalMember(owner = "client!e", name = "l", descriptor = "I")
+	@OriginalMember(owner = "client.client!e", name = "l", descriptor = "I")
 	private static int lastY;
 
-	@OriginalMember(owner = "client!e", name = "a", descriptor = "(I)V")
+	@OriginalMember(owner = "client.client!e", name = "a", descriptor = "(I)V")
 	public static synchronized void setEnabled() {
 		outBuffer = Packet.alloc(1);
 		oldBuffer = null;
@@ -41,13 +41,13 @@ public class InputTracking {
 		enabled = true;
 	}
 
-	@OriginalMember(owner = "client!e", name = "a", descriptor = "(B)V")
+	@OriginalMember(owner = "client.client!e", name = "a", descriptor = "(B)V")
 	public static synchronized void setDisabled() {
 		enabled = false;
 		outBuffer = null;
 	}
 
-	@OriginalMember(owner = "client!e", name = "b", descriptor = "(I)Lclient!kb;")
+	@OriginalMember(owner = "client.client!e", name = "b", descriptor = "(I)Lclient!kb;")
 	public static synchronized Packet flush() {
 		@Pc(1) Packet buffer = null;
 		if (oldBuffer != null && enabled) {
@@ -57,7 +57,7 @@ public class InputTracking {
 		return buffer;
 	}
 
-	@OriginalMember(owner = "client!e", name = "c", descriptor = "(I)Lclient!kb;")
+	@OriginalMember(owner = "client.client!e", name = "c", descriptor = "(I)Lclient!kb;")
 	public static synchronized Packet stop() {
 		@Pc(9) Packet buffer = null;
 		if (outBuffer != null && outBuffer.pos > 0 && enabled) {
@@ -67,7 +67,7 @@ public class InputTracking {
 		return buffer;
 	}
 
-	@OriginalMember(owner = "client!e", name = "a", descriptor = "(II)V")
+	@OriginalMember(owner = "client.client!e", name = "a", descriptor = "(II)V")
 	private static synchronized void ensureCapacity(@OriginalArg(1) int n) {
 		if (outBuffer.pos + n >= 500) {
 			@Pc(15) Packet buffer = outBuffer;
@@ -76,7 +76,7 @@ public class InputTracking {
 		}
 	}
 
-	@OriginalMember(owner = "client!e", name = "a", descriptor = "(IIIB)V")
+	@OriginalMember(owner = "client.client!e", name = "a", descriptor = "(IIIB)V")
 	public static synchronized void mousePressed(@OriginalArg(0) int x, @OriginalArg(2) int y, @OriginalArg(1) int button) {
 		if (enabled && (x >= 0 && x < 789 && y >= 0 && y < 532)) {
 			trackedCount++;
@@ -101,7 +101,7 @@ public class InputTracking {
 		}
 	}
 
-	@OriginalMember(owner = "client!e", name = "b", descriptor = "(II)V")
+	@OriginalMember(owner = "client.client!e", name = "b", descriptor = "(II)V")
 	public static synchronized void mouseReleased(@OriginalArg(0) int button) {
 		if (enabled) {
 			trackedCount++;
@@ -125,7 +125,7 @@ public class InputTracking {
 		}
 	}
 
-	@OriginalMember(owner = "client!e", name = "a", descriptor = "(IZI)V")
+	@OriginalMember(owner = "client.client!e", name = "a", descriptor = "(IZI)V")
 	public static synchronized void mouseMoved(@OriginalArg(2) int x, @OriginalArg(0) int y) {
 		if (enabled && (x >= 0 && x < 789 && y >= 0 && y < 532)) {
 			@Pc(17) long now = System.currentTimeMillis();
@@ -164,7 +164,7 @@ public class InputTracking {
 		}
 	}
 
-	@OriginalMember(owner = "client!e", name = "a", descriptor = "(IZ)V")
+	@OriginalMember(owner = "client.client!e", name = "a", descriptor = "(IZ)V")
 	public static synchronized void keyPressed(@OriginalArg(0) int key) {
 		if (enabled) {
 			trackedCount++;
@@ -195,7 +195,7 @@ public class InputTracking {
 		}
 	}
 
-	@OriginalMember(owner = "client!e", name = "c", descriptor = "(II)V")
+	@OriginalMember(owner = "client.client!e", name = "c", descriptor = "(II)V")
 	public static synchronized void keyReleased(@OriginalArg(0) int key) {
 		if (enabled) {
 			trackedCount++;
@@ -226,7 +226,7 @@ public class InputTracking {
 		}
 	}
 
-	@OriginalMember(owner = "client!e", name = "d", descriptor = "(I)V")
+	@OriginalMember(owner = "client.client!e", name = "d", descriptor = "(I)V")
 	public static synchronized void focusGained() {
 		if (enabled) {
 			trackedCount++;
@@ -244,7 +244,7 @@ public class InputTracking {
 		}
 	}
 
-	@OriginalMember(owner = "client!e", name = "e", descriptor = "(I)V")
+	@OriginalMember(owner = "client.client!e", name = "e", descriptor = "(I)V")
 	public static synchronized void focusLost() {
 		if (enabled) {
 			trackedCount++;
@@ -262,7 +262,7 @@ public class InputTracking {
 		}
 	}
 
-	@OriginalMember(owner = "client!e", name = "f", descriptor = "(I)V")
+	@OriginalMember(owner = "client.client!e", name = "f", descriptor = "(I)V")
 	public static synchronized void mouseEntered() {
 		if (enabled) {
 			trackedCount++;
@@ -280,7 +280,7 @@ public class InputTracking {
 		}
 	}
 
-	@OriginalMember(owner = "client!e", name = "a", descriptor = "(Z)V")
+	@OriginalMember(owner = "client.client!e", name = "a", descriptor = "(Z)V")
 	public static synchronized void mouseExited() {
 		if (enabled) {
 			trackedCount++;

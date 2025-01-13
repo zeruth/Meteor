@@ -8,49 +8,49 @@ import org.openrs2.deob.annotation.OriginalMember;
 import org.openrs2.deob.annotation.Pc;
 
 // name taken from rs3
-@OriginalClass("client!fc")
+@OriginalClass("client.client!fc")
 public class FloType {
 
-	@OriginalMember(owner = "client!fc", name = "c", descriptor = "I")
+	@OriginalMember(owner = "client.client!fc", name = "c", descriptor = "I")
 	public static int count;
 
-	@OriginalMember(owner = "client!fc", name = "d", descriptor = "[Lclient!fc;")
+	@OriginalMember(owner = "client.client!fc", name = "d", descriptor = "[Lclient!fc;")
 	public static FloType[] instances;
 
-	@OriginalMember(owner = "client!fc", name = "e", descriptor = "I")
+	@OriginalMember(owner = "client.client!fc", name = "e", descriptor = "I")
 	public int rgb;
 
-	@OriginalMember(owner = "client!fc", name = "f", descriptor = "I")
+	@OriginalMember(owner = "client.client!fc", name = "f", descriptor = "I")
 	public int texture = -1;
 
-	@OriginalMember(owner = "client!fc", name = "g", descriptor = "Z")
+	@OriginalMember(owner = "client.client!fc", name = "g", descriptor = "Z")
 	private boolean overlay = false;
 
-	@OriginalMember(owner = "client!fc", name = "h", descriptor = "Z")
+	@OriginalMember(owner = "client.client!fc", name = "h", descriptor = "Z")
 	public boolean occlude = true;
 
-	@OriginalMember(owner = "client!fc", name = "i", descriptor = "Ljava/lang/String;")
+	@OriginalMember(owner = "client.client!fc", name = "i", descriptor = "Ljava/lang/String;")
 	public String name;
 
-	@OriginalMember(owner = "client!fc", name = "j", descriptor = "I")
+	@OriginalMember(owner = "client.client!fc", name = "j", descriptor = "I")
 	public int hue;
 
-	@OriginalMember(owner = "client!fc", name = "k", descriptor = "I")
+	@OriginalMember(owner = "client.client!fc", name = "k", descriptor = "I")
 	public int saturation;
 
-	@OriginalMember(owner = "client!fc", name = "l", descriptor = "I")
+	@OriginalMember(owner = "client.client!fc", name = "l", descriptor = "I")
 	public int lightness;
 
-	@OriginalMember(owner = "client!fc", name = "m", descriptor = "I")
+	@OriginalMember(owner = "client.client!fc", name = "m", descriptor = "I")
 	public int chroma;
 
-	@OriginalMember(owner = "client!fc", name = "n", descriptor = "I")
+	@OriginalMember(owner = "client.client!fc", name = "n", descriptor = "I")
 	public int luminance;
 
-	@OriginalMember(owner = "client!fc", name = "o", descriptor = "I")
+	@OriginalMember(owner = "client.client!fc", name = "o", descriptor = "I")
 	public int hsl;
 
-	@OriginalMember(owner = "client!fc", name = "a", descriptor = "(Lclient!ub;I)V")
+	@OriginalMember(owner = "client.client!fc", name = "a", descriptor = "(Lclient!ub;I)V")
 	public static void unpack(@OriginalArg(0) Jagfile config) {
 		@Pc(9) Packet dat = new Packet(config.read("flo.dat", null));
 		count = dat.g2();
@@ -68,7 +68,7 @@ public class FloType {
 		}
 	}
 
-	@OriginalMember(owner = "client!fc", name = "a", descriptor = "(ZLclient!kb;)V")
+	@OriginalMember(owner = "client.client!fc", name = "a", descriptor = "(ZLclient!kb;)V")
 	public void decode(@OriginalArg(1) Packet dat) {
 		while (true) {
 			@Pc(10) int code = dat.g1();
@@ -88,12 +88,12 @@ public class FloType {
 			} else if (code == 6) {
 				this.name = dat.gjstr();
 			} else {
-				System.out.println("Error unrecognised config code: " + code);
+				System.out.println("Error unrecognised flo config code: " + code);
 			}
 		}
 	}
 
-	@OriginalMember(owner = "client!fc", name = "a", descriptor = "(II)V")
+	@OriginalMember(owner = "client.client!fc", name = "a", descriptor = "(II)V")
 	private void setColor(@OriginalArg(1) int rgb) {
 		@Pc(10) double red = (double) (rgb >> 16 & 0xFF) / 256.0D;
 		@Pc(28) double green = (double) (rgb >> 8 & 0xFF) / 256.0D;
@@ -190,7 +190,7 @@ public class FloType {
 		this.hsl = this.hsl24to16(hue, saturation, lightness);
 	}
 
-	@OriginalMember(owner = "client!fc", name = "a", descriptor = "(III)I")
+	@OriginalMember(owner = "client.client!fc", name = "a", descriptor = "(III)I")
 	private int hsl24to16(@OriginalArg(0) int hue, @OriginalArg(1) int saturation, @OriginalArg(2) int lightness) {
 		if (lightness > 179) {
 			saturation /= 2;

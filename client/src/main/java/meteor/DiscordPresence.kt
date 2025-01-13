@@ -1,5 +1,6 @@
 package meteor
 
+import androidx.compose.runtime.mutableStateOf
 import io.github.vyfor.kpresence.RichClient
 import io.github.vyfor.kpresence.logger.ILogger
 import io.github.vyfor.kpresence.logger.LogLevel
@@ -9,6 +10,8 @@ import meteor.plugin.discord.DiscordPlugin
 
 object DiscordPresence {
     private val discordClient = RichClient(969159977463848960)
+
+    var updatingDiscordState = mutableStateOf(false)
 
     init {
         discordClient.logger = ILogger.default(level = LogLevel.INFO)
@@ -37,10 +40,10 @@ object DiscordPresence {
         PluginManager.get<DiscordPlugin>()?.let {
             if (!it.enabled())
                 return
-            if (!Main.client.isLoggedIn && !it.sendStatusLoggedOut())
+            if (!Main.client.ingame && !it.sendStatusLoggedOut())
                 state = null
         }
-        val details = if (Main.client.isLoggedIn) "Logged in" else "Logged out"
+        val details = if (Main.client.ingame) "Logged in" else "Logged out"
 
         if (state == null || state!!.length < 2 || state!!.length > 128) {
             update(details = details, state = null)

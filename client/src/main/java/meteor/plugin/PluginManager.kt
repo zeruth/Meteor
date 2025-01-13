@@ -1,24 +1,14 @@
 package meteor.plugin
 
 import meteor.Logger
-import meteor.plugin.account.AccountPlugin
 import meteor.plugin.discord.DiscordPlugin
-import meteor.plugin.rendering.RenderingPlugin
-import meteor.plugin.stretchedmode.StretchedModePlugin
-import meteor.plugin.meteor.MeteorPlugin
-import meteor.plugin.sound.SoundPlugin
 
 object PluginManager {
     val plugins = mutableListOf<Plugin>()
     val logger = Logger("PluginManager")
 
     init {
-        plugins.add(AccountPlugin())
         plugins.add(DiscordPlugin())
-        plugins.add(MeteorPlugin())
-        plugins.add(RenderingPlugin())
-        plugins.add(SoundPlugin())
-        plugins.add(StretchedModePlugin())
     }
 
     fun startPlugins() {

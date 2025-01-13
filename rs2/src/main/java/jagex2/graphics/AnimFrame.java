@@ -1,41 +1,46 @@
 package jagex2.graphics;
 
-import jagex2.io.Jagfile;
-import jagex2.io.Packet;
 import org.openrs2.deob.annotation.OriginalArg;
 import org.openrs2.deob.annotation.OriginalClass;
 import org.openrs2.deob.annotation.OriginalMember;
 import org.openrs2.deob.annotation.Pc;
 
+import jagex2.io.Jagfile;
+import jagex2.io.Packet;
+
 // name taken from runetek5
-@OriginalClass("client!g")
+@OriginalClass("client.client!g")
 public class AnimFrame {
 
-	@OriginalMember(owner = "client!g", name = "a", descriptor = "[Lclient!g;")
+	@OriginalMember(owner = "client.client!g", name = "a", descriptor = "[Lclient!g;")
 	public static AnimFrame[] instances;
 
-	@OriginalMember(owner = "client!g", name = "b", descriptor = "I")
+	@OriginalMember(owner = "client.client!g", name = "b", descriptor = "I")
 	public int delay;
 
-	@OriginalMember(owner = "client!g", name = "c", descriptor = "Lclient!f;")
+	@OriginalMember(owner = "client.client!g", name = "c", descriptor = "Lclient!f;")
 	public AnimBase base;
 
-	@OriginalMember(owner = "client!g", name = "d", descriptor = "I")
+	@OriginalMember(owner = "client.client!g", name = "d", descriptor = "I")
 	public int length;
 
-	@OriginalMember(owner = "client!g", name = "e", descriptor = "[I")
-	public int[] bases;
+	// groups to use from base
+	@OriginalMember(owner = "client.client!g", name = "e", descriptor = "[I")
+	public int[] groups;
 
-	@OriginalMember(owner = "client!g", name = "f", descriptor = "[I")
+	// x adjustment for group
+	@OriginalMember(owner = "client.client!g", name = "f", descriptor = "[I")
 	public int[] x;
 
-	@OriginalMember(owner = "client!g", name = "g", descriptor = "[I")
+	// y adjustment for group
+	@OriginalMember(owner = "client.client!g", name = "g", descriptor = "[I")
 	public int[] y;
 
-	@OriginalMember(owner = "client!g", name = "h", descriptor = "[I")
+	// z adjustment for group
+	@OriginalMember(owner = "client.client!g", name = "h", descriptor = "[I")
 	public int[] z;
 
-	@OriginalMember(owner = "client!g", name = "a", descriptor = "(ZLclient!ub;)V")
+	@OriginalMember(owner = "client.client!g", name = "a", descriptor = "(ZLclient!ub;)V")
 	public static void unpack(@OriginalArg(1) Jagfile models) {
 		@Pc(17) Packet head = new Packet(models.read("frame_head.dat", null));
 		@Pc(27) Packet tran1 = new Packet(models.read("frame_tran1.dat", null));
@@ -46,7 +51,7 @@ public class AnimFrame {
 		@Pc(53) int count = head.g2();
 		instances = new AnimFrame[count + 1];
 
-		@Pc(61) int[] labels = new int[500];
+		@Pc(61) int[] groups = new int[500];
 		@Pc(64) int[] x = new int[500];
 		@Pc(67) int[] y = new int[500];
 		@Pc(70) int[] z = new int[500];
@@ -68,10 +73,10 @@ public class AnimFrame {
 				int flags = tran1.g1();
 
 				if (flags > 0) {
-					if (base.types[j] != 0) {
+					if (base.types[j] != AnimBase.OP_BASE) {
 						for (@Pc(124) int group = j - 1; group > lastGroup; group--) {
-							if (base.types[group] == 0) {
-								labels[current] = group;
+							if (base.types[group] == AnimBase.OP_BASE) {
+								groups[current] = group;
 								x[current] = 0;
 								y[current] = 0;
 								z[current] = 0;
@@ -81,10 +86,10 @@ public class AnimFrame {
 						}
 					}
 
-					labels[current] = j;
+					groups[current] = j;
 
 					@Pc(160) short defaultValue = 0;
-					if (base.types[labels[current]] == 3) {
+					if (base.types[groups[current]] == AnimBase.OP_SCALE) {
 						defaultValue = 128;
 					}
 
@@ -112,13 +117,13 @@ public class AnimFrame {
 			}
 
 			frame.length = current;
-			frame.bases = new int[current];
+			frame.groups = new int[current];
 			frame.x = new int[current];
 			frame.y = new int[current];
 			frame.z = new int[current];
 
 			for (int j = 0; j < current; j++) {
-				frame.bases[j] = labels[j];
+				frame.groups[j] = groups[j];
 				frame.x[j] = x[j];
 				frame.y[j] = y[j];
 				frame.z[j] = z[j];
