@@ -3,7 +3,11 @@
 A Kotlin/Compose client built around [Lost-City/Client](https://github.com/2004Scape/Client)  
 [Android port](https://github.com/zeruth/meteor-android)  
 
+Windows:  
 ![image](https://github.com/user-attachments/assets/0300fa0d-4194-49ca-87d7-086ed3347661)
+
+Ubuntu:
+![image](https://github.com/user-attachments/assets/c3fa102a-bd28-4770-b50e-48726df2b88f)
 
 Enhancements are nice, but I intend to respect the experience, and the developers of Lost-City.  
     
@@ -20,43 +24,23 @@ Forbidden features (unless otherwise permitted by Lost-City):
         The original experience should be a viable option for people to play with"
 
     Per Zeruth:
-        We will absolutely be respecting the project here, if things change regarding content
-        that is forbidden or not, it will be reflected here.
+    "We will absolutely be respecting the project here, if things change regarding content
+        that is forbidden or not, it will be reflected here."
 ```
 
 ```
-Improved RuneLite Injector  
-    Inject to deob instead of vanilla, great for debugging
 Kotlin/Compose framework:
     client module is entirely Kotlin, and entirely Compose - No Java / Swing in the frontend
     Many systems improved / modernized to benefit from this
-Compose only UI/Overlays:
-    Overlays are native resolution regardless of rs stretching
-    Overlays are rendered on compose UI thread, client thread won't starve because of drawing
 ```
   
 Depends on the following sub-projects:  
 [Annotations](https://www.github.com/zeruth/annotations)  runelite deobfuscation/mixin annotations  
 [Eventbus](https://www.github.com/zeruth/eventbus)  kotlin coroutines based eventbus  
-[Injector](https://www.github.com/zeruth/injector)  packs `api`/`api-rs`/`mixins` into `rs2`  
 [Logger](https://www.github.com/zeruth/logger)  pretty logger  
   
-* `/api` restricted-level interfaces to client members
-* `/api-rs` unrestricted-level interfaces to client members
 * `/client` pure kotlin / compose 3pc
-* `/mixins` code to be packed/modified in `rs2`
 * `/rs2` aka deob aka 2004Scape Client aka Client1 aka vanilla
-
-The injector has a handful of improvements over RuneLite/OpenOSRSs releases.
-```
--targets rs2 instead of mapping against vanilla jar  
-  (changes made in rs2 are injected on build)
-  (rs2 is debuggable with breakpoints etc after injection)  
--can handle targets with packages  
--various bytecode fixes  
--virtually annotate members 
-  (no need to annotate anything in rs2)  
-```
   
 # 2004Scape Client
 
