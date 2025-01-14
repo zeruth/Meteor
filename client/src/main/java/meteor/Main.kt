@@ -6,6 +6,8 @@ import androidx.compose.ui.window.application
 import client.client
 import com.google.gson.GsonBuilder
 import meteor.DiscordPresence.updatingDiscordState
+import meteor.audio.MidiPlayer
+import meteor.audio.SoundPlayer
 import meteor.config.ConfigManager
 import meteor.plugin.PluginManager
 import meteor.ui.MeteorWindow.MeteorWindow
@@ -21,6 +23,8 @@ object Main {
 
     init {
         Logger.logFile = File(Configuration.dataDir, "log.txt")
+        MidiPlayer.init()
+        SoundPlayer.init()
         Game.init()
         PluginManager.startPlugins()
 

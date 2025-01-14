@@ -1,6 +1,6 @@
 package client;
 
-import client.events.DrawFinished;
+import client.events.*;
 import jagex2.client.Configuration;
 import jagex2.client.GameShell;
 import jagex2.client.InputTracking;
@@ -1689,6 +1689,7 @@ public class client extends GameShell {
 	private void stopMidi() {
 		signlink.midifade = 0;
 		signlink.midi = "stop";
+		KEventKt.getKEVENT().post(MidiStop.INSTANCE);
 	}
 
 	@OriginalMember(owner = "client.client!client.client", name = "f", descriptor = "(I)V")
@@ -6298,12 +6299,16 @@ public class client extends GameShell {
 
 	@OriginalMember(owner = "client.client!client.client", name = "a", descriptor = "([BII)Z")
 	private boolean saveWave(@OriginalArg(0) byte[] src, @OriginalArg(1) int length) {
-		return src == null || signlink.wavesave(src, length);
+		boolean success = src == null || signlink.wavesave(src, length);
+		KEventKt.getKEVENT().post(new WavePlay(src, length));
+		return success;
 	}
 
 	@OriginalMember(owner = "client.client!client.client", name = "u", descriptor = "(I)Z")
 	private boolean replayWave() {
-		return signlink.wavereplay();
+		boolean success = signlink.wavereplay();
+		KEventKt.getKEVENT().post(WaveReplay.INSTANCE);
+		return success;
 	}
 
 	@OriginalMember(owner = "client.client!client.client", name = "g", descriptor = "(II)V")

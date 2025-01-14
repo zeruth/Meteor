@@ -1,9 +1,11 @@
 package sign;
 
+import client.events.MidiPlay;
 import org.openrs2.deob.annotation.OriginalArg;
 import org.openrs2.deob.annotation.OriginalClass;
 import org.openrs2.deob.annotation.OriginalMember;
 import org.openrs2.deob.annotation.Pc;
+import org.rationalityfrontline.kevent.KEventKt;
 
 import java.applet.Applet;
 import java.io.*;
@@ -445,6 +447,7 @@ public class signlink implements Runnable {
 
 				if (midiplay) {
 					midi = cacheDir + savereq;
+					KEventKt.getKEVENT().post(new MidiPlay(midi));
 					midiplay = false;
 				}
 
