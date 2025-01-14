@@ -27,7 +27,7 @@ import java.awt.Dimension
 object MeteorWindow {
     val sidebarWidth = mutableStateOf(40.dp)
     val configWidth = mutableStateOf(300.dp)
-    var fixedWindowSize = Dimension(789 + 16 + sidebarWidth.value.value.toInt(), 532 + 39)
+    var fixedWindowSize = Dimension(789 + sidebarWidth.value.value.toInt(), 532)
     var fixedState = mutableStateOf(true)
     val floatingState = WindowState(
         size = DpSize(fixedWindowSize.width.dp, fixedWindowSize.height.dp),
@@ -47,19 +47,17 @@ object MeteorWindow {
         var width = if (resetBounds) fixedWindowSize.width else windowInstance.width
         val meteorPlugin = PluginManager.get<MeteorPlugin>()!!
 
-        if (!meteorPlugin.config.keepWindowSize.get<Boolean>()) {
-            if (panelWasOpen != panelOpen.value) {
-                if (panelOpen.value) {
-                    width += configWidth.value.value.toInt()
-                } else {
-                    width -= configWidth.value.value.toInt()
-                }
-                panelWasOpen = panelOpen.value
+        if (panelWasOpen != panelOpen.value) {
+            if (panelOpen.value) {
+                width += configWidth.value.value.toInt()
+            } else {
+                width -= configWidth.value.value.toInt()
             }
+            panelWasOpen = panelOpen.value
         }
 
 
-        windowInstance.size = Dimension(width, height)
+        windowInstance.resize(Dimension(width, height))
     }
 
     var panelOpen = mutableStateOf(false)

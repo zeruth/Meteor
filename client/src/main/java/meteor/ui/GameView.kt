@@ -14,6 +14,7 @@ import androidx.compose.ui.awt.awtEventOrNull
 import androidx.compose.ui.focus.FocusRequester
 import androidx.compose.ui.focus.focusRequester
 import androidx.compose.ui.geometry.Offset
+import androidx.compose.ui.graphics.FilterQuality
 import androidx.compose.ui.graphics.ImageBitmap
 import androidx.compose.ui.input.key.*
 import androidx.compose.ui.input.pointer.PointerButton
@@ -31,12 +32,15 @@ import compose.icons.lineawesomeicons.UnlockSolid
 import meteor.Main
 import meteor.config.ConfigManager
 import meteor.ui.MeteorWindow.fixedState
+import meteor.ui.MeteorWindow.fixedWindowSize
 import meteor.ui.MeteorWindow.resetWindowSize
+import meteor.ui.MeteorWindow.sidebarWidth
 import meteor.ui.MeteorWindow.windowInstance
 import meteor.ui.MeteorWindow.windowState
 import meteor.ui.components.sidebar.SidebarComposables
 import meteor.ui.components.sidebar.buttons.FullscreenToggleButton
 import meteor.ui.components.sidebar.buttons.StretchToggleButton
+import java.awt.Dimension
 import meteor.Main.client as clientInstance
 
 object GameView {
@@ -47,13 +51,35 @@ object GameView {
     val focusRequester = FocusRequester()
     val stretchedMode = mutableStateOf(ConfigManager.get<Boolean>("meteor.stretched", false))
 
+    val filterQuality = mutableStateOf(ConfigManager.get<meteor.plugin.meteor.FilterQuality>("Meteor.filterQuality", meteor.plugin.meteor.FilterQuality.None))
+
     @Composable
     fun RowScope.GameViewContainer(src: ImageBitmap) {
         var mod = Modifier
             .focusable()
+            .defaultMinSize(789.dp, 532.dp)
             .focusRequester(focusRequester)
             .weight(1f)
             .onSizeChanged { newSize ->
+                if (fixedState.value) {
+                    if (newSize.width < 789) {
+                        val adjustWidth = (789 - newSize.width)
+                        fixedWindowSize = Dimension((fixedWindowSize.width + adjustWidth), fixedWindowSize.height)
+                    }
+                    if (newSize.height < 532) {
+                        val adjustHeight = (532 - newSize.height)
+                        fixedWindowSize = Dimension((fixedWindowSize.width), fixedWindowSize.height + adjustHeight)
+                    }
+                    if (newSize.width > 789) {
+                        val adjustWidth = (newSize.width - 789)
+                        fixedWindowSize = Dimension((fixedWindowSize.width - adjustWidth), fixedWindowSize.height)
+                    }
+                    if (newSize.height >  532) {
+                        val adjustHeight = (newSize.height - 532)
+                        fixedWindowSize = Dimension((fixedWindowSize.width), fixedWindowSize.height - adjustHeight)
+                    }
+                    resetWindowSize()
+                }
             scaleX = if (stretchedMode.value) (789f / newSize.width) else 1f
             scaleY = if (stretchedMode.value) (532f / newSize.height) else 1f
         }
@@ -88,6 +114,7 @@ object GameView {
                 src,
                 contentDescription = "GameView",
                 contentScale = if (stretchedMode.value) ContentScale.FillBounds else ContentScale.None,
+                filterQuality = filterQuality.value.composeValue,
                 modifier = mod
             )
         }

@@ -4,6 +4,6 @@ import meteor.config.Config
 import meteor.config.ConfigItem
 
 class MeteorConfig(plugin: MeteorPlugin) : Config(plugin) {
-    val uiColor = ConfigItem(this, "UI Color", "uicolor".key(), UIColor.GREEN)
-    val keepWindowSize = ConfigItem(this, "Keep window size", "keepWindowSize".key(), true)
+    val uiColor = ConfigItem(this, "UI color", "uicolor".key(), UIColor.GREEN)
+    val filterQuality = ConfigItem(this, "Filter quality", "filterQuality".key(), FilterQuality.None)
 }
