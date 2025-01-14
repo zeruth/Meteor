@@ -30,7 +30,6 @@ object MeteorWindow {
     var fixedWindowSize = Dimension(789 + sidebarWidth.value.value.toInt(), 532)
     var fixedState = mutableStateOf(true)
     val floatingState = WindowState(
-        size = DpSize(fixedWindowSize.width.dp, fixedWindowSize.height.dp),
         position = WindowPosition(Alignment.Center),
         placement = WindowPlacement.Floating)
     val fullscreenState = WindowState(
@@ -42,6 +41,7 @@ object MeteorWindow {
     var panelWasOpen = false
 
     fun resetWindowSize() {
+        windowInstance.minimumSize = Dimension(fixedWindowSize.width, fixedWindowSize.height)
         val resetBounds = !stretchedMode.value
         val height = if (resetBounds) fixedWindowSize.height else windowInstance.height
         var width = if (resetBounds) fixedWindowSize.width else windowInstance.width
@@ -56,8 +56,12 @@ object MeteorWindow {
             panelWasOpen = panelOpen.value
         }
 
+        if (windowState.value == fullscreenState) {
+            windowState.value = fullscreenState
+        } else {
+            windowInstance.resize(Dimension(width, height))
+        }
 
-        windowInstance.resize(Dimension(width, height))
     }
 
     var panelOpen = mutableStateOf(false)

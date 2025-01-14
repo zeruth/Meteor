@@ -62,22 +62,23 @@ object GameView {
             .weight(1f)
             .onSizeChanged { newSize ->
                 if (fixedState.value) {
-                    if (newSize.width < 789) {
+                    if (newSize.width < 788) {
                         val adjustWidth = (789 - newSize.width)
                         fixedWindowSize = Dimension((fixedWindowSize.width + adjustWidth), fixedWindowSize.height)
                     }
-                    if (newSize.height < 532) {
+                    if (newSize.height < 531) {
                         val adjustHeight = (532 - newSize.height)
                         fixedWindowSize = Dimension((fixedWindowSize.width), fixedWindowSize.height + adjustHeight)
                     }
-                    if (newSize.width > 789) {
+                    if (newSize.width > 790) {
                         val adjustWidth = (newSize.width - 789)
                         fixedWindowSize = Dimension((fixedWindowSize.width - adjustWidth), fixedWindowSize.height)
                     }
-                    if (newSize.height >  532) {
+                    if (newSize.height >  533) {
                         val adjustHeight = (newSize.height - 532)
                         fixedWindowSize = Dimension((fixedWindowSize.width), fixedWindowSize.height - adjustHeight)
                     }
+                    fixedWindowSize = Dimension(fixedWindowSize.width.coerceAtLeast(789), fixedWindowSize.height.coerceAtLeast(532))
                     resetWindowSize()
                 }
             scaleX = if (stretchedMode.value) (789f / newSize.width) else 1f
