@@ -8,14 +8,13 @@ import org.openrs2.deob.annotation.OriginalClass;
 import org.openrs2.deob.annotation.OriginalMember;
 import org.openrs2.deob.annotation.Pc;
 
-import java.applet.Applet;
 import java.awt.*;
 import java.awt.event.*;
 import java.awt.image.BufferedImage;
 
 // name taken from rsc
 @OriginalClass("client.client!a")
-public class GameShell extends Applet implements Runnable, MouseListener, MouseMotionListener, KeyListener, FocusListener, WindowListener {
+public class GameShell extends Component implements Runnable, MouseListener, MouseMotionListener, KeyListener, FocusListener, WindowListener {
 
 	@OriginalMember(owner = "client.client!a", name = "g", descriptor = "I")
 	private int state;
@@ -88,7 +87,6 @@ public class GameShell extends Applet implements Runnable, MouseListener, MouseM
 
 	private boolean hasFocus = true;
 
-	@Override
 	public Graphics getGraphics() {
 		return this.graphics;
 	}
@@ -231,7 +229,6 @@ public class GameShell extends Applet implements Runnable, MouseListener, MouseM
 	}
 
 	@OriginalMember(owner = "client.client!a", name = "start", descriptor = "()V")
-	@Override
 	public final void start() {
 		System.out.println("start");
 		if (this.state >= 0) {
@@ -240,7 +237,6 @@ public class GameShell extends Applet implements Runnable, MouseListener, MouseM
 	}
 
 	@OriginalMember(owner = "client.client!a", name = "stop", descriptor = "()V")
-	@Override
 	public final void stop() {
 		if (this.state >= 0) {
 			this.state = 4000 / this.deltime;
@@ -248,7 +244,6 @@ public class GameShell extends Applet implements Runnable, MouseListener, MouseM
 	}
 
 	@OriginalMember(owner = "client.client!a", name = "destroy", descriptor = "()V")
-	@Override
 	public final void destroy() {
 		this.state = -1;
 

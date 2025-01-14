@@ -8493,7 +8493,6 @@ public class client extends GameShell {
 	}
 
 	@OriginalMember(owner = "client.client!client.client", name = "getCodeBase", descriptor = "()Ljava/net/URL;")
-	@Override
 	public URL getCodeBase() {
         try {
             return new URL(Configuration.URL);
@@ -9349,13 +9348,13 @@ public class client extends GameShell {
 	}
 
 	@OriginalMember(owner = "client.client!client.client", name = "getParameter", descriptor = "(Ljava/lang/String;)Ljava/lang/String;")
-	@Override
-	public String getParameter(@OriginalArg(0) String name) {
-		if (signlink.mainapp != null) {
-			return signlink.mainapp.getParameter(name);
-		}
 
-		return super.getParameter(name);
+	public String getParameter(@OriginalArg(0) String name) {
+/*		if (signlink.mainapp != null) {
+			return signlink.mainapp.getParameter(name);
+		}*/
+
+		return "";
 	}
 
 	@OriginalMember(owner = "client.client!client.client", name = "l", descriptor = "(Z)V")
@@ -11546,7 +11545,6 @@ public class client extends GameShell {
 	}
 
 	@OriginalMember(owner = "client.client!client.client", name = "init", descriptor = "()V")
-	@Override
 	public void init() {
 		nodeId = Integer.parseInt(this.getParameter("nodeid"));
 		portOffset = Integer.parseInt(this.getParameter("portoff"));

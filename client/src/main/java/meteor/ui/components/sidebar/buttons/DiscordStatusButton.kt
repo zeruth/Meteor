@@ -36,6 +36,7 @@ class DiscordStatusButton : SidebarButton(
     companion object {
         var state = mutableStateOf("")
 
+        @Suppress("DEPRECATION")
         @Composable
         fun showDiscordStatusWindow() {
             val focusRequester = remember { FocusRequester() }

@@ -26,6 +26,8 @@ import meteor.ui.components.sidebar.buttons.PluginsButton.Companion.switchStateM
 import meteor.ui.components.sidebar.buttons.PluginsButton.Companion.textStateMap
 
 object ConfigComposables {
+
+    @Suppress("UNCHECKED_CAST")
     @Composable
     fun ConfigPanel(config: Config) {
         Box(Modifier.fillMaxSize()) {

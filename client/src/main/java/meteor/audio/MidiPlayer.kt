@@ -31,13 +31,9 @@ object MidiPlayer {
         if (!Main.client.ingame && preventLoginMusic)
             return
 
-        if (midi == null) {
-            sequencer!!.stop()
-        } else {
-            if (sequencer != null) if (sequencer!!.sequence != null) sequencer!!.start()
-        }
+        if (sequencer != null) if (sequencer!!.sequence != null) sequencer!!.start()
 
-        if (midi == null || (midi == currentSong && !forced)) {
+        if ((midi == currentSong && !forced)) {
             return
         }
 

@@ -8,6 +8,8 @@ open class Config(var plugin: Plugin? = null) {
     fun String.key(): String {
         return "${plugin!!.name}.$this"
     }
+
+    @Suppress("UNCHECKED_CAST")
     fun <T> get(key: String): ConfigItem<T> {
         return items.first { it.key == key } as ConfigItem<T>
     }

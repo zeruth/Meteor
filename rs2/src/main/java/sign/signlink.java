@@ -7,7 +7,6 @@ import org.openrs2.deob.annotation.OriginalMember;
 import org.openrs2.deob.annotation.Pc;
 import org.rationalityfrontline.kevent.KEventKt;
 
-import java.applet.Applet;
 import java.io.*;
 import java.net.InetAddress;
 import java.net.Socket;
@@ -23,7 +22,7 @@ public class signlink implements Runnable {
 	public static int uid;
 
 	@OriginalMember(owner = "client.client!sign/signlink", name = "mainapp", descriptor = "Ljava/applet/Applet;")
-	public static Applet mainapp;
+	public static client.client mainapp;
 
 	@OriginalMember(owner = "client.client!sign/signlink", name = "sunjava", descriptor = "Z")
 	public static boolean sunjava;

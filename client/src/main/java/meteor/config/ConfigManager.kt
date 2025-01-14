@@ -21,6 +21,7 @@ object ConfigManager {
         }
     }
 
+    @Suppress("UNCHECKED_CAST")
     fun <T> getItem(key: String) : ConfigItem<T>? {
         return getGeneric(key) as ConfigItem<T>?
     }

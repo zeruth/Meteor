@@ -30,7 +30,6 @@ public class Playground extends GameShell {
 
 	public static int portOffset = 1;
 
-	@Override
 	public URL getCodeBase() {
         try {
             return new URL("http://w1.225.2004scape.org:" + (portOffset + 80));

@@ -59,7 +59,7 @@ object MeteorWindow {
         if (windowState.value == fullscreenState) {
             windowState.value = fullscreenState
         } else {
-            windowInstance.resize(Dimension(width, height))
+            windowInstance.size = Dimension(width, height)
         }
 
     }
