@@ -2,7 +2,7 @@ package meteor.plugin.discord
 
 import meteor.plugin.Plugin
 
-class DiscordPlugin : Plugin("Discord Rich Presence", true, cantDisable = true) {
+class DiscordPlugin : Plugin("Discord", true, cantDisable = true) {
     val config = configuration<DiscordConfig>()
 
     fun enabled() : Boolean {
